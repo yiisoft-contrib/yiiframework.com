@@ -1,22 +1,19 @@
 <?php
 
-Yii::setAlias('@tests', dirname(__DIR__) . '/tests');
-
-$params = require(__DIR__ . '/params.php');
-$db = require(__DIR__ . '/db.php');
+$params = array_merge(
+    require(__DIR__ . '/params.php'),
+    require(__DIR__ . '/params-local.php')
+);
 
 return [
-    'id' => 'basic-console',
+    'id' => 'yiiframework.com-console',
     'basePath' => dirname(__DIR__),
-    'bootstrap' => ['log', 'gii'],
+    'bootstrap' => ['log'],
     'controllerNamespace' => 'app\commands',
-    'modules' => [
-        'gii' => 'yii\gii\Module',
-    ],
     'components' => [
-        'cache' => [
-            'class' => 'yii\caching\FileCache',
-        ],
+        'db' => $params['components.db'],
+        'cache' => $params['components.cache'],
+        'mailer' => $params['components.mailer'],
         'log' => [
             'targets' => [
                 [
@@ -25,7 +22,6 @@ return [
                 ],
             ],
         ],
-        'db' => $db,
     ],
     'params' => $params,
 ];
