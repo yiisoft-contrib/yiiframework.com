@@ -38,6 +38,12 @@ $config = [
                 ]
             ],
         ],
+        'urlManager' => [
+            'enablePrettyUrl' => true,
+            'showScriptName' => false,
+            'enableStrictParsing' => true,
+            'rules' => require(__DIR__ . '/urls.php'),
+        ],
     ],
     'params' => $params,
 ];

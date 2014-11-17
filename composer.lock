@@ -4,7 +4,7 @@
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "ad08aa2fbd495104844aa5e356a023aa",
+    "hash": "75e920f20772b77a1009927799c2816a",
     "packages": [
         {
             "name": "bower-asset/bootstrap",
@@ -365,16 +365,16 @@
         },
         {
             "name": "yiisoft/yii2",
-            "version": "2.0.0",
+            "version": "dev-master",
             "source": {
                 "type": "git",
                 "url": "https://github.com/yiisoft/yii2-framework.git",
-                "reference": "cf1ce50f33344fa2cf1b384cd86c1424493d3323"
+                "reference": "66e1a314106196f23baf4c0df8e18894a14e541c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/yiisoft/yii2-framework/zipball/cf1ce50f33344fa2cf1b384cd86c1424493d3323",
-                "reference": "cf1ce50f33344fa2cf1b384cd86c1424493d3323",
+                "url": "https://api.github.com/repos/yiisoft/yii2-framework/zipball/66e1a314106196f23baf4c0df8e18894a14e541c",
+                "reference": "66e1a314106196f23baf4c0df8e18894a14e541c",
                 "shasum": ""
             },
             "require": {
@@ -449,7 +449,7 @@
                 "framework",
                 "yii2"
             ],
-            "time": "2014-10-12 17:09:06"
+            "time": "2014-11-17 04:16:37"
         },
         {
             "name": "yiisoft/yii2-bootstrap",
@@ -738,19 +738,20 @@
         },
         {
             "name": "nikic/php-parser",
-            "version": "v0.9.4",
+            "version": "v0.9.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/nikic/PHP-Parser.git",
-                "reference": "1e5e280ae88a27effa2ae4aa2bd088494ed8594f"
+                "reference": "ef70767475434bdb3615b43c327e2cae17ef12eb"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/nikic/PHP-Parser/zipball/1e5e280ae88a27effa2ae4aa2bd088494ed8594f",
-                "reference": "1e5e280ae88a27effa2ae4aa2bd088494ed8594f",
+                "url": "https://api.github.com/repos/nikic/PHP-Parser/zipball/ef70767475434bdb3615b43c327e2cae17ef12eb",
+                "reference": "ef70767475434bdb3615b43c327e2cae17ef12eb",
                 "shasum": ""
             },
             "require": {
+                "ext-tokenizer": "*",
                 "php": ">=5.2"
             },
             "type": "library",
@@ -778,32 +779,32 @@
                 "parser",
                 "php"
             ],
-            "time": "2013-08-25 17:11:40"
+            "time": "2014-07-23 18:24:17"
         },
         {
             "name": "phpdocumentor/reflection",
-            "version": "1.0.6",
+            "version": "1.0.7",
             "source": {
                 "type": "git",
                 "url": "https://github.com/phpDocumentor/Reflection.git",
-                "reference": "b7d8c7abbe5f3f5fe0cb438fcc4bf9349609109a"
+                "reference": "fc40c3f604ac2287eb5c314174d5109b2c699372"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/phpDocumentor/Reflection/zipball/b7d8c7abbe5f3f5fe0cb438fcc4bf9349609109a",
-                "reference": "b7d8c7abbe5f3f5fe0cb438fcc4bf9349609109a",
+                "url": "https://api.github.com/repos/phpDocumentor/Reflection/zipball/fc40c3f604ac2287eb5c314174d5109b2c699372",
+                "reference": "fc40c3f604ac2287eb5c314174d5109b2c699372",
                 "shasum": ""
             },
             "require": {
-                "nikic/php-parser": "0.9.4",
+                "nikic/php-parser": "~0.9.4",
                 "php": ">=5.3.3",
-                "phpdocumentor/reflection-docblock": "2.*",
+                "phpdocumentor/reflection-docblock": "~2.0",
                 "psr/log": "~1.0"
             },
             "require-dev": {
                 "behat/behat": "~2.4",
-                "mockery/mockery": ">=0.7.0",
-                "phpunit/phpunit": "~3.7"
+                "mockery/mockery": "~0.8",
+                "phpunit/phpunit": "~4.0"
             },
             "type": "library",
             "extra": {
@@ -832,7 +833,7 @@
                 "reflection",
                 "static analysis"
             ],
-            "time": "2014-06-06 20:42:11"
+            "time": "2014-11-14 11:43:04"
         },
         {
             "name": "phpdocumentor/reflection-docblock",
@@ -1033,7 +1034,9 @@
     ],
     "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": [],
+    "stability-flags": {
+        "yiisoft/yii2": 20
+    },
     "prefer-stable": false,
     "platform": {
         "php": ">=5.4.0"

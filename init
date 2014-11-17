@@ -64,6 +64,12 @@ if (empty($params['env'])) {
 }
 
 echo "\n  Start initialization ...\n\n";
+
+@chmod("$root/scripts/cron-daily.sh", 0755);
+@chmod("$root/scripts/cron-hourly.sh", 0755);
+@chmod("$root/scripts/cron-weekly.sh", 0755);
+@chmod("$root/scripts/build-doc.sh", 0755);
+
 $files = getFileList("$root/env/{$env['path']}");
 $all = false;
 foreach ($files as $file) {

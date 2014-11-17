@@ -10,6 +10,13 @@ return [
     'basePath' => dirname(__DIR__),
     'bootstrap' => ['log'],
     'controllerNamespace' => 'app\commands',
+    'controllerMap' => [
+        'api' => 'app\apidoc\ApiController',
+        'guide' => 'app\apidoc\GuideController',
+    ],
+    'aliases' => [
+        'yii\apidoc\templates\' . $template'
+    ],
     'components' => [
         'db' => $params['components.db'],
         'cache' => $params['components.cache'],
