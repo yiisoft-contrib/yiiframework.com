@@ -19,5 +19,32 @@ return [
         // for the mailer to send real emails.
         'useFileTransport' => true,
     ],
+    'guide.versions' => [
+        '2.0' => [
+            'en' => 'English',
+            'es' => 'Español',     // Spanish
+            'ja' => '日本語',       // Japanese
+            'ru' => 'Русский',     // Russian
+            'zh-CN' => '简体中文',  // Simplified Chinese
+        ],
+        '1.1' => [
+            'de' => 'Deutsch',      // German
+            'en' => 'English',      // English
+            'es' => 'Español',      // Spanish
+            'fr' => 'Français',     // French
+            'he' => 'עִבְרִית',     // Hebrew
+            'id' => 'Bahasa Indonesia', // Indonesian
+            'it' => 'Italiano',     // Italian
+            'ja' => '日本語',       // Japanese
+            'pl' => 'Polski',       // Polish
+            'pt' => 'Português',    // Portuguese
+            'pt_br' => 'Português brasileiro',  // Brazilian Portuguese
+            'ro' => 'România',      // Romanian
+            'ru' => 'Русский',      // Russian
+            'sv' => 'Svenska',      // Swedish
+            'uk' => 'украї́нська', // Ukrainian
+            'zh_cn' => '简体中文',  // Simplified Chinese
+        ],
+    ],
     'adminEmail' => 'admin@example.com',
 ];

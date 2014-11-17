@@ -35,24 +35,24 @@ AppAsset::register($this);
                 echo Nav::widget([
                     'options' => ['class' => 'navbar-nav navbar-right'],
                     'items' => [
-                        ['label' => 'Home', 'url' => ['/site/index']],
+                        ['label' => 'Home', 'url' => ['site/index']],
                         ['label' => 'Learn', 'items' => [
-                            ['label' => 'The Definitive Guide', 'url' => ['/guide']],
-                            ['label' => 'Class Reference', 'url' => ['/api']],
+                            ['label' => 'The Definitive Guide', 'url' => ['guide/index', 'version' => '2.0', 'language' => 'en']],
+                            ['label' => 'Class Reference', 'url' => ['api/index', 'version' => '2.0']],
                             ['label' => 'Tutorials', 'url' => 'https://yiicamp.com/tutorials'],
                             ['label' => 'Answers', 'url' => 'https://yiicamp.com/answers'],
-                            ['label' => 'Books', 'url' => ['/site/books']],
+                            ['label' => 'Books', 'url' => ['site/books']],
                         ]],
                         ['label' => 'Develop', 'items' => [
-                            ['label' => 'Install Yii', 'url' => ['/site/install']],
+                            ['label' => 'Install Yii', 'url' => ['site/install']],
                             ['label' => 'Extensions', 'url' => 'https://yiicamp.com/extensions'],
                             ['label' => 'Report an Issue', 'url' => 'https://github.com/yiisoft/yii2/issues/new'],
                             ['label' => 'Contribute to Yii', 'url' => ['/site/contribute']],
                             ['label' => 'Jobs', 'url' => 'https://yiicamp.com/jobs'],
                         ]],
                         ['label' => 'Discuss', 'items' => [
-                            ['label' => 'Forum', 'url' => ['/site/install']],
-                            ['label' => 'Live Chat', 'url' => ['/site/chat']],
+                            ['label' => 'Forum', 'url' => '/forum'],
+                            ['label' => 'Live Chat', 'url' => ['site/chat']],
                             ['label' => 'GitHub', 'url' => 'https://github.com/yiisoft/yii2'],
                             ['label' => 'Facebook', 'url' => 'https://www.facebook.com/groups/yiitalk/'],
                             ['label' => 'LinkedIn', 'url' => 'https://www.linkedin.com/groups/yii-framework-1483367'],
