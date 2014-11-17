@@ -21,6 +21,9 @@ nbproject
 # composer itself is not needed
 composer.phar
 
+# skip composer.lock for now until near production
+composer.lock
+
 # phpunit itself is not needed
 phpunit.phar
 # local phpunit config
@@ -32,3 +35,4 @@ config/web-local.php
 config/console-local.php
 config/params-local.php
 web/index.php
+web/.htaccess
