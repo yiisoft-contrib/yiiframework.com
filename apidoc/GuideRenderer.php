@@ -18,37 +18,18 @@ class GuideRenderer extends \yii\apidoc\templates\html\GuideRenderer
 
     public $layout = '@app/apidoc/layouts/guide.php';
 
-
-    /**
-     * @inheritDoc
-     */
-    public function render($files, $targetDir)
+    public function generateGuideUrl($file)
     {
-        $types = array_merge($this->apiContext->classes, $this->apiContext->interfaces, $this->apiContext->traits);
-
-        $extTypes = [];
-        foreach ($this->extensions as $k => $ext) {
-            $extType = $this->filterTypes($types, $ext);
-            if (empty($extType)) {
-                unset($this->extensions[$k]);
-                continue;
-            }
-            $extTypes[$ext] = $extType;
+        $hash = '';
+        if (($pos = strrpos($file, '#')) !== false) {
+            $hash = substr($file, $pos);
+            $file = substr($file, 0, $pos);
         }
+        return rtrim($this->guideUrl, '/') . '/' . $this->guidePrefix . basename($file, '.md') . $hash;
+    }
 
-        parent::render($files, $targetDir);
-
-        if ($this->controller !== null) {
-            $this->controller->stdout('generating search index...');
-        }
-
-        $indexer = new ApiIndexer();
-        $indexer->indexFiles(FileHelper::findFiles($targetDir, ['only' => ['*.html']]), $targetDir);
-        $js = $indexer->exportJs();
-        file_put_contents($targetDir . '/jssearch.index.js', $js);
-
-        if ($this->controller !== null) {
-            $this->controller->stdout('done.' . PHP_EOL, Console::FG_GREEN);
-        }
+    protected function fixMarkdownLinks($content)
+    {
+        return preg_replace('/href\s*=\s*"([^"\/]+)\.md(#.*)?"/i', 'href="./\1\2"', $content);
     }
 }
