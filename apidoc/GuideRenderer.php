@@ -3,9 +3,6 @@
 namespace app\apidoc;
 
 use Yii;
-use yii\apidoc\helpers\ApiIndexer;
-use yii\helpers\Console;
-use yii\helpers\FileHelper;
 
 /**
  *
@@ -30,6 +27,8 @@ class GuideRenderer extends \yii\apidoc\templates\html\GuideRenderer
 
     protected function fixMarkdownLinks($content)
     {
-        return preg_replace('/href\s*=\s*"([^"\/]+)\.md(#.*)?"/i', 'href="./\1\2"', $content);
+        $guideUrl = rtrim($this->guideUrl, '/');
+        $content = preg_replace('/href\s*=\s*"([^"\/]+)\.md(#.*)?"/i', "href=\"$guideUrl/\\1\\2\"", $content);
+        return preg_replace('%<img src="(images/[^"]+)"%', "<img src=\"$guideUrl/\\1\"", $content);
     }
 }

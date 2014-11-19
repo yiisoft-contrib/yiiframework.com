@@ -9,6 +9,8 @@ class GuideController extends \yii\apidoc\commands\GuideController
 {
     public $defaultAction = 'all';
     public $guidePrefix = '';
+    protected $version = '2.0';
+    protected $language = 'en';
 
     public function actionAll()
     {
@@ -24,6 +26,8 @@ class GuideController extends \yii\apidoc\commands\GuideController
                         $source .= "-$language";
                     }
                     $target = "$targetPath/guide-$version/$language";
+                    $this->version = $version;
+                    $this->language = $language;
 
                     $this->stdout("Start generating guide $version in $name...\n");
                     $this->actionIndex([$source], $target);
@@ -35,6 +39,8 @@ class GuideController extends \yii\apidoc\commands\GuideController
 
     protected function findRenderer($template)
     {
-        return new GuideRenderer;
+        return new GuideRenderer([
+            'guideUrl' => "/guide/{$this->version}/{$this->language}",
+        ]);
     }
 }
