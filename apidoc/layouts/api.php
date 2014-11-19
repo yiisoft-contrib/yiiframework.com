@@ -10,9 +10,7 @@ use yii\helpers\StringHelper;
 
 /** @var $renderer ApiRenderer */
 $renderer = $this->context;
-
-$this->beginContent('@app/apidoc/layouts/main.php'); ?>
-
+?>
 <div class="row">
     <div class="col-md-3">
         <?php
@@ -49,7 +47,6 @@ $this->beginContent('@app/apidoc/layouts/main.php'); ?>
 </div>
 
 <script type="text/javascript">
-    /*<![CDATA[*/
     $("a.toggle").on('click', function () {
         var $this = $(this);
         if ($this.hasClass('properties-hidden')) {
@@ -64,19 +61,4 @@ $this->beginContent('@app/apidoc/layouts/main.php'); ?>
 
         return false;
     });
-    /*
-     $(".sourceCode a.show").toggle(function () {
-     $(this).text($(this).text().replace(/show/,'hide'));
-     $(this).parents(".sourceCode").find("div.code").show();
-     },function () {
-     $(this).text($(this).text().replace(/hide/,'show'));
-     $(this).parents(".sourceCode").find("div.code").hide();
-     });
-     $("a.sourceLink").click(function () {
-     $(this).attr('target','_blank');
-     });
-     */
-    /*]]>*/
 </script>
-
-<?php $this->endContent(); ?>

@@ -67,3 +67,8 @@ h2:hover .hashlink,
 h3:hover .hashlink {
     display: inline;
 }
+
+code {
+    color: #BD25C7;
+    background: none;
+}

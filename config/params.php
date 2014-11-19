@@ -19,6 +19,10 @@ return [
         // for the mailer to send real emails.
         'useFileTransport' => true,
     ],
+    'api.versions' => [
+        '2.0',
+        '1.1',
+    ],
     'guide.versions' => [
         '2.0' => [
             'en' => 'English',
