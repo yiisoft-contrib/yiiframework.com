@@ -45,6 +45,7 @@ class GuideController extends \yii\apidoc\commands\GuideController
                 $this->apiDocs = Yii::getAlias("@app/data/api-$version");
 
                 $this->stdout("Start generating guide $version in $name...\n", Console::FG_CYAN);
+                $this->generateIndex($source, $target);
                 $this->actionIndex([$source], $target);
                 $this->stdout("Finished guide $version in $name.\n\n", Console::FG_CYAN);
             }
@@ -59,5 +60,24 @@ class GuideController extends \yii\apidoc\commands\GuideController
             'guideUrl' => "/guide/{$this->version}/{$this->language}",
             'apiUrl' => "/api/{$this->version}",
         ]);
+    }
+
+    protected function generateIndex($source, $target)
+    {
+        $chapters = $this->findRenderer(null)->loadGuideStructure([$source . '/README.md']);
+        $index = [];
+        foreach ($chapters as $i => $chapter) {
+            foreach ($chapter['content'] as $j => $section) {
+                $section['file'] = basename($section['file'], '.md');
+                $chapters[$i]['content'][$j] = $section;
+                $index[$section['file']] = [$chapter['headline'], $section['headline']];
+            }
+        }
+        $lines = file($source . '/README.md');
+        if (($title = trim($lines[0])) === '') {
+            $title = "The Definitive Guide for Yii {$this->version}";
+        }
+
+        file_put_contents("$target/index.data", serialize([$title, $chapters, $index]));
     }
 }

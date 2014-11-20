@@ -1,17 +1,13 @@
 <?php
 /**
  * @var $this yii\web\View
- * @var $versions array all available guide versions
- * @var $version string the currently chosen guide version
- * @var $languages array all available languages (language ID => language name)
- * @var $language string the currently chosen guide language ID
- * @var $title string the page title
- * @var $section string the section name
- * @var $content string the section content
+ * @var $model app\models\GuideSection
  */
+use app\apidoc\SideNavWidget;
 use yii\helpers\Html;
+use yii\helpers\Url;
 
-$this->title = $title;
+$this->title = $model->getPageTitle();
 ?>
 <nav class="navbar navbar-default guide-view" role="navigation">
     <div class="container">
@@ -22,11 +18,11 @@ $this->title = $title;
         </form>
         <ul class="nav navbar-nav navbar-right">
             <li class="dropdown">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Version <?= $version ?> <span class="caret"></span></a>
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Version <?= $model->version ?> <span class="caret"></span></a>
                 <ul class="dropdown-menu" role="menu">
-                    <?php foreach ($versions as $ver): ?>
+                    <?php foreach ($model->getVersionOptions() as $version): ?>
                         <li role="presentation">
-                            <?= Html::a($ver, ['guide/view', 'version' => $ver, 'language' => $language, 'section' => $section], [
+                            <?= Html::a($version, ['guide/view', 'version' => $version, 'language' => $model->language, 'section' => $model->name], [
                                 'role' => 'menuitem',
                                 'tabindex' => -1,
                             ]) ?>
@@ -35,11 +31,11 @@ $this->title = $title;
                 </ul>
             </li>
             <li class="dropdown">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><?= $languages[$language] ?> <span class="caret"></span></a>
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><?= $model->getLanguageName() ?> <span class="caret"></span></a>
                 <ul class="dropdown-menu" role="menu">
-                    <?php foreach ($languages as $lang => $name): ?>
+                    <?php foreach ($model->getLanguageOptions() as $lang => $name): ?>
                         <li role="presentation">
-                            <?= Html::a($name, ['guide/view', 'version' => $version, 'language' => $lang, 'section' => $section], [
+                            <?= Html::a($name, ['guide/view', 'version' => $model->version, 'language' => $lang, 'section' => $model->name], [
                                 'role' => 'menuitem',
                                 'tabindex' => -1,
                             ]) ?>
@@ -51,4 +47,31 @@ $this->title = $title;
     </div>
 </nav>
 
-<?= $content ?>
+<div class="row">
+    <div class="col-md-3">
+        <?php
+        $nav = [];
+        foreach ($model->getGuideChapters() as $chapter) {
+            $items = [];
+            foreach($chapter['content'] as $chContent) {
+                $items[] = [
+                    'label' => $chContent['headline'],
+                    'url' => Url::to(['guide/view', 'section' => $chContent['file'], 'language' => $model->language, 'version' => $model->version]),
+                    'active' => $model->name === $chContent['file'],
+                ];
+            }
+            $nav[] = [
+                'label' => $chapter['headline'],
+                'items' => $items,
+            ];
+        } ?>
+        <?= SideNavWidget::widget([
+            'id' => 'navigation',
+            'items' => $nav,
+            'view' => $this,
+        ]) ?>
+    </div>
+    <div class="col-md-9 guide-content" role="main">
+        <?= $model->getContent() ?>
+    </div>
+</div>

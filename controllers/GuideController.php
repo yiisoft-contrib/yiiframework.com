@@ -2,6 +2,7 @@
 
 namespace app\controllers;
 
+use app\models\GuideSection;
 use Yii;
 use yii\filters\HttpCache;
 use yii\web\Controller;
@@ -11,30 +12,17 @@ class GuideController extends Controller
 {
     public function actionIndex($version, $language)
     {
-        return $this->actionView($version, $language, 'README');
+        return $this->actionView('README', $version, $language);
     }
 
-    public function actionView($version, $language, $section)
+    public function actionView($section, $version, $language)
     {
-        $this->validateVersionAndLanguage($version, $language);
-
-        $file = $this->findSection($version, $language, $section);
-        if ($file === false && $language !== 'en') {
-            $file = $this->findSection($version, 'en', $section);
+        $model = new GuideSection($section, $version, $language);
+        if ($model->validate()) {
+            return $this->render('view', ['model' => $model]);
+        } else {
+            throw new NotFoundHttpException('The requested page was not found.');
         }
-        if ($file === false) {
-            throw new NotFoundHttpException("The requested guide section was not found.");
-        }
-
-        return $this->render('view', [
-            'content' => file_get_contents($file),
-            'title' => $this->getPageTitle($version, $language, $section),
-            'versions' => array_keys(Yii::$app->params['guide.versions']),
-            'version' => $version,
-            'languages' => Yii::$app->params['guide.versions'][$version],
-            'language' => $language,
-            'section' => $section,
-        ]);
     }
 
     public function actionImage($version, $language, $image)
