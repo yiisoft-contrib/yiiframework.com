@@ -34,6 +34,9 @@ $config = [
                     'sourcePath' => null,
                     'css' => [
                         '//maxcdn.bootstrapcdn.com/bootswatch/3.3.0/readable/bootstrap.min.css',
+//                        '//maxcdn.bootstrapcdn.com/bootswatch/3.3.0/cerulean/bootstrap.min.css',
+//                        '//maxcdn.bootstrapcdn.com/bootswatch/3.3.0/cosmo/bootstrap.min.css'
+//                        '//maxcdn.bootstrapcdn.com/bootswatch/3.3.0/flatly/bootstrap.min.css'
                     ]
                 ]
             ],

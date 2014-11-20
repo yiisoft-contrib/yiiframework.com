@@ -27,11 +27,12 @@ AppAsset::register($this);
             'brandLabel' => 'Yii Framework',
             'brandUrl' => Yii::$app->homeUrl,
             'options' => [
-                'class' => 'navbar-default navbar-fixed-top',
+                'class' => 'navbar-default navbar-fixed-top navbar-inverse',
             ],
         ]);
             echo Nav::widget([
                 'options' => ['class' => 'navbar-nav navbar-right'],
+                'activateItems' => false,
                 'items' => [
                     ['label' => 'Home', 'url' => ['site/index']],
                     ['label' => 'Learn', 'items' => [

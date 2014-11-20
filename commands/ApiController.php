@@ -11,7 +11,7 @@ use app\apidoc\ApiRenderer;
  */
 class ApiController extends \yii\apidoc\commands\ApiController
 {
-    public $defaultAction = 'all';
+    public $defaultAction = 'generate';
     public $guidePrefix = '';
     protected $version = '2.0';
 
