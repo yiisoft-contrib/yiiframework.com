@@ -7,6 +7,9 @@ use yii\base\Object;
 
 class GuideSection extends Object
 {
+    /**
+     * @var string
+     */
     public $name;
     public $version;
     public $language;
@@ -28,14 +31,22 @@ class GuideSection extends Object
             return false;
         }
 
-        $file = $this->getSectionFile();
-        if (!is_file($file) && $this->language !== 'en') {
-            $file = $this->getSectionFile($this->name, $this->version, 'en');
-            $this->missingTranslation = true;
+        $this->filePath = $this->getSectionFile();
+        if (is_file($this->filePath)) {
+            return true;
         }
-        $this->filePath = $file;
+        if ($this->language !== 'en') {
+            $this->missingTranslation = true;
+            $this->filePath = $this->getSectionFile($this->name, $this->version, 'en');
+            return is_file($this->filePath);
+        } else {
+            return false;
+        }
+    }
 
-        return is_file($file);
+    public function getIsTranslationMissing()
+    {
+        return $this->missingTranslation;
     }
 
     public function getContent()
@@ -53,7 +64,7 @@ class GuideSection extends Object
         return array_keys(Yii::$app->params['guide.versions']);
     }
 
-    public function getSectionFile($name = null, $version = null, $language = null)
+    protected function getSectionFile($name = null, $version = null, $language = null)
     {
         if ($name === null) {
             $name = $this->name;
@@ -81,8 +92,18 @@ class GuideSection extends Object
     public function getPageTitle()
     {
         list ($title, $chapters, $sections) = $this->getGuideIndex();
-        list ($chapter, $section) = $sections[$this->name];
-        return "$chapter: $section | $title";
+        if (isset($sections[$this->name])) {
+            list ($chapter, $section) = $sections[$this->name];
+            return "$chapter: $section | $title";
+        } else {
+            return $title;
+        }
+    }
+
+    public function getGuideTitle()
+    {
+        list ($title, $chapters, $sections) = $this->getGuideIndex();
+        return $title;
     }
 
     public function getGuideChapters()
@@ -96,4 +117,5 @@ class GuideSection extends Object
         $languages = $this->getLanguageOptions();
         return $languages[$this->language];
     }
+
 }

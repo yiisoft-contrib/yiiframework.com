@@ -47,31 +47,15 @@ $this->title = $model->getPageTitle();
     </div>
 </nav>
 
+<?php if ($model->name === 'README'): ?>
+    <?= $model->getContent() ?>
+<?php else: ?>
 <div class="row">
     <div class="col-md-3">
-        <?php
-        $nav = [];
-        foreach ($model->getGuideChapters() as $chapter) {
-            $items = [];
-            foreach($chapter['content'] as $chContent) {
-                $items[] = [
-                    'label' => $chContent['headline'],
-                    'url' => Url::to(['guide/view', 'section' => $chContent['file'], 'language' => $model->language, 'version' => $model->version]),
-                    'active' => $model->name === $chContent['file'],
-                ];
-            }
-            $nav[] = [
-                'label' => $chapter['headline'],
-                'items' => $items,
-            ];
-        } ?>
-        <?= SideNavWidget::widget([
-            'id' => 'navigation',
-            'items' => $nav,
-            'view' => $this,
-        ]) ?>
+        <?= $this->render('_nav', ['model' => $model]) ?>
     </div>
     <div class="col-md-9 guide-content" role="main">
         <?= $model->getContent() ?>
     </div>
 </div>
+<?php endif; ?>

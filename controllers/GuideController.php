@@ -12,7 +12,12 @@ class GuideController extends Controller
 {
     public function actionIndex($version, $language)
     {
-        return $this->actionView('README', $version, $language);
+        $model = new GuideSection('README', $version, $language);
+        if ($model->validate()) {
+            return $this->render('index', ['model' => $model]);
+        } else {
+            throw new NotFoundHttpException('The requested page was not found.');
+        }
     }
 
     public function actionView($section, $version, $language)
