@@ -3,119 +3,64 @@
 namespace app\models;
 
 use Yii;
-use yii\base\Object;
 
-class GuideSection extends Object
+class GuideSection
 {
+    /**
+     * @var Guide
+     */
+    public $guide;
     /**
      * @var string
      */
     public $name;
-    public $version;
-    public $language;
-    protected $filePath;
-    protected $missingTranslation = false;
+    /**
+     * @var string
+     */
+    public $content;
+    /**
+     * @var boolean
+     */
+    public $missingTranslation;
 
-    public function __construct($name, $version, $language, $config = [])
+    public function __construct($name, Guide $guide)
     {
         $this->name = $name;
-        $this->version = $version;
-        $this->language = $language;
-        parent::__construct($config);
+        $this->guide = $guide;
     }
 
-    public function validate()
+    /**
+     * Loads the section content from its file.
+     * @return boolean whether the loading is successful
+     */
+    public function load()
     {
-        $versions = Yii::$app->params['guide.versions'];
-        if (!isset($versions[$this->version]) || !isset($versions[$this->version][$this->language]) || !preg_match('/^[\w\-\.]+$/', $this->name)) {
-            return false;
+        $this->content = $this->loadContent($this->name, $this->guide->version, $this->guide->language);
+        if ($this->content === false) {
+            if ($this->guide->language !== 'en') {
+                $this->missingTranslation = true;
+                $this->content = $this->loadContent($this->name, $this->guide->version, 'en');
+            }
         }
-
-        $this->filePath = $this->getSectionFile();
-        if (is_file($this->filePath)) {
-            return true;
-        }
-        if ($this->language !== 'en') {
-            $this->missingTranslation = true;
-            $this->filePath = $this->getSectionFile($this->name, $this->version, 'en');
-            return is_file($this->filePath);
-        } else {
-            return false;
-        }
+        return $this->content !== false;
     }
 
-    public function getIsTranslationMissing()
-    {
-        return $this->missingTranslation;
-    }
-
-    public function getContent()
-    {
-        return file_get_contents($this->filePath);
-    }
-
-    public function getLanguageOptions()
-    {
-        return Yii::$app->params['guide.versions'][$this->version];
-    }
-
-    public function getVersionOptions()
-    {
-        return array_keys(Yii::$app->params['guide.versions']);
-    }
-
-    protected function getSectionFile($name = null, $version = null, $language = null)
-    {
-        if ($name === null) {
-            $name = $this->name;
-        }
-        if ($version === null) {
-            $version = $this->version;
-        }
-        if ($language === null) {
-            $language = $this->language;
-        }
-        return Yii::getAlias("@app/data/guide-$version/$language/$name.html");
-    }
-
-    protected $index;
-
-    protected function getGuideIndex()
-    {
-        if ($this->index === null) {
-            $indexFile = Yii::getAlias("@app/data/guide-{$this->version}/{$this->language}/index.data");
-            $this->index = unserialize(file_get_contents($indexFile));
-        }
-        return $this->index;
-    }
-
+    /**
+     * @return string the title is suitable for being used as a page title
+     */
     public function getPageTitle()
     {
-        list ($title, $chapters, $sections) = $this->getGuideIndex();
-        if (isset($sections[$this->name])) {
-            list ($chapter, $section) = $sections[$this->name];
-            return "$chapter: $section | $title";
+        if (isset($this->guide->sections[$this->name])) {
+            list ($chapter, $section) = $this->guide->sections[$this->name];
+            return "$chapter: $section | {$this->guide->title}";
         } else {
-            return $title;
+            return $this->guide->title;
         }
     }
 
-    public function getGuideTitle()
+    protected function loadContent($name, $version, $language)
     {
-        list ($title, $chapters, $sections) = $this->getGuideIndex();
-        return $title;
+        $file = Yii::getAlias("@app/data/guide-$version/$language/$name.html");
+        return @file_get_contents($file);
     }
-
-    public function getGuideChapters()
-    {
-        list ($title, $chapters, $sections) = $this->getGuideIndex();
-        return $chapters;
-    }
-
-    public function getLanguageName()
-    {
-        $languages = $this->getLanguageOptions();
-        return $languages[$this->language];
-    }
-
 }

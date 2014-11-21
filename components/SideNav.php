@@ -1,6 +1,6 @@
 <?php
 
-namespace app\apidoc;
+namespace app\components;
 
 use Yii;
 use yii\base\InvalidConfigException;
@@ -9,41 +9,7 @@ use yii\helpers\ArrayHelper;
 use yii\helpers\Url;
 use yii\helpers\Html;
 
-/**
- * Nav renders a nav HTML component.
- *
- * For example:
- *
- * ```php
- * echo Nav::widget([
- *     'items' => [
- *         [
- *             'label' => 'Home',
- *             'url' => ['site/index'],
- *             'linkOptions' => [...],
- *         ],
- *         [
- *             'label' => 'Dropdown',
- *             'items' => [
- *                  ['label' => 'Level 1 - Dropdown A', 'url' => '#'],
- *                  '<li class="divider"></li>',
- *                  '<li class="dropdown-header">Dropdown Header</li>',
- *                  ['label' => 'Level 1 - Dropdown B', 'url' => '#'],
- *             ],
- *         ],
- *     ],
- * ]);
- * ```
- *
- * Note: Multilevel dropdowns beyond Level 1 are not supported in Bootstrap 3.
- *
- * @see http://getbootstrap.com/components.html#dropdowns
- * @see http://getbootstrap.com/components/#nav
- *
- * @author Antonio Ramirez <amigo.cobos@gmail.com>
- * @since 2.0
- */
-class SideNavWidget extends \yii\bootstrap\Widget
+class SideNav extends \yii\bootstrap\Widget
 {
     /**
      * @var array list of items in the nav widget. Each array element represents a single

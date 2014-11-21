@@ -4,7 +4,11 @@ body {
 }
 
 body {
-    padding-top: 60px;
+    padding-top: 87px;
+}
+
+.navbar-inverse {
+    background: lightslategray;
 }
 
 .footer {
@@ -12,10 +16,6 @@ body {
     background-color: #f5f5f5;
     border-top: 1px solid #ddd;
     padding-top: 20px;
-}
-
-.guide-view.navbar {
-    border: 0;
 }
 
 .list-group-item.active {
@@ -90,3 +90,20 @@ pre {
 .broken-link {
     background: lightpink;
 }
+
+.guide-index .thumbnail h3 {
+    font-size: 16px;
+    background: #eee;
+    padding: 5px 10px;
+    margin: 0;
+}
+
+.guide-index .thumbnail {
+    height: 270px;
+    overflow: auto;
+}
+
+.guide-index .thumbnail ul {
+    padding: 10px 15px;
+}
+

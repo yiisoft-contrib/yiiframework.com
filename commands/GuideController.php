@@ -64,13 +64,17 @@ class GuideController extends \yii\apidoc\commands\GuideController
 
     protected function generateIndex($source, $target)
     {
-        $chapters = $this->findRenderer(null)->loadGuideStructure([$source . '/README.md']);
-        $index = [];
-        foreach ($chapters as $i => $chapter) {
+        $chapters = [];
+        $sections = [];
+        $data = $this->findRenderer(null)->loadGuideStructure([$source . '/README.md']);
+        foreach ($data as $i => $chapter) {
             foreach ($chapter['content'] as $j => $section) {
-                $section['file'] = basename($section['file'], '.md');
-                $chapters[$i]['content'][$j] = $section;
-                $index[$section['file']] = [$chapter['headline'], $section['headline']];
+                $file = basename($section['file'], '.md');
+                if ($file === 'README') {
+                    continue;
+                }
+                $chapters[$chapter['headline']][$section['headline']] = $file;
+                $sections[$file] = [$chapter['headline'], $section['headline']];
             }
         }
         $lines = file($source . '/README.md');
@@ -78,6 +82,6 @@ class GuideController extends \yii\apidoc\commands\GuideController
             $title = "The Definitive Guide for Yii {$this->version}";
         }
 
-        file_put_contents("$target/index.data", serialize([$title, $chapters, $index]));
+        file_put_contents("$target/index.data", serialize([$title, $chapters, $sections]));
     }
 }
