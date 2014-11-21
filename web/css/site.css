@@ -3,19 +3,29 @@ body {
     height: 100%;
 }
 
-body {
-    padding-top: 87px;
+.navbar-inverse {
+    background: darkcyan;
 }
 
-.navbar-inverse {
-    background: lightslategray;
+.navbar-inverse .navbar-brand,
+.navbar-inverse .navbar-brand:hover,
+.navbar-inverse .navbar-brand:focus,
+.navbar-inverse .navbar-nav>li>a,
+.navbar-inverse .navbar-nav>li>a:hover,
+.navbar-inverse .navbar-nav>li>a:focus {
+    color: white;
 }
 
 .footer {
+    margin-top: 50px;
     height: 60px;
     background-color: #f5f5f5;
     border-top: 1px solid #ddd;
     padding-top: 20px;
+}
+
+.list-group-item {
+    background: #f0ffff;
 }
 
 .list-group-item.active {
@@ -26,6 +36,7 @@ body {
 
 .submenu .list-group-item {
     padding-left: 30px;
+    background: #ffffff;
 }
 
 .submenu .list-group-item.active {
@@ -82,13 +93,15 @@ blockquote {
 }
 
 pre {
+    font-size: 14px;
     border-radius: 0;
     background: #fafafa;
     border-color: #ddd;
 }
 
 .broken-link {
-    background: lightpink;
+    background: #FFE4EF;
+    border-bottom: 1px solid lightpink;
 }
 
 .guide-index .thumbnail h3 {
@@ -107,3 +120,14 @@ pre {
     padding: 10px 15px;
 }
 
+.guide-view .prev-next {
+    margin-top: 50px;
+    padding-top: 10px;
+    border-top: 1px solid #ccc;
+}
+
+.guide-view img.img-responsive {
+    padding: 10px;
+    background: #eee;
+    border: 1px solid #ccc;
+}

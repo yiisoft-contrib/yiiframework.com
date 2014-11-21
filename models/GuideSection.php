@@ -58,6 +58,44 @@ class GuideSection
         }
     }
 
+    /**
+     * @return array the previous section information ([name, title]), or null if the current section is the first one
+     */
+    public function getPrevSection()
+    {
+        $names = array_keys($this->guide->sections);
+        $index = array_search($this->name, $names);
+        if ($index - 1 >= 0) {
+            $name = $names[$index - 1];
+            list ($chapter, $section) = $this->guide->sections[$name];
+            if ($this->guide->sections[$this->name][0] === $chapter) {
+                return [$name, $section];
+            } else {
+                return [$name, "$chapter: $section"];
+            }
+        }
+        return null;
+    }
+
+    /**
+     * @return array the next section information ([name, title]), or null if the current section is the last one
+     */
+    public function getNextSection()
+    {
+        $names = array_keys($this->guide->sections);
+        $index = array_search($this->name, $names);
+        if ($index >= 0 && $index + 1 < count($names)) {
+            $name = $names[$index + 1];
+            list ($chapter, $section) = $this->guide->sections[$name];
+            if ($this->guide->sections[$this->name][0] === $chapter) {
+                return [$name, $section];
+            } else {
+                return [$name, "$chapter: $section"];
+            }
+        }
+        return null;
+    }
+
     protected function loadContent($name, $version, $language)
     {
         $file = Yii::getAlias("@app/data/guide-$version/$language/$name.html");

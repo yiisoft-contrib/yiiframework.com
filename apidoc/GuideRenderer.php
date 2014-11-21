@@ -29,7 +29,7 @@ class GuideRenderer extends \yii\apidoc\templates\html\GuideRenderer
     {
         $guideUrl = rtrim($this->guideUrl, '/');
         $content = preg_replace('/href\s*=\s*"([^"\/]+)\.md(#.*)?"/i', "href=\"$guideUrl/\\1\\2\"", $content);
-        return preg_replace('%<img src="(images/[^"]+)"%', "<img src=\"$guideUrl/\\1\"", $content);
+        return preg_replace('%<img src="(images/[^"]+)"%', "<img class=\"img-responsive\" src=\"$guideUrl/\\1\"", $content);
     }
 
     public function loadGuideStructure($files)
