@@ -25,21 +25,35 @@ foreach ($guide->chapters as $chapterTitle => $sections) {
 }
 
 $this->title = $section->getPageTitle();
+$this->registerJs('
+$(".sidenav-toggle").on("click", function() {
+    var $button = $(this);
+    $(".row-offcanvas").toggleClass("active");
+    if ($button.text() === $button.data("show-text")) {
+        $button.text($button.data("hide-text"));
+    } else {
+        $button.text($button.data("show-text"));
+    }
+});
+');
 ?>
 <div class="guide-view">
-    <div class="row">
-        <div class="col-md-3">
-            <?= SideNav::widget(['items' => $nav]) ?>
+    <div class="row row-offcanvas">
+        <div class="col-sm-3">
+            <?= SideNav::widget(['items' => $nav, 'options' => ['class' => 'sidenav-offcanvas']]) ?>
         </div>
-        <div class="col-md-9 guide-content" role="main">
+        <div class="col-sm-9 guide-content" role="main">
+            <div class="navbar-header">
+                <button type="button" class="sidenav-toggle btn btn-info" data-show-text="Navigate" data-hide-text="Close">Navigate</button>
+            </div>
             <div class="row">
                 <div class="col-sm-2">
                     <?= DropdownList::widget([
                         'selection' => "Version {$guide->version}",
-                        'items' => array_map(function ($version) use ($section, $guide) {
+                        'items' => array_map(function ($version) use ($guide) {
                             return [
                                 'label' => $version,
-                                'url' => ['guide/view', 'section' => $section->name, 'version' => $version, 'language' => $guide->language],
+                                'url' => ['guide/index', 'version' => $version, 'language' => $guide->language],
                             ];
                         }, $guide->getVersionOptions()),
                     ]) ?>
@@ -78,7 +92,6 @@ $this->title = $section->getPageTitle();
                 echo '<div class="text-center"><a href="#">Go to Top <span class="glyphicon glyphicon-chevron-up" aria-hidden="true"></span></a></div>';
                 ?>
             </div>
-
         </div>
     </div>
 </div>
