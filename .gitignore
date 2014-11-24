@@ -18,6 +18,9 @@ nbproject
 # composer vendor dir
 /vendor
 
+# NPM modules
+/node_modules
+
 # composer itself is not needed
 composer.phar
 
