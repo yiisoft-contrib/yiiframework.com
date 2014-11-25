@@ -14,7 +14,7 @@ use yii\widgets\Breadcrumbs;
     <meta charset="<?= Yii::$app->charset ?>"/>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <?= Html::csrfMetaTags() ?>
-    <?= Html::cssFile('@web/css/all.css') ?>
+    <?= Html::cssFile(YII_DEBUG ? '@web/css/all.css' : '@web/css/all.min.css?v=' . filemtime(Yii::getAlias('@webroot/css/all.min.css'))) ?>
 
     <title><?= Html::encode($this->title) ?></title>
     <?php $this->head() ?>
@@ -75,7 +75,7 @@ use yii\widgets\Breadcrumbs;
         </div>
     </footer>
 
-    <?= Html::jsFile('@web/js/all.js') ?>
+    <?= Html::jsFile(YII_DEBUG ? '@web/js/all.js' : '@web/js/all.min.js?v=' . filemtime(Yii::getAlias('@webroot/js/all.min.js'))) ?>
 
 <?php $this->endBody() ?>
 </body>
