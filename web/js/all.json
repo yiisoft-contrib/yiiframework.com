@@ -1,0 +1,7 @@
+[
+    "vendor/bower/jquery/dist/jquery.js",
+    "vendor/bower/bootstrap/dist/js/bootstrap.js",
+    "vendor/yiisoft/yii2/assets/yii.js",
+    "vendor/yiisoft/yii2/assets/yii.validation.js",
+    "vendor/yiisoft/yii2/assets/yii.activeForm.js"
+]

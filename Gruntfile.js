@@ -5,10 +5,12 @@ module.exports = function (grunt) {
         less: {
             dev: {
                 options: {
-                    compress: false
+                    compress: false,
+                    sourceMap: true,
+                    outputSourceFiles: true
                 },
                 files: {
-                    "./web/css/all.css": "./assets/less/all.less"
+                    "web/css/all.css": "web/less/all.less"
                 }
             },
             prod: {
@@ -16,7 +18,7 @@ module.exports = function (grunt) {
                     compress: true
                 },
                 files: {
-                    "./web/css/all.min.css": "./assets/less/all.less"
+                    "web/css/all.min.css": "web/less/all.less"
                 }
             }
         },
@@ -25,20 +27,14 @@ module.exports = function (grunt) {
                 separator: ';'
             },
             site: {
-                src: [
-                    './vendor/bower/jquery/dist/jquery.js',
-                    './vendor/bower/bootstrap/dist/js/bootstrap.js',
-                    './vendor/yiisoft/yii2/assets/yii.js',
-                    './vendor/yiisoft/yii2/assets/yii.validation.js',
-                    './vendor/yiisoft/yii2/assets/yii.activeForm.js'
-                ],
-                dest: './web/js/all.js'
+                src: grunt.file.readJSON('web/js/all.json'),
+                dest: 'web/js/all.js'
             }
         },
         copy: {
             main: {
                 files: [
-                    {expand: true, flatten: true, src: ['./vendor/bower/bootstrap/fonts/*'], dest: './web/fonts/', filter: 'isFile'}
+                    {expand: true, flatten: true, src: ['vendor/bower/bootstrap/fonts/*'], dest: 'web/fonts/', filter: 'isFile'}
                 ]
             }
         },
@@ -48,17 +44,17 @@ module.exports = function (grunt) {
             },
             site: {
                 files: {
-                    './web/js/all.min.js': './web/js/all.js'
+                    'web/js/all.min.js': 'web/js/all.js'
                 }
             }
         },
         watch: {
             js: {
                 files: [
-                    './assets/js/*.js',
-                    './vendor/bower/jquery/dist/jquery.js',
-                    './vendor/bower/bootstrap/dist/js/bootstrap.js',
-                    './vendor/yiisoft/yii2/assets/*.js'
+                    'assets/js/*.js',
+                    'vendor/bower/jquery/dist/jquery.js',
+                    'vendor/bower/bootstrap/dist/js/bootstrap.js',
+                    'vendor/yiisoft/yii2/assets/*.js'
                 ],
                 tasks: ['concat', 'uglify'],
                 options: {
@@ -66,14 +62,14 @@ module.exports = function (grunt) {
                 }
             },
             less: {
-                files: ['./assets/less/*.less'],
+                files: ['web/less/*.less'],
                 tasks: ['less'],
                 options: {
                     livereload: true
                 }
             },
             fonts: {
-                files: ['./vendor/bower/bootstrap/fonts/*'],
+                files: ['vendor/bower/bootstrap/fonts/*'],
                 tasks: ['copy'],
                 options: {
                     livereload: true

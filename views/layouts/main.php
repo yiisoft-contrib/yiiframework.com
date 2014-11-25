@@ -3,12 +3,9 @@ use yii\helpers\Html;
 use yii\bootstrap\Nav;
 use yii\bootstrap\NavBar;
 use yii\widgets\Breadcrumbs;
-use app\assets\AppAsset;
 
 /* @var $this \yii\web\View */
 /* @var $content string */
-
-AppAsset::register($this);
 ?>
 <?php $this->beginPage() ?>
 <!DOCTYPE html>
@@ -17,6 +14,8 @@ AppAsset::register($this);
     <meta charset="<?= Yii::$app->charset ?>"/>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <?= Html::csrfMetaTags() ?>
+    <?= Html::cssFile('@web/css/all.css') ?>
+
     <title><?= Html::encode($this->title) ?></title>
     <?php $this->head() ?>
 </head>
@@ -75,6 +74,8 @@ AppAsset::register($this);
             <p class="pull-left">&copy; Yii Software LLC <?= date('Y') ?></p>
         </div>
     </footer>
+
+    <?= Html::jsFile('@web/js/all.js') ?>
 
 <?php $this->endBody() ?>
 </body>
