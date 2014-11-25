@@ -39,3 +39,8 @@ config/console-local.php
 config/params-local.php
 web/index.php
 web/.htaccess
+
+# files automatically generated on dev platform
+web/css/all.css
+web/js/all.js
+web/js/all.js.map

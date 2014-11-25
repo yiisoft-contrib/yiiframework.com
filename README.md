@@ -40,6 +40,9 @@ cd ..
 ./yii guide 2.0 --interactive=0
 ./yii api 1.1 --interactive=0
 ./yii guide 1.1 --interactive=0
+
+# build js/css files
+grunt build
 ```
 
 
@@ -85,21 +88,23 @@ RewriteRule . index.php
 
 ## DEVELOPMENT
 
-We use grunt to automate the generation of CSS and JavaScript files from source files.
-Each time you make changes to LESS or source JavaScript files, you make run `grunt build` to regenerate
-the combined/compressed CSS and JavaScript files. Alternatively you may run `grunt watch` once to 
-watch the changes to the source files and automatically generate the CSS/JS files when needed.
+### Build
+
+We use grunt to manage the build tasks, such as compiling LESS into CSS, concatenating and compressing JS files.
+You may run `grunt` to watch file changes and automatically trigger the related build tasks. Alternatively you may
+manually run `grunt build` to rebuild all tasks.
 
 
-### Adding a new LESS file
+### CSS Files
 
-* The new LESS file should be put under `assets/less`. 
-* The new file should also be listed in `assets/less/all.less`.
+* Use LESS files to define CSS styles. 
+* All LESS files should be put under `/less` and listed in `/less/all.less`.
 * Usually each controller corresponds to a single LESS file whose name is the same as the controller ID.
   For example, the `GuideController` has a LESS file named `guide.less`.
   
-### Adding a new JavaScript file
 
-TBD
+### JS Files
 
-
+* All JS files should be put under `/js` and listed in `/js/all.json`.
+* Usually each controller corresponds to a single JS file whose name is the same as the controller ID.
+  For example, the `GuideController` has a LESS file named `guide.js`.

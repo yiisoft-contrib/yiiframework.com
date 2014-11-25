@@ -10,7 +10,7 @@ module.exports = function (grunt) {
                     outputSourceFiles: true
                 },
                 files: {
-                    "web/css/all.css": "web/less/all.less"
+                    "web/css/all.css": "less/all.less"
                 }
             },
             prod: {
@@ -18,17 +18,18 @@ module.exports = function (grunt) {
                     compress: true
                 },
                 files: {
-                    "web/css/all.min.css": "web/less/all.less"
+                    "web/css/all.min.css": "less/all.less"
                 }
             }
         },
-        concat: {
+        concat_sourcemap: {
             options: {
-                separator: ';'
+                sourcesContent: true
             },
-            site: {
-                src: grunt.file.readJSON('web/js/all.json'),
-                dest: 'web/js/all.js'
+            all: {
+                files: {
+                    'web/js/all.js': grunt.file.readJSON('js/all.json')
+                }
             }
         },
         copy: {
@@ -40,7 +41,7 @@ module.exports = function (grunt) {
         },
         uglify: {
             options: {
-                mangle: false  // Use if you want the names of your functions and variables unchanged
+                mangle: false
             },
             site: {
                 files: {
@@ -50,26 +51,25 @@ module.exports = function (grunt) {
         },
         watch: {
             js: {
-                files: [
-                    'assets/js/*.js',
-                    'vendor/bower/jquery/dist/jquery.js',
-                    'vendor/bower/bootstrap/dist/js/bootstrap.js',
-                    'vendor/yiisoft/yii2/assets/*.js'
-                ],
-                tasks: ['concat', 'uglify'],
+                files: grunt.file.readJSON('js/all.json'),
+                tasks: ['concat_sourcemap', 'uglify'],
                 options: {
                     livereload: true
                 }
             },
             less: {
-                files: ['web/less/*.less'],
+                files: [
+                    'less/*.less'
+                ],
                 tasks: ['less'],
                 options: {
                     livereload: true
                 }
             },
             fonts: {
-                files: ['vendor/bower/bootstrap/fonts/*'],
+                files: [
+                    'vendor/bower/bootstrap/fonts/*'
+                ],
                 tasks: ['copy'],
                 options: {
                     livereload: true
@@ -79,13 +79,13 @@ module.exports = function (grunt) {
     });
 
     // Plugin loading
-    grunt.loadNpmTasks('grunt-contrib-concat');
+    grunt.loadNpmTasks('grunt-concat-sourcemap');
     grunt.loadNpmTasks('grunt-contrib-watch');
     grunt.loadNpmTasks('grunt-contrib-less');
     grunt.loadNpmTasks('grunt-contrib-uglify');
     grunt.loadNpmTasks('grunt-contrib-copy');
 
     // Task definition
-    grunt.registerTask('build', ['less', 'copy', 'concat', 'uglify']);
+    grunt.registerTask('build', ['less', 'copy', 'concat_sourcemap', 'uglify']);
     grunt.registerTask('default', ['watch']);
 };
