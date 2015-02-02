@@ -1,7 +1,7 @@
 <?php
 
 use app\apidoc\ApiRenderer;
-use app\apidoc\SideNavWidget;
+use yii\apidoc\templates\bootstrap\SideNavWidget;
 use yii\helpers\StringHelper;
 
 /* @var $this yii\web\View */

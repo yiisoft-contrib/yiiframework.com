@@ -21,12 +21,13 @@ use yii\widgets\Breadcrumbs;
 </head>
 <body>
 <?php $this->beginBody() ?>
+
     <?php
         NavBar::begin([
             'brandLabel' => 'Yii Framework',
             'brandUrl' => Yii::$app->homeUrl,
             'options' => [
-                'class' => 'navbar-default navbar-inverse',
+                'class' => 'navbar-default',
             ],
         ]);
             echo Nav::widget([
@@ -62,16 +63,29 @@ use yii\widgets\Breadcrumbs;
         NavBar::end();
     ?>
 
+    <?php if (Yii::$app->requestedAction && Yii::$app->requestedAction->uniqueId === 'site/index'): ?>
+    <header>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="intro-text">
+                        <span class="name">Start Bootstrap</span>
+                        <hr class="star-light">
+                        <span class="skills">Web Developer - Graphic Artist - User Experience Designer</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+    <?php endif; ?>
+
     <div class="container">
-        <?= Breadcrumbs::widget([
-            'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
-        ]) ?>
         <?= $content ?>
     </div>
 
     <footer class="footer">
         <div class="container">
-            <p class="pull-left">&copy; Yii Software LLC <?= date('Y') ?></p>
+            <p>&copy; Yii Software LLC <?= date('Y') ?></p>
         </div>
     </footer>
 
