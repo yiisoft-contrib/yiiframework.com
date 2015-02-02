@@ -5,6 +5,7 @@ namespace app\commands;
 use Yii;
 use yii\helpers\Console;
 use app\apidoc\GuideRenderer;
+use yii\helpers\FileHelper;
 
 /**
  * Generates the Definitive Guide for Yii.
@@ -82,6 +83,7 @@ class GuideController extends \yii\apidoc\commands\GuideController
             $title = "The Definitive Guide for Yii {$this->version}";
         }
 
+        FileHelper::createDirectory($target);
         file_put_contents("$target/index.data", serialize([$title, $chapters, $sections]));
     }
 }
