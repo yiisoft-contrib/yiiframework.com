@@ -15,7 +15,7 @@ git clone git@github.com:qiangxue/yiiframework.com.git
 cd yiiframework.com
 
 # install the composer asset plugin globally, if you haven't done so before
-composer global require "fxp/composer-asset-plugin:1.0.0-beta4
+composer global require "fxp/composer-asset-plugin:1.0.0
 
 # install the dependent composer packages
 composer update
