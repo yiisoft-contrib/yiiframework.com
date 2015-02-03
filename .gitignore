@@ -44,5 +44,7 @@ phpunit.phar
 /web/css/all.css
 /web/js/all.js
 /web/js/all.js.map
-/web/js/all.min.js
+# The following files are included intentionally, so we do not need grunt on the webserver
+#/web/js/all.min.js
+#/web/css/all.min.css
 
