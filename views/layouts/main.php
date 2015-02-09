@@ -43,7 +43,7 @@ use yii\widgets\Breadcrumbs;
                         ['label' => 'Books', 'url' => ['site/books']],
                     ]],
                     ['label' => 'Develop', 'items' => [
-                        ['label' => 'Install Yii', 'url' => ['site/install']],
+                        ['label' => 'Install Yii', 'url' => ['guide/view', 'version' => '2.0', 'language' => 'en', 'section' => 'start-installation']],
                         ['label' => 'Extensions', 'url' => 'https://yiicamp.com/extensions'],
                         ['label' => 'Report an Issue', 'url' => 'https://github.com/yiisoft/yii2/issues/new'],
                         ['label' => 'Contribute to Yii', 'url' => ['/site/contribute']],

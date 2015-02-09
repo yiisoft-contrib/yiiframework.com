@@ -2,6 +2,9 @@
 
 return [
     'books' => 'site/books',
+    'contribute' => 'site/contribute',
+    'chat' => 'site/chat',
+
     '' => 'site/index',
     'api/<version:\\d\\.\\d>' => 'api/index',
     'api/<version:\\d\\.\\d>/<section>' => 'api/view',

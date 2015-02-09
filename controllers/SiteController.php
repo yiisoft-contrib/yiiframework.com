@@ -98,4 +98,14 @@ class SiteController extends Controller
     {
         return $this->render('books');
     }
+
+    public function actionContribute()
+    {
+        return $this->render('contribute');
+    }
+
+    public function actionChat()
+    {
+        return $this->render('chat');
+    }
 }
