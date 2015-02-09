@@ -1,6 +1,7 @@
 <?php
 
 return [
+    'books' => 'site/books',
     '' => 'site/index',
     'api/<version:\\d\\.\\d>' => 'api/index',
     'api/<version:\\d\\.\\d>/<section>' => 'api/view',
