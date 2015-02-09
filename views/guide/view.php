@@ -42,7 +42,7 @@ $(".sidenav-toggle").on("click", function() {
         <div class="col-sm-3">
             <?= SideNav::widget(['items' => $nav, 'options' => ['class' => 'sidenav-offcanvas']]) ?>
         </div>
-        <div class="col-sm-9 guide-content" role="main">
+        <div class="col-sm-9" role="main">
             <div class="navbar-header">
                 <button type="button" class="sidenav-toggle btn btn-info" data-show-text="Navigate" data-hide-text="Close">Navigate</button>
             </div>
@@ -77,7 +77,9 @@ $(".sidenav-toggle").on("click", function() {
                 </div>
             </div>
 
+            <div class="guide-content">
             <?= $section->content ?>
+            </div>
 
             <div class="prev-next clearfix">
                 <?php

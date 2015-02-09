@@ -10,13 +10,21 @@
         ul {
             padding: 1em 1.5em;
             li {
-                margin-bottom: 0.8em;
+                margin-bottom: 0.6em;
             }
         }
     }
 }
 
 .guide-view {
+    .guide-content, .prev-next {
+        font-size: 18px;
+
+        p {
+            min-width: 30em;
+            max-width: 40em;
+        }
+    }
 
     .broken-link {
         background: #FFE4EF;
@@ -31,8 +39,8 @@
 
     img.img-responsive {
         padding: 10px;
-        background: #eee;
-        border: 1px solid #ccc;
+        background: #fcfcfc;
+        border: 1px solid #f6f6f6;
     }
 
     code {
@@ -49,10 +57,13 @@
     }
 
     pre {
-        font-size: 14px;
+        font-size: 15px;
+        border-width: 1px 0 1px 0;
         border-radius: 0;
-        background: #fafafa;
-        border-color: #ddd;
+        background: #fcfcfc;
+        border-color: #eee;
+        padding: 1em;
+        margin: 1em 0;
     }
 
     pre code {
