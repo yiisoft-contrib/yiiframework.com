@@ -24,7 +24,7 @@ use yii\widgets\Breadcrumbs;
 
     <?php
         NavBar::begin([
-            'brandLabel' => 'Yii Framework',
+            'brandLabel' => '<object type="image/svg+xml" data="logo.svg" class="logo"></object>  Yii Framework',
             'brandUrl' => Yii::$app->homeUrl,
             'options' => [
                 'class' => 'navbar-default',
