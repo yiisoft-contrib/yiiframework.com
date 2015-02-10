@@ -19,8 +19,10 @@ $this->params['breadcrumbs'][] = $this->title;
         When asking a question, please be patient and stay for a while so that people have a chance to respond
         when they can.
     </p>
-    <p style="text-align:center;font-size:1.2em;margin:1em 0;">
+
+    <p>
         <a href="http://www.yiiframework.com/wiki/369/" target="_blank">Instructions on using MrFisk</a>
     </p>
+
     <iframe src="http://webchat.freenode.net?channels=yii&uio=OT10cnVlJjExPTE5NSYxMj10cnVl09" width="100%" height="480" style="border:1px solid silver;"></iframe>
 </div>
