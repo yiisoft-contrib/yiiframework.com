@@ -31,24 +31,25 @@ use yii\widgets\Breadcrumbs;
             ],
         ]);
             echo Nav::widget([
+                'encodeLabels' => false,
                 'options' => ['class' => 'navbar-nav navbar-right'],
                 'activateItems' => false,
                 'items' => [
-                    ['label' => 'Learn', 'items' => [
+                    ['label' => '<span class="glyphicon glyphicon-book" aria-hidden="true"></span> Learn', 'items' => [
                         ['label' => 'The Definitive Guide', 'url' => ['guide/index', 'version' => '2.0', 'language' => 'en']],
                         ['label' => 'Class Reference', 'url' => ['api/index', 'version' => '2.0']],
                         ['label' => 'Tutorials', 'url' => 'https://yiicamp.com/tutorials'],
                         ['label' => 'Answers', 'url' => 'https://yiicamp.com/answers'],
                         ['label' => 'Books', 'url' => ['site/books']],
                     ]],
-                    ['label' => 'Develop', 'items' => [
+                    ['label' => '<span class="glyphicon glyphicon-star" aria-hidden="true"></span> Develop', 'items' => [
                         ['label' => 'Install Yii', 'url' => ['guide/view', 'version' => '2.0', 'language' => 'en', 'section' => 'start-installation']],
                         ['label' => 'Extensions', 'url' => 'https://yiicamp.com/extensions'],
                         ['label' => 'Report an Issue', 'url' => 'https://github.com/yiisoft/yii2/issues/new'],
                         ['label' => 'Contribute to Yii', 'url' => ['/site/contribute']],
                         ['label' => 'Jobs', 'url' => 'https://yiicamp.com/jobs'],
                     ]],
-                    ['label' => 'Discuss', 'items' => [
+                    ['label' => '<span class="glyphicon glyphicon-comment" aria-hidden="true"></span> Discuss', 'items' => [
                         ['label' => 'Forum', 'url' => '/forum'],
                         ['label' => 'Live Chat', 'url' => ['site/chat']],
                         ['label' => 'GitHub', 'url' => 'https://github.com/yiisoft/yii2'],
@@ -56,7 +57,7 @@ use yii\widgets\Breadcrumbs;
                         ['label' => 'LinkedIn', 'url' => 'https://www.linkedin.com/groups/yii-framework-1483367'],
                         ['label' => 'Twitter', 'url' => 'https://twitter.com/yiiframework'],
                     ]],
-                    ['label' => 'Camp', 'url' => 'https://yiicamp.com']
+                    ['label' => '<span class="glyphicon glyphicon-tent" aria-hidden="true"></span> Camp', 'url' => 'https://yiicamp.com']
                 ],
             ]);
         NavBar::end();
