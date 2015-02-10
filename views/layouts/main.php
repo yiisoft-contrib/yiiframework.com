@@ -68,7 +68,7 @@ use yii\widgets\Breadcrumbs;
 
     <footer class="footer">
         <div class="container">
-            <p>&copy; Yii Software LLC <?= date('Y') ?></p>
+            <p>&copy; Yii Software LLC <?= date('Y') ?> <?php echo Html::a('<span class="glyphicon glyphicon-envelope" aria-hidden="true"></span>', ['site/contact']) ?></p>
         </div>
     </footer>
 
