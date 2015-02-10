@@ -5,7 +5,7 @@ use yii\helpers\Html;
 $this->title = 'Live Chat';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="site-chat">
+<div class="site-chat content">
     <h1><?= Html::encode($this->title) ?></h1>
 
     <p>

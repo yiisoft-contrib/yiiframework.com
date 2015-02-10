@@ -5,7 +5,7 @@ use yii\helpers\Html;
 $this->title = 'Books';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="site-books">
+<div class="site-books content">
     <h1><?= Html::encode($this->title) ?></h1>
 
     <p>There are handy books about both Yii 2.0 and Yii 1.1.</p>

@@ -34,4 +34,7 @@ $this->title = "Yii API Documentation $version";
     </div>
 </nav>
 
+
+<div class="content">
 <?= $content ?>
+</div>

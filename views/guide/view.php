@@ -77,7 +77,7 @@ $(".sidenav-toggle").on("click", function() {
                 </div>
             </div>
 
-            <div class="guide-content">
+            <div class="guide-content content">
             <?= $section->content ?>
             </div>
 
