@@ -24,7 +24,7 @@ $this->params['breadcrumbs'][] = $this->title;
     </p>
 
     <p>
-        Please use the <?php echo Html::a('contact us form', ['site/contact']); ?> to report any security issues.
+        Please use the <?php echo Html::a('contact us form', ['site/contact']) ?> to report any security issues.
         DO NOT use issue tracker or discuss it in the public forum.
     </p>
 
@@ -38,9 +38,9 @@ $this->params['breadcrumbs'][] = $this->title;
         <a href="http://www.yiiframework.com/forum/index.php?/forum/11-bug-discussions/">discuss it at the forum</a> first.</li>
     </ul>
 
-    <p class="important">Note that if you've found a security issue, it's better to
-    <a href="http://www.yiiframework.com/contact/">contact core team directly</a>.
-    We'll review the issue and will respond via email.</p>
+    <blockquote>Note that if you've found a security issue, it's better to
+    <?php echo Html::a('contact core team directly', ['site/contact']); ?>.
+    We'll review the issue and will respond via email.</blockquote>
 
     <h2>Help us to fix bugs</h2>
 
@@ -58,8 +58,8 @@ $this->params['breadcrumbs'][] = $this->title;
        server type, the Web browser type, the application configuration, the error
        call stack, the SQL statement being executed, and so on.</p>
 
-    <p class="important">Before you attempt to fix some non-trivial things, please
-       discuss with Yii core developers first to avoid going in the wrong direction.</p>
+    <blockquote>Before you attempt to fix some non-trivial things, please
+       discuss with Yii core developers first to avoid going in the wrong direction.</blockquote>
 
 
     <h2>Review code</h2>
@@ -93,8 +93,8 @@ $this->params['breadcrumbs'][] = $this->title;
        unit tests aren't coming with Yii release packages but are
        <a href="https://github.com/yiisoft/yii2/tree/master/tests">available from GitHub</a>.</p>
 
-    <p>To learn about testing framework used in Yii, please refer to the <?= Html::a('Definitive Guide to Yii', ['guide/view', 'section' => 'test-overview', 'version' => '2.0', 'language' => 'en']) ?>
-    <a href="http://www.yiiframework.com/doc/guide/1.1/en/test.overview"></a>.</p>
+    <p>To learn about testing framework used in Yii, please refer to the
+    <?= Html::a('Definitive Guide to Yii', ['guide/view', 'section' => 'test-overview', 'version' => '2.0', 'language' => 'en']) ?>.</p>
 
     <p>Not sure how it should work? Don't hesitate to contact the core team.</p>
 
@@ -116,6 +116,4 @@ $this->params['breadcrumbs'][] = $this->title;
     <p>Instructions on how to do the translation work are given in
         the <a href="https://github.com/yiisoft/yii2/blob/master/docs/internals/translation-workflow.md">Translation workflow</a> at GitHub.
     </p>
-
-    <div class="clear"></div>
 </div>

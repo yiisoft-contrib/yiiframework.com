@@ -4,6 +4,8 @@ return [
     'books' => 'site/books',
     'contribute' => 'site/contribute',
     'chat' => 'site/chat',
+    'contact' => 'site/contact',
+    'captcha' => 'site/captcha',
 
     '' => 'site/index',
     'api/<version:\\d\\.\\d>' => 'api/index',
