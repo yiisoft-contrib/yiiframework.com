@@ -34,7 +34,6 @@ use yii\widgets\Breadcrumbs;
                 'options' => ['class' => 'navbar-nav navbar-right'],
                 'activateItems' => false,
                 'items' => [
-                    ['label' => 'Home', 'url' => ['site/index']],
                     ['label' => 'Learn', 'items' => [
                         ['label' => 'The Definitive Guide', 'url' => ['guide/index', 'version' => '2.0', 'language' => 'en']],
                         ['label' => 'Class Reference', 'url' => ['api/index', 'version' => '2.0']],
