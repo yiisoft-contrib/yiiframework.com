@@ -78,6 +78,13 @@ $(".sidenav-toggle").on("click", function() {
             </div>
 
             <div class="guide-content content">
+                <?php if (!empty($missingTranslation)): ?>
+                    <div class="well">
+                        This section isn't yet translated. Please read it in English and consider
+                        <a href="https://github.com/yiisoft/yii2/blob/master/docs/internals/translation-workflow.md">
+                        helping us with translation</a>.
+                    </div>
+                <?php endif ?>
             <?= $section->content ?>
             </div>
 

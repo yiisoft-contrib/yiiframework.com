@@ -27,6 +27,7 @@ class GuideController extends Controller
             return $this->render('view', [
                 'guide' => $guide,
                 'section' => $section,
+                'missingTranslation' => $section->missingTranslation,
             ]);
         } else {
             throw new NotFoundHttpException('The requested page was not found.');
