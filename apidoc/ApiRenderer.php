@@ -117,6 +117,16 @@ class ApiRenderer extends \yii\apidoc\templates\html\ApiRenderer
             return $baseUrl . $url . '#L' . $line;
     }
 
+    public function generateGuideUrl($file)
+    {
+        $hash = '';
+        if (($pos = strrpos($file, '#')) !== false) {
+            $hash = substr($file, $pos);
+            $file = substr($file, 0, $pos);
+        }
+        return rtrim($this->guideUrl, '/') . '/' . $this->guidePrefix . basename($file, '.md') . $hash;
+    }
+
 	public function generateApiUrl($typeName)
 	{
 		return Yii::$app->params['api.baseUrl'] . "/$this->version/" . substr($this->generateFileName($typeName), 0, -5);

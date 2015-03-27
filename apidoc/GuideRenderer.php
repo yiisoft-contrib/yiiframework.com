@@ -25,6 +25,11 @@ class GuideRenderer extends \yii\apidoc\templates\html\GuideRenderer
         return rtrim($this->guideUrl, '/') . '/' . $this->guidePrefix . basename($file, '.md') . $hash;
     }
 
+    public function generateApiUrl($typeName)
+    {
+        return rtrim($this->apiUrl, '/') . '/' . strtolower(str_replace('\\', '-', $typeName));
+    }
+
     protected function fixMarkdownLinks($content)
     {
         $guideUrl = rtrim($this->guideUrl, '/');

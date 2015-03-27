@@ -40,42 +40,10 @@ $(".sidenav-toggle").on("click", function() {
 <div class="guide-view">
     <div class="row row-offcanvas">
         <div class="col-sm-3">
-            <?= SideNav::widget(['items' => $nav, 'options' => ['class' => 'sidenav-offcanvas']]) ?>
+            <?= SideNav::widget(['id' => 'guide-navigation', 'items' => $nav, 'options' => ['class' => 'sidenav-offcanvas']]) ?>
         </div>
         <div class="col-sm-9" role="main">
-            <div class="navbar-header">
-                <button type="button" class="sidenav-toggle btn btn-info" data-show-text="Navigate" data-hide-text="Close">Navigate</button>
-            </div>
-            <div class="row">
-                <div class="col-sm-2">
-                    <?= DropdownList::widget([
-                        'selection' => "Version {$guide->version}",
-                        'items' => array_map(function ($version) use ($guide) {
-                            return [
-                                'label' => $version,
-                                'url' => ['guide/index', 'version' => $version, 'language' => $guide->language],
-                            ];
-                        }, $guide->getVersionOptions()),
-                    ]) ?>
-                </div>
-                <div class="col-sm-2">
-                    <?= DropdownList::widget([
-                        'selection' => $guide->getLanguageName(),
-                        'items' => array_map(function ($language) use ($section, $guide) {
-                            $options = $guide->getLanguageOptions();
-                            return [
-                                'label' => $options[$language],
-                                'url' => ['guide/view', 'section' => $section->name, 'version' => $guide->version, 'language' => $language],
-                            ];
-                        }, array_keys($guide->getLanguageOptions())),
-                    ]) ?>
-                </div>
-                <div class="col-sm-4">
-                    <div class="form-group">
-                        <input type="text" class="form-control" placeholder="Search">
-                    </div>
-                </div>
-            </div>
+            <?= $this->render('_versions.php', compact('guide', 'section')) ?>
 
             <div class="guide-content content">
                 <?php if (!empty($missingTranslation)): ?>

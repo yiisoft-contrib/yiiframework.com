@@ -39,7 +39,7 @@ class ApiController extends \yii\apidoc\commands\ApiController
 //                "$sourcePath/yii-$version/extensions",
             ];
             $target = "$targetPath/api-$version";
-            $this->guide = "/guide/$version/en";
+            $this->guide = Yii::$app->params['guide.baseUrl'] . "/{$this->version}/en";
 
             $this->stdout("Start generating API $version...\n");
             $this->actionIndex($source, $target);

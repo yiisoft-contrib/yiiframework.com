@@ -58,8 +58,8 @@ class GuideController extends \yii\apidoc\commands\GuideController
     protected function findRenderer($template)
     {
         return new GuideRenderer([
-            'guideUrl' => "/guide/{$this->version}/{$this->language}",
-            'apiUrl' => "/api/{$this->version}",
+            'guideUrl' => Yii::$app->params['guide.baseUrl'] . "/{$this->version}/{$this->language}",
+            'apiUrl' => Yii::$app->params['api.baseUrl'] .  "/{$this->version}",
         ]);
     }
 

@@ -10,6 +10,10 @@ use yii\helpers\Html;
 class DropdownList extends Widget
 {
     /**
+     * @var string the html tag to render for the container element
+     */
+    public $tag = 'div';
+    /**
      * @var string the current selection text (it will not be HTML-encoded)
      */
     public $selection;
@@ -26,7 +30,7 @@ class DropdownList extends Widget
     /**
      * @var bool whether to show the dropdown list as a button. If false, a link will be used.
      */
-    public $useButton = true;
+    public $useButton = false;
     /**
      * @var boolean whether the nav items labels should be HTML-encoded.
      */
@@ -74,6 +78,6 @@ class DropdownList extends Widget
         } else {
             $selection = '<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">' . $this->selection . ' <span class="caret"></span></a>';
         }
-        return Html::tag('div', $selection . $menu, $this->options);
+        return Html::tag($this->tag, $selection . $menu, $this->options);
     }
 }
