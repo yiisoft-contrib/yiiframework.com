@@ -22,7 +22,10 @@ return [
     'api.versions' => [
         '2.0',
         '1.1',
+        '1.0',
     ],
+    // base url for generating api documentation
+    'api.baseUrl' => '/doc/api',
     'guide.versions' => [
         '2.0' => [
             'en' => 'English',
@@ -50,5 +53,7 @@ return [
             'zh_cn' => '简体中文',  // Simplified Chinese
         ],
     ],
+    // base url for generating api documentation
+    'guide.baseUrl' => '/doc/guide',
     'adminEmail' => 'admin@example.com',
 ];
