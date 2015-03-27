@@ -29,13 +29,14 @@ npm install
 # initialize the application, choose "development"
 ./init
 
-# clone yii repositories for generating API and guide documentation
-cd data
-git clone git@github.com:yiisoft/yii.git yii-1.1
-git clone git@github.com:yiisoft/yii2.git yii-2.0
+# clone yii repositories for generating API and guide documentation (yii 1.1 also needs dependencies for this)
+git clone git@github.com:yiisoft/yii.git data/yii-1.1
+cd data/yii-1.1
+composer install --prefer-dist
+cd ../..
+git clone git@github.com:yiisoft/yii2.git data/yii-2.0
 
 # build guide and API documentation (will be put in cron job on production)
-cd ..
 ./yii api 2.0 --interactive=0
 ./yii guide 2.0 --interactive=0
 ./yii api 1.1 --interactive=0

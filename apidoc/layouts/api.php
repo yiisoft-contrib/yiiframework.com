@@ -31,17 +31,18 @@ $renderer = $this->context;
             }
             $nav[$namespace]['items'][] = [
                 'label' => StringHelper::basename($class->name),
-                'url' => './' . $renderer->generateApiUrl($class->name),
+                'url' => $renderer->generateApiUrl($class->name),
                 'active' => isset($type) && ($class->name == $type->name),
             ];
         } ?>
         <?= SideNavWidget::widget([
-            'id' => 'navigation',
+            'id' => 'api-navigation',
             'items' => $nav,
             'view' => $this,
         ])?>
     </div>
-    <div class="col-md-9 api-content" role="main">
+    <div class="col-md-9" role="main">
+        <!-- YII_VERSION_SELECTOR -->
         <?= $content ?>
     </div>
 </div>

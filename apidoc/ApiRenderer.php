@@ -6,6 +6,8 @@ use Yii;
 use yii\apidoc\helpers\ApiIndexer;
 use yii\helpers\Console;
 use yii\helpers\FileHelper;
+use yii\helpers\StringHelper;
+use yii\helpers\VarDumper;
 
 /**
  *
@@ -19,6 +21,7 @@ class ApiRenderer extends \yii\apidoc\templates\html\ApiRenderer
     public $layout = '@app/apidoc/layouts/api.php';
     public $indexView = '@app/apidoc/views/index.php';
 
+    public $version;
 
     /**
      * @inheritdoc
@@ -54,37 +57,36 @@ class ApiRenderer extends \yii\apidoc\templates\html\ApiRenderer
             file_put_contents($targetDir . "/ext-{$ext}-index.html", $indexFileContent);
         }
 
+        // create index.html
         $yiiTypes = $this->filterTypes($types, 'yii');
-        if (empty($yiiTypes)) {
-//			$readme = @file_get_contents("https://raw.github.com/yiisoft/yii2-framework/master/README.md");
-            $indexFileContent = $this->renderWithLayout($this->indexView, [
-                'docContext' => $context,
-                'types' => $this->filterTypes($types, 'app'),
-                'readme' => null,
-            ]);
-        } else {
-            $readme = @file_get_contents("https://raw.github.com/yiisoft/yii2-framework/master/README.md");
-            $indexFileContent = $this->renderWithLayout($this->indexView, [
-                'docContext' => $context,
-                'types' => $yiiTypes,
-                'readme' => $readme ?: null,
-            ]);
-        }
+        $indexFileContent = $this->renderWithLayout($this->indexView, [
+            'docContext' => $context,
+            'types' => $yiiTypes,
+            'readme' => null,
+        ]);
         file_put_contents($targetDir . '/index.html', $indexFileContent);
 
-        if ($this->controller !== null) {
-            $this->controller->stdout('done.' . PHP_EOL, Console::FG_GREEN);
-            $this->controller->stdout('generating search index...');
+        // create file with page titles
+        $titles = [];
+        foreach($types as $type) {
+            $titles[$this->generateFileName($type->name)] = StringHelper::basename($type->name) . ", {$type->name}";
         }
+        file_put_contents($targetDir . '/titles.php', '<?php return ' . VarDumper::export($titles) . ';');
 
-        $indexer = new ApiIndexer();
-        $indexer->indexFiles(FileHelper::findFiles($targetDir, ['only' => ['*.html']]), $targetDir);
-        $js = $indexer->exportJs();
-        file_put_contents($targetDir . '/jssearch.index.js', $js);
 
-        if ($this->controller !== null) {
-            $this->controller->stdout('done.' . PHP_EOL, Console::FG_GREEN);
-        }
+//        if ($this->controller !== null) {
+//            $this->controller->stdout('done.' . PHP_EOL, Console::FG_GREEN);
+//            $this->controller->stdout('generating search index...');
+//        }
+//
+//        $indexer = new ApiIndexer();
+//        $indexer->indexFiles(FileHelper::findFiles($targetDir, ['only' => ['*.html']]), $targetDir);
+//        $js = $indexer->exportJs();
+//        file_put_contents($targetDir . '/jssearch.index.js', $js);
+//
+//        if ($this->controller !== null) {
+//            $this->controller->stdout('done.' . PHP_EOL, Console::FG_GREEN);
+//        }
     }
 
     public function getSourceUrl($type, $line = null)
@@ -114,4 +116,9 @@ class ApiRenderer extends \yii\apidoc\templates\html\ApiRenderer
         else
             return $baseUrl . $url . '#L' . $line;
     }
+
+	public function generateApiUrl($typeName)
+	{
+		return Yii::$app->params['api.baseUrl'] . "/$this->version/" . substr($this->generateFileName($typeName), 0, -5);
+	}
 }

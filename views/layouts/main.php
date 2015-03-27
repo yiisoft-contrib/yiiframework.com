@@ -13,6 +13,9 @@ use yii\widgets\Breadcrumbs;
 <head>
     <meta charset="<?= Yii::$app->charset ?>"/>
     <meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<link rel="shortcut icon" href="<?= Yii::getAlias('@web/favicon.ico') ?>" />
+
     <?= Html::csrfMetaTags() ?>
     <?= Html::cssFile(YII_DEBUG ? '@web/css/all.css' : '@web/css/all.min.css?v=' . filemtime(Yii::getAlias('@webroot/css/all.min.css'))) ?>
 
@@ -24,7 +27,7 @@ use yii\widgets\Breadcrumbs;
 
     <?php
         NavBar::begin([
-            'brandLabel' => '<object type="image/svg+xml" data="logo.svg" class="logo"></object>  Yii Framework',
+            'brandLabel' => '<object type="image/svg+xml" data="'.Yii::getAlias('@web/logo.svg').'" class="logo"></object><span class="hidden-sm"> Yii Framework</span>',
             'brandUrl' => Yii::$app->homeUrl,
             'options' => [
                 'class' => 'navbar-default',
