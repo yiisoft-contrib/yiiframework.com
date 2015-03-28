@@ -132,7 +132,6 @@ JUMBOTRON - START
 
            <div class="col-md-5 col-lg-4">
                <a href="#getting-started" class="btn btn-danger">Download</a>
-               <img src="image/phone.png" class="application-image img-responsive center-block" alt="">
            </div>
 
        </div>
@@ -255,7 +254,7 @@ VIDEO - END
     <div class="container">
     	<div class="row">
             <div class="col-md-8 col-md-offset-2">
-                <div id="testimonials-slider" class="owl-carousel owl-theme">
+                <div id="testimonials-slider">
                     <div class="item">
                         <i class="fa fa-quote-left"></i>
                         <p>Phasellus fringilla neque diam, eget elementum libero eleifend ac. Morbi condimentum metus felis, pellentesque iaculis sapien egestas imperdiet. Curabitur in lacus at ante elementum mollis.</p>

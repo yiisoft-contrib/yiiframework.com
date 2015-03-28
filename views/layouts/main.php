@@ -39,18 +39,6 @@ use yii\widgets\Menu;
 <body class="color-light-blue">
 <?php $this->beginBody() ?>
 
-	<!-- ==========================
-    	FACEBOOK - SHARE BUTTON
-    =========================== -->
-	<div id="fb-root"></div>
-	<script>(function(d, s, id) {
-      var js, fjs = d.getElementsByTagName(s)[0];
-      if (d.getElementById(id)) return;
-      js = d.createElement(s); js.id = id;
-      js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.0";
-      fjs.parentNode.insertBefore(js, fjs);
-    }(document, 'script', 'facebook-jssdk'));</script>
-
     <!-- ==========================
     COLOR SWITCHER - START
     =========================== - - >
@@ -131,19 +119,23 @@ use yii\widgets\Menu;
                         'encodeLabels' => false,
                         'options' => ['class' => 'nav navbar-nav navbar-main-menu'],
                         'activateItems' => false,
+                        'dropDownCaret' => '<i class="fa fa-chevron-down"></i>',
                         'items' => [
-                            ['label' => '<span class="glyphicon glyphicon-book" aria-hidden="true"></span> About <i class="fa fa-chevron-down"></i>', 'items' => [
+                            ['label' => '<span class="glyphicon glyphicon-book" aria-hidden="true"></span> About', 'items' => [
                                 ['label' => '<i class="fa fa-angle-double-right"></i>What is Yii?', 'url' => '#'],
                                 ['label' => '<i class="fa fa-angle-double-right"></i>News', 'url' => '#'],
                                 ['label' => '<i class="fa fa-angle-double-right"></i>License', 'url' => '#'],
                                 ['label' => '<i class="fa fa-angle-double-right"></i>Team', 'url' => '#'],
                             ]],
-                            ['label' => '<span class="glyphicon glyphicon-book" aria-hidden="true"></span> Learn <i class="fa fa-chevron-down"></i>', 'items' => [
+                            ['label' => '<span class="glyphicon glyphicon-book" aria-hidden="true"></span> Learn', 'options' => ['class' => 'yamm-fw hidden-md hidden-lg'], 'items' => [
                                 ['label' => '<i class="fa fa-angle-double-right"></i>The Definitive Guide', 'url' => ['guide/index', 'version' => '2.0', 'language' => 'en']],
                                 ['label' => '<i class="fa fa-angle-double-right"></i>Class Reference', 'url' => ['api/index', 'version' => '2.0']],
                                 ['label' => '<i class="fa fa-angle-double-right"></i>Tutorials<span class="label label-warning">coming soon</span>', 'url' => 'https://yiicamp.com/tutorials'],
                                 ['label' => '<i class="fa fa-angle-double-right"></i>Answers<span class="label label-warning">coming soon</span>', 'url' => 'https://yiicamp.com/answers'],
                                 ['label' => '<i class="fa fa-angle-double-right"></i>Books', 'url' => ['site/books']],
+                            ]],
+                            ['label' => '<span class="glyphicon glyphicon-book" aria-hidden="true"></span> Learn', 'options' => ['class' => 'yamm-fw hidden-xs hidden-sm'], 'items' => [
+                                $this->render('_learn'),
                             ]],
                             ['label' => '<span class="glyphicon glyphicon-star" aria-hidden="true"></span> Develop', 'items' => [
                                 ['label' => '<i class="fa fa-angle-double-right"></i>Install Yii', 'url' => ['guide/view', 'version' => '2.0', 'language' => 'en', 'section' => 'start-installation']],
@@ -153,48 +145,6 @@ use yii\widgets\Menu;
                                 ['label' => '<i class="fa fa-angle-double-right"></i>Contribute to Yii', 'url' => ['/site/contribute']],
                                 ['label' => '<i class="fa fa-angle-double-right"></i>Jobs<span class="label label-warning">coming soon</span>', 'url' => 'https://yiicamp.com/jobs'],
                             ]],
-                            <<<HTML
-<li class="dropdown yamm-fw hidden-xs hidden-sm">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Wide Menu <i class="fa fa-chevron-down"></i></a>
-                        <ul class="dropdown-menu">
-                        	<li>
-                            	<div class="yamm-content">
-                                    <div class="row">
-                                        <div class="col-sm-6">
-                                        	<h3>Our Latest Project</h3>
-                                            <div class="row">
-                                            	<div class="col-sm-6">
-                                            		<img src="image/image_02.jpg" class="img-responsive" alt="">
-                                            		<a href="portfolio-post1.html" class="btn btn-primary">Show Me</a>
-                                                </div>
-                                                <div class="col-sm-6">
-                                                	<p><b>Any idea how to use this feature? :)</b> amet, consectetur adipiscing elit. Duis nec lorem quis est ultrices volutpat. Donec id urna posuere nisl tincidunt laoreet. Aliquam erat volutpat. Duis eu sapien auctor, bibendum ante ut, volutpat purus. </p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-sm-3">
-                                        	<h3>Features Pages</h3>
-                                        	<ul class="nav vertical-nav">
-                                            	<li><a href="about.html"><i class="fa fa-angle-double-right"></i>About</a></li>
-                                                <li><a href="pricing1.html"><i class="fa fa-angle-double-right"></i>Pricing 1</a></li>
-                                                <li><a href="pricing2.html"><i class="fa fa-angle-double-right"></i>Pricing 2</a></li>
-                                                <li><a href="pricingtable.html"><i class="fa fa-angle-double-right"></i>Pricing Table</a></li>
-                                                <li><a href="services1.html"><i class="fa fa-angle-double-right"></i>Services 1</a></li>
-                                                <li><a href="services2.html"><i class="fa fa-angle-double-right"></i>Services 2</a></li>
-                                            </ul>
-                                        </div>
-                                        <div class="col-sm-3">
-                                            <h3>About Us</h3>
-                                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis nec lorem quis est ultrices volutpat. Donec id urna posuere nisl tincidunt laoreet. Aliquam erat volutpat. Duis eu sapien auctor, bibendum ante ut, volutpat purus.</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </li>
-                        </ul>
-                    </li>
-HTML
-                            ,
-
                             ['label' => '<span class="glyphicon glyphicon-comment" aria-hidden="true"></span> Discuss', 'items' => [
                                 ['label' => '<i class="fa fa-angle-double-right"></i>Forum', 'url' => '/forum'],
                                 ['label' => '<i class="fa fa-angle-double-right"></i>Live Chat', 'url' => ['site/chat']],
@@ -266,6 +216,7 @@ HTML
 
                 <div class="col-md-4 hidden-xs hidden-sm">
                 	<h3><i class="fa fa-camera"></i>Latest Work</h3>
+                    <?php /*
                     <div class="row" id="latest-work-footer">
 						<div class="overlay-wrapper col-sm-6">
                             <img src="image/image_01.jpg" class="img-responsive" alt="">
@@ -291,7 +242,7 @@ HTML
                                 <a href="portfolio-post1.html"><i class="fa fa-plus"></i></a>
                             </span>
                         </div>
-                    </div>
+                    </div> */ ?>
                 </div>
 
                 <div class="col-md-4 hidden-xs hidden-sm">
@@ -333,19 +284,6 @@ HTML
     	JS
     =========================== -->
     <?= Html::jsFile(YII_DEBUG ? '@web/js/all.js' : '@web/js/all.min.js?v=' . filemtime(Yii::getAlias('@webroot/js/all.min.js'))) ?>
-    <script src="http://code.jquery.com/jquery-latest.min.js"></script>
-    <script src="http://code.jquery.com/ui/1.11.1/jquery-ui.js"></script>
-    <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&amp;sensor=true"></script>
-    <script src="js/bootstrap.min.js"></script>
-    <script src="js/waypoints.min.js"></script>
-    <script src="js/owl.carousel.js"></script>
-    <script src="js/isotope.pkgd.min.js"></script>
-    <script src="js/jquery.magnific-popup.min.js"></script>
-    <script src="js/creative-brands.js"></script>
-    <script src="js/color-switcher.js"></script>
-    <script src="js/jquery.countTo.js"></script>
-    <script src="js/jquery.countdown.js"></script>
-    <script src="js/custom.js"></script>
 <?php $this->endBody() ?>
 </body>
 </html>
