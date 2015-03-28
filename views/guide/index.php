@@ -8,10 +8,8 @@ use yii\helpers\Html;
 $this->title = $guide->title;
 $blocksPerRow = 4;
 ?>
-<?= $this->render('_versions.php', ['guide' => $guide, 'section' => null]) ?>
-<div class="guide-index content">
-
-
+<div class="container guide-index">
+    <?= $this->render('_versions.php', ['guide' => $guide, 'section' => null]) ?>
     <h1><?= Html::encode($guide->title) ?></h1>
 
     <?php
@@ -42,4 +40,4 @@ $blocksPerRow = 4;
         echo '</div>';
     }
     ?>
-</div>
+</div></div>

@@ -10,7 +10,7 @@
 $this->title = "Yii API Documentation $version";
 ?>
 
-<div class="content api-content">
+<div class="container api-content">
     <div class="row">
         <div class="col-md-3">
             TODO navigation

@@ -3,10 +3,10 @@
 $this->title = 'My Yii Application';
 ?>
 <div class="site-index">
-
+<!--
     <div class="row">
         <div class="col-xs-10 col-xs-offset-1 col-sm-6 col-sm-offset-3 text-center">
-            <h1>PHP. Less noise.<br/>More signal.</h1>
+            <h1>Yii Framework 2.0<br/>More signal.</h1>
 
             <a href="#getting-started" class="btn btn-danger">You gonna <span class="glyphicon glyphicon-heart" aria-hidden="true"></span> it!</a>
         </div>
@@ -79,4 +79,208 @@ $this->title = 'My Yii Application';
             <a href="#getting-started" class="btn btn-danger">Learn how to develop faster with Yii</a>
         </div>
     </div>
+</div>-->
+
+
+<!-- ==========================
+JUMBOTRON - START
+=========================== -->
+<div class="jumbotron jumbotron7">
+<div class="container">
+
+
+   	<div class="row">
+       	<div class="col-md-7 col-lg-8">
+            <h2>Welcome to Yii Framework!</h2>
+
+            <div class="application-feature">
+                <div class="row">
+                    <div class="col-md-2"><span class="glyphicon glyphicon-flash" aria-hidden="true"></span></div>
+                    <div class="col-md-10"><h3>Fast</h3> - minimal overhead - only load what is needed.</div>
+                </div>
+            </div>
+
+            <div class="application-feature">
+                <div class="row">
+                    <div class="col-md-2"><span class="glyphicon glyphicon-lock" aria-hidden="true"></span></div>
+                    <div class="col-md-10"><h3>Secure</h3> - sane defaults, secure by default.</div>
+                </div>
+            </div>
+
+            <div class="application-feature">
+                <div class="row">
+                    <div class="col-md-2"><span class="glyphicon glyphicon-time" aria-hidden="true"></span></div>
+                    <div class="col-md-10"><h3>Efficient</h3> - Get a working app in no time</div>
+                </div>
+            </div>
+
+            <div class="application-feature">
+                <div class="row">
+                    <div class="col-md-2"><span class="glyphicon glyphicon-asterisk" aria-hidden="true"></span></div>
+                    <div class="col-md-10"><h3>Flexible</h3> - Adjust it too your needs.</div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-offset-2 col-md-10">
+
+                    <a href="#" class="btn btn-primary">Learn more...</a>
+                    <a href="#" class="btn btn-primary">Get started now!</a>
+                </div>
+            </div>
+
+           </div>
+
+           <div class="col-md-5 col-lg-4">
+               <a href="#getting-started" class="btn btn-danger">Download</a>
+               <img src="image/phone.png" class="application-image img-responsive center-block" alt="">
+           </div>
+
+       </div>
+   </div>
+</div>
+
+<!-- ==========================
+SERVICES - START
+=========================== -->
+<section class="content bg-color-2 services3" id="services">
+<div class="container">
+   	<h2 class="text-center">Features</h2>
+       <div class="row">
+
+           <!-- Service -->
+       	<div class="col-md-4">
+           	<div class="service">
+                   <i class="fa fa-desktop"></i>
+                   <div class="service-body">
+                   	<h3>Mobile Friendly</h3>
+                   	<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis nec lorem quis est ultrices volutpat. Donec id urna posuere nisl tincidunt laoreet.</p>
+                   </div>
+               </div>
+           </div>
+
+           <!-- Service -->
+       	<div class="col-md-4">
+           	<div class="service">
+                   <i class="fa fa-desktop"></i>
+                   <div class="service-body">
+                   	<h3>Mobile Friendly</h3>
+                   	<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis nec lorem quis est ultrices volutpat. Donec id urna posuere nisl tincidunt laoreet.</p>
+                   </div>
+               </div>
+           </div>
+
+           <!-- Service -->
+       	<div class="col-md-4">
+           	<div class="service">
+                   <i class="fa fa-desktop"></i>
+                   <div class="service-body">
+                   	<h3>Mobile Friendly</h3>
+                   	<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis nec lorem quis est ultrices volutpat. Donec id urna posuere nisl tincidunt laoreet.</p>
+                   </div>
+               </div>
+           </div>
+   	 </div>
+</div>
+</section>
+<!-- ==========================
+SERVICES - END
+=========================== -->
+
+<!-- ==========================
+STATISTICS - START
+=========================== -->
+<section class="content content-separator" id="section-statistics">
+   <div class="container">
+   	<div class="row">
+           <div class="col-md-3">
+               <div class="statistic">
+                   <div class="number" data-from="2200" data-to="2780" data-refresh-interval="100"></div>
+                   <div class="title">Clients</div>
+               </div>
+           </div>
+           <div class="col-md-3">
+               <div class="statistic">
+               	<div class="number" data-from="2200" data-to="2780" data-refresh-interval="100"></div>
+                   <div class="title">Clients</div>
+               </div>
+           </div>
+           <div class="col-md-3">
+               <div class="statistic">
+               	<div class="number" data-from="2200" data-to="2780" data-refresh-interval="100"></div>
+                   <div class="title">Clients</div>
+               </div>
+           </div>
+           <div class="col-md-3">
+               <div class="statistic">
+               	<div class="number" data-from="2200" data-to="2780" data-refresh-interval="100"></div>
+                   <div class="title">Clients</div>
+               </div>
+           </div>
+       </div>
+   </div>
+</section>
+<!-- ==========================
+STATISTICS - END
+=========================== -->
+
+<!-- ==========================
+VIDEO - START
+=========================== -->
+<section class="content" id="section-video">
+   <div class="container">
+   	<div class="row">
+       	<div class="col-md-6">
+           	<div class="flex-video widescreen">
+               	<iframe src="https://player.vimeo.com/video/23617801"></iframe>
+               </div>
+           </div>
+           <div class="col-md-6">
+           	<h2>Video for a ten thousand words</h2>
+               <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis nec lorem quis est ultrices volutpat. Donec id urna posuere nisl tincidunt laoreet. Aliquam erat volutpat. Duis eu sapien auctor, bibendum ante ut, volutpat purus.</p>
+               <a href="" class="btn-download btn-googleplay"></a>
+               <a href="" class="btn-download btn-appstore"></a>
+           </div>
+       </div>
+   </div>
+</section>
+
+<!-- ==========================
+VIDEO - END
+=========================== -->
+
+<!-- ==========================
+	TESTIMONIALS - START
+=========================== -->
+<section class="content content-separator" id="section-testimonials">
+    <div class="container">
+    	<div class="row">
+            <div class="col-md-8 col-md-offset-2">
+                <div id="testimonials-slider" class="owl-carousel owl-theme">
+                    <div class="item">
+                        <i class="fa fa-quote-left"></i>
+                        <p>Phasellus fringilla neque diam, eget elementum libero eleifend ac. Morbi condimentum metus felis, pellentesque iaculis sapien egestas imperdiet. Curabitur in lacus at ante elementum mollis.</p>
+                    	<h3>John Doe <small>[CEO]</small></h3>
+                    </div>
+
+                    <div class="item">
+                        <i class="fa fa-quote-left"></i>
+                        <p>Phasellus fringilla neque diam, eget elementum libero eleifend ac. Morbi condimentum metus felis, pellentesque iaculis sapien egestas imperdiet. Curabitur in lacus at ante elementum mollis.</p>
+                    	<h3>John Doe <small>[Designer]</small></h3>
+                    </div>
+
+                    <div class="item">
+                        <i class="fa fa-quote-left"></i>
+                        <p>Phasellus fringilla neque diam, eget elementum libero eleifend ac. Morbi condimentum metus felis, pellentesque iaculis sapien egestas imperdiet. Curabitur in lacus at ante elementum mollis.</p>
+                    	<h3>John Doe <small>[Developer]</small></h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- ==========================
+	TESTIMONIALS - END
+=========================== -->
+
+
 </div>

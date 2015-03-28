@@ -9,7 +9,7 @@ use app\components\DropdownList;
 use yii\helpers\Html;
 
 ?>
-<nav class="navbar navbar-default version-selector" role="navigation">
+<nav class="navbar-default version-selector" role="navigation">
     <ul class="nav navbar-nav">
         <?= DropdownList::widget([
             'tag' => 'li',

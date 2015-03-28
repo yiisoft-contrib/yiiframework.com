@@ -1,0 +1,624 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <!-- ==========================
+    	Meta Tags 
+    =========================== -->
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- ==========================
+    	Title 
+    =========================== -->
+    <title>Roxie</title>
+    
+    <!-- ==========================
+    	Favicons 
+    =========================== -->
+    <link rel="shortcut icon" href="icons/favicon.ico">
+	<link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+	<link rel="apple-touch-icon" sizes="72x72" href="icons/apple-touch-icon-72x72.png">
+	<link rel="apple-touch-icon" sizes="114x114" href="icons/apple-touch-icon-114x114.png">
+    
+    <!-- ==========================
+    	Fonts 
+    =========================== -->
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800&amp;subset=latin,latin-ext' rel='stylesheet' type='text/css'>
+	<link href='http://fonts.googleapis.com/css?family=Roboto:400,100,100italic,300,300italic,400italic,500,500italic,700,700italic,900,900italic' rel='stylesheet' type='text/css'>
+    
+    <!-- ==========================
+    	CSS 
+    =========================== -->
+    <link href="css/bootstrap.min.css" rel="stylesheet" type="text/css">
+    <link href="http://code.jquery.com/ui/1.11.1/themes/smoothness/jquery-ui.css" rel="stylesheet" type="text/css">
+    <link href="css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="css/animate.css" rel="stylesheet" type="text/css">
+    <link href="css/yamm.css" rel="stylesheet" type="text/css">
+    <link href="css/jquery.bootstrap-touchspin.css" rel="stylesheet" type="text/css">
+    <link href="css/owl.carousel.css" rel="stylesheet" type="text/css">
+    <link href="css/owl.theme.css" rel="stylesheet" type="text/css">
+    <link href="css/owl.transitions.css" rel="stylesheet" type="text/css">
+    <link href="css/magnific-popup.css" rel="stylesheet" type="text/css">
+    <link href="css/creative-brands.css" rel="stylesheet" type="text/css">
+    <link href="css/color-switcher.css" rel="stylesheet" type="text/css">
+    <link href="css/color.css" rel="stylesheet" type="text/css">
+    <link href="css/custom.css" rel="stylesheet" type="text/css">
+    
+    <!-- ==========================
+    	JS 
+    =========================== -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+    <![endif]-->
+    
+</head>
+<body class="color-green">
+	<!-- ==========================
+    	FACEBOOK - SHARE BUTTON 
+    =========================== -->
+	<div id="fb-root"></div>
+	<script>(function(d, s, id) {
+      var js, fjs = d.getElementsByTagName(s)[0];
+      if (d.getElementById(id)) return;
+      js = d.createElement(s); js.id = id;
+      js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.0";
+      fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));</script>
+    
+    <!-- ==========================
+    COLOR SWITCHER - START
+    =========================== -->
+    <div id="color-switcher">
+        <div id="toggle-switcher"><i class="fa fa-gear"></i></div>
+        <span>Color Scheme:</span>
+        <ul class="list-unstyled list-inline">
+            <li id="blue" data-toggle="tooltip" data-placement="top" title="Blue"></li>
+            <li id="green" data-toggle="tooltip" data-placement="top" title="Green"></li>
+            <li id="orange" data-toggle="tooltip" data-placement="top" title="Orange"></li>
+            <li id="red" data-toggle="tooltip" data-placement="top" title="Red"></li>
+            <li id="purple" data-toggle="tooltip" data-placement="top" title="Purple"></li>
+            <li id="light-blue" data-toggle="tooltip" data-placement="top" title="Light Blue"></li>
+            <li id="yellow" data-toggle="tooltip" data-placement="top" title="Yellow"></li>
+            <li id="pink" data-toggle="tooltip" data-placement="top" title="Pink"></li>
+            <li id="light-green" data-toggle="tooltip" data-placement="top" title="Light Green"></li>
+            <li id="black" data-toggle="tooltip" data-placement="top" title="Black"></li>
+        </ul>
+        
+        <button id="page-boxed-toggle" class="btn btn-primary">Boxed Page</button>
+    </div>
+    <!-- ==========================
+        COLOR SWITCHER - END
+    =========================== -->
+    
+    <div id="page-wrapper" class="">
+    
+	<!-- ==========================
+    	HEADER - START
+    =========================== -->
+    <div class="top-header hidden-xs hidden-sm">
+    	<div class="container">
+        	<div class="pull-left">
+            	<div class="header-item"><i class="fa fa-envelope"></i> info@pixlized.cz</div>
+                <div class="header-item"><i class="fa fa-phone"></i> +420 123 456 789</div>
+            </div>
+            <div class="pull-right">
+            	<ul class="brands brands-inline brands-tn brands-circle main">
+                	<li><a href="#"><i class="fa fa-twitter"></i></a></li>
+                    <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+                    <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
+                </ul>
+                <div class="header-item"><a href="signin.html" class="pull-right"><i class="fa fa-user"></i>Sign in</a></div>
+            </div>
+        </div>
+    </div>
+    
+	<header class="navbar yamm navbar-default navbar-static-top">
+    	<div class="container">
+            <div class="navbar-header">
+                <a href="index.html" class="navbar-brand"><img src="image/logo.png" alt=""></a>
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse"><i class="fa fa-bars"></i></button>
+            </div>
+            <div class="navbar-collapse collapse navbar-right">
+            	<ul class="nav navbar-nav navbar-main-menu">
+                    <li class="dropdown active">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Home <i class="fa fa-chevron-down"></i></a>
+                        <ul class="dropdown-menu">
+                        	<li><a href="index.html"><i class="fa fa-angle-double-right"></i>Default Option</a></li>
+                            <li><a href="index-image.html"><i class="fa fa-angle-double-right"></i>Option 1 (Static Image)</a></li>
+                            <li><a href="index-text.html"><i class="fa fa-angle-double-right"></i>Option 2 (Text Only)</a></li>
+                            <li><a href="index-application.html"><i class="fa fa-angle-double-right"></i>Application<span class="label label-warning">updated</span></a></li>
+                            <li><a href="index-product.html"><i class="fa fa-angle-double-right"></i>Product<span class="label label-warning">updated</span></a></li>
+                            <li><a href="index-eshop.html"><i class="fa fa-angle-double-right"></i>Eshop<span class="label label-warning">updated</span></a></li>
+                            <li><a href="index-coming-soon.html"><i class="fa fa-angle-double-right"></i>Coming Soon<span class="label label-warning">updated</span></a></li>
+                            <li><a href="index-search.html"><i class="fa fa-angle-double-right"></i>Search</a></li>
+                            <li><a href="index-portfolio.html"><i class="fa fa-angle-double-right"></i>Portfolio</a></li>
+                            <li><a href="index-event.html"><i class="fa fa-angle-double-right"></i>Event<span class="label label-danger">new</span></a></li>
+                        </ul>
+                    </li>
+                    
+                    <li>
+                        <a href="features.html">Features</a>
+                    </li>
+                    
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Eshop <i class="fa fa-chevron-down"></i></a>
+                        <ul class="dropdown-menu">
+                        	<li><a href="products1.html"><i class="fa fa-angle-double-right"></i>Grid Without Sidebar<span class="label label-warning">updated</span></a></li>
+                            <li><a href="products2.html"><i class="fa fa-angle-double-right"></i>Grid With Sidebar<span class="label label-warning">updated</span></a></li>
+                            <li><a href="products3.html"><i class="fa fa-angle-double-right"></i>List Without Sidebar<span class="label label-warning">updated</span></a></li>
+                            <li><a href="products4.html"><i class="fa fa-angle-double-right"></i>List With Sidebar<span class="label label-warning">updated</span></a></li>
+                            <li><a href="productdetail.html"><i class="fa fa-angle-double-right"></i>Product Detail<span class="label label-warning">updated</span></a></li>
+                            <li><a href="shoppingcart.html"><i class="fa fa-angle-double-right"></i>Shopping Cart</a></li>
+                        </ul>
+                    </li>
+                    
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Portfolio <i class="fa fa-chevron-down"></i></a>
+                        <ul class="dropdown-menu">
+                        	<li><a href="portfolio1.html"><i class="fa fa-angle-double-right"></i>Portfolio 2 Column Grid</a></li>
+                            <li><a href="portfolio2.html"><i class="fa fa-angle-double-right"></i>Portfolio 3 Column Grid</a></li>
+                            <li><a href="portfolio3.html"><i class="fa fa-angle-double-right"></i>Portfolio 4 Column Grid</a></li>
+                            <li><a href="portfolio4.html"><i class="fa fa-angle-double-right"></i>Portfolio 2 Column Grid Wide</a></li>
+                            <li><a href="portfolio5.html"><i class="fa fa-angle-double-right"></i>Portfolio 3 Column Grid Wide</a></li>
+                            <li><a href="portfolio6.html"><i class="fa fa-angle-double-right"></i>Portfolio 4 Column Grid Wide</a></li>
+                            <li><a href="portfolio7.html"><i class="fa fa-angle-double-right"></i>Portfolio Without Spaces</a></li>
+                            <li><a href="portfolio-post1.html"><i class="fa fa-angle-double-right"></i>Portfolio Post 1 (slider)</a></li>
+                            <li><a href="portfolio-post2.html"><i class="fa fa-angle-double-right"></i>Portfolio Post 2 (video)</a></li>
+                            <li><a href="portfolio-post3.html"><i class="fa fa-angle-double-right"></i>Portfolio Post 3 (audio)</a></li>
+                        </ul>
+                    </li>
+                    
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Blog <i class="fa fa-chevron-down"></i></a>
+                        <ul class="dropdown-menu">
+                        	<li><a href="blog1.html"><i class="fa fa-angle-double-right"></i>Blog Without Sidebar</a></li>
+                            <li><a href="blog2.html"><i class="fa fa-angle-double-right"></i>Blog Left Sidebar</a></li>
+                            <li><a href="blog3.html"><i class="fa fa-angle-double-right"></i>Blog Right Sidebar</a></li>
+                            <li><a href="blog-post1.html"><i class="fa fa-angle-double-right"></i>Blog Post Without Sidebar</a></li>
+                            <li><a href="blog-post2.html"><i class="fa fa-angle-double-right"></i>Blog Post Left Sidebar</a></li>
+                            <li><a href="blog-post3.html"><i class="fa fa-angle-double-right"></i>Blog Post Right Sidebar</a></li>
+                            <li><a href="blog4.html"><i class="fa fa-angle-double-right"></i>Blog 2 Column Grid</a></li>
+                            <li><a href="blog5.html"><i class="fa fa-angle-double-right"></i>Blog 3 Column Grid</a></li>
+                            <li><a href="blog6.html"><i class="fa fa-angle-double-right"></i>Blog 2 Column Grid (isotope)</a></li>
+                            <li><a href="blog7.html"><i class="fa fa-angle-double-right"></i>Blog 3 Column Grid (isotope)</a></li>
+                            <li><a href="blog8.html"><i class="fa fa-angle-double-right"></i>Blog Timeline</a></li>
+                        </ul>
+                    </li>
+                    
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Contact <i class="fa fa-chevron-down"></i></a>
+                        <ul class="dropdown-menu">
+                        	<li><a href="contact1.html"><i class="fa fa-angle-double-right"></i>Contact 1</a></li>
+                            <li><a href="contact2.html"><i class="fa fa-angle-double-right"></i>Contact 2</a></li>
+                        </ul>
+                    </li>
+                    
+                    <li class="dropdown yamm-fw hidden-xs hidden-sm">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Wide Menu <i class="fa fa-chevron-down"></i></a>
+                        <ul class="dropdown-menu">
+                        	<li>
+                            	<div class="yamm-content">
+                                    <div class="row">
+                                        <div class="col-sm-6">
+                                        	<h3>Our Latest Project</h3>
+                                            <div class="row">
+                                            	<div class="col-sm-6">
+                                            		<img src="image/image_02.jpg" class="img-responsive" alt="">
+                                            		<a href="portfolio-post1.html" class="btn btn-primary">Show Me</a>
+                                                </div>
+                                                <div class="col-sm-6">
+                                                	<p><b>Lorem ipsum dolor sit</b> amet, consectetur adipiscing elit. Duis nec lorem quis est ultrices volutpat. Donec id urna posuere nisl tincidunt laoreet. Aliquam erat volutpat. Duis eu sapien auctor, bibendum ante ut, volutpat purus. </p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-3">
+                                        	<h3>Features Pages</h3>
+                                        	<ul class="nav vertical-nav">
+                                            	<li><a href="about.html"><i class="fa fa-angle-double-right"></i>About</a></li>
+                                                <li><a href="pricing1.html"><i class="fa fa-angle-double-right"></i>Pricing 1</a></li>
+                                                <li><a href="pricing2.html"><i class="fa fa-angle-double-right"></i>Pricing 2</a></li>
+                                                <li><a href="pricingtable.html"><i class="fa fa-angle-double-right"></i>Pricing Table</a></li>
+                                                <li><a href="services1.html"><i class="fa fa-angle-double-right"></i>Services 1</a></li>
+                                                <li><a href="services2.html"><i class="fa fa-angle-double-right"></i>Services 2</a></li>
+                                            </ul>
+                                        </div>
+                                        <div class="col-sm-3">
+                                            <h3>About Us</h3>
+                                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis nec lorem quis est ultrices volutpat. Donec id urna posuere nisl tincidunt laoreet. Aliquam erat volutpat. Duis eu sapien auctor, bibendum ante ut, volutpat purus.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                    </li>
+                    
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Pages <i class="fa fa-chevron-down"></i></a>
+                        <ul class="dropdown-menu">
+                        	<li><a href="about.html"><i class="fa fa-angle-double-right"></i>About</a></li>
+                            <li><a href="profile.html"><i class="fa fa-angle-double-right"></i>Member Profile<span class="label label-danger">new</span></a></li>
+                            <li><a href="search.html"><i class="fa fa-angle-double-right"></i>Search Result<span class="label label-danger">new</span></a></li>
+                            <li><a href="pricing1.html"><i class="fa fa-angle-double-right"></i>Pricing 1</a></li>
+                            <li><a href="pricing2.html"><i class="fa fa-angle-double-right"></i>Pricing 2</a></li>
+                            <li><a href="pricingtable.html"><i class="fa fa-angle-double-right"></i>Pricing Table</a></li>
+                            <li><a href="services1.html"><i class="fa fa-angle-double-right"></i>Services 1</a></li>
+                            <li><a href="services2.html"><i class="fa fa-angle-double-right"></i>Services 2</a></li>
+                            <li><a href="services3.html"><i class="fa fa-angle-double-right"></i>Services 3</a></li>
+                            <li><a href="faq.html"><i class="fa fa-angle-double-right"></i>FAQ</a></li>
+                            <li><a href="error403.html"><i class="fa fa-angle-double-right"></i>Error 403</a></li>
+                            <li><a href="error404.html"><i class="fa fa-angle-double-right"></i>Error 404</a></li>
+                            <li><a href="signup.html"><i class="fa fa-angle-double-right"></i>Sign Up</a></li>
+                            <li><a href="signin.html"><i class="fa fa-angle-double-right"></i>Sign In</a></li>
+                        </ul>
+                    </li>
+                </ul>
+                
+                <ul class="nav navbar-nav hidden-xs hidden-sm">
+                    <li class="dropdown shopping-cart-toggle">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-shopping-cart"></i><span class="shopping-cart-counter">5</span></a>
+                        <ul class="dropdown-menu navbar-shopping-cart">
+                        	<li>
+                            	<div class="row">
+                                	<div class="col-md-1">
+                                    	<a href="#" class="delete"><i class="fa fa-times"></i></a>
+                                    </div>
+                                    <div class="col-md-8">
+                                    	<a href="productdetail.html"><h3>Product Title</h3></a>
+                                    </div>
+                                    <div class="col-md-1">
+                                    	<p>2x</p>
+                                    </div>
+                                    <div class="col-md-2">
+                                   		<p class="price">$123</p>
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                            	<div class="row">
+                                	<div class="col-md-1">
+                                    	<a href="#" class="delete"><i class="fa fa-times"></i></a>
+                                    </div>
+                                    <div class="col-md-8">
+                                    	<a href="productdetail.html"><h3>Product Title</h3></a>
+                                    </div>
+                                    <div class="col-md-1">
+                                    	<p>2x</p>
+                                    </div>
+                                    <div class="col-md-2">
+                                   		<p class="price">$123</p>
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                            	<div class="row">
+                                	<div class="col-md-1">
+                                    	<a href="#" class="delete"><i class="fa fa-times"></i></a>
+                                    </div>
+                                    <div class="col-md-8">
+                                    	<a href="productdetail.html"><h3>Product Title</h3></a>
+                                    </div>
+                                    <div class="col-md-1">
+                                    	<p>2x</p>
+                                    </div>
+                                    <div class="col-md-2">
+                                   		<p class="price">$123</p>
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                            	<div class="row">
+                                	<div class="col-md-10">
+                                    	<p>Total price:</p>
+                                    </div>
+                                    <div class="col-md-2">
+                                   		<p class="price">$369</p>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                	<div class="col-md-6">
+                                    	<a href="#" class="btn btn-info btn-block">Clear Cart</a>
+                                    </div>
+                                    <div class="col-md-6">
+                                   		<a href="shoppingcart.html" class="btn btn-danger btn-block btn-checkout">Checkout</a>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                    </li>
+                    
+                    <li class="dropdown search-form-toggle">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-search"></i></a>
+                        <ul class="dropdown-menu navbar-search-form">
+                        	<li>
+                            	<form>
+                                    <fieldset>
+                                        <div class="form-group nospace">
+                                            <div class="input-group">
+                                                <input type="text" class="form-control" id="search" placeholder="Search" required>
+                                                <span class="input-group-btn"><button class="btn btn-primary" type="button"><i class="fa fa-search"></i></button></span>
+                                            </div>
+                                        </div>
+                                    </fieldset>
+                                </form>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </header>
+    <!-- ==========================
+    	HEADER - END 
+    =========================== -->
+    
+    <!-- ==========================
+    	BREADCRUMB - START 
+    =========================== -->
+    <section class="breadcrumb-wrapper">
+        <div class="container">
+        	<h2>Portfolio Post</h2>
+            <ol class="breadcrumb">
+                <li><a href="index.html">Home</a></li>
+                <li class="active">Portfolio</li>
+            </ol>
+        </div>
+    </section>
+	<!-- ==========================
+    	BREADCRUMB - END 
+    =========================== -->
+
+    <!-- ==========================
+    	BLOG - START 
+    =========================== -->
+    <section class="content bg-color-2 blog-col-3" id="blog">
+    	<div class="container">
+            <div class="isotope-filter blog-filter">
+            	<ul class="list-unstyled list-inline">
+                	<li><a href="#" class="btn btn-lg btn-primary active" data-filter="*">All</a></li>
+                    <li><a href="#" class="btn btn-lg btn-primary" data-filter=".wordpress">Wordpress</a></li>
+                    <li><a href="#" class="btn btn-lg btn-primary" data-filter=".ecommerce">E-commerce</a></li>
+                    <li><a href="#" class="btn btn-lg btn-primary" data-filter=".portfolios">Portfolios</a></li>
+                    <li><a href="#" class="btn btn-lg btn-primary" data-filter=".videos">Videos</a></li>
+                </ul>
+            </div>
+            <div class="row blog-wrapper">
+            	
+                <!-- BLOG POST -->
+                <div class="col-md-4 blog-item wordpress videos">
+                	<div class="blog-post">
+                    	<div class="flex-video widescreen">
+                        	<iframe src="https://player.vimeo.com/video/23617801"></iframe>                        	
+                        </div>
+                        <div class="blog-post-detail">
+                            <span><i class="fa fa-calendar"></i>16/06/2014</span>
+                            <span><i class="fa fa-comment"></i>11</span>
+                            <span><i class="fa fa-thumbs-up"></i>23</span>
+                        </div>
+                        <div class="blog-post-body">
+                    		<a href="blog-post2.html"><h3>Blog post with Vimeo video</h3></a>
+                        	<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam auctor dictum nibh, ac gravida orci porttitor et. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Nullam posuere magna a dapibus luctus. Curabitur posuere vel nisi et scelerisque. Praesent imperdiet sed enim et ornare. In congue quis enim ut gravida. Aenean non justo varius, dapibus ipsum eu, mattis urna.</p>
+                    		<a href="" class="btn btn-primary"><i class="fa fa-chevron-right"></i>Read More</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- BLOG POST -->
+                <div class="col-md-4 blog-item ecommerce portfolios">
+                	<div class="blog-post">
+                        <div class="blog-post-detail">
+                            <span><i class="fa fa-calendar"></i>16/06/2014</span>
+                            <span><i class="fa fa-comment"></i>11</span>
+                            <span><i class="fa fa-thumbs-up"></i>23</span>
+                        </div>
+                        <div class="blog-post-body">
+                    		<a href="blog-post2.html"><h3>Blog post only with text and very long blog post title</h3></a>
+                        	<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam auctor dictum nibh, ac gravida orci porttitor et. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Nullam posuere magna a dapibus luctus. Curabitur posuere vel nisi et scelerisque. Praesent imperdiet sed enim et ornare. In congue quis enim ut gravida. Aenean non justo varius, dapibus ipsum eu, mattis urna.</p>
+                    		<a href="" class="btn btn-primary"><i class="fa fa-chevron-right"></i>Read More</a>
+                        </div>
+                    </div>
+                </div>
+                    
+                <!-- BLOG POST -->
+                <div class="col-md-4 blog-item ecommerce videos">
+                	<div class="blog-post">
+                    	<div class="flex-video widescreen">
+                            <iframe allowfullscreen src="http://www.youtube.com/embed/A3PDXmYoF5U?feature=player_detailpage"></iframe>
+                        </div>
+                        <div class="blog-post-detail">
+                            <span><i class="fa fa-calendar"></i>16/06/2014</span>
+                            <span><i class="fa fa-comment"></i>11</span>
+                            <span><i class="fa fa-thumbs-up"></i>23</span>
+                        </div>
+                        <div class="blog-post-body">
+                    		<a href="blog-post2.html"><h3>Blog post with Youtube video</h3></a>
+                        	<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam auctor dictum nibh, ac gravida orci porttitor et. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Nullam posuere magna a dapibus luctus. Curabitur posuere vel nisi et scelerisque. Praesent imperdiet sed enim et ornare. In congue quis enim ut gravida. Aenean non justo varius, dapibus ipsum eu, mattis urna.</p>
+                    		<a href="" class="btn btn-primary"><i class="fa fa-chevron-right"></i>Read More</a>
+                        </div>
+                    </div>
+               	</div>
+                    
+                <!-- BLOG POST -->
+                <div class="col-md-4 blog-item portfolios">
+                	<div class="blog-post">
+                    	<div class="flex-video soundcloud">
+    						<iframe height="166" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/97617992&amp;color=ff5500&amp;auto_play=false&amp;hide_related=false&amp;show_artwork=true"></iframe>
+                        </div> 
+                        <div class="blog-post-detail">
+                            <span><i class="fa fa-calendar"></i>16/06/2014</span>
+                            <span><i class="fa fa-comment"></i>11</span>
+                            <span><i class="fa fa-thumbs-up"></i>23</span>
+                        </div>
+                        <div class="blog-post-body">
+                    		<a href="blog-post2.html"><h3>Blog post with Soundcloud audio</h3></a>
+                        	<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam auctor dictum nibh, ac gravida orci porttitor et. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Nullam posuere magna a dapibus luctus. Curabitur posuere vel nisi et scelerisque. Praesent imperdiet sed enim et ornare. In congue quis enim ut gravida. Aenean non justo varius, dapibus ipsum eu, mattis urna.</p>
+                    		<a href="" class="btn btn-primary"><i class="fa fa-chevron-right"></i>Read More</a>
+                        </div>
+                    </div>
+               	</div>
+                    
+                <!-- BLOG POST -->
+                <div class="col-md-4 blog-item wordpress">
+                	<div class="blog-post">
+                    	<img src="image/image_02.jpg" class="img-responsive" alt="">
+                        <div class="blog-post-detail">
+                            <span><i class="fa fa-calendar"></i>16/06/2014</span>
+                            <span><i class="fa fa-comment"></i>11</span>
+                            <span><i class="fa fa-thumbs-up"></i>23</span>
+                        </div>
+                        <div class="blog-post-body">
+                    		<a href="blog-post2.html"><h3>Blog post with image</h3></a>
+                        	<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam auctor dictum nibh, ac gravida orci porttitor et. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Nullam posuere magna a dapibus luctus. Curabitur posuere vel nisi et scelerisque. Praesent imperdiet sed enim et ornare. In congue quis enim ut gravida. Aenean non justo varius, dapibus ipsum eu, mattis urna.</p>
+                    		<a href="" class="btn btn-primary"><i class="fa fa-chevron-right"></i>Read More</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- BLOG POST -->
+                <div class="col-md-4 blog-item wordpress">
+                	<div class="blog-post">
+                    	<img src="image/image_02.jpg" class="img-responsive" alt="">
+                        <div class="blog-post-detail">
+                            <span><i class="fa fa-calendar"></i>16/06/2014</span>
+                            <span><i class="fa fa-comment"></i>11</span>
+                            <span><i class="fa fa-thumbs-up"></i>23</span>
+                        </div>
+                        <div class="blog-post-body">
+                    		<a href="blog-post2.html"><h3>Blog post with image</h3></a>
+                        	<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam auctor dictum nibh, ac gravida orci porttitor et. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Nullam posuere magna a dapibus luctus. Curabitur posuere vel nisi et scelerisque. Praesent imperdiet sed enim et ornare. In congue quis enim ut gravida. Aenean non justo varius, dapibus ipsum eu, mattis urna.</p>
+                    		<a href="" class="btn btn-primary"><i class="fa fa-chevron-right"></i>Read More</a>
+                        </div>
+                    </div>
+                </div>
+                    
+                <!-- BLOG POST -->
+                <div class="col-md-4 blog-item ecommerce portfolios">
+                	<div class="blog-post">
+                        <div class="blog-post-detail">
+                            <span><i class="fa fa-calendar"></i>16/06/2014</span>
+                            <span><i class="fa fa-comment"></i>11</span>
+                            <span><i class="fa fa-thumbs-up"></i>23</span>
+                        </div>
+                        <div class="blog-post-body">
+                    		<a href="blog-post2.html"><h3>Blog post only with text and very long blog post title</h3></a>
+                        	<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam auctor dictum nibh, ac gravida orci porttitor et. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Nullam posuere magna a dapibus luctus. Curabitur posuere vel nisi et scelerisque. Praesent imperdiet sed enim et ornare. In congue quis enim ut gravida. Aenean non justo varius, dapibus ipsum eu, mattis urna.</p>
+                    		<a href="" class="btn btn-primary"><i class="fa fa-chevron-right"></i>Read More</a>
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+    </section>
+    <!-- ==========================
+    	BLOG - END 
+    =========================== --> 
+        
+    <!-- ==========================
+    	FOOTER - START 
+    =========================== -->
+    <footer>
+    	<div class="container">
+        	<div class="row">
+            	<div class="col-md-4">
+                	<h3><i class="fa fa-flag"></i>Contact</h3>
+                    <p class="contact-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis nec lorem quis est ultrices volutpat.</p>
+                    <ul class="list-unstyled contact-address">
+                    	<li>212-222 Broadway, New York, NY 10038, USA</li>
+                        <li><a>info@mycompany.com</a></li>
+                        <li>+420 123 456 789</li>
+                        <li>www.mycompany.com</li>
+                    </ul>
+                    <ul class="brands brands-inline brands-sm brands-transition brands-circle">
+                    	<li><a href="#" class="brands-facebook"><i class="fa fa-facebook"></i></a></li>
+                        <li><a href="#" class="brands-twitter"><i class="fa fa-twitter"></i></a></li>
+                        <li><a href="#" class="brands-google-plus"><i class="fa fa-google-plus"></i></a></li>
+                        <li><a href="#" class="brands-linkedin"><i class="fa fa-linkedin"></i></a></li>
+                        <li><a href="#" class="brands-youtube"><i class="fa fa-youtube"></i></a></li>
+                        <li><a href="#" class="brands-skype"><i class="fa fa-skype"></i></a></li>
+                    </ul>
+                </div>
+                
+                <div class="col-md-4 hidden-xs hidden-sm">
+                	<h3><i class="fa fa-camera"></i>Latest Work</h3>
+                    <div class="row" id="latest-work-footer">
+						<div class="overlay-wrapper col-sm-6">
+                            <img src="image/image_01.jpg" class="img-responsive" alt="">
+                            <span class="overlay">
+                                <a href="portfolio-post1.html"><i class="fa fa-plus"></i></a>
+                            </span>
+                        </div>
+                        <div class="overlay-wrapper col-sm-6">
+                            <img src="image/image_02.jpg" class="img-responsive" alt="">
+                            <span class="overlay">
+                                <a href="portfolio-post1.html"><i class="fa fa-plus"></i></a>
+                            </span>
+                        </div>
+                        <div class="overlay-wrapper col-sm-6">
+                            <img src="image/image_05.jpg" class="img-responsive" alt="">
+                            <span class="overlay">
+                                <a href="portfolio-post1.html"><i class="fa fa-plus"></i></a>
+                            </span>
+                        </div>
+                        <div class="overlay-wrapper col-sm-6">
+                            <img src="image/image_06.jpg" class="img-responsive" alt="">
+                            <span class="overlay">
+                                <a href="portfolio-post1.html"><i class="fa fa-plus"></i></a>
+                            </span>
+                        </div>                        
+                    </div>
+                </div>
+                
+                <div class="col-md-4 hidden-xs hidden-sm">
+                	<h3><i class="fa fa-envelope"></i>Newsletter</h3>
+                    <p class="contact-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis nec lorem quis est ultrices volutpat.</p>
+                    <form>
+                    	<fieldset>
+                        	<div class="form-group nospace">
+                            	<div class="input-group">
+                                    <input type="email" class="form-control" id="email" placeholder="Put your email" required>
+                                    <span class="input-group-btn"><button class="btn btn-primary" type="button">Submit</button></span>
+                                </div>
+                            </div>
+                        </fieldset>
+                    </form>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <div class="footer-copyright">
+                    <p>© Roxie 2014 All right reserved. Designed by <a href="http://pixelized.cz/" target="_blank">Pixelized Studio.</a></p>
+                </div>
+                <ul class="nav navbar-nav navbar-right hidden-xs hidden-sm">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="features.html">Features</a></li>
+                    <li><a href="blog2.html">Blog</a></li>
+                    <li><a href="portfolio1.html">Portfolio</a></li>
+                    <li><a href="contact1.html">Contact</a></li>
+                </ul>
+            </div>
+        </div>
+    </footer>
+    <!-- ==========================
+    	FOOTER - END 
+    =========================== -->
+   
+    </div>
+   
+   	<!-- ==========================
+    	JS 
+    =========================== -->        
+	<script src="http://code.jquery.com/jquery-latest.min.js"></script>
+    <script src="http://code.jquery.com/ui/1.11.1/jquery-ui.js"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&amp;sensor=true"></script>
+	<script src="js/bootstrap.min.js"></script>
+    <script src="js/waypoints.min.js"></script>
+    <script src="js/owl.carousel.js"></script>
+    <script src="js/isotope.pkgd.min.js"></script>
+    <script src="js/jquery.magnific-popup.min.js"></script>
+    <script src="js/creative-brands.js"></script>
+    <script src="js/color-switcher.js"></script>
+    <script src="js/jquery.countTo.js"></script>
+    <script src="js/jquery.countdown.js"></script>
+    <script src="js/custom.js"></script>
+</body>
+</html>

@@ -1,0 +1,84 @@
+/*----------------------------------------------------
+ * Copyright 2014 Pixelized Studio
+ * http://www.pixelized.cz
+ * Color Switcher
+ * color-switcher.css
+ *
+ * Version 2.0
+ * Released: 11.7.2014
+ * http://creativecommons.org/licenses/by/4.0/
+----------------------------------------------------*/
+
+/*------------------------------
+	COLOR SWITCHER
+------------------------------*/
+
+#color-switcher {
+	background-color: #FFFFFF;
+    padding:15px;
+    position:fixed;
+    right: -231px;
+    top: 130px;
+    width: 230px;
+    z-index: 1000;
+	box-shadow: 0px 1px 1px 0 rgba(0,0,0,0.4);
+}
+
+#toggle-switcher {
+	background-color: #333333;
+	color:#FFFFFF;
+	font-size:26px;
+	text-align: center;
+    position: absolute;
+    left: -46px;
+    top: 0;
+    width: 45px;
+	height: 45px;
+	cursor:pointer;
+	padding-top:3px;
+}
+
+#color-switcher span {
+	color:#333333;
+	display:block;
+	font-weight:700;
+}
+
+#color-switcher ul {
+	margin-bottom:0;
+}
+
+#color-switcher ul li {
+	background-color: #000000;
+	width:30px;
+	height:30px;
+	margin-bottom:7px;
+	cursor:pointer;
+}
+
+#color-switcher ul li:last-child {
+	margin-bottom:0;
+}
+
+#color-switcher ul.list-inline {
+	margin:5px 0 10px;
+}
+
+#color-switcher ul.list-inline:last-child {
+	margin:5px 0 0;
+}
+
+#color-switcher ul.list-inline li {
+	margin:0 2px;
+}
+
+#color-switcher ul li#blue {background-color: #0D58A6;}
+#color-switcher ul li#green {background-color: #01AE68;}
+#color-switcher ul li#orange {background-color: #FFB23A;}
+#color-switcher ul li#red {background-color: #B81117;}
+#color-switcher ul li#purple {background-color: #880045;}
+#color-switcher ul li#light-blue {background-color: #2FC3DF;}
+#color-switcher ul li#yellow {background-color: #E8CA20;}
+#color-switcher ul li#pink {background-color: #E84097;}
+#color-switcher ul li#light-green {background-color: #BAD72F;}
+#color-switcher ul li#black {background-color: #868686;}

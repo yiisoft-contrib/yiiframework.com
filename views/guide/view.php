@@ -37,7 +37,7 @@ $(".sidenav-toggle").on("click", function() {
 });
 ');
 ?>
-<div class="guide-view">
+<div class="container guide-view">
     <div class="row row-offcanvas">
         <div class="col-sm-3">
             <?= SideNav::widget(['id' => 'guide-navigation', 'items' => $nav, 'options' => ['class' => 'sidenav-offcanvas']]) ?>

@@ -13,6 +13,6 @@ if (!empty($title)) {
 }
 ?>
 
-<div class="content api-content">
+<div class="container api-content">
 	<?= strtr($content, ['<!-- YII_VERSION_SELECTOR -->' => $this->render('_versions.php', compact('version', 'versions', 'section'))]) ?>
 </div>

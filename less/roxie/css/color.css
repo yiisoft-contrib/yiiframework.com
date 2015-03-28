@@ -1,0 +1,1957 @@
+/*------------------------------
+ * Copyright 2014 Pixelized
+ * http://www.pixelized.cz
+ *
+ * Roxie theme v1.1
+------------------------------*/
+
+/*------------------------------
+	GREEN
+------------------------------*/
+
+body.color-green a,
+body.color-green .text-primary,
+body.color-green .btn-inverse:hover,
+body.color-green .btn-inverse:focus,
+body.color-green .nav.vertical-nav li a:hover,
+body.color-green form label,
+body.color-green .owl-theme .owl-controls .owl-buttons div,
+body.color-green .top-header .header-item,
+body.color-green .navbar-default .navbar-brand:hover,
+body.color-green .dropdown-menu > li > a:hover i,
+body.color-green .jumbotron6 #slide-3 .btn:first-child,
+body.color-green .jumbotron5 .btn:first-child,
+body.color-green .pagination > li > a:hover,
+body.color-green .pagination > li > span:hover,
+body.color-green #section-introduction h2,
+body.color-green #section-features .feature i,
+body.color-green .text-highlight span,
+body.color-green #section-portfolio .portfolio-item a:hover i,
+body.color-green footer h3 i,
+body.color-green footer .navbar-nav > li > a:hover,
+body.color-green #features .features-sidebar h3,
+body.color-green #features .features-content h3.features-title i,
+body.color-green #faq h3,
+body.color-green #services .service:hover h3,
+body.color-green #services.services1 .service i,
+body.color-green #services.services2 .service i,
+body.color-green #services.services3 .service i,
+body.color-green .profile h3 small,
+body.color-green .box h3,
+body.color-green .box ul li.active a,
+body.color-green .box ul li a:hover,
+body.color-green .box ul li a i,
+body.color-green .box.box-tags a:hover span,
+body.color-green .blog-post-detail span i,
+body.color-green .blog-timeline .blog-post .blog-post-info .month,
+body.color-green .comment a:hover,
+body.color-green #eshop .eshop-sidebar h3,
+body.color-green .shopping-cart-footer p.total-price,
+body.color-green .jumbotron6 #slide-3 .btn:hover,
+body.color-green .jumbotron5 .btn:hover,
+body.color-green .jumbotron3 .btn:hover,
+body.color-green #section-blog-posts .btn:hover,
+body.color-green #separator1 .btn:hover,
+
+body.color-green .comingsoon .brands li a:hover,
+body.color-green #profile-single .profile-body h2 small,
+body.color-green #eshop .eshop-sidebar .eshop-widget .checkbox input[type=checkbox]:checked + label:before,
+body.color-green .jumbotron-event .event-info h2,
+body.color-green #event-speakers .speaker .speaker-body h3,
+body.color-green #schedule .schedule-single-info i {
+	color:#16A085;
+}
+
+body.color-green .btn-primary,
+body.color-green .alert-primary,
+body.color-green .label-primary,
+body.color-green .panel-primary > .panel-heading,
+body.color-green .blog-timeline .blog-post:hover .blog-post-info,
+body.color-green .eshop-product .product-sale-label,
+body.color-green .popover-title,
+body.color-green .nav-tabs > li.active > a, 
+body.color-green .nav-tabs > li.active > a:hover, 
+body.color-green .nav-tabs > li.active > a:focus,
+body.color-green .overlay-wrapper .overlay,
+body.color-green .owl-theme .owl-controls .owl-page.active span,
+body.color-green .owl-theme .owl-controls .owl-buttons div:hover,
+body.color-green .brands.main li a,
+body.color-green .navbar-default .navbar-nav > .active > a, 
+body.color-green .navbar-default .navbar-nav > .active > a:hover, 
+body.color-green .navbar-default .navbar-nav > .active > a:focus,
+body.color-green .navbar-default .navbar-nav > .open > a, 
+body.color-green .navbar-default .navbar-nav > .open > a:hover, 
+body.color-green .navbar-default .navbar-nav > .open > a:focus,
+body.color-green .jumbotron6 #slide-3 .btn:first-child:hover,
+body.color-green .jumbotron5 .btn:first-child:hover,
+body.color-green .content-separator,
+body.color-green .bg-color-1,
+body.color-green .pagination > .active > a, 
+body.color-green .pagination > .active > span, 
+body.color-green .pagination > .active > a:hover, 
+body.color-green .pagination > .active > span:hover, 
+body.color-green .pagination > .active > a:focus, 
+body.color-green .pagination > .active > span:focus,
+body.color-green #section-features .feature:hover i,
+body.color-green .recent-blog-post .post-date,
+body.color-green .pricing-plan .pricing-plan-price,
+body.color-green #services.services2 .service:hover i,
+body.color-green #services.services3 .service:hover i,
+body.color-green .blog-header .vertical-nav li a:hover .badge,
+body.color-green .box ul li a span.badge,
+body.color-green .blog-timeline-mark,
+body.color-green #section-portfolio .portfolio-item .hover-overlay,
+body.color-green .hidden-control.owl-theme .owl-controls .owl-buttons div:hover,
+
+body.color-green .comingsoon .brands li a,
+body.color-green #profile-single .profile-body .profile-contacts li span,
+body.color-green #eshop .eshop-sidebar .eshop-widget .ui-slider .ui-slider-range,
+body.color-green .event-ticket.highlighted {
+    background-color: #16A085;
+}
+
+body.color-green .popover,
+body.color-green .navbar-nav > li > .dropdown-menu,
+body.color-green .jumbotron6 #slide-3 .btn:first-child,
+body.color-green .jumbotron5 .btn:first-child,
+body.color-green .pagination > .active > a, 
+body.color-green .pagination > .active > span, 
+body.color-green .pagination > .active > a:hover, 
+body.color-green .pagination > .active > span:hover, 
+body.color-green .pagination > .active > a:focus, 
+body.color-green .pagination > .active > span:focus,
+body.color-green #section-features .feature i,
+body.color-green .text-highlight,
+body.color-green #services.services2 .service i,
+body.color-green #services.services3 .service i,
+
+body.color-green #eshop .eshop-sidebar .eshop-widget .checkbox input[type=checkbox]:checked + label:before  {
+	border-color:#16A085;
+}
+
+body.color-green .popover.left > .arrow {border-left-color: #16A085;}
+body.color-green .popover.right > .arrow {border-right-color: #16A085;}
+body.color-green .popover.top > .arrow {border-top-color: #16A085;}
+body.color-green .popover.bottom > .arrow {border-bottom-color: #16A085;}
+
+/* TRANSPARENT */
+
+body.color-green .hidden-control.owl-theme .owl-controls .owl-buttons div,
+body.color-green .jumbotron-event p.event-date {
+	background-color: rgba(22, 160, 133, 0.5);
+}
+
+body.color-green .jumbotron6 h2,
+body.color-green .jumbotron5 h2,
+body.color-green .jumbotron3 h2,
+body.color-green .map-overlay {
+	background-color:rgba(22, 160, 133, 0.8);
+}
+
+body.color-green .jumbotron2,
+body.color-green .jumbotron4 {
+	background-image: linear-gradient(rgba(22, 160, 133, 0.9), rgba(22, 160, 133, 0.9)), url(../image/bg3.jpg);
+}
+
+body.color-green .jumbotron7 {
+	background-image: linear-gradient(rgba(22, 160, 133, 0.6), rgba(22, 160, 133, 0.6)),url(../image/gplaypattern.png);
+}
+
+body.color-green #section-blog-posts,
+body.color-green #section-testimonials,
+body.color-green #section-statistics,
+body.color-green .jumbotron1 {
+	background-image: linear-gradient(rgba(22, 160, 133, 0.6), rgba(22, 160, 133, 0.6)), url(../image/bg3.jpg);
+}
+
+@media (max-width:991px) {
+	body.color-green .navbar-default .navbar-toggle:hover,
+	body.color-green .navbar-default .navbar-toggle:focus,
+	body.color-green .navbar-default .navbar-nav .open .dropdown-menu > li > a:hover,
+	body.color-green .navbar-default .navbar-nav .open .dropdown-menu > li > a:focus {
+		color:#16A085;
+	}
+	
+	body.color-green .navbar-default .navbar-collapse {
+		border-color:#16A085;
+	}
+}
+
+/* DARKER */
+
+body.color-green a:hover,
+body.color-green a:focus {
+	color:#119178;
+}
+
+body.color-green .btn-primary:hover,
+body.color-green .btn-primary:focus,
+body.color-green .btn-primary.active,
+body.color-green .pricing-plan h3,
+body.color-green .pricing-plan p {
+	background-color:#119178;
+}
+
+body.color-green .btn-primary:hover,
+body.color-green .btn-primary:focus,
+body.color-green .btn-primary.active,
+body.color-green .blog-timeline .blog-post:hover .blog-post-info,
+body.color-green .eshop-product .product-sale-label {
+	border-color:#119178;
+}
+
+/*------------------------------
+	BLUE
+------------------------------*/
+
+body.color-blue a,
+body.color-blue .text-primary,
+body.color-blue .btn-inverse:hover,
+body.color-blue .btn-inverse:focus,
+body.color-blue .nav.vertical-nav li a:hover,
+body.color-blue form label,
+body.color-blue .owl-theme .owl-controls .owl-buttons div,
+body.color-blue .top-header .header-item,
+body.color-blue .navbar-default .navbar-brand:hover,
+body.color-blue .dropdown-menu > li > a:hover i,
+body.color-blue .jumbotron6 #slide-3 .btn:first-child,
+body.color-blue .jumbotron5 .btn:first-child,
+body.color-blue .pagination > li > a:hover,
+body.color-blue .pagination > li > span:hover,
+body.color-blue #section-introduction h2,
+body.color-blue #section-features .feature i,
+body.color-blue .text-highlight span,
+body.color-blue #section-portfolio .portfolio-item a:hover i,
+body.color-blue footer h3 i,
+body.color-blue footer .navbar-nav > li > a:hover,
+body.color-blue #features .features-sidebar h3,
+body.color-blue #features .features-content h3.features-title i,
+body.color-blue #faq h3,
+body.color-blue #services .service:hover h3,
+body.color-blue #services.services1 .service i,
+body.color-blue #services.services2 .service i,
+body.color-blue #services.services3 .service i,
+body.color-blue .profile h3 small,
+body.color-blue .box h3,
+body.color-blue .box ul li.active a,
+body.color-blue .box ul li a:hover,
+body.color-blue .box ul li a i,
+body.color-blue .box.box-tags a:hover span,
+body.color-blue .blog-post-detail span i,
+body.color-blue .blog-timeline .blog-post .blog-post-info .month,
+body.color-blue .comment a:hover,
+body.color-blue #eshop .eshop-sidebar h3,
+body.color-blue .shopping-cart-footer p.total-price,
+body.color-blue .jumbotron6 #slide-3 .btn:hover,
+body.color-blue .jumbotron5 .btn:hover,
+body.color-blue .jumbotron3 .btn:hover,
+body.color-blue #section-blog-posts .btn:hover,
+body.color-blue #separator1 .btn:hover,
+
+body.color-blue .comingsoon .brands li a:hover,
+body.color-blue #profile-single .profile-body h2 small,
+body.color-blue #eshop .eshop-sidebar .eshop-widget .checkbox input[type=checkbox]:checked + label:before,
+body.color-blue .jumbotron-event .event-info h2,
+body.color-blue #event-speakers .speaker .speaker-body h3,
+body.color-blue #schedule .schedule-single-info i  {
+	color:#0D58A6;
+}
+
+body.color-blue .btn-primary,
+body.color-blue .alert-primary,
+body.color-blue .label-primary,
+body.color-blue .panel-primary > .panel-heading,
+body.color-blue .blog-timeline .blog-post:hover .blog-post-info,
+body.color-blue .eshop-product .product-sale-label,
+body.color-blue .popover-title,
+body.color-blue .nav-tabs > li.active > a, 
+body.color-blue .nav-tabs > li.active > a:hover, 
+body.color-blue .nav-tabs > li.active > a:focus,
+body.color-blue .overlay-wrapper .overlay,
+body.color-blue .owl-theme .owl-controls .owl-page.active span,
+body.color-blue .owl-theme .owl-controls .owl-buttons div:hover,
+body.color-blue .brands.main li a,
+body.color-blue .navbar-default .navbar-nav > .active > a, 
+body.color-blue .navbar-default .navbar-nav > .active > a:hover, 
+body.color-blue .navbar-default .navbar-nav > .active > a:focus,
+body.color-blue .navbar-default .navbar-nav > .open > a, 
+body.color-blue .navbar-default .navbar-nav > .open > a:hover, 
+body.color-blue .navbar-default .navbar-nav > .open > a:focus,
+body.color-blue .jumbotron6 #slide-3 .btn:first-child:hover,
+body.color-blue .jumbotron5 .btn:first-child:hover,
+body.color-blue .content-separator,
+body.color-blue .bg-color-1,
+body.color-blue .pagination > .active > a, 
+body.color-blue .pagination > .active > span, 
+body.color-blue .pagination > .active > a:hover, 
+body.color-blue .pagination > .active > span:hover, 
+body.color-blue .pagination > .active > a:focus, 
+body.color-blue .pagination > .active > span:focus,
+body.color-blue #section-features .feature:hover i,
+body.color-blue .recent-blog-post .post-date,
+body.color-blue .pricing-plan .pricing-plan-price,
+body.color-blue #services.services2 .service:hover i,
+body.color-blue #services.services3 .service:hover i,
+body.color-blue .blog-header .vertical-nav li a:hover .badge,
+body.color-blue .box ul li a span.badge,
+body.color-blue .blog-timeline-mark,
+body.color-blue #section-portfolio .portfolio-item .hover-overlay,
+body.color-blue .hidden-control.owl-theme .owl-controls .owl-buttons div:hover,
+
+body.color-blue .comingsoon .brands li a,
+body.color-blue #profile-single .profile-body .profile-contacts li span,
+body.color-blue #eshop .eshop-sidebar .eshop-widget .ui-slider .ui-slider-range,
+body.color-blue .event-ticket.highlighted {
+    background-color: #0D58A6;
+}
+
+body.color-blue .popover,
+body.color-blue .navbar-nav > li > .dropdown-menu,
+body.color-blue .jumbotron6 #slide-3 .btn:first-child,
+body.color-blue .jumbotron5 .btn:first-child,
+body.color-blue .pagination > .active > a, 
+body.color-blue .pagination > .active > span, 
+body.color-blue .pagination > .active > a:hover, 
+body.color-blue .pagination > .active > span:hover, 
+body.color-blue .pagination > .active > a:focus, 
+body.color-blue .pagination > .active > span:focus,
+body.color-blue #section-features .feature i,
+body.color-blue .text-highlight,
+body.color-blue #services.services2 .service i,
+body.color-blue #services.services3 .service i,
+
+body.color-blue #eshop .eshop-sidebar .eshop-widget .checkbox input[type=checkbox]:checked + label:before  {
+	border-color:#0D58A6;
+}
+
+body.color-blue .popover.left > .arrow {border-left-color: #0D58A6;}
+body.color-blue .popover.right > .arrow {border-right-color: #0D58A6;}
+body.color-blue .popover.top > .arrow {border-top-color: #0D58A6;}
+body.color-blue .popover.bottom > .arrow {border-bottom-color: #0D58A6;}
+
+/* TRANSPARENT */
+
+body.color-blue .hidden-control.owl-theme .owl-controls .owl-buttons div,
+body.color-blue .jumbotron-event p.event-date {
+	background-color: rgba(13, 88, 166, 0.5);
+}
+
+body.color-blue .jumbotron6 h2,
+body.color-blue .jumbotron5 h2,
+body.color-blue .jumbotron3 h2,
+body.color-blue .map-overlay {
+	background-color:rgba(13, 88, 166, 0.8);
+}
+
+body.color-blue .jumbotron2,
+body.color-blue .jumbotron4 {
+	background-image: linear-gradient(rgba(13, 88, 166, 0.9), rgba(13, 88, 166, 0.9)), url(../image/bg3.jpg);
+}
+
+body.color-blue .jumbotron7 {
+	background-image: linear-gradient(rgba(13, 88, 166, 0.6), rgba(13, 88, 166, 0.6)),url(../image/gplaypattern.png);
+}
+
+body.color-blue #section-blog-posts,
+body.color-blue #section-testimonials,
+body.color-blue #section-statistics,
+body.color-blue .jumbotron1 {
+	background-image: linear-gradient(rgba(13, 88, 166, 0.6), rgba(13, 88, 166, 0.6)), url(../image/bg3.jpg);
+}
+
+@media (max-width:991px) {
+	body.color-blue .navbar-default .navbar-toggle:hover,
+	body.color-blue .navbar-default .navbar-toggle:focus,
+	body.color-blue .navbar-default .navbar-nav .open .dropdown-menu > li > a:hover,
+	body.color-blue .navbar-default .navbar-nav .open .dropdown-menu > li > a:focus {
+		color:#0D58A6;
+	}
+	
+	body.color-blue .navbar-default .navbar-collapse {
+		border-color:#0D58A6;
+	}
+}
+
+/* DARKER */
+
+body.color-blue a:hover,
+body.color-blue a:focus {
+	color:#074C94;
+}
+
+body.color-blue .btn-primary:hover,
+body.color-blue .btn-primary:focus,
+body.color-blue .btn-primary.active,
+body.color-blue .pricing-plan h3,
+body.color-blue .pricing-plan p {
+	background-color:#074C94;
+}
+
+body.color-blue .btn-primary:hover,
+body.color-blue .btn-primary:focus,
+body.color-blue .btn-primary.active,
+body.color-blue .blog-timeline .blog-post:hover .blog-post-info,
+body.color-blue .eshop-product .product-sale-label {
+	border-color:#074C94;
+}
+
+
+/*------------------------------
+	ORANGE
+------------------------------*/
+
+body.color-orange a,
+body.color-orange .text-primary,
+body.color-orange .btn-inverse:hover,
+body.color-orange .btn-inverse:focus,
+body.color-orange .nav.vertical-nav li a:hover,
+body.color-orange form label,
+body.color-orange .owl-theme .owl-controls .owl-buttons div,
+body.color-orange .top-header .header-item,
+body.color-orange .navbar-default .navbar-brand:hover,
+body.color-orange .dropdown-menu > li > a:hover i,
+body.color-orange .jumbotron6 #slide-3 .btn:first-child,
+body.color-orange .jumbotron5 .btn:first-child,
+body.color-orange .pagination > li > a:hover,
+body.color-orange .pagination > li > span:hover,
+body.color-orange #section-introduction h2,
+body.color-orange #section-features .feature i,
+body.color-orange .text-highlight span,
+body.color-orange #section-portfolio .portfolio-item a:hover i,
+body.color-orange footer h3 i,
+body.color-orange footer .navbar-nav > li > a:hover,
+body.color-orange #features .features-sidebar h3,
+body.color-orange #features .features-content h3.features-title i,
+body.color-orange #faq h3,
+body.color-orange #services .service:hover h3,
+body.color-orange #services.services1 .service i,
+body.color-orange #services.services2 .service i,
+body.color-orange #services.services3 .service i,
+body.color-orange .profile h3 small,
+body.color-orange .box h3,
+body.color-orange .box ul li.active a,
+body.color-orange .box ul li a:hover,
+body.color-orange .box ul li a i,
+body.color-orange .box.box-tags a:hover span,
+body.color-orange .blog-post-detail span i,
+body.color-orange .blog-timeline .blog-post .blog-post-info .month,
+body.color-orange .comment a:hover,
+body.color-orange #eshop .eshop-sidebar h3,
+body.color-orange .shopping-cart-footer p.total-price,
+body.color-orange .jumbotron6 #slide-3 .btn:hover,
+body.color-orange .jumbotron5 .btn:hover,
+body.color-orange .jumbotron3 .btn:hover,
+body.color-orange #section-blog-posts .btn:hover,
+body.color-orange #separator1 .btn:hover,
+
+body.color-orange .comingsoon .brands li a:hover,
+body.color-orange #profile-single .profile-body h2 small,
+body.color-orange #eshop .eshop-sidebar .eshop-widget .checkbox input[type=checkbox]:checked + label:before,
+body.color-orange .jumbotron-event .event-info h2,
+body.color-orange #event-speakers .speaker .speaker-body h3,
+body.color-orange #schedule .schedule-single-info i {
+	color:#FFB23A;
+}
+
+body.color-orange .btn-primary,
+body.color-orange .alert-primary,
+body.color-orange .label-primary,
+body.color-orange .panel-primary > .panel-heading,
+body.color-orange .blog-timeline .blog-post:hover .blog-post-info,
+body.color-orange .eshop-product .product-sale-label,
+body.color-orange .popover-title,
+body.color-orange .nav-tabs > li.active > a, 
+body.color-orange .nav-tabs > li.active > a:hover, 
+body.color-orange .nav-tabs > li.active > a:focus,
+body.color-orange .overlay-wrapper .overlay,
+body.color-orange .owl-theme .owl-controls .owl-page.active span,
+body.color-orange .owl-theme .owl-controls .owl-buttons div:hover,
+body.color-orange .brands.main li a,
+body.color-orange .navbar-default .navbar-nav > .active > a, 
+body.color-orange .navbar-default .navbar-nav > .active > a:hover, 
+body.color-orange .navbar-default .navbar-nav > .active > a:focus,
+body.color-orange .navbar-default .navbar-nav > .open > a, 
+body.color-orange .navbar-default .navbar-nav > .open > a:hover, 
+body.color-orange .navbar-default .navbar-nav > .open > a:focus,
+body.color-orange .jumbotron6 #slide-3 .btn:first-child:hover,
+body.color-orange .jumbotron5 .btn:first-child:hover,
+body.color-orange .content-separator,
+body.color-orange .bg-color-1,
+body.color-orange .pagination > .active > a, 
+body.color-orange .pagination > .active > span, 
+body.color-orange .pagination > .active > a:hover, 
+body.color-orange .pagination > .active > span:hover, 
+body.color-orange .pagination > .active > a:focus, 
+body.color-orange .pagination > .active > span:focus,
+body.color-orange #section-features .feature:hover i,
+body.color-orange .recent-blog-post .post-date,
+body.color-orange .pricing-plan .pricing-plan-price,
+body.color-orange #services.services2 .service:hover i,
+body.color-orange #services.services3 .service:hover i,
+body.color-orange .blog-header .vertical-nav li a:hover .badge,
+body.color-orange .box ul li a span.badge,
+body.color-orange .blog-timeline-mark,
+body.color-orange #section-portfolio .portfolio-item .hover-overlay,
+body.color-orange .hidden-control.owl-theme .owl-controls .owl-buttons div:hover,
+
+body.color-orange .comingsoon .brands li a,
+body.color-orange #profile-single .profile-body .profile-contacts li span,
+body.color-orange #eshop .eshop-sidebar .eshop-widget .ui-slider .ui-slider-range,
+body.color-orange .event-ticket.highlighted {
+    background-color: #FFB23A;
+}
+
+body.color-orange .popover,
+body.color-orange .navbar-nav > li > .dropdown-menu,
+body.color-orange .jumbotron6 #slide-3 .btn:first-child,
+body.color-orange .jumbotron5 .btn:first-child,
+body.color-orange .pagination > .active > a, 
+body.color-orange .pagination > .active > span, 
+body.color-orange .pagination > .active > a:hover, 
+body.color-orange .pagination > .active > span:hover, 
+body.color-orange .pagination > .active > a:focus, 
+body.color-orange .pagination > .active > span:focus,
+body.color-orange #section-features .feature i,
+body.color-orange .text-highlight,
+body.color-orange #services.services2 .service i,
+body.color-orange #services.services3 .service i,
+
+body.color-orange #eshop .eshop-sidebar .eshop-widget .checkbox input[type=checkbox]:checked + label:before  {
+	border-color:#FFB23A;
+}
+
+body.color-orange .popover.left > .arrow {border-left-color: #FFAA01;}
+body.color-orange .popover.right > .arrow {border-right-color: #FFAA01;}
+body.color-orange .popover.top > .arrow {border-top-color: #FFAA01;}
+body.color-orange .popover.bottom > .arrow {border-bottom-color: #FFAA01;}
+
+/* TRANSPARENT */
+
+body.color-orange .hidden-control.owl-theme .owl-controls .owl-buttons div,
+body.color-orange .jumbotron-event p.event-date {
+	background-color: rgba(255, 178, 58, 0.5);
+}
+
+body.color-orange .jumbotron6 h2,
+body.color-orange .jumbotron5 h2,
+body.color-orange .jumbotron3 h2,
+body.color-orange .map-overlay {
+	background-color:rgba(255, 178, 58, 0.8);
+}
+
+body.color-orange .jumbotron2,
+body.color-orange .jumbotron4 {
+	background-image: linear-gradient(rgba(255, 178, 58, 0.9), rgba(255, 178, 58, 0.9)), url(../image/bg3.jpg);
+}
+
+body.color-orange .jumbotron7 {
+	background-image: linear-gradient(rgba(255, 178, 58, 0.6), rgba(255, 178, 58, 0.6)),url(../image/gplaypattern.png);
+}
+
+body.color-orange #section-blog-posts,
+body.color-orange #section-testimonials,
+body.color-orange #section-statistics,
+body.color-orange .jumbotron1 {
+	background-image: linear-gradient(rgba(255, 178, 58, 0.6), rgba(255, 178, 58, 0.6)), url(../image/bg3.jpg);
+}
+
+@media (max-width:991px) {
+	body.color-orange .navbar-default .navbar-toggle:hover,
+	body.color-orange .navbar-default .navbar-toggle:focus,
+	body.color-orange .navbar-default .navbar-nav .open .dropdown-menu > li > a:hover,
+	body.color-orange .navbar-default .navbar-nav .open .dropdown-menu > li > a:focus {
+		color:#FFAA01;
+	}
+	
+	body.color-orange .navbar-default .navbar-collapse {
+		border-color:#FFAA01;
+	}
+}
+
+/* DARKER */
+
+body.color-orange a:hover,
+body.color-orange a:focus {
+	color:#E39802;
+}
+
+body.color-orange .btn-primary:hover,
+body.color-orange .btn-primary:focus,
+body.color-orange .btn-primary.active,
+body.color-orange .pricing-plan h3,
+body.color-orange .pricing-plan p {
+	background-color:#E39802;
+}
+
+body.color-orange .btn-primary:hover,
+body.color-orange .btn-primary:focus,
+body.color-orange .btn-primary.active,
+body.color-orange .blog-timeline .blog-post:hover .blog-post-info,
+body.color-orange .eshop-product .product-sale-label {
+	border-color:#E39802;
+}
+
+/*------------------------------
+	RED
+------------------------------*/
+
+body.color-red a,
+body.color-red .text-primary,
+body.color-red .btn-inverse:hover,
+body.color-red .btn-inverse:focus,
+body.color-red .nav.vertical-nav li a:hover,
+body.color-red form label,
+body.color-red .owl-theme .owl-controls .owl-buttons div,
+body.color-red .top-header .header-item,
+body.color-red .navbar-default .navbar-brand:hover,
+body.color-red .dropdown-menu > li > a:hover i,
+body.color-red .jumbotron6 #slide-3 .btn:first-child,
+body.color-red .jumbotron5 .btn:first-child,
+body.color-red .pagination > li > a:hover,
+body.color-red .pagination > li > span:hover,
+body.color-red #section-introduction h2,
+body.color-red #section-features .feature i,
+body.color-red .text-highlight span,
+body.color-red #section-portfolio .portfolio-item a:hover i,
+body.color-red footer h3 i,
+body.color-red footer .navbar-nav > li > a:hover,
+body.color-red #features .features-sidebar h3,
+body.color-red #features .features-content h3.features-title i,
+body.color-red #faq h3,
+body.color-red #services .service:hover h3,
+body.color-red #services.services1 .service i,
+body.color-red #services.services2 .service i,
+body.color-red #services.services3 .service i,
+body.color-red .profile h3 small,
+body.color-red .box h3,
+body.color-red .box ul li.active a,
+body.color-red .box ul li a:hover,
+body.color-red .box ul li a i,
+body.color-red .box.box-tags a:hover span,
+body.color-red .blog-post-detail span i,
+body.color-red .blog-timeline .blog-post .blog-post-info .month,
+body.color-red .comment a:hover,
+body.color-red #eshop .eshop-sidebar h3,
+body.color-red .shopping-cart-footer p.total-price,
+body.color-red .jumbotron6 #slide-3 .btn:hover,
+body.color-red .jumbotron5 .btn:hover,
+body.color-red .jumbotron3 .btn:hover,
+body.color-red #section-blog-posts .btn:hover,
+body.color-red #separator1 .btn:hover,
+
+body.color-red .comingsoon .brands li a:hover,
+body.color-red #profile-single .profile-body h2 small,
+body.color-red #eshop .eshop-sidebar .eshop-widget .checkbox input[type=checkbox]:checked + label:before,
+body.color-red .jumbotron-event .event-info h2,
+body.color-red #event-speakers .speaker .speaker-body h3,
+body.color-red #schedule .schedule-single-info i  {
+	color:#B81117;
+}
+
+body.color-red .btn-primary,
+body.color-red .alert-primary,
+body.color-red .label-primary,
+body.color-red .panel-primary > .panel-heading,
+body.color-red .blog-timeline .blog-post:hover .blog-post-info,
+body.color-red .eshop-product .product-sale-label,
+body.color-red .popover-title,
+body.color-red .nav-tabs > li.active > a, 
+body.color-red .nav-tabs > li.active > a:hover, 
+body.color-red .nav-tabs > li.active > a:focus,
+body.color-red .overlay-wrapper .overlay,
+body.color-red .owl-theme .owl-controls .owl-page.active span,
+body.color-red .owl-theme .owl-controls .owl-buttons div:hover,
+body.color-red .brands.main li a,
+body.color-red .navbar-default .navbar-nav > .active > a, 
+body.color-red .navbar-default .navbar-nav > .active > a:hover, 
+body.color-red .navbar-default .navbar-nav > .active > a:focus,
+body.color-red .navbar-default .navbar-nav > .open > a, 
+body.color-red .navbar-default .navbar-nav > .open > a:hover, 
+body.color-red .navbar-default .navbar-nav > .open > a:focus,
+body.color-red .jumbotron6 #slide-3 .btn:first-child:hover,
+body.color-red .jumbotron5 .btn:first-child:hover,
+body.color-red .content-separator,
+body.color-red .bg-color-1,
+body.color-red .pagination > .active > a, 
+body.color-red .pagination > .active > span, 
+body.color-red .pagination > .active > a:hover, 
+body.color-red .pagination > .active > span:hover, 
+body.color-red .pagination > .active > a:focus, 
+body.color-red .pagination > .active > span:focus,
+body.color-red #section-features .feature:hover i,
+body.color-red .recent-blog-post .post-date,
+body.color-red .pricing-plan .pricing-plan-price,
+body.color-red #services.services2 .service:hover i,
+body.color-red #services.services3 .service:hover i,
+body.color-red .blog-header .vertical-nav li a:hover .badge,
+body.color-red .box ul li a span.badge,
+body.color-red .blog-timeline-mark,
+body.color-red #section-portfolio .portfolio-item .hover-overlay,
+body.color-red .hidden-control.owl-theme .owl-controls .owl-buttons div:hover,
+
+body.color-red .comingsoon .brands li a,
+body.color-red #profile-single .profile-body .profile-contacts li span,
+body.color-red #eshop .eshop-sidebar .eshop-widget .ui-slider .ui-slider-range,
+body.color-red .event-ticket.highlighted {
+    background-color: #B81117;
+}
+
+body.color-red .popover,
+body.color-red .navbar-nav > li > .dropdown-menu,
+body.color-red .jumbotron6 #slide-3 .btn:first-child,
+body.color-red .jumbotron5 .btn:first-child,
+body.color-red .pagination > .active > a, 
+body.color-red .pagination > .active > span, 
+body.color-red .pagination > .active > a:hover, 
+body.color-red .pagination > .active > span:hover, 
+body.color-red .pagination > .active > a:focus, 
+body.color-red .pagination > .active > span:focus,
+body.color-red #section-features .feature i,
+body.color-red .text-highlight,
+body.color-red #services.services2 .service i,
+body.color-red #services.services3 .service i,
+
+body.color-red #eshop .eshop-sidebar .eshop-widget .checkbox input[type=checkbox]:checked + label:before  {
+	border-color:#B81117;
+}
+
+body.color-red .popover.left > .arrow {border-left-color: #B81117;}
+body.color-red .popover.right > .arrow {border-right-color: #B81117;}
+body.color-red .popover.top > .arrow {border-top-color: #B81117;}
+body.color-red .popover.bottom > .arrow {border-bottom-color: #B81117;}
+
+/* TRANSPARENT */
+
+body.color-red .hidden-control.owl-theme .owl-controls .owl-buttons div,
+body.color-red .jumbotron-event p.event-date {
+	background-color: rgba(184, 17, 23, 0.5);
+}
+
+body.color-red .jumbotron6 h2,
+body.color-red .jumbotron5 h2,
+body.color-red .jumbotron3 h2,
+body.color-red .map-overlay {
+	background-color:rgba(184, 17, 23, 0.8);
+}
+
+body.color-red .jumbotron2,
+body.color-red .jumbotron4 {
+	background-image: linear-gradient(rgba(184, 17, 23, 0.9), rgba(184, 17, 23, 0.9)), url(../image/bg3.jpg);
+}
+
+body.color-red .jumbotron7 {
+	background-image: linear-gradient(rgba(184, 17, 23, 0.6), rgba(184, 17, 23, 0.6)),url(../image/gplaypattern.png);
+}
+
+body.color-red #section-blog-posts,
+body.color-red #section-testimonials,
+body.color-red #section-statistics,
+body.color-red .jumbotron1 {
+	background-image: linear-gradient(rgba(184, 17, 23, 0.6), rgba(184, 17, 23, 0.6)), url(../image/bg3.jpg);
+}
+
+@media (max-width:991px) {
+	body.color-red .navbar-default .navbar-toggle:hover,
+	body.color-red .navbar-default .navbar-toggle:focus,
+	body.color-red .navbar-default .navbar-nav .open .dropdown-menu > li > a:hover,
+	body.color-red .navbar-default .navbar-nav .open .dropdown-menu > li > a:focus {
+		color:#B81117;
+	}
+	
+	body.color-red .navbar-default .navbar-collapse {
+		border-color:#B81117;
+	}
+}
+
+/* DARKER */
+
+body.color-red a:hover,
+body.color-red a:focus {
+	color:#96060B;
+}
+
+body.color-red .btn-primary:hover,
+body.color-red .btn-primary:focus,
+body.color-red .btn-primary.active,
+body.color-red .pricing-plan h3,
+body.color-red .pricing-plan p {
+	background-color:#96060B;
+}
+
+body.color-red .btn-primary:hover,
+body.color-red .btn-primary:focus,
+body.color-red .btn-primary.active,
+body.color-red .blog-timeline .blog-post:hover .blog-post-info,
+body.color-red .eshop-product .product-sale-label {
+	border-color:#96060B;
+}
+
+/*------------------------------
+	PURPLE
+------------------------------*/
+
+body.color-purple a,
+body.color-purple .text-primary,
+body.color-purple .btn-inverse:hover,
+body.color-purple .btn-inverse:focus,
+body.color-purple .nav.vertical-nav li a:hover,
+body.color-purple form label,
+body.color-purple .owl-theme .owl-controls .owl-buttons div,
+body.color-purple .top-header .header-item,
+body.color-purple .navbar-default .navbar-brand:hover,
+body.color-purple .dropdown-menu > li > a:hover i,
+body.color-purple .jumbotron6 #slide-3 .btn:first-child,
+body.color-purple .jumbotron5 .btn:first-child,
+body.color-purple .pagination > li > a:hover,
+body.color-purple .pagination > li > span:hover,
+body.color-purple #section-introduction h2,
+body.color-purple #section-features .feature i,
+body.color-purple .text-highlight span,
+body.color-purple #section-portfolio .portfolio-item a:hover i,
+body.color-purple footer h3 i,
+body.color-purple footer .navbar-nav > li > a:hover,
+body.color-purple #features .features-sidebar h3,
+body.color-purple #features .features-content h3.features-title i,
+body.color-purple #faq h3,
+body.color-purple #services .service:hover h3,
+body.color-purple #services.services1 .service i,
+body.color-purple #services.services2 .service i,
+body.color-purple #services.services3 .service i,
+body.color-purple .profile h3 small,
+body.color-purple .box h3,
+body.color-purple .box ul li.active a,
+body.color-purple .box ul li a:hover,
+body.color-purple .box ul li a i,
+body.color-purple .box.box-tags a:hover span,
+body.color-purple .blog-post-detail span i,
+body.color-purple .blog-timeline .blog-post .blog-post-info .month,
+body.color-purple .comment a:hover,
+body.color-purple #eshop .eshop-sidebar h3,
+body.color-purple .shopping-cart-footer p.total-price,
+body.color-purple .jumbotron6 #slide-3 .btn:hover,
+body.color-purple .jumbotron5 .btn:hover,
+body.color-purple .jumbotron3 .btn:hover,
+body.color-purple #section-blog-posts .btn:hover,
+body.color-purple #separator1 .btn:hover,
+
+body.color-purple .comingsoon .brands li a:hover,
+body.color-purple #profile-single .profile-body h2 small,
+body.color-purple #eshop .eshop-sidebar .eshop-widget .checkbox input[type=checkbox]:checked + label:before,
+body.color-purple .jumbotron-event .event-info h2,
+body.color-purple #event-speakers .speaker .speaker-body h3,
+body.color-purple #schedule .schedule-single-info i  {
+	color:#880045;
+}
+
+body.color-purple .btn-primary,
+body.color-purple .alert-primary,
+body.color-purple .label-primary,
+body.color-purple .panel-primary > .panel-heading,
+body.color-purple .blog-timeline .blog-post:hover .blog-post-info,
+body.color-purple .eshop-product .product-sale-label,
+body.color-purple .popover-title,
+body.color-purple .nav-tabs > li.active > a, 
+body.color-purple .nav-tabs > li.active > a:hover, 
+body.color-purple .nav-tabs > li.active > a:focus,
+body.color-purple .overlay-wrapper .overlay,
+body.color-purple .owl-theme .owl-controls .owl-page.active span,
+body.color-purple .owl-theme .owl-controls .owl-buttons div:hover,
+body.color-purple .brands.main li a,
+body.color-purple .navbar-default .navbar-nav > .active > a, 
+body.color-purple .navbar-default .navbar-nav > .active > a:hover, 
+body.color-purple .navbar-default .navbar-nav > .active > a:focus,
+body.color-purple .navbar-default .navbar-nav > .open > a, 
+body.color-purple .navbar-default .navbar-nav > .open > a:hover, 
+body.color-purple .navbar-default .navbar-nav > .open > a:focus,
+body.color-purple .jumbotron6 #slide-3 .btn:first-child:hover,
+body.color-purple .jumbotron5 .btn:first-child:hover,
+body.color-purple .content-separator,
+body.color-purple .bg-color-1,
+body.color-purple .pagination > .active > a, 
+body.color-purple .pagination > .active > span, 
+body.color-purple .pagination > .active > a:hover, 
+body.color-purple .pagination > .active > span:hover, 
+body.color-purple .pagination > .active > a:focus, 
+body.color-purple .pagination > .active > span:focus,
+body.color-purple #section-features .feature:hover i,
+body.color-purple .recent-blog-post .post-date,
+body.color-purple .pricing-plan .pricing-plan-price,
+body.color-purple #services.services2 .service:hover i,
+body.color-purple #services.services3 .service:hover i,
+body.color-purple .blog-header .vertical-nav li a:hover .badge,
+body.color-purple .box ul li a span.badge,
+body.color-purple .blog-timeline-mark,
+body.color-purple #section-portfolio .portfolio-item .hover-overlay,
+body.color-purple .hidden-control.owl-theme .owl-controls .owl-buttons div:hover,
+
+body.color-purple .comingsoon .brands li a,
+body.color-purple #profile-single .profile-body .profile-contacts li span,
+body.color-purple #eshop .eshop-sidebar .eshop-widget .ui-slider .ui-slider-range,
+body.color-purple .event-ticket.highlighted {
+    background-color: #880045;
+}
+
+body.color-purple .popover,
+body.color-purple .navbar-nav > li > .dropdown-menu,
+body.color-purple .jumbotron6 #slide-3 .btn:first-child,
+body.color-purple .jumbotron5 .btn:first-child,
+body.color-purple .pagination > .active > a, 
+body.color-purple .pagination > .active > span, 
+body.color-purple .pagination > .active > a:hover, 
+body.color-purple .pagination > .active > span:hover, 
+body.color-purple .pagination > .active > a:focus, 
+body.color-purple .pagination > .active > span:focus,
+body.color-purple #section-features .feature i,
+body.color-purple .text-highlight,
+body.color-purple #services.services2 .service i,
+body.color-purple #services.services3 .service ,
+
+body.color-green #eshop .eshop-sidebar .eshop-widget .checkbox input[type=checkbox]:checked + label:beforei  {
+	border-color:#880045;
+}
+
+body.color-purple .popover.left > .arrow {border-left-color: #880045;}
+body.color-purple .popover.right > .arrow {border-right-color: #880045;}
+body.color-purple .popover.top > .arrow {border-top-color: #880045;}
+body.color-purple .popover.bottom > .arrow {border-bottom-color: #880045;}
+
+/* TRANSPARENT */
+
+body.color-purple .hidden-control.owl-theme .owl-controls .owl-buttons div,
+body.color-purple .jumbotron-event p.event-date {
+	background-color: rgba(136, 0, 69, 0.5);
+}
+
+body.color-purple .jumbotron6 h2,
+body.color-purple .jumbotron5 h2,
+body.color-purple .jumbotron3 h2,
+body.color-purple .map-overlay {
+	background-color:rgba(136, 0, 69, 0.8);
+}
+
+body.color-purple .jumbotron2,
+body.color-purple .jumbotron4 {
+	background-image: linear-gradient(rgba(136, 0, 69, 0.9), rgba(136, 0, 69, 0.9)), url(../image/bg3.jpg);
+}
+
+body.color-purple .jumbotron7 {
+	background-image: linear-gradient(rgba(136, 0, 69, 0.6), rgba(136, 0, 69, 0.6)),url(../image/gplaypattern.png);
+}
+
+body.color-purple #section-blog-posts,
+body.color-purple #section-testimonials,
+body.color-purple #section-statistics,
+body.color-purple .jumbotron1 {
+	background-image: linear-gradient(rgba(136, 0, 69, 0.6), rgba(136, 0, 69, 0.6)), url(../image/bg3.jpg);
+}
+
+@media (max-width:991px) {
+	body.color-purple .navbar-default .navbar-toggle:hover,
+	body.color-purple .navbar-default .navbar-toggle:focus,
+	body.color-purple .navbar-default .navbar-nav .open .dropdown-menu > li > a:hover,
+	body.color-purple .navbar-default .navbar-nav .open .dropdown-menu > li > a:focus {
+		color:#880045;
+	}
+	
+	body.color-purple .navbar-default .navbar-collapse {
+		border-color:#880045;
+	}
+}
+
+/* DARKER */
+
+body.color-purple a:hover,
+body.color-purple a:focus {
+	color:#630434;
+}
+
+body.color-purple .btn-primary:hover,
+body.color-purple .btn-primary:focus,
+body.color-purple .btn-primary.active,
+body.color-purple .pricing-plan h3,
+body.color-purple .pricing-plan p {
+	background-color:#630434;
+}
+
+body.color-purple .btn-primary:hover,
+body.color-purple .btn-primary:focus,
+body.color-purple .btn-primary.active,
+body.color-purple .blog-timeline .blog-post:hover .blog-post-info,
+body.color-purple .eshop-product .product-sale-label {
+	border-color:#630434;
+}
+
+/*------------------------------
+	LIGHT BLUE
+------------------------------*/
+
+body.color-light-blue a,
+body.color-light-blue .text-primary,
+body.color-light-blue .btn-inverse:hover,
+body.color-light-blue .btn-inverse:focus,
+body.color-light-blue .nav.vertical-nav li a:hover,
+body.color-light-blue form label,
+body.color-light-blue .owl-theme .owl-controls .owl-buttons div,
+body.color-light-blue .top-header .header-item,
+body.color-light-blue .navbar-default .navbar-brand:hover,
+body.color-light-blue .dropdown-menu > li > a:hover i,
+body.color-light-blue .jumbotron6 #slide-3 .btn:first-child,
+body.color-light-blue .jumbotron5 .btn:first-child,
+body.color-light-blue .pagination > li > a:hover,
+body.color-light-blue .pagination > li > span:hover,
+body.color-light-blue #section-introduction h2,
+body.color-light-blue #section-features .feature i,
+body.color-light-blue .text-highlight span,
+body.color-light-blue #section-portfolio .portfolio-item a:hover i,
+body.color-light-blue footer h3 i,
+body.color-light-blue footer .navbar-nav > li > a:hover,
+body.color-light-blue #features .features-sidebar h3,
+body.color-light-blue #features .features-content h3.features-title i,
+body.color-light-blue #faq h3,
+body.color-light-blue #services .service:hover h3,
+body.color-light-blue #services.services1 .service i,
+body.color-light-blue #services.services2 .service i,
+body.color-light-blue #services.services3 .service i,
+body.color-light-blue .profile h3 small,
+body.color-light-blue .box h3,
+body.color-light-blue .box ul li.active a,
+body.color-light-blue .box ul li a:hover,
+body.color-light-blue .box ul li a i,
+body.color-light-blue .box.box-tags a:hover span,
+body.color-light-blue .blog-post-detail span i,
+body.color-light-blue .blog-timeline .blog-post .blog-post-info .month,
+body.color-light-blue .comment a:hover,
+body.color-light-blue #eshop .eshop-sidebar h3,
+body.color-light-blue .shopping-cart-footer p.total-price,
+body.color-light-blue .jumbotron6 #slide-3 .btn:hover,
+body.color-light-blue .jumbotron5 .btn:hover,
+body.color-light-blue .jumbotron3 .btn:hover,
+body.color-light-blue #section-blog-posts .btn:hover,
+body.color-light-blue #separator1 .btn:hover,
+
+body.color-light-blue .comingsoon .brands li a:hover,
+body.color-light-blue #profile-single .profile-body h2 small,
+body.color-light-blue #eshop .eshop-sidebar .eshop-widget .checkbox input[type=checkbox]:checked + label:before,
+body.color-light-blue .jumbotron-event .event-info h2,
+body.color-light-blue #event-speakers .speaker .speaker-body h3,
+body.color-light-blue #schedule .schedule-single-info i  {
+	color:#2FC3DF;
+}
+
+body.color-light-blue .btn-primary,
+body.color-light-blue .alert-primary,
+body.color-light-blue .label-primary,
+body.color-light-blue .panel-primary > .panel-heading,
+body.color-light-blue .blog-timeline .blog-post:hover .blog-post-info,
+body.color-light-blue .eshop-product .product-sale-label,
+body.color-light-blue .popover-title,
+body.color-light-blue .nav-tabs > li.active > a, 
+body.color-light-blue .nav-tabs > li.active > a:hover, 
+body.color-light-blue .nav-tabs > li.active > a:focus,
+body.color-light-blue .overlay-wrapper .overlay,
+body.color-light-blue .owl-theme .owl-controls .owl-page.active span,
+body.color-light-blue .owl-theme .owl-controls .owl-buttons div:hover,
+body.color-light-blue .brands.main li a,
+body.color-light-blue .navbar-default .navbar-nav > .active > a, 
+body.color-light-blue .navbar-default .navbar-nav > .active > a:hover, 
+body.color-light-blue .navbar-default .navbar-nav > .active > a:focus,
+body.color-light-blue .navbar-default .navbar-nav > .open > a, 
+body.color-light-blue .navbar-default .navbar-nav > .open > a:hover, 
+body.color-light-blue .navbar-default .navbar-nav > .open > a:focus,
+body.color-light-blue .jumbotron6 #slide-3 .btn:first-child:hover,
+body.color-light-blue .jumbotron5 .btn:first-child:hover,
+body.color-light-blue .content-separator,
+body.color-light-blue .bg-color-1,
+body.color-light-blue .pagination > .active > a, 
+body.color-light-blue .pagination > .active > span, 
+body.color-light-blue .pagination > .active > a:hover, 
+body.color-light-blue .pagination > .active > span:hover, 
+body.color-light-blue .pagination > .active > a:focus, 
+body.color-light-blue .pagination > .active > span:focus,
+body.color-light-blue #section-features .feature:hover i,
+body.color-light-blue .recent-blog-post .post-date,
+body.color-light-blue .pricing-plan .pricing-plan-price,
+body.color-light-blue #services.services2 .service:hover i,
+body.color-light-blue #services.services3 .service:hover i,
+body.color-light-blue .blog-header .vertical-nav li a:hover .badge,
+body.color-light-blue .box ul li a span.badge,
+body.color-light-blue .blog-timeline-mark,
+body.color-light-blue #section-portfolio .portfolio-item .hover-overlay,
+body.color-light-blue .hidden-control.owl-theme .owl-controls .owl-buttons div:hover,
+
+body.color-light-blue .comingsoon .brands li a,
+body.color-light-blue #profile-single .profile-body .profile-contacts li span,
+body.color-light-blue #eshop .eshop-sidebar .eshop-widget .ui-slider .ui-slider-range,
+body.color-light-blue .event-ticket.highlighted {
+    background-color: #2FC3DF;
+}
+
+body.color-light-blue .popover,
+body.color-light-blue .navbar-nav > li > .dropdown-menu,
+body.color-light-blue .jumbotron6 #slide-3 .btn:first-child,
+body.color-light-blue .jumbotron5 .btn:first-child,
+body.color-light-blue .pagination > .active > a, 
+body.color-light-blue .pagination > .active > span, 
+body.color-light-blue .pagination > .active > a:hover, 
+body.color-light-blue .pagination > .active > span:hover, 
+body.color-light-blue .pagination > .active > a:focus, 
+body.color-light-blue .pagination > .active > span:focus,
+body.color-light-blue #section-features .feature i,
+body.color-light-blue .text-highlight,
+body.color-light-blue #services.services2 .service i,
+body.color-light-blue #services.services3 .service i,
+
+body.color-light-blue #eshop .eshop-sidebar .eshop-widget .checkbox input[type=checkbox]:checked + label:before  {
+	border-color:#2FC3DF;
+}
+
+body.color-light-blue .popover.left > .arrow {border-left-color: #2FC3DF;}
+body.color-light-blue .popover.right > .arrow {border-right-color: #2FC3DF;}
+body.color-light-blue .popover.top > .arrow {border-top-color: #2FC3DF;}
+body.color-light-blue .popover.bottom > .arrow {border-bottom-color: #2FC3DF;}
+
+/* TRANSPARENT */
+
+body.color-light-blue .hidden-control.owl-theme .owl-controls .owl-buttons div,
+body.color-light-blue .jumbotron-event p.event-date {
+	background-color: rgba(47, 195, 223, 0.5);
+}
+
+body.color-light-blue .jumbotron6 h2,
+body.color-light-blue .jumbotron5 h2,
+body.color-light-blue .jumbotron3 h2,
+body.color-light-blue .map-overlay {
+	background-color:rgba(47, 195, 223, 0.8);
+}
+
+body.color-light-blue .jumbotron2,
+body.color-light-blue .jumbotron4 {
+	background-image: linear-gradient(rgba(47, 195, 223, 0.9), rgba(47, 195, 223, 0.9)), url(../image/bg3.jpg);
+}
+
+body.color-light-blue .jumbotron7 {
+	background-image: linear-gradient(rgba(47, 195, 223, 0.6), rgba(47, 195, 223, 0.6)),url(../image/gplaypattern.png);
+}
+
+body.color-light-blue #section-blog-posts,
+body.color-light-blue #section-testimonials,
+body.color-light-blue #section-statistics,
+body.color-light-blue .jumbotron1 {
+	background-image: linear-gradient(rgba(47, 195, 223, 0.6), rgba(47, 195, 223, 0.6)), url(../image/bg3.jpg);
+}
+
+@media (max-width:991px) {
+	body.color-light-blue .navbar-default .navbar-toggle:hover,
+	body.color-light-blue .navbar-default .navbar-toggle:focus,
+	body.color-light-blue .navbar-default .navbar-nav .open .dropdown-menu > li > a:hover,
+	body.color-light-blue .navbar-default .navbar-nav .open .dropdown-menu > li > a:focus {
+		color:#2FC3DF;
+	}
+	
+	body.color-light-blue .navbar-default .navbar-collapse {
+		border-color:#2FC3DF;
+	}
+}
+
+/* DARKER */
+
+body.color-light-blue a:hover,
+body.color-light-blue a:focus {
+	color:#1DABC6;
+}
+
+body.color-light-blue .btn-primary:hover,
+body.color-light-blue .btn-primary:focus,
+body.color-light-blue .btn-primary.active,
+body.color-light-blue .pricing-plan h3,
+body.color-light-blue .pricing-plan p {
+	background-color:#1DABC6;
+}
+
+body.color-light-blue .btn-primary:hover,
+body.color-light-blue .btn-primary:focus,
+body.color-light-blue .btn-primary.active,
+body.color-light-blue .blog-timeline .blog-post:hover .blog-post-info,
+body.color-light-blue .eshop-product .product-sale-label {
+	border-color:#1DABC6;
+}
+
+/*------------------------------
+	YELLOW
+------------------------------*/
+
+body.color-yellow a,
+body.color-yellow .text-primary,
+body.color-yellow .btn-inverse:hover,
+body.color-yellow .btn-inverse:focus,
+body.color-yellow .nav.vertical-nav li a:hover,
+body.color-yellow form label,
+body.color-yellow .owl-theme .owl-controls .owl-buttons div,
+body.color-yellow .top-header .header-item,
+body.color-yellow .navbar-default .navbar-brand:hover,
+body.color-yellow .dropdown-menu > li > a:hover i,
+body.color-yellow .jumbotron6 #slide-3 .btn:first-child,
+body.color-yellow .jumbotron5 .btn:first-child,
+body.color-yellow .pagination > li > a:hover,
+body.color-yellow .pagination > li > span:hover,
+body.color-yellow #section-introduction h2,
+body.color-yellow #section-features .feature i,
+body.color-yellow .text-highlight span,
+body.color-yellow #section-portfolio .portfolio-item a:hover i,
+body.color-yellow footer h3 i,
+body.color-yellow footer .navbar-nav > li > a:hover,
+body.color-yellow #features .features-sidebar h3,
+body.color-yellow #features .features-content h3.features-title i,
+body.color-yellow #faq h3,
+body.color-yellow #services .service:hover h3,
+body.color-yellow #services.services1 .service i,
+body.color-yellow #services.services2 .service i,
+body.color-yellow #services.services3 .service i,
+body.color-yellow .profile h3 small,
+body.color-yellow .box h3,
+body.color-yellow .box ul li.active a,
+body.color-yellow .box ul li a:hover,
+body.color-yellow .box ul li a i,
+body.color-yellow .box.box-tags a:hover span,
+body.color-yellow .blog-post-detail span i,
+body.color-yellow .blog-timeline .blog-post .blog-post-info .month,
+body.color-yellow .comment a:hover,
+body.color-yellow #eshop .eshop-sidebar h3,
+body.color-yellow .shopping-cart-footer p.total-price,
+body.color-yellow .jumbotron6 #slide-3 .btn:hover,
+body.color-yellow .jumbotron5 .btn:hover,
+body.color-yellow .jumbotron3 .btn:hover,
+body.color-yellow #section-blog-posts .btn:hover,
+body.color-yellow #separator1 .btn:hover,
+
+body.color-yellow .comingsoon .brands li a:hover,
+body.color-yellow #profile-single .profile-body h2 small,
+body.color-yellow #eshop .eshop-sidebar .eshop-widget .checkbox input[type=checkbox]:checked + label:before,
+body.color-yellow .jumbotron-event .event-info h2,
+body.color-yellow #event-speakers .speaker .speaker-body h3,
+body.color-yellow #schedule .schedule-single-info i  {
+	color:#E8CA20;
+}
+
+body.color-yellow .btn-primary,
+body.color-yellow .alert-primary,
+body.color-yellow .label-primary,
+body.color-yellow .panel-primary > .panel-heading,
+body.color-yellow .blog-timeline .blog-post:hover .blog-post-info,
+body.color-yellow .eshop-product .product-sale-label,
+body.color-yellow .popover-title,
+body.color-yellow .nav-tabs > li.active > a, 
+body.color-yellow .nav-tabs > li.active > a:hover, 
+body.color-yellow .nav-tabs > li.active > a:focus,
+body.color-yellow .overlay-wrapper .overlay,
+body.color-yellow .owl-theme .owl-controls .owl-page.active span,
+body.color-yellow .owl-theme .owl-controls .owl-buttons div:hover,
+body.color-yellow .brands.main li a,
+body.color-yellow .navbar-default .navbar-nav > .active > a, 
+body.color-yellow .navbar-default .navbar-nav > .active > a:hover, 
+body.color-yellow .navbar-default .navbar-nav > .active > a:focus,
+body.color-yellow .navbar-default .navbar-nav > .open > a, 
+body.color-yellow .navbar-default .navbar-nav > .open > a:hover, 
+body.color-yellow .navbar-default .navbar-nav > .open > a:focus,
+body.color-yellow .jumbotron6 #slide-3 .btn:first-child:hover,
+body.color-yellow .jumbotron5 .btn:first-child:hover,
+body.color-yellow .content-separator,
+body.color-yellow .bg-color-1,
+body.color-yellow .pagination > .active > a, 
+body.color-yellow .pagination > .active > span, 
+body.color-yellow .pagination > .active > a:hover, 
+body.color-yellow .pagination > .active > span:hover, 
+body.color-yellow .pagination > .active > a:focus, 
+body.color-yellow .pagination > .active > span:focus,
+body.color-yellow #section-features .feature:hover i,
+body.color-yellow .recent-blog-post .post-date,
+body.color-yellow .pricing-plan .pricing-plan-price,
+body.color-yellow #services.services2 .service:hover i,
+body.color-yellow #services.services3 .service:hover i,
+body.color-yellow .blog-header .vertical-nav li a:hover .badge,
+body.color-yellow .box ul li a span.badge,
+body.color-yellow .blog-timeline-mark,
+body.color-yellow #section-portfolio .portfolio-item .hover-overlay,
+body.color-yellow .hidden-control.owl-theme .owl-controls .owl-buttons div:hover,
+
+body.color-yellow .comingsoon .brands li a,
+body.color-yellow #profile-single .profile-body .profile-contacts li span,
+body.color-yellow #eshop .eshop-sidebar .eshop-widget .ui-slider .ui-slider-range,
+body.color-yellow .event-ticket.highlighted {
+    background-color: #E8CA20;
+}
+
+body.color-yellow .popover,
+body.color-yellow .navbar-nav > li > .dropdown-menu,
+body.color-yellow .jumbotron6 #slide-3 .btn:first-child,
+body.color-yellow .jumbotron5 .btn:first-child,
+body.color-yellow .pagination > .active > a, 
+body.color-yellow .pagination > .active > span, 
+body.color-yellow .pagination > .active > a:hover, 
+body.color-yellow .pagination > .active > span:hover, 
+body.color-yellow .pagination > .active > a:focus, 
+body.color-yellow .pagination > .active > span:focus,
+body.color-yellow #section-features .feature i,
+body.color-yellow .text-highlight,
+body.color-yellow #services.services2 .service i,
+body.color-yellow #services.services3 .service i,
+
+body.color-yellow #eshop .eshop-sidebar .eshop-widget .checkbox input[type=checkbox]:checked + label:before  {
+	border-color:#E8CA20;
+}
+
+body.color-yellow .popover.left > .arrow {border-left-color: #E8CA20;}
+body.color-yellow .popover.right > .arrow {border-right-color: #E8CA20;}
+body.color-yellow .popover.top > .arrow {border-top-color: #E8CA20;}
+body.color-yellow .popover.bottom > .arrow {border-bottom-color: #E8CA20;}
+
+/* TRANSPARENT */
+
+body.color-yellow .hidden-control.owl-theme .owl-controls .owl-buttons div,
+body.color-yellow .jumbotron-event p.event-date {
+	background-color: rgba(232, 202, 32, 0.5);
+}
+
+body.color-yellow .jumbotron6 h2,
+body.color-yellow .jumbotron5 h2,
+body.color-yellow .jumbotron3 h2,
+body.color-yellow .map-overlay {
+	background-color:rgba(232, 202, 32, 0.8);
+}
+
+body.color-yellow .jumbotron2,
+body.color-yellow .jumbotron4 {
+	background-image: linear-gradient(rgba(232, 202, 32, 0.9), rgba(232, 202, 32, 0.9)), url(../image/bg3.jpg);
+}
+
+body.color-yellow .jumbotron7 {
+	background-image: linear-gradient(rgba(232, 202, 32, 0.6), rgba(232, 202, 32, 0.6)),url(../image/gplaypattern.png);
+}
+
+body.color-yellow #section-blog-posts,
+body.color-yellow #section-testimonials,
+body.color-yellow #section-statistics,
+body.color-yellow .jumbotron1 {
+	background-image: linear-gradient(rgba(232, 202, 32, 0.6), rgba(232, 202, 32, 0.6)), url(../image/bg3.jpg);
+}
+
+@media (max-width:991px) {
+	body.color-yellow .navbar-default .navbar-toggle:hover,
+	body.color-yellow .navbar-default .navbar-toggle:focus,
+	body.color-yellow .navbar-default .navbar-nav .open .dropdown-menu > li > a:hover,
+	body.color-yellow .navbar-default .navbar-nav .open .dropdown-menu > li > a:focus {
+		color:#E8CA20;
+	}
+	
+	body.color-yellow .navbar-default .navbar-collapse {
+		border-color:#E8CA20;
+	}
+}
+
+/* DARKER */
+
+body.color-yellow a:hover,
+body.color-yellow a:focus {
+	color:#E3C61F;
+}
+
+body.color-yellow .btn-primary:hover,
+body.color-yellow .btn-primary:focus,
+body.color-yellow .btn-primary.active,
+body.color-yellow .pricing-plan h3,
+body.color-yellow .pricing-plan p {
+	background-color:#E3C61F;
+}
+
+body.color-yellow .btn-primary:hover,
+body.color-yellow .btn-primary:focus,
+body.color-yellow .btn-primary.active,
+body.color-yellow .blog-timeline .blog-post:hover .blog-post-info,
+body.color-yellow .eshop-product .product-sale-label {
+	border-color:#E3C61F;
+}
+
+/*------------------------------
+	PINK
+------------------------------*/
+
+body.color-pink a,
+body.color-pink .text-primary,
+body.color-pink .btn-inverse:hover,
+body.color-pink .btn-inverse:focus,
+body.color-pink .nav.vertical-nav li a:hover,
+body.color-pink form label,
+body.color-pink .owl-theme .owl-controls .owl-buttons div,
+body.color-pink .top-header .header-item,
+body.color-pink .navbar-default .navbar-brand:hover,
+body.color-pink .dropdown-menu > li > a:hover i,
+body.color-pink .jumbotron6 #slide-3 .btn:first-child,
+body.color-pink .jumbotron5 .btn:first-child,
+body.color-pink .pagination > li > a:hover,
+body.color-pink .pagination > li > span:hover,
+body.color-pink #section-introduction h2,
+body.color-pink #section-features .feature i,
+body.color-pink .text-highlight span,
+body.color-pink #section-portfolio .portfolio-item a:hover i,
+body.color-pink footer h3 i,
+body.color-pink footer .navbar-nav > li > a:hover,
+body.color-pink #features .features-sidebar h3,
+body.color-pink #features .features-content h3.features-title i,
+body.color-pink #faq h3,
+body.color-pink #services .service:hover h3,
+body.color-pink #services.services1 .service i,
+body.color-pink #services.services2 .service i,
+body.color-pink #services.services3 .service i,
+body.color-pink .profile h3 small,
+body.color-pink .box h3,
+body.color-pink .box ul li.active a,
+body.color-pink .box ul li a:hover,
+body.color-pink .box ul li a i,
+body.color-pink .box.box-tags a:hover span,
+body.color-pink .blog-post-detail span i,
+body.color-pink .blog-timeline .blog-post .blog-post-info .month,
+body.color-pink .comment a:hover,
+body.color-pink #eshop .eshop-sidebar h3,
+body.color-pink .shopping-cart-footer p.total-price,
+body.color-pink .jumbotron6 #slide-3 .btn:hover,
+body.color-pink .jumbotron5 .btn:hover,
+body.color-pink .jumbotron3 .btn:hover,
+body.color-pink #section-blog-posts .btn:hover,
+body.color-pink #separator1 .btn:hover,
+
+body.color-pink .comingsoon .brands li a:hover,
+body.color-pink #profile-single .profile-body h2 small,
+body.color-pink #eshop .eshop-sidebar .eshop-widget .checkbox input[type=checkbox]:checked + label:before,
+body.color-pink .jumbotron-event .event-info h2,
+body.color-pink #event-speakers .speaker .speaker-body h3,
+body.color-pink #schedule .schedule-single-info i  {
+	color:#E84097;
+}
+
+body.color-pink .btn-primary,
+body.color-pink .alert-primary,
+body.color-pink .label-primary,
+body.color-pink .panel-primary > .panel-heading,
+body.color-pink .blog-timeline .blog-post:hover .blog-post-info,
+body.color-pink .eshop-product .product-sale-label,
+body.color-pink .popover-title,
+body.color-pink .nav-tabs > li.active > a, 
+body.color-pink .nav-tabs > li.active > a:hover, 
+body.color-pink .nav-tabs > li.active > a:focus,
+body.color-pink .overlay-wrapper .overlay,
+body.color-pink .owl-theme .owl-controls .owl-page.active span,
+body.color-pink .owl-theme .owl-controls .owl-buttons div:hover,
+body.color-pink .brands.main li a,
+body.color-pink .navbar-default .navbar-nav > .active > a, 
+body.color-pink .navbar-default .navbar-nav > .active > a:hover, 
+body.color-pink .navbar-default .navbar-nav > .active > a:focus,
+body.color-pink .navbar-default .navbar-nav > .open > a, 
+body.color-pink .navbar-default .navbar-nav > .open > a:hover, 
+body.color-pink .navbar-default .navbar-nav > .open > a:focus,
+body.color-pink .jumbotron6 #slide-3 .btn:first-child:hover,
+body.color-pink .jumbotron5 .btn:first-child:hover,
+body.color-pink .content-separator,
+body.color-pink .bg-color-1,
+body.color-pink .pagination > .active > a, 
+body.color-pink .pagination > .active > span, 
+body.color-pink .pagination > .active > a:hover, 
+body.color-pink .pagination > .active > span:hover, 
+body.color-pink .pagination > .active > a:focus, 
+body.color-pink .pagination > .active > span:focus,
+body.color-pink #section-features .feature:hover i,
+body.color-pink .recent-blog-post .post-date,
+body.color-pink .pricing-plan .pricing-plan-price,
+body.color-pink #services.services2 .service:hover i,
+body.color-pink #services.services3 .service:hover i,
+body.color-pink .blog-header .vertical-nav li a:hover .badge,
+body.color-pink .box ul li a span.badge,
+body.color-pink .blog-timeline-mark,
+body.color-pink #section-portfolio .portfolio-item .hover-overlay,
+body.color-pink .hidden-control.owl-theme .owl-controls .owl-buttons div:hover,
+
+body.color-pink .comingsoon .brands li a,
+body.color-pink #profile-single .profile-body .profile-contacts li span,
+body.color-pink #eshop .eshop-sidebar .eshop-widget .ui-slider .ui-slider-range,
+body.color-pink .event-ticket.highlighted {
+    background-color: #E84097;
+}
+
+body.color-pink .popover,
+body.color-pink .navbar-nav > li > .dropdown-menu,
+body.color-pink .jumbotron6 #slide-3 .btn:first-child,
+body.color-pink .jumbotron5 .btn:first-child,
+body.color-pink .pagination > .active > a, 
+body.color-pink .pagination > .active > span, 
+body.color-pink .pagination > .active > a:hover, 
+body.color-pink .pagination > .active > span:hover, 
+body.color-pink .pagination > .active > a:focus, 
+body.color-pink .pagination > .active > span:focus,
+body.color-pink #section-features .feature i,
+body.color-pink .text-highlight,
+body.color-pink #services.services2 .service i,
+body.color-pink #services.services3 .service i,
+
+body.color-pink #eshop .eshop-sidebar .eshop-widget .checkbox input[type=checkbox]:checked + label:before  {
+	border-color:#E84097;
+}
+
+body.color-pink .popover.left > .arrow {border-left-color: #E84097;}
+body.color-pink .popover.right > .arrow {border-right-color: #E84097;}
+body.color-pink .popover.top > .arrow {border-top-color: #E84097;}
+body.color-pink .popover.bottom > .arrow {border-bottom-color: #E84097;}
+
+/* TRANSPARENT */
+
+body.color-pink .hidden-control.owl-theme .owl-controls .owl-buttons div,
+body.color-pink .jumbotron-event p.event-date {
+	background-color: rgba(232, 64, 151, 0.5);
+}
+
+body.color-pink .jumbotron6 h2,
+body.color-pink .jumbotron5 h2,
+body.color-pink .jumbotron3 h2,
+body.color-pink .map-overlay {
+	background-color:rgba(232, 64, 151, 0.8);
+}
+
+body.color-pink .jumbotron2,
+body.color-pink .jumbotron4 {
+	background-image: linear-gradient(rgba(232, 64, 151, 0.9), rgba(232, 64, 151, 0.9)), url(../image/bg3.jpg);
+}
+
+body.color-pink .jumbotron7 {
+	background-image: linear-gradient(rgba(232, 64, 151, 0.6), rgba(232, 64, 151, 0.6)),url(../image/gplaypattern.png);
+}
+
+body.color-pink #section-blog-posts,
+body.color-pink #section-testimonials,
+body.color-pink #section-statistics,
+body.color-pink .jumbotron1 {
+	background-image: linear-gradient(rgba(232, 64, 151, 0.6), rgba(232, 64, 151, 0.6)), url(../image/bg3.jpg);
+}
+
+@media (max-width:991px) {
+	body.color-pink .navbar-default .navbar-toggle:hover,
+	body.color-pink .navbar-default .navbar-toggle:focus,
+	body.color-pink .navbar-default .navbar-nav .open .dropdown-menu > li > a:hover,
+	body.color-pink .navbar-default .navbar-nav .open .dropdown-menu > li > a:focus {
+		color:#E84097;
+	}
+	
+	body.color-pink .navbar-default .navbar-collapse {
+		border-color:#E84097;
+	}
+}
+
+/* DARKER */
+
+body.color-pink a:hover,
+body.color-pink a:focus {
+	color:#D23184;
+}
+
+body.color-pink .btn-primary:hover,
+body.color-pink .btn-primary:focus,
+body.color-pink .btn-primary.active,
+body.color-pink .pricing-plan h3,
+body.color-pink .pricing-plan p {
+	background-color:#D23184;
+}
+
+body.color-pink .btn-primary:hover,
+body.color-pink .btn-primary:focus,
+body.color-pink .btn-primary.active,
+body.color-pink .blog-timeline .blog-post:hover .blog-post-info,
+body.color-pink .eshop-product .product-sale-label {
+	border-color:#D23184;
+}
+
+/*------------------------------
+	LIGHT GREEN
+------------------------------*/
+
+body.color-light-green a,
+body.color-light-green .text-primary,
+body.color-light-green .btn-inverse:hover,
+body.color-light-green .btn-inverse:focus,
+body.color-light-green .nav.vertical-nav li a:hover,
+body.color-light-green form label,
+body.color-light-green .owl-theme .owl-controls .owl-buttons div,
+body.color-light-green .top-header .header-item,
+body.color-light-green .navbar-default .navbar-brand:hover,
+body.color-light-green .dropdown-menu > li > a:hover i,
+body.color-light-green .jumbotron6 #slide-3 .btn:first-child,
+body.color-light-green .jumbotron5 .btn:first-child,
+body.color-light-green .pagination > li > a:hover,
+body.color-light-green .pagination > li > span:hover,
+body.color-light-green #section-introduction h2,
+body.color-light-green #section-features .feature i,
+body.color-light-green .text-highlight span,
+body.color-light-green #section-portfolio .portfolio-item a:hover i,
+body.color-light-green footer h3 i,
+body.color-light-green footer .navbar-nav > li > a:hover,
+body.color-light-green #features .features-sidebar h3,
+body.color-light-green #features .features-content h3.features-title i,
+body.color-light-green #faq h3,
+body.color-light-green #services .service:hover h3,
+body.color-light-green #services.services1 .service i,
+body.color-light-green #services.services2 .service i,
+body.color-light-green #services.services3 .service i,
+body.color-light-green .profile h3 small,
+body.color-light-green .box h3,
+body.color-light-green .box ul li.active a,
+body.color-light-green .box ul li a:hover,
+body.color-light-green .box ul li a i,
+body.color-light-green .box.box-tags a:hover span,
+body.color-light-green .blog-post-detail span i,
+body.color-light-green .blog-timeline .blog-post .blog-post-info .month,
+body.color-light-green .comment a:hover,
+body.color-light-green #eshop .eshop-sidebar h3,
+body.color-light-green .shopping-cart-footer p.total-price,
+body.color-light-green .jumbotron6 #slide-3 .btn:hover,
+body.color-light-green .jumbotron5 .btn:hover,
+body.color-light-green .jumbotron3 .btn:hover,
+body.color-light-green #section-blog-posts .btn:hover,
+body.color-light-green #separator1 .btn:hover,
+
+body.color-light-green .comingsoon .brands li a:hover,
+body.color-light-green #profile-single .profile-body h2 small,
+body.color-light-green #eshop .eshop-sidebar .eshop-widget .checkbox input[type=checkbox]:checked + label:before,
+body.color-light-green .jumbotron-event .event-info h2,
+body.color-light-green #event-speakers .speaker .speaker-body h3,
+body.color-light-green #schedule .schedule-single-info i  {
+	color:#BAD72F;
+}
+
+body.color-light-green .btn-primary,
+body.color-light-green .alert-primary,
+body.color-light-green .label-primary,
+body.color-light-green .panel-primary > .panel-heading,
+body.color-light-green .blog-timeline .blog-post:hover .blog-post-info,
+body.color-light-green .eshop-product .product-sale-label,
+body.color-light-green .popover-title,
+body.color-light-green .nav-tabs > li.active > a, 
+body.color-light-green .nav-tabs > li.active > a:hover, 
+body.color-light-green .nav-tabs > li.active > a:focus,
+body.color-light-green .overlay-wrapper .overlay,
+body.color-light-green .owl-theme .owl-controls .owl-page.active span,
+body.color-light-green .owl-theme .owl-controls .owl-buttons div:hover,
+body.color-light-green .brands.main li a,
+body.color-light-green .navbar-default .navbar-nav > .active > a, 
+body.color-light-green .navbar-default .navbar-nav > .active > a:hover, 
+body.color-light-green .navbar-default .navbar-nav > .active > a:focus,
+body.color-light-green .navbar-default .navbar-nav > .open > a, 
+body.color-light-green .navbar-default .navbar-nav > .open > a:hover, 
+body.color-light-green .navbar-default .navbar-nav > .open > a:focus,
+body.color-light-green .jumbotron6 #slide-3 .btn:first-child:hover,
+body.color-light-green .jumbotron5 .btn:first-child:hover,
+body.color-light-green .content-separator,
+body.color-light-green .bg-color-1,
+body.color-light-green .pagination > .active > a, 
+body.color-light-green .pagination > .active > span, 
+body.color-light-green .pagination > .active > a:hover, 
+body.color-light-green .pagination > .active > span:hover, 
+body.color-light-green .pagination > .active > a:focus, 
+body.color-light-green .pagination > .active > span:focus,
+body.color-light-green #section-features .feature:hover i,
+body.color-light-green .recent-blog-post .post-date,
+body.color-light-green .pricing-plan .pricing-plan-price,
+body.color-light-green #services.services2 .service:hover i,
+body.color-light-green #services.services3 .service:hover i,
+body.color-light-green .blog-header .vertical-nav li a:hover .badge,
+body.color-light-green .box ul li a span.badge,
+body.color-light-green .blog-timeline-mark,
+body.color-light-green #section-portfolio .portfolio-item .hover-overlay,
+body.color-light-green .hidden-control.owl-theme .owl-controls .owl-buttons div:hover,
+
+body.color-light-green .comingsoon .brands li a,
+body.color-light-green #profile-single .profile-body .profile-contacts li span,
+body.color-light-green #eshop .eshop-sidebar .eshop-widget .ui-slider .ui-slider-range,
+body.color-light-green .event-ticket.highlighted {
+    background-color: #BAD72F;
+}
+
+body.color-light-green .popover,
+body.color-light-green .navbar-nav > li > .dropdown-menu,
+body.color-light-green .jumbotron6 #slide-3 .btn:first-child,
+body.color-light-green .jumbotron5 .btn:first-child,
+body.color-light-green .pagination > .active > a, 
+body.color-light-green .pagination > .active > span, 
+body.color-light-green .pagination > .active > a:hover, 
+body.color-light-green .pagination > .active > span:hover, 
+body.color-light-green .pagination > .active > a:focus, 
+body.color-light-green .pagination > .active > span:focus,
+body.color-light-green #section-features .feature i,
+body.color-light-green .text-highlight,
+body.color-light-green #services.services2 .service i,
+body.color-light-green #services.services3 .service i,
+
+body.color-light-green #eshop .eshop-sidebar .eshop-widget .checkbox input[type=checkbox]:checked + label:before  {
+	border-color:#BAD72F;
+}
+
+body.color-light-green .popover.left > .arrow {border-left-color: #BAD72F;}
+body.color-light-green .popover.right > .arrow {border-right-color: #BAD72F;}
+body.color-light-green .popover.top > .arrow {border-top-color: #BAD72F;}
+body.color-light-green .popover.bottom > .arrow {border-bottom-color: #BAD72F;}
+
+/* TRANSPARENT */
+
+body.color-light-green .hidden-control.owl-theme .owl-controls .owl-buttons div,
+body.color-light-green .jumbotron-event p.event-date {
+	background-color: rgba(186, 215, 47, 0.5);
+}
+
+body.color-light-green .jumbotron6 h2,
+body.color-light-green .jumbotron5 h2,
+body.color-light-green .jumbotron3 h2,
+body.color-light-green .map-overlay {
+	background-color:rgba(186, 215, 47, 0.8);
+}
+
+body.color-light-green .jumbotron2,
+body.color-light-green .jumbotron4 {
+	background-image: linear-gradient(rgba(186, 215, 47, 0.9), rgba(186, 215, 47, 0.9)), url(../image/bg3.jpg);
+}
+
+body.color-light-green .jumbotron7 {
+	background-image: linear-gradient(rgba(186, 215, 47, 0.6), rgba(186, 215, 47, 0.6)),url(../image/gplaypattern.png);
+}
+
+body.color-light-green #section-blog-posts,
+body.color-light-green #section-testimonials,
+body.color-light-green #section-statistics,
+body.color-light-green .jumbotron1 {
+	background-image: linear-gradient(rgba(186, 215, 47, 0.6), rgba(186, 215, 47, 0.6)), url(../image/bg3.jpg);
+}
+
+@media (max-width:991px) {
+	body.color-light-green .navbar-default .navbar-toggle:hover,
+	body.color-light-green .navbar-default .navbar-toggle:focus,
+	body.color-light-green .navbar-default .navbar-nav .open .dropdown-menu > li > a:hover,
+	body.color-light-green .navbar-default .navbar-nav .open .dropdown-menu > li > a:focus {
+		color:#BAD72F;
+	}
+	
+	body.color-light-green .navbar-default .navbar-collapse {
+		border-color:#BAD72F;
+	}
+}
+
+/* DARKER */
+
+body.color-light-green a:hover,
+body.color-light-green a:focus {
+	color:#A8C520;
+}
+
+body.color-light-green .btn-primary:hover,
+body.color-light-green .btn-primary:focus,
+body.color-light-green .btn-primary.active,
+body.color-light-green .pricing-plan h3,
+body.color-light-green .pricing-plan p {
+	background-color:#A8C520;
+}
+
+body.color-light-green .btn-primary:hover,
+body.color-light-green .btn-primary:focus,
+body.color-light-green .btn-primary.active,
+body.color-light-green .blog-timeline .blog-post:hover .blog-post-info,
+body.color-light-green .eshop-product .product-sale-label {
+	border-color:#A8C520;
+}
+
+/*------------------------------
+	BLACK
+------------------------------*/
+
+body.color-black a,
+body.color-black .text-primary,
+body.color-black .btn-inverse:hover,
+body.color-black .btn-inverse:focus,
+body.color-black .nav.vertical-nav li a:hover,
+body.color-black form label,
+body.color-black .owl-theme .owl-controls .owl-buttons div,
+body.color-black .top-header .header-item,
+body.color-black .navbar-default .navbar-brand:hover,
+body.color-black .dropdown-menu > li > a:hover i,
+body.color-black .jumbotron6 #slide-3 .btn:first-child,
+body.color-black .jumbotron5 .btn:first-child,
+body.color-black .pagination > li > a:hover,
+body.color-black .pagination > li > span:hover,
+body.color-black #section-introduction h2,
+body.color-black #section-features .feature i,
+body.color-black .text-highlight span,
+body.color-black #section-portfolio .portfolio-item a:hover i,
+body.color-black footer h3 i,
+body.color-black footer .navbar-nav > li > a:hover,
+body.color-black #features .features-sidebar h3,
+body.color-black #features .features-content h3.features-title i,
+body.color-black #faq h3,
+body.color-black #services .service:hover h3,
+body.color-black #services.services1 .service i,
+body.color-black #services.services2 .service i,
+body.color-black #services.services3 .service i,
+body.color-black .profile h3 small,
+body.color-black .box h3,
+body.color-black .box ul li.active a,
+body.color-black .box ul li a:hover,
+body.color-black .box ul li a i,
+body.color-black .box.box-tags a:hover span,
+body.color-black .blog-post-detail span i,
+body.color-black .blog-timeline .blog-post .blog-post-info .month,
+body.color-black .comment a:hover,
+body.color-black #eshop .eshop-sidebar h3,
+body.color-black .shopping-cart-footer p.total-price,
+body.color-black .jumbotron6 #slide-3 .btn:hover,
+body.color-black .jumbotron5 .btn:hover,
+body.color-black .jumbotron3 .btn:hover,
+body.color-black #section-blog-posts .btn:hover,
+body.color-black #separator1 .btn:hover,
+
+body.color-black .comingsoon .brands li a:hover,
+body.color-black #profile-single .profile-body h2 small,
+body.color-black #eshop .eshop-sidebar .eshop-widget .checkbox input[type=checkbox]:checked + label:before,
+body.color-black .jumbotron-event .event-info h2,
+body.color-black #event-speakers .speaker .speaker-body h3,
+body.color-black #schedule .schedule-single-info i  {
+	color:#868686;
+}
+
+body.color-black .btn-primary,
+body.color-black .alert-primary,
+body.color-black .label-primary,
+body.color-black .panel-primary > .panel-heading,
+body.color-black .blog-timeline .blog-post:hover .blog-post-info,
+body.color-black .eshop-product .product-sale-label,
+body.color-black .popover-title,
+body.color-black .nav-tabs > li.active > a, 
+body.color-black .nav-tabs > li.active > a:hover, 
+body.color-black .nav-tabs > li.active > a:focus,
+body.color-black .overlay-wrapper .overlay,
+body.color-black .owl-theme .owl-controls .owl-page.active span,
+body.color-black .owl-theme .owl-controls .owl-buttons div:hover,
+body.color-black .brands.main li a,
+body.color-black .navbar-default .navbar-nav > .active > a, 
+body.color-black .navbar-default .navbar-nav > .active > a:hover, 
+body.color-black .navbar-default .navbar-nav > .active > a:focus,
+body.color-black .navbar-default .navbar-nav > .open > a, 
+body.color-black .navbar-default .navbar-nav > .open > a:hover, 
+body.color-black .navbar-default .navbar-nav > .open > a:focus,
+body.color-black .jumbotron6 #slide-3 .btn:first-child:hover,
+body.color-black .jumbotron5 .btn:first-child:hover,
+body.color-black .content-separator,
+body.color-black .bg-color-1,
+body.color-black .pagination > .active > a, 
+body.color-black .pagination > .active > span, 
+body.color-black .pagination > .active > a:hover, 
+body.color-black .pagination > .active > span:hover, 
+body.color-black .pagination > .active > a:focus, 
+body.color-black .pagination > .active > span:focus,
+body.color-black #section-features .feature:hover i,
+body.color-black .recent-blog-post .post-date,
+body.color-black .pricing-plan .pricing-plan-price,
+body.color-black #services.services2 .service:hover i,
+body.color-black #services.services3 .service:hover i,
+body.color-black .blog-header .vertical-nav li a:hover .badge,
+body.color-black .box ul li a span.badge,
+body.color-black .blog-timeline-mark,
+body.color-black #section-portfolio .portfolio-item .hover-overlay,
+body.color-black .hidden-control.owl-theme .owl-controls .owl-buttons div:hover,
+
+body.color-black .comingsoon .brands li a,
+body.color-black #profile-single .profile-body .profile-contacts li span,
+body.color-black #eshop .eshop-sidebar .eshop-widget .ui-slider .ui-slider-range,
+body.color-black .event-ticket.highlighted {
+    background-color: #868686;
+}
+
+body.color-black .popover,
+body.color-black .navbar-nav > li > .dropdown-menu,
+body.color-black .jumbotron6 #slide-3 .btn:first-child,
+body.color-black .jumbotron5 .btn:first-child,
+body.color-black .pagination > .active > a, 
+body.color-black .pagination > .active > span, 
+body.color-black .pagination > .active > a:hover, 
+body.color-black .pagination > .active > span:hover, 
+body.color-black .pagination > .active > a:focus, 
+body.color-black .pagination > .active > span:focus,
+body.color-black #section-features .feature i,
+body.color-black .text-highlight,
+body.color-black #services.services2 .service i,
+body.color-black #services.services3 .service i,
+
+body.color-black #eshop .eshop-sidebar .eshop-widget .checkbox input[type=checkbox]:checked + label:before  {
+	border-color:#868686;
+}
+
+body.color-black .popover.left > .arrow {border-left-color: #868686;}
+body.color-black .popover.right > .arrow {border-right-color: #868686;}
+body.color-black .popover.top > .arrow {border-top-color: #868686;}
+body.color-black .popover.bottom > .arrow {border-bottom-color: #868686;}
+
+/* TRANSPARENT */
+
+body.color-black .hidden-control.owl-theme .owl-controls .owl-buttons div,
+body.color-black .jumbotron-event p.event-date {
+	background-color: rgba(134, 134, 134, 0.5);
+}
+
+body.color-black .jumbotron6 h2,
+body.color-black .jumbotron5 h2,
+body.color-black .jumbotron3 h2,
+body.color-black .map-overlay {
+	background-color:rgba(134, 134, 134, 0.8);
+}
+
+body.color-black .jumbotron2,
+body.color-black .jumbotron4 {
+	background-image: linear-gradient(rgba(134, 134, 134, 0.9), rgba(134, 134, 134, 0.9)), url(../image/bg3.jpg);
+}
+
+body.color-black .jumbotron7 {
+	background-image: linear-gradient(rgba(134, 134, 134, 0.6), rgba(134, 134, 134, 0.6)),url(../image/gplaypattern.png);
+}
+
+body.color-black #section-blog-posts,
+body.color-black #section-testimonials,
+body.color-black #section-statistics,
+body.color-black .jumbotron1 {
+	background-image: linear-gradient(rgba(134, 134, 134, 0.6), rgba(134, 134, 134, 0.6)), url(../image/bg3.jpg);
+}
+
+@media (max-width:991px) {
+	body.color-black .navbar-default .navbar-toggle:hover,
+	body.color-black .navbar-default .navbar-toggle:focus,
+	body.color-black .navbar-default .navbar-nav .open .dropdown-menu > li > a:hover,
+	body.color-black .navbar-default .navbar-nav .open .dropdown-menu > li > a:focus {
+		color:#868686;
+	}
+	
+	body.color-black .navbar-default .navbar-collapse {
+		border-color:#868686;
+	}
+}
+
+/* DARKER */
+
+body.color-black a:hover,
+body.color-black a:focus {
+	color:#444444;
+}
+
+body.color-black .btn-primary:hover,
+body.color-black .btn-primary:focus,
+body.color-black .btn-primary.active,
+body.color-black .pricing-plan h3,
+body.color-black .pricing-plan p {
+	background-color:#444444;
+}
+
+body.color-black .btn-primary:hover,
+body.color-black .btn-primary:focus,
+body.color-black .btn-primary.active,
+body.color-black .blog-timeline .blog-post:hover .blog-post-info,
+body.color-black .eshop-product .product-sale-label {
+	border-color:#444444;
+}
