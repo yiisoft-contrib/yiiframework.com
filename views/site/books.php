@@ -23,7 +23,7 @@ $this->params['breadcrumbs'][] = $this->title;
     </div>
 
 
-    <h2>Yii 1.0</h2>
+    <h2>Yii 1.1</h2>
 
     <div class="row">
         <div class="col-sm-6 col-md-3">

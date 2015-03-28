@@ -54,4 +54,21 @@ class GuideController extends Controller
             Yii::$app->response->sendFile($file, null, ['inline' => true]);
         }
     }
+
+    /**
+     * This action redirects old urls http://www.yiiframework.com/doc-2.0/guide-*.html to the new location.
+     */
+    public function actionRedirect($section)
+    {
+        if ($section === 'README') {
+            return $this->redirect(['index', 'version' => '2.0', 'language' => 'en'], 301); // Moved Permanently
+        }
+
+        $guide = Guide::load('2.0', 'en');
+        if ($guide && ($section = $guide->loadSection($section))) {
+            return $this->redirect(['view', 'version' => '2.0', 'section' => $section->name, 'language' => 'en'], 301); // Moved Permanently
+        } else {
+            throw new NotFoundHttpException('The requested page was not found.');
+        }
+    }
 }

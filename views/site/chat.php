@@ -9,7 +9,7 @@ $this->params['breadcrumbs'][] = $this->title;
     <h1><?= Html::encode($this->title) ?></h1>
 
     <p>
-        We have an IRC channel in the irc.freenode.org server related to yii framework. Simply click on
+        We have an IRC channel on the irc.freenode.org server related to yii framework. Simply click on
         <a href="irc://irc.freenode.net/yii">#yii on the Freenode irc network</a> if you have an IRC client.
         Or use the following Web-based IRC client to join the channel and get near-instant help or support
         with the Yii Framework.

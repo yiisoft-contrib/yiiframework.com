@@ -45,4 +45,16 @@ class ApiController extends Controller
             'title' => $title,
         ]);
     }
+
+    /**
+     * This action redirects old urls http://www.yiiframework.com/doc-2.0/*.html to the new location.
+     */
+    public function actionRedirect($section)
+    {
+        $file = Yii::getAlias("@app/data/api-2.0/$section.html");
+        if (!preg_match('/^[\w\-]+$/', $section) || !is_file($file)) {
+            throw new NotFoundHttpException('The requested page was not found.');
+        }
+        return $this->redirect(['view', 'version' => '2.0', 'section' => $section], 301); // Moved Permanently
+    }
 }

@@ -7,7 +7,7 @@
  * @var $content string the API page content
  */
 
-$this->title = "Yii API Documentation Version $version";
+$this->title = "API Documentation for Yii $version";
 if (!empty($title)) {
     $this->title = "$title - $this->title";
 }

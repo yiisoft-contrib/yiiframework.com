@@ -13,6 +13,7 @@ $this->title = "Yii API Documentation $version";
 <div class="content api-content">
     <div class="row">
         <div class="col-md-3">
+            TODO navigation
         </div>
         <div class="col-md-9" role="main">
             <?= $this->render('_versions.php', compact('version', 'versions', 'section')) ?>
