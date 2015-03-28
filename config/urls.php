@@ -7,6 +7,8 @@ return [
     'contact' => 'site/contact',
     'captcha' => 'site/captcha',
 
+    // TODO implement redirect for url/ to url, needed for old 1.1 api urls
+
     '' => 'site/index',
     'doc/api/<version:\\d\\.\\d>' => 'api/index',
     'doc/api/<version:\\d\\.\\d>/<section:.+>' => 'api/view',

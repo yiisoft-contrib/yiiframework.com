@@ -46,7 +46,7 @@ class ApiController extends \yii\apidoc\commands\ApiController
             $this->stdout("Finished API $version.\n\n", Console::FG_GREEN);
         } elseif ($version[0] === '1') {
             $target = "$targetPath/api-$version";
-            $cmd = Yii::getAlias('@app/data/yii-1.1/build/build');
+            $cmd = Yii::getAlias("@app/data/yii-$version/build/build");
 
             if (!is_file($composerYii1 = Yii::getAlias('@app/data/yii-1.1/vendor/autoload.php'))) {
                 $this->stdout("WARNING: Composer dependencies of Yii 1.1 are not installed, api generation may fail.\n", Console::BOLD, Console::FG_YELLOW);
@@ -58,7 +58,7 @@ class ApiController extends \yii\apidoc\commands\ApiController
 
             foreach(FileHelper::findFiles($target, ['only' => ['*.html']]) as $file) {
                 file_put_contents($file, preg_replace(
-                    '~href="/doc/api/(\w+)"~',
+                    '~href="/doc/api/([\w\#\-\.]+)"~i',
                     'href="' . Yii::$app->params['api.baseUrl'] . '/' . $version . '/\1"',
                     file_get_contents($file))
                 );

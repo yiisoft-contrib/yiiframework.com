@@ -40,7 +40,7 @@ class ApiController extends Controller
         return $this->render($view, [
             'content' => file_get_contents($file),
             'section' => $section,
-            'versions' => array_keys(Yii::$app->params['guide.versions']),
+            'versions' => Yii::$app->params['api.versions'],
             'version' => $version,
             'title' => $title,
         ]);
