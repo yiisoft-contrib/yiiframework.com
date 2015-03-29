@@ -6,6 +6,10 @@ return [
     'chat' => 'site/chat',
     'contact' => 'site/contact',
     'captcha' => 'site/captcha',
+    'about' => 'site/about',
+    'license' => 'site/license',
+    'news' => 'site/news',
+    'team' => 'site/team',
 
     // TODO implement redirect for url/ to url, needed for old 1.1 api urls
 
