@@ -10,8 +10,10 @@ use yii\captcha\Captcha;
 $this->title = 'Contact';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="site-contact content">
+<div class="container content">
     <h1><?= Html::encode($this->title) ?></h1>
+
+    <!-- TODO there is a roxie template style for contact pages -->
 
     <?php if (Yii::$app->session->hasFlash('contactFormSubmitted')): ?>
 

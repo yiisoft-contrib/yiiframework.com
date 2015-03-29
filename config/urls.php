@@ -10,6 +10,7 @@ return [
     'license' => 'site/license',
     'news' => 'site/news',
     'team' => 'site/team',
+    'report-issue' => 'site/report-issue',
 
     // TODO implement redirect for url/ to url, needed for old 1.1 api urls
 

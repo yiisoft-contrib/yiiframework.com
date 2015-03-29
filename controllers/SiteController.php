@@ -124,4 +124,10 @@ class SiteController extends Controller
         return $this->render('team');
     }
 
+    public function actionReportIssue()
+    {
+        return $this->render('report-issue');
+    }
+
+
 }
