@@ -36,33 +36,8 @@ use yii\widgets\Menu;
     <title><?= Html::encode($this->title) ?></title>
     <?php $this->head() ?>
 </head>
-<body class="color-light-blue">
+<body class="color-yii">
 <?php $this->beginBody() ?>
-
-    <!-- ==========================
-    COLOR SWITCHER - START
-    =========================== - - >
-    <div id="color-switcher">
-        <div id="toggle-switcher"><i class="fa fa-gear"></i></div>
-        <span>Color Scheme:</span>
-        <ul class="list-unstyled list-inline">
-            <li id="blue" data-toggle="tooltip" data-placement="top" title="Blue"></li>
-            <li id="green" data-toggle="tooltip" data-placement="top" title="Green"></li>
-            <li id="orange" data-toggle="tooltip" data-placement="top" title="Orange"></li>
-            <li id="red" data-toggle="tooltip" data-placement="top" title="Red"></li>
-            <li id="purple" data-toggle="tooltip" data-placement="top" title="Purple"></li>
-            <li id="light-blue" data-toggle="tooltip" data-placement="top" title="Light Blue"></li>
-            <li id="yellow" data-toggle="tooltip" data-placement="top" title="Yellow"></li>
-            <li id="pink" data-toggle="tooltip" data-placement="top" title="Pink"></li>
-            <li id="light-green" data-toggle="tooltip" data-placement="top" title="Light Green"></li>
-            <li id="black" data-toggle="tooltip" data-placement="top" title="Black"></li>
-        </ul>
-
-        <button id="page-boxed-toggle" class="btn btn-primary">Boxed Page</button>
-    </div>
-    <!-- ==========================
-        COLOR SWITCHER - END
-    =========================== -->
 
     <div id="page-wrapper" class="">
 

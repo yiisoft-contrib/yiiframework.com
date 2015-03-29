@@ -53,21 +53,21 @@ $(".sidenav-toggle").on("click", function() {
                         helping us with translation</a>.
                     </div>
                 <?php endif ?>
-            <?= $section->content ?>
-            </div>
+                <?= $section->content ?>
 
-            <div class="prev-next clearfix">
-                <?php
-                if (($prev = $section->getPrevSection()) !== null) {
-                    $left = '<span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span> ';
-                    echo '<div class="pull-left">' . Html::a($left . Html::encode($prev[1]), ['guide/view', 'section' => $prev[0], 'version' => $guide->version, 'language' => $guide->language]) . '</div>';
-                }
-                if (($next = $section->getNextSection()) !== null) {
-                    $right = ' <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>';
-                    echo '<div class="pull-right">' . Html::a(Html::encode($next[1]) . $right, ['guide/view', 'section' => $next[0], 'version' => $guide->version, 'language' => $guide->language]) . '</div>';
-                }
-                echo '<div class="text-center"><a href="#">Go to Top <span class="glyphicon glyphicon-chevron-up" aria-hidden="true"></span></a></div>';
-                ?>
+                <div class="prev-next clearfix">
+                    <?php
+                    if (($prev = $section->getPrevSection()) !== null) {
+                        $left = '<span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span> ';
+                        echo '<div class="pull-left">' . Html::a($left . Html::encode($prev[1]), ['guide/view', 'section' => $prev[0], 'version' => $guide->version, 'language' => $guide->language]) . '</div>';
+                    }
+                    if (($next = $section->getNextSection()) !== null) {
+                        $right = ' <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>';
+                        echo '<div class="pull-right">' . Html::a(Html::encode($next[1]) . $right, ['guide/view', 'section' => $next[0], 'version' => $guide->version, 'language' => $guide->language]) . '</div>';
+                    }
+                    echo '<div class="text-center"><a href="#">Go to Top <span class="glyphicon glyphicon-chevron-up" aria-hidden="true"></span></a></div>';
+                    ?>
+                </div>
             </div>
         </div>
     </div>

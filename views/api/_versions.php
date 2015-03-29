@@ -9,8 +9,8 @@ use app\components\DropdownList;
 use yii\helpers\Html;
 
 ?>
-<nav class="navbar-default version-selector" role="navigation">
-    <ul class="nav navbar-nav">
+<nav class="version-selector" role="navigation">
+    <ul>
         <?= DropdownList::widget([
             'tag' => 'li',
             'selection' => "Version {$version}",

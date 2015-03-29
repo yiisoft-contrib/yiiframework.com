@@ -8,20 +8,26 @@ use yii\helpers\Html;
 $this->title = $guide->title;
 $blocksPerRow = 4;
 ?>
-<div class="container guide-index">
+<div class="container guide-content">
     <?= $this->render('_versions.php', ['guide' => $guide, 'section' => null]) ?>
-    <h1><?= Html::encode($guide->title) ?></h1>
 
+    <div class="content">
+        <h1><?= Html::encode($guide->title) ?></h1>
+
+        <div class="row">
     <?php
     $count = 0;
     foreach ($guide->chapters as $chapterTitle => $sections) {
-        if ($count % $blocksPerRow === 0) {
-            echo '<div class="row">';
+        if ($count && $count % $blocksPerRow === 0) {
+            echo '</div><div class="row">';
         }
     ?>
         <div class="col-sm-6 col-md-3">
-            <div class="thumbnail">
-                <h3><?= Html::encode($chapterTitle) ?></h3>
+            <div class="panel panel-primary">
+                <div class="panel-heading">
+                    <h3 class="panel-title"><?= Html::encode($chapterTitle) ?></h3>
+                </div>
+                <div class="panel-body">
                 <?= Html::ul($sections, ['item' => function ($name, $title) use ($guide) {
                     return '<li>' . Html::a(Html::encode($title), ['guide/view',
                         'section' => $name,
@@ -29,15 +35,13 @@ $blocksPerRow = 4;
                         'version' => $guide->version
                     ]) . '</li>';
                 }, 'class' => 'list-unstyled']) ?>
+                </div>
             </div>
         </div>
     <?php
-        if ($count++ % $blocksPerRow === $blocksPerRow - 1) {
-            echo '</div>';
-        }
-    }
-    if ($count && $count % $blocksPerRow !== $blocksPerRow - 1) {
-        echo '</div>';
+        $count++;
     }
     ?>
-</div></div>
+        </div>
+</div>
+</div>
