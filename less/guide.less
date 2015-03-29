@@ -83,7 +83,10 @@ a.list-group-item:active {
     .border-bottom-radius(0);
 }
 
-.submenu .list-group-item.active, a.list-group-item:active {
+.submenu a.list-group-item.active,
+.submenu a.list-group-item.active:focus,
+.submenu a.list-group-item.active:hover,
+.submenu a.list-group-item:active {
     background: #e5e5e5 !important;
     color: #555555 !important;
 
