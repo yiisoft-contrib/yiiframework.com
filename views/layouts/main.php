@@ -42,15 +42,15 @@ use yii\widgets\Menu;
     	HEADER - START
     =========================== -->
     <div class="top-header hidden-xs hidden-sm">
-    	<div class="container">
-        	<?php /*<div class="pull-left">
-            	<div class="header-item"><i class="fa fa-envelope"></i> info@pixlized.cz</div>
-                <div class="header-item"><i class="fa fa-phone"></i> +420 123 456 789</div>
-            </div> */ ?>
+        <div class="container">
+            <div class="pull-left">
+                <div class="header-item"><?= Html::a('The Definitive Guide', ['guide/index', 'version' => '2.0', 'language' => 'en']) ?></div>
+                <div class="header-item"><?= Html::a('Class Reference', ['api/index', 'version' => '2.0']) ?></div>
+            </div>
             <div class="pull-right">
-            	<ul class="brands brands-inline brands-tn brands-circle main">
+                <ul class="brands brands-inline brands-tn brands-circle main">
                     <li><a href="https://github.com/yiisoft/yii2"><i class="fa fa-github"></i></a></li>
-                	<li><a href="https://twitter.com/yiiframework"><i class="fa fa-twitter"></i></a></li>
+                    <li><a href="https://twitter.com/yiiframework"><i class="fa fa-twitter"></i></a></li>
                     <li><a href="https://www.facebook.com/groups/yiitalk/"><i class="fa fa-facebook"></i></a></li>
                     <li><a href="https://www.linkedin.com/groups/yii-framework-1483367"><i class="fa fa-linkedin"></i></a></li>
                     <!--li><a href="#"><i class="fa fa-google-plus"></i></a></li-->
