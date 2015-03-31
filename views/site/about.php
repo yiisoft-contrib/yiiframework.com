@@ -8,8 +8,35 @@ $this->params['breadcrumbs'][] = $this->title;
 <div class="container content">
     <h1><?= Html::encode($this->title) ?></h1>
 
-    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec a diam lectus. Sed sit amet ipsum mauris. Maecenas congue ligula ac quam viverra nec consectetur ante hendrerit. Donec et mollis dolor. Praesent et diam eget libero egestas mattis sit amet vitae augue. Nam tincidunt congue enim, ut porta lorem lacinia consectetur. Donec ut libero sed arcu vehicula ultricies a non tortor. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean ut gravida lorem. Ut turpis felis, pulvinar a semper sed, adipiscing id dolor. Pellentesque auctor nisi id magna consequat sagittis. Curabitur dapibus enim sit amet elit pharetra tincidunt feugiat nisl imperdiet. Ut convallis libero in urna ultrices accumsan. Donec sed odio eros. Donec viverra mi quis quam pulvinar at malesuada arcu rhoncus. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. In rutrum accumsan ultricies. Mauris vitae nisi at sem facilisis semper ac in est.</p>
+    <p>Yii is a high-performance modern PHP framework best for developing both web applications and APIs.</p>
 
-    <p>Vivamus fermentum semper porta. Nunc diam velit, adipiscing ut tristique vitae, sagittis vel odio. Maecenas convallis ullamcorper ultricies. Curabitur ornare, ligula semper consectetur sagittis, nisi diam iaculis velit, id fringilla sem nunc vel mi. Nam dictum, odio nec pretium volutpat, arcu ante placerat erat, non tristique elit urna et turpis. Quisque mi metus, ornare sit amet fermentum et, tincidunt et orci. Fusce eget orci a orci congue vestibulum. Ut dolor diam, elementum et vestibulum eu, porttitor vel elit. Curabitur venenatis pulvinar tellus gravida ornare. Sed et erat faucibus nunc euismod ultricies ut id justo. Nullam cursus suscipit nisi, et ultrices justo sodales nec. Fusce venenatis facilisis lectus ac semper. Aliquam at massa ipsum. Quisque bibendum purus convallis nulla ultrices ultricies. Nullam aliquam, mi eu aliquam tincidunt, purus velit laoreet tortor, viverra pretium nisi quam vitae mi. Fusce vel volutpat elit. Nam sagittis nisi dui.</p>
+    <p>Yii helps developers build complex applications and deliver them on-time.</p>
 
+    <p><strong>Yii</strong> is pronounced as Yee or [ji:], and is an acronym for "<strong>Yes It Is!</strong>".
+        This is often the accurate, and most concise response to inquires from those new to Yii:
+        Is it fast? ... Is it secure? ... Is it professional? ... Is it right for my next project? ... <strong>Yes, it is!</strong></p>
+
+    <p>Yii is a free, open-source Web application development framework written in PHP5 that promotes clean, DRY design
+        and encourages rapid development. It works to streamline your application development and helps to ensure an
+        extremely efficient, extensible, and maintainable end product.</p>
+
+    <p>Being constantly performance optimized, Yii is a perfect choice for any sized project. However, it has been built
+        with sophisticated, enterprise applications in mind. You have full control over the configuration from
+        head-to-toe (presentation-to-persistence) to conform to your enterprise development guidelines. It comes
+        packaged with tools to help test and debug your application, and has clear and comprehensive documentation.</p>
+
+    <h2>History</h2>
+
+    <p>Yii is the brainchild of its founder, Qiang Xue, who started the Yii project on January 1, 2008. Qiang
+        previously developed and maintained the Prado framework. The years of experience gained and developer feedback
+        gathered from that project solidified the need for an extremely fast, secure and professional framework that is
+        tailor-made to meet the expectations of Web 2.0 application development. On December 3, 2008, after nearly one
+        year's development, Yii 1.0 was formally released to the public.</p>
+
+    <p>Its extremely impressive performance metrics when compared to other PHP-based frameworks immediately drew very
+        positive attention and its popularity and adoption continues to grow at an ever increasing rate.</p>
+
+    <p>On October 2014 Yii 2.0.0 was released which is a complete rewrite over the previous version that was made
+       in order to build a state-of-the-art PHP framework by keeping the original simplicity and extensibility of Yii
+       while adopting the latest technologies and features to make it even better.</p>
 </div>
