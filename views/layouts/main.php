@@ -99,15 +99,13 @@ use yii\widgets\Menu;
                                 ['label' => '<i class="fa fa-angle-double-right"></i>License', 'url' => ['site/license']],
                                 ['label' => '<i class="fa fa-angle-double-right"></i>Team', 'url' => ['site/team']],
                             ]],
-                            ['label' => '<span class="glyphicon glyphicon-book" aria-hidden="true"></span> Learn', 'options' => ['class' => 'yamm-fw hidden-md hidden-lg'], 'items' => [
-                                ['label' => '<i class="fa fa-angle-double-right"></i>The Definitive Guide', 'url' => ['guide/index', 'version' => '2.0', 'language' => 'en']],
-                                ['label' => '<i class="fa fa-angle-double-right"></i>Class Reference', 'url' => ['api/index', 'version' => '2.0']],
+                            ['label' => '<span class="glyphicon glyphicon-book" aria-hidden="true"></span> Learn', 'items' => [
+                                ['label' => '<i class="fa fa-angle-double-right"></i>Getting started', 'url' => ['guide/view', 'section' => 'start-installation', 'language' => 'en', 'version' => key(Yii::$app->params['guide.versions'])]],
+                                ['label' => '<i class="fa fa-angle-double-right"></i>The Definitive Guide', 'url' => ['guide/index', 'language' => 'en', 'version' => key(Yii::$app->params['guide.versions'])]],
+                                ['label' => '<i class="fa fa-angle-double-right"></i>API Documentation', 'url' => ['api/index', 'version' => reset(Yii::$app->params['api.versions'])]],
                                 ['label' => '<i class="fa fa-angle-double-right"></i>Tutorials<span class="label label-warning">coming soon</span>', 'url' => 'https://yiicamp.com/tutorials'],
                                 ['label' => '<i class="fa fa-angle-double-right"></i>Answers<span class="label label-warning">coming soon</span>', 'url' => 'https://yiicamp.com/answers'],
                                 ['label' => '<i class="fa fa-angle-double-right"></i>Books', 'url' => ['site/books']],
-                            ]],
-                            ['label' => '<span class="glyphicon glyphicon-book" aria-hidden="true"></span> Learn', 'options' => ['class' => 'yamm-fw hidden-xs hidden-sm'], 'items' => [
-                                $this->render('_learn'),
                             ]],
                             ['label' => '<span class="glyphicon glyphicon-star" aria-hidden="true"></span> Develop', 'items' => [
                                 ['label' => '<i class="fa fa-angle-double-right"></i>Install Yii', 'url' => ['guide/view', 'version' => '2.0', 'language' => 'en', 'section' => 'start-installation']],
