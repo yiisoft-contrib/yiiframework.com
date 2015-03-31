@@ -93,13 +93,13 @@ use yii\widgets\Menu;
                         'activateItems' => false,
                         'dropDownCaret' => '<i class="fa fa-chevron-down"></i>',
                         'items' => [
-                            ['label' => '<span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span> About', 'items' => [
+                            ['label' => 'About', 'items' => [
                                 ['label' => '<i class="fa fa-angle-double-right"></i>What is Yii?', 'url' => ['site/about']],
                                 ['label' => '<i class="fa fa-angle-double-right"></i>News', 'url' => ['site/news']],
                                 ['label' => '<i class="fa fa-angle-double-right"></i>License', 'url' => ['site/license']],
                                 ['label' => '<i class="fa fa-angle-double-right"></i>Team', 'url' => ['site/team']],
                             ]],
-                            ['label' => '<span class="glyphicon glyphicon-book" aria-hidden="true"></span> Learn', 'items' => [
+                            ['label' => 'Learn', 'items' => [
                                 ['label' => '<i class="fa fa-angle-double-right"></i>Getting started', 'url' => ['guide/view', 'section' => 'start-installation', 'language' => 'en', 'version' => key(Yii::$app->params['guide.versions'])]],
                                 ['label' => '<i class="fa fa-angle-double-right"></i>The Definitive Guide', 'url' => ['guide/index', 'language' => 'en', 'version' => key(Yii::$app->params['guide.versions'])]],
                                 ['label' => '<i class="fa fa-angle-double-right"></i>API Documentation', 'url' => ['api/index', 'version' => reset(Yii::$app->params['api.versions'])]],
@@ -107,22 +107,18 @@ use yii\widgets\Menu;
                                 ['label' => '<i class="fa fa-angle-double-right"></i>Answers<span class="label label-warning">coming soon</span>', 'url' => 'https://yiicamp.com/answers'],
                                 ['label' => '<i class="fa fa-angle-double-right"></i>Books', 'url' => ['site/books']],
                             ]],
-                            ['label' => '<span class="glyphicon glyphicon-star" aria-hidden="true"></span> Develop', 'items' => [
+                            ['label' => 'Develop', 'items' => [
                                 ['label' => '<i class="fa fa-angle-double-right"></i>Install Yii', 'url' => ['guide/view', 'version' => '2.0', 'language' => 'en', 'section' => 'start-installation']],
                                 ['label' => '<i class="fa fa-angle-double-right"></i>Extensions<span class="label label-warning">coming soon</span>', 'url' => 'https://yiicamp.com/extensions'],
                                 ['label' => '<i class="fa fa-angle-double-right"></i>Report an Issue', 'url' => ['site/report-issue']],
                                 ['label' => '<i class="fa fa-angle-double-right"></i>Contribute to Yii', 'url' => ['/site/contribute']],
                                 ['label' => '<i class="fa fa-angle-double-right"></i>Jobs<span class="label label-warning">coming soon</span>', 'url' => 'https://yiicamp.com/jobs'],
                             ]],
-                            ['label' => '<span class="glyphicon glyphicon-comment" aria-hidden="true"></span> Discuss', 'items' => [
+                            ['label' => 'Discuss', 'items' => [
                                 ['label' => '<i class="fa fa-angle-double-right"></i>Forum', 'url' => '/forum'],
                                 ['label' => '<i class="fa fa-angle-double-right"></i>Live Chat', 'url' => ['site/chat']],
-//                                ['label' => 'GitHub', 'url' => 'https://github.com/yiisoft/yii2'],
-//                                ['label' => 'Facebook', 'url' => 'https://www.facebook.com/groups/yiitalk/'],
-//                                ['label' => 'LinkedIn', 'url' => 'https://www.linkedin.com/groups/yii-framework-1483367'],
-//                                ['label' => 'Twitter', 'url' => 'https://twitter.com/yiiframework'],
                             ]],
-                            ['label' => '<span class="glyphicon glyphicon-tent" aria-hidden="true"></span> Camp', 'url' => 'https://yiicamp.com']
+                            ['label' => 'Camp', 'url' => 'https://yiicamp.com']
                         ],
                     ]);
 ?>
