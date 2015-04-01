@@ -122,8 +122,37 @@ class SiteController extends Controller
     public function actionTeam()
     {
         $members = Yii::$app->params['members'];
+
+        $contributorLimit = 1000;
+
+        // getting contributors from github
+        $cacheKey = __CLASS__ . ":team:contributors:$contributorLimit";
+        if (($contributors = Yii::$app->cache->get($cacheKey)) === false) {
+
+            $client = new \Github\Client();
+            $api = $client->api('repo');
+            $paginator  = new \Github\ResultPager($client);
+            $parameters = ['yiisoft', 'yii2'];
+            $contributors = $paginator->fetch($api, 'contributors', $parameters);
+            while($paginator->hasNext() && count($contributors) < $contributorLimit) {
+                $contributors = array_merge($contributors, $paginator->fetchNext());
+            }
+
+            // remove team members
+            $teamGithubs = array_filter(array_map(function($member) { return isset($member['github']) ? $member['github'] : false; }, $members));
+            foreach($contributors as $key => $contributor) {
+                if (in_array($contributor['login'], $teamGithubs)) {
+                    unset($contributors[$key]);
+                }
+            }
+
+            $contributors = array_slice($contributors, 0, $contributorLimit);
+            Yii::$app->cache->set($cacheKey, $contributors, 3600 * 12); // cache for 12hours
+        }
+
         return $this->render('team', [
             'members' => $members,
+            'contributors' => $contributors,
         ]);
     }
 

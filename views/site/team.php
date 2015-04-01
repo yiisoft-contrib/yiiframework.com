@@ -2,6 +2,8 @@
 use yii\helpers\Html;
 
 /* @var $this yii\web\View */
+/* @var $members array */
+/* @var $contributors array */
 $this->title = 'Team';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
@@ -20,10 +22,15 @@ $this->params['breadcrumbs'][] = $this->title;
                         <h3><?= Html::encode($member['name'])?><small><?= Html::encode($member['location'])?></small></h3>
                         <h4>Since <?= Html::encode($member['memberSince']) ?></h4>
                         <p><?= Html::encode($member['duty']) ?></p>
-                        <ul class="brands brands-sm brands-circle brands-inline main">
-                            <li><a href="" class="brands-facebook"><i class="fa fa-facebook"></i></a></li>
-                            <li><a href="" class="brands-twitter"><i class="fa fa-twitter"></i></a></li>
-                            <li><a href="" class="brands-google-plus"><i class="fa fa-google-plus"></i></a></li>
+                        <ul class="brands brands-inline brands-sm brands-transition brands-circle">
+                            <?php
+                            if (isset($member['github'])) {
+                                echo '<li>' . Html::a('<i class="fa fa-github"></i>', 'https://github.com/' . $member['github'], ['class' => 'brands-github']) . '</li>';
+                            }
+                            if (isset($member['twitter'])) {
+                                echo '<li>' . Html::a('<i class="fa fa-twitter"></i>', 'https://twitter.com/' . $member['twitter'], ['class' => 'brands-twitter']) . '</li>';
+                            }
+                            ?>
                         </ul>
                     </div>
                 </div>
@@ -41,10 +48,15 @@ $this->params['breadcrumbs'][] = $this->title;
                         <h3><?= Html::encode($member['name'])?><small><?= Html::encode($member['location'])?></small></h3>
                         <h4>Since <?= Html::encode($member['memberSince']) ?></h4>
                         <p><?= Html::encode($member['duty']) ?></p>
-                        <ul class="brands brands-sm brands-circle brands-inline main">
-                            <li><a href="" class="brands-facebook"><i class="fa fa-facebook"></i></a></li>
-                            <li><a href="" class="brands-twitter"><i class="fa fa-twitter"></i></a></li>
-                            <li><a href="" class="brands-google-plus"><i class="fa fa-google-plus"></i></a></li>
+                        <ul class="brands brands-inline brands-sm brands-transition brands-circle">
+                            <?php
+                            if (isset($member['github'])) {
+                                echo '<li>' . Html::a('<i class="fa fa-github"></i>', 'https://github.com/' . $member['github'], ['class' => 'brands-github']) . '</li>';
+                            }
+                            if (isset($member['twitter'])) {
+                                echo '<li>' . Html::a('<i class="fa fa-twitter"></i>', 'https://twitter.com/' . $member['twitter'], ['class' => 'brands-twitter']) . '</li>';
+                            }
+                            ?>
                         </ul>
                     </div>
                 </div>
@@ -54,7 +66,11 @@ $this->params['breadcrumbs'][] = $this->title;
         <div class="container">
             <h2>Contributors</h2>
 
-            <div id="contributors">TODO: get from https://api.github.com/repos/yiisoft/yii2/contributors</div>
+            <div id="contributors">
+                <?php foreach ($contributors as $contributor) {
+                    echo Html::a(Html::img($contributor['avatar_url'] . '&s=42', ['alt' => 'Avatar of ' . $contributor['login']]), $contributor['html_url'], ['title' => $contributor['login'] . ' on Github']);
+                } ?>
+            </div>
         </div>
     </section>
 </div>

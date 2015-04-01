@@ -8,7 +8,8 @@ return [
         'location' => 'Washington DC, USA',
         'duty' => 'Founder and project lead',
         'photo' => 'https://avatars2.githubusercontent.com/u/993322?v=3&s=460',
-        'github' => 'https://github.com/qiangxue/',
+        'github' => 'qiangxue',
+        'twitter' => 'qiang_xue',
         'active' => true,
     ],
     [
@@ -19,7 +20,8 @@ return [
         'location' => 'Russia',
         'duty' => 'Core framework development',
         'photo' => 'https://avatars0.githubusercontent.com/u/47294?v=3&s=460',
-        'github' => 'https://github.com/samdark',
+        'github' => 'samdark',
+        'twitter' => 'sam_dark',
         'active' => true,
     ],
     [
@@ -30,7 +32,8 @@ return [
         'location' => 'Rovinj, Croatia',
         'duty' => 'Core framework development',
         'photo' => 'https://avatars1.githubusercontent.com/u/209837?v=3&s=460',
-        'github' => 'https://github.com/mdomba',
+        'github' => 'mdomba',
+        'twitter' => 'mdomba',
         'active' => true,
     ],
     [
@@ -41,7 +44,8 @@ return [
         'location' => 'Berlin, Germany',
         'duty' => 'Core framework development',
         'photo' => 'https://avatars0.githubusercontent.com/u/189796?v=3&s=460',
-        'github' => 'https://github.com/cebe',
+        'github' => 'cebe',
+        'twitter' => 'cebe_cc',
         'active' => true,
     ],
     [
@@ -52,7 +56,8 @@ return [
         'location' => ' Donetsk, Ukraine',
         'duty' => 'Core framework development',
         'photo' => 'https://avatars1.githubusercontent.com/u/1482054?v=3&s=460',
-        'github' => 'https://github.com/klimov-paul',
+        'github' => 'klimov-paul',
+        'twitter' => 'klimov_paul',
         'active' => true,
     ],
     [
@@ -63,7 +68,8 @@ return [
         'location' => 'Majorca, Balearic Islands, Spain',
         'duty' => 'Core framework development',
         'photo' => 'https://avatars2.githubusercontent.com/u/566016?v=3&s=460',
-        'github' => 'https://github.com/tonydspaniard',
+        'github' => 'tonydspaniard',
+        'twitter' => 'tonydspaniard',
         'active' => true,
     ],
     [
@@ -74,7 +80,7 @@ return [
         'location' => 'Almaty, Kazakhstan',
         'duty' => 'Core framework development',
         'photo' => 'https://avatars0.githubusercontent.com/u/100198?v=3&s=460',
-        'github' => 'https://github.com/resurtm',
+        'github' => 'resurtm',
         'active' => false,
     ],
     [
@@ -85,7 +91,7 @@ return [
         'location' => 'Sydney, Australia',
         'duty' => 'Project site maintenance and development',
         'photo' => 'https://avatars0.githubusercontent.com/u/448167?v=3&s=460',
-        'github' => 'https://github.com/xwz',
+        'github' => 'xwz',
         'active' => false,
     ],
     [
@@ -96,7 +102,7 @@ return [
         'location' => 'Argentina',
         'duty' => 'Component development',
         'photo' => 'https://avatars1.githubusercontent.com/u/1434034?v=3&s=460',
-        'github' => 'https://github.com/sebathi',
+        'github' => 'sebathi',
         'active' => false,
     ],
     [
@@ -107,7 +113,7 @@ return [
         'location' => 'Austin, TX, USA',
         'duty' => 'Documentation and marketing',
         'photo' => 'https://avatars2.githubusercontent.com/u/299167?v=3&s=460',
-        'github' => 'https://github.com/jefftulsa',
+        'github' => 'jefftulsa',
         'active' => false,
     ],
     [
@@ -138,7 +144,7 @@ return [
         'location' => 'Hungary',
         'duty' => 'Core framework development',
         'photo' => 'https://avatars2.githubusercontent.com/u/187342?v=3&s=460',
-        'github' => 'https://github.com/pestaa',
+        'github' => 'pestaa',
         'active' => false,
     ],
 ];
