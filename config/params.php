@@ -55,5 +55,6 @@ return [
     ],
     // base url for generating api documentation
     'guide.baseUrl' => '/doc/guide',
+    'members' => require 'members.php',
     'adminEmail' => 'admin@example.com',
 ];

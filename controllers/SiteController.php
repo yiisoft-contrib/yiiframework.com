@@ -121,7 +121,10 @@ class SiteController extends Controller
 
     public function actionTeam()
     {
-        return $this->render('team');
+        $members = Yii::$app->params['members'];
+        return $this->render('team', [
+            'members' => $members,
+        ]);
     }
 
     public function actionReportIssue()
