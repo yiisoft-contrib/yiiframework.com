@@ -55,12 +55,14 @@ use yii\widgets\Menu;
                     <li><a href="https://www.linkedin.com/groups/yii-framework-1483367"><i class="fa fa-linkedin"></i></a></li>
                     <!--li><a href="#"><i class="fa fa-google-plus"></i></a></li-->
                 </ul>
+                <!-- TODO this link is not shown on mobile so it has to find a better place
                 <div class="header-item"><a href="signin.html" class="pull-right"><i class="fa fa-user"></i>Sign in</a></div>
+                -->
             </div>
         </div>
     </div>
 
-	<header class="navbar yamm navbar-default navbar-static-top">
+	<header class="navbar navbar-default navbar-static-top">
     	<div class="container">
             <div class="navbar-header">
                 <a href="<?= Yii::$app->homeUrl ?>" class="navbar-brand">
