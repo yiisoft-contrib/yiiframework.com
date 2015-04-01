@@ -11,6 +11,7 @@ return [
     'news' => 'site/news',
     'team' => 'site/team',
     'report-issue' => 'site/report-issue',
+    'security' => 'site/security',
 
     // TODO implement redirect for url/ to url, needed for old 1.1 api urls
 

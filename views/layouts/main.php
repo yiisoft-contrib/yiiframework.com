@@ -111,6 +111,7 @@ use yii\widgets\Menu;
                                 ['label' => '<i class="fa fa-angle-double-right"></i>Install Yii', 'url' => ['guide/view', 'version' => '2.0', 'language' => 'en', 'section' => 'start-installation']],
                                 ['label' => '<i class="fa fa-angle-double-right"></i>Extensions<span class="label label-warning">coming soon</span>', 'url' => 'https://yiicamp.com/extensions'],
                                 ['label' => '<i class="fa fa-angle-double-right"></i>Report an Issue', 'url' => ['site/report-issue']],
+                                ['label' => '<i class="fa fa-angle-double-right"></i>Report a Security Issue', 'url' => ['site/security']],
                                 ['label' => '<i class="fa fa-angle-double-right"></i>Contribute to Yii', 'url' => ['/site/contribute']],
                                 ['label' => '<i class="fa fa-angle-double-right"></i>Jobs<span class="label label-warning">coming soon</span>', 'url' => 'https://yiicamp.com/jobs'],
                             ]],

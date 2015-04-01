@@ -132,5 +132,9 @@ class SiteController extends Controller
         return $this->render('report-issue');
     }
 
+    public function actionSecurity()
+    {
+        return $this->render('security');
+    }
 
 }
