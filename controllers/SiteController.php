@@ -2,6 +2,7 @@
 
 namespace app\controllers;
 
+use app\components\RowHelper;
 use Yii;
 use yii\filters\AccessControl;
 use yii\web\Controller;
@@ -123,6 +124,20 @@ class SiteController extends Controller
     {
         $members = Yii::$app->params['members'];
 
+        $activeMembers = [];
+        $pastMembers = [];
+
+        foreach ($members as $member) {
+            if ($member['active']) {
+                $activeMembers[] = $member;
+            } else {
+                $pastMembers[] = $member;
+            }
+        }
+
+        $activeMembers = RowHelper::split($activeMembers, 3);
+        $pastMembers = RowHelper::split($pastMembers, 3);
+
         $contributorLimit = 1000;
 
         // getting contributors from github
@@ -151,7 +166,8 @@ class SiteController extends Controller
         }
 
         return $this->render('team', [
-            'members' => $members,
+            'activeMembers' => $activeMembers,
+            'pastMembers' => $pastMembers,
             'contributors' => $contributors,
         ]);
     }

@@ -2,7 +2,8 @@
 use yii\helpers\Html;
 
 /* @var $this yii\web\View */
-/* @var $members array */
+/* @var $activeMembers array */
+/* @var $pastMembers array */
 /* @var $contributors array */
 $this->title = 'Team';
 $this->params['breadcrumbs'][] = $this->title;
@@ -14,25 +15,28 @@ $this->params['breadcrumbs'][] = $this->title;
         <div class="container">
             <h2>Current Developer Team</h2>
 
-            <?php foreach($members as $member): ?>
-                <?php if (!$member['active']) continue ?>
-                <div class="col-sm-4">
-                    <div class="profile">
-                        <img src="<?= Html::encode($member['photo']) ?>" class="img-responsive center-block" alt="">
-                        <h3><?= Html::encode($member['name'])?><small><?= Html::encode($member['location'])?></small></h3>
-                        <h4>Since <?= Html::encode($member['memberSince']) ?></h4>
-                        <p class="duty"><?= Html::encode($member['duty']) ?></p>
-                        <ul class="brands brands-inline brands-sm brands-transition brands-circle">
-                            <?php
-                            if (isset($member['github'])) {
-                                echo '<li>' . Html::a('<i class="fa fa-github"></i>', 'https://github.com/' . $member['github'], ['class' => 'brands-github']) . '</li>';
-                            }
-                            if (isset($member['twitter'])) {
-                                echo '<li>' . Html::a('<i class="fa fa-twitter"></i>', 'https://twitter.com/' . $member['twitter'], ['class' => 'brands-twitter']) . '</li>';
-                            }
-                            ?>
-                        </ul>
-                    </div>
+            <?php foreach($activeMembers as $row): ?>
+                <div class="row">
+                    <?php foreach($row as $member):?>
+                        <div class="col-sm-4">
+                            <div class="profile">
+                                <img src="<?= Html::encode($member['photo']) ?>" class="img-responsive center-block" alt="">
+                                <h3><?= Html::encode($member['name'])?><small><?= Html::encode($member['location'])?></small></h3>
+                                <h4>Since <?= Html::encode($member['memberSince']) ?></h4>
+                                <p class="duty"><?= Html::encode($member['duty']) ?></p>
+                                <ul class="brands brands-inline brands-sm brands-transition brands-circle">
+                                    <?php
+                                    if (isset($member['github'])) {
+                                        echo '<li>' . Html::a('<i class="fa fa-github"></i>', 'https://github.com/' . $member['github'], ['class' => 'brands-github']) . '</li>';
+                                    }
+                                    if (isset($member['twitter'])) {
+                                        echo '<li>' . Html::a('<i class="fa fa-twitter"></i>', 'https://twitter.com/' . $member['twitter'], ['class' => 'brands-twitter']) . '</li>';
+                                    }
+                                    ?>
+                                </ul>
+                            </div>
+                        </div>
+                    <?php endforeach ?>
                 </div>
             <?php endforeach ?>
         </div>
@@ -40,27 +44,30 @@ $this->params['breadcrumbs'][] = $this->title;
         <div class="container">
             <h2>Past Team Members</h2>
 
-            <?php foreach($members as $member): ?>
-                <?php if ($member['active']) continue ?>
-                <div class="col-sm-4">
-                    <div class="profile">
-                        <img src="<?= Html::encode($member['photo']) ?>" class="img-responsive center-block" alt="">
-                        <h3><?= Html::encode($member['name'])?><small><?= Html::encode($member['location'])?></small></h3>
-                        <h4><?= Html::encode($member['memberSince']) ?></h4>
-                        <p><?= Html::encode($member['duty']) ?></p>
-                        <ul class="brands brands-inline brands-sm brands-transition brands-circle">
-                            <?php
-                            if (isset($member['github'])) {
-                                echo '<li>' . Html::a('<i class="fa fa-github"></i>', 'https://github.com/' . $member['github'], ['class' => 'brands-github']) . '</li>';
-                            }
-                            if (isset($member['twitter'])) {
-                                echo '<li>' . Html::a('<i class="fa fa-twitter"></i>', 'https://twitter.com/' . $member['twitter'], ['class' => 'brands-twitter']) . '</li>';
-                            }
-                            ?>
-                        </ul>
+            <?php foreach($pastMembers as $row): ?>
+            <div class="row">
+                <?php foreach($row as $member):?>
+                    <div class="col-sm-4">
+                        <div class="profile">
+                            <img src="<?= Html::encode($member['photo']) ?>" class="img-responsive center-block" alt="">
+                            <h3><?= Html::encode($member['name'])?><small><?= Html::encode($member['location'])?></small></h3>
+                            <h4>Since <?= Html::encode($member['memberSince']) ?></h4>
+                            <p class="duty"><?= Html::encode($member['duty']) ?></p>
+                            <ul class="brands brands-inline brands-sm brands-transition brands-circle">
+                                <?php
+                                if (isset($member['github'])) {
+                                    echo '<li>' . Html::a('<i class="fa fa-github"></i>', 'https://github.com/' . $member['github'], ['class' => 'brands-github']) . '</li>';
+                                }
+                                if (isset($member['twitter'])) {
+                                    echo '<li>' . Html::a('<i class="fa fa-twitter"></i>', 'https://twitter.com/' . $member['twitter'], ['class' => 'brands-twitter']) . '</li>';
+                                }
+                                ?>
+                            </ul>
+                        </div>
                     </div>
-                </div>
-            <?php endforeach ?>
+                <?php endforeach ?>
+            </div>
+        <?php endforeach ?>
         </div>
 
         <div class="container">

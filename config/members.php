@@ -34,7 +34,7 @@ return [
         'photo' => 'https://avatars1.githubusercontent.com/u/209837?v=3&s=460',
         'github' => 'mdomba',
         'twitter' => 'mdomba',
-        'active' => true,
+        'active' => false,
     ],
     [
         'name' => 'Carsten Brandt',
@@ -70,7 +70,7 @@ return [
         'photo' => 'https://avatars2.githubusercontent.com/u/566016?v=3&s=460',
         'github' => 'tonydspaniard',
         'twitter' => 'tonydspaniard',
-        'active' => true,
+        'active' => false,
     ],
     [
         'name' => 'Timur Ruziev',
