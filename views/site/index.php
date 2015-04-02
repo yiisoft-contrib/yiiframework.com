@@ -1,6 +1,5 @@
 <?php
 /* @var $this yii\web\View */
-$this->title = 'My Yii Application';
 ?>
 <div class="site-index">
 <!--
@@ -194,25 +193,25 @@ STATISTICS - START
            <div class="col-md-3">
                <div class="statistic">
                    <div class="number" data-from="2200" data-to="2780" data-refresh-interval="100"></div>
-                   <div class="title">Clients</div>
+                   <div class="title">Facebook</div>
                </div>
            </div>
            <div class="col-md-3">
                <div class="statistic">
                	<div class="number" data-from="2200" data-to="2780" data-refresh-interval="100"></div>
-                   <div class="title">Clients</div>
+                   <div class="title">VICE</div>
                </div>
            </div>
            <div class="col-md-3">
                <div class="statistic">
                	<div class="number" data-from="2200" data-to="2780" data-refresh-interval="100"></div>
-                   <div class="title">Clients</div>
+                   <div class="title">Stay</div>
                </div>
            </div>
            <div class="col-md-3">
                <div class="statistic">
                	<div class="number" data-from="2200" data-to="2780" data-refresh-interval="100"></div>
-                   <div class="title">Clients</div>
+                   <div class="title">FIFA</div>
                </div>
            </div>
        </div>

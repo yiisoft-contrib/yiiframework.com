@@ -30,7 +30,7 @@ use yii\widgets\Menu;
     <?= Html::csrfMetaTags() ?>
     <?= Html::cssFile(YII_DEBUG ? '@web/css/all.css' : '@web/css/all.min.css?v=' . filemtime(Yii::getAlias('@webroot/css/all.min.css'))) ?>
 
-    <title><?= Html::encode($this->title) ?></title>
+    <title><?php if (!empty($this->title)): ?><?= Html::encode($this->title) ?> - <?php endif?>Yii PHP Framework</title>
     <?php $this->head() ?>
 </head>
 <body class="color-yii">
