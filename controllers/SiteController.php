@@ -182,4 +182,8 @@ class SiteController extends Controller
         return $this->render('security');
     }
 
+    public function actionDownload()
+    {
+        return $this->render('download');
+    }
 }
