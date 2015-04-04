@@ -20,7 +20,7 @@ $this->params['breadcrumbs'][] = $this->title;
                     <?php foreach($row as $member):?>
                         <div class="col-sm-4">
                             <div class="profile">
-                                <img src="<?= Html::encode($member['photo']) ?>" class="img-responsive center-block" alt="">
+                                <img src="<?= Html::encode(Yii::getAlias($member['photo'])) ?>" class="img-responsive center-block" alt="">
                                 <h3><?= Html::encode($member['name'])?><small><?= Html::encode($member['location'])?></small></h3>
                                 <h4>Since <?= Html::encode($member['memberSince']) ?></h4>
                                 <p class="duty"><?= Html::encode($member['duty']) ?></p>
@@ -49,7 +49,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 <?php foreach($row as $member):?>
                     <div class="col-sm-4">
                         <div class="profile">
-                            <img src="<?= Html::encode($member['photo']) ?>" class="img-responsive center-block" alt="">
+                            <img src="<?= Html::encode(Yii::getAlias($member['photo'])) ?>" class="img-responsive center-block" alt="">
                             <h3><?= Html::encode($member['name'])?><small><?= Html::encode($member['location'])?></small></h3>
                             <h4><?= Html::encode($member['memberSince']) ?></h4>
                             <p class="duty"><?= Html::encode($member['duty']) ?></p>
