@@ -41,14 +41,39 @@ class GuideController extends \yii\apidoc\commands\GuideController
                     $source .= "-$language";
                 }
                 $target = "$targetPath/guide-$version/$language";
+                $pdfTarget = "$targetPath/guide-$version/$language/pdf";
                 $this->version = $version;
                 $this->language = $language;
                 $this->apiDocs = Yii::getAlias("@app/data/api-$version");
 
                 $this->stdout("Start generating guide $version in $name...\n", Console::FG_CYAN);
+                $this->template = 'bootstrap';
                 $this->generateIndex($source, $target);
                 $this->actionIndex([$source], $target);
                 $this->stdout("Finished guide $version in $name.\n\n", Console::FG_CYAN);
+
+                // set LaTeX language
+                $languageMap = [
+                    'en' => 'british',
+                    'de' => 'ngerman',
+                    'ru' => 'russian',
+                ];
+                if (isset($languageMap[$language])) {
+                    $this->stdout("Start generating guide $version PDF in $name...\n", Console::FG_CYAN);
+                    $this->template = 'pdf';
+                    $this->actionIndex([$source], $pdfTarget);
+                    $this->stdout('Generating PDF with pdflatex...');
+                    file_put_contents("$pdfTarget/main.tex", str_replace('british', $languageMap[$language], file_get_contents("$pdfTarget/main.tex")));
+                    exec('cd ' . escapeshellarg($pdfTarget) . ' && make pdf', $output, $ret);
+                    if ($ret === 0) {
+                        $this->stdout("\nFinished guide $version PDF in $name.\n\n", Console::FG_CYAN);
+                    } else {
+                        $this->stdout("\n" . implode("\n", $output) . "\n");
+                        $this->stdout("Guide $version PDF failed, make exited with status $ret.\n\n", Console::FG_RED);
+                    }
+                } else {
+                    $this->stdout("Guide PDF is not available for $name.\n\n", Console::FG_CYAN);
+                }
             }
         }
 
@@ -57,6 +82,11 @@ class GuideController extends \yii\apidoc\commands\GuideController
 
     protected function findRenderer($template)
     {
+        if ($template === 'pdf') {
+            $rendererClass = 'yii\\apidoc\\templates\\' . $template . '\\GuideRenderer';
+            return new $rendererClass();
+        }
+
         return new GuideRenderer([
             'guideUrl' => Yii::$app->params['guide.baseUrl'] . "/{$this->version}/{$this->language}",
             'apiUrl' => Yii::$app->params['api.baseUrl'] .  "/{$this->version}",
