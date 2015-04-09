@@ -11,6 +11,7 @@ $config = [
     'bootstrap' => ['log'],
     'components' => [
         'db' => $params['components.db'],
+        'elasticsearch' => $params['components.elasticsearch'],
         'cache' => $params['components.cache'],
         'mailer' => $params['components.mailer'],
         'user' => [

@@ -2,6 +2,8 @@
 
 namespace app\apidoc;
 
+use app\models\ApiPrimitive;
+use app\models\ApiType;
 use Yii;
 use yii\apidoc\helpers\ApiIndexer;
 use yii\helpers\Console;
@@ -56,6 +58,9 @@ class ApiRenderer extends \yii\apidoc\templates\html\ApiRenderer
             ]);
             file_put_contents($targetDir . "/ext-{$ext}-index.html", $indexFileContent);
         }
+        if ($this->controller !== null) {
+            $this->controller->stdout("done.\n", Console::FG_GREEN);
+        }
 
         // create index.html
         $yiiTypes = $this->filterTypes($types, 'yii');
@@ -72,6 +77,27 @@ class ApiRenderer extends \yii\apidoc\templates\html\ApiRenderer
             $titles[$this->generateFileName($type->name)] = StringHelper::basename($type->name) . ", {$type->name}";
         }
         file_put_contents($targetDir . '/titles.php', '<?php return ' . VarDumper::export($titles) . ';');
+
+        if ($this->controller !== null) {
+            Console::startProgress(0, $count = count($types), 'populating elasticsearch index...', false);
+        }
+        // first delete all records for this version
+//        ApiPrimitive::find()->where(['version' => $this->version])->delete(); // TODO this does not work
+//        ApiType::find()->where(['version' => $this->version])->delete();
+        ApiType::setMappings();
+        ApiPrimitive::setMappings();
+        $i = 0;
+        foreach($types as $type) {
+            ApiType::createRecord($type, $this->version);
+            if ($this->controller !== null) {
+                Console::updateProgress(++$i, $count);
+            }
+        }
+        if ($this->controller !== null) {
+
+            Console::endProgress(true, true);
+            $this->controller->stdout("done.\n", Console::FG_GREEN);
+        }
 
 
 //        if ($this->controller !== null) {

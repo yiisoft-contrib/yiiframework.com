@@ -26,4 +26,6 @@ return [
     // urls from old site redirect to new location
     'doc-2.0/guide-<section:[A-z0-9\\.\\-]+>.html' => 'guide/redirect',
     'doc-2.0/<section:.+>.html' => 'api/redirect',
+
+    'search' => 'search/global',
 ];

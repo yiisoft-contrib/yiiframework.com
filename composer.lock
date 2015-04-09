@@ -4,7 +4,7 @@
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "70e3e343033b78393c784c6bfb46cc47",
+    "hash": "dfa1eedaa754e5efdc6e4429d70d689c",
     "packages": [
         {
             "name": "bower-asset/bootstrap",
@@ -515,16 +515,16 @@
         },
         {
             "name": "knplabs/github-api",
-            "version": "1.4.5",
+            "version": "1.4.7",
             "source": {
                 "type": "git",
                 "url": "https://github.com/KnpLabs/php-github-api.git",
-                "reference": "d561376583db696f9b09d595f3767af64640ae4d"
+                "reference": "d2729cf6b9d5b6fa340b1ff001dd89e319741baa"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/KnpLabs/php-github-api/zipball/d561376583db696f9b09d595f3767af64640ae4d",
-                "reference": "d561376583db696f9b09d595f3767af64640ae4d",
+                "url": "https://api.github.com/repos/KnpLabs/php-github-api/zipball/d2729cf6b9d5b6fa340b1ff001dd89e319741baa",
+                "reference": "d2729cf6b9d5b6fa340b1ff001dd89e319741baa",
                 "shasum": ""
             },
             "require": {
@@ -572,7 +572,7 @@
                 "gist",
                 "github"
             ],
-            "time": "2015-03-28 00:40:32"
+            "time": "2015-04-07 20:24:33"
         },
         {
             "name": "mikevanriel/text-to-latex",
@@ -916,12 +916,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/yiisoft/yii2-framework.git",
-                "reference": "d18d87e876972957adc05471e4d45a7b65952764"
+                "reference": "9933a8eb21e007966107f3abebd4e73ff203a379"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/yiisoft/yii2-framework/zipball/d18d87e876972957adc05471e4d45a7b65952764",
-                "reference": "d18d87e876972957adc05471e4d45a7b65952764",
+                "url": "https://api.github.com/repos/yiisoft/yii2-framework/zipball/9933a8eb21e007966107f3abebd4e73ff203a379",
+                "reference": "9933a8eb21e007966107f3abebd4e73ff203a379",
                 "shasum": ""
             },
             "require": {
@@ -996,7 +996,7 @@
                 "framework",
                 "yii2"
             ],
-            "time": "2015-04-03 16:22:42"
+            "time": "2015-04-09 20:16:38"
         },
         {
             "name": "yiisoft/yii2-apidoc",
@@ -1004,12 +1004,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/yiisoft/yii2-apidoc.git",
-                "reference": "bed861930f544f19f9304d84c9b30e674abfadfd"
+                "reference": "33a938b59062f7f8c7edd4c577a2cbce29bd1492"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/yiisoft/yii2-apidoc/zipball/bed861930f544f19f9304d84c9b30e674abfadfd",
-                "reference": "bed861930f544f19f9304d84c9b30e674abfadfd",
+                "url": "https://api.github.com/repos/yiisoft/yii2-apidoc/zipball/33a938b59062f7f8c7edd4c577a2cbce29bd1492",
+                "reference": "33a938b59062f7f8c7edd4c577a2cbce29bd1492",
                 "shasum": ""
             },
             "require": {
@@ -1058,7 +1058,7 @@
                 "phpdoc",
                 "yii2"
             ],
-            "time": "2015-03-23 18:32:02"
+            "time": "2015-04-07 00:08:52"
         },
         {
             "name": "yiisoft/yii2-bootstrap",
@@ -1066,12 +1066,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/yiisoft/yii2-bootstrap.git",
-                "reference": "a1876944644373efbe1dbd9cfdbc9c3747008577"
+                "reference": "b8c381f8d9ccaf541de061e1858bb0144639fd14"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/yiisoft/yii2-bootstrap/zipball/a1876944644373efbe1dbd9cfdbc9c3747008577",
-                "reference": "a1876944644373efbe1dbd9cfdbc9c3747008577",
+                "url": "https://api.github.com/repos/yiisoft/yii2-bootstrap/zipball/b8c381f8d9ccaf541de061e1858bb0144639fd14",
+                "reference": "b8c381f8d9ccaf541de061e1858bb0144639fd14",
                 "shasum": ""
             },
             "require": {
@@ -1108,7 +1108,7 @@
                 "bootstrap",
                 "yii2"
             ],
-            "time": "2015-04-03 15:52:53"
+            "time": "2015-04-09 21:58:18"
         },
         {
             "name": "yiisoft/yii2-composer",
@@ -1156,6 +1156,55 @@
                 "yii2"
             ],
             "time": "2015-03-01 06:22:44"
+        },
+        {
+            "name": "yiisoft/yii2-elasticsearch",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/yiisoft/yii2-elasticsearch.git",
+                "reference": "243f07405abf7e847431501c26dbc0635e331f3c"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/yiisoft/yii2-elasticsearch/zipball/243f07405abf7e847431501c26dbc0635e331f3c",
+                "reference": "243f07405abf7e847431501c26dbc0635e331f3c",
+                "shasum": ""
+            },
+            "require": {
+                "ext-curl": "*",
+                "yiisoft/yii2": "*"
+            },
+            "type": "yii2-extension",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "2.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "yii\\elasticsearch\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-3-Clause"
+            ],
+            "authors": [
+                {
+                    "name": "Carsten Brandt",
+                    "email": "mail@cebe.cc"
+                }
+            ],
+            "description": "Elasticsearch integration and ActiveRecord for the Yii framework",
+            "keywords": [
+                "active-record",
+                "elasticsearch",
+                "fulltext",
+                "search",
+                "yii2"
+            ],
+            "time": "2015-04-06 12:21:31"
         },
         {
             "name": "yiisoft/yii2-swiftmailer",
@@ -1264,6 +1313,7 @@
         "yiisoft/yii2-bootstrap": 20,
         "yiisoft/yii2-swiftmailer": 20,
         "yiisoft/yii2-apidoc": 20,
+        "yiisoft/yii2-elasticsearch": 20,
         "yiisoft/yii2-debug": 20
     },
     "prefer-stable": false,

@@ -72,6 +72,18 @@ use yii\widgets\Menu;
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse"><i class="fa fa-bars"></i></button>
             </div>
             <div class="navbar-collapse collapse navbar-right">
+
+                <ul class="nav navbar-nav"><li>
+                        <?= Html::beginForm(['/search/global'], 'get', ['id' => 'search-form', 'class' => 'navbar-form']) ?>
+                        <div class="form-group nospace">
+                            <div class="input-group">
+                                <input type="text" class="form-control" id="search" name="q" placeholder="Search" value="<?= property_exists($this->context, 'searchQuery') ? Html::encode($this->context->searchQuery) : '' ?>">
+                                <span class="input-group-btn"><?= Html::submitButton('<i class="fa fa-search"></i>', ['class' => "btn btn-primary"]) ?></span>
+                            </div>
+                        </div>
+                        <?= Html::endForm() ?>
+                    </li></ul>
+
             <?php
 
 //                    // search form
@@ -125,7 +137,7 @@ use yii\widgets\Menu;
                         ],
                     ]);
 ?>
-                <ul class="nav navbar-nav hidden-xs hidden-sm">
+<!--                <ul class="nav navbar-nav">
                     <li class="dropdown search-form-toggle">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-search"></i></a>
                         <ul class="dropdown-menu navbar-search-form">
@@ -143,7 +155,7 @@ use yii\widgets\Menu;
                             </li>
                         </ul>
                     </li>
-                </ul>
+                </ul>-->
             </div>
         </div>
     </header>

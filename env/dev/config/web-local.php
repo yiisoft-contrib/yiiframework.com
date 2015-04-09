@@ -5,7 +5,14 @@ return [
         'debug',
     ],
     'modules' => [
-        'debug' => 'yii\debug\Module',
+        'debug' => [
+            'class' => 'yii\\debug\\Module',
+            'panels' => [
+                'elasticsearch' => [
+                    'class' => 'yii\\elasticsearch\\DebugPanel',
+                ],
+            ],
+        ],
     ],
     'components' => [
         'request' => [
