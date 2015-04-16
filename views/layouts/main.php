@@ -183,13 +183,10 @@ use yii\widgets\Menu;
         	<div class="row">
             	<div class="col-md-4">
                 	<h3><i class="fa fa-flag"></i>Contact</h3>
-                    <p class="contact-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis nec lorem quis est ultrices volutpat.</p>
-                    <ul class="list-unstyled contact-address">
-                    	<li>212-222 Broadway, New York, NY 10038, USA</li>
-                        <li><a>info@mycompany.com</a></li>
-                        <li>+420 123 456 789</li>
-                        <li>www.mycompany.com</li>
-                    </ul>
+                    <p class="contact-text">Use <?= Html::a('contact form', ['site/contact']) ?> if you have consulting requests or any other proposals.</p>
+<!--                    <ul class="list-unstyled contact-address">-->
+<!--                        <li>Yii Software LLC</li>-->
+<!--                    </ul>-->
                     <ul class="brands brands-inline brands-sm brands-transition brands-circle">
                         <li><a href="https://github.com/yiisoft/yii2" class="brands-github"><i class="fa fa-github"></i></a></li>
                     	<li><a href="https://twitter.com/yiiframework" class="brands-twitter"><i class="fa fa-twitter"></i></a></li>
@@ -205,15 +202,12 @@ use yii\widgets\Menu;
                 </div>
 
                 <div class="col-md-4 hidden-xs hidden-sm">
-                	<h3><i class="fa fa-camera"></i>Latest Work</h3>
-                    <?php /*
+                	<h3><i class="fa fa-heart-o"></i>Our supporters</h3>
                     <div class="row" id="latest-work-footer">
 						<div class="overlay-wrapper col-sm-6">
-                            <img src="image/image_01.jpg" class="img-responsive" alt="">
-                            <span class="overlay">
-                                <a href="portfolio-post1.html"><i class="fa fa-plus"></i></a>
-                            </span>
+                            <a href="https://www.jetbrains.com/"><img src="image/logo_jetbrains.png" class="img-responsive" alt="JetBrains"></a>
                         </div>
+                        <?php /*
                         <div class="overlay-wrapper col-sm-6">
                             <img src="image/image_02.jpg" class="img-responsive" alt="">
                             <span class="overlay">
@@ -232,7 +226,8 @@ use yii\widgets\Menu;
                                 <a href="portfolio-post1.html"><i class="fa fa-plus"></i></a>
                             </span>
                         </div>
-                    </div> */ ?>
+                        */ ?>
+                    </div>
                 </div>
 
                 <div class="col-md-4 hidden-xs hidden-sm">

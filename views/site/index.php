@@ -193,25 +193,25 @@ STATISTICS - START
            <div class="col-md-3">
                <div class="statistic">
                    <div class="number" data-from="2200" data-to="2780" data-refresh-interval="100"></div>
-                   <div class="title">Facebook</div>
+                   <div class="title"><img src="/image/facebook.png" alt="Facebook"/></div>
                </div>
            </div>
            <div class="col-md-3">
                <div class="statistic">
-               	<div class="number" data-from="2200" data-to="2780" data-refresh-interval="100"></div>
-                   <div class="title">VICE</div>
+               <div class="number" data-from="2200" data-to="2780" data-refresh-interval="100"></div>
+                   <div class="title"><img src="/image/stay.png" alt="Stay.com"/></div>
                </div>
            </div>
            <div class="col-md-3">
                <div class="statistic">
-               	<div class="number" data-from="2200" data-to="2780" data-refresh-interval="100"></div>
-                   <div class="title">Stay</div>
+               <div class="number" data-from="2200" data-to="2780" data-refresh-interval="100"></div>
+                   <div class="title"><img src="/image/vice.png" alt="VICE"/></div>
                </div>
            </div>
            <div class="col-md-3">
                <div class="statistic">
-               	<div class="number" data-from="2200" data-to="2780" data-refresh-interval="100"></div>
-                   <div class="title">FIFA</div>
+               <div class="number" data-from="2200" data-to="2780" data-refresh-interval="100"></div>
+                   <div class="title"><img src="/image/fifa.png" alt="FIFA"/></div>
                </div>
            </div>
        </div>
@@ -260,6 +260,7 @@ VIDEO - END
                         <h3>Brandon Kelly, <small>Craft</small></h3>
                     </div>
 
+                    <?php /*
                     <div class="item">
                         <i class="fa fa-quote-left"></i>
                         <p>Phasellus fringilla neque diam, eget elementum libero eleifend ac. Morbi condimentum metus felis, pellentesque iaculis sapien egestas imperdiet. Curabitur in lacus at ante elementum mollis.</p>
@@ -271,6 +272,7 @@ VIDEO - END
                         <p>Phasellus fringilla neque diam, eget elementum libero eleifend ac. Morbi condimentum metus felis, pellentesque iaculis sapien egestas imperdiet. Curabitur in lacus at ante elementum mollis.</p>
                     	<h3>John Doe <small>[Developer]</small></h3>
                     </div>
+                    */ ?>
                 </div>
             </div>
         </div>
