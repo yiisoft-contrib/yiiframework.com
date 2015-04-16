@@ -28,4 +28,9 @@ return [
     'doc-2.0/<section:.+>.html' => 'api/redirect',
 
     'search' => 'search/global',
+
+    'logout' => 'site/logout',
+    'login' => 'site/login',
+    'signup' => 'site/signup',
+    'auth' => 'site/auth',
 ];

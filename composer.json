@@ -14,7 +14,9 @@
         "yiisoft/yii2-swiftmailer": "2.0.*@dev",
         "yiisoft/yii2-apidoc": "2.0.*@dev",
         "yiisoft/yii2-elasticsearch": "2.0.*@dev",
-        "knplabs/github-api": "~1.2"
+        "knplabs/github-api": "~1.2",
+        "yiisoft/yii2-authclient": "2.0.*@dev",
+        "cebe/yii2-gravatar": "1.1"
     },
     "require-dev": {
         "yiisoft/yii2-debug": "2.0.*@dev"

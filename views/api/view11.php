@@ -21,3 +21,10 @@ $this->title = "Yii API Documentation $version";
         </div>
     </div>
 </div>
+
+<div class="container">
+    <?= \app\components\Comments::widget([
+        'objectType' => 'api',
+        'objectId' => $version . '-' . $section,
+    ]) ?>
+</div>

@@ -4,7 +4,7 @@
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "dfa1eedaa754e5efdc6e4429d70d689c",
+    "hash": "bf6e3a7803a11865827dccb0014e6818",
     "packages": [
         {
             "name": "bower-asset/bootstrap",
@@ -373,6 +373,49 @@
                 "markdown-extra"
             ],
             "time": "2014-10-20 23:24:21"
+        },
+        {
+            "name": "cebe/yii2-gravatar",
+            "version": "1.1",
+            "target-dir": "cebe/gravatar",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/cebe/yii2-gravatar.git",
+                "reference": "c9c01bd14c9bdee9e5ae1ef1aad23f80c182c057"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/cebe/yii2-gravatar/zipball/c9c01bd14c9bdee9e5ae1ef1aad23f80c182c057",
+                "reference": "c9c01bd14c9bdee9e5ae1ef1aad23f80c182c057",
+                "shasum": ""
+            },
+            "require": {
+                "yiisoft/yii2": "*"
+            },
+            "type": "yii2-extension",
+            "autoload": {
+                "psr-0": {
+                    "cebe\\gravatar\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Carsten Brandt",
+                    "email": "mail@cebe.cc",
+                    "homepage": "http://cebe.cc/",
+                    "role": "Core framework development"
+                }
+            ],
+            "description": "Gravatar Widget for Yii 2",
+            "keywords": [
+                "gravatar",
+                "yii"
+            ],
+            "time": "2013-12-10 17:49:58"
         },
         {
             "name": "ezyang/htmlpurifier",
@@ -916,12 +959,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/yiisoft/yii2-framework.git",
-                "reference": "9933a8eb21e007966107f3abebd4e73ff203a379"
+                "reference": "095a3a52b9f04cf1650685d73529a2d3b3548fcd"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/yiisoft/yii2-framework/zipball/9933a8eb21e007966107f3abebd4e73ff203a379",
-                "reference": "9933a8eb21e007966107f3abebd4e73ff203a379",
+                "url": "https://api.github.com/repos/yiisoft/yii2-framework/zipball/095a3a52b9f04cf1650685d73529a2d3b3548fcd",
+                "reference": "095a3a52b9f04cf1650685d73529a2d3b3548fcd",
                 "shasum": ""
             },
             "require": {
@@ -996,7 +1039,7 @@
                 "framework",
                 "yii2"
             ],
-            "time": "2015-04-09 20:16:38"
+            "time": "2015-04-16 08:32:02"
         },
         {
             "name": "yiisoft/yii2-apidoc",
@@ -1061,17 +1104,65 @@
             "time": "2015-04-07 00:08:52"
         },
         {
+            "name": "yiisoft/yii2-authclient",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/yiisoft/yii2-authclient.git",
+                "reference": "12343d9c97850bd329dc4ba699665592674b6a39"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/yiisoft/yii2-authclient/zipball/12343d9c97850bd329dc4ba699665592674b6a39",
+                "reference": "12343d9c97850bd329dc4ba699665592674b6a39",
+                "shasum": ""
+            },
+            "require": {
+                "ext-curl": "*",
+                "yiisoft/yii2": "*"
+            },
+            "type": "yii2-extension",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "2.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "yii\\authclient\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-3-Clause"
+            ],
+            "authors": [
+                {
+                    "name": "Paul Klimov",
+                    "email": "klimov.paul@gmail.com"
+                }
+            ],
+            "description": "External authentication via OAuth and OpenID for the Yii framework",
+            "keywords": [
+                "OpenId",
+                "auth",
+                "oauth",
+                "yii2"
+            ],
+            "time": "2015-04-06 11:05:49"
+        },
+        {
             "name": "yiisoft/yii2-bootstrap",
             "version": "dev-master",
             "source": {
                 "type": "git",
                 "url": "https://github.com/yiisoft/yii2-bootstrap.git",
-                "reference": "b8c381f8d9ccaf541de061e1858bb0144639fd14"
+                "reference": "356ed62e5f445e6517aa81dd2d8df796c1f9317a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/yiisoft/yii2-bootstrap/zipball/b8c381f8d9ccaf541de061e1858bb0144639fd14",
-                "reference": "b8c381f8d9ccaf541de061e1858bb0144639fd14",
+                "url": "https://api.github.com/repos/yiisoft/yii2-bootstrap/zipball/356ed62e5f445e6517aa81dd2d8df796c1f9317a",
+                "reference": "356ed62e5f445e6517aa81dd2d8df796c1f9317a",
                 "shasum": ""
             },
             "require": {
@@ -1108,7 +1199,7 @@
                 "bootstrap",
                 "yii2"
             ],
-            "time": "2015-04-09 21:58:18"
+            "time": "2015-04-16 15:12:41"
         },
         {
             "name": "yiisoft/yii2-composer",
@@ -1264,12 +1355,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/yiisoft/yii2-debug.git",
-                "reference": "c49b9f96b3ba844b87e028e42983269a2d8b452a"
+                "reference": "14ef93a0b75bd1c2d6b6eac69ffe33ff3df47560"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/yiisoft/yii2-debug/zipball/c49b9f96b3ba844b87e028e42983269a2d8b452a",
-                "reference": "c49b9f96b3ba844b87e028e42983269a2d8b452a",
+                "url": "https://api.github.com/repos/yiisoft/yii2-debug/zipball/14ef93a0b75bd1c2d6b6eac69ffe33ff3df47560",
+                "reference": "14ef93a0b75bd1c2d6b6eac69ffe33ff3df47560",
                 "shasum": ""
             },
             "require": {
@@ -1303,7 +1394,7 @@
                 "debugger",
                 "yii2"
             ],
-            "time": "2015-04-03 13:46:33"
+            "time": "2015-04-12 08:53:46"
         }
     ],
     "aliases": [],
@@ -1314,6 +1405,7 @@
         "yiisoft/yii2-swiftmailer": 20,
         "yiisoft/yii2-apidoc": 20,
         "yiisoft/yii2-elasticsearch": 20,
+        "yiisoft/yii2-authclient": 20,
         "yiisoft/yii2-debug": 20
     },
     "prefer-stable": false,

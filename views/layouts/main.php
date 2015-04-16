@@ -133,7 +133,8 @@ use yii\widgets\Menu;
                                 ['label' => '<i class="fa fa-angle-double-right"></i>Forum', 'url' => '/forum'],
                                 ['label' => '<i class="fa fa-angle-double-right"></i>Live Chat', 'url' => ['site/chat']],
                             ]],
-                            ['label' => 'Camp', 'url' => 'https://yiicamp.com']
+                            ['label' => 'Camp', 'url' => 'https://yiicamp.com'],
+                            ['label' => 'Logout', 'url' => ['site/logout'], 'visible' => !Yii::$app->user->isGuest, 'linkOptions' => ['data-method' => 'post']],
                         ],
                     ]);
 ?>

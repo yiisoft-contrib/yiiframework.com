@@ -16,3 +16,10 @@ if (!empty($title)) {
 <div class="container api-content">
 	<?= strtr($content, ['<!-- YII_VERSION_SELECTOR -->' => $this->render('_versions.php', compact('version', 'versions', 'section'))]) ?>
 </div>
+
+<div class="container">
+    <?= \app\components\Comments::widget([
+        'objectType' => 'api',
+        'objectId' => $version . '-' . $section,
+    ]) ?>
+</div>
