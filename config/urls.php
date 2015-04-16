@@ -14,6 +14,11 @@ return [
     'security' => 'site/security',
     'download' => 'site/download',
 
+    'logout' => 'site/logout',
+    'login' => 'site/login',
+    'signup' => 'site/signup',
+    'auth' => 'site/auth',
+
     // TODO implement redirect for url/ to url, needed for old 1.1 api urls
 
     '' => 'site/index',
@@ -31,6 +36,5 @@ return [
     'doc-2.0/guide-<section:[A-z0-9\\.\\-]+>.html' => 'guide/redirect',
     'doc-2.0/<section:.+>.html' => 'api/redirect',
     '<url:doc/terms>' => 'site/redirect'
-
 
 ];

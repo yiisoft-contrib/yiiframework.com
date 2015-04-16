@@ -4,7 +4,6 @@
  * @var $guide app\models\Guide
  * @var $section app\models\GuideSection
  */
-use app\components\DropdownList;
 use app\components\SideNav;
 use yii\helpers\Html;
 
@@ -69,6 +68,12 @@ $(".sidenav-toggle").on("click", function() {
                     ?>
                 </div>
             </div>
+
+
+            <?= \app\components\Comments::widget([
+                'objectType' => 'guide',
+                'objectId' => $section->name. '-' . $guide->version,
+            ]) ?>
         </div>
     </div>
 </div>

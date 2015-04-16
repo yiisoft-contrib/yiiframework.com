@@ -16,6 +16,7 @@ $config = [
         'mailer' => $params['components.mailer'],
         'user' => [
             'identityClass' => 'app\models\User',
+            'enableAutoLogin' => true,
         ],
         'errorHandler' => [
             'errorAction' => 'site/error',
@@ -53,6 +54,10 @@ $config = [
             'showScriptName' => false,
             'enableStrictParsing' => true,
             'rules' => require(__DIR__ . '/urls.php'),
+        ],
+        'authClientCollection' => [
+            'class' => 'yii\authclient\Collection',
+            'clients' => $params['authclients'],
         ],
     ],
     'params' => $params,
