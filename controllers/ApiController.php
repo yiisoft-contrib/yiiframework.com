@@ -22,9 +22,11 @@ class ApiController extends Controller
         }
 
         $title = '';
+        $packages = [];
         if ($version[0] === '1') {
             $file = Yii::getAlias("@app/data/api-$version/api/$section.html");
-            $view = 'view11';
+            $packages = unserialize(file_get_contents(Yii::getAlias("@app/data/api-$version/api/packages.txt")));
+            $view = 'view1x';
         } else {
             $file = Yii::getAlias("@app/data/api-$version/$section.html");
             $view = 'view2x';
@@ -43,6 +45,7 @@ class ApiController extends Controller
             'versions' => Yii::$app->params['api.versions'],
             'version' => $version,
             'title' => $title,
+            'packages' => $packages,
         ]);
     }
 
