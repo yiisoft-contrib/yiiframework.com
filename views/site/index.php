@@ -145,35 +145,35 @@ SERVICES - START
    	<h2 class="text-center">Features</h2>
        <div class="row">
 
-           <!-- Service -->
        	<div class="col-md-4">
            	<div class="service">
-                   <i class="fa fa-desktop"></i>
+                   <i class="fa fa-database"></i>
                    <div class="service-body">
-                   	<h3>Mobile Friendly</h3>
-                   	<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis nec lorem quis est ultrices volutpat. Donec id urna posuere nisl tincidunt laoreet.</p>
+                   	<h3>Relational and noSQL databases</h3>
+                   	<p>Yii has all you need to work with both relational and noSQL databases. Both powerful ActiveRecord
+                        and convenient query builder are there to help.</p>
                    </div>
                </div>
            </div>
 
-           <!-- Service -->
        	<div class="col-md-4">
            	<div class="service">
-                   <i class="fa fa-desktop"></i>
+                   <i class="fa fa-wrench"></i>
                    <div class="service-body">
-                   	<h3>Mobile Friendly</h3>
-                   	<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis nec lorem quis est ultrices volutpat. Donec id urna posuere nisl tincidunt laoreet.</p>
+                   	<h3>Great tools</h3>
+                   	<p>Debugger will help you tracking errors, analyzing performance and various events of the application.
+                    Gii is there to generate code for you. An error page will show you enough details to fix error in no time.</p>
                    </div>
                </div>
            </div>
 
-           <!-- Service -->
        	<div class="col-md-4">
            	<div class="service">
-                   <i class="fa fa-desktop"></i>
+                   <i class="fa fa-users"></i>
                    <div class="service-body">
-                   	<h3>Mobile Friendly</h3>
-                   	<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis nec lorem quis est ultrices volutpat. Donec id urna posuere nisl tincidunt laoreet.</p>
+                   	<h3>Exceptional community</h3>
+                   	<p>Yii has one of the most helpful communities out there. There are forums, IRC chat, active GitHub
+                    development, collaborative wiki and much more.</p>
                    </div>
                </div>
            </div>
@@ -256,8 +256,8 @@ VIDEO - END
                 <div id="testimonials-slider">
                     <div class="item">
                         <i class="fa fa-quote-left"></i>
-                        <p>Phasellus fringilla neque diam, eget elementum libero eleifend ac. Morbi condimentum metus felis, pellentesque iaculis sapien egestas imperdiet. Curabitur in lacus at ante elementum mollis.</p>
-                    	<h3>John Doe <small>[CEO]</small></h3>
+                        <p>Choosing the right PHP framework was a vital decision when we set out to build Craft. With its elegant, modular architecture, rich internationalization support, and helpful documentation, Yii was a perfect fit.</p>
+                        <h3>Brandon Kelly, <small>Craft</small></h3>
                     </div>
 
                     <div class="item">
