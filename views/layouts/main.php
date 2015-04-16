@@ -48,6 +48,13 @@ use yii\widgets\Menu;
                 <div class="header-item"><?= Html::a('Class Reference', ['api/index', 'version' => '2.0']) ?></div>
             </div>
             <div class="pull-right">
+                <?php if (Yii::$app->user->isGuest): ?>
+                    <div class="header-item"><?= Html::a('<i class="fa fa-sign-in"></i>Login</a>', ['/site/login']) ?></div>
+                    <div class="header-item"><?= Html::a('<i class="fa fa-user"></i>Sign up</a>', ['/site/signup']) ?></div>
+                <?php else: ?>
+                    <div class="header-item">Welcome, <?= Yii::$app->user->identity->username ?>!</div>
+                    <div class="header-item"><?= Html::a('<i class="fa fa-sign-out"></i>Logout</a>', ['/site/logout'], ['data-method' => 'post']) ?></div>
+                <?php endif; ?>
                 <ul class="brands brands-inline brands-tn brands-circle main">
                     <li><a href="https://github.com/yiisoft/yii2"><i class="fa fa-github"></i></a></li>
                     <li><a href="https://twitter.com/yiiframework"><i class="fa fa-twitter"></i></a></li>
@@ -134,7 +141,9 @@ use yii\widgets\Menu;
                                 ['label' => '<i class="fa fa-angle-double-right"></i>Live Chat', 'url' => ['site/chat']],
                             ]],
                             ['label' => 'Camp', 'url' => 'https://yiicamp.com'],
-                            ['label' => 'Logout', 'url' => ['site/logout'], 'visible' => !Yii::$app->user->isGuest, 'linkOptions' => ['data-method' => 'post']],
+                            ['label' => 'Login', 'url' => ['site/login'], 'visible' => Yii::$app->user->isGuest, 'options' => ['class' => 'hidden-lg hidden-md']],
+                            ['label' => 'Signup', 'url' => ['site/signup'], 'visible' => Yii::$app->user->isGuest, 'options' => ['class' => 'hidden-lg hidden-md']],
+                            ['label' => 'Logout', 'url' => ['site/logout'], 'visible' => !Yii::$app->user->isGuest, 'linkOptions' => ['data-method' => 'post'], 'options' => ['class' => 'hidden-lg hidden-md']],
                         ],
                     ]);
 ?>
