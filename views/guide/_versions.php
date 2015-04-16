@@ -5,6 +5,7 @@
  * @var $section app\models\GuideSection
  */
 use app\components\DropdownList;
+use app\models\Guide;
 use yii\helpers\Html;
 
 ?>
@@ -29,10 +30,21 @@ use yii\helpers\Html;
         <?= DropdownList::widget([
             'tag' => 'li',
             'selection' => "Version {$guide->version}",
-            'items' => array_map(function ($version) use ($guide) {
+            'items' => array_map(function ($version) use ($section, $guide) {
+                $language = $guide->language;
+                $otherGuide = Guide::load($version, $language);
+                if ($otherGuide === null) {
+                    $language = 'en';
+                    $otherGuide = Guide::load($version, $language);
+                }
+                if (isset($section) && $guide->version[0] === $version[0] && $otherGuide->loadSection($section->name) !== null) {
+                    $url = ['guide/view', 'section' => $section->name, 'version' => $version, 'language' => $language];
+                } else {
+                    $url = ['guide/index', 'version' => $version, 'language' => $language];
+                }
                 return [
                     'label' => $version,
-                    'url' => ['guide/index', 'version' => $version, 'language' => $guide->language],
+                    'url' => $url,
                 ];
             }, $guide->getVersionOptions()),
         ]) ?>

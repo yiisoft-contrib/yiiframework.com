@@ -8,7 +8,7 @@ $this->params['breadcrumbs'][] = $this->title;
 <div class="container content site-license">
     <h1><?= Html::encode($this->title) ?></h1>
 
-    <h1>License of Yii Framework</h1>
+    <h1 id="framework">License of Yii Framework</h1>
 
     <div class="row">
         <div class="col-xs-6 legal">
@@ -53,7 +53,7 @@ $this->params['breadcrumbs'][] = $this->title;
         </div>
     </div>
 
-    <h2>License of Official and User-contributed Documentation</h2>
+    <h2 id="docs">License of Official and User-contributed Documentation</h2>
 
     <div class="row">
         <div class="col-xs-6 legal">
@@ -81,7 +81,7 @@ $this->params['breadcrumbs'][] = $this->title;
         </div>
     </div>
 
-    <h2>3rd Party Licenses</h2>
+    <h2 id="3rd-party">3rd Party Licenses</h2>
 
     <div class="row">
         <div class="col-xs-6 legal">

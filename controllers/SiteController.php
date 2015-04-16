@@ -9,6 +9,7 @@ use yii\web\Controller;
 use yii\filters\VerbFilter;
 use app\models\LoginForm;
 use app\models\ContactForm;
+use yii\web\NotFoundHttpException;
 
 class SiteController extends Controller
 {
@@ -51,6 +52,21 @@ class SiteController extends Controller
     public function actionIndex()
     {
         return $this->render('index');
+    }
+
+    /**
+     * This action redirects old urls to the new location.
+     */
+    public function actionRedirect($url)
+    {
+        $urlMap = [
+            'doc/terms' => ['site/license', '#' => 'docs'],
+        ];
+        if (isset($urlMap[$url])) {
+            return $this->redirect($urlMap[$url], 301); // Moved Permanently
+        } else {
+            throw new NotFoundHttpException('The requested page was not found.');
+        }
     }
 
     public function actionLogin()

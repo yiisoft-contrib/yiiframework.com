@@ -2,6 +2,7 @@
 
 namespace app\commands;
 
+use app\apidoc\Yii1GuideRenderer;
 use Yii;
 use yii\helpers\Console;
 use app\apidoc\GuideRenderer;
@@ -38,7 +39,12 @@ class GuideController extends \yii\apidoc\commands\GuideController
             foreach ($languages as $language => $name) {
                 $source = "$sourcePath/yii-$version/docs/guide";
                 if ($language !== 'en') {
-                    $source .= "-$language";
+                    if (strpos($language, '-') !== false) {
+                        list($lang, $locale) = explode('-', $language);
+                        $source .= "-$lang" . (empty($locale) ? '' : '-' . strtoupper($locale));
+                    } else {
+                        $source .= "-$language";
+                    }
                 }
                 $target = "$targetPath/guide-$version/$language";
                 $pdfTarget = "$targetPath/guide-$version/$language/pdf";
@@ -77,6 +83,31 @@ class GuideController extends \yii\apidoc\commands\GuideController
             }
         }
 
+        if ($version[0] === '1') {
+            foreach ($languages as $language => $name) {
+                $unnormalizedLanguage = strtolower(str_replace('-', '_', $language));
+
+                $source = "$sourcePath/yii-$version/docs/guide";
+                $target = "$targetPath/guide-$version/$language";
+//                $pdfTarget = "$targetPath/guide-$version/$language/pdf"; TODO
+                $this->version = $version;
+                $this->language = $language;
+
+                FileHelper::createDirectory($target);
+                $renderer = new Yii1GuideRenderer([
+                    'basePath' => $source,
+                    'targetPath' => $target,
+                ]);
+
+                $this->stdout("Start generating guide $version in $name...\n", Console::FG_CYAN);
+                $this->generateIndexYii1($source, $target, $version, $unnormalizedLanguage);
+                $renderer->renderGuide($version, $unnormalizedLanguage);
+                FileHelper::copyDirectory("$source/images", "$target/images");
+                $this->stdout("Finished guide $version in $name.\n\n", Console::FG_CYAN);
+
+            }
+        }
+
         return 0;
     }
 
@@ -112,6 +143,41 @@ class GuideController extends \yii\apidoc\commands\GuideController
         if (($title = trim($lines[0])) === '') {
             $title = "The Definitive Guide for Yii {$this->version}";
         }
+
+        FileHelper::createDirectory($target);
+        file_put_contents("$target/index.data", serialize([$title, $chapters, $sections]));
+    }
+
+    protected function generateIndexYii1($source, $target, $version, $language)
+    {
+        $chapters = [];
+        $sections = [];
+
+        $file = "$source/toc.txt";
+        $file = FileHelper::localize($file, $language, 'en');
+        $lines = file($file);
+        $chapter = '';
+        foreach ($lines as $line) {
+            // trim unicode BOM from line
+            $line = trim(ltrim($line, "\xEF\xBB\xBF"));
+            if ($line === '') {
+                continue;
+            }
+            if ($line[0] === '*') {
+                $chapter = trim($line, '* ');
+            } else if ($line[0] === '-' && preg_match('/\[(.*?)\]\((.*?)\)/', $line, $matches)) {
+                $chapters[$chapter][$matches[1]] = $matches[2];
+                $sections[$matches[2]] = [$chapter, $matches[1]];
+            }
+        }
+
+        $file = "$source/index.txt";
+        $file = FileHelper::localize($file, $language, 'en');
+        $lines = file($file);
+        if (($title = trim($lines[0])) === '') {
+            $title = "The Definitive Guide for Yii";
+        }
+        $title = str_replace('Yii', "Yii $version", $title);
 
         FileHelper::createDirectory($target);
         file_put_contents("$target/index.data", serialize([$title, $chapters, $sections]));

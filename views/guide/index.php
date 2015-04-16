@@ -8,11 +8,17 @@ use yii\helpers\Html;
 $this->title = $guide->title;
 $blocksPerRow = 4;
 ?>
-<div class="container guide-content">
-    <?= $this->render('_versions.php', ['guide' => $guide, 'section' => null]) ?>
+<div class="container guide-view lang-<?= $guide->language ?>">
+    <div class="row">
+        <div class="col-xs-7 col-sm-8">
+            <h1 class="guide-headline"><?= Html::encode($guide->title) ?></h1>
+        </div>
+        <div class="col-xs-5 col-sm-4">
+            <?= $this->render('_versions.php', ['guide' => $guide, 'section' => null]) ?>
+        </div>
+    </div>
 
-    <div class="content">
-        <h1><?= Html::encode($guide->title) ?></h1>
+    <div class="guide-content content">
 
         <div class="row">
     <?php

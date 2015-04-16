@@ -6,7 +6,9 @@ html {
     min-width: 350px;
 }
 
-.navbar-collapse .navbar-nav li.dropdown > a {
-    height:auto; // do not force height for links in collapsed navbar on small screens
-}
 
+@media (max-width: @grid-float-breakpoint) {
+    .navbar-collapse .navbar-nav li.dropdown > a {
+        height: auto; // do not force height for links in collapsed navbar on small screens
+    }
+}

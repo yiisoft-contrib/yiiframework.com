@@ -48,7 +48,7 @@ class ApiController extends \yii\apidoc\commands\ApiController
             $target = "$targetPath/api-$version";
             $cmd = Yii::getAlias("@app/data/yii-$version/build/build");
 
-            if (!is_file($composerYii1 = Yii::getAlias('@app/data/yii-1.1/vendor/autoload.php'))) {
+            if ($version === '1.1' && !is_file($composerYii1 = Yii::getAlias('@app/data/yii-1.1/vendor/autoload.php'))) {
                 $this->stdout("WARNING: Composer dependencies of Yii 1.1 are not installed, api generation may fail.\n", Console::BOLD, Console::FG_YELLOW);
             }
 

@@ -29,24 +29,9 @@ npm install
 # initialize the application, choose "development"
 ./init
 
-# clone yii repositories for generating API and guide documentation (yii 1.1 also needs dependencies for this)
-git clone git@github.com:yiisoft/yii.git data/yii-1.0
-cd data/yii-1.0
-git checkout 1.0.9
-cd ../..
-git clone git@github.com:yiisoft/yii.git data/yii-1.1
-cd data/yii-1.1
-composer install --prefer-dist
-cd ../..
-git clone git@github.com:yiisoft/yii2.git data/yii-2.0
-
 # build guide and API documentation (will be put in cron job on production)
-./yii api 2.0 --interactive=0
-./yii guide 2.0 --interactive=0
-./yii api 1.1 --interactive=0
-./yii guide 1.1 --interactive=0
-./yii api 1.0 --interactive=0
-./yii guide 1.0 --interactive=0
+# this assumes you have installed pdflatex and configured elasticsearch
+make docs
 
 # build js/css files
 grunt build
