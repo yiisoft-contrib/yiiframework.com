@@ -81,6 +81,11 @@ return [
             'zh-cn' => '简体中文',  // Simplified Chinese
         ],
     ],
+
+    'authclients' => [
+        // these should be configured in local config
+    ],
+
     // base url for generating api documentation
     'guide.baseUrl' => '/doc/guide',
     'members' => require 'members.php',
