@@ -72,7 +72,7 @@ $(".sidenav-toggle").on("click", function() {
 
             <?= \app\components\Comments::widget([
                 'objectType' => 'guide',
-                'objectId' => $section->name. '-' . $guide->language . '-' . $guide->version,
+                'objectId' => $section->name. '-' . $guide->version,
             ]) ?>
         </div>
     </div>
