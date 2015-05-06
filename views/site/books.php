@@ -18,11 +18,11 @@ $this->params['breadcrumbs'][] = $this->title;
         </div>
 
         <div class="col-sm-6 col-md-9">
-            <h3>PHP Web Application Development, Bill Keck</h3>
+            <h3>PHP Web Application Development <small class="authors">by Bill Keck</small></h3>
 
             <h4>Recommended for beginners.</h4>
 
-            <p>It is step by step introduction to the framework which is based around
+            <p>It is a step by step introduction to the framework, which is based around
                 creating a reusable template that can serve as the basis for your projects.</p>
         </div>
     </div>
@@ -33,7 +33,7 @@ $this->params['breadcrumbs'][] = $this->title;
         </div>
 
         <div class="col-sm-6 col-md-9">
-            <h3>Web Application Development with Yii 2 and PHP, Mark Safronov</h3>
+            <h3>Web Application Development with Yii 2 and PHP <small class="authors">by Mark Safronov</small></h3>
 
             <h4>Recommended for intermediate-to-advanced developers.</h4>
 
@@ -41,6 +41,20 @@ $this->params['breadcrumbs'][] = $this->title;
             It is assumed that reader is experienced enough in object orientented programming so don't expect OO-basics
             explained. There are many references to good overall programming books so even if you're already familiar with
             Yii 2.0 it worth at least skimming it.</p>
+        </div>
+    </div>
+
+    <div class="row book">
+        <div class="col-sm-6 col-md-3">
+            <a href="http://www.amazon.com/dp/1784392278?tag=gii20f-20"><img src="https://d255esdrn735hr.cloudfront.net/sites/default/files/imagecache/ppv4_main_book_cover/2277OS.jpg" class="img-responsive" /></a>
+        </div>
+
+        <div class="col-sm-6 col-md-9">
+            <h3>Learning Yii Testing <small class="authors">by Matteo Pescarin</small></h3>
+
+            <h4>Recommended for intermediate-to-advanced developers.</h4>
+
+            <p>Embrace 360-degree testing on your Yii 2 projects using Codeception.</p>
         </div>
     </div>
 
@@ -52,7 +66,7 @@ $this->params['breadcrumbs'][] = $this->title;
         </div>
 
         <div class="col-sm-6 col-md-9">
-            <h3>The Yii Book, Larry Ullman</h3>
+            <h3>The Yii Book <small class="authors">by Larry Ullman</small></h3>
 
             <h4>Recommended for beginners.</h4>
 
@@ -69,7 +83,7 @@ $this->params['breadcrumbs'][] = $this->title;
         </div>
 
         <div class="col-sm-6 col-md-9">
-            <h3>Yii Application Developement Cookbook, Alexander Makarov</h3>
+            <h3>Yii Application Developement Cookbook <small class="authors">by Alexander Makarov</small></h3>
 
             <h4>Recommended for intermediate-to-advanced developers.</h4>
 
@@ -84,7 +98,7 @@ $this->params['breadcrumbs'][] = $this->title;
         </div>
 
         <div class="col-sm-6 col-md-9">
-            <h3>Web Application Development with Yii and PHP, Jeffrey Winesett</h3>
+            <h3>Web Application Development with Yii and PHP <small class="authors">by Jeffrey Winesett</small></h3>
 
             <h4>Recommended for beginners.</h4>
 
@@ -100,7 +114,7 @@ $this->params['breadcrumbs'][] = $this->title;
         </div>
 
         <div class="col-sm-6 col-md-9">
-            <h3>Yii Project Blueprints, Charles R. Portwood II</h3>
+            <h3>Yii Project Blueprints <small class="authors">by Charles R. Portwood II</small></h3>
 
             <h4>Recommended for intermediate-to-advanced Yii developers.</h4>
 
@@ -116,7 +130,7 @@ $this->params['breadcrumbs'][] = $this->title;
         </div>
 
         <div class="col-sm-6 col-md-9">
-            <h3>Yii Rapid Application Developement, Lauren J. O'Meara, James R. Hamilton III</h3>
+            <h3>Yii Rapid Application Developement <small class="authors">by Lauren J. O'Meara, James R. Hamilton III</small></h3>
 
             <h4>Recommended for intermediate-to-advanced Yii developers.</h4>
 
