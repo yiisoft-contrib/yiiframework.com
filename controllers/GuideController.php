@@ -70,10 +70,20 @@ class GuideController extends Controller
      */
     public function actionEntry($version = null, $language = null)
     {
-        $versions = array_keys(Yii::$app->params['guide.versions']);
-        arsort($versions, SORT_NATURAL);
-        $defaultVersion = array_shift($versions);
-        return $this->redirect(['index', 'version' => $version ?: $defaultVersion, 'language' => $language ?: 'en']);
+        // choose the latest version
+        if ($version === null) {
+            $versions = array_keys(Yii::$app->params['guide.versions']);
+            arsort($versions, SORT_NATURAL);
+            $version = array_shift($versions);
+        }
+
+        // negotiate language from browser preference
+        if ($language === null) {
+            $languages = array_keys(Yii::$app->params['guide.versions'][$version]);
+            $language = Yii::$app->request->getPreferredLanguage($languages);
+        }
+
+        return $this->redirect(['index', 'version' => $version, 'language' => $language]);
     }
 
     /**

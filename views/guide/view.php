@@ -37,12 +37,20 @@ $(".sidenav-toggle").on("click", function() {
 ');
 ?>
 <div class="container guide-view lang-<?= $guide->language ?>">
+    <div class="row">
+        <div class="col-xs-7 col-sm-8">
+            <h1 class="guide-headline"><?= Html::encode($guide->title) ?></h1>
+        </div>
+        <div class="col-xs-5 col-sm-4">
+            <?= $this->render('_versions.php', ['guide' => $guide, 'section' => $section]) ?>
+        </div>
+    </div>
+
     <div class="row row-offcanvas">
         <div class="col-sm-3">
             <?= SideNav::widget(['id' => 'guide-navigation', 'items' => $nav, 'options' => ['class' => 'sidenav-offcanvas']]) ?>
         </div>
         <div class="col-sm-9" role="main">
-            <?= $this->render('_versions.php', compact('guide', 'section')) ?>
 
             <div class="guide-content content">
                 <?php if (!empty($missingTranslation)): ?>

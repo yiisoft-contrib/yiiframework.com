@@ -122,7 +122,7 @@ use yii\widgets\Menu;
                             ]],
                             ['label' => 'Learn', 'items' => [
                                 ['label' => '<i class="fa fa-angle-double-right"></i>Getting started', 'url' => ['guide/view', 'section' => 'start-installation', 'language' => 'en', 'version' => key(Yii::$app->params['guide.versions'])]],
-                                ['label' => '<i class="fa fa-angle-double-right"></i>The Definitive Guide', 'url' => ['guide/index', 'language' => 'en', 'version' => key(Yii::$app->params['guide.versions'])]],
+                                ['label' => '<i class="fa fa-angle-double-right"></i>The Definitive Guide', 'url' => ['guide/entry']],
                                 ['label' => '<i class="fa fa-angle-double-right"></i>API Documentation', 'url' => ['api/index', 'version' => reset(Yii::$app->params['api.versions'])]],
                                 ['label' => '<i class="fa fa-angle-double-right"></i>Tutorials<span class="label label-warning">coming soon</span>', 'url' => 'https://yiicamp.com/tutorials'],
                                 ['label' => '<i class="fa fa-angle-double-right"></i>Answers<span class="label label-warning">coming soon</span>', 'url' => 'https://yiicamp.com/answers'],
