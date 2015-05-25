@@ -14,7 +14,7 @@ $this->params['breadcrumbs'][] = $this->title;
 
     <div class="row book">
         <div class="col-sm-6 col-md-3">
-            <a href="https://leanpub.com/yii2forbeginners"><img src="https://s3.amazonaws.com/titlepages.leanpub.com/yii2forbeginners/large?1416032860" class="img-responsive" /></a>
+            <a href="https://leanpub.com/yii2forbeginners"><img src="<?= Yii::getAlias('@web/image/books/yii2-forbeginners.png') ?>" class="img-responsive" /></a>
         </div>
 
         <div class="col-sm-6 col-md-9">
@@ -29,7 +29,7 @@ $this->params['breadcrumbs'][] = $this->title;
 
     <div class="row book">
         <div class="col-sm-6 col-md-3">
-            <a href="http://www.amazon.com/dp/1783981881?tag=gii20f-20"><img src="http://ecx.images-amazon.com/images/I/51YWA8WvU2L.jpg" class="img-responsive" /></a>
+            <a href="http://www.amazon.com/dp/1783981881?tag=gii20f-20"><img src="<?= Yii::getAlias('@web/image/books/yii2-app-development.png') ?>" class="img-responsive" /></a>
         </div>
 
         <div class="col-sm-6 col-md-9">
@@ -46,7 +46,7 @@ $this->params['breadcrumbs'][] = $this->title;
 
     <div class="row book">
         <div class="col-sm-6 col-md-3">
-            <a href="http://www.amazon.com/dp/1784392278?tag=gii20f-20"><img src="https://d255esdrn735hr.cloudfront.net/sites/default/files/imagecache/ppv4_main_book_cover/2277OS.jpg" class="img-responsive" /></a>
+            <a href="http://www.amazon.com/dp/1784392278?tag=gii20f-20"><img src="<?= Yii::getAlias('@web/image/books/yii2-testing.png') ?>" class="img-responsive" /></a>
         </div>
 
         <div class="col-sm-6 col-md-9">
@@ -62,7 +62,7 @@ $this->params['breadcrumbs'][] = $this->title;
 
     <div class="row book">
         <div class="col-sm-6 col-md-3">
-            <a href="http://yii.larryullman.com/"><img alt="The Yii Book" src="https://larry.pub/images/yiibookcover.png" class="img-responsive" /></a>
+            <a href="http://yii.larryullman.com/"><img alt="The Yii Book" src="<?= Yii::getAlias('@web/image/books/yii1-yiibook-larry.png') ?>" class="img-responsive" /></a>
         </div>
 
         <div class="col-sm-6 col-md-9">
@@ -79,7 +79,7 @@ $this->params['breadcrumbs'][] = $this->title;
 
     <div class="row book">
         <div class="col-sm-6 col-md-3">
-            <a href="http://yiicookbook.org/"><img alt="Yii Application Development Cookbook" src="http://ecx.images-amazon.com/images/I/51wKCp3gr1L.jpg" class="img-responsive" /></a>
+            <a href="http://yiicookbook.org/"><img alt="Yii Application Development Cookbook" src="<?= Yii::getAlias('@web/image/books/yii1-cookbook.png') ?>" class="img-responsive" /></a>
         </div>
 
         <div class="col-sm-6 col-md-9">
@@ -94,7 +94,7 @@ $this->params['breadcrumbs'][] = $this->title;
 
     <div class="row book">
         <div class="col-sm-6 col-md-3">
-            <a href="http://www.seesawlabs.com/yii-book"><img alt="Web Application Development with Yii and PHP" src="http://ecx.images-amazon.com/images/I/5178uFKKD0L.jpg" class="img-responsive" /></a>
+            <a href="http://www.seesawlabs.com/yii-book"><img alt="Web Application Development with Yii and PHP" src="<?= Yii::getAlias('@web/image/books/yii1-app-development.png') ?>" class="img-responsive" /></a>
         </div>
 
         <div class="col-sm-6 col-md-9">
@@ -110,7 +110,7 @@ $this->params['breadcrumbs'][] = $this->title;
 
     <div class="row book">
         <div class="col-sm-6 col-md-3">
-            <a href="http://www.amazon.com/dp/178328773X?tag=gii20f-20"><img alt="Yii Project Blueprints" src="http://ecx.images-amazon.com/images/I/514Ft5H%2BmZL.jpg" class="img-responsive" /></a>
+            <a href="http://www.amazon.com/dp/178328773X?tag=gii20f-20"><img alt="Yii Project Blueprints" src="<?= Yii::getAlias('@web/image/books/yii1-blueprints.png') ?>" class="img-responsive" /></a>
         </div>
 
         <div class="col-sm-6 col-md-9">
@@ -126,7 +126,7 @@ $this->params['breadcrumbs'][] = $this->title;
 
     <div class="row book">
         <div class="col-sm-6 col-md-3">
-            <a href="http://www.packtpub.com/yii-rapid-application-development-hotshot/book"><img alt="Yii Rapid Application Development Hotshot" src="https://www.packtpub.com/sites/default/files/7508OS.jpg" class="img-responsive" /></a>
+            <a href="http://www.packtpub.com/yii-rapid-application-development-hotshot/book"><img alt="Yii Rapid Application Development Hotshot" src="<?= Yii::getAlias('@web/image/books/yii1-hotshot.png') ?>" class="img-responsive" /></a>
         </div>
 
         <div class="col-sm-6 col-md-9">
