@@ -58,7 +58,7 @@ class ApiController extends \yii\apidoc\commands\ApiController
 
             foreach(FileHelper::findFiles($target, ['only' => ['*.html']]) as $file) {
                 file_put_contents($file, preg_replace(
-                    '~href="/doc/api/([\w\#\-\.]+)"~i',
+                    '~href="/doc/api/([\w\#\-\.]*)"~i',
                     'href="' . Yii::$app->params['api.baseUrl'] . '/' . $version . '/\1"',
                     file_get_contents($file))
                 );

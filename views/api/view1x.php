@@ -45,7 +45,7 @@ $this->title = Html::encode((!empty($title) ? "$title - " : '') .  "Yii API Docu
         </div>
         <div class="col-md-9" role="main">
             <?= $this->render('_versions.php', compact('version', 'versions', 'section')) ?>
-            <div class="content">
+            <div class="content api1">
             <?= $content ?>
             </div>
         </div>

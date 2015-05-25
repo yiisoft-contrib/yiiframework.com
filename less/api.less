@@ -1,31 +1,51 @@
 .api-content {
 
+    a.tool-link {
+        float: right;
+        color: #ddd;
+        margin: 0 8px;
+    }
+
+
+    .icon-hash:before {
+        content: '#';
+        font-size: 32px;
+        font-weight: bold;
+        /*top: -10px;*/
+        line-height: 0.5;
+    }
+
+    .tool-link:hover {
+        color: #bbb;
+        text-decoration: none;
+    }
 
 
     // old Yii 1.1 and 1.0 API docs
-    pre {
-        &:extend(.content pre code);
-    }
+    .api1 {
+        pre {
+            &:extend(.content pre code);
+        }
 
-    div.code {
-        &:extend(.content pre code);
-//        &:extend(.content pre code);
+        div.code {
+            &:extend(.content pre code);
 
-        display: none;
-    }
+            display: none;
+        }
 
-    table.summaryTable {
-        .table;
-        .table-bordered;
-        .table-striped;
+        table.summaryTable {
+            .table;
+            .table-bordered;
+            .table-striped;
 
-        width: 100%;
-        margin: 18px 0;
-    }
+            width: 100%;
+            margin: 18px 0;
+        }
 
-    table.docClass {
-        th {
-            width: 25%;
+        table.docClass {
+            th {
+                width: 25%;
+            }
         }
     }
 
@@ -35,64 +55,63 @@
         border-top: 1px #ddd solid;
     }
 
-  #classDescription {
-    padding: 5px;
-    margin: 10px 0 20px 0;
-    border-bottom: 1px solid #BFCFFF;
-  }
-
-  .detailHeader {
-    font-weight: bold;
-    font-size: 12pt;
-    margin: 30px 0 5px 0;
-    border-bottom: 1px solid #BFCFFF;
-  }
-
-  .detailHeaderTag {
-    font-weight: normal;
-    font-size: 10pt;
-  }
-
-
-  .paramNameCol {
-    width: 12%;
-    font-weight: bold;
-  }
-
-  .paramTypeCol {
-    width: 12%;
-  }
-
-  .sourceCode {
-    margin: 5px 0;
-    padding:5px;
-    background: #f9f9f9;
-    white-space: normal;
-
-    a.show {
-        display: inline !important;
+    #classDescription {
+        padding: 5px;
+        margin: 10px 0 20px 0;
+        border-bottom: 1px solid #BFCFFF;
     }
-  }
 
-  .signature, td.signature, td .signature2 {
-      margin: 1em 0;
-      padding: 8px;
+    .detailHeader {
+        font-weight: bold;
+        font-size: 12pt;
+        margin: 30px 0 5px 0;
+        border-bottom: 1px solid #BFCFFF;
+    }
 
-      color: #000000;
-      background: #f9f9f9;
+    .detailHeaderTag {
+        font-weight: normal;
+        font-size: 10pt;
+    }
 
-      border-top: 1px solid #ddd;
-      border-bottom: 1px solid #ddd;
+    .paramNameCol {
+      width: 12%;
+      font-weight: bold;
+    }
 
-      font-family: "courier new", "times new roman", monospace;
-      line-height: 1.3em;
-//      white-space: pre-line;
-      word-wrap: break-word;
-      word-break: break-all;
-  }
-  td .signature2 {
-      margin: 0;
-      border: none;
-      padding: 0;
-  }
+    .paramTypeCol {
+      width: 12%;
+    }
+
+    .sourceCode {
+        margin: 5px 0;
+        padding:5px;
+        background: #f9f9f9;
+        white-space: normal;
+
+        a.show {
+            display: inline !important;
+        }
+    }
+
+    .signature, td.signature, td .signature2 {
+        margin: 1em 0;
+        padding: 8px;
+
+        color: #000000;
+        background: #f9f9f9;
+
+        border-top: 1px solid #ddd;
+        border-bottom: 1px solid #ddd;
+
+        font-family: "courier new", "times new roman", monospace;
+        line-height: 1.3em;
+  //      white-space: pre-line;
+        word-wrap: break-word;
+        word-break: break-all;
+    }
+    td .signature2 {
+        margin: 0;
+        border: none;
+        padding: 0;
+    }
 }

@@ -43,6 +43,8 @@ $renderer = $this->context;
     </div>
     <div class="col-md-9" role="main">
         <!-- YII_VERSION_SELECTOR -->
+        <div class="content">
         <?= $content ?>
+        </div>
     </div>
 </div>
