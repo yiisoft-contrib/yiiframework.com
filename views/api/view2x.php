@@ -23,3 +23,26 @@ if (!empty($title)) {
         'objectId' => $version . '-' . $section,
     ]) ?>
 </div>
+
+<?php
+
+$this->registerJs(<<<'JS'
+
+$(".api-content a.toggle").on('click', function () {
+    var $this = $(this);
+    if ($this.hasClass('properties-hidden')) {
+        $this.text($this.text().replace(/Show/,'Hide'));
+        $this.parents(".summary").find(".inherited").show();
+        $this.removeClass('properties-hidden');
+    } else {
+        $this.text($this.text().replace(/Hide/,'Show'));
+        $this.parents(".summary").find(".inherited").hide();
+        $this.addClass('properties-hidden');
+    }
+
+    return false;
+});
+
+
+JS
+);

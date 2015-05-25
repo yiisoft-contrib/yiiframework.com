@@ -44,8 +44,8 @@ use yii\widgets\Menu;
     <div class="top-header hidden-xs hidden-sm">
         <div class="container">
             <div class="pull-left">
-                <div class="header-item"><?= Html::a('The Definitive Guide', ['guide/index', 'version' => '2.0', 'language' => 'en']) ?></div>
-                <div class="header-item"><?= Html::a('Class Reference', ['api/index', 'version' => '2.0']) ?></div>
+                <div class="header-item"><?= Html::a('The Definitive Guide', ['guide/entry']) ?></div>
+                <div class="header-item"><?= Html::a('Class Reference', ['api/index', 'version' => reset(Yii::$app->params['api.versions'])]) ?></div>
             </div>
             <div class="pull-right">
                 <?php if (Yii::$app->user->isGuest): ?>

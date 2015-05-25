@@ -149,17 +149,13 @@ h3:hover .hashlink {
   margin-top: 0;
 }
 
-.api-content h1:first-of-type {
-    margin-top: 36px;
-}
+//.api-content h1:first-of-type {
+//    margin-top: 36px;
+//}
 #api-navigation,
 #guide-navigation {
     margin-top: 15px; // same as a bootstrap h1
     margin-bottom: 15px;
-}
-
-.summaryTable {
-    margin: 18px 0;
 }
 
 // adjustments for rtl languages
@@ -184,7 +180,43 @@ h3:hover .hashlink {
 }
 
 
+div.toc {
+    border: solid 1px #ddd;
+    padding: 15px;
+    margin: 15px 0;
+    width: auto;
+    max-width: 36em;
 
+    ol {
+        margin: 0;
+        width: auto;
+    }
+}
+
+div.image {
+    border: solid 1px #ddd;
+    padding: 0;
+    margin: 15px 0;
+    width: auto;
+//    max-width: 36em;
+    text-align: center;
+
+    p {
+        background: #eee;
+        text-align: center;
+        margin: 0;
+        max-width: 100%;
+    }
+    img {
+        margin: 15px auto;
+        padding: 0;
+        max-width: 100%;
+    }
+    img.img-responsive {
+        padding: 0;
+        border: none;
+    }
+}
 
 @media screen and (min-width: 768px) {
     .sidenav-toggle {

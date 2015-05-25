@@ -17,7 +17,7 @@ class ApiController extends Controller
     {
         $versions = Yii::$app->params['api.versions'];
         if (!in_array($version, $versions)) {
-            // TODO make nicer error page
+            // TODO make nicer error page (keep version and language selector)
             throw new NotFoundHttpException('The requested version was not found.');
         }
 
@@ -27,6 +27,7 @@ class ApiController extends Controller
             $file = Yii::getAlias("@app/data/api-$version/api/$section.html");
             $packages = unserialize(file_get_contents(Yii::getAlias("@app/data/api-$version/api/packages.txt")));
             $view = 'view1x';
+            $title = $section !== 'index' ? $section : '';
         } else {
             $file = Yii::getAlias("@app/data/api-$version/$section.html");
             $view = 'view2x';

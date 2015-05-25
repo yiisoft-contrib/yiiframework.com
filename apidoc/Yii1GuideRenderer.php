@@ -144,11 +144,11 @@ class Yii1GuideRenderer extends Component
             "href=\"$apiBaseUrl/{$this->version}", $content);
 //        $content = str_replace('href="/doc/', "href=\"{$bu}doc/", $content);
         $content = preg_replace('/<p>\s*<img(.*?)src="(.*?)"\s+alt="(.*?)"\s*\/>\s*<\/p>/',
-            '<div class="image"><p>\3</p><img\1src="' . "$guideBaseUrl/{$this->version}/{$this->language}/images/\\2" .'" alt="\3" /></div>', $content);
+            '<div class="image"><p>\3</p><img\1class="img-responsive" src="' . "$guideBaseUrl/{$this->version}/{$this->language}/images/\\2" .'" alt="\3" /></div>', $content);
         $content = preg_replace_callback('!<h(1|2|3) id="([^"]+)"\s*>(.+?)</h\d>!', array($this, 'headings'), $content);
 
         // generate TOC
-        if (!empty($this->headings)) {
+        if (count($this->headings) > 1) {
             $toc = array();
             foreach ($this->headings as $heading)
                 $toc[] = '<li>' . Html::a($heading['title'], '#' . $heading['id']) . '</li>';
@@ -171,7 +171,7 @@ class Yii1GuideRenderer extends Component
         if ($level == 2) {
             $this->headings[] = array('title' => $title, 'id' => $id);
             $section = count($this->headings);
-            $anchor = sprintf('<a class="anchor" href="#%s">¶</a>', $id);
+            $anchor = sprintf('<a class="hashlink" href="#%s">¶</a>', $id);
             return sprintf('<h%d id="%s">%s. %s %s</h%d>', $level, $id, $section, $title, $anchor, $level);
         }
         return $match[0];
