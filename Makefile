@@ -38,3 +38,6 @@ yii-2.0:
 
 composer:
 	cd data && (test -f composer.phar || (php -r "readfile('https://getcomposer.org/installer');" | php))
+
+clean-es:
+	./yii api/drop-elasticsearch-index --interactive=0

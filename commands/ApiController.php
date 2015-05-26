@@ -2,7 +2,11 @@
 
 namespace app\commands;
 
+use app\models\ApiPrimitive;
+use app\models\ApiType;
 use Yii;
+use yii\apidoc\models\Context;
+use yii\base\ErrorHandler;
 use yii\helpers\Console;
 use app\apidoc\ApiRenderer;
 use yii\helpers\FileHelper;
@@ -45,6 +49,9 @@ class ApiController extends \yii\apidoc\commands\ApiController
             $this->actionIndex($source, $target);
             $this->stdout("Finished API $version.\n\n", Console::FG_GREEN);
         } elseif ($version[0] === '1') {
+            $source = [
+                "$sourcePath/yii-$version/framework",
+            ];
             $target = "$targetPath/api-$version";
             $cmd = Yii::getAlias("@app/data/yii-$version/build/build");
 
@@ -64,6 +71,10 @@ class ApiController extends \yii\apidoc\commands\ApiController
                 );
             }
 
+            if (!$this->populateElasticsearch1x($source, $target)) {
+                return 1;
+            }
+
             $this->stdout("Finished API $version.\n\n", Console::FG_GREEN);
         }
 
@@ -75,5 +86,80 @@ class ApiController extends \yii\apidoc\commands\ApiController
         return new ApiRenderer([
             'version' => $this->version,
         ]);
+    }
+
+    public function actionDropElasticsearchIndex()
+    {
+        if ($this->confirm('really drop the whole elasticsearch index? You need to rebuild it afterwards!')) {
+            ApiType::getDb()->createCommand()->deleteIndex(ApiType::index());
+            sleep(1);
+            ApiType::setMappings();
+            ApiPrimitive::setMappings();
+            return 0;
+        }
+        return 1;
+    }
+
+    protected function populateElasticsearch1x($source, $target)
+    {
+        // search for files to process
+        if (($files = $this->searchFiles($source)) === false) {
+            return false;
+        }
+
+        // load context from cache
+        $context = $this->loadContext($target);
+        $this->stdout('Checking for updated files... ');
+        foreach ($context->files as $file => $sha) {
+            if (!file_exists($file)) {
+                $this->stdout('At least one file has been removed. Rebuilding the context...');
+                $context = new Context();
+                if (($files = $this->searchFiles($source)) === false) {
+                    return false;
+                }
+                break;
+            }
+            if (sha1_file($file) === $sha) {
+                unset($files[$file]);
+            }
+        }
+        $this->stdout('done.' . PHP_EOL, Console::FG_GREEN);
+
+        // process files
+        $fileCount = count($files);
+        $this->stdout($fileCount . ' file' . ($fileCount == 1 ? '' : 's') . ' to update.' . PHP_EOL);
+        Console::startProgress(0, $fileCount, 'Processing files... ', false);
+        $done = 0;
+        foreach ($files as $file) {
+            $context->addFile($file);
+            Console::updateProgress(++$done, $fileCount);
+        }
+        Console::endProgress(true);
+        $this->stdout('done.' . PHP_EOL, Console::FG_GREEN);
+
+        // save processed data to cache
+        $this->storeContext($context, $target);
+
+        $this->updateContext($context);
+
+        $types = array_merge($context->classes, $context->interfaces, $context->traits);
+
+        Console::startProgress(0, $count = count($types), 'populating elasticsearch index...', false);
+        $version = $this->version;
+        // first delete all records for this version
+        ApiType::setMappings();
+        ApiPrimitive::setMappings();
+//        ApiPrimitive::deleteAllForVersion($version);
+        ApiType::deleteAllForVersion($version);
+        sleep(1);
+        $i = 0;
+        foreach($types as $type) {
+            ApiType::createRecord($type, $version);
+            Console::updateProgress(++$i, $count);
+        }
+        Console::endProgress(true, true);
+        $this->stdout("done.\n", Console::FG_GREEN);
+
+        return true;
     }
 } 

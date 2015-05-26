@@ -176,52 +176,55 @@ class ApiPrimitive extends SearchActiveRecord
         if (!$command->indexExists(static::index())) {
             $command->createIndex(static::index());
         }
-        $command->setMapping(static::index(), static::type(), [
-            static::type() => [
-                // TODO improve mappings for search
-                '_parent' => ['type' => 'api-type'],
-                'properties' => [
-                    'version' => ['type' => 'string', 'index' => 'not_analyzed'],
-                    'type' => ['type' => 'string', 'index' => 'not_analyzed'],
+        $mapping = $command->getMapping(static::index(), static::type());
+        if (empty($mapping)) {
+            $command->setMapping(static::index(), static::type(), [
+                static::type() => [
+                    // TODO improve mappings for search
+                    '_parent' => ['type' => 'api-type'],
+                    'properties' => [
+                        'version' => ['type' => 'string', 'index' => 'not_analyzed'],
+                        'type' => ['type' => 'string', 'index' => 'not_analyzed'],
 
-                    'name' => ['type' => 'string'],
-                    'parentId' => ['type' => 'string', 'index' => 'not_analyzed'],
-                    'shortDescription' => ['type' => 'string'],
-                    'description' => ['type' => 'string'],
-                    'since' => ['type' => 'string', 'index' => 'not_analyzed'],
-                    'deprecatedSince' => ['type' => 'string', 'index' => 'not_analyzed'],
-                    'deprecatedReason' => ['type' => 'string'],
+                        'name' => ['type' => 'string'],
+                        'parentId' => ['type' => 'string', 'index' => 'not_analyzed'],
+                        'shortDescription' => ['type' => 'string'],
+                        'description' => ['type' => 'string'],
+                        'since' => ['type' => 'string', 'index' => 'not_analyzed'],
+                        'deprecatedSince' => ['type' => 'string', 'index' => 'not_analyzed'],
+                        'deprecatedReason' => ['type' => 'string'],
 
-                    'definedBy' => ['type' => 'string', 'index' => 'not_analyzed'],
+                        'definedBy' => ['type' => 'string', 'index' => 'not_analyzed'],
 
-                    // methods and properties
-                    'visibility' => ['type' => 'string', 'index' => 'not_analyzed'],
-                    'isStatic' => ['type' => 'boolean'],
+                        // methods and properties
+                        'visibility' => ['type' => 'string', 'index' => 'not_analyzed'],
+                        'isStatic' => ['type' => 'boolean'],
 
-                    // properties
-                    'writeOnly' => ['type' => 'boolean'],
-                    'readOnly' => ['type' => 'boolean'],
-                    'types' => ['type' => 'string', 'index' => 'not_analyzed'], // array
-                    'defaultValue' => ['type' => 'string', 'index' => 'not_analyzed'],
-                    'getter' => ['type' => 'string', 'index' => 'not_analyzed'],
-                    'setter' => ['type' => 'string', 'index' => 'not_analyzed'],
+                        // properties
+                        'writeOnly' => ['type' => 'boolean'],
+                        'readOnly' => ['type' => 'boolean'],
+                        'types' => ['type' => 'string', 'index' => 'not_analyzed'], // array
+                        'defaultValue' => ['type' => 'string', 'index' => 'not_analyzed'],
+                        'getter' => ['type' => 'string', 'index' => 'not_analyzed'],
+                        'setter' => ['type' => 'string', 'index' => 'not_analyzed'],
 
-                    // const, event
-                    'value' => ['type' => 'string', 'index' => 'not_analyzed'],
+                        // const, event
+                        'value' => ['type' => 'string', 'index' => 'not_analyzed'],
 
-                    // method
-                    'isAbstract' => ['type' => 'boolean'],
-                    'isFinal' => ['type' => 'boolean'],
-                    //'params', // array
-                    //'exceptions', // array
-                    'return' => ['type' => 'string'],
-                    'returnTypes' => ['type' => 'string', 'index' => 'not_analyzed'], // array
-                    'isReturnByReference' => ['type' => 'boolean'],
+                        // method
+                        'isAbstract' => ['type' => 'boolean'],
+                        'isFinal' => ['type' => 'boolean'],
+                        //'params', // array
+                        //'exceptions', // array
+                        'return' => ['type' => 'string'],
+                        'returnTypes' => ['type' => 'string', 'index' => 'not_analyzed'], // array
+                        'isReturnByReference' => ['type' => 'boolean'],
 
+                    ],
                 ],
-            ],
-        ]);
-        $command->flushIndex(static::index());
+            ]);
+            $command->flushIndex(static::index());
+        }
     }
 
     public function getUrl()

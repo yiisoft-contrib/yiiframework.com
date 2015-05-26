@@ -6,6 +6,7 @@ use app\models\ApiPrimitive;
 use app\models\ApiType;
 use Yii;
 use yii\apidoc\helpers\ApiIndexer;
+use yii\base\ErrorHandler;
 use yii\helpers\Console;
 use yii\helpers\FileHelper;
 use yii\helpers\StringHelper;
@@ -82,13 +83,15 @@ class ApiRenderer extends \yii\apidoc\templates\html\ApiRenderer
             Console::startProgress(0, $count = count($types), 'populating elasticsearch index...', false);
         }
         // first delete all records for this version
-//        ApiPrimitive::find()->where(['version' => $this->version])->delete(); // TODO this does not work
-//        ApiType::find()->where(['version' => $this->version])->delete();
+        $version = $this->version;
         ApiType::setMappings();
         ApiPrimitive::setMappings();
+//        ApiPrimitive::deleteAllForVersion($version);
+        ApiType::deleteAllForVersion($version);
+        sleep(1);
         $i = 0;
         foreach($types as $type) {
-            ApiType::createRecord($type, $this->version);
+            ApiType::createRecord($type, $version);
             if ($this->controller !== null) {
                 Console::updateProgress(++$i, $count);
             }

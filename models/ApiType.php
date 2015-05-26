@@ -80,6 +80,7 @@ class ApiType extends SearchActiveRecord
         } elseif ($type instanceof TraitDoc) {
             $model->type = 'trait';
         }
+
         $model->insert(false);
 
         if ($type->methods !== null) {
@@ -122,34 +123,41 @@ class ApiType extends SearchActiveRecord
         if (!$command->indexExists(static::index())) {
             $command->createIndex(static::index());
         }
-        $command->setMapping(static::index(), static::type(), [
-            static::type() => [
-                // TODO improve mappings for search
-                'properties' => [
-                    'version' => ['type' => 'string', 'index' => 'not_analyzed'],
-                    'type' => ['type' => 'string', 'index' => 'not_analyzed'],
+        $mapping = $command->getMapping(static::index(), static::type());
+        if (empty($mapping)) {
+            $command->setMapping(static::index(), static::type(), [
+                static::type() => [
+                    // TODO improve mappings for search
+                    'properties' => [
+                        'version' => ['type' => 'string', 'index' => 'not_analyzed'],
+                        'type' => ['type' => 'string', 'index' => 'not_analyzed'],
 
-                    'name' => ['type' => 'string'],
-                    'namespace' => ['type' => 'string'],
-                    'shortDescription' => ['type' => 'string'],
-                    'description' => ['type' => 'string'],
-                    'since' => ['type' => 'string', 'index' => 'not_analyzed'],
-                    'deprecatedSince' => ['type' => 'string', 'index' => 'not_analyzed'],
-                    'deprecatedReason' => ['type' => 'string'],
+                        'name' => ['type' => 'string'],
+                        'namespace' => ['type' => 'string'],
+                        'shortDescription' => ['type' => 'string'],
+                        'description' => ['type' => 'string'],
+                        'since' => ['type' => 'string', 'index' => 'not_analyzed'],
+                        'deprecatedSince' => ['type' => 'string', 'index' => 'not_analyzed'],
+                        'deprecatedReason' => ['type' => 'string'],
 
-                    // for classes
-                    'extends' => ['type' => 'string'],
-                    'implements' => ['type' => 'string'],
-                    'traits' => ['type' => 'string'],
+                        // for classes
+                        'extends' => ['type' => 'string'],
+                        'implements' => ['type' => 'string'],
+                        'traits' => ['type' => 'string'],
+                    ]
                 ]
-            ]
-        ]);
-        $command->flushIndex(static::index());
+            ]);
+            $command->flushIndex(static::index());
+        }
     }
 
     public function getUrl()
     {
-        $name = strtolower(str_replace('\\', '-', $this->name));
+        if ($this->version[0] === '1') {
+            $name = $this->name;
+        } else {
+            $name = strtolower(str_replace('\\', '-', $this->name));
+        }
         return ['api/view', 'version' => $this->version, 'section' => $name];
     }
 } 

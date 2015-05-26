@@ -60,4 +60,9 @@ abstract class SearchActiveRecord extends ActiveRecord
         return new static;
     }
 
+    public static function deleteAllForVersion($version)
+    {
+        static::deleteAll(['version' => $version]);
+        static::getDb()->createCommand()->flushIndex(static::index());
+    }
 }
