@@ -3,6 +3,7 @@
 namespace app\commands;
 
 use app\apidoc\Yii1GuideRenderer;
+use app\models\SearchGuideSection;
 use Yii;
 use yii\helpers\Console;
 use app\apidoc\GuideRenderer;
@@ -54,8 +55,8 @@ class GuideController extends \yii\apidoc\commands\GuideController
 
                 $this->stdout("Start generating guide $version in $name...\n", Console::FG_CYAN);
                 $this->template = 'bootstrap';
-                $this->generateIndex($source, $target);
                 $this->actionIndex([$source], $target);
+                $this->generateIndex($source, $target);
                 $this->stdout("Finished guide $version in $name.\n\n", Console::FG_CYAN);
 
                 // set LaTeX language
@@ -100,8 +101,8 @@ class GuideController extends \yii\apidoc\commands\GuideController
                 ]);
 
                 $this->stdout("Start generating guide $version in $name...\n", Console::FG_CYAN);
-                $this->generateIndexYii1($source, $target, $version, $unnormalizedLanguage);
                 $renderer->renderGuide($version, $unnormalizedLanguage);
+                $this->generateIndexYii1($source, $target, $version, $unnormalizedLanguage);
                 FileHelper::copyDirectory("$source/images", "$target/images");
                 $this->stdout("Finished guide $version in $name.\n\n", Console::FG_CYAN);
 
@@ -124,8 +125,18 @@ class GuideController extends \yii\apidoc\commands\GuideController
         ]);
     }
 
+    /**
+     * generate index file and populate elasticsearch index
+     */
     protected function generateIndex($source, $target)
     {
+        $this->stdout('populating elasticsearch index...');
+        // first delete all records for this version
+        $version = $this->version;
+        SearchGuideSection::setMappings();
+//        SearchGuideSection::deleteAllForVersion($version);
+        sleep(1);
+
         $chapters = [];
         $sections = [];
         $data = $this->findRenderer(null)->loadGuideStructure([$source . '/README.md']);
@@ -135,8 +146,19 @@ class GuideController extends \yii\apidoc\commands\GuideController
                 if ($file === 'README') {
                     continue;
                 }
+
+                // index file
                 $chapters[$chapter['headline']][$section['headline']] = $file;
                 $sections[$file] = [$chapter['headline'], $section['headline']];
+
+                // elasticsearch
+                $file = $target . '/' . $file . '.html';
+                if (!file_exists($file)) {
+                    echo "file not found: $file\n";
+                    continue;
+                }
+                $html = file_get_contents($file);
+                SearchGuideSection::createRecord(basename($file, '.html'), $section['headline'], $html, $this->version, $this->language);
             }
         }
         $lines = file($source . '/README.md');
@@ -146,10 +168,20 @@ class GuideController extends \yii\apidoc\commands\GuideController
 
         FileHelper::createDirectory($target);
         file_put_contents("$target/index.data", serialize([$title, $chapters, $sections]));
+
+        $this->stdout("done.\n", Console::FG_GREEN);
     }
 
     protected function generateIndexYii1($source, $target, $version, $language)
     {
+        $this->stdout('populating elasticsearch index...');
+        // first delete all records for this version
+        $version = $this->version;
+        SearchGuideSection::setMappings();
+//        SearchGuideSection::deleteAllForVersion($version);
+        sleep(1);
+
+
         $chapters = [];
         $sections = [];
 
@@ -168,6 +200,15 @@ class GuideController extends \yii\apidoc\commands\GuideController
             } else if ($line[0] === '-' && preg_match('/\[(.*?)\]\((.*?)\)/', $line, $matches)) {
                 $chapters[$chapter][$matches[1]] = $matches[2];
                 $sections[$matches[2]] = [$chapter, $matches[1]];
+
+                // elasticsearch
+                $file = $target . '/' . $matches[2] . '.html';
+                if (!file_exists($file)) {
+                    echo "file not found: $file\n";
+                    continue;
+                }
+                $html = file_get_contents($file);
+                SearchGuideSection::createRecord(basename($file, '.html'), $matches[1], $html, $this->version, $this->language);
             }
         }
 
@@ -181,5 +222,7 @@ class GuideController extends \yii\apidoc\commands\GuideController
 
         FileHelper::createDirectory($target);
         file_put_contents("$target/index.data", serialize([$title, $chapters, $sections]));
+
+        $this->stdout("done.\n", Console::FG_GREEN);
     }
 }

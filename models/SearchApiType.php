@@ -31,7 +31,7 @@ use yii\apidoc\models\TypeDoc;
  * @property array $implements
  * @property array $traits
  */
-class ApiType extends SearchActiveRecord
+class SearchApiType extends SearchActiveRecord
 {
 
     public function attributes()
@@ -62,7 +62,7 @@ class ApiType extends SearchActiveRecord
      */
     public static function createRecord($type, $version)
     {
-        /** @var ApiType $model */
+        /** @var SearchApiType $model */
         $model = new static();
         $model->version = $version;
         $model->name = $type->name;
@@ -88,7 +88,7 @@ class ApiType extends SearchActiveRecord
                 if ($method->visibility === 'private') {
                     continue;
                 }
-                ApiPrimitive::createRecord($model, $method, $version);
+                SearchApiPrimitive::createRecord($model, $method, $version);
             }
         }
 
@@ -97,17 +97,17 @@ class ApiType extends SearchActiveRecord
                 if ($property->visibility === 'private') {
                     continue;
                 }
-                ApiPrimitive::createRecord($model, $property, $version);
+                SearchApiPrimitive::createRecord($model, $property, $version);
             }
         }
 
         if ($type instanceof ClassDoc) {
             foreach($type->constants as $const) {
-                ApiPrimitive::createRecord($model, $const, $version);
+                SearchApiPrimitive::createRecord($model, $const, $version);
             }
 
             foreach($type->events as $event) {
-                ApiPrimitive::createRecord($model, $event, $version);
+                SearchApiPrimitive::createRecord($model, $event, $version);
             }
         }
     }

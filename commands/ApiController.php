@@ -2,8 +2,8 @@
 
 namespace app\commands;
 
-use app\models\ApiPrimitive;
-use app\models\ApiType;
+use app\models\SearchApiPrimitive;
+use app\models\SearchApiType;
 use Yii;
 use yii\apidoc\models\Context;
 use yii\base\ErrorHandler;
@@ -91,10 +91,10 @@ class ApiController extends \yii\apidoc\commands\ApiController
     public function actionDropElasticsearchIndex()
     {
         if ($this->confirm('really drop the whole elasticsearch index? You need to rebuild it afterwards!')) {
-            ApiType::getDb()->createCommand()->deleteIndex(ApiType::index());
+            SearchApiType::getDb()->createCommand()->deleteIndex(SearchApiType::index());
             sleep(1);
-            ApiType::setMappings();
-            ApiPrimitive::setMappings();
+            SearchApiType::setMappings();
+            SearchApiPrimitive::setMappings();
             return 0;
         }
         return 1;
@@ -147,14 +147,14 @@ class ApiController extends \yii\apidoc\commands\ApiController
         Console::startProgress(0, $count = count($types), 'populating elasticsearch index...', false);
         $version = $this->version;
         // first delete all records for this version
-        ApiType::setMappings();
-        ApiPrimitive::setMappings();
+        SearchApiType::setMappings();
+        SearchApiPrimitive::setMappings();
 //        ApiPrimitive::deleteAllForVersion($version);
-        ApiType::deleteAllForVersion($version);
+        SearchApiType::deleteAllForVersion($version);
         sleep(1);
         $i = 0;
         foreach($types as $type) {
-            ApiType::createRecord($type, $version);
+            SearchApiType::createRecord($type, $version);
             Console::updateProgress(++$i, $count);
         }
         Console::endProgress(true, true);

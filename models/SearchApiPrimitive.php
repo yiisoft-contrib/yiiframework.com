@@ -43,7 +43,7 @@ use yii\apidoc\models\PropertyDoc;
  * @property string $returnTypes
  * @property boolean $isReturnByReference
  */
-class ApiPrimitive extends SearchActiveRecord
+class SearchApiPrimitive extends SearchActiveRecord
 {
 
     public function attributes()
@@ -96,7 +96,7 @@ class ApiPrimitive extends SearchActiveRecord
      */
     public static function createRecord($parent, $primitive, $version)
     {
-        /** @var ApiPrimitive $model */
+        /** @var SearchApiPrimitive $model */
         $model = new static();
         $model->version = $version;
         $model->name = $primitive->name;

@@ -79,33 +79,9 @@ use yii\widgets\Menu;
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse"><i class="fa fa-bars"></i></button>
             </div>
             <div class="navbar-collapse collapse navbar-right">
+                <?php
 
-                <ul class="nav navbar-nav"><li>
-                        <?= Html::beginForm(['/search/global'], 'get', ['id' => 'search-form', 'class' => 'navbar-form']) ?>
-                        <div class="form-group nospace">
-                            <div class="input-group">
-                                <input type="text" class="form-control" id="search" name="q" placeholder="Search" value="<?= property_exists($this->context, 'searchQuery') ? Html::encode($this->context->searchQuery) : '' ?>">
-                                <span class="input-group-btn"><?= Html::submitButton('<i class="fa fa-search"></i>', ['class' => "btn btn-primary"]) ?></span>
-                            </div>
-                        </div>
-                        <?= Html::endForm() ?>
-                    </li></ul>
-
-            <?php
-
-//                    // search form
-//                    $form = ActiveForm::begin([
-//        	            'id' => 'search-form',
-//        	            'options' => [
-//        		            'class' => 'navbar-form navbar-left',
-//        		            'role' => 'search',
-//        	            ],
-//                    ]);
-//                        echo '<div class="form-group">';
-//                        echo Html::input('text', 'q', '', ['class' => 'form-control', 'placeholder' => 'Search...', 'aria-label' => 'Search terms']) . ' ';
-//                        echo Html::button('Search!', ['type' => 'submit', 'class' => 'btn btn-default']);
-//        			    echo '</div>';
-//                    ActiveForm::end();
+                    echo $this->render('_searchForm');
 
                     // main navigation
                     echo Nav::widget([

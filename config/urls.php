@@ -31,6 +31,7 @@ return [
     'doc/guide' => 'guide/entry',
 
     'search' => 'search/global',
+    'search/suggest' => 'search/suggest',
 
     // urls from old site redirect to new location
     'doc-2.0/guide-<section:[A-z0-9\\.\\-]+>.html' => 'guide/redirect',

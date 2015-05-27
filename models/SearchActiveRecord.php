@@ -18,17 +18,17 @@ abstract class SearchActiveRecord extends ActiveRecord
         return YII_ENV_DEV ? 'yiiframework-dev' : 'yiiframework';
     }
 
-    public static function search($queryString)
+    public static function search($queryString, $version = null, $language = null)
     {
         $query = static::find();
-        $query->from(static::index(), ['api-type', 'api-primitive']);
+        $query->from(static::index(), ['api-type', 'api-primitive', 'guide-section']);
         $query->query([
             'bool' => [
                 'should' => [
                     // match title and description for keywords, boost title by 3
                     ['multi_match' => [
                         'query' => $queryString,
-                        'fields' => ['name^3', 'shortDescription^2', 'description'],
+                        'fields' => ['title^3', 'name^3', 'shortDescription^2', 'description', 'body'],
                     ]],
                     // check for comments that match keywords
                     ['has_child' => [
@@ -41,10 +41,17 @@ abstract class SearchActiveRecord extends ActiveRecord
                 'minimum_should_match' => 1
             ],
         ]);
+        if ($language !== null) {
+            $query->andWhere(['language' => $language]);
+        }
+        if ($version !== null) {
+            $query->andWhere(['version' => $version]);
+        }
         $query->highlight([
             'fields' => [
                 'shortDescription' => ["fragment_size" => 5000, "number_of_fragments" => 1],
                 'description' => ["fragment_size" => 100, "number_of_fragments" => 5],
+                'body' => ["fragment_size" => 100, "number_of_fragments" => 5],
             ],
         ]);
         return $query;
@@ -54,8 +61,9 @@ abstract class SearchActiveRecord extends ActiveRecord
     {
         switch($row['_type'])
         {
-            case 'api-type': return new ApiType();
-            case 'api-primitive': return new ApiPrimitive();
+            case 'api-type': return new SearchApiType();
+            case 'api-primitive': return new SearchApiPrimitive();
+            case 'guide-section': return new SearchGuideSection();
         }
         return new static;
     }

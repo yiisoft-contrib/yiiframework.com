@@ -2,8 +2,8 @@
 
 namespace app\apidoc;
 
-use app\models\ApiPrimitive;
-use app\models\ApiType;
+use app\models\SearchApiPrimitive;
+use app\models\SearchApiType;
 use Yii;
 use yii\apidoc\helpers\ApiIndexer;
 use yii\base\ErrorHandler;
@@ -84,14 +84,14 @@ class ApiRenderer extends \yii\apidoc\templates\html\ApiRenderer
         }
         // first delete all records for this version
         $version = $this->version;
-        ApiType::setMappings();
-        ApiPrimitive::setMappings();
+        SearchApiType::setMappings();
+        SearchApiPrimitive::setMappings();
 //        ApiPrimitive::deleteAllForVersion($version);
-        ApiType::deleteAllForVersion($version);
+        SearchApiType::deleteAllForVersion($version);
         sleep(1);
         $i = 0;
         foreach($types as $type) {
-            ApiType::createRecord($type, $version);
+            SearchApiType::createRecord($type, $version);
             if ($this->controller !== null) {
                 Console::updateProgress(++$i, $count);
             }

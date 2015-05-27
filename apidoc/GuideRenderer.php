@@ -2,7 +2,9 @@
 
 namespace app\apidoc;
 
+use app\models\SearchGuideSection;
 use Yii;
+use yii\helpers\Console;
 
 /**
  *
