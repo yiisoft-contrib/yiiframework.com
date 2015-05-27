@@ -9,7 +9,7 @@ use yii\widgets\ActiveForm;
 use yii\helpers\Html;
 ?>
 
-<div class="component-comments">
+<div class="component-comments lang-en">
     <?php if (!empty($comments)): ?>
         <ol>
         <?php foreach ($comments as $comment): ?>

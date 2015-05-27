@@ -79,7 +79,7 @@ $(".sidenav-toggle").on("click", function() {
 
                 <?php if (($editUrl = $section->editUrl) !== false): ?>
                 <div class="edit-icon"><i class="fa fa-github"></i></div>
-                <p>
+                <p class="lang-en">
                     <em>Found a typo or you think this page needs improvement?<br />
                         <a href="<?= $editUrl; ?>">Edit it on github</a>!</em>
                 </p>
