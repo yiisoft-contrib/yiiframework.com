@@ -3,8 +3,9 @@
 namespace app\models;
 
 use Yii;
+use yii\base\Object;
 
-class Guide
+class Guide extends Object
 {
     /**
      * @var string the version of this guide
@@ -101,7 +102,7 @@ class Guide
         return $languages[$this->language];
     }
 
-    protected function __construct($version, $language)
+    public function __construct($version, $language)
     {
         $this->version = $version;
         $this->language = $language;

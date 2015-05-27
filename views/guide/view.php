@@ -36,7 +36,7 @@ $(".sidenav-toggle").on("click", function() {
 });
 ');
 ?>
-<div class="container guide-view lang-<?= $guide->language ?>">
+<div class="container guide-view lang-<?= $guide->language ?>" xmlns="http://www.w3.org/1999/html">
     <div class="row">
         <div class="col-xs-7 col-sm-8">
             <h1 class="guide-headline"><?= Html::encode($guide->title) ?></h1>
@@ -54,8 +54,9 @@ $(".sidenav-toggle").on("click", function() {
 
             <div class="guide-content content">
                 <?php if (!empty($missingTranslation)): ?>
-                    <div class="well">
-                        This section isn't yet translated. Please read it in English and consider
+                    <div class="alert alert-warning">
+                        <strong>This section is not translated yet.</strong> <br />
+                        Please read it in English and consider
                         <a href="https://github.com/yiisoft/yii2/blob/master/docs/internals/translation-workflow.md">
                         helping us with translation</a>.
                     </div>
@@ -75,8 +76,15 @@ $(".sidenav-toggle").on("click", function() {
                     echo '<div class="text-center"><a href="#">Go to Top <span class="glyphicon glyphicon-chevron-up" aria-hidden="true"></span></a></div>';
                     ?>
                 </div>
-            </div>
 
+                <?php if (($editUrl = $section->editUrl) !== false): ?>
+                <div class="edit-icon"><i class="fa fa-github"></i></div>
+                <p>
+                    <em>Found a typo or you think this page needs improvement?<br />
+                        <a href="<?= $editUrl; ?>">Edit it on github</a>!</em>
+                </p>
+                <?php endif; ?>
+            </div>
 
             <?= \app\components\Comments::widget([
                 'objectType' => 'guide',

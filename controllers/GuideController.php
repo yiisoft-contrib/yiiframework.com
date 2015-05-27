@@ -91,7 +91,7 @@ class GuideController extends Controller
      */
     public function actionRedirect($section)
     {
-        if ($section === 'README') {
+        if ($section === 'README' || $section === 'index') {
             return $this->redirect(['index', 'version' => '2.0', 'language' => 'en'], 301); // Moved Permanently
         }
 

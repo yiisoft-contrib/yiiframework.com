@@ -3,8 +3,9 @@
 namespace app\models;
 
 use Yii;
+use yii\base\Object;
 
-class GuideSection
+class GuideSection extends Object
 {
     /**
      * @var Guide
@@ -22,6 +23,7 @@ class GuideSection
      * @var boolean
      */
     public $missingTranslation;
+
 
     public function __construct($name, Guide $guide)
     {
@@ -100,5 +102,29 @@ class GuideSection
     {
         $file = Yii::getAlias("@app/data/guide-$version/$language/$name.html");
         return @file_get_contents($file);
+    }
+
+    public function getEditUrl()
+    {
+        $version = $this->guide->version;
+        if ($version === '1.1') {
+            if ($this->missingTranslation) {
+                $language = 'en';
+            } else {
+                $language = str_replace('-', '_', strtolower($this->guide->language));
+            }
+            return 'https://github.com/yiisoft/yii/edit/master/docs/guide/' . ($language !== 'en' ? "$language/" : '') . "{$this->name}.txt";
+        } elseif ($version[0] === '2') {
+            if ($this->missingTranslation) {
+                $language = 'en';
+            } elseif (strpos($this->guide->language, '-') !== false) {
+                list($lang, $locale) = explode('-', $this->guide->language);
+                $language = $lang . (empty($locale) ? '' : '-' . strtoupper($locale));
+            } else {
+                $language = $this->guide->language;
+            }
+            return 'https://github.com/yiisoft/yii2/edit/master/docs/guide' . ($language !== 'en' ? "-$language" : '') . "/{$this->name}.md";
+        }
+        return false;
     }
 }

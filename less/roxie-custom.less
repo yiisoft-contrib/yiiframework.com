@@ -198,7 +198,6 @@ body button.btn-warning:focus {
 }
 
 .btn-danger,
-.alert-danger,
 .label-danger,
 .panel-danger > .panel-heading {
 	background-color:#C0392B;
@@ -212,7 +211,6 @@ body button.btn-warning:focus {
 }
 
 .btn-info,
-.alert-info,
 .label-info,
 .panel-info > .panel-heading {
 	background-color:#3498DB;
@@ -226,7 +224,6 @@ body button.btn-warning:focus {
 }
 
 .btn-warning,
-.alert-warning,
 .label-warning,
 .panel-warning > .panel-heading {
 	background-color:#E67E22;
@@ -240,7 +237,6 @@ body button.btn-warning:focus {
 }
 
 .btn-success,
-.alert-success,
 .label-success,
 .panel-success > .panel-heading {
 	background-color:#2ECC71;
@@ -285,8 +281,31 @@ body button.btn-warning:focus {
 .alert {
 	border:0;
 	border-radius:2px;
-	color:#FFFFFF;
+    color: #000;
+
+    border-bottom: 1px solid;
+    border-right: 1px solid;
+    border-top: 1px solid;
+    border-left: 5px solid;
 }
+
+.alert-danger {
+    background: #cc0000;
+    border-color: #cc0000;
+}
+.alert-info {
+    background: #aaaaff;
+    border-color: #0000cc;
+}
+.alert-warning {
+    background: rgba(255, 255, 0, 0.25);
+    border-color: #efef00;
+}
+.alert-success {
+    background: #00cc00;
+    border-color: #00cc00;
+}
+
 
 .alert .close {
     color: #000;

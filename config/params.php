@@ -44,6 +44,7 @@ return [
             'en' => 'English',
             'es' => 'Español',     // Spanish
             'ja' => '日本語',       // Japanese
+            'pt-br' => 'Português brasileiro',  // Brazilian Portuguese
             'ru' => 'Русский',     // Russian
             'zh-cn' => '简体中文',  // Simplified Chinese
         ],
