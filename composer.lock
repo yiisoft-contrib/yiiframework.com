@@ -961,7 +961,7 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/yiisoft/yii2-framework/zipball/1e4076d3446e10fce94daed6526d55fb16ea4f1f",
+                "url": "https://api.github.com/repos/yiisoft/yii2-framework/zipball/06d2c79886d3d4388bf4eb8c471be4dcba331751",
                 "reference": "1e4076d3446e10fce94daed6526d55fb16ea4f1f",
                 "shasum": ""
             },
@@ -1045,12 +1045,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/yiisoft/yii2-apidoc.git",
-                "reference": "bff4cbd4019d81810ced031ecf1dc0731b407a6c"
+                "reference": "85678e85ee6c5ff9dcb00b5245c800043b68731c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/yiisoft/yii2-apidoc/zipball/bff4cbd4019d81810ced031ecf1dc0731b407a6c",
-                "reference": "bff4cbd4019d81810ced031ecf1dc0731b407a6c",
+                "url": "https://api.github.com/repos/yiisoft/yii2-apidoc/zipball/85678e85ee6c5ff9dcb00b5245c800043b68731c",
+                "reference": "85678e85ee6c5ff9dcb00b5245c800043b68731c",
                 "shasum": ""
             },
             "require": {
@@ -1099,7 +1099,7 @@
                 "phpdoc",
                 "yii2"
             ],
-            "time": "2015-06-05 18:17:29"
+            "time": "2015-06-05 23:44:39"
         },
         {
             "name": "yiisoft/yii2-authclient",
