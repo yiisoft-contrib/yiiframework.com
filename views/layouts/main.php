@@ -73,7 +73,7 @@ use yii\widgets\Menu;
     	<div class="container">
             <div class="navbar-header">
                 <a href="<?= Yii::$app->homeUrl ?>" class="navbar-brand">
-                    <img src="<?= Yii::getAlias('@web/image/logo.png') ?>" class="logo">
+                    <img src="<?= Yii::getAlias('@web/image/logo.png') ?>" class="logo" alt="Yii Framework">
                     <?php /* <object type="image/svg+xml" data="<?= Yii::getAlias('@web/logo.svg') ?>" class="logo"></object><span class="hidden-sm"> Yii Framework</span>*/ ?>
                 </a>
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse"><i class="fa fa-bars"></i></button>

@@ -1,3 +1,6 @@
+@api-box-padding-x: @font-size-base;
+@api-box-padding-y: ceil(@font-size-base / 2);
+
 .api-content {
 
     a.tool-link {
@@ -47,55 +50,53 @@
                 width: 25%;
             }
         }
-    }
 
-    #nav {
-        padding: 3px;
-        margin: 0 0 10px 0;
-        border-top: 1px #ddd solid;
-    }
+        .detailHeader {
+            font-weight: bold;
+            font-size: 12pt;
+            margin: 30px 0 5px 0;
+            border-bottom: 1px solid #ddd;
+        }
 
-    #classDescription {
-        padding: 5px;
-        margin: 10px 0 20px 0;
-        border-bottom: 1px solid #BFCFFF;
-    }
+        .detailHeaderTag {
+            font-weight: normal;
+            font-size: 10pt;
+        }
 
-    .detailHeader {
-        font-weight: bold;
-        font-size: 12pt;
-        margin: 30px 0 5px 0;
-        border-bottom: 1px solid #BFCFFF;
-    }
+        .paramNameCol {
+          width: 12%;
+          font-weight: bold;
+        }
 
-    .detailHeaderTag {
-        font-weight: normal;
-        font-size: 10pt;
-    }
+        .paramTypeCol {
+          width: 12%;
+        }
 
-    .paramNameCol {
-      width: 12%;
-      font-weight: bold;
-    }
+        .sourceCode {
+            margin: 5px 0;
+            padding:5px;
+            background: #f9f9f9;
+            white-space: normal;
 
-    .paramTypeCol {
-      width: 12%;
-    }
+            a.show {
+                display: inline !important;
+            }
+        }
 
-    .sourceCode {
-        margin: 5px 0;
-        padding:5px;
-        background: #f9f9f9;
-        white-space: normal;
+        #nav {
+            padding: 3px;
+            margin: 0 0 10px 0;
+            border-top: 1px #ddd solid;
+        }
 
-        a.show {
-            display: inline !important;
+        #classDescription {
+            &:extend(.content p);
         }
     }
 
     .signature, td.signature, td .signature2 {
         margin: 1em 0;
-        padding: 8px;
+        padding: @api-box-padding-y @api-box-padding-x;
 
         color: #000000;
         background: #f9f9f9;
@@ -103,9 +104,8 @@
         border-top: 1px solid #ddd;
         border-bottom: 1px solid #ddd;
 
-        font-family: "courier new", "times new roman", monospace;
-        line-height: 1.3em;
-  //      white-space: pre-line;
+        font-family: @font-family-monospace;
+//      white-space: pre-line;
         word-wrap: break-word;
         word-break: break-all;
     }
@@ -114,4 +114,67 @@
         border: none;
         padding: 0;
     }
+
+    .property-doc .signature {
+        border-left: solid 1px #ddd;
+        border-right: solid 1px #ddd;
+        margin: 0;
+    }
+
+    .detail-header {
+        margin: 30px 0 0 0;
+        border-left: solid 1px #ddd;
+        border-right: solid 1px #ddd;
+        padding: @api-box-padding-y @api-box-padding-x;
+    }
+
+    .doc-description {
+        border-left: solid 1px #ddd;
+        border-right: solid 1px #ddd;
+        padding: @api-box-padding-y @api-box-padding-x;
+        margin: 0;
+    }
+
+    .event-doc .doc-description {
+        border-bottom: solid 1px #ddd;
+    }
+
+    table {
+        tbody > tr > td,
+        tbody > tr > th {
+            padding-left: @api-box-padding-x;
+        }
+    }
+
+    table td p:last-child,
+    .doc-description p:last-child {
+        margin-bottom: 0;
+    }
+
+
+    .signature-defs {
+        color: #936;
+    }
+
+    .signature-type, .signature-type a {
+        color: #693;
+    }
+
+
+    table.detail-table .param-name-col { width: 15%; min-width: 10em; }
+    table.detail-table .param-type-col { width: 20%; min-width: 12em; }
+    table.detail-table .param-desc-col { width: 65%; }
+
+    table.summary-table .col-method   { width: 20%; }
+    table.summary-table .col-property { width: 20%; }
+    table.summary-table .col-const    { width: 20%; }
+    table.summary-table .col-event    { width: 20%; }
+    table.summary-table .col-defined  { width: 15%; }
+
+    .top-nav {
+        padding: 3px;
+        margin: 0 0 10px 0;
+        border-top: 1px #ddd solid;
+    }
+
 }
