@@ -5,6 +5,7 @@
  * Roxie theme v1.1
 ------------------------------*/
 
+/*
 //FIXED NAVBAR
 $(window).scroll(function(){
 	if($(window).width() > 991) {
@@ -21,7 +22,7 @@ $(window).scroll(function(){
 			$('body').css("padding-top","0px");
 		}
 	}
-	
+
 	else {
 		if($(window).scrollTop()) {
 			$('.navbar').addClass('navbar-offset');
@@ -37,6 +38,7 @@ $(window).scroll(function(){
 		}
 	}
 });
+*/
 
 //TWITTER SHARE BUTTON
 //!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="https://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");
@@ -68,10 +70,10 @@ $(document).ready(function() {
 	//$( "#amount2" ).val( "$" + $( "#slider-range" ).slider( "values", 1 ));
 		
 	//SCROLLING
-	$("a.scroll[href^='#']").on('click', function(e) {
+	$("a[href^='#']").on('click', function(e) {
 		e.preventDefault();
 		var hash = this.hash;
-		$('html, body').animate({ scrollTop: $(this.hash).offset().top - 110}, 1000, function(){window.location.hash = hash;});
+		$('html, body').animate({ scrollTop: $(this.hash).offset().top }, 250, function(){window.location.hash = hash;});
 	});
 	
 	//TOOLTIP
