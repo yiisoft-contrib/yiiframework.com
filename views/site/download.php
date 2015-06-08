@@ -14,5 +14,13 @@ $this->params['breadcrumbs'][] = $this->title;
 
     <h2 id="yii2">Yii 2.0</h2>
 
+
+        <h3>Offline Documentation</h3>
+
+        <ul>
+            <li><?= Html::a('yii-docs-2.0.tar.bz2', ['site/file', 'category' => 'docs-offline', 'file' => 'yii-docs-2.0.tar.bz2']) ?></li>
+            <li><?= Html::a('yii-docs-2.0.tar.gz', ['site/file', 'category' => 'docs-offline', 'file' => 'yii-docs-2.0.tar.gz']) ?></li>
+        </ul>
+
     <h2 id="yii1">Yii 1.1</h2>
 </div>

@@ -14,6 +14,8 @@ return [
     'security' => 'site/security',
     'download' => 'site/download',
 
+    'download/<category:[\w-]+>/<file:[\w\d-.]+>' => 'site/file',
+
     'logout' => 'site/logout',
     'login' => 'site/login',
     'signup' => 'site/signup',

@@ -345,4 +345,25 @@ class SiteController extends Controller
     {
         return $this->render('download');
     }
+
+    /**
+     * used to download specific files
+     */
+    public function actionFile($category, $file)
+    {
+        if (!preg_match('~^[\w\d-.]+$~', $file)) {
+            throw new NotFoundHttpException('The requested page was not found.');
+        }
+
+        switch($category)
+        {
+            case 'docs-offline':
+                $filePath = Yii::getAlias("@app/data/docs-offline/$file");
+                if (file_exists($filePath)) {
+                    return Yii::$app->response->sendFile($filePath, $file);
+                }
+                break;
+        }
+        throw new NotFoundHttpException('The requested page was not found.');
+    }
 }
