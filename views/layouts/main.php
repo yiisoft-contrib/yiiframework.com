@@ -223,7 +223,7 @@ use yii\widgets\Menu;
             </div>
             <div class="footer-bottom">
                 <div class="footer-copyright">
-                    <p>&copy; 2015 Yii Software LLC</p>
+                    <p>&copy; 2015 Yii Software LLC | <?= Html::a('Terms of service', ['/site/tos']) ?></p>
                 </div>
                 <ul class="nav navbar-nav navbar-right hidden-xs hidden-sm">
                     <li><a href="index.html">Home</a></li>

@@ -13,6 +13,7 @@ return [
     'report-issue' => 'site/report-issue',
     'security' => 'site/security',
     'download' => 'site/download',
+    'tos' => 'site/tos',
 
     'download/<category:[\w-]+>/<file:[\w\d-.]+>' => 'site/file',
 

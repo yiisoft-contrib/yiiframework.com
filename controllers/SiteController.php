@@ -346,6 +346,11 @@ class SiteController extends Controller
         return $this->render('download');
     }
 
+    public function actionTos()
+    {
+        return $this->render('tos');
+    }
+
     /**
      * used to download specific files
      */
