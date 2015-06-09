@@ -27,18 +27,28 @@ api-%: yii-%
 guide-%: yii-%
 	./yii guide "$(subst guide-,,$@)" --interactive=0
 
+
 download-%: TARGET_DIR=data/docs-offline
 download-%: SOURCE_DIR=data/yii-$(subst download-,,$@)
 download-%: DOC_DIR=yii-docs-$(subst download-,,$@)
+download-%: LANGUAGES=en $(shell find ${SOURCE_DIR}/docs/ | grep -ioP 'guide-[a-z-]+$$' | cut -c 7-)
 download-%: yii-%
-	-test -d ${TARGET_DIR} && rm -rf ${TARGET_DIR}
-	vendor/bin/apidoc guide ${SOURCE_DIR}/docs/guide ${TARGET_DIR}/${DOC_DIR} --interactive=0
+	cd ${SOURCE_DIR}/docs && ln -sf guide guide-en
 	vendor/bin/apidoc api ${SOURCE_DIR}/framework ${TARGET_DIR}/${DOC_DIR} --interactive=0
-	vendor/bin/apidoc guide ${SOURCE_DIR}/docs/guide ${TARGET_DIR}/${DOC_DIR} --interactive=0
-	rm -r ${TARGET_DIR}/${DOC_DIR}/cache
-	cd ${TARGET_DIR} && tar czf ${DOC_DIR}.tar.gz ${DOC_DIR}
-	cd ${TARGET_DIR} && tar cjf ${DOC_DIR}.tar.bz2 ${DOC_DIR}
-	rm -r ${TARGET_DIR}/${DOC_DIR}
+	for l in ${LANGUAGES} ; do \
+		echo ""  ; \
+		echo "building guide and api package for language $$l..."  ; \
+		test -d ${TARGET_DIR}/${DOC_DIR}-$$l && rm -rf ${TARGET_DIR}/${DOC_DIR}-$$l  ; \
+		test -f ${TARGET_DIR}/${DOC_DIR}-$$l.tar.gz && rm ${TARGET_DIR}/${DOC_DIR}-$$l.tar.gz  ; \
+		test -f ${TARGET_DIR}/${DOC_DIR}-$$l.tar.bz2 && rm ${TARGET_DIR}/${DOC_DIR}-$$l.tar.bz2  ; \
+		cp -ar ${TARGET_DIR}/${DOC_DIR} ${TARGET_DIR}/${DOC_DIR}-$$l  ; \
+		vendor/bin/apidoc guide ${SOURCE_DIR}/docs/guide-$$l ${TARGET_DIR}/${DOC_DIR}-$$l --interactive=0  ; \
+		rm -r ${TARGET_DIR}/${DOC_DIR}-$$l/cache  ; \
+		cd ${TARGET_DIR} && tar czf ${DOC_DIR}-$$l.tar.gz ${DOC_DIR}-$$l ; cd - ; \
+		cd ${TARGET_DIR} && tar cjf ${DOC_DIR}-$$l.tar.bz2 ${DOC_DIR}-$$l ; cd - ; \
+		rm -r ${TARGET_DIR}/${DOC_DIR}-$$l  ; \
+	done
+
 
 # targets for cloning yii repos for building docs
 yii-1.0:
