@@ -17,10 +17,17 @@ $this->params['breadcrumbs'][] = $this->title;
 
         <h3>Offline Documentation</h3>
 
+        <?php foreach(Yii::$app->params['guide.versions']['2.0'] as $locale => $language): ?>
         <ul>
-            <li><?= Html::a('yii-docs-2.0.tar.bz2', ['site/file', 'category' => 'docs-offline', 'file' => 'yii-docs-2.0.tar.bz2']) ?></li>
-            <li><?= Html::a('yii-docs-2.0.tar.gz', ['site/file', 'category' => 'docs-offline', 'file' => 'yii-docs-2.0.tar.gz']) ?></li>
+            <li><?php
+                echo "$language: ";
+                $file = "yii-docs-2.0-$locale.tar";
+                echo Html::a("$file.gz", ['site/file', 'category' => 'docs-offline', 'file' => "$file.gz"]) . ' ';
+                echo Html::a("$file.bz2", ['site/file', 'category' => 'docs-offline', 'file' => "$file.bz2"]);
+            ?>
+            </li>
         </ul>
+        <?php endforeach; ?>
 
     <h2 id="yii1">Yii 1.1</h2>
 </div>
