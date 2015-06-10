@@ -351,6 +351,21 @@ class SiteController extends Controller
         return $this->render('tos');
     }
 
+    public function actionPerformance()
+    {
+        $this->redirect(['index']);
+    }
+
+    public function actionDemos()
+    {
+        $this->redirect(['index']);
+    }
+
+    public function actionLogo()
+    {
+        return $this->render('logo');
+    }
+
     /**
      * used to download specific files
      */

@@ -14,6 +14,9 @@ return [
     'security' => 'site/security',
     'download' => 'site/download',
     'tos' => 'site/tos',
+    'performance' => 'site/performance',
+    'demos' => 'site/demos',
+    'logo' => 'site/logo',
 
     'download/<category:[\w-]+>/<file:[\w\d-.]+>' => 'site/file',
 
