@@ -181,7 +181,7 @@ use yii\widgets\Menu;
                 	<h3><i class="fa fa-heart-o"></i>Our supporters</h3>
                     <div class="row" id="latest-work-footer">
 						<div class="overlay-wrapper col-sm-6">
-                            <a href="https://www.jetbrains.com/"><img src="image/logo_jetbrains.png" class="img-responsive" alt="JetBrains"></a>
+                            <a href="https://www.jetbrains.com/"><img src="<?= Yii::getAlias('@web/image/logo_jetbrains.png') ?>" class="img-responsive" alt="JetBrains"></a>
                         </div>
                         <?php /*
                         <div class="overlay-wrapper col-sm-6">
@@ -225,13 +225,13 @@ use yii\widgets\Menu;
                 <div class="footer-copyright">
                     <p>&copy; 2015 Yii Software LLC | <?= Html::a('Terms of service', ['/site/tos']) ?></p>
                 </div>
-                <ul class="nav navbar-nav navbar-right hidden-xs hidden-sm">
+                <!--ul class="nav navbar-nav navbar-right hidden-xs hidden-sm">
                     <li><a href="index.html">Home</a></li>
                     <li><a href="features.html">Features</a></li>
                     <li><a href="blog2.html">Blog</a></li>
                     <li><a href="portfolio1.html">Portfolio</a></li>
                     <li><a href="contact1.html">Contact</a></li>
-                </ul>
+                </ul-->
             </div>
         </div>
     </footer>

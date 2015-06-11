@@ -15,7 +15,7 @@ $this->params['breadcrumbs'][] = $this->title;
     <h2 id="yii2">Yii 2.0</h2>
 
 
-        <h3>Offline Documentation</h3>
+        <h3 id="yii2-docs">Offline Documentation</h3>
 
         <?php foreach(Yii::$app->params['guide.versions']['2.0'] as $locale => $language): ?>
         <ul>
