@@ -89,7 +89,7 @@ JUMBOTRON - START
 
     <h1>Welcome to Yii Framework!</h1>
 
-    <h2>The solid foundation for for your web application.</h2>
+    <h2>The solid foundation for your PHP web application.</h2>
 
     <div class="application-features">
         <div class="row application-feature">
