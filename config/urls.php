@@ -17,6 +17,7 @@ return [
     'performance' => 'site/performance',
     'demos' => 'site/demos',
     'logo' => 'site/logo',
+    'getting-started' => 'site/getting-started',
 
     'download/<category:[\w-]+>/<file:[\w\d-.]+>' => 'site/file',
 

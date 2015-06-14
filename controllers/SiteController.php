@@ -366,6 +366,11 @@ class SiteController extends Controller
         return $this->render('logo');
     }
 
+    public function actionGettingStarted()
+    {
+        return $this->render('getting-started');
+    }
+
     /**
      * used to download specific files
      */
