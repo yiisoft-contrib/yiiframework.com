@@ -89,7 +89,7 @@ JUMBOTRON - START
 
     <h1>Welcome to Yii Framework!</h1>
 
-    <h2>The solid foundation for your PHP web application.</h2>
+    <h2>The solid foundation for your PHP application.</h2>
 
     <div class="application-features">
         <div class="row application-feature">
@@ -105,7 +105,7 @@ JUMBOTRON - START
                 <span class="glyphicon glyphicon-lock" aria-hidden="true"></span>
                 <h3>Secure.</h3>
             </div>
-            <div class="col-sm-8 key-description">It is secure by default and helps you write solid and secure code. </div>
+            <div class="col-sm-8 key-description">Sane defaults and built in tools help you write solid and secure code. </div>
         </div>
 
         <div class="row application-feature">
@@ -113,7 +113,7 @@ JUMBOTRON - START
                 <span class="glyphicon glyphicon-time" aria-hidden="true"></span>
                 <h3>Efficient.</h3>
             </div>
-            <div class="col-sm-8 key-description">Write more code in less time with easy to use APIs and code generation.</div>
+            <div class="col-sm-8 key-description">Write more code in less time with simple yet powerful APIs and code generation.</div>
         </div>
 
         <div class="row application-feature">
