@@ -366,9 +366,9 @@ class SiteController extends Controller
         return $this->render('logo');
     }
 
-    public function actionGettingStarted()
+    public function actionTour()
     {
-        return $this->render('getting-started');
+        return $this->render('tour');
     }
 
     /**
