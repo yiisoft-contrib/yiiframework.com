@@ -58,6 +58,22 @@ $this->params['breadcrumbs'][] = $this->title;
         </div>
     </div>
 
+    <div class="row book">
+        <div class="col-sm-6 col-md-3">
+            <div class="simple">
+                <a href="https://github.com/samdark/yii2-cookbook">Yii 2.0 Cookbook</a>
+            </div>
+        </div>
+
+        <div class="col-sm-6 col-md-9">
+            <h3>Yii 2.0 Cookbook <small class="authors">by Alexander Makarov</small></h3>
+
+            <h4>Work in progress OpenSource Yii 2.0 recipe book.</h4>
+
+            <p>Although not finished, there are some nice recipes from one of the core team and community. Worth checking.</p>
+        </div>
+    </div>
+
     <h2>Yii 1.1</h2>
 
     <div class="row book">
