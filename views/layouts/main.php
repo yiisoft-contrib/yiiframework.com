@@ -95,6 +95,7 @@ use yii\widgets\Menu;
                                 ['label' => '<i class="fa fa-angle-double-right"></i>News', 'url' => ['site/news']],
                                 ['label' => '<i class="fa fa-angle-double-right"></i>License', 'url' => ['site/license']],
                                 ['label' => '<i class="fa fa-angle-double-right"></i>Team', 'url' => ['site/team']],
+                                ['label' => '<i class="fa fa-angle-double-right"></i>Official logo', 'url' => ['site/logo']],
                             ]],
                             ['label' => 'Learn', 'items' => [
                                 ['label' => '<i class="fa fa-angle-double-right"></i>Getting started', 'url' => ['guide/view', 'section' => 'start-installation', 'language' => 'en', 'version' => key(Yii::$app->params['guide.versions'])]],
