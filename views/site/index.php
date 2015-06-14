@@ -84,57 +84,52 @@
 <!-- ==========================
 JUMBOTRON - START
 =========================== -->
-<div class="jumbotron jumbotron7">
+<div class="jumbotron jumbotron-index">
 <div class="container">
 
+    <h1>Welcome to Yii Framework!</h1>
 
-   	<div class="row">
-       	<div class="col-md-7 col-lg-8">
-            <h2>Welcome to Yii Framework!</h2>
+    <h2>The solid foundation for your PHP application.</h2>
 
-            <div class="application-feature">
-                <div class="row">
-                    <div class="col-md-2"><span class="glyphicon glyphicon-flash" aria-hidden="true"></span></div>
-                    <div class="col-md-10"><h3>Fast</h3> - minimal overhead - only load what is needed.</div>
-                </div>
+    <div class="application-features">
+        <div class="row application-feature">
+            <div class="col-sm-4 key-word">
+                <span class="glyphicon glyphicon-flash" aria-hidden="true"></span>
+                <h3>Fast.</h3>
             </div>
+            <div class="col-sm-8 key-description">Yii gives you maximum functionality by adding as less overhead as possible.</div>
+        </div>
 
-            <div class="application-feature">
-                <div class="row">
-                    <div class="col-md-2"><span class="glyphicon glyphicon-lock" aria-hidden="true"></span></div>
-                    <div class="col-md-10"><h3>Secure</h3> - sane defaults, secure by default.</div>
-                </div>
+        <div class="row application-feature">
+            <div class="col-sm-4 key-word">
+                <span class="glyphicon glyphicon-lock" aria-hidden="true"></span>
+                <h3>Secure.</h3>
             </div>
+            <div class="col-sm-8 key-description">Sane defaults and built in tools help you write solid and secure code. </div>
+        </div>
 
-            <div class="application-feature">
-                <div class="row">
-                    <div class="col-md-2"><span class="glyphicon glyphicon-time" aria-hidden="true"></span></div>
-                    <div class="col-md-10"><h3>Efficient</h3> - Get a working app in no time</div>
-                </div>
+        <div class="row application-feature">
+            <div class="col-sm-4 key-word">
+                <span class="glyphicon glyphicon-time" aria-hidden="true"></span>
+                <h3>Efficient.</h3>
             </div>
+            <div class="col-sm-8 key-description">Write more code in less time with simple yet powerful APIs and code generation.</div>
+        </div>
 
-            <div class="application-feature">
-                <div class="row">
-                    <div class="col-md-2"><span class="glyphicon glyphicon-asterisk" aria-hidden="true"></span></div>
-                    <div class="col-md-10"><h3>Flexible</h3> - Adjust it too your needs.</div>
-                </div>
+        <div class="row application-feature">
+            <div class="col-sm-4 key-word">
+                <span class="glyphicon glyphicon-asterisk" aria-hidden="true"></span>
+                <h3>Flexible.</h3>
             </div>
-            <div class="row">
-                <div class="col-md-offset-2 col-md-10">
+            <div class="col-sm-8 key-description">It works out of the box using reasonable defaults but is highly adjustable to fit your needs.</div>
+        </div>
 
-                    <a href="#" class="btn btn-primary">Learn more...</a>
-                    <a href="#" class="btn btn-primary">Get started now!</a>
-                </div>
-            </div>
+    </div>
+</div>
+</div>
 
-           </div>
-
-           <div class="col-md-5 col-lg-4">
-               <a href="#getting-started" class="btn btn-danger">Download</a>
-           </div>
-
-       </div>
-   </div>
+<div style="text-align: center;">
+    TODO call to action: Demo, Download, Quickstart
 </div>
 
 <!-- ==========================
@@ -193,25 +188,25 @@ STATISTICS - START
            <div class="col-md-3">
                <div class="statistic">
                    <div class="number" data-from="2200" data-to="2780" data-refresh-interval="100"></div>
-                   <div class="title"><img src="/image/facebook.png" alt="Facebook"/></div>
+                   <div class="title"><img src="<?= Yii::getAlias('@web/image/facebook.png') ?>" alt="Facebook"/></div>
                </div>
            </div>
            <div class="col-md-3">
                <div class="statistic">
                <div class="number" data-from="2200" data-to="2780" data-refresh-interval="100"></div>
-                   <div class="title"><img src="/image/stay.png" alt="Stay.com"/></div>
+                   <div class="title"><img src="<?= Yii::getAlias('@web/image/stay.png') ?>" alt="Stay.com"/></div>
                </div>
            </div>
            <div class="col-md-3">
                <div class="statistic">
                <div class="number" data-from="2200" data-to="2780" data-refresh-interval="100"></div>
-                   <div class="title"><img src="/image/vice.png" alt="VICE"/></div>
+                   <div class="title"><img src="<?= Yii::getAlias('@web/image/vice.png') ?>" alt="VICE"/></div>
                </div>
            </div>
            <div class="col-md-3">
                <div class="statistic">
                <div class="number" data-from="2200" data-to="2780" data-refresh-interval="100"></div>
-                   <div class="title"><img src="/image/fifa.png" alt="FIFA"/></div>
+                   <div class="title"><img src="<?= Yii::getAlias('@web/image/fifa.png') ?>" alt="FIFA"/></div>
                </div>
            </div>
        </div>
