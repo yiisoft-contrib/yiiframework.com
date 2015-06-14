@@ -371,6 +371,11 @@ class SiteController extends Controller
         return $this->render('tour');
     }
 
+    public function actionResources()
+    {
+        return $this->render('resources');
+    }
+
     /**
      * used to download specific files
      */

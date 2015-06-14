@@ -104,6 +104,7 @@ use yii\widgets\Menu;
                                 ['label' => '<i class="fa fa-angle-double-right"></i>Tutorials<span class="label label-warning">coming soon</span>', 'url' => 'https://yiicamp.com/tutorials'],
                                 ['label' => '<i class="fa fa-angle-double-right"></i>Answers<span class="label label-warning">coming soon</span>', 'url' => 'https://yiicamp.com/answers'],
                                 ['label' => '<i class="fa fa-angle-double-right"></i>Books', 'url' => ['site/books']],
+                                ['label' => '<i class="fa fa-angle-double-right"></i>Resources', 'url' => ['site/resources']],
                             ]],
                             ['label' => 'Develop', 'items' => [
                                 ['label' => '<i class="fa fa-angle-double-right"></i>Install Yii', 'url' => ['site/download']],

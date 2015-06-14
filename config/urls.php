@@ -18,6 +18,7 @@ return [
     'demos' => 'site/demos',
     'logo' => 'site/logo',
     'tour' => 'site/tour',
+    'resources' => 'site/resources',
 
     'download/<category:[\w-]+>/<file:[\w\d-.]+>' => 'site/file',
 
