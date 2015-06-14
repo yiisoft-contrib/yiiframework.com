@@ -73,15 +73,13 @@ use yii\widgets\Menu;
     	<div class="container">
             <div class="navbar-header">
                 <a href="<?= Yii::$app->homeUrl ?>" class="navbar-brand">
-                    <img src="<?= Yii::getAlias('@web/image/logo.png') ?>" class="logo" alt="Yii Framework">
+                    <img src="<?= Yii::getAlias('@web/image/logo42.png') ?>" class="logo" alt="Yii Framework">
                     <?php /* <object type="image/svg+xml" data="<?= Yii::getAlias('@web/logo.svg') ?>" class="logo"></object><span class="hidden-sm"> Yii Framework</span>*/ ?>
                 </a>
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse"><i class="fa fa-bars"></i></button>
             </div>
             <div class="navbar-collapse collapse navbar-right">
                 <?php
-
-                    echo $this->render('_searchForm');
 
                     // main navigation
                     echo Nav::widget([
@@ -124,6 +122,8 @@ use yii\widgets\Menu;
                             ['label' => 'Logout', 'url' => ['site/logout'], 'visible' => !Yii::$app->user->isGuest, 'linkOptions' => ['data-method' => 'post'], 'options' => ['class' => 'hidden-lg hidden-md']],
                         ],
                     ]);
+
+                    echo $this->render('_searchForm');
 ?>
 <!--                <ul class="nav navbar-nav">
                     <li class="dropdown search-form-toggle">
