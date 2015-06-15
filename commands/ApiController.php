@@ -70,6 +70,7 @@ class ApiController extends \yii\apidoc\commands\ApiController
                     file_get_contents($file))
                 );
             }
+            file_put_contents("$target/api/index.html", str_replace('<h1>Class Reference</h1>', '<h1>API Documentation</h1>', file_get_contents("$target/api/index.html")));
 
             if (!$this->populateElasticsearch1x($source, $target)) {
                 return 1;
