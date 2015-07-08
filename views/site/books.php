@@ -14,6 +14,25 @@ $this->params['breadcrumbs'][] = $this->title;
 
     <div class="row book">
         <div class="col-sm-6 col-md-3">
+            <a href="http://yii.larryullman.com/"><img alt="The Yii Book" src="<?= Yii::getAlias('@web/image/books/yii1-yiibook-larry.png') ?>" class="img-responsive" /></a>
+        </div>
+
+        <div class="col-sm-6 col-md-9">
+            <h3>The Yii Book (second edition) <small class="authors">by Larry Ullman</small></h3>
+
+            <h4>Recommended for beginners.</h4>
+
+            <p>The book starts with the very basics: object oriented programming, MVC, using a web server and command line tools.
+            Then gradually shows how to use Yii. It covers everything from the very basics such as installing Yii to advanced topics
+            such as implementing your own framework extension. Explanations are very clear. Additionally to the guide-style
+                chapters there are two complete example chapters: a CMS and an E-commerce website.
+            Note that the second edition (for Yii 2.0) is <strong>not finished yet</strong>, but buyers can download updates as soon as they are available.
+            </p>
+        </div>
+    </div>
+
+    <div class="row book">
+        <div class="col-sm-6 col-md-3">
             <a href="https://leanpub.com/yii2forbeginners"><img src="<?= Yii::getAlias('@web/image/books/yii2-forbeginners.png') ?>" class="img-responsive" /></a>
         </div>
 
@@ -82,7 +101,7 @@ $this->params['breadcrumbs'][] = $this->title;
         </div>
 
         <div class="col-sm-6 col-md-9">
-            <h3>The Yii Book <small class="authors">by Larry Ullman</small></h3>
+            <h3>The Yii Book (first edition) <small class="authors">by Larry Ullman</small></h3>
 
             <h4>Recommended for beginners.</h4>
 
