@@ -25,29 +25,41 @@ $this->params['breadcrumbs'][] = $this->title;
     <p>If the error or feature request is for one of the official extensions, please select below:</p>
 
     <ul>
-        <li><a href="https://github.com/yiisoft/yii2-apidoc/issues/new">API Documentation Generator</a> (<code>yiisoft/yii2-apidoc</code>)</li>
-        <li><a href="https://github.com/yiisoft/yii2-authclient/issues/new">Auth client extension</a> (<code>yiisoft/yii2-authclient</code>)</li>
-        <li><a href="https://github.com/yiisoft/yii2-bootstrap/issues/new">Bootstrap extension</a> (<code>yiisoft/yii2-bootstrap</code>)</li>
-        <li><a href="https://github.com/yiisoft/yii2-codeception/issues/new">Codeception extension</a> (<code>yiisoft/yii2-codeception</code>)</li>
-        <li><a href="https://github.com/yiisoft/yii2-composer/issues/new">Composer Installer</a> (<code>yiisoft/yii2-composer</code>)</li>
-        <li><a href="https://github.com/yiisoft/yii2-debug/issues/new">Debug Toolbar</a> (<code>yiisoft/yii2-debug</code>)</li>
-        <li><a href="https://github.com/yiisoft/yii2-elasticsearch/issues/new">Elasticsearch extension</a> (<code>yiisoft/yii2-elasticsearch</code>)</li>
-        <li><a href="https://github.com/yiisoft/yii2-faker/issues/new">Faker extension</a> (<code>yiisoft/yii2-faker</code>)</li>
-        <li><a href="https://github.com/yiisoft/yii2-gii/issues/new">Gii Code Generator</a> (<code>yiisoft/yii2-gii</code>)</li>
-        <li><a href="https://github.com/yiisoft/yii2-jui/issues/new">jQuery UI extension</a> (<code>yiisoft/yii2-jui</code>)</li>
-        <li><a href="https://github.com/yiisoft/yii2-mongodb/issues/new">Mongo DB extension</a> (<code>yiisoft/yii2-mongodb</code>)</li>
-        <li><a href="https://github.com/yiisoft/yii2-redis/issues/new">redis extension</a> (<code>yiisoft/yii2-redis</code>)</li>
-        <li><a href="https://github.com/yiisoft/yii2-smarty/issues/new">Smarty view renderer</a> (<code>yiisoft/yii2-smarty</code>)</li>
-        <li><a href="https://github.com/yiisoft/yii2-sphinx/issues/new">Sphinx Search extension</a> (<code>yiisoft/yii2-sphinx</code>)</li>
-        <li><a href="https://github.com/yiisoft/yii2-swiftmailer/issues/new">Swiftmailer extension</a> (<code>yiisoft/yii2-swiftmailer</code>)</li>
-        <li><a href="https://github.com/yiisoft/yii2-twig/issues/new">Twig view renderer</a> (<code>yiisoft/yii2-twig</code>)</li>
+        <?php
+
+            $extensions = [
+                'yii2-apidoc' => 'API Documentation Generator',
+                'yii2-authclient' => 'Auth client extension',
+                'yii2-bootstrap' => 'Bootstrap extension',
+                'yii2-codeception' => 'Codeception extension',
+                'yii2-composer' => 'Composer Installer',
+                'yii2-debug' => 'Debug Toolbar',
+                'yii2-elasticsearch' => 'Elasticsearch extension',
+                'yii2-faker' => 'Faker extension',
+                'yii2-gii' => 'Gii Code Generator',
+                'yii2-jui' => 'jQuery UI extension',
+                'yii2-mongodb' => 'Mongo DB extension',
+                'yii2-redis' => 'redis extension',
+                'yii2-smarty' => 'Smarty view renderer',
+                'yii2-sphinx' => 'Sphinx Search extension',
+                'yii2-swiftmailer' => 'Swiftmailer extension',
+                'yii2-twig' => 'Twig view renderer',
+            ];
+
+            foreach($extensions as $ext => $extName) {
+                echo "<li><a href=\"https://github.com/yiisoft/{$ext}/issues/new\">{$extName}</a> (<code>yiisoft/{$ext}</code>)</li>\n";
+            }
+        ?>
     </ul>
 
     <p>For other extensions that are created by other users please check the extension page on where to report issues.</p>
 
+    <p>If you are unsure whether the issue you want to report belongs to an extension or the framework, just report it on the
+        <a href="https://github.com/yiisoft/yii2/issues/new">framework issue tracker</a>. We will figure out where it belongs and move it later.</p>
+
     <h3>Yii 1.1</h3>
 
-    <p>If you want to report a bug for Yii 1.1, please open and issue in the <code>yiisoft/yii</code> repository: <a href="https://github.com/yiisoft/yii/issues/new">Report issue!</a></p>
+    <p>If you want to report a bug for Yii 1.1, please open an issue in the <code>yiisoft/yii</code> repository: <a href="https://github.com/yiisoft/yii/issues/new">Report issue!</a></p>
 
     <p>Please note that Yii 1.1 is in maintainance mode, we will not introduce big features anymore. Please consider upgrading to Yii 2 instead.</p>
 </div>

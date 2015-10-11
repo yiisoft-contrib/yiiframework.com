@@ -74,11 +74,27 @@ $this->params['breadcrumbs'][] = $this->title;
         <div class="container">
             <h2>Contributors</h2>
 
+            <p>
+                There is a huge community of contributors working on the Yii Framework code.
+                Without their help it would not be possible to provide and maintain the huge amount of functionality,
+                documentation, and translations.
+            </p>
+
+            <?php if ($contributors === false): ?>
+            <div class="alert alert-warning">
+                <p>
+                    Github.com seems to be unavailable. Thus we curently can not show the list of contributors here. Please try again later.
+                </p>
+            </div>
+            <?php else:  ?>
+            <p>The following list...</p>
+
             <div id="contributors">
                 <?php foreach ($contributors as $contributor) {
                     echo Html::a(Html::img($contributor['avatar_url'] . '&s=42', ['alt' => 'Avatar of ' . $contributor['login']]), $contributor['html_url'], ['title' => $contributor['login'] . ' on Github']);
                 } ?>
             </div>
+            <?php endif; ?>
         </div>
     </section>
 </div>

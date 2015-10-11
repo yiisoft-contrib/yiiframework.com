@@ -16,6 +16,14 @@ if (isset($readme)) {
 
 ?><h1>API Documentation</h1>
 
+<p>
+    This is the Yii Framework Class Reference. You can use it to find detailed information about all classes
+    provided by the Framework. Below you find a list of the existing classes ordered by their
+    fully qualified class name (including the namespace). For each class you find a short description about the
+    purpose of the class, a list of the available methods, properties and constants, and detailed description
+    on how to use each of them.
+</p>
+
 <table class="summaryTable docIndex table table-bordered table-striped table-hover">
     <colgroup>
         <col class="col-package" />
