@@ -4,6 +4,8 @@ use yii\helpers\Html;
 /* @var $this yii\web\View */
 $this->title = 'About';
 $this->params['breadcrumbs'][] = $this->title;
+
+// TODO this is duplicate content with the guide
 ?>
 <div class="container content">
     <h1><?= Html::encode($this->title) ?></h1>
@@ -16,14 +18,14 @@ $this->params['breadcrumbs'][] = $this->title;
         This is often the accurate, and most concise response to inquires from those new to Yii:
         Is it fast? ... Is it secure? ... Is it professional? ... Is it right for my next project? ... <strong>Yes, it is!</strong></p>
 
-    <p>Yii is a free, open-source Web application development framework written in PHP5 that promotes clean, DRY design
+    <p>Yii is a <?= Html::a('free, open-source', ['site/license']) ?> Web application development framework written in PHP5 that promotes clean, DRY design
         and encourages rapid development. It works to streamline your application development and helps to ensure an
         extremely efficient, extensible, and maintainable end product.</p>
 
     <p>Being constantly performance optimized, Yii is a perfect choice for any sized project. However, it has been built
         with sophisticated, enterprise applications in mind. You have full control over the configuration from
         head-to-toe (presentation-to-persistence) to conform to your enterprise development guidelines. It comes
-        packaged with tools to help test and debug your application, and has clear and comprehensive documentation.</p>
+        packaged with tools to help test and debug your application, and has clear and comprehensive <?= Html::a('documentation', ['guide/entry']) ?>.</p>
 
     <h2>History</h2>
 
