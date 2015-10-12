@@ -78,7 +78,7 @@ class ApiController extends \yii\apidoc\commands\ApiController
                     file_get_contents($file))
                 );
             }
-            file_put_contents("$target/api/index.html", str_replace('<h1>Class Reference</h1>', '<h1>API Documentation</h1>', file_get_contents("$target/api/index.html")));
+            file_put_contents("$target/api/index.html", str_replace('<h1>Class Reference</h1>', '<h1>Yii Framework ' . $version . ' API Documentation</h1>', file_get_contents("$target/api/index.html")));
 
             if (!$this->populateElasticsearch1x($source, $target)) {
                 return 1;
@@ -143,7 +143,9 @@ class ApiController extends \yii\apidoc\commands\ApiController
         Console::startProgress(0, $fileCount, 'Processing files... ', false);
         $done = 0;
         foreach ($files as $file) {
-            $context->addFile($file);
+            if (file_exists("$target/api/" . basename($file, '.php') . '.html')) {
+                $context->addFile($file);
+            }
             Console::updateProgress(++$done, $fileCount);
         }
         Console::endProgress(true);
@@ -171,6 +173,8 @@ class ApiController extends \yii\apidoc\commands\ApiController
         }
         Console::endProgress(true, true);
         $this->stdout("done.\n", Console::FG_GREEN);
+
+        $this->writeJsonFiles1x($target, $types);
 
         return true;
     }

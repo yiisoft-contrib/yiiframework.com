@@ -30,6 +30,8 @@ return [
     // TODO implement redirect for url/ to url, needed for old 1.1 api urls
 
     '' => 'site/index',
+    'doc/api' => 'api/entry',
+    'doc/api/class-members' => 'api/class-members',
     'doc/api/<version:\\d\\.\\d>' => 'api/index',
     'doc/api/<version:\\d\\.\\d>/<section:.+>' => 'api/view',
     'doc/guide/<version:\\d\\.\\d>/<language:[\\w\\-]+>' => 'guide/index',

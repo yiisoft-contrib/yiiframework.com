@@ -9,6 +9,7 @@ if ($language = Yii::$app->request->get('language')) {
 }
 if ($version = Yii::$app->request->get('version')) {
     $url['version'] = $version;
+    $this->registerJs('yiiSearchVersion = ' . \yii\helpers\Json::htmlEncode($version), \yii\web\View::POS_HEAD);
 }
 
 ?>
