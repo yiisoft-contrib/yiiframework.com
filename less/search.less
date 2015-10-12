@@ -16,7 +16,51 @@
   min-height: 150px;
 
   border: solid 1px #cccccc;
+  border-top: none;
   background: #fff;
+  box-shadow: 0 1px 5px 0 rgba(0, 0, 0, 0.05);
 
   display: none;
+
+  .result-head {
+    margin: 0;
+    padding: 0px 5px;
+    font-weight: bold;
+    border-top: solid 1px #CCCCCC;
+    border-bottom: solid 1px #CCCCCC;
+
+    .search-limit {
+      font-weight: normal;
+      float: right;
+    }
+  }
+
+  ul {
+    padding: 0;
+    margin: 0;
+
+    list-style: none;
+
+    max-height: 150px;
+    overflow-y: auto;
+
+    li {
+      display: block;
+      padding: 0;
+      margin: 0;
+      width: 100%;
+
+      a {
+        display: inline-block;
+        margin: 0;
+        padding: 5px 5px 5px 15px;
+        width: 100%;
+      }
+
+      a:hover, a.selected {
+        background: @roxie-color;
+        color: #fff;
+      }
+    }
+  }
 }

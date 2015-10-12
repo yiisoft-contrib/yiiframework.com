@@ -5,7 +5,11 @@ namespace app\commands;
 use app\models\SearchApiPrimitive;
 use app\models\SearchApiType;
 use Yii;
+use yii\apidoc\models\ConstDoc;
 use yii\apidoc\models\Context;
+use yii\apidoc\models\EventDoc;
+use yii\apidoc\models\MethodDoc;
+use yii\apidoc\models\PropertyDoc;
 use yii\base\ErrorHandler;
 use yii\helpers\Console;
 use app\apidoc\ApiRenderer;
@@ -196,31 +200,88 @@ class ApiController extends \yii\apidoc\commands\ApiController
             }, $types))
         ));
 
-        // write primitive file:
-        $primitives = [];
+        // write class-member file:
+        $members = [];
         foreach($types as $type) {
-            foreach($type['methods'] as $method) {
+
+            $methods = isset($type['methods']) ? array_map(function($m) { $m['type'] = 'method'; return $m; }, $type['methods']) : [];
+            $properties = isset($type['properties']) ? array_map(function($m) { $m['type'] = 'property'; return $m; }, $type['properties']) : [];
+            $constants = isset($type['constants']) ? array_map(function($m) { $m['type'] = 'constant'; return $m; }, $type['constants']) : [];
+            $events = isset($type['events']) ? array_map(function($m) { $m['type'] = 'event'; return $m; }, $type['events']) : [];
+
+            foreach(array_merge($methods, $properties, $constants, $events) as $method) {
 
                 if ($method['definedBy'] != $type['name']) {
                     continue;
                 }
 
-                if (isset($primitives[$method['name']])) {
-                    $primitives[$method['name']] = [
+                $k = $method['type'].$method['name'];
+                if (!isset($members[$k])) {
+                    $members[$k] = [
+                        'type' => $method['type'],
                         'name' => $method['name'],
                         'implemented' => [],
                     ];
                 }
-                $primitives[$method['name']]['implemented'][] = $type['name'];
+                $members[$k]['implemented'][] = $type['name'];
             }
         }
-        file_put_contents("$target/json/primitiveNames.json", Json::encode(
+        file_put_contents("$target/json/typeMembers.json", Json::encode(array_values($members)));
+    }
+
+    public function writeJsonFiles1x($target, $types)
+    {
+        FileHelper::createDirectory("$target/json");
+
+        // write types file:
+        file_put_contents("$target/json/typeNames.json", Json::encode(
             array_values(array_map(function($type) {
                 return [
-                    'name' => $type['name'],
-                    'description' => isset($type['shortDescription']) ? $type['shortDescription'] : '',
+                    'name' => $type->name,
+                    'description' => $type->shortDescription,
                 ];
             }, $types))
         ));
+
+        // write class-member file:
+        $members = [];
+        foreach($types as $type) {
+
+            $methods = isset($type->methods) ? $type->methods : [];
+            $properties = isset($type->properties) ? $type->properties : [];
+            $constants = isset($type->constants) ? $type->constants : [];
+            $events = isset($type->events) ? $type->events : [];
+
+            foreach(array_merge($methods, $properties, $constants, $events) as $method) {
+
+                if ($method->definedBy != $type->name) {
+                    continue;
+                }
+
+                if ($method instanceof MethodDoc) {
+                    $mtype = 'method';
+                }
+                if ($method instanceof PropertyDoc) {
+                    $mtype = 'property';
+                }
+                if ($method instanceof ConstDoc) {
+                    $mtype = 'const';
+                }
+                if ($method instanceof EventDoc) {
+                    $mtype = 'event';
+                }
+
+                $k = $mtype . $method->name;
+                if (!isset($members[$k])) {
+                    $members[$k] = [
+                        'type' => $mtype,
+                        'name' => $method->name,
+                        'implemented' => [],
+                    ];
+                }
+                $members[$k]['implemented'][] = $type->name;
+            }
+        }
+        file_put_contents("$target/json/typeMembers.json", Json::encode(array_values($members)));
     }
-} 
+}

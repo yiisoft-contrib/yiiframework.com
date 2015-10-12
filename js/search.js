@@ -17,13 +17,17 @@ searchResultCache = {
     }
 };
 
-renderResultList = function(resultName) {
+renderResultList = function(resultName, limit) {
 
     var html = '';
+    var limitHtml = '';
+    if (limit != '') {
+        limitHtml = '<span class="search-limit">' + limit + '</span>';
+    }
 
-    html += '<div class="result-head">' + searchResultCache[resultName].title + '</div>';
+    html += '<div class="result-head">' + searchResultCache[resultName].title + limitHtml + '</div>';
     if (searchResultCache[resultName].fetched) {
-        html += '<ul class="result-list">';
+        html += '<ul>';
         if (searchResultCache[resultName].data.length == 0) {
             html += '<li>No results.</li>';
         } else {
@@ -42,14 +46,15 @@ updateSearchResults = function() {
     $results.show();
 
     var html = '';
+    var limit = '';
 
     if (typeof yiiSearchVersion !== 'undefined') {
-        html += 'search scope: version ' + yiiSearchVersion;
+        limit += 'version ' + yiiSearchVersion + ' only';
     }
 
-    html += renderResultList('api');
-    html += renderResultList('guide');
-    html += renderResultList('forum');
+    html += renderResultList('api', limit);
+    html += renderResultList('guide', '');
+    html += renderResultList('forum', '');
 
     $results.html(html);
 };
@@ -159,9 +164,9 @@ highlight = function(s, h) {
 }
 
 renderType = function(t, query) {
-    return '<p>' +
+    return '<div class="result-item">' +
         '<a href="' + t.url + '">' + highlight(t.name, query) + ' ' /*+ t.description*/ + '</a>' +
-    '</p>';
+        '</div>';
 };
 
 renderMember = function(m, query, ownerFilter) {
@@ -175,7 +180,7 @@ renderMember = function(m, query, ownerFilter) {
         impl = impl.filter(function(owner) {
             if (owner == ownerFilter) {
                 return true;
-            } else if (owner.indexOf(ownerFilter) > -1) {
+            } else if (owner.toLowerCase().indexOf(ownerFilter.toLowerCase()) > -1) {
                 return true;
             } else {
                 return false;
@@ -183,15 +188,13 @@ renderMember = function(m, query, ownerFilter) {
         });
     }
 
-    if (impl.length > 1) {
-        return '<p>' +
-            '<a href="' + /*c.url +*/ '">' + highlight(name, query) + ' ' + m.type + ' of ' /* + c.description*/ + highlight(impl.join(', '), ownerFilter) + '</a>' +
-            '</p>';
-    } else {
-        return '<p>' +
-            '<a href="' + /*c.url +*/ '">' + highlight(impl.join(', '), ownerFilter) + '::' + highlight(name, query) + ' ' + m.type + '</a>' +
-            '</p>';
+    var html = '';
+    for (var i = 0; i < impl.length; ++i) {
+        html += '<div class="result-item">' +
+            '<a href="' + /*c.url + TODO URL*/ '">' + highlight(impl[i], ownerFilter) + '::' + highlight(name, query) + ' ' + m.type + '</a>' +
+            '</div>';
     }
+    return html;
 };
 
 // search in method, property, const, and event names
@@ -280,62 +283,85 @@ searchApiDocPopulateTypes = function(query) {
     searchResultCache.api.fetched = true;
 };
 
+var searchBox = $('#search');
+var searchResultBox = $('#search-resultbox');
+var openSearchWidth = 250;
+var closedSearchWidth = 150;
+
+adjustSearchBoxSize = function() {
+
+    openSearchWidth = ($('.container').width() - $('#main-nav').width() - $('#main-nav-head').width() - 60) * 0.8;
+    closedSearchWidth = Math.floor(openSearchWidth * 0.75);
+
+    if (searchBox.val() == "") {
+        searchBox.width(closedSearchWidth + "px");
+    } else {
+        searchBox.width(openSearchWidth + "px");
+    }
+    searchResultBox.width((openSearchWidth - 2) + "px"); // -2 for border
+
+};
+
+jQuery(window).resize(adjustSearchBoxSize);
+
 jQuery(document).ready(function () {
 
-    var searchBox = $('#search');
-
+    adjustSearchBoxSize();
     // animate search box to open on focus
     searchBox.focus(function() {
-        $(this).animate({width: "255px"}, 50);
+        $(this).animate({width: openSearchWidth + "px"}, 250);
     });
     searchBox.blur(function() {
         var $this = $(this);
         if ($this.val() == "") {
-            $this.animate({width: "150px"}, 50);
+            $this.animate({width: closedSearchWidth + "px"}, 250);
         }
     });
-
 
     // search when typing in search field
     searchBox.on("keyup", function(event) {
         var query = $(this).val();
 
+        console.log(event.which);
+
         if (query == '' || event.which == 27) {
-            $('#search-resultbox').hide();
+            searchResultBox.hide();
             return;
-//        } else if (event.which == 13) {
-//            var selectedLink = $('#search-resultbox a.selected');
-//            if (selectedLink.length != 0) {
-//                document.location = selectedLink.attr('href');
-//                return;
-//            }
-//        } else if (event.which == 38 || event.which == 40) {
-//            $('#search-resultbox').show();
-//
-//            var selected = $('#search-resultbox a.selected');
-//            if (selected.length == 0) {
-//                $('#search-results').find('a').first().addClass('selected');
-//            } else {
-//                var next;
-//                if (event.which == 40) {
-//                    next = selected.parent().next().find('a').first();
-//                } else {
-//                    next = selected.parent().prev().find('a').first();
-//                }
-//                if (next.length != 0) {
-//                    var resultbox = $('#search-results');
-//                    var position = next.position();
-//
-////              TODO scrolling is buggy and jumps around
-////                resultbox.scrollTop(Math.floor(position.top));
-////                console.log(position.top);
-//
-//                    selected.removeClass('selected');
-//                    next.addClass('selected');
-//                }
-//            }
-//
-//            return;
+        } else if (event.which == 13) {
+            var selectedLink = searchResultBox.find('a.selected');
+            if (selectedLink.length != 0) {
+                document.location = selectedLink.attr('href');
+                event.stopPropagation();
+                return;
+            }
+        } else if (event.which == 38 || event.which == 40) {
+            searchResultBox.show();
+
+            var selected = searchResultBox.find('a.selected');
+            if (selected.length == 0) {
+                searchResultBox.find('ul li a').first().addClass('selected');
+            } else {
+                var next;
+                if (event.which == 40) {
+                    next = selected.parent().parent().next().find('a').first();
+                } else {
+                    next = selected.parent().parent().prev().find('a').first();
+                }
+                if (next.length != 0) {
+                    var position = next.position();
+
+//              TODO scrolling is buggy and jumps around
+//                searchResultBox.scrollTop(Math.floor(position.top));
+//                console.log(position.top);
+
+                    selected.removeClass('selected');
+                    next.addClass('selected');
+                }
+            }
+
+            event.stopPropagation();
+
+            return;
         }
 //        $('#search-resultbox').show();
 //        $('#search-resultbox').html('<li><span class="no-results">No results</span></li>');
