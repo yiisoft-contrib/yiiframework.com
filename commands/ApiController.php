@@ -10,6 +10,7 @@ use yii\base\ErrorHandler;
 use yii\helpers\Console;
 use app\apidoc\ApiRenderer;
 use yii\helpers\FileHelper;
+use yii\helpers\Json;
 
 /**
  * Generates API documentation for Yii.
@@ -46,7 +47,14 @@ class ApiController extends \yii\apidoc\commands\ApiController
             $this->guide = Yii::$app->params['guide.baseUrl'] . "/{$this->version}/en";
 
             $this->stdout("Start generating API $version...\n");
+            $this->template = 'bootstrap';
             $this->actionIndex($source, $target);
+
+            $this->stdout("Start generating API $version JSON Info...\n");
+            $this->template = 'json';
+            $this->actionIndex($source, $target);
+            $this->splitJson($target);
+
             $this->stdout("Finished API $version.\n\n", Console::FG_GREEN);
         } elseif ($version[0] === '1') {
             $source = [
@@ -84,6 +92,9 @@ class ApiController extends \yii\apidoc\commands\ApiController
 
     protected function findRenderer($template)
     {
+        if ($template === 'json') {
+            return new \yii\apidoc\templates\json\ApiRenderer();
+        }
         return new ApiRenderer([
             'version' => $this->version,
         ]);
@@ -162,5 +173,50 @@ class ApiController extends \yii\apidoc\commands\ApiController
         $this->stdout("done.\n", Console::FG_GREEN);
 
         return true;
+    }
+
+    public function splitJson($target)
+    {
+        $json = file_get_contents("$target/types.json");
+        FileHelper::createDirectory("$target/json");
+
+        $types = Json::decode($json);
+
+        // write types file:
+        file_put_contents("$target/json/typeNames.json", Json::encode(
+            array_values(array_map(function($type) {
+                return [
+                    'name' => $type['name'],
+                    'description' => isset($type['shortDescription']) ? $type['shortDescription'] : '',
+                ];
+            }, $types))
+        ));
+
+        // write primitive file:
+        $primitives = [];
+        foreach($types as $type) {
+            foreach($type['methods'] as $method) {
+
+                if ($method['definedBy'] != $type['name']) {
+                    continue;
+                }
+
+                if (isset($primitives[$method['name']])) {
+                    $primitives[$method['name']] = [
+                        'name' => $method['name'],
+                        'implemented' => [],
+                    ];
+                }
+                $primitives[$method['name']]['implemented'][] = $type['name'];
+            }
+        }
+        file_put_contents("$target/json/primitiveNames.json", Json::encode(
+            array_values(array_map(function($type) {
+                return [
+                    'name' => $type['name'],
+                    'description' => isset($type['shortDescription']) ? $type['shortDescription'] : '',
+                ];
+            }, $types))
+        ));
     }
 } 
