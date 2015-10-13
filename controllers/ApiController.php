@@ -155,16 +155,29 @@ class ApiController extends Controller
                 ]);
 
                 $members = Json::decode(file_get_contents(Yii::getAlias("@app/data/api-2.0/json/typeMembers.json")));
-                foreach($members as $i => $member) {
-//                    $members[$i]['url'] = Yii::$app->request->hostInfo . $apiRenderer->generateApiUrl($member['definedBy']);
-                    $members[$i]['version'] = '2.0';
+                foreach($members as $m => $member) {
+                    $hash = $member['name'] . ($member['type'] == 'method' ? '()' : '') . '-detail';
+                    foreach($members[$m]['implemented'] as $i => $impl) {
+                        $members[$m]['implemented'][$i] = [
+                            'name' => $impl,
+                            'url' => Yii::$app->request->hostInfo . $apiRenderer->generateApiUrl($impl) . "#$hash",
+                        ];
+                    }
+                    $members[$m]['version'] = '2.0';
                 }
 
                 // 1.1 classes
                 $members1 = Json::decode(file_get_contents(Yii::getAlias("@app/data/api-1.1/json/typeMembers.json")));
-                foreach($members1 as $i => $member) {
-//                    $members1[$i]['url'] = Yii::$app->params['api.baseUrl'] . "/1.1/{$class['name']}";
-                    $members1[$i]['version'] = '1.1';
+                foreach($members1 as $m => $member) {
+                    $hash = $member['name'] . '-detail';
+                    foreach($members1[$m]['implemented'] as $i => $impl) {
+                        $members1[$m]['implemented'][$i] = [
+                            'name' => $impl,
+                            'url' => Yii::$app->params['api.baseUrl'] . "/1.1/{$impl}#$hash"
+                        ];
+                    }
+//                    $members1[$i]['url'] = ;
+                    $members1[$m]['version'] = '1.1';
                 }
 
                 return [

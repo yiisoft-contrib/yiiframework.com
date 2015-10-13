@@ -29,7 +29,7 @@ renderResultList = function(resultName, limit) {
     if (searchResultCache[resultName].fetched) {
         html += '<ul>';
         if (searchResultCache[resultName].data.length == 0) {
-            html += '<li>No results.</li>';
+            html += '<li><p>No results.</p></li>';
         } else {
             html += '<li>' + searchResultCache[resultName].data.join('</li><li>') + '</li>';
         }
@@ -164,9 +164,7 @@ highlight = function(s, h) {
 }
 
 renderType = function(t, query) {
-    return '<div class="result-item">' +
-        '<a href="' + t.url + '">' + highlight(t.name, query) + ' ' /*+ t.description*/ + '</a>' +
-        '</div>';
+    return '<a href="' + t.url + '">' + highlight(t.name, query) + ' ' /*+ t.description*/ + '</a>';
 };
 
 renderMember = function(m, query, ownerFilter) {
@@ -178,9 +176,9 @@ renderMember = function(m, query, ownerFilter) {
     var impl = m.implemented;
     if (ownerFilter != '') {
         impl = impl.filter(function(owner) {
-            if (owner == ownerFilter) {
+            if (owner.name == ownerFilter) {
                 return true;
-            } else if (owner.toLowerCase().indexOf(ownerFilter.toLowerCase()) > -1) {
+            } else if (owner.name.toLowerCase().indexOf(ownerFilter.toLowerCase()) > -1) {
                 return true;
             } else {
                 return false;
@@ -188,13 +186,11 @@ renderMember = function(m, query, ownerFilter) {
         });
     }
 
-    var html = '';
+    var html = [];
     for (var i = 0; i < impl.length; ++i) {
-        html += '<div class="result-item">' +
-            '<a href="' + /*c.url + TODO URL*/ '">' + highlight(impl[i], ownerFilter) + '::' + highlight(name, query) + ' ' + m.type + '</a>' +
-            '</div>';
+        html.push('<a href="' + impl[i].url + '">' + highlight(impl[i].name, ownerFilter) + '::' + highlight(name, query) + ' ' + m.type + '</a>');
     }
-    return html;
+    return html.join("</li>\n<li>");
 };
 
 // search in method, property, const, and event names
@@ -203,7 +199,7 @@ searchApiDocPopulateMembers = function(query, owner) {
     var bestMatch = [];
     var secondMatch = [];
 
-    if (query.length > 1 || owner != '' && query.length > 0) {
+    if (query.length > 1 || owner != ''/* && query.length > 0*/) {
         var i, len;
         for (i = 0, len = searchApiDocMembers.length; i < len; ++i) {
             var m = searchApiDocMembers[i];
@@ -217,12 +213,12 @@ searchApiDocPopulateMembers = function(query, owner) {
             if (owner != '') {
                 var matchOwner = false;
                 for(var o = 0; o < m.implemented.length; ++o) {
-                    var matchOwnerPos = m.implemented[o].toLowerCase().indexOf(owner.toLowerCase());
+                    var matchOwnerPos = m.implemented[o].name.toLowerCase().indexOf(owner.toLowerCase());
                     if (matchOwnerPos > -1) {
                         matchOwner = true;
                         break;
                     }
-                } // TODO filter all unmatched owners
+                }
                 if (!matchOwner) {
                     continue;
                 }
@@ -334,7 +330,7 @@ jQuery(document).ready(function () {
                 event.stopPropagation();
                 return;
             }
-        } else if (event.which == 38 || event.which == 40) {
+        } else if (event.which == 38 || event.which == 40 || event.which == 34 || event.which == 33) {
             searchResultBox.show();
 
             var selected = searchResultBox.find('a.selected');
@@ -343,16 +339,37 @@ jQuery(document).ready(function () {
             } else {
                 var next;
                 if (event.which == 40) {
-                    next = selected.parent().parent().next().find('a').first();
-                } else {
-                    next = selected.parent().parent().prev().find('a').first();
+                    // down
+                    next = selected.parent().next().find('a').first();
+                } else if (event.which == 38) {
+                    // up
+                    next = selected.parent().prev().find('a').first();
+                } else if (event.which == 34) {
+                    // page down
+                    var i = 0;
+                    var n = selected;
+                    while(i++ < 10 && n.length > 0) {
+                        next = n;
+                        n = n.parent().next().find('a').first();
+                    }
+                } else if (event.which == 33) {
+                    // page up
+                    var i = 0;
+                    var n = selected;
+                    while(i++ < 10 && n.length > 0) {
+                        next = n;
+                        n = n.parent().prev().find('a').first();
+                    }
                 }
                 if (next.length != 0) {
-                    var position = next.position();
+                    // position of next relative to the top of the result bar
+                    var position = Math.floor(next.position().top);
+                    var resultUl = selected.parent().parent();
+                    var currentScroll = Math.floor(resultUl.scrollTop());
 
-//              TODO scrolling is buggy and jumps around
-//                searchResultBox.scrollTop(Math.floor(position.top));
-//                console.log(position.top);
+                    resultUl.animate({
+                        scrollTop: Math.max(currentScroll + position - 60, 0)
+                    }, 100);
 
                     selected.removeClass('selected');
                     next.addClass('selected');
@@ -363,46 +380,19 @@ jQuery(document).ready(function () {
 
             return;
         }
-//        $('#search-resultbox').show();
-//        $('#search-resultbox').html('<li><span class="no-results">No results</span></li>');
-//        updateSearchResults();
 
         searchApidoc(query);
 
-//        var result = jssearch.search(query);
-//
-//        if (result.length > 0) {
-//            var i = 0;
-//            var resHtml = '';
-//
-//            for (var key in result) {
-//                if (i++ > 20) {
-//                    break;
-//                }
-//                resHtml = resHtml +
-//                    '<li><a href="' + result[key].file.u.substr(3) +'"><span class="title">' + result[key].file.t + '</span>' +
-//                    '<span class="description">' + result[key].file.d + '</span></a></li>';
-//            }
-//            $('#search-results').html(resHtml);
-//        }
-//        alert(query);
+        // TODO search guide and others
     });
 
-// hide the search results on ESC
+    // hide the search results on ESC
     $(document).on("keyup", function(event) { if (event.which == 27) { $('#search-resultbox').hide(); } });
-// hide search results on click to document
+    // hide search results on click to document
     $(document).bind('click', function (e) { $('#search-resultbox').hide(); });
-// except the following:
+    // except the following:
     searchBox.bind('click', function(e) { e.stopPropagation(); });
     $('#search-resultbox').bind('click', function(e) { e.stopPropagation(); });
 
 
-
-
-
-
-
-
-
 });
-
