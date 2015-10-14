@@ -6,6 +6,7 @@ use yii\helpers\Html;
 $url = ['/search/global'];
 if ($language = Yii::$app->request->get('language')) {
     $url['language'] = $language;
+    $this->registerJs('yiiSearchLanguage = ' . \yii\helpers\Json::htmlEncode($language), \yii\web\View::POS_HEAD);
 }
 if ($version = Yii::$app->request->get('version')) {
     $url['version'] = $version;

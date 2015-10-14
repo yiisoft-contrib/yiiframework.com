@@ -106,13 +106,15 @@ class ApiController extends \yii\apidoc\commands\ApiController
 
     public function actionDropElasticsearchIndex()
     {
-        if ($this->confirm('really drop the whole elasticsearch index? You need to rebuild it afterwards!')) {
-            SearchApiType::getDb()->createCommand()->deleteIndex(SearchApiType::index());
-            sleep(1);
-            SearchApiType::setMappings();
-            SearchApiPrimitive::setMappings();
-            return 0;
-        }
+        echo "currently not implemented\n";
+// TODO adjust this
+//        if ($this->confirm('really drop the whole elasticsearch index? You need to rebuild it afterwards!')) {
+//            SearchApiType::getDb()->createCommand()->deleteIndex(SearchApiType::index());
+//            sleep(1);
+//            SearchApiType::setMappings();
+//            SearchApiPrimitive::setMappings();
+//            return 0;
+//        }
         return 1;
     }
 
@@ -168,7 +170,7 @@ class ApiController extends \yii\apidoc\commands\ApiController
         SearchApiType::setMappings();
         SearchApiPrimitive::setMappings();
 //        ApiPrimitive::deleteAllForVersion($version);
-        SearchApiType::deleteAllForVersion($version);
+//        SearchApiType::deleteAllForVersion($version);
         sleep(1);
         $i = 0;
         foreach($types as $type) {

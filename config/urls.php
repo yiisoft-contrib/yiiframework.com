@@ -42,6 +42,7 @@ return [
 
     'search' => 'search/global',
     'search/suggest' => 'search/suggest',
+    'search/as-you-type' => 'search/as-you-type',
 
     // urls from old site redirect to new location
     'doc-2.0/guide-<section:[A-z0-9\\.\\-]+>.html' => 'guide/redirect',

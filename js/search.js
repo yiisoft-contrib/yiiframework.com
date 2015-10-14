@@ -46,14 +46,23 @@ updateSearchResults = function() {
     $results.show();
 
     var html = '';
-    var limit = '';
 
+    var apiLimit = '';
     if (typeof yiiSearchVersion !== 'undefined') {
-        limit += 'version ' + yiiSearchVersion + ' only';
+        apiLimit += 'version ' + yiiSearchVersion + ' only';
     }
 
-    html += renderResultList('api', limit);
-    html += renderResultList('guide', '');
+    var guideLimit = '';
+    if (typeof yiiSearchVersion !== 'undefined' && typeof yiiSearchLanguage !== 'undefined') {
+        guideLimit += 'version ' + yiiSearchVersion + ' and ' + yiiSearchLanguage + ' only';
+    } else if (typeof yiiSearchVersion !== 'undefined') {
+        guideLimit += 'version ' + yiiSearchVersion + ' only';
+    } else if (typeof yiiSearchLanguage !== 'undefined') {
+        guideLimit += yiiSearchLanguage + ' only';
+    }
+
+    html += renderResultList('api', apiLimit);
+    html += renderResultList('guide', guideLimit);
     html += renderResultList('forum', '');
 
     $results.html(html);
@@ -145,6 +154,51 @@ searchApidoc = function(query) {
     }
     updateSearchResults();
 };
+
+renderGuide = function(t, query) {
+    return '<a href="' + t.url + '">' + t.title + '<span class="result-annotation">' + t.language + ', ' + t.version + '</span></a>';
+};
+
+searchGuideResults = {};
+searchGuideResultsStatus = {};
+
+searchGuide = function(query) {
+
+    // request is pending
+    if (typeof searchGuideResultsStatus[query] == 'undefined') {
+        searchGuideResultsStatus[query] = false;
+
+        var apiUrl = '?q=' + encodeURIComponent(query);
+        if (typeof yiiSearchVersion != 'undefined') {
+            apiUrl += '&version=' + encodeURIComponent(yiiSearchVersion);
+        }
+        if (typeof yiiSearchLanguage != 'undefined') {
+            apiUrl += '&language=' + encodeURIComponent(yiiSearchLanguage);
+        }
+
+
+        $.ajax({
+            url: yiiBaseUrl + '/search/as-you-type' + apiUrl,
+            dataType: "json",
+            success: function(data) {
+                console.log(data);
+                searchGuideResults[query] = [];
+                for(var i = 0; i < data.length; ++i) {
+                    searchGuideResults[query].push(renderGuide(data[i], query));
+                }
+                searchGuideResultsStatus[query] = true;
+
+                searchResultCache.guide.data = searchGuideResults[query];
+                searchResultCache.guide.fetched = true;
+                updateSearchResults();
+            }
+        });
+    } else if (searchGuideResultsStatus[query] == true) {
+        searchResultCache.guide.data = searchGuideResults[query];
+        searchResultCache.guide.fetched = true;
+        updateSearchResults();
+    }
+}
 
 highlight = function(s, h) {
     if (h == '') {
@@ -318,7 +372,7 @@ jQuery(document).ready(function () {
     searchBox.on("keyup", function(event) {
         var query = $(this).val();
 
-        console.log(event.which);
+        //console.log(event.which);
 
         if (query == '' || event.which == 27) {
             searchResultBox.hide();
@@ -382,6 +436,7 @@ jQuery(document).ready(function () {
         }
 
         searchApidoc(query);
+        searchGuide(query);
 
         // TODO search guide and others
     });

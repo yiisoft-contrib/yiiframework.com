@@ -5,6 +5,7 @@ namespace app\controllers;
 use app\models\SearchApiType;
 use app\models\SearchActiveRecord;
 use Yii;
+use yii\helpers\Url;
 use yii\web\Response;
 use yii\data\ActiveDataProvider;
 use yii\elasticsearch\Command;
@@ -51,7 +52,7 @@ class SearchController extends Controller
 
         /** @var Command $command */
         $command = Yii::$app->elasticsearch->createCommand();
-        $command->index = SearchActiveRecord::index();
+        $command->index = SearchActiveRecord::index() . '-en';
         $result = $command->suggest(['my-suggestion' => ['text' => $q, 'term' => ['field' => 'body']]]);
 
         Yii::$app->response->format = Response::FORMAT_JSON;
@@ -59,6 +60,34 @@ class SearchController extends Controller
             return [];
         } else {
             return $result;
+        }
+    }
+
+    public function actionAsYouType($q, $version = null, $language = null)
+    {
+        if (!in_array($version, $this->getVersions())) {
+            $version = null;
+        }
+        if (!in_array($language, array_keys($this->getLanguages()))) {
+            $language = null;
+        }
+
+        $query = SearchActiveRecord::searchAsYouType($q, $version, $language);
+        $query->fields(['title', 'name', 'version', 'language']);
+        $result = $query->search()['hits']['hits'];
+
+        Yii::$app->response->format = Response::FORMAT_JSON;
+        if (!$result) {
+            return [];
+        } else {
+            return array_values(array_map(function($r) {
+                return [
+                    'title' => $r->title,
+                    'url' => Url::to($r->getUrl(), true),
+                    'version' => $r->version,
+                    'language' => $r->language,
+                ];
+            }, $result));
         }
     }
 
