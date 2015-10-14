@@ -100,7 +100,7 @@ class GuideSection extends Object
 
     protected function loadContent($name, $version, $language)
     {
-        $file = Yii::getAlias("@app/data/guide-$version/$language/$name.html");
+        $file = Yii::getAlias("@app/data/{$this->guide->type}-$version/$language/$name.html");
         return @file_get_contents($file);
     }
 
@@ -113,7 +113,8 @@ class GuideSection extends Object
             } else {
                 $language = str_replace('-', '_', strtolower($this->guide->language));
             }
-            return 'https://github.com/yiisoft/yii/edit/master/docs/guide/' . ($language !== 'en' ? "$language/" : '') . "{$this->name}.txt";
+            $type = $this->guide->type == 'blogtut' ? 'blog' : 'guide';
+            return "https://github.com/yiisoft/yii/edit/master/docs/{$type}/" . ($language !== 'en' ? "$language/" : '') . "{$this->name}.txt";
         } elseif ($version[0] === '2') {
             if ($this->missingTranslation) {
                 $language = 'en';

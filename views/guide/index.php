@@ -38,7 +38,8 @@ $blocksPerRow = 4;
                     return '<li>' . Html::a(Html::encode($title), ['guide/view',
                         'section' => $name,
                         'language' => $guide->language,
-                        'version' => $guide->version
+                        'version' => $guide->version,
+                        'type' => $guide->typeUrlName
                     ]) . '</li>';
                 }, 'class' => 'list-unstyled']) ?>
                 </div>

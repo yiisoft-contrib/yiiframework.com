@@ -20,6 +20,8 @@ use yii\apidoc\models\TypeDoc;
  *
  * @property string $version
  * @property string $language
+ * @property string $type
+ * @property string $name
  * @property string $title
  * @property string $body
  */
@@ -31,6 +33,7 @@ class SearchGuideSection extends SearchActiveRecord
         return [
             'version',
             'language',
+            'type',
 
             'name',
             'title',
@@ -46,7 +49,7 @@ class SearchGuideSection extends SearchActiveRecord
     /**
      *
      */
-    public static function createRecord($name, $title, $body, $version, $language)
+    public static function createRecord($name, $title, $body, $version, $language, $type = 'guide')
     {
         // filter out code blocks
         $body = preg_replace('~<pre><code>.*?</code></pre>~', '', $body);
@@ -56,6 +59,7 @@ class SearchGuideSection extends SearchActiveRecord
         $model = new static();
         $model->version = $version;
         $model->language = $language;
+        $model->type = $type;
 
         $model->name = $name;
         $model->title = $title;
@@ -66,7 +70,7 @@ class SearchGuideSection extends SearchActiveRecord
             static::index() . "-$language",
             static::type(),
             $values,
-            sha1("$version-$name-$language")
+            sha1("$type-$version-$language-$name")
         );
     }
 
@@ -89,6 +93,7 @@ class SearchGuideSection extends SearchActiveRecord
                             'version' => ['type' => 'string', 'index' => 'not_analyzed'],
                             'language' => ['type' => 'string', 'index' => 'not_analyzed'],
                             'name' => ['type' => 'string', 'index' => 'not_analyzed'],
+                            'type' => ['type' => 'string', 'index' => 'not_analyzed'],
 
                             'title' => [
                                 'type' => 'string',
@@ -125,6 +130,6 @@ class SearchGuideSection extends SearchActiveRecord
         } else {
             $name = strtolower(str_replace('\\', '-', $this->name));
         }
-        return ['guide/view', 'version' => $this->version, 'language' => $this->language, 'section' => $name];
+        return ['guide/view', 'version' => $this->version, 'language' => $this->language, 'section' => $name, 'type' => $this->type];
     }
 } 

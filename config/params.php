@@ -32,13 +32,17 @@ return [
 
     // api and guide
 
+    // base url for generating api documentation
+    'api.baseUrl' => '/doc/api',
+    'guide.baseUrl' => '/doc/guide',
+    'blogtut.baseUrl' => '/doc/blog',
+
     'api.versions' => [
         '2.0',
         '1.1',
         '1.0',
     ],
-    // base url for generating api documentation
-    'api.baseUrl' => '/doc/api',
+
     'guide.versions' => [
         '2.0' => [
             'en' => 'English',
@@ -83,12 +87,31 @@ return [
         ],
     ],
 
+    'blogtut.versions' => [
+        '1.1' => [
+            'en' => 'English',      // English
+            'es' => 'Español',      // Spanish
+            'id' => 'Bahasa Indonesia', // Indonesian
+            'ja' => '日本語',       // Japanese
+            'pl' => 'Polski',       // Polish
+            'pt' => 'Português',    // Portuguese
+            'pt-br' => 'Português brasileiro',  // Brazilian Portuguese
+            'ru' => 'Русский',      // Russian
+            'uk' => 'украї́нська', // Ukrainian
+            'zh-cn' => '简体中文',  // Simplified Chinese
+        ],
+        '1.0' => [
+            'en' => 'English',      // English
+            'ja' => '日本語',       // Japanese
+            'pl' => 'Polski',       // Polish
+            'ru' => 'Русский',      // Russian
+        ],
+    ],
+
     'authclients' => [
         // these should be configured in local config
     ],
 
-    // base url for generating api documentation
-    'guide.baseUrl' => '/doc/guide',
     'members' => require 'members.php',
     'adminEmail' => 'admin@example.com',
 ];

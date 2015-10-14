@@ -10,14 +10,14 @@ use yii\web\NotFoundHttpException;
 
 class GuideController extends Controller
 {
-    public function actionIndex($version, $language)
+    public function actionIndex($version, $language, $type = 'guide')
     {
         // normalize language, old yii 1.1 docs have _ in locale
         $normalizedLanguage = strtolower(str_replace('_', '-', $language));
-        $guide = Guide::load($version, $normalizedLanguage);
+        $guide = Guide::load($version, $normalizedLanguage, $type == 'blog' ? 'blogtut' : $type);
         if ($guide) {
             if ($normalizedLanguage !== $language) {
-                $this->redirect(['index', 'language' => $normalizedLanguage, 'version' => $version]);
+                $this->redirect(['index', 'language' => $normalizedLanguage, 'version' => $version, 'type' => $type]);
             }
             return $this->render('index', ['guide' => $guide]);
         } else {
@@ -25,12 +25,12 @@ class GuideController extends Controller
         }
     }
 
-    public function actionView($section, $version, $language)
+    public function actionView($section, $version, $language, $type = 'guide')
     {
         $normalizedLanguage = strtolower(str_replace('_', '-', $language));
-        $guide = Guide::load($version, $normalizedLanguage);
+        $guide = Guide::load($version, $normalizedLanguage, $type == 'blog' ? 'blogtut' : $type);
         if ($guide && $normalizedLanguage !== $language) {
-            $this->redirect(['view', 'language' => $normalizedLanguage, 'version' => $version, 'section' => $section]);
+            $this->redirect(['view', 'language' => $normalizedLanguage, 'version' => $version, 'section' => $section, 'type' => $type]);
         }
 
         if ($guide && ($section = $guide->loadSection($section))) {
@@ -38,17 +38,18 @@ class GuideController extends Controller
                 'guide' => $guide,
                 'section' => $section,
                 'missingTranslation' => $section->missingTranslation,
+                'type' => $type,
             ]);
         } else {
             throw new NotFoundHttpException('The requested page was not found.');
         }
     }
 
-    public function actionImage($image, $version, $language)
+    public function actionImage($image, $version, $language, $type = 'guide')
     {
-        $file = Guide::findImage($image, $version, $language);
+        $file = Guide::findImage($image, $version, $language, $type == 'blog' ? 'blogtut' : $type);
         if ($file === false && $language !== 'en') {
-            $file = Guide::findImage($image, $version, 'en');
+            $file = Guide::findImage($image, $version, 'en', $type == 'blog' ? 'blogtut' : $type);
         }
         if ($file === false) {
             throw new NotFoundHttpException("The requested image was not found: $image");
@@ -83,7 +84,28 @@ class GuideController extends Controller
             $language = Yii::$app->request->getPreferredLanguage($languages);
         }
 
-        return $this->redirect(['index', 'version' => $version, 'language' => $language]);
+        return $this->redirect(['index', 'version' => $version, 'language' => $language, 'type' => 'guide']);
+    }
+
+    /**
+     * Redirection for short urls to default version/language
+     */
+    public function actionBlogEntry($version = null, $language = null)
+    {
+        // choose the latest version
+        if ($version === null) {
+            $versions = array_keys(Yii::$app->params['blogtut.versions']);
+            arsort($versions, SORT_NATURAL);
+            $version = array_shift($versions);
+        }
+
+        // negotiate language from browser preference
+        if ($language === null) {
+            $languages = array_keys(Yii::$app->params['blogtut.versions'][$version]);
+            $language = Yii::$app->request->getPreferredLanguage($languages);
+        }
+
+        return $this->redirect(['index', 'version' => $version, 'language' => $language, 'type' => 'blog']);
     }
 
     /**

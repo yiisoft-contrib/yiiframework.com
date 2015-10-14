@@ -63,14 +63,13 @@ class Yii1GuideRenderer extends Component
         $this->renderTutorial();
     }
 
-    public function actionBlog()
+    public function renderBlog($version, $language)
     {
-        // TODO
         $this->tutorialType = 'blog';
         $this->tutorialTitle = 'Building a Blog System Using Yii';
         $this->defaultSection = 'start.overview';
-        $this->languages = param('tutorial.blog.languages');
-        $this->versions = param('tutorial.blog.versions');
+        $this->language = $language;
+        $this->version = $version;
 
         $this->renderTutorial();
     }
@@ -136,7 +135,7 @@ class Yii1GuideRenderer extends Component
         $content = $markdown->transform($content);
 
         // adjust URLs
-        $guideBaseUrl = Yii::$app->params['guide.baseUrl'];
+        $guideBaseUrl = $this->tutorialType == 'blog' ? Yii::$app->params['blogtut.baseUrl'] :  Yii::$app->params['guide.baseUrl'];
         $apiBaseUrl = Yii::$app->params['api.baseUrl'];
         $content = preg_replace("/href=\"\/doc\/{$this->tutorialType}/",
             "href=\"$guideBaseUrl/{$this->version}/{$this->language}", $content);

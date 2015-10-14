@@ -27,4 +27,10 @@ $this->params['breadcrumbs'][] = $this->title;
         <li><a href="https://www.youtube.com/playlist?list=PLMyGpiUTm106xkNQh9WeMsa-LXjanaLUm">Beginning Yii 2.0 by Tom King</a></li>
         <li><a href="https://www.youtube.com/playlist?list=PLRd0zhQj3CBmusDbBzFgg3H20VxLx2mkF">Yii2 Lessons, DoingITeasyChannel</a></li>
     </ul>
+
+    <h2>Yii 1.1</h2>
+
+    <ul>
+        <li><?= Html::a('The Yii 1.1 Blog tutorial', ['guide/blog-entry']) ?></li>
+    </ul>
 </div>

@@ -94,7 +94,7 @@ $this->params['breadcrumbs'][] = $this->title;
        <a href="https://github.com/yiisoft/yii2/tree/master/tests">available from GitHub</a>.</p>
 
     <p>To learn about testing framework used in Yii, please refer to the
-    <?= Html::a('Definitive Guide to Yii', ['guide/view', 'section' => 'test-overview', 'version' => '2.0', 'language' => 'en']) ?>.</p>
+    <?= Html::a('Definitive Guide to Yii', ['guide/view', 'section' => 'test-overview', 'version' => '2.0', 'language' => 'en', 'type' => 'guide']) ?>.</p>
 
     <p>Not sure how it should work? Don't hesitate to contact the core team.</p>
 

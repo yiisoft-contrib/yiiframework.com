@@ -36,6 +36,10 @@ class GuideController extends \yii\apidoc\commands\GuideController
         $targetPath = Yii::getAlias('@app/data');
         $sourcePath = Yii::getAlias('@app/data');
 
+        // prepare elasticsearch index
+        SearchGuideSection::setMappings();
+        sleep(1);
+
         if ($version[0] === '2') {
             foreach ($languages as $language => $name) {
                 $source = "$sourcePath/yii-$version/docs/guide";
@@ -107,6 +111,32 @@ class GuideController extends \yii\apidoc\commands\GuideController
                 $this->stdout("Finished guide $version in $name.\n\n", Console::FG_CYAN);
 
             }
+
+            // generate blog tutorial
+            if (isset(Yii::$app->params['blogtut.versions'][$version])) {
+                foreach(Yii::$app->params['blogtut.versions'][$version] as $language => $name) {
+                    $unnormalizedLanguage = strtolower(str_replace('-', '_', $language));
+
+                    $source = "$sourcePath/yii-$version/docs/blog";
+                    $target = "$targetPath/blogtut-$version/$language";
+//                $pdfTarget = "$targetPath/guide-$version/$language/pdf"; TODO
+                    $this->version = $version;
+                    $this->language = $language;
+
+                    FileHelper::createDirectory($target);
+                    $renderer = new Yii1GuideRenderer([
+                        'basePath' => $source,
+                        'targetPath' => $target,
+                    ]);
+
+                    $this->stdout("Start generating blog tutorial $version in $name...\n", Console::FG_CYAN);
+                    $renderer->renderBlog($version, $unnormalizedLanguage);
+                    $this->generateIndexYii1($source, $target, $version, $unnormalizedLanguage, 'blog');
+                    FileHelper::copyDirectory("$source/images", "$target/images");
+                    $this->stdout("Finished blog tutorial $version in $name.\n\n", Console::FG_CYAN);
+
+                }
+            }
         }
 
         return 0;
@@ -133,9 +163,6 @@ class GuideController extends \yii\apidoc\commands\GuideController
         $this->stdout('populating elasticsearch index...');
         // first delete all records for this version
         $version = $this->version;
-        SearchGuideSection::setMappings();
-//        SearchGuideSection::deleteAllForVersion($version);
-        sleep(1);
 
         $chapters = [];
         $sections = [];
@@ -172,15 +199,11 @@ class GuideController extends \yii\apidoc\commands\GuideController
         $this->stdout("done.\n", Console::FG_GREEN);
     }
 
-    protected function generateIndexYii1($source, $target, $version, $language)
+    protected function generateIndexYii1($source, $target, $version, $language, $type = 'guide')
     {
         $this->stdout('populating elasticsearch index...');
         // first delete all records for this version
         $version = $this->version;
-        SearchGuideSection::setMappings();
-//        SearchGuideSection::deleteAllForVersion($version);
-        sleep(1);
-
 
         $chapters = [];
         $sections = [];
@@ -208,15 +231,15 @@ class GuideController extends \yii\apidoc\commands\GuideController
                     continue;
                 }
                 $html = file_get_contents($file);
-                SearchGuideSection::createRecord(basename($file, '.html'), $matches[1], $html, $this->version, $this->language);
+                SearchGuideSection::createRecord(basename($file, '.html'), $matches[1], $html, $this->version, $this->language, $type);
             }
         }
 
-        $file = "$source/index.txt";
+        $file = $type == 'blog' ? "$source/start.overview.txt" : "$source/index.txt";
         $file = FileHelper::localize($file, $language, 'en');
         $lines = file($file);
         if (($title = trim($lines[0])) === '') {
-            $title = "The Definitive Guide for Yii";
+            $title = $type == 'blog' ? 'Building a Blog System Using Yii' : 'The Definitive Guide for Yii';
         }
         $title = str_replace('Yii', "Yii $version", $title);
 

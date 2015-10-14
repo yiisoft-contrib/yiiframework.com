@@ -73,7 +73,7 @@ class SearchController extends Controller
         }
 
         $query = SearchActiveRecord::searchAsYouType($q, $version, $language);
-        $query->fields(['title', 'name', 'version', 'language']);
+        $query->fields(['title', 'name', 'version', 'language', 'type']);
         $result = $query->search()['hits']['hits'];
 
         Yii::$app->response->format = Response::FORMAT_JSON;
