@@ -53,17 +53,6 @@ $(document).ready(function() {
 		$(this).removeClass('open');
 	});
 
-    var $search = $('#search');
-    $search.focus(function() {
-        $(this).animate({width: "255px"}, 50);
-    });
-
-    $search.blur(function() {
-        var $this = $(this);
-        if ($this.val() == "") {
-            $this.animate({width: "150px"}, 50);
-        }
-    });
 
 	//var minimum = 1250;
 	//var maximum = 1500;

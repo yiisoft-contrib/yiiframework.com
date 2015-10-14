@@ -1,7 +1,7 @@
 {
     "_readme": [
         "This file locks the dependencies of your project to a known state",
-        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
+        "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
     "hash": "0f9ad225e6a1a2ac70957885cea73b5e",
@@ -1045,12 +1045,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/yiisoft/yii2-apidoc.git",
-                "reference": "85678e85ee6c5ff9dcb00b5245c800043b68731c"
+                "reference": "eee2700df2c1c6120781999e722a4a0698fc1e3d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/yiisoft/yii2-apidoc/zipball/85678e85ee6c5ff9dcb00b5245c800043b68731c",
-                "reference": "85678e85ee6c5ff9dcb00b5245c800043b68731c",
+                "url": "https://api.github.com/repos/yiisoft/yii2-apidoc/zipball/eee2700df2c1c6120781999e722a4a0698fc1e3d",
+                "reference": "eee2700df2c1c6120781999e722a4a0698fc1e3d",
                 "shasum": ""
             },
             "require": {
@@ -1099,7 +1099,7 @@
                 "phpdoc",
                 "yii2"
             ],
-            "time": "2015-06-05 23:44:39"
+            "time": "2015-07-02 12:56:35"
         },
         {
             "name": "yiisoft/yii2-authclient",

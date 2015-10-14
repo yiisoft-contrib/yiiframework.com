@@ -88,6 +88,11 @@ class SearchApiPrimitive extends SearchActiveRecord
         ];
     }
 
+    public static function index()
+    {
+        return parent::index() . '-en';
+    }
+
     /**
      *
      * @param ApiType $parent

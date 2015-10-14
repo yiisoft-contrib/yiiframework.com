@@ -29,6 +29,7 @@ use yii\widgets\Menu;
 
     <?= Html::csrfMetaTags() ?>
     <?= Html::cssFile(YII_DEBUG ? '@web/css/all.css' : '@web/css/all.min.css?v=' . filemtime(Yii::getAlias('@webroot/css/all.min.css'))) ?>
+    <?php $this->registerJs('yiiBaseUrl = ' . \yii\helpers\Json::htmlEncode(Yii::$app->request->getBaseUrl()), \yii\web\View::POS_HEAD); ?>
 
     <title><?php if (!empty($this->title)): ?><?= Html::encode($this->title) ?> - <?php endif?>Yii PHP Framework</title>
     <?php $this->head() ?>
@@ -71,7 +72,7 @@ use yii\widgets\Menu;
 
 	<header class="navbar navbar-default navbar-static-top">
     	<div class="container">
-            <div class="navbar-header">
+            <div id="main-nav-head" class="navbar-header">
                 <a href="<?= Yii::$app->homeUrl ?>" class="navbar-brand">
                     <img src="<?= Yii::getAlias('@web/image/logo42.png') ?>" class="logo" alt="Yii Framework">
                     <?php /* <object type="image/svg+xml" data="<?= Yii::getAlias('@web/logo.svg') ?>" class="logo"></object><span class="hidden-sm"> Yii Framework</span>*/ ?>
@@ -83,6 +84,7 @@ use yii\widgets\Menu;
 
                     // main navigation
                     echo Nav::widget([
+                        'id' => 'main-nav',
                         'encodeLabels' => false,
                         'options' => ['class' => 'nav navbar-nav navbar-main-menu'],
                         'activateItems' => false,

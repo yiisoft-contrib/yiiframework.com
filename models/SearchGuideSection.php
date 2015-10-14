@@ -34,7 +34,7 @@ class SearchGuideSection extends SearchActiveRecord
 
             'name',
             'title',
-            'body'
+            'body',
         ];
     }
 
@@ -61,7 +61,13 @@ class SearchGuideSection extends SearchActiveRecord
         $model->title = $title;
         $model->body = $body;
 
-        $model->insert(false);
+        $values = $model->getDirtyAttributes();
+        static::getDb()->createCommand()->insert(
+            static::index() . "-$language",
+            static::type(),
+            $values,
+            sha1("$version-$name-$language")
+        );
     }
 
     public static function type()
@@ -71,26 +77,44 @@ class SearchGuideSection extends SearchActiveRecord
 
     public static function setMappings()
     {
+        // create an index for each language
         $command = static::getDb()->createCommand();
-        if (!$command->indexExists(static::index())) {
-            $command->createIndex(static::index());
-        }
-        $mapping = $command->getMapping(static::index(), static::type());
-        if (empty($mapping)) {
-            $command->setMapping(static::index(), static::type(), [
-                static::type() => [
-                    // TODO improve mappings for search
-                    'properties' => [
-                        'version' => ['type' => 'string', 'index' => 'not_analyzed'],
-                        'language' => ['type' => 'string', 'index' => 'not_analyzed'],
-                        'name' => ['type' => 'string', 'index' => 'not_analyzed'],
+        foreach(static::$languages as $lang => $analyzer) {
+            $index = static::index() . "-$lang";
+            if (!$command->indexExists($index)) {
+                $command->createIndex($index);
+                $command->setMapping($index, static::type(), [
+                    static::type() => [
+                        'properties' => [
+                            'version' => ['type' => 'string', 'index' => 'not_analyzed'],
+                            'language' => ['type' => 'string', 'index' => 'not_analyzed'],
+                            'name' => ['type' => 'string', 'index' => 'not_analyzed'],
 
-                        'title' => ['type' => 'string'],
-                        'body' => ['type' => 'string'],
+                            'title' => [
+                                'type' => 'string',
+                                // sub-fields added for language
+                                'fields' => [
+                                    'stemmed' => [
+                                        'type' => 'string',
+                                        'analyzer' => $analyzer,
+                                    ],
+                                ],
+                            ],
+                            'body' => [
+                                'type' => 'string',
+                                // sub-fields added for language
+                                'fields' => [
+                                    'stemmed' => [
+                                        'type' => 'string',
+                                        'analyzer' => $analyzer,
+                                    ],
+                                ],
+                            ],
+                        ]
                     ]
-                ]
-            ]);
-            $command->flushIndex(static::index());
+                ]);
+                $command->flushIndex(static::index());
+            }
         }
     }
 

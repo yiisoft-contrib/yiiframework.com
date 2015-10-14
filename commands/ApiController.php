@@ -5,11 +5,16 @@ namespace app\commands;
 use app\models\SearchApiPrimitive;
 use app\models\SearchApiType;
 use Yii;
+use yii\apidoc\models\ConstDoc;
 use yii\apidoc\models\Context;
+use yii\apidoc\models\EventDoc;
+use yii\apidoc\models\MethodDoc;
+use yii\apidoc\models\PropertyDoc;
 use yii\base\ErrorHandler;
 use yii\helpers\Console;
 use app\apidoc\ApiRenderer;
 use yii\helpers\FileHelper;
+use yii\helpers\Json;
 
 /**
  * Generates API documentation for Yii.
@@ -46,7 +51,14 @@ class ApiController extends \yii\apidoc\commands\ApiController
             $this->guide = Yii::$app->params['guide.baseUrl'] . "/{$this->version}/en";
 
             $this->stdout("Start generating API $version...\n");
+            $this->template = 'bootstrap';
             $this->actionIndex($source, $target);
+
+            $this->stdout("Start generating API $version JSON Info...\n");
+            $this->template = 'json';
+            $this->actionIndex($source, $target);
+            $this->splitJson($target);
+
             $this->stdout("Finished API $version.\n\n", Console::FG_GREEN);
         } elseif ($version[0] === '1') {
             $source = [
@@ -70,7 +82,7 @@ class ApiController extends \yii\apidoc\commands\ApiController
                     file_get_contents($file))
                 );
             }
-            file_put_contents("$target/api/index.html", str_replace('<h1>Class Reference</h1>', '<h1>API Documentation</h1>', file_get_contents("$target/api/index.html")));
+            file_put_contents("$target/api/index.html", str_replace('<h1>Class Reference</h1>', '<h1>Yii Framework ' . $version . ' API Documentation</h1>', file_get_contents("$target/api/index.html")));
 
             if (!$this->populateElasticsearch1x($source, $target)) {
                 return 1;
@@ -84,6 +96,9 @@ class ApiController extends \yii\apidoc\commands\ApiController
 
     protected function findRenderer($template)
     {
+        if ($template === 'json') {
+            return new \yii\apidoc\templates\json\ApiRenderer();
+        }
         return new ApiRenderer([
             'version' => $this->version,
         ]);
@@ -91,13 +106,15 @@ class ApiController extends \yii\apidoc\commands\ApiController
 
     public function actionDropElasticsearchIndex()
     {
-        if ($this->confirm('really drop the whole elasticsearch index? You need to rebuild it afterwards!')) {
-            SearchApiType::getDb()->createCommand()->deleteIndex(SearchApiType::index());
-            sleep(1);
-            SearchApiType::setMappings();
-            SearchApiPrimitive::setMappings();
-            return 0;
-        }
+        echo "currently not implemented\n";
+// TODO adjust this
+//        if ($this->confirm('really drop the whole elasticsearch index? You need to rebuild it afterwards!')) {
+//            SearchApiType::getDb()->createCommand()->deleteIndex(SearchApiType::index());
+//            sleep(1);
+//            SearchApiType::setMappings();
+//            SearchApiPrimitive::setMappings();
+//            return 0;
+//        }
         return 1;
     }
 
@@ -132,7 +149,9 @@ class ApiController extends \yii\apidoc\commands\ApiController
         Console::startProgress(0, $fileCount, 'Processing files... ', false);
         $done = 0;
         foreach ($files as $file) {
-            $context->addFile($file);
+            if (file_exists("$target/api/" . basename($file, '.php') . '.html')) {
+                $context->addFile($file);
+            }
             Console::updateProgress(++$done, $fileCount);
         }
         Console::endProgress(true);
@@ -151,7 +170,7 @@ class ApiController extends \yii\apidoc\commands\ApiController
         SearchApiType::setMappings();
         SearchApiPrimitive::setMappings();
 //        ApiPrimitive::deleteAllForVersion($version);
-        SearchApiType::deleteAllForVersion($version);
+//        SearchApiType::deleteAllForVersion($version);
         sleep(1);
         $i = 0;
         foreach($types as $type) {
@@ -161,6 +180,110 @@ class ApiController extends \yii\apidoc\commands\ApiController
         Console::endProgress(true, true);
         $this->stdout("done.\n", Console::FG_GREEN);
 
+        $this->writeJsonFiles1x($target, $types);
+
         return true;
     }
-} 
+
+    public function splitJson($target)
+    {
+        $json = file_get_contents("$target/types.json");
+        FileHelper::createDirectory("$target/json");
+
+        $types = Json::decode($json);
+
+        // write types file:
+        file_put_contents("$target/json/typeNames.json", Json::encode(
+            array_values(array_map(function($type) {
+                return [
+                    'name' => $type['name'],
+                    'description' => isset($type['shortDescription']) ? $type['shortDescription'] : '',
+                ];
+            }, $types))
+        ));
+
+        // write class-member file:
+        $members = [];
+        foreach($types as $type) {
+
+            $methods = isset($type['methods']) ? array_map(function($m) { $m['type'] = 'method'; return $m; }, $type['methods']) : [];
+            $properties = isset($type['properties']) ? array_map(function($m) { $m['type'] = 'property'; return $m; }, $type['properties']) : [];
+            $constants = isset($type['constants']) ? array_map(function($m) { $m['type'] = 'constant'; return $m; }, $type['constants']) : [];
+            $events = isset($type['events']) ? array_map(function($m) { $m['type'] = 'event'; return $m; }, $type['events']) : [];
+
+            foreach(array_merge($methods, $properties, $constants, $events) as $method) {
+
+                if ($method['definedBy'] != $type['name']) {
+                    continue;
+                }
+
+                $k = $method['type'].$method['name'];
+                if (!isset($members[$k])) {
+                    $members[$k] = [
+                        'type' => $method['type'],
+                        'name' => $method['name'],
+                        'implemented' => [],
+                    ];
+                }
+                $members[$k]['implemented'][] = $type['name'];
+            }
+        }
+        file_put_contents("$target/json/typeMembers.json", Json::encode(array_values($members)));
+    }
+
+    public function writeJsonFiles1x($target, $types)
+    {
+        FileHelper::createDirectory("$target/json");
+
+        // write types file:
+        file_put_contents("$target/json/typeNames.json", Json::encode(
+            array_values(array_map(function($type) {
+                return [
+                    'name' => $type->name,
+                    'description' => $type->shortDescription,
+                ];
+            }, $types))
+        ));
+
+        // write class-member file:
+        $members = [];
+        foreach($types as $type) {
+
+            $methods = isset($type->methods) ? $type->methods : [];
+            $properties = isset($type->properties) ? $type->properties : [];
+            $constants = isset($type->constants) ? $type->constants : [];
+            $events = isset($type->events) ? $type->events : [];
+
+            foreach(array_merge($methods, $properties, $constants, $events) as $method) {
+
+                if ($method->definedBy != $type->name) {
+                    continue;
+                }
+
+                if ($method instanceof MethodDoc) {
+                    $mtype = 'method';
+                }
+                if ($method instanceof PropertyDoc) {
+                    $mtype = 'property';
+                }
+                if ($method instanceof ConstDoc) {
+                    $mtype = 'const';
+                }
+                if ($method instanceof EventDoc) {
+                    $mtype = 'event';
+                }
+
+                $k = $mtype . $method->name;
+                if (!isset($members[$k])) {
+                    $members[$k] = [
+                        'type' => $mtype,
+                        'name' => $method->name,
+                        'implemented' => [],
+                    ];
+                }
+                $members[$k]['implemented'][] = $type->name;
+            }
+        }
+        file_put_contents("$target/json/typeMembers.json", Json::encode(array_values($members)));
+    }
+}

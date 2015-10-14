@@ -55,6 +55,11 @@ class SearchApiType extends SearchActiveRecord
         ];
     }
 
+    public static function index()
+    {
+        return parent::index() . '-en';
+    }
+
     /**
      *
      * @param TypeDoc $type
