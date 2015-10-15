@@ -66,6 +66,25 @@ class GuideController extends Controller
         }
     }
 
+    public function actionDownload($version, $language, $format)
+    {
+        $guide = Guide::load($version, $language);
+        if ($guide && ($file = $guide->getDownloadFile($format)) !== false) {
+
+            $cache = new HttpCache([
+                'cacheControlHeader' => 'public, max-age=86400',
+                'lastModified' => function ($file) {
+                    return filemtime($file); // TODO does this work?
+                },
+            ]);
+            if ($cache->beforeAction(null)) {
+                return Yii::$app->response->sendFile($file['file'], $file['name']);
+            }
+        } else {
+            throw new NotFoundHttpException('The requested page was not found.');
+        }
+    }
+
     /**
      * Redirection for short urls to default version/language
      */

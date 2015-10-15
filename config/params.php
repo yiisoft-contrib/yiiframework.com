@@ -87,6 +87,14 @@ return [
         ],
     ],
 
+    // guide languages for PDF creation
+    'guide-pdf.languages' => [
+        // language => latex babel language
+        'en' => 'british',
+        'de' => 'ngerman',
+        'ru' => 'russian',
+    ],
+
     'blogtut.versions' => [
         '1.1' => [
             'en' => 'English',      // English

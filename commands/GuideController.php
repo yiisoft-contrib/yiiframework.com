@@ -64,11 +64,7 @@ class GuideController extends \yii\apidoc\commands\GuideController
                 $this->stdout("Finished guide $version in $name.\n\n", Console::FG_CYAN);
 
                 // set LaTeX language
-                $languageMap = [
-                    'en' => 'british',
-                    'de' => 'ngerman',
-                    'ru' => 'russian',
-                ];
+                $languageMap = Yii::$app->params['guide-pdf.languages'];
                 if (isset($languageMap[$language])) {
                     $this->stdout("Start generating guide $version PDF in $name...\n", Console::FG_CYAN);
                     $this->template = 'pdf';

@@ -11,6 +11,34 @@ use yii\helpers\Html;
 ?>
 <nav class="version-selector" role="navigation">
     <ul>
+        <?php if ($guide->type == 'guide') {
+            $items = [];
+            if ($guide->getDownloadFile('pdf') !== false) {
+                $items[] = [
+                    'label' => 'PDF',
+                    'url' => ['guide/download', 'version' => $guide->version, 'language' => $guide->language, 'format' => 'pdf'],
+                ];
+            }
+            if ($guide->getDownloadFile('tar.gz') !== false) {
+                $items[] = [
+                    'label' => 'Offline HTML (tar.gz)',
+                    'url' => ['guide/download', 'version' => $guide->version, 'language' => $guide->language, 'format' => 'tar.gz'],
+                ];
+            }
+            if ($guide->getDownloadFile('tar.bz2') !== false) {
+                $items[] = [
+                    'label' => 'Offline HTML (tar.bz2)',
+                    'url' => ['guide/download', 'version' => $guide->version, 'language' => $guide->language, 'format' => 'tar.bz2'],
+                ];
+            }
+            if (!empty($items)) {
+                echo DropdownList::widget([
+                    'tag' => 'li',
+                    'selection' => 'Download',
+                    'items' => $items,
+                ]);
+            }
+        } ?>
         <?= DropdownList::widget([
             'tag' => 'li',
             'selection' => $guide->getLanguageName(),

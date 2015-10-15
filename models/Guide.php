@@ -142,4 +142,40 @@ class Guide extends Object
     {
         return $this->type == 'blogtut' ? 'blog' : $this->type;
     }
+
+    public function getDownloadFile($format)
+    {
+        if ($this->version[0] == '2') {
+            switch($format) {
+                case 'pdf':
+                    $file = Yii::getAlias("@app/data/guide-{$this->version}/{$this->language}/pdf/guide.pdf");
+                    $name = "yii-guide-{$this->version}-{$this->language}.pdf";
+                    break;
+                case 'tar.gz':
+                case 'tar.bz2':
+                    $lang = $this->localeToUpper($this->language);
+                    $file = Yii::getAlias("@app/data/docs-offline/yii-docs-{$this->version}-{$lang}.$format");
+                    $name = "yii-docs-{$this->version}-{$this->language}.$format";
+                    break;
+                default:
+                    return false;
+            }
+            if (is_file($file)) {
+                return [
+                    'file' => $file,
+                    'name' => $name,
+                ];
+            }
+        }
+        return false;
+    }
+
+    public function localeToUpper($locale)
+    {
+        $l = explode('-', $locale);
+        if (isset($l[1])) {
+            $l[1] = strtoupper($l[1]);
+        }
+        return implode('-', $l);
+    }
 }

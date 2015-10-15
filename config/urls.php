@@ -42,6 +42,9 @@ return [
     'doc/blog/<version:\\d\\.\\d>' => 'guide/blog-entry',
     'doc/blog' => 'guide/blog-entry',
 
+    'doc/download/yii-guide-<version:\\d\\.\\d>-<language:[\\w\\-]+>.<format:pdf>' => 'guide/download',
+    'doc/download/yii-docs-<version:\\d\\.\\d>-<language:[\\w\\-]+>.<format:tar\\.gz|tar\\.bz2>' => 'guide/download',
+
     'search' => 'search/global',
     'search/suggest' => 'search/suggest',
     'search/as-you-type' => 'search/as-you-type',

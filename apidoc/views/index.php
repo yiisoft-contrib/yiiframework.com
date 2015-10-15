@@ -27,9 +27,7 @@ if (isset($readme)) {
     On this page you find all the classes included in version <?= $this->context->version ?>
     of the framework. You can use the dropdown menu on the top right to switch between versions.
 </p>
-<p>
-    This page is also available in <a href="?_format=json">JSON format</a>.
-</p>
+<!-- YII_DOWNLOAD_OPTIONS -->
 
 <table class="summaryTable docIndex table table-bordered table-striped table-hover">
     <colgroup>
