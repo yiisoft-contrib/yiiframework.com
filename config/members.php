@@ -61,6 +61,18 @@ return [
         'active' => true,
     ],
     [
+        'name' => 'Dmitry Naumenko',
+        'id' => '197711',
+        'forumName' => 'Dmitry Naumenko',
+        'memberSince' => 'November 2015',
+        'location' => ' Kiev, Ukraine',
+        'duty' => 'Core framework development',
+        'photo' => '@web/image/team/noimage.png',
+        'github' => 'SilverFire',
+        'twitter' => 'S1lverF1re',
+        'active' => true,
+    ],
+    [
         'name' => 'Antonio Ramirez',
         'id' => '7106',
         'forumName' => 'Antonio Ramirez',
