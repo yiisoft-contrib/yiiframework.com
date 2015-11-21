@@ -1,4 +1,4 @@
-The Yii framework website is free software. It is released under the terms of
+The source code of this Yii framework project site is released under the terms of
 the following BSD License.
 
 Copyright © 2008 by Yii Software LLC (http://www.yiisoft.com)
