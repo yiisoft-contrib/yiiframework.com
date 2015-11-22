@@ -1,0 +1,45 @@
+.content {
+    p a:visited:not(:hover) {
+      color: $link-visited-color;
+    }
+
+    p, li, blockquote, .alert, div.toc {
+        max-width: 40em;
+        font-size: $font-size-base;
+    }
+
+    code {
+        color: #BD25C7;
+        background: none;
+        padding: 2px 2px;
+        font-size: 95%;
+    }
+
+    blockquote {
+        border-right: 1px solid #eee;
+        border-top: 1px solid #eee;
+        border-bottom: 1px solid #eee;
+        margin: 2em 0;
+    }
+
+    img.img-responsive {
+        padding: 10px;
+        border: 1px solid #f6f6f6;
+    }
+
+    pre {
+        font-size: $font-size-codeblocks;
+        border-width: 1px 0 1px 0;
+        border-radius: 0;
+        background: #fcfcfc;
+        border-color: #eee;
+        padding: 1em;
+        margin: 1em 0;
+    }
+
+    pre code {
+        overflow: auto;
+        word-wrap: normal;
+        white-space: pre;
+    }
+}

@@ -12,6 +12,9 @@ nbproject
 # windows thumbnail cache
 **/Thumbs.db
 
+# Sass cache
+/.sass-cache
+
 # Mac DS_Store Files
 **/.DS_Store
 
@@ -44,4 +47,3 @@ phpunit.phar
 # The following files are included intentionally, so we do not need grunt on the webserver
 #/web/js/all.min.js
 #/web/css/all.min.css
-

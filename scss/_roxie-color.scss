@@ -1,0 +1,195 @@
+/*------------------------------
+ * Copyright 2014 Pixelized
+ * http://www.pixelized.cz
+ *
+ * Roxie theme v1.1
+------------------------------*/
+
+$yii-green: #73C902;
+$yii-orange: #FF8C00;
+$yii-blue: #4394F0;
+
+//$roxie-color: #2FC3DF;
+//$roxie-color-darker: #1DABC6;
+
+$roxie-color: #1DABC6;
+$roxie-color-darker: #1DABC6;
+
+/*------------------------------
+	GREEN
+------------------------------*/
+
+body.color-yii a,
+body.color-yii .text-primary,
+body.color-yii .btn-inverse:hover,
+body.color-yii .btn-inverse:focus,
+body.color-yii .nav.vertical-nav li a:hover,
+body.color-yii form label,
+body.color-yii .owl-theme .owl-controls .owl-buttons div,
+body.color-yii .top-header .header-item,
+body.color-yii .navbar-default .navbar-brand:hover,
+body.color-yii .dropdown-menu > li > a:hover i,
+body.color-yii .jumbotron6 #slide-3 .btn:first-child,
+body.color-yii .jumbotron5 .btn:first-child,
+body.color-yii .pagination > li > a:hover,
+body.color-yii .pagination > li > span:hover,
+body.color-yii #section-introduction h2,
+body.color-yii #section-features .feature i,
+body.color-yii .text-highlight span,
+body.color-yii #section-portfolio .portfolio-item a:hover i,
+body.color-yii footer h3 i,
+body.color-yii footer .navbar-nav > li > a:hover,
+body.color-yii #features .features-sidebar h3,
+body.color-yii #features .features-content h3.features-title i,
+body.color-yii #faq h3,
+body.color-yii #services .service:hover h3,
+body.color-yii #services.services1 .service i,
+body.color-yii #services.services2 .service i,
+body.color-yii #services.services3 .service i,
+body.color-yii .profile h3 small,
+body.color-yii .box h3,
+body.color-yii .box ul li.active a,
+body.color-yii .box ul li a:hover,
+body.color-yii .box ul li a i,
+body.color-yii .box.box-tags a:hover span,
+body.color-yii .blog-post-detail span i,
+body.color-yii .blog-timeline .blog-post .blog-post-info .month,
+body.color-yii .comment a:hover,
+body.color-yii #eshop .eshop-sidebar h3,
+body.color-yii .shopping-cart-footer p.total-price,
+body.color-yii .jumbotron6 #slide-3 .btn:hover,
+body.color-yii .jumbotron5 .btn:hover,
+body.color-yii .jumbotron3 .btn:hover,
+body.color-yii #section-blog-posts .btn:hover,
+body.color-yii #separator1 .btn:hover,
+
+body.color-yii .comingsoon .brands li a:hover,
+body.color-yii #profile-single .profile-body h2 small,
+body.color-yii #eshop .eshop-sidebar .eshop-widget .checkbox input[type=checkbox]:checked + label:before,
+body.color-yii .jumbotron-event .event-info h2,
+body.color-yii #event-speakers .speaker .speaker-body h3,
+body.color-yii #schedule .schedule-single-info i {
+	color:$roxie-color;
+}
+
+body.color-yii .btn-primary,
+body.color-yii .alert-primary,
+body.color-yii .label-primary,
+body.color-yii .panel-primary > .panel-heading,
+body.color-yii .blog-timeline .blog-post:hover .blog-post-info,
+body.color-yii .eshop-product .product-sale-label,
+body.color-yii .popover-title,
+body.color-yii .nav-tabs > li.active > a,
+body.color-yii .nav-tabs > li.active > a:hover,
+body.color-yii .nav-tabs > li.active > a:focus,
+body.color-yii .overlay-wrapper .overlay,
+body.color-yii .owl-theme .owl-controls .owl-page.active span,
+body.color-yii .owl-theme .owl-controls .owl-buttons div:hover,
+body.color-yii .brands.main li a,
+body.color-yii .navbar-default .navbar-nav > .active > a,
+body.color-yii .navbar-default .navbar-nav > .active > a:hover,
+body.color-yii .navbar-default .navbar-nav > .active > a:focus,
+body.color-yii .navbar-default .navbar-nav > .open > a,
+body.color-yii .navbar-default .navbar-nav > .open > a:hover,
+body.color-yii .navbar-default .navbar-nav > .open > a:focus,
+body.color-yii .jumbotron6 #slide-3 .btn:first-child:hover,
+body.color-yii .jumbotron5 .btn:first-child:hover,
+body.color-yii .content-separator,
+body.color-yii .bg-color-1,
+body.color-yii .pagination > .active > a,
+body.color-yii .pagination > .active > span,
+body.color-yii .pagination > .active > a:hover,
+body.color-yii .pagination > .active > span:hover,
+body.color-yii .pagination > .active > a:focus,
+body.color-yii .pagination > .active > span:focus,
+body.color-yii #section-features .feature:hover i,
+body.color-yii .recent-blog-post .post-date,
+body.color-yii .pricing-plan .pricing-plan-price,
+body.color-yii #services.services2 .service:hover i,
+body.color-yii #services.services3 .service:hover i,
+body.color-yii .blog-header .vertical-nav li a:hover .badge,
+body.color-yii .box ul li a span.badge,
+body.color-yii .blog-timeline-mark,
+body.color-yii #section-portfolio .portfolio-item .hover-overlay,
+body.color-yii .hidden-control.owl-theme .owl-controls .owl-buttons div:hover,
+
+body.color-yii .comingsoon .brands li a,
+body.color-yii #profile-single .profile-body .profile-contacts li span,
+body.color-yii #eshop .eshop-sidebar .eshop-widget .ui-slider .ui-slider-range,
+body.color-yii .event-ticket.highlighted {
+    background-color: $roxie-color;
+}
+
+body.color-yii .popover,
+body.color-yii .navbar-nav > li > .dropdown-menu,
+body.color-yii .jumbotron6 #slide-3 .btn:first-child,
+body.color-yii .jumbotron5 .btn:first-child,
+body.color-yii .pagination > .active > a,
+body.color-yii .pagination > .active > span,
+body.color-yii .pagination > .active > a:hover,
+body.color-yii .pagination > .active > span:hover,
+body.color-yii .pagination > .active > a:focus,
+body.color-yii .pagination > .active > span:focus,
+body.color-yii #section-features .feature i,
+body.color-yii .text-highlight,
+body.color-yii #services.services2 .service i,
+body.color-yii #services.services3 .service i,
+
+body.color-yii #eshop .eshop-sidebar .eshop-widget .checkbox input[type=checkbox]:checked + label:before  {
+	border-color:$roxie-color;
+}
+
+body.color-yii .popover.left > .arrow {border-left-color: $roxie-color;}
+body.color-yii .popover.right > .arrow {border-right-color: $roxie-color;}
+body.color-yii .popover.top > .arrow {border-top-color: $roxie-color;}
+body.color-yii .popover.bottom > .arrow {border-bottom-color: $roxie-color;}
+
+/* TRANSPARENT */
+
+body.color-yii .hidden-control.owl-theme .owl-controls .owl-buttons div,
+body.color-yii .jumbotron-event p.event-date {
+	background-color: fade($roxie-color, 50);
+}
+
+body.color-yii .jumbotron6 h2,
+body.color-yii .jumbotron5 h2,
+body.color-yii .jumbotron3 h2,
+body.color-yii .map-overlay {
+	background-color: fade($roxie-color, 80);
+}
+
+@media (max-width:991px) {
+	body.color-yii .navbar-default .navbar-toggle:hover,
+	body.color-yii .navbar-default .navbar-toggle:focus,
+	body.color-yii .navbar-default .navbar-nav .open .dropdown-menu > li > a:hover,
+	body.color-yii .navbar-default .navbar-nav .open .dropdown-menu > li > a:focus {
+		color:$roxie-color;
+	}
+	
+	body.color-yii .navbar-default .navbar-collapse {
+		border-color:$roxie-color;
+	}
+}
+
+/* DARKER */
+
+body.color-yii a:hover,
+body.color-yii a:focus {
+	color:$roxie-color-darker;
+}
+
+body.color-yii .btn-primary:hover,
+body.color-yii .btn-primary:focus,
+body.color-yii .btn-primary.active,
+body.color-yii .pricing-plan h3,
+body.color-yii .pricing-plan p {
+	background-color:$roxie-color-darker;
+}
+
+body.color-yii .btn-primary:hover,
+body.color-yii .btn-primary:focus,
+body.color-yii .btn-primary.active,
+body.color-yii .blog-timeline .blog-post:hover .blog-post-info,
+body.color-yii .eshop-product .product-sale-label {
+	border-color:$roxie-color-darker;
+}
