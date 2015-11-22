@@ -10,7 +10,7 @@ Before you start, make sure you have installed [composer](https://getcomposer.or
 
 ```
 # clone the project
-git clone git@github.com:qiangxue/yiiframework.com.git
+git clone git@github.com:yiisoft-contrib/yiiframework.com.git
 
 cd yiiframework.com
 
