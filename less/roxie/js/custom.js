@@ -43,15 +43,15 @@ $(window).scroll(function(){
 //TWITTER SHARE BUTTON
 //!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="https://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");
 
-$(document).ready(function() {	
+$(document).ready(function() {
 	//NAVBAR
-	$('.navbar-main-menu > li.dropdown').mouseenter(function() {
-		$(this).addClass('open');
-	});
-	
-	$('.navbar-main-menu > li.dropdown').mouseleave(function() {
-		$(this).removeClass('open');
-	});
+	//$('.navbar-main-menu > li.dropdown').mouseenter(function() {
+	//	$(this).addClass('open');
+	//});
+
+	//$('.navbar-main-menu > li.dropdown').mouseleave(function() {
+	//	$(this).removeClass('open');
+	//});
 
 
 	//var minimum = 1250;
@@ -69,20 +69,20 @@ $(document).ready(function() {
     //});
     //$( "#amount" ).val( "$" + $( "#slider-range" ).slider( "values", 0 ));
 	//$( "#amount2" ).val( "$" + $( "#slider-range" ).slider( "values", 1 ));
-		
+
 	//SCROLLING
 	$("a[href^='#']").on('click', function(e) {
 		e.preventDefault();
 		var hash = this.hash;
 		$('html, body').animate({ scrollTop: $(this.hash).offset().top }, 250, function(){window.location.hash = hash;});
 	});
-	
+
 	//TOOLTIP
 	$('.tooltip-init').tooltip();
-	
+
 	//POPOVER
 	$('.popover-init').popover();
-	
+
 	//PORTFOLIO - ISOTOPE
 	//var $container = $('.portfolio-wrapper');
 	//$container.isotope({
@@ -98,7 +98,7 @@ $(document).ready(function() {
 	//		filter: category
 	//	});
     //});
-	
+
 	//BLOG - ISOTOPE
 	//var $container2 = $('.blog-wrapper');
 	//$container2.isotope({
@@ -114,12 +114,12 @@ $(document).ready(function() {
 	//		filter: category
 	//	});
     //});
-	
+
 	//FORM TOGGLE
 	//$('#reset-password-toggle').click(function() {
      //   $('#reset-password').slideToggle(500);
     //});
-	
+
 	//ESHOP TOGGLE
 	//$(".addtocart").click(function() {
      //   $("#eshop-cart-alert").toggleClass("active");
@@ -132,10 +132,10 @@ $(document).ready(function() {
 	//$('#billing-address-toggle').click(function() {
      //   $('#billing-address').slideToggle(500);
     //});
-		
+
 	//MAGNIFIC POPUP
 	//$('.show-image').magnificPopup({type:'image'});
-		
+
 	//OWL CAROUSEL
 	//$("#section-partners #partners-slider").owlCarousel({
 	//	autoPlay: 3000,
@@ -261,7 +261,7 @@ $(document).ready(function() {
 	//	$('#section-statistics .number').countTo();
 	//	},{offset:'85%'}
 	//);
-	
+
 	//GOOGLE MAP
 	//var myLatlng = new google.maps.LatLng(40.710968,-74.0084713);
 	//var mapOptions = {
@@ -281,5 +281,5 @@ $(document).ready(function() {
 	//	map: map,
 	//	title:"Your Marker!"
 	//});
-		
+
 });
