@@ -37,7 +37,7 @@ npm install
 make docs
 
 # build js/css files
-grunt build
+gulp build
 ```
 
 
