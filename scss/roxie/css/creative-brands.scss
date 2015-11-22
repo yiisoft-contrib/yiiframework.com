@@ -1,0 +1,356 @@
+/*----------------------------------------------------
+ * Copyright 2014 Pixelized Studio
+ * http://www.pixelized.cz
+ * creative-brands.css
+ *
+ * Version 1.2
+ * Released: 17.6.2014
+ * http://creativecommons.org/licenses/by/2.0/
+----------------------------------------------------*/
+
+/*------------------------------
+	MAIN
+------------------------------*/
+
+.brands {
+	list-style:none;
+	padding-left:0;
+}
+
+.brands > li {
+	margin:0 0 8px;
+}
+
+/*------------------------------
+	SIZES
+------------------------------*/
+
+.brands > li > a {
+	background-color:#ebebeb;
+	text-align:center;
+	color:#555555;
+	display:inline-block;	
+	font-size:20px;
+	padding-top:11px;
+	width:50px;
+	height:50px;
+}
+
+.brands-tn > li > a {
+	font-size:12px;
+	padding-top:4px;
+	width:25px;
+	height:25px;
+}
+
+.brands-sm > li > a {
+	font-size:16px;
+	padding-top:6px;
+	width:35px;
+	height:35px;
+}
+
+.brands-md > li > a {
+	font-size: 18px;
+	padding-top: 8px;
+	width: 42px;
+    height: 42px;
+}
+
+.brands-lg > li > a {
+	font-size:40px;
+	padding-top:12px;
+	width:80px;
+	height:80px;
+}
+
+.brands-hg > li > a {
+	font-size:60px;
+	padding-top:13px;
+	width:110px;
+	height:110px;
+}
+
+/*------------------------------
+	COLORS
+------------------------------*/
+
+.brands-inverse > li > a {
+	background-color:#555555;
+	color:#ebebeb;
+}
+
+.brands-colored > li > a {
+	color:#ffffff;
+}
+
+.brands-colored > li > a.brands-adn {background-color:#444444;}
+.brands-colored > li > a.brands-android {background-color:#A4C639;}
+.brands-colored > li > a.brands-apple {background-color:#000000;}
+.brands-colored > li > a.brands-bitbucket {background-color:#205081;}
+.brands-colored > li > a.brands-btc {background-color:#F89F37;}
+.brands-colored > li > a.brands-css3 {background-color:#2177FF;}
+.brands-colored > li > a.brands-dribbble {background-color:#F46899;}
+.brands-colored > li > a.brands-dropbox {background-color:#3476E4;}
+.brands-colored > li > a.brands-facebook {background-color:#3B5998;}
+.brands-colored > li > a.brands-flickr {background-color:#FE0883;}
+.brands-colored > li > a.brands-foursquare {background-color:#8FD400;}
+.brands-colored > li > a.brands-github {background-color:#222222;}
+.brands-colored > li > a.brands-gittip {background-color:#663300;}
+.brands-colored > li > a.brands-google-plus {background-color:#C63D2D;}
+.brands-colored > li > a.brands-html5 {background-color:#E44D26;}
+.brands-colored > li > a.brands-instagram {background-color:#4E433C;}
+.brands-colored > li > a.brands-linkedin {background-color:#4875B4;}
+.brands-colored > li > a.brands-linux {background-color:#FFD133;}
+.brands-colored > li > a.brands-maxcdn {background-color:#F7AC1B;}
+.brands-colored > li > a.brands-pagelines {background-color:#135DA7;}
+.brands-colored > li > a.brands-pinterest {background-color:#CB2027;}
+.brands-colored > li > a.brands-renren {background-color:#005AAB;}
+.brands-colored > li > a.brands-skype {background-color:#00ADF2;}
+.brands-colored > li > a.brands-stack-exchange {background-color:#205296;}
+.brands-colored > li > a.brands-stack-overflow {background-color:#D28A29;}
+.brands-colored > li > a.brands-trello {background-color:#216884;}
+.brands-colored > li > a.brands-tumblr {background-color:#2B4964;}
+.brands-colored > li > a.brands-twitter {background-color:#33CCFF;}
+.brands-colored > li > a.brands-vimeo {background-color:#86B32D;}
+.brands-colored > li > a.brands-vk {background-color:#44678D;}
+.brands-colored > li > a.brands-weibo {background-color:#D52B2A;}
+.brands-colored > li > a.brands-windows {background-color:#00ADEF;}
+.brands-colored > li > a.brands-xing {background-color:#005A5F;}
+.brands-colored > li > a.brands-youtube {background-color:#FF3333;}
+
+.brands-transparent > li > a {
+	background-color:rgba(235,235,235,0.4);
+}
+
+.brands-transparent-inverse > li > a {
+	background-color:rgba(85,85,85,0.2);
+	color:#ebebeb;
+}
+
+/*------------------------------
+	SHAPES
+------------------------------*/
+
+.brands-rounded.brands-tn > li > a {
+	border-radius:2px;
+}
+
+.brands-rounded.brands-sm > li > a {
+	border-radius:4px;
+}
+
+.brands-rounded.brands-md > li > a {
+	border-radius:5px;
+}
+
+.brands-rounded > li > a {
+	border-radius:6px;
+}
+
+.brands-rounded.brands-lg > li > a {
+	border-radius:8px;
+}
+
+.brands-rounded.brands-hg > li > a {
+	border-radius:10px;
+}
+
+.brands-circle > li > a {
+	border-radius:50%;
+}
+
+/*------------------------------
+	ANIMATION
+------------------------------*/
+
+.brands-spin > li > a:hover i {
+	animation: spin 0.5s linear;
+	-webkit-animation: spin 0.5s linear;
+}
+
+.brands-transition > li > a {
+	transition-duration:0.5s;
+}
+
+/*------------------------------
+	STRUCTURE
+------------------------------*/
+
+.brands-justified > li {
+    display: table-cell;
+	width:1%;
+	float:none;
+}
+
+.brands-justified > li > a {
+    width:100%;
+}
+
+.brands-justified.brands-rounded.brands-tn > li > a,
+.brands-justified.brands-rounded.brands-sm > li > a, 
+.brands-justified.brands-rounded.brands-md > li > a, 
+.brands-justified.brands-rounded > li > a, 
+.brands-justified.brands-rounded.brands-lg > li > a,
+.brands-justified.brands-rounded.brands-hg > li > a,
+.brands-justified.brands-circle > li > a {
+	border-radius:0;
+}
+
+.brands-justified.brands-rounded.brands-tn > li:first-child > a {
+	border-radius:2px 0 0 2px;
+}
+
+.brands-justified.brands-rounded.brands-tn > li:last-child > a {
+	border-radius:0 2px 2px 0;
+}
+
+.brands-justified.brands-rounded.brands-sm > li:first-child > a {
+	border-radius:4px 0 0 4px;
+}
+
+.brands-justified.brands-rounded.brands-sm > li:last-child > a {
+	border-radius:0 4px 4px 0;
+}
+
+.brands-justified.brands-rounded.brands-md > li:first-child > a {
+	border-radius:5px 0 0 5px;
+}
+
+.brands-justified.brands-rounded.brands-md > li:last-child > a {
+	border-radius:0 5px 5px 0;
+}
+
+.brands-justified.brands-rounded > li:first-child > a {
+	border-radius:6px 0 0 6px;
+}
+
+.brands-justified.brands-rounded > li:last-child > a {
+	border-radius:0 6px 6px 0;
+}
+
+.brands-justified.brands-rounded.brands-lg > li:first-child > a {
+	border-radius:8px 0 0 8px;
+}
+
+.brands-justified.brands-rounded.brands-lg > li:last-child > a {
+	border-radius:0 8px 8px 0;
+}
+
+.brands-justified.brands-rounded.brands-hg > li:first-child > a {
+	border-radius:10px 0 0 10px;
+}
+
+.brands-justified.brands-rounded.brands-hg > li:last-child > a {
+	border-radius:0 10px 10px 0;
+}
+
+.brands-justified.brands-circle > li:first-child > a {
+	border-radius:50% 0 0 50%;
+}
+
+.brands-justified.brands-circle > li:last-child > a {
+	border-radius:0 50% 50% 0;
+}
+
+.brands-inline > li {
+	display:inline-block;
+	margin-right:5px;
+}
+
+.brands-inline > li:last-child {
+	margin-right:0;
+}
+
+/*------------------------------
+	HOVERS
+------------------------------*/
+
+.brands > li > a:hover {
+	color:#ffffff;
+}
+
+.brands > li > a.brands-adn:hover {background-color:#444444;}
+.brands > li > a.brands-android:hover {background-color:#A4C639;}
+.brands > li > a.brands-apple:hover {background-color:#000000;}
+.brands > li > a.brands-bitbucket:hover {background-color:#205081;}
+.brands > li > a.brands-btc:hover {background-color:#F89F37;}
+.brands > li > a.brands-css3:hover {background-color:#2177FF;}
+.brands > li > a.brands-dribbble:hover {background-color:#F46899;}
+.brands > li > a.brands-dropbox:hover {background-color:#3476E4;}
+.brands > li > a.brands-facebook:hover {background-color:#3B5998;}
+.brands > li > a.brands-flickr:hover {background-color:#FE0883;}
+.brands > li > a.brands-foursquare:hover {background-color:#8FD400;}
+.brands > li > a.brands-github:hover {background-color:#222222;}
+.brands > li > a.brands-gittip:hover {background-color:#663300;}
+.brands > li > a.brands-google-plus:hover {background-color:#C63D2D;}
+.brands > li > a.brands-html5:hover {background-color:#E44D26;}
+.brands > li > a.brands-instagram:hover {background-color:#4E433C;}
+.brands > li > a.brands-linkedin:hover {background-color:#4875B4;}
+.brands > li > a.brands-linux:hover {background-color:#FFD133;}
+.brands > li > a.brands-maxcdn:hover {background-color:#F7AC1B;}
+.brands > li > a.brands-pagelines:hover {background-color:#135DA7;}
+.brands > li > a.brands-pinterest:hover {background-color:#CB2027;}
+.brands > li > a.brands-renren:hover {background-color:#005AAB;}
+.brands > li > a.brands-skype:hover {background-color:#00ADF2;}
+.brands > li > a.brands-stack-exchange:hover {background-color:#205296;}
+.brands > li > a.brands-stack-overflow:hover {background-color:#D28A29;}
+.brands > li > a.brands-trello:hover {background-color:#216884;}
+.brands > li > a.brands-tumblr:hover {background-color:#2B4964;}
+.brands > li > a.brands-twitter:hover {background-color:#33CCFF;}
+.brands > li > a.brands-vimeo:hover {background-color:#86B32D;}
+.brands > li > a.brands-vk:hover {background-color:#44678D;}
+.brands > li > a.brands-weibo:hover {background-color:#D52B2A;}
+.brands > li > a.brands-windows:hover {background-color:#00ADEF;}
+.brands > li > a.brands-xing:hover {background-color:#005A5F;}
+.brands > li > a.brands-youtube:hover {background-color:#FF3333;}
+
+/*------------------------------
+	MEDIA QUERIES
+------------------------------*/
+
+@media (max-width:767px) {
+	.brands > li > a {color:#ffffff;}
+	
+	.brands > li > a.brands-adn {background-color:#444444;}
+	.brands > li > a.brands-android {background-color:#A4C639;}
+	.brands > li > a.brands-apple {background-color:#000000;}
+	.brands > li > a.brands-bitbucket {background-color:#205081;}
+	.brands > li > a.brands-btc {background-color:#F89F37;}
+	.brands > li > a.brands-css3 {background-color:#2177FF;}
+	.brands > li > a.brands-dribbble {background-color:#F46899;}
+	.brands > li > a.brands-dropbox {background-color:#3476E4;}
+	.brands > li > a.brands-facebook {background-color:#3B5998;}
+	.brands > li > a.brands-flickr {background-color:#FE0883;}
+	.brands > li > a.brands-foursquare {background-color:#8FD400;}
+	.brands > li > a.brands-github {background-color:#222222;}
+	.brands > li > a.brands-gittip {background-color:#663300;}
+	.brands > li > a.brands-google-plus {background-color:#C63D2D;}
+	.brands > li > a.brands-html5 {background-color:#E44D26;}
+	.brands > li > a.brands-instagram {background-color:#4E433C;}
+	.brands > li > a.brands-linkedin {background-color:#4875B4;}
+	.brands > li > a.brands-linux {background-color:#FFD133;}
+	.brands > li > a.brands-maxcdn {background-color:#F7AC1B;}
+	.brands > li > a.brands-pagelines {background-color:#135DA7;}
+	.brands > li > a.brands-pinterest {background-color:#CB2027;}
+	.brands > li > a.brands-renren {background-color:#005AAB;}
+	.brands > li > a.brands-skype {background-color:#00ADF2;}
+	.brands > li > a.brands-stack-exchange {background-color:#205296;}
+	.brands > li > a.brands-stack-overflow {background-color:#D28A29;}
+	.brands > li > a.brands-trello {background-color:#216884;}
+	.brands > li > a.brands-tumblr {background-color:#2B4964;}
+	.brands > li > a.brands-twitter {background-color:#33CCFF;}
+	.brands > li > a.brands-vimeo {background-color:#86B32D;}
+	.brands > li > a.brands-vk {background-color:#44678D;}
+	.brands > li > a.brands-weibo {background-color:#D52B2A;}
+	.brands > li > a.brands-windows {background-color:#00ADEF;}
+	.brands > li > a.brands-xing {background-color:#005A5F;}
+	.brands > li > a.brands-youtube {background-color:#FF3333;}
+	
+	.brands-spin > li > a:hover i {
+		animation:none;
+		-webkit-animation: none;
+	}
+}
+
+
