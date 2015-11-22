@@ -5,8 +5,8 @@
     "vendor/yiisoft/yii2/assets/yii.validation.js",
     "vendor/yiisoft/yii2/assets/yii.activeForm.js",
     "vendor/yiisoft/yii2-authclient/assets/authchoice.js",
-    "less/roxie/js/waypoints.min.js",
-    "less/roxie/js/creative-brands.js",
-    "less/roxie/js/custom.js",
+    "scss/roxie/js/waypoints.min.js",
+    "scss/roxie/js/creative-brands.js",
+    "scss/roxie/js/custom.js",
     "js/search.js"
 ]
