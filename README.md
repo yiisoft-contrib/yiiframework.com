@@ -89,7 +89,7 @@ RewriteRule . index.php
 
 ### Build
 
-* During development, run `gulp` to watch View, Sass and JS file changes and automatically build target CSS/JS files. This command will also launch a browser window which is connected to browsersync.
+* During development, run `gulp` to watch view, Sass and JS file changes and automatically build target CSS/JS files. This command will also launch a browser window which is connected to browsersync.
 * At any time, run `gulp build` to manually rebuild target CSS/JS files from source Sass/JS files.
 * If you only want to watch for changes, you can issue the command `gulp watch`
 
@@ -99,7 +99,7 @@ RewriteRule . index.php
 * All Sass files should be put under `/scss` and listed in `/scss/all.scss`.
 * Usually each controller corresponds to a single Sass file whose name is the same as the controller ID.
   For example, the `GuideController` has a Sass file named `_guide.scss`.
-* All Sass source files, except `all.scss` should have a leading underscore in the name. Sass will ignore files starting with an underscore so that only one css file will be produced (all.css).
+* All Sass source files, except `all.scss` should have a leading underscore in the name. Sass will ignore files starting with an underscore so that only one CSS file will be produced (all.css).
 
 
 ### JS Files
