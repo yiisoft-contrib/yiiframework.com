@@ -8,10 +8,6 @@ This project contains the source code for the yiiframework.com Website.
 
 Before you start, make sure you have installed [composer](https://getcomposer.org/) and [Node.js](http://nodejs.org/).
 
-You also need to install [Ruby](https://www.ruby-lang.org/en/) and [Sass](http://sass-lang.com/) because the current tool-chain uses Gulp-ruby-sass. Both because it is faster than node-sass, but also because node-sass tends to lag behind Ruby sass.
-
-Once you have Ruby installed, you can do a `gem install sass`, perhaps prepended by a `sudo` if you are on a \*nix box.
-
 ```
 # clone the project
 git clone git@github.com:qiangxue/yiiframework.com.git

@@ -1,6 +1,6 @@
 // Load plugins
 var gulp = require('gulp'),
-    sass = require('gulp-ruby-sass'),
+    sass = require('gulp-sass'),
     autoprefixer = require('gulp-autoprefixer'),
     minifycss = require('gulp-minify-css'),
     jshint = require('gulp-jshint'),
@@ -14,10 +14,23 @@ var gulp = require('gulp'),
     sourcemaps = require('gulp-sourcemaps'),
     del = require('del');
 
+    var sassOptions = {
+      errLogToConsole: true,
+      outputStyle: 'expanded'
+    };
+
+    var autoprefixerOptions = {
+      browsers: ['last 2 versions', '> 5%', 'Firefox ESR']
+    };
+
+
 // Styles
 gulp.task('styles', function() {
-  return sass('scss/all.scss', { style: 'expanded', sourcemap: true })
+  return gulp
+    .src('scss/all.scss')
     .pipe(sourcemaps.init())
+    .pipe(sass(sassOptions).on('error', sass.logError))
+    .pipe(sourcemaps.write())
     .pipe(autoprefixer('last 2 version'))
     .pipe(gulp.dest('web/css'))
     .pipe(rename({ suffix: '.min' }))
