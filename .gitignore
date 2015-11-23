@@ -42,8 +42,8 @@ phpunit.phar
 
 # files automatically generated on dev platform
 /web/css/all.css
+/web/css/all.min.css
+/web/css/all.min.css.map
 /web/js/all.js
 /web/js/all.js.map
-# The following files are included intentionally, so we do not need grunt on the webserver
-#/web/js/all.min.js
-#/web/css/all.min.css
+/web/js/all.min.js
