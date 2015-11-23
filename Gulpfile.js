@@ -35,7 +35,7 @@ gulp.task('styles', function() {
     .pipe(sourcemaps.init())
     .pipe(sass(sassOptions).on('error', sass.logError))
     .pipe(sourcemaps.write())
-    .pipe(autoprefixer('last 2 version'))
+    .pipe(autoprefixer(autoprefixerOptions))
     .pipe(gulp.dest('web/css'))
     .pipe(rename({ suffix: '.min' }))
     .pipe(minifycss())
