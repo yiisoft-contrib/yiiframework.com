@@ -3,6 +3,8 @@ yiiframework.com Website
 
 This project contains the source code for the yiiframework.com Website.
 
+If you want to contribute please get in touch with us using the [issue tracker](https://github.com/yiisoft-contrib/yiiframework.com/issues). We will set up some contributions guidelines soon.
+
 
 ## INSTALLATION
 
@@ -10,12 +12,12 @@ Before you start, make sure you have installed [composer](https://getcomposer.or
 
 ```
 # clone the project
-git clone git@github.com:yiisoft-contrib/yiiframework.com.git
+git clone https://github.com/yiisoft-contrib/yiiframework.com.git
 
 cd yiiframework.com
 
 # install the composer asset plugin globally, if you haven't done so before
-composer global require "fxp/composer-asset-plugin:~1.0.3"
+composer global require "fxp/composer-asset-plugin:~1.1.1"
 
 # install the dependent composer packages
 composer install
@@ -32,12 +34,13 @@ npm install
 # initialize the application, choose "development"
 ./init
 
+# build js/css files
+gulp build
+
 # build guide and API documentation (will be put in cron job on production)
 # this assumes you have installed pdflatex and configured elasticsearch
 make docs
 
-# build js/css files
-gulp build
 ```
 
 
