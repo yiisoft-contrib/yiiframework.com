@@ -97,7 +97,7 @@ JUMBOTRON - START
                 <span class="glyphicon glyphicon-flash" aria-hidden="true"></span>
                 <h3>Fast.</h3>
             </div>
-            <div class="col-sm-8 key-description">Yii gives you maximum functionality by adding as less overhead as possible.</div>
+            <div class="col-sm-8 key-description">Yii gives you maximum functionality by adding the least possible overhead.</div>
         </div>
 
         <div class="row application-feature">
