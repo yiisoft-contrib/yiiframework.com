@@ -79,27 +79,36 @@ class ApiRenderer extends \yii\apidoc\templates\html\ApiRenderer
         }
         file_put_contents($targetDir . '/titles.php', '<?php return ' . VarDumper::export($titles) . ';');
 
-        if ($this->controller !== null) {
-            Console::startProgress(0, $count = count($types), 'populating elasticsearch index...', false);
-        }
-        // first delete all records for this version
-        $version = $this->version;
-        SearchApiType::setMappings();
-        SearchApiPrimitive::setMappings();
-//        ApiPrimitive::deleteAllForVersion($version);
-        SearchApiType::deleteAllForVersion($version);
-        sleep(1);
-        $i = 0;
-        foreach($types as $type) {
-            SearchApiType::createRecord($type, $version);
+        try {
             if ($this->controller !== null) {
-                Console::updateProgress(++$i, $count);
+                Console::startProgress(0, $count = count($types), 'populating elasticsearch index...', false);
             }
-        }
-        if ($this->controller !== null) {
+            // first delete all records for this version
+            $version = $this->version;
+            SearchApiType::setMappings();
+            SearchApiPrimitive::setMappings();
+//        ApiPrimitive::deleteAllForVersion($version);
+            SearchApiType::deleteAllForVersion($version);
+            sleep(1);
+            $i = 0;
+            foreach ($types as $type) {
+                SearchApiType::createRecord($type, $version);
+                if ($this->controller !== null) {
+                    Console::updateProgress(++$i, $count);
+                }
+            }
+            if ($this->controller !== null) {
 
-            Console::endProgress(true, true);
-            $this->controller->stdout("done.\n", Console::FG_GREEN);
+                Console::endProgress(true, true);
+                $this->controller->stdout("done.\n", Console::FG_GREEN);
+            }
+        } catch (\Exception $e) {
+            if (YII_DEBUG && $this->controller !== null) {
+                $this->controller->stdout("!!! FAILED !!! Search will not be available.\n", Console::FG_RED, Console::BOLD);
+                $this->controller->stdout(((string) $e) . "\n\n");
+            } else {
+                throw $e;
+            }
         }
 
 

@@ -164,21 +164,30 @@ class ApiController extends \yii\apidoc\commands\ApiController
 
         $types = array_merge($context->classes, $context->interfaces, $context->traits);
 
-        Console::startProgress(0, $count = count($types), 'populating elasticsearch index...', false);
-        $version = $this->version;
-        // first delete all records for this version
-        SearchApiType::setMappings();
-        SearchApiPrimitive::setMappings();
+        try {
+            Console::startProgress(0, $count = count($types), 'populating elasticsearch index...', false);
+            $version = $this->version;
+            // first delete all records for this version
+            SearchApiType::setMappings();
+            SearchApiPrimitive::setMappings();
 //        ApiPrimitive::deleteAllForVersion($version);
 //        SearchApiType::deleteAllForVersion($version);
-        sleep(1);
-        $i = 0;
-        foreach($types as $type) {
-            SearchApiType::createRecord($type, $version);
-            Console::updateProgress(++$i, $count);
+            sleep(1);
+            $i = 0;
+            foreach ($types as $type) {
+                SearchApiType::createRecord($type, $version);
+                Console::updateProgress(++$i, $count);
+            }
+            Console::endProgress(true, true);
+            $this->stdout("done.\n", Console::FG_GREEN);
+        } catch (\Exception $e) {
+            if (YII_DEBUG) {
+                $this->stdout("!!! FAILED !!! Search will not be available.\n", Console::FG_RED, Console::BOLD);
+                $this->stdout(((string) $e) . "\n\n");
+            } else {
+                throw $e;
+            }
         }
-        Console::endProgress(true, true);
-        $this->stdout("done.\n", Console::FG_GREEN);
 
         $this->writeJsonFiles1x($target, $types);
 
