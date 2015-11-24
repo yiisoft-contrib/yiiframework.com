@@ -1,5 +1,15 @@
+$yii-yellow: #DF6E35;//#D8582B
+$yii-blue: #3379B2;//#3B6FBA
+$yii-green: #8CBC4C;//#16A314
+
 @import "bootstrap-variables";
+// extra vars that was added to bootstrap variables by Roxio
+$link-visited-color: #397DB4;// TODO: make this derive from Yii blue
+$font-family-nav: 'Roboto', sans-serif;
+$font-size-codeblocks:    $font-size-base;
+
 @import "vendors/bootstrap";
+@import "vendors/bootstrap/theme";
 @import "vendors/font-awesome";
 
 @import "fonts/ptsans";

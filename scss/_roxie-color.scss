@@ -5,15 +5,8 @@
  * Roxie theme v1.1
 ------------------------------*/
 
-$yii-green: #73C902;
-$yii-orange: #FF8C00;
-$yii-blue: #4394F0;
-
-//$roxie-color: #2FC3DF;
-//$roxie-color-darker: #1DABC6;
-
-$roxie-color: #1DABC6;
-$roxie-color-darker: #1DABC6;
+$roxie-color: $yii-blue;
+$roxie-color-darker: $yii-blue;
 
 /*------------------------------
 	GREEN
@@ -72,7 +65,7 @@ body.color-yii #schedule .schedule-single-info i {
 	color:$roxie-color;
 }
 
-body.color-yii .btn-primary,
+//body.color-yii .btn-primary,
 body.color-yii .alert-primary,
 body.color-yii .label-primary,
 body.color-yii .panel-primary > .panel-heading,
@@ -165,7 +158,7 @@ body.color-yii .map-overlay {
 	body.color-yii .navbar-default .navbar-nav .open .dropdown-menu > li > a:focus {
 		color:$roxie-color;
 	}
-	
+
 	body.color-yii .navbar-default .navbar-collapse {
 		border-color:$roxie-color;
 	}
@@ -178,17 +171,17 @@ body.color-yii a:focus {
 	color:$roxie-color-darker;
 }
 
-body.color-yii .btn-primary:hover,
-body.color-yii .btn-primary:focus,
-body.color-yii .btn-primary.active,
+//body.color-yii .btn-primary:hover,
+//body.color-yii .btn-primary:focus,
+//body.color-yii .btn-primary.active,
 body.color-yii .pricing-plan h3,
 body.color-yii .pricing-plan p {
 	background-color:$roxie-color-darker;
 }
 
-body.color-yii .btn-primary:hover,
-body.color-yii .btn-primary:focus,
-body.color-yii .btn-primary.active,
+//body.color-yii .btn-primary:hover,
+//body.color-yii .btn-primary:focus,
+//body.color-yii .btn-primary.active,
 body.color-yii .blog-timeline .blog-post:hover .blog-post-info,
 body.color-yii .eshop-product .product-sale-label {
 	border-color:$roxie-color-darker;

@@ -6,13 +6,15 @@
 	background-color:#F0F0F0;
 	border-bottom:1px solid #DDDDDD;
 	padding:12px 0;
-	height:50px;
+	height:40px;
 
     .header-item {
         display:inline-block;
         margin-right:20px;
         font-size:12px;
-        padding-top:4px;
+        padding-top:2px;
+				position:relative;
+        top:-3px;
     }
 
     .header-item:last-child {
@@ -27,7 +29,7 @@
         display:inline-block;
 //        margin-right:20px;
         position:relative;
-        top:-2px;
+        top:-3px;
     }
 }
 
@@ -313,4 +315,3 @@
     text-shadow: none !important;
     background: #fff2a8;
 }
-
