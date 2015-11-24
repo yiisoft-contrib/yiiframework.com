@@ -12,18 +12,14 @@ $font-size-codeblocks:    $font-size-base;
 @import "vendors/bootstrap/theme";
 @import "vendors/font-awesome";
 
-@import "fonts/ptsans";
+//@import "fonts/ptsans";
 @import "fonts/roboto";
 
 // Roxie theme
-
-@import "roxie/css/animate";
+//@import "roxie/css/animate";
 @import "roxie/css/creative-brands";
-
-// Roxie theme customizations
-
-@import "roxie-color";
-@import "roxie-custom";
+//@import "roxie-color";
+//@import "roxie-custom";
 
 // Overall customizations
 @import "content";
@@ -43,4 +39,4 @@ $font-size-codeblocks:    $font-size-base;
 @import "components/authchoice";
 
 // adjustments for smaller screens
-@import "responsive";
+//@import "responsive"; // TODO: this should be inlined in other code

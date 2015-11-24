@@ -57,16 +57,10 @@
 
     // logo on the left
     .navbar-brand {
-        $logo-height: 42px;
-
         height: $navbar-height;
-        padding: ($navbar-height - $logo-height) / 2;
-
         font-size: 35px;
         font-weight: 600;
-
         img.logo {
-            height: $logo-height;
             vertical-align: middle;
         }
     }
@@ -109,7 +103,7 @@
     .navbar-nav > li > .dropdown-menu {
         background-color: #FFFFFF;
         border: 0;
-        border-bottom: 3px solid #16A085;
+        border-bottom: 3px solid $yii-yellow;
         border-radius: 0;
         box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
         margin: 0;

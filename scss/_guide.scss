@@ -30,7 +30,7 @@ nav.version-selector {
 
         li.dropdown:hover, li.dropdown:active, li.dropdown.open {
             color: #ffffff;
-            background: $roxie-color;
+            background: $yii-blue;
 
             &> a {
                 color: #ffffff;
@@ -45,7 +45,7 @@ nav.version-selector {
 
             background-color: #FFFFFF;
             border:0;
-            border-bottom:3px solid $roxie-color;
+            border-bottom:3px solid $yii-yellow;
             @include border-top-radius(0);
             @include border-bottom-radius(0);
             box-shadow: 0 2px 6px rgba(0,0,0,0.2);
@@ -75,7 +75,7 @@ body.color-yii .submenu a.list-group-item {
 }
 
 a.list-group-item:hover {
-    background-color: $roxie-color;
+    background-color: $yii-blue;
     color: #ffffff !important;
 }
 
@@ -88,7 +88,7 @@ a.list-group-item.active,
 a.list-group-item.active:focus,
 a.list-group-item.active:hover,
 a.list-group-item:active {
-    background: $roxie-color;
+    background: $yii-blue;
     color: #ffffff !important;
 
     border-color: #dddddd;
