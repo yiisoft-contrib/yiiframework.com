@@ -6,7 +6,8 @@
 	background-color:#F0F0F0;
 	border-bottom:1px solid #DDDDDD;
 	padding:12px 0;
-	height:40px;
+	height:38px;
+	margin-bottom: 0;
 
     .header-item {
         display:inline-block;
@@ -14,7 +15,7 @@
         font-size:12px;
         padding-top:2px;
 				position:relative;
-        top:-3px;
+        top:-5px;
     }
 
     .header-item:last-child {
@@ -29,7 +30,7 @@
         display:inline-block;
 //        margin-right:20px;
         position:relative;
-        top:-3px;
+        top:-5px;
     }
 }
 
@@ -46,6 +47,8 @@
 
 .navbar-header {
     height: $navbar-height;
+		position: relative;
+		top: 5px;
 }
 
 .navbar > .container .navbar-brand {
@@ -55,23 +58,13 @@
 .navbar-default {
     box-shadow: 0 1px 5px 0 rgba(0, 0, 0, 0.05);
 
-    // logo on the left
-    .navbar-brand {
-        height: $navbar-height;
-        font-size: 35px;
-        font-weight: 600;
-        img.logo {
-            vertical-align: middle;
-        }
-    }
-
     // style of navigation links
     .navbar-nav > li > a,
     .navbar-nav > li.dropdown > a {
         height: $navbar-height;
-        padding-top: floor(($navbar-height - floor($font-size-base * 1.4)) / 2);
-        padding-bottom: floor(($navbar-height - floor($font-size-base * 1.4)) / 2);
-        line-height: floor($font-size-base * 1.4);
+        padding-top: floor(($navbar-height - floor($font-size-base * 1.6)) / 2);
+        padding-bottom: floor(($navbar-height - floor($font-size-base * 1.6)) / 2);
+        line-height: floor($font-size-base * 1.6);
 
         color: #777777;
         font-weight: 300;
