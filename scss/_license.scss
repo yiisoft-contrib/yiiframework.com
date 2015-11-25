@@ -1,14 +1,14 @@
 .site-license {
     .can {
-        color: #16A314;
+        color: $yii-green;
     }
 
     .cannot {
-        color: #D8582B;
+        color: $yii-yellow;
     }
 
     .must {
-        color: #3B6FBA;
+        color: $yii-blue;
     }
 
     .legal {

@@ -5,18 +5,13 @@
 .top-header {
 	background-color:#F0F0F0;
 	border-bottom:1px solid #DDDDDD;
-	padding:12px 0;
-	height:50px;
-
+	height:20px;
     .header-item {
         display:inline-block;
         margin-right:20px;
         font-size:12px;
-        padding-top:4px;
-    }
-
-    .header-item:last-child {
-        margin-right:0;
+				position:relative;
+        top:-5px;
     }
 
     .header-item i {
@@ -25,284 +20,29 @@
 
     .brands {
         display:inline-block;
-//        margin-right:20px;
         position:relative;
-        top:-2px;
+        top:-5px;
+				left: -24px;
     }
 }
-
 /*
  HEADER navigation
 */
 
 .navbar {
-	border-bottom:1px solid #DDDDDD;
-	background-color:#FFFFFF;
-	margin:0;
-	min-height: $navbar-height;
+	position: relative;
+	top: -25px;
+	border-bottom:1px solid #000;
+	border-top:1px solid #000;
+	@media (max-width: $grid-float-breakpoint) {
+		top: 0px;
+	}
 }
 
 .navbar-header {
-    height: $navbar-height;
-}
-
-.navbar > .container .navbar-brand {
-    margin-left: -30px;
-}
-
-.navbar-default {
-    box-shadow: 0 1px 5px 0 rgba(0, 0, 0, 0.05);
-
-    // logo on the left
-    .navbar-brand {
-        $logo-height: 42px;
-
-        height: $navbar-height;
-        padding: ($navbar-height - $logo-height) / 2;
-
-        font-size: 35px;
-        font-weight: 600;
-
-        img.logo {
-            height: $logo-height;
-            vertical-align: middle;
-        }
-    }
-
-    // style of navigation links
-    .navbar-nav > li > a,
-    .navbar-nav > li.dropdown > a {
-        height: $navbar-height;
-        padding-top: floor(($navbar-height - floor($font-size-base * 1.4)) / 2);
-        padding-bottom: floor(($navbar-height - floor($font-size-base * 1.4)) / 2);
-        line-height: floor($font-size-base * 1.4);
-
-        color: #777777;
-        font-weight: 300;
-        font-family: $font-family-nav;
-
-        i {
-            font-size: 10px;
-            position: relative;
-            top: -2px;
-            left: 3px;
-        }
-    }
-
-    .navbar-nav > li > a:hover,
-    .navbar-nav > li > a:focus {
-        color: #333333;
-    }
-
-    .navbar-nav > li.active > a,
-    .navbar-nav > li.active > a:hover,
-    .navbar-nav > li.active > a:focus,
-    .navbar-nav > li.open > a,
-    .navbar-nav > li.open > a:hover,
-    .navbar-nav > li.open > a:focus {
-        color: #FFFFFF;
-    }
-
-    // dropdown menus
-    .navbar-nav > li > .dropdown-menu {
-        background-color: #FFFFFF;
-        border: 0;
-        border-bottom: 3px solid #16A085;
-        border-radius: 0;
-        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
-        margin: 0;
-        padding: 0;
-        min-width: 260px;
-    }
-}
-
-.dropdown-menu > li {
-    border-bottom: 1px solid #E5E5E5;
-}
-
-.dropdown-menu > li:last-child {
-    border-bottom: 0;
-}
-
-.dropdown-menu > li > a {
-    color: #555555;
-    font-weight: 400;
-    padding: 10px 15px;
-    transition: 0.3s ease-in-out 0s;
-    background-color: #FFFFFF;
-    position: relative;
-}
-
-.dropdown-menu > li > a i {
-    margin-right: 8px;
-}
-
-.dropdown-menu > li > a span {
-    margin-left: 4px;
-    position: absolute;
-    right: 10px;
-    padding: 4px 6px;
-}
-
-.dropdown-menu > li > a:hover {
-    background-color: #E5E5E5;
-    color: #333333;
-    padding-left: 20px;
-}
-
-@media (min-width:992px) and (max-width:1199px) {
-
-    .navbar-default .navbar-nav > li > a {
-        padding-left: 9px;
-        padding-right: 9px;
-    }
-
-    .navbar-nav > li > .dropdown-menu {
-        min-width: 240px;
-    }
-
-    .dropdown-menu > li > a {
-        font-size: 13px;
-    }
-}
-
-@media (max-width:991px) {
-	/* NAVBAR */
-
-	.navbar-default {
-		background-color:#ffffff;
-		height:50px;
-	}
-
-	.navbar-default .container {
-		width:auto;
-	}
-
-	.navbar-default .navbar-header {
-		float:none;
-		margin:0 -15px;
-	}
-
-	.navbar-default .navbar-brand {
-		font-size: 25px;
-		transition:none;
-	}
-
-	.navbar-default .navbar-brand img {
-		max-height:50px;
-	}
-
-	.navbar > .container .navbar-brand {
-		margin-left:0;
-	}
-
-	.navbar-default .navbar-toggle {
-		border:0;
-		padding:0;
-		border-radius:0;
-		margin:17px 18px;
-		font-size:28px;
-		color:#555555;
-		display: block;
-	}
-
-	.navbar-default .navbar-toggle:hover,
-	.navbar-default .navbar-toggle:focus {
-		background-color:transparent;
-	}
-
-	.navbar-default .navbar-collapse {
-		border:0;
-		box-shadow:none;
-		border-bottom:3px solid #16A085;
-		margin:0 -15px;
-		max-height: 300px;
-		float:none;
-	}
-
-	.navbar-default .navbar-collapse .navbar-nav {
-		margin: 0 -15px;
-		background-color:#FFFFFF;
-		padding:5px 15px;
-		float:none;
-	}
-
-	.navbar-nav.nav > li {
-		display: block;
 		position: relative;
-		float:none;
-	}
-
-	body .navbar.navbar-default .navbar-nav > li > a,
-	body .navbar.navbar-default .navbar-nav > li.active > a,
-	body .navbar.navbar-default .navbar-nav > li.active > a,
-	body .navbar.navbar-default .navbar-nav > li.active > a:hover,
-	body .navbar.navbar-default .navbar-nav > li.active > a:focus,
-	body .navbar.navbar-default .navbar-nav > li.open > a,
-	body .navbar.navbar-default .navbar-nav > li.open > a:hover,
-	body .navbar.navbar-default .navbar-nav > li.open > a:focus {
-		background-color:#FFFFFF;
-		color: #555555;
-		padding:5px 0;
-		border-bottom:2px solid #E5E5E5;
-		font-size:14px;
-		font-weight:600;
-	}
-
-	.navbar-default .navbar-nav > li > a i {
-		display:none;
-	}
-
-	.navbar-nav > li > .dropdown-menu {
-		display:block;
-		position:relative;
-		width:100%;
-		float:none;
-		box-shadow:none;
-		border:0;
-		margin-bottom:10px;
-	}
-
-	.navbar-nav > li:last-child > .dropdown-menu {
-		margin-bottom:0;
-	}
-
-	.navbar-default .navbar-nav .dropdown-menu > li > a,
-	.navbar-default .navbar-nav .open .dropdown-menu > li > a,
-	.navbar-default .navbar-nav .dropdown-menu > li > a:hover {
-		background-color:#FFFFFF;
-		padding:8px 10px;
-		transition:none;
-	}
-
+		top: -6px;
 }
-
-// search form in navbar header
-#search-form {
-    $searchform-height: 32px;
-    height: $searchform-height;
-    margin: (($navbar-height - $searchform-height)/2) 0;
-    padding-right: 0;
-
-    .form-control {
-        height: $searchform-height;
-        border-width: 1px;
-        border-radius: 0;
-
-        width: 150px;
-    }
-    .input-group-btn .btn {
-        height: $searchform-height;
-        padding-top: ($searchform-height - 20) / 2 - 1;
-        padding-bottom: ($searchform-height - 20) / 2;
-    }
-}
-
-
-/*
- CONTENT general rules
-*/
-
 
 ::selection {
     text-shadow: none !important;
@@ -313,4 +53,3 @@
     text-shadow: none !important;
     background: #fff2a8;
 }
-

@@ -56,42 +56,42 @@ use yii\widgets\Menu;
 	<!-- ==========================
     	HEADER - START
     =========================== -->
-    <div class="top-header hidden-xs hidden-sm">
-        <div class="container">
-            <div class="pull-left">
-                <div class="header-item"><?= Html::a('The Definitive Guide', ['guide/entry']) ?></div>
-                <div class="header-item"><?= Html::a('Class Reference', ['api/index', 'version' => reset(Yii::$app->params['api.versions'])]) ?></div>
-            </div>
-            <div class="pull-right">
-                <?php if (Yii::$app->user->isGuest): ?>
-                    <div class="header-item"><?= Html::a('<i class="fa fa-sign-in"></i>Login</a>', ['/site/login']) ?></div>
-                    <div class="header-item"><?= Html::a('<i class="fa fa-user"></i>Sign up</a>', ['/site/signup']) ?></div>
-                <?php else: ?>
-                    <div class="header-item">Welcome, <?= Yii::$app->user->identity->username ?>!</div>
-                    <div class="header-item"><?= Html::a('<i class="fa fa-sign-out"></i>Logout</a>', ['/site/logout'], ['data-method' => 'post']) ?></div>
-                <?php endif; ?>
-                <ul class="brands brands-inline brands-tn brands-circle main">
-                    <li><a href="https://github.com/yiisoft/yii2"><i class="fa fa-github"></i></a></li>
-                    <li><a href="https://twitter.com/yiiframework"><i class="fa fa-twitter"></i></a></li>
-                    <li><a href="https://www.facebook.com/groups/yiitalk/"><i class="fa fa-facebook"></i></a></li>
-                    <li><a href="https://www.linkedin.com/groups/yii-framework-1483367"><i class="fa fa-linkedin"></i></a></li>
-                    <!--li><a href="#"><i class="fa fa-google-plus"></i></a></li-->
-                </ul>
-                <!-- TODO this link is not shown on mobile so it has to find a better place
-                <div class="header-item"><a href="signin.html" class="pull-right"><i class="fa fa-user"></i>Sign in</a></div>
-                -->
-            </div>
-        </div>
-    </div>
-
-	<header class="navbar navbar-default navbar-static-top">
+  <div class="top-header hidden-xs hidden-sm hidden-md">
+      <div class="container">
+          <div class="pull-left">
+              <div class="header-item"><?= Html::a('The Definitive Guide', ['guide/entry']) ?></div>
+              <div class="header-item"><?= Html::a('Class Reference', ['api/index', 'version' => reset(Yii::$app->params['api.versions'])]) ?></div>
+          </div>
+          <div class="pull-right">
+              <?php if (Yii::$app->user->isGuest): ?>
+                  <div class="header-item"><?= Html::a('<i class="fa fa-sign-in"></i>Login</a>', ['/site/login']) ?></div>
+                  <div class="header-item"><?= Html::a('<i class="fa fa-user"></i>Sign up</a>', ['/site/signup']) ?></div>
+              <?php else: ?>
+                  <div class="header-item">Welcome, <?= Yii::$app->user->identity->username ?>!</div>
+                  <div class="header-item"><?= Html::a('<i class="fa fa-sign-out"></i>Logout</a>', ['/site/logout'], ['data-method' => 'post']) ?></div>
+              <?php endif; ?>
+              <ul class="brands brands-inline brands-tn brands-circle main">
+                  <li><a href="https://github.com/yiisoft/yii2"><i class="fa fa-github"></i></a></li>
+                  <li><a href="https://twitter.com/yiiframework"><i class="fa fa-twitter"></i></a></li>
+                  <li><a href="https://www.facebook.com/groups/yiitalk/"><i class="fa fa-facebook"></i></a></li>
+                  <li><a href="https://www.linkedin.com/groups/yii-framework-1483367"><i class="fa fa-linkedin"></i></a></li>
+                  <!--li><a href="#"><i class="fa fa-google-plus"></i></a></li-->
+              </ul>
+              <!-- TODO this link is not shown on mobile so it has to find a better place
+              <div class="header-item"><a href="signin.html" class="pull-right"><i class="fa fa-user"></i>Sign in</a></div>
+              -->
+          </div>
+      </div>
+  </div>
+  <div class="clearfix"></div>
+	<header class="navbar navbar-inverse navbar-static">
     	<div class="container">
             <div id="main-nav-head" class="navbar-header">
                 <a href="<?= Yii::$app->homeUrl ?>" class="navbar-brand">
-                    <img src="<?= Yii::getAlias('@web/image/logo42.png') ?>" class="logo" alt="Yii Framework">
+                    <img src="<?= Yii::getAlias('@web/image/logo36.png') ?>" class="logo" alt="Yii Framework">
                     <?php /* <object type="image/svg+xml" data="<?= Yii::getAlias('@web/logo.svg') ?>" class="logo"></object><span class="hidden-sm"> Yii Framework</span>*/ ?>
                 </a>
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse"><i class="fa fa-bars"></i></button>
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse"><i class="fa fa-inverse fa-bars"></i></button>
             </div>
             <div class="navbar-collapse collapse navbar-right">
                 <?php
@@ -115,31 +115,30 @@ use yii\widgets\Menu;
                                 ['label' => '<i class="fa fa-angle-double-right"></i>Getting started', 'url' => ['site/tour']],
                                 ['label' => '<i class="fa fa-angle-double-right"></i>The Definitive Guide', 'url' => ['guide/entry']],
                                 ['label' => '<i class="fa fa-angle-double-right"></i>API Documentation', 'url' => ['api/index', 'version' => reset(Yii::$app->params['api.versions'])]],
-                                ['label' => '<i class="fa fa-angle-double-right"></i>Tutorials<span class="label label-warning">coming soon</span>', 'url' => 'https://yiicamp.com/tutorials'],
-                                ['label' => '<i class="fa fa-angle-double-right"></i>Answers<span class="label label-warning">coming soon</span>', 'url' => 'https://yiicamp.com/answers'],
+                                //['label' => '<i class="fa fa-angle-double-right"></i>Tutorials<span class="label label-warning">coming soon</span>', 'url' => 'https://yiicamp.com/tutorials'],
+                                //['label' => '<i class="fa fa-angle-double-right"></i>Answers<span class="label label-warning">coming soon</span>', 'url' => 'https://yiicamp.com/answers'],
                                 ['label' => '<i class="fa fa-angle-double-right"></i>Books', 'url' => ['site/books']],
                                 ['label' => '<i class="fa fa-angle-double-right"></i>Resources', 'url' => ['site/resources']],
                             ]],
                             ['label' => 'Develop', 'items' => [
                                 ['label' => '<i class="fa fa-angle-double-right"></i>Install Yii', 'url' => ['site/download']],
-                                ['label' => '<i class="fa fa-angle-double-right"></i>Extensions<span class="label label-warning">coming soon</span>', 'url' => 'https://yiicamp.com/extensions'],
+                                //['label' => '<i class="fa fa-angle-double-right"></i>Extensions<span class="label label-warning">coming soon</span>', 'url' => 'https://yiicamp.com/extensions'],
                                 ['label' => '<i class="fa fa-angle-double-right"></i>Report an Issue', 'url' => ['site/report-issue']],
                                 ['label' => '<i class="fa fa-angle-double-right"></i>Report a Security Issue', 'url' => ['site/security']],
                                 ['label' => '<i class="fa fa-angle-double-right"></i>Contribute to Yii', 'url' => ['/site/contribute']],
-                                ['label' => '<i class="fa fa-angle-double-right"></i>Jobs<span class="label label-warning">coming soon</span>', 'url' => 'https://yiicamp.com/jobs'],
+                                //['label' => '<i class="fa fa-angle-double-right"></i>Jobs<span class="label label-warning">coming soon</span>', 'url' => 'https://yiicamp.com/jobs'],
                             ]],
                             ['label' => 'Discuss', 'items' => [
                                 ['label' => '<i class="fa fa-angle-double-right"></i>Forum', 'url' => '/forum'],
                                 ['label' => '<i class="fa fa-angle-double-right"></i>Live Chat', 'url' => ['site/chat']],
                             ]],
-                            ['label' => 'Camp', 'url' => 'https://yiicamp.com'],
                             ['label' => 'Login', 'url' => ['site/login'], 'visible' => Yii::$app->user->isGuest, 'options' => ['class' => 'hidden-lg hidden-md']],
                             ['label' => 'Signup', 'url' => ['site/signup'], 'visible' => Yii::$app->user->isGuest, 'options' => ['class' => 'hidden-lg hidden-md']],
                             ['label' => 'Logout', 'url' => ['site/logout'], 'visible' => !Yii::$app->user->isGuest, 'linkOptions' => ['data-method' => 'post'], 'options' => ['class' => 'hidden-lg hidden-md']],
                         ],
                     ]);
 
-                    echo $this->render('_searchForm');
+                    //echo $this->render('_searchForm');
 ?>
 <!--                <ul class="nav navbar-nav">
                     <li class="dropdown search-form-toggle">
