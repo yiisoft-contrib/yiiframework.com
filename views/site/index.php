@@ -87,7 +87,7 @@ JUMBOTRON - START
 <div class="jumbotron jumbotron-index">
 <div class="container">
 
-    <h1>Welcome to Yii Framework!</h1>
+    <h1><img src="/image/yii_petals.svg" alt="Yii Framework" />yii<span class="hero-framework">framework</span></h1>
 
     <h2>The solid foundation for your PHP application.</h2>
 
