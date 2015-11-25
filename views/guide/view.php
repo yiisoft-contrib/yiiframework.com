@@ -25,14 +25,10 @@ foreach ($guide->chapters as $chapterTitle => $sections) {
 
 $this->title = $section->getPageTitle();
 $this->registerJs('
-$(".sidenav-toggle").on("click", function() {
-    var $button = $(this);
-    $(".row-offcanvas").toggleClass("active");
-    if ($button.text() === $button.data("show-text")) {
-        $button.text($button.data("hide-text"));
-    } else {
-        $button.text($button.data("show-text"));
-    }
+$(document).ready(function () {
+  $(\'[data-toggle="offcanvas"]\').click(function () {
+    $(\'.row-offcanvas\').toggleClass(\'active\')
+  });
 });
 ');
 ?>
@@ -51,6 +47,9 @@ $(".sidenav-toggle").on("click", function() {
             <?= SideNav::widget(['id' => 'guide-navigation', 'items' => $nav, 'options' => ['class' => 'sidenav-offcanvas']]) ?>
         </div>
         <div class="col-sm-9" role="main">
+          <p class="pull-right visible-xs">
+            <button type="button" class="btn btn-primary btn-xs" data-toggle="offcanvas">Toggle nav</button>
+          </p>
 
             <div class="guide-content content">
                 <?php if (!empty($missingTranslation)): ?>
