@@ -238,31 +238,31 @@ div.image {
     }
 }
 
+/*
+ * Off Canvas
+ * --------------------------------------------------
+ */
 @media screen and (max-width: 767px) {
+  .row-offcanvas {
+    left: 0;
+    position: relative;
+    -webkit-transition: all .25s ease-out;
+         -o-transition: all .25s ease-out;
+            transition: all .25s ease-out;
+  }
 
-    /* outer div */
-    .row-offcanvas {
-        position: relative;
-        left: 0;
-        -webkit-transition: left .3s ease-in;
-        -most-transition: left .3s ease-in;
-        transition: left .3s ease-in;
-    }
+  .row-offcanvas
+  .sidenav-offcanvas {
+    left: -50%; /* 6 columns */
+  }
 
-    /* sidebar */
-    .sidenav-offcanvas {
-        left: -50%;
-        width: 50%;
-        position: absolute;
-        top: 0;
-        height: 100%;
-        background-color: #F7F7F7;
-        padding: 0px;
-    }
+  .row-offcanvas.active {
+    left: 50%; /* 6 columns */
+  }
 
-    /* content */
-    .row-offcanvas.active {
-        left: 80%;
-    }
-
+  .sidenav-offcanvas {
+    position: absolute;
+    top: 0;
+    width: 50%; /* 6 columns */
+  }
 }
