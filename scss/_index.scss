@@ -1,6 +1,11 @@
 
 .jumbotron-index {
 
+	position: relative;
+	top: -48px;
+	@media (max-width: $grid-float-breakpoint) {
+		top: -25px;
+	}
 	padding:0 0 50px;
 	border-bottom:0;
 

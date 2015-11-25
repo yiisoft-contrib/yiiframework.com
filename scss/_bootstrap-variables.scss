@@ -9,16 +9,16 @@
 //
 //## Gray and brand colors for use across Bootstrap.
 
-// $gray-base:              #000
-// $gray-darker:            lighten($gray-base, 13.5%) // #222
-// $gray-dark:              lighten($gray-base, 20%)   // #333
-// $gray:                   lighten($gray-base, 33.5%) // #555
-// $gray-light:             lighten($gray-base, 46.7%) // #777
-// $gray-lighter:           lighten($gray-base, 93.5%) // #eee
+$gray-base:              #000;
+$gray-darker:            lighten($gray-base, 13.5%); // #222
+$gray-dark:              lighten($gray-base, 20%);   // #333
+$gray:                   lighten($gray-base, 33.5%); // #555
+$gray-light:             lighten($gray-base, 46.7%); // #777
+$gray-lighter:           lighten($gray-base, 93.5%); // #eee
 
-// $brand-primary:         darken(#428bca, 6.5%) // #337ab7
-// $brand-success:         #5cb85c
-// $brand-warning:         #f0ad4e
+// $brand-primary:         darken(#428bca, 6.5%); // #337ab7
+// $brand-success:         #5cb85c;
+// $brand-warning:         #f0ad4e;
 $brand-primary:         $yii-blue;
 $brand-success:         $yii-green;
 $brand-warning:         $yii-yellow;
@@ -39,18 +39,30 @@ $state-warning-text:             $yii-yellow;
 // $body-bg:               #fff
 $body-bg:               #FEFEFE;
 //** Global text color on `<body>`.
-// $text-color:            $gray-dark
+$text-color:            $gray-dark;
 
 //** Global textual link color.
-// $link-color:            $brand-primary
+$link-color:            $brand-primary;
 //** Link hover color set via `darken()` function.
-// $link-hover-color:      darken($link-color, 15%)
+$link-hover-color:      darken($link-color, 15%);
 //** Link hover decoration.
-// $link-hover-decoration: underline
+$link-hover-decoration: underline;
 
 
 $navbar-height: 40px;
 $navbar-inverse-link-active-bg:             transparent;
+
+$well-bg: #F5F5F5;
+
+$pre-bg: inherit;
+$pre-color: inherit;
+$pre-border-color: inherit;
+
+$icon-font-path: "/fonts/";
+
+$font-size-base:          16px;
+
+
 $grid-float-breakpoint: 1200px;
 
 $grid-gutter-width:         30px;
@@ -62,17 +74,6 @@ $container-sm:                 $container-tablet;
 $container-large-desktop:      (1240px + $grid-gutter-width);
 //** For `$screen-lg-min` and up.
 $container-lg:                 $container-large-desktop;
-
-
-$well-bg: #F5F5F5;
-
-$pre-bg: inherit;
-$pre-color: inherit;
-$pre-border-color: inherit;
-
-$icon-font-path: "/fonts/";
-
-$font-size-base:          16px;
 
 //== Typography
 //
