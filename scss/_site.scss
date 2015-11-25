@@ -36,8 +36,6 @@ header.navbar.navbar-inverse {
 .navbar {
 	position: relative;
 	top: -25px;
-	border-bottom:1px solid #000;
-	border-top:1px solid #000;
 	@media (max-width: $grid-float-breakpoint) {
 		top: 0px;
 	}
