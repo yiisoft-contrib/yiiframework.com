@@ -1,10 +1,12 @@
 .content {
+    @include make-md-column(12);
+
     p a:visited:not(:hover) {
       color: $link-visited-color;
     }
 
     p, li, blockquote, .alert, div.toc {
-        max-width: 40em;
+        //max-width: 40em; //TODO: is this really needed?
         font-size: $font-size-base;
     }
 
