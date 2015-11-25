@@ -93,35 +93,35 @@ JUMBOTRON - START
 
     <div class="application-features">
         <div class="row application-feature">
-            <div class="col-sm-4 key-word">
+            <div class="col-md-4 key-word">
                 <span class="glyphicon glyphicon-flash" aria-hidden="true"></span>
                 <h3>Fast.</h3>
             </div>
-            <div class="col-sm-8 key-description">Yii gives you maximum functionality by adding the least possible overhead.</div>
+            <div class="col-md-8 key-description">Yii gives you maximum functionality by adding the least possible overhead.</div>
         </div>
 
         <div class="row application-feature">
-            <div class="col-sm-4 key-word">
+            <div class="col-md-4 key-word">
                 <span class="glyphicon glyphicon-lock" aria-hidden="true"></span>
                 <h3>Secure.</h3>
             </div>
-            <div class="col-sm-8 key-description">Sane defaults and built in tools help you write solid and secure code. </div>
+            <div class="col-md-8 key-description">Sane defaults and built in tools help you write solid and secure code. </div>
         </div>
 
         <div class="row application-feature">
-            <div class="col-sm-4 key-word">
+            <div class="col-md-4 key-word">
                 <span class="glyphicon glyphicon-time" aria-hidden="true"></span>
                 <h3>Efficient.</h3>
             </div>
-            <div class="col-sm-8 key-description">Write more code in less time with simple yet powerful APIs and code generation.</div>
+            <div class="col-md-8 key-description">Write more code in less time with simple yet powerful APIs and code generation.</div>
         </div>
 
         <div class="row application-feature">
-            <div class="col-sm-4 key-word">
+            <div class="col-md-4 key-word">
                 <span class="glyphicon glyphicon-asterisk" aria-hidden="true"></span>
                 <h3>Flexible.</h3>
             </div>
-            <div class="col-sm-8 key-description">It works out of the box using reasonable defaults but is highly adjustable to fit your needs.</div>
+            <div class="col-md-8 key-description">It works out of the box using reasonable defaults but is highly adjustable to fit your needs.</div>
         </div>
 
     </div>
