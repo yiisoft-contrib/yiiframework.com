@@ -132,33 +132,22 @@ use yii\widgets\Menu;
                                 ['label' => '<i class="fa fa-angle-double-right"></i>Team', 'url' => ['site/team']],
                                 ['label' => '<i class="fa fa-angle-double-right"></i>Official logo', 'url' => ['site/logo']],
                             ]],
-                            ['label' => 'Login', 'url' => ['site/login'], 'visible' => Yii::$app->user->isGuest, 'options' => ['class' => 'hidden-lg hidden-md']],
-                            ['label' => 'Signup', 'url' => ['site/signup'], 'visible' => Yii::$app->user->isGuest, 'options' => ['class' => 'hidden-lg hidden-md']],
-                            ['label' => 'Logout', 'url' => ['site/logout'], 'visible' => !Yii::$app->user->isGuest, 'linkOptions' => ['data-method' => 'post'], 'options' => ['class' => 'hidden-lg hidden-md']],
+                            ['label' => 'Login', 'url' => ['site/login'], 'visible' => Yii::$app->user->isGuest, 'options' => ['class' => 'hidden-lg']],
+                            ['label' => 'Signup', 'url' => ['site/signup'], 'visible' => Yii::$app->user->isGuest, 'options' => ['class' => 'hidden-lg']],
+                            ['label' => 'Logout', 'url' => ['site/logout'], 'visible' => !Yii::$app->user->isGuest, 'linkOptions' => ['data-method' => 'post'], 'options' => ['class' => 'hidden-lg']],
                         ],
                     ]);
-
-                    //echo $this->render('_searchForm');
 ?>
-<!--                <ul class="nav navbar-nav">
+                <ul class="nav navbar-nav visible-lg">
                     <li class="dropdown search-form-toggle">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-search"></i></a>
                         <ul class="dropdown-menu navbar-search-form">
-                        	<li>
-                            	<form>
-                                    <fieldset>
-                                        <div class="form-group nospace">
-                                            <div class="input-group">
-                                                <input type="text" class="form-control" id="search" placeholder="Search" required>
-                                                <span class="input-group-btn"><button class="btn btn-primary" type="button"><i class="fa fa-search"></i></button></span>
-                                            </div>
-                                        </div>
-                                    </fieldset>
-                                </form>
+                          	<li>
+                                <?= $this->render('_searchForm'); ?>
                             </li>
                         </ul>
                     </li>
-                </ul>-->
+                </ul>
             </div>
         </div>
     </header>
