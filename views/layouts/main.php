@@ -138,9 +138,10 @@ use yii\widgets\Menu;
                         ],
                     ]);
 ?>
+                <!-- Search dropdown - only visible on larger screens -->
                 <ul class="nav navbar-nav visible-lg">
                     <li class="dropdown search-form-toggle">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-search"></i></a>
+                        <a href="#" class="dropdown-toggle" title="Search" data-toggle="dropdown"><i class="fa fa-search"></i></a>
                         <ul class="dropdown-menu navbar-search-form">
                           	<li>
                                 <?= $this->render('_searchForm'); ?>
