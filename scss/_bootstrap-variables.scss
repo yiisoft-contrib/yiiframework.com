@@ -77,10 +77,10 @@ $container-large-desktop:      (1240px + $grid-gutter-width);
 //** For `$screen-lg-min` and up.
 $container-lg:                 $container-large-desktop;
 
-$headings-font-family:    "tenby_fiveregular";
+$headings-font-family:    "josefin_sanssemibold";
 $headings-color:          $gray;
 
-//$font-family-sans-serif:  "tenby_fiveregular", Helvetica, Arial, sans-serif;
+$font-family-sans-serif:  "Roboto", Helvetica, Arial, sans-serif;
 
 //== Typography
 //
