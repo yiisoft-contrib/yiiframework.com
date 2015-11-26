@@ -3,7 +3,7 @@
 /* Sticky footer styles
 -------------------------------------------------- */
 $footer-height: 210px;
-$footer-height-mobile: 229px;
+$footer-height-mobile: 275px;
 
 html {
   position: relative;
@@ -15,6 +15,9 @@ body {
 	@media (max-width: $grid-float-breakpoint) {
 		margin-bottom: $footer-height-mobile;
 	}
+  @media (max-width: $container-tablet) {
+		margin-bottom: $footer-height-mobile + 100px;
+	}
 }
 
 /*
@@ -23,13 +26,13 @@ body {
 .top-header {
 	background-color:#F0F0F0;
 	border-bottom:1px solid #DDDDDD;
-	height:20px;
+	height:40px;
     .header-item {
         display:inline-block;
         margin-right:20px;
         font-size:12px;
 				position:relative;
-        top:-5px;
+        top:-3px;
     }
 
     .header-item i {
@@ -77,13 +80,26 @@ header.navbar.navbar-inverse {
 
 footer {
   position: absolute;
+  font-size: smaller;
+  .footer-header {
+    font-family: $headings-font-family;
+    font-size: 26px;
+    margin-bottom: 0.5em;
+  }
   bottom: 0;
   width: 100%;
   height: $footer-height;
 	@media (max-width: $grid-float-breakpoint) {
 		height: $footer-height-mobile;
 	}
+  @media (max-width: $container-tablet) {
+		height: $footer-height-mobile + 100px;
+	}
 	background-color: #333333;
 	color: $gray;
 	margin-top: 4em;
+  padding-top: 2em;
+  .fa {
+    margin-right: 0.5em;
+  }
 }
