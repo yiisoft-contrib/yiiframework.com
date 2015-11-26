@@ -34,6 +34,7 @@ $font-size-codeblocks: $font-size-base;
 
 @import "components/comments";
 @import "components/authchoice";
+@import "components/scrollup";
 
 // adjustments for smaller screens
 //@import "responsive"; // TODO: this should be inlined in other code
