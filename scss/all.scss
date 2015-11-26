@@ -17,6 +17,9 @@ $font-size-codeblocks: $font-size-base;
 // Roxie theme
 @import "roxie/css/creative-brands";
 
+// Elements
+@import "elements/index_features";
+
 // Overall customizations
 @import "content";
 @import "site";
