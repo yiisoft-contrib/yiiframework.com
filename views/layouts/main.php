@@ -104,13 +104,6 @@ use yii\widgets\Menu;
                         'activateItems' => false,
                         'dropDownCaret' => '<i class="fa fa-chevron-down"></i>',
                         'items' => [
-                            ['label' => 'About', 'items' => [
-                                ['label' => '<i class="fa fa-angle-double-right"></i>What is Yii?', 'url' => ['site/about']],
-                                ['label' => '<i class="fa fa-angle-double-right"></i>News', 'url' => ['site/news']],
-                                ['label' => '<i class="fa fa-angle-double-right"></i>License', 'url' => ['site/license']],
-                                ['label' => '<i class="fa fa-angle-double-right"></i>Team', 'url' => ['site/team']],
-                                ['label' => '<i class="fa fa-angle-double-right"></i>Official logo', 'url' => ['site/logo']],
-                            ]],
                             ['label' => 'Learn', 'items' => [
                                 ['label' => '<i class="fa fa-angle-double-right"></i>Getting started', 'url' => ['site/tour']],
                                 ['label' => '<i class="fa fa-angle-double-right"></i>The Definitive Guide', 'url' => ['guide/entry']],
@@ -131,6 +124,13 @@ use yii\widgets\Menu;
                             ['label' => 'Discuss', 'items' => [
                                 ['label' => '<i class="fa fa-angle-double-right"></i>Forum', 'url' => '/forum'],
                                 ['label' => '<i class="fa fa-angle-double-right"></i>Live Chat', 'url' => ['site/chat']],
+                            ]],
+                            ['label' => 'About', 'items' => [
+                                ['label' => '<i class="fa fa-angle-double-right"></i>What is Yii?', 'url' => ['site/about']],
+                                ['label' => '<i class="fa fa-angle-double-right"></i>News', 'url' => ['site/news']],
+                                ['label' => '<i class="fa fa-angle-double-right"></i>License', 'url' => ['site/license']],
+                                ['label' => '<i class="fa fa-angle-double-right"></i>Team', 'url' => ['site/team']],
+                                ['label' => '<i class="fa fa-angle-double-right"></i>Official logo', 'url' => ['site/logo']],
                             ]],
                             ['label' => 'Login', 'url' => ['site/login'], 'visible' => Yii::$app->user->isGuest, 'options' => ['class' => 'hidden-lg hidden-md']],
                             ['label' => 'Signup', 'url' => ['site/signup'], 'visible' => Yii::$app->user->isGuest, 'options' => ['class' => 'hidden-lg hidden-md']],
