@@ -15,32 +15,28 @@ JUMBOTRON - START
         <div class="application-features">
             <div class="row application-feature">
                 <div class="col-md-4 key-word">
-                    <span class="glyphicon glyphicon-flash" aria-hidden="true"></span>
-                    <h3>Fast.</h3>
+                    <div class="app-feature-heading"><span class="fa fa-rocket fa-inverse" aria-hidden="true"></span>Fast.</div>
                 </div>
                 <div class="col-md-8 key-description">Yii gives you maximum functionality by adding the least possible overhead.</div>
             </div>
 
             <div class="row application-feature">
                 <div class="col-md-4 key-word">
-                    <span class="glyphicon glyphicon-lock" aria-hidden="true"></span>
-                    <h3>Secure.</h3>
+                    <div class="app-feature-heading"><span class="fa fa-lock fa-inverse" aria-hidden="true"></span>Secure.</div>
                 </div>
                 <div class="col-md-8 key-description">Sane defaults and built in tools help you write solid and secure code. </div>
             </div>
 
             <div class="row application-feature">
                 <div class="col-md-4 key-word">
-                    <span class="glyphicon glyphicon-time" aria-hidden="true"></span>
-                    <h3>Efficient.</h3>
+                    <div class="app-feature-heading"><span class="fa fa-clock-o fa-inverse" aria-hidden="true"></span>Efficient.</div>
                 </div>
                 <div class="col-md-8 key-description">Write more code in less time with simple yet powerful APIs and code generation.</div>
             </div>
 
             <div class="row application-feature">
                 <div class="col-md-4 key-word">
-                    <span class="glyphicon glyphicon-asterisk" aria-hidden="true"></span>
-                    <h3>Flexible.</h3>
+                    <div class="app-feature-heading"><span class="fa fa-asterisk fa-inverse" aria-hidden="true"></span>Flexible.</div>
                 </div>
                 <div class="col-md-8 key-description">It works out of the box using reasonable defaults but is highly adjustable to fit your needs.</div>
             </div>
@@ -114,30 +110,26 @@ JUMBOTRON - START
     </div>
     <!-- end of features -->
     <!-- start of poweredby -->
-    <section class="content-separator" id="section-statistics">
+    <section class="content-separator section-poweredby">
        <div class="container">
        	<div class="row">
                <div class="col-md-3">
-                   <div class="statistic">
-                       <div class="number" data-from="2200" data-to="2780" data-refresh-interval="100"></div>
+                   <div class="poweredby">
                        <div class="title"><img src="<?= Yii::getAlias('@web/image/facebook.png') ?>" alt="Facebook"/></div>
                    </div>
                </div>
                <div class="col-md-3">
-                   <div class="statistic">
-                   <div class="number" data-from="2200" data-to="2780" data-refresh-interval="100"></div>
+                   <div class="poweredby">
                        <div class="title"><img src="<?= Yii::getAlias('@web/image/stay.png') ?>" alt="Stay.com"/></div>
                    </div>
                </div>
                <div class="col-md-3">
-                   <div class="statistic">
-                   <div class="number" data-from="2200" data-to="2780" data-refresh-interval="100"></div>
+                   <div class="poweredby">
                        <div class="title"><img src="<?= Yii::getAlias('@web/image/vice.png') ?>" alt="VICE"/></div>
                    </div>
                </div>
                <div class="col-md-3">
-                   <div class="statistic">
-                   <div class="number" data-from="2200" data-to="2780" data-refresh-interval="100"></div>
+                   <div class="poweredby">
                        <div class="title"><img src="<?= Yii::getAlias('@web/image/fifa.png') ?>" alt="FIFA"/></div>
                    </div>
                </div>
@@ -146,13 +138,13 @@ JUMBOTRON - START
     </section>
     <!-- end of poweredby -->
     <!-- start of testimonials -->
-    <section class="content-separator" id="section-testimonials">
+    <section class="section-testimonials">
         <div class="container">
         	<div class="row">
-                <div class="col-md-8">
+                <div class="col-md-12">
                     <div id="testimonials-slider">
                         <div class="item">
-                            <i class="fa fa-quote-left"></i>
+                            <i class="fa fa-quote-left fa-pull-left"></i>
                             <p>Choosing the right PHP framework was a vital decision when we set out to build Craft. With its elegant, modular architecture, rich internationalization support, and helpful documentation, Yii was a perfect fit.</p>
                             <h3>Brandon Kelly, <small>Craft</small></h3>
                         </div>

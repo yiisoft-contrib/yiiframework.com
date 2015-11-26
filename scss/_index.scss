@@ -64,11 +64,13 @@ $third: lighten($brand-primary, 15%);
             white-space: nowrap;
 
 
-            .glyphicon {
+            .fa {
                 float: left;
-                font-size: 4 * $appf-base-font-size;
+                font-size: 3 * $appf-base-font-size;
                 color: #fff;
-                top: 3px;
+								position: relative;
+								top: 5px;
+								margin-right: 6px;
 
                 @media (max-width: $screen-sm-max) {
                     font-size: $appf-base-font-size * 3.6;
@@ -96,7 +98,7 @@ $third: lighten($brand-primary, 15%);
             margin-left: 30px;
         }
 
-        h3 {
+        .app-feature-heading {
             font-size: $appf-base-font-size * 2;
             line-height: 4 * $appf-base-font-size;
             vertical-align: middle;
@@ -110,4 +112,34 @@ $third: lighten($brand-primary, 15%);
             }
         }
     }
+}
+
+.content-separator {
+	margin-top: 2em;
+}
+
+.content-separator.section-poweredby {
+	.container {
+		padding: 2em;
+		background-color: $yii-blue;
+		img {
+			-webkit-filter: drop-shadow(16px 16px 10px rgba(0,0,0,0.9));
+		  filter: drop-shadow(16px 16px 10px rgba(0,0,0,0.9));
+		}
+	}
+}
+.section-testimonials {
+	.container {
+		color: #ddd;
+		font-size: 20px;
+		font-style: italic;
+		padding: 2em;
+		background-color: $yii-blue;
+		h3 {
+			color: #ccc;
+			small {
+				color: #bbb;
+			}
+		}
+	}
 }
