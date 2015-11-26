@@ -37,7 +37,7 @@ $state-warning-text:             $yii-yellow;
 
 //** Background color for `<body>`.
 // $body-bg:               #fff
-$body-bg:               #FEFEFE;
+$body-bg:               darken(#FEFEFE, 5%);
 //** Global text color on `<body>`.
 $text-color:            $gray-dark;
 

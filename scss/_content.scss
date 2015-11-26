@@ -1,5 +1,10 @@
 .content {
+
     @include make-md-column(12);
+
+    background-color: #FEFEFE;
+    border-radius: 5px;
+    margin-bottom: 1em;
 
     p a:visited:not(:hover) {
       color: $link-visited-color;
