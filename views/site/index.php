@@ -53,14 +53,14 @@ JUMBOTRON - START
     <!-- start of features -->
     <div class="yii-features">
         <div class="container">
-        	<div class="row">
+        	<div class="row equalizer">
             	<div class="col-xs-12 col-sm-6 col-lg-4">
         			<div class="feature-box blue">
         				<div class="icon">
         					<div class="image"><i class="fa fa-database"></i></div>
         					<div class="info">
         						<h3 class="title">Relational and noSQL databases</h3>
-                      <p>Yii has all you need to work with both relational and noSQL databases. Both powerful ActiveRecord and convenient query builder are there to help.</p>
+                      <p class="watch">Yii has all you need to work with both relational and noSQL databases. Both powerful ActiveRecord and convenient query builder are there to help.</p>
         						<div class="more">
         							<a href="#" title="Title Link">
         								Read More <i class="fa fa-angle-double-right"></i>
@@ -76,9 +76,9 @@ JUMBOTRON - START
         			<div class="feature-box yellow">
         				<div class="icon">
         					<div class="image"><i class="fa fa-wrench"></i></div>
-        					<div class="info">
+                  <div class="info">
                     <h3 class="title">Great tools</h3>
-                      <p>Debugger will help you tracking errors, analyzing performance and various events of the application.
+                      <p class="watch">Debugger will help you tracking errors, analyzing performance and various events of the application.
                       Gii is there to generate code for you. An error page will show you enough details to fix error in no time.</p>
         						<div class="more">
         							<a href="#" title="Title Link">
@@ -95,9 +95,9 @@ JUMBOTRON - START
         			<div class="feature-box green">
         				<div class="icon">
         					<div class="image"><i class="fa fa-thumbs-up"></i></div>
-        					<div class="info">
+                  <div class="info">
                     <h3 class="title">Exceptional community</h3>
-                    <p>Yii has one of the most helpful communities out there. There are forums, IRC chat, active GitHub
+                    <p class="watch">Yii has one of the most helpful communities out there. There are forums, IRC chat, active GitHub
                     development, collaborative wiki and much more.</p>
         						<div class="more">
         							<a href="#" title="Title Link">
@@ -156,20 +156,6 @@ JUMBOTRON - START
                             <p>Choosing the right PHP framework was a vital decision when we set out to build Craft. With its elegant, modular architecture, rich internationalization support, and helpful documentation, Yii was a perfect fit.</p>
                             <h3>Brandon Kelly, <small>Craft</small></h3>
                         </div>
-
-                        <?php /*
-                        <div class="item">
-                            <i class="fa fa-quote-left"></i>
-                            <p>Phasellus fringilla neque diam, eget elementum libero eleifend ac. Morbi condimentum metus felis, pellentesque iaculis sapien egestas imperdiet. Curabitur in lacus at ante elementum mollis.</p>
-                        	<h3>John Doe <small>[Designer]</small></h3>
-                        </div>
-
-                        <div class="item">
-                            <i class="fa fa-quote-left"></i>
-                            <p>Phasellus fringilla neque diam, eget elementum libero eleifend ac. Morbi condimentum metus felis, pellentesque iaculis sapien egestas imperdiet. Curabitur in lacus at ante elementum mollis.</p>
-                        	<h3>John Doe <small>[Developer]</small></h3>
-                        </div>
-                        */ ?>
                     </div>
                 </div>
             </div>

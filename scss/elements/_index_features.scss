@@ -1,6 +1,9 @@
 .yii-feature-wrapper {
   position: relative;
   top: -100px;
+  @media (max-width: $grid-float-breakpoint) {
+    top: -80px;
+	}
 }
 
 .feature-box > .icon {
