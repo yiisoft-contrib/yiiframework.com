@@ -7,6 +7,7 @@
     "vendor/yiisoft/yii2-authclient/assets/authchoice.js",
     "scss/roxie/js/waypoints.min.js",
     "scss/roxie/js/creative-brands.js",
+    "js/jquery.scrollUp.js",
     "scss/roxie/js/custom.js",
     "js/search.js"
 ]

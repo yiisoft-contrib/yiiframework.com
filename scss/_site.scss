@@ -1,7 +1,25 @@
+// Global styles
+
+/* Sticky footer styles
+-------------------------------------------------- */
+$footer-height: 210px;
+$footer-height-mobile: 229px;
+
+html {
+  position: relative;
+  min-height: 100%;
+}
+body {
+  /* Margin bottom by footer height */
+  margin-bottom: $footer-height;
+	@media (max-width: $grid-float-breakpoint) {
+		margin-bottom: $footer-height-mobile;
+	}
+}
+
 /*
  HEADER first line
 */
-
 .top-header {
 	background-color:#F0F0F0;
 	border-bottom:1px solid #DDDDDD;
@@ -28,12 +46,14 @@
 /*
  HEADER navigation
 */
+header.navbar.navbar-inverse {
+	padding: 0;
+	margin: 0;
+}
 
 .navbar {
 	position: relative;
 	top: -25px;
-	border-bottom:1px solid #000;
-	border-top:1px solid #000;
 	@media (max-width: $grid-float-breakpoint) {
 		top: 0px;
 	}
@@ -52,4 +72,18 @@
 ::-moz-selection {
     text-shadow: none !important;
     background: #fff2a8;
+}
+
+
+footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: $footer-height;
+	@media (max-width: $grid-float-breakpoint) {
+		height: $footer-height-mobile;
+	}
+	background-color: #333333;
+	color: $gray;
+	margin-top: 4em;
 }

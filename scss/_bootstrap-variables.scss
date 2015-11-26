@@ -37,7 +37,7 @@ $state-warning-text:             $yii-yellow;
 
 //** Background color for `<body>`.
 // $body-bg:               #fff
-$body-bg:               #FEFEFE;
+$body-bg:               darken(#FEFEFE, 5%);
 //** Global text color on `<body>`.
 $text-color:            $gray-dark;
 
@@ -51,6 +51,8 @@ $link-hover-decoration: underline;
 
 $navbar-height: 40px;
 $navbar-inverse-link-active-bg:             transparent;
+$navbar-inverse-border:                     transparent;
+$navbar-border-radius: 0;
 
 $well-bg: #F5F5F5;
 
@@ -74,6 +76,11 @@ $container-sm:                 $container-tablet;
 $container-large-desktop:      (1240px + $grid-gutter-width);
 //** For `$screen-lg-min` and up.
 $container-lg:                 $container-large-desktop;
+
+$headings-font-family:    "josefin_sanssemibold";
+$headings-color:          $gray;
+
+$font-family-sans-serif:  "Roboto", Helvetica, Arial, sans-serif;
 
 //== Typography
 //

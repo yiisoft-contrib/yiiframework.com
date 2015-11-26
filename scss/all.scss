@@ -5,14 +5,14 @@ $yii-green: #8CBC4C;
 @import "bootstrap-variables";
 // extra vars that was added to bootstrap variables by Roxio
 $link-visited-color: $yii-blue;
-$font-family-nav: 'Roboto', sans-serif;// TODO: figure out if Roboto is the font to use
 $font-size-codeblocks: $font-size-base;
 
 @import "vendors/bootstrap";
 @import "vendors/bootstrap/theme";
 @import "vendors/font-awesome";
 
-@import "fonts/roboto";// TODO: needed?
+@import "fonts/roboto";
+@import "fonts/josefine-sans";
 
 // Roxie theme
 @import "roxie/css/creative-brands";
@@ -33,6 +33,7 @@ $font-size-codeblocks: $font-size-base;
 
 @import "components/comments";
 @import "components/authchoice";
+@import "components/scrollup";
 
 // adjustments for smaller screens
 //@import "responsive"; // TODO: this should be inlined in other code

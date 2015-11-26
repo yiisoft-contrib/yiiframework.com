@@ -47,11 +47,10 @@ $(document).ready(function () {
             <?= SideNav::widget(['id' => 'guide-navigation', 'items' => $nav, 'options' => ['class' => 'sidenav-offcanvas']]) ?>
         </div>
         <div class="col-sm-9" role="main">
-          <p class="pull-right visible-xs">
-            <button type="button" class="btn btn-primary btn-xs" data-toggle="offcanvas">Toggle nav</button>
-          </p>
-
             <div class="guide-content content">
+              <p class="pull-right visible-xs">
+                <button type="button" class="btn btn-primary btn-xs" data-toggle="offcanvas">Toggle nav</button>
+              </p>
                 <?php if (!empty($missingTranslation)): ?>
                     <div class="alert alert-warning">
                         <strong>This section is not translated yet.</strong> <br />
