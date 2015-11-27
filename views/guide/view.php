@@ -46,7 +46,7 @@ $(document).ready(function () {
         <div class="col-sm-3">
             <?= SideNav::widget(['id' => 'guide-navigation', 'items' => $nav, 'options' => ['class' => 'sidenav-offcanvas']]) ?>
         </div>
-        <div class="col-sm-9" role="main">
+        <div class="col-sm-9" role="main" id="top">
             <div class="guide-content content">
               <p class="pull-right visible-xs">
                 <button type="button" class="btn btn-primary btn-xs" data-toggle="offcanvas">Toggle nav</button>
@@ -71,7 +71,7 @@ $(document).ready(function () {
                         $right = ' <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>';
                         echo '<div class="pull-right">' . Html::a(Html::encode($next[1]) . $right, ['guide/view', 'section' => $next[0], 'version' => $guide->version, 'language' => $guide->language, 'type' => $guide->typeUrlName]) . '</div>';
                     }
-                    echo '<div class="text-center"><a href="#">Go to Top <span class="glyphicon glyphicon-chevron-up" aria-hidden="true"></span></a></div>';
+                    echo '<div class="text-center"><a href="#top">Go to Top <span class="glyphicon glyphicon-chevron-up" aria-hidden="true"></span></a></div>';
                     ?>
                 </div>
 
