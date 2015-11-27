@@ -44,7 +44,7 @@ $(document).ready(function () {
             <?= $this->render('_versions.php', ['guide' => $guide, 'section' => $section]) ?>
             <?= SideNav::widget(['id' => 'guide-navigation', 'items' => $nav, 'options' => ['class' => 'sidenav-offcanvas']]) ?>
         </div>
-        <div class="col-sm-8 col-md-9 col-lg-8" role="main" id="top">
+        <div class="col-sm-8 col-md-9 col-lg-10" role="main" id="top">
             <div class="guide-content content">
               <p class="pull-right visible-xs">
                 <button type="button" class="btn btn-primary btn-xs" data-toggle="offcanvas">Toggle nav</button>

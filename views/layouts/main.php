@@ -48,7 +48,7 @@ use yii\widgets\Menu;
     <title><?php if (!empty($this->title)): ?><?= Html::encode($this->title) ?> - <?php endif?>Yii PHP Framework</title>
     <?php $this->head() ?>
 </head>
-<body class="color-yii">
+<body data-spy="scroll" data-target="#scrollnav" data-offset="20">
 <?php $this->beginBody() ?>
 
     <div id="page-wrapper" class="">
