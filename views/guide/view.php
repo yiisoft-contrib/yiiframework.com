@@ -40,12 +40,8 @@ $(document).ready(function () {
     </div>
 
     <div class="row row-offcanvas">
-        <!-- <div class="row sidenav-offcanvas">
-            <div class="col-sm-4 col-md-3 col-lg-2">
-                < ?= //$this->render('_versions.php', ['guide' => $guide, 'section' => $section]) ?>
-            </div>
-        </div> -->
         <div class="col-sm-4 col-md-3 col-lg-2">
+            <?= $this->render('_versions.php', ['guide' => $guide, 'section' => $section]) ?>
             <?= SideNav::widget(['id' => 'guide-navigation', 'items' => $nav, 'options' => ['class' => 'sidenav-offcanvas']]) ?>
         </div>
         <div class="col-sm-8 col-md-9 col-lg-8" role="main" id="top">
