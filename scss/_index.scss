@@ -42,76 +42,23 @@ $third: lighten($brand-primary, 15%);
         text-align: center;
     }
 
-    .application-features {
-        margin: 0 auto;
-        padding: 0;
-
-        @media (min-width: $screen-sm-min) and (max-width: $screen-sm-max) {
-            width: $screen-sm-min - 30px; // container padding is 30px
-        }
-
-        @media (min-width: $screen-md-min) {
-            width: 800px;
-        }
-    }
-
-    .application-feature {
-        margin: 0 0 (2 * $appf-base-font-size);
-
-        .key-word {
-            height: 4 * $appf-base-font-size;
-
-            white-space: nowrap;
-
-
-            .fa {
-                float: left;
-                font-size: 3 * $appf-base-font-size;
-                color: #fff;
-								position: relative;
-								top: 5px;
-								margin-right: 6px;
-
-                @media (max-width: $screen-sm-max) {
-                    font-size: $appf-base-font-size * 3.6;
-                    top: 5px;
-                }
-            }
-        }
-
-        .key-description {
-            height: 4 * $appf-base-font-size;
-            line-height: 2 * $appf-base-font-size;
-            font-size: 1.2 * $appf-base-font-size;
-            font-weight: 600;
-
-            color: rgba(0, 0, 0, 0.75);
-
-            @media (max-width: $screen-xs-max) {
-                margin-left: ($appf-base-font-size * 3.6) + floor($appf-base-font-size * 1.5);
-                height: auto;
-            }
-        }
-
-        img {
-            max-width: 64px;
-            margin-left: 30px;
-        }
-
-        .app-feature-heading {
-            font-size: $appf-base-font-size * 2;
-            line-height: 4 * $appf-base-font-size;
-            vertical-align: middle;
-            font-weight: 600;
-            color: rgba(0, 0, 0, 0.7);
-            margin: 0 floor($appf-base-font-size * 1.5);
-            display: inline-block;
-
-            @media (max-width: $screen-sm-max) {
-                font-size: $appf-base-font-size * 1.8;
-            }
-        }
-    }
+		.features {
+			color: #eee;
+			font-size: 20px;
+			font-family: $font-family-sans-serif;
+			ul > li {
+				vertical-align: middle;
+			}
+			strong {
+				font-size: 28px;
+				font-family: $headings-font-family;
+				vertical-align: middle;
+				margin-right: 0.5em;
+				position: relative;
+				top: -4px;
+			}
+			line-height: 3em;
+		}
 }
 
 .content-separator {

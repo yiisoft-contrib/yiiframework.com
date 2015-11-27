@@ -8,39 +8,19 @@ JUMBOTRON - START
 <div class="jumbotron jumbotron-index">
     <div class="container">
 
-        <h1><img src="/image/yii_petals.svg" alt="Yii Framework" />yii<span class="hero-framework">framework</span></h1>
+        <h1><img src="/image/yii_petals.svg" alt="Yii Framework" width="80" />yii<span class="hero-framework">framework</span></h1>
 
         <h2>The solid foundation for your PHP application.</h2>
 
-        <div class="application-features">
-            <div class="row application-feature">
-                <div class="col-md-4 key-word">
-                    <div class="app-feature-heading"><span class="fa fa-rocket fa-inverse" aria-hidden="true"></span>Fast.</div>
-                </div>
-                <div class="col-md-8 key-description">Yii gives you maximum functionality by adding the least possible overhead.</div>
+        <div class="row features">
+            <div class="col-md-10 col-md-offset-2">
+                <ul class="fa-ul">
+                  <li><i class="fa-li fa fa-rocket fa-inverse fa-2x"></i><strong>Fast</strong>  Yii gives you maximum functionality by adding the least possible overhead.</li>
+                  <li><i class="fa-li fa fa-lock fa-inverse fa-2x"></i><strong>Secure</strong>  Sane defaults and built in tools help you write solid and secure code.</li>
+                  <li><i class="fa-li fa fa-clock-o fa-inverse fa-2x"></i><strong>Efficient</strong>  Write more code in less time with simple yet powerful APIs and code generation.</li>
+                  <li><i class="fa-li fa fa-asterisk fa-inverse fa-2x"></i><strong>Flexible</strong>  It works out of the box using reasonable defaults but is highly adjustable to fit your needs.</li>
+                </ul>
             </div>
-
-            <div class="row application-feature">
-                <div class="col-md-4 key-word">
-                    <div class="app-feature-heading"><span class="fa fa-lock fa-inverse" aria-hidden="true"></span>Secure.</div>
-                </div>
-                <div class="col-md-8 key-description">Sane defaults and built in tools help you write solid and secure code. </div>
-            </div>
-
-            <div class="row application-feature">
-                <div class="col-md-4 key-word">
-                    <div class="app-feature-heading"><span class="fa fa-clock-o fa-inverse" aria-hidden="true"></span>Efficient.</div>
-                </div>
-                <div class="col-md-8 key-description">Write more code in less time with simple yet powerful APIs and code generation.</div>
-            </div>
-
-            <div class="row application-feature">
-                <div class="col-md-4 key-word">
-                    <div class="app-feature-heading"><span class="fa fa-asterisk fa-inverse" aria-hidden="true"></span>Flexible.</div>
-                </div>
-                <div class="col-md-8 key-description">It works out of the box using reasonable defaults but is highly adjustable to fit your needs.</div>
-            </div>
-
         </div>
     </div>
 </div>
