@@ -5,6 +5,18 @@
 // --------------------------------------------------
 
 
+// HOW TO USE THIS FILE:
+//
+// Search and find a setting that you want to override
+// copy it and paste it at the top
+// and then customize it.
+// Be sure to leave the original untouched where it is.
+//
+// That way, we always know what the original value looked like.
+// And it will be easier to spot what we have changed (and what we haven't.)
+
+
+
 //== Colors
 //
 //## Gray and brand colors for use across Bootstrap.
@@ -81,6 +93,12 @@ $headings-font-family:    "josefin_sanssemibold";
 $headings-color:          $gray;
 
 $font-family-sans-serif:  "Roboto", Helvetica, Arial, sans-serif;
+
+
+// extra vars that was added to bootstrap variables by Roxio
+$link-visited-color: $yii-blue;
+$font-size-codeblocks: $font-size-base;
+
 
 //== Typography
 //

@@ -1,41 +1,48 @@
-$yii-yellow: #DF6E35;
-$yii-blue: #3379B2;
-$yii-green: #8CBC4C;
+// This is the master include file for the style
+// used by yiiframework.com
+//
+// Inspired by Sass Guidelines: http://sass-guidelin.es/
+// and using a variant of the 7-1 pattern for organizing
+// sass partials ( http://sass-guidelin.es/#the-7-1-pattern )
 
-@import "bootstrap-variables";
-// extra vars that was added to bootstrap variables by Roxio
-$link-visited-color: $yii-blue;
-$font-size-codeblocks: $font-size-base;
 
-@import "vendors/bootstrap";
-@import "vendors/bootstrap/theme";
-@import "vendors/font-awesome";
+// Common style and global variables/mixins
+// that does not depend on vendors
+@import "1-common/colors";
+@import "1-common/bootstrap-variables";
 
-@import "fonts/roboto";
-@import "fonts/josefine-sans";
+// Vendors
+@import "2-vendors/bootstrap";
+@import "2-vendors/bootstrap/theme";
+@import "2-vendors/font-awesome";
+@import "2-vendors/fonts/roboto";
+@import "2-vendors/fonts/josefine-sans";
+@import "2-vendors/roxie/css/creative-brands";
+@import "2-vendors/scrollup";
 
-// Roxie theme
-@import "roxie/css/creative-brands";
+// Global styling that makes use of vendors
+@import "3-global/content";
+@import "3-global/site";
+@import "3-global/highlight"; // guide code highlight
+
+// Components that could be used in multiple pages
+@import "4-components/comments";
+@import "4-components/authchoice";
+
+// Page specific style
+@import "5-pages/guide";
+@import "5-pages/api";
+@import "5-pages/index";
+@import "5-pages/books";
+@import "5-pages/team";
+@import "5-pages/license";
+@import "5-pages/search";
 
 // Elements
-@import "elements/index/features";
-@import "elements/index/showcase";
-@import "elements/index/testimonials";
-
-// Overall customizations
-@import "content";
-@import "site";
-@import "guide";
-@import "api";
-@import "highlight"; // guide code highlight
-@import "index";
-@import "books";
-@import "team";
-@import "license";
-@import "search";
-
-// components
-
-@import "components/comments";
-@import "components/authchoice";
-@import "components/scrollup";
+// When a page specific style becomes too big
+// it can be split up.
+// Indivual elements gets placed here
+// in subdirectories named after the page
+@import "6-elements/index/features";
+@import "6-elements/index/showcase";
+@import "6-elements/index/testimonials";
