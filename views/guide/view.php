@@ -32,21 +32,23 @@ $(document).ready(function () {
 });
 ');
 ?>
-<div class="container guide-view lang-<?= $guide->language ?>" xmlns="http://www.w3.org/1999/html">
+<div class="container-fluid guide-view lang-<?= $guide->language ?>" xmlns="http://www.w3.org/1999/html">
     <div class="row">
-        <div class="col-xs-7 col-sm-8">
+        <div class="col-xs-12 col-sm-8 col-sm-offset-4 col-md-9 col-md-offset-3 col-lg-10 col-lg-offset-2">
             <h1 class="guide-headline"><?= Html::encode($guide->title) ?></h1>
-        </div>
-        <div class="col-xs-5 col-sm-4">
-            <?= $this->render('_versions.php', ['guide' => $guide, 'section' => $section]) ?>
         </div>
     </div>
 
     <div class="row row-offcanvas">
-        <div class="col-sm-3">
+        <!-- <div class="row sidenav-offcanvas">
+            <div class="col-sm-4 col-md-3 col-lg-2">
+                < ?= //$this->render('_versions.php', ['guide' => $guide, 'section' => $section]) ?>
+            </div>
+        </div> -->
+        <div class="col-sm-4 col-md-3 col-lg-2">
             <?= SideNav::widget(['id' => 'guide-navigation', 'items' => $nav, 'options' => ['class' => 'sidenav-offcanvas']]) ?>
         </div>
-        <div class="col-sm-9" role="main" id="top">
+        <div class="col-sm-8 col-md-9 col-lg-8" role="main" id="top">
             <div class="guide-content content">
               <p class="pull-right visible-xs">
                 <button type="button" class="btn btn-primary btn-xs" data-toggle="offcanvas">Toggle nav</button>
