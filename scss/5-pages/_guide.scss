@@ -56,60 +56,6 @@ nav.version-selector {
     }
 }
 
-body.color-yii a.list-group-item {
-    color: #333333;
-    @include border-top-radius(0);
-    @include border-bottom-radius(0);
-    font-weight: bold;
-
-    .caret {
-        display: inline-block;
-        margin: 8px 0;
-        float: right;
-    }
-}
-
-body.color-yii .submenu a.list-group-item {
-    color: #333333;
-    font-weight: lighter;
-}
-
-a.list-group-item:hover {
-    background-color: $yii-blue;
-    color: #ffffff !important;
-}
-
-.submenu a.list-group-item:hover {
-    background-color: #e5e5e5;
-    color: #333333 !important;
-}
-
-a.list-group-item.active,
-a.list-group-item.active:focus,
-a.list-group-item.active:hover,
-a.list-group-item:active {
-    background: $yii-blue;
-    color: #ffffff !important;
-
-    border-color: #dddddd;
-
-    @include border-top-radius(0);
-    @include border-bottom-radius(0);
-}
-
-.submenu a.list-group-item.active,
-.submenu a.list-group-item.active:focus,
-.submenu a.list-group-item.active:hover,
-.submenu a.list-group-item:active {
-    background: #e5e5e5 !important;
-    color: #333333 !important;
-
-    border-color: #dddddd;
-
-    @include border-top-radius(0);
-    @include border-bottom-radius(0);
-}
-
 .guide-content {
     .broken-link {
         background: #FFE4EF;
