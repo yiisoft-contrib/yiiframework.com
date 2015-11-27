@@ -1,0 +1,21 @@
+// Removes outline on hover
+// but should not prevent keyboard users from getting feedback
+
+textarea:hover,
+input:hover,
+textarea:active,
+input:active,
+textarea:focus,
+input:focus,
+button:focus,
+button:active,
+button:hover
+{
+    outline:0px !important;
+    -webkit-appearance:none;
+}
+
+// yes, but there is outline on links by means of underline upon focus
+*:focus {
+    outline: 0 !important;
+}
