@@ -77,9 +77,6 @@ use yii\widgets\Menu;
                   <li><a href="https://www.linkedin.com/groups/yii-framework-1483367"><i class="fa fa-linkedin"></i></a></li>
                   <!--li><a href="#"><i class="fa fa-google-plus"></i></a></li-->
               </ul>
-              <!-- TODO this link is not shown on mobile so it has to find a better place
-              <div class="header-item"><a href="signin.html" class="pull-right"><i class="fa fa-user"></i>Sign in</a></div>
-              -->
           </div>
       </div>
   </div>
@@ -165,56 +162,27 @@ use yii\widgets\Menu;
     	<div class="container">
         	<div class="row">
             	<div class="col-md-4">
-                	<h3><i class="fa fa-flag"></i>Contact</h3>
+                	<div class="footer-header"><i class="fa fa-flag fa-1g"></i>Contact</div>
                     <p class="contact-text">Use <?= Html::a('contact form', ['site/contact']) ?> if you have consulting requests or any other proposals.</p>
-<!--                    <ul class="list-unstyled contact-address">-->
-<!--                        <li>Yii Software LLC</li>-->
-<!--                    </ul>-->
                     <ul class="brands brands-inline brands-sm brands-transition brands-circle">
                         <li><a href="https://github.com/yiisoft/yii2" class="brands-github"><i class="fa fa-github"></i></a></li>
                     	<li><a href="https://twitter.com/yiiframework" class="brands-twitter"><i class="fa fa-twitter"></i></a></li>
                         <li><a href="https://www.facebook.com/groups/yiitalk/" class="brands-facebook"><i class="fa fa-facebook"></i></a></li>
                         <li><a href="https://www.linkedin.com/groups/yii-framework-1483367" class="brands-linkedin"><i class="fa fa-linkedin"></i></a></li>
-                    	<!--li><a href="#" class="brands-facebook"><i class="fa fa-facebook"></i></a></li>
-                        <li><a href="#" class="brands-twitter"><i class="fa fa-twitter"></i></a></li>
-                        <li><a href="#" class="brands-google-plus"><i class="fa fa-google-plus"></i></a></li>
-                        <li><a href="#" class="brands-linkedin"><i class="fa fa-linkedin"></i></a></li>
-                        <li><a href="#" class="brands-youtube"><i class="fa fa-youtube"></i></a></li>
-                        <li><a href="#" class="brands-skype"><i class="fa fa-skype"></i></a></li-->
                     </ul>
                 </div>
 
-                <div class="col-md-4 hidden-xs hidden-sm">
-                	<h3><i class="fa fa-heart-o"></i>Our supporters</h3>
+                <div class="col-md-4 fa-1g">
+                	<div class="footer-header"><i class="fa fa-heart-o"></i>Our supporters</div>
                     <div class="row" id="latest-work-footer">
 						<div class="overlay-wrapper col-sm-6">
                             <a href="https://www.jetbrains.com/"><img src="<?= Yii::getAlias('@web/image/logo_jetbrains.png') ?>" class="img-responsive" alt="JetBrains"></a>
                         </div>
-                        <?php /*
-                        <div class="overlay-wrapper col-sm-6">
-                            <img src="image/image_02.jpg" class="img-responsive" alt="">
-                            <span class="overlay">
-                                <a href="portfolio-post1.html"><i class="fa fa-plus"></i></a>
-                            </span>
-                        </div>
-                        <div class="overlay-wrapper col-sm-6">
-                            <img src="image/image_05.jpg" class="img-responsive" alt="">
-                            <span class="overlay">
-                                <a href="portfolio-post1.html"><i class="fa fa-plus"></i></a>
-                            </span>
-                        </div>
-                        <div class="overlay-wrapper col-sm-6">
-                            <img src="image/image_06.jpg" class="img-responsive" alt="">
-                            <span class="overlay">
-                                <a href="portfolio-post1.html"><i class="fa fa-plus"></i></a>
-                            </span>
-                        </div>
-                        */ ?>
                     </div>
                 </div>
 
                 <div class="col-md-4 hidden-xs hidden-sm">
-                	<h3><i class="fa fa-envelope"></i>Newsletter</h3>
+                	<div class="footer-header"><i class="fa fa-envelope"></i>Newsletter</div>
                     <p class="contact-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis nec lorem quis est ultrices volutpat.</p>
                     <form>
                     	<fieldset>
@@ -232,22 +200,10 @@ use yii\widgets\Menu;
                 <div class="footer-copyright">
                     <p>&copy; 2015 Yii Software LLC | <?= Html::a('Terms of service', ['/site/tos']) ?></p>
                 </div>
-                <!--ul class="nav navbar-nav navbar-right hidden-xs hidden-sm">
-                    <li><a href="index.html">Home</a></li>
-                    <li><a href="features.html">Features</a></li>
-                    <li><a href="blog2.html">Blog</a></li>
-                    <li><a href="portfolio1.html">Portfolio</a></li>
-                    <li><a href="contact1.html">Contact</a></li>
-                </ul-->
             </div>
         </div>
     </footer>
-    <!-- ==========================
-    	FOOTER - END
-    =========================== -->
-
     </div>
-
    	<!-- ==========================
     	JS
     =========================== -->
