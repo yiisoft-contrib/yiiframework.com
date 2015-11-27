@@ -109,6 +109,7 @@ RewriteRule . index.php
 * Usually each controller corresponds to a single Sass file whose name is the same as the controller ID.
   For example, the `GuideController` has a Sass file named `_guide.scss`.
 * All Sass source files, except `all.scss` should have a leading underscore in the name. Sass will ignore files starting with an underscore so that only one CSS file will be produced (all.css).
+* For information about where each file should be put, please consult the master include file `all.scss`.
 
 
 ### JS Files
