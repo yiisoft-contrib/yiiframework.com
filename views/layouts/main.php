@@ -31,7 +31,7 @@ use yii\widgets\Menu;
     <link rel="icon" type="image/png" sizes="32x32" href="<?= Yii::getAlias('@web/favicon-32x32.png') ?>">
     <link rel="icon" type="image/png" sizes="96x96" href="<?= Yii::getAlias('@web/favicon-96x96.png') ?>">
     <link rel="icon" type="image/png" sizes="16x16" href="<?= Yii::getAlias('@web/favicon-16x16.png') ?>">
-    <link rel="manifest" href="/manifest.json">
+    <link rel="manifest" href="<?= Yii::getAlias('@web/manifest.json') ?>">
     <meta name="msapplication-TileColor" content="#4394F0">
     <meta name="msapplication-TileImage" content="<?= Yii::getAlias('@web/ms-icon-144x144.png') ?>">
     <meta name="theme-color" content="#4394F0">

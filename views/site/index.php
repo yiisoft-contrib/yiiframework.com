@@ -8,7 +8,7 @@ JUMBOTRON - START
 <div class="jumbotron jumbotron-index">
     <div class="container">
 
-        <h1><img src="/image/yii_petals.svg" alt="Yii Framework" width="80" />yii<span class="hero-framework">framework</span></h1>
+        <h1><img src="<?= Yii::getAlias('@web/image/yii_petals.svg') ?>" alt="Yii Framework" width="80" />yii<span class="hero-framework">framework</span></h1>
 
         <h2>The solid foundation for your PHP application.</h2>
 
