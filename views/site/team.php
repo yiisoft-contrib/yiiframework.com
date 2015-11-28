@@ -410,7 +410,6 @@ $( document ).ready(function() {
     <div class="row">
         <div>
             <h1><?= Html::encode($this->title) ?></h1>
-
             <section id="about-team">
                 <div class="container">
                     <div class="row">
@@ -419,14 +418,14 @@ $( document ).ready(function() {
                     <?php foreach($activeMembers as $row): ?>
                         <div class="row">
                             <?php foreach($row as $member):?>
-                                <div class="col-sm-3 col-md-4">
+                                <div class="col-sm-6 col-md-4">
                                     <div class="team-card">
                                         <canvas class="header-bg" width="250" height="70" id="header-blur"></canvas>
                                         <div class="avatar">
                                             <img src="" alt="" />
                                         </div>
                                         <div class="content">
-                                            <h3><?= Html::encode($member['name'])?><small><?= Html::encode($member['location'])?></small></h3>
+                                            <h3><?= Html::encode($member['name'])?><small> <?= Html::encode($member['location'])?></small></h3>
                                             <h4>Since <?= Html::encode($member['memberSince']) ?></h4>
                                             <p class="duty"><?= HtmlPurifier::process($member['duty']) ?></p>
                                             <ul class="brands brands-inline brands-sm brands-transition brands-circle">
@@ -454,14 +453,14 @@ $( document ).ready(function() {
                     <?php foreach($pastMembers as $row): ?>
                     <div class="row">
                         <?php foreach($row as $member):?>
-                            <div class="col-sm-3 col-md-4">
+                            <div class="col-sm-6 col-md-4">
                                 <div class="team-card">
                                     <canvas class="header-bg" width="250" height="70" id="header-blur"></canvas>
                                     <div class="avatar">
                                         <img src="" alt="" />
                                     </div>
                                     <div class="content">
-                                        <h3><?= Html::encode($member['name'])?><small><?= Html::encode($member['location'])?></small></h3>
+                                        <h3><?= Html::encode($member['name'])?> <small><?= Html::encode($member['location'])?></small></h3>
                                         <h4>Since <?= Html::encode($member['memberSince']) ?></h4>
                                         <p class="duty"><?= HtmlPurifier::process($member['duty']) ?></p>
                                         <ul class="brands brands-inline brands-sm brands-transition brands-circle">
