@@ -74,7 +74,7 @@
   padding: 0 !important;
 }
 .info-card .info-card-details .info-card-header h3 {
-  color: rgb(142, 182, 52);
+  color: $yii-green;
   font-size: 15px;
   font-weight: 400;
   margin-top: 5px;
@@ -166,16 +166,16 @@ a.linkedin:hover {
   top: 19px; right: -21px;
 }
 .ribbon.green span {
-  background: #79A70A;
-  background: linear-gradient(#9BC90D 0%, #79A70A 100%);
+  background: $yii-green;
+  background: linear-gradient(darken($yii-green, 10%) 0%, $yii-green 100%);
 }
 .ribbon.blue span {
-  background: #2989D8;
-  background: linear-gradient(#1E5799 0%, #2989D8 100%);
+  background: $yii-blue;
+  background: linear-gradient(darken($yii-blue, 10%) 0%, $yii-blue 100%);
 }
 .ribbon.red span {
-  background: #F70505;
-  background: linear-gradient(#8F0808 0%, #F70505 100%);
+  background: $yii-yellow;
+  background: linear-gradient(darken($yii-yellow, 10%) 0%, $yii-yellow 100%);
 }
 .ribbon span::before {
   content: "";
@@ -185,16 +185,16 @@ a.linkedin:hover {
   border-bottom: 3px solid transparent;
 }
 .ribbon.green span::before {
-  border-left: 3px solid #79A70A;
-  border-top: 3px solid #79A70A;
+  border-left: 3px solid $yii-green;
+  border-top: 3px solid $yii-green;
 }
 .ribbon.blue span::before {
-  border-left: 3px solid #2989D8;
-  border-top: 3px solid #2989D8;
+  border-left: 3px solid $yii-blue;
+  border-top: 3px solid $yii-blue;
 }
 .ribbon.red span::before {
-  border-left: 3px solid #F70505;
-  border-top: 3px solid #F70505;
+  border-left: 3px solid $yii-yellow;
+  border-top: 3px solid $yii-yellow;
 }
 .ribbon span::after {
   content: "";
@@ -204,14 +204,14 @@ a.linkedin:hover {
   border-bottom: 3px solid transparent;
 }
 .ribbon.green span::after {
-  border-right: 3px solid #79A70A;
-  border-top: 3px solid #79A70A;
+  border-right: 3px solid $yii-green;
+  border-top: 3px solid $yii-green;
 }
 .ribbon.blue span::after {
-  border-right: 3px solid #2989D8;
-  border-top: 3px solid #2989D8;
+  border-right: 3px solid $yii-blue;
+  border-top: 3px solid $yii-blue;
 }
 .ribbon.red span::after {
-  border-right: 3px solid #F70505;
-  border-top: 3px solid #F70505;
+  border-right: 3px solid $yii-yellow;
+  border-top: 3px solid $yii-yellow;
 }
