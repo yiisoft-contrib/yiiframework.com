@@ -99,6 +99,7 @@ $this->params['breadcrumbs'][] = $this->title;
                     <div class="[ info-card-detail ]">
                         <!-- Description -->
                         <p>
+                            Embrace 360-degree testing on your Yii 2 projects using Codeception.
                         </p>
                     </div>
                     <div class="social">
