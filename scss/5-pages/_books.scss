@@ -136,31 +136,82 @@ a.linkedin:hover {
   background-color: rgb(1, 116, 179) !important;
 }
 
-.site-books {
-    .book {
-        margin-bottom: 1em;
 
-        small.authors {
-            font-style: italic;
-        }
-
-        .simple {
-            height: 328px;
-            text-align: center;
-            position: relative;
-            border: 1px solid #f6f6f6;
-
-            a {
-                padding-top: 100px;
-                display: block;
-                background: black;
-                color: white;
-                position: absolute;
-                top: 10px;
-                left: 10px;
-                right: 10px;
-                bottom: 10px;
-            }
-        }
-    }
+.box {
+  width: 200px; height: 300px;
+  position: relative;
+  border: 1px solid #BBB;
+  background: #EEE;
+}
+.ribbon {
+  position: absolute;
+  right: -5px; top: -5px;
+  z-index: 1;
+  overflow: hidden;
+  width: 75px; height: 75px;
+  text-align: right;
+}
+.ribbon span {
+  font-size: 10px;
+  font-weight: bold;
+  color: #FFF;
+  text-align: center;
+  line-height: 20px;
+  transform: rotate(45deg);
+  -webkit-transform: rotate(45deg);
+  width: 100px;
+  display: block;
+  box-shadow: 0 3px 10px -5px rgba(0, 0, 0, 1);
+  position: absolute;
+  top: 19px; right: -21px;
+}
+.ribbon.green span {
+  background: #79A70A;
+  background: linear-gradient(#9BC90D 0%, #79A70A 100%);
+}
+.ribbon.blue span {
+  background: #2989D8;
+  background: linear-gradient(#1E5799 0%, #2989D8 100%);
+}
+.ribbon.red span {
+  background: #F70505;
+  background: linear-gradient(#8F0808 0%, #F70505 100%);
+}
+.ribbon span::before {
+  content: "";
+  position: absolute; left: 0px; top: 100%;
+  z-index: -1;
+  border-right: 3px solid transparent;
+  border-bottom: 3px solid transparent;
+}
+.ribbon.green span::before {
+  border-left: 3px solid #79A70A;
+  border-top: 3px solid #79A70A;
+}
+.ribbon.blue span::before {
+  border-left: 3px solid #2989D8;
+  border-top: 3px solid #2989D8;
+}
+.ribbon.red span::before {
+  border-left: 3px solid #F70505;
+  border-top: 3px solid #F70505;
+}
+.ribbon span::after {
+  content: "";
+  position: absolute; right: 0px; top: 100%;
+  z-index: -1;
+  border-left: 3px solid transparent;
+  border-bottom: 3px solid transparent;
+}
+.ribbon.green span::after {
+  border-right: 3px solid #79A70A;
+  border-top: 3px solid #79A70A;
+}
+.ribbon.blue span::after {
+  border-right: 3px solid #2989D8;
+  border-top: 3px solid #2989D8;
+}
+.ribbon.red span::after {
+  border-right: 3px solid #F70505;
+  border-top: 3px solid #F70505;
 }
