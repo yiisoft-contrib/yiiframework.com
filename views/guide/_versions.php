@@ -9,7 +9,7 @@ use app\models\Guide;
 use yii\helpers\Html;
 
 ?>
-<nav class="version-selector">
+<nav class="version-selector sidenav-offcanvas">
     <div class="btn-group btn-group-justified">
         <?php if ($guide->type == 'guide') {
             $items = [];
@@ -87,4 +87,3 @@ use yii\helpers\Html;
         ]) ?>
     </div>
 </nav>
-<div class="clearfix"></div>

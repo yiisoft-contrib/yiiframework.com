@@ -37,6 +37,9 @@ $(document).ready(function () {
         <div class="col-xs-12 col-sm-8 col-sm-offset-4 col-md-9 col-md-offset-3 col-lg-10 col-lg-offset-2">
             <h1 class="guide-headline"><?= Html::encode($guide->title) ?></h1>
         </div>
+          <p class="pull-right visible-xs">
+            <button type="button" class="btn btn-primary btn-xs" data-toggle="offcanvas">Toggle nav</button>
+          </p>
     </div>
 
     <div class="row row-offcanvas">
@@ -46,9 +49,6 @@ $(document).ready(function () {
         </div>
         <div class="col-sm-8 col-md-9 col-lg-10" role="main" id="top">
             <div class="guide-content content">
-              <p class="pull-right visible-xs">
-                <button type="button" class="btn btn-primary btn-xs" data-toggle="offcanvas">Toggle nav</button>
-              </p>
                 <?php if (!empty($missingTranslation)): ?>
                     <div class="alert alert-warning">
                         <strong>This section is not translated yet.</strong> <br />

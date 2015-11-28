@@ -1,4 +1,12 @@
 nav.version-selector {
+
+  @media (max-width: $container-tablet) {
+    position: relative;
+    top: -18px;
+    .btn-group {
+      right: 8px;
+    }
+	}
   .btn-group button {
     font-size: 10px;
   }
