@@ -31,6 +31,11 @@ $(document).ready(function() {
       });
   });
 
+  $('#quote-carousel').carousel({
+    pause: true,
+    interval: false,
+  });
+
 	$(function () {
 	  $(".equalizer").each(function() {
 	    var heights = $(this).find(".watch").map(function() {
