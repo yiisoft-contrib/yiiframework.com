@@ -99,35 +99,35 @@ use yii\widgets\Menu;
                         'encodeLabels' => false,
                         'options' => ['class' => 'nav navbar-nav navbar-main-menu'],
                         'activateItems' => false,
-                        'dropDownCaret' => '<i class="fa fa-chevron-down"></i>',
+                        'dropDownCaret' => '<span class="caret"></span>',
                         'items' => [
                             ['label' => 'Learn', 'items' => [
-                                ['label' => '<i class="fa fa-angle-double-right"></i>Getting started', 'url' => ['site/tour']],
-                                ['label' => '<i class="fa fa-angle-double-right"></i>The Definitive Guide', 'url' => ['guide/entry']],
-                                ['label' => '<i class="fa fa-angle-double-right"></i>API Documentation', 'url' => ['api/index', 'version' => reset(Yii::$app->params['api.versions'])]],
+                                ['label' => '<i class="fa fa-angle-double-right"></i> Getting started', 'url' => ['site/tour']],
+                                ['label' => '<i class="fa fa-angle-double-right"></i> The Definitive Guide', 'url' => ['guide/entry']],
+                                ['label' => '<i class="fa fa-angle-double-right"></i> API Documentation', 'url' => ['api/index', 'version' => reset(Yii::$app->params['api.versions'])]],
                                 //['label' => '<i class="fa fa-angle-double-right"></i>Tutorials<span class="label label-warning">coming soon</span>', 'url' => 'https://yiicamp.com/tutorials'],
                                 //['label' => '<i class="fa fa-angle-double-right"></i>Answers<span class="label label-warning">coming soon</span>', 'url' => 'https://yiicamp.com/answers'],
-                                ['label' => '<i class="fa fa-angle-double-right"></i>Books', 'url' => ['site/books']],
-                                ['label' => '<i class="fa fa-angle-double-right"></i>Resources', 'url' => ['site/resources']],
+                                ['label' => '<i class="fa fa-angle-double-right"></i> Books', 'url' => ['site/books']],
+                                ['label' => '<i class="fa fa-angle-double-right"></i> Resources', 'url' => ['site/resources']],
                             ]],
                             ['label' => 'Develop', 'items' => [
-                                ['label' => '<i class="fa fa-angle-double-right"></i>Install Yii', 'url' => ['site/download']],
+                                ['label' => '<i class="fa fa-angle-double-right"></i> Install Yii', 'url' => ['site/download']],
                                 //['label' => '<i class="fa fa-angle-double-right"></i>Extensions<span class="label label-warning">coming soon</span>', 'url' => 'https://yiicamp.com/extensions'],
-                                ['label' => '<i class="fa fa-angle-double-right"></i>Report an Issue', 'url' => ['site/report-issue']],
-                                ['label' => '<i class="fa fa-angle-double-right"></i>Report a Security Issue', 'url' => ['site/security']],
-                                ['label' => '<i class="fa fa-angle-double-right"></i>Contribute to Yii', 'url' => ['/site/contribute']],
+                                ['label' => '<i class="fa fa-angle-double-right"></i> Report an Issue', 'url' => ['site/report-issue']],
+                                ['label' => '<i class="fa fa-angle-double-right"></i> Report a Security Issue', 'url' => ['site/security']],
+                                ['label' => '<i class="fa fa-angle-double-right"></i> Contribute to Yii', 'url' => ['/site/contribute']],
                                 //['label' => '<i class="fa fa-angle-double-right"></i>Jobs<span class="label label-warning">coming soon</span>', 'url' => 'https://yiicamp.com/jobs'],
                             ]],
                             ['label' => 'Discuss', 'items' => [
-                                ['label' => '<i class="fa fa-angle-double-right"></i>Forum', 'url' => '/forum'],
-                                ['label' => '<i class="fa fa-angle-double-right"></i>Live Chat', 'url' => ['site/chat']],
+                                ['label' => '<i class="fa fa-angle-double-right"></i> Forum', 'url' => '/forum'],
+                                ['label' => '<i class="fa fa-angle-double-right"></i> Live Chat', 'url' => ['site/chat']],
                             ]],
                             ['label' => 'About', 'items' => [
-                                ['label' => '<i class="fa fa-angle-double-right"></i>What is Yii?', 'url' => ['site/about']],
-                                ['label' => '<i class="fa fa-angle-double-right"></i>News', 'url' => ['site/news']],
-                                ['label' => '<i class="fa fa-angle-double-right"></i>License', 'url' => ['site/license']],
-                                ['label' => '<i class="fa fa-angle-double-right"></i>Team', 'url' => ['site/team']],
-                                ['label' => '<i class="fa fa-angle-double-right"></i>Official logo', 'url' => ['site/logo']],
+                                ['label' => '<i class="fa fa-angle-double-right"></i> What is Yii?', 'url' => ['site/about']],
+                                ['label' => '<i class="fa fa-angle-double-right"></i> News', 'url' => ['site/news']],
+                                ['label' => '<i class="fa fa-angle-double-right"></i> License', 'url' => ['site/license']],
+                                ['label' => '<i class="fa fa-angle-double-right"></i> Team', 'url' => ['site/team']],
+                                ['label' => '<i class="fa fa-angle-double-right"></i> Official logo', 'url' => ['site/logo']],
                             ]],
                             ['label' => 'Login', 'url' => ['site/login'], 'visible' => Yii::$app->user->isGuest, 'options' => ['class' => 'hidden-lg']],
                             ['label' => 'Signup', 'url' => ['site/signup'], 'visible' => Yii::$app->user->isGuest, 'options' => ['class' => 'hidden-lg']],
@@ -141,7 +141,25 @@ use yii\widgets\Menu;
                         <a href="#" class="dropdown-toggle" title="Search" data-toggle="dropdown"><i class="fa fa-search"></i></a>
                         <ul class="dropdown-menu navbar-search-form">
                           	<li>
-                                <?= $this->render('_searchForm'); ?>
+                                <ul class="nav navbar-nav">
+                                    <li>
+                                        <?= $this->render('_searchForm'); ?>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+                <ul class="nav navbar-nav navbar-right hidden-lg">
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown"><b>Search</b> <span class="caret"></span></a>
+                        <ul id="search-dp" class="dropdown-menu">
+                            <li>
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <?= $this->render('_searchForm'); ?>
+                                    </div>
+                                </div>
                             </li>
                         </ul>
                     </li>

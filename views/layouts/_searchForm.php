@@ -14,8 +14,6 @@ if ($version = Yii::$app->request->get('version')) {
 }
 
 ?>
-<ul class="nav navbar-nav">
-    <li>
         <?= Html::beginForm($url, 'get', ['id' => 'search-form', 'class' => 'navbar-form']) ?>
         <div class="form-group nospace">
             <div class="input-group">
@@ -25,5 +23,3 @@ if ($version = Yii::$app->request->get('version')) {
         </div>
         <div id="search-resultbox"></div>
         <?= Html::endForm() ?>
-    </li>
-</ul>
