@@ -15,12 +15,12 @@ $this->params['breadcrumbs'][] = $this->title;
             <ul class="timeline">
                 <li>
                     <div class="timeline-image">
-                        <img class="img-circle img-responsive" src="http://lorempixel.com/250/250/cats/1" alt="">
+                        <img class="img-circle img-responsive" src="/image/tour/composer.png" alt="">
                     </div>
                     <div class="timeline-panel">
                         <div class="timeline-heading">
                             <h4>Step One</h4>
-                            <h4 class="subheading">Subtitle</h4>
+                            <h4 class="subheading">Composer</h4>
                         </div>
                         <div class="timeline-body">
                             <p class="text-muted">
@@ -32,12 +32,12 @@ $this->params['breadcrumbs'][] = $this->title;
                 </li>
                 <li class="timeline-inverted">
                     <div class="timeline-image">
-                        <img class="img-circle img-responsive" src="http://lorempixel.com/250/250/cats/2" alt="">
+                        <img class="img-circle img-responsive" src="/image/tour/project-install.png" alt="">
                     </div>
                     <div class="timeline-panel">
                         <div class="timeline-heading">
                             <h4>Step Two</h4>
-                            <h4 class="subheading">Subtitle</h4>
+                            <h4 class="subheading">Basic Project Template</h4>
                         </div>
                         <div class="timeline-body">
                             <p class="text-muted">
@@ -49,12 +49,12 @@ $this->params['breadcrumbs'][] = $this->title;
                 </li>
                 <li>
                     <div class="timeline-image">
-                        <img class="img-circle img-responsive" src="http://lorempixel.com/250/250/cats/3" alt="">
+                        <img class="img-circle img-responsive" src="/image/tour/start-app-installed.png" alt="">
                     </div>
                     <div class="timeline-panel">
                         <div class="timeline-heading">
                             <h4>Step Three</h4>
-                            <h4 class="subheading">Subtitle</h4>
+                            <h4 class="subheading">Welcome Page</h4>
                         </div>
                         <div class="timeline-body">
                             <p class="text-muted">
@@ -66,12 +66,12 @@ $this->params['breadcrumbs'][] = $this->title;
                 </li>
                 <li class="timeline-inverted">
                     <div class="timeline-image">
-                        <img class="img-circle img-responsive" src="http://lorempixel.com/250/250/cats/4" alt="">
+                        <img class="img-circle img-responsive" src="/image/tour/migration.png" alt="">
                     </div>
                     <div class="timeline-panel">
                         <div class="timeline-heading">
-                            <h4>Step Three</h4>
-                            <h4 class="subheading">Subtitle</h4>
+                            <h4>Step Four</h4>
+                            <h4 class="subheading">Migrations</h4>
                         </div>
                         <div class="timeline-body">
                             <p class="text-muted">
@@ -83,12 +83,12 @@ $this->params['breadcrumbs'][] = $this->title;
                 </li>
                 <li>
                     <div class="timeline-image">
-                        <img class="img-circle img-responsive" src="http://lorempixel.com/250/250/cats/5" alt="">
+                        <img class="img-circle img-responsive" src="/image/tour/gii.png" alt="">
                     </div>
                     <div class="timeline-panel">
                         <div class="timeline-heading">
-                            <h4>Bonus Step</h4>
-                            <h4 class="subheading">Subtitle</h4>
+                            <h4>Step Five</h4>
+                            <h4 class="subheading">Gii - Yii Code Generator</h4>
                         </div>
                         <div class="timeline-body">
                             <p class="text-muted">
@@ -102,7 +102,7 @@ $this->params['breadcrumbs'][] = $this->title;
     </div>
     <div class="row">
         <div class="col-lg-12">
-            <h2>lskdfjslafj</h2>
+            <h2>What to do next?</h2>
             <ol>
                 <li><?= Html::a('Read "Getting started" guide', ['guide/view', 'section' => 'start-installation', 'language' => 'en', 'version' => key(Yii::$app->params['guide.versions']), 'type' => 'guide']) ?>.</li>
                 <li>To learn more, <?= Html::a('read the Guide', ['guide/entry']) ?>.</li>
