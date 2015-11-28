@@ -24,8 +24,7 @@ body {
  HEADER first line
 */
 .top-header {
-	background-color:#F0F0F0;
-	border-bottom:1px solid #DDDDDD;
+	background-color: $top-header-background-color;
 	height:40px;
     .header-item {
         display:inline-block;
@@ -69,12 +68,12 @@ header.navbar.navbar-inverse {
 
 ::selection {
     text-shadow: none !important;
-    background: #fff2a8;
+    background: $selection-color;
 }
 
 ::-moz-selection {
     text-shadow: none !important;
-    background: #fff2a8;
+    background: $selection-color;
 }
 
 
@@ -95,8 +94,8 @@ footer {
   @media (max-width: $container-tablet) {
 		height: $footer-height-mobile + 100px;
 	}
-	background-color: #333333;
-	color: $gray;
+	background-color: $footer-background-color;
+	color: $footer-color;
 	margin-top: 4em;
   padding-top: 2em;
   .fa {

@@ -13,3 +13,31 @@ $yii-green: #8CBC4C;
 .yii-yellow {
     color: $yii-yellow;
 }
+
+// duplicated from Bootstrap variables
+$gray-base:              #000;
+$gray-darker:            lighten($gray-base, 13.5%); // #222
+$gray-dark:              lighten($gray-base, 20%);   // #333
+$gray:                   lighten($gray-base, 33.5%); // #555
+$gray-light:             lighten($gray-base, 46.7%); // #777
+$gray-lighter:           lighten($gray-base, 93.5%); // #eee
+
+
+// Global colors
+
+$selection-color: #fff2a8;
+
+$footer-background-color: #333333;
+$footer-color: $gray;
+
+$top-header-background-color: #F0F0F0;
+
+$content-background-color: #FEFEFE;
+
+
+$jumbotron-background: transparent linear-gradient(135deg, darken($yii-blue, 35%), $yii-blue, lighten($yii-blue, 15%)) repeat scroll 0% 0%;
+//$jumbotron-background: lighten($yii-blue, 30%);
+$jumbotron-header-color: #fff;
+//$jumbotron-header-color: #333;
+$jumbotron-features-color: #eee;
+//$jumbotron-features-color: #333;

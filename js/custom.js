@@ -43,10 +43,4 @@ $(document).ready(function() {
 	  });
 	});
 
-	//TOOLTIP
-	$('.tooltip-init').tooltip();
-
-	//POPOVER
-	$('.popover-init').popover();
-
 });

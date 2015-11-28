@@ -461,7 +461,7 @@ $( document ).ready(function() {
                                     </div>
                                     <div class="content">
                                         <h3><?= Html::encode($member['name'])?> <small><?= Html::encode($member['location'])?></small></h3>
-                                        <h4>Since <?= Html::encode($member['memberSince']) ?></h4>
+                                        <h4><?= Html::encode($member['memberSince']) ?></h4>
                                         <p class="duty"><?= HtmlPurifier::process($member['duty']) ?></p>
                                         <ul class="brands brands-inline brands-sm brands-transition brands-circle">
                                             <?php
