@@ -16,7 +16,7 @@ $this->params['breadcrumbs'][] = $this->title;
         </div>
     </div>
     <div class="row">
-        <div class="col-sm-4 col-md-3">
+        <div class="col-sm-3 col-md-3 col-lg-3">
             <div class="info-card">
                 <img src="<?= Yii::getAlias('@web/image/books/yii1-yiibook-larry.png') ?>" alt="The Yii Book" />
                 <div class="info-card-details animate">
@@ -42,7 +42,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 </div>
             </div>
         </div> <!-- book -->
-        <div class="col-sm-4 col-md-3">
+        <div class="col-sm-3 col-md-3 col-lg-3">
             <div class="[ info-card ]">
                 <img src="<?= Yii::getAlias('@web/image/books/yii2-forbeginners.png') ?>" alt="PHP Web Application Development" />
                 <div class="[ info-card-details ] animate">
@@ -64,7 +64,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 </div>
             </div>
         </div> <!-- book -->
-        <div class="col-sm-4 col-md-3">
+        <div class="col-sm-3 col-md-3 col-lg-3">
             <div class="[ info-card ]">
                 <img src="<?= Yii::getAlias('@web/image/books/yii2-app-development.png') ?>" alt="Web Application Development with Yii 2 and PHP" />
                 <div class="[ info-card-details ] animate">
@@ -88,7 +88,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 </div>
             </div>
         </div> <!-- book -->
-        <div class="col-sm-4 col-md-3">
+        <div class="col-sm-3 col-md-3 col-lg-3">
             <div class="[ info-card ]">
                 <img src="<?= Yii::getAlias('@web/image/books/yii2-testing.png') ?>" alt="Learning Yii Testing" />
                 <div class="[ info-card-details ] animate">
@@ -109,10 +109,9 @@ $this->params['breadcrumbs'][] = $this->title;
                 </div>
             </div>
         </div> <!-- book -->
-        <div class="col-sm-4 col-md-3">
+        <div class="col-sm-3 col-md-3 col-lg-3">
             <div class="[ info-card ]">
-                <img src="" alt="" />
-                <!-- <img style="width: 100%" src="https://avatars.githubusercontent.com/u/564874?v=3" /> -->
+                <img alt="Yii 2.0 Cookbook" src="/image/team/samdark.jpg" />
                 <div class="[ info-card-details ] animate">
                     <div class="[ info-card-header ]">
                         <h1> Yii 2.0 Cookbook </h1>
@@ -136,7 +135,7 @@ $this->params['breadcrumbs'][] = $this->title;
         <h2>Yii 1.1</h2>
     </div>
     <div class="row">
-        <div class="col-sm-4 col-md-3">
+        <div class="col-sm-3 col-md-3 col-lg-3">
             <div class="info-card">
                 <img alt="The Yii Book" src="<?= Yii::getAlias('@web/image/books/yii1-yiibook-larry.png') ?>" />
                 <div class="info-card-details animate">
@@ -160,7 +159,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 </div>
             </div>
         </div> <!-- book -->
-        <div class="col-sm-4 col-md-3">
+        <div class="col-sm-3 col-md-3 col-lg-3">
             <div class="info-card">
                 <img alt="Yii Application Development Cookbook" src="<?= Yii::getAlias('@web/image/books/yii1-cookbook.png') ?>" /></a>
                 <div class="info-card-details animate">
@@ -182,7 +181,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 </div>
             </div>
         </div> <!-- book -->
-        <div class="col-sm-4 col-md-3">
+        <div class="col-sm-3 col-md-3 col-lg-3">
             <div class="info-card">
                 <img alt="Web Application Development with Yii and PHP" src="<?= Yii::getAlias('@web/image/books/yii1-app-development.png') ?>" />
                 <div class="info-card-details animate">
@@ -205,7 +204,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 </div>
             </div>
         </div> <!-- book -->
-        <div class="col-sm-4 col-md-3">
+        <div class="col-sm-3 col-md-3 col-lg-3">
             <div class="info-card">
                 <img alt="Yii Project Blueprints" src="<?= Yii::getAlias('@web/image/books/yii1-blueprints.png') ?>" />
                 <div class="info-card-details animate">
@@ -228,7 +227,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 </div>
             </div>
         </div> <!-- book -->
-        <div class="col-sm-4 col-md-3">
+        <div class="col-sm-3 col-md-3 col-lg-3">
             <div class="info-card">
                 <img alt="Yii Rapid Application Development Hotshot" src="<?= Yii::getAlias('@web/image/books/yii1-hotshot.png') ?>" />
                 <div class="info-card-details animate">
