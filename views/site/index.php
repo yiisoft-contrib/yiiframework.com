@@ -18,6 +18,8 @@ JUMBOTRON - START
 
     <?= $this->render('_features'); ?>
 
+    <?= $this->render('_quickstart'); ?>
+
     <?= $this->render('_poweredby'); ?>
 
     <?= $this->render('_testimonials'); ?>
