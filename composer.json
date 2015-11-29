@@ -16,7 +16,8 @@
         "yiisoft/yii2-elasticsearch": "2.0.*@dev",
         "knplabs/github-api": "~1.2",
         "yiisoft/yii2-authclient": "2.0.*@dev",
-        "cebe/yii2-gravatar": "1.1"
+        "cebe/yii2-gravatar": "1.1",
+        "scrivo/highlight.php": "8.*"
     },
     "require-dev": {
         "yiisoft/yii2-debug": "2.0.*@dev"
