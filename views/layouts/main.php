@@ -70,13 +70,6 @@ use yii\widgets\Menu;
                   <div class="header-item">Welcome, <?= Yii::$app->user->identity->username ?>!</div>
                   <div class="header-item"><?= Html::a('<i class="fa fa-sign-out"></i>Logout</a>', ['/site/logout'], ['data-method' => 'post']) ?></div>
               <?php endif; ?>
-              <ul class="brands brands-inline brands-tn brands-circle main">
-                  <li><a href="https://github.com/yiisoft/yii2"><i class="fa fa-github"></i></a></li>
-                  <li><a href="https://twitter.com/yiiframework"><i class="fa fa-twitter"></i></a></li>
-                  <li><a href="https://www.facebook.com/groups/yiitalk/"><i class="fa fa-facebook"></i></a></li>
-                  <li><a href="https://www.linkedin.com/groups/yii-framework-1483367"><i class="fa fa-linkedin"></i></a></li>
-                  <!--li><a href="#"><i class="fa fa-google-plus"></i></a></li-->
-              </ul>
           </div>
       </div>
   </div>

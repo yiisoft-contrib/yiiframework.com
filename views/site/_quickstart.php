@@ -3,7 +3,7 @@ use yii\helpers\Html;
 $hl = new Highlight\Highlighter();
 ?>
 <!-- start of quickstart -->
-<section class="content-separator section-quickstart">
+<section class="section-quickstart">
    <div class="container">
     <div class="row">
         <div class="col-md-3">

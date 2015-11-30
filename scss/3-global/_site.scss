@@ -25,17 +25,22 @@ body {
 */
 .top-header {
 	background-color: $top-header-background-color;
-	height:40px;
+	height:45px;
     .header-item {
         display:inline-block;
         margin-right:20px;
         font-size:12px;
 				position:relative;
-        top:-3px;
+        top:-2px;
+    }
+
+    .header-item a {
+      color: $top-header-color;
     }
 
     .header-item i {
         margin-right:7px;
+        color: $top-header-color;
     }
 
     .brands {
