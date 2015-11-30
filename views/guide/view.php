@@ -32,25 +32,23 @@ $(document).ready(function () {
 });
 ');
 ?>
-<div class="container guide-view lang-<?= $guide->language ?>" xmlns="http://www.w3.org/1999/html">
+<div class="container-fluid guide-view lang-<?= $guide->language ?>" xmlns="http://www.w3.org/1999/html">
     <div class="row">
-        <div class="col-xs-7 col-sm-8">
+        <div class="col-xs-12 col-sm-8 col-sm-offset-4 col-md-9 col-md-offset-3 col-lg-10 col-lg-offset-2">
             <h1 class="guide-headline"><?= Html::encode($guide->title) ?></h1>
         </div>
-        <div class="col-xs-5 col-sm-4">
-            <?= $this->render('_versions.php', ['guide' => $guide, 'section' => $section]) ?>
-        </div>
+          <p class="pull-right visible-xs">
+            <button type="button" class="btn btn-primary btn-xs" data-toggle="offcanvas">Toggle nav</button>
+          </p>
     </div>
 
     <div class="row row-offcanvas">
-        <div class="col-sm-3">
+        <div class="col-sm-4 col-md-3 col-lg-2">
+            <?= $this->render('_versions.php', ['guide' => $guide, 'section' => $section]) ?>
             <?= SideNav::widget(['id' => 'guide-navigation', 'items' => $nav, 'options' => ['class' => 'sidenav-offcanvas']]) ?>
         </div>
-        <div class="col-sm-9" role="main">
+        <div class="col-sm-8 col-md-9 col-lg-10" role="main" id="top">
             <div class="guide-content content">
-              <p class="pull-right visible-xs">
-                <button type="button" class="btn btn-primary btn-xs" data-toggle="offcanvas">Toggle nav</button>
-              </p>
                 <?php if (!empty($missingTranslation)): ?>
                     <div class="alert alert-warning">
                         <strong>This section is not translated yet.</strong> <br />
@@ -71,7 +69,7 @@ $(document).ready(function () {
                         $right = ' <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>';
                         echo '<div class="pull-right">' . Html::a(Html::encode($next[1]) . $right, ['guide/view', 'section' => $next[0], 'version' => $guide->version, 'language' => $guide->language, 'type' => $guide->typeUrlName]) . '</div>';
                     }
-                    echo '<div class="text-center"><a href="#">Go to Top <span class="glyphicon glyphicon-chevron-up" aria-hidden="true"></span></a></div>';
+                    echo '<div class="text-center"><a href="#top">Go to Top <span class="glyphicon glyphicon-chevron-up" aria-hidden="true"></span></a></div>';
                     ?>
                 </div>
 

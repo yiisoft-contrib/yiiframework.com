@@ -9,12 +9,12 @@ use yii\widgets\ActiveForm;
 use yii\helpers\Html;
 ?>
 
-<div class="component-comments lang-en">
+<div class="component-comments lang-en" id="comments">
     <?php if (!empty($comments)): ?>
         <ol>
         <?php foreach ($comments as $comment): ?>
-            <li id="c<?= $comment->id ?>" class="row">
-                <div class="col-xs-1 author">
+            <li class="row">
+                <div class="col-xs-1 author" id="c<?= $comment->id ?>">
                     <?php echo \cebe\gravatar\Gravatar::widget([
                         'email' => $comment->user->email,
                         'options' => [

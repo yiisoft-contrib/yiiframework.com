@@ -30,8 +30,8 @@
 @import "bootstrap/navs";
 @import "bootstrap/navbar";
 //@import "bootstrap/breadcrumbs";
-//@import "bootstrap/pagination";
-//@import "bootstrap/pager";
+@import "bootstrap/pagination";
+@import "bootstrap/pager";
 @import "bootstrap/labels";
 @import "bootstrap/badges";
 @import "bootstrap/jumbotron";
@@ -47,9 +47,9 @@
 
 // Components w/ JavaScript
 //@import "bootstrap/modals";
-//@import "bootstrap/tooltip";
-//@import "bootstrap/popovers";
-//@import "bootstrap/carousel";
+@import "bootstrap/tooltip";
+@import "bootstrap/popovers";
+@import "bootstrap/carousel";
 
 // Utility classes
 @import "bootstrap/utilities";

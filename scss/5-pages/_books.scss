@@ -1,28 +1,177 @@
-.site-books {
-    .book {
-        margin-bottom: 1em;
 
-        small.authors {
-            font-style: italic;
-        }
+.animate {
+  -webkit-transition: all 0.3s ease-in-out;
+  -moz-transition: all 0.3s ease-in-out;
+  -o-transition: all 0.3s ease-in-out;
+  -ms-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
+}
+.info-card {
+  width: 100%;
+  border: 1px solid rgb(215, 215, 215);
+  position: relative;
+  margin-bottom: 20px;
+  overflow: hidden;
+  font-weight: bold;
+}
+.info-card > img {
+  width: 100%;
+  margin-bottom: 60px;
+}
+.info-card .info-card-details,
+.info-card .info-card-details .info-card-header  {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  bottom: -100%;
+  left: 0;
+  padding: 0 15px;
+  background: rgb(255, 255, 255);
+  opacity: 0.85;
+  filter: alpha(opacity=85); /* For IE8 and earlier */
+  text-align: center;
+}
+.info-card .info-card-details::-webkit-scrollbar {
+  width: 8px;
+}
+.info-card .info-card-details::-webkit-scrollbar-button {
+  width: 8px;
+  height: 0px;
+}
+.info-card .info-card-details::-webkit-scrollbar-track {
+  background: transparent;
+}
+.info-card .info-card-details::-webkit-scrollbar-thumb {
+  background: rgb(160, 160, 160);
+}
+.info-card .info-card-details::-webkit-scrollbar-thumb:hover {
+  background: rgb(130, 130, 130);
+}
 
-        .simple {
-            height: 328px;
-            text-align: center;
-            position: relative;
-            border: 1px solid #f6f6f6;
+.info-card .info-card-details .info-card-header {
+  height: auto;
+  bottom: 100%;
+  padding: 10px 5px;
+}
+.info-card:hover .info-card-details {
+  bottom: 0px;
+  overflow: auto;
+  padding-bottom: 25px;
+}
+.info-card:hover .info-card-details .info-card-header {
+  position: relative;
+  bottom: 0px;
+  padding-top: 45px;
+  padding-bottom: 25px;
+}
+.info-card .info-card-details .info-card-header h1,
+.info-card .info-card-details .info-card-header h3 {
+  color: rgb(62, 62, 62);
+  font-size: 22px;
+  font-weight: 900;
+  text-transform: uppercase;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+.info-card .info-card-details .info-card-header h3 {
+  color: $yii-green;
+  font-size: 15px;
+  font-weight: 400;
+  margin-top: 5px;
+}
+.info-card .info-card-details .info-card-detail .social {
+  list-style: none;
+  padding: 0px;
+  margin-top: 25px;
+  text-align: center;
+}
+.info-card .info-card-details .info-card-detail .social a {
+  position: relative;
+  display: inline-block;
+  min-width: 40px;
+  padding: 10px 0px;
+  margin: 0px 5px;
+  overflow: hidden;
+  text-align: center;
+  background-color: rgb(215, 215, 215);
+  border-radius: 40px;
+}
 
-            a {
-                padding-top: 100px;
-                display: block;
-                background: black;
-                color: white;
-                position: absolute;
-                top: 10px;
-                left: 10px;
-                right: 10px;
-                bottom: 10px;
-            }
-        }
-    }
+.box {
+  width: 200px; height: 300px;
+  position: relative;
+  border: 1px solid #BBB;
+  background: #EEE;
+}
+.ribbon {
+  position: absolute;
+  right: -5px; top: -5px;
+  z-index: 1;
+  overflow: hidden;
+  width: 75px; height: 75px;
+  text-align: right;
+}
+.ribbon span {
+  font-size: 10px;
+  font-weight: bold;
+  color: #FFF;
+  text-align: center;
+  line-height: 20px;
+  transform: rotate(45deg);
+  -webkit-transform: rotate(45deg);
+  width: 100px;
+  display: block;
+  box-shadow: 0 3px 10px -5px rgba(0, 0, 0, 1);
+  position: absolute;
+  top: 19px; right: -21px;
+}
+.ribbon.green span {
+  background: $yii-green;
+  background: linear-gradient(darken($yii-green, 10%) 0%, $yii-green 100%);
+}
+.ribbon.blue span {
+  background: $yii-blue;
+  background: linear-gradient(darken($yii-blue, 10%) 0%, $yii-blue 100%);
+}
+.ribbon.red span {
+  background: $yii-yellow;
+  background: linear-gradient(darken($yii-yellow, 10%) 0%, $yii-yellow 100%);
+}
+.ribbon span::before {
+  content: "";
+  position: absolute; left: 0px; top: 100%;
+  z-index: -1;
+  border-right: 3px solid transparent;
+  border-bottom: 3px solid transparent;
+}
+.ribbon.green span::before {
+  border-left: 3px solid $yii-green;
+  border-top: 3px solid $yii-green;
+}
+.ribbon.blue span::before {
+  border-left: 3px solid $yii-blue;
+  border-top: 3px solid $yii-blue;
+}
+.ribbon.red span::before {
+  border-left: 3px solid $yii-yellow;
+  border-top: 3px solid $yii-yellow;
+}
+.ribbon span::after {
+  content: "";
+  position: absolute; right: 0px; top: 100%;
+  z-index: -1;
+  border-left: 3px solid transparent;
+  border-bottom: 3px solid transparent;
+}
+.ribbon.green span::after {
+  border-right: 3px solid $yii-green;
+  border-top: 3px solid $yii-green;
+}
+.ribbon.blue span::after {
+  border-right: 3px solid $yii-blue;
+  border-top: 3px solid $yii-blue;
+}
+.ribbon.red span::after {
+  border-right: 3px solid $yii-yellow;
+  border-top: 3px solid $yii-yellow;
 }

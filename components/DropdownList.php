@@ -30,7 +30,7 @@ class DropdownList extends Widget
     /**
      * @var bool whether to show the dropdown list as a button. If false, a link will be used.
      */
-    public $useButton = false;
+    public $useButton = true;
     /**
      * @var boolean whether the nav items labels should be HTML-encoded.
      */
@@ -74,7 +74,7 @@ class DropdownList extends Widget
         }
         $menu = '<ul class="dropdown-menu" role="menu">' . implode("\n", $items) . '</ul>';
         if ($this->useButton) {
-            $selection = '<button class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">' . $this->selection . ' <span class="caret"></span></button>';
+            $selection = '<button class="btn btn-primary dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">' . $this->selection . ' <span class="caret"></span></button>';
         } else {
             $selection = '<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">' . $this->selection . ' <span class="caret"></span></a>';
         }

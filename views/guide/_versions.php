@@ -9,8 +9,8 @@ use app\models\Guide;
 use yii\helpers\Html;
 
 ?>
-<nav class="version-selector" role="navigation">
-    <ul>
+<nav class="version-selector sidenav-offcanvas">
+    <div class="btn-group btn-group-justified">
         <?php if ($guide->type == 'guide') {
             $items = [];
             if ($guide->getDownloadFile('pdf') !== false) {
@@ -33,14 +33,17 @@ use yii\helpers\Html;
             }
             if (!empty($items)) {
                 echo DropdownList::widget([
-                    'tag' => 'li',
+                    'tag' => 'div',
                     'selection' => 'Download',
                     'items' => $items,
+                    'options' => [
+                        'class' => 'btn-group btn-group-sm'
+                        ]
                 ]);
             }
         } ?>
         <?= DropdownList::widget([
-            'tag' => 'li',
+            'tag' => 'div',
             'selection' => $guide->getLanguageName(),
             'items' => array_map(function ($language) use ($section, $guide) {
                 $options = $guide->getLanguageOptions();
@@ -54,9 +57,12 @@ use yii\helpers\Html;
                     'url' => $url,
                 ];
             }, array_keys($guide->getLanguageOptions())),
+            'options' => [
+                'class' => 'btn-group btn-group-sm'
+                ]
         ]) ?>
         <?= DropdownList::widget([
-            'tag' => 'li',
+            'tag' => 'div',
             'selection' => "Version {$guide->version}",
             'items' => array_map(function ($version) use ($section, $guide) {
                 $language = $guide->language;
@@ -75,6 +81,9 @@ use yii\helpers\Html;
                     'url' => $url,
                 ];
             }, $guide->getVersionOptions()),
+            'options' => [
+                'class' => 'btn-group btn-group-sm'
+                ]
         ]) ?>
-    </ul>
+    </div>
 </nav>
