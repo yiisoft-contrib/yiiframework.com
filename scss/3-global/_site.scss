@@ -66,6 +66,11 @@ header.navbar.navbar-inverse {
 		top: -6px;
     font-weight: bolder;
     font-family: josefin_sansregular;
+    .nudge-left {
+      position: relative;
+      right: 6px;
+      font-size: 24px;
+    }
 }
 
 ::selection {
