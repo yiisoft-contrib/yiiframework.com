@@ -35,6 +35,12 @@ $top-header-color: #444;
 
 $content-background-color: #FEFEFE;
 
+// The word 'framwork' after 'yii' on Jumbotron header
+$hero-framework-color: #888;
+
+.framework-gray {
+  color: $hero-framework-color;
+}
 
 $jumbotron-background: transparent linear-gradient(135deg, darken($yii-blue, 35%), $yii-blue, lighten($yii-blue, 15%)) repeat scroll 0% 0%;
 //$jumbotron-background: lighten($yii-blue, 30%);
