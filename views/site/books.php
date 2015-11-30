@@ -45,15 +45,15 @@ $this->params['breadcrumbs'][] = $this->title;
             </div>
         </div> <!-- book -->
         <div class="col-sm-3 col-md-3 col-lg-3">
-            <div class="[ info-card ]">
+            <div class="info-card">
                 <div class="ribbon green"><span>Beginners</span></div>
                 <img src="<?= Yii::getAlias('@web/image/books/yii2-forbeginners.png') ?>" alt="PHP Web Application Development" />
-                <div class="[ info-card-details ] animate">
-                    <div class="[ info-card-header ]">
+                <div class="info-card-details animate">
+                    <div class="info-card-header">
                         <h1> PHP Web Application Development </h1>
                         <h3> by Bill Keck </h3>
                     </div>
-                    <div class="[ info-card-detail ]">
+                    <div class="info-card-detail">
                         <!-- Description -->
                         <p>
                             It is a step by step introduction to the framework, which is based around
@@ -68,15 +68,15 @@ $this->params['breadcrumbs'][] = $this->title;
             </div>
         </div> <!-- book -->
         <div class="col-sm-3 col-md-3 col-lg-3">
-            <div class="[ info-card ]">
+            <div class="info-card">
                 <div class="ribbon red"><span>Intermediate+</span></div>
                 <img src="<?= Yii::getAlias('@web/image/books/yii2-app-development.png') ?>" alt="Web Application Development with Yii 2 and PHP" />
-                <div class="[ info-card-details ] animate">
-                    <div class="[ info-card-header ]">
+                <div class="info-card-details animate">
+                    <div class="info-card-header">
                         <h1> Web Application Development with Yii 2 and PHP </h1>
                         <h3> by Mark Safronov </h3>
                     </div>
-                    <div class="[ info-card-detail ]">
+                    <div class="info-card-detail">
                         <!-- Description -->
                         <p>
                             The book is based around implementing a real world CRM application following many development best practices.
@@ -93,15 +93,15 @@ $this->params['breadcrumbs'][] = $this->title;
             </div>
         </div> <!-- book -->
         <div class="col-sm-3 col-md-3 col-lg-3">
-            <div class="[ info-card ]">
+            <div class="info-card">
                 <div class="ribbon red"><span>Intermediate+</span></div>
                 <img src="<?= Yii::getAlias('@web/image/books/yii2-testing.png') ?>" alt="Learning Yii Testing" />
-                <div class="[ info-card-details ] animate">
-                    <div class="[ info-card-header ]">
+                <div class="info-card-details animate">
+                    <div class="info-card-header">
                         <h1> Learning Yii Testing </h1>
                         <h3> by Matteo Pescarin </h3>
                     </div>
-                    <div class="[ info-card-detail ]">
+                    <div class="info-card-detail">
                         <!-- Description -->
                         <p>
                             Embrace 360-degree testing on your Yii 2 projects using Codeception.
@@ -115,15 +115,15 @@ $this->params['breadcrumbs'][] = $this->title;
             </div>
         </div> <!-- book -->
         <div class="col-sm-3 col-md-3 col-lg-3">
-            <div class="[ info-card ]">
+            <div class="info-card">
                 <div class="ribbon blue"><span>All levels</span></div>
                 <img alt="Yii 2.0 Cookbook" src="/image/team/samdark.jpg" />
-                <div class="[ info-card-details ] animate">
-                    <div class="[ info-card-header ]">
+                <div class="info-card-details animate">
+                    <div class="info-card-header">
                         <h1> Yii 2.0 Cookbook </h1>
                         <h3> by Alexander Makarov </h3>
                     </div>
-                    <div class="[ info-card-detail ]">
+                    <div class="info-card-detail">
                         <!-- Description -->
                         <p>
                             Although not finished, there are some nice recipes from one of the core team and community. Worth checking.
