@@ -15,15 +15,23 @@ $this->params['breadcrumbs'][] = $this->title;
                Derivative Works 3.0 Unported License</a>.</p>
 
             <div>
-                <img src="<?= Yii::getAlias('@web/files/logo/yii.png') ?>" title="Yii logo in color" width="363" height="79" alt="">
+                <h2>Logo for dark backgrounds</h2>
+                <div>
+                    White 'Yii' and light grey 'framework' with transparent background, 725x157px.
+                </div>
+                <img src="<?= Yii::getAlias('@web/image/logo80.png') ?>" title="Yii logo for dark backgrounds" alt="Yii logo for dark backgrounds">
 
-                <p>Download: <a href="<?= Yii::getAlias('@web/files/logo/yii.eps') ?>">EPS version</a>, <a href="<?= Yii::getAlias('@web/files/logo/yii.png') ?>">PNG version</a></p>
+                <p>Download: <a href="<?= Yii::getAlias('@web/files/logo/yii.eps') ?>">SVG version</a>, <a href="<?= Yii::getAlias('@web/files/logo/yii.png') ?>">PNG version</a></p>
             </div>
 
 
             <div>
-                <img src="<?= Yii::getAlias('@web/files/logo/yii-bw.png') ?>" title="Yii logo in black and white" width="363" height="79" alt="">
-                <p>Download: <a href="<?= Yii::getAlias('@web/files/logo/yii-bw.eps') ?>">EPS version</a>, <a href="<?= Yii::getAlias('@web/files/logo/yii-bw.png') ?>">PNG version</a></p>
+                <h2>Logo for light backgrounds</h2>
+                <div>
+                    Blue 'Yii' and dark grey 'framework' with transparent background, 725x157px.
+                </div>
+                <img src="<?= Yii::getAlias('@web/image/logo-light-80.png') ?>" title="Yii logo for light backgrounds" alt="Yii logo for light backgrounds">
+                <p>Download: <a href="<?= Yii::getAlias('@web/files/logo/yii-bw.eps') ?>">SVG version</a>, <a href="<?= Yii::getAlias('@web/files/logo/yii-bw.png') ?>">PNG version</a></p>
             </div>
         </div>
     </div>
