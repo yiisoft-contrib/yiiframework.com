@@ -251,7 +251,9 @@ class SiteController extends Controller
 
     public function actionBooks()
     {
-        return $this->render('books');
+        $books1 = Yii::$app->params['books1'];
+        $books2 = Yii::$app->params['books2'];
+        return $this->render('books', ['books2' => $books2, 'books1' => $books1]);
     }
 
     public function actionContribute()
