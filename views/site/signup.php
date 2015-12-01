@@ -6,7 +6,7 @@ use yii\bootstrap\ActiveForm;
 /* @var $form yii\bootstrap\ActiveForm */
 /* @var $model \app\models\SignupForm */
 
-$this->title = 'Sign Up';
+$this->title = 'Create a new account';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="site-signup container">
