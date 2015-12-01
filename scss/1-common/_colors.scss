@@ -1,6 +1,6 @@
-$yii-yellow: #DF6E35;
-$yii-blue: #3379B2;
-$yii-green: #8CBC4C;
+$yii-yellow: rgb(223, 110, 53);//#DF6E35
+$yii-blue: rgb(51, 121, 178);//#3379B2
+$yii-green: rgb(140, 188, 76);//#8CBC4C
 
 .yii-green {
     color: $yii-green;
@@ -25,26 +25,28 @@ $gray-lighter:           lighten($gray-base, 93.5%); // #eee
 
 // Global colors
 
-$selection-color: #fff2a8;
+$selection-color: rgb(255, 242, 168);//#fff2a8
 
-$footer-background-color: #333;
+$footer-background-color: rgb(51, 51, 51);//#333
 $footer-color: $gray;
 
-$top-header-background-color: #F0F0F0;
-$top-header-color: #444;
+$top-header-background-color: rgb(240, 240, 240);//#F0F0F0
+$top-header-color: rgb(68, 68, 68);//#444
 
-$content-background-color: #FEFEFE;
+$content-background-color: rgb(254, 254, 254);//#FEFEFE
+
+$page-element-background-color: rgb(232, 232, 232);//#E8E8E8
 
 // The word 'framwork' after 'yii' on Jumbotron header
-$hero-framework-color: #888;
+$hero-framework-color: rgb(207, 207, 207);//#cfcfcf//#888;
 
 .framework-gray {
   color: $hero-framework-color;
+  font-weight: 300;
 }
 
-$jumbotron-background: transparent linear-gradient(135deg, darken($yii-blue, 35%), $yii-blue, lighten($yii-blue, 15%)) repeat scroll 0% 0%;
-//$jumbotron-background: lighten($yii-blue, 30%);
-$jumbotron-header-color: #fff;
-//$jumbotron-header-color: #333;
-$jumbotron-features-color: #eee;
-//$jumbotron-features-color: #333;
+$jumbotron-background: transparent linear-gradient(135deg, darken($yii-blue, 45%), $yii-blue, lighten($yii-blue, 25%)) repeat scroll 0% 0%;
+$jumbotron-header-color: rgb(255, 255, 255);//#fff
+//$jumbotron-header-color: rgb(51, 51, 51);//#333
+$jumbotron-features-color: rgb(238, 238, 238);//#eee
+//$jumbotron-features-color: rgb(51, 51, 51);//#333
