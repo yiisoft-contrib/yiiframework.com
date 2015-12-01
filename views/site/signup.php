@@ -6,32 +6,75 @@ use yii\bootstrap\ActiveForm;
 /* @var $form yii\bootstrap\ActiveForm */
 /* @var $model \app\models\SignupForm */
 
-$this->title = 'Signup';
+$this->title = 'Sign Up';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="site-signup container">
-    <h1><?= Html::encode($this->title) ?></h1>
+    <div class="omb_login">
+        <h3 class="omb_authTitle"><?= Html::encode($this->title) ?> or <?= Html::a('Login', ['site/login']) ?></h3>
+        <div class="row omb_row-sm-offset-3 omb_socialButtons">
+            <div class="col-xs-4 col-sm-2">
+                <!-- <a href="#" class="btn btn-lg btn-block omb_btn-facebook">
+                    <i class="fa fa-facebook visible-xs"></i>
+                    <span class="hidden-xs">Facebook</span>
+                </a> -->
+            </div>
+            <div class="col-xs-4 col-sm-2">
+                    <a href="/auth?authclient=github" class="btn btn-lg btn-block omb_btn-github">
+                    <i class="fa fa-github visible-xs"></i>
+                    <span class="hidden-xs">Github</span>
+                </a>
+            </div>
+            <div class="col-xs-4 col-sm-2">
+                <!-- <a href="#" class="btn btn-lg btn-block omb_btn-google">
+                    <i class="fa fa-google-plus visible-xs"></i>
+                    <span class="hidden-xs">Google+</span>
+                </a> -->
+            </div>
+        </div>
 
-    <div class="row">
-        <div class="col-xs-3 col-xs-offset-1">
-            <?= yii\authclient\widgets\AuthChoice::widget([
-                'baseAuthUrl' => ['site/auth'],
-                'popupMode' => false,
-            ]) ?>
+        <div class="row omb_row-sm-offset-3 omb_loginOr">
+            <div class="col-xs-12 col-sm-6">
+                <hr class="omb_hrOr">
+                <span class="omb_spanOr">or</span>
+            </div>
         </div>
-        <div class="col-xs-2">
-            <h2>OR</h2>
+
+        <div class="row omb_row-sm-offset-3">
+            <div class="col-xs-12 col-sm-6">
+                <?php $form = ActiveForm::begin(['id' => 'form-signup', 'options' => ['class' => 'omb_loginForm', 'autocomplete' => 'off']]); ?>
+                    <div class="input-group">
+                        <span class="input-group-addon"><i class="fa fa-user"></i></span>
+                        <?= $form->field($model, 'username', ['inputOptions' => ['placeholder' => $model->getAttributeLabel('username')]])->label('') ?>
+                    </div>
+                    <span class="help-block"></span>
+                    <div class="input-group">
+                        <span class="input-group-addon"><i class="fa fa-envelope"></i></span>
+                        <?= $form->field($model, 'email', ['inputOptions' => ['placeholder' => $model->getAttributeLabel('email')]])->label('') ?>
+                    </div>
+                    <span class="help-block"></span>
+
+                    <div class="input-group">
+                        <span class="input-group-addon"><i class="fa fa-lock"></i></span>
+                        <?= $form->field($model, 'password', ['inputOptions' => ['placeholder' => $model->getAttributeLabel('password')]])->passwordInput()->label('') ?>
+                    </div>
+                    <span class="help-block"><!-- Password error --></span>
+
+                    <?= Html::submitButton('Sign Up', ['class' => 'btn btn-lg btn-block btn-primary', 'name' => 'signup-button']) ?>
+                <?php ActiveForm::end(); ?>
+            </div>
         </div>
-        <div class="col-xs-5">
-            <h2>fill out the following form</h2>
-            <?php $form = ActiveForm::begin(['id' => 'form-signup']); ?>
-                <?= $form->field($model, 'username') ?>
-                <?= $form->field($model, 'email') ?>
-                <?= $form->field($model, 'password')->passwordInput() ?>
-                <div class="form-group">
-                    <?= Html::submitButton('Signup', ['class' => 'btn btn-primary', 'name' => 'signup-button']) ?>
-                </div>
-            <?php ActiveForm::end(); ?>
+        <div class="row omb_row-sm-offset-3">
+            <div class="col-xs-12 col-sm-3">
+                <!-- <label class="checkbox">
+                    <input type="checkbox" value="remember-me">Remember Me
+                </label> -->
+            </div>
+            <div class="col-xs-12 col-sm-3">
+                <p class="omb_forgotPwd">
+                    <?= Html::a('I forgot my password', ['site/request-password-reset']) ?>.
+                </p>
+            </div>
         </div>
     </div>
 </div>
