@@ -114,3 +114,12 @@ footer {
     margin-right: 0.5em;
   }
 }
+
+.logo-download-light {
+  background-color: $top-header-background-color;
+}
+
+.logo-download-dark {
+  color: $top-header-background-color;
+  background-color: $yii-blue;
+}
