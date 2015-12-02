@@ -15,7 +15,8 @@ use app\components\Highlight as HL;
                 Creating a project with Yii can be done in less than 5 minutes by creating a project using Composer and a project template:
             </p>
             <?php HL::begin(['language'=>'bash']); ?>
-composer create-project --prefer-dist yiisoft/yii2-app-basic basic<?php HL::end(); ?>
+composer create-project --prefer-dist yiisoft/yii2-app-basic basic
+            <?php HL::end(); ?>
             <p>
                 For more information about how to get started with Yii quickly
             </p>

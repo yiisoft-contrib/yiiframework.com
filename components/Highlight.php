@@ -49,13 +49,13 @@ class Highlight extends Widget
 
     /**
      * Marks the end of content to be highlighted.
-     * Stops capturing an output and echoes highlighted result.
+     * Stops capturing an output and returns highlighted result.
      */
     public function run()
     {
         $content = ob_get_clean();
         $highlighter = $this->getHighlighter();
         $result = $highlighter->highlight($this->language, Html::encode($content));
-        return "<pre class='hljs " . $result->language . "'>" . $result->value . "</pre>";
+        return "<pre class='hljs " . $result->language . "'>" . rtrim($result->value) . "</pre>";
     }
 }
