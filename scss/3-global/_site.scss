@@ -81,11 +81,13 @@ header.navbar.navbar-inverse {
 ::selection {
     text-shadow: none !important;
     background: $selection-color;
+    color: #222;
 }
 
 ::-moz-selection {
     text-shadow: none !important;
     background: $selection-color;
+    color: #222;
 }
 
 
