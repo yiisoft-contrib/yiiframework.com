@@ -43,6 +43,18 @@ $state-info-text:                $yii-blue;
 $state-warning-text:             $yii-yellow;
 
 
+$font-family-sans-serif: 'Josefin Sans', sans-serif;
+$font-family-serif: 'Arvo', serif;
+$font-family-base: $font-family-serif;
+
+$headings-font-family: $font-family-sans-serif;
+$headings-color:          $gray;
+
+$icon-font-path: "/fonts/";
+
+$font-size-base:          16px;
+
+
 //== Scaffolding
 //
 //## Settings for some of the most global styles.
@@ -72,11 +84,6 @@ $pre-bg: inherit;
 $pre-color: inherit;
 $pre-border-color: inherit;
 
-$icon-font-path: "/fonts/";
-
-$font-size-base:          16px;
-
-
 $grid-float-breakpoint: 1200px;
 
 $grid-gutter-width:         30px;
@@ -88,12 +95,6 @@ $container-sm:                 $container-tablet;
 $container-large-desktop:      (1240px + $grid-gutter-width);
 //** For `$screen-lg-min` and up.
 $container-lg:                 $container-large-desktop;
-
-$headings-font-family:    "josefin_sanssemibold";
-$headings-color:          $gray;
-
-$font-family-sans-serif:  "Roboto", Helvetica, Arial, sans-serif;
-
 
 // extra vars that was added to bootstrap variables by Roxio
 $link-visited-color: $yii-blue;
