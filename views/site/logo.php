@@ -10,9 +10,13 @@ $this->params['breadcrumbs'][] = $this->title;
         <div class="content">
             <h1><?= Html::encode($this->title) ?></h1>
 
-            <p>In the following, we provide downloading of the official logo for the Yii framework in different formats. The logo
-               is licensed under a <a href="http://creativecommons.org/licenses/by-nd/3.0/">Creative Commons Attribution-No
-               Derivative Works 3.0 Unported License</a>.</p>
+            <p>
+                In the following, we provide downloading of the official logo for the Yii framework in different formats.
+            </p>
+            <p>
+                The logo is licensed under a <a href="http://creativecommons.org/licenses/by-nd/3.0/">Creative Commons Attribution-No
+               Derivative Works 3.0 Unported License</a>.
+           </p>
 
             <div>
                 <h2>Logo for dark backgrounds</h2>

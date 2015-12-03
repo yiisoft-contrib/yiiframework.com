@@ -23,7 +23,14 @@ use yii\helpers\Html;
  */
 class Highlight extends Widget
 {
+    // what language to highlight in
     public $language = 'php';
+
+    // if $capture is set to true
+    // then $captured will be set to
+    // the highlighted result and not returned
+    public $capture = false;
+    public $captured = null;
 
     protected $highlighter = null;
 
@@ -56,6 +63,11 @@ class Highlight extends Widget
         $content = ob_get_clean();
         $highlighter = $this->getHighlighter();
         $result = $highlighter->highlight($this->language, $content);
-        return "<pre class='hljs " . $result->language . "'>" . rtrim($result->value) . "</pre>";
+        $rendered = "<pre class='hljs " . $result->language . "'>" . rtrim($result->value) . "</pre>";
+        if($this->capture) {
+            $this->captured = $rendered;
+            return;
+        }
+        return $rendered;
     }
 }

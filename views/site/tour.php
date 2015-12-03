@@ -1,5 +1,6 @@
 <?php
 use yii\helpers\Html;
+use yii\bootstrap\Modal;
 use app\components\Highlight as HL;
 
 /* @var $this yii\web\View */
@@ -93,10 +94,7 @@ $this->params['breadcrumbs'][] = $this->title;
                             <h4 class="subheading">Migrations</h4>
                         </div>
                         <div class="timeline-body">
-                            <p class="text-muted">
-                                Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-                            </p>
-<?php HL::begin(); ?>
+<?php HL::begin(['capture' => true]); ?>
 use yii\db\Schema;
 use yii\db\Migration;
 
@@ -130,7 +128,20 @@ class m150416_155923_create_comment_table extends Migration
         $this->dropTable('{{%comment}}');
     }
 }
-<?php HL::end(); ?>
+<?php $hl = HL::end(); ?>
+                            <?php Modal::begin(['header' => '<h2>Hello world</h2>',
+                                'toggleButton' => ['label' => 'click me'],
+                                'closeButton' =>  ['label' => 'Close'],
+                                'size' => 'modal-lg',
+                                'clientOptions' => ['backdrop' => false],
+                                ]); ?>
+                                <?= $hl->captured; ?>
+
+                            <?php Modal::end(); ?>
+                            <p class="text-muted">
+                                Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                            </p>
+
                         </div>
                     </div>
                     <div class="line"></div>
