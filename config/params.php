@@ -120,6 +120,9 @@ return [
         // these should be configured in local config
     ],
 
+    'books2' => require 'books2.php',
+    'books1' => require 'books1.php',
+
     'members' => require 'members.php',
     'adminEmail' => 'admin@example.com',
 ];

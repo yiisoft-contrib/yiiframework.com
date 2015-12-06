@@ -25,17 +25,22 @@ body {
 */
 .top-header {
 	background-color: $top-header-background-color;
-	height:40px;
+	height:45px;
     .header-item {
         display:inline-block;
         margin-right:20px;
         font-size:12px;
 				position:relative;
-        top:-3px;
+        top:-2px;
+    }
+
+    .header-item a {
+      color: $top-header-color;
     }
 
     .header-item i {
         margin-right:7px;
+        color: $top-header-color;
     }
 
     .brands {
@@ -64,16 +69,25 @@ header.navbar.navbar-inverse {
 .navbar-header {
 		position: relative;
 		top: -6px;
+    font-weight: bolder;
+    font-family: 'Josefin Sans', sans-serif;
+    .nudge-left {
+      position: relative;
+      right: 6px;
+      font-size: 24px;
+    }
 }
 
 ::selection {
     text-shadow: none !important;
     background: $selection-color;
+    color: #222;
 }
 
 ::-moz-selection {
     text-shadow: none !important;
     background: $selection-color;
+    color: #222;
 }
 
 
@@ -101,4 +115,13 @@ footer {
   .fa {
     margin-right: 0.5em;
   }
+}
+
+.logo-download-light {
+  background-color: $top-header-background-color;
+}
+
+.logo-download-dark {
+  color: $top-header-background-color;
+  background-color: $yii-blue;
 }

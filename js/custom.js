@@ -1,9 +1,3 @@
-/*------------------------------
- * Copyright 2014 Pixelized
- * http://www.pixelized.cz
- *
- * Roxie theme v1.1
-------------------------------*/
 
 $(document).ready(function() {
 	//SCROLLING

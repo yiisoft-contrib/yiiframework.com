@@ -1,9 +1,9 @@
 <?php
 use yii\helpers\Html;
-$hl = new Highlight\Highlighter();
+use app\components\Highlight as HL;
 ?>
 <!-- start of quickstart -->
-<section class="content-separator section-quickstart">
+<section class="section-quickstart">
    <div class="container">
     <div class="row">
         <div class="col-md-3">
@@ -14,8 +14,9 @@ $hl = new Highlight\Highlighter();
             <p>
                 Creating a project with Yii can be done in less than 5 minutes by creating a project using Composer and a project template:
             </p>
-            <?php $r = $hl->highlight("bash", Html::encode('composer create-project --prefer-dist yiisoft/yii2-app-basic basic')); ?>
-            <pre class="hljs <?=$r->language?>"><?=$r->value?></pre>
+            <?php HL::begin(['language'=>'bash']); ?>
+composer create-project --prefer-dist yiisoft/yii2-app-basic basic
+            <?php HL::end(); ?>
             <p>
                 For more information about how to get started with Yii quickly
             </p>

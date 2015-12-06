@@ -43,6 +43,17 @@ $state-info-text:                $yii-blue;
 $state-warning-text:             $yii-yellow;
 
 
+$font-family-sans-serif: 'Open Sans', sans-serif;
+$font-family-base: $font-family-sans-serif;
+
+$headings-font-family: 'Josefin Sans', sans-serif;
+$headings-color:          $gray;
+
+$icon-font-path: "/fonts/";
+
+$font-size-base:          16px;
+
+
 //== Scaffolding
 //
 //## Settings for some of the most global styles.
@@ -66,16 +77,11 @@ $navbar-inverse-link-active-bg:             transparent;
 $navbar-inverse-border:                     transparent;
 $navbar-border-radius: 0;
 
-$well-bg: #F5F5F5;
+$well-bg: rgb(245, 245, 245);//#F5F5F5
 
 $pre-bg: inherit;
 $pre-color: inherit;
 $pre-border-color: inherit;
-
-$icon-font-path: "/fonts/";
-
-$font-size-base:          16px;
-
 
 $grid-float-breakpoint: 1200px;
 
@@ -89,16 +95,22 @@ $container-large-desktop:      (1240px + $grid-gutter-width);
 //** For `$screen-lg-min` and up.
 $container-lg:                 $container-large-desktop;
 
-$headings-font-family:    "josefin_sanssemibold";
-$headings-color:          $gray;
-
-$font-family-sans-serif:  "Roboto", Helvetica, Arial, sans-serif;
-
-
 // extra vars that was added to bootstrap variables by Roxio
 $link-visited-color: $yii-blue;
 $font-size-codeblocks: $font-size-base;
 
+$blue-navbar: true;
+
+@if $blue-navbar {
+  $navbar-inverse-color:                      lighten($gray-light, 20%);
+  $navbar-inverse-bg:                         darken($yii-blue, 15%);
+  // Inverted navbar links
+  $navbar-inverse-link-color:                 lighten($gray-light, 40%);
+  // Inverted navbar toggle
+  $navbar-inverse-toggle-hover-bg:            $navbar-inverse-bg;
+  // $navbar-inverse-toggle-icon-bar-bg:         #fff;
+  $navbar-inverse-toggle-border-color:        darken($navbar-inverse-bg, 5%);
+}
 
 //== Typography
 //

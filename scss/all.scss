@@ -1,3 +1,21 @@
+/*
+This file is part of the
+       _ _  __                                             _
+ _   _(_|_)/ _|_ __ __ _ _ __ ___   _____      _____  _ __| | __  ___ ___  _ __ ___
+| | | | | | |_| '__/ _` | '_ ` _ \ / _ \ \ /\ / / _ \| '__| |/ / / __/ _ \| '_ ` _ \
+| |_| | | |  _| | | (_| | | | | | |  __/\ V  V / (_) | |  |   < | (_| (_) | | | | | |
+ \__, |_|_|_| |_|  \__,_|_| |_| |_|\___| \_/\_/ \___/|_|  |_|\_(_)___\___/|_| |_| |_|
+ |___/
+
+ source code repository.
+
+ https://github.com/yiisoft-contrib/yiiframework.com
+
+ Licensed under the modified BSD license.
+
+ Copyright 2015 Yii Software LLC (yiisoft.com)
+
+*/
 // This is the master include file for the style
 // used by yiiframework.com
 //
@@ -14,10 +32,7 @@
 
 // Vendors
 @import "2-vendors/bootstrap";
-//@import "2-vendors/bootstrap/theme";
 @import "2-vendors/font-awesome";
-@import "2-vendors/fonts/roboto";
-@import "2-vendors/fonts/josefine-sans";
 @import "2-vendors/roxie/creative-brands";
 @import "2-vendors/scrollup";
 @import "2-vendors/bootstrap-social/bootstrap-social";
@@ -32,6 +47,7 @@
 // Components that could be used in multiple pages
 @import "4-components/comments";
 @import "4-components/authchoice";
+@import "4-components/login";
 
 // Page specific style
 @import "5-pages/index";
