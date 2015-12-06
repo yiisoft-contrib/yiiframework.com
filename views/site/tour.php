@@ -7,8 +7,7 @@ use app\components\Highlight as HL;
 $this->title = 'Getting started';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="container hidden-sm hidden-xs">
-    <?php $this->beginBlock('intro', true) ?>
+<div class="container">
     <div class="row">
         <div class="col-lg-12">
             <h1><?= Html::encode($this->title) ?></h1>
@@ -17,23 +16,28 @@ $this->params['breadcrumbs'][] = $this->title;
             </p>
         </div>
     </div>
-    <?php $this->endBlock() ?>
     <div class="timeline">
         <div class="row">
-            <div class="col-lg-8 col-xs-12">
+            <div class="visible-sm visible-xs">
+                <img class="img-circle img-thumbnail img-responsive center-block" width=250 src="/image/tour/composer.png" alt="">
+            </div>
+            <div class="col-lg-9 col-xs-12">
                 <div class="media timeline">
-                    <?php $this->beginBlock('composer', true) ?>
                     <div class="media-body">
                         <h2 class="media-heading">1) Composer</h2>
                         <p>
-                            If you do not already have <a href="https://getcomposer.org/">Composer</a> installed, you need to install it.
+                            If you do not already have <a href="https://getcomposer.org/">Composer</a> installed, you need to install it, because Yii uses it
+                            for neat things, from dependency management to project generation.
                         </p>
                         <p>
-                            You also need to install the composer asset plugin globally, as it is used by the Yii composer project templates:
+                            You also need to install the composer asset plugin globally, as it is used by the Yii composer project templates to handle Bower and NPM repositories:
                         </p>
 <?php HL::begin(['language' => 'bash']); ?>
 composer global require "fxp/composer-asset-plugin:~1.1.0"
 <?php HL::end(); ?>
+                        <p>
+                            You only need to install that plugin once, and not for each project, because you installed it globally.
+                        </p>
                         <p>
                             For detailed instructions, click the following button to open up an informative modal window:
                         </p>
@@ -52,7 +56,6 @@ composer global require "fxp/composer-asset-plugin:~1.1.0"
                                     'id' => 'composer_install',
                                     'toggleButton' => ['label' => 'View detailed instructions.'],
                                     'closeButton' =>  ['label' => 'Close'],
-                                    'size' => 'modal-lg',
                                     'clientOptions' => ['backdrop' => false],
                                     ]); ?>
                                 <p>On Linux and Mac OS X, you'll run the following commands:</p>
@@ -79,24 +82,21 @@ composer global require "fxp/composer-asset-plugin:~1.1.0"
                                 <?php Modal::end(); ?>
                             </p>
                     </div>
-                    <?php $this->endBlock() ?>
-                    <div class="media-right media-top">
-                        <?php $this->beginBlock('composer-image', true) ?>
+                    <div class="media-right media-top hidden-sm hidden-xs">
                         <img class="media-object img-circle img-thumbnail" src="/image/tour/composer.png" alt="">
-                        <?php $this->endBlock() ?>
                     </div>
                 </div>
             </div>
         </div>
         <div class="row">
-            <div class="col-lg-8 col-lg-offset-4">
+            <div class="visible-sm visible-xs">
+                <img class="img-circle img-thumbnail img-responsive center-block" width=250 src="/image/tour/project-install.png" alt="">
+            </div>
+            <div class="col-lg-9 col-lg-offset-3">
                 <div class="media timeline">
-                    <div class="media-left media-top timeline-image">
-                        <?php $this->beginBlock('template-image', true) ?>
+                    <div class="media-left media-top hidden-sm hidden-xs">
                         <img class="img-circle media-object img-thumbnail" src="/image/tour/project-install.png" alt="">
-                        <?php $this->endBlock() ?>
                     </div>
-                    <?php $this->beginBlock('template', true) ?>
                     <div class="media-body">
                         <h2 class="media-heading">2) Basic project template</h2>
 <?php HL::begin(['language' => 'bash']); ?>
@@ -115,14 +115,15 @@ composer create-project --prefer-dist yiisoft/yii2-app-basic basic
                             Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
                         </p>
                     </div>
-                    <?php $this->endBlock() ?>
                 </div>
             </div>
         </div>
         <div class="row">
-            <div class="col-lg-8">
+            <div class="visible-sm visible-xs">
+                <img class="img-circle img-thumbnail img-responsive center-block" width=250 src="/image/tour/start-app-installed.png" alt="">
+            </div>
+            <div class="col-lg-9">
                 <div class="media timeline">
-                    <?php $this->beginBlock('welcome', true) ?>
                     <div class="media-body">
                         <h2 class="media-heading">3) Welcome page</h2>
                         <p class="text-muted">
@@ -138,24 +139,21 @@ composer create-project --prefer-dist yiisoft/yii2-app-basic basic
                             Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
                         </p>
                     </div>
-                    <?php $this->endBlock() ?>
-                    <div class="media-right media-top timeline-image">
-                        <?php $this->beginBlock('welcome-image', true) ?>
+                    <div class="media-right media-top hidden-sm hidden-xs">
                         <img class="img-circle media-object img-thumbnail" src="/image/tour/start-app-installed.png" alt="">
-                        <?php $this->endBlock() ?>
                     </div>
                 </div>
             </div>
         </div>
         <div class="row">
-            <div class="col-lg-8 col-lg-offset-4">
+            <div class="visible-sm visible-xs">
+                <img class="img-circle img-thumbnail img-responsive center-block" width=250 src="/image/tour/migration.png" alt="">
+            </div>
+            <div class="col-lg-9 col-lg-offset-3">
                 <div class="media timeline">
-                    <div class="media-left media-top timeline-image">
-                        <?php $this->beginBlock('migration-image', true) ?>
+                    <div class="media-left media-top hidden-sm hidden-xs">
                         <img class="img-circle media-object img-thumbnail" src="/image/tour/migration.png" alt="">
-                        <?php $this->endBlock() ?>
                     </div>
-                    <?php $this->beginBlock('migration', true) ?>
                     <div class="media-body">
                         <h2 class="media-heading">4) Migrations</h2>
 <?php HL::begin(['language' => 'bash']); ?>
@@ -199,21 +197,21 @@ class m150416_155923_create_comment_table extends Migration
                             'id' => 'migration',
                             'toggleButton' => ['label' => 'View generated migration'],
                             'closeButton' =>  ['label' => 'Close'],
-                            'size' => 'modal-lg',
                             'clientOptions' => ['backdrop' => false],
                             ]); ?>
                             <?= $hl->captured; ?>
 
                         <?php Modal::end(); ?>
                     </div>
-                    <?php $this->endBlock() ?>
                 </div>
             </div>
         </div>
         <div class="row">
-            <div class="col-lg-8">
+            <div class="visible-sm visible-xs">
+                <img class="img-circle img-thumbnail img-responsive center-block" width=250 src="/image/tour/gii.png" alt="">
+            </div>
+            <div class="col-lg-9">
                 <div class="media timeline">
-                    <?php $this->beginBlock('gii', true) ?>
                     <div class="media-body">
                         <h2 class="media-heading">5) Gii - Yii Code Generator</h2>
                         <p class="text-muted">
@@ -229,17 +227,13 @@ class m150416_155923_create_comment_table extends Migration
                             Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
                         </p>
                     </div>
-                    <?php $this->endBlock() ?>
-                    <div class="media-right media-top timeline-image">
-                        <?php $this->beginBlock('gii-image', true) ?>
+                    <div class="media-right media-top hidden-sm hidden-xs">
                         <img class="img-circle media-object img-thumbnail" src="/image/tour/gii.png" alt="">
-                        <?php $this->endBlock() ?>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    <?php $this->beginBlock('outro', true) ?>
     <div class="row">
         <div class="col-lg-12">
             <h2>What to do next?</h2>
@@ -252,32 +246,4 @@ class m150416_155923_create_comment_table extends Migration
             <p>Check this <a href="http://www.yiiframework.com/wiki/268/how-to-learn-yii">great wiki article written by Yii community</a>.</p>
         </div>
     </div>
-    <?php $this->endBlock() ?>
-</div>
-<!-- Separate section for use on small devices - that's what all the blocks were for -->
-<div class="container-fluid visible-sm visible-xs">
-    <?= $this->blocks['intro']; ?>
-    <div class="row mini-timeline">
-        <div class="col-sm-12">
-            <?= $this->blocks['composer-image']; ?>
-            <?= $this->blocks['composer']; ?>
-        </div>
-        <div class="col-sm-12">
-            <?= $this->blocks['template-image']; ?>
-            <?= $this->blocks['template']; ?>
-        </div>
-        <div class="col-sm-12">
-            <?= $this->blocks['welcome-image']; ?>
-            <?= $this->blocks['welcome']; ?>
-        </div>
-        <div class="col-sm-12">
-            <?= $this->blocks['migration-image']; ?>
-            <?= $this->blocks['migration']; ?>
-        </div>
-        <div class="col-sm-12">
-            <?= $this->blocks['gii-image']; ?>
-            <?= $this->blocks['gii']; ?>
-        </div>
-    </div>
-    <?= $this->blocks['outro']; ?>
 </div>
