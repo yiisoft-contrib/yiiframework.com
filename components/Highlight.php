@@ -45,13 +45,10 @@ class Highlight extends Widget
 
     protected function getHighlighter()
     {
-        if(!isset($this->highlighter))
-        {
+        if(!isset($this->highlighter)) {
             $this->highlighter = new \Highlight\Highlighter();
-            return $this->highlighter;
-        } else {
-            return $this->highlighter;
         }
+        return $this->highlighter;
     }
 
     /**
