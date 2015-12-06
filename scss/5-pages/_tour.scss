@@ -17,13 +17,13 @@
       position: absolute;
       top: 240px;
       bottom: 0;
-      left: 200px;
+      left: 215px;
       width: 5px;
       height:340px;
       background-color: $yii-blue;
-      -ms-transform: rotate(-24deg); /* IE 9 */
-      -webkit-transform: rotate(-24deg); /* Safari */
-      transform: rotate(-24deg);
+      -ms-transform: rotate(-15deg); /* IE 9 */
+      -webkit-transform: rotate(-15deg); /* Safari */
+      transform: rotate(-15deg);
       //box-shadow: 0 0 5px #4582ec;
       z-index: -100;
   }
@@ -33,13 +33,13 @@
       position: absolute;
       top: 240px;
       bottom: 0;
-      left: 600px;
+      left: 625px;
       width: 5px;
       height:340px;
       background-color: $yii-blue;
-      -ms-transform: rotate(24deg); /* IE 9 */
-      -webkit-transform: rotate(24deg); /* Safari */
-      transform: rotate(24deg);
+      -ms-transform: rotate(15deg); /* IE 9 */
+      -webkit-transform: rotate(15deg); /* Safari */
+      transform: rotate(15deg);
       //box-shadow: 0 0 5px #4582ec;
       z-index: -100;
   }
