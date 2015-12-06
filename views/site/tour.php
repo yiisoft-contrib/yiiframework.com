@@ -21,8 +21,8 @@ $this->params['breadcrumbs'][] = $this->title;
             <div class="visible-sm visible-xs">
                 <img class="img-circle img-thumbnail img-responsive center-block" width=250 src="/image/tour/composer.png" alt="">
             </div>
-            <div class="col-lg-9 col-xs-12">
-                <div class="media timeline">
+            <div class="col-lg-8 col-xs-12">
+                <div class="media timeline-item">
                     <div class="media-body">
                         <h2 class="media-heading">1) Composer</h2>
                         <p>
@@ -82,8 +82,9 @@ composer global require "fxp/composer-asset-plugin:~1.1.0"
                                 <?php Modal::end(); ?>
                             </p>
                     </div>
-                    <div class="media-right media-top hidden-sm hidden-xs">
+                    <div class="media-right media-top hidden-sm hidden-xs" id="composer-img">
                         <img class="media-object img-circle img-thumbnail" src="/image/tour/composer.png" alt="">
+                        <div class="line"></div>
                     </div>
                 </div>
             </div>
@@ -92,10 +93,11 @@ composer global require "fxp/composer-asset-plugin:~1.1.0"
             <div class="visible-sm visible-xs">
                 <img class="img-circle img-thumbnail img-responsive center-block" width=250 src="/image/tour/project-install.png" alt="">
             </div>
-            <div class="col-lg-9 col-lg-offset-3">
-                <div class="media timeline">
+            <div class="col-lg-8 col-lg-offset-4">
+                <div class="media timeline-item">
                     <div class="media-left media-top hidden-sm hidden-xs">
                         <img class="img-circle media-object img-thumbnail" src="/image/tour/project-install.png" alt="">
+                        <div class="line"></div>
                     </div>
                     <div class="media-body">
                         <h2 class="media-heading">2) Basic project template</h2>
@@ -122,8 +124,8 @@ composer create-project --prefer-dist yiisoft/yii2-app-basic basic
             <div class="visible-sm visible-xs">
                 <img class="img-circle img-thumbnail img-responsive center-block" width=250 src="/image/tour/start-app-installed.png" alt="">
             </div>
-            <div class="col-lg-9">
-                <div class="media timeline">
+            <div class="col-lg-8">
+                <div class="media timeline-item">
                     <div class="media-body">
                         <h2 class="media-heading">3) Welcome page</h2>
                         <p class="text-muted">
@@ -141,6 +143,7 @@ composer create-project --prefer-dist yiisoft/yii2-app-basic basic
                     </div>
                     <div class="media-right media-top hidden-sm hidden-xs">
                         <img class="img-circle media-object img-thumbnail" src="/image/tour/start-app-installed.png" alt="">
+                        <div class="line"></div>
                     </div>
                 </div>
             </div>
@@ -149,10 +152,11 @@ composer create-project --prefer-dist yiisoft/yii2-app-basic basic
             <div class="visible-sm visible-xs">
                 <img class="img-circle img-thumbnail img-responsive center-block" width=250 src="/image/tour/migration.png" alt="">
             </div>
-            <div class="col-lg-9 col-lg-offset-3">
-                <div class="media timeline">
+            <div class="col-lg-8 col-lg-offset-4">
+                <div class="media timeline-item">
                     <div class="media-left media-top hidden-sm hidden-xs">
                         <img class="img-circle media-object img-thumbnail" src="/image/tour/migration.png" alt="">
+                        <div class="line"></div>
                     </div>
                     <div class="media-body">
                         <h2 class="media-heading">4) Migrations</h2>
@@ -210,8 +214,8 @@ class m150416_155923_create_comment_table extends Migration
             <div class="visible-sm visible-xs">
                 <img class="img-circle img-thumbnail img-responsive center-block" width=250 src="/image/tour/gii.png" alt="">
             </div>
-            <div class="col-lg-9">
-                <div class="media timeline">
+            <div class="col-lg-8">
+                <div class="media timeline-item">
                     <div class="media-body">
                         <h2 class="media-heading">5) Gii - Yii Code Generator</h2>
                         <p class="text-muted">
