@@ -1,6 +1,7 @@
 <?php
 use yii\helpers\Html;
 use yii\bootstrap\ActiveForm;
+use yii\helpers\Url;
 
 /* @var $this yii\web\View */
 /* @var $form yii\bootstrap\ActiveForm */
@@ -11,7 +12,7 @@ $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="container">
     <div class="omb_login">
-        <h3 class="omb_authTitle"><?= Html::encode($this->title) ?> or <?= Html::a('Sign Up', ['site/signup']) ?></h3>
+        <h3 class="omb_authTitle"><?= Html::encode($this->title) ?> or <?= Html::a('Sign Up', Url::to(['site/signup'])) ?></h3>
         <div class="row omb_row-sm-offset-3 omb_socialButtons">
             <div class="col-xs-4 col-sm-2">
                 <!-- <a href="#" class="btn btn-lg btn-block omb_btn-facebook">
@@ -67,7 +68,7 @@ $this->params['breadcrumbs'][] = $this->title;
             </div>
             <div class="col-xs-12 col-sm-3">
                 <p class="omb_forgotPwd">
-                    <?= Html::a('I forgot my password', ['site/request-password-reset']) ?>.
+                    <?= Html::a('I forgot my password', Url::to(['site/request-password-reset'])) ?>.
                 </p>
             </div>
         </div>
