@@ -22,9 +22,8 @@ body {
 
 // External links
 /* long version */
-//a[href^="https://"]:not([href*="github.com"]):after,
 a[href^="http://"]:not([href*="yiiframwork.com"]):after,
-a[href^="https://"]:not([href*="yiiframwork.com"]):not([href*="github.com/yiisoft/yii2"]):after,
+a[href^="https://"]:not([href*="yiiframwork.com"]):not([href="https://github.com/yiisoft/yii2"]):after,
 a[href^="//"]:not([href*="yiiframwork.com"]):after {
   font-family: 'fontawesome';
   font-size: 0.8em;
