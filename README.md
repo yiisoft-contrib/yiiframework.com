@@ -1,7 +1,7 @@
 yiiframework.com Website
 ========================
 
-This project contains the source code for the yiiframework.com Website.
+This project contains the source code for the [yiiframework.com](http://yiiframework.com/) Website.
 
 If you want to contribute please get in touch with us using the [issue tracker](https://github.com/yiisoft-contrib/yiiframework.com/issues). We will set up some contributions guidelines soon.
 
