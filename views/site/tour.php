@@ -7,7 +7,7 @@ use app\components\Highlight as HL;
 $this->title = 'Getting started';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="container">
+<div class="container main">
     <div class="row">
         <div class="col-lg-12">
             <h1><?= Html::encode($this->title) ?></h1>
