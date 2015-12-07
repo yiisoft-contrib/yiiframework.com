@@ -1,6 +1,46 @@
 .timeline .row {
   margin-bottom: 3em;
 }
-.mini-timeline>div {
-  margin-bottom: 3em;
+
+
+.timeline > .row > div > .timeline-item > div > img {
+  background-color: $yii-blue;
+  z-index: 100;
+}
+
+
+@media (min-width: $grid-float-breakpoint) {
+
+  /*Style for even div.line*/
+  .timeline > .row > div > .timeline-item > .media-top:nth-child(odd) .line:before {
+      content: "";
+      position: absolute;
+      top: 240px;
+      bottom: 0;
+      left: 215px;
+      width: 5px;
+      height:340px;
+      background-color: $yii-blue;
+      -ms-transform: rotate(-15deg); /* IE 9 */
+      -webkit-transform: rotate(-15deg); /* Safari */
+      transform: rotate(-15deg);
+      //box-shadow: 0 0 5px #4582ec;
+      z-index: -100;
+  }
+  /*Style for odd div.line*/
+  .timeline > .row > div > .timeline-item > .media-top:nth-child(even) .line:before {
+      content: "";
+      position: absolute;
+      top: 240px;
+      bottom: 0;
+      left: 625px;
+      width: 5px;
+      height:340px;
+      background-color: $yii-blue;
+      -ms-transform: rotate(15deg); /* IE 9 */
+      -webkit-transform: rotate(15deg); /* Safari */
+      transform: rotate(15deg);
+      //box-shadow: 0 0 5px #4582ec;
+      z-index: -100;
+  }
 }
