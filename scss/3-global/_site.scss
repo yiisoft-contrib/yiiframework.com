@@ -20,6 +20,19 @@ body {
 	}
 }
 
+// External links
+/* long version */
+a[href^="http://"]:not([href*="yiiframework.com"]):after,
+a[href^="https://"]:not([href*="yiiframework.com"]):after,
+a[href^="//"]:not([href*="yiiframework.com"]):after {
+  font-family: 'fontawesome';
+  font-size: 0.8em;
+  content: "\f08e";
+  padding-left: 2px;
+}
+
+
+
 /*
  HEADER first line
 */
