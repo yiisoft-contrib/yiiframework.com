@@ -68,7 +68,7 @@ gulp.task('images', function() {
 
 // Copy fonts
 gulp.task('fonts', function() {
-  gulp.src(['vendor/bower/bootstrap/fonts/*'])
+  gulp.src(['vendor/bower/bootstrap/fonts/*','scss/2-vendors/fontawesome/fonts/*'])
   .pipe(gulp.dest('./web/fonts'));
 });
 
