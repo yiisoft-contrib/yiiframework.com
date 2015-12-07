@@ -39,7 +39,25 @@ body {
   padding-left: 2px;
 }
 
+// style navbar search form-control
+.navbar.navbar-inverse.navbar-static div.container div.navbar-collapse.collapse.navbar-right div.col-sm-3.col-md-3.visible-lg form#search-form.navbar-form div.form-group.nospace div.input-group input#search.form-control {
+  background-color: darken($yii-blue, 5%);
+  border-color: $yii-blue;
+}
 
+// style the search control placeholders
+.navbar.navbar-inverse.navbar-static div.container div.navbar-collapse.collapse.navbar-right div.col-sm-3.col-md-3.visible-lg form#search-form.navbar-form div.form-group.nospace div.input-group input#search.form-control::-webkit-input-placeholder {
+  color: $hero-framework-color;
+}
+.navbar.navbar-inverse.navbar-static div.container div.navbar-collapse.collapse.navbar-right div.col-sm-3.col-md-3.visible-lg form#search-form.navbar-form div.form-group.nospace div.input-group input#search.form-control:-moz-placeholder { /* Firefox 18- */
+   color: $hero-framework-color;
+}
+.navbar.navbar-inverse.navbar-static div.container div.navbar-collapse.collapse.navbar-right div.col-sm-3.col-md-3.visible-lg form#search-form.navbar-form div.form-group.nospace div.input-group input#search.form-control::-moz-placeholder {  /* Firefox 19+ */
+  color: $hero-framework-color;
+}
+.navbar.navbar-inverse.navbar-static div.container div.navbar-collapse.collapse.navbar-right div.col-sm-3.col-md-3.visible-lg form#search-form.navbar-form div.form-group.nospace div.input-group input#search.form-control::-ms-input-placeholder {
+  color: $hero-framework-color;
+}
 
 /*
  HEADER first line
