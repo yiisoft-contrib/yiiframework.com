@@ -29,6 +29,12 @@ npm install -g gulp
 # install browsersync globally if you haven't done so before
 npm install -g browser-sync
 
+# At this stage if you're on Windows and having trouble
+npm install -g npm
+npm -v
+# should output 3.x.x
+# Also make sure you have MS C++ build tools: https://www.microsoft.com/en-us/download/details.aspx?id=48159
+
 # install dependent NPM modules
 npm install
 
@@ -37,6 +43,9 @@ npm install
 
 # build js/css files
 gulp build
+
+# If you're on Windows you have to manually symlink or copy
+# %appdata%/npm/node_modules/browser-sync to your app's node_modules
 
 # The next step is for building the API documentation and the Guide files.
 # It is optional for the site to be working but you will have no API docs and Guide.
