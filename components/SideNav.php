@@ -111,7 +111,8 @@ class SideNav extends \yii\bootstrap\Widget
             $linkOptions['data-toggle'] = 'collapse';
             $linkOptions['data-parent'] = '#' . $this->id;
             $id = $this->id . '-' . static::$counter++;
-            $url = '#' . $id;
+            $linkOptions['data-target'] = '#' . $id;
+            $url = '#';
             $label .= ' ' . Html::tag('b', '', ['class' => 'caret']);
             if (is_array($items)) {
                 if ($active === false) {
