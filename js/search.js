@@ -335,13 +335,14 @@ searchApiDocPopulateTypes = function(query) {
 
 var searchBox = $('#search');
 var searchResultBox = $('#search-resultbox');
-var openSearchWidth = 250;
-var closedSearchWidth = 150;
+var openSearchWidth = 350;
+var closedSearchWidth = 200;
 
 adjustSearchBoxSize = function() {
 
-    openSearchWidth = ($('.container').width() - $('#main-nav').width() - $('#main-nav-head').width() - 60) * 0.8;
-    closedSearchWidth = Math.floor(openSearchWidth * 0.75);
+    // TODO may need to dynamically adjust search with dependend on screen size
+    //openSearchWidth = ($('.container').width() - $('#main-nav').width() - $('#main-nav-head').width() - 120) * 0.7;
+    //closedSearchWidth = Math.floor(openSearchWidth * 0.75);
 
     if (searchBox.val() == "") {
         searchBox.width(closedSearchWidth + "px");
