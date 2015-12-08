@@ -1,38 +1,43 @@
+//$parallax-element: '.wikijumbo';
+@include parallax-init;
+
 .wikijumbo {
-    background-color: #303133;
-    margin-top: -25px;
-    @media (max-width: $grid-float-breakpoint) {
-      margin-top: 16px;
-  	}
-    overflow: visible;
-    position: relative;
-    width: 100%;
-    margin-bottom: 2em;
+  @include parallax(-2);
+  background-color: #303133;
+  top: -350px;
+  right: 20px;
+  @media (max-width: $grid-float-breakpoint) {
+    margin-top: 16px;
+	}
+  overflow: visible;
+  position: relative;
+  width: 100%;
+  margin-bottom: 1em;
 }
 
 .wikijumbo img {
-    position: relative;
-    top: -1em;
-    margin: 0;
-    width: 100%;
-    padding: 0;
+  position: relative;
+  top: 50px;
+  margin: 0;
+  width: 100%;
+  padding: 0;
 }
 
 .wikijumbo .text-slogan {
-    right: 50%;
-    margin-top: -8%;
-    padding: 0;
-    position: absolute;
-    text-align: right;
-    top: 50%;
-    font-size: 58px;
-    @media (max-width: $grid-float-breakpoint) {
-      font-size: 38px;
-  	}
-    @media (max-width: $container-tablet) {
-      font-size: 28px;
-  	}
-    font-weight: 700;
-    margin-left: 4%;
-    color: $hero-framework-color;
+  right: 50%;
+  margin-top: -8%;
+  padding: 0;
+  position: absolute;
+  text-align: right;
+  top: 50%;
+  font-size: 58px;
+  @media (max-width: $grid-float-breakpoint) {
+    font-size: 38px;
+	}
+  @media (max-width: $container-tablet) {
+    font-size: 28px;
+	}
+  font-weight: 700;
+  margin-left: 4%;
+  color: $hero-framework-color;
 }
