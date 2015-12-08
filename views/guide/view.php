@@ -25,11 +25,9 @@ foreach ($guide->chapters as $chapterTitle => $sections) {
 
 $this->title = $section->getPageTitle();
 $this->registerJs('
-$(document).ready(function () {
   $(\'[data-toggle="offcanvas"]\').click(function () {
     $(\'.row-offcanvas\').toggleClass(\'active\')
   });
-});
 ');
 ?>
 <div class="container-fluid guide-view lang-<?= $guide->language ?>" xmlns="http://www.w3.org/1999/html">
