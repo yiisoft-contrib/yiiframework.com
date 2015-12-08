@@ -279,6 +279,11 @@ class SiteController extends Controller
         return $this->render('license');
     }
 
+    public function actionWiki()
+    {
+        return $this->render('wiki');
+    }
+
     public function actionTeam()
     {
         $members = Yii::$app->params['members'];

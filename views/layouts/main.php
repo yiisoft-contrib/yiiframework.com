@@ -99,6 +99,7 @@ use yii\widgets\Menu;
                                 ['label' => '<i class="fa fa-angle-double-right"></i> Getting started', 'url' => ['site/tour']],
                                 ['label' => '<i class="fa fa-angle-double-right"></i> The Definitive Guide', 'url' => ['guide/entry']],
                                 ['label' => '<i class="fa fa-angle-double-right"></i> API Documentation', 'url' => ['api/index', 'version' => reset(Yii::$app->params['api.versions'])]],
+                                ['label' => '<i class="fa fa-angle-double-right"></i> Wiki', 'url' => ['site/wiki']],
                                 //['label' => '<i class="fa fa-angle-double-right"></i>Tutorials<span class="label label-warning">coming soon</span>', 'url' => 'https://yiicamp.com/tutorials'],
                                 //['label' => '<i class="fa fa-angle-double-right"></i>Answers<span class="label label-warning">coming soon</span>', 'url' => 'https://yiicamp.com/answers'],
                                 ['label' => '<i class="fa fa-angle-double-right"></i> Books', 'url' => ['site/books']],

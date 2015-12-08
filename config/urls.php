@@ -10,6 +10,7 @@ return [
     'license' => 'site/license',
     'news' => 'site/news',
     'team' => 'site/team',
+    'wiki' => 'site/wiki',
     'report-issue' => 'site/report-issue',
     'security' => 'site/security',
     'download' => 'site/download',
