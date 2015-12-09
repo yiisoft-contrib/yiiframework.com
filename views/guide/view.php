@@ -90,11 +90,11 @@ $this->registerJs('
                             echo '<li>' . Html::a($section->getTitle(), '#' . (isset($section->headings['id']) ? $section->headings['id'] : '')) . '</li>';
                             $sections = isset($section->headings['sections']) ? $section->headings['sections'] : [];
                             foreach($sections as $heading) {
-                                echo '<li>' . Html::a($heading['title'], '#' . $heading['id']);
+                                echo '<li>' . Html::a(Html::encode(strip_tags($heading['title'])), '#' . $heading['id']);
                                 if (isset($heading['sub'])) {
                                     echo '<ul class="nav">';
                                     foreach ($heading['sub'] as $subheading) {
-                                        echo '<li class="subheading">' . Html::a($subheading['title'], '#' . $subheading['id']) . '</li>';
+                                        echo '<li class="subheading">' . Html::a(Html::encode(strip_tags($subheading['title'])), '#' . $subheading['id']) . '</li>';
                                     }
                                     echo "</ul>";
                                 }
