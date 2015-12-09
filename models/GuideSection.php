@@ -4,6 +4,7 @@ namespace app\models;
 
 use Yii;
 use yii\base\Object;
+use yii\helpers\Json;
 
 class GuideSection extends Object
 {
@@ -19,6 +20,10 @@ class GuideSection extends Object
      * @var string
      */
     public $content;
+    /**
+     * @var string
+     */
+    public $headings = [];
     /**
      * @var boolean
      */
@@ -38,10 +43,12 @@ class GuideSection extends Object
     public function load()
     {
         $this->content = $this->loadContent($this->name, $this->guide->version, $this->guide->language);
+        $this->headings = $this->loadHeadings($this->name, $this->guide->version, $this->guide->language);
         if ($this->content === false) {
             if ($this->guide->language !== 'en') {
                 $this->missingTranslation = true;
                 $this->content = $this->loadContent($this->name, $this->guide->version, 'en');
+                $this->headings = $this->loadHeadings($this->name, $this->guide->version, 'en');
             }
         }
         return $this->content !== false;
@@ -57,6 +64,22 @@ class GuideSection extends Object
             return "$chapter: $section | {$this->guide->title}";
         } else {
             return $this->guide->title;
+        }
+    }
+
+    /**
+     * @return string the title of the section
+     */
+    public function getTitle()
+    {
+        if (!empty($this->headings['h1'])) {
+            return $this->headings['h1'];
+        }
+        if (isset($this->guide->sections[$this->name])) {
+            list ($chapter, $section) = $this->guide->sections[$this->name];
+            return $section;
+        } else {
+            return false;
         }
     }
 
@@ -102,6 +125,13 @@ class GuideSection extends Object
     {
         $file = Yii::getAlias("@app/data/{$this->guide->type}-$version/$language/$name.html");
         return @file_get_contents($file);
+    }
+
+    protected function loadHeadings($name, $version, $language)
+    {
+        $file = Yii::getAlias("@app/data/{$this->guide->type}-$version/$language/$name.json");
+        $json = @file_get_contents($file);
+        return empty($json) ? [] : Json::decode($json);
     }
 
     public function getEditUrl()

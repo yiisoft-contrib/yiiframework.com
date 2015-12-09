@@ -46,7 +46,10 @@ $this->registerJs('
             <?= SideNav::widget(['id' => 'guide-navigation', 'items' => $nav, 'options' => ['class' => 'sidenav-offcanvas']]) ?>
         </div>
         <div class="col-sm-8 col-md-9 col-lg-10" role="main" id="top">
-            <div class="guide-content content">
+
+            <div class="row">
+            <div class="col-md-12 col-lg-10">
+                <div class="guide-content content">
                 <?php if (!empty($missingTranslation)): ?>
                     <div class="alert alert-warning">
                         <strong>This section is not translated yet.</strong> <br />
@@ -78,6 +81,29 @@ $this->registerJs('
                         <a href="<?= $editUrl; ?>">Edit it on github</a>!</em>
                 </p>
                 <?php endif; ?>
+            </div>
+            </div>
+            <div class="col-lg-2 visible-lg">
+                <nav id="scrollnav" data-spy="affix">
+                    <ul class="nav hidden-xs hidden-sm">
+                        <?php
+                            echo '<li>' . Html::a($section->getTitle(), '#' . (isset($section->headings['id']) ? $section->headings['id'] : '')) . '</li>';
+                            $sections = isset($section->headings['sections']) ? $section->headings['sections'] : [];
+                            foreach($sections as $heading) {
+                                echo '<li>' . Html::a($heading['title'], '#' . $heading['id']);
+                                if (isset($heading['sub'])) {
+                                    echo "<ul>";
+                                    foreach ($heading['sub'] as $subheading) {
+                                        echo '<li>' . Html::a($subheading['title'], '#' . $subheading['id']) . '</li>';
+                                    }
+                                    echo "</ul>";
+                                }
+                                echo '</li>';
+                            }
+                        ?>
+                    </ul>
+                </nav>
+            </div>
             </div>
 
             <?= \app\components\Comments::widget([
