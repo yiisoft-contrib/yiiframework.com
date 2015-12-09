@@ -183,49 +183,58 @@ div.image {
 }
 
 // scrollnav styles nicked from Bootstrap docs
-#scrollnav .nav>li>a {
-  display: block;
-  padding: 4px 20px;
-  font-size: 13px;
-  font-weight: 500;
-  color: #767676;
-}
-#scrollnav .nav>li>a:focus, #scrollnav .nav>li>a:hover {
-  padding-left: 19px;
-  color: $yii-yellow;
-  text-decoration: none;
-  background-color: transparent;
-  border-left: 1px solid $yii-yellow;
-}
-#scrollnav .nav>.active:focus>a, #scrollnav .nav>.active:hover>a, #scrollnav .nav>.active>a {
-  padding-left: 18px;
-  font-weight: 700;
-  color: $yii-yellow;
-  background-color: transparent;
-  border-left: 2px solid $yii-yellow;
-}
-#scrollnav .nav .nav {
-  display: none;
-  padding-bottom: 10px;
-}
-#scrollnav .nav>li>ul {
-  list-style: none;
-}
-#scrollnav .nav>li>ul>li.active a {
-  color: #f00;
-}
-#scrollnav .nav>li>ul>li>a,
-#scrollnav .nav .nav>li>a {
-  padding-top: 1px;
-  padding-bottom: 1px;
-  padding-left: 30px;
-  font-size: 12px;
-  font-weight: 400;
-}
-#scrollnav .nav .nav>li>a:focus, #scrollnav .nav .nav>li>a:hover {
-  padding-left: 29px;
-}
-#scrollnav .nav .nav>.active:focus>a, #scrollnav .nav .nav>.active:hover>a, #scrollnav .nav .nav>.active>a {
-  padding-left: 28px;
-  font-weight: 500;
+#scrollnav {
+
+  .nav>li>a {
+    display: block;
+    padding: 4px 20px;
+    font-size: 13px;
+    font-weight: 500;
+    color: #767676;
+  }
+
+  .nav>li>a:focus,
+  .nav>li>a:hover {
+    padding-left: 19px;
+    color: $yii-yellow;
+    text-decoration: none;
+    background-color: transparent;
+    border-left: 1px solid $yii-yellow;
+  }
+
+  .nav>.active:focus>a,
+  .nav>.active:hover>a,
+  .nav>.active>a {
+    padding-left: 18px;
+    font-weight: 700;
+    color: $yii-yellow;
+    background-color: transparent;
+    border-left: 2px solid $yii-yellow;
+  }
+
+  .nav .nav {
+    display: none;
+    padding-bottom: 10px;
+  }
+  .nav>li.active>.nav {
+    display: block;
+  }
+
+  .nav .nav>li>a {
+    padding-top: 1px;
+    padding-bottom: 1px;
+    padding-left: 30px;
+    font-size: 12px;
+    font-weight: 400;
+  }
+  .nav .nav>li>a:focus,
+  .nav .nav>li>a:hover {
+    padding-left: 29px;
+  }
+  .nav .nav>.active:focus>a,
+  .nav .nav>.active:hover>a,
+  .nav .nav>.active>a {
+    padding-left: 28px;
+    font-weight: 500;
+  }
 }
