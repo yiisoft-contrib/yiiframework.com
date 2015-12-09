@@ -208,6 +208,13 @@ div.image {
   display: none;
   padding-bottom: 10px;
 }
+#scrollnav .nav>li>ul {
+  list-style: none;
+}
+#scrollnav .nav>li>ul>li.active a {
+  color: #f00;
+}
+#scrollnav .nav>li>ul>li>a,
 #scrollnav .nav .nav>li>a {
   padding-top: 1px;
   padding-bottom: 1px;

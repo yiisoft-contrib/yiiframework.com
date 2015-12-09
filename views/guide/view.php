@@ -92,11 +92,11 @@ $this->registerJs('
                             foreach($sections as $heading) {
                                 echo '<li>' . Html::a($heading['title'], '#' . $heading['id']);
                                 if (isset($heading['sub'])) {
-                                    //echo "<ul>";
+                                    echo "<ul>";
                                     foreach ($heading['sub'] as $subheading) {
                                         echo '<li class="subheading">' . Html::a($subheading['title'], '#' . $subheading['id']) . '</li>';
                                     }
-                                    //echo "</ul>";
+                                    echo "</ul>";
                                 }
                                 echo '</li>';
                             }
