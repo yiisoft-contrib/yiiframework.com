@@ -7,6 +7,7 @@ use yii\base\Component;
 use yii\base\Exception;
 use yii\helpers\FileHelper;
 use yii\helpers\Html;
+use yii\helpers\Json;
 
 class Yii1GuideRenderer extends Component
 {
@@ -87,6 +88,21 @@ class Yii1GuideRenderer extends Component
             $content = $this->getContent($file);
 
             file_put_contents($this->targetPath . '/' . $section . '.html', $content); // TODO TOC
+
+            // extract toc as json
+            $headings = [
+                'h1' => '',
+                'id' => '',
+                'sections' => $this->headings,
+            ];
+            if (preg_match('/<h1>(.+?)(\s*<span id="(.+?)">.*?)?<\/h1>/i', $content, $matches)) {
+                $headings['h1'] = $matches[1];
+                $headings['id'] = isset($matches[3]) ? $matches[3] : '';
+            } elseif (preg_match('/<h1 id="(.+?)">(.+?)<\/h1>/i', $content, $matches)) {
+                $headings['h1'] = $matches[2];
+                $headings['id'] = $matches[1];
+            }
+            file_put_contents($this->targetPath . '/' . $section . '.json', Json::encode($headings));
         }
     }
 
@@ -151,7 +167,7 @@ class Yii1GuideRenderer extends Component
             $toc = array();
             foreach ($this->headings as $heading)
                 $toc[] = '<li>' . Html::a($heading['title'], '#' . $heading['id']) . '</li>';
-            $toc = '<div class="toc"><ol>' . implode("\n", $toc) . "</ol></div>\n";
+            $toc = '<div class="toc hidden-lg"><ol>' . implode("\n", $toc) . "</ol></div>\n";
             if (strpos($content, '</h1>') !== false)
                 $content = str_replace('</h1>', "</h1>\n" . $toc, $content);
             else
@@ -172,6 +188,13 @@ class Yii1GuideRenderer extends Component
             $section = count($this->headings);
             $anchor = sprintf('<a class="hashlink" href="#%s">¶</a>', $id);
             return sprintf('<h%d id="%s">%s. %s %s</h%d>', $level, $id, $section, $title, $anchor, $level);
+        } elseif ($level > 2) {
+            if (end($this->headings)) {
+                $this->headings[key($this->headings)]['sub'][] = [
+                    'title' => trim($title),
+                    'id' => $id,
+                ];
+            }
         }
         return $match[0];
     }
