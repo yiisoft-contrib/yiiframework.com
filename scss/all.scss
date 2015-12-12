@@ -38,7 +38,7 @@ This file is part of the
 @import "2-vendors/scrollup";
 @import "../vendor/bower/bootstrap-social/bootstrap-social.scss";
 @import "2-vendors/gh-ribbons";
-@import "2-vendors/highlight/railscasts";
+@import "../vendor/scrivo/highlight.php/styles/railscasts";
 
 // Global styling that makes use of vendors
 @import "3-global/content";
