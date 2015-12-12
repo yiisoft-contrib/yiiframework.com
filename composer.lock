@@ -996,7 +996,7 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/yiisoft/yii2-framework/zipball/2fdfdc5aaefee5513eec5df9137be264360e8d0d",
+                "url": "https://api.github.com/repos/yiisoft/yii2-framework/zipball/c177f2137fdfa19221ff04ba1e8261d63a754e42",
                 "reference": "1e4076d3446e10fce94daed6526d55fb16ea4f1f",
                 "shasum": ""
             },
@@ -1080,12 +1080,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/yiisoft/yii2-apidoc.git",
-                "reference": "ec56f6827bf8eed991bec61b28449054f7cd4df3"
+                "reference": "bd0c1241ad4c09b4f223ac65bb7383f395a3aae8"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/yiisoft/yii2-apidoc/zipball/ec56f6827bf8eed991bec61b28449054f7cd4df3",
-                "reference": "ec56f6827bf8eed991bec61b28449054f7cd4df3",
+                "url": "https://api.github.com/repos/yiisoft/yii2-apidoc/zipball/bd0c1241ad4c09b4f223ac65bb7383f395a3aae8",
+                "reference": "bd0c1241ad4c09b4f223ac65bb7383f395a3aae8",
                 "shasum": ""
             },
             "require": {
@@ -1093,8 +1093,9 @@
                 "cebe/markdown": "~1.0.0 | ~1.1.0",
                 "cebe/markdown-latex": "~1.0.0",
                 "nikic/php-parser": "0.9.*",
-                "phpdocumentor/reflection": ">=1.0.3",
-                "phpdocumentor/reflection-docblock": ">2.0.1",
+                "phpdocumentor/reflection": "^1.0.3",
+                "phpdocumentor/reflection-docblock": "^2.0.1",
+                "scrivo/highlight.php": "~8.0",
                 "yiisoft/yii2": ">=2.0.4",
                 "yiisoft/yii2-bootstrap": "*"
             },
@@ -1134,7 +1135,7 @@
                 "phpdoc",
                 "yii2"
             ],
-            "time": "2015-12-08 04:58:32"
+            "time": "2015-12-12 04:02:49"
         },
         {
             "name": "yiisoft/yii2-authclient",
@@ -1146,7 +1147,7 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/yiisoft/yii2-authclient/zipball/67a6728fea2cc2a3b39c17e6d2033571ca8cd0ad",
+                "url": "https://api.github.com/repos/yiisoft/yii2-authclient/zipball/4248a5ddb425103488ee4c1bdb5d9a5730627775",
                 "reference": "c25b04a34ab1b9ae4f2f7a35aeee38033ad3654d",
                 "shasum": ""
             },
@@ -1194,7 +1195,7 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/yiisoft/yii2-bootstrap/zipball/3b792412bd0fdfef4e48aff3781279e28dfd19a4",
+                "url": "https://api.github.com/repos/yiisoft/yii2-bootstrap/zipball/e7b4df436f09ca00f44615928909fa9cc2a78ae7",
                 "reference": "0396fafd62d30dbf83e5f56cc72536ed5ce1d63e",
                 "shasum": ""
             },

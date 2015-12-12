@@ -15,15 +15,25 @@
         font-size: $font-size-base;
     }
 
-code {
-  background: $selection-color;
-  color: inherit;
-  font-weight: bolder;
-}
-pre code {
-  background: inherit;
-  font-weight: inherit;
-}
+    code {
+        background: $selection-color;
+        color: inherit;
+        font-weight: bolder;
+    }
+
+    pre {
+        display: block;
+        overflow-x: auto;
+        padding: 0.5em;
+        background: #232323;
+        color: #e6e1dc;
+        -webkit-text-size-adjust: none;
+    }
+
+    pre code {
+        background: inherit;
+        font-weight: inherit;
+    }
 
 
 // temporary remove to see if Bootstrap default styling is ok
