@@ -1,6 +1,6 @@
 [
     "vendor/bower/jquery/dist/jquery.js",
-    "vendor/bower/bootstrap-sass/assets/javascript/bootstrap/bootstrap.js",
+    "vendor/bower/bootstrap-sass/assets/javascripts/bootstrap.js",
     "vendor/bower/scrollup/dist/jquery.scrollUp.js",
     "vendor/yiisoft/yii2/assets/yii.js",
     "vendor/yiisoft/yii2/assets/yii.validation.js",
