@@ -83,6 +83,14 @@ RewriteCond %{REQUEST_FILENAME} !-d
 RewriteRule . index.php
 ```
 
+### DEPLOYMENT
+
+This section covers notes for deployment on a server, you may not need this for your dev env. OS is assumed to be debian Jessie.
+
+```
+apt-get install texlive-full git nodejs npm make
+```
+
 
 ## DIRECTORY STRUCTURE
 
