@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "0926ea5a0cbd21264af88e4062a93ce5",
-    "content-hash": "561e42fbbbc4e29b45b0155bf169dad4",
+    "hash": "4310d5624294d33069514a69f96b727e",
+    "content-hash": "3ec2afd2e1c0827755930b090a6cfa62",
     "packages": [
         {
             "name": "bower-asset/bootstrap",
@@ -291,6 +291,34 @@
                     "Gruntfile.js",
                     "node_modules",
                     "package.json"
+                ]
+            }
+        },
+        {
+            "name": "bower-asset/scrollup",
+            "version": "v2.4.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/markgoodyear/scrollup.git",
+                "reference": "2167852df6d20548863a0786cb88abcff49f5261"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/markgoodyear/scrollup/zipball/2167852df6d20548863a0786cb88abcff49f5261",
+                "reference": "2167852df6d20548863a0786cb88abcff49f5261",
+                "shasum": ""
+            },
+            "require": {
+                "bower-asset/jquery": ">=1.11.0"
+            },
+            "type": "bower-asset-library",
+            "extra": {
+                "bower-asset-main": "dist/jquery.scrollUp.min.js",
+                "bower-asset-ignore": [
+                    "css",
+                    "img",
+                    ".travis.yml",
+                    "index.html"
                 ]
             }
         },
