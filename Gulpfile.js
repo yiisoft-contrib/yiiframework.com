@@ -74,7 +74,7 @@ gulp.task('fonts', function() {
 
 // Clean
 gulp.task('clean', function(cb) {
-    del(['web/css', 'web/js'], cb)
+    del(['web/css', 'web/js', 'web/fonts'], cb)
 });
 
 // Build the "web" folder by running all of the above tasks

@@ -41,9 +41,6 @@ phpunit.phar
 /web/.htaccess
 
 # files automatically generated on dev platform
-/web/css/all.css
-/web/css/all.min.css
-/web/css/all.min.css.map
-/web/js/all.js
-/web/js/all.js.map
-/web/js/all.min.js
+/web/css/*
+/web/js/*
+/web/fonts/*
