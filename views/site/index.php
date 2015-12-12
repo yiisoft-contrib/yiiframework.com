@@ -27,6 +27,10 @@ JUMBOTRON - START
 
     <?= $this->render('_quickstart'); ?>
 
+    <?= $this->render('_recentnews'); ?>
+
+    <?= $this->render('_bookscommunity'); ?>
+
     <?= $this->render('_poweredby'); ?>
 
     <?= $this->render('_testimonials'); ?>
