@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "aad13c82a0e287dcafc7bf4790068240",
-    "content-hash": "570119771409bb738a79d97640ed056d",
+    "hash": "0926ea5a0cbd21264af88e4062a93ce5",
+    "content-hash": "561e42fbbbc4e29b45b0155bf169dad4",
     "packages": [
         {
             "name": "bower-asset/bootstrap",
@@ -100,6 +100,37 @@
                 "bootstrap",
                 "sass",
                 "twbs"
+            ]
+        },
+        {
+            "name": "bower-asset/bootstrap-social",
+            "version": "4.11.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/lipis/bootstrap-social.git",
+                "reference": "31e26ae3a64a8517c05a0cc8e718be8d32f3746f"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/lipis/bootstrap-social/zipball/31e26ae3a64a8517c05a0cc8e718be8d32f3746f",
+                "reference": "31e26ae3a64a8517c05a0cc8e718be8d32f3746f",
+                "shasum": ""
+            },
+            "require": {
+                "bower-asset/bootstrap": "~3",
+                "bower-asset/font-awesome": "~4.5"
+            },
+            "type": "bower-asset-library",
+            "extra": {
+                "bower-asset-main": "bootstrap-social.css",
+                "bower-asset-ignore": [
+                    "assets",
+                    "index.html",
+                    "LICENCE"
+                ]
+            },
+            "license": [
+                "MIT"
             ]
         },
         {
