@@ -16,16 +16,17 @@ var gulp = require('gulp'),
     cache = require('gulp-cache'),
     browsersync = require('browser-sync'),
     sourcemaps = require('gulp-sourcemaps'),
-    del = require('del');
+    del = require('del'),
+    gulpif = require('gulp-if');
 
-    var sassOptions = {
-      errLogToConsole: true,
-      outputStyle: 'expanded'
-    };
+var sassOptions = {
+  errLogToConsole: true,
+  outputStyle: 'expanded'
+};
 
-    var autoprefixerOptions = {
-      browsers: ['last 2 versions', '> 5%', 'Firefox ESR']
-    };
+var autoprefixerOptions = {
+  browsers: ['last 2 versions', '> 5%', 'Firefox ESR']
+};
 
 
 // Styles
@@ -35,12 +36,12 @@ gulp.task('styles', function() {
     .pipe(sourcemaps.init())
     .pipe(sass(sassOptions).on('error', sass.logError))
     .pipe(autoprefixer(autoprefixerOptions))
+    .pipe(sourcemaps.write('.', { sourceRoot: '../../scss/' }))
     .pipe(gulp.dest('web/css'))
-    .pipe(rename({ suffix: '.min' }))
-    .pipe(minifycss())
-    .pipe(sourcemaps.write('../css/',{includeContent: false, sourceRoot: '../scss/'}))
-    .pipe(gulp.dest('web/css'))
-    .pipe(notify({ message: 'Styles task complete' }));
+    .pipe(gulpif('*.css', rename({ suffix: '.min' })))
+    .pipe(gulpif('*.css', minifycss()))
+    .pipe(gulpif('*.css', gulp.dest('web/css')))
+    .pipe(gulpif('*.css', notify({ message: 'Styles task complete' })));
 });
 
 // Scripts
@@ -50,12 +51,12 @@ gulp.task('scripts', function() {
     //.pipe(jshint.reporter('default'))
     .pipe(sourcemaps.init())
     .pipe(concat('all.js'))
+    .pipe(sourcemaps.write('.', { sourceRoot: '../../js/' }))
     .pipe(gulp.dest('web/js'))
-    .pipe(rename({ suffix: '.min' }))
-    .pipe(uglify())
-    .pipe(sourcemaps.write())
-    .pipe(gulp.dest('web/js'))
-    .pipe(notify({ message: 'Scripts task complete' }));
+    .pipe(gulpif('*.js', rename({ suffix: '.min' })))
+    .pipe(gulpif('*.js', uglify()))
+    .pipe(gulpif('*.js', gulp.dest('web/js')))
+    .pipe(gulpif('*.js', notify({ message: 'Scripts task complete' })));
 });
 
 // Images
