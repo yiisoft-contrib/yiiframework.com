@@ -31,7 +31,7 @@ $gray-lighter:           lighten($gray-base, 93.5%); // #eee
 // $brand-primary:         darken(#428bca, 6.5%); // #337ab7
 // $brand-success:         #5cb85c;
 // $brand-warning:         #f0ad4e;
-$brand-primary:         $yii-blue;
+$brand-primary:         #1E6887;//$yii-blue;
 $brand-success:         $yii-green;
 $brand-warning:         $yii-yellow;
 // $brand-info:            #5bc0de
@@ -59,8 +59,8 @@ $font-size-base:          16px;
 //## Settings for some of the most global styles.
 
 //** Background color for `<body>`.
-// $body-bg:               #fff
-$body-bg:               darken(#FEFEFE, 5%);
+$body-bg:               #fff;
+//$body-bg:               darken(#FEFEFE, 5%);
 //** Global text color on `<body>`.
 $text-color:            $gray-dark;
 
@@ -99,11 +99,11 @@ $container-lg:                 $container-large-desktop;
 $link-visited-color: $yii-blue;
 $font-size-codeblocks: $font-size-base;
 
-$blue-navbar: false;
+$blue-navbar: true;
 
 @if $blue-navbar {
   $navbar-inverse-color:                      lighten($gray-light, 20%);
-  $navbar-inverse-bg:                         darken($yii-blue, 15%);
+  $navbar-inverse-bg:                         #1E6887;//darken($yii-blue, 15%);
   // Inverted navbar links
   $navbar-inverse-link-color:                 lighten($gray-light, 40%);
   // Inverted navbar toggle
