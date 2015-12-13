@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "4310d5624294d33069514a69f96b727e",
-    "content-hash": "3ec2afd2e1c0827755930b090a6cfa62",
+    "hash": "b83831dcbcf5e4e8b0a46c36f43acc14",
+    "content-hash": "ba82de7abd379581a8941b9e293357b7",
     "packages": [
         {
             "name": "bower-asset/bootstrap",
@@ -1223,12 +1223,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/yiisoft/yii2-apidoc.git",
-                "reference": "12cccbb6c1c9ee2840fddb9d93c14982a9bb0c3f"
+                "reference": "4988ea28ccc02d3afbe3547119a1216fffd9d695"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/yiisoft/yii2-apidoc/zipball/12cccbb6c1c9ee2840fddb9d93c14982a9bb0c3f",
-                "reference": "12cccbb6c1c9ee2840fddb9d93c14982a9bb0c3f",
+                "url": "https://api.github.com/repos/yiisoft/yii2-apidoc/zipball/4988ea28ccc02d3afbe3547119a1216fffd9d695",
+                "reference": "4988ea28ccc02d3afbe3547119a1216fffd9d695",
                 "shasum": ""
             },
             "require": {
@@ -1278,7 +1278,7 @@
                 "phpdoc",
                 "yii2"
             ],
-            "time": "2015-12-13 04:03:34"
+            "time": "2015-12-13 04:55:11"
         },
         {
             "name": "yiisoft/yii2-authclient",
