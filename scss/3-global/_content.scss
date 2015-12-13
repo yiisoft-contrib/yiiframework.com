@@ -30,6 +30,13 @@
         -webkit-text-size-adjust: none;
     }
 
+    .hl-code pre {
+      border-top: 1px solid #eee;
+      border-bottom: 1px solid #eee;
+      background: #fcfcfc;
+      color: #232323;
+    }
+
     pre code {
         background: inherit;
         font-weight: inherit;
