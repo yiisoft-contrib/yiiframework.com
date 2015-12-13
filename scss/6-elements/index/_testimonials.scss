@@ -1,13 +1,13 @@
 .section-testimonials {
 	.container {
-		color: #ddd;
+		//color: #ddd;
 		font-size: 20px;
 		font-style: italic;
 		padding: 2em;
 		h3 {
-			color: #ccc;
+			//color: #ccc;
 			small {
-				color: #bbb;
+				//color: #bbb;
 			}
 		}
 		min-height: 330px;
@@ -28,7 +28,7 @@
 #quote-carousel .carousel-control
 {
   background: none;
-  color: #bbb;
+  //color: #bbb;
   font-size: 2.3em;
   text-shadow: none;
   margin-top: 10px;
@@ -54,11 +54,11 @@
 /* Changes the color of the indicators */
 #quote-carousel .carousel-indicators li
 {
-  background: #bbb;
+  //background: #bbb;
 }
 #quote-carousel .carousel-indicators .active
 {
-  background: #fff;
+  //background: #fff;
 }
 /* End carousel */
 
