@@ -18,7 +18,7 @@ var gulp = require('gulp'),
     sourcemaps = require('gulp-sourcemaps'),
     del = require('del'),
     gulpif = require('gulp-if'),
-	runSequence = require('run-sequence');
+    runSequence = require('run-sequence');
 
 var sassOptions = {
   errLogToConsole: true,
