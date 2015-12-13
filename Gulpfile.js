@@ -17,7 +17,8 @@ var gulp = require('gulp'),
     browsersync = require('browser-sync'),
     sourcemaps = require('gulp-sourcemaps'),
     del = require('del'),
-    gulpif = require('gulp-if');
+    gulpif = require('gulp-if'),
+    runSequence = require('run-sequence');
 
 var sassOptions = {
   errLogToConsole: true,
@@ -31,8 +32,7 @@ var autoprefixerOptions = {
 
 // Styles
 gulp.task('styles', function() {
-  return gulp
-    .src('scss/all.scss')
+  return gulp.src('scss/all.scss')
     .pipe(sourcemaps.init())
     .pipe(sass(sassOptions).on('error', sass.logError))
     .pipe(autoprefixer(autoprefixerOptions))
@@ -69,17 +69,19 @@ gulp.task('images', function() {
 
 // Copy fonts
 gulp.task('fonts', function() {
-  gulp.src(['vendor/bower/bootstrap-sass/assets/fonts/bootstrap/*','vendor/bower/font-awesome/fonts/*'])
-  .pipe(gulp.dest('./web/fonts'));
+  return gulp.src(['vendor/bower/bootstrap-sass/assets/fonts/bootstrap/*','vendor/bower/font-awesome/fonts/*'])
+    .pipe(gulp.dest('./web/fonts'));
 });
 
 // Clean
-gulp.task('clean', function(cb) {
-    del(['web/css', 'web/js', 'web/fonts'], cb)
+gulp.task('clean', function() {
+  return del(['web/css/*', 'web/js/*', 'web/fonts/*']);
 });
 
 // Build the "web" folder by running all of the above tasks
-gulp.task('build', ['clean', 'styles', 'scripts', 'fonts'], function() {});
+gulp.task('build', function(callback) {
+  runSequence('clean', ['styles', 'scripts', 'fonts'], callback);
+});
 
 // Watch
 gulp.task('watch', function() {
