@@ -1,5 +1,15 @@
 .content-separator.section-poweredby {
 	.container {
-		padding: 2em;
+				img {
+					-webkit-filter: grayscale(1);
+				  filter: grayscale(1);
+					height: 40px;
+					margin: 2em;
+				}
+				.poweredby {
+					margin: auto;
+					width: 60%;
+				}
+
 	}
 }
