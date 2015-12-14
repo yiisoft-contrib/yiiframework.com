@@ -167,3 +167,24 @@ footer {
   color: $top-header-background-color;
   background-color: $eshill-blue;
 }
+
+.affix {
+  top: 10px;
+  background-color: $top-header-background-color;
+  z-index: 300;
+}
+
+.affix-bottom {
+  top: 50px;
+}
+
+.topmost {
+  z-index: 300;
+  overflow: hidden;
+  right: -12px;
+  opacity: 0.4;
+  &:hover {
+    opacity: 0.9;
+    right: 1px;
+  }
+}

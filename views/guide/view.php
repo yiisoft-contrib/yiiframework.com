@@ -35,8 +35,8 @@ $this->registerJs('
         <div class="col-xs-12 col-sm-8 col-sm-offset-4 col-md-9 col-md-offset-3 col-lg-10 col-lg-offset-2">
             <h1 class="guide-headline"><?= Html::encode($guide->title) ?></h1>
         </div>
-          <p class="pull-right visible-xs">
-            <button type="button" class="btn btn-primary btn-xs" data-toggle="offcanvas">Toggle nav</button>
+          <p class="pull-right visible-xs topmost">
+            <button type="button" title="Toggle Side-Nav" class="btn btn-primary btn-xs" data-toggle="offcanvas">Nav</button>
           </p>
     </div>
 
@@ -84,7 +84,7 @@ $this->registerJs('
             </div>
             </div>
             <div class="col-lg-2 visible-lg">
-                <nav id="scrollnav" data-spy="affix">
+                <nav id="scrollnav" data-spy="affix" data-offset-top="60">
                     <ul class="nav hidden-xs hidden-sm">
                         <?php
                             echo '<li>' . Html::a($section->getTitle(), '#' . (isset($section->headings['id']) ? $section->headings['id'] : '')) . '</li>';
