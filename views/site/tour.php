@@ -105,16 +105,13 @@ composer global require "fxp/composer-asset-plugin:~1.1.0"
 composer create-project --prefer-dist yiisoft/yii2-app-basic basic
 <?php HL::end(); ?>
                         <p class="text-muted">
-                            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                            Minim pork enim nisi swine. Leberkas veniam incididunt commodo eu ad cow flank rump anim eiusmod meatball doner. Kielbasa reprehenderit venison drumstick adipisicing exercitation. Pariatur capicola exercitation, alcatra anim sed shank kevin aute minim venison pork mollit occaecat. Porchetta tri-tip salami ground round occaecat laboris nisi shankle landjaeger dolore aute beef.
                         </p>
                         <p class="text-muted">
-                            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                            Minim pork enim nisi swine. Leberkas veniam incididunt commodo eu ad cow flank rump anim eiusmod meatball doner. Kielbasa reprehenderit venison drumstick adipisicing exercitation. Pariatur capicola exercitation, alcatra anim sed shank kevin aute minim venison pork mollit occaecat. Porchetta tri-tip salami ground round occaecat laboris nisi shankle landjaeger dolore aute beef.
                         </p>
                         <p class="text-muted">
-                            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-                        </p>
-                        <p class="text-muted">
-                            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                            Minim pork enim nisi swine. Leberkas veniam incididunt commodo eu ad cow flank rump anim eiusmod meatball doner. Kielbasa reprehenderit venison drumstick adipisicing exercitation. Pariatur capicola exercitation, alcatra anim sed shank kevin aute minim venison pork mollit occaecat. Porchetta tri-tip salami ground round occaecat laboris nisi shankle landjaeger dolore aute beef.
                         </p>
                     </div>
                 </div>
@@ -129,16 +126,13 @@ composer create-project --prefer-dist yiisoft/yii2-app-basic basic
                     <div class="media-body">
                         <h2 class="media-heading">3) Welcome page</h2>
                         <p class="text-muted">
-                            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                            Enim magna commodo laboris ullamco eiusmod spare ribs elit do anim. Pancetta beef tempor, in est turducken t-bone eiusmod meatloaf sunt prosciutto eu pork chop id voluptate. Ex duis fatback hamburger prosciutto. Tail doner short loin frankfurter sirloin laborum, tempor incididunt eu shankle corned beef rump chuck.
                         </p>
                         <p class="text-muted">
-                            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                            Ut incididunt occaecat dolor hamburger. Swine meatloaf in leberkas venison non, t-bone mollit aute esse in ea shank aliqua. Fatback bacon non kielbasa biltong. Ut ham hock laboris turkey culpa incididunt picanha veniam t-bone shoulder tempor bresaola cupidatat rump. Frankfurter short loin flank, excepteur tail tempor minim ut fugiat kevin capicola magna hamburger shankle ad. Doner short ribs proident magna ham hock. Pancetta culpa tail, ham fugiat dolore flank voluptate anim et.
                         </p>
                         <p class="text-muted">
-                            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-                        </p>
-                        <p class="text-muted">
-                            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                            Alcatra enim deserunt, ground round fatback quis meatball reprehenderit labore capicola ribeye kevin. Landjaeger officia tail leberkas, consectetur picanha sausage boudin commodo cillum aliquip ut rump drumstick. Tail short ribs in sausage fugiat ipsum cow andouille aute. Jerky meatloaf adipisicing, in ipsum ground round salami pancetta anim. Meatball ipsum sirloin brisket short ribs et, id cupim commodo ground round t-bone alcatra. Aute ut cow turducken porchetta leberkas swine biltong mollit officia id et culpa cillum.
                         </p>
                     </div>
                     <div class="media-right media-top hidden-sm hidden-xs">
@@ -207,13 +201,10 @@ class m150416_155923_create_comment_table extends Migration
 
                         <?php Modal::end(); ?>
                         <p class="text-muted">
-                            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                            Kielbasa chuck swine pork, beef hamburger ground round leberkas shankle drumstick turducken. Meatloaf shankle andouille, pancetta kielbasa doner biltong cow ball tip shank tri-tip venison. Beef ribs ground round biltong kielbasa capicola turkey salami jowl rump. Short ribs cupim pork filet mignon, salami turducken tail chicken. Drumstick tongue turducken jowl turkey short ribs pork belly boudin meatball cow hamburger cupim. Tenderloin pork belly pork, pancetta tongue doner short loin biltong jowl pig.
                         </p>
                         <p class="text-muted">
-                            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-                        </p>
-                        <p class="text-muted">
-                            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                            Sirloin pork belly bresaola ground round turkey pork jowl bacon salami flank filet mignon cow fatback tenderloin ham hock. Alcatra tail bresaola, sirloin cow ham pork chop. Shoulder ham sausage t-bone. Ball tip leberkas andouille tenderloin swine short ribs sausage, fatback t-bone jowl flank chuck salami picanha cupim. Andouille porchetta picanha beef sausage chuck, boudin turducken.
                         </p>
                     </div>
                 </div>
@@ -228,16 +219,16 @@ class m150416_155923_create_comment_table extends Migration
                     <div class="media-body">
                         <h2 class="media-heading">5) Gii - Yii Code Generator</h2>
                         <p class="text-muted">
-                            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                            Bacon ipsum dolor amet beef ground round bresaola ribeye shoulder salami, tri-tip venison frankfurter porchetta. Jowl capicola pork loin brisket. Spare ribs t-bone salami, ribeye filet mignon jerky doner rump drumstick. Chicken boudin turducken meatloaf chuck beef pork belly ribeye. Turkey filet mignon sirloin pork loin biltong. Tri-tip biltong venison flank.
                         </p>
                         <p class="text-muted">
-                            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                            Bacon ipsum dolor amet beef ground round bresaola ribeye shoulder salami, tri-tip venison frankfurter porchetta. Jowl capicola pork loin brisket. Spare ribs t-bone salami, ribeye filet mignon jerky doner rump drumstick. Chicken boudin turducken meatloaf chuck beef pork belly ribeye. Turkey filet mignon sirloin pork loin biltong. Tri-tip biltong venison flank.
                         </p>
                         <p class="text-muted">
-                            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                            Bacon ipsum dolor amet beef ground round bresaola ribeye shoulder salami, tri-tip venison frankfurter porchetta. Jowl capicola pork loin brisket. Spare ribs t-bone salami, ribeye filet mignon jerky doner rump drumstick. Chicken boudin turducken meatloaf chuck beef pork belly ribeye. Turkey filet mignon sirloin pork loin biltong. Tri-tip biltong venison flank.
                         </p>
                         <p class="text-muted">
-                            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                            Bacon ipsum dolor amet beef ground round bresaola ribeye shoulder salami, tri-tip venison frankfurter porchetta. Jowl capicola pork loin brisket. Spare ribs t-bone salami, ribeye filet mignon jerky doner rump drumstick. Chicken boudin turducken meatloaf chuck beef pork belly ribeye. Turkey filet mignon sirloin pork loin biltong. Tri-tip biltong venison flank.
                         </p>
                     </div>
                     <div class="media-right media-top hidden-sm hidden-xs">
@@ -252,7 +243,6 @@ class m150416_155923_create_comment_table extends Migration
             <h2>What to do next?</h2>
             <ol>
                 <li><?= Html::a('Read "Getting started" guide', ['guide/view', 'section' => 'start-installation', 'language' => 'en', 'version' => key(Yii::$app->params['guide.versions']), 'type' => 'guide']) ?>.</li>
-                <li>To learn more, <?= Html::a('read the Guide', ['guide/entry']) ?>.</li>
                 <li>Get to know the <?= Html::a('API docs', ['api/index', 'version' => reset(Yii::$app->params['api.versions'])])?>. you'll use them every day (at least for a while). You can view Yii source code directly in the API docs. The API search box is invaluable.</li>
             </ol>
 

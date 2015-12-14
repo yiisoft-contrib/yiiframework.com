@@ -8,7 +8,7 @@
                 Should be one or two recent news entries - the rest should be on the News page..
             </p>
             <p>
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                Bacon ipsum dolor amet picanha shank do incididunt tongue. Beef sed shank non, aliqua consectetur culpa. Sirloin esse excepteur exercitation, magna non ground round ad veniam strip steak cupidatat capicola in. Quis cupim salami, veniam ipsum dolor enim ut turkey esse drumstick proident eu.
             </p>
         </div>
         <div class="col-md-6">
@@ -17,7 +17,7 @@
                 Featured projects, maybe?
             </p>
             <p>
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                Minim pork enim nisi swine. Leberkas veniam incididunt commodo eu ad cow flank rump anim eiusmod meatball doner. Kielbasa reprehenderit venison drumstick adipisicing exercitation. Pariatur capicola exercitation, alcatra anim sed shank kevin aute minim venison pork mollit occaecat. Porchetta tri-tip salami ground round occaecat laboris nisi shankle landjaeger dolore aute beef.
             </p>
         </div>
     </div>
