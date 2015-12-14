@@ -66,16 +66,15 @@ use yii\widgets\Menu;
           </div>
           <div class="pull-right">
               <?php if (Yii::$app->user->isGuest): ?>
-                  <div class="header-item"><?= Html::a('<i class="fa fa-sign-in"></i>Login</a>', ['/site/login']) ?></div>
-                  <div class="header-item"><?= Html::a('<i class="fa fa-user"></i>Sign up</a>', ['/site/signup']) ?></div>
+                  <div class="header-item"><?= Html::a('<i class="fa fa-sign-in"></i>Login', ['/site/login']) ?></div>
+                  <div class="header-item"><?= Html::a('<i class="fa fa-user"></i>Sign up', ['/site/signup']) ?></div>
               <?php else: ?>
                   <div class="header-item">Welcome, <?= Yii::$app->user->identity->username ?>!</div>
-                  <div class="header-item"><?= Html::a('<i class="fa fa-sign-out"></i>Logout</a>', ['/site/logout'], ['data-method' => 'post']) ?></div>
+                  <div class="header-item"><?= Html::a('<i class="fa fa-sign-out"></i>Logout', ['/site/logout'], ['data-method' => 'post']) ?></div>
               <?php endif; ?>
           </div>
       </div>
   </div>
-  <div class="clearfix"></div>
 	<header class="navbar navbar-inverse navbar-static">
     	<div class="container">
             <div id="main-nav-head" class="navbar-header">

@@ -32,5 +32,4 @@ JUMBOTRON - START
 
     <?= $this->render('_testimonials'); ?>
 
-</div>
 </div> <!-- class site-index -->
