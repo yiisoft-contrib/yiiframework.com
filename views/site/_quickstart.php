@@ -8,7 +8,13 @@ use app\components\Highlight as HL;
    <div class="container">
     <div class="row">
         <div class="col-md-3">
-            <a href="/tour" class="thumbnail"><img src="<?= Yii::getAlias('@web/image/front/tour.png') ?>" title="Quick Start" alt="Quick Start"/></a>
+            <div class="thumb">
+                <div class="overlay"></div>
+                <div class="more-link">
+                    <a href="<?= Url::to(['tour']) ?>">The Yii Tour</a>
+                </div>
+                <a href="<?= Url::to(['tour']) ?>" class="thumbnail"><img src="<?= Yii::getAlias('@web/image/front/tour.png') ?>" title="Quick Start" alt="Quick Start"/></a>
+            </div>
         </div>
         <div class="col-md-9">
             <h2>Quick Start</h2>
