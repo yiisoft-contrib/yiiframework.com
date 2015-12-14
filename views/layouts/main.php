@@ -95,7 +95,7 @@ use yii\widgets\Menu;
                         'dropDownCaret' => '<span class="caret"></span>',
                         'items' => [
                             ['label' => 'Learn', 'items' => [
-                                ['label' => '<i class="fa fa-angle-double-right"></i> Getting started', 'url' => ['site/tour']],
+                                ['label' => '<i class="fa fa-angle-double-right"></i> The Yii Tour', 'url' => ['site/tour']],
                                 ['label' => '<i class="fa fa-angle-double-right"></i> The Definitive Guide', 'url' => ['guide/entry']],
                                 ['label' => '<i class="fa fa-angle-double-right"></i> API Documentation', 'url' => ['api/index', 'version' => reset(Yii::$app->params['api.versions'])]],
                                 ['label' => '<i class="fa fa-angle-double-right"></i> Wiki', 'url' => ['site/wiki']],

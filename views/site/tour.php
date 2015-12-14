@@ -4,7 +4,7 @@ use yii\bootstrap\Modal;
 use app\components\Highlight as HL;
 
 /* @var $this yii\web\View */
-$this->title = 'Getting started';
+$this->title = 'The Yii Tour';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="container main">

@@ -14,7 +14,7 @@
                                         Yii has all you need to work with both relational and noSQL databases. Both powerful ActiveRecord and convenient query builder are there to help.
                                     </p>
                                     <div class="btn btn-primary" role="button">
-                                        Read more
+                                        Read More
                                     </div>
                                 </div>
                             </div>
@@ -34,7 +34,7 @@
                                         Gii is there to generate code for you. An error page will show you enough details to fix error in no time.
                                     </p>
                                     <div class="btn btn-warning" role="button">
-                                        Read more
+                                        Check it Out
                                     </div>
                                 </div>
                             </div>
@@ -54,7 +54,7 @@
                                         development, collaborative wiki and much more.
                                     </p>
                                     <div class="btn btn-success" role="button">
-                                        Read more
+                                        Join Us
                                     </div>
                                 </div>
                             </div>
