@@ -91,7 +91,9 @@ return [
     'guide-pdf.languages' => [
         // language => latex babel language
         'en' => 'british',
+        'es' => 'spanish',
         'de' => 'ngerman',
+        'pt-br' => 'brazilian',
         'ru' => 'russian',
     ],
 
