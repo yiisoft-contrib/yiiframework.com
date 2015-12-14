@@ -30,6 +30,6 @@ JUMBOTRON - START
 
     <?= $this->render('_poweredby'); ?>
 
-    <?= $this->render('_testimonials'); ?>
+    <? //= $this->render('_testimonials'); ?>
 
 </div> <!-- class site-index -->
