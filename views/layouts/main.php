@@ -129,24 +129,9 @@ use yii\widgets\Menu;
                         ],
                     ]);
 ?>
-                <div class="col-sm-3 col-md-3 visible-lg">
+                <div class="nav navbar-nav navbar-right">
                     <?= $this->render('_searchForm'); ?>
                 </div>
-                <ul class="nav navbar-nav navbar-right hidden-lg">
-                    <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown"><b>Search</b> <span class="caret"></span></a>
-                        <ul id="search-dp" class="dropdown-menu">
-                            <li>
-                                <div class="row">
-                                    <div class="col-md-3">
-                                        <?= $this->render('_searchForm'); ?>
-                                    </div>
-                                </div>
-                            </li>
-                        </ul>
-                    </li>
-                </ul>
-            </div>
         </div>
     </header>
     <!-- ==========================
