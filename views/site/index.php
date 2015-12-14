@@ -22,6 +22,8 @@ JUMBOTRON - START
     </div>
 </div>
 
+    <? //= $this->render('_features'); ?>
+
     <?= $this->render('_quickstart'); ?>
 
     <?= $this->render('_recentnews'); ?>
