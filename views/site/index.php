@@ -22,7 +22,7 @@ JUMBOTRON - START
     </div>
 </div>
 
-    <?php //echo $this->render('_features'); ?>
+    <?php echo $this->render('_features'); ?>
 
     <?= $this->render('_quickstart'); ?>
 
