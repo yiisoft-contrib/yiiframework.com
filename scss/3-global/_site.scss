@@ -4,6 +4,8 @@
 -------------------------------------------------- */
 $footer-height: 210px;
 $footer-height-mobile: 275px;
+
+// Sticky footer - turned off (for now)
 /*
 html {
   position: relative;
@@ -150,7 +152,7 @@ footer {
 	}
 	background-color: $footer-background-color;
 	color: $footer-color;
-	margin-top: 4em;
+	margin-top: 2em;
   padding-top: 2em;
   .fa {
     margin-right: 0.5em;
