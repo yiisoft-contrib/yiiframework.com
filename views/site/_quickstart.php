@@ -1,5 +1,6 @@
 <?php
 use yii\helpers\Html;
+use yii\helpers\Url;
 use app\components\Highlight as HL;
 ?>
 <!-- start of quickstart -->
@@ -22,13 +23,13 @@ composer create-project --prefer-dist yiisoft/yii2-app-basic basic
             </p>
             <div class="row">
                 <div class="col-md-3">
-                    <a class="btn btn-block btn-primary" href="/tour" role="button">Take the Yii Tour</a>
+                    <a class="btn btn-block btn-primary" href="<?= Url::to(['tour']) ?>" role="button">Take the Yii Tour</a>
                 </div>
                 <div class="col-md-3">
-                    <a class="btn btn-block btn-warning" href="/doc/guide" role="button">Read the Guide</a>
+                    <a class="btn btn-block btn-warning" href="<?= Url::to(['doc/guide']) ?>" role="button">Read the Guide</a>
                 </div>
                 <div class="col-md-3">
-                    <a class="btn btn-block btn-success" href="#" role="button">Join the Community</a>
+                    <a class="btn btn-block btn-success" href="<?= Url::to(['/forum']) ?>" role="button">Join the Community</a>
                 </div>
             </div>
         </div>

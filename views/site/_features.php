@@ -1,10 +1,13 @@
+<?php
+use yii\helpers\Url;
+?>
 <!-- start of features -->
 <div class="yii-feature-wrapper">
     <div class="yii-features">
         <div class="container">
             <div class="row equalizer">
                 <div class="col-xs-12 col-sm-6 col-lg-4">
-                    <a href="#" title="Title Link" class="features-link">
+                    <a href="<?= Url::to(['doc/guide/2.0/en/db-dao']) ?>" title="Read More" class="features-link">
                         <div class="feature-box blue">
                             <div class="icon">
                                 <div class="image"><i class="fa fa-database"></i></div>
@@ -23,7 +26,7 @@
                     </a>
                 </div>
                 <div class="col-xs-12 col-sm-6 col-lg-4">
-                    <a href="#" title="Title Link" class="features-link">
+                    <a href="<?= Url::to(['doc/guide/2.0/en/start-gii']) ?>" title="Check it Out" class="features-link">
                         <div class="feature-box yellow">
                             <div class="icon">
                                 <div class="image"><i class="fa fa-wrench"></i></div>
@@ -43,7 +46,7 @@
                     </a>
                 </div>
                 <div class="col-xs-12 col-sm-6 col-lg-4">
-                    <a href="#" title="Title Link" class="features-link">
+                    <a href="<?= Url::to(['/forum']) ?>" title="Join Us" class="features-link">
                         <div class="feature-box green">
                             <div class="icon">
                                 <div class="image"><i class="fa fa-thumbs-up"></i></div>
