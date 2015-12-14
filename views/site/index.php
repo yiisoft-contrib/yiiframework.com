@@ -22,7 +22,7 @@ JUMBOTRON - START
     </div>
 </div>
 
-    <? //= $this->render('_features'); ?>
+    <?php //echo $this->render('_features'); ?>
 
     <?= $this->render('_quickstart'); ?>
 
@@ -32,6 +32,6 @@ JUMBOTRON - START
 
     <?= $this->render('_poweredby'); ?>
 
-    <? //= $this->render('_testimonials'); ?>
+    <?php //echo $this->render('_testimonials'); ?>
 
 </div> <!-- class site-index -->
