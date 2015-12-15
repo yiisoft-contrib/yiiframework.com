@@ -61,6 +61,9 @@ use yii\widgets\Menu;
 	<header class="navbar navbar-inverse navbar-static">
     	<div class="container">
             <div id="main-nav-head" class="navbar-header">
+                <a href="<?= Yii::$app->homeUrl ?>" class="navbar-brand">
+                    Yii Framework
+                </a>
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse"><i class="fa fa-inverse fa-bars"></i></button>
             </div>
             <div class="navbar-collapse collapse navbar-right">
