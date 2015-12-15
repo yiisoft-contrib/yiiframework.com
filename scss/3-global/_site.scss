@@ -19,16 +19,6 @@
   padding-left: 2px;
 }
 
-.navbar-header {
-		position: relative;
-		top: -6px;
-    .nudge-left {
-      position: relative;
-      right: 6px;
-      font-size: 24px;
-    }
-}
-
 ::selection {
     text-shadow: none !important;
     background: $selection-color;
@@ -40,7 +30,6 @@
     background: $selection-color;
     color: $gray-darker;
 }
-
 
 footer {
 	background-color: $footer-background-color;
