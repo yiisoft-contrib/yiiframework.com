@@ -1,3 +1,14 @@
+.guide-header-wrap {
+  background-color: #247BA0;
+}
+.guide-header {
+  color: white;
+  .guide-headline {
+    position: relative;
+    top: -12px;
+  }
+}
+
 
 .guide-content {
   .broken-link {
@@ -204,5 +215,40 @@ div.image {
   .nav .nav>.active>a {
     padding-left: 28px;
     font-weight: 500;
+  }
+}
+.fixed {
+  position: fixed;
+  top: 200px;
+  right: 2px;
+}
+.affix-top {
+  position: fixed;
+  top: 150px;
+  background-color: $top-header-background-color;
+  z-index: 300;
+  right: 2px;
+}
+
+.affix {
+  position: fixed;
+  top: 150px;
+  right: 2px;
+  background-color: $top-header-background-color;
+  z-index: 300;
+}
+
+.affix-bottom {
+  top: 50px;
+}
+
+.topmost {
+  z-index: 300;
+  overflow: hidden;
+  right: -12px;
+  opacity: 0.4;
+  &:hover {
+    opacity: 0.9;
+    right: 1px;
   }
 }

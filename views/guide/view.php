@@ -30,25 +30,52 @@ $this->registerJs('
   });
 ');
 ?>
-<div class="container-fluid guide-view lang-<?= $guide->language ?>" xmlns="http://www.w3.org/1999/html">
-    <div class="row">
-        <div class="col-xs-12 col-sm-8 col-sm-offset-4 col-md-9 col-md-offset-3 col-lg-10 col-lg-offset-2">
-            <h1 class="guide-headline"><?= Html::encode($guide->title) ?></h1>
+<div class="guide-header-wrap">
+    <div class="container guide-header lang-<?= $guide->language ?>" xmlns="http://www.w3.org/1999/html">
+        <div class="row">
+            <div class="col-md-6">
+                <h1 class="guide-headline"><?= Html::encode($guide->title) ?></h1>
+            </div>
+            <div class="col-md-6">
+                <?= $this->render('_versions.php', ['guide' => $guide, 'section' => $section]) ?>
+            </div>
+              <p class="pull-right visible-xs topmost">
+                <button type="button" title="Toggle Side-Nav" class="btn btn-primary btn-xs" data-toggle="offcanvas">Nav</button>
+              </p>
         </div>
-          <p class="pull-right visible-xs topmost">
-            <button type="button" title="Toggle Side-Nav" class="btn btn-primary btn-xs" data-toggle="offcanvas">Nav</button>
-          </p>
     </div>
+</div>
+<div class="visible-lg fixed">
+    <nav id="scrollnav" data-spy="affix" data-offset-top="60">
+        <ul class="nav hidden-xs hidden-sm">
+            <?php
+                echo '<li>' . Html::a($section->getTitle(), '#' . (isset($section->headings['id']) ? $section->headings['id'] : '')) . '</li>';
+                $sections = isset($section->headings['sections']) ? $section->headings['sections'] : [];
+                foreach($sections as $heading) {
+                    echo '<li>' . Html::a(Html::encode(strip_tags($heading['title'])), '#' . $heading['id']);
+                    if (isset($heading['sub'])) {
+                        echo '<ul class="nav">';
+                        foreach ($heading['sub'] as $subheading) {
+                            echo '<li class="subheading">' . Html::a(Html::encode(strip_tags($subheading['title'])), '#' . $subheading['id']) . '</li>';
+                        }
+                        echo "</ul>";
+                    }
+                    echo '</li>';
+                }
+            ?>
+        </ul>
+    </nav>
+</div>
+<div class="container guide-view lang-<?= $guide->language ?>" xmlns="http://www.w3.org/1999/html">
 
     <div class="row row-offcanvas">
-        <div class="col-sm-4 col-md-3 col-lg-2">
-            <?= $this->render('_versions.php', ['guide' => $guide, 'section' => $section]) ?>
+        <div class="col-sm-4 col-md-3 col-lg-3">
             <?= SideNav::widget(['id' => 'guide-navigation', 'items' => $nav, 'options' => ['class' => 'sidenav-offcanvas']]) ?>
         </div>
-        <div class="col-sm-8 col-md-9 col-lg-10" role="main" id="top">
+        <div class="col-sm-6 col-md-9 col-lg-9" role="main" id="top">
 
             <div class="row">
-            <div class="col-md-12 col-lg-10">
+            <div class="col-md-12 col-lg-12">
                 <div class="guide-content content">
                 <?php if (!empty($missingTranslation)): ?>
                     <div class="alert alert-warning">
@@ -83,29 +110,7 @@ $this->registerJs('
                 <?php endif; ?>
             </div>
             </div>
-            <div class="col-lg-2 visible-lg">
-                <nav id="scrollnav" data-spy="affix" data-offset-top="60">
-                    <ul class="nav hidden-xs hidden-sm">
-                        <?php
-                            echo '<li>' . Html::a($section->getTitle(), '#' . (isset($section->headings['id']) ? $section->headings['id'] : '')) . '</li>';
-                            $sections = isset($section->headings['sections']) ? $section->headings['sections'] : [];
-                            foreach($sections as $heading) {
-                                echo '<li>' . Html::a(Html::encode(strip_tags($heading['title'])), '#' . $heading['id']);
-                                if (isset($heading['sub'])) {
-                                    echo '<ul class="nav">';
-                                    foreach ($heading['sub'] as $subheading) {
-                                        echo '<li class="subheading">' . Html::a(Html::encode(strip_tags($subheading['title'])), '#' . $subheading['id']) . '</li>';
-                                    }
-                                    echo "</ul>";
-                                }
-                                echo '</li>';
-                            }
-                        ?>
-                    </ul>
-                </nav>
             </div>
-            </div>
-
             <?= \app\components\Comments::widget([
                 'objectType' => 'guide',
                 'objectId' => $section->name. '-' . $guide->version,

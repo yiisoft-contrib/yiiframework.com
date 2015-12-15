@@ -10,14 +10,15 @@ $blocksPerRow = 4;
 ?>
 <div class="container guide-view lang-<?= $guide->language ?>">
     <div class="row">
-        <div class="col-xs-7 col-sm-8">
+        <div class="col-md-6">
             <h1 class="guide-headline"><?= Html::encode($guide->title) ?></h1>
         </div>
-        <div class="col-xs-5 col-sm-4">
+        <div class="col-md-6">
             <?= $this->render('_versions.php', ['guide' => $guide, 'section' => null]) ?>
         </div>
     </div>
-
+</div>
+<div class="container guide-view lang-<?= $guide->language ?>">
     <div class="guide-content content">
 
         <div class="row">
