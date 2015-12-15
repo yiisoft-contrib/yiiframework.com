@@ -35,7 +35,6 @@ This file is part of the
 // Vendors
 @import "2-vendors/bootstrap";
 @import "../vendor/bower/font-awesome/scss/font-awesome";
-@import "2-vendors/roxie/creative-brands";
 @import "2-vendors/scrollup";
 @import "../vendor/bower/bootstrap-social/bootstrap-social.scss";
 @import "../vendor/scrivo/highlight.php/styles/railscasts";
@@ -66,10 +65,4 @@ This file is part of the
 // it can be split up.
 // Indivual elements gets placed here
 // in subdirectories named after the page
-@import "6-elements/index/jumbotron";
-@import "6-elements/index/features";
-@import "6-elements/index/showcase";
-@import "6-elements/index/testimonials";
-@import "6-elements/index/quickstart";
-@import "6-elements/index/bookscommunity";
-@import "6-elements/index/recentnews";
+//@import "6-elements/index/jumbotron";
