@@ -45,8 +45,6 @@ use yii\widgets\Menu;
     <?= Html::cssFile(YII_DEBUG ? '@web/css/all.css' : '@web/css/all.min.css?v=' . filemtime(Yii::getAlias('@webroot/css/all.min.css'))) ?>
     <?php $this->registerJs('yiiBaseUrl = ' . \yii\helpers\Json::htmlEncode(Yii::$app->request->getBaseUrl()), \yii\web\View::POS_HEAD); ?>
 
-    <link href='https://fonts.googleapis.com/css?family=Josefin+Sans:600|Open+Sans' rel='stylesheet' type='text/css'>
-
     <title><?php if (!empty($this->title)): ?><?= Html::encode($this->title) ?> - <?php endif?>Yii PHP Framework</title>
     <?php $this->head() ?>
 </head>
@@ -77,11 +75,11 @@ use yii\widgets\Menu;
                         'activateItems' => false,
                         'dropDownCaret' => '<span class="caret"></span>',
                         'items' => [
-                            ['label' => 'Guide', 'url' => ['guide/entry'], 'options' => ['title' => 'The Definitive Guide']],
+                            ['label' => 'Guide', 'url' => ['guide/entry'], 'options' => ['title' => 'The Definitive Guide to Yii']],
                             ['label' => 'API', 'url' => ['api/index', 'version' => reset(Yii::$app->params['api.versions'])], 'options' => ['title' => 'API Documentation']],
                             ['label' => 'Wiki', 'url' => ['site/wiki'], 'options' => ['title' => 'Community Wiki']],
                             ['label' => 'Extensions', 'options' => ['title' => 'Not Yet']],
-                            ['label' => 'More...', 'items' => [
+                            ['label' => 'More&hellip;', 'options' => ['title' => 'Yii Quick Links'], 'items' => [
                                 ['label' => 'Learn', 'options' => ['class' => 'separator']],
                                 ['label' => '<i class="fa fa-angle-double-right"></i> The Yii Tour', 'url' => ['site/tour']],
                                 ['label' => '<i class="fa fa-angle-double-right"></i> Books', 'url' => ['site/books']],

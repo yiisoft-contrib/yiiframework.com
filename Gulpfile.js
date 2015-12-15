@@ -69,7 +69,12 @@ gulp.task('images', function() {
 
 // Copy fonts
 gulp.task('fonts', function() {
-  return gulp.src(['vendor/bower/bootstrap-sass/assets/fonts/bootstrap/*','vendor/bower/font-awesome/fonts/*'])
+  return gulp.src(
+    [   'vendor/bower/bootstrap-sass/assets/fonts/bootstrap/*',
+        'vendor/bower/font-awesome/fonts/*',
+        'scss/2-vendors/ptsans-bold/fonts/*',
+        'scss/2-vendors/ptsans-regular/fonts/*'
+    ])
     .pipe(gulp.dest('./web/fonts'));
 });
 

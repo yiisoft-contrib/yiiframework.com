@@ -43,15 +43,14 @@ $state-info-text:                $yii-blue;
 $state-warning-text:             $yii-yellow;
 
 
-//$font-family-sans-serif: 'Open Sans', sans-serif;
-//$font-family-base: $font-family-sans-serif;
+$font-family-sans-serif: 'pt_sansregular', sans-serif;
+$font-family-base: $font-family-sans-serif;
 
-//$headings-font-family: 'Josefin Sans', sans-serif;
-//$headings-color:          $gray;
+$bold-headings-font-family: 'pt_sansbold', sans-serif;
+//$headings-color: $gray;
 
 $icon-font-path: "/fonts/";
-
-$font-size-base:          16px;
+$font-size-base: 16px;
 
 
 //== Scaffolding

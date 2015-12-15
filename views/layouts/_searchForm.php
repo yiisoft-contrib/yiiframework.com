@@ -18,7 +18,6 @@ if ($version = Yii::$app->request->get('version')) {
         <div class="form-group nospace">
             <div class="input-group">
                 <input type="text" class="form-control" autofocus id="search" name="q" placeholder="Search" autocomplete="off" value="<?= property_exists($this->context, 'searchQuery') ? Html::encode($this->context->searchQuery) : '' ?>">
-                <span class="input-group-btn"><?= Html::submitButton('<i class="fa fa-search"></i>', ['class' => "btn btn-primary"]) ?></span>
             </div>
         </div>
         <div id="search-resultbox"></div>
