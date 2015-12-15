@@ -1,7 +1,8 @@
+$eshill-blue: rgba(30, 104, 135, 1);//1E6887
+
 $yii-yellow: rgb(223, 110, 53);//#DF6E35
-$yii-blue: rgb(51, 121, 178);//#3379B2
+$yii-blue: $eshill-blue;//#3379B2
 $yii-green: rgb(140, 188, 76);//#8CBC4C
-$eshill-blue: #1E6887;
 
 .yii-green {
     color: $yii-green;

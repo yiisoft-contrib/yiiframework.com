@@ -1,29 +1,3 @@
-nav.version-selector {
-
-  @media (max-width: $container-tablet) {
-    position: relative;
-    top: -18px;
-    .btn-group {
-      right: 8px;
-    }
-	}
-  .btn-group button {
-    font-size: 10px;
-  }
-
-  .btn-group ul.dropdown-menu {
-
-    background-color: #FFFFFF;
-    border:0;
-    border-bottom:3px solid $yii-yellow;
-    @include border-top-radius(0);
-    @include border-bottom-radius(0);
-    box-shadow: 0 2px 6px rgba(0,0,0,0.2);
-    margin:0;
-    padding:0;
-    min-width: 260px;
-  }
-}
 
 .guide-content {
   .broken-link {
@@ -36,12 +10,6 @@ nav.version-selector {
     margin-bottom: 15px;
     padding-top: 10px;
     border-top: 1px solid #ccc;
-  }
-
-  /* move the toggle button to the left and give it some breathing room */
-  .sidenav-toggle {
-    float: left;
-    margin-left: 10px;
   }
 }
 

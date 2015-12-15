@@ -29,8 +29,6 @@ This file is part of the
 @import "1-common/colors";
 @import "1-common/bootstrap-variables";
 @import "1-common/fixes";
-@import "1-common/parallax";
-@import "1-common/thumb";
 
 // Vendors
 @import "2-vendors/bootstrap";
@@ -43,6 +41,8 @@ This file is part of the
 @import "3-global/content";
 @import "3-global/site";
 @import "3-global/highlight"; // guide code highlight
+@import "3-global/yii-list-group";
+
 
 // Components that could be used in multiple pages
 @import "4-components/comments";
