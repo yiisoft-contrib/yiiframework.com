@@ -1,12 +1,19 @@
 .guide-header-wrap {
-  background-color: #247BA0;
+  background-color: $eshill-light-blue;
+  //height: $beefy-header-height;
+  margin-bottom: 12px;
 }
 .guide-header {
   font-family: $bold-headings-font-family;
+  h1 {
+    font-size: 35px;
+  }
   color: white;
-  .guide-headline {
+  padding-top: 22px;
+  padding-bottom: 22px;
+  .version-selector{
     position: relative;
-    top: -12px;
+    top: 28px;
   }
 }
 
@@ -220,12 +227,12 @@ div.image {
 }
 .fixed {
   position: fixed;
-  top: 200px;
+  top: 220px;
   right: 2px;
 }
 .affix-top {
   position: fixed;
-  top: 150px;
+  top: 220px;
   background-color: $top-header-background-color;
   z-index: 300;
   right: 2px;
@@ -233,7 +240,7 @@ div.image {
 
 .affix {
   position: fixed;
-  top: 150px;
+  top: 220px;
   right: 2px;
   background-color: $top-header-background-color;
   z-index: 300;

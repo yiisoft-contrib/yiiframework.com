@@ -56,7 +56,7 @@ use yii\widgets\Menu;
 	<!-- ==========================
     	HEADER - START
     =========================== -->
-	<header class="navbar navbar-inverse navbar-static">
+	<header class="navbar navbar-inverse navbar-static" id="top">
     	<div class="container">
             <div id="main-nav-head" class="navbar-header">
                 <a href="<?= Yii::$app->homeUrl ?>" class="navbar-brand">

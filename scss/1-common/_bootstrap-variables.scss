@@ -71,10 +71,11 @@ $link-hover-color:      darken($link-color, 15%);
 $link-hover-decoration: underline;
 
 
-//$navbar-height: 40px;
+$navbar-height: 80px;
 $navbar-inverse-link-active-bg:             transparent;
 $navbar-inverse-border:                     transparent;
 $navbar-border-radius: 0;
+$navbar-margin-bottom: 0;
 
 $well-bg: rgb(245, 245, 245);//#F5F5F5
 
@@ -86,11 +87,11 @@ $grid-float-breakpoint: 1200px;
 
 $grid-gutter-width:         30px;
 
-$container-tablet:             (720px + $grid-gutter-width);
+$container-tablet:             (740px + $grid-gutter-width);
 //** For `$screen-sm-min` and up.
 $container-sm:                 $container-tablet;
 // Large screen / wide desktop
-$container-large-desktop:      (1240px + $grid-gutter-width);
+$container-large-desktop:      (940px + $grid-gutter-width);
 //** For `$screen-lg-min` and up.
 $container-lg:                 $container-large-desktop;
 

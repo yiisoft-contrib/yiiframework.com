@@ -72,7 +72,7 @@ $this->registerJs('
         <div class="col-sm-4 col-md-3 col-lg-3">
             <?= SideNav::widget(['id' => 'guide-navigation', 'items' => $nav, 'options' => ['class' => 'sidenav-offcanvas']]) ?>
         </div>
-        <div class="col-sm-6 col-md-9 col-lg-9" role="main" id="top">
+        <div class="col-sm-6 col-md-9 col-lg-9" role="main">
 
             <div class="row">
             <div class="col-md-12 col-lg-12">
