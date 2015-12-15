@@ -1,27 +1,5 @@
 // Global styles
 
-/* Sticky footer styles
--------------------------------------------------- */
-$footer-height: 210px;
-$footer-height-mobile: 275px;
-
-// Sticky footer - turned off (for now)
-/*
-html {
-  position: relative;
-  min-height: 100%;
-}
-body {
-  // Margin bottom by footer height
-  margin-bottom: $footer-height;
-	@media (max-width: $grid-float-breakpoint) {
-		margin-bottom: $footer-height-mobile;
-	}
-  @media (max-width: $container-tablet) {
-		margin-bottom: $footer-height-mobile + 100px;
-	}
-}
-*/
 // External links
 /* long version */
 .main a[href^="http://"]:not([href*="yiiframwork.com"]):after,
@@ -39,75 +17,6 @@ body {
   font-size: 0.8em;
   content: $fa-var-external-link;
   padding-left: 2px;
-}
-
-
-// style navbar search form-control
-form#search-form.navbar-form div.form-group.nospace div.input-group input#search.form-control {
-   background-color: darken($navbar-inverse-bg, 1%);
-   border-color: $navbar-inverse-bg;
-   color: $navbar-inverse-link-color;
-   width: 400px !important;
- }
-
-// style the search control placeholders
-form#search-form.navbar-form div.form-group.nospace div.input-group input#search.form-control::-webkit-input-placeholder {
-  color: $hero-framework-color;
-}
-form#search-form.navbar-form div.form-group.nospace div.input-group input#search.form-control:-moz-placeholder { /* Firefox 18- */
-  color: $hero-framework-color;
-}
-form#search-form.navbar-form div.form-group.nospace div.input-group input#search.form-control::-moz-placeholder {  /* Firefox 19+ */
-  color: $hero-framework-color;
-}
-form#search-form.navbar-form div.form-group.nospace div.input-group input#search.form-control::-ms-input-placeholder {
-  color: $hero-framework-color;
-}
-
-/*
- HEADER first line
-*/
-.top-header {
-	background-color: $top-header-background-color;
-	height:45px;
-    .header-item {
-        display:inline-block;
-        margin-right:20px;
-        font-size:12px;
-				position:relative;
-        top:-2px;
-    }
-
-    .header-item a {
-      color: $top-header-color;
-    }
-
-    .header-item i {
-        margin-right:7px;
-        color: $top-header-color;
-    }
-
-    .brands {
-        display:inline-block;
-        position:relative;
-        top:-5px;
-				left: -24px;
-    }
-}
-/*
- HEADER navigation
-*/
-header.navbar.navbar-inverse {
-	padding: 0;
-	margin: 0;
-}
-
-.navbar {
-	position: relative;
-	top: -25px;
-	@media (max-width: $grid-float-breakpoint) {
-		top: 0px;
-	}
 }
 
 .navbar-header {
@@ -134,29 +43,7 @@ header.navbar.navbar-inverse {
 
 
 footer {
-  //position: absolute;
-  font-size: smaller;
-  .footer-header {
-    font-family: $headings-font-family;
-    font-size: 26px;
-    margin-bottom: 0.5em;
-  }
-  bottom: 0;
-  width: 100%;
-  height: $footer-height;
-	@media (max-width: $grid-float-breakpoint) {
-		height: $footer-height-mobile;
-	}
-  @media (max-width: $container-tablet) {
-		height: $footer-height-mobile + 100px;
-	}
 	background-color: $footer-background-color;
-	color: $footer-color;
-	margin-top: 2em;
-  padding-top: 2em;
-  .fa {
-    margin-right: 0.5em;
-  }
 }
 
 .logo-download-light {
