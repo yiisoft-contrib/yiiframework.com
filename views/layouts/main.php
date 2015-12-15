@@ -77,6 +77,7 @@ use yii\widgets\Menu;
                         'items' => [
                             ['label' => 'Guide', 'url' => ['guide/entry'], 'options' => ['title' => 'The Definitive Guide to Yii']],
                             ['label' => 'API', 'url' => ['api/index', 'version' => reset(Yii::$app->params['api.versions'])], 'options' => ['title' => 'API Documentation']],
+                            ['label' => 'Forum', 'url' => ['/forum'], 'options' => ['title' => 'Community Forum']],
                             ['label' => 'Wiki', 'url' => ['site/wiki'], 'options' => ['title' => 'Community Wiki']],
                             ['label' => 'Extensions', 'options' => ['title' => 'Not Yet']],
                             ['label' => 'More&hellip;', 'options' => ['title' => 'Yii Quick Links'], 'items' => [

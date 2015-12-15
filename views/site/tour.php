@@ -7,15 +7,16 @@ use app\components\Highlight as HL;
 $this->title = 'The Yii Tour';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="container main">
-    <div class="row">
-        <div class="col-lg-12">
-            <h1><?= Html::encode($this->title) ?></h1>
-            <p>
-                Introductory notes here..
-            </p>
+<div class="guide-header-wrap">
+    <div class="container guide-header">
+        <div class="row">
+            <div class="col-md-12">
+                <h1 class="guide-headline"><?= Html::encode($this->title) ?></h1>
+            </div>
         </div>
     </div>
+</div>
+<div class="container-fluid main" style="max-width:1300px;">
     <div class="timeline">
         <div class="row">
             <div class="visible-sm visible-xs">
