@@ -31,6 +31,12 @@
     color: $gray-darker;
 }
 
+// lift the logo up a bit
+.navbar-header {
+		position: relative;
+		top: -13px;
+}
+
 // style navbar search form-control
 form#search-form.navbar-form div.form-group.nospace div.input-group input#search.form-control {
    width: 160px !important;
