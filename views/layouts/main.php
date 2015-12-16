@@ -111,15 +111,8 @@ use yii\widgets\Menu;
 
     <?= $content ?>
 
-    <div class="footer-wrapper">
-        <footer>
-        	<div class="container">
-            	<div class="row">
-                    This is the mighy footer
-                </div>
-        </footer>
-    </div>
-    </div>
+    <?= $this->render('_footer'); ?>
+
     <?= Html::jsFile(YII_DEBUG ? '@web/js/all.js' : '@web/js/all.min.js?v=' . filemtime(Yii::getAlias('@webroot/js/all.min.js'))) ?>
 <?php $this->endBody() ?>
 </body>
