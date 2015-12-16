@@ -43,10 +43,6 @@ form#search-form.navbar-form div.form-group.nospace div.input-group input#search
    border-radius: $btn-border-radius-base;
  }
 
-footer {
-	background-color: $footer-background-color;
-}
-
 .logo-download-light {
   background-color: $top-header-background-color;
 }
@@ -62,4 +58,5 @@ footer {
   background-color: $footer-background-color;
   color: $footer-color;
   min-height: 428px;
+  margin-top: 24px;
 }

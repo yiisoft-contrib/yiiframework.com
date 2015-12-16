@@ -1,5 +1,6 @@
 <?php
 use yii\helpers\Html;
+use yii\helpers\Url;
 
 /* @var $this yii\web\View */
 $this->title = 'Report an Issue';
@@ -15,7 +16,7 @@ $this->params['breadcrumbs'][] = $this->title;
             itself, or in one of the official extensions.</p>
 
             <p>If you want to report a <b>security issue</b>, please consider contacting us privately so we can fix it before the details
-            of the issue are publicly disclosed. <?= Html::a('Go to the contact page!', ['site/contact']) ?></p>
+            of the issue are publicly disclosed. <?= Html::a('Go to the contact page!', Url::to(['site/contact'])) ?></p>
 
             <h3>Yii 2.0</h3>
 

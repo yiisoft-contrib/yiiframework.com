@@ -1,6 +1,7 @@
 <?php
 
 use yii\helpers\Html;
+use yii\helpers\Url;
 
 /* @var $this yii\web\View */
 /* @var $name string */
@@ -17,12 +18,12 @@ $this->title = $name;
             <div class="alert alert-warning">
                 <?= nl2br(Html::encode($message)) ?>
             </div>
-
+            <img src="<?= Yii::getAlias('@web/image/404.jpg') ?>" alt="Something is wrong: <?= Html::encode($this->title) ?>" />
             <p>
                 The above error occurred while the Web server was processing your request.
             </p>
             <p>
-                Please contact us if you think this is a server error. Thank you.
+                Please <?= Html::a('contact us', Url::to(['site/contact'])) ?> if you think this is a server error. Thank you.
             </p>
 
         </div>
