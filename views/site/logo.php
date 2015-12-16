@@ -17,48 +17,6 @@ $this->params['breadcrumbs'][] = $this->title;
                Derivative Works 3.0 Unported License</a>.
            </p>
 
-            <div>
-                <h2>Logo for dark backgrounds</h2>
-                <div class="logo-download-dark">
-                    <img src="<?= Yii::getAlias('@web/image/logo80.png') ?>" title="Yii logo for dark backgrounds" alt="Yii logo for dark backgrounds">
-                     transparent background, 725 x 157 px.
-                </div>
-
-                <p>Download: <a href="<?= Yii::getAlias('@web/files/logo/yii.eps') ?>">SVG version</a>, <a href="<?= Yii::getAlias('@web/files/logo/yii.png') ?>">PNG version</a></p>
-            </div>
-            <div>
-                <h2>Logo for light backgrounds</h2>
-                <div class="logo-download-light">
-                    <img src="<?= Yii::getAlias('@web/image/logo-light-80.png') ?>" title="Yii logo for light backgrounds" alt="Yii logo for light backgrounds">
-                     transparent background, 725 x 157 px.
-                </div>
-                <p>Download: <a href="<?= Yii::getAlias('@web/files/logo/yii-bw.eps') ?>">SVG version</a>, <a href="<?= Yii::getAlias('@web/files/logo/yii-bw.png') ?>">PNG version</a></p>
-            </div>
-            <div>
-                <h2>Colorful Logo for dark backgrounds</h2>
-                <div class="logo-download-dark">
-                    <img src="<?= Yii::getAlias('@web/image/logo-colour-80.png') ?>" title="Yii logo for dark backgrounds" alt="Yii logo for dark backgrounds with colored petal">
-                     transparent background, 725 x 157 px.
-                </div>
-
-                <p>Download: <a href="<?= Yii::getAlias('@web/files/logo/yii.eps') ?>">SVG version</a>, <a href="<?= Yii::getAlias('@web/files/logo/yii.png') ?>">PNG version</a></p>
-            </div>
-            <div>
-                <h2>Colorful Logo for light backgrounds</h2>
-                <div class="logo-download-light">
-                    <img src="<?= Yii::getAlias('@web/image/logo-colour-light-80.png') ?>" title="Yii logo for light backgrounds" alt="Yii logo for light backgrounds with colored petal">
-                     transparent background, 725 x 157 px.
-                </div>
-                <p>Download: <a href="<?= Yii::getAlias('@web/files/logo/yii-bw.eps') ?>">SVG version</a>, <a href="<?= Yii::getAlias('@web/files/logo/yii-bw.png') ?>">PNG version</a></p>
-            </div>
-            <div>
-                <h2>Grey Logo</h2>
-                <div class="logo-download-light">
-                    <img src="<?= Yii::getAlias('@web/image/logo-grey-80.png') ?>" title="Yii logo for light backgrounds" alt="Yii logo in grey scale">
-                     transparent background, 725 x 157 px.
-                </div>
-                <p>Download: <a href="<?= Yii::getAlias('@web/files/logo/yii-bw.eps') ?>">SVG version</a>, <a href="<?= Yii::getAlias('@web/files/logo/yii-bw.png') ?>">PNG version</a></p>
-            </div>
         </div>
     </div>
 </div>
