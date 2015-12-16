@@ -406,10 +406,10 @@ $( document ).ready(function() {
 });
 ");
 ?>
+<?= $this->render('_heading.php', ['title' => $this->title]) ?>
 <div class="container">
     <div class="row">
         <div>
-            <h1><?= Html::encode($this->title) ?></h1>
             <section id="about-team">
                 <div class="container">
                     <div class="row">

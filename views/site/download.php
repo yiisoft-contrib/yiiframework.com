@@ -5,11 +5,10 @@ use yii\helpers\Html;
 $this->title = 'Install Yii';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
+<?= $this->render('_heading.php', ['title' => $this->title]) ?>
 <div class="container">
     <div class="row">
         <div class="content site-license">
-            <h1><?= Html::encode($this->title) ?></h1>
-
             <p>Yii is an open source project released under the terms of the <?= Html::a('BSD License', ['site/license']) ?>. This means that you can use Yii for free to develop either open-source or proprietary Web applications.</p>
 
             <p>Currently there are two major versions of Yii: <a href="#yii2">2.0</a> and <a href="#yii1">1.1</a>.</p>

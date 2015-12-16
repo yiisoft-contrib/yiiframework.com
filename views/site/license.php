@@ -5,11 +5,10 @@ use yii\helpers\Html;
 $this->title = 'License';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
+<?= $this->render('_heading.php', ['title' => $this->title]) ?>
 <div class="container">
     <div class="row">
         <div class="content site-license">
-            <h1><?= Html::encode($this->title) ?></h1>
-
             <h2 id="framework">License of Yii Framework</h2>
 
             <div class="row">

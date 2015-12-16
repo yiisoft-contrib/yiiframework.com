@@ -11,6 +11,7 @@ use yii\captcha\Captcha;
 $this->title = 'Contact';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
+<?= $this->render('_heading.php', ['title' => $this->title]) ?>
 <div class="container">
     <div class="omb_login">
         <h1 class="omb_authTitle"><?= Html::encode($this->title) ?></h1>

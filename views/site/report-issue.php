@@ -5,11 +5,10 @@ use yii\helpers\Html;
 $this->title = 'Report an Issue';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
+<?= $this->render('_heading.php', ['title' => $this->title]) ?>
 <div class="container">
     <div class="row">
         <div class="content">
-            <h1><?= Html::encode($this->title) ?></h1>
-
             <p>Thanks for helping to make Yii better!</p>
 
             <p>To ensure the issue gets reported to the right place, you need to find out whether it is an issue in the Yii framework

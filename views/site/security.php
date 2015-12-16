@@ -5,11 +5,10 @@ use yii\helpers\Html;
 $this->title = 'Report a Security Issue';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
+<?= $this->render('_heading.php', ['title' => $this->title]) ?>
 <div class="container">
     <div class="row">
         <div class="content">
-            <h1><?= Html::encode($this->title) ?></h1>
-
             <p>Please use the <?php echo Html::a('contact us form', ['site/contact']) ?> to report to us any security issue
                 you find in Yii. DO NOT use the issue tracker or discuss it in the public forum as it will cause more damage
                 than help.</p>

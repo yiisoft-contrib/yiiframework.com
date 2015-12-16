@@ -5,11 +5,10 @@ use yii\helpers\Html;
 $this->title = 'Resources';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
+<?= $this->render('_heading.php', ['title' => $this->title]) ?>
 <div class="container">
     <div class="row">
         <div class="content">
-            <h1><?= Html::encode($this->title) ?></h1>
-
             <p>There are various resources that aren't part of official Yii website but are very helpful. Check these out.</p>
 
             <h2>News</h2>

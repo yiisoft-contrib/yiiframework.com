@@ -5,11 +5,10 @@ use yii\helpers\Html;
 $this->title = 'Terms of Service';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
+<?= $this->render('_heading.php', ['title' => $this->title]) ?>
 <div class="container">
     <div class="row">
         <div class="content">
-            <h1><?= Html::encode($this->title) ?></h1>
-
             <p>This web site is owned and operated by <a href="http://www.yiisoft.com/">Yii Software LLC</a>, (YiiSoft or we).
                We have created this page to share with you our privacy and legal policies regarding to your personal information
                and the contents on this site.</p>

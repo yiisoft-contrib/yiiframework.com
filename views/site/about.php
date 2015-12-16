@@ -7,11 +7,10 @@ $this->params['breadcrumbs'][] = $this->title;
 
 // TODO this is duplicate content with the guide
 ?>
+<?= $this->render('_heading.php', ['title' => $this->title]) ?>
 <div class="container">
     <div class="row">
         <div class="content">
-            <h1><?= Html::encode($this->title) ?></h1>
-
             <p>Yii is a high-performance modern PHP framework best for developing both web applications and APIs.</p>
 
             <p>Yii helps developers build complex applications and deliver them on-time.</p>

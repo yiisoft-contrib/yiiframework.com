@@ -5,11 +5,10 @@ use yii\helpers\Html;
 $this->title = 'Live Chat';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
+<?= $this->render('_heading.php', ['title' => $this->title]) ?>
 <div class="container">
     <div class="row">
         <div class="site-chat content">
-            <h1><?= Html::encode($this->title) ?></h1>
-
             <p>
                 We have an IRC channel on the irc.freenode.org server related to yii framework. Simply click on
                 <a href="irc://irc.freenode.net/yii">#yii on the Freenode irc network</a> if you have an IRC client.
