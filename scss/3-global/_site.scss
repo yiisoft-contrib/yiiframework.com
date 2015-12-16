@@ -57,3 +57,9 @@ footer {
 }
 
 $beefy-header-height: 120px;
+
+footer {
+  background-color: $footer-background-color;
+  color: $footer-color;
+  min-height: 428px;
+}

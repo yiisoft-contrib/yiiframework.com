@@ -10,7 +10,7 @@ $this->params['breadcrumbs'][] = $this->title;
 <?= $this->render('_heading.php', ['title' => $this->title]) ?>
 <div class="container">
     <div class="row">
-        <div class="content">
+        <div class="content two-columns">
             <p>Yii is a high-performance modern PHP framework best for developing both web applications and APIs.</p>
 
             <p>Yii helps developers build complex applications and deliver them on-time.</p>

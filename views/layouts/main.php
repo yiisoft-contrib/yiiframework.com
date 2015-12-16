@@ -53,9 +53,6 @@ use yii\widgets\Menu;
 
     <div id="page-wrapper" class="">
 
-	<!-- ==========================
-    	HEADER - START
-    =========================== -->
 	<header class="navbar navbar-inverse navbar-static" id="top">
     	<div class="container">
             <div id="main-nav-head" class="navbar-header">
@@ -111,24 +108,18 @@ use yii\widgets\Menu;
                 </div>
         </div>
     </header>
-    <!-- ==========================
-    	HEADER - END
-    =========================== -->
 
     <?= $content ?>
 
-    <!-- ==========================
-    	FOOTER - START
-    =========================== -->
-    <footer>
-    	<div class="container">
-        	<div class="row">
-        </div>
-    </footer>
+    <div class="footer-wrapper">
+        <footer>
+        	<div class="container">
+            	<div class="row">
+                    This is the mighy footer
+                </div>
+        </footer>
     </div>
-   	<!-- ==========================
-    	JS
-    =========================== -->
+    </div>
     <?= Html::jsFile(YII_DEBUG ? '@web/js/all.js' : '@web/js/all.min.js?v=' . filemtime(Yii::getAlias('@webroot/js/all.min.js'))) ?>
 <?php $this->endBody() ?>
 </body>
