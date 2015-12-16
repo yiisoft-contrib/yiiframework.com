@@ -31,6 +31,12 @@
     color: $gray-darker;
 }
 
+// style navbar search form-control
+form#search-form.navbar-form div.form-group.nospace div.input-group input#search.form-control {
+   width: 160px !important;
+   border-radius: $btn-border-radius-base;
+ }
+
 footer {
 	background-color: $footer-background-color;
 }

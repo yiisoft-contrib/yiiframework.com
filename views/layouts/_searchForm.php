@@ -17,7 +17,7 @@ if ($version = Yii::$app->request->get('version')) {
         <?= Html::beginForm($url, 'get', ['id' => 'search-form', 'class' => 'navbar-form']) ?>
         <div class="form-group nospace">
             <div class="input-group">
-                <input type="text" class="form-control" autofocus id="search" name="q" placeholder="Search" autocomplete="off" value="<?= property_exists($this->context, 'searchQuery') ? Html::encode($this->context->searchQuery) : '' ?>">
+                <input type="text" class="form-control" autofocus id="search" name="q" placeholder="Search&hellip;" autocomplete="off" value="<?= property_exists($this->context, 'searchQuery') ? Html::encode($this->context->searchQuery) : '' ?>">
             </div>
         </div>
         <div id="search-resultbox"></div>
