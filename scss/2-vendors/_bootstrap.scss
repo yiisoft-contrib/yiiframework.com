@@ -24,12 +24,14 @@
 
 // Components
 @import "../../vendor/bower/bootstrap-sass/assets/stylesheets/bootstrap/component-animations";
-@import "../../vendor/bower/bootstrap-sass/assets/stylesheets/bootstrap/dropdowns";
-@import "../../vendor/bower/bootstrap-sass/assets/stylesheets/bootstrap/button-groups";
+//@import "../../vendor/bower/bootstrap-sass/assets/stylesheets/bootstrap/dropdowns";
+@import "custom-bootstrap/yii-dropdowns";
+//@import "../../vendor/bower/bootstrap-sass/assets/stylesheets/bootstrap/button-groups";
+@import "custom-bootstrap/yii-button-groups";
 @import "../../vendor/bower/bootstrap-sass/assets/stylesheets/bootstrap/input-groups";
 @import "../../vendor/bower/bootstrap-sass/assets/stylesheets/bootstrap/navs";
 @import "../../vendor/bower/bootstrap-sass/assets/stylesheets/bootstrap/navbar";
-//@import "../../vendor/bower/bootstrap-sass/assets/stylesheets/bootstrap/breadcrumbs";
+@import "../../vendor/bower/bootstrap-sass/assets/stylesheets/bootstrap/breadcrumbs";
 @import "../../vendor/bower/bootstrap-sass/assets/stylesheets/bootstrap/pagination";
 @import "../../vendor/bower/bootstrap-sass/assets/stylesheets/bootstrap/pager";
 @import "../../vendor/bower/bootstrap-sass/assets/stylesheets/bootstrap/labels";
@@ -39,8 +41,10 @@
 @import "../../vendor/bower/bootstrap-sass/assets/stylesheets/bootstrap/alerts";
 //@import "../../vendor/bower/bootstrap-sass/assets/stylesheets/bootstrap/progress-bars";
 @import "../../vendor/bower/bootstrap-sass/assets/stylesheets/bootstrap/media";
-@import "../../vendor/bower/bootstrap-sass/assets/stylesheets/bootstrap/list-group";
-@import "../../vendor/bower/bootstrap-sass/assets/stylesheets/bootstrap/panels";
+//@import "../../vendor/bower/bootstrap-sass/assets/stylesheets/bootstrap/list-group";
+@import "custom-bootstrap/yii-list-group";
+//@import "../../vendor/bower/bootstrap-sass/assets/stylesheets/bootstrap/panels";
+@import "custom-bootstrap/yii-panels";
 //@import "../../vendor/bower/bootstrap-sass/assets/stylesheets/bootstrap/responsive-embed";
 @import "../../vendor/bower/bootstrap-sass/assets/stylesheets/bootstrap/wells";
 @import "../../vendor/bower/bootstrap-sass/assets/stylesheets/bootstrap/close";

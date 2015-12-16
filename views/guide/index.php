@@ -32,7 +32,7 @@ $blocksPerRow = 4;
         }
     ?>
         <div class="col-sm-6 col-md-3">
-            <div class="panel panel-primary">
+            <div class="panel">
                 <div class="panel-heading">
                     <h3 class="panel-title"><?= Html::encode($chapterTitle) ?></h3>
                 </div>
