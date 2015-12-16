@@ -1,5 +1,8 @@
 <div class="wikijumbo">
-    <img src="/image/yiicoding.jpg" />
+    <div class="image-wrap">
+      <div class="regular" style="background:url(./image/yiicoding.jpg) no-repeat center center; background-size: cover;"></div>
+      <div class="blurred" style="background:url(./image/yiicoding-blurred.jpg) no-repeat center center; background-size: cover;"></div>
+    </div>
     <div class="text-slogan">
         <span>Yii Wiki</span>
     </div>
