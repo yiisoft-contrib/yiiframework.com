@@ -1,7 +1,15 @@
-//TODO: clean up this mess :)
+// colours used throughout
 
 $eshill-blue: rgba(30, 104, 135, 1);//#1E6887
 $eshill-light-blue: rgba(36, 123, 160, 1);//#247BA0
+
+$eshill-red: rgba(255, 22, 84, 1);//#FF1654
+$eshill-green: rgba(68, 179, 160, 1);//#44B3A0
+$eshill-yellow: rgba(243, 255, 189, 1);//#F3FFBD
+
+$eshill-section-bgcolor: rgba(235, 241, 242, 1);//#EBF1F2
+$eshill-header-color: rgba(77, 77, 77, 1);//#4D4D4D
+
 
 $yii-yellow: rgb(223, 110, 53);//#DF6E35
 $yii-blue: $eshill-blue;//old Yii blue: #3379B2
@@ -20,40 +28,11 @@ $yii-green: rgb(140, 188, 76);//#8CBC4C
 }
 
 
-// duplicated from Bootstrap variables
-$gray-base:              #000;
-$gray-darker:            lighten($gray-base, 13.5%); // #222
-$gray-dark:              lighten($gray-base, 20%);   // #333
-$gray:                   lighten($gray-base, 33.5%); // #555
-$gray-light:             lighten($gray-base, 46.7%); // #777
-$gray-lighter:           lighten($gray-base, 93.5%); // #eee
-
-
-// Global colors
-
-$selection-color: rgb(255, 242, 168);//#fff2a8
+$selection-color: $eshill-yellow;
 
 $footer-color: rgb(207, 207, 207);
 $footer-background-color: rgba(77, 77, 77, 1);//#4D4D4D
 
-$top-header-background-color: rgb(245, 245, 245);//#F0F0F0
-$top-header-color: rgb(68, 68, 68);//#444
-
-$content-background-color: rgb(254, 254, 254);//#FEFEFE
-
-$page-element-background-color: rgb(232, 232, 232);//#E8E8E8
-
-// The word 'framwork' after 'yii' on Jumbotron header
-$hero-framework-color: rgb(207, 207, 207);//#cfcfcf//#888;
-
-.framework-gray {
-  color: $hero-framework-color;
-  font-weight: 300;
-}
-
 $jumbotron-background: transparent;
-//$jumbotron-background: #247BA0;
-//$jumbotron-header-color: rgb(255, 255, 255);//#fff
 $jumbotron-header-color: rgb(51, 51, 51);//#333
-//$jumbotron-features-color: rgb(238, 238, 238);//#eee
 $jumbotron-features-color: rgb(51, 51, 51);//#333
