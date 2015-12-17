@@ -1,18 +1,11 @@
 .wikijumbo {
     background-color: #303133;
-/*    margin-top: -25px;
-    @media (max-width: $grid-float-breakpoint) {
-      margin-top: 16px;
-  	}*/
     overflow: visible;
-    //position: relative;
     width: 100%;
     margin-bottom: 2em;
 }
 
 .wikijumbo img {
-    //position: relative;
-    //top: -1em;
     margin: 0;
     width: 100%;
     padding: 0;
@@ -35,4 +28,28 @@
     font-weight: 700;
     margin-left: 4%;
     color: $eshill-section-bgcolor;
+}
+
+/* Blur Effect */
+
+.image-wrap {
+  position: relative;
+  height: 454px;
+  overflow: hidden
+}
+
+.regular,
+.blurred {
+  position: absolute;
+  width: 100%;
+  min-height: 454px;
+  -webkit-transform: translate3d(0, 0, 0);
+}
+
+.regular {
+  opacity: 1;
+}
+
+.blurred {
+  opacity: 0;
 }

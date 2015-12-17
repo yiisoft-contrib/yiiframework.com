@@ -24,27 +24,3 @@ hr.eshill-dashed {
   margin-right: auto;
   width: 40%;
 }
-
-/* Blur Effect */
-
-.image-wrap {
-  position: relative;
-  height: 600px;
-  overflow: hidden
-}
-
-.regular,
-.blurred {
-  position: absolute;
-  width: 100%;
-  min-height: 600px;
-  -webkit-transform: translate3d(0, 0, 0);
-}
-
-.regular {
-  opacity: 1;
-}
-
-.blurred {
-  opacity: 0;
-}
