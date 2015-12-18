@@ -1,6 +1,8 @@
 <?php
 /* @var $this yii\web\View */
 ?>
+<?= $this->render('partials/index/_jumbo'); ?>
+
 <div class="site-index" style="background-color: #1E6887;">
     <div class="container">
         <div class="row">

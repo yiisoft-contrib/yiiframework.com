@@ -10,9 +10,9 @@
   content: $fa-var-external-link;
   padding-left: 2px;
 }
-.content a[href^="http://"]:not([href*="yiiframwork.com"]):after,
-.content a[href^="https://"]:not([href*="yiiframwork.com"]):not([href="https://github.com/yiisoft/yii2"]):after,
-.content a[href^="//"]:not([href*="yiiframwork.com"]):after {
+.guide-content p a[href^="http://"]:not([href*="yiiframwork.com"]):after,
+.guide-content p a[href^="https://"]:not([href*="yiiframwork.com"]):not([href="https://github.com/yiisoft/yii2"]):after,
+.guide-content p a[href^="//"]:not([href*="yiiframwork.com"]):after {
   font-family: 'fontawesome';
   font-size: 0.8em;
   content: $fa-var-external-link;
