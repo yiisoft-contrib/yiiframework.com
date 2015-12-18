@@ -13,7 +13,10 @@
 
 .wikijumbo .wiki-header {
     right: 50%;
-    margin-top: -8%;
+    @media (max-width: $grid-float-breakpoint) {
+      margin-top: -8vh;
+    }
+    margin-top: -16vh;
     padding: 0;
     position: relative;
     text-align: right;
@@ -35,6 +38,14 @@
 
 .image-wrap {
   position: relative;
+  @media (max-width: $grid-float-breakpoint) {
+    height: 227px;
+    max-height: 227px;
+  }
+  @media (max-width: $container-tablet) {
+    height: 144px;
+    max-height: 144px;
+  }
   height: 454px;
   max-height: 454px;
   overflow: hidden
@@ -45,6 +56,12 @@
   position: absolute;
   width: 100%;
   min-height: 454px;
+  @media (max-width: $grid-float-breakpoint) {
+    min-height: 227px;
+  }
+  @media (max-width: $container-tablet) {
+    min-height: 144px;
+  }
   -webkit-transform: translate3d(0, 0, 0);
 }
 

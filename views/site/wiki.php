@@ -8,7 +8,7 @@ $this->registerJs("
 
       // Loop elements with class 'blurred'
       r.each(function() {
-        elView = wh - ($(this).offset().top - dt + 700);
+        elView = wh - ($(this).offset().top - dt + ($('.wikijumbo').height()*2));
         if (elView > 0) { // Top of DIV above bottom of window.
           opacity = 1 / (wh + $(this).height()) * elView * 8
           if (opacity < 1) // Bottom of DIV below top of window.
@@ -19,7 +19,7 @@ $this->registerJs("
 
     $(document).bind('scroll', fader);
 
-    var jumboHeight = 454;
+    var jumboHeight = $('.image-wrap').height();
     function parallax(){
         var scrolled = $(window).scrollTop();
         $('.image-wrap').css('height', (jumboHeight-scrolled) + 'px');
