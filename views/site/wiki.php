@@ -1,3 +1,33 @@
+<?php
+$this->registerJs("
+    function fader() {
+      var r = $('.blurred'),
+        wh = $(window).height(),
+        dt = $(document).scrollTop(),
+        elView, opacity;
+
+      // Loop elements with class 'blurred'
+      r.each(function() {
+        elView = wh - ($(this).offset().top - dt + 700);
+        if (elView > 0) { // Top of DIV above bottom of window.
+          opacity = 1 / (wh + $(this).height()) * elView * 4
+          if (opacity < 1) // Bottom of DIV below top of window.
+            $(this).css('opacity', opacity);
+        }
+      });
+    }
+
+    $(document).bind('scroll', fader);
+
+    var jumboHeight = $('.wikijumbo').outerHeight();
+    function parallax(){
+        var scrolled = $(window).scrollTop();
+        $('.image-wrap').css('height', (jumboHeight-scrolled) + 'px');
+    }
+    $(document).bind('scroll', parallax);
+
+");
+?>
 <div class="wikijumbo">
     <div class="image-wrap">
       <div class="regular" style="background:url(./image/yiicoding.jpg) no-repeat center center; background-size: cover;"></div>

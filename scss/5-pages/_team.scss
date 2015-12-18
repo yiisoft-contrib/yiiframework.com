@@ -42,7 +42,34 @@
   border: 5px solid rgba(0,0,30,0.8);
 }
 
-
+.team-content {
+  color: $eshill-section-bgcolor;
+  h3 {
+    small {
+      color: $eshill-section-bgcolor;
+    }
+  }
+  .links-inline {
+    list-style: none;
+    li {
+      display: inline;
+      a {
+        color: $darkish-text;
+        padding: 3px;
+      }
+    }
+    li.github {
+      a:hover {
+        color: #222;
+      }
+    }
+    li.twitter {
+      a:hover {
+        color: #2795e9;
+      }
+    }
+  }
+}
 
 
 .profile {

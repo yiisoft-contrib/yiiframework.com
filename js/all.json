@@ -7,5 +7,6 @@
     "vendor/yiisoft/yii2/assets/yii.activeForm.js",
     "vendor/yiisoft/yii2-authclient/assets/authchoice.js",
     "js/custom.js",
+    "js/blur.js",
     "js/search.js"
 ]
