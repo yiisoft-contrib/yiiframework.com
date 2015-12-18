@@ -2,19 +2,17 @@
   margin-top: 2em;
 }
 .sitejumbo {
-  position: relative;
-  top: -120px;
-  height: 1155px;
+  height: 900px;
   background-color: $eshill-light-blue;
   background-repeat: no-repeat;
   background-position: right;
   background-image: url(../image/yiibackground.png);
+  background-height: 100%;
+  overflow: hidden;
   background-blend-mode: soft-light;
   z-index: -1;
   .container {
     padding: 1em;
-    position: relative;
-    top: 140px;
     color: $eshill-section-bgcolor;
     h1 {
       font-size: 48px;
