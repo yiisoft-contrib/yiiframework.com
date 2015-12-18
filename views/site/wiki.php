@@ -10,7 +10,7 @@ $this->registerJs("
       r.each(function() {
         elView = wh - ($(this).offset().top - dt + 700);
         if (elView > 0) { // Top of DIV above bottom of window.
-          opacity = 1 / (wh + $(this).height()) * elView * 4
+          opacity = 1 / (wh + $(this).height()) * elView * 8
           if (opacity < 1) // Bottom of DIV below top of window.
             $(this).css('opacity', opacity);
         }
@@ -19,7 +19,7 @@ $this->registerJs("
 
     $(document).bind('scroll', fader);
 
-    var jumboHeight = $('.wikijumbo').outerHeight();
+    var jumboHeight = 454;
     function parallax(){
         var scrolled = $(window).scrollTop();
         $('.image-wrap').css('height', (jumboHeight-scrolled) + 'px');
@@ -33,8 +33,11 @@ $this->registerJs("
       <div class="regular" style="background:url(./image/yiicoding.jpg) no-repeat center center; background-size: cover;"></div>
       <div class="blurred" style="background:url(./image/yiicoding-blurred.jpg) no-repeat center center; background-size: cover;"></div>
     </div>
-    <div class="text-slogan">
-        <span>Yii Wiki</span>
+    <div class="wiki-header">
+        <h1>Yii Wiki</h1>
+        <p>
+            Tutorials and Snippets
+        </p>
     </div>
 </div>
 <div class="container">
