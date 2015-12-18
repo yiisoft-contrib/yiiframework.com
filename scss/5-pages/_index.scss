@@ -3,23 +3,22 @@
 }
 .sitejumbo {
 	position: relative;
+	top: -120px;
 	height: 1155px;
 	background-color: $eshill-light-blue;
-}
-.sitejumbo:after {
-	background: url(../image/yiibackground.png);
-	background-position: right;
 	background-repeat: no-repeat;
-	content: "";
-  opacity: 0.5;
-  top: 0;
-  left: 0;
-  bottom: 0;
-  right: 0;
-  position: absolute;
-  z-index: 1;
-}
-.row {
-	z-index: 100;
-	opacity: 1;
+	background-position: right;
+	background-image: url(../image/yiibackground.png);
+	background-blend-mode: soft-light;
+	z-index: -1;
+	.container {
+		padding: 1em;
+		position: relative;
+		top: 140px;
+		color: $eshill-section-bgcolor;
+		h1 {
+			font-size: 48px;
+			font-family: $bold-headings-font-family;
+		}
+	}
 }
