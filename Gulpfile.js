@@ -73,7 +73,8 @@ gulp.task('fonts', function() {
     [   'vendor/bower/bootstrap-sass/assets/fonts/bootstrap/*',
         'vendor/bower/font-awesome/fonts/*',
         'scss/2-vendors/ptsans-bold/fonts/*',
-        'scss/2-vendors/ptsans-regular/fonts/*'
+        'scss/2-vendors/ptsans-regular/fonts/*',
+        'scss/2-vendors/sourcecodepro/fonts/*'
     ])
     .pipe(gulp.dest('./web/fonts'));
 });
