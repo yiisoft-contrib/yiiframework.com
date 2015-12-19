@@ -15,7 +15,7 @@
 
                 <?= $this->render('footer/_socialcopyright'); ?>
 
+            </div>
         </div>
     </footer>
-    </div>
 </div>
