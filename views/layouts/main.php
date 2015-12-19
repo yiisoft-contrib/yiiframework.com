@@ -114,6 +114,9 @@ use yii\widgets\Menu;
     <?= $this->render('partials/_footer'); ?>
 
     <?= Html::jsFile(YII_DEBUG ? '@web/js/all.js' : '@web/js/all.min.js?v=' . filemtime(Yii::getAlias('@webroot/js/all.min.js'))) ?>
+    
+    </div> <!-- close the id="page-wrapper" -->
+    
 <?php $this->endBody() ?>
 </body>
 </html>
