@@ -13,7 +13,10 @@
    inkscape:version="0.91 r13725"
    sodipodi:docname="logo4site.svg"
    width="725"
-   height="157">
+   height="157"
+   inkscape:export-filename="/home/jacmoe/webdev/vhosts/yiisoft/web/image/logo.png"
+   inkscape:export-xdpi="90"
+   inkscape:export-ydpi="90">
   <metadata
      id="metadata18">
     <rdf:RDF>
@@ -22,7 +25,7 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title></dc:title>
+        <dc:title />
       </cc:Work>
     </rdf:RDF>
   </metadata>
@@ -42,8 +45,8 @@
      id="namedview14"
      showgrid="false"
      inkscape:zoom="0.76496097"
-     inkscape:cx="333.37326"
-     inkscape:cy="-19.52867"
+     inkscape:cx="395.46793"
+     inkscape:cy="-44.366539"
      inkscape:window-x="144"
      inkscape:window-y="83"
      inkscape:window-maximized="0"
