@@ -34,7 +34,7 @@ $this->registerJs('
     <div class="container guide-header lang-<?= $guide->language ?>" xmlns="http://www.w3.org/1999/html">
         <div class="row">
             <div class="col-md-6">
-                <h1 class="guide-headline"><?= Html::encode($guide->title) ?></h1>
+                <div class="guide-headline h1"><?= Html::encode($guide->title) ?></div>
             </div>
             <div class="col-md-6">
                 <?= $this->render('partials/_versions.php', ['guide' => $guide, 'section' => $section]) ?>
