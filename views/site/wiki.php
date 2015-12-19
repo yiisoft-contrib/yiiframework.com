@@ -19,11 +19,12 @@ function fader() {
 }
 $(document).bind('scroll', fader);
 
-
 (function() {
     $(window).scroll(function() {
         var oVal;
-        oVal = $(window).scrollTop() / 240;
+        oVal = $(window).scrollTop() / 300;
+        var scrolled = $(window).scrollTop();
+        $('.blurImg').css('height', ($('.wiki-header').height() - scrolled - 120) + 'px');
         return $('.blur').css('opacity', oVal);
     });
 
