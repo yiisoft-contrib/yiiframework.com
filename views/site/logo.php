@@ -5,7 +5,7 @@ use yii\helpers\Html;
 $this->title = 'Official Logos';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<?= $this->render('_heading.php', ['title' => $this->title]) ?>
+<?= $this->render('partials/common/_heading.php', ['title' => $this->title]) ?>
 <div class="container">
     <div class="row">
         <div class="content">

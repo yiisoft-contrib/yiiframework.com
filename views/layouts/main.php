@@ -104,14 +104,14 @@ use yii\widgets\Menu;
                     ]);
 ?>
                 <div class="nav navbar-nav navbar-right">
-                    <?= $this->render('_searchForm'); ?>
+                    <?= $this->render('partials/_searchForm'); ?>
                 </div>
         </div>
     </header>
 
     <?= $content ?>
 
-    <?= $this->render('_footer'); ?>
+    <?= $this->render('partials/_footer'); ?>
 
     <?= Html::jsFile(YII_DEBUG ? '@web/js/all.js' : '@web/js/all.min.js?v=' . filemtime(Yii::getAlias('@webroot/js/all.min.js'))) ?>
 <?php $this->endBody() ?>

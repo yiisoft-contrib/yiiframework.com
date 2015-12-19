@@ -7,7 +7,7 @@ use app\components\Highlight as HL;
 $this->title = 'The Yii Tour';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<?= $this->render('_heading.php', ['title' => $this->title]) ?>
+<?= $this->render('partials/common/_heading.php', ['title' => $this->title]) ?>
 <div class="container-fluid main" style="max-width:1300px;">
     <div class="timeline">
         <div class="row">

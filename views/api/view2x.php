@@ -18,7 +18,7 @@ if (!empty($title)) {
 
 <div class="container api-content">
 	<?= strtr($content, [
-        '<!-- YII_VERSION_SELECTOR -->' => $this->render('_versions.php', compact('version', 'versions', 'section')),
+        '<!-- YII_VERSION_SELECTOR -->' => $this->render('partials/_versions.php', compact('version', 'versions', 'section')),
         '<!-- YII_DOWNLOAD_OPTIONS -->' => '<p>You may download the API documentation for offline use: </p><ul>'
             . '<li>' . Html::a("yii-docs-{$version}-en.tar.bz2", ['guide/download', 'version' => $version, 'language' => 'en', 'format' => 'tar.bz2']) . '</li>'
             . '<li>' . Html::a("yii-docs-{$version}-en.tar.gz", ['guide/download', 'version' => $version, 'language' => 'en', 'format' => 'tar.gz']) . '</li>'

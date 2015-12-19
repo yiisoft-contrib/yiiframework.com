@@ -12,7 +12,7 @@ $this->title = 'Search results for &quot;' . Html::encode($queryString) . '&quot
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="container">
-    <?= $this->render('_versions', [
+    <?= $this->render('partials/_versions', [
         'searchQuery' => $queryString,
         'language' => $language,
         'version' => $version,
@@ -22,7 +22,7 @@ $this->params['breadcrumbs'][] = $this->title;
 
         <?= \yii\widgets\ListView::widget([
             'dataProvider' => $results,
-            'itemView' => '_result',
+            'itemView' => 'partials/_result',
         ]) ?>
 
     </div>

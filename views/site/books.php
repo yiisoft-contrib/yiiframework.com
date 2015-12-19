@@ -5,7 +5,7 @@ use yii\helpers\Html;
 $this->title = 'Books';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<?= $this->render('_heading.php', ['title' => $this->title]) ?>
+<?= $this->render('partials/common/_heading.php', ['title' => $this->title]) ?>
 <div class="container">
     <div class="row">
         <div class="site-books">
@@ -16,7 +16,7 @@ $this->params['breadcrumbs'][] = $this->title;
     </div>
     <div class="row">
     <?php foreach($books2 as $book): ?>
-        <?= $this->render('_book', ['book' => $book]); ?>
+        <?= $this->render('partials/books/_book', ['book' => $book]); ?>
     <?php endforeach ?>
     </div>
     <div class="row">
@@ -24,7 +24,7 @@ $this->params['breadcrumbs'][] = $this->title;
     </div>
     <div class="row">
         <?php foreach($books1 as $book): ?>
-            <?= $this->render('_book', ['book' => $book]); ?>
+            <?= $this->render('partials/books/_book', ['book' => $book]); ?>
         <?php endforeach ?>
     </div>
 </div>

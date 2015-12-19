@@ -10,7 +10,7 @@ use yii\helpers\Url;
 
 $this->title = $name;
 ?>
-<?= $this->render('_heading.php', ['title' => $this->title]) ?>
+<?= $this->render('partials/common/_heading.php', ['title' => $this->title]) ?>
 <div class="container">
     <div class="row">
         <div class="site-error content">
@@ -18,7 +18,9 @@ $this->title = $name;
             <div class="alert alert-warning">
                 <?= nl2br(Html::encode($message)) ?>
             </div>
-            <img src="<?= Yii::getAlias('@web/image/404.jpg') ?>" alt="Something is wrong: <?= Html::encode($this->title) ?>" />
+            <img src="<?= Yii::getAlias('@web/image/404.jpg') ?>"
+                alt="Something is wrong: <?= Html::encode($this->title) ?>"
+                class="img-responsive" />
             <p>
                 The above error occurred while the Web server was processing your request.
             </p>

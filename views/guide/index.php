@@ -15,7 +15,7 @@ $blocksPerRow = 4;
                 <h1 class="guide-headline"><?= Html::encode($guide->title) ?></h1>
             </div>
             <div class="col-md-6">
-                <?= $this->render('_versions.php', ['guide' => $guide, 'section' => null]) ?>
+                <?= $this->render('partials/_versions.php', ['guide' => $guide, 'section' => null]) ?>
             </div>
         </div>
     </div>

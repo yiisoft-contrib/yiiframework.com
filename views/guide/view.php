@@ -37,7 +37,7 @@ $this->registerJs('
                 <h1 class="guide-headline"><?= Html::encode($guide->title) ?></h1>
             </div>
             <div class="col-md-6">
-                <?= $this->render('_versions.php', ['guide' => $guide, 'section' => $section]) ?>
+                <?= $this->render('partials/_versions.php', ['guide' => $guide, 'section' => $section]) ?>
             </div>
               <p class="pull-right visible-xs topmost">
                 <button type="button" title="Toggle Side-Nav" class="btn btn-primary btn-xs" data-toggle="offcanvas">Nav</button>
