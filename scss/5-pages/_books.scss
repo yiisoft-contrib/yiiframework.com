@@ -9,22 +9,24 @@
     color: $gray;
     padding-bottom: 1em;
   }
-  .green {
-    background-color: $yii-green;
+  img {
+    margin-bottom: 1em;
+  }
+  %level {
     color: #fff;
     padding: 1em;
     margin-top: 1em;
+  }
+  .green {
+    @extend %level;
+    background-color: $yii-green;
   }
   .red {
+    @extend %level;
     background-color: $yii-yellow;
-    color: #fff;
-    padding: 1em;
-    margin-top: 1em;
   }
   .blue {
+    @extend %level;
     background-color: $yii-blue;
-    color: #fff;
-    padding: 1em;
-    margin-top: 1em;
   }
 }
