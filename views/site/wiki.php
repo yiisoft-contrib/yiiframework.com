@@ -10,7 +10,7 @@ function fader() {
     r.each(function() {
         elView  = wh - ($(this).offset().top - dt + 300);
         if (elView > 0) { // Top of DIV above bottom of window.
-            opacity = 1 / (wh + $(this).height()) * elView * 3
+            opacity = 1 / (wh + $(this).height()) * elView * 6
             if (opacity < 1) // Bottom of DIV below top of window.
             $(this).css('opacity', opacity);
         }
@@ -22,7 +22,7 @@ $(document).bind('scroll', fader);
 (function() {
     $(window).scroll(function() {
         var oVal;
-        oVal = $(window).scrollTop() / 300;
+        oVal = $(window).scrollTop() / 150;
         var scrolled = $(window).scrollTop();
         $('.blurImg').css('height', ($('.wiki-header').height() - scrolled - 120) + 'px');
         return $('.blur').css('opacity', oVal);
