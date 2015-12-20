@@ -1,6 +1,7 @@
 //
 // Button groups
 // --------------------------------------------------
+$yii-btn-border-radius-base: 6px;
 
 // Make the div behave like a button
 .btn-group,
@@ -75,11 +76,15 @@
 .btn-group > .btn-group:first-child:not(:last-child) {
   > .btn:last-child,
   > .dropdown-toggle {
+    @include border-top-radius($yii-btn-border-radius-base);
     @include border-right-radius(0);
+    @include border-bottom-radius(0);
   }
 }
 .btn-group > .btn-group:last-child:not(:first-child) > .btn:first-child {
+  @include border-top-radius($yii-btn-border-radius-base);
   @include border-left-radius(0);
+  @include border-bottom-radius(0);
 }
 
 // On active and open, don't show outline
@@ -173,12 +178,12 @@
     border-radius: 0;
   }
   &:first-child:not(:last-child) {
-    @include border-top-radius($btn-border-radius-base);
+    @include border-top-radius($yii-btn-border-radius-base);
     @include border-bottom-radius(0);
   }
   &:last-child:not(:first-child) {
     @include border-top-radius(0);
-    @include border-bottom-radius($btn-border-radius-base);
+    @include border-bottom-radius($yii-btn-border-radius-base);
   }
 }
 .btn-group-vertical > .btn-group:not(:first-child):not(:last-child) > .btn {
@@ -210,7 +215,7 @@
     width: 1%;
   }
   > .btn-group .btn {
-    width: 100%;
+    width: 99.5%;
   }
 
   > .btn-group .dropdown-menu {

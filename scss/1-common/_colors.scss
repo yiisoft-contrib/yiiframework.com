@@ -1,20 +1,22 @@
 // colours used throughout
 
-$eshill-blue: rgba(30, 104, 135, 1);//#1E6887
-$eshill-light-blue: rgba(36, 123, 160, 1);//#247BA0
-$eshill-light-blue-trans: rgba(36, 123, 160, 0.5);//#247BA0
+$eshill-blue: rgb(30, 104, 135);//#1E6887
+$eshill-light-blue: rgb(36, 123, 160);//#247BA0
 
-$eshill-red: rgba(255, 22, 84, 1);//#FF1654
-$eshill-green: rgba(68, 179, 160, 1);//#44B3A0
-$eshill-yellow: rgba(243, 255, 189, 1);//#F3FFBD
+$eshill-red: rgb(255, 22, 84);//#FF1654
+$eshill-green: rgb(68, 179, 160);//#44B3A0
+$eshill-yellow: rgb(243, 255, 189);//#F3FFBD
 
-$eshill-section-bgcolor: rgba(235, 241, 242, 1);//#EBF1F2
-$eshill-header-color: rgba(77, 77, 77, 1);//#4D4D4D
+$version-buttons: rgb(178, 219, 191);//#B2DBBF
+$guide-listgroup-bg-active: rgb(112, 193, 179);//#70C1B3
+
+$eshill-section-bgcolor: rgb(235, 241, 242);//#EBF1F2
+$eshill-header-color: rgb(77, 77, 77);//#4D4D4D
 
 
 $yii-yellow: rgb(223, 110, 53);//#DF6E35
 $yii-blue: $eshill-blue;//old Yii blue: #3379B2
-$yii-green: rgb(140, 188, 76);//#8CBC4C
+$yii-green: rgb(140, 188, 76);//#8CBC4C//#B2DBBF
 
 .yii-green {
     color: $yii-green;
@@ -34,7 +36,7 @@ $selection-color: $eshill-yellow;
 $darkish-text: rgb(51, 51, 51);
 
 $footer-color: rgb(207, 207, 207);
-$footer-background-color: rgba(77, 77, 77, 1);//#4D4D4D
+$footer-background-color: rgb(77, 77, 77);//#4D4D4D
 
 $jumbotron-background: transparent;
 $jumbotron-header-color: rgb(51, 51, 51);//#333

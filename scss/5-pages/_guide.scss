@@ -4,8 +4,8 @@
   margin-bottom: 12px;
 }
 .guide-header {
-  font-family: $bold-headings-font-family;
   h1 {
+    font-family: $bold-headings-font-family;
     font-size: 35px;
   }
   color: white;
@@ -13,7 +13,11 @@
   padding-bottom: 22px;
   .version-selector{
     position: relative;
-    top: 28px;
+    bottom: -61px;
+    .btn {
+      @include button-variant($yii-blue, $version-buttons, transparent);
+      font-family: $font-family-base;
+    }
   }
 }
 
