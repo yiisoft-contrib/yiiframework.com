@@ -11,12 +11,22 @@
   color: white;
   padding-top: 22px;
   padding-bottom: 22px;
-  .version-selector{
+  .version-selector {
     position: relative;
     bottom: -61px;
     .btn {
       @include button-variant($yii-blue, $version-buttons, transparent);
       font-family: $font-family-base;
+    }
+    .dropdown-menu {
+      background-color: $eshill-yellow;
+      width: 200%;
+      > li > a {
+        &:hover,
+        &:active {
+          background-color: $version-buttons;
+        }
+      }
     }
   }
 }
