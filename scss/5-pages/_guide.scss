@@ -186,21 +186,15 @@ div.image {
 
   .nav>li>a:focus,
   .nav>li>a:hover {
-    padding-left: 19px;
-    color: $yii-yellow;
+    //padding-left: 19px;
+    background-color: #F2F9FA;
     text-decoration: none;
-    background-color: transparent;
-    border-left: 1px solid $yii-yellow;
   }
 
   .nav>.active:focus>a,
   .nav>.active:hover>a,
   .nav>.active>a {
-    padding-left: 18px;
-    font-weight: 700;
-    color: $yii-yellow;
-    background-color: transparent;
-    border-left: 2px solid $yii-yellow;
+    background-color: #F2F9FA;
   }
 
   .nav .nav {
@@ -237,17 +231,19 @@ div.image {
 .affix-top {
   position: fixed;
   top: 220px;
-  background-color: $eshill-section-bgcolor;
+  background-color: $body-bg;
   z-index: 300;
   right: 2px;
+  border-left: 2px $version-buttons dashed;
 }
 
 .affix {
   position: fixed;
-  top: 220px;
+  top: 12px;
   right: 2px;
-  background-color: $eshill-section-bgcolor;
+  background-color: $body-bg;
   z-index: 300;
+  border-left: 2px $version-buttons dashed;
 }
 
 .affix-bottom {
