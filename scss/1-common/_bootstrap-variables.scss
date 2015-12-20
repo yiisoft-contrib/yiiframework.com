@@ -106,7 +106,7 @@ $blue-navbar: true;
   $navbar-inverse-color:                      lighten($gray-light, 20%);
   $navbar-inverse-bg:                         $eshill-blue;//darken($yii-blue, 15%);
   // Inverted navbar links
-  $navbar-inverse-link-color:                 lighten($gray-light, 40%);
+  $navbar-inverse-link-color:                 #fff;
   // Inverted navbar toggle
   $navbar-inverse-toggle-hover-bg:            $navbar-inverse-bg;
   // $navbar-inverse-toggle-icon-bar-bg:         #fff;
