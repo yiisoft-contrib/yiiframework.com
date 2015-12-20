@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "b83831dcbcf5e4e8b0a46c36f43acc14",
-    "content-hash": "ba82de7abd379581a8941b9e293357b7",
+    "hash": "de47349f90ec63cc8649aac7529e213d",
+    "content-hash": "6586849ad2df37d0491efbcd33a4a4d2",
     "packages": [
         {
             "name": "bower-asset/bootstrap",
@@ -289,32 +289,39 @@
             }
         },
         {
-            "name": "bower-asset/scrollup",
-            "version": "v2.4.1",
+            "name": "bower-asset/wowjs",
+            "version": "1.1.2",
             "source": {
                 "type": "git",
-                "url": "https://github.com/markgoodyear/scrollup.git",
-                "reference": "2167852df6d20548863a0786cb88abcff49f5261"
+                "url": "https://github.com/matthieua/WOW.git",
+                "reference": "535597ab3d6dfe3f7bfd76281c991e042fdeca25"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/markgoodyear/scrollup/zipball/2167852df6d20548863a0786cb88abcff49f5261",
-                "reference": "2167852df6d20548863a0786cb88abcff49f5261",
+                "url": "https://api.github.com/repos/matthieua/WOW/zipball/535597ab3d6dfe3f7bfd76281c991e042fdeca25",
+                "reference": "535597ab3d6dfe3f7bfd76281c991e042fdeca25",
                 "shasum": ""
-            },
-            "require": {
-                "bower-asset/jquery": ">=1.11.0"
             },
             "type": "bower-asset-library",
             "extra": {
-                "bower-asset-main": "dist/jquery.scrollUp.min.js",
+                "bower-asset-main": "dist/wow.js",
                 "bower-asset-ignore": [
-                    "css",
-                    "img",
-                    ".travis.yml",
-                    "index.html"
+                    "**/.*",
+                    "node_modules",
+                    "bower_components",
+                    "test",
+                    "tests"
                 ]
-            }
+            },
+            "license": [
+                "MIT"
+            ],
+            "description": "Reveal CSS animation as you scroll down a page.",
+            "keywords": [
+                "animation",
+                "reveal",
+                "scroll"
+            ]
         },
         {
             "name": "bower-asset/yii2-pjax",
@@ -1133,7 +1140,7 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/yiisoft/yii2-framework/zipball/c177f2137fdfa19221ff04ba1e8261d63a754e42",
+                "url": "https://api.github.com/repos/yiisoft/yii2-framework/zipball/cec48859a02cfc3ab2102ebde0d89fda32a28b40",
                 "reference": "c177f2137fdfa19221ff04ba1e8261d63a754e42",
                 "shasum": ""
             },
@@ -1290,7 +1297,7 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/yiisoft/yii2-authclient/zipball/4248a5ddb425103488ee4c1bdb5d9a5730627775",
+                "url": "https://api.github.com/repos/yiisoft/yii2-authclient/zipball/e593da06f6477d2fcb21323dfd0b766291c67fe5",
                 "reference": "4248a5ddb425103488ee4c1bdb5d9a5730627775",
                 "shasum": ""
             },
@@ -1338,7 +1345,7 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/yiisoft/yii2-bootstrap/zipball/e7b4df436f09ca00f44615928909fa9cc2a78ae7",
+                "url": "https://api.github.com/repos/yiisoft/yii2-bootstrap/zipball/7de7d5d63d655c0c69764f80f2dfc549e9b1d9f0",
                 "reference": "e7b4df436f09ca00f44615928909fa9cc2a78ae7",
                 "shasum": ""
             },
@@ -1435,7 +1442,7 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/yiisoft/yii2-elasticsearch/zipball/6bef30558c78d20a42cf9d604a60f3ae3b5a84ac",
+                "url": "https://api.github.com/repos/yiisoft/yii2-elasticsearch/zipball/621fe3cbe456c9104945c837deb222cce5eaa424",
                 "reference": "6bef30558c78d20a42cf9d604a60f3ae3b5a84ac",
                 "shasum": ""
             },
@@ -1527,6 +1534,34 @@
     ],
     "packages-dev": [
         {
+            "name": "bower-asset/scrollup",
+            "version": "v2.4.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/markgoodyear/scrollup.git",
+                "reference": "2167852df6d20548863a0786cb88abcff49f5261"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/markgoodyear/scrollup/zipball/2167852df6d20548863a0786cb88abcff49f5261",
+                "reference": "2167852df6d20548863a0786cb88abcff49f5261",
+                "shasum": ""
+            },
+            "require": {
+                "bower-asset/jquery": ">=1.11.0"
+            },
+            "type": "bower-asset-library",
+            "extra": {
+                "bower-asset-main": "dist/jquery.scrollUp.min.js",
+                "bower-asset-ignore": [
+                    "css",
+                    "img",
+                    ".travis.yml",
+                    "index.html"
+                ]
+            }
+        },
+        {
             "name": "yiisoft/yii2-debug",
             "version": "dev-master",
             "source": {
@@ -1536,7 +1571,7 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/yiisoft/yii2-debug/zipball/150efc56f56bd58ca8d1aae195b2f11223cf8b40",
+                "url": "https://api.github.com/repos/yiisoft/yii2-debug/zipball/4d6056e3ec68d3db21e9a1878e5dcb7f418b1aaa",
                 "reference": "150efc56f56bd58ca8d1aae195b2f11223cf8b40",
                 "shasum": ""
             },

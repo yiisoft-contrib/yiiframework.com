@@ -7,4 +7,5 @@ $(document).ready(function() {
         $('html, body').animate({ scrollTop: $(this.hash).offset().top }, 250, function(){window.location.hash = hash;});
     });
 
+    new WOW().init();
 });

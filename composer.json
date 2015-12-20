@@ -19,7 +19,8 @@
         "knplabs/github-api": "~1.2",
         "yiisoft/yii2-authclient": "2.0.*@dev",
         "cebe/yii2-gravatar": "1.1",
-        "scrivo/highlight.php": "8.*"
+        "scrivo/highlight.php": "8.*",
+        "bower-asset/wowjs": "^1.1"
     },
     "require-dev": {
         "yiisoft/yii2-debug": "2.0.*@dev"
