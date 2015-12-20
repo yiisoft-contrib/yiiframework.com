@@ -8,4 +8,7 @@ $(document).ready(function() {
     });
 
     new WOW().init();
+
+    $('.jumbo-slider').unslider()
+
 });
