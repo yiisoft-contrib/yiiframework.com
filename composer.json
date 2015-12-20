@@ -21,7 +21,8 @@
         "cebe/yii2-gravatar": "1.1",
         "scrivo/highlight.php": "8.*",
         "bower-asset/wowjs": "^1.1",
-        "bower-asset/unslider": "^2.0"
+        "bower-asset/unslider": "^2.0",
+        "bower-asset/jquery.event.swipe": "^0.5.4"
     },
     "require-dev": {
         "yiisoft/yii2-debug": "2.0.*@dev"

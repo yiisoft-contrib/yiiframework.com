@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "398ffd41652d14fc254925bd2f09c64d",
-    "content-hash": "5e82a913e36ef9ceba85910341d8323c",
+    "hash": "a71d329be6b24174c295c2093e1086b5",
+    "content-hash": "a7a22240f7b8d4560e9cec339e402b7b",
     "packages": [
         {
             "name": "bower-asset/bootstrap",
@@ -212,6 +212,52 @@
                 "javascript",
                 "jquery",
                 "library"
+            ]
+        },
+        {
+            "name": "bower-asset/jquery.event.move",
+            "version": "1.3.6",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/stephband/jquery.event.move.git",
+                "reference": "82ea750b62c7fca0d9da270e68907f9434fe65bd"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/stephband/jquery.event.move/zipball/82ea750b62c7fca0d9da270e68907f9434fe65bd",
+                "reference": "82ea750b62c7fca0d9da270e68907f9434fe65bd",
+                "shasum": ""
+            },
+            "type": "bower-asset-library"
+        },
+        {
+            "name": "bower-asset/jquery.event.swipe",
+            "version": "0.5.4",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/stephband/jquery.event.swipe.git",
+                "reference": "978ca4d1cb207845fdf7c60ece384206583746dd"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/stephband/jquery.event.swipe/zipball/978ca4d1cb207845fdf7c60ece384206583746dd",
+                "reference": "978ca4d1cb207845fdf7c60ece384206583746dd",
+                "shasum": ""
+            },
+            "require": {
+                "bower-asset/jquery": ">=1.7.0",
+                "bower-asset/jquery.event.move": "dev-1.x|1.x"
+            },
+            "type": "bower-asset-library",
+            "extra": {
+                "bower-asset-main": "js/jquery.event.swipe.js"
+            },
+            "description": "jQuery special events for the gestures swipeleft, swiperight, swipeup and swipedown.",
+            "keywords": [
+                "event",
+                "special",
+                "swipe",
+                "touch"
             ]
         },
         {
