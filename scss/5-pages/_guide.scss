@@ -34,7 +34,47 @@
     padding-top: 10px;
     border-top: 1px solid #ccc;
   }
+  .panel-heading {
+    h3 {
+      text-transform: uppercase;
+    }
+  }
+  .panel .panel-body {
+    > ul.list-unstyled {
+      border-top: 1px dashed $gray;
+      padding-top: 12px;
+      li {
+        margin-bottom: 12px;
+      }
+    }
+  }
+
 }
+
+#guide-navigation {
+  > a {
+    &:active,
+    &:hover {
+      background-color: $eshill-green;
+      color: #fff;
+    }
+  }
+  > .in {
+    background-color: #F2F9FA;
+    a.active {
+      background-color: $eshill-green;
+      color: #fff;
+    }
+    > a {
+      &:active,
+      &:hover {
+        background-color: $eshill-green;
+        color: #fff;
+      }
+    }
+  }
+}
+
 
 .edit-icon {
   margin: .5em 1em .5em 0;
