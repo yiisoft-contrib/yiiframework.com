@@ -7,8 +7,8 @@
     "vendor/yiisoft/yii2/assets/yii.activeForm.js",
     "vendor/yiisoft/yii2-authclient/assets/authchoice.js",
     "vendor/bower/wowjs/dist/wow.js",
+    "vendor/bower/unslider/src/js/unslider.js",
     "js/blur.js",
-    "js/unslider.js",
     "js/custom.js",
     "js/search.js"
 ]

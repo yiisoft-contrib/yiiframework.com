@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "de47349f90ec63cc8649aac7529e213d",
-    "content-hash": "6586849ad2df37d0491efbcd33a4a4d2",
+    "hash": "398ffd41652d14fc254925bd2f09c64d",
+    "content-hash": "5e82a913e36ef9ceba85910341d8323c",
     "packages": [
         {
             "name": "bower-asset/bootstrap",
@@ -287,6 +287,42 @@
                     "package.json"
                 ]
             }
+        },
+        {
+            "name": "bower-asset/unslider",
+            "version": "v2.0.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/idiot/unslider.git",
+                "reference": "094dc429abe3617588b7402cd2d10346e9299968"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/idiot/unslider/zipball/094dc429abe3617588b7402cd2d10346e9299968",
+                "reference": "094dc429abe3617588b7402cd2d10346e9299968",
+                "shasum": ""
+            },
+            "type": "bower-asset-library",
+            "extra": {
+                "bower-asset-main": "src/js/unslider.js",
+                "bower-asset-ignore": [
+                    "**/.*",
+                    "node_modules",
+                    "bower_components",
+                    "test",
+                    "tests"
+                ]
+            },
+            "license": [
+                "WTFPL"
+            ],
+            "description": "The simplest little slider.",
+            "keywords": [
+                "carousel",
+                "jquery",
+                "slider",
+                "unslider"
+            ]
         },
         {
             "name": "bower-asset/wowjs",
