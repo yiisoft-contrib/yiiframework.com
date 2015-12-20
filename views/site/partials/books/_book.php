@@ -12,10 +12,10 @@ use yii\helpers\Html;
             <h2 class="media-heading"><?= Html::encode($book['title'])?></h2>
             <div class="author"> by <?= Html::encode($book['author'])?> </div>
             <p>
-                <?= Html::encode($book['description'])?>
+                <?= $book['description'] ?>
             </p>
             <div>
-                <a href="<?= Html::encode($book['url'])?>"><?= Html::encode($book['title'])?></a>
+                <?= Html::a(Html::encode($book['title']), $book['url']) ?>
             </div>
             <div class="<?= Html::encode($book['level'])?>"><?= Html::encode($book['level-description'])?></div>
         </div>
