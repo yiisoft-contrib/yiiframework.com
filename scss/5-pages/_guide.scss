@@ -53,7 +53,15 @@
 
 #guide-navigation {
   > a {
-    &:active,
+    &:hover {
+      background-color: $eshill-green;
+      color: #fff;
+    }
+  }
+  > a.active {
+    background-color: #F2F9FA;
+    border-bottom: 4px solid #EBF1F2;
+    color: inherit;
     &:hover {
       background-color: $eshill-green;
       color: #fff;

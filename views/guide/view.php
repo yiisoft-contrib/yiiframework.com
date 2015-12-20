@@ -46,7 +46,7 @@ $this->registerJs('
     </div>
 </div>
 <div class="visible-lg fixed">
-    <nav id="scrollnav" data-spy="affix" data-offset-top="60">
+    <nav id="scrollnav" data-spy="affix" data-offset-top="120">
         <ul class="nav hidden-xs hidden-sm">
             <?php
                 echo '<li>' . Html::a($section->getTitle(), '#' . (isset($section->headings['id']) ? $section->headings['id'] : '')) . '</li>';

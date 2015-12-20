@@ -68,6 +68,7 @@
   }
   .dropdown-menu {
     background-color: $eshill-yellow;
+    padding-left: 16px;
     > li > a {
       background-color: $eshill-yellow;
       &:hover {
@@ -78,6 +79,7 @@
       background-color: $eshill-yellow;
       text-transform: uppercase;
       color: black;
+      margin-left: -16px;
     }
   }
 }
