@@ -10,9 +10,10 @@ use yii\helpers\Html;
 
 ?>
 <nav class="version-selector" role="navigation">
-    <ul>
+    <div class="btn-group btn-group-justified">
+    </div>
         <?= DropdownList::widget([
-            'tag' => 'li',
+            'tag' => 'div',
             'selection' => "Version {$version}",
             'items' => array_map(function ($ver) use ($version, $section) {
                 return [
@@ -20,6 +21,9 @@ use yii\helpers\Html;
                     'url' => ['api/view', 'version' => $ver, 'section' => ($version[0] === $ver[0]) ? $section : 'index'],
                 ];
             }, $versions),
+            'options' => [
+                'class' => 'btn-group btn-group-sm'
+                ]
         ]) ?>
-    </ul>
+    </div>
 </nav>

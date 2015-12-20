@@ -15,10 +15,23 @@ if (!empty($title)) {
     $this->title = "$title - $this->title";
 }
 ?>
-
+<div class="guide-header-wrap">
+    <div class="container guide-header">
+        <div class="row">
+            <div class="col-md-8">
+                <div class="guide-headline h1">API Documentation for <?= $version ?></div>
+            </div>
+            <div class="col-md-4">
+                <?= $this->render('partials/_versions.php', compact('version', 'versions', 'section')) ?>
+            </div>
+              <p class="pull-right visible-xs topmost">
+                <button type="button" title="Toggle Side-Nav" class="btn btn-primary btn-xs" data-toggle="offcanvas">Nav</button>
+              </p>
+        </div>
+    </div>
+</div>
 <div class="container api-content">
 	<?= strtr($content, [
-        '<!-- YII_VERSION_SELECTOR -->' => $this->render('partials/_versions.php', compact('version', 'versions', 'section')),
         '<!-- YII_DOWNLOAD_OPTIONS -->' => '<p>You may download the API documentation for offline use: </p><ul>'
             . '<li>' . Html::a("yii-docs-{$version}-en.tar.bz2", ['guide/download', 'version' => $version, 'language' => 'en', 'format' => 'tar.bz2']) . '</li>'
             . '<li>' . Html::a("yii-docs-{$version}-en.tar.gz", ['guide/download', 'version' => $version, 'language' => 'en', 'format' => 'tar.gz']) . '</li>'

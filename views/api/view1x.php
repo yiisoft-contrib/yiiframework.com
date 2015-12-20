@@ -15,7 +15,21 @@ use yii\helpers\Url;
 
 $this->title = Html::encode((!empty($title) ? "$title - " : '') .  "Yii API Documentation $version");
 ?>
-
+<div class="guide-header-wrap">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8">
+                <div class="guide-headline h1"><?= Html::encode($this->title) ?></div>
+            </div>
+            <div class="col-md-4">
+                <?= $this->render('partials/_versions.php', compact('version', 'versions', 'section')) ?>
+            </div>
+              <p class="pull-right visible-xs topmost">
+                <button type="button" title="Toggle Side-Nav" class="btn btn-primary btn-xs" data-toggle="offcanvas">Nav</button>
+              </p>
+        </div>
+    </div>
+</div>
 <div class="container api-content">
     <div class="row">
         <div class="col-md-3">
@@ -44,7 +58,6 @@ $this->title = Html::encode((!empty($title) ? "$title - " : '') .  "Yii API Docu
         ]) ?>
         </div>
         <div class="col-md-9" role="main">
-            <?= $this->render('partials/_versions.php', compact('version', 'versions', 'section')) ?>
             <div class="content api1">
             <?= $content ?>
             </div>
