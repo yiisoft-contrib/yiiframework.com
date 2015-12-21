@@ -1,3 +1,21 @@
 .content-separator {
   margin-top: 2em;
 }
+
+.features {
+  .media-heading {
+    font-size: 34px;
+    font-family: $bold-headings-font-family;
+  }
+  .fast {
+    color: $eshill-red;
+  }
+  .secure {
+    color: $eshill-green;
+  }
+  .efficient {
+    color: $eshill-light-blue;
+  }
+}
+
+//.features div.row div.col-md-4 div.media div.media-body div.media-heading
