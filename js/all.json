@@ -7,9 +7,7 @@
     "vendor/yiisoft/yii2/assets/yii.activeForm.js",
     "vendor/yiisoft/yii2-authclient/assets/authchoice.js",
     "vendor/bower/wowjs/dist/wow.js",
-    "vendor/bower/jquery.event.move/js/jquery.event.move.js",
-    "vendor/bower/jquery.event.swipe/js/jquery.event.swipe.js",
-    "vendor/bower/unslider/src/js/unslider.js",
+    "vendor/bower/glidejs/dist/glide.js",
     "js/blur.js",
     "js/custom.js",
     "js/search.js"
