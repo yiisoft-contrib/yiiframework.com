@@ -77,7 +77,7 @@ use yii\widgets\Menu;
                                 ['label' => 'Forum', 'url' => ['/forum'], 'options' => ['title' => 'Community Forum']],
                                 ['label' => 'Wiki', 'url' => ['site/wiki'], 'options' => ['title' => 'Community Wiki']],
                                 ['label' => 'Extensions', 'options' => ['title' => 'Not Yet']],
-                                ['label' => 'More&hellip;', 'options' => ['title' => 'Yii Quick Links'], 'items' => [
+                                ['label' => 'More&hellip;', 'items' => [
                                     ['label' => 'Learn', 'options' => ['class' => 'separator']],
                                     ['label' => 'The Yii Tour', 'url' => ['site/tour']],
                                     ['label' => 'Books', 'url' => ['site/books']],

@@ -44,7 +44,6 @@ This file is part of the
 @import "../vendor/bower/wowjs/css/libs/animate";
 
 // Global styling that makes use of vendors
-@import "3-global/content";
 @import "3-global/site";
 @import "3-global/highlight"; // guide code highlight
 @import "3-global/typography";
@@ -66,14 +65,17 @@ This file is part of the
 @import "5-pages/wiki";
 
 // Elements
-// When a page specific style becomes too big
+// When a style file becomes too big
 // it can be split up.
 // Indivual elements gets placed here
-// in subdirectories named after the page
+// in subdirectories named after the page/name
+@import "6-elements/site/externallinks";
+@import "6-elements/site/navbar";
+@import "6-elements/site/footer";
+@import "6-elements/index/sitejumbo";
 @import "6-elements/guide/guideheader";
 @import "6-elements/guide/guidenavigation";
 @import "6-elements/guide/offcanvas";
 @import "6-elements/guide/scrollnav";
 @import "6-elements/guide/blockquotes";
 @import "6-elements/guide/rtl";
-@import "6-elements/index/sitejumbo";

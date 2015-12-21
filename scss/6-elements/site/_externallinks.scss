@@ -1,0 +1,26 @@
+// External links
+/* long version */
+.guide-content ul li a[href^="http://"]:not([href*="yiiframwork.com"]):after,
+.guide-content ul li a[href^="https://"]:not([href*="yiiframwork.com"]):after,
+.guide-content ul li a[href^="//"]:not([href*="yiiframwork.com"]):after {
+  font-family: 'fontawesome';
+  font-size: 0.8em;
+  content: $fa-var-external-link;
+  padding-left: 2px;
+}
+.guide-content p a[href^="http://"]:not([href*="yiiframwork.com"]):after,
+.guide-content p a[href^="https://"]:not([href*="yiiframwork.com"]):after,
+.guide-content p a[href^="//"]:not([href*="yiiframwork.com"]):after {
+  font-family: 'fontawesome';
+  font-size: 0.8em;
+  content: $fa-var-external-link;
+  padding-left: 2px;
+}
+.guide-content ol li a[href^="http://"]:not([href*="yiiframwork.com"]):after,
+.guide-content ol li a[href^="https://"]:not([href*="yiiframwork.com"]):after,
+.guide-content ol li a[href^="//"]:not([href*="yiiframwork.com"]):after {
+  font-family: 'fontawesome';
+  font-size: 0.8em;
+  content: $fa-var-external-link;
+  padding-left: 2px;
+}
