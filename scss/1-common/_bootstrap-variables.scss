@@ -84,17 +84,7 @@ $pre-bg: inherit;
 $pre-color: inherit;
 $pre-border-color: inherit;
 
-$grid-float-breakpoint: 1200px;
-
-$grid-gutter-width:         30px;
-
-$container-tablet:             (740px + $grid-gutter-width);
-//** For `$screen-sm-min` and up.
-$container-sm:                 $container-tablet;
-// Large screen / wide desktop
-$container-large-desktop:      (940px + $grid-gutter-width);
-//** For `$screen-lg-min` and up.
-$container-lg:                 $container-large-desktop;
+$grid-float-breakpoint: 1100px;
 
 // extra vars that was added to bootstrap variables by Roxio
 $link-visited-color: $yii-blue;

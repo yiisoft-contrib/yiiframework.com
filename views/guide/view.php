@@ -45,7 +45,7 @@ $this->registerJs('
         </div>
     </div>
 </div>
-<div class="visible-lg fixed">
+<div class="visible-huge fixed">
     <nav id="scrollnav" data-spy="affix" data-offset-top="120">
         <ul class="nav hidden-xs hidden-sm">
             <?php
@@ -75,7 +75,7 @@ $this->registerJs('
         <div class="col-sm-6 col-md-9 col-lg-9" role="main">
 
             <div class="row">
-            <div class="col-md-12 col-lg-12">
+            <div class="col-md-12 col-lg-11">
                 <div class="guide-content content">
                 <?php if (!empty($missingTranslation)): ?>
                     <div class="alert alert-warning">

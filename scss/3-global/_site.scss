@@ -154,3 +154,20 @@ footer {
   margin-left: 0;
   margin-bottom: 30px;
 }
+
+.visible-huge {
+  display: none !important;
+}
+@media (min-width: 1300px) {
+  .visible-huge {
+    display: block !important;
+  }
+}
+@media (min-width: 1300px) {
+  .hidden-huge {
+    display: none !important;
+  }
+}
+.hidden-lg {
+  @extend .hidden-huge;
+}

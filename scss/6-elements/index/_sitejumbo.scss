@@ -1,5 +1,5 @@
 .sitejumbo {
-  height: 900px;
+  //height: 900px;
   background-color: $eshill-light-blue;
   background-repeat: no-repeat;
   background-position: right;
@@ -15,5 +15,10 @@
       font-size: 48px;
       font-family: $bold-headings-font-family;
     }
+  }
+  .slider-wrapper {
+    z-index: 2;
+    position: relative;
+    bottom: 0;
   }
 }
