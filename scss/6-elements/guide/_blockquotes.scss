@@ -2,8 +2,10 @@
 %blockquote{
   display:block;
   background: #fff;
-  padding: 15px 20px 15px 85px;
-  margin: 0 0 110px;
+  padding-top: 15px;
+  padding-right: 20px;
+  padding-bottom: 15px;
+  padding-left: 85px;
   position: relative;
   border-radius: 6px;
 }
@@ -23,6 +25,8 @@
   content: "";
 }
 
+// find possible content values in
+// vendor/bower/font-awesome/scss/_variables.scss
 
 blockquote.tip {
   @extend %blockquote;
@@ -30,7 +34,7 @@ blockquote.tip {
   border-left: 4px solid #70C1B3;
 }
 blockquote.tip::before{
-  content: "\f0eb";
+  content: $fa-var-lightbulb-o;
   color: #70C1B3;
 }
 blockquote.note {
@@ -39,7 +43,7 @@ blockquote.note {
   border-left: 4px solid #FFAB19;
 }
 blockquote.note::before{
-  content: "\f24a";
+  content: $fa-var-sticky-note-o;
   color: #FFAB19;
 }
 blockquote.info {
@@ -48,7 +52,7 @@ blockquote.info {
   border-left: 4px solid #247BA0;
 }
 blockquote.info::before{
-  content: "\f129";
+  content: $fa-var-info;
   color: #247BA0;
 }
 blockquote.warn {
@@ -57,6 +61,6 @@ blockquote.warn {
   border-left: 4px solid #FF1654;
 }
 blockquote.warn::before{
-  content: "\f071";
+  content: $fa-var-warning;
   color: #FF1654;
 }
