@@ -1,5 +1,6 @@
 // External links
-/* long version */
+
+// for the guide
 .guide-content ul li a[href^="http://"]:not([href*="yiiframwork.com"]):after,
 .guide-content ul li a[href^="https://"]:not([href*="yiiframwork.com"]):after,
 .guide-content ul li a[href^="//"]:not([href*="yiiframwork.com"]):after {
@@ -19,6 +20,32 @@
 .guide-content ol li a[href^="http://"]:not([href*="yiiframwork.com"]):after,
 .guide-content ol li a[href^="https://"]:not([href*="yiiframwork.com"]):after,
 .guide-content ol li a[href^="//"]:not([href*="yiiframwork.com"]):after {
+  font-family: 'fontawesome';
+  font-size: 0.8em;
+  content: $fa-var-external-link;
+  padding-left: 2px;
+}
+
+// copy for other
+.style_external_links ul li a[href^="http://"]:not([href*="yiiframwork.com"]):after,
+.style_external_links ul li a[href^="https://"]:not([href*="yiiframwork.com"]):after,
+.style_external_links ul li a[href^="//"]:not([href*="yiiframwork.com"]):after {
+  font-family: 'fontawesome';
+  font-size: 0.8em;
+  content: $fa-var-external-link;
+  padding-left: 2px;
+}
+.style_external_links p a[href^="http://"]:not([href*="yiiframwork.com"]):after,
+.style_external_links p a[href^="https://"]:not([href*="yiiframwork.com"]):after,
+.style_external_links p a[href^="//"]:not([href*="yiiframwork.com"]):after {
+  font-family: 'fontawesome';
+  font-size: 0.8em;
+  content: $fa-var-external-link;
+  padding-left: 2px;
+}
+.style_external_links ol li a[href^="http://"]:not([href*="yiiframwork.com"]):after,
+.style_external_links ol li a[href^="https://"]:not([href*="yiiframwork.com"]):after,
+.style_external_links ol li a[href^="//"]:not([href*="yiiframwork.com"]):after {
   font-family: 'fontawesome';
   font-size: 0.8em;
   content: $fa-var-external-link;
