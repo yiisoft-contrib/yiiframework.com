@@ -1,0 +1,32 @@
+.guide-header-wrap {
+  background-color: $eshill-light-blue;
+  //height: $beefy-header-height;
+  margin-bottom: 12px;
+}
+.guide-header {
+  h1 {
+    font-family: $bold-headings-font-family;
+    font-size: 35px;
+  }
+  color: white;
+  padding-top: 22px;
+  padding-bottom: 22px;
+  .version-selector {
+    position: relative;
+    bottom: -61px;
+    .btn {
+      @include button-variant($yii-blue, $version-buttons, transparent);
+      font-family: $font-family-base;
+    }
+    .dropdown-menu {
+      background-color: $eshill-yellow;
+      width: 200%;
+      > li > a {
+        &:hover,
+        &:active {
+          background-color: $version-buttons;
+        }
+      }
+    }
+  }
+}

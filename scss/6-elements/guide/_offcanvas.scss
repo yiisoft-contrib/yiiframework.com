@@ -1,0 +1,41 @@
+
+/*
+* Off Canvas
+* --------------------------------------------------
+*/
+@media screen and (max-width: 767px) {
+  .row-offcanvas {
+    left: 0;
+    position: relative;
+    -webkit-transition: all .25s ease-out;
+    -o-transition: all .25s ease-out;
+    transition: all .25s ease-out;
+  }
+
+  .row-offcanvas
+  .sidenav-offcanvas {
+    left: -50%; /* 6 columns */
+  }
+
+  .row-offcanvas.active {
+    left: 50%; /* 6 columns */
+  }
+
+  .sidenav-offcanvas {
+    position: absolute;
+    top: 0;
+    width: 50%; /* 6 columns */
+  }
+}
+
+
+.topmost {
+  z-index: 300;
+  overflow: hidden;
+  right: -12px;
+  opacity: 0.4;
+  &:hover {
+    opacity: 0.9;
+    right: 1px;
+  }
+}

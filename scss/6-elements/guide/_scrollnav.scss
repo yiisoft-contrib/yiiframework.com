@@ -1,0 +1,76 @@
+// scrollnav styles nicked from Bootstrap docs
+#scrollnav {
+
+  .nav>li>a {
+    display: block;
+    padding: 4px 20px;
+    font-size: 13px;
+    font-weight: 500;
+    color: #767676;
+  }
+
+  .nav>li>a:focus,
+  .nav>li>a:hover {
+    //padding-left: 19px;
+    background-color: #F2F9FA;
+    text-decoration: none;
+  }
+
+  .nav>.active:focus>a,
+  .nav>.active:hover>a,
+  .nav>.active>a {
+    background-color: #F2F9FA;
+  }
+
+  .nav .nav {
+    display: none;
+    padding-bottom: 10px;
+  }
+  .nav>li.active>.nav {
+    display: block;
+  }
+
+  .nav .nav>li>a {
+    padding-top: 1px;
+    padding-bottom: 1px;
+    padding-left: 30px;
+    font-size: 12px;
+    font-weight: 400;
+  }
+  .nav .nav>li>a:focus,
+  .nav .nav>li>a:hover {
+    padding-left: 29px;
+  }
+  .nav .nav>.active:focus>a,
+  .nav .nav>.active:hover>a,
+  .nav .nav>.active>a {
+    padding-left: 28px;
+    font-weight: 500;
+  }
+}
+.fixed {
+  position: fixed;
+  top: 220px;
+  right: 2px;
+}
+.affix-top {
+  position: fixed;
+  top: 220px;
+  background-color: $body-bg;
+  z-index: 300;
+  right: 2px;
+  border-left: 2px $version-buttons dashed;
+}
+
+.affix {
+  position: fixed;
+  top: 12px;
+  right: 2px;
+  background-color: $body-bg;
+  z-index: 300;
+  border-left: 2px $version-buttons dashed;
+}
+
+.affix-bottom {
+  top: 50px;
+}

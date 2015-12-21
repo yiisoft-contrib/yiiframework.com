@@ -70,4 +70,10 @@ This file is part of the
 // it can be split up.
 // Indivual elements gets placed here
 // in subdirectories named after the page
+@import "6-elements/guide/guideheader";
+@import "6-elements/guide/guidenavigation";
+@import "6-elements/guide/offcanvas";
+@import "6-elements/guide/scrollnav";
+@import "6-elements/guide/blockquotes";
+@import "6-elements/guide/rtl";
 @import "6-elements/index/sitejumbo";

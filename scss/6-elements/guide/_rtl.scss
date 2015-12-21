@@ -1,0 +1,30 @@
+// adjustments for rtl languages
+.lang-he {
+  direction: rtl;
+
+  pre, code {
+    direction: ltr;
+  }
+
+  ul.list-unstyled {
+    padding-right: 0;
+  }
+
+  .guide-headline {
+    text-align: left;
+  }
+
+  .guide-content {
+    padding-top: 52px;
+  }
+
+  // container for english language inside of rtl content
+  .lang-en {
+    text-align: left;
+    direction: ltr;
+  }
+
+  p.lang-en {
+    max-width: 100%;
+  }
+}
