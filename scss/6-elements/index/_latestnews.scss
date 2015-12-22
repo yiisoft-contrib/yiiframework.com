@@ -1,6 +1,2 @@
 .latest-news {
-  .btn {
-    @include button-variant($eshill-green, transparent, lighten($eshill-green, 20%));
-    font-size: 22px;
-  }
 }

@@ -39,3 +39,8 @@ $beefy-header-height: 120px;
 .hidden-lg {
   @extend .hidden-huge;
 }
+
+.padded-row {
+  margin-right: 6px;
+  margin-left: 6px;
+}

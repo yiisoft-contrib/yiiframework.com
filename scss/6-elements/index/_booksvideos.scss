@@ -1,3 +1,36 @@
 .books-videos {
-  
+  background-color: #EBF1F2;
+  .books-videos-description {
+    @include center-block;
+  }
+  .books-item {
+    padding: 22px;
+    .books-header {
+      font-size: 22px;
+    }
+    .books-image {
+
+    }
+    .books-link {
+      a {
+        font-weight: bold;
+        font-size: 18px;
+      }
+      margin-bottom: 16px;
+    }
+    .author-publisher {
+      font-size: 12px;
+      .what {
+        color: $eshill-green;
+      }
+      .who {
+
+      }
+      margin-bottom: 16px;
+    }
+  }
+  .see-all {
+    margin-right: 6px;
+    margin-left: 6px;
+  }
 }
