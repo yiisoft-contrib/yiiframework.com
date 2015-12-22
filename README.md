@@ -15,6 +15,8 @@ If you intend to use the Pageres client to generate screen shots for testing pur
 ~~~
 npm install --global pageres-cli
 ~~~
+And then you can use the script `run_pageres.sh` at the root of the source directory to generate screen shots.
+
 
 ### Installation instructions
 
