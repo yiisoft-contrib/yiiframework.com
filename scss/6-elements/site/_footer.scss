@@ -11,13 +11,14 @@ footer {
   }
 }
 .footer-inner {
-  display: flex;
   margin: auto;
-  //max-width: 1060px;
-  overflow: hidden;
+  > .center-block {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+  }
 }
 .footerList {
-    flex: 1 1 1;
     list-style: outside none none;
     margin-top: 60px;
     margin-left: -16px;
@@ -31,7 +32,6 @@ footer {
   color: $footer-color;
   font-size: 18px;
   font-family: $bold-headings-font-family;
-  //font-weight: 600;
   margin-top: 2px;
   margin-left: 0;
   margin-bottom: 30px;
