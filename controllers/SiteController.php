@@ -141,7 +141,10 @@ class SiteController extends Controller
 
     public function actionIndex()
     {
-        return $this->render('index', ['tour_slides' => Yii::$app->params['tour_slides']]);
+        return $this->render('index', [
+                'tour_slides' => Yii::$app->params['tour_slides'],
+                'testimonials' => Yii::$app->params['testimonials'],
+            ]);
     }
 
     /**
