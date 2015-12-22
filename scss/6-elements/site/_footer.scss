@@ -20,14 +20,44 @@ footer {
   }
 }
 .footerList {
-    list-style: outside none none;
-    margin-top: 60px;
-    margin-left: -16px;
-    margin-right: 24px;
+  list-style: outside none none;
+  margin-top: 60px;
+  margin-left: -16px;
+  margin-right: 24px;
 }
 .footerList_item {
-    font-size: 14px;
-    margin-bottom: 12px;
+  font-size: 14px;
+  margin-bottom: 12px;
+  .social {
+    i {
+      font-size: 12px;
+      margin-left: 3px;
+      padding: 6px 6px;
+      display: inline-block;
+      background-color: $footer-color;
+      color: $footer-background-color;
+      border-radius:50%;
+      width: 24px;
+      height: 24px;
+      transition:color 0.4s ease-out, background 0.4s ease-in;
+      &:hover {
+        color: $footer-color;
+      }
+      &.fa-linkedin:hover {
+        background-color: #4875B4;
+      }
+      &.fa-twitter:hover {
+        background-color: #33CCFF;
+      }
+      &.fa-facebook:hover {
+        background-color: #3B5998;
+      }
+      &.fa-rss:hover {
+        background-color: #D28A29;
+      }
+
+    }
+  }
 }
 .footerList_item:first-child {
   color: $footer-color;

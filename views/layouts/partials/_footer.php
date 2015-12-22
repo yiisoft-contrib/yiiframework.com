@@ -1,6 +1,6 @@
 <div class="footer-wrapper">
     <footer>
-        <div class="container">
+        <div class="container-fluid">
             <div class="footer-inner">
                 <div class="row">
                     <div class="col-md-2 col-sm-4 hidden-xs">
@@ -21,7 +21,7 @@
                     <div class="col-md-2 col-sm-4 hidden-xs">
                         <?= $this->render('footer/_socialcopyright'); ?>
                     </div>
-                    <div class="col-xs-12 hidden-sm hidden-md hidden-lg">
+                    <div class="col-xs-offset-3 col-xs-6 hidden-sm hidden-md hidden-lg">
                         <div class="center-block">
                             <div style="width:300px;">
                                 <?= $this->render('footer/_socialcopyright'); ?>

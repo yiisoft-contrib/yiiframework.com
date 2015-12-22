@@ -1,6 +1,11 @@
 <ul class="footerList">
   <li class="footerList_item">
-      social icons
+      <span class="social">
+          <a href="#"><i class="fa fa-facebook"></i></a>
+          <a href="#"><i class="fa fa-twitter"></i></a>
+          <a href="#"><i class="fa fa-linkedin"></i></a>
+          <a href="#"><i class="fa fa-rss"></i></a>
+      </span>
   </li>
   <li class="footerList_item">
     <a href="#">Terms of service</a>
@@ -18,6 +23,6 @@
       &nbsp;
   </li>
   <li class="footerList_item">
-    Design: Eshill
+    Design: <a href="http://www.eshill.ru/" target="_blank">Eshill</a>
   </li>
 </ul>
