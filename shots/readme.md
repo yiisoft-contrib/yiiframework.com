@@ -2,6 +2,7 @@ This directory will hold the generated screen shots taken by the Pageres-cli too
 
 To install:
 ~~~
+npm install --global pageres-cli
 ~~~
 
 See https://github.com/sindresorhus/pageres-cli for usage
