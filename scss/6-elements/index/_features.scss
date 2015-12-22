@@ -1,0 +1,29 @@
+.features {
+  .media-body {
+    font-size: 22px;
+  }
+  .media-heading {
+    font-size: 34px;
+    font-family: $bold-headings-font-family;
+    font-weight: 600;
+  }
+  .media-left {
+    padding-right: 20px;
+  }
+  .fast {
+    color: $eshill-red;
+  }
+  .secure {
+    color: $eshill-green;
+  }
+  .efficient {
+    color: $eshill-light-blue;
+  }
+
+  @media (max-width: $grid-float-breakpoint) {
+    .media {
+      margin-bottom: 22px;
+    }
+  }
+
+}

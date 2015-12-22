@@ -19,6 +19,10 @@
       font-size: 26px;
       color: darken($eshill-section-bgcolor, 8%);
     }
+    .btn {
+      @include button-variant($eshill-light-blue, $eshill-yellow, transparent);
+      font-size: 22px;
+    }
   }
 }
 

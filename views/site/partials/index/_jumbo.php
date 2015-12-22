@@ -24,7 +24,7 @@ $this->registerJs("
         <div class="row">
             <div class="col-md-12">
                 <div class="dashed-heading-jumbo">
-                    <span>Test</span>
+                    <span><a href="#" class="btn">Download Yii</a> </span>
                 </div>
             </div>
         </div>
