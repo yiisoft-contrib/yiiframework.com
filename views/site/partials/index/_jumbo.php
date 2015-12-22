@@ -23,7 +23,9 @@ $this->registerJs("
     <div class="container">
         <div class="row">
             <div class="col-md-12">
-                <?= $this->render('../common/_dashedheading', ['title' => 'test', 'bgcolor' => '#247BA0', 'color' => '#F3FFBD', 'fontsize' => 45]); ?>
+                <div class="dashed-heading-jumbo">
+                    <span>Test</span>
+                </div>
             </div>
         </div>
     </div>

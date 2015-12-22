@@ -1,0 +1,34 @@
+@mixin dashed-heading-variant($color, $background, $font-size) {
+  height: 1px;
+  border-top: 2px dashed $color;
+  text-align: center;
+  margin-top: $font-size * 0.8;
+  margin-bottom: $font-size * 0.8;
+  span {
+    padding-right: $font-size*0.5;
+    padding-left: $font-size*0.5;
+    color: $color;
+    font-family: $bold-headings-font-family;
+    font-size: $font-size;
+    background-color: $background;
+    position: relative;
+    top: -($font-size*0.80);
+  }
+}
+
+.dashed-heading {
+  @include dashed-heading-variant($eshill-header-color, $body-bg, $font-size-base);
+}
+
+.dashed-heading-jumbo {
+  @include dashed-heading-variant($eshill-yellow, $eshill-light-blue, 36px);
+}
+.dashed-heading-front {
+  @include dashed-heading-variant($eshill-header-color, $body-bg, 36px);
+}
+.dashed-heading-front-section {
+  @include dashed-heading-variant($eshill-header-color, $body-bg, 28px);
+}
+.dashed-heading-front-books {
+  @include dashed-heading-variant($eshill-header-color, #EBF1F2, 36px);
+}
