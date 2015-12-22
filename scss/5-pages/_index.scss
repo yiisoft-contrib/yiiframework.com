@@ -4,6 +4,14 @@
 .btn-front {
   @include button-variant($eshill-green, transparent, lighten($eshill-green, 20%));
   font-size: 22px;
+  transition:color 0.4s ease-out, background 0.4s ease-in;
+  &:hover,
+  &:focus,
+  &:active {
+    background-color: $eshill-green;
+    border: 1px solid #fff;
+    color: #fff;
+  }
   @media (max-width: 380px) {
     font-size: 16px;
   }
