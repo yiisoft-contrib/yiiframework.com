@@ -1,7 +1,7 @@
 <?php
 /* @var $this yii\web\View */
 ?>
-<?= $this->render('partials/index/_jumbo'); ?>
+<?= $this->render('partials/index/_jumbo', ['tour_slides' => $tour_slides]); ?>
 
 <?= $this->render('partials/index/_featurepoints'); ?>
 
