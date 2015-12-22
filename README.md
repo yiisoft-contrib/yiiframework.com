@@ -11,7 +11,7 @@ If you want to contribute please get in touch with us using the [issue tracker](
 Before you start, make sure you have installed [composer](https://getcomposer.org/) and [Node.js](http://nodejs.org/).
 If you are on Debian or Ubuntu you might also want to install the [libnotify-bin](https://packages.debian.org/jessie/libnotify-bin) package, which is used by Gulp to inform you about its status.
 
-If you intend to use the Pageres client to generate screen shots for testing purposes, you need to install the `pageres.cli` tool globally:
+If you intend to use the [Pageres client](https://github.com/sindresorhus/pageres-cli) to generate screen shots for testing purposes, you need to install the `pageres.cli` tool globally:
 ~~~
 npm install --global pageres-cli
 ~~~
