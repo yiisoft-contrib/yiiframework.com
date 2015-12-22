@@ -88,6 +88,9 @@ ol.hl-main pre {
     color: #000;
     background-color: #F2F9FA;
     border-left: 5px solid #EBF1F2;
+    overflow: auto;
+    word-wrap: normal;
+    white-space: pre;
 }
 code {
   background-color: #F2F9FA;

@@ -9,7 +9,7 @@
 }
 
 
-@media (min-width: $grid-float-breakpoint) {
+@media (min-width: 1200px) {
 
   /*Style for even div.line*/
   .timeline > .row > div > .timeline-item > .media-top:nth-child(odd) .line:before {

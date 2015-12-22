@@ -19,3 +19,9 @@ button:hover
 *:focus {
     outline: 0 !important;
 }
+
+/* Always show the scrollbar to prevent "jumping" */
+html {
+  overflow: -moz-scrollbars-vertical;
+  overflow-y: scroll;
+}
