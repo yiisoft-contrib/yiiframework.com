@@ -2,7 +2,8 @@
 $this->registerJs("
     $('#Glide').glide({
         type: 'carousel',
-        autoheight: true
+        autoheight: true,
+        autoplay: 10000,
     });
 ");
 ?>
