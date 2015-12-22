@@ -102,11 +102,13 @@ $this->registerJs('
                 </div>
 
                 <?php if (($editUrl = $section->editUrl) !== false): ?>
-                <div class="edit-icon"><i class="fa fa-github"></i></div>
-                <p class="lang-en">
-                    <em>Found a typo or you think this page needs improvement?<br />
-                        <a href="<?= $editUrl; ?>">Edit it on github</a>!</em>
-                </p>
+                <div class="edit-box">
+                    <div class="edit-icon"><i class="fa fa-github"></i></div>
+                    <p class="lang-en">
+                        Found a typo or you think this page needs improvement?<br />
+                            <a href="<?= $editUrl; ?>">Edit it on github</a> !
+                    </p>
+                </div>
                 <?php endif; ?>
             </div>
             </div>

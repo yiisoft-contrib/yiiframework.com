@@ -27,14 +27,28 @@
 
 }
 
-.edit-icon {
-  margin: .5em 1em .5em 0;
-  float: left;
-
-  i {
-    font-size: 2em
+.edit-box {
+  border: 1px solid $eshill-blue;
+  border-radius: 6px;
+  padding-top: 12px;
+  padding-right: 12px;
+  padding-left: 12px;
+  margin-right: auto;
+  margin-left: auto;
+  margin-bottom: 1em;
+  width: 60%;
+  color: $eshill-blue;
+  .edit-icon {
+    margin-top: .2em;
+    margin-right: 1.5em;
+    margin-bottom: .5em;
+    margin-left: 1.5em;
+    float: left;
+    i {
+      font-size: 3.5em;
+      color: $eshill-blue;
+    }
   }
-
 }
 
 .hashlink {
