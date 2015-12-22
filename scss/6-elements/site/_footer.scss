@@ -34,15 +34,15 @@ footer {
       margin-left: 3px;
       padding: 6px 6px;
       display: inline-block;
-      background-color: $footer-color;
-      color: $footer-background-color;
+      color: $footer-color;
+      background-color: darken($footer-color, 30%);
       border-radius:50%;
       width: 24px;
       height: 24px;
       transition:color 0.4s ease-out, background 0.4s ease-in;
       &:hover {
-        color: #fff;
-        background-color: darken($footer-color, 30%);
+        background-color: $footer-color;
+        color: $footer-background-color;
       }
       // The following looks like crap :)
       // &.fa-linkedin:hover {
