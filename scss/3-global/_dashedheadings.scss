@@ -4,11 +4,20 @@
   text-align: center;
   margin-top: $font-size * 0.8;
   margin-bottom: $font-size * 0.8;
+  @media (max-width: 380px) {
+    margin-bottom: $font-size * 1.2;
+  }
   span {
     padding-right: $font-size*0.5;
     padding-left: $font-size*0.5;
     color: $color;
     font-family: $bold-headings-font-family;
+    @media (max-width: 1140px) {
+      font-size: $font-size * 0.8;
+    }
+    @media (max-width: 380px) {
+      font-size: $font-size * 0.6;
+    }
     font-size: $font-size;
     background-color: $background;
     position: relative;
