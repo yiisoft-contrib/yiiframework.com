@@ -41,20 +41,22 @@ footer {
       height: 24px;
       transition:color 0.4s ease-out, background 0.4s ease-in;
       &:hover {
-        color: $footer-color;
+        color: #fff;
+        background-color: darken($footer-color, 30%);
       }
-      &.fa-linkedin:hover {
-        background-color: #4875B4;
-      }
-      &.fa-twitter:hover {
-        background-color: #33CCFF;
-      }
-      &.fa-facebook:hover {
-        background-color: #3B5998;
-      }
-      &.fa-rss:hover {
-        background-color: #D28A29;
-      }
+      // The following looks like crap :)
+      // &.fa-linkedin:hover {
+      //   background-color: #4875B4;
+      // }
+      // &.fa-twitter:hover {
+      //   background-color: #33CCFF;
+      // }
+      // &.fa-facebook:hover {
+      //   background-color: #3B5998;
+      // }
+      // &.fa-rss:hover {
+      //   background-color: #D28A29;
+      // }
 
     }
   }
