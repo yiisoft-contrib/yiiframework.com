@@ -19,7 +19,7 @@ if (!empty($title)) {
     <div class="container guide-header">
         <div class="row">
             <div class="col-md-8">
-                <div class="guide-headline h1">API Documentation for <?= $version ?></div>
+                <div class="guide-headline h1">API Documentation for Yii <?= $version ?></div>
             </div>
             <div class="col-md-4">
                 <?= $this->render('partials/_versions.php', compact('version', 'versions', 'section')) ?>

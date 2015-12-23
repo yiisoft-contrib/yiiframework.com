@@ -13,13 +13,13 @@ use yii\helpers\Html;
 use yii\helpers\StringHelper;
 use yii\helpers\Url;
 
-$this->title = Html::encode((!empty($title) ? "$title - " : '') .  "Yii API Documentation $version");
+$this->title = Html::encode((!empty($title) ? "$title - " : '') .  "API Documentation for Yii $version");
 ?>
 <div class="guide-header-wrap">
-    <div class="container">
+    <div class="container guide-header">
         <div class="row">
             <div class="col-md-8">
-                <div class="guide-headline h1"><?= Html::encode($this->title) ?></div>
+                <div class="guide-headline h1">API Documentation for Yii <?= $version ?></div>
             </div>
             <div class="col-md-4">
                 <?= $this->render('partials/_versions.php', compact('version', 'versions', 'section')) ?>

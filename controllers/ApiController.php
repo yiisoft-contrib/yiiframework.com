@@ -112,7 +112,7 @@ class ApiController extends Controller
     {
         switch (Yii::$app->response->format) {
             case Response::FORMAT_HTML:
-                return $this->redirect(['index', 'version' => '2.0'], 301); // Moved Permanently
+                return $this->redirect(['index', 'version' => '2.0'], 302); // Found, latest docs url is not permanent
 
             case Response::FORMAT_JSON:
 
