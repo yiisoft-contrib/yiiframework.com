@@ -84,6 +84,7 @@ ol.hl-main pre {
 }
 
 .hljs {
+  @include rem(padding-left, 40px);
   font-family: 'source_code_proregular';
   color: #000;
   background-color: #F2F9FA;

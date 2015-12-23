@@ -27,13 +27,13 @@
   background-color: transparent;//$list-group-bg;
   border: none;//1px solid $list-group-border;
 
-  // Round the first and last items
+  // Do not round the first and last items
   &:first-child {
-    @include border-top-radius($list-group-border-radius);
+    @include border-top-radius(0);
   }
   &:last-child {
     margin-bottom: 0;
-    @include border-bottom-radius($list-group-border-radius);
+    @include border-bottom-radius(0);
   }
 }
 

@@ -68,10 +68,10 @@ $this->registerJs('
 <div class="container guide-view lang-<?= $guide->language ?>" xmlns="http://www.w3.org/1999/html">
 
     <div class="row row-offcanvas">
-        <div class="col-sm-4 col-md-3 col-lg-3">
+        <div class="col-sm-4 col-md-4 col-lg-4">
             <?= SideNav::widget(['id' => 'guide-navigation', 'items' => $nav, 'options' => ['class' => 'sidenav-offcanvas']]) ?>
         </div>
-        <div class="col-sm-6 col-md-9 col-lg-9" role="main">
+        <div class="col-sm-6 col-md-8 col-lg-8" role="main">
 
             <div class="row">
             <div class="col-md-12 col-lg-11">

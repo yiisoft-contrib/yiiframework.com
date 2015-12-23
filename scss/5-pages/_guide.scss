@@ -1,4 +1,5 @@
 .guide-content {
+  @include rem(margin-top, 50px);
   .broken-link {
     background: #FFE4EF;
     border-bottom: 1px solid lightpink;

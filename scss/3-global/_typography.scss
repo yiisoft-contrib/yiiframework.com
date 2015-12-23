@@ -6,7 +6,8 @@ a {
   text-decoration: underline;
   transition: all ease-in-out .5s;
   &:hover,
-  &:active {
+  &:active,
+  &:focus {
     text-decoration: underline;
   }
 }

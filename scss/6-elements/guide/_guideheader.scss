@@ -1,11 +1,10 @@
 .guide-header-wrap {
   background-color: $eshill-light-blue;
-  margin-bottom: 12px;
 }
 .guide-header {
   h1 {
     font-family: $bold-headings-font-family;
-    font-size: 35px;
+    font-size: fontsize(h1);
   }
   color: white;
   padding-top: 22px;
