@@ -13,18 +13,16 @@ footer {
   }
 }
 .footer-inner {
-  margin: auto;
-  > .center-block {
-    display: block;
-    margin-left: auto;
+  .center-block {
+    white-space: nowrap;
+    width: 40%;
+    margin-left: 2rem;
     margin-right: auto;
   }
 }
 .footerList {
   list-style: outside none none;
   @include rem(margin-top, 60px);
-  //@include rem(margin-left, -16px);
-  //@include rem(margin-right, 24px);
 }
 .footerList_item {
   @include rem(font-size, 14px);
