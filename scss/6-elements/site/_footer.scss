@@ -6,7 +6,8 @@ footer {
   a {
     color: darken($footer-color, 30%);
     &:hover {
-      text-decoration: underline dashed darken($footer-color, 30%);
+      text-decoration: none;
+      border-color: darken($footer-color, 30%);
       color: $footer-color;
     }
   }

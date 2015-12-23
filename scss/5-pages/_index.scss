@@ -25,9 +25,6 @@ ul.latest-list {
   li {
     a {
       font-size: 18px;
-      &:hover {
-        text-decoration: underline dashed $eshill-green;
-      }
     }
   }
 }

@@ -1,3 +1,14 @@
 .h1 {
 	@extend h1;
 }
+
+a {
+  text-decoration: none;
+  border-bottom: 1px dashed transparent;
+  transition: all ease-in-out .5s;
+  &:hover,
+  &:active {
+    text-decoration: none;
+    border-color: $eshill-green;
+  }
+}
