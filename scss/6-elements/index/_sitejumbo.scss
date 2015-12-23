@@ -12,28 +12,28 @@
     padding: 1em;
     color: $eshill-section-bgcolor;
     h1 {
-      @include rem(font-size, 48px);
+      @include rem(font-size, fontsize(h1));
       @media (max-width: 1140px) {
-        @include rem(font-size, 36px);
+        @include rem(font-size, fontsize(h2));
       }
       @media (max-width: 380px) {
-        @include rem(font-size, 22px);
+        @include rem(font-size, fontsize(h3));
       }
       font-family: $bold-headings-font-family;
     }
     .propaganda {
-      @include rem(font-size, 26px);
+      @include rem(font-size, fontsize(h3));
       @media (max-width: 1140px) {
-        @include rem(font-size, 22px);
+        @include rem(font-size, fontsize(h4));
       }
       @media (max-width: 380px) {
-        @include rem(font-size, 16px);
+        @include rem(font-size, fontsize(base));
       }
       color: darken($eshill-section-bgcolor, 8%);
     }
     .btn {
       @include button-variant($eshill-light-blue, $eshill-yellow, transparent);
-      @include rem(font-size, 22px);
+      @include rem(font-size, fontsize(h3));
     }
   }
 }

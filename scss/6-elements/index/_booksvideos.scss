@@ -6,7 +6,7 @@
   .books-item {
     @include rem(padding, 22px);
     .books-header {
-      @include rem(font-size, 22px);
+      @include rem(font-size, fontsize(large));
     }
     .books-image {
 
@@ -14,12 +14,12 @@
     .books-link {
       a {
         font-weight: bold;
-        @include rem(font-size, 18px);
+        @include rem(font-size, fontsize(large));
       }
       @include rem(margin-bottom, 16px);
     }
     .author-publisher {
-      @include rem(font-size, 12px);
+      @include rem(font-size, fontsize(smaller));
       .what {
         color: $eshill-green;
       }

@@ -1,15 +1,15 @@
 .tour-subheader {
   color: $eshill-yellow-diffuse;
-  @include rem(font-size, 18px);
+  @include rem(font-size, fontsize(base));
 }
 .tour-header {
   color: $eshill-yellow;
-  @include rem(font-size, 28px);
+  @include rem(font-size, fontsize(h3));
   font-family: $bold-headings-font-family;
 }
 .tour-content {
-  @include rem(font-size, 22px);
+  @include rem(font-size, fontsize(large));
   @media (max-width: 380px) {
-    @include rem(font-size, 16px);
+    @include rem(font-size, fontsize(base));
   }
 }

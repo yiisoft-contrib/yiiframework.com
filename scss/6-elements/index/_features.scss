@@ -1,9 +1,9 @@
 .features {
   .media-body {
-    @include rem(font-size, 22px);
+    @include rem(font-size, fontsize(larger));
   }
   .media-heading {
-    @include rem(font-size, 34px);
+    @include rem(font-size, fontsize(h2));
     font-family: $bold-headings-font-family;
     font-weight: 600;
   }
