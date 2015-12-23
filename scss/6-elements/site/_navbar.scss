@@ -14,12 +14,13 @@
     > li > a {
       color: $navbar-default-link-color;
       transition: none;
-
+      margin-bottom: 0;
+      padding-bottom: 0;
       &:hover {
         color: $navbar-default-link-hover-color;
         background-color: $navbar-default-link-hover-bg;
         border-bottom: 3px solid $eshill-yellow;
-        margin-bottom: -3px;
+        height: $navbar-height;
       }
     }
     > .active > a {
