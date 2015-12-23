@@ -1,16 +1,32 @@
 
 #guide-navigation {
-  > a {
+  color: $separator-color;
+  > .has-children {
+    text-decoration: none;
+    text-transform: uppercase;
     &:hover {
+      text-decoration: none;
+      background-color: $eshill-green;
+      color: #fff;
+    }
+  }
+  > a {
+    @include rem(font-size, 13px);
+    @include rem(line-height, 13px);
+    @include rem(padding, 20px 10px);
+    border-bottom: 1px solid $eshill-section-bgcolor;
+    &:hover {
+      text-decoration: underline;
       background-color: $eshill-green;
       color: #fff;
     }
   }
   > a.active {
     background-color: #F2F9FA;
-    border-bottom: 4px solid #EBF1F2;
+    border-bottom: 1px solid #EBF1F2;
     color: inherit;
     &:hover {
+      text-decoration: underline;
       background-color: $eshill-green;
       color: #fff;
     }
@@ -22,8 +38,8 @@
       color: #fff;
     }
     > a {
-      &:active,
       &:hover {
+        text-decoration: underline;
         background-color: $eshill-green;
         color: #fff;
       }

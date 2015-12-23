@@ -108,6 +108,7 @@ class SideNav extends \yii\bootstrap\Widget
         }
 
         if ($items !== null) {
+            Html::addCssClass($linkOptions, 'has-children');
             $linkOptions['data-toggle'] = 'collapse';
             $linkOptions['data-parent'] = '#' . $this->id;
             $id = $this->id . '-' . static::$counter++;
