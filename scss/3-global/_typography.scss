@@ -54,3 +54,8 @@ $font-sizes: (
   @warn "Unknown `#{$key}` in $font-sizes.";
   @return null;
 }
+
+@function px2rem($size) {
+  $remSize: $size / 16px;
+  @return #{$remSize}rem;
+}
