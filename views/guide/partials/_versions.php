@@ -9,8 +9,8 @@ use app\models\Guide;
 use yii\helpers\Html;
 
 ?>
-<nav class="version-selector sidenav-offcanvas">
-    <div class="btn-group btn-group-justified">
+<nav class="version-selector">
+        <div class="btn-group btn-group-justified">
         <?php if ($guide->type == 'guide') {
             $items = [];
             if ($guide->getDownloadFile('pdf') !== false) {

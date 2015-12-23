@@ -14,6 +14,9 @@
     .btn {
       @include button-variant($yii-blue, $version-buttons, transparent);
       font-family: $font-family-base;
+      @media (max-width: 380px) {
+        @include rem(font-size, 12px);
+      }
     }
     .dropdown-menu {
       background-color: $eshill-yellow;
