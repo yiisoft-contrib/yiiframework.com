@@ -1,6 +1,6 @@
 @mixin dashed-heading-variant($color, $background, $font-size) {
   height: 1px;
-  border-top: 2px dashed $color;
+  border-top: 2px dashed rgba($color, 0.75);
   text-align: center;
   margin-top: $font-size * 0.8;
   margin-bottom: $font-size * 0.8;
