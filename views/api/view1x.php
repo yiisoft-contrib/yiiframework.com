@@ -8,6 +8,7 @@
  * @var $packages array the API page menu structure
  */
 
+use app\components\SideNav;
 use yii\apidoc\templates\bootstrap\SideNavWidget;
 use yii\helpers\Html;
 use yii\helpers\StringHelper;
@@ -51,7 +52,7 @@ $this->title = Html::encode((!empty($title) ? "$title - " : '') .  "API Document
                 ];
             }
         } ?>
-        <?= SideNavWidget::widget([
+        <?= SideNav::widget([
             'id' => 'api-navigation',
             'items' => $nav,
             'view' => $this,

@@ -1,6 +1,7 @@
 <?php
 
 use app\apidoc\ApiRenderer;
+use app\components\SideNav;
 use yii\apidoc\templates\bootstrap\SideNavWidget;
 use yii\helpers\StringHelper;
 
@@ -35,7 +36,7 @@ $renderer = $this->context;
                 'active' => isset($type) && ($class->name == $type->name),
             ];
         } ?>
-        <?= SideNavWidget::widget([
+        <?= SideNav::widget([
             'id' => 'api-navigation',
             'items' => $nav,
             'view' => $this,
