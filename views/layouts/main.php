@@ -57,7 +57,9 @@ use yii\widgets\Menu;
                 <div class="container">
                     <div id="main-nav-head" class="navbar-header">
                         <a href="<?= Yii::$app->homeUrl ?>" class="navbar-brand">
-                            <img src="<?= Yii::getAlias('@web/image/logo42.png') ?>" alt="Yii PHP Framework" />
+                            <img src="<?= Yii::getAlias('@web/image/logo35.png') ?>"
+                                alt="Yii PHP Framework"
+                                height=35 />
                         </a>
                         <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse"><i class="fa fa-inverse fa-bars"></i></button>
                     </div>
