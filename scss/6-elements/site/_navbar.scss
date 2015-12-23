@@ -36,6 +36,7 @@
       background-color: $eshill-yellow;
       padding-left: 0;
       > li > a {
+        color: $link-color;
         background-color: $eshill-yellow;
         &:hover {
           text-decoration: underline;
@@ -54,11 +55,16 @@
 // restyle navbar dropdown menu when collapsed
 @media screen and (max-width: $grid-float-breakpoint) {
   .navbar-nav {
+    > li > a {
+      text-decoration: none;
+    }
     .dropdown-menu {
+      > li > a {
+        text-decoration: none;
+      }
       > li.separator {
         text-transform: uppercase;
-        color: black;
-        margin-left: -16px;
+        color: $eshill-section-bgcolor;
       }
     }
   }

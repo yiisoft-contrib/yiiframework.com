@@ -1,15 +1,5 @@
 
 #guide-navigation {
-  color: $separator-color;
-  > .has-children {
-    text-decoration: none;
-    text-transform: uppercase;
-    &:hover {
-      text-decoration: none;
-      background-color: $eshill-green;
-      color: #fff;
-    }
-  }
   > a {
     @include rem(font-size, 13px);
     @include rem(line-height, 13px);
@@ -21,25 +11,31 @@
       color: #fff;
     }
   }
-  > a.active {
-    background-color: #F2F9FA;
-    border-bottom: 1px solid #EBF1F2;
-    color: inherit;
+  > a.has-children {
+    color: $separator-color;
+    text-decoration: none;
+    text-transform: uppercase;
+    border-bottom: 1px solid $eshill-section-bgcolor;
     &:hover {
-      text-decoration: underline;
+      text-decoration: none;
       background-color: $eshill-green;
       color: #fff;
     }
   }
+  > a.active {
+    background-color: $eshill-section-bgcolor;
+  }
   > .in {
-    background-color: #F2F9FA;
+    background-color: $eshill-section-bgcolor;
     a.active {
+      text-decoration: none;
       background-color: $eshill-green;
       color: #fff;
     }
     > a {
+      color: $eshill-light-blue;
       &:hover {
-        text-decoration: underline;
+        text-decoration: none;
         background-color: $eshill-green;
         color: #fff;
       }
