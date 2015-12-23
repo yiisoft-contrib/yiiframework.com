@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "d6b5b87d3c51592ecb31029c1ef4b7fb",
-    "content-hash": "b074170c979e4e3793d6043a5547a622",
+    "hash": "963d7de7ee7af2e7b454b47c293e0e5d",
+    "content-hash": "9ae120b12afdf03965bc7dcdb274f197",
     "packages": [
         {
             "name": "bower-asset/bootstrap",
@@ -330,6 +330,40 @@
                     "package.json"
                 ]
             }
+        },
+        {
+            "name": "bower-asset/sass-rem",
+            "version": "v1.2.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/pierreburel/sass-rem.git",
+                "reference": "54664553a81f9144c83932d15fb6073e7c31c539"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/pierreburel/sass-rem/zipball/54664553a81f9144c83932d15fb6073e7c31c539",
+                "reference": "54664553a81f9144c83932d15fb6073e7c31c539",
+                "shasum": ""
+            },
+            "type": "bower-asset-library",
+            "extra": {
+                "bower-asset-main": "_rem.scss",
+                "bower-asset-ignore": [
+                    "**/.*",
+                    "sache.json",
+                    "package.json"
+                ]
+            },
+            "license": [
+                "MIT"
+            ],
+            "description": "Sass mixin and function to use rem units with pixel fallback.",
+            "keywords": [
+                "fallback",
+                "rem",
+                "responsive",
+                "sass"
+            ]
         },
         {
             "name": "bower-asset/wowjs",
@@ -1183,7 +1217,7 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/yiisoft/yii2-framework/zipball/beab46928b0c5400f682645d0211d91e9f1fd273",
+                "url": "https://api.github.com/repos/yiisoft/yii2-framework/zipball/62964c2cd02a9276ebf387dadd8d6c54c19902bf",
                 "reference": "c177f2137fdfa19221ff04ba1e8261d63a754e42",
                 "shasum": ""
             },

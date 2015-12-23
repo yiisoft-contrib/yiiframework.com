@@ -1,96 +1,96 @@
 // Yii 1.1 guide code block highlights
 
 .hl-default {
-    color: Black;
+  color: Black;
 }
 .hl-code {
-    color: Gray;
+  color: Gray;
 }
 .hl-brackets {
-    color: Olive;
+  color: Olive;
 }
 .hl-comment {
-    color: #808080;
-	font-style: italic;
+  color: #808080;
+  font-style: italic;
 }
 .hl-quotes {
-    color: red;
+  color: red;
 }
 .hl-string {
-    color: Red;
+  color: Red;
 }
 .hl-identifier {
-    color: green;
+  color: green;
 }
 .hl-builtin {
-    color: Teal;
+  color: Teal;
 }
 .hl-reserved {
-    color: black;
-	font-weight: bold;
+  color: black;
+  font-weight: bold;
 }
 .hl-inlinedoc {
-    color: Blue;
+  color: Blue;
 }
 .hl-var {
-    color: blue;
+  color: blue;
 }
 .hl-url {
-    color: Blue;
+  color: Blue;
 }
 .hl-special {
-    color: Navy;
+  color: Navy;
 }
 .hl-number {
-    color: Maroon;
+  color: Maroon;
 }
 .hl-inlinetags {
-    color: Blue;
+  color: Blue;
 }
 .hl-main {
-	font-family: $font-family-monospace;
-	font-weight: normal;
-    font-size: $font-size-codeblocks;
+  font-family: $font-family-monospace;
+  font-weight: normal;
+  @include rem(font-size, $font-size-codeblocks);
 }
 ol.hl-main pre {
-	margin: 0;
-	padding: 0;
+  margin: 0;
+  padding: 0;
 }
 .hl-gutter {
-    background-color: #999999;
-    color: White
+  background-color: #999999;
+  color: White
 }
 .hl-table {
-    font-family: $font-family-monospace;
-    font-size: $font-size-codeblocks;
-    border: solid 1px #505050;
+  font-family: $font-family-monospace;
+  @include rem(font-size, $font-size-codeblocks);
+  border: solid 1px #505050;
 }
 
 .source .copycode
 {
-	text-align: right;
-	float: right;
+  text-align: right;
+  float: right;
 }
 
 .source .copycode a
 {
-	cursor: pointer;
-	color: blue;
+  cursor: pointer;
+  color: blue;
 }
 
 .source .copycode_hover a
 {
-	color: red;
+  color: red;
 }
 
 .hljs {
-    font-family: 'source_code_proregular';
-    color: #000;
-    background-color: #F2F9FA;
-    border-left: 5px solid #EBF1F2;
-    overflow: auto;
-    word-wrap: normal;
-    white-space: pre;
+  font-family: 'source_code_proregular';
+  color: #000;
+  background-color: #F2F9FA;
+  border-left: 5px solid #EBF1F2;
+  overflow: auto;
+  word-wrap: normal;
+  white-space: pre;
 }
 code {
   background-color: #F2F9FA;

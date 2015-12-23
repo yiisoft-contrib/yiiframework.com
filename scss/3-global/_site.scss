@@ -41,6 +41,6 @@ $beefy-header-height: 120px;
 }
 
 .padded-row {
-  margin-right: 6px;
-  margin-left: 6px;
+  @include rem(margin-right, 6px);
+  @include rem(margin-left, 6px);
 }
