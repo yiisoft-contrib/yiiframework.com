@@ -4,9 +4,9 @@
     @include center-block;
   }
   .books-item {
-    padding: 22px;
+    @include rem(padding, 22px);
     .books-header {
-      font-size: 22px;
+      @include rem(font-size, 22px);
     }
     .books-image {
 
@@ -14,23 +14,23 @@
     .books-link {
       a {
         font-weight: bold;
-        font-size: 18px;
+        @include rem(font-size, 18px);
       }
-      margin-bottom: 16px;
+      @include rem(margin-bottom, 16px);
     }
     .author-publisher {
-      font-size: 12px;
+      @include rem(font-size, 12px);
       .what {
         color: $eshill-green;
       }
       .who {
 
       }
-      margin-bottom: 16px;
+      @include rem(margin-bottom, 16px);
     }
   }
   .see-all {
-    margin-right: 6px;
-    margin-left: 6px;
+    @include rem(margin-right, 6px);
+    @include rem(margin-left, 6px);
   }
 }

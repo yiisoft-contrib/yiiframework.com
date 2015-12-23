@@ -6,9 +6,9 @@
   }
 
   .prev-next {
-    margin-top: 50px;
-    margin-bottom: 15px;
-    padding-top: 10px;
+    @include rem(margin-top, 50px);
+    @include rem(margin-bottom, 15px);
+    @include rem(padding-top, 10px);
     border-top: 1px solid #ccc;
   }
   .panel-heading {
@@ -19,9 +19,9 @@
   .panel .panel-body {
     > ul.list-unstyled {
       border-top: 1px dashed $gray;
-      padding-top: 12px;
+      @include rem(padding-top, 12px);
       li {
-        margin-bottom: 12px;
+        @include rem(margin-bottom, 12px);
       }
     }
   }
@@ -30,10 +30,10 @@
 
 .edit-box {
   border: 1px solid $eshill-blue;
-  border-radius: 6px;
-  padding-top: 12px;
-  padding-right: 12px;
-  padding-left: 12px;
+  @include rem(border-radius, 6px);
+  @include rem(padding-top, 12px);
+  @include rem(padding-right, 12px);
+  @include rem(padding-left, 12px);
   margin-right: auto;
   margin-left: auto;
   margin-bottom: 1em;
@@ -75,8 +75,8 @@ h3:hover .hashlink {
 
 div.toc {
   border: solid 1px #ddd;
-  padding: 15px;
-  margin: 15px 0;
+  @include rem(padding, 15px);
+  @include rem(margin, 15px 0);
   width: auto;
   max-width: 36em;
 
@@ -89,7 +89,7 @@ div.toc {
 div.image {
   border: solid 1px #ddd;
   padding: 0;
-  margin: 15px 0;
+  @include rem(margin, 15px 0);
   width: auto;
   //    max-width: 36em;
   text-align: center;

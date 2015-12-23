@@ -1,14 +1,14 @@
 .features {
   .media-body {
-    font-size: 22px;
+    @include rem(font-size, 22px);
   }
   .media-heading {
-    font-size: 34px;
+    @include rem(font-size, 34px);
     font-family: $bold-headings-font-family;
     font-weight: 600;
   }
   .media-left {
-    padding-right: 20px;
+    @include rem(padding-right, 20px);
   }
   .fast {
     color: $eshill-red;
@@ -22,7 +22,7 @@
 
   @media (max-width: $grid-float-breakpoint) {
     .media {
-      margin-bottom: 22px;
+      @include rem(margin-bottom, 22px);
     }
   }
 

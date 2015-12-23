@@ -1,11 +1,12 @@
 footer {
   background-color: $footer-background-color;
   color: darken($footer-color, 30%);
-  min-height: 428px;
-  margin-top: 24px;
+  @include rem(min-height, 428px);
+  @include rem(margin-top, 24px);
   a {
     color: darken($footer-color, 30%);
-    &:hover {
+    &:hover,
+    &:focus {
       border-color: darken($footer-color, 30%);
       color: $footer-color;
     }
@@ -21,54 +22,40 @@ footer {
 }
 .footerList {
   list-style: outside none none;
-  margin-top: 60px;
-  margin-left: -16px;
-  margin-right: 24px;
+  @include rem(margin-top, 60px);
+  @include rem(margin-left, -16px);
+  @include rem(margin-right, 24px);
 }
 .footerList_item {
-  font-size: 14px;
-  margin-bottom: 12px;
+  @include rem(font-size, 14px);
+  @include rem(margin-bottom, 12px);
   .social {
     a {
       border: none;
     }
     i {
-      font-size: 12px;
-      margin-left: 3px;
-      padding: 6px 6px;
+      @include rem(font-size, 12px);
+      @include rem(margin-left, 3px);
+      @include rem(padding, 6px 6px);
       display: inline-block;
       color: $footer-color;
       background-color: darken($footer-color, 30%);
       border-radius:50%;
-      width: 24px;
-      height: 24px;
+      @include rem(width, 24px);
+      @include rem(height, 24px);
       transition:color 0.4s ease-out, background 0.4s ease-in;
       &:hover {
         background-color: $footer-color;
         color: $footer-background-color;
       }
-      // The following looks like crap :)
-      // &.fa-linkedin:hover {
-      //   background-color: #4875B4;
-      // }
-      // &.fa-twitter:hover {
-      //   background-color: #33CCFF;
-      // }
-      // &.fa-facebook:hover {
-      //   background-color: #3B5998;
-      // }
-      // &.fa-rss:hover {
-      //   background-color: #D28A29;
-      // }
-
     }
   }
 }
 .footerList_item:first-child {
   color: $footer-color;
-  font-size: 18px;
+  @include rem(font-size, 18px);
   font-family: $bold-headings-font-family;
-  margin-top: 2px;
+  @include rem(margin-top, 2px);
   margin-left: 0;
-  margin-bottom: 30px;
+  @include rem(margin-bottom, 30px);
 }

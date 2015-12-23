@@ -3,7 +3,7 @@
 
   .nav>li>a {
     display: block;
-    padding: 4px 20px;
+    @include rem(padding, 4px 20px);
     @include rem(font-size, 14px);
     color: $link-color;
     text-decoration: underline;

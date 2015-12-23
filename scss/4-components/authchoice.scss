@@ -4,8 +4,8 @@
 
 .auth-icon {
     display: block;
-    width: 32px;
-    height: 32px;
+    @include rem(width, 32px);
+    @include rem(height, 32px);
     background: url(/image/authchoice.png) no-repeat;
 }
 
@@ -78,7 +78,7 @@
 
 .auth-clients .auth-client .auth-link {
     display: block;
-    width: 58px;
+    @include rem(width, 58px);
 }
 
 .auth-client .auth-link .auth-icon {

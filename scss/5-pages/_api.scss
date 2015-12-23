@@ -6,13 +6,13 @@ $api-box-padding-y: ceil($font-size-base / 2);
     a.tool-link {
         float: right;
         color: #ddd;
-        margin: 0 8px;
+        @include rem(margin, 0 8px);
     }
 
 
     .icon-hash:before {
         content: '#';
-        font-size: 32px;
+        @include rem(font-size, 32px);
         font-weight: bold;
         /*top: -10px;*/
         line-height: 0.5;
@@ -46,7 +46,7 @@ $api-box-padding-y: ceil($font-size-base / 2);
             @extend .table-striped;
 
             width: 100%;
-            margin: 18px 0;
+            @include rem(margin, 18px 0);
         }
 
         table.docClass {
@@ -58,7 +58,7 @@ $api-box-padding-y: ceil($font-size-base / 2);
         .detailHeader {
             font-weight: bold;
             font-size: 12pt;
-            margin: 30px 0 5px 0;
+            @include rem(margin, 30px 0 5px 0);
             border-bottom: 1px solid #ddd;
         }
 
@@ -78,7 +78,7 @@ $api-box-padding-y: ceil($font-size-base / 2);
 
         .sourceCode {
             margin: 5px 0;
-            padding:5px;
+            @include rem(padding, 5px);
             background: #f9f9f9;
             white-space: normal;
 
@@ -88,8 +88,8 @@ $api-box-padding-y: ceil($font-size-base / 2);
         }
 
         #nav {
-            padding: 3px;
-            margin: 0 0 10px 0;
+            @include rem(padding, 3px);
+            @include rem(margin, 0 0 10px 0);
             border-top: 1px #ddd solid;
         }
 
@@ -128,7 +128,7 @@ $api-box-padding-y: ceil($font-size-base / 2);
 
     .detail-header {
         font-size: floor($font-size-base * 1.5);
-        margin: 30px 0 0 0;
+        @include rem(margin, 30px 0 0 0);
         border-left: solid 1px #ddd;
         border-right: solid 1px #ddd;
         padding: $api-box-padding-y $api-box-padding-x;
@@ -178,8 +178,8 @@ $api-box-padding-y: ceil($font-size-base / 2);
     table.summary-table .col-defined  { width: 15%; }
 
     .top-nav {
-        padding: 3px;
-        margin: 0 0 10px 0;
+        @include rem(padding, 3px);
+        @include rem(margin, 0 0 10px 0);
         border-top: 1px #ddd solid;
     }
 

@@ -3,7 +3,7 @@
 }
 .btn-front {
   @include button-variant($eshill-green, transparent, lighten($eshill-green, 20%));
-  font-size: 22px;
+  @include rem(font-size, 22px);
   transition:color 0.4s ease-out, background 0.4s ease-in;
   &:hover,
   &:focus,
@@ -13,18 +13,18 @@
     color: #fff;
   }
   @media (max-width: 380px) {
-    font-size: 16px;
+    @include rem(font-size, 16px);
   }
-  margin-bottom: 12px;
+  @include rem(margin-bottom, 12px);
 }
 
 ul.latest-list {
   color: $eshill-green;
   list-style-type: square;
-  line-height: 36px;
+  @include rem(line-height, 36px);
   li {
     a {
-      font-size: 18px;
+      @include rem(font-size, 18px);
     }
   }
 }

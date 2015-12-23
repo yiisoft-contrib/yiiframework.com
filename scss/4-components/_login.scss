@@ -41,7 +41,7 @@
 }
 .omb_login .omb_loginOr .omb_hrOr {
 	background-color: #cdcdcd;
-	height: 1px;
+	@include rem(height, 1px);
 	margin-top: 0px !important;
 	margin-bottom: 0px !important;
 }
@@ -67,6 +67,6 @@
 @media (min-width: 768px) {
     .omb_login .omb_forgotPwd {
         text-align: right;
-		margin-top:10px;
+		@include rem(margin-top, 10px);
  	}
 }

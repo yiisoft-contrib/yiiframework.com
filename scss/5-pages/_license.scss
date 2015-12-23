@@ -13,7 +13,7 @@
 
     .legal {
         border-right: 1px solid #ddd;
-        padding-right: 20px;
-        min-height: 340px;
+        @include rem(padding-right, 20px);
+        @include rem(min-height, 340px);
     }
 }

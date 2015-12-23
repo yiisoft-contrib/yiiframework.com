@@ -12,8 +12,8 @@
 
 #search-resultbox {
   position: absolute;
-  width: 255px;
-  min-height: 150px;
+  @include rem(width, 255px);
+  @include rem(min-height, 150px);
   z-index: 1000;
 
   border: solid 1px #cccccc;
@@ -25,7 +25,7 @@
 
   .result-head {
     margin: 0;
-    padding: 0px 5px;
+    @include rem(padding, 0px 5px);
     font-weight: bold;
     border-top: solid 1px #CCCCCC;
     border-bottom: solid 1px #CCCCCC;
@@ -42,7 +42,7 @@
 
     list-style: none;
 
-    max-height: 150px;
+    @include rem(max-height, 150px);
     overflow-y: auto;
 
     li {
@@ -54,7 +54,7 @@
       a, p {
         display: inline-block;
         margin: 0;
-        padding: 5px 5px 5px 15px;
+        @include rem(padding, 5px 5px 5px 15px);
         width: 100%;
 
         span.result-annotation {

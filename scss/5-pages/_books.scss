@@ -5,7 +5,7 @@
   border: 2px solid lighten($eshill-light-blue, 40%);
   background-color: $eshill-section-bgcolor;
   .author {
-    font-size: 24px;
+    @include rem(font-size, 24px);
     color: $gray;
     padding-bottom: 1em;
   }

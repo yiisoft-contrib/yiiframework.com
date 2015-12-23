@@ -1,16 +1,16 @@
 .blurImg {
   z-index: -1;
   position: relative;
-  top: -150px;
+  @include rem(top, -150px);
   width: 100%;
-  height: 440px;
+  @include rem(height, 440px);
   z-index: -1;
   left: 0;
 }
 .blurImg > div {
   position: fixed;
   width: 100%;
-  height: 440px;
+  @include rem(height, 440px);
   background-repeat: no-repeat;
   -webkit-background-size: cover;
   -moz-background-size: cover;
@@ -28,13 +28,13 @@
   position: absolute;
   top: 0;
   width: 100%;
-  padding: 0px 20px;
+  @include rem(padding, 0px 20px);
 }
 .wiki-header > div {
-  max-width: 600px;
+  @include rem(max-width, 600px);
   margin: 0 auto;
-  padding-top: 150px;
-  height: 280px;
+  @include rem(padding-top, 150px);
+  @include rem(height, 280px);
   text-align: center;
   color: White;
 }
@@ -42,8 +42,8 @@
   font-size: 0.8em;
   letter-spacing: 0.08em;
   color: rgba(255,255,255,0.85);
-  line-height: 30px;
-  padding: 7px 14px;
+  @include rem(line-height, 30px);
+  @include rem(padding, 7px 14px);
   border: 1px solid rgba(255,255,255,0.3);
   -webkit-border-radius: 2em;
   border-radius: 2em;
@@ -70,18 +70,18 @@
 }
 .wiki-nav {
   z-index: 1;
-  max-width: 600px;
+  @include rem(max-width, 600px);
   margin: 0 auto;
-  height: 6px;
+  @include rem(height, 6px);
   border-top: 1px rgba(255,255,255,0.35) solid;
 }
 .wiki-nav ul li {
   display: inline-block;
-  margin-right: 20px;
+  @include rem(margin-right, 20px);
 }
 .wiki-nav ul li a {
   font-weight: 800;
-  font-size: 11px;
+  @include rem(font-size, 11px);
   text-transform: uppercase;
   letter-spacing: 0.2em;
   color: rgba(255,255,255,0.5);
@@ -105,25 +105,25 @@
   z-index: 1;
   background:#fff;
   position: relative;
-  top: -140px;
-  padding-top: 12px;
+  @include rem(top, -140px);
+  @include rem(padding-top, 12px);
 }
 
 /* Blur Effect */
 .image-wrap {
-position:relative;
-height:800px;
-overflow:hidden
+  position:relative;
+  @include rem(height, 800px);
+  overflow:hidden
 }
 .regular, .blurred {
-position:absolute;
-width:100%;
-min-height: 800px;
--webkit-transform: translate3d(0,0,0);
--moz-transform: translate3d(0,0,0);
--o-transform: translate3d(0,0,0);
--ms-transform: translate3d(0,0,0);
-transform: translate3d(0,0,0);
+  position:absolute;
+  width:100%;
+  @include rem(min-height, 800px);
+  -webkit-transform: translate3d(0,0,0);
+  -moz-transform: translate3d(0,0,0);
+  -o-transform: translate3d(0,0,0);
+  -ms-transform: translate3d(0,0,0);
+  transform: translate3d(0,0,0);
 }
 .regular {opacity:1;}
 .blurred { opacity:0;}

@@ -1,5 +1,5 @@
 .testimonials {
   .testimonial {
-    min-height: 381px;
+    @include rem(min-height, 381px);
   }
 }

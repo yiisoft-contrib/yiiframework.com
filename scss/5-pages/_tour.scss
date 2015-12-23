@@ -15,11 +15,11 @@
   .timeline > .row > div > .timeline-item > .media-top:nth-child(odd) .line:before {
       content: "";
       position: absolute;
-      top: 240px;
+      @include rem(top, 240px);
       bottom: 0;
-      left: 215px;
-      width: 5px;
-      height:340px;
+      @include rem(left, 215px);
+      @include rem(width, 5px);
+      @include rem(height, 340px);
       background-color: $yii-blue;
       -ms-transform: rotate(-15deg); /* IE 9 */
       -webkit-transform: rotate(-15deg); /* Safari */
@@ -31,11 +31,11 @@
   .timeline > .row > div > .timeline-item > .media-top:nth-child(even) .line:before {
       content: "";
       position: absolute;
-      top: 240px;
+      @include rem(top, 240px);
       bottom: 0;
-      left: 625px;
-      width: 5px;
-      height:340px;
+      @include rem(left, 625px);
+      @include rem(width, 5px);
+      @include rem(height, 340px);
       background-color: $yii-blue;
       -ms-transform: rotate(15deg); /* IE 9 */
       -webkit-transform: rotate(15deg); /* Safari */

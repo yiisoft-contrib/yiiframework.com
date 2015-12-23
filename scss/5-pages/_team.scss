@@ -8,7 +8,7 @@
   overflow: hidden;
   position: relative;
   border: 1px solid #CCC;
-  border-radius: 8px;
+  @include rem(border-radius, 8px);
   text-align: center;
   padding: 0;
   background-color: $yii-blue;
@@ -22,20 +22,20 @@
   top: 0;
   left: 0;
   width: 100%;
-  height: 70px;
+  @include rem(height, 70px);
   border-bottom: 1px #FFF solid;
   /* This positions the canvas under the text */
   z-index: 1;
 }
 .team-card .avatar {
   position: relative;
-  margin-top: 15px;
+  @include rem(margin-top, 15px);
   z-index: 100;
 }
 
 .team-card .avatar img {
-  width: 100px;
-  height: 100px;
+  @include rem(width, 100px);
+  @include rem(height, 100px);
   -webkit-border-radius: 50%;
   -moz-border-radius: 50%;
   border-radius: 50%;
@@ -55,7 +55,7 @@
       display: inline;
       a {
         color: $darkish-text;
-        padding: 3px;
+        @include rem(padding, 3px);
       }
     }
     li.github {
@@ -83,13 +83,13 @@
     }
 
     img {
-        width: 262px;
+        @include rem(width, 262px);
     }
 }
 
 #contributors img {
     display: inline-block;
-    width: 42px;
-    height: 42px;
-    margin: 1px;
+    @include rem(width, 42px);
+    @include rem(height, 42px);
+    @include rem(margin, 1px);
 }
