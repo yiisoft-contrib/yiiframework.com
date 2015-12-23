@@ -33,15 +33,14 @@ $this->registerJs('
 <div class="guide-header-wrap">
     <div class="container guide-header lang-<?= $guide->language ?>" xmlns="http://www.w3.org/1999/html">
         <div class="row">
-            <div class="col-md-8">
+            <div class="col-xs-12 col-sm-12 col-md-12">
                 <div class="guide-headline h1"><?= Html::encode($guide->title) ?></div>
             </div>
-            <div class="col-md-4">
+        </div>
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-offset-8 col-md-4">
                 <?= $this->render('partials/_versions.php', ['guide' => $guide, 'section' => $section]) ?>
             </div>
-              <p class="pull-right visible-xs topmost">
-                <button type="button" title="Toggle Side-Nav" class="btn btn-primary btn-xs" data-toggle="offcanvas">Nav</button>
-              </p>
         </div>
     </div>
 </div>

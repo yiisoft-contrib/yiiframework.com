@@ -11,9 +11,7 @@
 
   .nav>li>a:focus,
   .nav>li>a:hover {
-    //padding-left: 19px;
     background-color: #F2F9FA;
-    text-decoration: none;
   }
 
   .nav>.active:focus>a,
@@ -59,7 +57,7 @@
   background-color: $body-bg;
   z-index: 300;
   right: 2px;
-  border-left: 2px $version-buttons dashed;
+  border-left: 1px $version-buttons dashed;
 }
 
 .affix {
@@ -68,7 +66,7 @@
   right: 2px;
   background-color: $body-bg;
   z-index: 300;
-  border-left: 2px $version-buttons dashed;
+  border-left: 1px $version-buttons dashed;
 }
 
 .affix-bottom {

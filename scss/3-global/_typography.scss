@@ -3,19 +3,17 @@ html {
 }
 
 a {
-  text-decoration: none;
-  border-bottom: 1px dashed transparent;
-  transition: all ease-in-out .4s;
+  text-decoration: underline;
+  transition: all ease-in-out .5s;
   &:hover,
   &:active {
-    text-decoration: none;
-    border-color: $eshill-green;
-  }
-  &:focus {
-    text-decoration: none;
+    text-decoration: underline;
   }
 }
 
+.btn {
+  text-decoration: none;
+}
 // Copied here from bootstrap 'type' for reference
 // $font-size-base:          14px !default;
 // $font-size-large:         ceil(($font-size-base * 1.25)) !default; // ~18px

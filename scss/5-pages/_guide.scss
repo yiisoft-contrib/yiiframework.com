@@ -57,13 +57,14 @@
 }
 
 .hashlink:hover {
+  display: none;
   text-decoration: none;
 }
 
 h1:hover .hashlink,
 h2:hover .hashlink,
 h3:hover .hashlink {
-  display: inline;
+  display: none;
 }
 
 

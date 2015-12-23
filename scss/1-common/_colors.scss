@@ -13,7 +13,7 @@ $guide-listgroup-bg-active: rgb(112, 193, 179);//#70C1B3
 
 $eshill-section-bgcolor: rgb(235, 241, 242);//#EBF1F2
 $eshill-header-color: rgb(77, 77, 77);//#4D4D4D
-
+$separator-color: $eshill-header-color;
 
 $yii-yellow: rgb(223, 110, 53);//#DF6E35
 $yii-blue: $eshill-blue;//old Yii blue: #3379B2
@@ -38,7 +38,3 @@ $darkish-text: rgb(51, 51, 51);
 
 $footer-color: rgb(207, 207, 207);
 $footer-background-color: rgb(77, 77, 77);//#4D4D4D
-
-$jumbotron-background: transparent;
-$jumbotron-header-color: rgb(51, 51, 51);//#333
-$jumbotron-features-color: rgb(51, 51, 51);//#333

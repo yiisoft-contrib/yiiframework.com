@@ -1,6 +1,5 @@
 .guide-header-wrap {
   background-color: $eshill-light-blue;
-  //height: $beefy-header-height;
   margin-bottom: 12px;
 }
 .guide-header {
@@ -10,10 +9,9 @@
   }
   color: white;
   padding-top: 22px;
-  padding-bottom: 22px;
   .version-selector {
-    position: relative;
-    bottom: -61px;
+    margin-bottom: 0;
+    padding-bottom: 0;
     .btn {
       @include button-variant($yii-blue, $version-buttons, transparent);
       font-family: $font-family-base;
