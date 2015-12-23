@@ -2,66 +2,44 @@
 %blockquote{
   display:block;
   background: #fff;
-  padding-top: 15px;
-  padding-right: 20px;
-  padding-bottom: 15px;
-  padding-left: 85px;
-  position: relative;
+  @include rem(font-size, 18px);
+  @include rem(line-height, 26px);
+  @include rem(padding-top, 15px);
+  @include rem(padding-right, 20px);
+  @include rem(padding-bottom, 15px);
+  @include rem(padding-left, 85px);
   border-radius: 6px;
   min-height: 5em;
+  background-position: 20px;
+  background-repeat: no-repeat;
+	background-size: 40px 40px;
 }
-
-%blockquote::before{
-  font-family: 'FontAwesome';
-  font-size: 48px;
-  vertical-align: middle;
-  /*Positioning*/
-  position: absolute;
-  left: 25px;
-  //top: 10px;
-}
-
-%blockquote::after{
-  /*Reset to make sure*/
-  content: "";
-}
-
-// find possible content values in
-// vendor/bower/font-awesome/scss/_variables.scss
 
 blockquote.tip {
   @extend %blockquote;
   background-color: #DDF7F2;
+  background-image: url(../image/guide/ico_tip.svg);
   border-left: 4px solid #70C1B3;
-}
-blockquote.tip::before{
-  content: $fa-var-lightbulb-o;
-  color: #70C1B3;
+  color: darken(#70C1B3, 15%);
 }
 blockquote.note {
   @extend %blockquote;
   background-color: #FFF7E9;
+  background-image: url(../image/guide/ico_note.svg);
   border-left: 4px solid #FFAB19;
-}
-blockquote.note::before{
-  content: $fa-var-sticky-note-o;
-  color: #FFAB19;
+  color: darken(#FFAB19, 15%);
 }
 blockquote.info {
   @extend %blockquote;
   background-color: #E3F7FF;
+  background-image: url(../image/guide/ico_info.svg);
   border-left: 4px solid #247BA0;
-}
-blockquote.info::before{
-  content: $fa-var-info;
-  color: #247BA0;
+  color: darken(#247BA0, 15%);
 }
 blockquote.warn {
   @extend %blockquote;
   background-color: #FFF0F4;
+  background-image: url(../image/guide/ico_attention.svg);
   border-left: 4px solid #FF1654;
-}
-blockquote.warn::before{
-  content: $fa-var-warning;
-  color: #FF1654;
+  color: darken(#FF1654, 15%);
 }
