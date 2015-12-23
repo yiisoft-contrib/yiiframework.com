@@ -23,13 +23,14 @@ footer {
 .footerList {
   list-style: outside none none;
   @include rem(margin-top, 60px);
-  @include rem(margin-left, -16px);
-  @include rem(margin-right, 24px);
+  //@include rem(margin-left, -16px);
+  //@include rem(margin-right, 24px);
 }
 .footerList_item {
   @include rem(font-size, 14px);
   @include rem(margin-bottom, 12px);
   .social {
+    white-space: nowrap;
     a {
       border: none;
     }

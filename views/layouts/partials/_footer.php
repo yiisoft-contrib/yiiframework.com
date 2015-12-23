@@ -1,6 +1,6 @@
 <div class="footer-wrapper">
     <footer>
-        <div class="container-fluid">
+        <div class="container">
             <div class="footer-inner">
                 <div class="row">
                     <div class="col-md-2 col-sm-4 hidden-xs">
