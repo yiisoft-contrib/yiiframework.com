@@ -9,7 +9,7 @@
 }
 
 
-@media (min-width: 1200px) {
+@media (min-width: 1300px) {
 
   /*Style for even div.line*/
   .timeline > .row > div > .timeline-item > .media-top:nth-child(odd) .line:before {
@@ -18,9 +18,9 @@
       @include rem(top, 240px);
       bottom: 0;
       @include rem(left, 215px);
-      @include rem(width, 5px);
+      @include rem(width, 4px);
       @include rem(height, 340px);
-      background-color: $yii-blue;
+      background-color: $eshill-blue;
       -ms-transform: rotate(-15deg); /* IE 9 */
       -webkit-transform: rotate(-15deg); /* Safari */
       transform: rotate(-15deg);
@@ -31,15 +31,15 @@
   .timeline > .row > div > .timeline-item > .media-top:nth-child(even) .line:before {
       content: "";
       position: absolute;
-      @include rem(top, 240px);
+      @include rem(top, 210px);
       bottom: 0;
-      @include rem(left, 625px);
-      @include rem(width, 5px);
+      @include rem(left, 656px);
+      @include rem(width, 4px);
       @include rem(height, 340px);
-      background-color: $yii-blue;
-      -ms-transform: rotate(15deg); /* IE 9 */
-      -webkit-transform: rotate(15deg); /* Safari */
-      transform: rotate(15deg);
+      background-color: $eshill-blue;
+      -ms-transform: rotate(20deg); /* IE 9 */
+      -webkit-transform: rotate(20deg); /* Safari */
+      transform: rotate(20deg);
       //box-shadow: 0 0 5px #4582ec;
       z-index: -100;
   }

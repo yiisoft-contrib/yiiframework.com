@@ -8,11 +8,11 @@ $this->title = 'The Yii Tour';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <?= $this->render('partials/common/_heading.php', ['title' => $this->title]) ?>
-<div class="container-fluid main" style="max-width:1300px;">
+<div class="container-fluid style_external_links" style="max-width:1430px;">
     <div class="timeline">
         <div class="row">
             <div class="visible-sm visible-xs">
-                <img class="img-circle img-thumbnail img-responsive center-block" width=250 src="/image/tour/composer.png" alt="">
+                <img class="img-circle img-thumbnail img-responsive center-block" src="/image/tour/composer.png" alt="">
             </div>
             <div class="col-lg-8 col-xs-12">
                 <div class="media timeline-item">
@@ -25,9 +25,11 @@ $this->params['breadcrumbs'][] = $this->title;
                         <p>
                             You also need to install the composer asset plugin globally, as it is used by the Yii composer project templates to handle Bower and NPM repositories:
                         </p>
+                        <div>
 <?php HL::begin(['language' => 'bash']); ?>
 composer global require "fxp/composer-asset-plugin:~1.1.0"
 <?php HL::end(); ?>
+                        </div>
                         <p>
                             You only need to install that plugin once, and not for each project, because you installed it globally.
                         </p>
@@ -94,9 +96,11 @@ composer global require "fxp/composer-asset-plugin:~1.1.0"
                     </div>
                     <div class="media-body">
                         <h2 class="media-heading">2) Basic project template</h2>
+<div>
 <?php HL::begin(['language' => 'bash']); ?>
 composer create-project --prefer-dist yiisoft/yii2-app-basic basic
 <?php HL::end(); ?>
+</div>
                         <p class="text-muted">
                             Minim pork enim nisi swine. Leberkas veniam incididunt commodo eu ad cow flank rump anim eiusmod meatball doner. Kielbasa reprehenderit venison drumstick adipisicing exercitation. Pariatur capicola exercitation, alcatra anim sed shank kevin aute minim venison pork mollit occaecat. Porchetta tri-tip salami ground round occaecat laboris nisi shankle landjaeger dolore aute beef.
                         </p>

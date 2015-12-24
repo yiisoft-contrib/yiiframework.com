@@ -60,7 +60,7 @@ class Highlight extends Widget
         $content = ob_get_clean();
         $highlighter = $this->getHighlighter();
         $result = $highlighter->highlight($this->language, $content);
-        $rendered = "<pre class='hljs " . $result->language . "'>" . rtrim($result->value) . "</pre>";
+        $rendered = "<pre><code class='hljs " . $result->language . "'>" . rtrim($result->value) . "</code></pre>";
         if($this->capture) {
             $this->captured = $rendered;
             return;
