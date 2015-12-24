@@ -44,3 +44,12 @@ $beefy-header-height: 120px;
   @include rem(margin-right, 6px);
   @include rem(margin-left, 6px);
 }
+
+.common-heading {
+  @include rem(padding-top, 14px);
+  @include rem(padding-bottom, 14px);
+  .row {
+    position: relative;
+    @include rem(top, -12px);
+  }
+}
