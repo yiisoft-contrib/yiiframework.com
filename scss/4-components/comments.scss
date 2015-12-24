@@ -1,0 +1,13 @@
+.comments-wrapper {
+   background-color: $comments-background-color;
+   @include rem(padding-top, 40px);
+   .comments {
+     .heading {
+       @include rem(font-size, fontsize(h3));
+       font-family: $bold-headings-font-family;
+       color: $eshill-header-color;
+     }
+     .component-comments {
+     }
+   }
+}
