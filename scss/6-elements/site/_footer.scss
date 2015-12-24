@@ -2,8 +2,8 @@ footer {
   background-color: $footer-background-color;
   color: darken($footer-color, 30%);
   @include rem(min-height, 428px);
-  @include rem(margin-top, 24px);
   a {
+    text-decoration: none;
     color: darken($footer-color, 30%);
     &:hover,
     &:focus {
@@ -33,18 +33,18 @@ footer {
       border: none;
     }
     i {
-      @include rem(font-size, 12px);
+      @include rem(font-size, 14px);
       @include rem(margin-left, 3px);
       @include rem(padding, 6px 6px);
       display: inline-block;
-      color: $footer-color;
-      background-color: darken($footer-color, 30%);
+      background-color: $footer-color;
+      color: $footer-background-color;
       border-radius:50%;
       @include rem(width, 24px);
       @include rem(height, 24px);
       transition:color 0.4s ease-out, background 0.4s ease-in;
       &:hover {
-        background-color: $footer-color;
+        background-color: #fff;
         color: $footer-background-color;
       }
     }

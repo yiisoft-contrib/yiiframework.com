@@ -112,10 +112,14 @@ $this->registerJs('
             </div>
             </div>
             </div>
-            <?= \app\components\Comments::widget([
-                'objectType' => 'guide',
-                'objectId' => $section->name. '-' . $guide->version,
-            ]) ?>
         </div>
+    </div>
+</div>
+<div class="comments-wrapper">
+    <div class="container comments">
+        <?= \app\components\Comments::widget([
+            'objectType' => 'guide',
+            'objectId' => $section->name. '-' . $guide->version,
+        ]) ?>
     </div>
 </div>

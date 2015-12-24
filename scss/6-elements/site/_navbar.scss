@@ -36,6 +36,7 @@
       background-color: $eshill-yellow;
       padding-left: 0;
       > li > a {
+        @include rem(text-indent, 20px);
         color: $link-color;
         background-color: $eshill-yellow;
         &:hover {

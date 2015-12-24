@@ -31,16 +31,11 @@
 .edit-box {
   border: 1px solid $eshill-blue;
   @include rem(border-radius, 6px);
-  @include rem(padding-top, 12px);
-  @include rem(padding-right, 12px);
-  @include rem(padding-left, 12px);
-  margin-right: auto;
-  margin-left: auto;
+  @include rem(padding, 12px);
   margin-bottom: 1em;
-  width: 60%;
   color: $eshill-blue;
   .edit-icon {
-    margin-top: .2em;
+    margin-top: .16em;
     margin-right: 1.5em;
     margin-bottom: .5em;
     margin-left: 1.5em;

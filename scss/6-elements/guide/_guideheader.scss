@@ -12,7 +12,36 @@
     margin-bottom: 0;
     padding-bottom: 0;
     .btn {
-      @include button-variant($yii-blue, $version-buttons, transparent);
+      color: $yii-blue;
+      background-color: $version-buttons;//#BAD9C1
+      border-color: darken($version-buttons, 12%);
+
+      &:focus,
+      &.focus {
+        color: $yii-blue;
+        background-color: #F5FEC4;
+            border-color: darken(#F5FEC4, 12%);
+      }
+      &:hover {
+        color: $yii-blue;
+        background-color: #83BFB3;
+            border-color: darken(#83BFB3, 12%);
+      }
+      &:active,
+      &.active,
+      .open > &.dropdown-toggle {
+        color: $yii-blue;
+        background-color: #F5FEC4;
+            border-color: darken(#F5FEC4, 12%);
+
+        &:hover,
+        &:focus,
+        &.focus {
+          color: $yii-blue;
+          background-color: #F5FEC4;
+          border-color: darken(#F5FEC4, 12%);
+        }
+      }
       font-family: $font-family-base;
       @media (max-width: 380px) {
         @include rem(font-size, 12px);
@@ -22,8 +51,10 @@
       background-color: $eshill-yellow;
       width: 200%;
       > li > a {
+        color: $yii-blue;
         &:hover,
         &:active {
+          text-decoration: underline;
           background-color: $version-buttons;
         }
       }
