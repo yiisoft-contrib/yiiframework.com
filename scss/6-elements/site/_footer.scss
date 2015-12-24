@@ -5,10 +5,12 @@ footer {
   a {
     text-decoration: none;
     color: darken($footer-color, 30%);
-    &:hover,
-    &:focus {
-      border-color: darken($footer-color, 30%);
+    &:hover {
       color: $footer-color;
+    }
+    &:focus {
+      color: $footer-color;
+      text-decoration: none;
     }
   }
 }

@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "963d7de7ee7af2e7b454b47c293e0e5d",
-    "content-hash": "9ae120b12afdf03965bc7dcdb274f197",
+    "hash": "e23ccbccf18cd12a9af78f1fa8307659",
+    "content-hash": "9e1aaa2d1aaabe4576dcb1490b0ea417",
     "packages": [
         {
             "name": "bower-asset/bootstrap",
@@ -364,6 +364,34 @@
                 "responsive",
                 "sass"
             ]
+        },
+        {
+            "name": "bower-asset/scrollup",
+            "version": "v2.4.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/markgoodyear/scrollup.git",
+                "reference": "2167852df6d20548863a0786cb88abcff49f5261"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/markgoodyear/scrollup/zipball/2167852df6d20548863a0786cb88abcff49f5261",
+                "reference": "2167852df6d20548863a0786cb88abcff49f5261",
+                "shasum": ""
+            },
+            "require": {
+                "bower-asset/jquery": ">=1.11.0"
+            },
+            "type": "bower-asset-library",
+            "extra": {
+                "bower-asset-main": "dist/jquery.scrollUp.min.js",
+                "bower-asset-ignore": [
+                    "css",
+                    "img",
+                    ".travis.yml",
+                    "index.html"
+                ]
+            }
         },
         {
             "name": "bower-asset/wowjs",
@@ -1217,7 +1245,7 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/yiisoft/yii2-framework/zipball/62964c2cd02a9276ebf387dadd8d6c54c19902bf",
+                "url": "https://api.github.com/repos/yiisoft/yii2-framework/zipball/8a8510b76a8589fc7f8a580c4c7f7cd622fe7df1",
                 "reference": "c177f2137fdfa19221ff04ba1e8261d63a754e42",
                 "shasum": ""
             },
@@ -1655,34 +1683,6 @@
                 "swipe",
                 "touch"
             ]
-        },
-        {
-            "name": "bower-asset/scrollup",
-            "version": "v2.4.1",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/markgoodyear/scrollup.git",
-                "reference": "2167852df6d20548863a0786cb88abcff49f5261"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/markgoodyear/scrollup/zipball/2167852df6d20548863a0786cb88abcff49f5261",
-                "reference": "2167852df6d20548863a0786cb88abcff49f5261",
-                "shasum": ""
-            },
-            "require": {
-                "bower-asset/jquery": ">=1.11.0"
-            },
-            "type": "bower-asset-library",
-            "extra": {
-                "bower-asset-main": "dist/jquery.scrollUp.min.js",
-                "bower-asset-ignore": [
-                    "css",
-                    "img",
-                    ".travis.yml",
-                    "index.html"
-                ]
-            }
         },
         {
             "name": "bower-asset/unslider",

@@ -32,6 +32,8 @@
       color: darken($eshill-section-bgcolor, 8%);
     }
     .btn {
+      @include rem(font-size, fontsize(larger));
+      font-family: $font-family-base;
       color: $eshill-light-blue;
       background-color: #F5FEC4;
       border-color: darken(#F5FEC4, 12%);
@@ -62,8 +64,6 @@
           border-color: darken(#83BFB3, 12%);
         }
       }
-      @include rem(font-size, fontsize(h3));
-      font-family: $font-family-base;
     } // btn end
   }
 }
