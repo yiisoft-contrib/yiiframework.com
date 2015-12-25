@@ -5,11 +5,6 @@
     @include rem(line-height, 13px);
     @include rem(padding, 20px 10px);
     border-bottom: 1px solid $eshill-section-bgcolor;
-    &:hover {
-      text-decoration: underline;
-      background-color: $eshill-green;
-      color: #fff;
-    }
   }
   > a.has-children {
     color: $separator-color;
@@ -18,26 +13,29 @@
     border-bottom: 1px solid $eshill-section-bgcolor;
     &:hover {
       text-decoration: none;
-      background-color: $eshill-green;
-      color: #fff;
+      background-color: $eshill-section-bgcolor;
     }
   }
   > a.active {
     background-color: $eshill-section-bgcolor;
   }
-  > .in {
+  > .active-parent {
     background-color: $eshill-section-bgcolor;
     a.active {
       text-decoration: none;
       background-color: $eshill-green;
       color: #fff;
+      &:hover {
+        text-decoration: none;
+        background-color: $eshill-section-bgcolor;
+      }
     }
     > a {
       color: $eshill-light-blue;
       &:hover {
-        text-decoration: none;
-        background-color: $eshill-green;
-        color: #fff;
+        text-decoration: underline;
+        background-color: white;
+        color: $link-color;
       }
     }
   }

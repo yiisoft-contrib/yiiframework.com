@@ -129,7 +129,7 @@ class SideNav extends \yii\bootstrap\Widget
                     'encodeLabels' => $this->encodeLabels,
                     'view' => $this->getView(),
                     'options' => [
-                        'class' => "submenu panel-collapse collapse" . ($active || !$collapsed ? ' in' : '')
+                        'class' => "submenu panel-collapse collapse" . ($active || !$collapsed ? ' in' : '') . ($active ? ' active-parent' : '')
                     ]
                 ]);
             }
