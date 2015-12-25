@@ -1,3 +1,7 @@
+.books {
+  @include rem(margin-top, 50px);
+  @include rem(margin-bottom, 50px);
+}
 .book {
   padding: 1em;
   margin-bottom: 1em;

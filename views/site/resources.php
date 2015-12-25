@@ -6,7 +6,7 @@ $this->title = 'Resources';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <?= $this->render('partials/common/_heading.php', ['title' => $this->title]) ?>
-<div class="container">
+<div class="container style_external_links">
     <div class="row">
         <div class="content">
             <p>There are various resources that aren't part of official Yii website but are very helpful. Check these out.</p>

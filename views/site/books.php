@@ -6,7 +6,7 @@ $this->title = 'Books';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <?= $this->render('partials/common/_heading.php', ['title' => $this->title]) ?>
-<div class="container">
+<div class="container books style_external_links">
     <div class="row">
         <div class="site-books">
             <p>There are handy books about both Yii 2.0 and Yii 1.1 which could help you master the framework.</p>

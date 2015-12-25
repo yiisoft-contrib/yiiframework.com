@@ -6,7 +6,7 @@ $this->title = 'Terms of Service';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <?= $this->render('partials/common/_heading.php', ['title' => $this->title]) ?>
-<div class="container">
+<div class="container style_external_links">
     <div class="row">
         <div class="content">
             <p>This web site is owned and operated by <a href="http://www.yiisoft.com/">Yii Software LLC</a>, (YiiSoft or we).

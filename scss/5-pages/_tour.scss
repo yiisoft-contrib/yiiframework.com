@@ -1,4 +1,5 @@
 .timeline {
+  @include rem(margin-top, 50px);
   p {
     white-space: initial !important;
   }
@@ -53,4 +54,8 @@
       //box-shadow: 0 0 5px #4582ec;
       z-index: -100;
   }
+}
+
+.timeline-end {
+  @include rem(margin-bottom, 50px);
 }

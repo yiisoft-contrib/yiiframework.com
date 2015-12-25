@@ -235,7 +235,7 @@ class m150416_155923_create_comment_table extends Migration
             </div>
         </div>
     </div>
-    <div class="row">
+    <div class="row timeline-end">
         <div class="col-lg-12">
             <h2>What to do next?</h2>
             <ol>

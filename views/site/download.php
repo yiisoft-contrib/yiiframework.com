@@ -6,7 +6,7 @@ $this->title = 'Download Yii';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <?= $this->render('partials/common/_heading.php', ['title' => $this->title]) ?>
-<div class="container">
+<div class="container style_external_links">
     <div class="row">
         <div class="content site-license">
             <strong>There is supposed to be something a bit different on this page</strong>
