@@ -1,0 +1,4 @@
+.content {
+  @include rem(margin-top, 50px);
+  @include rem(margin-bottom, 50px);
+}

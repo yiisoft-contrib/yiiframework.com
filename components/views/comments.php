@@ -11,7 +11,11 @@ use yii\helpers\Html;
 
 <div class="row">
     <div class="col-md-offset-2 col-md-9">
-        <span class="heading">User Contributed Notes</span>
+        <?php if (!empty($comments)): ?>
+            <span class="heading">User Contributed Notes <span class="badge"><?= count($comments) ?></span></span>
+        <?php else: ?>
+            <span class="heading">User Contributed Notes</span>
+        <?php endif; ?>
     </div>
 </div>
 <div class="row">
@@ -43,7 +47,7 @@ use yii\helpers\Html;
                 </ol>
             <?php endif ?>
 
-            <?php if (Yii::$app->user->isGuest): ?>
+            <?php if (!Yii::$app->user->isGuest): ?>
                 <?php $form = ActiveForm::begin(); ?>
                     <?= $form->field($commentForm, 'text')->label('Add new comment')->textarea() ?>
 

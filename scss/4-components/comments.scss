@@ -6,6 +6,16 @@
        @include rem(font-size, fontsize(h3));
        font-family: $bold-headings-font-family;
        color: $eshill-header-color;
+       .badge {
+         position: relative;
+         @include rem(top, -12px);
+         background-color: $eshill-red;
+         @include rem(padding-left, 12px);
+         @include rem(padding-right, 12px);
+         @include rem(font-size, fontsize(smaller));
+         font-weight: 600;
+         font-family: $font-family-base;
+       }
      }
      .component-comments {
      }
