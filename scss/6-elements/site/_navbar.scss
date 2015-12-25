@@ -50,6 +50,12 @@
         text-transform: uppercase;
         color: $separator-color;
       }
+      > .active > a {
+        background-color: $version-buttons;
+        &:hover {
+          color: $link-color;
+        }
+      }
     }
   }
 }
