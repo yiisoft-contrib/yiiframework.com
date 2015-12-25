@@ -2,9 +2,6 @@
 use yii\bootstrap\ActiveForm;
 use yii\helpers\Html;
 use yii\bootstrap\Nav;
-use yii\bootstrap\NavBar;
-use yii\widgets\Breadcrumbs;
-use yii\widgets\Menu;
 
 /* @var $this \yii\web\View */
 /* @var $content string */
@@ -71,7 +68,8 @@ use yii\widgets\Menu;
                             'id' => 'main-nav',
                             'encodeLabels' => false,
                             'options' => ['class' => 'nav navbar-nav navbar-main-menu'],
-                            'activateItems' => false,
+                            'activateItems' => true,
+                            'activateParents' => true,
                             'dropDownCaret' => '<span class="caret"></span>',
                             'items' => [
                                 ['label' => 'Guide', 'url' => ['guide/entry'], 'options' => ['title' => 'The Definitive Guide to Yii']],
