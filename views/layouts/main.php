@@ -83,7 +83,7 @@ use yii\bootstrap\Nav;
                                     ['label' => 'Books', 'url' => ['site/books']],
                                     ['label' => 'Resources', 'url' => ['site/resources']],
                                     ['label' => 'Develop', 'options' => ['class' => 'separator']],
-                                    ['label' => 'Install Yii', 'url' => ['site/download']],
+                                    ['label' => 'Download Yii', 'url' => ['site/download']],
                                     //['label' => '<i class="fa fa-angle-double-right"></i>Extensions<span class="label label-warning">coming soon</span>', 'url' => 'https://yiicamp.com/extensions'],
                                     ['label' => 'Report an Issue', 'url' => ['site/report-issue']],
                                     ['label' => 'Report a Security Issue', 'url' => ['site/security']],

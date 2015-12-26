@@ -1,11 +1,12 @@
 .comments-wrapper {
    background-color: $comments-background-color;
    @include rem(padding-top, 40px);
+   @include rem(padding-bottom, 40px);
    .comments {
+     color: $eshill-header-color;
      .heading {
        @include rem(font-size, fontsize(h3));
        font-family: $bold-headings-font-family;
-       color: $eshill-header-color;
        .badge {
          position: relative;
          @include rem(top, -12px);
@@ -18,6 +19,24 @@
        }
      }
      .component-comments {
+       @include rem(margin-top, 32px);
+       .comment {
+         border: 1px dashed #fff;
+         @include rem(padding-bottom, 22px);
+         @include rem(margin-bottom, 40px);
+         @include rem(border-radius, 6px);
+         .comment-header {
+           margin: 0;
+           @include rem(padding-left, 22px);
+           @include rem(padding-top, 8px);
+           @include rem(padding-right, 22px);
+           @include rem(padding-bottom, 8px);
+           background-color: #fff !important;
+         }
+         .comment-body {
+           @include rem(padding, 22px);
+         }
+       }
      }
    }
 }

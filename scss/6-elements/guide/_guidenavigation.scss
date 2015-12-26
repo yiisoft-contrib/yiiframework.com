@@ -19,6 +19,14 @@
   > a.active {
     background-color: $eshill-section-bgcolor;
   }
+  > .in a{
+    color: $eshill-light-blue;
+    &:hover {
+      text-decoration: none;
+      color: $eshill-light-blue;
+      background-color: $eshill-section-bgcolor;
+    }
+  }
   > .active-parent {
     background-color: $eshill-section-bgcolor;
     a.active {
@@ -35,7 +43,7 @@
       &:hover {
         text-decoration: underline;
         background-color: white;
-        color: $link-color;
+        color: $eshill-light-blue;
       }
     }
   }
