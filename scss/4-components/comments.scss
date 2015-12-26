@@ -28,10 +28,11 @@
          .comment-header {
            margin: 0;
            @include rem(padding-left, 22px);
-           @include rem(padding-top, 2px);
+           @include rem(padding-top, 3px);
            @include rem(padding-right, 22px);
            @include rem(padding-bottom, 2px);
-           background-color: #fff !important;
+           background-color: #fff;
+           @include rem(font-size, fontsize(small));
            .comment-id {
              color: $comments-background-color;
              @include rem(font-size, fontsize(h3));
