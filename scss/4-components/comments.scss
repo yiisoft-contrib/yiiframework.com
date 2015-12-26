@@ -28,10 +28,31 @@
          .comment-header {
            margin: 0;
            @include rem(padding-left, 22px);
-           @include rem(padding-top, 8px);
+           @include rem(padding-top, 2px);
            @include rem(padding-right, 22px);
-           @include rem(padding-bottom, 8px);
+           @include rem(padding-bottom, 2px);
            background-color: #fff !important;
+           .comment-id {
+             color: $comments-background-color;
+             @include rem(font-size, fontsize(h3));
+             font-weight: 600;
+             text-decoration: none;
+           }
+           .details {
+             @include rem(padding-top, 7px);
+           }
+           .voting {
+             @include rem(padding-top, 7px);
+             .votes {
+               @include rem(font-size, fontsize(smaller));
+             }
+           }
+           .votes-up {
+             color: #70C1B3;
+           }
+           .votes-down {
+             color: $eshill-red;
+           }
          }
          .comment-body {
            @include rem(padding, 22px);
