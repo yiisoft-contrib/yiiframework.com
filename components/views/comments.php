@@ -63,7 +63,7 @@ use yii\helpers\Html;
 </div>
 <div class="row">
     <div class="col-md-offset-2 col-md-9">
-        <?php if (Yii::$app->user->isGuest): ?>
+        <?php if (!Yii::$app->user->isGuest): ?>
             <?php $form = ActiveForm::begin(); ?>
                 <?= $form->field($commentForm, 'text')->label('')->textarea() ?>
 
