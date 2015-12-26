@@ -30,9 +30,13 @@ if (!empty($title)) {
     </div>
 </div>
 <div class="container api-content">
-    <p class="pull-right visible-xs topmost">
-        <button type="button" title="Toggle Side-Nav" class="btn btn-primary btn-xs" data-toggle="offcanvas">Nav</button>
-    </p>
+    <div class="row visible-xs">
+        <div class="col-md-12">
+            <p class="pull-right topmost">
+                <button type="button" title="Toggle Side-Nav" class="btn btn-primary btn-xs" data-toggle="offcanvas">SideNav</button>
+            </p>
+        </div>
+    </div>
 	<?= strtr($content, [
         '<!-- YII_DOWNLOAD_OPTIONS -->' => '<p>You may download the API documentation for offline use: </p><ul>'
             . '<li>' . Html::a("yii-docs-{$version}-en.tar.bz2", ['guide/download', 'version' => $version, 'language' => 'en', 'format' => 'tar.bz2']) . '</li>'

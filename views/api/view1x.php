@@ -31,10 +31,14 @@ $this->title = Html::encode((!empty($title) ? "$title - " : '') .  "API Document
     </div>
 </div>
 <div class="container api-content">
-    <p class="pull-right visible-xs topmost">
-        <button type="button" title="Toggle Side-Nav" class="btn btn-primary btn-xs" data-toggle="offcanvas">Nav</button>
-    </p>
-    <div class="row">
+    <div class="row visible-xs">
+        <div class="col-md-12">
+            <p class="pull-right topmost">
+                <button type="button" title="Toggle Side-Nav" class="btn btn-primary btn-xs" data-toggle="offcanvas">SideNav</button>
+            </p>
+        </div>
+    </div>
+    <div class="row row-offcanvas">
         <div class="col-md-3">
         <?php
         ksort($packages);

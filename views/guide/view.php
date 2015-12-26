@@ -30,9 +30,6 @@ $this->registerJs('
   });
 ');
 ?>
-<p class="pull-right visible-xs topmost">
-    <button type="button" title="Toggle Side-Nav" class="btn btn-primary btn-xs" data-toggle="offcanvas">Nav</button>
-</p>
 <div class="guide-header-wrap">
     <div class="container guide-header lang-<?= $guide->language ?>" xmlns="http://www.w3.org/1999/html">
         <div class="row">
@@ -69,12 +66,18 @@ $this->registerJs('
     </nav>
 </div>
 <div class="container guide-view lang-<?= $guide->language ?>" xmlns="http://www.w3.org/1999/html">
+    <div class="row visible-xs">
+        <div class="col-md-12">
+            <p class="pull-right topmost">
+                <button type="button" title="Toggle Side-Nav" class="btn btn-primary btn-xs" data-toggle="offcanvas">SideNav</button>
+            </p>
+        </div>
+    </div>
     <div class="row row-offcanvas">
         <div class="col-sm-2 col-md-2 col-lg-2">
             <?= SideNav::widget(['id' => 'guide-navigation', 'items' => $nav, 'options' => ['class' => 'sidenav-offcanvas']]) ?>
         </div>
         <div class="col-sm-10 col-md-10 col-lg-10" role="main">
-
             <div class="row">
             <div class="col-md-12 col-lg-11">
                 <div class="guide-content content">
