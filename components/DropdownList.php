@@ -74,9 +74,9 @@ class DropdownList extends Widget
         }
         $menu = '<ul class="dropdown-menu" role="menu">' . implode("\n", $items) . '</ul>';
         if ($this->useButton) {
-            $selection = '<button class="btn btn-primary dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">' . $this->selection . ' <span class="caret"></span></button>';
+            $selection = '<button class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-expanded="false">' . $this->selection . ' <span class="caret"></span></button>';
         } else {
-            $selection = '<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">' . $this->selection . ' <span class="caret"></span></a>';
+            $selection = '<a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">' . $this->selection . ' <span class="caret"></span></a>';
         }
         return Html::tag($this->tag, $selection . $menu, $this->options);
     }
