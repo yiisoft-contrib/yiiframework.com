@@ -56,7 +56,8 @@ use yii\helpers\Html;
                                                 foreach($matches[1] as $match){
                                                     $processed = $highlighter->highlightAuto(html_entity_decode($match));
                                                     $pre_processed_text = str_replace($match, $processed->value, $pre_processed_text);
-                                                    $pre_processed_text = str_replace('<code>', '<code class="hljs '.$processed->language.'">', $pre_processed_text);
+                                                    $pre_processed_text = str_replace('<code>', '<pre><code class="hljs '.$processed->language.'">', $pre_processed_text);
+                                                    $pre_processed_text = str_replace('</code>', '</code></pre>', $pre_processed_text);
                                                 }
                                             }
                                             echo $pre_processed_text;

@@ -43,9 +43,16 @@ class Comments extends Widget
     {
         $commentForm = $this->getNewCommentForm($this->objectType, $this->objectId);
 
-        if ($commentForm->load(Yii::$app->request->post()) && $commentForm->save()) {
-            // reset form
-            $commentForm = $this->getNewCommentForm($this->objectType, $this->objectId);
+        if ($commentForm->load(Yii::$app->request->post())) {
+            if( $commentForm->save()) {
+                $id = $commentForm->id;
+                // reset form
+                $commentForm = $this->getNewCommentForm($this->objectType, $this->objectId);
+                // take user to the newly created comment
+                \Yii::$app->getResponse()
+                    ->refresh(sprintf("#c%d", $id))
+                    ->send();
+            }
         }
 
         $comments = Comment::find()->where([
