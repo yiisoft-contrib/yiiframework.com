@@ -10,6 +10,10 @@
 use yii\helpers\Html;
 use yii\helpers\Url;
 
+$this->registerJs("
+    $('.has-children.active + div').addClass('active-parent');
+");
+
 $this->title = "API Documentation for Yii $version";
 if (!empty($title)) {
     $this->title = "$title - $this->title";

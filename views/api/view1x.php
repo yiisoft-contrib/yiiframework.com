@@ -14,6 +14,11 @@ use yii\helpers\Html;
 use yii\helpers\StringHelper;
 use yii\helpers\Url;
 
+$this->registerJs("
+    $('.has-children.active + div').addClass('active-parent');
+");
+
+
 $this->title = Html::encode((!empty($title) ? "$title - " : '') .  "API Documentation for Yii $version");
 ?>
 <div class="guide-header-wrap">

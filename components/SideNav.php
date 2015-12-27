@@ -114,7 +114,6 @@ class SideNav extends \yii\bootstrap\Widget
             $id = $this->id . '-' . static::$counter++;
             $linkOptions['data-target'] = '#' . $id;
             $url = '#';
-            //$label .= ' ' . Html::tag('b', '', ['class' => 'caret']);
             if (is_array($items)) {
                 if ($active === false) {
                     foreach ($items as $subItem) {
