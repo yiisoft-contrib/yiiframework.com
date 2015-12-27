@@ -24,7 +24,7 @@
     &:hover {
       text-decoration: none;
       color: $eshill-light-blue;
-      background-color: $eshill-section-bgcolor;
+      background-color: white;
     }
   }
   > .active-parent {
@@ -33,9 +33,10 @@
       text-decoration: none;
       background-color: $eshill-green;
       color: #fff;
+      &:active,
       &:hover {
         text-decoration: none;
-        background-color: $eshill-section-bgcolor;
+        background-color: white;
       }
     }
     > a {

@@ -204,28 +204,32 @@ $api-box-padding-y: ceil($font-size-base / 2);
   > a.active {
     background-color: $eshill-section-bgcolor;
   }
+  > .in a{
+    color: $eshill-light-blue;
+    &:hover {
+      text-decoration: none;
+      color: $eshill-light-blue;
+      background-color: white;
+    }
+  }
   > .active-parent {
     background-color: $eshill-section-bgcolor;
     a.active {
       text-decoration: none;
       background-color: $eshill-green;
       color: #fff;
+      &:active,
       &:hover {
         text-decoration: none;
-        background-color: $eshill-section-bgcolor;
+        background-color: white;
       }
     }
     > a {
       color: $eshill-light-blue;
-      a.active {
-        text-decoration: none;
-        background-color: $eshill-green;
-        color: #fff;
-      }
       &:hover {
         text-decoration: underline;
         background-color: white;
-        color: $link-color;
+        color: $eshill-light-blue;
       }
     }
   }
