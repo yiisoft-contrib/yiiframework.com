@@ -35,11 +35,11 @@ use yii\helpers\Html;
                                             <a href="#"><?= $comment->user->username; ?></a> at
                                             <span class="date"><?=Yii::$app->formatter->format($comment->created_at, 'datetime')?></span>
                                         </div>
-                                        <div class="col-md-1 voting votes-up">
-                                            <span class="votes">0</span> <i class="fa fa-thumbs-up"></i>
-                                        </div>
-                                        <div class="col-md-1 voting votes-down">
-                                            <span class="votes">0</span> <i class="fa fa-thumbs-down"></i>
+                                        <div class="col-md-2 voting">
+                                            <div class="pull-right">
+                                                <span class="votes votes-up">0</span> <i class="thumbs-up"></i>
+                                                <span class="votes votes-down">0</span> <i class="thumbs-down"></i>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
