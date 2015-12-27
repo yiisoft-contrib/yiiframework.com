@@ -6,10 +6,13 @@
   }
 
   .prev-next {
-    @include rem(margin-top, 50px);
-    @include rem(margin-bottom, 15px);
-    @include rem(padding-top, 10px);
-    border-top: 1px solid #ccc;
+    @include rem(margin-top, 40px);
+    @include rem(margin-bottom, 40px);
+    border-top: 2px dashed rgba($separator-color, 0.7);
+    a {
+      text-decoration: none;
+      vertical-align: middle;
+    }
   }
   .panel-heading {
     h3 {
@@ -110,4 +113,36 @@ div.image {
     padding: 0;
     border: none;
   }
+}
+
+%chevron {
+  @include rem(margin-top, 30px);
+  background-repeat: no-repeat;
+  background-size: 12px 20px;
+  position: relative;
+  top: 5px;
+  width: 12px;
+  height: 20px;
+  display: inline-block;
+  min-height: 20px;
+  vertical-align: center;
+}
+.chevron-left {
+  @extend %chevron;
+  @include rem(margin-right, 20px);
+  background-image: url(../image/guide/larr.svg);
+}
+.chevron-right {
+  @extend %chevron;
+  @include rem(margin-left, 20px);
+  background-image: url(../image/guide/rarr.svg);
+}
+.chevron-up {
+  @extend %chevron;
+  top: 7px;
+  @include rem(margin-left, 20px);
+  background-size: 20px 12px;
+  width: 20px;
+  height: 12px;
+  background-image: url(../image/guide/tarr.svg);
 }
