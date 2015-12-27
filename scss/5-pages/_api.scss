@@ -185,52 +185,5 @@ $api-box-padding-y: ceil($font-size-base / 2);
 
 }
 #api-navigation {
-  > a {
-    @include rem(font-size, 13px);
-    @include rem(line-height, 13px);
-    @include rem(padding, 20px 10px);
-    border-bottom: 1px solid $eshill-section-bgcolor;
-  }
-  > a.has-children {
-    color: $separator-color;
-    text-decoration: none;
-    text-transform: uppercase;
-    border-bottom: 1px solid $eshill-section-bgcolor;
-    &:hover {
-      text-decoration: none;
-      background-color: $eshill-section-bgcolor;
-    }
-  }
-  > a.active {
-    background-color: $eshill-section-bgcolor;
-  }
-  > .in a{
-    color: $eshill-light-blue;
-    &:hover {
-      text-decoration: none;
-      color: $eshill-light-blue;
-      background-color: white;
-    }
-  }
-  > .active-parent {
-    background-color: $eshill-section-bgcolor;
-    a.active {
-      text-decoration: none;
-      background-color: $eshill-green;
-      color: #fff;
-      &:active,
-      &:hover {
-        text-decoration: none;
-        background-color: white;
-      }
-    }
-    > a {
-      color: $eshill-light-blue;
-      &:hover {
-        text-decoration: underline;
-        background-color: white;
-        color: $eshill-light-blue;
-      }
-    }
-  }
+  @extend %sidenav;
 }
