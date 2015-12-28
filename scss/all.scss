@@ -47,6 +47,7 @@ This file is part of the
 
 // Global styling that makes use of vendors
 @import "3-global/site";
+@import "3-global/externallinks";
 @import "3-global/highlight"; // guide code highlight
 @import "3-global/typography";
 @import "3-global/dashedheadings";
@@ -74,7 +75,6 @@ This file is part of the
 // it can be split up.
 // Indivual elements gets placed here
 // in subdirectories named after the page/name
-@import "6-elements/site/externallinks";
 @import "6-elements/site/navbar";
 @import "6-elements/site/footer";
 @import "6-elements/index/sitejumbo";

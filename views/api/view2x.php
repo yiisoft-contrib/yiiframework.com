@@ -12,6 +12,9 @@ use yii\helpers\Url;
 
 $this->registerJs("
     $('.has-children.active + div').addClass('active-parent');
+
+    $(\".api-ns-level-1:contains('\\\\\\\\')\").css('color', '#247BA0');
+
 ");
 
 $this->title = "API Documentation for Yii $version";

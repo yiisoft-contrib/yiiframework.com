@@ -189,4 +189,9 @@ $api-box-padding-y: ceil($font-size-base / 2);
   > a.has-children {
     text-transform: none;
   }
+  // can only safely target the first level
+  // rest is handled by jQuery
+  .api-ns-level-0 {
+    color: $eshill-green;
+  }
 }
