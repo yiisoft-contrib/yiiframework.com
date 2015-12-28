@@ -11,6 +11,10 @@ use yii\helpers\Html;
 use yii\helpers\Url;
 
 $this->registerJs("
+    $(\"[data-toggle='offcanvas']\").click(function () {
+      $('.row-offcanvas').toggleClass('active')
+    });
+
     $('.has-children.active + div').addClass('active-parent');
 
     // find the spans with class 'api-ns-level-1' that contains

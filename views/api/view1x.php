@@ -15,6 +15,10 @@ use yii\helpers\StringHelper;
 use yii\helpers\Url;
 
 $this->registerJs("
+    $(\"[data-toggle='offcanvas']\").click(function () {
+      $('.row-offcanvas').toggleClass('active')
+    });
+
     $('.has-children.active + div').addClass('active-parent');
 
     // find the spans with class 'api-ns-level-1' that contains
@@ -51,7 +55,7 @@ $this->title = Html::encode((!empty($title) ? "$title - " : '') .  "API Document
         </div>
     </div>
     <div class="row row-offcanvas">
-        <div class="col-md-3">
+        <div class="col-sm-2 col-md-2 col-lg-2">
         <?php
         ksort($packages);
 //        print_r($packages);
@@ -84,7 +88,7 @@ $this->title = Html::encode((!empty($title) ? "$title - " : '') .  "API Document
             'view' => $this,
         ]) ?>
         </div>
-        <div class="col-md-9" role="main">
+        <div class="col-sm-10 col-md-10 col-lg-10" role="main">
             <div class="content api1">
             <?= $content ?>
             </div>

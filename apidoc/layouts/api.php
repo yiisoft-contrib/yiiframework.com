@@ -48,6 +48,7 @@ $renderer = $this->context;
             'id' => 'api-navigation',
             'items' => $nav,
             'view' => $this,
+            'options' => ['class' => 'sidenav-offcanvas'],
         ])?>
     </div>
     <div class="col-sm-10 col-md-10 col-lg-10" role="main">
