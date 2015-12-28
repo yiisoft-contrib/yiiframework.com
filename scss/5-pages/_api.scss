@@ -186,4 +186,7 @@ $api-box-padding-y: ceil($font-size-base / 2);
 }
 #api-navigation {
   @extend %sidenav;
+  > a.has-children {
+    text-transform: none;
+  }
 }
