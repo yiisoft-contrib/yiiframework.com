@@ -13,8 +13,8 @@ use yii\helpers\StringHelper;
 /** @var $renderer ApiRenderer */
 $renderer = $this->context;
 ?>
-<div class="row">
-    <div class="col-md-3">
+<div class="row row-offcanvas">
+    <div class="col-sm-2 col-md-2 col-lg-2">
         <?php
         $types = $renderer->getNavTypes(isset($type) ? $type : null, $types);
         ksort($types);
@@ -50,7 +50,7 @@ $renderer = $this->context;
             'view' => $this,
         ])?>
     </div>
-    <div class="col-md-9" role="main">
+    <div class="col-sm-10 col-md-10 col-lg-10" role="main">
         <!-- YII_VERSION_SELECTOR -->
         <div class="content">
         <?= $content ?>
