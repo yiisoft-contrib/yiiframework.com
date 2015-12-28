@@ -27,7 +27,7 @@ $this->registerJs("
         <div class="row">
             <div class="col-md-12">
                 <div class="dashed-heading-jumbo">
-                    <span><a href="<?= Url::to(['site/download']) ?>" class="btn">Download Yii</a> </span>
+                    <span><a href="<?= Url::to(['doc/guide/2.0/en/start-installation']) ?>" class="btn">Get Started</a> </span>
                 </div>
             </div>
         </div>
