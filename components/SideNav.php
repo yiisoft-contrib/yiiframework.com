@@ -94,7 +94,8 @@ class SideNav extends \yii\bootstrap\Widget
             throw new InvalidConfigException("The 'label' option is required.");
         }
 
-        $label = $this->encodeLabels ? Html::encode($item['label']) : $item['label'];
+        $encode = isset($item['encodeLabel']) ? $item['encodeLabel'] : $this->encodeLabels;
+        $label = $encode ? Html::encode($item['label']) : $item['label'];
 //		$options = ArrayHelper::getValue($item, 'options', []);
         $items = ArrayHelper::getValue($item, 'items');
         $url = Url::to(ArrayHelper::getValue($item, 'url', '#'));

@@ -3,6 +3,7 @@
 use app\apidoc\ApiRenderer;
 use app\components\SideNav;
 use yii\apidoc\templates\bootstrap\SideNavWidget;
+use yii\helpers\Html;
 use yii\helpers\StringHelper;
 
 /* @var $this yii\web\View */
@@ -21,11 +22,18 @@ $renderer = $this->context;
         foreach ($types as $i => $class) {
             $namespace = $class->namespace;
             if (empty($namespace)) {
-                $namespace = 'Not namespaced classes';
+                $namespaceLabel = 'Not namespaced classes';
+            } else {
+                $namespaceLabel = [];
+                foreach(explode('\\', $namespace) as $level => $ns) {
+                    $namespaceLabel[] = Html::tag('span', Html::encode($ns) . ($level < substr_count($namespace, '\\') ? '\\' : ''), ['class' => "api-ns-level-$level"]);
+                }
+                $namespaceLabel = implode('', $namespaceLabel);
             }
             if (!isset($nav[$namespace])) {
                 $nav[$namespace] = [
-                    'label' => $namespace,
+                    'label' => $namespaceLabel,
+                    'encodeLabel' => false,
                     'url' => '#',
                     'items' => [],
                 ];

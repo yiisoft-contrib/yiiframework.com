@@ -50,8 +50,16 @@ $this->title = Html::encode((!empty($title) ? "$title - " : '') .  "API Document
 //        print_r($packages);
         $nav = [];
         foreach ($packages as $package => $classes) {
+
+            $packageLabel = [];
+            foreach(explode('.', $package) as $level => $ns) {
+                $packageLabel[] = Html::tag('span', Html::encode($ns) . ($level < substr_count($package, '.') ? '.' : ''), ['class' => "api-ns-level-$level"]);
+            }
+            $packageLabel = implode('', $packageLabel);
+
             $nav[$package] = [
-                'label' => $package,
+                'label' => $packageLabel,
+                'encodeLabel' => false,
                 'url' => '#',
                 'items' => [],
             ];
