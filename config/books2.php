@@ -51,7 +51,7 @@ return [
     [
         'title' => 'Yii 2.0 Cookbook',
         'author' => 'Alexander Makarov',
-        'image' => '/image/team/samdark.jpg',
+        'image' => '@web/image/team/samdark.jpg',
         'description' => 'Although not finished, there are some nice recipes from one of the core team and community. Worth checking out.',
         'url' => 'https://github.com/samdark/yii2-cookbook',
         'level' => 'blue',

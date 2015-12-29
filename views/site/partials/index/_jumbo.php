@@ -4,7 +4,7 @@ use yii\helpers\Url;
 $this->registerJs("
     $('#Glide').glide({
         type: 'carousel',
-        autoheight: true,
+        autoheight: false,
         autoplay: 10000,
     });
 ");

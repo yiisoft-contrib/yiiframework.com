@@ -209,7 +209,7 @@ class m150416_155923_create_comment_table extends Migration
         </div>
         <div class="row">
             <div class="visible-sm visible-xs">
-                <img class="img-circle img-thumbnail img-responsive center-block" width=250 src="/image/tour/gii.png" alt="">
+                <img class="img-circle img-thumbnail img-responsive center-block" width=250 src="<?= Yii::getAlias('@web/image/tour/gii.png') ?>" alt="">
             </div>
             <div class="col-lg-8">
                 <div class="media timeline-item">

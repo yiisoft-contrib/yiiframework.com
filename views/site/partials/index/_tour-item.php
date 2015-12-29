@@ -1,9 +1,9 @@
 <li class="glide__slide">
     <div class="row">
         <div class="col-md-7">
-            <img src="<?= $tour_slide['image'] ?>"
+            <img src="<?= Yii::getAlias($tour_slide['image']) ?>"
                 alt=""
-                class="img-responsive"/>
+                class="img-circle img-thumbnail img-responsive"/>
         </div>
         <div class="col-md-5">
             <div class="tour-subheader">
