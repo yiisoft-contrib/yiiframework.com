@@ -91,7 +91,7 @@ use yii\bootstrap\Nav;
                                     ['label' => 'Discuss', 'options' => ['class' => 'separator']],
                                     ['label' => 'Live Chat', 'url' => ['site/chat']],
                                     ['label' => 'About', 'options' => ['class' => 'separator']],
-                                    ['label' => 'What is Yii?', 'url' => ['site/about']],
+                                    ['label' => 'What is Yii?', 'url' => ['doc/guide/2.0/en/intro-yii']],
                                     ['label' => 'News', 'url' => ['site/news']],
                                     ['label' => 'License', 'url' => ['site/license']],
                                     ['label' => 'Team', 'url' => ['site/team']],
