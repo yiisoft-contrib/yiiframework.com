@@ -3,7 +3,7 @@
         <div class="col-md-7">
             <img src="<?= Yii::getAlias($tour_slide['image']) ?>"
                 alt=""
-                class="img-thumbnail img-responsive"/>
+                class="img-responsive"/>
         </div>
         <div class="col-md-5">
             <div class="tour-subheader">
