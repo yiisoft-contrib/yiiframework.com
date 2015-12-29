@@ -64,7 +64,12 @@ $this->title = Html::encode((!empty($title) ? "$title - " : '') .  "API Document
 
             $packageLabel = [];
             foreach(explode('.', $package) as $level => $ns) {
-                $packageLabel[] = Html::tag('span', Html::encode($ns) . ($level < substr_count($package, '.') ? '.' : ''), ['class' => "api-ns-level-$level"]);
+                // apply level classes to all package levels except the last one
+                if ($level < substr_count($package, '.')) {
+                    $packageLabel[] = Html::tag('span', Html::encode($ns) . '.', ['class' => "api-ns-level-$level"]);
+                } else {
+                    $packageLabel[] = Html::encode($ns);
+                }
             }
             $packageLabel = implode('', $packageLabel);
 

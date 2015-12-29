@@ -24,9 +24,14 @@ $renderer = $this->context;
             if (empty($namespace)) {
                 $namespaceLabel = 'Not namespaced classes';
             } else {
+                // apply level classes to all namespace levels except the last one
                 $namespaceLabel = [];
                 foreach(explode('\\', $namespace) as $level => $ns) {
-                    $namespaceLabel[] = Html::tag('span', Html::encode($ns) . ($level < substr_count($namespace, '\\') ? '\\' : ''), ['class' => "api-ns-level-$level"]);
+                    if ($level < substr_count($namespace, '\\')) {
+                        $namespaceLabel[] = Html::tag('span', Html::encode($ns) . '\\', ['class' => "api-ns-level-$level"]);
+                    } else {
+                        $namespaceLabel[] = Html::encode($ns);
+                    }
                 }
                 $namespaceLabel = implode('', $namespaceLabel);
             }
