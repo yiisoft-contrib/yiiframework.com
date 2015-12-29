@@ -7,9 +7,14 @@
   background-height: 100%;
   overflow: hidden;
   background-blend-mode: soft-light;
+  padding-bottom: 0;
+  margin-bottom: 0;
   z-index: -1;
   .container {
-    padding: 1em;
+    padding-left: 1em;
+    padding-top: 1em;
+    padding-right: 1em;
+    padding-bottom: 0;
     color: $eshill-section-bgcolor;
     h1 {
       @include rem(font-size, fontsize(h1));
@@ -70,4 +75,5 @@
 
 .glide__track {
   padding: 0;
+  margin-bottom: 0;
 }
