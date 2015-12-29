@@ -79,7 +79,6 @@ use yii\bootstrap\Nav;
                                 ['label' => 'Extensions', 'options' => ['title' => 'Not Yet']],
                                 ['label' => 'More&hellip;', 'items' => [
                                     ['label' => 'Learn', 'options' => ['class' => 'separator']],
-                                    ['label' => 'The Yii Tour', 'url' => ['site/tour']],
                                     ['label' => 'Books', 'url' => ['site/books']],
                                     ['label' => 'Resources', 'url' => ['site/resources']],
                                     ['label' => 'Develop', 'options' => ['class' => 'separator']],

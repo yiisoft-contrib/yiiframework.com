@@ -7,7 +7,7 @@ return [
     [
         'title' => 'Ipsum',
         'sub_title' => 'Lorem',
-        'image' => '@web/image/tour-gii.png',
+        'image' => '@web/image/front/tour-gii.png',
         'content' => $content_1,
     ],
 ];
