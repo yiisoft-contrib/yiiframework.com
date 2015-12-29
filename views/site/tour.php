@@ -12,7 +12,7 @@ $this->params['breadcrumbs'][] = $this->title;
     <div class="timeline">
         <div class="row">
             <div class="visible-sm visible-xs">
-                <img class="img-circle img-thumbnail img-responsive center-block" src="/image/tour/composer.png" alt="">
+                <img class="img-circle img-thumbnail img-responsive center-block" src="<?= Yii::getAlias('@web/image/tour/composer.png') ?>" alt="Composer">
             </div>
             <div class="col-lg-8 col-xs-12">
                 <div class="media timeline-item">
@@ -78,7 +78,7 @@ composer global require "fxp/composer-asset-plugin:~1.1.0"
                             </p>
                     </div>
                     <div class="media-right media-top hidden-sm hidden-xs" id="composer-img">
-                        <img class="media-object img-circle img-thumbnail" src="/image/tour/composer.png" alt="">
+                        <img class="media-object img-circle img-thumbnail" src="<?= Yii::getAlias('@web/image/tour/composer.png') ?>" alt="Composer">
                         <div class="line"></div>
                     </div>
                 </div>
@@ -86,12 +86,12 @@ composer global require "fxp/composer-asset-plugin:~1.1.0"
         </div>
         <div class="row">
             <div class="visible-sm visible-xs">
-                <img class="img-circle img-thumbnail img-responsive center-block" width=250 src="/image/tour/project-install.png" alt="">
+                <img class="img-circle img-thumbnail img-responsive center-block" width=250 src="<?= Yii::getAlias('@web/image/tour/project-install.png') ?>" alt="Basic project template">
             </div>
             <div class="col-lg-8 col-lg-offset-4">
                 <div class="media timeline-item">
                     <div class="media-left media-top hidden-sm hidden-xs">
-                        <img class="img-circle media-object img-thumbnail" src="/image/tour/project-install.png" alt="">
+                        <img class="img-circle media-object img-thumbnail" src="<?= Yii::getAlias('@web/image/tour/project-install.png') ?>" alt="Basic project template">
                         <div class="line"></div>
                     </div>
                     <div class="media-body">
@@ -116,7 +116,7 @@ composer create-project --prefer-dist yiisoft/yii2-app-basic basic
         </div>
         <div class="row">
             <div class="visible-sm visible-xs">
-                <img class="img-circle img-thumbnail img-responsive center-block" width=250 src="/image/tour/start-app-installed.png" alt="">
+                <img class="img-circle img-thumbnail img-responsive center-block" width=250 src="/image/tour/<?= Yii::getAlias('@web/image/tour/start-app-installed.png') ?>" alt="Welcome page">
             </div>
             <div class="col-lg-8">
                 <div class="media timeline-item">
@@ -133,7 +133,7 @@ composer create-project --prefer-dist yiisoft/yii2-app-basic basic
                         </p>
                     </div>
                     <div class="media-right media-top hidden-sm hidden-xs">
-                        <img class="img-circle media-object img-thumbnail" src="/image/tour/start-app-installed.png" alt="">
+                        <img class="img-circle media-object img-thumbnail" src="<?= Yii::getAlias('@web/image/tour/start-app-installed.png') ?>" alt="Welcome page">
                         <div class="line"></div>
                     </div>
                 </div>
@@ -141,12 +141,12 @@ composer create-project --prefer-dist yiisoft/yii2-app-basic basic
         </div>
         <div class="row">
             <div class="visible-sm visible-xs">
-                <img class="img-circle img-thumbnail img-responsive center-block" width=250 src="/image/tour/migration.png" alt="">
+                <img class="img-circle img-thumbnail img-responsive center-block" width=250 src="<?= Yii::getAlias('@web/image/tour/migration.png') ?>" alt="Migration">
             </div>
             <div class="col-lg-8 col-lg-offset-4">
                 <div class="media timeline-item">
                     <div class="media-left media-top hidden-sm hidden-xs">
-                        <img class="img-circle media-object img-thumbnail" src="/image/tour/migration.png" alt="">
+                        <img class="img-circle media-object img-thumbnail" src="<?= Yii::getAlias('@web/image/tour/migration.png') ?>" alt="Migration">
                         <div class="line"></div>
                     </div>
                     <div class="media-body">
@@ -209,7 +209,7 @@ class m150416_155923_create_comment_table extends Migration
         </div>
         <div class="row">
             <div class="visible-sm visible-xs">
-                <img class="img-circle img-thumbnail img-responsive center-block" width=250 src="<?= Yii::getAlias('@web/image/tour/gii.png') ?>" alt="">
+                <img class="img-circle img-thumbnail img-responsive center-block" width=250 src="<?= Yii::getAlias('@web/image/tour/gii.png') ?>" alt="Gii - Yii Code generator">
             </div>
             <div class="col-lg-8">
                 <div class="media timeline-item">
@@ -229,7 +229,7 @@ class m150416_155923_create_comment_table extends Migration
                         </p>
                     </div>
                     <div class="media-right media-top hidden-sm hidden-xs">
-                        <img class="img-circle media-object img-thumbnail" src="/image/tour/gii.png" alt="">
+                        <img class="img-circle media-object img-thumbnail" src="<?= Yii::getAlias('@web/image/tour/gii.png') ?>" alt="Gii - Yii code generator">
                     </div>
                 </div>
             </div>
