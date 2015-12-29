@@ -16,13 +16,6 @@ $this->registerJs("
     });
 
     $('.has-children.active + div').addClass('active-parent');
-
-    // find the spans with class 'api-ns-level-1' that contains
-    // text that ends with a backslash
-    // - i.e. only target those that has a child namespace
-    // that is 4 backslashes for jQuery and 4 for PHP to escape them
-    $(\".api-ns-level-1:contains('\\\\\\\\')\").css('color', '#247BA0');
-
 ");
 
 $this->title = "API Documentation for Yii $version";
