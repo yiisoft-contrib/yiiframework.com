@@ -9,7 +9,6 @@ $this->params['breadcrumbs'][] = $this->title;
 <div class="container style_external_links">
     <div class="row">
         <div class="content site-license">
-            <strong>There is supposed to be something a bit different on this page</strong>
             <p>Yii is an open source project released under the terms of the <?= Html::a('BSD License', ['site/license']) ?>. This means that you can use Yii for free to develop either open-source or proprietary Web applications.</p>
 
             <p>Currently there are two major versions of Yii: <a href="#yii2">2.0</a> and <a href="#yii1">1.1</a>.</p>
