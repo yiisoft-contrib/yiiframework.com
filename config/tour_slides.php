@@ -7,7 +7,7 @@ return [
     [
         'title' => 'Installation',
         'sub_title' => 'Step 1',
-        'image' => '@web/image/front/slide.png',
+        'image' => '@web/image/front/installation.png',
         'content' => $content_1,
     ],
     [
@@ -19,7 +19,7 @@ return [
     [
         'title' => 'Migrations',
         'sub_title' => 'Step 3',
-        'image' => '@web/image/front/slide.png',
+        'image' => '@web/image/front/migration.png',
         'content' => $content_1,
     ],
     [
