@@ -38,7 +38,7 @@ $this->registerJs('
             </div>
         </div>
         <div class="row">
-            <div class="col-xs-12 col-sm-12 col-md-offset-8 col-md-4">
+            <div class="col-xs-12 col-sm-12 col-md-offset-7 col-md-5">
                 <?= $this->render('partials/_versions.php', ['guide' => $guide, 'section' => $section]) ?>
             </div>
         </div>

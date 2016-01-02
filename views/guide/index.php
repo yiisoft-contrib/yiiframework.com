@@ -16,7 +16,7 @@ $blocksPerRow = 4;
             </div>
         </div>
         <div class="row">
-            <div class="col-sm-12 col-md-offset-8 col-md-4">
+            <div class="col-sm-12 col-md-offset-7 col-md-5">
                 <?= $this->render('partials/_versions.php', ['guide' => $guide, 'section' => null]) ?>
             </div>
         </div>

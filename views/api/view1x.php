@@ -33,7 +33,7 @@ $this->title = Html::encode((!empty($title) ? "$title - " : '') .  "API Document
             </div>
         </div>
         <div class="row">
-            <div class="col-sm-12 col-md-offset-8 col-md-4">
+            <div class="col-sm-12 col-md-offset-7 col-md-5">
                 <?= $this->render('partials/_versions.php', compact('version', 'versions', 'section')) ?>
             </div>
         </div>
