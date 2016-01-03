@@ -36,9 +36,11 @@ $this->registerJs("
         <div id="Glide" class="glide">
             <div class="glide__wrapper">
                 <ul class="glide__track">
-                    <?php foreach($tour_slides as $tour_slide): ?>
-                        <?= $this->render('/site/partials/index/_tour-item', ['tour_slide' => $tour_slide]); ?>
-                    <?php endforeach ?>
+                    <?= $this->render('/site/partials/tour/1') ?>
+                    <?= $this->render('/site/partials/tour/2') ?>
+                    <?= $this->render('/site/partials/tour/3') ?>
+                    <?= $this->render('/site/partials/tour/4') ?>
+                    <?= $this->render('/site/partials/tour/5') ?>
                 </ul>
             </div>
             <div class="glide__bullets hidden-xs"></div>

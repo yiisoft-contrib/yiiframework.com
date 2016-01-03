@@ -4,7 +4,7 @@
 /* @var $tour_slides array */
 /* @var $testimonials array */
 ?>
-<?= $this->render('partials/index/_jumbo', ['tour_slides' => $tour_slides]); ?>
+<?= $this->render('partials/index/_jumbo'); ?>
 
 <?= $this->render('partials/index/_featurepoints'); ?>
 
