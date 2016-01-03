@@ -1,4 +1,6 @@
 <?php
+/* @var $books array */
+use yii\helpers\Html;
 use yii\helpers\Url;
 ?>
 <div class="container content-separator wow fadeInUp books-videos">
@@ -15,74 +17,24 @@ use yii\helpers\Url;
     <div class="row">
         <div class="col-md-12 col-sm-12 col-xs-12">
             <div class="row">
+                <?php foreach ($books as $book): ?>
                 <div class="col-md-3 col-sm-6 col-xs-6 books-item">
                     <div class="books-image">
-                        <a href="#">
-                            <img src="/image/books/yii2-app-development.png" alt="" class="thumbnail img-responsive"/>
+                        <a href="<?= $book['url'] ?>">
+                            <img src="<?= Yii::getAlias(Html::encode($book['image'])) ?>" alt="<?= Html::encode($book['title'])?>" class="thumbnail img-responsive"/>
                         </a>
                     </div>
                     <div class="books-link">
-                        <a href="#">Book Title</a>
+                        <a href="<?= $book['url'] ?>"><?= Html::encode($book['title'])?></a>
                     </div>
                     <div class="author-publisher">
-                        <div><span class="what">Author:</span> <span class="who">A. Uthor</span></div>
-                        <div><span class="what">Publisher:</span> <span class="who">Publisher Inc.</span></div>
+                        <div><span class="what">Author: </span> <span class="who"><?= Html::encode($book['author'])?></span></div>
                     </div>
                     <p class="books-description">
-                        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                        <?= $book['description'] ?>
                     </p>
                 </div>
-                <div class="col-md-3 col-sm-6 col-xs-6 books-item">
-                    <div class="books-image">
-                        <a href="#">
-                            <img src="/image/books/yii2-app-development.png" alt="" class="thumbnail img-responsive"/>
-                        </a>
-                    </div>
-                    <div class="books-link">
-                        <a href="#">Book Title</a>
-                    </div>
-                    <div class="author-publisher">
-                        <div><span class="what">Author:</span> <span class="who">A. Uthor</span></div>
-                        <div><span class="what">Publisher:</span> <span class="who">Publisher Inc.</span></div>
-                    </div>
-                    <p class="books-description">
-                        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-                    </p>
-                </div>
-                <div class="col-md-3 col-sm-6 col-xs-6 books-item">
-                    <div class="books-image">
-                        <a href="#">
-                            <img src="/image/books/yii2-app-development.png" alt="" class="thumbnail img-responsive"/>
-                        </a>
-                    </div>
-                    <div class="books-link">
-                        <a href="#">Book Title</a>
-                    </div>
-                    <div class="author-publisher">
-                        <div><span class="what">Author:</span> <span class="who">A. Uthor</span></div>
-                        <div><span class="what">Publisher:</span> <span class="who">Publisher Inc.</span></div>
-                    </div>
-                    <p class="books-description">
-                        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-                    </p>
-                </div>
-                <div class="col-md-3 col-sm-6 col-xs-6 books-item">
-                    <div class="books-image">
-                        <a href="#">
-                            <img src="/image/books/yii2-app-development.png" alt="" class="thumbnail img-responsive"/>
-                        </a>
-                    </div>
-                    <div class="books-link">
-                        <a href="#">Book Title</a>
-                    </div>
-                    <div class="author-publisher">
-                        <div><span class="what">Author:</span> <span class="who">A. Uthor</span></div>
-                        <div><span class="what">Publisher:</span> <span class="who">Publisher Inc.</span></div>
-                    </div>
-                    <p class="books-description">
-                        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-                    </p>
-                </div>
+                <?php endforeach ?>
             </div>
         </div>
     </div>

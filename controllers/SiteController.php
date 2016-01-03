@@ -141,10 +141,12 @@ class SiteController extends Controller
 
     public function actionIndex()
     {
+        $books = array_slice(Yii::$app->params['books2'], 0, 4);
         return $this->render('index', [
-                'tour_slides' => Yii::$app->params['tour_slides'],
-                'testimonials' => Yii::$app->params['testimonials'],
-            ]);
+            'tour_slides' => Yii::$app->params['tour_slides'],
+            'testimonials' => Yii::$app->params['testimonials'],
+            'books' => $books,
+        ]);
     }
 
     /**

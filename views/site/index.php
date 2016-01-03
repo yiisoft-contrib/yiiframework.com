@@ -1,5 +1,8 @@
 <?php
 /* @var $this yii\web\View */
+/* @var $books array */
+/* @var $tour_slides array */
+/* @var $testimonials array */
 ?>
 <?= $this->render('partials/index/_jumbo', ['tour_slides' => $tour_slides]); ?>
 
@@ -7,7 +10,7 @@
 
 <?= $this->render('partials/index/_news'); ?>
 
-<?= $this->render('partials/index/_booksvideos'); ?>
+<?= $this->render('partials/index/_booksvideos', ['books' => $books]); ?>
 
 <div class="container content-separator wow fadeInUp">
     <div class="row">
