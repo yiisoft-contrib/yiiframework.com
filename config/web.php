@@ -61,6 +61,14 @@ $config = [
         ],
     ],
     'params' => $params,
+
+    // URLs with trailing slashes should be redirected to URLs without trailig slashes
+    'on beforeRequest' => function () {
+        $pathInfo = Yii::$app->request->pathInfo;
+        if (!empty($pathInfo) && substr($pathInfo, -1) === '/') {
+            Yii::$app->response->redirect('/' . substr(rtrim($pathInfo), 0, -1), 301);
+        }
+    },
 ];
 
 return $config;
