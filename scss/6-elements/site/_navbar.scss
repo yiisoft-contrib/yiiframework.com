@@ -7,6 +7,9 @@
     }
 }
 
+.navbar-inverse {
+  border: none;
+}
 
 @media screen and (min-width: $grid-float-breakpoint) {
   // Dropdown menu items
@@ -18,6 +21,7 @@
       margin-bottom: 0;
       padding-bottom: 0;
       &:hover {
+        padding-bottom: 0;
         color: $navbar-default-link-hover-color;
         background-color: $navbar-default-link-hover-bg;
         border-bottom: 3px solid $eshill-yellow;
