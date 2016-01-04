@@ -17,8 +17,11 @@ use yii\helpers\Url;
     <div class="row">
         <div class="col-md-12 col-sm-12 col-xs-12">
             <div class="row">
-                <?php foreach ($books as $book): ?>
-                <div class="col-md-3 col-sm-6 col-xs-6 books-item">
+                <?php foreach ($books as $i => $book): ?>
+                    <?php if ($i !== 0 && $i % 2 === 0): ?>
+                        <div class="clearfix visible-md"></div>
+                    <?php endif ?>
+                <div class="<?= $i === 4 ? 'col-md-offset-3 col-lg-offset-0 ' : '' ?>col-lg-5ths col-md-6 col-xs-12 books-item">
                     <div class="books-image">
                         <a href="<?= $book['url'] ?>">
                             <img src="<?= Yii::getAlias(Html::encode($book['image'])) ?>" alt="<?= Html::encode($book['title'])?>" class="thumbnail img-responsive"/>

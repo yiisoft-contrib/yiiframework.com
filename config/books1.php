@@ -16,7 +16,7 @@ return [
     [
         'title' => 'Yii Application Developement Cookbook',
         'author' => 'Alexander Makarov',
-        'image' => '@web/image/books/yii1-cookbook.png',
+        'image' => '@web/image/books/yii1-cookbook.jpg',
         'description' => 'The book is a set of individual independent recipes written by Yii core developer. Each recipe shows how to
             do something useful with Yii explainig why it\'s done, how it\'s done, why it works and how exactly it works.',
         'url' => 'http://yiicookbook.org/',
@@ -27,7 +27,7 @@ return [
     [
         'title' => 'Web Application Development with Yii and PHP',
         'author' => 'Jeffrey Winesett',
-        'image' => '@web/image/books/yii1-app-development.png',
+        'image' => '@web/image/books/yii1-app-development.jpg',
         'description' => 'Written by former Yii core developer, the book takes a strong learn-by-doing philosophy to introducing you
            to the Yii framework. After a brief introduction to the framework in chapters 1 and 2, the remaining 10
            chapters are dedicated to building an entire project managemnt application.',
@@ -51,7 +51,7 @@ return [
     [
         'title' => 'Yii Rapid Application Developement',
         'author' => 'Lauren J. O\'Meara, James R. Hamilton III',
-        'image' => '@web/image/books/yii1-hotshot.png',
+        'image' => '@web/image/books/yii1-hotshot.jpg',
         'description' => 'The book is by-example guide to framework based around building example projects and explaining what was
             done in the process.',
         'url' => 'http://www.packtpub.com/yii-rapid-application-development-hotshot/book',

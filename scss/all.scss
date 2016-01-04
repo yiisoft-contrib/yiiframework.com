@@ -46,6 +46,7 @@ This file is part of the
 @import "../vendor/bower/sass-rem/rem";
 
 // Global styling that makes use of vendors
+@import "3-global/5ths";
 @import "3-global/site";
 @import "3-global/externallinks";
 @import "3-global/highlight"; // guide code highlight
