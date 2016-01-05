@@ -1,7 +1,7 @@
 <li class="glide__slide">
     <div class="row">
         <div class="col-md-7">
-            <img src="<?= Yii::getAlias('@web/image/front/migration.png') ?>"
+            <img src="<?= Yii::getAlias('@web/image/tour/3.png') ?>"
                 alt=""
                 class="img-responsive"/>
         </div>
