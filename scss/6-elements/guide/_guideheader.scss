@@ -9,9 +9,11 @@
   color: white;
   @include rem(padding-top, 22px);
   .version-selector {
+    border: none;
     margin-bottom: 0;
     padding-bottom: 0;
     .btn {
+      border: none;
       color: $yii-blue;
       background-color: $version-buttons;//#BAD9C1
       border-color: darken($version-buttons, 12%);
@@ -48,6 +50,7 @@
       }
     }
     .dropdown-menu {
+      margin-top: -1px;
       background-color: $eshill-yellow;
       width: 200%;
       > li > a {

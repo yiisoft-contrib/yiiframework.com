@@ -19,7 +19,7 @@
       text-transform: uppercase;
     }
   }
-  .panel .panel-body {
+  .guide-panel .panel-body {
     > ul.list-unstyled {
       border-top: 1px dashed $gray;
       @include rem(padding-top, 12px);
