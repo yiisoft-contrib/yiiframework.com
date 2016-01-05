@@ -9,7 +9,7 @@ return [
             such as implementing your own framework extension. Explanations are very clear. Additionally to the guide-style
                 chapters there are two complete example chapters: a CMS and an E-commerce website.',
         'url' => 'http://yii.larryullman.com/',
-        'level' => 'green',
+        'level' => 'beginner',
         'level-text' => 'Beginners',
         'level-description' => 'Recommended for beginners.',
     ],
@@ -20,7 +20,7 @@ return [
         'description' => 'The book is a set of individual independent recipes written by Yii core developer. Each recipe shows how to
             do something useful with Yii explainig why it\'s done, how it\'s done, why it works and how exactly it works.',
         'url' => 'http://yiicookbook.org/',
-        'level' => 'red',
+        'level' => 'pro',
         'level-text' => 'Pro',
         'level-description' => 'Recommended for intermediate-to-advanced developers.',
     ],
@@ -32,7 +32,7 @@ return [
            to the Yii framework. After a brief introduction to the framework in chapters 1 and 2, the remaining 10
            chapters are dedicated to building an entire project managemnt application.',
         'url' => 'http://www.seesawlabs.com/yii-book',
-        'level' => 'green',
+        'level' => 'beginner',
         'level-text' => 'Beginners',
         'level-description' => 'Recommended for beginners.',
     ],
@@ -44,7 +44,7 @@ return [
            The book will guide you through several projects from the project conception through to planning your
            project and implementation.',
         'url' => 'http://www.amazon.com/dp/178328773X?tag=gii20f-20',
-        'level' => 'red',
+        'level' => 'pro',
         'level-text' => 'Pro',
         'level-description' => 'Recommended for intermediate-to-advanced developers.',
     ],
@@ -55,7 +55,7 @@ return [
         'description' => 'The book is by-example guide to framework based around building example projects and explaining what was
             done in the process.',
         'url' => 'http://www.packtpub.com/yii-rapid-application-development-hotshot/book',
-        'level' => 'red',
+        'level' => 'pro',
         'level-text' => 'Pro',
         'level-description' => 'Recommended for intermediate-to-advanced developers.',
     ],

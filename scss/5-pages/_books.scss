@@ -21,15 +21,15 @@
     padding: 1em;
     margin-top: 1em;
   }
-  .green {
+  .beginner {
     @extend %level;
     background-color: $yii-green;
   }
-  .red {
+  .pro {
     @extend %level;
     background-color: $yii-yellow;
   }
-  .blue {
+  .all {
     @extend %level;
     background-color: $yii-blue;
   }
