@@ -6,6 +6,9 @@
     @include rem(padding, 20px 10px);
     border-bottom: 1px solid $eshill-section-bgcolor;
   }
+  > .in > a {
+    background-color: $eshill-section-bgcolor-alternate;
+  }
   > a.has-children {
     color: $separator-color;
     text-decoration: none;
