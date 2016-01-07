@@ -22,12 +22,12 @@ $beefy-header-height: 120px;
 .visible-huge {
   display: none !important;
 }
-@media (min-width: 1300px) {
+@media (min-width: 1650px) {
   .visible-huge {
     display: block !important;
   }
 }
-@media (min-width: 1300px) {
+@media (min-width: 1650px) {
   .hidden-huge {
     display: none !important;
   }
