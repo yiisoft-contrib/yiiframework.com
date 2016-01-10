@@ -1,19 +1,44 @@
 .site-license {
-    .can {
-        color: $yii-green;
+    .header {
+        background: url('/image/licenses/header.svg') no-repeat 100% 1em;
+        background-size: auto 90%;
+
+        h1 {
+            font-size: 65pt;
+        }
     }
 
-    .cannot {
-        color: $yii-yellow;
+    .license {
+        .text {
+            background-color: #ebf1f2;
+            padding: 1em 2em;
+        }
+
+        .can {
+            background-color: #e1f7d9;
+            padding: 1em 2em;
+        }
+
+        .cannot {
+            background-color: #ffd9e3;
+            padding: 1em 2em;
+        }
+
+        .must {
+            background-color: #f1f7f8;
+            padding: 1em 2em;
+        }
     }
 
-    .must {
-        color: $yii-blue;
+    .points {
+        overflow: hidden;
     }
 
-    .legal {
-        border-right: 1px solid #ddd;
-        @include rem(padding-right, 20px);
-        @include rem(min-height, 340px);
+    .points {
+        padding-bottom: 1em;
+        .col-md-4, .col-md-6 {
+            margin-bottom: -99999px;
+            padding-bottom: 99999px;
+        }
     }
 }

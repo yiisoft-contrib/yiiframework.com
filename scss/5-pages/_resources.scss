@@ -1,0 +1,28 @@
+.site-resources {
+    .header {
+        h1 {
+            font-size: 65pt;
+        }
+    }
+
+    .group {
+        h3 {
+            text-align: center;
+        }
+
+        .image {
+            border: none;
+            text-align: center;
+        }
+
+        margin-bottom: 1em;
+    }
+}
+
+@media (min-width: 1000px) {
+    .site-resources .header .background {
+        position: relative;
+        margin-top: -10em;
+        z-index: -1;
+    }
+}

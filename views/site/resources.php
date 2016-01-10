@@ -5,35 +5,69 @@ use yii\helpers\Html;
 $this->title = 'Resources';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<?= $this->render('partials/common/_heading.php', ['title' => $this->title]) ?>
-<div class="container style_external_links">
-    <div class="row">
-        <div class="content">
-            <p>There are various resources that aren't part of official Yii website but are very helpful. Check these out.</p>
+<div class="site-resources">
+    <div class="header container">
+        <div class="row">
+            <h1>Resources</h1>
+            <h2>Very helpful. Check these out</h2>
+        </div>
+        <img class="background" src="<?= Yii::getAlias('@web/image/resources/header.svg')?>" alt="">
+    </div>
+    <div class="container style_external_links">
+        <div class="row">
+            <div class="content">
+                <p>There are various resources that aren't part of official Yii website but are very helpful. Check these out.</p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12 col-md-6 col-lg-3 group">
+                <h3>News</h3>
 
-            <h2>News</h2>
+                <div class="image">
+                    <img src="<?= Yii::getAlias('@web/image/resources/yiifeed.png') ?>" alt="">
+                </div>
 
-            <p><a href="http://yiifeed.com/">YiiFeed</a> is a community-driven news source for both official Yii announcements and
-            unofficial articles, blogposts and tutorials. Anyone can suggest news. RSS provided.</p>
+                <h4><a href="http://yiifeed.com/">YiiFeed</a></h4>
 
-            <h2>Extensions</h2>
+                <p>is a community-driven news source for both official Yii announcements and
+                    unofficial articles, blogposts and tutorials. Anyone can suggest news. RSS provided.</p>
+            </div>
+            <div class="col-xs-12 col-md-6 col-lg-3 group">
+                <h3>Extensions</h3>
 
-            <p>Until official extensions repository is ready you can use <a href="https://yiigist.com/">YiiGist</a> which is community driven project based on packagist.</p>
+                <div class="image">
+                    <img src="<?= Yii::getAlias('@web/image/resources/yiigist.png') ?>" alt="">
+                </div>
 
-            <h2>Videos</h2>
+                <h4><a href="https://yiigist.com/">YiiGist</a></h4>
 
-            <p>There are many videos available. Check YouTube for "yii". Below are links to two big video series community likes most.</p>
+                <p>Until official extensions repository is ready you can use this community driven project based on packagist.</p>
+            </div>
+            <div class="col-xs-12 col-md-6 col-lg-3 group">
+                <h3>Videos</h3>
 
-            <ul>
-                <li><a href="https://www.youtube.com/playlist?list=PLMyGpiUTm106xkNQh9WeMsa-LXjanaLUm">Beginning Yii 2.0 by Tom King</a></li>
-                <li><a href="https://www.youtube.com/playlist?list=PLRd0zhQj3CBmusDbBzFgg3H20VxLx2mkF">Yii2 Lessons, DoingITeasyChannel</a></li>
-            </ul>
+                <div class="image">
+                    <img src="<?= Yii::getAlias('@web/image/resources/videos.png') ?>" alt="">
+                </div>
 
-            <h2>Yii 1.1</h2>
+                <p>There are many videos available. Check YouTube for "yii". Below are links to two big video series community likes most.</p>
 
-            <ul>
-                <li><?= Html::a('The Yii 1.1 Blog tutorial', ['guide/blog-entry']) ?></li>
-            </ul>
+                <ul>
+                    <li><a href="https://www.youtube.com/playlist?list=PLMyGpiUTm106xkNQh9WeMsa-LXjanaLUm">Beginning Yii 2.0 by Tom King</a></li>
+                    <li><a href="https://www.youtube.com/playlist?list=PLRd0zhQj3CBmusDbBzFgg3H20VxLx2mkF">Yii2 Lessons, DoingITeasyChannel</a></li>
+                </ul>
+            </div>
+            <div class="col-xs-12 col-md-6 col-lg-3 group">
+                <h3>Yii 1.1</h3>
+
+                <div class="image">
+                    <img src="<?= Yii::getAlias('@web/image/resources/yii11.png') ?>" alt="">
+                </div>
+
+                <h4><?= Html::a('The Yii 1.1 Blog tutorial', ['guide/blog-entry']) ?></h4>
+
+                <p>If you need to learn good old Yii 1.1 this is must read official tutorial.</p>
+            </div>
         </div>
     </div>
 </div>
