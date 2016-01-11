@@ -5,26 +5,30 @@ use yii\helpers\Html;
 $this->title = 'Books';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<?= $this->render('partials/common/_heading.php', ['title' => $this->title]) ?>
-<div class="container books style_external_links">
-    <div class="row">
-        <div class="site-books">
-            <p>There are handy books about both Yii 2.0 and Yii 1.1 which could help you master the framework.</p>
-
-            <h2>Yii 2.0</h2>
+<div class="site-books">
+    <div class="container books">
+        <div class="header container">
+            <div class="row">
+                <div class="col-md-6">
+                    <h1>Books</h1>
+                    <h2>Could help you master the framework</h2>
+                </div>
+                <div class="col-md-6">
+                    <img class="background" src="<?= Yii::getAlias('@web/image/books/header.svg')?>" alt="">
+                </div>
+            </div>
         </div>
-    </div>
-    <div class="row">
-    <?php foreach($books2 as $book): ?>
-        <?= $this->render('partials/books/_book', ['book' => $book]); ?>
-    <?php endforeach ?>
-    </div>
-    <div class="row">
-        <h2>Yii 1.1</h2>
-    </div>
-    <div class="row">
-        <?php foreach($books1 as $book): ?>
-            <?= $this->render('partials/books/_book', ['book' => $book]); ?>
-        <?php endforeach ?>
+        <div class="row version">
+            <h2><span>Yii 2.0</span></h2>
+        </div>
+        <div class="row">
+            <?= $this->render('partials/_books', ['books' => $books2]) ?>
+        </div>
+        <div class="row version">
+            <h2><span>Yii 1.1</span></h2>
+        </div>
+        <div class="row">
+            <?= $this->render('partials/_books', ['books' => $books1]) ?>
+        </div>
     </div>
 </div>

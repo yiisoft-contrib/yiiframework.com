@@ -39,7 +39,7 @@ return [
     [
         'title' => 'Yii Project Blueprints',
         'author' => 'Charles R. Portwood II',
-        'image' => '@web/image/books/yii1-blueprints.png',
+        'image' => '@web/image/books/yii1-blueprints.jpg',
         'description' => 'This book is a step-by-step guide to developing reusable real-world applications using the Yii framework.
            The book will guide you through several projects from the project conception through to planning your
            project and implementation.',
