@@ -56,7 +56,7 @@ use yii\bootstrap\Nav;
                         <a href="<?= Yii::$app->homeUrl ?>" class="navbar-brand">
                             <img src="<?= Yii::getAlias('@web/image/logo.svg') ?>"
                                 alt="Yii PHP Framework"
-                                width="100%" />
+                                width="165" height="35" />
                         </a>
                         <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse"><i class="fa fa-inverse fa-bars"></i></button>
                     </div>
