@@ -6,7 +6,7 @@ require('es6-promise').polyfill();
 var gulp = require('gulp'),
     sass = require('gulp-sass'),
     autoprefixer = require('gulp-autoprefixer'),
-    minifycss = require('gulp-minify-css'),
+    cssnano = require('gulp-cssnano'),
     jshint = require('gulp-jshint'),
     uglify = require('gulp-uglify'),
     imagemin = require('gulp-imagemin'),
@@ -39,7 +39,7 @@ gulp.task('styles', function() {
     .pipe(sourcemaps.write('.', { sourceRoot: '../../scss/' }))
     .pipe(gulp.dest('web/css'))
     .pipe(gulpif('*.css', rename({ suffix: '.min' })))
-    .pipe(gulpif('*.css', minifycss()))
+    .pipe(gulpif('*.css', cssnano()))
     .pipe(gulpif('*.css', gulp.dest('web/css')))
     .pipe(gulpif('*.css', notify({ message: 'Styles task complete' })));
 });
