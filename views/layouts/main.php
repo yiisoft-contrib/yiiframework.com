@@ -74,7 +74,7 @@ use yii\bootstrap\Nav;
                             'dropDownCaret' => '<span class="caret"></span>',
                             'items' => [
                                 ['label' => 'Guide', 'url' => ['guide/entry'], 'options' => ['title' => 'The Definitive Guide to Yii'], 'active' => ($controller == 'guide')],
-                                ['label' => 'API', 'url' => ['api/index', 'version' => reset(Yii::$app->params['api.versions'])], 'options' => ['title' => 'API Documentation'], 'active' => ($controller == 'api')],
+                                ['label' => 'API', 'url' => ['api/index', 'version' => reset(Yii::$app->params['versions']['api'])], 'options' => ['title' => 'API Documentation'], 'active' => ($controller == 'api')],
                                 ['label' => 'Forum', 'url' => ['/forum'], 'options' => ['title' => 'Community Forum']],
                                 ['label' => 'Wiki', 'url' => ['site/wiki'], 'options' => ['title' => 'Community Wiki']],
                                 ['label' => 'Extensions', 'options' => ['title' => 'Not Yet']],

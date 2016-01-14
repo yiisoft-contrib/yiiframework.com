@@ -70,7 +70,7 @@ class ApiController extends Controller
                 return $this->render($view, [
                     'content' => file_get_contents($file),
                     'section' => $section,
-                    'versions' => Yii::$app->params['api.versions'],
+                    'versions' => Yii::$app->params['versions']['api'],
                     'version' => $version,
                     'title' => $title,
                     'packages' => $packages,
@@ -201,7 +201,7 @@ class ApiController extends Controller
 
     protected function validateVersion($version)
     {
-        $versions = Yii::$app->params['api.versions'];
+        $versions = Yii::$app->params['versions']['api'];
         if (!in_array($version, $versions)) {
             // TODO make nicer error page (keep version and language selector)
             throw new NotFoundHttpException('The requested version was not found.');

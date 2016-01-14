@@ -93,7 +93,7 @@ class SearchController extends Controller
 
     public function getVersions()
     {
-        $versions = Yii::$app->params['api.versions'];
+        $versions = Yii::$app->params['versions']['api'];
         return array_combine($versions, $versions);
     }
 

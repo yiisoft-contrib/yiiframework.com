@@ -37,12 +37,6 @@ return [
     'guide.baseUrl' => '/doc/guide',
     'blogtut.baseUrl' => '/doc/blog',
 
-    'api.versions' => [
-        '2.0',
-        '1.1',
-        '1.0',
-    ],
-
     'guide.versions' => [
         '2.0' => [
             'en' => 'English',
@@ -121,6 +115,8 @@ return [
     'authclients' => [
         // these should be configured in local config
     ],
+
+	'versions' => require 'versions.php',
 
     'books2' => require 'books2.php',
     'books1' => require 'books1.php',

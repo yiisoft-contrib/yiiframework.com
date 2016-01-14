@@ -351,7 +351,12 @@ class SiteController extends Controller
 
     public function actionDownload()
     {
-        return $this->render('download');
+	    $versions = Yii::$app->params['versions']['minor-versions'];
+	    $versionInfo = Yii::$app->params['versions']['version-info'];
+        return $this->render('download', [
+	        'versions' => $versions,
+	        'versionInfo' => $versionInfo,
+        ]);
     }
 
     public function actionTos()

@@ -32,7 +32,7 @@ class ApiController extends \yii\apidoc\commands\ApiController
      */
     public function actionGenerate($version)
     {
-        $versions = Yii::$app->params['api.versions'];
+        $versions = Yii::$app->params['versions']['api'];
         if (!in_array($version, $versions)) {
             $this->stderr("Unknown version $version. Valid versions are " . implode(', ', $versions) . "\n\n", Console::FG_RED);
             return 1;
