@@ -1,126 +1,126 @@
 
 /*
-    Note: It is best to use a less version of this file ( see http://css2less.cc
-    For the media queries use @screen-sm-min instead of 768px.
-    For .omb_spanOr use @body-bg instead of white.
+Note: It is best to use a less version of this file ( see http://css2less.cc
+For the media queries use @screen-sm-min instead of 768px.
+For .omb_spanOr use @body-bg instead of white.
 */
 
 
 .login-container {
-	background-color: $eshill-light-blue;
- 	width: 100%;
+  background-color: $eshill-light-blue;
+  width: 100%;
 
- 	.omb_login {
+  .omb_login {
 
-		padding:80px 0px;
-		
-		.omb_authTitle {
+    padding:80px 0px;
 
-			margin-bottom: 20px;
+    .omb_authTitle {
 
-			h3{
-				color:#FFF;
-			    font-size: 45pt;
-			    font-weight: bold;
-			    display: block;
-			    margin: 0px;
-			}
+      margin-bottom: 20px;
 
-			span{
-				color: #fff;
-			    font-size: 20px;
-			    padding-right: 6px;
-		    }
+      h3{
+        color:#FFF;
+        font-size: 45pt;
+        font-weight: bold;
+        display: block;
+        margin: 0px;
+      }
 
-		    a{
-		    	color: #f3ffbd;
-		    	font-size: 2.5rem;
-		    }
-		}
+      span{
+        color: #fff;
+        font-size: 20px;
+        padding-right: 6px;
+      }
 
-		.omb_loginForm{
+      a{
+        color: #f3ffbd;
+        font-size: 2.5rem;
+      }
+    }
 
-			.help-block {
-			    color: red;
-			}
+    .omb_loginForm{
 
-			.login-control{
-				background: none;
-			    border: none;
-			    border-bottom: 2px solid #7abbd7;
-			    -webkit-box-shadow: 0 0 0 1000px $eshill-light-blue inset;
-			    padding: 10px 0px;
-			    font-size: 1.7rem;
-			    color: #7abbd7;
-			    width: 100%;
-			    -webkit-text-fill-color: #7abbd7 !important;
+      .help-block {
+        color: red;
+      }
 
-				&:-moz-placeholder {
-					color: #7abbd7;
-				}
-				&:-ms-input-placeholder {
-					color: #7abbd7;
-				}
-				&::-webkit-input-placeholder {
-					color: #7abbd7;
-				}
-			}
-		}
+      .login-control{
+        background: none;
+        border: none;
+        border-bottom: 2px solid #7abbd7;
+        -webkit-box-shadow: 0 0 0 1000px $eshill-light-blue inset;
+        padding: 10px 0px;
+        font-size: 1.7rem;
+        color: #7abbd7;
+        width: 100%;
+        -webkit-text-fill-color: #7abbd7 !important;
 
-		.forgotPwd{
-			margin-top: 10px;
+        &:-moz-placeholder {
+          color: #7abbd7;
+        }
+        &:-ms-input-placeholder {
+          color: #7abbd7;
+        }
+        &::-webkit-input-placeholder {
+          color: #7abbd7;
+        }
+      }
+    }
 
-			a {
-			    color: #f3ffbd;
-			    font-size: 1.7rem;
-			}
-		}
+    .forgotPwd{
+      margin-top: 10px;
 
-		.btn{
-			font-size: 1.8rem;
-		    font-family: "pt_sansregular", sans-serif;
-		    color: #247ba0;
-		    background-color: #F5FEC4;
-		    border-color: #ebfd88;
+      a {
+        color: #f3ffbd;
+        font-size: 1.7rem;
+      }
+    }
 
-		    &:hover{
-		        color: #1e6887;
-			    background-color: #BAD9C1;
-			    border-color: #93c39e;
-		    }
+    .btn{
+      font-size: 1.8rem;
+      font-family: "pt_sansregular", sans-serif;
+      color: #247ba0;
+      background-color: #F5FEC4;
+      border-color: #ebfd88;
 
-		    &:active{
-			    color: #ebf1f2;
-			    background-color: #83BFB3;
-			    border-color: #5baa9a;
-			}
-		}
+      &:hover{
+        color: #1e6887;
+        background-color: #BAD9C1;
+        border-color: #93c39e;
+      }
 
-		.social-login{
-		    text-align: center;
-		    border-left: 2px solid #1e6887;
-		    min-height: 400px;
-		    color:#fff;
+      &:active{
+        color: #ebf1f2;
+        background-color: #83BFB3;
+        border-color: #5baa9a;
+      }
+    }
 
-		    .github-icon{
-			    background: #1e6887;
-			    color: #fff;
-			    border-radius: 100px;
-			    padding: 11px 22px;
-			    font-size: 6rem;
+    .social-login{
+      text-align: center;
+      border-left: 2px solid #1e6887;
+      min-height: 400px;
+      color:#fff;
 
-		    	i{
-	    		    background: #fff;
-				    color: #1e6887;
-				    border-radius: 25px;
-				    line-height: 50px;
-				    width: 50px;
-		    	}
-			}
+      .github-icon{
+        background: #1e6887;
+        color: #fff;
+        border-radius: 100px;
+        padding: 11px 22px;
+        font-size: 6rem;
 
-		    h4{
-		    	margin: 30px 0px;
-		    }
-		}
-	}
+        i{
+          background: #fff;
+          color: #1e6887;
+          border-radius: 25px;
+          line-height: 50px;
+          width: 50px;
+        }
+      }
+
+      h4{
+        margin: 30px 0px;
+      }
+    }
+  }
 }
