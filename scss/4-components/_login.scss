@@ -103,11 +103,19 @@
 		    color:#fff;
 
 		    .github-icon{
-				background: #1e6887;
+			    background: #1e6887;
 			    color: #fff;
 			    border-radius: 100px;
-			    padding: 5px 18px;
+			    padding: 11px 22px;
 			    font-size: 6rem;
+
+		    	i{
+	    		    background: #fff;
+				    color: #1e6887;
+				    border-radius: 25px;
+				    line-height: 50px;
+				    width: 50px;
+		    	}
 			}
 
 		    h4{

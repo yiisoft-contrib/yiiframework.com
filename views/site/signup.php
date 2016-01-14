@@ -38,7 +38,7 @@ $this->params['breadcrumbs'][] = $this->title;
       </div>
       <div class="col-md-3 col-md-offset-1 social-login">
             <span class="github-icon">
-                <i class="fa fa-github"></i>
+                <i class="fa fa fa-github-square"></i>
             </span>
             <h4>Did you sign up with your<br/>Github Account?</h4>
             <?= Html::a('Login with Github', '/auth?authclient=github',['class' => 'btn btn-lg']) ?>
