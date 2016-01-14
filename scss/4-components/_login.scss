@@ -5,68 +5,122 @@
     For .omb_spanOr use @body-bg instead of white.
 */
 
-@media (min-width: 768px) {
-    .omb_row-sm-offset-3 div:first-child[class*="col-"] {
-        margin-left: 25%;
-    }
-}
 
-.omb_login .omb_authTitle {
-    text-align: center;
-	line-height: 300%;
-}
+.login-container {
+	background-color: $eshill-light-blue;
+ 	width: 100%;
 
-.omb_login .omb_socialButtons a {
-	color: white; // In yourUse @body-bg
-	opacity:0.9;
-}
-.omb_login .omb_socialButtons a:hover {
-    color: white;
-	opacity:1;
-}
-.omb_login .omb_socialButtons .omb_btn-facebook {background: #3b5998;}
-.omb_login .omb_socialButtons .omb_btn-twitter {background: #00aced;}
-.omb_login .omb_socialButtons .omb_btn-google {background: #c32f10;}
-.omb_login .omb_socialButtons .omb_btn-github {background: $gray-darker;}
+ 	.omb_login {
 
+		padding:80px 0px;
+		
+		.omb_authTitle {
 
-.omb_login .omb_loginOr {
-	position: relative;
-	font-size: 1.5em;
-	color: #aaa;
-	margin-top: 1em;
-	margin-bottom: 1em;
-	padding-top: 0.5em;
-	padding-bottom: 0.5em;
-}
-.omb_login .omb_loginOr .omb_hrOr {
-	background-color: #cdcdcd;
-	@include rem(height, 1px);
-	margin-top: 0px !important;
-	margin-bottom: 0px !important;
-}
-.omb_login .omb_loginOr .omb_spanOr {
-	display: block;
-	position: absolute;
-	left: 50%;
-	top: -0.6em;
-	margin-left: -1.5em;
-  background-color: #f1f1f1;
-	width: 3em;
-	text-align: center;
-}
+			margin-bottom: 20px;
 
-.omb_login .omb_loginForm .input-group.i {
-	width: 2em;
-}
-.omb_login .omb_loginForm  .help-block {
-    color: red;
-}
+			h3{
+				color:#FFF;
+			    font-size: 45pt;
+			    font-weight: bold;
+			    display: block;
+			    margin: 0px;
+			}
 
+			span{
+				color: #fff;
+			    font-size: 20px;
+			    padding-right: 6px;
+		    }
 
-@media (min-width: 768px) {
-    .omb_login .omb_forgotPwd {
-        text-align: right;
-		@include rem(margin-top, 10px);
- 	}
+		    a{
+		    	color: #f3ffbd;
+		    	font-size: 2.5rem;
+		    }
+		}
+
+		.omb_loginForm{
+
+			.help-block {
+			    color: red;
+			}
+
+			.login-control{
+				background: none;
+			    border: none;
+			    border-bottom: 2px solid #7abbd7;
+			    -webkit-box-shadow: 0 0 0 1000px $eshill-light-blue inset;
+			    padding: 10px 0px;
+			    font-size: 1.7rem;
+			    color: #7abbd7;
+			    width: 100%;
+			    -webkit-text-fill-color: #7abbd7 !important;
+
+				&:-moz-placeholder {
+					color: #7abbd7;
+				}
+				&:-ms-input-placeholder {
+					color: #7abbd7;
+				}
+				&::-webkit-input-placeholder {
+					color: #7abbd7;
+				}
+			}
+		}
+
+		.forgotPwd{
+			margin-top: 10px;
+
+			a {
+			    color: #f3ffbd;
+			    font-size: 1.7rem;
+			}
+		}
+
+		.btn{
+			font-size: 1.8rem;
+		    font-family: "pt_sansregular", sans-serif;
+		    color: #247ba0;
+		    background-color: #F5FEC4;
+		    border-color: #ebfd88;
+
+		    &:hover{
+		        color: #1e6887;
+			    background-color: #BAD9C1;
+			    border-color: #93c39e;
+		    }
+
+		    &:active{
+			    color: #ebf1f2;
+			    background-color: #83BFB3;
+			    border-color: #5baa9a;
+			}
+		}
+
+		.social-login{
+		    text-align: center;
+		    border-left: 2px solid #1e6887;
+		    min-height: 400px;
+		    color:#fff;
+
+		    .github-icon{
+			    background: #1e6887;
+			    color: #fff;
+			    border-radius: 100px;
+			    padding: 11px 22px;
+			    font-size: 6rem;
+
+		    	i{
+	    		    background: #fff;
+				    color: #1e6887;
+				    border-radius: 25px;
+				    line-height: 50px;
+				    width: 50px;
+		    	}
+			}
+
+		    h4{
+		    	margin: 30px 0px;
+		    }
+		}
+	}
 }
