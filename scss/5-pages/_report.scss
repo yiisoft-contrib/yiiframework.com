@@ -1,0 +1,80 @@
+
+.site-header {
+	color:#4d4d4d;
+	margin-top: 5rem;
+	margin-bottom: 5rem;
+
+    h1 {
+        font-size: 60pt;
+        margin-top: 60pt;
+        font-weight: bold;
+    }
+
+    h2{
+    	margin-top:0px;
+    }
+
+    margin-bottom: 2em;
+}
+
+
+.container.report {
+	color:#4d4d4d;
+	margin-bottom: 45pt;
+
+	p{
+		font-size:13pt;
+	}
+
+	.medium{
+    	font-size: 18pt;
+	}
+
+	.github-btn{
+		border-color: #1e6887;
+	    color: #1e6887;
+	    font-size: 26pt;
+	    padding: 8pt 22pt;
+	    font-weight: bold;
+	    letter-spacing: 1px;
+	    margin: 16pt 0px;
+
+	    i{
+	    	font-size:40pt;
+	    }
+
+	    span{
+	    	padding:3pt 0pt 3pt 15pt;
+	    	float:right;
+	    }
+	}
+
+	.extensions{
+	    margin-top: 20pt;
+		margin-bottom: 20pt;
+
+		ul{
+			list-style:none;
+			padding: 0px;
+
+			li{
+				padding: 12pt;
+
+				a{
+					font-size:13pt;
+				}
+
+				span{
+				    display: block;
+				}
+			}
+		}
+	}
+
+	.heading-separator h2 {
+	    @include dashed-heading-variant($eshill-header-color, #fff, fontsize(h1));
+	    margin: 50pt 0px;
+	}
+
+}
+
