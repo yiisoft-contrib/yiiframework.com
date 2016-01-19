@@ -4,7 +4,7 @@ use yii\helpers\Html;
 use yii\helpers\Url;
 ?>
 <div class="books-videos">
-    <div class="container content-separator wow fadeInUp">
+    <div class="container content-separator">
         <div class="row">
             <div class="col-md-12">
                 <div class="dashed-heading-front-books">

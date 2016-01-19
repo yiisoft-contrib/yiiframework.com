@@ -1,4 +1,4 @@
-<div class="container content-separator wow fadeInUp features">
+<div class="container content-separator features">
     <div class="row">
         <div class="col-md-4">
             <div class="media">

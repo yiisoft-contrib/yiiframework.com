@@ -20,7 +20,6 @@
         "yiisoft/yii2-authclient": "2.0.*@dev",
         "cebe/yii2-gravatar": "1.1",
         "scrivo/highlight.php": "8.*",
-        "bower-asset/wowjs": "^1.1",
         "bower-asset/glidejs": "^2.0",
         "bower-asset/sass-rem": "^1.2",
         "bower-asset/scrollup": "^2.4"

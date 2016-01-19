@@ -1,7 +1,7 @@
 <?php
 use yii\helpers\Url;
 ?>
-<div class="container content-separator wow fadeInUp latest-news">
+<div class="container content-separator latest-news">
     <div class="row">
         <div class="col-md-12">
             <div class="dashed-heading-front">

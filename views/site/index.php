@@ -12,7 +12,7 @@
 
 <?= $this->render('partials/index/_booksvideos', ['books' => $books]); ?>
 
-<div class="container content-separator wow fadeInUp">
+<div class="container content-separator">
     <div class="row">
         <div class="col-md-4">
             <?= $this->render('partials/index/_testimonials', ['testimonials' => $testimonials]); ?>
