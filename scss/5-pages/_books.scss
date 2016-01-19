@@ -1,7 +1,7 @@
 .site-books {
     .header {
         h1 {
-            font-size: 65pt;
+            @include rem(font-size, 65px);
             font-weight: bold;
         }
 

@@ -4,7 +4,7 @@
         background-size: auto 90%;
 
         h1 {
-            font-size: 65pt;
+            @include rem(font-size, 65px);
         }
     }
 

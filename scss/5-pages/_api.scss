@@ -57,14 +57,14 @@ $api-box-padding-y: ceil($font-size-base / 2);
 
         .detailHeader {
             font-weight: bold;
-            font-size: 12pt;
+            @include rem(font-size, 12px);
             @include rem(margin, 30px 0 5px 0);
             border-bottom: 1px solid #ddd;
         }
 
         .detailHeaderTag {
             font-weight: normal;
-            font-size: 10pt;
+            @include rem(font-size, 10px);
         }
 
         .paramNameCol {
@@ -77,7 +77,7 @@ $api-box-padding-y: ceil($font-size-base / 2);
         }
 
         .sourceCode {
-            margin: 5px 0;
+            @include rem(margin, 5px 0);
             @include rem(padding, 5px);
             background: #f9f9f9;
             white-space: normal;

@@ -42,7 +42,7 @@
   padding-left: 20%;
   color: $eshill-blue;
   p {
-    margin-top: 2px;
+    @include rem(margin-top, 2px);
   }
   .edit-icon {
     margin-right: 1.5em;
@@ -120,11 +120,11 @@ div.image {
   background-repeat: no-repeat;
   background-size: 12px 20px;
   position: relative;
-  top: 5px;
-  width: 12px;
-  height: 20px;
+  @include rem(top, 5px);
+  @include rem(width, 12px);
+  @include rem(height, 20px);
   display: inline-block;
-  min-height: 20px;
+  @include rem(min-height, 20px);
   vertical-align: center;
 }
 .chevron-left {
@@ -142,7 +142,7 @@ div.image {
   top: 7px;
   @include rem(margin-left, 20px);
   background-size: 20px 12px;
-  width: 20px;
-  height: 12px;
+  @include rem(width, 20px);
+  @include rem(height, 12px);
   background-image: url(../image/guide/tarr.svg);
 }

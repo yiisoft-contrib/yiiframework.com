@@ -60,8 +60,8 @@
 .auth-link:hover .auth-icon i,
 .auth-link:focus .auth-icon i {
     display: block;
-    width: 32px;
-    height: 32px;
+    @include rem(width, 32px);
+    @include rem(height, 32px);
     background: url(/image/authchoice.png) 0 0 no-repeat;
 }
 

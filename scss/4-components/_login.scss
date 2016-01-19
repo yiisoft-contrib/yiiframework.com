@@ -12,24 +12,24 @@ For .omb_spanOr use @body-bg instead of white.
 
   .omb_login {
 
-    padding:80px 0px;
+    @include rem(padding, 80px 0px);
 
     .omb_authTitle {
 
-      margin-bottom: 20px;
+      @include rem(margin-bottom, 20px);
 
       h3{
         color:#FFF;
-        font-size: 45pt;
+        @include rem(font-size, 45px);
         font-weight: bold;
         display: block;
-        margin: 0px;
+        margin: 0;
       }
 
       span{
         color: #fff;
-        font-size: 20px;
-        padding-right: 6px;
+        @include rem(font-size, 20px);
+        @include rem(padding-right, 6px);
       }
 
       a{
@@ -49,7 +49,7 @@ For .omb_spanOr use @body-bg instead of white.
         border: none;
         border-bottom: 2px solid #7abbd7;
         -webkit-box-shadow: 0 0 0 1000px $eshill-light-blue inset;
-        padding: 10px 0px;
+        @include rem(padding, 10px 0px);
         font-size: 1.7rem;
         color: #7abbd7;
         width: 100%;
@@ -68,7 +68,7 @@ For .omb_spanOr use @body-bg instead of white.
     }
 
     .forgotPwd{
-      margin-top: 10px;
+      @include rem(margin-top, 10px);
 
       a {
         color: #f3ffbd;
@@ -99,27 +99,27 @@ For .omb_spanOr use @body-bg instead of white.
     .social-login{
       text-align: center;
       border-left: 2px solid #1e6887;
-      min-height: 400px;
+      @include rem(min-height, 400px);
       color:#fff;
 
       .github-icon{
         background: #1e6887;
         color: #fff;
         border-radius: 100px;
-        padding: 11px 22px;
+        @include rem(padding, 11px 22px);
         font-size: 6rem;
 
         i{
           background: #fff;
           color: #1e6887;
           border-radius: 25px;
-          line-height: 50px;
-          width: 50px;
+          @include rem(line-height, 50px);
+          @include rem(width, 50px);
         }
       }
 
       h4{
-        margin: 30px 0px;
+        @include rem(margin, 30px 0px);
       }
     }
   }

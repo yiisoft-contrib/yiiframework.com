@@ -3,9 +3,9 @@
 .col-md-5ths,
 .col-lg-5ths {
     position: relative;
-    min-height: 1px;
-    padding-right: 10px;
-    padding-left: 10px;
+    @include rem(min-height, 1px);
+    @include rem(padding-right, 10px);
+    @include rem(padding-left, 10px);
 }
 
 .col-xs-5ths {

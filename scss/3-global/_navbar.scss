@@ -1,7 +1,7 @@
 // lift the logo up a bit
 .navbar-header {
 		position: relative;
-		top: -5px;
+		@include rem(top, -5px);
     a {
       border: none;
     }
