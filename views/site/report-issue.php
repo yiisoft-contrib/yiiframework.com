@@ -9,11 +9,11 @@ $this->params['breadcrumbs'][] = $this->title;
 
 <div class="container site-header">
     <div class="row">
-        <div class="col-md-7">
+        <div class="col-md-6">
             <h1>Report an Issue</h1>
-            <h2>Let's do Yii better</h2>
+            <h2>Let's make Yii better</h2>
         </div>
-        <div class="col-md-5">
+        <div class="col-md-6">
             <img class="background" src="<?= Yii::getAlias('@web/image/issues/issues.svg')?>" alt="">
         </div>
     </div>
@@ -85,7 +85,7 @@ $this->params['breadcrumbs'][] = $this->title;
             <p>For other extensions that are created by other users please check the extension page on where to report issues.</p>
 
             <p>If you are unsure whether the issue you want to report belongs to an extension or the framework, just report it on the
-                <a href="https://github.com/yiisoft/yii2/issues/new">framework issue tracker</a>. We will figure out where it belongs and move it later.</p>
+                <a href="https://github.com/yiisoft/yii2/issues/new">framework issue tracker</a>.<br />We will figure out where it belongs and move it later.</p>
 
             <div class="heading-separator">
                 <h2><span>Yii 1.1</span></h2>
