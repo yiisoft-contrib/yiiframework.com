@@ -10,6 +10,10 @@
         font-weight: bold;
     }
 
+    h1.security {
+        margin-top: 5rem;
+    }
+
     h2{
         margin-top:0;
     }
@@ -22,6 +26,10 @@
 
     p{
         font-size:1.8rem;
+    }
+
+    .small{
+        font-size: 1.6rem;
     }
 
     .medium{
@@ -67,6 +75,14 @@
                 }
             }
         }
+    }
+
+    ol.issue-process li{
+        margin-top:3rem;
+    }
+
+    .btn.btn-send{
+        padding:1rem 6rem;
     }
 
     .heading-separator h2 {
