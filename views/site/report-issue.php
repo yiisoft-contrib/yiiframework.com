@@ -6,10 +6,23 @@ use yii\helpers\Url;
 $this->title = 'Report an Issue';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<?= $this->render('partials/common/_heading.php', ['title' => $this->title]) ?>
-<div class="container style_external_links">
+
+<div class="container site-header">
+    <div class="row">
+        <div class="col-md-6">
+            <h1>Report an Issue</h1>
+            <h2>Let's make Yii better</h2>
+        </div>
+        <div class="col-md-6">
+            <img class="background" src="<?= Yii::getAlias('@web/image/issues/issues.svg')?>" alt="">
+        </div>
+    </div>
+</div>
+
+<div class="container report">
     <div class="row">
         <div class="content">
+        <div class="col-md-12">
             <p>Thanks for helping to make Yii better!</p>
 
             <p>To ensure the issue gets reported to the right place, you need to find out whether it is an issue in the Yii framework
@@ -18,15 +31,22 @@ $this->params['breadcrumbs'][] = $this->title;
             <p>If you want to report a <b>security issue</b>, please consider contacting us privately so we can fix it before the details
             of the issue are publicly disclosed. <?= Html::a('Go to the contact page!', Url::to(['site/contact'])) ?></p>
 
-            <h3>Yii 2.0</h3>
+            <div class="heading-separator">
+                <h2><span>Yii 2.0</span></h2>
+            </div>
 
-            <p>General issues, reported on github in the <code>yiisoft/yii2</code> repository: <a href="https://github.com/yiisoft/yii2/issues/new">Report issue!</a></p>
+            <p class="text-center medium">General issues, reported on github in the <a target="_blank" href="https://github.com/yiisoft/yii2">yiisoft/yii2</a> repository</p>
+            <p class="text-center">
+            <a class="btn btn-lg btn-default github-btn" href="https://github.com/yiisoft/yii2/issues/new"><i class="fa fa-github"></i> <span>Report issue</span></a>
+            </p>
 
-            <h3>Yii 2.0 Extensions</h3>
+            <div class="heading-separator">
+                <h2><span>Yii 2.0 Extensions</span></h2>
+            </div>
 
-            <p>If the error or feature request is for one of the official extensions, please select below:</p>
+            <p class="text-center medium">If the error or feature request is for one of the official extensions, please select below:</p>
 
-            <ul>
+            <div class="row extensions">
                 <?php
 
                     $extensions = [
@@ -48,22 +68,37 @@ $this->params['breadcrumbs'][] = $this->title;
                         'yii2-twig' => 'Twig view renderer',
                     ];
 
-                    foreach($extensions as $ext => $extName) {
-                        echo "<li><a href=\"https://github.com/yiisoft/{$ext}/issues/new\">{$extName}</a> (<code>yiisoft/{$ext}</code>)</li>\n";
+                    $extensionColumns = array_chunk($extensions, 4,true);
+
+                    foreach($extensionColumns as $column) {
+
+                        echo '<div class="col-md-3"><ul>';
+                        foreach($column as $ext => $extName) {
+                            echo "<li><a href=\"https://github.com/yiisoft/{$ext}/issues/new\">{$extName}</a><span>yiisoft/{$ext}</span></li>\n";
+                        }
+
+                        echo'</ul></div>';
                     }
                 ?>
-            </ul>
+            </div>
 
             <p>For other extensions that are created by other users please check the extension page on where to report issues.</p>
 
             <p>If you are unsure whether the issue you want to report belongs to an extension or the framework, just report it on the
-                <a href="https://github.com/yiisoft/yii2/issues/new">framework issue tracker</a>. We will figure out where it belongs and move it later.</p>
+                <a href="https://github.com/yiisoft/yii2/issues/new">framework issue tracker</a>.<br />We will figure out where it belongs and move it later.</p>
 
-            <h3>Yii 1.1</h3>
+            <div class="heading-separator">
+                <h2><span>Yii 1.1</span></h2>
+            </div>
 
-            <p>If you want to report a bug for Yii 1.1, please open an issue in the <code>yiisoft/yii</code> repository: <a href="https://github.com/yiisoft/yii/issues/new">Report issue!</a></p>
+            <p class="text-center medium">If you want to report a bug for Yii 1.1, please open an issue in the <a target="_blank" href="https://github.com/yiisoft/yii">yiisoft/yii</a> repository</p>
+            <p class="text-center">
+            <a class="btn btn-lg btn-default github-btn" href="https://github.com/yiisoft/yii/issues/new"><i class="fa fa-github"></i> <span>Report issue</span></a>
+            </p>
 
-            <p>Please note that Yii 1.1 is in maintainance mode, we will not introduce big features anymore. Please consider upgrading to Yii 2 instead.</p>
+            <p class="text-center">Please note that Yii 1.1 is in maintainance mode, we will not introduce big features anymore. Please consider upgrading to Yii 2 instead.</p>
+
+            </div>
         </div>
     </div>
 </div>
