@@ -10,6 +10,10 @@
         font-weight: bold;
     }
 
+    h1.security {
+        margin-top: 5rem;
+    }
+
     h2{
         margin-top:0;
     }
@@ -22,6 +26,10 @@
 
     p{
         font-size:1.8rem;
+    }
+
+    .small{
+        font-size: 1.6rem;
     }
 
     .medium{
@@ -69,6 +77,15 @@
         }
     }
 
+    ol.issue-process li{
+        margin-top:3rem;
+    }
+
+    .btn.btn-send{
+        padding:1rem 6rem;
+        margin-bottom: 3rem;
+    }
+
     .heading-separator h2 {
         @include dashed-heading-variant($eshill-header-color, #fff, fontsize(h1));
         margin: 6.5rem 0;
@@ -76,3 +93,10 @@
 
 }
 
+@media (max-width: 992px) {
+    .site-header {
+        h1, h1.security {
+            margin-top: 0;
+        }
+    }
+}
