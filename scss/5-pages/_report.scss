@@ -83,6 +83,7 @@
 
     .btn.btn-send{
         padding:1rem 6rem;
+        margin-bottom: 3rem;
     }
 
     .heading-separator h2 {
@@ -92,3 +93,10 @@
 
 }
 
+@media (max-width: 992px) {
+    .site-header {
+        h1, h1.security {
+            margin-top: 0;
+        }
+    }
+}

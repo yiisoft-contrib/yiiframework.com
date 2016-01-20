@@ -72,7 +72,7 @@ $this->params['breadcrumbs'][] = $this->title;
 
                     foreach($extensionColumns as $column) {
 
-                        echo '<div class="col-md-3"><ul>';
+                        echo '<div class="col-md-3 col-sm-6 col-xs-6"><ul>';
                         foreach($column as $ext => $extName) {
                             echo "<li><a href=\"https://github.com/yiisoft/{$ext}/issues/new\">{$extName}</a><span>yiisoft/{$ext}</span></li>\n";
                         }
