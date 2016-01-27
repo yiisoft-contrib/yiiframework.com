@@ -18,7 +18,7 @@ $this->registerJs("
                     <strong>Yii</strong> is <em>fast</em>, <em>secure</em> and <em>efficient</em> and works right out of the box using reasonable defaults.
                 </p>
                 <p class="propaganda">
-                    The framework is easy to adjust to meet your needs, because Yii has been designed to be <em>flexible</em>
+                    The framework is easy to adjust to meet your needs, because Yii has been designed to be <em>flexible</em>.
                 </p>
             </div>
         </div>
