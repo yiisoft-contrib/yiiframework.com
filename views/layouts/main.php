@@ -48,6 +48,15 @@ use yii\helpers\Url;
         <meta property="og:title" content="<?= !empty($this->title) ? Html::encode($this->title) : 'Yii Framework' ?>" />
         <meta property="og:image" content="<?= Url::to(Yii::getAlias('@web/image/facebook_cover.png'), true) ?>" />
         <meta property="og:url" content="<?= Url::to() ?>" />
+        <meta property="og:description" content="" />
+
+        <meta name="twitter:card" content="summary" />
+        <meta name="twitter:site" content="yiiframework" />
+        <meta name="twitter:title" content="<?= !empty($this->title) ? Html::encode($this->title) : 'Yii Framework' ?>" />
+        <meta name="twitter:description" content="" />
+        <meta name="twitter:image" content="<?= Url::to(Yii::getAlias('@web/image/twitter_cover.png'), true) ?>" />
+        <meta name="twitter:image:width" content="120" />
+        <meta name="twitter:image:height" content="120" />
 
         <?php $this->head() ?>
     </head>
