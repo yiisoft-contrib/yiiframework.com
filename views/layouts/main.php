@@ -1,7 +1,7 @@
 <?php
-use yii\bootstrap\ActiveForm;
 use yii\helpers\Html;
 use yii\bootstrap\Nav;
+use yii\helpers\Url;
 
 /* @var $this \yii\web\View */
 /* @var $content string */
@@ -43,6 +43,12 @@ use yii\bootstrap\Nav;
         <?php $this->registerJs('yiiBaseUrl = ' . \yii\helpers\Json::htmlEncode(Yii::$app->request->getBaseUrl()), \yii\web\View::POS_HEAD); ?>
 
         <title><?php if (!empty($this->title)): ?><?= Html::encode($this->title) ?> - <?php endif?>Yii PHP Framework</title>
+
+        <meta property="og:site_name" content="Yii Framework" />
+        <meta property="og:title" content="<?= !empty($this->title) ? Html::encode($this->title) : 'Yii Framework' ?>" />
+        <meta property="og:image" content="<?= Url::to(Yii::getAlias('@web/image/facebook_cover.png'), true) ?>" />
+        <meta property="og:url" content="<?= Url::to() ?>" />
+
         <?php $this->head() ?>
     </head>
     <body data-spy="scroll" data-target="#scrollnav" data-offset="1">
