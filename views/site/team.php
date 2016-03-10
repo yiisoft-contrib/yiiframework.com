@@ -103,7 +103,7 @@ $this->params['breadcrumbs'][] = $this->title;
 
                     <div id="contributors">
                         <?php foreach ($contributors as $contributor) {
-                            echo Html::a(Html::img($contributor['avatar_url'] . '&s=42', ['alt' => 'Avatar of ' . $contributor['login']]), $contributor['html_url'], ['title' => $contributor['login'] . ' on Github']);
+                            echo Html::a(Html::img('', ['style="display:inline-block;"', 'class' => 'icon-'. $contributor['login']]), $contributor['html_url'], ['title' => $contributor['login'] . ' on Github']);
                         } ?>
                     </div>
                     <?php endif; ?>
