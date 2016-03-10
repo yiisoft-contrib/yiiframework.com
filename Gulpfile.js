@@ -45,6 +45,17 @@ gulp.task('styles', function() {
     .pipe(gulpif('*.css', notify({ message: 'Styles task complete' })));
 });
 
+// sprites
+gulp.task('sprites', function () {
+    var spriteData = gulp.src('data/avatars/*')
+        .pipe(spritesmith({
+            imgName: '../image/sprite.png',
+            cssName: 'contributors.css'
+        }));
+    spriteData.img.pipe(gulp.dest('web/image'));
+    spriteData.css.pipe(gulp.dest('scss/2-vendors'));
+});
+
 // Scripts
 gulp.task('scripts', function() {
   return gulp.src(require('./js/all.json'))
