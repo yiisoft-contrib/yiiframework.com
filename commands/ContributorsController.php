@@ -34,22 +34,41 @@ class ContributorsController extends Controller
             return self::EXIT_CODE_ERROR;
         }
 
-        $github_owner = 'yiisoft';
-        $github_repo = 'yii2';
-        $curl_url = "https://api.github.com/repos/$github_owner/$github_repo/contributors";
-
-        $raw_output = $this->runCurl($curl_url);
-        $output = json_decode($raw_output);
-
+        $members = Yii::$app->params['members'];
         $contributors = array();
+        $raw_contributors = array();
+        $contributorLimit = 1000;
 
-        if(count($output) > 0) {
-            foreach($output as $element) {
+        // getting contributors from github
+        try {
+            $client = new \Github\Client();
+            $api = $client->api('repo');
+            $paginator  = new \Github\ResultPager($client);
+            $parameters = ['yiisoft', 'yii2'];
+            $raw_contributors = $paginator->fetch($api, 'contributors', $parameters);
+            while($paginator->hasNext() && count($raw_contributors) < $contributorLimit) {
+                $raw_contributors = array_merge($raw_contributors, $paginator->fetchNext());
+            }
+
+            // remove team members
+            $teamGithubs = array_filter(array_map(function($member) { return isset($member['github']) ? $member['github'] : false; }, $members));
+            foreach($raw_contributors as $key => $raw_contributor) {
+                if (in_array($raw_contributor['login'], $teamGithubs)) {
+                    unset($raw_contributors[$key]);
+                }
+            }
+            $raw_contributors = array_slice($raw_contributors, 0, $contributorLimit);
+        } catch(\Exception $e) {
+            $raw_contributors = false;
+        }
+
+        if($raw_contributors) {
+            foreach($raw_contributors as $raw_contributor) {
                 $contributor = array();
-                $contributor['login'] = $element->login;
-                $contributor['avatar_url'] = $element->avatar_url;
-                $contributor['html_url'] = $element->html_url;
-                $contributor['contributions'] = $element->contributions;
+                $contributor['login'] = $raw_contributor['login'];
+                $contributor['avatar_url'] = $raw_contributor['avatar_url'];
+                $contributor['html_url'] = $raw_contributor['html_url'];
+                $contributor['contributions'] = $raw_contributor['contributions'];
                 $contributors[] = $contributor;
             }
         }
@@ -69,34 +88,24 @@ class ContributorsController extends Controller
 
         foreach($contributors as $contributor) {
             $login = $contributor['login'];
-            $this->stdout("Saving $login.png\n");
-            $imagine->open($contributor['avatar_url'])
-                ->thumbnail($size, $mode)
-                ->save($thumbnail_dir . DIRECTORY_SEPARATOR . $login . '.png');
+
+            // Check if the file exists and there are no errors
+            $headers = get_headers($contributor['avatar_url'], 1);
+            $code = (isset($headers[1])) ? next(explode(' ', $headers[1])) : next(explode(' ', $headers[0]));
+            if ($code != 404 and $code != 403 and $code != 400 and $code != 500) {
+                // the image url seems to be good, save the thumbnail
+                $this->stdout("Saving $login.png\n");
+                $imagine->open($contributor['avatar_url'])
+                    ->thumbnail($size, $mode)
+                    ->save($thumbnail_dir . DIRECTORY_SEPARATOR . $login . '.png');
+            } else {
+                //TODO: default avatar thumbnail?
+                $this->stdout("Avatar $login.png was not found\n");
+            }
         }
 
         $this->releaseMutex();
         return self::EXIT_CODE_NORMAL;
-    }
-
-    /**
-     * Calls the Github API using Curl and a Github token.
-     * @param  string $curl_url The Github API endpoint to call
-     * @return string           The JSON response
-     */
-    private function runCurl($curl_url) {
-
-        // If rate limit becomes a problem, create an API token @ Github and modify below
-        //$github_token = '';
-        //$curl_token_auth = 'Authorization: token ' . $github_token;
-
-        $ch = curl_init($curl_url);
-        curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-        curl_setopt($ch, CURLOPT_HTTPHEADER, array('User-Agent: Awesome-Octocat-App'));
-        //curl_setopt($ch, CURLOPT_HTTPHEADER, array('User-Agent: Awesome-Octocat-App', $curl_token_auth));
-        $output = curl_exec($ch);
-        curl_close($ch);
-        return $output;
     }
 
     /**

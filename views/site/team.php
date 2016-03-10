@@ -8,38 +8,6 @@ use yii\helpers\HtmlPurifier;
 /* @var $contributors array */
 $this->title = 'Team';
 $this->params['breadcrumbs'][] = $this->title;
-$this->registerJs("
-  var BLUR_RADIUS = 40;
-  var sourceImages = [];
-
-  $('.src-image').each(function(){
-    sourceImages.push($(this).attr('src'));
-  });
-
-  $('.avatar img').each(function(index){
-    $(this).attr('src', sourceImages[index] );
-  });
-
-  var drawBlur = function(canvas, image) {
-    var w = canvas.width;
-    var h = canvas.height;
-    var canvasContext = canvas.getContext('2d');
-    canvasContext.drawImage(image, 0, 0, w, h);
-    stackBlurCanvasRGBA(canvas, 0, 0, w, h, BLUR_RADIUS);
-  };
-
-
-  $('.team-card canvas').each(function(index){
-    var canvas = $(this)[0];
-
-    var image = new Image();
-    image.src = sourceImages[index];
-
-    image.onload = function() {
-      drawBlur(canvas, image);
-    }
-  });
-");
 ?>
 <?= $this->render('partials/common/_heading.php', ['title' => $this->title]) ?>
 <div class="container">
@@ -57,7 +25,7 @@ $this->registerJs("
                                     <div class="team-card">
                                         <canvas class="header-bg" width="250" height="70" id="header-blur"></canvas>
                                         <div class="avatar">
-                                            <img src="" alt="" />
+                                            <img src="<?= Html::encode(Yii::getAlias($member['photo'])) ?>" alt="">
                                         </div>
                                         <div class="team-content">
                                             <h3><?= Html::encode($member['name'])?><small> <?= Html::encode($member['location'])?></small></h3>
@@ -76,7 +44,6 @@ $this->registerJs("
                                         </div>
                                     </div>
                                 </div>
-                                <img src="<?= Html::encode(Yii::getAlias($member['photo'])) ?>" class="src-image" alt="">
                             <?php endforeach ?>
                         </div>
                     <?php endforeach ?>
@@ -92,7 +59,7 @@ $this->registerJs("
                                 <div class="team-card">
                                     <canvas class="header-bg" width="250" height="70" id="header-blur"></canvas>
                                     <div class="avatar">
-                                        <img src="" alt="" />
+                                        <img src="<?= Html::encode(Yii::getAlias($member['photo'])) ?>" alt="">
                                     </div>
                                     <div class="team-content">
                                         <h3><?= Html::encode($member['name'])?> <small><?= Html::encode($member['location'])?></small></h3>
@@ -111,7 +78,6 @@ $this->registerJs("
                                     </div>
                                 </div>
                             </div>
-                            <img src="<?= Html::encode(Yii::getAlias($member['photo'])) ?>" class="src-image" alt="">
                         <?php endforeach ?>
                     </div>
                 <?php endforeach ?>
