@@ -39,7 +39,6 @@ class ContributorsController extends Controller
         $curl_url = "https://api.github.com/repos/$github_owner/$github_repo/contributors";
 
         $raw_output = $this->runCurl($curl_url);
-
         $output = json_decode($raw_output);
 
         $contributors = array();
@@ -49,6 +48,7 @@ class ContributorsController extends Controller
                 $contributor = array();
                 $contributor['login'] = $element->login;
                 $contributor['avatar_url'] = $element->avatar_url;
+                $contributor['html_url'] = $element->html_url;
                 $contributor['contributions'] = $element->contributions;
                 $contributors[] = $contributor;
             }
@@ -86,12 +86,14 @@ class ContributorsController extends Controller
      */
     private function runCurl($curl_url) {
 
-        $github_token = '7f69ff487fcfaf21255c53b014c4926f4c231b75';
-        $curl_token_auth = 'Authorization: token ' . $github_token;
+        // If rate limit becomes a problem, create an API token @ Github and modify below
+        //$github_token = '';
+        //$curl_token_auth = 'Authorization: token ' . $github_token;
 
         $ch = curl_init($curl_url);
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-        curl_setopt($ch, CURLOPT_HTTPHEADER, array('User-Agent: Awesome-Octocat-App', $curl_token_auth));
+        curl_setopt($ch, CURLOPT_HTTPHEADER, array('User-Agent: Awesome-Octocat-App'));
+        //curl_setopt($ch, CURLOPT_HTTPHEADER, array('User-Agent: Awesome-Octocat-App', $curl_token_auth));
         $output = curl_exec($ch);
         curl_close($ch);
         return $output;
