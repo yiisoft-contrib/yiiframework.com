@@ -88,7 +88,7 @@ gulp.task('clean', function() {
 
 // Build the "web" folder by running all of the above tasks
 gulp.task('build', function(callback) {
-  runSequence('clean', ['styles', 'scripts', 'fonts'], callback);
+  runSequence('clean', 'sprites', ['styles', 'scripts', 'fonts'], callback);
 });
 
 // Watch
