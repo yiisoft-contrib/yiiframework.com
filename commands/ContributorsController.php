@@ -65,7 +65,7 @@ class ContributorsController extends Controller
 
         $imagine = new Imagine();
         $mode = ImageInterface::THUMBNAIL_OUTBOUND;
-        $size    = new \Imagine\Image\Box(24, 24);
+        $size    = new \Imagine\Image\Box(48, 48);
 
         foreach($contributors as $contributor) {
             $login = $contributor['login'];

@@ -50,7 +50,8 @@ gulp.task('sprites', function () {
     var spriteData = gulp.src('data/avatars/*')
         .pipe(spritesmith({
             imgName: '../image/sprite.png',
-            cssName: 'contributors.css'
+            cssName: 'contributors.css',
+            padding: 2
         }));
     spriteData.img.pipe(gulp.dest('web/image'));
     spriteData.css.pipe(gulp.dest('scss/2-vendors'));
