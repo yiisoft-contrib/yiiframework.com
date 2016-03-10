@@ -22,7 +22,8 @@
         "scrivo/highlight.php": "8.*",
         "bower-asset/glidejs": "^2.0",
         "bower-asset/sass-rem": "^1.2",
-        "bower-asset/scrollup": "^2.4"
+        "bower-asset/scrollup": "^2.4",
+        "imagine/imagine": "^0.6.3"
     },
     "require-dev": {
         "yiisoft/yii2-debug": "2.0.*@dev"

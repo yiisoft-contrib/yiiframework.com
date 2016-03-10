@@ -16,6 +16,7 @@ var gulp = require('gulp'),
     cache = require('gulp-cache'),
     browsersync = require('browser-sync'),
     sourcemaps = require('gulp-sourcemaps'),
+    spritesmith = require('gulp.spritesmith'),
     del = require('del'),
     gulpif = require('gulp-if'),
     runSequence = require('run-sequence');
@@ -47,8 +48,6 @@ gulp.task('styles', function() {
 // Scripts
 gulp.task('scripts', function() {
   return gulp.src(require('./js/all.json'))
-    //.pipe(jshint('.jshintrc'))
-    //.pipe(jshint.reporter('default'))
     .pipe(sourcemaps.init())
     .pipe(concat('all.js'))
     .pipe(sourcemaps.write('.', { sourceRoot: '../../js/' }))
@@ -57,14 +56,6 @@ gulp.task('scripts', function() {
     .pipe(gulpif('*.js', uglify()))
     .pipe(gulpif('*.js', gulp.dest('web/js')))
     .pipe(gulpif('*.js', notify({ message: 'Scripts task complete' })));
-});
-
-// Images
-gulp.task('images', function() {
-  return gulp.src('img/**/*')
-    .pipe(cache(imagemin({ optimizationLevel: 3, progressive: true, interlaced: true })))
-    .pipe(gulp.dest('web/img'))
-    .pipe(notify({ message: 'Images task complete' }));
 });
 
 // Copy fonts
@@ -102,9 +93,6 @@ gulp.task('watch', function() {
 
   // Watch .js files
   gulp.watch('js/**/*.js', ['scripts']);
-
-  // Watch image files
-  //gulp.watch('img/**/*', ['images']);
 
   // Watch any view files in 'views', reload on change
   gulp.watch(['views/**/*.php']).on('change', browsersync.reload);
