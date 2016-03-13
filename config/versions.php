@@ -35,6 +35,7 @@ HTML
 			// - guide pdf
 			// - blog pdf
 			// - api html
+			'download-url'=>'https://github.com/yiisoft/yii/releases/download/1.1.17/yii-1.1.17.467ff50',
 			'min-php-version' => '5.1.0',
 			'support-until' => 'December 31, 2016 ',
 			'security-until' => 'December 31, 2018 (may be extended further if needed) ',

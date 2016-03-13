@@ -41,8 +41,8 @@ $this->params['breadcrumbs'][] = $this->title;
 	            <p class="small">
 		        The latest release of Yii 2 is <strong><?= $latest = key($versions[$version]) ?></strong>
 		        released on <strong><?= $versions[$version][$latest] ?></strong>.
-		        For changes in this and older Versions, see the <?= Html::a('CHANGELOG', '#') ?> file.
-		        Instructions on how to upgrade to this version can be found in the <?= Html::a('UPGRADE', '#') ?> file.
+		        For changes in this and older Versions, see the <?= Html::a('CHANGELOG', 'https://github.com/yiisoft/yii2/master/framework/CHANGELOG.md') ?> file.
+		        Instructions on how to upgrade to this version can be found in the <?= Html::a('UPGRADE', 'https://github.com/yiisoft/yii2/blob/master/framework/UPGRADE.md') ?> file.
 		        </p>
 
 		        <div class="row text-center ptrem2">
@@ -141,7 +141,8 @@ $this->params['breadcrumbs'][] = $this->title;
 
 	            <div class="row text-center ptrem1">
 			        <div class="col-md-12">
-			        <p class="small"><a href="#changelog">Source Code</a>(<a href="#zip">.zip</a>)<span class="separator"></span><a href="#upgrade">Change log</a><span class="separator"></span><a href="#upgrade">Upgrade instructions</a></p>
+			        <?php $latest = key($versions['1.1']); ?>
+			        <p class="small"><a href="<?= $versionInfo['1.1']['download-url'] ?>.tar.gz">Source Code</a> (<a href="<?= $versionInfo['1.1']['download-url'] ?>.zip">.zip</a>)<span class="separator"></span><a href="https://raw.githubusercontent.com/yiisoft/yii/<?= $latest ?>/CHANGELOG">Change log</a><span class="separator"></span><a href="https://raw.githubusercontent.com/yiisoft/yii/<?= $latest ?>/UPGRADE">Upgrade instructions</a></p>
 			        </div>
 		        </div>
 
