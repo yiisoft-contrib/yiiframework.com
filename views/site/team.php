@@ -9,82 +9,111 @@ use yii\helpers\HtmlPurifier;
 $this->title = 'Team';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<?= $this->render('partials/common/_heading.php', ['title' => $this->title]) ?>
+<div class="container site-header">
+    <div class="row">
+        <div class="col-md-6">
+            <h1>Team</h1>
+            <h2>Current & Past Team Members</h2>
+        </div>
+        <div class="col-md-6">
+            <img class="background" src="<?= Yii::getAlias('@web/image/team/team.svg')?>" alt="">
+        </div>
+    </div>
+</div>
+
 <div class="container">
     <div class="row">
-        <div>
-            <section id="about-team">
-                <div class="container">
-                    <div class="row">
-                        <h2>Current Developer Team</h2>
-                    </div>
-                    <?php foreach($activeMembers as $row): ?>
+        <div class="content">
+            <div class="col-md-12">
+                <div class="heading-separator">
+                    <h2><span>Current Developer Team</span></h2>
+                </div>
+
+                <?php foreach($activeMembers as $row): ?>
                         <div class="row">
-                            <?php foreach($row as $member):?>
-                                <div class="col-sm-6 col-md-4">
-                                    <div class="team-card">
-                                        <canvas class="header-bg" width="250" height="70" id="header-blur"></canvas>
+                            <?php foreach($row as $i=>$member):?>
+                                <div class="col-xs-4 col-sm-4 col-md-2 person-card <?= ($i==0 && count($row)<6)?'col-md-offset-'.(6-count($row)):'' ?>">
                                         <div class="avatar">
-                                            <img src="<?= Html::encode(Yii::getAlias($member['photo'])) ?>" alt="">
+                                            <img src="<?= Html::encode(Yii::getAlias($member['photo'])) ?>" class="img-responsive" alt="" />
                                         </div>
                                         <div class="team-content">
-                                            <h3><?= Html::encode($member['name'])?><small> <?= Html::encode($member['location'])?></small></h3>
-                                            <h4>Since <?= Html::encode($member['memberSince']) ?></h4>
-                                            <p class="duty"><?= HtmlPurifier::process($member['duty']) ?></p>
                                             <ul class="links-inline links-circle">
                                                 <?php
-                                                if (isset($member['github'])) {
-                                                    echo '<li class="github">' . Html::a('<i class="fa fa-github"></i>', 'https://github.com/' . $member['github'], ['title' => $member['name'].' on Github']) . '</li>';
-                                                }
+                                                
                                                 if (isset($member['twitter'])) {
-                                                    echo '<li class="twitter">' . Html::a('<i class="fa fa-twitter"></i>', 'https://twitter.com/' . $member['twitter'], ['title' => $member['name'].' on Twitter']) . '</li>';
+                                                    echo '<li class="twitter">' . Html::a('<span class="fa-stack fa-lg">
+                                                          <i class="fa fa-circle fa-stack-1-5x"></i>
+                                                          <i class="fa fa-twitter fa-stack-1x fa-inverse"></i>
+                                                        </span>', 'https://twitter.com/' . $member['twitter'], ['title' => $member['name'].' on Twitter']) . '</li>';
+                                                }
+                                                if (isset($member['github'])) {
+                                                    echo '<li class="github">' . Html::a('<span class="fa-stack fa-lg">
+                                                          <i class="fa fa-github fa-stack-1-5x" style="
+                                                        "></i>
+                                                          
+                                                        </span>', 'https://github.com/' . $member['github'], ['title' => $member['name'].' on Github']) . '</li>';
                                                 }
                                                 ?>
                                             </ul>
+                                            <h4><?= Html::encode($member['name'])?></h4>
+                                            <p class="duty"><?= HtmlPurifier::process($member['duty']) ?></p>
+                                            <p class="location"> <?= Html::encode($member['location'])?></p>
+                                            <p class="period">Since <?= Html::encode($member['memberSince']) ?></p>
+                                            
+                                            
                                         </div>
-                                    </div>
                                 </div>
                             <?php endforeach ?>
                         </div>
                     <?php endforeach ?>
-                </div>
-                <div class="container">
-                    <div class="row">
-                        <h2>Past Team Members</h2>
+
+
+                    <div class="heading-separator">
+                        <h2><span>Past Team Members</span></h2>
                     </div>
+
                     <?php foreach($pastMembers as $row): ?>
                     <div class="row">
-                        <?php foreach($row as $member):?>
-                            <div class="col-sm-6 col-md-4">
+                        <?php foreach($row as $i=>$member):?>
+                            <div class="col-xs-4 col-sm-4 col-md-2 person-card <?= ($i==0 && count($row)<6)?'col-md-offset-'.(6-count($row)):'' ?>">
                                 <div class="team-card">
-                                    <canvas class="header-bg" width="250" height="70" id="header-blur"></canvas>
                                     <div class="avatar">
-                                        <img src="<?= Html::encode(Yii::getAlias($member['photo'])) ?>" alt="">
+                                        <img src="<?= Html::encode(Yii::getAlias($member['photo'])) ?>" class="img-responsive" alt="" />
                                     </div>
                                     <div class="team-content">
-                                        <h3><?= Html::encode($member['name'])?> <small><?= Html::encode($member['location'])?></small></h3>
-                                        <h4><?= Html::encode($member['memberSince']) ?></h4>
-                                        <p class="duty"><?= HtmlPurifier::process($member['duty']) ?></p>
                                         <ul class="links-inline links-circle">
-                                            <?php
-                                            if (isset($member['github'])) {
-                                                echo '<li class="github">' . Html::a('<i class="fa fa-github"></i>', 'https://github.com/' . $member['github'], ['title' => $member['name'].' on Github']) . '</li>';
-                                            }
-                                            if (isset($member['twitter'])) {
-                                                echo '<li class="twitter">' . Html::a('<i class="fa fa-twitter"></i>', 'https://twitter.com/' . $member['twitter'], ['title' => $member['name'].' on Twitter']) . '</li>';
-                                            }
-                                            ?>
-                                        </ul>
+                                                <?php
+                                                
+                                                if (isset($member['twitter'])) {
+                                                    echo '<li class="twitter">' . Html::a('<span class="fa-stack fa-lg">
+                                                          <i class="fa fa-circle fa-stack-1-5x"></i>
+                                                          <i class="fa fa-twitter fa-stack-1x fa-inverse"></i>
+                                                        </span>', 'https://twitter.com/' . $member['twitter'], ['title' => $member['name'].' on Twitter']) . '</li>';
+                                                }
+                                                if (isset($member['github'])) {
+                                                    echo '<li class="github">' . Html::a('<span class="fa-stack fa-lg">
+                                                          <i class="fa fa-github fa-stack-1-5x" style="
+                                                        "></i>
+                                                          
+                                                        </span>', 'https://github.com/' . $member['github'], ['title' => $member['name'].' on Github']) . '</li>';
+                                                }
+                                                ?>
+                                            </ul>
+                                            <h4><?= Html::encode($member['name'])?></h4>
+                                            <p class="duty"><?= HtmlPurifier::process($member['duty']) ?></p>
+                                            <p class="location"> <?= Html::encode($member['location'])?></p>
+                                            <p class="period">Since <?= Html::encode($member['memberSince']) ?></p>
                                     </div>
                                 </div>
                             </div>
                         <?php endforeach ?>
                     </div>
                 <?php endforeach ?>
-                </div>
 
-                <div class="container">
-                    <h2>Contributors</h2>
+
+                    <div class="heading-separator">
+                        <h2><span>Contributors</span></h2>
+                    </div>
 
                     <p>
                         There is a huge community of contributors working on the Yii Framework code.
@@ -107,6 +136,8 @@ $this->params['breadcrumbs'][] = $this->title;
                         } ?>
                     </div>
                     <?php endif; ?>
+
+                    <p>&nbsp;</p>
                 </div>
             </section>
         </div>
