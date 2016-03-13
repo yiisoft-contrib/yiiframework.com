@@ -1,4 +1,5 @@
 <?php
+
 use yii\helpers\Html;
 
 /* @var $this yii\web\View */
@@ -8,122 +9,155 @@ use yii\helpers\Html;
 $this->title = 'Download Yii';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<?= $this->render('partials/common/_heading.php', ['title' => $this->title]) ?>
-<div class="container style_external_links">
+<div class="container site-header">
     <div class="row">
-        <div class="content site-license">
-            <p>
-	            Yii is an open source project released under the terms of the <?= Html::a('BSD License', ['site/license']) ?>.
-	            This means that you can use Yii for free to develop either open-source or proprietary Web applications.
-            </p>
-
-            <p>
-	            On this page you find download options for the current two major versions of Yii,
-	            <a href="#yii2-0">version 2.0</a> and <a href="#yii1-1">version 1.1</a> as well as an <a href="#archive">archive</a> of old resources.
-            </p>
-
-	        <?php foreach($versionInfo as $version => $info): ?>
-
-		        <?php if($info['status'] === 'deprecated') continue; ?>
-
-
-	            <h2 id="yii<?= str_replace('.', '-', $version) ?>">Yii <?= $version ?> <span class="label"><?= $info['status'] ?></span></h2>
-
-		        <p class="intro">
-			        <?= $info['summary'] ?>
-		        </p>
-
-		        <p>
-		        The latest release of Yii <?= $version ?> is <strong><?= $latest = key($versions[$version]) ?></strong>
-		        released on <strong><?= $versions[$version][$latest] ?></strong>.
-		        For changes in this and older Versions, see the <?= Html::a('CHANGELOG', '#') ?> file.
-		        Instructions on how to upgrade to this version can be found in the <?= Html::a('UPGRADE', '#') ?> file.
-		        </p>
-
-		        Download options:
-
-		        <ul>
-			        <li>source code: Files, GIT, SVN
-
-				        <ul>
-					        <li>GIT: <?= $info['git-url'] ?></li>
-					        <li>SVN: <?= $info['svn-url'] ?></li>
-				        </ul>
-
-			        </li>
-			        <li>documentation</li>
-		        </ul>
-
-		        <h3 id="yii2-docs">Offline Documentation</h3>
-
-				<?php foreach(Yii::$app->params['guide.versions']['2.0'] as $locale => $language): ?>
-				<ul>
-				  <li><?php
-				      echo "$language: ";
-				      $file = "yii-docs-2.0-$locale.tar";
-				      echo Html::a("$file.gz", ['site/file', 'category' => 'docs-offline', 'file' => "$file.gz"]) . ' ';
-				      echo Html::a("$file.bz2", ['site/file', 'category' => 'docs-offline', 'file' => "$file.bz2"]);
-				  ?>
-				  </li>
-				</ul>
-				<?php endforeach; ?>
-
-
-		        Information about this version:
-
-		        <ul>
-			        <li>Latest: <strong><?= $latest = key($versions[$version]) ?></strong></li>
-			        <li>status: <strong><?= $info['status'] ?></strong></li>
-			        <li>minimum PHP version: <strong><?= $info['min-php-version'] ?></strong></li>
-			        <?php if ($info['support-until']): ?>
-				        <li>End of Maintenance: <strong><?= $info['support-until'] ?></strong></li>
-			        <?php endif; ?>
-			        <?php if ($info['security-until']): ?>
-				        <li>Security support until: <strong><?= $info['security-until'] ?></strong></li>
-			        <?php endif; ?>
-		        </ul>
-
-	        <?php endforeach; ?>
-
-	        <h2 id="archive">Archive</h2>
-
-	        <p>Below you'll find a list of download resources from old Yii versions and other resources that were available
-		        for download before but are not referenced elsewhere anymore.
-	        </p>
-
-	        <?php foreach($versionInfo as $version => $info): ?>
-
-		        <?php if($info['status'] !== 'deprecated') continue; ?>
-
-	            <h3 id="yii<?= str_replace('.', '-', $version) ?>">Yii <?= $version ?></h3>
-
-		        <p class="intro">
-			        <?= $info['summary'] ?>
-		        </p>
-
-		        <p>
-		        The latest release of Yii <?= $version ?> is <?= $latest = key($versions[$version]) ?>
-		        released on <?= $versions[$version][$latest] ?>.
-		        <?php /*
-		        For changes in this and older Versions, see the <?= Html::a('CHANGELOG', '#') ?> file.
-		        Instructions on how to upgrade to this version can be found in the <?= Html::a('UPGRADE', '#') ?> file.
-                */ ?>
-		        </p>
-
-		        <ul>
-			        <li>... TODO: Table of files in tar.gz and zip format for framework file <b>and</b> docs file <a href="https://code.google.com/p/yii/downloads/list?can=1&q=1.0">example files</a> ...</li>
-		        </ul>
-
-	        <?php endforeach; ?>
-
-	        <h3>Other resources</h3>
-
-	        <ul>
-		        <li>... TODO: <a href="https://code.google.com/p/yii/downloads/list?can=1&q=vmware+OR+blog+OR+benchmark+OR+cheatsheet">example files</a> </li>
-	        </ul>
-
-
-
+        <div class="col-md-6">
+            <h1>Download</h1>
+            <h2>Yii Framework & Offline Documentation</h2>
+        </div>
+        <div class="col-md-6">
+            <img class="background" src="<?= Yii::getAlias('@web/image/download/downloads.svg')?>" alt="">
         </div>
     </div>
 </div>
+
+
+<div class="container download">
+    <div class="row">
+        <div class="content">
+	        <div class="col-md-12">
+	        	<p>
+		            Yii is an open source project released under the terms of the <?= Html::a('BSD License', ['site/license']) ?>.
+		            This means that you can use Yii for free to develop either open-source or proprietary Web applications.
+	            </p>
+	            <p id="yii-2-0">
+		            On this page you find download options for the current two major versions of Yii,
+		            <a href="#yii-2-0">version 2.0</a> and <a href="#yii-1-1">version 1.1</a> as well as an <a href="#archive">archive</a> of old resources.
+	            </p>
+	            <div class="heading-separator">
+	                <h2><span>Yii 2.0</span></h2>
+	            </div>
+	            <?php $version = '2.0'; ?>
+	            <p class="small">
+		        The latest release of Yii 2 is <strong><?= $latest = key($versions[$version]) ?></strong>
+		        released on <strong><?= $versions[$version][$latest] ?></strong>.
+		        For changes in this and older Versions, see the <?= Html::a('CHANGELOG', 'https://github.com/yiisoft/yii2/master/framework/CHANGELOG.md') ?> file.
+		        Instructions on how to upgrade to this version can be found in the <?= Html::a('UPGRADE', 'https://github.com/yiisoft/yii2/blob/master/framework/UPGRADE.md') ?> file.
+		        </p>
+
+		        <div class="row text-center ptrem2">
+			        <div class="col-md-12">
+			        <p class="small"><a href="#changelog">Complete change log</a><span class="separator">|</span><a href="#upgrade">Upgrade instructions</a></p>
+			        </div>
+		        </div>
+
+		        <p class="small">There are two ways to install Yii 2: using composer or downloading an application template. We highly recommend you to use former.</p>
+
+		        <h1>Install via Composer</h1>
+
+		        <p class="small">This is the prefered way of installing Yii 2.0. If you do not have Composer installed yet, you may install it following instuctions <a href="#here">here</a>.</p>
+
+		        <p class="small">After installing Composer, run the following command to install <a target="_blank" href="https://github.com/francoispluchino/composer-asset-plugin">Composer Asset Plugin</a>:</p>
+
+				<pre>
+					<code class="hljs bash language-bash">php composer.phar global require "fxp/composer-asset-plugin:~1.1.1"</code>
+				</pre>
+
+				<p class="small">Now choose one of the application templates to start installing Yii 2.0. An application template is a package that contains a skeleton Web application written in Yii.</p>
+
+				<div class="row ptrem1">
+			        <div class="col-md-3">
+			        <p class="small install">To install the <b>basic</b> application template, run the command below:</p>
+			        </div>
+			        <div class="col-md-9">
+					<pre><code class="hljs bash language-bash">php composer.phar create-project yiisoft/yii-app-basic basic <?= $latest ?></code></pre>
+			        </div>
+		        </div>
+		        <div class="row ptrem1">
+			        <div class="col-md-3">
+			        <p class="small install">To install the <b>advanced</b> application template, run the command below:</p>
+			        </div>
+			        <div class="col-md-9">
+					<pre><code class="hljs bash language-bash">php composer.phar create-project yiisoft/yii-app-advanced basic <?= $latest ?></code></pre>
+			        </div>
+		        </div>
+
+		        <h1>Install from an Archive File</h1>
+
+		        <p class="small">Download one of the following archive files, and then extract it to Web-accessible folder:</p>
+
+		        <div class="row extensions">
+					<div class="col-md-6 col-sm-12 col-xs-12">
+						<a class="btn btn-lg btn-default btn-block download-btn" href="https://github.com/yiisoft/yii2/releases/download/<?= $latest ?>/yii-basic-app-<?= $latest ?>.tgz">
+						<img style="height:5rem;"src="<?= Yii::getAlias('@web/image/tgz.svg')?>" />
+						<span>Yii 2 with basic application template</span></a>
+					</div>
+					<div class="col-md-6 col-sm-12 col-xs-12">
+						<a class="btn btn-lg btn-default btn-block download-btn" href="https://github.com/yiisoft/yii2/releases/download/<?= $latest ?>/yii-advanced-app-<?= $latest ?>.tgz">
+						<img style="height:5rem;"src="<?= Yii::getAlias('@web/image/tgz.svg')?>" />
+						<span>Yii 2 with advanced application template</span></a>
+					</div>
+				</div>
+
+
+				<h1>Upgrade from Older Versions</h1>
+
+				<p class="small">If you are upgrading from Yii 2.0.0 with composer, simple run the following command in your project's root directory:</p>
+
+				<pre>
+					<code class="hljs bash language-bash">php composer.phar global require "fxp/composer-asset-plugin:~1.1.1"</code>
+				</pre>
+
+				<p class="small">If you installed Yii using an archive file, you should download the new release file, extract it and replace the older version with the new one.</p>
+
+				<p class="small">Upgrading from Yii 1.1 is not trivial. Please refer to the guide about <a href="#upgrade">upgrading from Yii 1.1</a>.</p>
+
+				<p>&nbsp;</p>
+
+				<div class="heading-separator">
+	                <h2><span>Offline Documentation</span></h2>
+	            </div>
+
+	            <ul class="offline-doc-v2">
+	            	<?php foreach(Yii::$app->params['guide.versions']['2.0'] as $locale => $language): ?>
+					<li>
+						<?php $file = "yii-docs-2.0-$locale.tar"; ?>
+						<img src="image/download/<?= $locale ?>.png" />
+						<span><?= $language ?></span>
+						<span><?= Html::a(".gz", ['site/file', 'category' => 'docs-offline', 'file' => "$file.gz"]) ?>  <?= Html::a(".bz2", ['site/file', 'category' => 'docs-offline', 'file' => "$file.bz2"]) ?></span>
+					</li>
+					<?php endforeach; ?>
+				</ul>
+
+				<span id="yii-1-1">&nbsp;</span>
+	            <div class="heading-separator">
+	                <h2><span>Yii 1.1</span></h2>
+	            </div>
+
+	            <p class="text-center medium">Yii 1.1 is currently under maintance mode.</p>
+	            <p class="text-center">Continued support and bug fixes for this version will be provided until <b><?= $versionInfo['1.1']['support-until'] ?></b>.</p>
+	            <p class="text-center">Security fixes until <b><?= $versionInfo['1.1']['security-until'] ?></b>.</p>
+
+
+	            <div class="row text-center ptrem1">
+			        <div class="col-md-12">
+			        <?php $latest = key($versions['1.1']); ?>
+			        <p class="small"><a href="<?= $versionInfo['1.1']['download-url'] ?>.tar.gz">Source Code</a> (<a href="<?= $versionInfo['1.1']['download-url'] ?>.zip">.zip</a>)<span class="separator"></span><a href="https://raw.githubusercontent.com/yiisoft/yii/<?= $latest ?>/CHANGELOG">Change log</a><span class="separator"></span><a href="https://raw.githubusercontent.com/yiisoft/yii/<?= $latest ?>/UPGRADE">Upgrade instructions</a></p>
+			        </div>
+		        </div>
+
+		        <h3 class="text-center">Offline Documentation</h3>
+
+		        <ul class="offline-doc-v1">
+	            	<?php foreach(Yii::$app->params['guide.versions']['1.1'] as $locale => $language): ?>
+					<li>
+						<?= Html::a($language, ['/doc/guide/1.1/'.$locale]) ?>
+					</li>
+					<?php endforeach; ?>
+				</ul>
+
+	        </div>
+	    </div>
+	</div>
+</div>
+
