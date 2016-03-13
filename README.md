@@ -109,6 +109,8 @@ It will connect to Github via the API and fetch a list of contributors, generate
 
 It would be a good idea to set up a Cron job to run that once in a while - perhaps once each month.
 
+If you generate a personal Github token (from your Github profile settings section) you can tell the contributors/generate function to make use of it by creating a file in the `data` directory (@app/data) called `github.token` with the token pasted into it (one line, no line-break). That should solve most issues related to the API rate limit imposed by Github.
+
 ## DIRECTORY STRUCTURE
 
       commands/           contains console commands (controllers)
