@@ -92,9 +92,3 @@
     @include rem(height, 42px);
     @include rem(margin, 1px);
 }
-
-.col-center {
-   float: none;
-   margin-right: auto;
-   margin-left: auto;
-}
