@@ -298,8 +298,8 @@ class SiteController extends Controller
             }
         }
 
-        $activeMembers = RowHelper::split($activeMembers, 3);
-        $pastMembers = RowHelper::split($pastMembers, 3);
+        $activeMembers = RowHelper::split($activeMembers, 6);
+        $pastMembers = RowHelper::split($pastMembers, 6);
 
         $contributors = false;
         try {

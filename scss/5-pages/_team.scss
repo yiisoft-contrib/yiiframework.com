@@ -1,56 +1,64 @@
-// http://bootsnipp.com/snippets/featured/dynamic-avatar-blur
 
-.src-image {
-  display: none;
+
+.avatar img {
+    border: 2px solid $eshill-section-bgcolor;
+    margin-bottom: 1em;
 }
 
-.team-card {
-  overflow: hidden;
-  position: relative;
-  border: 1px solid #CCC;
-  @include rem(border-radius, 8px);
-  text-align: center;
-  padding: 0;
-  background-color: $yii-blue;
-  color: $yii-blue;
-  margin-bottom: 1em;
+.heading-separator h2 {
+    @include dashed-heading-variant($eshill-header-color, #fff, fontsize(h1));
+    margin: 6.5rem 0;
 }
 
-.team-card .header-bg {
-  /* This stretches the canvas across the entire hero unit */
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  @include rem(height, 70px);
-  border-bottom: 1px #FFF solid;
-  /* This positions the canvas under the text */
-  z-index: 1;
-}
-.team-card .avatar {
-  position: relative;
-  @include rem(margin-top, 15px);
-  z-index: 100;
-}
-
-.team-card .avatar img {
-  @include rem(width, 100px);
-  @include rem(height, 100px);
-  -webkit-border-radius: 50%;
-  -moz-border-radius: 50%;
-  border-radius: 50%;
-  border: 5px solid rgba(0,0,30,0.8);
+.person-card {
+  height:45rem;
 }
 
 .team-content {
-  color: $eshill-section-bgcolor;
-  h3 {
-    small {
-      color: $eshill-section-bgcolor;
+
+    h4{
+        font-weight: bold;
+        text-align:center;
     }
-  }
+
+    p {
+        text-align:center;
+    }
+
+    p.duty{
+        font-size: 1.4rem;
+        font-weight: bold;
+    }
+
+    p.location{
+        color: #999;
+        font-size: 1.4rem;
+    }
+
+    p.period{
+        font-size: 1.4rem;
+    }
+
+    p.location{
+        color: #999;
+        font-size: 1.4rem;
+    }
+
   .links-inline {
     list-style: none;
+    text-align: center;
+    padding: 0;
+    min-height: 4rem;
+
+    .fa-stack-1-5x{
+        font-size:1.5em;
+    }
+
+    .fa-twitter{
+        line-height: 2.2em;
+        font-size: 0.75em;
+    }
+
     li {
       display: inline;
       a {
@@ -59,32 +67,23 @@
       }
     }
     li.github {
-      a:hover {
-        color: #222;
+
+      span {
+        color:#999;
+      }
+      span:hover {
+        color:#1e6887;
       }
     }
     li.twitter {
-      a:hover {
-        color: #2795e9;
+      span {
+        color:#999;
+      }
+      span:hover {
+        color:#1e6887;
       }
     }
   }
-}
-
-
-.profile {
-    .brands li a {
-        color: #fff;
-        background-color: #777;
-    }
-
-    .duty {
-        text-align: center;
-    }
-
-    img {
-        @include rem(width, 262px);
-    }
 }
 
 #contributors img {
@@ -92,4 +91,10 @@
     @include rem(width, 42px);
     @include rem(height, 42px);
     @include rem(margin, 1px);
+}
+
+.col-center {
+   float: none;
+   margin-right: auto;
+   margin-left: auto;
 }
