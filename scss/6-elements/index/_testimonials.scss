@@ -1,5 +1,32 @@
 .testimonials {
   .testimonial {
+  	padding: 1rem;
     @include rem(min-height, 381px);
+
+    .testimonial-content{
+    	padding:1rem;
+
+	    .title {
+		    font-size: 2rem;
+		    font-weight: bold;
+		    text-decoration: underline;
+		    margin: 2rem 0;
+		}
+		    
+		.quote {
+		    border-left: 2px dashed #44b3a0;
+		    padding-left: 2rem;
+		    color: #888;
+		    font-style: italic;
+		    margin: 2rem 2rem 2rem 0;
+		    font-size: 1.5rem;
+		}
+
+		img{
+		    min-width: 100%;
+		    box-shadow: 0 0 0.5rem #DDD;
+		}
+    }
+
   }
 }

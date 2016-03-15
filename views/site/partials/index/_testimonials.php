@@ -9,35 +9,29 @@ $this->registerJs("
     });
 ");
 ?>
+
 <div class="testimonials">
     <div class="dashed-heading-front-section">
         <span>Testimonials</span>
     </div>
     <div class="row testimonial">
+
         <div id="Glide2" class="glide">
-            <div class="glide__arrows">
-                <button class="glide__arrow prev" data-glide-dir="<">prev</button>
-                <button class="glide__arrow next" data-glide-dir=">">next</button>
-            </div>
             <div class="glide__wrapper">
                 <ul class="glide__track">
                     <?php foreach($testimonials as $testimonial): ?>
                         <li class="glide__slide">
-                            <div class="testimonial-image">
-                                <img src="<?= $testimonial['image'] ?>"
-                                    alt=""
-                                    class="img-responsive"/>
-                            </div>
-                            <div class="testimonial-title">
-                                <?= $testimonial['title'] ?>
-                            </div>
-                            <div class="testimonial-description">
-                                <?= $testimonial['description'] ?>
-                            </div>
-                            <div class="testimonial-quote">
-                                <p>
+                            <div class="testimonial-content">
+                                <img src="<?= $testimonial['image'] ?>" alt="" class="img-responsive"/>
+                                <div class="title">
+                                    <a href="<?= $testimonial['url'] ?>"><?= $testimonial['title'] ?></a>
+                                </div>
+                                <div class="description">
+                                    <?= $testimonial['description'] ?>
+                                </div>
+                                <div class="quote">
                                     <?= $testimonial['quote'] ?>
-                                </p>
+                                </div>
                             </div>
                         </li>
                     <?php endforeach ?>

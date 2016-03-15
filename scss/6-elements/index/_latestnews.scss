@@ -1,2 +1,36 @@
+
 .latest-news {
+
+	.row.news {
+		margin-bottom: 5rem;
+		margin-top: 5rem;
+	}
+
+	.last {
+		margin-top: 0;
+	}
+
+	h2 {
+		margin-top: 0;
+		line-height: 2.2rem;
+		margin-bottom: 3rem;
+
+		a {
+			color:#247ba0;
+			font-size: 2.3rem;
+			font-weight:bold;
+		}
+	}
+
+	span.date{
+		color:#83BFB3;
+		font-size: 1.3rem;
+	}
+
+}
+
+@media (max-width: 992px) {
+    .latest-news .row.news { 
+    	margin-bottom: 0;
+    }
 }
