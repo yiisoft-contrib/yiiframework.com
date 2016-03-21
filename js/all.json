@@ -7,7 +7,6 @@
     "vendor/yiisoft/yii2/assets/yii.activeForm.js",
     "vendor/yiisoft/yii2-authclient/assets/authchoice.js",
     "vendor/bower/glidejs/dist/glide.js",
-    "vendor/bower/scrollup/dist/jquery.scrollUp.js",
     "js/blur.js",
     "js/custom.js",
     "js/search.js"
