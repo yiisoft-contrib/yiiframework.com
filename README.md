@@ -137,11 +137,12 @@ If you generate a personal Github token (from your Github profile settings secti
 * During development, run `gulp` to watch view, Sass and JS file changes and automatically build target CSS/JS files. This command will also launch a browser window which is connected to browsersync.
 * At any time, run `gulp build` to manually rebuild target CSS/JS files from source Sass/JS files.
 * If you only want to watch for changes, you can issue the command `gulp watch`
+* To build the assets for production, specify the `production` flag: `gulp build --production`
 
 ### CSS Files
 
 * Use Sass files to define CSS styles.
-* All Sass files should be put under `/scss` and listed in `/scss/all.scss`.
+* All Sass files should be put under `assets/src/scss` and listed in `assets/src/scss/all.scss`.
 * Usually each controller corresponds to a single Sass file whose name is the same as the controller ID.
   For example, the `GuideController` has a Sass file named `_guide.scss`.
 * All Sass source files, except `all.scss` should have a leading underscore in the name. Sass will ignore files starting with an underscore so that only one CSS file will be produced (all.css).
@@ -150,7 +151,7 @@ If you generate a personal Github token (from your Github profile settings secti
 
 ### JS Files
 
-* All JS files should be put under `/js` and listed in `/js/all.json`.
+* All JS files should be put under `assets/src/js` and listed in `config.yml`.
 * Usually each controller corresponds to a single JS file whose name is the same as the controller ID.
   For example, the `GuideController` has a JS file named `guide.js`.
 
