@@ -74,10 +74,12 @@ function fonts() {
 
 // Clean
 function clean(done) {
-    if(!PRODUCTION) {
-        rimraf(config.PATHS.dist, done);
-    } else {
+    if(PRODUCTION) {
+        // in production mode do not perform a clean,
+        // but simply return nothing the Gulp way
         return gulp.src('.').pipe($.nop());
+    } else {
+        rimraf(config.PATHS.dist, done);
     }
 }
 
@@ -110,7 +112,7 @@ function watch() {
 // Default task runs build and then watch
 gulp.task('default', gulp.series('build', watch));
 
-// Export these function to the Gulp client
+// Export these functions to the Gulp client
 gulp.task('clean', clean);
 gulp.task('fonts', fonts);
 gulp.task('styles', styles);
