@@ -74,7 +74,11 @@ function fonts() {
 
 // Clean
 function clean(done) {
-    rimraf(config.PATHS.dist, done);
+    if(!PRODUCTION) {
+        rimraf(config.PATHS.dist, done);
+    } else {
+        return gulp.src('.').pipe($.nop());
+    }
 }
 
 // The main build task
