@@ -32,8 +32,8 @@ composer global require "fxp/composer-asset-plugin:~1.1.1"
 # install the dependent composer packages
 composer install
 
-# install gulp globally if you haven't done so before
-npm install -g gulp
+# install gulp globally if you haven't done so before (we currently require 4.0 beta)
+npm install -g "gulpjs/gulp#4.0"
 
 # install browsersync globally if you haven't done so before
 npm install -g browser-sync
