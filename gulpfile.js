@@ -10,7 +10,7 @@ var fs = require('fs');
 // Check for --production flag
 const PRODUCTION = !!(yargs.argv.production);
 
-// Load settings from settings.yml
+// Load settings from config.yml
 var config = loadConfig();
 
 function loadConfig() {
