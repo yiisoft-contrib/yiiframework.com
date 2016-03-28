@@ -15,6 +15,7 @@
   "author": "Qiang Xue",
   "homepage": "http://www.yiiframework.com",
   "devDependencies": {
+    "es6-promise": "*",
     "gulp": "gulpjs/gulp#4.0",
     "gulp-autoprefixer": "^3.1.0",
     "gulp-concat": "^2.5.2",

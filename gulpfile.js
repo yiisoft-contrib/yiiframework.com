@@ -1,3 +1,7 @@
+// fix problems with undefined Promise class
+// http://stackoverflow.com/questions/32490328/gulp-autoprefixer-throwing-referenceerror-promise-is-not-defined
+require('es6-promise').polyfill();
+
 // Load plugins
 var gulp = require('gulp');
 var $ = require('gulp-load-plugins')();
