@@ -2,6 +2,8 @@
 use yii\helpers\Html;
 use yii\bootstrap\Nav;
 use yii\helpers\Url;
+use app\assets\AppAsset;
+AppAsset::register($this);
 
 /* @var $this \yii\web\View */
 /* @var $content string */
@@ -39,7 +41,6 @@ use yii\helpers\Url;
         <![endif]-->
 
         <?= Html::csrfMetaTags() ?>
-        <?= Html::cssFile(YII_DEBUG ? '@web/css/all.css' : '@web/css/all.min.css?v=' . filemtime(Yii::getAlias('@webroot/css/all.min.css'))) ?>
         <?php $this->registerJs('yiiBaseUrl = ' . \yii\helpers\Json::htmlEncode(Yii::$app->request->getBaseUrl()), \yii\web\View::POS_HEAD); ?>
 
         <title><?php if (!empty($this->title)): ?><?= Html::encode($this->title) ?> - <?php endif?>Yii PHP Framework</title>
@@ -131,7 +132,6 @@ use yii\helpers\Url;
 
         </div> <!-- close the id="page-wrapper" -->
 
-        <?= Html::jsFile(YII_DEBUG ? '@web/js/all.js' : '@web/js/all.min.js?v=' . filemtime(Yii::getAlias('@webroot/js/all.min.js'))) ?>
         <?php $this->endBody() ?>
     </body>
 </html>

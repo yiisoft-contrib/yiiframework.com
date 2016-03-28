@@ -31,23 +31,18 @@ $config = [
             ],
         ],
         'assetManager' => [
-            'bundles' => false,
-//                [
-//                'yii\bootstrap\BootstrapAsset' => false,
-//                'yii\bootstrap\BootstrapPluginAsset' => false,
-//                'yii\web\YiiAsset' => false,
-//                'yii\validators\ValidationAsset' => false,
-//                'yii\web\JqueryAsset' => false,
-//                'yii\bootstrap\BootstrapAsset2' => [
-//                    'sourcePath' => null,
-//                    'css' => [
-//                        '//maxcdn.bootstrapcdn.com/bootswatch/3.3.0/readable/bootstrap.min.css',
-////                        '//maxcdn.bootstrapcdn.com/bootswatch/3.3.0/cerulean/bootstrap.min.css',
-////                        '//maxcdn.bootstrapcdn.com/bootswatch/3.3.0/cosmo/bootstrap.min.css'
-////                        '//maxcdn.bootstrapcdn.com/bootswatch/3.3.0/flatly/bootstrap.min.css'
-//                    ]
-//                ]
-//            ],
+            'bundles' => [
+                'yii\bootstrap\BootstrapAsset' => false,
+                'yii\validators\ValidationAsset' => false,
+                'yii\web\YiiAsset' => false,
+                'yii\widgets\ActiveFormAsset' => false,
+                'yii\bootstrap\BootstrapPluginAsset' => false,
+                'yii\web\JqueryAsset' => false,
+                //'yii\authclient\widgets\AuthChoiceAsset' => false, //authchoice.js
+                //'yii\authclient\widgets\AuthChoiceStyleAsset' => false, //authchoice.css
+            ],
+            'linkAssets' => true,
+            'appendTimestamp' => true,
         ],
         'urlManager' => [
             'enablePrettyUrl' => true,

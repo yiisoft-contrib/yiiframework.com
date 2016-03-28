@@ -36,13 +36,13 @@ This file is part of the
 @import "2-vendors/ptsans-bold/ptsans-bold";
 @import "2-vendors/ptsans-regular/ptsans-regular";
 @import "2-vendors/sourcecodepro/sourcecodepro";
-@import "../vendor/bower/glidejs/src/sass/glide.core";
+@import "glide.core";
 @import "2-vendors/glide.theme";
 @import "2-vendors/scrollup";
-@import "../vendor/bower/font-awesome/scss/font-awesome";
-@import "../vendor/bower/bootstrap-social/bootstrap-social.scss";
-@import "../vendor/scrivo/highlight.php/styles/github";
-@import "../vendor/bower/sass-rem/rem";
+@import "font-awesome";
+@import "bootstrap-social.scss";
+@import "styles/github";
+@import "rem";
 @import "2-vendors/contributors";
 
 // Global styling that makes use of vendors

@@ -1,0 +1,41 @@
+# Your project's server will run on proxy
+PROXY: "http://local.yiiframework.com"
+
+# Autoprefixer will make sure your CSS works with these browsers
+COMPATIBILITY:
+  - "last 2 versions"
+  - "ie >= 9"
+
+# Gulp will reference these paths when it copies files
+PATHS:
+  # Path to dist folder
+  dist: "assets/dist"
+  # Path to source folder
+  src: "assets/src"
+  # Paths to fonts
+  fonts:
+    - "vendor/bower/font-awesome/fonts/**/*"
+    - "vendor/bower/bootstrap/fonts/**/*"
+    - "assets/src/fonts/ptsans-bold/**/*"
+    - "assets/src/fonts/ptsans-regular/**/*"
+    - "assets/src/fonts/sourcecodepro/**/*"
+  # Paths to Sass libraries, which can then be loaded with @import
+  sass:
+    - "vendor/bower/bootstrap-sass/assets/stylesheets"
+    - "vendor/bower/glidejs/src/sass"
+    - "vendor/bower/bootstrap-social"
+    - "vendor/scrivo/highlight.php"
+    - "vendor/bower/font-awesome/scss"
+    - "vendor/bower/sass-rem"
+  # Paths to JavaScript libraries, which are compined into one file
+  javascript:
+    - "vendor/bower/jquery/dist/jquery.js"
+    - "vendor/bower/bootstrap-sass/assets/javascripts/bootstrap.js"
+    - "vendor/bower/scrollup/dist/jquery.scrollUp.js"
+    - "vendor/yiisoft/yii2/assets/yii.js"
+    - "vendor/yiisoft/yii2/assets/yii.validation.js"
+    - "vendor/yiisoft/yii2/assets/yii.activeForm.js"
+    - "vendor/yiisoft/yii2-authclient/assets/authchoice.js"
+    - "vendor/bower/glidejs/dist/glide.js"
+    - "assets/src/js/custom.js"
+    - "assets/src/js/search.js"
