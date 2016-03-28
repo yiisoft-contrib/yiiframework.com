@@ -111,8 +111,11 @@ class ContributorsController extends Controller
             }
         }
 
-        //TODO: is this enough?
-        exec('gulp sprites && gulp styles', $output, $ret);
+        if(YII_ENV_DEV) {
+            exec('gulp sprites && gulp styles', $output, $ret);
+        } else {
+            exec('gulp sprites && gulp styles --production', $output, $ret);
+        }
 
         $this->releaseMutex();
         return self::EXIT_CODE_NORMAL;
