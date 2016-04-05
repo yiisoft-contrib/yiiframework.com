@@ -18,28 +18,28 @@
 blockquote.tip {
   @extend %blockquote;
   background-color: #DDF7F2;
-  background-image: url(../image/guide/ico_tip.svg);
+  background-image: url(/image/guide/ico_tip.svg);
   border-left: 4px solid #70C1B3;
   color: darken(#70C1B3, 15%);
 }
 blockquote.note {
   @extend %blockquote;
   background-color: #FFF7E9;
-  background-image: url(../image/guide/ico_note.svg);
+  background-image: url(/image/guide/ico_note.svg);
   border-left: 4px solid #FFAB19;
   color: darken(#FFAB19, 15%);
 }
 blockquote.info {
   @extend %blockquote;
   background-color: #E3F7FF;
-  background-image: url(../image/guide/ico_info.svg);
+  background-image: url(/image/guide/ico_info.svg);
   border-left: 4px solid #247BA0;
   color: darken(#247BA0, 15%);
 }
 blockquote.warn {
   @extend %blockquote;
   background-color: #FFF0F4;
-  background-image: url(../image/guide/ico_attention.svg);
+  background-image: url(/image/guide/ico_attention.svg);
   border-left: 4px solid #FF1654;
   color: darken(#FF1654, 15%);
 }
