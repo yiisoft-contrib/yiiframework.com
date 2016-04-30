@@ -59,3 +59,8 @@ $font-sizes: (
   $remSize: $size / 16px;
   @return #{$remSize}rem;
 }
+
+html[lang=jp] em {
+  font-weight: bold;
+  font-style: normal;
+}
