@@ -60,17 +60,18 @@
         padding-bottom: 2rem;
     }
 
-    code{
+    pre code{
         padding: 2rem 4rem;
     }
 
 
 	ul.offline-doc-v2{
 		text-align: center;
+        padding-left: 0;
 
         li{
             display:inline-block;
-            margin:4rem;
+            margin:3rem;
 
             img{
                 box-shadow: 0 0 0.5rem #DDD;

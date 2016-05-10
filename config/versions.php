@@ -25,7 +25,7 @@ return [
 			'svn-url' => 'https://github.com/yiisoft/yii2/trunk/',
 			'summary' => <<<HTML
 				Yii 2.0 is a complete rewrite of Yii on top of PHP 5.4.0.
-				It is aimed to become a state-of-the-art of the new generation of PHP framework.
+				It is aimed to be a state-of-the-art of the new generation of PHP framework.
 				Yii 2.0 is not compatible with version 1.1.
 HTML
 		],
@@ -67,6 +67,7 @@ HTML
 	],
 	'minor-versions' => [
 		'2.0' => [
+			'2.0.8' => 'April 28, 2016',
 			'2.0.7' => 'February 14, 2016',
 			'2.0.6' => 'August 05, 2015',
 			'2.0.5' => 'July 11, 2015',
