@@ -50,6 +50,9 @@ npm install
 # initialize the application, choose "development"
 ./init
 
+# build contributors page (this may take some time as it downloads a lot of user avatars from github)
+./yii contributors/generate
+
 # build js/css files
 gulp build
 
