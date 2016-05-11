@@ -95,6 +95,13 @@ class ContributorsController extends Controller
         foreach($contributors as $contributor) {
             $login = $contributor['login'];
 
+            $thumbFile = $thumbnail_dir . DIRECTORY_SEPARATOR . $login . '.png';
+            // test if file exists and is not older than 2 days
+            if (is_file($thumbFile) && filemtime($thumbFile) > time() - 86400 * 2) {
+                $this->stdout("Using cached $login.png\n");
+                continue;
+            }
+
             // Check if the file exists and there are no errors
             $headers = get_headers($contributor['avatar_url'], 1);
             $code = (isset($headers[1])) ? explode(' ', $headers[1]) : explode(' ', $headers[0]);
@@ -104,7 +111,7 @@ class ContributorsController extends Controller
                 $this->stdout("Saving $login.png\n");
                 $imagine->open($contributor['avatar_url'])
                     ->thumbnail($size, $mode)
-                    ->save($thumbnail_dir . DIRECTORY_SEPARATOR . $login . '.png');
+                    ->save($thumbFile);
             } else {
                 //TODO: default avatar thumbnail?
                 $this->stdout("Avatar $login.png was not found\n");
