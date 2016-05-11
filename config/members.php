@@ -67,7 +67,7 @@ return [
         'memberSince' => 'November 2015',
         'location' => ' Kiev, Ukraine',
         'duty' => 'Core framework development',
-        'photo' => '@web/image/team/noimage.png',
+        'photo' => '@web/image/team/silverfire.jpg',
         'github' => 'SilverFire',
         'twitter' => 'S1lverF1re',
         'active' => true,
