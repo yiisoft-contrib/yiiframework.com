@@ -9,7 +9,7 @@ $this->params['breadcrumbs'][] = $this->title;
     <div class="row">
         <div class="col-md-8 col-sm-8">
             <h1><?= $this->title ?></h1>
-            <h2>Several ways you can help</h2>
+            <h2>There are several ways you can help</h2>
         </div>
         <div class="col-md-4 col-sm-4">
             <img class="background" src="<?= Yii::getAlias('@web/image/contribute/contribute.svg')?>" alt="">
@@ -36,15 +36,15 @@ $this->params['breadcrumbs'][] = $this->title;
                         <p class="text-center"><img class="icon" src="<?= Yii::getAlias('@web/image/contribute/ico_contribute_02.svg')?>" alt=""></p>
                         <p>
                             Found a bug? We probably don't know about it yet so you can help us
-                            reporting it in <a href="https://github.com/yiisoft/yii2/issues">Yii issue tracker</a>.
+                            reporting it in one of the <?= Html::a('Yii issue trackers', ['site/report-issue']) ?>.
                         </p>
                         <p>
-                            Please use the <?php echo Html::a('contact us form', ['site/contact']) ?> to report any security issues.
-                            DO NOT use issue tracker or discuss it in the public forum.
+                            Please use the <?php echo Html::a('contact form', ['site/security']) ?> to report any security issues.
+                            <strong>Do not</strong> use the issue tracker or discuss it in the public forum.
                         </p>
-                        <p>To help us solve it more efficiently please:</p>
+                        <p>To help us solve issues more efficiently please:</p>
                         <ul>
-                            <li>Check if it is not already reported.</li>
+                            <li>Check if the issue is not already reported.</li>
                             <li>Don't use issue tracker to ask questions. There is a
                                 <a href="http://www.yiiframework.com/forum/index.php?/forum/29-general-discussion-for-yii-11x/">forum</a>.
                             </li>
@@ -77,7 +77,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 <div class="row">
                     <div class="col-md-6">
                         <blockquote class="note">Note that if you've found a security issue, it's better to
-                            <?php echo Html::a('contact core team directly', ['site/contact']); ?>.
+                            <?php echo Html::a('contact core team directly', ['site/security']); ?>.
                             We'll review the issue and will respond via email.
                         </blockquote>
                     </div>
@@ -112,8 +112,8 @@ $this->params['breadcrumbs'][] = $this->title;
                         </p>
                         <p>When requesting a feature please:</p>
                         <ul>
-                            <li>Describe the problem feature solves clearly. Explain why you need
-                                this and what is it exactly.
+                            <li>Describe the problem, the feature solves, clearly. Explain why you need
+                                this and what it is exactly.
                             </li>
                             <li>Suggest on how it should be implemented if you have an idea.</li>
                             <li>Provide links to existing implementations if any.</li>
@@ -128,8 +128,8 @@ $this->params['breadcrumbs'][] = $this->title;
                             unit tests aren't coming with Yii release packages but are
                             <a href="https://github.com/yiisoft/yii2/tree/master/tests">available from GitHub</a>.
                         </p>
-                        <p>To learn about testing framework used in Yii, please refer to the
-                            <?= Html::a('Definitive Guide to Yii', ['guide/view', 'section' => 'test-overview', 'version' => '2.0', 'language' => 'en', 'type' => 'guide']) ?>.
+                        <p>To learn about the testing framework used in Yii, please refer to the
+                            <?= Html::a('Definitive Guide', ['guide/view', 'section' => 'test-overview', 'version' => '2.0', 'language' => 'en', 'type' => 'guide']) ?>.
                         </p>
                         <p>Not sure how it should work? Don't hesitate to contact the core team.</p>
                     </div>
@@ -145,6 +145,8 @@ $this->params['breadcrumbs'][] = $this->title;
                             submit all these in
                             <a href="https://github.com/yiisoft/yii2/issues">Yii issue tracker</a>.
                         </p>
+                        <p>Also each page in the <?= Html::a('Definitive Guide', ['guide/entry']) ?> has an edit link
+                        on the bottom, that lets you update the file and submit your changes directly via Github.</p>
                     </div>
                     <div class="col-md-6">
                         <div class="heading-separator">
@@ -158,6 +160,7 @@ $this->params['breadcrumbs'][] = $this->title;
                         </p>
                         <p>Instructions on how to do the translation work are given in
                             the <a href="https://github.com/yiisoft/yii2/blob/master/docs/internals/translation-workflow.md">Translation workflow</a> at GitHub.
+                            Also if you need help, we are happy to help you get started, just ask.
                         </p>
                     </div>
                 </div>
