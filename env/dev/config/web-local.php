@@ -2,7 +2,7 @@
 
 return [
     'bootstrap' => [
-        'debug',
+        'debug', 'gii',
     ],
     'modules' => [
         'debug' => [
@@ -12,6 +12,9 @@ return [
                     'class' => 'yii\\elasticsearch\\DebugPanel',
                 ],
             ],
+        ],
+        'gii' => [
+            'class' => 'yii\\gii\\Module',
         ],
     ],
     'components' => [

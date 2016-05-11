@@ -56,6 +56,7 @@ This file is part of the
 @import "3-global/sidenav";
 @import "3-global/navbar";
 @import "3-global/footer";
+@import "3-global/admin";
 
 // Components that could be used in multiple pages
 @import "4-components/comments";
@@ -80,7 +81,7 @@ This file is part of the
 // Elements
 // When a style file becomes too big
 // it can be split up.
-// Indivual elements gets placed here
+// Individual elements gets placed here
 // in subdirectories named after the page/name
 @import "6-elements/index/sitejumbo";
 @import "6-elements/index/tour";
