@@ -22,7 +22,7 @@ $this->registerJs("
                     <?php foreach($testimonials as $testimonial): ?>
                         <li class="glide__slide">
                             <div class="testimonial-content">
-                                <img src="<?= $testimonial['image'] ?>" alt="" class="img-responsive"/>
+                                <img src="<?= Yii::getAlias($testimonial['image']) ?>" alt="" class="img-responsive"/>
                                 <div class="title">
                                     <a href="<?= $testimonial['url'] ?>"><?= $testimonial['title'] ?></a>
                                 </div>

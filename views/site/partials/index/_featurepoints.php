@@ -3,9 +3,7 @@
         <div class="col-md-4">
             <div class="media">
               <div class="media-left">
-                <a href="#">
-                  <img class="media-object" src="/image/front/fast-80.png" alt="Yii is Fast">
-                </a>
+                  <img class="media-object" src="<?= Yii::getAlias('@web/image/front/fast-80.png') ?>" alt="Yii is Fast">
               </div>
               <div class="media-body">
                 <div class="media-heading fast">Fast</div>
@@ -16,9 +14,7 @@
         <div class="col-md-4">
             <div class="media">
               <div class="media-left">
-                <a href="#">
-                    <img class="media-object" src="/image/front/secure-80.png" alt="Yii is Secure">
-                </a>
+                    <img class="media-object" src="<?= Yii::getAlias('@web/image/front/secure-80.png') ?>" alt="Yii is Secure">
               </div>
               <div class="media-body">
                 <div class="media-heading secure">Secure</div>
@@ -29,9 +25,7 @@
         <div class="col-md-4">
             <div class="media">
               <div class="media-left">
-                <a href="#">
-                    <img class="media-object" src="/image/front/professional-80.png" alt="Yii is Efficient">
-                </a>
+                    <img class="media-object" src="<?= Yii::getAlias('@web/image/front/professional-80.png') ?>" alt="Yii is Efficient">
               </div>
               <div class="media-body">
                 <div class="media-heading efficient">Efficient</div>

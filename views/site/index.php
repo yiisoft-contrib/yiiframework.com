@@ -3,12 +3,13 @@
 /* @var $books array */
 /* @var $tour_slides array */
 /* @var $testimonials array */
+/* @var $news app\models\News[] */
 ?>
 <?= $this->render('partials/index/_jumbo'); ?>
 
 <?= $this->render('partials/index/_featurepoints'); ?>
 
-<?= $this->render('partials/index/_news'); ?>
+<?= $this->render('partials/index/_news', ['news' => $news]); ?>
 
 <?= $this->render('partials/index/_booksvideos', ['books' => $books]); ?>
 

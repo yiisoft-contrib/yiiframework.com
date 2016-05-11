@@ -8,14 +8,14 @@ EOD1;
 
 return [
     [
-        'image' => '/image/testimonials/stay.png',
+        'image' => '@web/image/testimonials/stay.png',
         'title' => 'Stay.com',
         'url' => '#',
         'description' => 'A great way to plan your next travel. Time Magazine ranks Stay.com as one of the 50 best websites in 2010.',
         'quote' => $quote_1,
     ],
     [
-        'image' => '/image/testimonials/stay.png',
+        'image' => '@web/image/testimonials/stay.png',
         'title' => 'Stay.com',
         'url' => '#',
         'description' => 'A great way to plan your next travel. Time Magazine ranks Stay.com as one of the 50 best websites in 2010.',

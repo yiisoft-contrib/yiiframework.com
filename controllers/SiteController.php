@@ -4,6 +4,7 @@ namespace app\controllers;
 
 use app\components\RowHelper;
 use app\models\Auth;
+use app\models\News;
 use app\models\PasswordResetRequestForm;
 use app\models\ResetPasswordForm;
 use app\models\SignupForm;
@@ -145,6 +146,7 @@ class SiteController extends Controller
         return $this->render('index', [
             'testimonials' => Yii::$app->params['testimonials'],
             'books' => $books,
+            'news' => News::find()->latest()->limit(4)->all(),
         ]);
     }
 
@@ -270,11 +272,6 @@ class SiteController extends Controller
     public function actionChat()
     {
         return $this->render('chat');
-    }
-
-    public function actionNews()
-    {
-        return $this->render('news');
     }
 
     public function actionLicense()

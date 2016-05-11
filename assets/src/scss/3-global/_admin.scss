@@ -1,0 +1,33 @@
+// Common style for admin pages
+
+.admin-header {
+  .admin-headline {
+    font-family: $bold-headings-font-family;
+    font-size: fontsize(h1);
+    width: 50%;
+  }
+  color: white;
+  @include rem(padding-top, 22px);
+  padding-bottom: 0;
+
+  ul.nav {
+    width: 25%;
+    float: right;
+
+    li > a {
+      color: white;
+      padding: 5px 15px;
+    }
+
+    li > a {
+      color: white;
+      padding: 5px 15px;
+    }
+
+    li a:hover, li a:focus, li.active a {
+      color: black;
+      background: #eee;
+    }
+
+  }
+}

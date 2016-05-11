@@ -76,6 +76,16 @@ AppAsset::register($this);
                         </a>
                         <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse"><i class="fa fa-inverse fa-bars"></i></button>
                     </div>
+
+                    <?php
+                    // TODO move this to a proper place
+                    if (Yii::$app->user->isGuest) {
+                        echo Html::a('login', ['site/login']);
+                    } else {
+                        echo "logged in as " . Html::encode(Yii::$app->user->identity->username) . " (" . Html::a('logout', ['site/logout'], ['data-method' => 'post']) . ")";
+                    }
+                    ?>
+
                     <div class="navbar-collapse collapse navbar-right">
                         <?php
 
@@ -108,7 +118,7 @@ AppAsset::register($this);
                                     ['label' => 'Live Chat', 'url' => ['site/chat']],
                                     ['label' => 'About', 'options' => ['class' => 'separator']],
                                     ['label' => 'What is Yii?', 'url' => ['guide/view', 'type' => 'guide', 'version' => reset(Yii::$app->params['versions']['api']), 'language' => 'en', 'section' => 'intro-yii']],
-                                    ['label' => 'News', 'url' => ['site/news']],
+                                    ['label' => 'News', 'url' => ['news/index']],
                                     ['label' => 'License', 'url' => ['site/license']],
                                     ['label' => 'Team', 'url' => ['site/team']],
                                     ['label' => 'Official logo', 'url' => ['site/logo']],
