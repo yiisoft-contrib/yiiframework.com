@@ -35,3 +35,8 @@
   content: $fa-var-external-link;
   padding-left: 2px;
 }
+
+// do not display it on image links
+.style_external_links .image a:after {
+  content: "" !important;
+}

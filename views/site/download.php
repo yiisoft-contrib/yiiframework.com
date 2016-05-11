@@ -218,7 +218,7 @@ $this->params['breadcrumbs'][] = $this->title;
 				</div>
 				<?php $version = '1.1'; ?>
 
-				<p class="text-center medium">Yii 1.1 is currently under <a href="http://www.yiiframework.com/news/90/update-on-yii-1-1-support-and-end-of-life/">maintance mode</a>.</p>
+				<p class="text-center medium">Yii 1.1 is currently under <a href="http://www.yiiframework.com/news/90/update-on-yii-1-1-support-and-end-of-life/">maintenance mode</a>.</p>
 				<p class="text-center">Continued support and bug fixes for this version will be provided until <b><?= $versionInfo[$version]['support-until'] ?></b>.</p>
 				<p class="text-center">Security fixes until <b><?= $versionInfo[$version]['security-until'] ?></b>.</p>
 
@@ -261,6 +261,7 @@ $this->params['breadcrumbs'][] = $this->title;
 					<h2><span>Archive</span></h2>
 				</div>
 
+				<p class="text-center">coming soon...</p>
 				<?php
 				//$file = "yii-docs-2.0-$locale.tar";
 				//                            echo Html::a(".gz", ['site/file', 'category' => 'docs-offline', 'file' => "$file.gz"]);

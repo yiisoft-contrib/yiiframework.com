@@ -29,15 +29,15 @@ $this->params['breadcrumbs'][] = $this->title;
             itself, or in one of the official extensions.</p>
 
             <p>If you want to report a <b>security issue</b>, please consider contacting us privately so we can fix it before the details
-            of the issue are publicly disclosed. <?= Html::a('Go to the contact page!', Url::to(['site/contact'])) ?></p>
+            of the issue are publicly disclosed. <?= Html::a('Go to the contact page!', Url::to(['site/security'])) ?></p>
 
             <div class="heading-separator">
                 <h2><span>Yii 2.0</span></h2>
             </div>
 
-            <p class="text-center medium">General issues, reported on github in the <a target="_blank" href="https://github.com/yiisoft/yii2">yiisoft/yii2</a> repository</p>
+            <p class="text-center medium">General issues, that affect the Yii core framework, should be reported on Github in the <a target="_blank" href="https://github.com/yiisoft/yii2/issues">yiisoft/yii2</a> repository.</p>
             <p class="text-center">
-            <a class="btn btn-lg btn-default github-btn" href="https://github.com/yiisoft/yii2/issues/new"><i class="fa fa-github"></i> <span>Report issue</span></a>
+            <a class="btn btn-lg btn-default github-btn" href="https://github.com/yiisoft/yii2/issues/new"><i class="fa fa-github"></i><span>Report issue</span></a>
             </p>
 
             <div class="heading-separator">
@@ -91,13 +91,14 @@ $this->params['breadcrumbs'][] = $this->title;
                 <h2><span>Yii 1.1</span></h2>
             </div>
 
-            <p class="text-center medium">If you want to report a bug for Yii 1.1, please open an issue in the <a target="_blank" href="https://github.com/yiisoft/yii">yiisoft/yii</a> repository</p>
+            <p class="text-center medium">If you want to report a bug for Yii 1.1, please open an issue in the <a target="_blank" href="https://github.com/yiisoft/yii">yiisoft/yii</a> repository.</p>
             <p class="text-center">
             <a class="btn btn-lg btn-default github-btn" href="https://github.com/yiisoft/yii/issues/new"><i class="fa fa-github"></i> <span>Report issue</span></a>
             </p>
 
-            <p class="text-center">Please note that Yii 1.1 is in maintainance mode, we will not introduce big features anymore. Please consider upgrading to Yii 2 instead.</p>
-
+            <p class="text-center">
+                Please note that Yii 1.1 is in <a href="http://www.yiiframework.com/news/90/update-on-yii-1-1-support-and-end-of-life/">maintenance mode</a>,
+                we will not introduce big features anymore. Please consider upgrading to Yii 2 instead.</p>
             </div>
         </div>
     </div>
