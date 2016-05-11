@@ -67,6 +67,7 @@ $config = [
                 $url .= '?' . $query;
             }
             Yii::$app->response->redirect($url, 301);
+            Yii::$app->end();
         }
     },
 ];
