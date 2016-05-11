@@ -76,10 +76,10 @@
 .thumbs-up {
   @extend %thumbs;
   top: 2px;
-  background-image: url(../image/guide/ico_like.svg);
+  background-image: url(../../../image/guide/ico_like.svg);
 }
 .thumbs-down {
   @extend %thumbs;
   top: 6px;
-  background-image: url(../image/guide/ico_dislike.svg);
+  background-image: url(../../../image/guide/ico_dislike.svg);
 }
