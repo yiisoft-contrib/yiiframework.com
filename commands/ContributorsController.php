@@ -21,7 +21,7 @@ class ContributorsController extends Controller
     * After the controller object is created, if you want to change this property, you should only assign it
     * with a mutex connection object.
     */
-    public $mutex = 'yii\mutex\FileMutex';
+    public $mutex = 'yii\mutex\MysqlMutex';
 
     /**
      * Generates contributor data and avatars
