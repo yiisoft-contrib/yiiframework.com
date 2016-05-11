@@ -1,15 +1,18 @@
+<?php
+use yii\helpers\Html;
+?>
 <ul class="footerList">
   <li class="footerList_item">
     <div>Documentation</div>
   </li>
   <li class="footerList_item">
-    <a href="#">Guide</a>
+    <?= Html::a('Guide', ['guide/entry']) ?>
   </li>
   <li class="footerList_item">
-    <a href="#">API</a>
+    <?= Html::a('API', ['api/entry']) ?>
   </li>
   <li class="footerList_item">
-    <a href="#">Yii Tour</a>
+    <?= Html::a('Yii Tour', ['site/tour']) ?>
   </li>
   <li class="footerList_item">
     <a href="#">Wiki</a>
@@ -21,6 +24,6 @@
     <a href="#">Screencasts</a>
   </li>
   <li class="footerList_item">
-    <a href="#">Resources</a>
+    <?= Html::a('Resources', ['site/resources']) ?>
   </li>
 </ul>

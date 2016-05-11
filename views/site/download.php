@@ -170,7 +170,7 @@ $this->params['breadcrumbs'][] = $this->title;
 				</p>
 
 				<div class="heading-separator">
-					<h2><span>Offline Documentation</span></h2>
+					<h2 id="offline-documentation"><span>Offline Documentation</span></h2>
 				</div>
 
 				<p class="small">

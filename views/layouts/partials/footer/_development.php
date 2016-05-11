@@ -1,17 +1,20 @@
+<?php
+use yii\helpers\Html;
+?>
 <ul class="footerList">
   <li class="footerList_item">
     <div>Development</div>
   </li>
   <li class="footerList_item">
-    <a href="#">Contribute</a>
+    <?= Html::a('Contribute', ['site/contribute']) ?>
   </li>
   <li class="footerList_item">
-    <a href="#">Latest Updates</a>
+    <?= Html::a('Latest Updates', 'https://github.com/yiisoft/yii2/commits/master') ?>
   </li>
   <li class="footerList_item">
-    <a href="#">Report a Bug</a>
+    <?= Html::a('Report a Bug', ['site/report-issue']) ?>
   </li>
   <li class="footerList_item">
-    <a href="#">Report Security Issue</a>
+    <?= Html::a('Report Security Issue', ['site/security']) ?>
   </li>
 </ul>

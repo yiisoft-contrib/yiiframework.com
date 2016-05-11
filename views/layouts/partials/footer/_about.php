@@ -1,20 +1,26 @@
+<?php
+use yii\helpers\Html;
+?>
 <ul class="footerList">
   <li class="footerList_item">
     <div>About</div>
   </li>
   <li class="footerList_item">
-    <a href="#">About Yii</a>
+    <?= Html::a('About Yii', ['guide/view', 'type' => 'guide', 'version' => reset(Yii::$app->params['versions']['api']), 'language' => 'en', 'section' => 'intro-yii']) ?>
   </li>
   <li class="footerList_item">
-    <a href="#">Features</a>
+    <?= Html::a('News', ['news/index']) ?>
   </li>
   <li class="footerList_item">
-    <a href="#">Performance</a>
+    <?= Html::a('Features', ['site/features']) ?>
   </li>
   <li class="footerList_item">
-    <a href="#">License</a>
+    <?= Html::a('Performance', ['site/performance']) ?>
   </li>
   <li class="footerList_item">
-    <a href="#">Contact Us</a>
+    <?= Html::a('License', ['site/license']) ?>
+  </li>
+  <li class="footerList_item">
+    <?= Html::a('Contact Us', ['site/contact']) ?>
   </li>
 </ul>

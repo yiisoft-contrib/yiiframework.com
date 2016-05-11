@@ -1,3 +1,6 @@
+<?php
+use yii\helpers\Html;
+?>
 <ul class="footerList">
   <li class="footerList_item">
     <div>Community</div>
@@ -6,7 +9,7 @@
     <a href="#">Forum</a>
   </li>
   <li class="footerList_item">
-    <a href="#">IRC (Live Chat)</a>
+    <?= Html::a('IRC (Live Chat)', ['site/chat']) ?>
   </li>
   <li class="footerList_item">
     <a href="#">Gitter</a>
