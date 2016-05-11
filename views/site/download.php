@@ -84,6 +84,19 @@ $this->params['breadcrumbs'][] = $this->title;
 					<pre><code class="hljs bash language-bash">php composer.phar create-project yiisoft/yii-app-basic <?= $latest ?> basic</code></pre>
 					</div>
 				</div>
+
+				<p class="small">
+					The best way to get started with the basic application template is to follow the
+					<?= Html::a('introduction in the definitive guide', [
+						'guide/view',
+						'type' => 'guide',
+						'version' => '2.0',
+						'language' => 'en',
+						'section' => 'start-installation',
+						'#' => 'verifying-installation',
+					]) ?>.
+				</p>
+
 				<div class="row ptrem1">
 					<div class="col-md-3">
 					<p class="small install">To install the <b>advanced</b> application template, run the command below:</p>
@@ -94,16 +107,8 @@ $this->params['breadcrumbs'][] = $this->title;
 				</div>
 
 				<p class="small">
-					Where to go from here?
-					The best way to get started is to follow the
-					<?= Html::a('introduction in the definitive guide', [
-						'guide/view',
-						'type' => 'guide',
-						'version' => '2.0',
-						'language' => 'en',
-						'section' => 'start-installation',
-						'#' => 'verifying-installation',
-					]) ?>.
+					When you have installed the advanced application template, you should check out its <a href="https://github.com/yiisoft/yii2-app-advanced/tree/master/docs/guide#readme">documentation</a>
+					to learn how to use it.
 				</p>
 
 				<h1 id="install-from-archive">Install from an Archive File</h1>
@@ -132,7 +137,11 @@ $this->params['breadcrumbs'][] = $this->title;
 						'language' => 'en',
 						'section' => 'start-installation',
 						'#' => 'verifying-installation',
-					]) ?> to get started.
+					]) ?> to get started, or
+					check out the <a href="https://github.com/yiisoft/yii2-app-advanced/tree/master/docs/guide#readme">documentation of the advanced application template</a>
+					to learn how to use it.
+				</p>
+
 				</p>
 
 				<h1>Upgrade from Older Versions</h1>
