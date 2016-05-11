@@ -17,6 +17,9 @@ use yii\helpers\Html;
       <?= Html::a('License', ['site/license']) ?>
   </li>
   <li class="footerList_item">
+      <a href="https://github.com/yiisoft-contrib/yiiframework.com" target="_blank">Website Souce Code</a>
+  </li>
+  <li class="footerList_item">
       &nbsp;
   </li>
   <li class="footerList_item">

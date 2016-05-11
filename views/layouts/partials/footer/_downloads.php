@@ -15,9 +15,6 @@ use yii\helpers\Html;
     <a href="#">Extensions</a>
   </li>
   <li class="footerList_item">
-    <a href="#">Demos</a>
-  </li>
-  <li class="footerList_item">
     <?= Html::a('Logo', ['site/logo']) ?>
   </li>
 </ul>

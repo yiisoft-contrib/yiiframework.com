@@ -6,7 +6,6 @@ return [
     'chat' => 'site/chat',
     'contact' => 'site/contact',
     'captcha' => 'site/captcha',
-    'about' => 'site/about',
     'license' => 'site/license',
     'news' => 'site/news',
     'team' => 'site/team',
@@ -15,8 +14,6 @@ return [
     'security' => 'site/security',
     'download' => 'site/download',
     'tos' => 'site/tos',
-    'performance' => 'site/performance',
-    'demos' => 'site/demos',
     'logo' => 'site/logo',
     'tour' => 'site/tour',
     'resources' => 'site/resources',
@@ -53,6 +50,7 @@ return [
     // urls from old site redirect to new location
     'doc-2.0/guide-<section:[A-z0-9\\.\\-]+>.html' => 'guide/redirect',
     'doc-2.0/<section:.+>.html' => 'api/redirect',
-    '<url:doc/terms>' => 'site/redirect'
+    '<url:doc/terms>' => 'site/redirect',
+    '<url:about|performance|demos|doc>' => 'site/redirect',
 
 ];

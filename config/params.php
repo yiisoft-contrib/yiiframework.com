@@ -122,5 +122,6 @@ return [
     'books1' => require 'books1.php',
     'testimonials' => require 'testimonials.php',
     'members' => require 'members.php',
-    'adminEmail' => 'admin@example.com',
+
+    'adminEmail' => 'yii@cebe.cc',
 ];

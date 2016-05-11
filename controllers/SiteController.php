@@ -155,6 +155,10 @@ class SiteController extends Controller
     {
         $urlMap = [
             'doc/terms' => ['site/license', '#' => 'docs'],
+            'about' => ['guide/view', 'type' => 'guide', 'version' => reset(Yii::$app->params['versions']['api']), 'language' => 'en', 'section' => 'intro-yii'],
+            'performance' => ['site/index'],
+            'demos' => ['site/index'],
+            'doc' => ['guide/entry'],
         ];
         if (isset($urlMap[$url])) {
             return $this->redirect($urlMap[$url], 301); // Moved Permanently
@@ -339,16 +343,6 @@ class SiteController extends Controller
     public function actionTos()
     {
         return $this->render('tos');
-    }
-
-    public function actionPerformance()
-    {
-        $this->redirect(['index']);
-    }
-
-    public function actionDemos()
-    {
-        $this->redirect(['index']);
     }
 
     public function actionLogo()
