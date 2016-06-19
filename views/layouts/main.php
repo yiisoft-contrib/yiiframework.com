@@ -93,7 +93,7 @@ AppAsset::register($this);
                                 ['label' => 'API', 'url' => ['api/index', 'version' => reset(Yii::$app->params['versions']['api'])], 'options' => ['title' => 'API Documentation'], 'active' => ($controller == 'api')],
                                 ['label' => 'Forum', 'url' => ['/forum'], 'options' => ['title' => 'Community Forum']],
                                 ['label' => 'Wiki', 'url' => ['site/wiki'], 'options' => ['title' => 'Community Wiki']],
-                                ['label' => 'Extensions', 'options' => ['title' => 'Not Yet']],
+                                ['label' => 'Extensions', 'url' => ['/extension'], 'options' => ['title' => 'Extensions']],
                                 ['label' => 'More&hellip;', 'items' => [
                                     ['label' => 'Learn', 'options' => ['class' => 'separator']],
                                     ['label' => 'Books', 'url' => ['site/books']],
