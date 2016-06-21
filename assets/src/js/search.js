@@ -14,6 +14,11 @@ searchResultCache = {
         title: 'Forum',
         fetched: false,
         data: []
+    },
+    extension: {
+        title: 'Extension',
+        fetched: false,
+        data: []
     }
 };
 
@@ -64,6 +69,7 @@ updateSearchResults = function() {
     html += renderResultList('api', apiLimit);
     html += renderResultList('guide', guideLimit);
     html += renderResultList('forum', '');
+    html += renderResultList('extension', '');
 
     $results.html(html);
 };
@@ -199,6 +205,40 @@ searchGuide = function(query) {
         updateSearchResults();
     }
 }
+
+searchExtensionResults = {};
+searchExtensionResultsStatus = {};
+
+searchExtension = function(query) {
+    if (typeof searchExtensionResultsStatus[query] == 'undefined') {
+        searchExtensionResultsStatus[query] = false;
+
+        var apiUrl = '?q=' + encodeURIComponent(query);
+        $.ajax({
+            url: yiiBaseUrl + '/search/extension' + apiUrl,
+            dataType: "json",
+            success: function(data) {
+                searchExtensionResults[query] = [];
+                for(var i = 0; i < data.length; ++i) {
+                    searchExtensionResults[query].push(renderExtension(data[i], query));
+                }
+                searchExtensionResultsStatus[query] = true;
+
+                searchResultCache.extension.data = searchExtensionResults[query];
+                searchResultCache.extension.fetched = true;
+                updateSearchResults();
+            }
+        });
+    } else if (searchExtensionResultsStatus[query] == true) {
+        searchResultCache.extension.data = searchExtensionResults[query];
+        searchResultCache.extension.fetched = true;
+        updateSearchResults();
+    }
+}
+
+renderExtension = function(t, query) {
+    return '<a href="' + t.url + '">' + t.title + '</a> '
+};
 
 highlight = function(s, h) {
     if (h == '') {
@@ -438,6 +478,7 @@ jQuery(document).ready(function () {
 
         searchApidoc(query);
         searchGuide(query);
+        searchExtension(query);
 
         // TODO search guide and others
     });
