@@ -229,7 +229,7 @@ searchExtension = function(query) {
                 updateSearchResults();
             }
         });
-    } else if (searchExtensionResultsStatus[query] == true) {
+    } else if (searchExtensionResultsStatus[query] === true) {
         searchResultCache.extension.data = searchExtensionResults[query];
         searchResultCache.extension.fetched = true;
         updateSearchResults();
@@ -237,7 +237,7 @@ searchExtension = function(query) {
 }
 
 renderExtension = function(t, query) {
-    return '<a href="' + t.url + '">' + t.title + '</a> '
+    return '<a href="' + t.url + '">' + highlight(htmlEncode(t.title), query) + '</a>'
 };
 
 highlight = function(s, h) {

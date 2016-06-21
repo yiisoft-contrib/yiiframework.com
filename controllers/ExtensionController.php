@@ -11,7 +11,7 @@ use yii\helpers\Url;
 use yii\web\Controller;
 
 /**
- * Расширения
+ * Extension page
  *
  * Class ExtensionController
  * @package app\controllers
@@ -19,7 +19,7 @@ use yii\web\Controller;
 class ExtensionController extends Controller
 {
     /**
-     * Главная / поиск пакетов
+     * Search package
      *
      * @param null|string $q
      * @param null|integer $page
@@ -44,33 +44,41 @@ class ExtensionController extends Controller
         $dataPackagist = \Yii::$app->cache->get($keyCache);
         if ($dataPackagist === false) {
             $dataPackagist = Packagist::search($queryString, $page, $sort->getOrders());
-            \Yii::$app->cache->set($keyCache, $dataPackagist, 300);
+            \Yii::$app->cache->set($keyCache, $dataPackagist, \Yii::$app->params['cacheDuration.extensionController.searchPackage']);
         }
 
-        if ($dataPackagist['listPackage']) {
-            $pagination = new Pagination([
-                'totalCount' => $dataPackagist['totalPackage'],
-                'defaultPageSize' => $dataPackagist['countOnPage'],
-                'forcePageParam' => false
-            ]);
+        $listPackage = [];
+        $totalPackage = 0;
 
-            foreach ($dataPackagist['listPackage'] as &$package) {
-                $package['urlPackage'] = Url::to([
-                    'package',
-                    'vendorName' => $package['vendorName'],
-                    'packageName' => $package['packageName']
+        if ($dataPackagist) {
+            $listPackage = $dataPackagist['listPackage'];
+            $totalPackage = $dataPackagist['totalPackage'];
+
+            if ($listPackage) {
+                $pagination = new Pagination([
+                    'totalCount' => $totalPackage,
+                    'defaultPageSize' => $dataPackagist['countOnPage'],
+                    'forcePageParam' => false
                 ]);
-            }
-            unset($package);
-        }
 
-        if ($dataPackagist['messageError']) {
-            \Yii::$app->session->setFlash('error', $dataPackagist['messageError']);
+                foreach ($listPackage as &$package) {
+                    $package['urlPackage'] = Url::to([
+                        'package',
+                        'vendorName' => $package['vendorName'],
+                        'packageName' => $package['packageName']
+                    ]);
+
+                    $package['repositoryHost'] = parse_url($package['repository'], PHP_URL_HOST);
+                }
+                unset($package);
+            }
+        } else {
+            \Yii::$app->session->setFlash('error', 'Bad response from the server packagist.org');
         }
 
         return $this->render('index', [
-            'listPackage' => $dataPackagist['listPackage'],
-            'totalPackage' => $dataPackagist['totalPackage'],
+            'listPackage' => $listPackage,
+            'totalPackage' => $totalPackage,
             'pagination' => $pagination,
             'sort' => $sort,
             'queryString' => $q
@@ -78,7 +86,7 @@ class ExtensionController extends Controller
     }
 
     /**
-     * Открыть пакет
+     * Open package
      *
      * @param string $vendorName
      * @param string $packageName
@@ -90,25 +98,30 @@ class ExtensionController extends Controller
     {
         $listVersion = [];
         $selectVersion = null;
-        $selectVersionData = [];
 
         $keyCache = 'extension/package__package_' . md5(serialize([$vendorName, $packageName]));
-        $package = \Yii::$app->cache->get($keyCache, 300);
+        $package = \Yii::$app->cache->get($keyCache);
         if ($package === false) {
             $package = Packagist::getPackage($vendorName, $packageName);
-            \Yii::$app->cache->set($keyCache, $package, 300);
+            if ($package) {
+                $package['repoReadme'] = Packagist::getReadmeFromRepository($package['repository']);
+            }
+
+            \Yii::$app->cache->set($keyCache, $package, \Yii::$app->params['cacheDuration.extensionController.openPackage']);
         }
 
         if ($package) {
+            $package['repositoryHost'] = parse_url($package['repository'], PHP_URL_HOST);
+
             $listVersion = array_values($package['versions']);
             usort($listVersion, function($a, $b) {
-                return $a['version_normalized'] < $b['version_normalized'];
+                return ($a['version_normalized'] < $b['version_normalized'])? 1: -1;
             });
 
             foreach ($listVersion as $versionKey => $versionItem) {
                 if (
-                    (!is_null($version) && $version !== $versionItem['version']) ||
-                    (is_null($version) && strpos($versionItem['version_normalized'], 'dev') !== false)
+                    ($version !== null && $version !== $versionItem['version']) ||
+                    ($version === null && mb_strpos($versionItem['version_normalized'], 'dev') !== false)
                 ) {
                     continue;
                 }
@@ -117,46 +130,17 @@ class ExtensionController extends Controller
                 break;
             }
 
-            if (is_null($selectVersion) && $listVersion) {
+            if ($selectVersion === null && $listVersion) {
                 $selectVersion = $listVersion[0];
             }
-
-            if ($selectVersion) {
-                foreach (['require', 'require-dev', 'suggest', 'provide', 'conflict', 'replace'] as $vName) {
-                    $selectVersionData[$vName] = [];
-
-                    if (!empty($selectVersion[$vName])) {
-                        foreach ($selectVersion[$vName] as $kVersionItem =>  $vVersionItem) {
-                            if (preg_match('/^([a-z\d\-_]+)\/([a-z\d\-_]+)$/i', $kVersionItem, $m)) {
-                                $str = Html::a($kVersionItem, [
-                                    'package',
-                                    'vendorName' => $m[1],
-                                    'packageName' => $m[2]
-                                ]);
-                            } else {
-                                $str = Html::encode($kVersionItem);
-                            }
-
-                            $selectVersionData[$vName][] = ' - ' . $str . ' ' . Html::encode($vVersionItem);
-                        }
-                    }
-
-                    if (!$selectVersionData[$vName]) {
-                        $selectVersionData[$vName][] = '<small>[empty]</small>';
-                    }
-                }
-            }
-
-            $package['repoReadme'] = Packagist::getReadmeFromRepository($package['repository']);
         } else {
-            \Yii::$app->session->setFlash('error', 'Error get data from packagist.org');
+            \Yii::$app->session->setFlash('error', 'Bad response from the server packagist.org');
         }
 
         return $this->render('package', [
             'package' => $package,
             'listVersion' => $listVersion,
-            'selectVersion' => $selectVersion,
-            'selectVersionData' => $selectVersionData
+            'selectVersion' => $selectVersion
         ]);
     }
 }
