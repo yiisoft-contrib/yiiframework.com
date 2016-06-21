@@ -50,13 +50,13 @@ $this->params['breadcrumbs'][] = $this->title;
                 <? foreach ($listPackage as $package):?>
                     <tr>
                         <td>
-                            <?= Html::a($package['name'], $package['urlPackage']);?>
+                            <?= Html::a(Html::encode($package['name']), $package['urlPackage']);?>
                         </td>
                         <td><?= Html::encode(StringHelper::truncateWords($package['description'], 10));?></td>
                         <td><?= Html::encode($package['downloads']);?></td>
                         <td><?= Html::encode($package['favers']);?></td>
                         <td>
-                            <?= Html::a(parse_url($package['repository'], PHP_URL_HOST), $package['repository'], ['target' => '_blank']);?>
+                            <?= Html::a(Html::encode($package['repositoryHost']), $package['repository']);?>
                         </td>
                         <td>
                             <?= Html::a('Open', $package['urlPackage']);?>

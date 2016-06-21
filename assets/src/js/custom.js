@@ -26,3 +26,13 @@ $(document).ready(function() {
   });
 
 });
+
+/**
+ * Convert special characters to HTML entities
+ *
+ * @param html
+ * @returns {*|jQuery}
+ */
+function htmlEncode(html) {
+    return $('<div/>').text(html).html();
+};

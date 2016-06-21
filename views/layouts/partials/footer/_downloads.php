@@ -12,7 +12,7 @@ use yii\helpers\Html;
     <?= Html::a('Documentation', ['site/download', '#' => 'offline-documentation']) ?>
   </li>
   <li class="footerList_item">
-    <a href="#">Extensions</a>
+    <a href="/extension">Extensions</a>
   </li>
   <li class="footerList_item">
     <?= Html::a('Logo', ['site/logo']) ?>

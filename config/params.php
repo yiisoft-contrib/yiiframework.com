@@ -124,4 +124,7 @@ return [
     'members' => require 'members.php',
 
     'adminEmail' => 'yii@cebe.cc',
+
+    'cacheDuration.extensionController.searchPackage' => 300,
+    'cacheDuration.extensionController.openPackage' => 300
 ];
