@@ -111,14 +111,14 @@ class ExtensionController extends Controller
             usort(
                 $versions,
                 function ($a, $b) {
-                    return $a['version_normalized'] < $b['version_normalized'];
+                    return $a['version_normalized'] < $b['version_normalized'] ? 1 : -1;
                 }
             );
 
             foreach ($versions as $versionItem) {
                 if (
                     ($version !== null && $version !== $versionItem['version']) ||
-                    ($version === null && strpos($versionItem['version_normalized'], 'dev') !== false)
+                    ($version === null && mb_strpos($versionItem['version_normalized'], 'dev', null, 'UTF-8') !== false)
                 ) {
                     continue;
                 }
