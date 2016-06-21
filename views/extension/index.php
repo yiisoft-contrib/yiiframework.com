@@ -3,8 +3,8 @@
  * @var yii\web\View $this
  * @var \yii\data\Pagination $pagination
  * @var \yii\data\Sort $sort
- * @var array $listPackage
- * @var integer $totalPackage
+ * @var array $packages
+ * @var integer $totalCount
  * @var string $queryString
  */
 
@@ -35,8 +35,8 @@ $this->params['breadcrumbs'][] = $this->title;
             'queryString' => $queryString
         ])?>
 
-        <p>Total: <?= Html::encode($totalPackage);?></p>
-        <? if ($listPackage):?>
+        <p>Total: <?= Html::encode($totalCount);?></p>
+        <?php if ($packages !== []):?>
             <table class="summary-table table table-striped table-bordered table-hover">
                 <tbody>
                     <tr>
@@ -47,31 +47,31 @@ $this->params['breadcrumbs'][] = $this->title;
                         <th>Repository</th>
                         <th>Package</th>
                     </tr>
-                <? foreach ($listPackage as $package):?>
+                <?php foreach ($packages as $package):?>
                     <tr>
                         <td>
-                            <?= Html::a($package['name'], $package['urlPackage']);?>
+                            <?= Html::a(Html::encode($package['name']), $package['urlPackage']);?>
                         </td>
                         <td><?= Html::encode(StringHelper::truncateWords($package['description'], 10));?></td>
                         <td><?= Html::encode($package['downloads']);?></td>
                         <td><?= Html::encode($package['favers']);?></td>
                         <td>
-                            <?= Html::a(parse_url($package['repository'], PHP_URL_HOST), $package['repository'], ['target' => '_blank']);?>
+                            <?= Html::a(parse_url($package['repository'], PHP_URL_HOST), $package['repository'], ['target' => '_blank', 'rel' => 'noopener noreferrer']);?>
                         </td>
                         <td>
                             <?= Html::a('Open', $package['urlPackage']);?>
                         </td>
                     </tr>
-                <? endforeach;?>
+                <?php endforeach ?>
                 </tbody>
             </table>
 
-            <? if ($pagination):?>
+            <?php if ($pagination):?>
                 <?= LinkPager::widget([
                     'pagination' => $pagination
-                ]);?>
-            <? endif;?>
-        <? endif;?>
+                ]) ?>
+            <?php endif ?>
+        <?php endif ?>
     </div>
 </div>
 <br>

@@ -162,7 +162,9 @@ searchApidoc = function(query) {
 };
 
 renderGuide = function(t, query) {
-    return '<a href="' + t.url + '">' + t.title + '<span class="result-annotation">' + t.language + ', ' + t.version + '</span></a>';
+    return $('<a />').attr('href', t.url).text(t.title).append(
+        $('<span class="result-annotation">').text(t.language + ', ' + t.version)
+    ).prop('outerHTML');
 };
 
 searchGuideResults = {};
@@ -204,13 +206,13 @@ searchGuide = function(query) {
         searchResultCache.guide.fetched = true;
         updateSearchResults();
     }
-}
+};
 
 searchExtensionResults = {};
 searchExtensionResultsStatus = {};
 
 searchExtension = function(query) {
-    if (typeof searchExtensionResultsStatus[query] == 'undefined') {
+    if (typeof searchExtensionResultsStatus[query] === 'undefined') {
         searchExtensionResultsStatus[query] = false;
 
         var apiUrl = '?q=' + encodeURIComponent(query);
@@ -229,15 +231,15 @@ searchExtension = function(query) {
                 updateSearchResults();
             }
         });
-    } else if (searchExtensionResultsStatus[query] == true) {
+    } else if (searchExtensionResultsStatus[query] === true) {
         searchResultCache.extension.data = searchExtensionResults[query];
         searchResultCache.extension.fetched = true;
         updateSearchResults();
     }
-}
+};
 
 renderExtension = function(t, query) {
-    return '<a href="' + t.url + '">' + t.title + '</a> '
+    return $('<a>').attr('href', t.url).html(highlight(t.title)).prop('outerHTML');
 };
 
 highlight = function(s, h) {
@@ -258,7 +260,7 @@ highlight = function(s, h) {
 }
 
 renderType = function(t, query) {
-    return '<a href="' + t.url + '">' + highlight(t.name, query) + ' ' /*+ t.description*/ + '</a>';
+    return $('<a>').attr('href', t.url).html(highlight(t.name, query) + ' ').prop('outerHTML');
 };
 
 renderMember = function(m, query, ownerFilter) {
@@ -325,7 +327,7 @@ searchApiDocPopulateMembers = function(query, owner) {
             var match = name.toLowerCase().indexOf(query.toLowerCase());
             if (match == 0) {
                 bestMatch.push(renderMember(m, query, owner));
-            } else if (match == 1 && name.substring(0, 1) == '$') {
+            } else if (match == 1 && name.substring(0, 1) === '$') {
                 secondMatch.push(renderMember(m, query, owner));
             }
 

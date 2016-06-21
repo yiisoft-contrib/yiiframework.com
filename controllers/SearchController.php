@@ -2,7 +2,7 @@
 
 namespace app\controllers;
 
-use app\components\Packagist;
+use app\components\PackagistApi;
 use app\models\SearchApiType;
 use app\models\SearchActiveRecord;
 use Yii;
@@ -93,23 +93,23 @@ class SearchController extends Controller
     }
 
     /**
-     * Поиск extension
+     * Extension search
      *
-     * @param $q
+     * @param string $q query
      * @return array
      */
     public function actionExtension($q)
     {
         $keyCache = 'search/extension__dataPackagist_' . md5(serialize([$q]));
-        $dataPackagist = \Yii::$app->cache->get($keyCache, 300);
-        if ($dataPackagist === false) {
-            $dataPackagist = Packagist::search($q);
-            \Yii::$app->cache->set($keyCache, $dataPackagist, 300);
+        $packagistData = \Yii::$app->cache->get($keyCache);
+        if ($packagistData === false) {
+            $packagistData = (new PackagistApi())->search($q);
+            \Yii::$app->cache->set($keyCache, $packagistData, Yii::$app->params['cache.extensions.search']);
         }
 
         $this->searchQuery = $q;
         Yii::$app->response->format = Response::FORMAT_JSON;
-        if (!$dataPackagist['listPackage']) {
+        if (!$packagistData['packages']) {
             return [];
         } else {
             return array_values(array_map(function($package) {
@@ -120,7 +120,7 @@ class SearchController extends Controller
                         'vendorName' => $package['vendorName'],
                         'packageName' => $package['packageName']])
                 ];
-            }, $dataPackagist['listPackage']));
+            }, $packagistData['packages']));
         }
     }
 

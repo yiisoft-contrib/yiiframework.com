@@ -38,6 +38,6 @@ use yii\helpers\Url;
         </li>
     </ul>
     <div class="row padded-row">
-        <a href="<?= Url::to(['/extension']) ?>" class="btn btn-front btn-block">See all extensions</a>
+        <a href="<?= Url::to(['extension/index']) ?>" class="btn btn-front btn-block">See all extensions</a>
     </div>
 </div>

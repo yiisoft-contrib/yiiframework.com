@@ -124,4 +124,8 @@ return [
     'members' => require 'members.php',
 
     'adminEmail' => 'yii@cebe.cc',
+
+    // cache
+    'cache.extensions.search' => 300,
+    'cache.extensions.get' => 300,
 ];
