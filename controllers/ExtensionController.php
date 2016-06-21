@@ -2,7 +2,8 @@
 
 namespace app\controllers;
 
-use app\components\PackagistApi;
+use app\components\packagist\Package;
+use app\components\packagist\PackagistApi;
 use Yii;
 use yii\data\Pagination;
 use yii\data\Sort;
@@ -55,17 +56,6 @@ class ExtensionController extends Controller
                     'forcePageParam' => false
                 ]
             );
-
-            foreach ($packagistData['packages'] as &$package) {
-                $package['urlPackage'] = Url::to(
-                    [
-                        'package',
-                        'vendorName' => $package['vendorName'],
-                        'packageName' => $package['packageName']
-                    ]
-                );
-            }
-            unset($package);
         }
 
         if ($packagistData['errorMessage']) {
@@ -100,6 +90,8 @@ class ExtensionController extends Controller
         $selectedVersionData = [];
 
         $keyCache = 'extension/package__package_' . md5(serialize([$vendorName, $packageName]));
+
+        /** @var Package $package */
         $package = \Yii::$app->cache->get($keyCache);
         if ($package === false) {
             $package = (new PackagistApi())->getPackage($vendorName, $packageName);
@@ -107,7 +99,7 @@ class ExtensionController extends Controller
         }
 
         if ($package) {
-            $versions = array_values($package['versions']);
+            $versions = array_values($package->getVersions());
             usort(
                 $versions,
                 function ($a, $b) {
@@ -159,8 +151,6 @@ class ExtensionController extends Controller
                     }
                 }
             }
-
-            $package['repoReadme'] = (new PackagistApi())->getReadmeFromRepository($package['repository']);
         } else {
             \Yii::$app->session->setFlash('error', 'Error get data from packagist.org');
         }
@@ -169,6 +159,7 @@ class ExtensionController extends Controller
             'package',
             [
                 'package' => $package,
+                'readme' => (new PackagistApi())->getReadmeFromRepository($package->getRepository()),
                 'versions' => $versions,
                 'selectedVersion' => $selectedVersion,
                 'selectedVersionData' => $selectedVersionData

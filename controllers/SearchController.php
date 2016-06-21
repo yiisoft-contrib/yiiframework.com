@@ -2,8 +2,8 @@
 
 namespace app\controllers;
 
-use app\components\PackagistApi;
-use app\models\SearchApiType;
+use app\components\packagist\Package;
+use app\components\packagist\PackagistApi;
 use app\models\SearchActiveRecord;
 use Yii;
 use yii\helpers\Url;
@@ -26,20 +26,25 @@ class SearchController extends Controller
             $language = null;
         }
 
-        $results = new ActiveDataProvider([
-            'query' => SearchActiveRecord::search($q, $version, $language),
-            'key' => 'primaryKey',
-            'sort' => false,
-        ]);
+        $results = new ActiveDataProvider(
+            [
+                'query' => SearchActiveRecord::search($q, $version, $language),
+                'key' => 'primaryKey',
+                'sort' => false,
+            ]
+        );
 
         $this->searchQuery = $q;
 
-        return $this->render('results', [
-            'results' => $results,
-            'queryString' => $q,
-            'version' => $version,
-            'language' => $language,
-        ]);
+        return $this->render(
+            'results',
+            [
+                'results' => $results,
+                'queryString' => $q,
+                'version' => $version,
+                'language' => $language,
+            ]
+        );
     }
 
     public function actionSuggest($q, $version = null, $language = null)
@@ -81,14 +86,19 @@ class SearchController extends Controller
         if (!$result) {
             return [];
         } else {
-            return array_values(array_map(function($r) {
-                return [
-                    'title' => $r->title,
-                    'url' => Url::to($r->getUrl(), true),
-                    'version' => $r->version,
-                    'language' => $r->language,
-                ];
-            }, $result));
+            return array_values(
+                array_map(
+                    function ($r) {
+                        return [
+                            'title' => $r->title,
+                            'url' => Url::to($r->getUrl(), true),
+                            'version' => $r->version,
+                            'language' => $r->language,
+                        ];
+                    },
+                    $result
+                )
+            );
         }
     }
 
@@ -112,15 +122,23 @@ class SearchController extends Controller
         if (!$packagistData['packages']) {
             return [];
         } else {
-            return array_values(array_map(function($package) {
-                return [
-                    'title' =>$package['name'],
-                    'url' => Url::to([
-                        '/extension/package',
-                        'vendorName' => $package['vendorName'],
-                        'packageName' => $package['packageName']])
-                ];
-            }, $packagistData['packages']));
+            return array_values(
+                array_map(
+                    function (Package $package) {
+                        return [
+                            'title' => $package->getName(),
+                            'url' => Url::to(
+                                [
+                                    'extension/package',
+                                    'vendorName' => $package->getVendor(),
+                                    'packageName' => $package->getName(),
+                                ]
+                            )
+                        ];
+                    },
+                    $packagistData['packages']
+                )
+            );
         }
     }
 
@@ -133,7 +151,7 @@ class SearchController extends Controller
     public function getLanguages()
     {
         $languages = [];
-        foreach(Yii::$app->params['guide.versions'] as $version => $l) {
+        foreach (Yii::$app->params['guide.versions'] as $version => $l) {
             $languages = array_merge($languages, $l);
         }
         return $languages;

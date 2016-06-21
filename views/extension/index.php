@@ -3,7 +3,7 @@
  * @var yii\web\View $this
  * @var \yii\data\Pagination $pagination
  * @var \yii\data\Sort $sort
- * @var array $packages
+ * @var \app\components\packagist\Package[] $packages
  * @var integer $totalCount
  * @var string $queryString
  */
@@ -45,21 +45,17 @@ $this->params['breadcrumbs'][] = $this->title;
                         <th><?= $sort->link('downloads');?></th>
                         <th><?= $sort->link('favers');?></th>
                         <th>Repository</th>
-                        <th>Package</th>
                     </tr>
                 <?php foreach ($packages as $package):?>
                     <tr>
                         <td>
-                            <?= Html::a(Html::encode($package['name']), $package['urlPackage']);?>
+                            <?= Html::a(Html::encode($package->getName()), $package->getUrl()) ?>
                         </td>
-                        <td><?= Html::encode(StringHelper::truncateWords($package['description'], 10));?></td>
-                        <td><?= Html::encode($package['downloads']);?></td>
-                        <td><?= Html::encode($package['favers']);?></td>
+                        <td><?= Html::encode(StringHelper::truncateWords($package->getDescription(), 10)) ?></td>
+                        <td><?= Html::encode($package->getDownloads()) ?></td>
+                        <td><?= Html::encode($package->getFavers()) ?></td>
                         <td>
-                            <?= Html::a(parse_url($package['repository'], PHP_URL_HOST), $package['repository'], ['target' => '_blank', 'rel' => 'noopener noreferrer']);?>
-                        </td>
-                        <td>
-                            <?= Html::a('Open', $package['urlPackage']);?>
+                            <?= Html::a($package->getRepositoryHost(), $package->getRepository(), ['target' => '_blank', 'rel' => 'noopener noreferrer']);?>
                         </td>
                     </tr>
                 <?php endforeach ?>

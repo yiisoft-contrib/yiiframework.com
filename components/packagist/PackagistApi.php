@@ -1,6 +1,6 @@
 <?php
 
-namespace app\components;
+namespace app\components\packagist;
 
 use yii\base\Exception;
 use yii\helpers\Json;
@@ -71,29 +71,7 @@ class PackagistApi
         } else {
             $currentPageCount = count($data['results']);
             foreach ($data['results'] as $result) {
-                $package = [
-                    'name' => null,
-                    'description' => null,
-                    'url' => null,
-                    'repository' => null,
-                    'downloads' => 0,
-                    'favers' => 0,
-                ];
-
-                foreach (array_keys($package) as $key) {
-                    if (array_key_exists($key, $result)) {
-                        $package[$key] = $result[$key];
-                    }
-                }
-
-                if (!preg_match('/^([a-z\d\-_]+)\/([a-z\d\-_]+)$/i', $package['name'], $matches)) {
-                    continue;
-                }
-
-                $package['vendorName'] = $matches[1];
-                $package['packageName'] = $matches[2];
-
-                $packages[] = $package;
+                $packages[] = Package::createFromAPIData($result);
             }
             $totalCount = $data['total'];
         }
@@ -112,7 +90,7 @@ class PackagistApi
      * @param string $vendorName
      * @param string $packageName
      *
-     * @return boolean|array
+     * @return Package
      */
     public function getPackage($vendorName, $packageName)
     {
@@ -128,35 +106,7 @@ class PackagistApi
             return false;
         }
 
-        $dataPackage = $data['package'];
-
-        $package = [
-            'name' => null,
-            'description' => null,
-            'repository' => null,
-            'versions' => [],
-            'favers' => 0
-        ];
-
-        foreach (array_keys($package) as $key) {
-            if (array_key_exists($key, $dataPackage)) {
-                $package[$key] = $dataPackage[$key];
-            }
-        }
-
-        if (!isset($package['versions']) || !is_array($package['versions'])) {
-            $package['versions'] = [];
-        }
-
-        foreach (['total', 'monthly', 'daily'] as $key) {
-            if (array_key_exists($key, $dataPackage['downloads'])) {
-                $package['downloads'][$key] = $dataPackage['downloads'][$key];
-            }
-        }
-
-        $package['time'] = isset($dataPackage['time']) ? strtotime($dataPackage['time']) : null;
-
-        return $package;
+        return Package::createFromAPIData($data['package']);
     }
 
     /**
