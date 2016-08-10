@@ -8,8 +8,6 @@ use Yii;
 use yii\data\Pagination;
 use yii\data\Sort;
 use yii\helpers\Html;
-use yii\helpers\Url;
-use yii\helpers\VarDumper;
 use yii\web\Controller;
 
 /**
@@ -144,19 +142,20 @@ class ExtensionController extends Controller
                     }
                 }
             }
-        } else {
-            \Yii::$app->session->setFlash('error', 'Error get data from packagist.org');
+
+            return $this->render(
+                'package',
+                [
+                    'package' => $package,
+                    'readme' => (new PackagistApi())->getReadmeFromRepository($package->getRepository()),
+                    'versions' => $versions,
+                    'selectedVersion' => $selectedVersion,
+                    'selectedVersionData' => $selectedVersionData
+                ]
+            );
         }
 
-        return $this->render(
-            'package',
-            [
-                'package' => $package,
-                'readme' => (new PackagistApi())->getReadmeFromRepository($package->getRepository()),
-                'versions' => $versions,
-                'selectedVersion' => $selectedVersion,
-                'selectedVersionData' => $selectedVersionData
-            ]
-        );
+        \Yii::$app->session->setFlash('error', 'This extension is not found on packagist.org');
+        return $this->render('packageMessage');
     }
 }
