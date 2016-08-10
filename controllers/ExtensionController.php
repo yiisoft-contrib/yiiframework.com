@@ -22,6 +22,7 @@ class ExtensionController extends Controller
      *
      * @param null|string $q
      * @param null|integer $page
+     *
      * @return string
      */
     public function actionIndex($q = null, $page = null)
@@ -129,25 +130,17 @@ class ExtensionController extends Controller
 
                     if (!empty($selectedVersion[$section])) {
                         foreach ($selectedVersion[$section] as $kVersionItem => $vVersionItem) {
-                            if (preg_match('/^([a-z\d\-_]+)\/([a-z\d\-_]+)$/i', $kVersionItem, $m)) {
-                                $str = Html::a(
-                                    $kVersionItem,
-                                    [
-                                        'package',
-                                        'vendorName' => $m[1],
-                                        'packageName' => $m[2]
-                                    ]
-                                );
-                            } else {
-                                $str = Html::encode($kVersionItem);
+                            $versionItemName = Html::encode($kVersionItem);
+                            if (preg_match('/^([\w\-\.]+)\/([\w\-\.]+)$/i', $kVersionItem, $match)) {
+                                $versionItemName = Html::a($versionItemName, [
+                                    'extension/package',
+                                    'vendorName' => $match[1],
+                                    'packageName' => $match[2]
+                                ]);
                             }
 
-                            $selectedVersionData[$section][] = ' - ' . $str . ' ' . Html::encode($vVersionItem);
+                            $selectedVersionData[$section][] = $versionItemName . ': ' . Html::encode($vVersionItem);
                         }
-                    }
-
-                    if (!$selectedVersionData[$section]) {
-                        $selectedVersionData[$section][] = '<small>[empty]</small>';
                     }
                 }
             }

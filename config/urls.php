@@ -54,7 +54,7 @@ return [
     '<url:doc/terms>' => 'site/redirect',
     '<url:about|performance|demos|doc>' => 'site/redirect',
 
-    'extension/package/<vendorName:[\w\-_\d]+>/<packageName:[\w\-_\d]+>' => 'extension/package',
-    'extension/page/<page:\d+>' => 'extension/index',
-    'extension' => 'extension/index',
+    'extensions/package/<vendorName:[\w\-\.]+>/<packageName:[\w\-\.]+>' => 'extension/package',
+    'extensions/page/<page:\d+>' => 'extension/index',
+    'extensions' => 'extension/index',
 ];

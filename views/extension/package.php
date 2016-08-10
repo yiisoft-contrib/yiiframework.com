@@ -2,7 +2,7 @@
 /**
  * @var yii\web\View $this
  * @var \app\components\packagist\Package $package
- * @var array $selectedVersion
+ * @var null|array $selectedVersion
  * @var array $selectedVersionData
  * @var array $versions
  */
@@ -12,7 +12,7 @@ use yii\helpers\Url;
 use yii\widgets\DetailView;
 
 $this->title = $package->getName();
-$this->params['breadcrumbs'][] = ['label' => 'Extension', 'url' => ['/extension']];
+$this->params['breadcrumbs'][] = ['label' => 'Extension', 'url' => ['extension/index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 
@@ -20,7 +20,7 @@ $this->params['breadcrumbs'][] = $this->title;
     <div class="container guide-header common-heading">
         <div class="row">
             <div class="col-md-12">
-                <h1 class="guide-headline"><?= Html::encode($package->getName())?></h1>
+                <h1 class="guide-headline"><?= Html::encode($package->getName()) ?></h1>
                 <small><?= Html::encode($package->getDescription()) ?></small>
             </div>
         </div>
@@ -29,9 +29,9 @@ $this->params['breadcrumbs'][] = $this->title;
 
 <div class="container">
     <br>
-    <?= \app\widgets\Alert::widget();?>
+    <?= \app\widgets\Alert::widget() ?>
     <?php if ($package): ?>
-        <p><code class="hljs json language-json">composer require <?= Html::encode($package->getName());?></code></p>
+        <p><code class="hljs json language-json">composer require <?= Html::encode($package->getName()) ?></code></p>
 
         <?= DetailView::widget([
             'model' => $package,
@@ -58,7 +58,7 @@ $this->params['breadcrumbs'][] = $this->title;
                             'total',
                             'monthly',
                             'daily'
-                        ],
+                        ]
                     ])
                 ],
                 'favers' => [
@@ -74,15 +74,16 @@ $this->params['breadcrumbs'][] = $this->title;
                 [
                     'label' => '',
                     'format' => 'raw',
-                    'value' => Html::a('Open packagist.org', 'https://packagist.org/packages/' . Html::encode($package->getName()), ['target' => '_blank'])
-                ],
-            ],
+                    'value' => Html::a('Open packagist.org', $package->getUrlRemote(), ['target' => '_blank', 'rel' => 'noopener noreferrer'])
+                ]
+            ]
         ]);?>
         <hr>
 
         <h3>Select version</h3>
         <div class="row">
             <div class="col-md-10">
+
                 <?php if ($selectedVersion): ?>
                     <?= DetailView::widget([
                         'model' => $selectedVersion,
@@ -90,62 +91,43 @@ $this->params['breadcrumbs'][] = $this->title;
                             'version',
                             [
                                 'attribute' => 'license',
-                                'value' => (isset($selectedVersion['license']))? implode(', ', $selectedVersion['license']): ''
+                                'value' => isset($selectedVersion['license']) ? implode(', ', $selectedVersion['license']) : null
                             ],
                             [
                                 'attribute' => 'authors',
                                 'format' => 'raw',
-                                'value' => (isset($selectedVersion['authors']))?
-                                    implode(', ', array_map(function($data) {
-                                        return Html::encode($data['name']) . ' (' . Html::mailto($data['name'], $data['name']) . ')';
-                                    }, $selectedVersion['authors'])): ''
+                                'value' => isset($selectedVersion['authors']) ? implode(', ', \yii\helpers\ArrayHelper::getColumn($selectedVersion['authors'], 'name')) : null
                             ],
                             [
                                 'attribute' => 'keywords',
-                                'value' => (isset($selectedVersion['keywords']))? implode(', ', $selectedVersion['keywords']): ''
+                                'value' => isset($selectedVersion['keywords']) ? implode(', ', $selectedVersion['keywords']) : null
                             ],
                             [
                                 'attribute' => 'type',
-                                'value' => (isset($selectedVersion['type']))? $selectedVersion['type']: null
-                            ],
+                                'value' => isset($selectedVersion['type']) ? $selectedVersion['type'] : null
+                            ]
                         ]
                     ]);?>
                 <?php endif ?>
 
                 <?php if ($selectedVersionData):?>
                     <table class="table table-bordered">
-                        <tr>
-                            <td style="width: 50%;">
-                                <strong>require</strong><br>
-                                <?= implode('<br>', $selectedVersionData['require']);?>
-                            </td>
-                            <td>
-                                <strong>requires (dev)</strong><br>
-                                <?= implode('<br>', $selectedVersionData['require-dev']);?>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <strong>provide</strong><br>
-                                <?= implode('<br>', $selectedVersionData['provide']);?>
-                            </td>
-                            <td>
-                                <strong>replaces</strong><br>
-                                <?= implode('<br>', $selectedVersionData['replace']);?>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td colspan="2">
-                                <strong>suggests</strong><br>
-                                <?= implode('<br>', $selectedVersionData['suggest']);?>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td colspan="2">
-                                <strong>conflicts</strong><br>
-                                <?= implode('<br>', $selectedVersionData['conflict']);?>
-                            </td>
-                        </tr>
+                        <?php $selectedVersionDataSections = [
+                            ['require', 'require-dev'],
+                            ['provide', 'replace'],
+                            ['suggest', 'conflict']
+                        ] ?>
+
+                        <?php foreach ($selectedVersionDataSections as $rows): ?>
+                            <tr>
+                            <?php foreach ($rows as $section): ?>
+                                <td style="width: 50%;">
+                                    <strong><?= Html::encode($section) ?></strong><br>
+                                    <?= !empty($selectedVersionData[$section]) ? implode('<br>', $selectedVersionData[$section]) : Html::tag('small', '[empty]') ?>
+                                </td>
+                            <?php endforeach ?>
+                            </tr>
+                        <?php endforeach ?>
                     </table>
                 <?php endif ?>
             </div>
@@ -153,20 +135,20 @@ $this->params['breadcrumbs'][] = $this->title;
             <div class="col-md-2">
                 <table class="table table-bordered">
                     <tr>
-                        <th>Versions <span class="label label-info"><?= count($versions);?></span></th>
+                        <th>Versions <span class="label label-info"><?= count($versions) ?></span></th>
                     </tr>
                     <?php $countVersion = 0 ?>
-                    <?php foreach ($versions as $versionItem):?>
-                        <?php if (++$countVersion > 12):?>
+                    <?php foreach ($versions as $versionItem): ?>
+                        <?php if (++$countVersion > 12): ?>
                             <?php break ?>
                         <?php endif ?>
                         <tr>
                             <td>
-                                <?php if ($selectedVersion['version_normalized'] === $versionItem['version_normalized']):?>
-                                    <span><?= Html::encode($versionItem['version']);?></span>
+                                <?php if ($selectedVersion['version_normalized'] === $versionItem['version_normalized']): ?>
+                                    <span><?= Html::encode($versionItem['version']) ?></span>
                                 <?php else:?>
-                                    <?= Html::a($versionItem['version'], Url::current(['version' => $versionItem['version']]));?>
-                                <?php endif;?>
+                                    <?= Html::a($versionItem['version'], Url::current(['version' => $versionItem['version']])) ?>
+                                <?php endif ?>
                             </td>
                         </tr>
                     <?php endforeach ?>
@@ -174,10 +156,10 @@ $this->params['breadcrumbs'][] = $this->title;
             </div>
         </div>
 
-        <?php if (!empty($readme)):?>
+        <?php if (!empty($readme)): ?>
             <hr>
-            <?= \yii\apidoc\helpers\ApiMarkdown::process($readme);?>
-        <?php endif;?>
-    <?php endif;?>
+            <?= \yii\apidoc\helpers\ApiMarkdown::process($readme) ?>
+        <?php endif ?>
+    <?php endif ?>
     <br>
 </div>

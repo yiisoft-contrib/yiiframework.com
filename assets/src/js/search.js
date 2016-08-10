@@ -239,11 +239,11 @@ searchExtension = function(query) {
 };
 
 renderExtension = function(t, query) {
-    return $('<a>').attr('href', t.url).html(highlight(t.title)).prop('outerHTML');
+    return $('<a>').attr('href', t.url).html(highlight(t.title, query)).prop('outerHTML');
 };
 
 highlight = function(s, h) {
-    if (h == '') {
+    if (typeof h === "undefined" || h == '') {
         return s;
     }
 
