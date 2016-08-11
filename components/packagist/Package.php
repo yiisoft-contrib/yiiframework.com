@@ -3,10 +3,16 @@ namespace app\components\packagist;
 
 use yii\helpers\Url;
 
+/**
+ * Class Package
+ * @package app\components\packagist
+ */
 class Package
 {
-    private $vendor;
-    private $name;
+    const URL_REMOTE = 'https://packagist.org/packages/%s';
+
+    private $vendorName;
+    private $packageName;
     private $description;
     private $repository;
     private $versions = [];
@@ -17,17 +23,25 @@ class Package
     /**
      * @return mixed
      */
-    public function getVendor()
+    public function getVendorName()
     {
-        return $this->vendor;
+        return $this->vendorName;
     }
 
     /**
      * @return mixed
      */
+    public function getPackageName()
+    {
+        return $this->packageName;
+    }
+
+    /**
+     * @return string
+     */
     public function getName()
     {
-        return $this->name;
+        return $this->getVendorName() . '/' . $this->getPackageName();
     }
 
     /**
@@ -70,6 +84,9 @@ class Package
         return $this->repository;
     }
 
+    /**
+     * @return mixed
+     */
     public function getRepositoryHost()
     {
         return parse_url($this->getRepository(), PHP_URL_HOST);
@@ -83,13 +100,26 @@ class Package
         return $this->description;
     }
 
+    /**
+     * @return string
+     */
     public function getUrl()
     {
         return Url::to( [
-            'package',
-            'vendorName' => $this->getVendor(),
-            'packageName' => $this->getName(),
+            'extension/package',
+            'vendorName' => $this->getVendorName(),
+            'packageName' => $this->getPackageName()
         ]);
+    }
+
+    /**
+     * Url to packagist.org
+     *
+     * @return string
+     */
+    public function getUrlRemote()
+    {
+        return sprintf(self::URL_REMOTE, $this->getName());
     }
 
     private function __construct()
@@ -105,11 +135,11 @@ class Package
         $package = new self();
 
         if (array_key_exists('name', $data)) {
-            if (!preg_match('/^([a-z\d\-_]+)\/([a-z\d\-_]+)$/i', $data['name'], $matches)) {
+            if (!preg_match('/^([\w\-\.]+)\/([\w\-\.]+)$/i', $data['name'], $matches)) {
                 return null;
             } else {
-                $package->vendor = $matches[1];
-                $package->name = $matches[2];
+                $package->vendorName = $matches[1];
+                $package->packageName = $matches[2];
             }
         }
 

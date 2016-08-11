@@ -20,7 +20,7 @@ $this->params['breadcrumbs'][] = $this->title;
     <div class="container guide-header common-heading">
         <div class="row">
             <div class="col-md-12">
-                <h1 class="guide-headline"><?= Html::encode($this->title)?></h1>
+                <h1 class="guide-headline"><?= Html::encode($this->title) ?></h1>
                 <small>via packagist.org</small>
             </div>
         </div>
@@ -29,21 +29,21 @@ $this->params['breadcrumbs'][] = $this->title;
 
 <div class="container">
     <div class="content">
-        <?= \app\widgets\Alert::widget();?>
+        <?= \app\widgets\Alert::widget() ?>
 
         <?= $this->render('_search', [
             'queryString' => $queryString
-        ])?>
+        ]) ?>
 
-        <p>Total: <?= Html::encode($totalCount);?></p>
+        <p>Total: <?= Html::encode($totalCount) ?></p>
         <?php if ($packages !== []):?>
             <table class="summary-table table table-striped table-bordered table-hover">
                 <tbody>
                     <tr>
                         <th>Vendor / Name</th>
                         <th>Description</th>
-                        <th><?= $sort->link('downloads');?></th>
-                        <th><?= $sort->link('favers');?></th>
+                        <th><?= $sort->link('downloads') ?></th>
+                        <th><?= $sort->link('favers') ?></th>
                         <th>Repository</th>
                     </tr>
                 <?php foreach ($packages as $package):?>
@@ -55,14 +55,14 @@ $this->params['breadcrumbs'][] = $this->title;
                         <td><?= Html::encode($package->getDownloads()) ?></td>
                         <td><?= Html::encode($package->getFavers()) ?></td>
                         <td>
-                            <?= Html::a($package->getRepositoryHost(), $package->getRepository(), ['target' => '_blank', 'rel' => 'noopener noreferrer']);?>
+                            <?= Html::a($package->getRepositoryHost(), $package->getRepository(), ['target' => '_blank', 'rel' => 'noopener noreferrer']) ?>
                         </td>
                     </tr>
                 <?php endforeach ?>
                 </tbody>
             </table>
 
-            <?php if ($pagination):?>
+            <?php if ($pagination): ?>
                 <?= LinkPager::widget([
                     'pagination' => $pagination
                 ]) ?>

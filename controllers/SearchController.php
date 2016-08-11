@@ -106,6 +106,7 @@ class SearchController extends Controller
      * Extension search
      *
      * @param string $q query
+     *
      * @return array
      */
     public function actionExtension($q)
@@ -127,13 +128,7 @@ class SearchController extends Controller
                     function (Package $package) {
                         return [
                             'title' => $package->getName(),
-                            'url' => Url::to(
-                                [
-                                    'extension/package',
-                                    'vendorName' => $package->getVendor(),
-                                    'packageName' => $package->getName(),
-                                ]
-                            )
+                            'url' => $package->getUrl()
                         ];
                     },
                     $packagistData['packages']

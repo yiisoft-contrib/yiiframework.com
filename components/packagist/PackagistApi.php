@@ -33,7 +33,7 @@ class PackagistApi
         $errorMessage = null;
 
         $orderBys = [
-            0 => [
+            [
                 'sort' => 'downloads',
                 'order' => 'desc',
             ]
@@ -49,7 +49,6 @@ class PackagistApi
         }
         $queryParam = [
             'type' => 'yii2-extension',
-            'page' => $page === null ? 1 : $page,
             'q' => $query,
             'orderBys' => $orderBys
         ];
@@ -71,7 +70,10 @@ class PackagistApi
         } else {
             $currentPageCount = count($data['results']);
             foreach ($data['results'] as $result) {
-                $packages[] = Package::createFromAPIData($result);
+                $package = Package::createFromAPIData($result);
+                if ($package instanceof Package) {
+                    $packages[] = Package::createFromAPIData($result);
+                }
             }
             $totalCount = $data['total'];
         }
@@ -90,7 +92,7 @@ class PackagistApi
      * @param string $vendorName
      * @param string $packageName
      *
-     * @return Package
+     * @return Package|bool
      */
     public function getPackage($vendorName, $packageName)
     {
@@ -106,7 +108,8 @@ class PackagistApi
             return false;
         }
 
-        return Package::createFromAPIData($data['package']);
+        $package = Package::createFromAPIData($data['package']);
+        return $package instanceof Package ? $package : false;
     }
 
     /**

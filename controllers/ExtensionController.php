@@ -8,8 +8,6 @@ use Yii;
 use yii\data\Pagination;
 use yii\data\Sort;
 use yii\helpers\Html;
-use yii\helpers\Url;
-use yii\helpers\VarDumper;
 use yii\web\Controller;
 
 /**
@@ -22,6 +20,7 @@ class ExtensionController extends Controller
      *
      * @param null|string $q
      * @param null|integer $page
+     *
      * @return string
      */
     public function actionIndex($q = null, $page = null)
@@ -129,41 +128,34 @@ class ExtensionController extends Controller
 
                     if (!empty($selectedVersion[$section])) {
                         foreach ($selectedVersion[$section] as $kVersionItem => $vVersionItem) {
-                            if (preg_match('/^([a-z\d\-_]+)\/([a-z\d\-_]+)$/i', $kVersionItem, $m)) {
-                                $str = Html::a(
-                                    $kVersionItem,
-                                    [
-                                        'package',
-                                        'vendorName' => $m[1],
-                                        'packageName' => $m[2]
-                                    ]
-                                );
-                            } else {
-                                $str = Html::encode($kVersionItem);
+                            $versionItemName = Html::encode($kVersionItem);
+                            if (preg_match('/^([\w\-\.]+)\/([\w\-\.]+)$/i', $kVersionItem, $match)) {
+                                $versionItemName = Html::a($versionItemName, [
+                                    'extension/package',
+                                    'vendorName' => $match[1],
+                                    'packageName' => $match[2]
+                                ]);
                             }
 
-                            $selectedVersionData[$section][] = ' - ' . $str . ' ' . Html::encode($vVersionItem);
+                            $selectedVersionData[$section][] = $versionItemName . ': ' . Html::encode($vVersionItem);
                         }
-                    }
-
-                    if (!$selectedVersionData[$section]) {
-                        $selectedVersionData[$section][] = '<small>[empty]</small>';
                     }
                 }
             }
-        } else {
-            \Yii::$app->session->setFlash('error', 'Error get data from packagist.org');
+
+            return $this->render(
+                'package',
+                [
+                    'package' => $package,
+                    'readme' => (new PackagistApi())->getReadmeFromRepository($package->getRepository()),
+                    'versions' => $versions,
+                    'selectedVersion' => $selectedVersion,
+                    'selectedVersionData' => $selectedVersionData
+                ]
+            );
         }
 
-        return $this->render(
-            'package',
-            [
-                'package' => $package,
-                'readme' => (new PackagistApi())->getReadmeFromRepository($package->getRepository()),
-                'versions' => $versions,
-                'selectedVersion' => $selectedVersion,
-                'selectedVersionData' => $selectedVersionData
-            ]
-        );
+        \Yii::$app->session->setFlash('error', 'This extension is not found on packagist.org');
+        return $this->render('packageMessage');
     }
 }
