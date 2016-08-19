@@ -41,7 +41,9 @@ return [
         '2.0' => [
             'en' => 'English',
             'es' => 'Español',     // Spanish
+            'fr' => 'Français',     // French
             'ja' => '日本語',       // Japanese
+            'pl' => 'Polski',       // Polish
             'pt-br' => 'Português brasileiro',  // Brazilian Portuguese
             'ru' => 'Русский',     // Russian
             'zh-cn' => '简体中文',  // Simplified Chinese
@@ -84,9 +86,11 @@ return [
     // guide languages for PDF creation
     'guide-pdf.languages' => [
         // language => latex babel language
+        'de' => 'ngerman',
         'en' => 'british',
         'es' => 'spanish',
-        'de' => 'ngerman',
+        'fr' => 'frenchb',
+        'pl' => 'polish',
         'pt-br' => 'brazilian',
         'ru' => 'russian',
     ],
