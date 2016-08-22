@@ -80,12 +80,16 @@ class GuideController extends \yii\apidoc\commands\GuideController
                     $this->actionIndex([$source], $pdfTarget);
                     $this->stdout('Generating PDF with pdflatex...');
                     file_put_contents("$pdfTarget/main.tex", str_replace('british', $languageMap[$language], file_get_contents("$pdfTarget/main.tex")));
+                    if (file_exists("$pdfTarget/fail.log")) {
+                        unlink("$pdfTarget/fail.log");
+                    }
                     exec('cd ' . escapeshellarg($pdfTarget) . ' && make pdf', $output, $ret);
                     if ($ret === 0) {
                         $this->stdout("\nFinished guide $version PDF in $name.\n\n", Console::FG_CYAN);
                     } else {
-                        $this->stdout("\n" . implode("\n", $output) . "\n");
-                        $this->stdout("Guide $version PDF failed, make exited with status $ret.\n\n", Console::FG_RED);
+                        $this->stdout("Guide $version PDF failed, make exited with status $ret.\n", Console::FG_RED);
+                        file_put_contents("$pdfTarget/fail.log", implode("\n", $output));
+                        $this->stdout("Errors logged to $pdfTarget/fail.log\n\n");
                     }
                 } else {
                     $this->stdout("Guide PDF is not available for $name.\n\n", Console::FG_CYAN);
