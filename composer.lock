@@ -518,16 +518,16 @@
         },
         {
             "name": "cebe/markdown-latex",
-            "version": "1.1.2",
+            "version": "1.1.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/cebe/markdown-latex.git",
-                "reference": "febd9ee2535cd79654c50f171eb672fdf71e57a0"
+                "reference": "1707d27f3e980e5fbd65fed6e750d4c6bed7b060"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/cebe/markdown-latex/zipball/febd9ee2535cd79654c50f171eb672fdf71e57a0",
-                "reference": "febd9ee2535cd79654c50f171eb672fdf71e57a0",
+                "url": "https://api.github.com/repos/cebe/markdown-latex/zipball/1707d27f3e980e5fbd65fed6e750d4c6bed7b060",
+                "reference": "1707d27f3e980e5fbd65fed6e750d4c6bed7b060",
                 "shasum": ""
             },
             "require": {
@@ -574,7 +574,7 @@
                 "markdown",
                 "markdown-extra"
             ],
-            "time": "2016-08-22 13:42:33"
+            "time": "2016-08-23 08:32:49"
         },
         {
             "name": "cebe/yii2-gravatar",
