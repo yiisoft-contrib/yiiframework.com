@@ -5,6 +5,7 @@ namespace app\controllers;
 use Yii;
 use app\models\News;
 use app\models\NewsSearch;
+use yii\data\ActiveDataProvider;
 use yii\filters\AccessControl;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
@@ -51,14 +52,29 @@ class NewsController extends Controller
      * Lists all News models.
      * @return mixed
      */
-    public function actionIndex()
+    public function actionIndex($year = null)
     {
-        $searchModel = new NewsSearch();
-        $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
+        $query = News::find();
+        $dataProvider = new ActiveDataProvider([
+            'query' => $query,
+        ]);
+
+        // only show published news if user is not admin
+        if (!Yii::$app->user->can('news:pAdmin')) {
+            $query->andWhere(['status' => News::STATUS_PUBLISHED]);
+        }
+
+        if ($year !== null) {
+            $year = (int) $year;
+            if ($year < 1900) {
+                throw new NotFoundHttpException('The requested page does not exist.');
+            }
+            $query->andWhere('YEAR(news_date) = :year', [':year' => $year]);
+        }
 
         return $this->render('index', [
-            'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
+            'year' => $year,
         ]);
     }
 
@@ -86,9 +102,15 @@ class NewsController extends Controller
     {
 	    $model = $this->findModel($id);
 
-	    if (!Yii::$app->user->can('news:pAdmin') && $model->status != News::STATUS_PUBLISHED) {
-		    throw new NotFoundHttpException('The requested page does not exist.');
-	    }
+        if (!Yii::$app->user->can('news:pAdmin') && $model->status != News::STATUS_PUBLISHED) {
+   		    throw new NotFoundHttpException('The requested page does not exist.');
+   	    }
+
+        // normalize slug URL
+        $slug = Yii::$app->request->get('name');
+        if ($model->slug !== $slug) {
+            return $this->redirect(['news/view', 'id' => $model->id, 'name' => $model->slug], 301);
+        }
 
         return $this->render('view', [
             'model' => $model,

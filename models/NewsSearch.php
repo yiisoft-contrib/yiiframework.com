@@ -47,6 +47,9 @@ class NewsSearch extends News
 
         $dataProvider = new ActiveDataProvider([
             'query' => $query,
+            'sort' => [
+                'defaultOrder' => ['status' => SORT_ASC, 'news_date' => SORT_DESC],
+            ],
         ]);
 
         $this->load($params);
@@ -60,17 +63,16 @@ class NewsSearch extends News
         // grid filtering conditions
         $query->andFilterWhere([
             'id' => $this->id,
-            'news_date' => $this->news_date,
-            'image_id' => $this->image_id,
-            'created_at' => $this->created_at,
-            'updated_at' => $this->updated_at,
             'creator_id' => $this->creator_id,
             'updater_id' => $this->updater_id,
             'status' => $this->status,
         ]);
 
         $query->andFilterWhere(['like', 'title', $this->title])
-            ->andFilterWhere(['like', 'content', $this->content]);
+            ->andFilterWhere(['like', 'content', $this->content])
+            ->andFilterWhere(['like', 'news_date', $this->news_date])
+            ->andFilterWhere(['like', 'created_at', $this->created_at])
+            ->andFilterWhere(['like', 'updated_at', $this->updated_at]);
 
         return $dataProvider;
     }

@@ -1,5 +1,6 @@
 <?php
 
+use app\models\News;
 use yii\helpers\Html;
 use yii\grid\GridView;
 
@@ -29,13 +30,20 @@ echo $this->render('//site/partials/common/_admin_heading.php', [
                     'id',
                     'title',
                     'news_date',
-                    'status',
+                    [
+                        'attribute' => 'status',
+                        'value' => 'statusName',
+                        'filter' => News::getStatusList(),
+                    ],
                     'created_at',
                     'updated_at',
                     // 'creator_id',
                     // 'updater_id',
 
-                    ['class' => 'yii\grid\ActionColumn'],
+                    [
+                        'class' => 'yii\grid\ActionColumn',
+                        'contentOptions' => ['class' => 'action-column'],
+                    ],
                 ],
             ]); ?>
 
