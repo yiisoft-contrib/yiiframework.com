@@ -20,7 +20,7 @@ return [
 	'news' => 'news/index',
 	'news/<id:\d+>/<name>' => 'news/view',
 	'news/<id:\d+>' => 'news/view',
-	'news/<action:\w+>' => 'news/<action>',
+	'news/<action:[\w-]+>' => 'news/<action>',
 
     'download/<category:[\w-]+>/<file:[\w\d-.]+>' => 'site/file',
 

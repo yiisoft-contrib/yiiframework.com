@@ -90,6 +90,12 @@ class News extends \yii\db\ActiveRecord
         ];
     }
 
+    public function getStatusName()
+    {
+        $statusList = static::getStatusList();
+        return isset($statusList[$this->status]) ? $statusList[$this->status] : 'Unknown';
+    }
+
     /**
      * @inheritdoc
      */

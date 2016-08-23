@@ -50,9 +50,7 @@ echo $this->render('//site/partials/common/_admin_heading.php', [
 
                     <p>TODO</p>
 
-                    <h2>News Archive</h2>
-
-                    <p>TODO</p>
+                    <?= \app\widgets\NewsArchive::widget() ?>
 
                     <h2>Tags</h2>
 

@@ -4,10 +4,14 @@ use yii\helpers\Html;
 use yii\widgets\ListView;
 
 /* @var $this yii\web\View */
-/* @var $searchModel app\models\NewsSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
+/* @var $year int */
 
-$this->title = 'News';
+if ($year) {
+	$this->title = "News from $year";
+} else {
+	$this->title = 'Latest News';
+}
 echo $this->render('//site/partials/common/_admin_heading.php', [
     'title' => $this->title,
     'menu' => [
@@ -28,14 +32,13 @@ echo $this->render('//site/partials/common/_admin_heading.php', [
 		                'dataProvider' => $dataProvider,
 		                'itemOptions' => ['class' => 'item'],
 		                'itemView' => '_view',
+						'summary' => '',
 		            ]) ?>
 
 				</div>
 				<div class="col-md-3">
 
-					<h2>News Archive</h2>
-
-					<p>TODO</p>
+					<?= \app\widgets\NewsArchive::widget() ?>
 
 					<h2>Tags</h2>
 

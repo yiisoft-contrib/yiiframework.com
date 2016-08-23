@@ -1,0 +1,26 @@
+<?php
+
+use yii\helpers\Html;
+use yii\helpers\Url;
+
+/** @var array $archiveEntries */
+
+if (empty($archiveEntries)) {
+    return;
+}
+
+?>
+<h2>News Archive</h2>
+
+<ul>
+<?php
+    $archive = Yii::$app->request->get('year');
+    foreach($archiveEntries as $date => $entry) {
+        if ($date === $archive) {
+            echo '<li class="active">';
+        } else {
+            echo '<li>';
+        }
+        echo Html::a($entry, ['news/index', 'year' => $date]) . '</li>';
+    } ?>
+</ul>
