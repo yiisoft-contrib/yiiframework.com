@@ -86,13 +86,16 @@ return [
     // guide languages for PDF creation
     'guide-pdf.languages' => [
         // language => latex babel language
+        // https://en.wikibooks.org/wiki/LaTeX/Internationalization
         'de' => 'ngerman',
         'en' => 'british',
         'es' => 'spanish',
         'fr' => 'frenchb',
+//        'ja' => '', // custom code in GuideController
         'pl' => 'polish',
         'pt-br' => 'brazilian',
         'ru' => 'russian',
+//        'zh-cn' => '', // custom code in GuideController
     ],
 
     'blogtut.versions' => [

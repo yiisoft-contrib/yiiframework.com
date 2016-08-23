@@ -78,8 +78,20 @@ class GuideController extends \yii\apidoc\commands\GuideController
                     $this->stdout("Start generating guide $version PDF in $name...\n", Console::FG_CYAN);
                     $this->template = 'pdf';
                     $this->actionIndex([$source], $pdfTarget);
+
                     $this->stdout('Generating PDF with pdflatex...');
-                    file_put_contents("$pdfTarget/main.tex", str_replace('british', $languageMap[$language], file_get_contents("$pdfTarget/main.tex")));
+                    // adjust LaTeX config for language
+                    if ($language === 'ja') {
+                        // https://en.wikibooks.org/wiki/LaTeX/Internationalization#Japanese
+                        // TODO this does not work yet. See https://github.com/yiisoft-contrib/yiiframework.com/issues/142
+                        file_put_contents("$pdfTarget/main.tex", str_replace('\usepackage[british]{babel}', '\usepackage{japanese}', file_get_contents("$pdfTarget/main.tex")));
+                    } elseif ($language === 'zh-cn') {
+                        // https://en.wikibooks.org/wiki/LaTeX/Internationalization#Chinese
+                        // TODO this does not work yet. See https://github.com/yiisoft-contrib/yiiframework.com/issues/142
+                    } else {
+                        file_put_contents("$pdfTarget/main.tex", str_replace('british', $languageMap[$language], file_get_contents("$pdfTarget/main.tex")));
+                    }
+
                     if (file_exists("$pdfTarget/fail.log")) {
                         unlink("$pdfTarget/fail.log");
                     }
