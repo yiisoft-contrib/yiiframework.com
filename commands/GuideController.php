@@ -8,6 +8,8 @@ use Yii;
 use yii\helpers\Console;
 use app\apidoc\GuideRenderer;
 use yii\helpers\FileHelper;
+use yii\helpers\Inflector;
+use yii\helpers\Json;
 
 /**
  * Generates the Definitive Guide for Yii.
@@ -80,6 +82,7 @@ class GuideController extends \yii\apidoc\commands\GuideController
                     $this->actionIndex([$source], $pdfTarget);
 
                     $this->stdout('Generating PDF with pdflatex...');
+
                     // adjust LaTeX config for language
                     if ($language === 'ja') {
                         // https://en.wikibooks.org/wiki/LaTeX/Internationalization#Japanese
@@ -90,6 +93,29 @@ class GuideController extends \yii\apidoc\commands\GuideController
                         // TODO this does not work yet. See https://github.com/yiisoft-contrib/yiiframework.com/issues/142
                     } else {
                         file_put_contents("$pdfTarget/main.tex", str_replace('british', $languageMap[$language], file_get_contents("$pdfTarget/main.tex")));
+                    }
+
+                    // adjust title for non english guides
+                    if ($language !== 'en' && file_exists("$target/README.json")) {
+                        $json = Json::decode(file_get_contents("$target/README.json"));
+                        if (isset($json['h1'])) {
+                            $tex = file_get_contents("$pdfTarget/main.tex");
+
+                            $translators = '';
+                            if (is_file("$source/translators.json")) {
+                                $translatorNames = Json::decode(file_get_contents("$source/translators.json"));
+                                if (!empty($translatorNames)) {
+                                    $translatorNames = Inflector::sentence($translatorNames, ', \\\\\\\\', null, ', \\\\\\\\');
+                                    $translators = "$name translation provided by: \\\\\\\\ " . $translatorNames;
+                                }
+                            }
+
+                            $tex = preg_replace('~\\\\newcommand{\\\\plainTitle}{.+?}~', '\newcommand{\plainTitle}{' . $json['h1'] . '}', $tex);
+                            $tex = preg_replace('~\\\\newcommand{\\\\formattedTitle}{.+? 2.0}~', '\newcommand{\formattedTitle}{' . $json['h1'] . '}', $tex);
+                            $tex = preg_replace('~\\\\newcommand{\\\\formattedTranslators}{}~', '\newcommand{\formattedTranslators}{' . $translators . '}', $tex);
+
+                            file_put_contents("$pdfTarget/main.tex", $tex);
+                        }
                     }
 
                     if (file_exists("$pdfTarget/fail.log")) {
