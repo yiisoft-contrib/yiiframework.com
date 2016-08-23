@@ -1,85 +1,172 @@
 <?php
-$this->registerJs("
-function fader() {
-    var r = $('.blurred'),
-    wh = $(window).height(),
-    dt = $(document).scrollTop(),
-    elView, opacity;
 
-    // Loop elements with class 'blurred'
-    r.each(function() {
-        elView  = wh - ($(this).offset().top - dt + 300);
-        if (elView > 0) { // Top of DIV above bottom of window.
-            opacity = 1 / (wh + $(this).height()) * elView * 6
-            if (opacity < 1) // Bottom of DIV below top of window.
-            $(this).css('opacity', opacity);
-        }
+use yii\helpers\Html;
 
-    });
-}
-$(document).bind('scroll', fader);
-
-(function() {
-    $(window).scroll(function() {
-        var oVal;
-        oVal = $(window).scrollTop() / 150;
-        var scrolled = $(window).scrollTop();
-        $('.blurImg').css('height', ($('.wiki-header').height() - scrolled - 120) + 'px');
-        return $('.blur').css('opacity', oVal);
-    });
-
-}).call(this);
-");
+$this->title = 'Wiki';
+$this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class='blurImg'>
-    <div style="background-image: url('./image/yiicoding.jpg')"></div>
-    <div class='blur' style="background-image: url('./image/yiicoding-blurred.jpg')"></div>
-</div>
-<div class="wiki-header">
-    <div>
-        <h1>
-            Yii Wiki
-        </h1>
-        <p>
-            Tutorials and code snippets
-        </p>
-    </div>
-    <div class="wiki-nav">
-    </div>
-</div>
-<div class="wiki-container">
-    <div class="container">
+<div class="guide-header-wrap">
+    <div class="container guide-header common-heading">
         <div class="row">
-            <p>
-                Meh listicle marfa, VHS XOXO messenger bag etsy. Post-ironic mumblecore poutine occupy, mixtape neutra everyday carry polaroid ethical biodiesel shabby chic listicle craft beer. Bicycle rights wayfarers kogi photo booth portland listicle. Meh YOLO echo park, godard fanny pack single-origin coffee next level. Semiotics four dollar toast shoreditch raw denim, +1 tumblr pour-over. Kitsch aesthetic four dollar toast kombucha, mumblecore meggings yuccie selvage deep v hashtag marfa small batch DIY green juice narwhal. Pop-up vinyl trust fund keffiyeh deep v, skateboard shabby chic normcore stumptown.
-            </p>
-            <p>
-                Keytar authentic 90's, ethical poutine butcher celiac. Leggings vegan shabby chic, chartreuse yuccie flexitarian marfa. Tilde bushwick kitsch fanny pack tousled 3 wolf moon, flexitarian forage schlitz. Squid lo-fi venmo, try-hard four dollar toast umami sartorial occupy seitan quinoa biodiesel master cleanse. Lomo post-ironic cray, cold-pressed 90's narwhal small batch single-origin coffee migas freegan +1 pour-over roof party normcore brooklyn. Wolf PBR&B chillwave literally, everyday carry aesthetic asymmetrical shoreditch. Gastropub roof party fashion axe, listicle fixie lo-fi put a bird on it freegan neutra wayfarers bitters kogi.
-            </p>
-            <p>
-                Etsy DIY mixtape, affogato photo booth taxidermy four loko kombucha kitsch lomo meditation twee skateboard migas post-ironic. Twee iPhone cronut 90's, humblebrag selvage chia microdosing kinfolk gentrify slow-carb bushwick health goth tousled mixtape. Microdosing iPhone gluten-free yuccie four loko quinoa. Fap bespoke readymade next level, tofu normcore mumblecore ramps selvage disrupt hella actually truffaut organic whatever. Food truck direct trade trust fund pug. Hammock iPhone microdosing, put a bird on it shoreditch brooklyn vice wolf messenger bag dreamcatcher meggings narwhal. Etsy fashion axe tattooed four loko, authentic keytar plaid 3 wolf moon schlitz salvia art party yr chia pug next level.
-            </p>
-            <p>
-                Brunch tumblr letterpress squid marfa. Craft beer cornhole helvetica, leggings drinking vinegar cred street art gentrify pour-over actually portland disrupt migas tote bag. +1 umami street art, cronut jean shorts schlitz fingerstache thundercats disrupt. Listicle tumblr bitters, drinking vinegar migas cliche synth pickled artisan microdosing chicharrones. Kombucha chambray pitchfork, fap pinterest cornhole pour-over lumbersexual +1 thundercats normcore you probably haven't heard of them. Slow-carb pitchfork austin, bushwick organic VHS lo-fi cornhole cray ramps asymmetrical ennui cardigan mumblecore. Heirloom normcore gastropub slow-carb, fixie yr brunch tote bag meh helvetica polaroid pabst.
-            </p>
-            <p>
-                Asymmetrical migas humblebrag, pug PBR&B heirloom bespoke pickled whatever hammock brooklyn pitchfork direct trade godard bicycle rights. Authentic farm-to-table quinoa, semiotics fingerstache mlkshk food truck stumptown blue bottle schlitz organic shabby chic butcher. Vinyl yuccie williamsburg, meh fap selfies iPhone ennui. Brooklyn whatever actually, deep v crucifix bushwick messenger bag. Squid keytar pour-over williamsburg, bitters pickled pug. Paleo authentic ethical, mumblecore tacos keffiyeh sriracha raw denim hella godard craft beer you probably haven't heard of them beard pug. Gentrify jean shorts authentic, waistcoat cliche pinterest fingerstache cold-pressed synth meditation helvetica celiac wolf.
-            </p>
-            <p>
-                Bacon ipsum dolor amet short loin pastrami ex kielbasa corned beef. Anim rump consectetur, dolore boudin ex ut aute capicola in id ut. Ham filet mignon picanha, deserunt pastrami drumstick duis boudin ham hock swine. Drumstick shoulder in, pariatur esse tri-tip leberkas sed. Doner id ut eiusmod non tongue in bresaola. Sunt ut chuck tri-tip picanha aliquip et anim tongue jerky quis voluptate drumstick capicola.
-            </p>
-            <p>
-                Beef ribs dolor pig veniam short loin, tenderloin lorem nulla doner. Eiusmod dolor ground round flank cupidatat pariatur, cillum spare ribs short ribs sunt ham in picanha quis. Nostrud frankfurter capicola incididunt lorem tenderloin. Spare ribs ea swine, tenderloin cillum strip steak dolore doner in est turducken fatback pork loin porchetta pig. Fatback andouille sint salami, bresaola duis et elit meatloaf chuck porchetta. Fugiat strip steak qui labore meatball. Sausage turkey culpa irure id jowl occaecat eu venison cupim hamburger non dolor ut.
-            </p>
-            <p>
-                Dolore pastrami tri-tip officia. Ham hock jowl aliqua pork, chicken consectetur cow nisi alcatra shankle short ribs. Short ribs cupidatat sausage, sunt do in proident salami drumstick. Pork drumstick id sed, cupidatat swine deserunt elit in kielbasa pork loin adipisicing cupim shankle tenderloin. Tri-tip shankle tempor, proident sed excepteur kielbasa meatloaf veniam officia eu turkey. Veniam ham hock nulla leberkas est duis ex incididunt in turkey tri-tip tempor swine.
-            </p>
-            <p>
-                Qui sed proident, ham hamburger ad tempor eu kielbasa. Aute tempor kevin cow leberkas. Dolore culpa pariatur short ribs chuck shankle dolore. Lorem mollit chuck deserunt jowl brisket et reprehenderit flank ground round. Fugiat nostrud corned beef laborum ground round. Boudin short ribs rump, cupim pig corned beef shank meatloaf. Dolore sausage minim sint tongue laboris.
-            </p>
-            <p>
-                Shankle cow ham hock eiusmod enim pancetta magna meatloaf et, filet mignon nisi excepteur. Nostrud duis venison shankle beef ribs aliqua ut pariatur drumstick consectetur quis in. Swine anim ut ribeye jerky bresaola. Pork loin enim aute, corned beef pig prosciutto quis consequat. Tongue ham hock ball tip in ut laborum. Laboris et deserunt pork, corned beef non shoulder leberkas hamburger laborum ground round biltong.
-            </p>
+            <div class="col-md-12">
+                <h1 class="guide-headline"><?= Html::encode($this->title) ?></h1>
+            </div>
         </div>
     </div>
+</div>
+
+<div class="container guide-view lang-en" xmlns="http://www.w3.org/1999/xhtml">
+    <div class="row">
+        <div class="col-sm-2 col-md-2 col-lg-2">
+            <a href="#" class="btn btn-block btn-new-wiki-article"><span class="big">Write</span><span class="small">new article</span></a>
+            <input type="text" class="form-control wiki-search" id="search" name="q" placeholder="Search wiki…" autocomplete="off" value="">
+
+            <h3 class="wiki-side-title">Sorting by</h3>
+            <ul class="wiki-side-menu">
+                <li class="active"><a href="#">Date</a></li>
+                <li><a href="#">Rating</a></li>
+                <li><a href="#">Comments</a></li>
+                <li><a href="#">Views</a></li>
+            </ul>
+
+            <h3 class="wiki-side-title">Categories</h3>
+            <ul class="wiki-side-menu">
+                <li class="active"><a href="#">All</a></li>
+                <li><a href="#">Tips <span class="count">(168)</span></a></li>
+                <li><a href="#">How-tos <span class="count">(367)</span></a></li>
+                <li><a href="#">Tutorials <span class="count">(266)</span></a></li>
+                <li><a href="#">FAQs <span class="count">(9)</span></a></li>
+                <li><a href="#">Others <span class="count">(26)</span></a></li>
+            </ul>
+
+            <h3 class="wiki-side-title">Popular Tags</h3>
+            <ul class="wiki-side-menu last-side-menu">
+                <li><a href="#">Ajax <span class="count">(52)</span></a></li>
+                <li><a href="#">Authentification <span class="count">(23)</span></a></li>
+            </ul>
+        </div>
+
+        <div class="col-sm-10 col-md-10 col-lg-10" role="main">
+        <div class="row">
+                <div class="col-md-12 col-lg-9">
+                    <div class="content wiki-row">
+                        <div class="suptitle">Created 17 days ago by <a href="#">AlaFalaki</a></div>
+                        <h2 class="title"><a href="#">How to change GridView delete confirmation message specific controllers only?</a></h2>
+                        <div class="text">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+                        tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+                        quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+                        consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+                        cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+                        proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</div>
+                        <div class="comments"><a href="#">0 comments</a></div>
+                    </div>
+                </div> 
+                <div class="col-md-12 col-lg-3">
+                    <div class="vote-box content">
+                        <div class="thumbs">
+                        <span class="up">
+                            <span class="votes">1</span> 
+                            <a href="#"><i class="fa fa-thumbs-up" aria-hidden="true"></i></a>
+                        </span>
+                        <span class="down">
+                            <span class="votes">0</span>
+                            <a href="#"><i class="fa fa-thumbs-down" aria-hidden="true"></i></a>
+                        </span>
+                        </div>
+                        <div class="viewed"><span>Viewed:</span> 1 452 times</div>
+                        <div class="version"><span>Version:</span> 2.0</div>
+                        <div class="group"><span>Group:</span> <a href="#">Tips</a></div>
+                        <div class="tags"><span>Tags:</span> <a href="#">gridview</a>, <a href="#">delete</a>, <a href="#">message</a></div>
+                    </div>
+                </div>              
+            </div>
+            <div class="row">
+                <div class="col-md-12 col-lg-9">
+                    <div class="content wiki-row">
+                        <div class="suptitle">Created 17 days ago by <a href="#">AlaFalaki</a></div>
+                        <h2 class="title"><a href="#">How to change GridView delete confirmation message specific controllers only?</a></h2>
+                        <div class="text">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+                        tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+                        quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+                        consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+                        cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+                        proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</div>
+                        <div class="comments"><a href="#">0 comments</a></div>
+                    </div>
+                </div> 
+                <div class="col-md-12 col-lg-3">
+                    <div class="vote-box content">
+                        <div class="thumbs">
+                        <span class="up">
+                            <span class="votes">1</span> 
+                            <a href="#"><i class="fa fa-thumbs-up" aria-hidden="true"></i></a>
+                        </span>
+                        <span class="down">
+                            <span class="votes">0</span>
+                            <a href="#"><i class="fa fa-thumbs-down" aria-hidden="true"></i></a>
+                        </span>
+                        </div>
+                        <div class="viewed"><span>Viewed:</span> 1 452 times</div>
+                        <div class="version"><span>Version:</span> 2.0</div>
+                        <div class="group"><span>Group:</span> <a href="#">Tips</a></div>
+                        <div class="tags"><span>Tags:</span> <a href="#">gridview</a>, <a href="#">delete</a>, <a href="#">message</a></div>
+                    </div>
+                </div>              
+            </div>
+            <div class="row">
+                <div class="col-md-12 col-lg-9">
+                    <div class="content wiki-row">
+                        <div class="suptitle">Created 17 days ago by <a href="#">AlaFalaki</a></div>
+                        <h2 class="title"><a href="#">How to change GridView delete confirmation message specific controllers only?</a></h2>
+                        <div class="text">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+                        tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+                        quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+                        consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+                        cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+                        proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</div>
+                        <div class="comments"><a href="#">0 comments</a></div>
+                    </div>
+                </div> 
+                <div class="col-md-12 col-lg-3">
+                    <div class="vote-box content">
+                        <div class="thumbs">
+                        <span class="up">
+                            <span class="votes">1</span> 
+                            <a href="#"><i class="fa fa-thumbs-up" aria-hidden="true"></i></a>
+                        </span>
+                        <span class="down">
+                            <span class="votes">0</span>
+                            <a href="#"><i class="fa fa-thumbs-down" aria-hidden="true"></i></a>
+                        </span>
+                        </div>
+                        <div class="viewed"><span>Viewed:</span> 1 452 times</div>
+                        <div class="version"><span>Version:</span> 2.0</div>
+                        <div class="group"><span>Group:</span> <a href="#">Tips</a></div>
+                        <div class="tags"><span>Tags:</span> <a href="#">gridview</a>, <a href="#">delete</a>, <a href="#">message</a></div>
+                    </div>
+                </div>              
+            </div>
+
+            <nav aria-label="Page navigation">
+              <ul class="pagination pagination-lg wiki-pagination">
+                <li>
+                  <a href="#" aria-label="Previous">
+                    <span aria-hidden="true">&laquo;</span>
+                  </a>
+                </li>
+                <li class="active"><a href="#">1</a></li>
+                <li><a href="#">2</a></li>
+                <li><a href="#">3</a></li>
+                <li><a href="#">4</a></li>
+                <li><a href="#">5</a></li>
+                <li>
+                  <a href="#" aria-label="Next">
+                    <span aria-hidden="true">&raquo;</span>
+                  </a>
+                </li>
+              </ul>
+            </nav>
+
+        </div>
+</div>
 </div>
