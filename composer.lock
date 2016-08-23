@@ -1350,12 +1350,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/yiisoft/yii2-apidoc.git",
-                "reference": "361c42fb7098122297add2499fd2129524e13fb5"
+                "reference": "a41a32710133b1707df278baf977527e9ce78168"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/yiisoft/yii2-apidoc/zipball/361c42fb7098122297add2499fd2129524e13fb5",
-                "reference": "361c42fb7098122297add2499fd2129524e13fb5",
+                "url": "https://api.github.com/repos/yiisoft/yii2-apidoc/zipball/a41a32710133b1707df278baf977527e9ce78168",
+                "reference": "a41a32710133b1707df278baf977527e9ce78168",
                 "shasum": ""
             },
             "require": {
@@ -1405,7 +1405,7 @@
                 "phpdoc",
                 "yii2"
             ],
-            "time": "2016-08-22 10:30:41"
+            "time": "2016-08-23 11:30:41"
         },
         {
             "name": "yiisoft/yii2-authclient",
