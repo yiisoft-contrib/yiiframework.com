@@ -35,7 +35,7 @@ class NewsController extends Controller
 			        [
 				        // allow all to a access index and view action
 				        'allow' => true,
-				        'actions' => ['admin', 'create', 'update', 'list-tags'],
+				        'actions' => ['admin', 'create', 'update', 'delete', 'list-tags'],
 				        'roles' => ['news:pAdmin'],
 			        ],
 		        ]
@@ -191,9 +191,10 @@ class NewsController extends Controller
      */
     public function actionDelete($id)
     {
-        $this->findModel($id)->delete();
+        //$this->findModel($id)->delete();
+        $this->findModel($id)->updateAttributes(['status' => News::STATUS_DELETED]);
 
-        return $this->redirect(['index']);
+        return $this->redirect(['admin']);
     }
 
     /**
