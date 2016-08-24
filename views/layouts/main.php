@@ -76,6 +76,7 @@ AppAsset::register($this);
                         </a>
                         <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse"><i class="fa fa-inverse fa-bars"></i></button>
                     </div>
+
                     <div class="navbar-collapse collapse navbar-right">
                         <?php
 
@@ -108,7 +109,7 @@ AppAsset::register($this);
                                     ['label' => 'Live Chat', 'url' => ['site/chat']],
                                     ['label' => 'About', 'options' => ['class' => 'separator']],
                                     ['label' => 'What is Yii?', 'url' => ['guide/view', 'type' => 'guide', 'version' => reset(Yii::$app->params['versions']['api']), 'language' => 'en', 'section' => 'intro-yii']],
-                                    ['label' => 'News', 'url' => ['site/news']],
+                                    ['label' => 'News', 'url' => ['news/index'], 'active' => ($controller == 'news')],
                                     ['label' => 'License', 'url' => ['site/license']],
                                     ['label' => 'Team', 'url' => ['site/team']],
                                     ['label' => 'Official logo', 'url' => ['site/logo']],
@@ -119,6 +120,32 @@ AppAsset::register($this);
                                 ],
                                 ]);
                                 ?>
+                        <div class="nav navbar-nav navbar-right">
+                        <?php
+                            echo Nav::widget([
+                                'id' => 'login-nav',
+                                'encodeLabels' => true,
+                                'options' => ['class' => 'nav navbar-nav navbar-main-menu'],
+                                'activateItems' => false,
+                                'dropDownCaret' => '<span class="caret"></span>',
+                                'items' => [
+                                    Yii::$app->user->isGuest ? (
+                                        ['label' => 'Login', 'url' => ['/site/login']]
+                                    ) : (
+                                        '<li>'
+                                        . Html::beginForm(['/site/logout'], 'post', ['class' => 'navbar-form'])
+                                        . Html::submitButton(
+                                            'Logout (' . Yii::$app->user->identity->username . ')',
+                                            ['class' => 'btn btn-link']
+                                        )
+                                        . Html::endForm()
+                                        . '</li>'
+                                    ),
+                                ]
+                            ]);
+                        ?>
+                        </div>
+
                         <div class="nav navbar-nav navbar-right">
                             <?= $this->render('partials/_searchForm'); ?>
                         </div>

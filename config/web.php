@@ -38,6 +38,16 @@ $config = [
                 'yii\widgets\ActiveFormAsset' => false,
                 'yii\bootstrap\BootstrapPluginAsset' => false,
                 'yii\web\JqueryAsset' => false,
+                'yii\jui\JuiAsset' => [
+                    'depends' => [
+                        \app\assets\AppAsset::class,
+                    ],
+                ],
+                'yii\grid\GridViewAsset' => [
+                    'depends' => [
+                        \app\assets\AppAsset::class,
+                    ],
+                ],
                 //'yii\authclient\widgets\AuthChoiceAsset' => false, //authchoice.js
                 //'yii\authclient\widgets\AuthChoiceStyleAsset' => false, //authchoice.css
             ],
@@ -49,6 +59,12 @@ $config = [
             'showScriptName' => false,
             'enableStrictParsing' => true,
             'rules' => require(__DIR__ . '/urls.php'),
+        ],
+        'authManager' => [
+            'class' => yii\rbac\PhpManager::class,
+            'itemFile' => '@app/config/rbac/items.php',
+            'assignmentFile' => '@app/config/rbac/assignments.php',
+            'ruleFile' => '@app/rbac/rules.php',
         ],
         'authClientCollection' => [
             'class' => 'yii\authclient\Collection',

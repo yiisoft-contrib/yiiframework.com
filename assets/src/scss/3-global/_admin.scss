@@ -1,0 +1,71 @@
+// Common style for admin pages
+
+.admin-header {
+  .admin-headline {
+    font-family: $bold-headings-font-family;
+    font-size: fontsize(h1);
+    width: 70%;
+  }
+  color: white;
+  @include rem(padding-top, 22px);
+  padding-bottom: 0;
+
+  ul.nav {
+    width: 25%;
+    float: right;
+
+    li > a {
+      color: white;
+      padding: 5px 15px;
+    }
+
+    li > a {
+      color: white;
+      padding: 5px 15px;
+    }
+
+    li a:hover, li a:focus, li.active a {
+      color: black;
+      background: #eee;
+    }
+
+  }
+}
+
+/* add sorting icons to gridview sort links */
+.grid-view {
+  a.asc:after, a.desc:after, .glyphicon:after {
+    position: relative;
+    top: 1px;
+    display: inline-block;
+    font-family: FontAwesome;
+    font-style: normal;
+    font-weight: normal;
+    line-height: 1;
+    padding-left: 5px;
+
+    font-feature-settings: normal;
+    font-kerning: auto;
+    font-language-override: normal;
+    font-size: inherit;
+    font-size-adjust: none;
+    font-stretch: normal;
+    font-synthesis: weight style;
+    font-variant: normal;
+    text-rendering: auto;
+  }
+
+  a.asc:after               { content: "\f160"; } // http://fontawesome.io/icon/sort-amount-asc/
+  a.desc:after              { content: "\f161"; } // http://fontawesome.io/icon/sort-amount-desc/
+  .glyphicon-eye-open:after { content: "\f06e"; } // http://fontawesome.io/icon/eye/
+  .glyphicon-pencil:after   { content: "\f040"; } // http://fontawesome.io/icon/pencil/
+  .glyphicon-trash:after    { content: "\f1f8"; } // http://fontawesome.io/icon/trash/
+
+  th, td.action-column {
+    white-space: nowrap;
+  }
+}
+
+.detail-view th {
+  white-space: nowrap;
+}
