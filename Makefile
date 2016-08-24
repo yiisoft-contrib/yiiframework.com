@@ -19,7 +19,7 @@ help:
 deploy:
 	composer install
 	npm install
-	gulp build
+	gulp build --production
 	./yii migrate
 	./yii cache/flush-all
 
