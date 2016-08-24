@@ -25,6 +25,7 @@ use yii\db\Expression;
  * @property integer $status
  *
  * @property NewsTag[] $tags
+ * @property News[] $relatedNews
  */
 class News extends \yii\db\ActiveRecord
 {
@@ -145,5 +146,33 @@ class News extends \yii\db\ActiveRecord
     {
         return $this->hasMany(NewsTag::className(), ['id' => 'news_tag_id'])
             ->viaTable('news2news_tags', ['news_id' => 'id']);
+    }
+
+    /**
+     * @return News[]
+     */
+    public function getRelatedNews()
+    {
+        $tags = $this->tags;
+        if (empty($tags)) {
+            return [];
+        }
+        $likes = [];
+        foreach($tags as $i => $tag) {
+            if ($i > 5) {
+                break;
+            }
+            $likes[] = $tag->name;
+        }
+        $ids = News::find()
+            ->latest()
+            ->select('news.id')->distinct()
+            ->joinWith('tags AS tags')
+            ->where(['or like', 'tags.name', $likes])
+            ->andWhere(['!=', 'news.id', $this->id])
+            ->limit(5)
+            ->column();
+
+        return News::findAll($ids);
     }
 }

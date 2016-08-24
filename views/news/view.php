@@ -48,7 +48,15 @@ echo $this->render('//site/partials/common/_admin_heading.php', [
                 <div class="col-md-3">
                     <h2>Related News</h2>
 
-                    <p>TODO</p>
+                    <ul>
+                    <?php foreach($model->relatedNews as $news) {
+                        echo '<li>' . Html::a(
+                            \yii\helpers\StringHelper::truncate($news->title, 64),
+                            ['news/view', 'id' => $news->id, 'name' => $news->slug]
+                        ). '</li>';
+                    }
+                    ?>
+                    </ul>
 
                     <?= \app\widgets\NewsTaglist::widget(['news' => $model]) ?>
 
