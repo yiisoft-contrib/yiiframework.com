@@ -10,8 +10,8 @@ $this->title = 'Update News: ' . $model->title;
 echo $this->render('//site/partials/common/_admin_heading.php', [
     'title' => $this->title,
     'menu' => [
-        ['label' => 'News page', 'url' => ['news/index'] ],
-        ['label' => 'News admin', 'url' => ['news/admin'] ],
+        ['label' => 'News Page', 'url' => ['news/index'] ],
+        ['label' => 'News Admin', 'url' => ['news/admin'] ],
         ['label' => 'View this news', 'url' => ['news/view', 'id' => $model->id, 'name' => $model->slug] ],
     ]
 ]);

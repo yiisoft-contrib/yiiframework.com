@@ -13,8 +13,8 @@ $this->params['breadcrumbs'][] = $this->title;
 echo $this->render('//site/partials/common/_admin_heading.php', [
     'title' => $this->title,
     'menu' => Yii::$app->user->can('news:pAdmin') ? [
-        ['label' => 'News page', 'url' => ['news/index'] ],
-        ['label' => 'News admin', 'url' => ['news/admin'] ],
+        ['label' => 'News Page', 'url' => ['news/index'] ],
+        ['label' => 'News Admin', 'url' => ['news/admin'] ],
         ['label' => 'Update this news', 'url' => ['news/update', 'id' => $model->id, 'name' => $model->slug] ],
     ] : [],
 ]);
@@ -32,7 +32,8 @@ echo $this->render('//site/partials/common/_admin_heading.php', [
                             'body' =>
                                 '<strong>News Status: </strong>' . Html::encode(\app\models\News::getStatusList()[$model->status])
                                 . ($model->status != \app\models\News::STATUS_PUBLISHED ? ' &mdash; This is a preview, not visibile to non-admins.' : ''),
-                            'options' => ['class' => 'alert-info']
+                            'options' => ['class' => 'alert-info'],
+                            'closeButton' => false,
                         ]);
 
                     } ?>
@@ -46,6 +47,27 @@ echo $this->render('//site/partials/common/_admin_heading.php', [
                     </div>
                 </div>
                 <div class="col-md-3">
+
+                    <?php if (Yii::$app->user->can('news:pAdmin')): ?>
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                Admin Info
+                            </div>
+                            <?= DetailView::widget([
+                                'model' => $model,
+                                'attributes' => [
+                                    'id',
+                                    'slug',
+                                    'created_at:datetime',
+                                    'creator_id',
+                                    'updated_at:datetime',
+                                    'updater_id',
+                                ]
+                            ]) ?>
+                        </div>
+
+                    <?php endif; ?>
+
                     <h2>Related News</h2>
 
                     <ul>

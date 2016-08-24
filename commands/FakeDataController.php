@@ -44,7 +44,7 @@ class FakeDataController extends Controller
 			$news = new News();
 			$news->setAttributes([
 				'title' => ucfirst($faker->sentence(10)),
-				'news_date' => $faker->date(),
+				'news_date' => $faker->dateTimeBetween('-10 years', 'now')->format('Y-m-d'),
 				'content' => implode("\n\n", $faker->paragraphs($faker->randomDigit)),
 				'status' => $faker->randomElement(array_keys(News::getStatusList())),
 				'tagNames' => implode(', ', $faker->words($faker->randomDigit)),

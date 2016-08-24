@@ -12,7 +12,7 @@ $this->title = 'News Admin';
 echo $this->render('//site/partials/common/_admin_heading.php', [
     'title' => $this->title,
     'menu' => [
-        ['label' => 'News Index', 'url' => ['news/index'] ],
+        ['label' => 'News Page', 'url' => ['news/index'] ],
         ['label' => 'News Admin', 'url' => ['news/admin'], 'active' => true ],
         ['label' => 'Create News', 'url' => ['news/create'] ],
     ]
