@@ -52,7 +52,6 @@ class NewsController extends Controller
 
     /**
      * Lists all News models.
-     * @return mixed
      */
     public function actionIndex($year = null, $tag = null)
     {
@@ -161,11 +160,11 @@ class NewsController extends Controller
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->id]);
-        } else {
-            return $this->render('update', [
-                'model' => $model,
-            ]);
         }
+
+        return $this->render('update', [
+            'model' => $model,
+        ]);
     }
 
     /**

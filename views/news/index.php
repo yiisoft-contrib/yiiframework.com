@@ -28,31 +28,29 @@ echo $this->render('//site/partials/common/_admin_heading.php', [
 ]);
 ?>
 <div class="container style_external_links">
-    <div class="row">
-        <div class="content news-content">
+    <div class="content news-content">
 
-	        <div class="row">
-				<div class="col-md-9">
+        <div class="row">
+			<div class="col-md-9">
 
-					<?php //echo $this->render('_search', ['model' => $searchModel]); ?>
+				<?php //echo $this->render('_search', ['model' => $searchModel]); ?>
 
-		            <?= ListView::widget([
-		                'dataProvider' => $dataProvider,
-		                'itemOptions' => ['class' => 'item'],
-		                'itemView' => '_view',
-						'summary' => '',
-		            ]) ?>
+	            <?= ListView::widget([
+	                'dataProvider' => $dataProvider,
+	                'itemOptions' => ['class' => 'item'],
+	                'itemView' => '_view',
+					'summary' => '',
+	            ]) ?>
 
-				</div>
-				<div class="col-md-3">
-
-					<?= \app\widgets\NewsArchive::widget(['urlParams' => $urlParams]) ?>
-
-					<?= \app\widgets\NewsTaglist::widget(['urlParams' => $urlParams]) ?>
-
-				</div>
 			</div>
+			<div class="col-md-3">
 
-        </div>
+				<?= \app\widgets\NewsArchive::widget(['urlParams' => $urlParams]) ?>
+
+				<?= \app\widgets\NewsTaglist::widget(['urlParams' => $urlParams]) ?>
+
+			</div>
+		</div>
+
     </div>
 </div>

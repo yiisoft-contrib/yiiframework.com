@@ -1,7 +1,33 @@
 .news-content {
 
+  div.toc {
+    display: none;
+  }
+
   li.active {
     font-weight: bold;
+  }
+
+  .item {
+    margin-bottom: 5rem;
+  }
+
+  h2 {
+      margin-top: 0;
+      line-height: 2.2rem;
+      margin-bottom: 3rem;
+
+      a {
+          color:#247ba0;
+          font-size: 2.3rem;
+          font-weight:bold;
+      }
+  }
+
+  span.date{
+      color:#83BFB3;
+      font-size: 1.3rem;
+      text-transform: uppercase;
   }
 
 }
