@@ -8,6 +8,8 @@ use Yii;
 use yii\helpers\Console;
 use app\apidoc\GuideRenderer;
 use yii\helpers\FileHelper;
+use yii\helpers\Inflector;
+use yii\helpers\Json;
 
 /**
  * Generates the Definitive Guide for Yii.
@@ -78,14 +80,54 @@ class GuideController extends \yii\apidoc\commands\GuideController
                     $this->stdout("Start generating guide $version PDF in $name...\n", Console::FG_CYAN);
                     $this->template = 'pdf';
                     $this->actionIndex([$source], $pdfTarget);
+
                     $this->stdout('Generating PDF with pdflatex...');
-                    file_put_contents("$pdfTarget/main.tex", str_replace('british', $languageMap[$language], file_get_contents("$pdfTarget/main.tex")));
+
+                    // adjust LaTeX config for language
+                    if ($language === 'ja') {
+                        // https://en.wikibooks.org/wiki/LaTeX/Internationalization#Japanese
+                        // TODO this does not work yet. See https://github.com/yiisoft-contrib/yiiframework.com/issues/142
+                        file_put_contents("$pdfTarget/main.tex", str_replace('\usepackage[british]{babel}', '\usepackage{japanese}', file_get_contents("$pdfTarget/main.tex")));
+                    } elseif ($language === 'zh-cn') {
+                        // https://en.wikibooks.org/wiki/LaTeX/Internationalization#Chinese
+                        // TODO this does not work yet. See https://github.com/yiisoft-contrib/yiiframework.com/issues/142
+                    } else {
+                        file_put_contents("$pdfTarget/main.tex", str_replace('british', $languageMap[$language], file_get_contents("$pdfTarget/main.tex")));
+                    }
+
+                    // adjust title for non english guides
+                    if ($language !== 'en' && file_exists("$target/README.json")) {
+                        $json = Json::decode(file_get_contents("$target/README.json"));
+                        if (isset($json['h1'])) {
+                            $tex = file_get_contents("$pdfTarget/main.tex");
+
+                            $translators = '';
+                            if (is_file("$source/translators.json")) {
+                                $translatorNames = Json::decode(file_get_contents("$source/translators.json"));
+                                if (!empty($translatorNames)) {
+                                    $translatorNames = Inflector::sentence($translatorNames, ', \\\\\\\\', null, ', \\\\\\\\');
+                                    $translators = "$name translation provided by: \\\\\\\\ " . $translatorNames;
+                                }
+                            }
+
+                            $tex = preg_replace('~\\\\newcommand{\\\\plainTitle}{.+?}~', '\newcommand{\plainTitle}{' . $json['h1'] . '}', $tex);
+                            $tex = preg_replace('~\\\\newcommand{\\\\formattedTitle}{.+? 2.0}~', '\newcommand{\formattedTitle}{' . $json['h1'] . '}', $tex);
+                            $tex = preg_replace('~\\\\newcommand{\\\\formattedTranslators}{}~', '\newcommand{\formattedTranslators}{' . $translators . '}', $tex);
+
+                            file_put_contents("$pdfTarget/main.tex", $tex);
+                        }
+                    }
+
+                    if (file_exists("$pdfTarget/fail.log")) {
+                        unlink("$pdfTarget/fail.log");
+                    }
                     exec('cd ' . escapeshellarg($pdfTarget) . ' && make pdf', $output, $ret);
                     if ($ret === 0) {
                         $this->stdout("\nFinished guide $version PDF in $name.\n\n", Console::FG_CYAN);
                     } else {
-                        $this->stdout("\n" . implode("\n", $output) . "\n");
-                        $this->stdout("Guide $version PDF failed, make exited with status $ret.\n\n", Console::FG_RED);
+                        $this->stdout("Guide $version PDF failed, make exited with status $ret.\n", Console::FG_RED);
+                        file_put_contents("$pdfTarget/fail.log", implode("\n", $output));
+                        $this->stdout("Errors logged to $pdfTarget/fail.log\n\n");
                     }
                 } else {
                     $this->stdout("Guide PDF is not available for $name.\n\n", Console::FG_CYAN);

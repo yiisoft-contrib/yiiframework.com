@@ -130,12 +130,12 @@ div.image {
 .chevron-left {
   @extend %chevron;
   @include rem(margin-right, 20px);
-  background-image: url(../image/guide/larr.svg);
+  background-image: url(../../../image/guide/larr.svg);
 }
 .chevron-right {
   @extend %chevron;
   @include rem(margin-left, 20px);
-  background-image: url(../image/guide/rarr.svg);
+  background-image: url(../../../image/guide/rarr.svg);
 }
 .chevron-up {
   @extend %chevron;
@@ -144,5 +144,5 @@ div.image {
   background-size: 20px 12px;
   @include rem(width, 20px);
   @include rem(height, 12px);
-  background-image: url(../image/guide/tarr.svg);
+  background-image: url(../../../image/guide/tarr.svg);
 }

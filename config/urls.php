@@ -46,6 +46,7 @@ return [
     'search' => 'search/global',
     'search/suggest' => 'search/suggest',
     'search/as-you-type' => 'search/as-you-type',
+    'search/extension' => 'search/extension',
 
     // urls from old site redirect to new location
     'doc-2.0/guide-<section:[A-z0-9\\.\\-]+>.html' => 'guide/redirect',
@@ -53,4 +54,7 @@ return [
     '<url:doc/terms>' => 'site/redirect',
     '<url:about|performance|demos|doc>' => 'site/redirect',
 
+    'extensions/package/<vendorName:[\w\-\.]+>/<packageName:[\w\-\.]+>' => 'extension/package',
+    'extensions/page/<page:\d+>' => 'extension/index',
+    'extensions' => 'extension/index',
 ];

@@ -26,6 +26,8 @@ api-%: yii-%
 
 guide-%: yii-%
 	./yii guide "$(subst guide-,,$@)" --interactive=0
+	@echo "PDF errors in the following logs:"
+	@find data/$@/ | grep fail.log || echo " - no errors - "
 
 
 download-%: TARGET_DIR=data/docs-offline
