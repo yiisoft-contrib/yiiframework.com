@@ -6,11 +6,19 @@ use yii\widgets\ListView;
 /* @var $this yii\web\View */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 /* @var $year int */
+/* @var $tag \app\models\NewsTag */
+
+$urlParams = [];
 
 if ($year) {
+	$urlParams['year'] = $year;
 	$this->title = "News from $year";
 } else {
 	$this->title = 'Latest News';
+}
+if ($tag) {
+	$urlParams['tag'] = $tag->slug;
+	$this->title .= ' tagged with "' . Html::encode($tag->name) . '"';
 }
 echo $this->render('//site/partials/common/_admin_heading.php', [
     'title' => $this->title,
@@ -21,7 +29,7 @@ echo $this->render('//site/partials/common/_admin_heading.php', [
 ?>
 <div class="container style_external_links">
     <div class="row">
-        <div class="content">
+        <div class="content news-content">
 
 	        <div class="row">
 				<div class="col-md-9">
@@ -38,11 +46,9 @@ echo $this->render('//site/partials/common/_admin_heading.php', [
 				</div>
 				<div class="col-md-3">
 
-					<?= \app\widgets\NewsArchive::widget() ?>
+					<?= \app\widgets\NewsArchive::widget(['urlParams' => $urlParams]) ?>
 
-					<h2>Tags</h2>
-
-					<p>TODO</p>
+					<?= \app\widgets\NewsTaglist::widget(['urlParams' => $urlParams]) ?>
 
 				</div>
 			</div>

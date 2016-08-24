@@ -21,7 +21,7 @@ echo $this->render('//site/partials/common/_admin_heading.php', [
 ?>
 <div class="container style_external_links">
     <div class="row">
-        <div class="content news-view">
+        <div class="content news-content">
 
             <div class="row">
                 <div class="col-md-9">
@@ -50,11 +50,9 @@ echo $this->render('//site/partials/common/_admin_heading.php', [
 
                     <p>TODO</p>
 
+                    <?= \app\widgets\NewsTaglist::widget(['news' => $model]) ?>
+
                     <?= \app\widgets\NewsArchive::widget() ?>
-
-                    <h2>Tags</h2>
-
-                    <p>TODO</p>
 
                 </div>
             </div>

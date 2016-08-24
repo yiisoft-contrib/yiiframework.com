@@ -1,6 +1,7 @@
 <?php
 
 use app\models\News;
+use dosamigos\selectize\SelectizeTextInput;
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 
@@ -18,6 +19,20 @@ use yii\widgets\ActiveForm;
     <?= $form->field($model, 'news_date')->widget(\yii\jui\DatePicker::className()) ?>
 
     <?= $form->field($model, 'title')->textInput(['maxlength' => true]) ?>
+
+    <?= $form->field($model, 'tagNames')->widget(SelectizeTextInput::className(), [
+        // calls an action that returns a JSON object with matched
+        // tags
+        'loadUrl' => ['news/list-tags'],
+        'options' => ['class' => 'form-control'],
+        'clientOptions' => [
+            'plugins' => ['remove_button'],
+            'valueField' => 'name',
+            'labelField' => 'name',
+            'searchField' => ['name'],
+            'create' => true,
+        ],
+    ])->hint('Use commas to separate tags') ?>
 
     <?= $form->field($model, 'content')->textarea(['rows' => 6]) ?>
 

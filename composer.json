@@ -25,6 +25,9 @@
 
         "imagine/imagine": "^0.6.3",
 
+        "2amigos/yii2-taggable-behavior": "~1.0.1",
+        "2amigos/yii2-selectize-widget": "~1.0.1",
+
         "yiisoft/yii2-bootstrap": "~2.0.6",
         "yiisoft/yii2-jui": "~2.0.6",
 
