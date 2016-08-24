@@ -1,5 +1,6 @@
 <?php
 
+use yii\apidoc\helpers\ApiMarkdown;
 use yii\helpers\Html;
 use yii\helpers\Markdown;
 use yii\widgets\DetailView;
@@ -41,8 +42,13 @@ echo $this->render('//site/partials/common/_admin_heading.php', [
                 <h2><?= Html::a(Html::encode($model->title), ['news/view', 'id' => $model->id, 'name' => $model->slug]) ?></h2>
                 <div class="text">
 
+                    <?php
 
-                    <?= \yii\apidoc\helpers\ApiMarkdown::process($model->content) ?>
+                    ApiMarkdown::$renderer = new \app\apidoc\GuideRenderer();
+                    ApiMarkdown::$renderer->apiContext = new \yii\apidoc\models\Context();
+                    echo ApiMarkdown::process($model->content)
+
+                    ?>
 
                 </div>
             </div>
