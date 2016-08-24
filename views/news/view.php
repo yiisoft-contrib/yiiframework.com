@@ -57,7 +57,7 @@ echo $this->render('//site/partials/common/_admin_heading.php', [
                 <?php if (Yii::$app->user->can('news:pAdmin')): ?>
                     <div class="panel panel-default">
                         <div class="panel-heading">
-                            Admin Info
+                            <strong>Admin Info</strong>
                         </div>
                         <?= DetailView::widget([
                             'model' => $model,
