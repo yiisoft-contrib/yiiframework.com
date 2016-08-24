@@ -32,7 +32,8 @@ class NewsTaglist extends Widget
                 $query->select(['id' => 'news_tag_id', 'name', 'news_tags.slug', 'frequency' => 'COUNT(*)'])
                     ->joinWith(['news'])
                       ->andWhere(['news.status' => News::STATUS_PUBLISHED])
-                      ->groupBy(['news_tag_id', 'name', 'slug']);
+                      ->groupBy(['news_tag_id', 'name', 'slug'])
+                      ->orderBy(['frequency' => SORT_DESC]);
             }
 
             $tags = $query->limit(10)->all();

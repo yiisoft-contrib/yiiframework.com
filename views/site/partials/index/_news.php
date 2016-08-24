@@ -23,6 +23,7 @@ use yii\helpers\Url;
                         <h2><?= Html::a(Html::encode($newsItem->title), ['news/view', 'id' => $newsItem->id, 'name' => $newsItem->slug]) ?></h2>
                         <div class="text">
                             <p><?= Markdown::process($newsItem->getTeaser(), 'gfm') ?></p>
+                            <p><?= Html::a('&raquo; read more', ['news/view', 'id' => $newsItem->id, 'name' => $newsItem->slug]) ?></p>
                         </div>
                     </div>
 

@@ -5,7 +5,7 @@ namespace app\models;
 use dosamigos\taggable\Taggable;
 use Yii;
 use yii\behaviors\BlameableBehavior;
-use yii\behaviors\SluggableBehavior;
+use app\components\SluggableBehavior;
 use yii\behaviors\TimestampBehavior;
 use yii\db\Expression;
 
@@ -31,8 +31,7 @@ class News extends \yii\db\ActiveRecord
 {
     const STATUS_DRAFT = 1;
     const STATUS_PUBLISHED = 2;
-    const STATUS_ARCHIVED = 3;
-    const STATUS_DELETED = 4;
+    const STATUS_DELETED = 3;
 
     public function behaviors()
     {
@@ -49,8 +48,10 @@ class News extends \yii\db\ActiveRecord
             [
                 'class' => SluggableBehavior::class,
                 'attribute' => 'title',
-                'attributes' => [static::EVENT_BEFORE_INSERT => 'slug'],
-                'immutable' => true,
+                'attributes' => [
+                    static::EVENT_BEFORE_INSERT => 'slug',
+                    static::EVENT_BEFORE_UPDATE => 'slug',
+                ],
             ],
             [
                 'class' => Taggable::className(),
@@ -94,7 +95,6 @@ class News extends \yii\db\ActiveRecord
         return [
             self::STATUS_DRAFT => 'Draft',
             self::STATUS_PUBLISHED => 'Published',
-            self::STATUS_ARCHIVED => 'Archived',
             self::STATUS_DELETED => 'Deleted',
         ];
     }
@@ -121,12 +121,13 @@ class News extends \yii\db\ActiveRecord
             'creator_id' => 'Creator ID',
             'updater_id' => 'Updater ID',
             'status' => 'Status',
+            'statusName' => 'Status',
         ];
     }
 
     public function getTeaser()
     {
-        return reset(explode("\n\n", $this->content));
+        return reset(preg_split("/\n\s+\n/", $this->content, -1, PREG_SPLIT_NO_EMPTY));
     }
 
     /**

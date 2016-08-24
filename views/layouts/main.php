@@ -109,7 +109,7 @@ AppAsset::register($this);
                                     ['label' => 'Live Chat', 'url' => ['site/chat']],
                                     ['label' => 'About', 'options' => ['class' => 'separator']],
                                     ['label' => 'What is Yii?', 'url' => ['guide/view', 'type' => 'guide', 'version' => reset(Yii::$app->params['versions']['api']), 'language' => 'en', 'section' => 'intro-yii']],
-                                    ['label' => 'News', 'url' => ['news/index']],
+                                    ['label' => 'News', 'url' => ['news/index'], 'active' => ($controller == 'news')],
                                     ['label' => 'License', 'url' => ['site/license']],
                                     ['label' => 'Team', 'url' => ['site/team']],
                                     ['label' => 'Official logo', 'url' => ['site/logo']],
