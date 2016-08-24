@@ -6,6 +6,8 @@
 help:
 	@echo "the following targets are available:"
 	@echo ""
+	@echo " - deploy       run commands after git pull for deployment on a server"
+	@echo ""
 	@echo " - docs         make all the docs"
 	@echo " - guide        make only the guide docs"
 	@echo " - guide-{v}    make only the guide docs for version {v} (1.0, 1.1, 2.0)"
@@ -13,6 +15,13 @@ help:
 	@echo " - api-{v}      make only the api docs for version {v} (1.0, 1.1, 2.0)"
 	@echo " - download     make only the doc download archives"
 	@echo " - download-{v} make only the doc download archives for version {v} (2.0)"
+
+deploy:
+	composer install
+	npm install
+	gulp build
+	./yii migrate
+	./yii cache/flush-all
 
 docs: api guide download
 
