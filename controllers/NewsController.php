@@ -137,6 +137,8 @@ class NewsController extends Controller
     public function actionCreate()
     {
         $model = new News();
+        $model->status = News::STATUS_DRAFT;
+        $model->news_date = date('Y-m-d');
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->id]);

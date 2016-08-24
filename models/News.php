@@ -41,10 +41,11 @@ class News extends \yii\db\ActiveRecord
                 'class' => TimestampBehavior::class,
                 'value' => new Expression('NOW()'),
             ],
-//            [
-//                //'class' => BlameableBehavior::class,
-//                // TODO configure
-//            ],
+            [
+                'class' => BlameableBehavior::class,
+                'createdByAttribute' => 'creator_id',
+                'updatedByAttribute' => 'updater_id',
+            ],
             [
                 'class' => SluggableBehavior::class,
                 'attribute' => 'title',

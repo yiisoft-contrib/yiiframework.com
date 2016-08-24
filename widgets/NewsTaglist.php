@@ -41,7 +41,8 @@ class NewsTaglist extends Widget
         $tagEntries = [];
         foreach($tags as $tag) {
             /** @var $tag NewsTag */
-            $tagEntries[$tag->slug] = Html::a(Html::encode($tag->name), array_merge($this->urlParams, ['news/index', 'tag' => $tag->slug])) . " ($tag->frequency)";
+            $tagEntries[$tag->slug] = Html::a(Html::encode($tag->name), array_merge($this->urlParams, ['news/index', 'tag' => $tag->slug]))
+                . ($this->news ? '' : " ($tag->frequency)");
         }
 
         return $this->render('newsTaglist', ['tagEntries' => $tagEntries]);
