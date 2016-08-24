@@ -16,11 +16,11 @@ if (empty($archiveEntries)) {
 <?php
     $archive = Yii::$app->request->get('year');
     foreach($archiveEntries as $date => $entry) {
-        if ($date === $archive) {
+        if ($date == $archive) {
             echo '<li class="active">';
         } else {
             echo '<li>';
         }
-        echo Html::a($entry, ['news/index', 'year' => $date]) . '</li>';
+        echo $entry . '</li>';
     } ?>
 </ul>

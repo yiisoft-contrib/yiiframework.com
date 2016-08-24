@@ -47,7 +47,14 @@ class FakeDataController extends Controller
 				'news_date' => $faker->date(),
 				'content' => implode("\n\n", $faker->paragraphs($faker->randomDigit)),
 				'status' => $faker->randomElement(array_keys(News::getStatusList())),
+				'tagNames' => implode(', ', $faker->words($faker->randomDigit)),
 			]);
+			$r = rand(0, 100);
+			if ($r > 80) {
+				$news->tagNames .= ', Yii 2.0';
+			} else if ($r > 50) {
+				$news->tagNames .= ', PHP 7';
+			}
 			$news->save(false);
 			$this->stdout('.');
 		}

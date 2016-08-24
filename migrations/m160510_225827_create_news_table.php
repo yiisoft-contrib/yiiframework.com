@@ -1,7 +1,6 @@
 <?php
 
 use app\migrations\BaseMigration;
-use yii\db\Migration;
 
 class m160510_225827_create_news_table extends BaseMigration
 {
@@ -20,8 +19,6 @@ class m160510_225827_create_news_table extends BaseMigration
 
 			'creator_id' => $this->integer(),
 			'updater_id' => $this->integer(),
-
-	        // `tags` text, // TODO
 
 	        'status' => $this->integer(),
         ], $this->tableOptions);

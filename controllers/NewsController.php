@@ -2,6 +2,7 @@
 
 namespace app\controllers;
 
+use app\models\NewsTag;
 use Yii;
 use app\models\News;
 use app\models\NewsSearch;
@@ -10,6 +11,7 @@ use yii\filters\AccessControl;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
+use yii\web\Response;
 
 /**
  * NewsController implements the CRUD actions for News model.
@@ -33,7 +35,7 @@ class NewsController extends Controller
 			        [
 				        // allow all to a access index and view action
 				        'allow' => true,
-				        'actions' => ['admin', 'create', 'update'],
+				        'actions' => ['admin', 'create', 'update', 'list-tags'],
 				        'roles' => ['news:pAdmin'],
 			        ],
 		        ]
@@ -52,16 +54,16 @@ class NewsController extends Controller
      * Lists all News models.
      * @return mixed
      */
-    public function actionIndex($year = null)
+    public function actionIndex($year = null, $tag = null)
     {
-        $query = News::find();
+        $query = News::find()->latest();
         $dataProvider = new ActiveDataProvider([
             'query' => $query,
         ]);
 
-        // only show published news if user is not admin
-        if (!Yii::$app->user->can('news:pAdmin')) {
-            $query->andWhere(['status' => News::STATUS_PUBLISHED]);
+        // also show unublished news if user is not admin
+        if (Yii::$app->user->can('news:pAdmin')) {
+            $query->orWhere(['!=', 'status', News::STATUS_PUBLISHED]);
         }
 
         if ($year !== null) {
@@ -72,9 +74,19 @@ class NewsController extends Controller
             $query->andWhere('YEAR(news_date) = :year', [':year' => $year]);
         }
 
+        if ($tag !== null) {
+            $tag = NewsTag::find()->where(['slug' => $tag])->one();
+            if ($tag === null) {
+                throw new NotFoundHttpException('The requested page does not exist.');
+            }
+            $query->joinWith('tags AS tags');
+            $query->andWhere(['tags.id' => $tag->id]);
+        }
+
         return $this->render('index', [
             'dataProvider' => $dataProvider,
             'year' => $year,
+            'tag' => $tag,
         ]);
     }
 
@@ -152,6 +164,22 @@ class NewsController extends Controller
                 'model' => $model,
             ]);
         }
+    }
+
+    /**
+     * actionList to return matched tags
+     */
+    public function actionListTags($query)
+    {
+        $models = NewsTag::find()->where(['like', 'name', $query])->all();
+        $items = [];
+
+        foreach ($models as $model) {
+            $items[] = ['name' => $model->name];
+        }
+
+        Yii::$app->response->format = Response::FORMAT_JSON;
+        return $items;
     }
 
     /**

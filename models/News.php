@@ -2,6 +2,7 @@
 
 namespace app\models;
 
+use dosamigos\taggable\Taggable;
 use Yii;
 use yii\behaviors\BlameableBehavior;
 use yii\behaviors\SluggableBehavior;
@@ -22,6 +23,8 @@ use yii\db\Expression;
  * @property integer $creator_id
  * @property integer $updater_id
  * @property integer $status
+ *
+ * @property NewsTag[] $tags
  */
 class News extends \yii\db\ActiveRecord
 {
@@ -46,6 +49,9 @@ class News extends \yii\db\ActiveRecord
                 'attribute' => 'title',
                 'attributes' => [static::EVENT_BEFORE_INSERT => 'slug'],
                 'immutable' => true,
+            ],
+            [
+                'class' => Taggable::className(),
             ],
         ];
     }
@@ -77,6 +83,7 @@ class News extends \yii\db\ActiveRecord
 
             [['news_date'], 'date', 'timestampAttribute' => 'news_date', 'timestampAttributeFormat' => 'php:Y-m-d'],
 
+            [['tagNames'], 'safe'],
         ];
     }
 
@@ -127,5 +134,16 @@ class News extends \yii\db\ActiveRecord
     public static function find()
     {
         return new NewsQuery(get_called_class());
+    }
+
+    // relations
+
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getTags()
+    {
+        return $this->hasMany(NewsTag::className(), ['id' => 'news_tag_id'])
+            ->viaTable('news2news_tags', ['news_id' => 'id']);
     }
 }
