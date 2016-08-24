@@ -49,6 +49,17 @@ echo $this->render('//site/partials/common/_admin_heading.php', [
 
 				<?= \app\widgets\NewsTaglist::widget(['urlParams' => $urlParams]) ?>
 
+
+				<div class="panel panel-default">
+					<div class="panel-heading">
+						<strong>Yii Feed</strong>
+					</div>
+					<div class="panel-body">
+						This site contains official framework annoncements only.
+						Find more Yii related news on <a href="http://yiifeed.com/">yiifeed.com</a>.
+					</div>
+				</div>
+
 			</div>
 		</div>
 
