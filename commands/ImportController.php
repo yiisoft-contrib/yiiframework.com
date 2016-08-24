@@ -95,9 +95,7 @@ class ImportController extends Controller
 	protected function convertMarkdown($markdown)
 	{
 		// convert code blocks
-		echo "converting MD...\n";
 		$markdown = preg_replace_callback('/~~~\s*\[php\]\s*(.+?)\n~~~/is', function($matches) {
-			print_r($matches);
 			return "```php\n".$matches[1]."\n```";
 		}, $markdown);
 
