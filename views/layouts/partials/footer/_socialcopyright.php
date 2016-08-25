@@ -23,7 +23,7 @@ use yii\helpers\Html;
       &nbsp;
   </li>
   <li class="footerList_item">
-    &copy; 2008 - 2015 Yii
+    &copy; 2008 - <?= date('Y') ?> Yii
   </li>
   <li class="footerList_item">
       &nbsp;
