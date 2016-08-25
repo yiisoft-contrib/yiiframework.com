@@ -9,6 +9,7 @@ namespace app\commands;
 
 
 use app\models\News;
+use app\models\User;
 use Faker\Factory;
 use yii\console\Controller;
 use yii\db\Connection;
@@ -23,18 +24,39 @@ class ImportController extends Controller
 {
 	public $defaultAction = 'import';
 
+	/**
+	 * @var array|Connection
+	 */
 	public $sourceDb = [
 		'class' => Connection::class,
 		'dsn' => 'mysql:host=localhost;dbname=yiisite',
 		'username' => 'root',
-		'password' => 'wurstepelle',
+		'password' => '',
+		'charset' => 'utf8',
 	];
+
+	public $password;
+
+	public function options($actionId)
+	{
+		return array_merge(parent::options($actionId), ['password']);
+	}
 
 	public function init()
 	{
 		$this->sourceDb = Instance::ensure($this->sourceDb, Connection::class);
 		parent::init();
 	}
+
+	public function beforeAction($action)
+	{
+		if ($this->password) {
+			$this->sourceDb->password = $this->password;
+		}
+
+		return parent::beforeAction($action);
+	}
+
 
 
 	public function actionImport()
@@ -43,16 +65,136 @@ class ImportController extends Controller
 			return 1;
 		}
 
-		// TODO import users!
+		$this->importUsers();
+
+		$this->importBadges();
+		$this->importRanking();
 
 		$this->importNews();
 
 		return 0;
 	}
 
+	private function importUsers()
+	{
+		//$userQuery = (new Query)->from('tbl_user');
+		$userQuery = (new Query)->from('ipb_members')
+			->select(['member_id', 'name', 'email', 'joined', 'last_visit', 'last_activity', 'members_display_name', 'members_pass_hash', 'members_pass_salt', 'conv_password'])
+			->where(['member_banned' => 0]);
+
+		$count = $userQuery->count('*', $this->sourceDb);
+		Console::startProgress(0, $count, 'Importing users...');
+		$i = 0;
+		foreach($userQuery->each(100, $this->sourceDb) as $user) {
+
+			$yiiUser = (new Query)->from('tbl_user')->where(['id' => $user['member_id']])->one($this->sourceDb);
+			if ($yiiUser === false) {
+				$this->stdout('NO YII USER for: ' . $user['member_id'] . ' - ' . $user['name']. "\n");
+			}
+			if ($yiiUser['username'] !== $user['name']) {
+				$this->stdout('NAME MISMATCH with YII USER for: ' . $user['member_id'] . ' - ' . $user['name'] . ' - ' . $yiiUser['username'] . "\n");
+				continue;
+			}
+
+			$passwordHash = '';
+			if (!empty($user['conv_password'])) {
+				$passwordHash = 'LEGACYSHA:' . $user['conv_password'];
+			} elseif (!empty($user['members_pass_hash']) && !empty($user['members_pass_salt'])) {
+				$passwordHash = 'LEGACYMD5:' . $user['members_pass_hash'] . ':' . $user['members_pass_salt'];
+			}
+
+			$model = new User([
+				'id' => $user['member_id'],
+				'username' => $user['name'],
+				'email' => $user['email'],
+				'display_name' => $user['members_display_name'],
+				'created_at' => date('Y-m-d H:i:s', $user['joined']),
+				'password_hash' => $passwordHash,
+
+				'login_time' => date('Y-m-d H:i:s', $yiiUser['login_time']),
+
+				'rank' => $yiiUser['rank'],
+				'rating' => $yiiUser['rating'],
+				'extension_count' => $yiiUser['extension_count'],
+				'wiki_count' => $yiiUser['wiki_count'],
+				'comment_count' => $yiiUser['comment_count'],
+				'post_count' => $yiiUser['post_count'],
+
+			]);
+			$model->detachBehavior('timestamp');
+			$model->save(false);
+
+			Console::updateProgress(++$i, $count);
+		}
+		Console::endProgress(true);
+		$this->stdout("done.", Console::FG_GREEN, Console::BOLD);
+		$this->stdout(" $count records imported.\n");
+	}
+
+	private function importBadges()
+	{
+		$query = (new Query)->from('tbl_badges');
+
+		$count = $query->count('*', $this->sourceDb);
+		Console::startProgress(0, $count, 'Importing badges...');
+		$i = 0;
+		foreach($query->each(100, $this->sourceDb) as $badge) {
+
+			\Yii::$app->db->createCommand()->insert('{{%badges}}', $badge)->execute();
+
+			Console::updateProgress(++$i, $count);
+		}
+		Console::endProgress(true);
+		$this->stdout("done.", Console::FG_GREEN, Console::BOLD);
+		$this->stdout(" $count records imported.\n");
+
+		$this->importBadgeQueue();
+		$this->importUserBadges();
+	}
+
+	private function importBadgeQueue()
+	{
+		$query = (new Query)->from('tbl_badge_queue');
+
+		$count = $query->count('*', $this->sourceDb);
+		Console::startProgress(0, $count, 'Importing badge queue...');
+		$i = 0;
+		foreach($query->each(100, $this->sourceDb) as $badge) {
+
+			\Yii::$app->db->createCommand()->insert('{{%badge_queue}}', $badge)->execute();
+
+			Console::updateProgress(++$i, $count);
+		}
+		Console::endProgress(true);
+		$this->stdout("done.", Console::FG_GREEN, Console::BOLD);
+		$this->stdout(" $count records imported.\n");
+	}
+
+	private function importUserBadges()
+	{
+		$query = (new Query)->from('tbl_user_badge');
+
+		$count = $query->count('*', $this->sourceDb);
+		Console::startProgress(0, $count, 'Importing user badges...');
+		$i = 0;
+		foreach($query->each(100, $this->sourceDb) as $badge) {
+
+			$badge['create_time'] = date('Y-m-d H:i:s', $badge['create_time']);
+			if ($badge['complete_time'] !== null) {
+				$badge['complete_time'] = date('Y-m-d H:i:s', $badge['complete_time']);
+			}
+			\Yii::$app->db->createCommand()->insert('{{%user_badge}}', $badge)->execute();
+
+			Console::updateProgress(++$i, $count);
+		}
+		Console::endProgress(true);
+		$this->stdout("done.", Console::FG_GREEN, Console::BOLD);
+		$this->stdout(" $count records imported.\n");
+	}
+
 	private function importNews()
 	{
-		$news = (new Query)->from('tbl_news');
+		$newsQuery = (new Query)->from('tbl_news');
 
 		$statusMap = [
 			/*const STATUS_DRAFT=*/1 => News::STATUS_DRAFT,
@@ -62,15 +204,15 @@ class ImportController extends Controller
 			/*const STATUS_DELETED=*/5 => News::STATUS_DELETED,
 		];
 
-		$count = $news->count('*', $this->sourceDb);
+		$count = $newsQuery->count('*', $this->sourceDb);
 		Console::startProgress(0, $count, 'Importing news...');
 		$i = 0;
-		foreach($news->each(100, $this->sourceDb) as $news) {
+		foreach($newsQuery->each(100, $this->sourceDb) as $news) {
 
 			$content = $news['content'];
 			$content = $this->convertMarkdown($content);
 
-			$news = new News([
+			$model = new News([
 				'id' => $news['id'],
 				'title' => $news['title'],
 				'news_date' => date('Y-m-d', $news['news_date']),
@@ -83,7 +225,9 @@ class ImportController extends Controller
 				'updated_at' => date('Y-m-d H:i:s', $news['update_time']),
 				'tagNames' => $news['tags'],
 			]);
-			$news->save(false);
+			$model->detachBehavior('timestamp');
+			$model->detachBehavior('blameable');
+			$model->save(false);
 
 			Console::updateProgress(++$i, $count);
 		}

@@ -3,7 +3,7 @@
 namespace app\models;
 
 use Yii;
-use yii\behaviors\SluggableBehavior;
+use app\components\SluggableBehavior;
 
 /**
  * This is the model class for table "news_tags".

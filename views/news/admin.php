@@ -20,33 +20,31 @@ echo $this->render('//site/partials/common/_admin_heading.php', [
 
 ?>
 <div class="container style_external_links">
-    <div class="row">
-        <div class="content">
+    <div class="content">
 
-            <?= GridView::widget([
-                'dataProvider' => $dataProvider,
-                'filterModel' => $searchModel,
-                'columns' => [
-                    'id',
-                    'title',
-                    'news_date',
-                    [
-                        'attribute' => 'status',
-                        'value' => 'statusName',
-                        'filter' => News::getStatusList(),
-                    ],
-                    'created_at',
-                    'updated_at',
-                    // 'creator_id',
-                    // 'updater_id',
-
-                    [
-                        'class' => 'yii\grid\ActionColumn',
-                        'contentOptions' => ['class' => 'action-column'],
-                    ],
+        <?= GridView::widget([
+            'dataProvider' => $dataProvider,
+            'filterModel' => $searchModel,
+            'columns' => [
+                'id',
+                'title',
+                'news_date',
+                [
+                    'attribute' => 'status',
+                    'value' => 'statusName',
+                    'filter' => News::getStatusList(),
                 ],
-            ]); ?>
+                'created_at',
+                'updated_at',
+                // 'creator_id',
+                // 'updater_id',
 
-        </div>
+                [
+                    'class' => 'yii\grid\ActionColumn',
+                    'contentOptions' => ['class' => 'action-column'],
+                ],
+            ],
+        ]); ?>
+
     </div>
 </div>

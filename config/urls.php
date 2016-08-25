@@ -61,4 +61,14 @@ return [
     'extensions/package/<vendorName:[\w\-\.]+>/<packageName:[\w\-\.]+>' => 'extension/package',
     'extensions/page/<page:\d+>' => 'extension/index',
     'extensions' => 'extension/index',
+
+	'user' => 'user/index',
+	'user/<id:\d+>' => 'user/view',
+	'user/<action:halloffame>' => 'user/<action>',
+
+	'badges' => 'user/badges',
+	'badges/<name:[\w-]+>' => 'user/view-badge',
+
+	'admin/<controller:user>' => '<controller>-admin/index',
+	'admin/<controller:user>/<action:[\w-]+>' => '<controller>-admin/<action>',
 ];
