@@ -9,7 +9,7 @@ use yii\widgets\ActiveForm;
 use yii\helpers\Html;
 ?>
 
-<div class="row">
+<div class="row" id="user-notes">
     <div class="col-md-offset-2 col-md-9">
         <?php if (!empty($comments)): ?>
             <span class="heading">User Contributed Notes <span class="badge"><?= count($comments) ?></span></span>

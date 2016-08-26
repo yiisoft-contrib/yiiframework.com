@@ -94,11 +94,13 @@ $this->title = Html::encode((!empty($title) ? "$title - " : '') .  "API Document
     </div>
 </div>
 
-<div class="container">
-    <?= \app\components\Comments::widget([
-        'objectType' => 'api',
-        'objectId' => $version . '-' . $section,
-    ]) ?>
+<div class="comments-wrapper">
+    <div class="container comments">
+        <?= \app\components\Comments::widget([
+            'objectType' => 'api',
+            'objectId' => $version . '/' . $section,
+        ]) ?>
+    </div>
 </div>
 
 <?php

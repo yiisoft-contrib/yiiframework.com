@@ -7,6 +7,7 @@ use yii\base\NotSupportedException;
 use yii\behaviors\TimestampBehavior;
 use yii\db\ActiveQuery;
 use yii\db\ActiveRecord;
+use yii\db\Expression;
 use yii\helpers\Html;
 use yii\web\IdentityInterface;
 use yii\helpers\ArrayHelper;
@@ -43,7 +44,10 @@ class User extends ActiveRecord implements IdentityInterface
     public function behaviors()
     {
         return [
-            'timestamp' => TimestampBehavior::className(),
+            'timestamp' => [
+                'class' => TimestampBehavior::class,
+                'value' => new Expression('NOW()'),
+            ],
         ];
     }
 
@@ -152,7 +156,7 @@ class User extends ActiveRecord implements IdentityInterface
      */
     public function validatePassword($password)
     {
-        if ($this->password_hash[0] === '$') {
+        if (strpos($this->password_hash, '$') === 0) {
             // up to date password hash
             return Yii::$app->security->validatePassword($password, $this->password_hash);
         }
@@ -176,7 +180,7 @@ class User extends ActiveRecord implements IdentityInterface
 
     public function getPasswordType()
     {
-        if ($this->password_hash[0] === '$') {
+        if (strpos($this->password_hash, '$') === 0) {
             return 'NEW';
         }
         if (strpos($this->password_hash, 'LEGACYMD5:') === 0) {

@@ -22,7 +22,7 @@ class m150416_155549_create_user_and_auth_tables extends BaseMigration
 
             'login_time' => $this->dateTime(),
             'login_attempts' => $this->integer()->notNull()->defaultValue(0),
-            'login_ip' => $this->integer()->notNull()->defaultValue(0),
+            'login_ip' => $this->string(39),
 
         ], $this->tableOptions);
 //        $this->createIndex('idx-user-username-unique', '{{%user}}', 'username', true);

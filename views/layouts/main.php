@@ -82,6 +82,7 @@ AppAsset::register($this);
 
                         // main navigation
                         $controller = Yii::$app->controller ? Yii::$app->controller->id : null;
+                        $action = Yii::$app->controller && Yii::$app->controller->action ? Yii::$app->controller->action->id : null;
                         echo Nav::widget([
                             'id' => 'main-nav',
                             'encodeLabels' => false,
@@ -96,9 +97,10 @@ AppAsset::register($this);
                                 ['label' => 'Extensions', 'url' => ['extension/index'], 'options' => ['title' => 'Extensions']],
                                 ['label' => 'Community', 'items' => [
                                     ['label' => 'Forum', 'url' => '@web/forum', 'options' => ['title' => 'Community Forum']],
-                                    ['label' => 'Members', 'url' => ['/user/index'], 'options' => ['title' => 'Community Members']],
+                                    ['label' => 'Live Chat', 'url' => ['site/chat']],
+                                    ['label' => 'Members', 'url' => ['/user/index'], 'options' => ['title' => 'Community Members'], 'active' => ($controller == 'user' && in_array($action, ['index', 'view']))],
                                     ['label' => 'Hall of Fame', 'url' => ['/user/halloffame'], 'options' => ['title' => 'Community Hall of Fame']],
-                                    ['label' => 'Badges', 'url' => ['/badges'], 'options' => ['title' => 'Community Badges']],
+                                    ['label' => 'Badges', 'url' => ['/badges'], 'options' => ['title' => 'Community Badges'], 'active' => ($controller == 'user' && in_array($action, ['badges', 'view-badge']))],
                                 ]],
                                 ['label' => 'More&hellip;', 'items' => [
                                     ['label' => 'Learn', 'options' => ['class' => 'separator']],
@@ -110,8 +112,6 @@ AppAsset::register($this);
                                     ['label' => 'Report an Issue', 'url' => ['site/report-issue']],
                                     ['label' => 'Report a Security Issue', 'url' => ['site/security']],
                                     ['label' => 'Contribute to Yii', 'url' => ['/site/contribute']],
-                                    ['label' => 'Discuss', 'options' => ['class' => 'separator']],
-                                    ['label' => 'Live Chat', 'url' => ['site/chat']],
                                     ['label' => 'About', 'options' => ['class' => 'separator']],
                                     ['label' => 'What is Yii?', 'url' => ['guide/view', 'type' => 'guide', 'version' => reset(Yii::$app->params['versions']['api']), 'language' => 'en', 'section' => 'intro-yii']],
                                     ['label' => 'News', 'url' => ['news/index'], 'active' => ($controller == 'news')],

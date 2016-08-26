@@ -31,7 +31,7 @@ class m160825_210900_add_user_ranking_system extends Migration
             'id' => $this->primaryKey(),
             'user_id' => $this->integer()->notNull(),
             'badge_id' => $this->integer()->notNull(),
-            'progess' => $this->smallInteger()->notNull()->defaultValue(0),
+            'progress' => $this->smallInteger()->notNull()->defaultValue(0),
             'create_time' => $this->dateTime()->notNull(),
             'complete_time' => $this->dateTime(),
             'message' => $this->string(),

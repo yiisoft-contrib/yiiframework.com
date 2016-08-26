@@ -73,4 +73,6 @@ $this->registerMetaTag(['name' => 'keywords', 'value' => 'yii framework, communi
 	<div class="clear"></div>
 
 	<div class="all-members"><?php echo Html::a('View all members',array('user/index')); ?></div>
+
+    </div>
 </div>

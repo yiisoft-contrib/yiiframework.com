@@ -8,14 +8,14 @@ class m150416_155923_create_comment_table extends BaseMigration
     public function up()
     {
         $this->createTable('{{%comment}}', [
-            'id' => Schema::TYPE_PK,
-            'user_id' => Schema::TYPE_INTEGER . ' NOT NULL',
-            'object_type' => Schema::TYPE_STRING . ' NOT NULL',
-            'object_id' => Schema::TYPE_STRING . ' NOT NULL',
-            'text' => Schema::TYPE_TEXT . ' NOT NULL',
-            'status' => Schema::TYPE_SMALLINT . ' NOT NULL DEFAULT 10',
-            'created_at' => Schema::TYPE_INTEGER . ' NOT NULL',
-            'updated_at' => Schema::TYPE_INTEGER . ' NOT NULL',
+            'id' => $this->primaryKey(),
+            'user_id' => $this->integer()->notNull(),
+            'object_type' => $this->string(255)->notNull(),
+            'object_id' => $this->string(255)->notNull(),
+            'text' => $this->text()->notNull(),
+            'status' => $this->smallInteger()->notNull()->defaultValue(10),
+            'created_at' => $this->dateTime()->notNull(),
+            'updated_at' => $this->dateTime(),
         ], $this->tableOptions);
 
         $this->addForeignKey('fk-comment-user_id-user-id', '{{%comment}}', 'user_id', '{{%user}}', 'id', 'RESTRICT');

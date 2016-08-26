@@ -8,11 +8,13 @@
 namespace app\commands;
 
 
+use app\models\Comment;
 use app\models\News;
 use app\models\User;
 use Faker\Factory;
 use yii\console\Controller;
 use yii\db\Connection;
+use yii\db\Expression;
 use yii\db\Query;
 use yii\di\Instance;
 use yii\helpers\Console;
@@ -68,7 +70,11 @@ class ImportController extends Controller
 		$this->importUsers();
 
 		$this->importBadges();
-		$this->importRanking();
+
+		// TODO wiki
+		// TODO extensions
+
+		$this->importComments();
 
 		$this->importNews();
 
@@ -77,6 +83,11 @@ class ImportController extends Controller
 
 	private function importUsers()
 	{
+		if (User::find()->count() > 0) {
+			$this->stdout("Users table is already populated, skipping.\n");
+			return;
+		}
+
 		//$userQuery = (new Query)->from('tbl_user');
 		$userQuery = (new Query)->from('ipb_members')
 			->select(['member_id', 'name', 'email', 'joined', 'last_visit', 'last_activity', 'members_display_name', 'members_pass_hash', 'members_pass_salt', 'conv_password'])
@@ -107,7 +118,7 @@ class ImportController extends Controller
 				'id' => $user['member_id'],
 				'username' => $user['name'],
 				'email' => $user['email'],
-				'display_name' => $user['members_display_name'],
+				'display_name' => empty($user['members_display_name']) ? $user['name'] : $user['members_display_name'],
 				'created_at' => date('Y-m-d H:i:s', $user['joined']),
 				'password_hash' => $passwordHash,
 
@@ -133,7 +144,12 @@ class ImportController extends Controller
 
 	private function importBadges()
 	{
-		$query = (new Query)->from('tbl_badges');
+		if ((new Query)->from('{{%badges}}')->count() > 0) {
+			$this->stdout("Badges table is already populated, skipping.\n");
+			return;
+		}
+
+		$query = (new Query)->from('tbl_badge');
 
 		$count = $query->count('*', $this->sourceDb);
 		Console::startProgress(0, $count, 'Importing badges...');
@@ -183,7 +199,7 @@ class ImportController extends Controller
 			if ($badge['complete_time'] !== null) {
 				$badge['complete_time'] = date('Y-m-d H:i:s', $badge['complete_time']);
 			}
-			\Yii::$app->db->createCommand()->insert('{{%user_badge}}', $badge)->execute();
+			\Yii::$app->db->createCommand()->insert('{{%user_badges}}', $badge)->execute();
 
 			Console::updateProgress(++$i, $count);
 		}
@@ -192,8 +208,55 @@ class ImportController extends Controller
 		$this->stdout(" $count records imported.\n");
 	}
 
+	private function importComments()
+	{
+		if (Comment::find()->count() > 0) {
+			$this->stdout("Comment table is already populated, skipping.\n");
+			return;
+		}
+
+		$query = (new Query)->from('tbl_comment');
+
+		$count = $query->count('*', $this->sourceDb);
+		Console::startProgress(0, $count, 'Importing comments...');
+		$i = 0;
+		$err = 0;
+		foreach($query->each(100, $this->sourceDb) as $comment) {
+
+			try {
+				\Yii::$app->db->createCommand()->insert('{{%comment}}', [
+					'id' => $comment['id'],
+					'user_id' => $comment['creator_id'],
+					'object_type' => $comment['object_type'],
+					'object_id' => $comment['object_id'],
+					'text' => (empty($comment['title']) ? '' : '#### ' . $comment['title'] . "\n\n")
+						. $this->convertMarkdown($comment['content']),
+					'created_at' => date('Y-m-d H:i:s', $comment['create_time']),
+					'updated_at' => date('Y-m-d H:i:s', $comment['update_time']),
+
+					// TODO votes, rating and status
+				])->execute();
+			}catch (\Exception $e) {
+				$err++;
+			}
+			Console::updateProgress(++$i, $count);
+		}
+		Console::endProgress(true);
+		$this->stdout("done.", Console::FG_GREEN, Console::BOLD);
+		$this->stdout(" $count records imported.");
+		if ($err > 0) {
+			$this->stdout(" $err errors occurred.", Console::FG_RED, Console::BOLD);
+		}
+		$this->stdout("\n");
+	}
+
 	private function importNews()
 	{
+		if (News::find()->count() > 0) {
+			$this->stdout("News table is already populated, skipping.\n");
+			return;
+		}
+
 		$newsQuery = (new Query)->from('tbl_news');
 
 		$statusMap = [
@@ -240,7 +303,7 @@ class ImportController extends Controller
 	{
 		// convert code blocks
 		$markdown = preg_replace_callback('/~~~\s*\[php\]\s*(.+?)\n~~~/is', function($matches) {
-			return "```php\n".$matches[1]."\n```";
+			return "\n```php\n".$matches[1]."\n```";
 		}, $markdown);
 
 		return $markdown;
