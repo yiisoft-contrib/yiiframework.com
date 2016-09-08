@@ -77,6 +77,27 @@ abstract class Badge extends \yii\db\ActiveRecord
     }
 
     /**
+     * Add current user id as potential badge candidate
+     */
+    public static function check()
+    {
+        $user = Yii::$app->user->identity;
+        if($user)
+        {
+            $userID = $user->id;
+            static::addCandidate($userID);
+        }
+    }
+
+    /**
+     * Call to insert an user as potential badge candidate
+     */
+    public static function addCandidate($userID)
+    {
+        static::getDb()->createCommand()->insert('{{%badge_queue}}', ['user_id' => $userID])->execute();
+    }
+
+    /**
      * Override this method to calculate if this badge is earned.
      * @return bool True if user has earned this badge, false otherwise.
      */
