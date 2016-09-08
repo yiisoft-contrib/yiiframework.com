@@ -78,6 +78,9 @@ class ImportController extends Controller
 
 		$this->importNews();
 
+        // TODO
+        //$this->importStars();
+
 		return 0;
 	}
 
