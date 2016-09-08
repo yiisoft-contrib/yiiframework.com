@@ -2,6 +2,8 @@
 
 namespace app\controllers;
 
+use app\models\Badge;
+use app\models\UserBadge;
 use Yii;
 use app\models\User;
 use yii\data\ActiveDataProvider;
@@ -101,14 +103,24 @@ class UserController extends Controller
 
     public function actionBadges()
     {
-        // TODO implement (migrate from old site)
-        echo 'TODO implement (migrate from old site)';
+        $badges = Badge::find()->orderBy('achieved DESC, urlname')->all();
+        return $this->render('badges', [
+            'badges' => $badges,
+            'counts' => UserBadge::countUsers(),
+        ]);
     }
 
     public function actionViewBadge($name)
     {
-        // TODO implement (migrate from old site)
-        echo 'TODO implement (migrate from old site)';
+        $badge = Badge::find()->where(['urlname' => $name])->one();
+        if ($badge === null) {
+            throw new NotFoundHttpException('Unknown badge');
+        }
+        return $this->render('badge', [
+            'badge' => $badge,
+            'users' => UserBadge::listUsers($badge),
+            'count' => UserBadge::countUsers($badge),
+        ]);
     }
 
     /**

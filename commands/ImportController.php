@@ -164,7 +164,7 @@ class ImportController extends Controller
 		$this->stdout("done.", Console::FG_GREEN, Console::BOLD);
 		$this->stdout(" $count records imported.\n");
 
-		$this->importBadgeQueue();
+//		$this->importBadgeQueue();
 		$this->importUserBadges();
 	}
 

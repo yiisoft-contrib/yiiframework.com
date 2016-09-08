@@ -1,0 +1,53 @@
+<?php
+
+use yii\helpers\Html;
+use yii\grid\GridView;
+
+/* @var $this yii\web\View */
+/* @var $badges app\models\Badge[] */
+/* @var $counts array */
+
+$this->title = 'Badges';
+
+echo $this->render('//site/partials/common/_admin_heading.php', [
+    'title' => $this->title,
+    'menu' => [
+        ['label' => 'User Admin', 'url' => ['user-admin/index'], 'visible' => Yii::$app->user->can('news:pAdmin') ],
+    ]
+]);
+
+$this->registerMetaTag(['name' => 'keywords', 'value' => 'yii framework, community, badges']);
+
+$total = array_sum($counts);
+if ($total === 0) {
+    $total = 1;
+}
+$max = empty($counts) ? 0 : max($counts) / $total;
+$expand = $max < 0.45 ? 2 : 1;
+
+?>
+<div class="container style_external_links">
+    <div class="content">
+
+        <p>It's easy to play an active role in the Yii community: add comments and cast votes throughout the site, ask and respond to questions posted in forum topics, write and help to improve on the wiki articles, contribute framework extensions, and more. As you participate you will earn badges which appear on your user page. Here are all available badges and the criteria for earning them:</p>
+
+        <?php foreach($badges as $badge): ?>
+            <?php if(!isset($counts[$badge->id])) $counts[$badge->id]=0; ?>
+            <?php $percent = $counts[$badge->id]/$total*100.0; ?>
+            <div class="badge g-progress badge-<?php echo $badge->urlname ?>">
+                <div class="bar" style="width: <?php echo round($percent*$expand) ?>%"></div>
+                <div class="info">
+                    <h3>
+                        <?= Html::a(Html::encode($badge->name), ['user/view-badge', 'name' => $badge->urlname]) ?>
+                        <?php if(isset($counts[$badge->id])): ?>
+                            <span class="x">x</span><span class="count"><?php echo $counts[$badge->id] ?></span>
+                        <?php endif ?>
+                    </h3>
+                    <p><?php echo Html::encode($badge->description) ?></p>
+                    <span class="per"><?php printf('%0.1f%%', $percent) ?></span>
+                </div>
+            </div>
+            <br>
+        <?php endforeach ?>
+    </div>
+</div>
