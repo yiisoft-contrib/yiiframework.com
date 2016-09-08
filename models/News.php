@@ -36,11 +36,11 @@ class News extends \yii\db\ActiveRecord
     public function behaviors()
     {
         return [
-            [
+            'timestamp' => [
                 'class' => TimestampBehavior::class,
                 'value' => new Expression('NOW()'),
             ],
-            [
+            'blameable' => [
                 'class' => BlameableBehavior::class,
                 'createdByAttribute' => 'creator_id',
                 'updatedByAttribute' => 'updater_id',

@@ -23,6 +23,9 @@ class m160510_225827_create_news_table extends BaseMigration
 	        'status' => $this->integer(),
         ], $this->tableOptions);
 
+        $this->addForeignKey('fk-news-creator_id-user-id', '{{%news}}', 'creator_id', '{{%user}}', 'id');
+        $this->addForeignKey('fk-news-updater_id-user-id', '{{%news}}', 'updater_id', '{{%user}}', 'id');
+
     }
 
     public function down()

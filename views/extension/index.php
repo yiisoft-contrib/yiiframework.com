@@ -13,7 +13,6 @@ use yii\helpers\StringHelper;
 use yii\widgets\LinkPager;
 
 $this->title = 'Extensions';
-$this->params['breadcrumbs'][] = $this->title;
 ?>
 
 <div class="guide-header-wrap">

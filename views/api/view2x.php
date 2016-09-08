@@ -55,11 +55,13 @@ if (!empty($title)) {
     ]) ?>
 </div>
 
-<div class="container">
-    <?= \app\components\Comments::widget([
-        'objectType' => 'api',
-        'objectId' => $version . '-' . $section,
-    ]) ?>
+<div class="comments-wrapper">
+    <div class="container comments">
+        <?= \app\components\Comments::widget([
+            'objectType' => 'api',
+            'objectId' => $version . '/' . $section,
+        ]) ?>
+    </div>
 </div>
 
 <?php

@@ -82,6 +82,7 @@ AppAsset::register($this);
 
                         // main navigation
                         $controller = Yii::$app->controller ? Yii::$app->controller->id : null;
+                        $action = Yii::$app->controller && Yii::$app->controller->action ? Yii::$app->controller->action->id : null;
                         echo Nav::widget([
                             'id' => 'main-nav',
                             'encodeLabels' => false,
@@ -92,9 +93,15 @@ AppAsset::register($this);
                             'items' => [
                                 ['label' => 'Guide', 'url' => ['guide/entry'], 'options' => ['title' => 'The Definitive Guide to Yii'], 'active' => ($controller == 'guide')],
                                 ['label' => 'API', 'url' => ['api/index', 'version' => reset(Yii::$app->params['versions']['api'])], 'options' => ['title' => 'API Documentation'], 'active' => ($controller == 'api')],
-                                ['label' => 'Forum', 'url' => ['/forum'], 'options' => ['title' => 'Community Forum']],
                                 ['label' => 'Wiki', 'url' => ['site/wiki'], 'options' => ['title' => 'Community Wiki']],
                                 ['label' => 'Extensions', 'url' => ['extension/index'], 'options' => ['title' => 'Extensions']],
+                                ['label' => 'Community', 'items' => [
+                                    ['label' => 'Forum', 'url' => '@web/forum', 'options' => ['title' => 'Community Forum']],
+                                    ['label' => 'Live Chat', 'url' => ['site/chat']],
+                                    ['label' => 'Members', 'url' => ['/user/index'], 'options' => ['title' => 'Community Members'], 'active' => ($controller == 'user' && in_array($action, ['index', 'view']))],
+                                    ['label' => 'Hall of Fame', 'url' => ['/user/halloffame'], 'options' => ['title' => 'Community Hall of Fame']],
+                                    ['label' => 'Badges', 'url' => ['/badges'], 'options' => ['title' => 'Community Badges'], 'active' => ($controller == 'user' && in_array($action, ['badges', 'view-badge']))],
+                                ]],
                                 ['label' => 'More&hellip;', 'items' => [
                                     ['label' => 'Learn', 'options' => ['class' => 'separator']],
                                     ['label' => 'Books', 'url' => ['site/books']],
@@ -105,21 +112,19 @@ AppAsset::register($this);
                                     ['label' => 'Report an Issue', 'url' => ['site/report-issue']],
                                     ['label' => 'Report a Security Issue', 'url' => ['site/security']],
                                     ['label' => 'Contribute to Yii', 'url' => ['/site/contribute']],
-                                    ['label' => 'Discuss', 'options' => ['class' => 'separator']],
-                                    ['label' => 'Live Chat', 'url' => ['site/chat']],
                                     ['label' => 'About', 'options' => ['class' => 'separator']],
                                     ['label' => 'What is Yii?', 'url' => ['guide/view', 'type' => 'guide', 'version' => reset(Yii::$app->params['versions']['api']), 'language' => 'en', 'section' => 'intro-yii']],
                                     ['label' => 'News', 'url' => ['news/index'], 'active' => ($controller == 'news')],
                                     ['label' => 'License', 'url' => ['site/license']],
                                     ['label' => 'Team', 'url' => ['site/team']],
                                     ['label' => 'Official logo', 'url' => ['site/logo']],
-                                    ]],
-                                    //['label' => 'Login', 'url' => ['site/login'], 'visible' => Yii::$app->user->isGuest, 'options' => ['class' => 'hidden-lg']],
-                                    //['label' => 'Signup', 'url' => ['site/signup'], 'visible' => Yii::$app->user->isGuest, 'options' => ['class' => 'hidden-lg']],
-                                    //['label' => 'Logout', 'url' => ['site/logout'], 'visible' => !Yii::$app->user->isGuest, 'linkOptions' => ['data-method' => 'post'], 'options' => ['class' => 'hidden-lg']],
-                                ],
-                                ]);
-                                ?>
+                                ]],
+                                //['label' => 'Login', 'url' => ['site/login'], 'visible' => Yii::$app->user->isGuest, 'options' => ['class' => 'hidden-lg']],
+                                //['label' => 'Signup', 'url' => ['site/signup'], 'visible' => Yii::$app->user->isGuest, 'options' => ['class' => 'hidden-lg']],
+                                //['label' => 'Logout', 'url' => ['site/logout'], 'visible' => !Yii::$app->user->isGuest, 'linkOptions' => ['data-method' => 'post'], 'options' => ['class' => 'hidden-lg']],
+                            ],
+                        ]);
+                        ?>
                         <div class="nav navbar-nav navbar-right">
                         <?php
                             echo Nav::widget([

@@ -10,14 +10,21 @@ class m150416_155549_create_user_and_auth_tables extends BaseMigration
         $this->createTable('{{%user}}', [
             'id' => $this->primaryKey(),
             'username' => $this->string(64)->notNull(),
+            'display_name' => $this->string(64)->notNull(),
+            'email' => $this->string(255)->notNull(),
+
             'auth_key' => $this->string(32)->notNull(),
-            'password_hash' => $this->string()->notNull(),
+            'password_hash' => $this->string(128)->notNull(),
             'password_reset_token' => $this->string(),
-            'email' => $this->string(320)->notNull(),
 
             'status' => Schema::TYPE_SMALLINT . ' NOT NULL DEFAULT 10',
-            'created_at' => Schema::TYPE_INTEGER . ' NOT NULL',
-            'updated_at' => Schema::TYPE_INTEGER . ' NOT NULL',
+            'created_at' => $this->dateTime()->notNull(),
+            'updated_at' => $this->dateTime(),
+
+            'login_time' => $this->dateTime(),
+            'login_attempts' => $this->integer()->notNull()->defaultValue(0),
+            'login_ip' => $this->string(39),
+
         ], $this->tableOptions);
         $this->createIndex('idx-user-username-unique', '{{%user}}', 'username', true);
         $this->createIndex('idx-user-email-unique', '{{%user}}', 'email', true);

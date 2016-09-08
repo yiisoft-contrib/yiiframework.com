@@ -12,7 +12,7 @@ return [
         'charset' => 'utf8',
     ],
     'components.cache' => [
-        'class' => 'yii\caching\FileCache',
+        'class' => YII_DEBUG ? 'yii\caching\DummyCache' : 'yii\caching\FileCache',
     ],
     'components.mailer' => [
         'class' => 'yii\swiftmailer\Mailer',

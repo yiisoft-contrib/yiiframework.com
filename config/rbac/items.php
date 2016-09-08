@@ -14,4 +14,15 @@ return [
 			'news:pAdmin',
 		],
 	],
+	'users:pAdmin' => [
+		'type' => Item::TYPE_PERMISSION,
+		'description' => 'Update and delete Users.',
+	],
+	'users:Admin' => [
+		'type' => Item::TYPE_ROLE,
+		'description' => 'Administrator for Users.',
+		'children' => [
+			'users:pAdmin',
+		],
+	],
 ];

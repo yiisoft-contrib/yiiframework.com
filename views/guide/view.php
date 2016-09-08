@@ -61,6 +61,8 @@ $this->registerJs('
                     }
                     echo '</li>';
                 }
+                //echo '<li class="separator"></li>';
+                echo '<li>' . Html::a('User Contributed Notes', '#user-notes') . '</li>';
             ?>
         </ul>
     </nav>
@@ -123,8 +125,8 @@ $this->registerJs('
 <div class="comments-wrapper">
     <div class="container comments">
         <?= \app\components\Comments::widget([
-            'objectType' => 'guide',
-            'objectId' => $section->name. '-' . $guide->version,
+            'objectType' => 'tutorial',
+            'objectId' => "$type/$guide->version/$guide->language/$section->name",
         ]) ?>
     </div>
 </div>
