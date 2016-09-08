@@ -35,11 +35,8 @@ use yii\helpers\Html;
                                             <a href="#"><?= $comment->user->username; ?></a> at
                                             <span class="date"><?=Yii::$app->formatter->format($comment->created_at, 'datetime')?></span>
                                         </div>
-                                        <div class="col-md-2 voting">
-                                            <div class="pull-right">
-                                                <span class="votes votes-up">0</span> <i class="thumbs-up"></i>
-                                                <span class="votes votes-down">0</span> <i class="thumbs-down"></i>
-                                            </div>
+                                        <div class="col-md-2">
+                                            <?= \app\widgets\Voter::widget(['model' => $comment]) ?>
                                         </div>
                                     </div>
                                 </div>

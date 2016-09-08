@@ -4,7 +4,7 @@
  * @var $guide app\models\Guide
  * @var $section app\models\GuideSection
  */
-use app\components\SideNav;
+use app\widgets\SideNav;
 use yii\helpers\Html;
 
 $nav = [];
@@ -124,7 +124,7 @@ $this->registerJs('
 </div>
 <div class="comments-wrapper">
     <div class="container comments">
-        <?= \app\components\Comments::widget([
+        <?= \app\widgets\Comments::widget([
             'objectType' => 'tutorial',
             'objectId' => "$type/$guide->version/$guide->language/$section->name",
         ]) ?>

@@ -15,10 +15,17 @@ class m160908_135835_rating_table extends BaseMigration
             'PRIMARY KEY(user_id, object_type, object_id)'
         ], $this->tableOptions);
         $this->addForeignKey('fk-rating-user_id-user-id', '{{%rating}}', 'user_id', '{{%user}}', 'id');
+
+        $this->addColumn('{{%comment}}', 'total_votes', $this->integer()->notNull()->defaultValue(0));
+        $this->addColumn('{{%comment}}', 'up_votes', $this->integer()->notNull()->defaultValue(0));
+        $this->addColumn('{{%comment}}', 'rating', $this->double()->notNull()->defaultValue(0));
     }
 
     public function down()
     {
+        $this->dropColumn('{{%comment}}', 'rating');
+        $this->dropColumn('{{%comment}}', 'up_votes');
+        $this->dropColumn('{{%comment}}', 'total_votes');
         $this->dropTable('{{%rating}}');
     }
 }

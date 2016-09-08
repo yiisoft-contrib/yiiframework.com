@@ -1,7 +1,7 @@
 <?php
 
 
-namespace app\components;
+namespace app\widgets;
 
 
 use app\models\Comment;

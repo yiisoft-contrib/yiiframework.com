@@ -71,4 +71,6 @@ return [
 
 	'admin/<controller:user>' => '<controller>-admin/index',
 	'admin/<controller:user>/<action:[\w-]+>' => '<controller>-admin/<action>',
+
+    'ajax/<action:[\w-]+>' => 'ajax/<action>',
 ];

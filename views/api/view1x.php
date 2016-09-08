@@ -8,7 +8,7 @@
  * @var $packages array the API page menu structure
  */
 
-use app\components\SideNav;
+use app\widgets\SideNav;
 use yii\apidoc\templates\bootstrap\SideNavWidget;
 use yii\helpers\Html;
 use yii\helpers\StringHelper;
@@ -96,7 +96,7 @@ $this->title = Html::encode((!empty($title) ? "$title - " : '') .  "API Document
 
 <div class="comments-wrapper">
     <div class="container comments">
-        <?= \app\components\Comments::widget([
+        <?= \app\widgets\Comments::widget([
             'objectType' => 'api',
             'objectId' => $version . '/' . $section,
         ]) ?>

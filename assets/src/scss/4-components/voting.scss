@@ -1,0 +1,39 @@
+.voting {
+  @include rem(padding-top, 7px);
+  .votes {
+    @include rem(font-size, fontsize(smaller));
+    @include rem(margin-right, 7px);
+  }
+  .votes-up {
+    color: #70C1B3;
+  }
+  .votes-down {
+    color: $eshill-red;
+  }
+}
+
+%thumbs {
+  background-repeat: no-repeat;
+  position: relative;
+  width: #{(16 * 1.3)}px;
+  height: #{(14 * 1.3)}px;
+  display: inline-block;
+  min-height: 14px;
+  vertical-align: center;
+}
+.thumbs-up {
+  @extend %thumbs;
+  top: 2px;
+  background-image: url(../../../image/guide/ico_like.svg);
+}
+.thumbs-down {
+  @extend %thumbs;
+  top: 6px;
+  background-image: url(../../../image/guide/ico_dislike.svg);
+}
+// onclick animation
+a:active {
+  .thumbs-up, .thumbs-down {
+    margin-bottom: -2px;
+  }
+}

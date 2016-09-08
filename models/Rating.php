@@ -19,6 +19,8 @@ use yii\db\ActiveRecord;
  */
 class Rating extends \yii\db\ActiveRecord
 {
+    public static $modelClasses = ['Comment'];
+
     /**
      * @inheritdoc
      */
@@ -87,7 +89,7 @@ class Rating extends \yii\db\ActiveRecord
      * @param integer $vote the vote (1 means up vote, 0 means down vote)
      * @return array the updated vote information of the content object (total votes, up votes). False if the content object is invalid.
      */
-    public function castVote($model, $userID, $vote)
+    public static function castVote($model, $userID, $vote)
     {
         /** @var $rating Rating */
         $rating = static::findOne([

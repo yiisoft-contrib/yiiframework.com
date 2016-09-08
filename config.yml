@@ -39,3 +39,4 @@ PATHS:
     - "vendor/bower/glidejs/dist/glide.js"
     - "assets/src/js/custom.js"
     - "assets/src/js/search.js"
+    - "assets/src/js/voting.js"

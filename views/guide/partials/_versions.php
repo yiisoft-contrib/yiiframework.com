@@ -4,7 +4,7 @@
  * @var $guide app\models\Guide
  * @var $section app\models\GuideSection
  */
-use app\components\DropdownList;
+use app\widgets\DropdownList;
 use app\models\Guide;
 use yii\helpers\Html;
 

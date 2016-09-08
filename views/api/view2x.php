@@ -57,7 +57,7 @@ if (!empty($title)) {
 
 <div class="comments-wrapper">
     <div class="container comments">
-        <?= \app\components\Comments::widget([
+        <?= \app\widgets\Comments::widget([
             'objectType' => 'api',
             'objectId' => $version . '/' . $section,
         ]) ?>

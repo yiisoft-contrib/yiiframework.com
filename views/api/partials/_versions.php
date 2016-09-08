@@ -5,7 +5,7 @@
  * @var $version string the currently chosen API version
  * @var $section string the currently active API file
  */
-use app\components\DropdownList;
+use app\widgets\DropdownList;
 use app\models\Guide;
 use yii\helpers\Html;
 

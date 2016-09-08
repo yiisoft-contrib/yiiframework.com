@@ -5,7 +5,7 @@
  * @var $version string
  * @var $searchQuery string
  */
-use app\components\DropdownList;
+use app\widgets\DropdownList;
 use app\models\Guide;
 use yii\helpers\Html;
 
