@@ -352,4 +352,9 @@ class User extends ActiveRecord implements IdentityInterface
             ->andWhere('comment_count > 0')
             ->orderBy(['comment_count' => SORT_DESC])->all();
     }
+
+    public function getBadges()
+    {
+        return $this->hasMany(UserBadge::class, ['user_id' => 'id']);
+    }
 }
