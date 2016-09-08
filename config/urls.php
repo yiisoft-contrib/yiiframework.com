@@ -64,7 +64,7 @@ return [
 
 	'user' => 'user/index',
 	'user/<id:\d+>' => 'user/view',
-	'user/<action:halloffame>' => 'user/<action>',
+	'user/<action:halloffame|profile>' => 'user/<action>',
 
 	'badges' => 'user/badges',
 	'badges/<name:[\w-]+>' => 'user/view-badge',

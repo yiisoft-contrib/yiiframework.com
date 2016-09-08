@@ -7,6 +7,7 @@ use app\models\UserBadge;
 use Yii;
 use app\models\User;
 use yii\data\ActiveDataProvider;
+use yii\filters\AccessControl;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 
@@ -15,6 +16,27 @@ use yii\web\NotFoundHttpException;
  */
 class UserController extends Controller
 {
+    /**
+     * @inheritdoc
+     */
+    public function behaviors()
+    {
+        return [
+            'access' => [
+                'class' => AccessControl::class,
+                'only' => ['profile'],
+                'rules' => [
+                    [
+                        // allow all to a access index and view action
+                        'allow' => true,
+                        'actions' => ['profile'],
+                        'roles' => ['@'],
+                    ],
+                ]
+            ],
+        ];
+    }
+
     /**
      * Lists all User models.
      */
@@ -94,6 +116,11 @@ class UserController extends Controller
             'model' => $this->findModel($id),
             'userCount' => User::find()->count(),
         ]);
+    }
+
+    public function actionProfile()
+    {
+        $this->redirect(['view', 'id' => Yii::$app->user->id], 302);
     }
 
     public function actionHalloffame()
