@@ -29,6 +29,8 @@ $this->params['breadcrumbs'][] = $this->title;
 
             <?= $form->field($model, 'password', ['inputOptions' => ['class'=>'login-control','placeholder' => $model->getAttributeLabel('password')]])->passwordInput()->label(false) ?>
 
+            <?= $form->field($model, 'rememberMe')->checkbox() ?>
+
             <?= Html::submitButton('Login', ['class' => 'btn btn-lg btn-block']) ?>
             
             <?php ActiveForm::end(); ?>

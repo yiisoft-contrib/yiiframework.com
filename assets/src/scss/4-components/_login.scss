@@ -1,4 +1,5 @@
 
+
 /*
 Note: It is best to use a less version of this file ( see http://css2less.cc
 For the media queries use @screen-sm-min instead of 768px.
@@ -63,6 +64,17 @@ For .omb_spanOr use @body-bg instead of white.
         }
         &::-webkit-input-placeholder {
           color: #7abbd7;
+        }
+      }
+
+      .checkbox {
+        label {
+          color: #fff;
+        }
+
+        input[type="checkbox"],
+        input[type="checkbox"]:hover {
+          -webkit-appearance: checkbox;
         }
       }
     }
