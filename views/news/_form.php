@@ -36,7 +36,7 @@ use yii\widgets\ActiveForm;
         ],
     ])->hint('Use commas to separate tags') ?>
 
-    <?= $form->field($model, 'content')->textarea(['rows' => 6])->hint('Content will be converted using Guide Markdown') ?>
+    <?= $form->field($model, 'content')->label(false)->textarea(['rows' => 6, 'class' => 'markdown-editor'])->hint('Content will be converted using Guide Markdown') ?>
 
     <div class="form-group">
         <?= Html::submitButton($model->isNewRecord ? 'Create' : 'Update', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>

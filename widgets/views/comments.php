@@ -78,7 +78,7 @@ use yii\helpers\Html;
     <div class="col-md-offset-2 col-md-9">
         <?php if (!Yii::$app->user->isGuest): ?>
             <?php $form = ActiveForm::begin(); ?>
-                <?= $form->field($commentForm, 'text')->label('')->textarea() ?>
+                <?= $form->field($commentForm, 'text')->label(false)->textarea(['class' => 'markdown-editor']) ?>
 
                 <div class="form-group">
                     <?= Html::submitButton('Comment', ['class' => 'btn btn-primary']) ?>

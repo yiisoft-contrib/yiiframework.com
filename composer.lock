@@ -4,21 +4,21 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "54088da129286402fac3377d2494d1a1",
-    "content-hash": "a1da83d605f519c4cd0e483e20664242",
+    "hash": "80aa7d49eb5437ec3330482bc5d184de",
+    "content-hash": "75badec1b3cbc4ac8852aa46f7494a4d",
     "packages": [
         {
             "name": "2amigos/yii2-selectize-widget",
-            "version": "1.0.1",
+            "version": "1.0.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/2amigos/yii2-selectize-widget.git",
-                "reference": "bc997df0769084f45dbdcaef95a028f5ca3fd028"
+                "reference": "1000cf8703cf8b3eed61359c8a3922cfeb71df6e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/2amigos/yii2-selectize-widget/zipball/bc997df0769084f45dbdcaef95a028f5ca3fd028",
-                "reference": "bc997df0769084f45dbdcaef95a028f5ca3fd028",
+                "url": "https://api.github.com/repos/2amigos/yii2-selectize-widget/zipball/1000cf8703cf8b3eed61359c8a3922cfeb71df6e",
+                "reference": "1000cf8703cf8b3eed61359c8a3922cfeb71df6e",
                 "shasum": ""
             },
             "require": {
@@ -71,7 +71,7 @@
                 "yii 2",
                 "yii2"
             ],
-            "time": "2015-03-20 18:56:41"
+            "time": "2016-09-10 19:27:58"
         },
         {
             "name": "2amigos/yii2-taggable-behavior",
@@ -264,6 +264,72 @@
             },
             "license": [
                 "MIT"
+            ]
+        },
+        {
+            "name": "bower-asset/codemirror",
+            "version": "5.9.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/codemirror/CodeMirror.git",
+                "reference": "ec73f71ee6d04cc5c257f098bfcf693460be1866"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/codemirror/CodeMirror/zipball/ec73f71ee6d04cc5c257f098bfcf693460be1866",
+                "reference": "ec73f71ee6d04cc5c257f098bfcf693460be1866",
+                "shasum": ""
+            },
+            "type": "bower-asset-library",
+            "extra": {
+                "bower-asset-main": [
+                    "lib/codemirror.js",
+                    "lib/codemirror.css"
+                ],
+                "bower-asset-ignore": [
+                    "**/.*",
+                    "node_modules",
+                    "components",
+                    "bin",
+                    "demo",
+                    "doc",
+                    "test",
+                    "index.html",
+                    "package.json",
+                    "mode/*/*test.js",
+                    "mode/*/*.html"
+                ]
+            }
+        },
+        {
+            "name": "bower-asset/codemirror-buttons",
+            "version": "1.0.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/samdark/codemirror-buttons.git",
+                "reference": "600ad81b803f6c82cb03d2742d9173523bd65f88"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/samdark/codemirror-buttons/zipball/600ad81b803f6c82cb03d2742d9173523bd65f88",
+                "reference": "600ad81b803f6c82cb03d2742d9173523bd65f88",
+                "shasum": ""
+            },
+            "require": {
+                "bower-asset/codemirror": "*"
+            },
+            "type": "bower-asset-library",
+            "extra": {
+                "bower-asset-main": "buttons.js"
+            },
+            "license": [
+                "BSD"
+            ],
+            "description": "CodeMirror buttons",
+            "keywords": [
+                "buttons",
+                "codemirror",
+                "ui"
             ]
         },
         {
@@ -579,16 +645,16 @@
         },
         {
             "name": "bower-asset/selectize",
-            "version": "v0.12.2",
+            "version": "v0.12.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/selectize/selectize.js.git",
-                "reference": "2e72b32d9ca8e8c1c943bb16a80d8a9c9af61268"
+                "reference": "abc8a560a8335a017790c2a799925cc123670bfc"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/selectize/selectize.js/zipball/2e72b32d9ca8e8c1c943bb16a80d8a9c9af61268",
-                "reference": "2e72b32d9ca8e8c1c943bb16a80d8a9c9af61268",
+                "url": "https://api.github.com/repos/selectize/selectize.js/zipball/abc8a560a8335a017790c2a799925cc123670bfc",
+                "reference": "abc8a560a8335a017790c2a799925cc123670bfc",
                 "shasum": ""
             },
             "require": {
@@ -1490,7 +1556,7 @@
         },
         {
             "name": "symfony/event-dispatcher",
-            "version": "v2.8.9",
+            "version": "v2.8.11",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/event-dispatcher.git",
@@ -1648,24 +1714,24 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/yiisoft/yii2-apidoc.git",
-                "reference": "a41a32710133b1707df278baf977527e9ce78168"
+                "reference": "453d93514005eaa1e5b0ed3cb2b21429e1852383"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/yiisoft/yii2-apidoc/zipball/a41a32710133b1707df278baf977527e9ce78168",
-                "reference": "a41a32710133b1707df278baf977527e9ce78168",
+                "url": "https://api.github.com/repos/yiisoft/yii2-apidoc/zipball/453d93514005eaa1e5b0ed3cb2b21429e1852383",
+                "reference": "453d93514005eaa1e5b0ed3cb2b21429e1852383",
                 "shasum": ""
             },
             "require": {
-                "cebe/js-search": "*",
+                "cebe/js-search": "0.9.*",
                 "cebe/markdown": "~1.0.0 | ~1.1.0",
                 "cebe/markdown-latex": "~1.0",
                 "nikic/php-parser": "0.9.*",
                 "phpdocumentor/reflection": "^1.0.3",
                 "phpdocumentor/reflection-docblock": "^2.0.1",
                 "scrivo/highlight.php": "~8.0",
-                "yiisoft/yii2": ">=2.0.4",
-                "yiisoft/yii2-bootstrap": "*"
+                "yiisoft/yii2": "~2.0.4",
+                "yiisoft/yii2-bootstrap": "~2.0.0"
             },
             "bin": [
                 "apidoc"
@@ -1703,20 +1769,20 @@
                 "phpdoc",
                 "yii2"
             ],
-            "time": "2016-08-23 11:30:41"
+            "time": "2016-09-05 10:52:18"
         },
         {
             "name": "yiisoft/yii2-authclient",
-            "version": "2.1.0",
+            "version": "2.1.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/yiisoft/yii2-authclient.git",
-                "reference": "1e65f3af2c7095dbb55047f617231fc0ae601876"
+                "reference": "5ed7ebfda270d87197f7640b2a9c046297080cac"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/yiisoft/yii2-authclient/zipball/1e65f3af2c7095dbb55047f617231fc0ae601876",
-                "reference": "1e65f3af2c7095dbb55047f617231fc0ae601876",
+                "url": "https://api.github.com/repos/yiisoft/yii2-authclient/zipball/5ed7ebfda270d87197f7640b2a9c046297080cac",
+                "reference": "5ed7ebfda270d87197f7640b2a9c046297080cac",
                 "shasum": ""
             },
             "require": {
@@ -1751,7 +1817,7 @@
                 "oauth",
                 "yii2"
             ],
-            "time": "2016-08-04 13:41:57"
+            "time": "2016-08-29 09:21:09"
         },
         {
             "name": "yiisoft/yii2-bootstrap",
@@ -1998,21 +2064,21 @@
         },
         {
             "name": "yiisoft/yii2-swiftmailer",
-            "version": "2.0.5",
+            "version": "2.0.6",
             "source": {
                 "type": "git",
                 "url": "https://github.com/yiisoft/yii2-swiftmailer.git",
-                "reference": "e2c6315caff30a9271a7afad4d684627721dc69a"
+                "reference": "26b900767f1031ff3a4668dfa36c10595875f0a5"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/yiisoft/yii2-swiftmailer/zipball/e2c6315caff30a9271a7afad4d684627721dc69a",
-                "reference": "e2c6315caff30a9271a7afad4d684627721dc69a",
+                "url": "https://api.github.com/repos/yiisoft/yii2-swiftmailer/zipball/26b900767f1031ff3a4668dfa36c10595875f0a5",
+                "reference": "26b900767f1031ff3a4668dfa36c10595875f0a5",
                 "shasum": ""
             },
             "require": {
                 "swiftmailer/swiftmailer": "~5.0",
-                "yiisoft/yii2": ">=2.0.4"
+                "yiisoft/yii2": "~2.0.4"
             },
             "type": "yii2-extension",
             "extra": {
@@ -2044,7 +2110,7 @@
                 "swiftmailer",
                 "yii2"
             ],
-            "time": "2016-03-17 03:58:49"
+            "time": "2016-09-09 11:48:11"
         }
     ],
     "packages-dev": [

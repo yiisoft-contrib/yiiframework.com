@@ -1,0 +1,9 @@
+.CodeMirror {
+  @extend  .form-control
+}
+
+.CodeMirror-buttonsPanel {
+  button {
+    margin: 0 2px 2px 0;
+  }
+}

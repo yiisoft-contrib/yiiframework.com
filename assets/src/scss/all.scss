@@ -44,6 +44,8 @@ This file is part of the
 @import "styles/github";
 @import "rem";
 @import "2-vendors/contributors";
+@import "codemirror";
+@import "2-vendors/codemirror";
 
 // Global styling that makes use of vendors
 @import "3-global/5ths";
