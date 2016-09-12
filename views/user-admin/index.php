@@ -30,6 +30,20 @@ $this->params['breadcrumbs'][] = $this->title;
                 return Html::a(Html::encode($model->username), ['user-admin/view', 'id' => $model->id]);
             },
         ],
+        [
+            'label' => 'Auth Methods',
+            'content' => function($model) {
+                /** $model app\models\User */
+                $html[] = 'PW';
+                if (!empty($model->authClients)) {
+                    foreach($model->authClients as $authClient) {
+                        $html[] = Html::encode($authClient->source);
+                    }
+                }
+
+                return implode(', ', $html);
+            },
+        ],
 
         'email:email',
         // 'status',

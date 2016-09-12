@@ -10,7 +10,7 @@ use Yii;
  * @property integer $id
  * @property integer $user_id
  * @property string $source
- * @property string $source_id
+ * @property string $source_login
  *
  * @property User $user
  */
@@ -21,19 +21,7 @@ class Auth extends \yii\db\ActiveRecord
      */
     public static function tableName()
     {
-        return 'auth';
-    }
-
-    /**
-     * @inheritdoc
-     */
-    public function rules()
-    {
-        return [
-            [['user_id', 'source', 'source_id'], 'required'],
-            [['user_id'], 'integer'],
-            [['source', 'source_id'], 'string', 'max' => 255]
-        ];
+        return '{{%auth}}';
     }
 
     /**
@@ -46,6 +34,7 @@ class Auth extends \yii\db\ActiveRecord
             'user_id' => 'User ID',
             'source' => 'Source',
             'source_id' => 'Source ID',
+            'source_login' => 'Source Login',
         ];
     }
 

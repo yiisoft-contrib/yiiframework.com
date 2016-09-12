@@ -91,6 +91,10 @@ class ImportController extends Controller
 			return;
 		}
 
+		// TODO find a way to migrate these accounts
+		$duplicateMail = $this->sourceDb->createCommand("SELECT `email` FROM `ipb_members` GROUP BY `email` HAVING COUNT(*) > 1")->queryColumn();
+		$duplicateUsername = $this->sourceDb->createCommand("SELECT `name` FROM `ipb_members` GROUP BY `name` HAVING COUNT(*) > 1")->queryColumn();
+
 		//$userQuery = (new Query)->from('tbl_user');
 		$userQuery = (new Query)->from('ipb_members')
 			->select(['member_id', 'name', 'email', 'joined', 'last_visit', 'last_activity', 'members_display_name', 'members_pass_hash', 'members_pass_salt', 'conv_password'])
@@ -107,6 +111,14 @@ class ImportController extends Controller
 			}
 			if ($yiiUser['username'] !== $user['name']) {
 				$this->stdout('NAME MISMATCH with YII USER for: ' . $user['member_id'] . ' - ' . $user['name'] . ' - ' . $yiiUser['username'] . "\n");
+				continue;
+			}
+			if (in_array($user['name'], $duplicateUsername)) {
+				$this->stdout('NOT IMPORTED DUPLICATE USERNAME: ' . $user['member_id'] . ' - ' . $user['name'] . ' - ' . $user['email'] . "\n");
+				continue;
+			}
+			if (in_array($user['email'], $duplicateMail)) {
+				$this->stdout('NOT IMPORTED DUPLICATE EMAIL: ' . $user['member_id'] . ' - ' . $user['name'] . ' - ' . $user['email'] . "\n");
 				continue;
 			}
 

@@ -18,6 +18,7 @@ use yii\filters\VerbFilter;
 use yii\helpers\ArrayHelper;
 use yii\web\BadRequestHttpException;
 use yii\web\Controller;
+use yii\web\NotFoundHttpException;
 
 /**
  * AuthController handles user authentification, i.e. Login, Signup and OAuth login.
@@ -32,15 +33,19 @@ class AuthController extends Controller
         return [
             'access' => [
                 'class' => AccessControl::class,
-                'only' => ['logout', 'signup'],
                 'rules' => [
                     [
-                        'actions' => ['signup'],
+                        'actions' => ['signup', 'login', 'request-password-reset', 'reset-password', 'auth'],
                         'allow' => true,
                         'roles' => ['?'],
                     ],
                     [
-                        'actions' => ['logout'],
+                        'actions' => ['logout', 'auth', 'request-password-reset'],
+                        'allow' => true,
+                        'roles' => ['@'],
+                    ],
+                    [
+                        'actions' => ['remove-auth', 'connect-auth', 'disable-password'],
                         'allow' => true,
                         'roles' => ['@'],
                     ],
@@ -50,6 +55,9 @@ class AuthController extends Controller
                 'class' => VerbFilter::class,
                 'actions' => [
                     'logout' => ['post'],
+                    'remove-auth' => ['post'],
+                    'connect-auth' => ['post'],
+                    'disable-password' => ['post'],
                 ],
             ],
         ];
@@ -106,6 +114,7 @@ class AuthController extends Controller
                             'user_id' => $user->id,
                             'source' => $client->getId(),
                             'source_id' => (string)$attributes['id'],
+                            'source_login' => (string)$attributes['login'],
                         ]);
                         if ($auth->save()) {
                             $transaction->commit();
@@ -125,14 +134,59 @@ class AuthController extends Controller
                 $auth = new Auth([
                     'user_id' => Yii::$app->user->id,
                     'source' => $client->getId(),
-                    'source_id' => $attributes['id'],
+                    'source_id' => (string)$attributes['id'],
+                    'source_login' => (string)$attributes['login'],
                 ]);
-                $auth->save();
+                $auth->save(false);
             }
         }
     }
 
+    /**
+     * Connect a logged in account via OAuth and redirects back to user profile.
+     */
+    public function actionConnectAuth($source)
+    {
+        if ($source !== 'github') {
+            throw new NotFoundHttpException();
+        }
+        Yii::$app->user->setReturnUrl(['/user/profile']);
+        return $this->redirect(['auth', 'authclient' => $source]);
+    }
 
+    /**
+     * Remove specified auth source from an account.
+     */
+    public function actionRemoveAuth($source)
+    {
+        if ($source !== 'github') {
+            throw new NotFoundHttpException();
+        }
+
+        /** @var $user User */
+        $user = Yii::$app->user->identity;
+        $auth = $user->getAuthClients()->where(['source' => $source])->one();
+        if ($auth !== null) {
+            $auth->delete();
+            Yii::$app->session->setFlash('success', 'You successfully removed ' . ucfirst($source) . ' login from your account.');
+        } else {
+            Yii::$app->session->setFlash('error', 'Your account has no ' . ucfirst($source) . ' login.');
+        }
+        $this->redirect(['user/profile']);
+    }
+
+
+    /**
+     * Disable password login for a user.
+     */
+    public function actionDisablePassword()
+    {
+        /** @var $user User */
+        $user = Yii::$app->user->identity;
+        $user->disablePassword();
+        Yii::$app->session->setFlash('success', 'You successfully disabled password login for your account.');
+        $this->redirect(['user/profile']);
+    }
 
     public function actionLogin()
     {
@@ -176,6 +230,12 @@ class AuthController extends Controller
     public function actionRequestPasswordReset()
     {
         $model = new PasswordResetRequestForm();
+
+        // prefill the form if it is requested by a logged in user
+        if (!Yii::$app->user->isGuest) {
+            $model->email = Yii::$app->user->identity->email;
+        }
+
         if ($model->load(Yii::$app->request->post()) && $model->validate()) {
             if ($model->sendEmail()) {
                 Yii::$app->getSession()->setFlash('success', 'Check your email for further instructions.');

@@ -7,21 +7,34 @@ use yii\bootstrap\ActiveForm;
 /* @var $model \app\models\ResetPasswordForm */
 
 $this->title = 'Reset password';
-$this->params['breadcrumbs'][] = $this->title;
 ?>
-<?= $this->render('partials/common/_heading.php', ['title' => $this->title]) ?>
-<div class="site-reset-password container">
+<div class="container login-container">
 
-    <p>Please choose your new password:</p>
+    <div class="omb_login row">
 
-    <div class="row">
-        <div class="col-lg-5">
-            <?php $form = ActiveForm::begin(['id' => 'reset-password-form']); ?>
-                <?= $form->field($model, 'password')->passwordInput() ?>
-                <div class="form-group">
-                    <?= Html::submitButton('Save', ['class' => 'btn btn-primary']) ?>
-                </div>
-            <?php ActiveForm::end(); ?>
+      <div class="col-md-4 col-md-offset-3">
+
+        <div class="omb_authTitle">
+            <h3><?= Html::encode($this->title) ?></h3>
+            <span>Please choose your new password.</span>
         </div>
+
+        <div class="row">
+          <div class="col-md-9">
+            <?php $form = ActiveForm::begin(['id' => 'reset-password-form', 'options' => ['class' => 'omb_loginForm', 'autocomplete' => 'off']]); ?>
+
+            <?= $form->field($model, 'password', ['inputOptions' => ['class'=>'login-control','placeholder' => $model->getAttributeLabel('password')]])->label(false) ?>
+            <span class="help-block"></span>
+
+            <?= Html::submitButton('Change Password', ['class' => 'btn btn-lg btn-block']) ?>
+
+            <?php ActiveForm::end(); ?>
+          </div>
+        </div>
+
+      </div>
+      <?= $this->render('partials/_githubLogin.php') ?>
+
     </div>
+
 </div>

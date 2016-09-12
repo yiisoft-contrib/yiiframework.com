@@ -120,7 +120,9 @@ class UserController extends Controller
 
     public function actionProfile()
     {
-        $this->redirect(['view', 'id' => Yii::$app->user->id], 302);
+        return $this->render('profile', [
+            'model' => Yii::$app->user->identity,
+        ]);
     }
 
     public function actionHalloffame()

@@ -15,7 +15,7 @@ $this->params['breadcrumbs'][] = $this->title;
 
     <div class="omb_login row">
 
-      <div class="col-md-3 col-md-offset-3">
+      <div class="col-md-4 col-md-offset-3">
 
         <div class="omb_authTitle">
             <h3><?= Html::encode($this->title) ?></h3>
@@ -23,6 +23,8 @@ $this->params['breadcrumbs'][] = $this->title;
              <?= Html::a('Login', Url::to(['auth/login']),['class'=>'create-account']) ?>
         </div>
 
+        <div class="row">
+          <div class="col-md-9">
             <?php $form = ActiveForm::begin(['id' => 'login-form', 'options' => ['class' => 'omb_loginForm', 'autocomplete' => 'off']]); ?>
                
             <?= $form->field($model, 'username', ['inputOptions' => ['class'=>'login-control','placeholder' => $model->getAttributeLabel('username')]])->label(false) ?>
@@ -34,15 +36,11 @@ $this->params['breadcrumbs'][] = $this->title;
             <?= Html::submitButton('Create New Account', ['class' => 'btn btn-lg btn-block']) ?>
             
             <?php ActiveForm::end(); ?>
+          </div>
+        </div>
 
       </div>
-      <div class="col-md-3 col-md-offset-1 social-login">
-            <span class="github-icon">
-                <i class="fa fa fa-github-square"></i>
-            </span>
-            <h4>Did you sign up with your<br/>Github Account?</h4>
-            <?= Html::a('Login with Github', '/auth?authclient=github',['class' => 'btn btn-lg']) ?>
-      </div>
+      <?= $this->render('partials/_githubLogin.php') ?>
 
     </div>
 

@@ -28,7 +28,7 @@ class UserBadge extends \yii\db\ActiveRecord
      */
     public static function tableName()
     {
-        return 'user_badges';
+        return '{{%user_badges}}';
     }
 
     /**

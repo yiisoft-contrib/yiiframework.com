@@ -26,7 +26,7 @@ abstract class Badge extends \yii\db\ActiveRecord
      */
     public static function tableName()
     {
-        return 'badges';
+        return '{{%badges}}';
     }
 
     /**

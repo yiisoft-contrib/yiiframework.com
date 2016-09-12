@@ -243,6 +243,14 @@ class User extends ActiveRecord implements IdentityInterface
     }
 
     /**
+     * Disables password login by setting password_hash to empty.
+     */
+    public function disablePassword()
+    {
+        $this->updateAttributes(['password_hash' => '']);
+    }
+
+    /**
      * Generates "remember me" authentication key
      */
     public function generateAuthKey()
@@ -356,5 +364,10 @@ class User extends ActiveRecord implements IdentityInterface
     public function getBadges()
     {
         return $this->hasMany(UserBadge::class, ['user_id' => 'id']);
+    }
+
+    public function getAuthClients()
+    {
+        return $this->hasMany(Auth::class, ['user_id' => 'id']);
     }
 }

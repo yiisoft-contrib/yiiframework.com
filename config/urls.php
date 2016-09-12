@@ -32,7 +32,7 @@ return [
     'logout' => 'auth/logout',
     'login' => 'auth/login',
     'signup' => 'auth/signup',
-    'auth' => 'auth/auth',
+    'auth/<action:[\w-]+>' => 'auth/<action>',
 
 	// class api docs
     'doc/api' => 'api/entry',
