@@ -24,13 +24,26 @@ $this->params['breadcrumbs'][] = $this->title;
         ],
     ]) ?>
 </p>
+<?php
 
+$authClients = [];
+foreach($model->authClients as $authClient) {
+    $authClients[] = Html::encode($authClient->source);
+}
+$authClients = empty($authClients) ? '<span class="not-set">(none)</span>' : implode(', ', $authClients);
+
+?>
 <?= DetailView::widget([
     'model' => $model,
     'attributes' => [
         'id',
         'username',
         'passwordType',
+        [
+            'label' => 'Auth Clients',
+            'value' => $authClients,
+            'format' => 'raw',
+        ],
         'login_time',
         'login_attempts',
         'login_ip',

@@ -131,6 +131,8 @@ return [
     'members' => require 'members.php',
 
     'adminEmail' => 'yii@cebe.cc',
+    'supportEmail' => 'yii@cebe.cc',
+    'user.passwordResetTokenExpire' => 3600 * 3, // 3 hours
 
     // cache
     'cache.extensions.search' => 300,

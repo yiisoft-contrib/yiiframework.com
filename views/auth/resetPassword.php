@@ -23,7 +23,7 @@ $this->title = 'Reset password';
           <div class="col-md-9">
             <?php $form = ActiveForm::begin(['id' => 'reset-password-form', 'options' => ['class' => 'omb_loginForm', 'autocomplete' => 'off']]); ?>
 
-            <?= $form->field($model, 'password', ['inputOptions' => ['class'=>'login-control','placeholder' => $model->getAttributeLabel('password')]])->label(false) ?>
+            <?= $form->field($model, 'password', ['inputOptions' => ['class'=>'login-control','placeholder' => $model->getAttributeLabel('password')]])->passwordInput()->label(false) ?>
             <span class="help-block"></span>
 
             <?= Html::submitButton('Change Password', ['class' => 'btn btn-lg btn-block']) ?>

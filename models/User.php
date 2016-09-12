@@ -56,10 +56,53 @@ class User extends ActiveRecord implements IdentityInterface
      */
     public function rules()
     {
-        return [
+        return array_merge(
+            static::usernameRules(),
+            static::emailRules(), [
+
+            ['display_name', 'filter', 'filter' => 'trim'],
+            ['display_name', 'required'],
+            ['display_name', 'string', 'min' => 2, 'max' => 64],
+
             ['status', 'default', 'value' => self::STATUS_ACTIVE],
             ['status', 'in', 'range' => [self::STATUS_ACTIVE, self::STATUS_DELETED]],
+        ]);
+    }
+
+    public static function usernameRules()
+    {
+        return [
+            ['username', 'filter', 'filter' => 'trim'],
+            ['username', 'required'],
+            ['username', 'unique', 'targetClass' => User::class, 'message' => 'This username has already been taken.'],
+            ['username', 'string', 'min' => 2, 'max' => 64],
         ];
+    }
+
+    public static function emailRules()
+    {
+        return [
+            ['email', 'filter', 'filter' => 'trim'],
+            ['email', 'required'],
+            ['email', 'filter', 'filter' => function($value) { return mb_strtolower($value, Yii::$app->charset); }],
+            ['email', 'string', 'max' => 255],
+            ['email', 'email'],
+            ['email', 'unique', 'targetClass' => User::class, 'message' => 'There is already an account with this email address.'],
+        ];
+    }
+
+    public function beforeSave($insert)
+    {
+        if (parent::beforeSave($insert)) {
+
+            // generate auth_key on creation
+            if ($insert && $this->auth_key === null) {
+                $this->generateAuthKey();
+            }
+
+            return true;
+        }
+        return false;
     }
 
     /**

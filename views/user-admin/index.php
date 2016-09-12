@@ -34,14 +34,17 @@ $this->params['breadcrumbs'][] = $this->title;
             'label' => 'Auth Methods',
             'content' => function($model) {
                 /** $model app\models\User */
-                $html[] = 'PW';
+                $html = [];
+                if ($model->getPasswordType() !== 'NONE') {
+                    $html[] = 'PW';
+                }
                 if (!empty($model->authClients)) {
                     foreach($model->authClients as $authClient) {
                         $html[] = Html::encode($authClient->source);
                     }
                 }
 
-                return implode(', ', $html);
+                return empty($html) ? '<span class="not-set">(none)</span>' : implode(', ', $html);
             },
         ],
 

@@ -40,7 +40,7 @@ class AuthController extends Controller
                         'roles' => ['?'],
                     ],
                     [
-                        'actions' => ['logout', 'auth', 'request-password-reset'],
+                        'actions' => ['logout', 'request-password-reset', 'reset-password', 'auth'],
                         'allow' => true,
                         'roles' => ['@'],
                     ],
@@ -148,8 +148,10 @@ class AuthController extends Controller
     public function actionConnectAuth($source)
     {
         if ($source !== 'github') {
+            // more auth sources may be added later
             throw new NotFoundHttpException();
         }
+        // ensure redirection to profile after OAuth workflow
         Yii::$app->user->setReturnUrl(['/user/profile']);
         return $this->redirect(['auth', 'authclient' => $source]);
     }
@@ -160,6 +162,7 @@ class AuthController extends Controller
     public function actionRemoveAuth($source)
     {
         if ($source !== 'github') {
+            // more auth sources may be added later
             throw new NotFoundHttpException();
         }
 
@@ -216,7 +219,7 @@ class AuthController extends Controller
         $model = new SignupForm();
         if ($model->load(Yii::$app->request->post())) {
             if ($user = $model->signup()) {
-                if (Yii::$app->getUser()->login($user, 3600 * 24 * 30)) {
+                if (Yii::$app->getUser()->login($user)) {
                     return $this->goHome();
                 }
             }
@@ -240,7 +243,7 @@ class AuthController extends Controller
             if ($model->sendEmail()) {
                 Yii::$app->getSession()->setFlash('success', 'Check your email for further instructions.');
 
-                return $this->goHome();
+                return Yii::$app->user->isGuest ? $this->goHome() : $this->redirect(['user/profile']);
             } else {
                 Yii::$app->getSession()->setFlash('error', 'Sorry, we are unable to reset password for email provided.');
             }
@@ -262,7 +265,7 @@ class AuthController extends Controller
         if ($model->load(Yii::$app->request->post()) && $model->validate() && $model->resetPassword()) {
             Yii::$app->getSession()->setFlash('success', 'New password was saved.');
 
-            return $this->goHome();
+            return Yii::$app->user->isGuest ? $this->goHome() : $this->redirect(['user/profile']);
         }
 
         return $this->render('resetPassword', [
