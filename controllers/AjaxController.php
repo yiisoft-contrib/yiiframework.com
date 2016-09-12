@@ -40,8 +40,6 @@ class AjaxController extends Controller
         ];
     }
 
-
-
     public function beforeAction($action)
     {
         Yii::$app->response->format = Response::FORMAT_JSON;

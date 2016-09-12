@@ -1,4 +1,7 @@
 <?php
+
+// Yii Framework Core team Members
+
 return [
     [
         'name' => 'Qiang Xue',

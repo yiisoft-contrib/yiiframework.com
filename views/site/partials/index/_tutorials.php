@@ -38,6 +38,6 @@ use yii\helpers\Url;
         </li>
     </ul>
     <div class="row padded-row">
-        <a href="<?= Url::to(['site/wiki']) ?>" class="btn btn-front btn-block">See all tutorials</a>
+        <a href="<?= Url::to(['wiki/index']) ?>" class="btn btn-front btn-block">See all tutorials</a>
     </div>
 </div>

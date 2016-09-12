@@ -19,7 +19,7 @@ $this->params['breadcrumbs'][] = $this->title;
         <div class="omb_authTitle">
             <h3><?= Html::encode($this->title) ?></h3>
             <span>or</span>
-             <?= Html::a('Create a new account', Url::to(['site/signup']),['class'=>'create-account']) ?>
+             <?= Html::a('Create a new account', Url::to(['auth/signup']),['class'=>'create-account']) ?>
         </div>
 
             <?php $form = ActiveForm::begin(['id' => 'login-form', 'options' => ['class' => 'omb_loginForm', 'autocomplete' => 'off']]); ?>
@@ -36,7 +36,7 @@ $this->params['breadcrumbs'][] = $this->title;
             <?php ActiveForm::end(); ?>
 
             <p class="forgotPwd">
-                <?= Html::a('Forgot password?', Url::to(['site/request-password-reset'])) ?>
+                <?= Html::a('Forgot password?', Url::to(['auth/request-password-reset'])) ?>
             </p>
 
       </div>
@@ -45,7 +45,8 @@ $this->params['breadcrumbs'][] = $this->title;
                 <i class="fa fa fa-github-square"></i>
             </span>
             <h4>Did you sign up with your<br/>Github Account?</h4>
-            <?= Html::a('Login with Github', ['site/auth', 'authclient' => 'github'], ['class' => 'btn btn-lg']) ?>
+            <?= Html::a('Login with Github', ['auth/auth', 'authclient' => 'github'], ['class' => 'btn btn-lg']) ?>
+            <h4>To connect your existing account<br/>with Github, log in first.</h4>
       </div>
 
     </div>

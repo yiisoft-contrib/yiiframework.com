@@ -20,7 +20,7 @@ $this->params['breadcrumbs'][] = $this->title;
         <div class="omb_authTitle">
             <h3><?= Html::encode($this->title) ?></h3>
             <span>or</span>
-             <?= Html::a('Login', Url::to(['site/login']),['class'=>'create-account']) ?>
+             <?= Html::a('Login', Url::to(['auth/login']),['class'=>'create-account']) ?>
         </div>
 
             <?php $form = ActiveForm::begin(['id' => 'login-form', 'options' => ['class' => 'omb_loginForm', 'autocomplete' => 'off']]); ?>

@@ -1,4 +1,7 @@
 <?php
+
+// Books about Yii 2
+
 return [
     [
         'title' => 'The Yii Book (Second edition)',

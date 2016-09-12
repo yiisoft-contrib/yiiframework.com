@@ -85,7 +85,7 @@ use yii\helpers\Html;
                 </div>
             <?php ActiveForm::end(); ?>
         <?php else: ?>
-            <p><?= Html::a('Signup', ['site/signup'])?> or <?= Html::a('Login', ['site/login']) ?> in order to comment.</p>
+            <p><?= Html::a('Signup', ['auth/signup'])?> or <?= Html::a('Login', ['auth/login']) ?> in order to comment.</p>
         <?php endif ?>
     </div>
 </div>

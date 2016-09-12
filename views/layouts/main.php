@@ -93,7 +93,7 @@ AppAsset::register($this);
                             'items' => [
                                 ['label' => 'Guide', 'url' => ['guide/entry'], 'options' => ['title' => 'The Definitive Guide to Yii'], 'active' => ($controller == 'guide')],
                                 ['label' => 'API', 'url' => ['api/index', 'version' => reset(Yii::$app->params['versions']['api'])], 'options' => ['title' => 'API Documentation'], 'active' => ($controller == 'api')],
-                                ['label' => 'Wiki', 'url' => ['site/wiki'], 'options' => ['title' => 'Community Wiki']],
+                                ['label' => 'Wiki', 'url' => ['wiki/index'], 'options' => ['title' => 'Community Wiki']],
                                 ['label' => 'Extensions', 'url' => ['extension/index'], 'options' => ['title' => 'Extensions']],
                                 ['label' => 'Community', 'items' => [
                                     ['label' => 'Forum', 'url' => '@web/forum', 'options' => ['title' => 'Community Forum']],
@@ -119,9 +119,9 @@ AppAsset::register($this);
                                     ['label' => 'Team', 'url' => ['site/team']],
                                     ['label' => 'Official logo', 'url' => ['site/logo']],
                                 ]],
-                                //['label' => 'Login', 'url' => ['site/login'], 'visible' => Yii::$app->user->isGuest, 'options' => ['class' => 'hidden-lg']],
-                                //['label' => 'Signup', 'url' => ['site/signup'], 'visible' => Yii::$app->user->isGuest, 'options' => ['class' => 'hidden-lg']],
-                                //['label' => 'Logout', 'url' => ['site/logout'], 'visible' => !Yii::$app->user->isGuest, 'linkOptions' => ['data-method' => 'post'], 'options' => ['class' => 'hidden-lg']],
+                                //['label' => 'Login', 'url' => ['auth/login'], 'visible' => Yii::$app->user->isGuest, 'options' => ['class' => 'hidden-lg']],
+                                //['label' => 'Signup', 'url' => ['auth/signup'], 'visible' => Yii::$app->user->isGuest, 'options' => ['class' => 'hidden-lg']],
+                                //['label' => 'Logout', 'url' => ['auth/logout'], 'visible' => !Yii::$app->user->isGuest, 'linkOptions' => ['data-method' => 'post'], 'options' => ['class' => 'hidden-lg']],
                             ],
                         ]);
                         ?>
@@ -135,14 +135,15 @@ AppAsset::register($this);
                                 'dropDownCaret' => '<span class="caret"></span>',
                                 'items' => [
                                     Yii::$app->user->isGuest ? (
-                                        ['label' => 'Login', 'url' => ['/site/login']]
+                                        ['label' => 'Login', 'url' => ['/auth/login']]
                                     ) : (
                                         '<li>'
-                                        . Html::beginForm(['/site/logout'], 'post', ['class' => 'navbar-form'])
+                                        . Html::beginForm(['/auth/logout'], 'post', ['class' => 'navbar-form'])
                                         . Html::submitButton(
-                                            'Logout (' . Yii::$app->user->identity->username . ')',
+                                            'Logout', // (' . Yii::$app->user->identity->username . ')',
                                             ['class' => 'btn btn-link']
                                         )
+                                        . Html::a(Html::encode(Yii::$app->user->identity->username), ['/user/profile'], ['class' => 'btn btn-link'])
                                         . Html::endForm()
                                         . '</li>'
                                     ),
