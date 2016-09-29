@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "80aa7d49eb5437ec3330482bc5d184de",
+    "hash": "fcd0432e8b21c1fc10fbfd4725b9c777",
     "content-hash": "75badec1b3cbc4ac8852aa46f7494a4d",
     "packages": [
         {
@@ -1714,12 +1714,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/yiisoft/yii2-apidoc.git",
-                "reference": "453d93514005eaa1e5b0ed3cb2b21429e1852383"
+                "reference": "f0719d0a69539b485132eed348f34980dd6029e8"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/yiisoft/yii2-apidoc/zipball/453d93514005eaa1e5b0ed3cb2b21429e1852383",
-                "reference": "453d93514005eaa1e5b0ed3cb2b21429e1852383",
+                "url": "https://api.github.com/repos/yiisoft/yii2-apidoc/zipball/f0719d0a69539b485132eed348f34980dd6029e8",
+                "reference": "f0719d0a69539b485132eed348f34980dd6029e8",
                 "shasum": ""
             },
             "require": {
@@ -1769,7 +1769,7 @@
                 "phpdoc",
                 "yii2"
             ],
-            "time": "2016-09-05 10:52:18"
+            "time": "2016-09-29 12:10:07"
         },
         {
             "name": "yiisoft/yii2-authclient",
