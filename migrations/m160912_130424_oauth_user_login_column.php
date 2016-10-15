@@ -1,8 +1,8 @@
 <?php
 
-use yii\db\Migration;
+use app\migrations\BaseMigration;
 
-class m160912_130424_oauth_user_login_column extends Migration
+class m160912_130424_oauth_user_login_column extends BaseMigration
 {
     public function up()
     {

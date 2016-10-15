@@ -19,6 +19,10 @@ $config = [
             'enableAutoLogin' => true,
             'loginUrl' => ['auth/login'],
         ],
+        'formatter' => [
+            'thousandSeparator' => '&thinsp;',
+        ],
+
         'errorHandler' => [
             'errorAction' => 'site/error',
         ],

@@ -18,7 +18,7 @@ class m150416_155923_create_comment_table extends BaseMigration
             'updated_at' => $this->dateTime(),
         ], $this->tableOptions);
 
-        $this->addForeignKey('fk-comment-user_id-user-id', '{{%comment}}', 'user_id', '{{%user}}', 'id', 'RESTRICT');
+        $this->addForeignKey('fk-comment-user_id-user-id', '{{%comment}}', 'user_id', '{{%user}}', 'id', 'RESTRICT', 'CASCADE');
         $this->createIndex('idx-comment-object_type-object_id', '{{%comment}}', ['object_type', 'object_id']);
     }
 

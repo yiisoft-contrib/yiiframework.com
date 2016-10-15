@@ -14,7 +14,7 @@ class m160908_135835_rating_table extends BaseMigration
             'created_at' => $this->dateTime()->notNull(),
             'PRIMARY KEY(user_id, object_type, object_id)'
         ], $this->tableOptions);
-        $this->addForeignKey('fk-rating-user_id-user-id', '{{%rating}}', 'user_id', '{{%user}}', 'id');
+        $this->addForeignKey('fk-rating-user_id-user-id', '{{%rating}}', 'user_id', '{{%user}}', 'id', 'RESTRICT', 'CASCADE');
 
         $this->addColumn('{{%comment}}', 'total_votes', $this->integer()->notNull()->defaultValue(0));
         $this->addColumn('{{%comment}}', 'up_votes', $this->integer()->notNull()->defaultValue(0));

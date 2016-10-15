@@ -13,6 +13,13 @@ return [
     'aliases' => [
         'yii\apidoc\templates\' . $template'
     ],
+    'controllerMap' => [
+        'migrate' => [
+            'class' => yii\console\controllers\MigrateController::class,
+            // use custom migration template
+            'templateFile' => '@app/migrations/migration_template.php',
+        ],
+    ],
     'components' => [
         'db' => $params['components.db'],
         'elasticsearch' => $params['components.elasticsearch'],

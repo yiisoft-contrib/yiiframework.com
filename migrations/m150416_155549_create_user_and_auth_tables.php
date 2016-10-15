@@ -36,7 +36,7 @@ class m150416_155549_create_user_and_auth_tables extends BaseMigration
             'source_id' => $this->string(16)->notNull(),
         ], $this->tableOptions);
 
-        $this->addForeignKey('fk-auth-user_id-user-id', '{{%auth}}', 'user_id', '{{%user}}', 'id');
+        $this->addForeignKey('fk-auth-user_id-user-id', '{{%auth}}', 'user_id', '{{%user}}', 'id', 'CASCADE', 'CASCADE');
     }
 
     public function down()

@@ -41,14 +41,24 @@ class SiteController extends Controller
     public function actionRedirect($url)
     {
         $urlMap = [
+            // documentation terms are now on the license page
             'doc/terms' => ['site/license', '#' => 'docs'],
+            // wiki has been under doc/cookbook long time ago on the old site
+            'doc/cookbook' => ['wiki/index'],
+            // about is now handled in the guide
             'about' => ['guide/view', 'type' => 'guide', 'version' => reset(Yii::$app->params['versions']['api']), 'language' => 'en', 'section' => 'intro-yii'],
+            // there is no dedicated performance page, redirect to home page
             'performance' => ['site/index'],
+            // there is no demo page anymore, redirect to home  page
             'demos' => ['site/index'],
+            // send requests to /doc directly to the guide
             'doc' => ['guide/entry'],
         ];
         if (isset($urlMap[$url])) {
             return $this->redirect($urlMap[$url], 301); // Moved Permanently
+        } elseif (preg_match('%doc/cookbook/(\d+)%', $url, $matches)) {
+            // old wiki URLs
+            return $this->redirect(['wiki/view', 'id' => $matches[1]], 301); // Moved Permanently
         } else {
             throw new NotFoundHttpException('The requested page was not found.');
         }
