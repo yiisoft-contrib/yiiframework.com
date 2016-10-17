@@ -26,4 +26,6 @@ return [
             'clientSecret' => '',
         ],
     ],
+
+    'siteAbsoluteUrl' => 'http://local.yiiframework.com'
 ];

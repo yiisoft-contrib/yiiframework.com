@@ -8,4 +8,6 @@ return [
             'scope' => 'user:email',
         ],
     ],
+
+    'siteAbsoluteUrl' => 'https://yiiframework.com'
 ];
