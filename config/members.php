@@ -162,4 +162,15 @@ return [
         'github' => 'pestaa',
         'active' => false,
     ],
+    [
+        'name' => 'Boudewijn Vahrmeijer',
+        'id' => '7384',
+        'forumName' => 'Boudewijn',
+        'memberSince' => 'October 2016',
+        'location' => 'Netherlands',
+        'duty' => 'Core framework development',
+        'photo' => '',
+        'github' => 'dynasource',
+        'active' => true,
+    ],
 ];
