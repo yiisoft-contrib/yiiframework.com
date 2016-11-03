@@ -41,6 +41,7 @@ PATHS:
     - "assets/src/js/custom.js"
     - "assets/src/js/search.js"
     - "assets/src/js/voting.js"
+    - "assets/src/js/star.js"
     - "vendor/bower/codemirror/lib/codemirror.js"
     - "vendor/bower/codemirror/mode/shell/shell.js"
     - "vendor/bower/codemirror/mode/clike/clike.js"

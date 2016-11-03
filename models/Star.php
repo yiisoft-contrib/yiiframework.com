@@ -19,6 +19,11 @@ use yii\db\Expression;
 class Star extends \yii\db\ActiveRecord
 {
     /**
+     * @var array Allow class for star
+     */
+    public static $modelClasses = [];
+
+    /**
      * @inheritdoc
      */
     public static function tableName()
@@ -160,5 +165,25 @@ class Star extends \yii\db\ActiveRecord
         return User::find()
             ->where(['star' => 1, 'object_type' => $class, 'object_id' => (int)$model->primaryKey])
             ->all();
+    }
+
+    /**
+     * Return current star value
+     *
+     * @param ActiveRecord $model
+     * @param $userID
+     *
+     * @return int
+     */
+    public static function getStarValue($model, $userID)
+    {
+        /** @var $star Star */
+        $star = static::findOne([
+            'object_type' => $model->formName(),
+            'object_id' => (int) $model->primaryKey,
+            'user_id' => $userID,
+        ]);
+
+        return $star === null ? 0 : $star->star;
     }
 }
