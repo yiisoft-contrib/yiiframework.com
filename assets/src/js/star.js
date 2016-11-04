@@ -6,8 +6,6 @@ $(function($) {
             method: 'post',
             dataType: 'json',
             success: function(data) {
-                var wrapper = el.parents('.star-wrapper');
-
                 el.removeClass('icon-star icon-star-empty');
                 if (data['star'] == 1) {
                     el.addClass('icon-star');
