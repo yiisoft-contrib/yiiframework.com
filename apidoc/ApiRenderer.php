@@ -138,6 +138,8 @@ class ApiRenderer extends \yii\apidoc\templates\html\ApiRenderer
             case 'yii':
                 if ($type->name == 'Yii') {
                     $url = '/framework/Yii.php';
+                } elseif ($type->name == 'YiiRequirementChecker') {
+                    $url = '/framework/requirements/YiiRequirementChecker.php';
                 } else {
                     $url = '/framework/' . str_replace('\\', '/', substr($type->name, 4)) . '.php';
                 }
