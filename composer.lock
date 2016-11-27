@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "fcd0432e8b21c1fc10fbfd4725b9c777",
-    "content-hash": "75badec1b3cbc4ac8852aa46f7494a4d",
+    "hash": "4c9d35de85af03196f1e1e300ae3baf0",
+    "content-hash": "b4fc2c35ed319e09a15c4db161cf5340",
     "packages": [
         {
             "name": "2amigos/yii2-selectize-widget",
@@ -1120,7 +1120,6 @@
                 "rest",
                 "web service"
             ],
-            "abandoned": "guzzlehttp/guzzle",
             "time": "2015-03-18 18:23:50"
         },
         {
@@ -1430,6 +1429,44 @@
             "time": "2015-02-03 12:10:50"
         },
         {
+            "name": "phpspec/php-diff",
+            "version": "v1.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/phpspec/php-diff.git",
+                "reference": "0464787bfa7cd13576c5a1e318709768798bec6a"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/phpspec/php-diff/zipball/0464787bfa7cd13576c5a1e318709768798bec6a",
+                "reference": "0464787bfa7cd13576c5a1e318709768798bec6a",
+                "shasum": ""
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-0": {
+                    "Diff": "lib/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-3-Clause"
+            ],
+            "authors": [
+                {
+                    "name": "Chris Boulton",
+                    "homepage": "http://github.com/chrisboulton"
+                }
+            ],
+            "description": "A comprehensive library for generating differences between two hashable objects (strings or arrays).",
+            "time": "2016-04-07 12:29:16"
+        },
+        {
             "name": "psr/log",
             "version": "1.0.0",
             "source": {
@@ -1714,12 +1751,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/yiisoft/yii2-apidoc.git",
-                "reference": "f0719d0a69539b485132eed348f34980dd6029e8"
+                "reference": "b4c3a1d26f2b5fd682d552c11f2e33b74f3568b1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/yiisoft/yii2-apidoc/zipball/f0719d0a69539b485132eed348f34980dd6029e8",
-                "reference": "f0719d0a69539b485132eed348f34980dd6029e8",
+                "url": "https://api.github.com/repos/yiisoft/yii2-apidoc/zipball/b4c3a1d26f2b5fd682d552c11f2e33b74f3568b1",
+                "reference": "b4c3a1d26f2b5fd682d552c11f2e33b74f3568b1",
                 "shasum": ""
             },
             "require": {
@@ -1769,7 +1806,7 @@
                 "phpdoc",
                 "yii2"
             ],
-            "time": "2016-09-29 12:10:07"
+            "time": "2016-11-15 22:39:28"
         },
         {
             "name": "yiisoft/yii2-authclient",
@@ -2188,44 +2225,6 @@
                 "fixtures"
             ],
             "time": "2016-04-29 12:21:54"
-        },
-        {
-            "name": "phpspec/php-diff",
-            "version": "v1.1.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/phpspec/php-diff.git",
-                "reference": "0464787bfa7cd13576c5a1e318709768798bec6a"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/phpspec/php-diff/zipball/0464787bfa7cd13576c5a1e318709768798bec6a",
-                "reference": "0464787bfa7cd13576c5a1e318709768798bec6a",
-                "shasum": ""
-            },
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "1.0.x-dev"
-                }
-            },
-            "autoload": {
-                "psr-0": {
-                    "Diff": "lib/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "BSD-3-Clause"
-            ],
-            "authors": [
-                {
-                    "name": "Chris Boulton",
-                    "homepage": "http://github.com/chrisboulton"
-                }
-            ],
-            "description": "A comprehensive library for generating differences between two hashable objects (strings or arrays).",
-            "time": "2016-04-07 12:29:16"
         },
         {
             "name": "yiisoft/yii2-debug",

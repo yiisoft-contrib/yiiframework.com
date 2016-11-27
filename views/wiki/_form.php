@@ -14,35 +14,43 @@ use yii\widgets\ActiveForm;
 
     <?php $form = ActiveForm::begin(); ?>
 
-    <p class="note">Fields with <span class="required">*</span> are required.</p>
+    <div class="row">
+        <div class="col-md-9">
 
-    <?= $form->field($model, 'title') ?>
-    <?= $form->field($model, 'category_id')->dropDownList(WikiCategory::getSelectData(), ['prompt' => 'Please select...']) ?>
-    <?= $form->field($model, 'yii_version')
-        ->dropDownList(['2.0' => 'Version 2.0', '1.1' => 'Version 1.1', 'all' => 'Version independent'], ['prompt' => 'Please select...'])
-        ->hint('Please select the Yii version for this article if the content is valid only for a specific version of Yii.')
-    ?>
+            <?= $form->field($model, 'title') ?>
 
-    <?= $form->field($model, 'tagNames')->widget(SelectizeTextInput::className(), [
-        // calls an action that returns a JSON object with matched
-        // tags
-        'loadUrl' => ['wiki/list-tags'],
-        'options' => ['class' => 'form-control'],
-        'clientOptions' => [
-            'plugins' => ['remove_button'],
-            'valueField' => 'name',
-            'labelField' => 'name',
-            'searchField' => ['name'],
-            'create' => true,
-        ],
-    ])->hint('Use commas to separate tags') ?>
+            <?= $form->field($model, 'content')->textarea() //TODO markdown editor! y-resizeable ?>
+
+            <?php if (!$model->isNewRecord): ?>
+                <?= $form->field($model, 'memo')->hint('Give a short summary of what you changed.') ?>
+            <?php endif; ?>
 
 
-    <?= $form->field($model, 'content')->textarea() //TODO markdown editor! ?>
+        </div>
+        <div class="col-md-3">
 
-    <?php if (!$model->isNewRecord): ?>
-        <?= $form->field($model, 'memo')->hint('Give a short summary of what you changed.') ?>
-    <?php endif; ?>
+            <?= $form->field($model, 'category_id')->dropDownList(WikiCategory::getSelectData(), ['prompt' => 'Please select...']) ?>
+            <?= $form->field($model, 'yii_version')
+                ->dropDownList(['2.0' => 'Version 2.0', '1.1' => 'Version 1.1', 'all' => 'Version independent'], ['prompt' => 'Please select...'])
+                ->hint('Please select the Yii version for this article if the content is valid only for a specific version of Yii.')
+            ?>
+
+            <?= $form->field($model, 'tagNames')->widget(SelectizeTextInput::className(), [
+                // calls an action that returns a JSON object with matched
+                // tags
+                'loadUrl' => ['wiki/list-tags'],
+                'options' => ['class' => 'form-control'],
+                'clientOptions' => [
+                    'plugins' => ['remove_button'],
+                    'valueField' => 'name',
+                    'labelField' => 'name',
+                    'searchField' => ['name'],
+                    'create' => true,
+                ],
+            ])->hint('Use commas to separate tags') ?>
+
+        </div>
+    </div>
 
 
     <div class="form-group">

@@ -3,6 +3,8 @@
 namespace app\controllers;
 
 use app\models\Wiki;
+use app\models\WikiCategory;
+use app\models\WikiRevision;
 use app\models\WikiTag;
 use Yii;
 use yii\data\ActiveDataProvider;
@@ -26,11 +28,11 @@ class WikiController extends Controller
                     [
                         // allow all to a access index and view action
                         'allow' => true,
-                        'actions' => ['index', 'view'],
+                        'actions' => ['index', 'view', 'history', 'revision'],
                     ],
                     [
                         'allow' => true,
-                        'actions' => ['create', 'list-tags'],
+                        'actions' => ['create', 'list-tags', 'update'],
                         'roles' => ['@'],
                     ],
 //                    [
@@ -53,6 +55,16 @@ class WikiController extends Controller
 
     public function actionIndex($category = null, $tag = null)
     {
+        $query = Wiki::find()->with(['creator', 'updater']);
+
+        if ($category !== null) {
+            $category = (int) $category;
+            if (WikiCategory::findOne($category) === null) {
+                throw new NotFoundHttpException('The requested category does not exist.');
+            }
+            $query->andWhere(['category_id' => $category]);
+        }
+
 //        $criteria=new CDbCriteria;
 //        $criteria->addCondition('t.status='.self::STATUS_PUBLISHED);
 //        if(isset($filters['category']))
@@ -64,93 +76,70 @@ class WikiController extends Controller
 //        }
 
         $dataProvider = new ActiveDataProvider([
-            'query' => Wiki::find()->with(['creator', 'updater']),
-//            'sort'=> [
-//                'attributes'=> [
-//                    'create'=> [
-//                        'asc'=>'t.create_time',
-//                        'desc'=>'t.create_time DESC',
-//                        'label'=>'Sorted by date',
-//                        'default'=>'desc',
-//                    ],
-//                    'update'=> [
-//                        'asc'=>'t.update_time',
-//                        'desc'=>'t.update_time DESC',
-//                        'label'=>'Sorted by date (updated)',
-//                        'default'=>'desc',
-//                    ],
-//                    'rating'=> [
-//                        'asc'=>'t.rating',
-//                        'desc'=>'t.rating DESC',
-//                        'label'=>'Sorted by rating',
-//                        'default'=>'desc',
-//                    ],
-//                    'comments'=> [
-//                        'asc'=>'t.comment_count',
-//                        'desc'=>'t.comment_count DESC',
-//                        'label'=>'Sorted by comments',
-//                        'default'=>'desc',
-//                    ],
-//                    'views'=> [
-//                        'asc'=>'t.view_count',
-//                        'desc'=>'t.view_count DESC',
-//                        'label'=>'Sorted by views',
-//                        'default'=>'desc',
-//                    ],
-//                ],
-//                'defaultOrder'=> ['create'=>true],
-//            ],
+            'query' => $query,
+            'sort'=> [
+                'attributes'=> [
+                    'create'=> [
+                        'asc'=>['created_at' => SORT_ASC],
+                        'desc'=>['created_at' => SORT_DESC],
+                        'label'=>'Sorted by date',
+                        'default'=>'desc',
+                    ],
+                    'update'=> [
+                        'asc'=>['updated_at' => SORT_ASC],
+                        'desc'=>['updated_at' => SORT_DESC],
+                        'label'=>'Sorted by date (updated)',
+                        'default'=>'desc',
+                    ],
+                    'rating'=> [
+                        'asc'=>['rating' => SORT_ASC],
+                        'desc'=>['rating' => SORT_DESC],
+                        'label'=>'Sorted by rating',
+                        'default'=>'desc',
+                    ],
+                    'comments'=> [
+                        'asc'=>['comment_count' => SORT_ASC],
+                        'desc'=>['comment_count' => SORT_DESC],
+                        'label'=>'Sorted by comments',
+                        'default'=>'desc',
+                    ],
+                    'views'=> [
+                        'asc'=>['view_count' => SORT_ASC],
+                        'desc'=>['view_count' => SORT_DESC],
+                        'label'=>'Sorted by views',
+                        'default'=>'desc',
+                    ],
+                ],
+                'defaultOrder'=> ['create'=>SORT_DESC],
+            ],
         ]);
 
 
         return $this->render('index', [
             'dataProvider' => $dataProvider,
             'tag' => $tag,
-            'category' => '', //isset($category) ? Lookup::item('WikiCategory',$category) : null,
+            'category' => $category,
         ]);
     }
 
-    public function actionView($id)
+    public function actionView($id, $revision = null)
     {
-        $model = $this->findModel($id);
+        $revision = empty($revision) ? null : (int) $revision;
+
+        $model = $this->findModel($id, $revision);
 
         // normalize slug URL
         $slug = Yii::$app->request->get('name');
         if ($model->slug !== $slug) {
-            return $this->redirect(['wiki/view', 'id' => $model->id, 'name' => $model->slug], 301);
+            return $this->redirect(['wiki/view', 'id' => $model->id, 'name' => $model->slug, 'revision' => $revision], 301);
         }
 
         // update view count
         $model->updateCounters(['view_count' => 1]);
 
-
-        // TODO
-        //$model->incrementViewCount();
-
-//        $content=preg_replace_callback('!<h(2|3)>(.+?)</h\d>!', array($this, 'processHeadings'), $model->htmlContent);
-//        if(count($this->headings)>=2 && strlen($content)>5000) // sufficiently long
-//        {
-//            $toc=array();
-//            foreach($this->headings as $heading)
-//                $toc[]="<div class=\"ref level-{$heading['level']}\">".l($heading['title'],'#'.$heading['id']).'</div>';
-//            $content='<div class="toc">'.implode("\n",$toc)."</div>\n".$content;
-//        }
-
         return $this->render('view', [
             'model' => $model,
         ]);
-    }
-
-    protected $headings=array();
-    protected function processHeadings($match)
-    {
-        $level = intval($match[1]);
-        $id = 'hh'.count($this->headings);
-        $title = $match[2];
-
-        $this->headings[] = array('title' => $title, 'id' => $id, 'level'=>$level);
-        $anchor = sprintf('<a class="anchor" href="#%s">¶</a>', $id);
-        return sprintf('<h%d id="%s">%s %s</h%d>', $level, $id, $title, $anchor, $level);
     }
 
     public function actionCreate()
@@ -160,6 +149,7 @@ class WikiController extends Controller
 //            throw new CHttpException(403,'Sorry, you are too new to write a wiki article. Please try posting it in our forum first.');
 
         $model = new Wiki();
+        $model->scenario = 'create';
 
         if ($model->load(\Yii::$app->request->post()) && $model->save()) {
 
@@ -168,46 +158,43 @@ class WikiController extends Controller
         }
 
         return $this->render('create',array(
-            'model'=>$model,
+            'model' => $model,
         ));
     }
 
     public function actionUpdate($id,$revision=0)
     {
-        if(user()->isGuest)
-            user()->loginRequired();
+        // TODO
+//        if(!user()->dbUser->canCreateWiki())
+//            throw new CHttpException(403,'Sorry, you are too new to write a wiki article. Please try posting it in our forum first.');
 
-        if(!user()->dbUser->canCreateWiki())
-            throw new CHttpException(403,'Sorry, you are too new to write a wiki article. Please try posting it in our forum first.');
+        $model = $this->findModel($id);
+        $model->scenario = 'update';
 
-        $model=$this->loadModel('Wiki',$id);
-        if(isset($_POST['Wiki']))
-        {
-            $oldAttributes=$model->attributes;
-            $model->attributes=$_POST['Wiki'];
-            if($model->save())
-            {
-                if(($changes=$model->findChanges($oldAttributes))!='')
-                    $model->notifyFollowers($changes);
-                Star::model()->castStar('Wiki',$model->id,user()->id,1);
-                $this->redirect($model->url);
-            }
-        }
-        else if(($revision=(int)$revision)!==0)
-        {
-            $rev=WikiRevision::model()->findByPk(array('wiki_id'=>$model->id,'revision'=>$revision));
-            if($rev!==null)
-            {
-                $model->title=$rev->title;
-                $model->content=$rev->content;
-                $model->tags=$rev->tags;
-                $model->memo='Reverted to revision #'.$rev->revision;
-                $model->category_id=$rev->category_id;
-            }
+        if ($model->load(\Yii::$app->request->post()) && $model->save()) {
+
+//            if(($changes=$model->findChanges($oldAttributes))!='')
+//                $model->notifyFollowers($changes);
+
+//            Star::model()->castStar('Wiki',$model->id,user()->id,1);
+            return $this->redirect(['view', 'id' => $model->id]);
         }
 
-        $this->render('update',array(
-            'model'=>$model,
+//        else if(($revision=(int)$revision)!==0)
+//        {
+//            $rev=WikiRevision::model()->findByPk(array('wiki_id'=>$model->id,'revision'=>$revision));
+//            if($rev!==null)
+//            {
+//                $model->title=$rev->title;
+//                $model->content=$rev->content;
+//                $model->tags=$rev->tags;
+//                $model->memo='Reverted to revision #'.$rev->revision;
+//                $model->category_id=$rev->category_id;
+//            }
+//        }
+
+        return $this->render('update',array(
+            'model' => $model,
         ));
     }
 
@@ -230,41 +217,51 @@ class WikiController extends Controller
 
     public function actionHistory($id)
     {
-        $model=$this->loadModel('Wiki',$id);
-        $this->render('history',array(
+        $model = $this->findModel($id);
+
+        return $this->render('history', [
             'model'=>$model,
-            'revisions'=>$model->revisions,
-        ));
+            'dataProvider' => new ActiveDataProvider([
+                'query' => $model->getRevisions(),
+                'pagination' => false,
+                'sort' => [
+                    'defaultOrder' => ['updated_at' => SORT_DESC],
+                ]
+            ])
+        ]);
     }
 
-    public function actionRevision($id,$r1,$r2=0)
+    public function actionRevision($id, $r1 = null, $r2 = null, array $r = [])
     {
-        $model=$this->loadModel('Wiki',$id);
-
-        $r1=(int)$r1;
-        $r2=(int)$r2;
-        $left=WikiRevision::model()->findByPk(array('wiki_id'=>$model->id,'revision'=>$r1));
-        if($left===null)
-            throw new CHttpException(404,"Unable to find the revision $r1.");
-        if($r2==0) // compare with prior revision
-        {
-            if(($right=$left->findPriorRevision())===null)
-                $right=$left->findNextRevision();
-            if($right===null)
-                $this->redirect($model->url);
-        }
-        else
-        {
-            $right=WikiRevision::model()->findByPk(array('wiki_id'=>$model->id,'revision'=>$r2));
-            if($right===null)
-                throw new CHttpException(404,"Unable to find the revision $r2.");
+        // if input revisions are given as array
+        if (is_array($r) && count($r) == 2) {
+            asort($r);
+            list($r1, $r2) = array_values($r);
         }
 
-        $this->render('revision',array(
-            'model'=>$model,
-            'left'=>$left,
-            'right'=>$right,
-        ));
+        $left = WikiRevision::findOne(['wiki_id' => $id, 'revision' => $r1]);
+        if ($left === null) {
+            throw new NotFoundHttpException('The requested revision does not exist.');
+        }
+        $model = $left->wiki;
+
+        if ($r2 !== null) {
+            $right = WikiRevision::findOne(['wiki_id' => $id, 'revision' => $r2]);
+            if ($right === null) {
+                throw new NotFoundHttpException('The requested revision does not exist.');
+            }
+        } else {
+            $right = WikiRevision::findOne(['wiki_id' => $id, 'revision' => $r1 - 1]);
+        }
+        if ($right === null) {
+            return $this->redirect(['view', 'id' => $model->id, 'name' => $model->slug]);
+        }
+
+        return $this->render('revision', [
+            'model' => $model,
+            'left' => $left,
+            'right' => $right,
+        ]);
     }
 
 
@@ -275,12 +272,25 @@ class WikiController extends Controller
      * @return Wiki the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
-    protected function findModel($id)
+    protected function findModel($id, $revision = null)
     {
         if (($model = Wiki::findOne($id)) !== null) {
-            return $model;
-        } else {
-            throw new NotFoundHttpException('The requested page does not exist.');
+
+            Yii::trace(print_r($model->attributes, true));
+
+            if ($revision === null) {
+                return $model;
+            } else {
+                $revisionModel = WikiRevision::findOne(['wiki_id' => $model->id, 'revision' => (int) $revision]);
+                if ($revisionModel !== null) {
+
+                    Yii::trace(print_r($revisionModel->attributes, true));
+                    $model->loadRevision($revisionModel);
+                    Yii::trace(print_r($model->attributes, true));
+                    return $model;
+                }
+            }
         }
+        throw new NotFoundHttpException('The requested page does not exist.');
     }
 }

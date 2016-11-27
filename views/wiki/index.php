@@ -21,7 +21,10 @@ $this->params['breadcrumbs'][] = $this->title;
 <div class="container guide-view lang-en" xmlns="http://www.w3.org/1999/xhtml">
     <div class="row">
         <div class="col-sm-3 col-md-2 col-lg-2">
-            <?= $this->render('_sidebar') ?>
+            <?= $this->render('_sidebar', [
+                'category' => $category,
+                'sort' => $dataProvider->sort,
+            ]) ?>
         </div>
 
         <div class="col-sm-9 col-md-10 col-lg-10" role="main">
@@ -31,7 +34,14 @@ $this->params['breadcrumbs'][] = $this->title;
                 'itemView' => '_view',
             ]) ?>
 
-<!-- delete from here -->
+<!-- delete from here -- >
+Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+
             <div class="row">
                 <div class="col-md-12 col-lg-9">
                     <div class="content wiki-row">

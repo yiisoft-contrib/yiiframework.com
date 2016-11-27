@@ -3,6 +3,7 @@
 namespace app\models;
 
 use Yii;
+use yii\db\ActiveQuery;
 use yii\helpers\ArrayHelper;
 
 /**
@@ -16,6 +17,8 @@ use yii\helpers\ArrayHelper;
  */
 class WikiCategory extends \yii\db\ActiveRecord
 {
+    public $count;
+
     /**
      * @inheritdoc
      */
@@ -59,5 +62,15 @@ class WikiCategory extends \yii\db\ActiveRecord
     public static function getSelectData()
     {
         return ArrayHelper::map(static::find()->orderBy(['name' => SORT_ASC])->asArray()->all(), 'id', 'name');
+    }
+
+    /**
+     * @return ActiveQuery
+     */
+    public static function findWithCountData()
+    {
+        return static::find()->alias('c')->joinWith('wikis')
+            ->select(['c.id', 'c.name', 'COUNT(*) AS count'])
+            ->groupBy(['c.id', 'c.name']);
     }
 }
