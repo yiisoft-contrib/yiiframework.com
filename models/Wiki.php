@@ -179,9 +179,17 @@ class Wiki extends \yii\db\ActiveRecord
 
     public function getTeaser()
     {
-        $teaser = reset(preg_split("/\n\s+\n/", $this->content, -1, PREG_SPLIT_NO_EMPTY));
-        $teaser = StringHelper::truncate($teaser, 400);
-        return Markdown::process($teaser, 'gfm');
+        $paragraphs = preg_split("/\n\s+\n/", $this->content, -1, PREG_SPLIT_NO_EMPTY);
+        while(count($paragraphs) > 0) {
+            $teaser = array_shift($paragraphs);
+            $teaser = StringHelper::truncate($teaser, 400);
+            $html = Markdown::process($teaser, 'gfm');
+            // do not use as teaser if the element in this block is a HTML block element
+            if (!preg_match('~^<(blockquote|h\d|pre)~', $html)) {
+                return $html;
+            }
+        }
+        return '';
     }
 
 
