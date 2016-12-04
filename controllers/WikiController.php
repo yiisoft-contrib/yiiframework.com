@@ -78,13 +78,6 @@ class WikiController extends Controller
 
 //        $criteria=new CDbCriteria;
 //        $criteria->addCondition('t.status='.self::STATUS_PUBLISHED);
-//        if(isset($filters['category']))
-//            $criteria->compare('t.category_id', (int)$filters['category']);
-//        if(isset($filters['tag']))
-//        {
-//            $criteria->addCondition("CONCAT(', ',tags,',') LIKE :tag");
-//            $criteria->params[':tag']='%, '.strtr($filters['tag'],array('%'=>'\%', '_'=>'\_', '\\'=>'\\\\')).',%';
-//        }
 
         $dataProvider = new ActiveDataProvider([
             'query' => $query,
@@ -125,7 +118,6 @@ class WikiController extends Controller
             ],
         ]);
 
-
         return $this->render('index', [
             'dataProvider' => $dataProvider,
             'tag' => $tagModel,
@@ -156,7 +148,7 @@ class WikiController extends Controller
 
     public function actionCreate()
     {
-        // TODO
+        // TODO permission
 //        if(!user()->dbUser->canCreateWiki())
 //            throw new CHttpException(403,'Sorry, you are too new to write a wiki article. Please try posting it in our forum first.');
 
@@ -165,7 +157,7 @@ class WikiController extends Controller
 
         if ($model->load(\Yii::$app->request->post()) && $model->save()) {
 
-//            Star::model()->castStar('Wiki',$model->id,user()->id,1);
+            Star::castStar($model, Yii::$app->user->id, 1);
             return $this->redirect(['view', 'id' => $model->id]);
         }
 
@@ -176,7 +168,7 @@ class WikiController extends Controller
 
     public function actionUpdate($id, $revision = null)
     {
-        // TODO
+        // TODO permission
 //        if(!user()->dbUser->canCreateWiki())
 //            throw new CHttpException(403,'Sorry, you are too new to write a wiki article. Please try posting it in our forum first.');
 
@@ -190,7 +182,7 @@ class WikiController extends Controller
 
         if ($model->load(\Yii::$app->request->post()) && $model->save()) {
 
-            // TODO
+            // TODO notification email for followers
 //            if(($changes=$model->findChanges($oldAttributes))!='')
 //                $model->notifyFollowers($changes);
 

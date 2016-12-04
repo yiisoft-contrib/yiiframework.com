@@ -21,9 +21,9 @@ use yii\helpers\Html;
     </ul-->
 
     <?= \yii\widgets\LinkSorter::widget([
-        'sort' => $sort, // TODO add active state when selected
+        'sort' => $sort,
         'options' => [
-            'class' => 'wiki-side-menu',
+            'class' => 'wiki-side-menu sorter',
         ],
     ]) ?>
 

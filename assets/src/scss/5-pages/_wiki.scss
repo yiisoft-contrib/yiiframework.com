@@ -64,7 +64,10 @@ ul.wiki-side-menu {
     display: inline;
     color: #808080;
   }
-  li.active a, li.active a:hover {
+  li a.asc, li a.asc:hover,
+  li a.desc, li a.desc:hover,
+  li.active a, li.active a:hover
+  {
     background-color: #70c1b3;
     color: #fff;
   }
