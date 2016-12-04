@@ -19,7 +19,7 @@ use yii\widgets\ActiveForm;
 
             <?= $form->field($model, 'title') ?>
 
-            <?= $form->field($model, 'content')->textarea() //TODO markdown editor! y-resizeable ?>
+            <?= $form->field($model, 'content')->textarea(['class' => 'markdown-editor']) ?>
 
             <?php if (!$model->isNewRecord): ?>
                 <?= $form->field($model, 'memo')->hint('Give a short summary of what you changed.') ?>
@@ -56,6 +56,7 @@ use yii\widgets\ActiveForm;
     <div class="form-group">
         <?= Html::submitButton('Submit', ['class' => 'btn btn-primary']) ?>
         <a class="g-markdown-preview" href="#" rel="#wiki_content">Preview</a>
+        <?= Html::a('Abort', ['view', 'id' => $model->id, 'name' => $model->slug], ['class' => 'btn btn-danger']) ?>
     </div>
     <?php ActiveForm::end(); ?>
 

@@ -28,7 +28,6 @@ $this->params['breadcrumbs'][] = $this->title;
 
         <div class="col-sm-9 col-md-10 col-lg-10" role="main">
 
-            <!-- delete from here -->
             <div class="row">
                 <div class="col-md-12 col-lg-9">
                     <div class="content wiki-row">
@@ -39,7 +38,7 @@ $this->params['breadcrumbs'][] = $this->title;
                     </div>
                 </div>
                 <div class="col-md-12 col-lg-3">
-                    <?= $this->render('_metadata.php', ['model' => $model]) ?>
+                    <?= $this->render('_metadata.php', ['model' => $model, 'extended' => true]) ?>
 
                     <?= Html::a('Update Article', ['wiki/update', 'id' => $model->id])?>
 

@@ -93,7 +93,7 @@ AppAsset::register($this);
                             'items' => [
                                 ['label' => 'Guide', 'url' => ['guide/entry'], 'options' => ['title' => 'The Definitive Guide to Yii'], 'active' => ($controller == 'guide')],
                                 ['label' => 'API', 'url' => ['api/index', 'version' => reset(Yii::$app->params['versions']['api'])], 'options' => ['title' => 'API Documentation'], 'active' => ($controller == 'api')],
-                                ['label' => 'Wiki', 'url' => ['wiki/index'], 'options' => ['title' => 'Community Wiki']],
+                                ['label' => 'Wiki', 'url' => ['wiki/index'], 'options' => ['title' => 'Community Wiki'], 'active' => ($controller == 'wiki')],
                                 ['label' => 'Extensions', 'url' => ['extension/index'], 'options' => ['title' => 'Extensions']],
                                 ['label' => 'Community', 'items' => [
                                     ['label' => 'Forum', 'url' => '@web/forum', 'options' => ['title' => 'Community Forum']],

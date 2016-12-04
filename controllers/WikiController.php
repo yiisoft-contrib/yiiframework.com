@@ -55,7 +55,7 @@ class WikiController extends Controller
 
     public function actionIndex($category = null, $tag = null)
     {
-        $query = Wiki::find()->with(['creator', 'updater']);
+        $query = Wiki::find()->with(['creator', 'updater', 'category']);
 
         if ($category !== null) {
             $category = (int) $category;
@@ -63,6 +63,16 @@ class WikiController extends Controller
                 throw new NotFoundHttpException('The requested category does not exist.');
             }
             $query->andWhere(['category_id' => $category]);
+        }
+
+        $tagModel = null;
+        if ($tag !== null) {
+            $tagModel = WikiTag::findOne(['slug' => $tag]);
+            if ($tagModel === null) {
+                throw new NotFoundHttpException('The requested tag does not exist.');
+            }
+            $query->joinWith('tags', false);
+            $query->andWhere(['wiki_tag_id' => $tagModel->id]);
         }
 
 //        $criteria=new CDbCriteria;
@@ -117,7 +127,7 @@ class WikiController extends Controller
 
         return $this->render('index', [
             'dataProvider' => $dataProvider,
-            'tag' => $tag,
+            'tag' => $tagModel,
             'category' => $category,
         ]);
     }

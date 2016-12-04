@@ -23,7 +23,7 @@ use yii\helpers\Html;
         </div>
     </div>
     <div class="col-md-12 col-lg-3">
-        <?= $this->render('_metadata.php', ['model' => $model]) ?>
+        <?= $this->render('_metadata.php', ['model' => $model, 'extended' => false]) ?>
     </div>
 </div>
 

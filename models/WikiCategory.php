@@ -34,8 +34,8 @@ class WikiCategory extends \yii\db\ActiveRecord
     {
         return [
             [['name'], 'required'],
-            [['sequence'], 'integer'],
             [['name'], 'string', 'max' => 255],
+            [['sequence'], 'integer'],
         ];
     }
 

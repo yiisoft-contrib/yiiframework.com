@@ -133,7 +133,7 @@ ul.wiki-side-menu {
       }
     }
   }
-  .viewed, .version, .group, .tags {
+  .viewed, .version, .group, .tags, .people, .dates {
     color: #959595;
   }
 }
@@ -159,4 +159,10 @@ nav.wiki-pagination-holder {
       border-color: #e8f4ec;
     }
   }
+}
+#wiki-content {
+  resize: vertical;
+  min-width: 100%;
+  max-width: 100%;
+  min-height: 350px;
 }

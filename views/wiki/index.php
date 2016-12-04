@@ -3,6 +3,8 @@
 use yii\helpers\Html;
 
 /** @var $dataProvider \yii\data\ActiveDataProvider */
+/** @var $category string */
+/** @var $tag \app\models\WikiTag */
 
 
 $this->title = 'Wiki';
@@ -23,6 +25,7 @@ $this->params['breadcrumbs'][] = $this->title;
         <div class="col-sm-3 col-md-2 col-lg-2">
             <?= $this->render('_sidebar', [
                 'category' => $category,
+                'tag' => $tag,
                 'sort' => $dataProvider->sort,
             ]) ?>
         </div>

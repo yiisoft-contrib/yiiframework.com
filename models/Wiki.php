@@ -5,6 +5,7 @@ namespace app\models;
 use app\components\SluggableBehavior;
 use dosamigos\taggable\Taggable;
 use Yii;
+use yii\apidoc\helpers\ApiMarkdown;
 use yii\behaviors\BlameableBehavior;
 use yii\behaviors\TimestampBehavior;
 use yii\db\Expression;
@@ -31,6 +32,8 @@ use yii\helpers\StringHelper;
  * @property User $creator
  * @property WikiRevision[] $revisions
  * @property WikiRevision[] $latestRevisions
+ *
+ * @property string $contentHtml
  */
 class Wiki extends \yii\db\ActiveRecord
 {
@@ -115,7 +118,7 @@ class Wiki extends \yii\db\ActiveRecord
         $revision = new WikiRevision(['scenario' => 'create']);
         $revision->wiki_id = $this->id;
         $revision->setAttributes($this->attributes);
-        $revision->memo = $this->memo;
+        $revision->memo = $insert ? null : $this->memo;
         $revision->save(false);
 
         return parent::afterSave($insert, $changedAttributes);
@@ -167,8 +170,10 @@ class Wiki extends \yii\db\ActiveRecord
 //            $content='<div class="toc">'.implode("\n",$toc)."</div>\n".$content;
 //        }
 
+        // TODO replace h tags
+
         // TODO HTML Purify
-        return Markdown::process($this->content, 'gfm');
+        return ApiMarkdown::process($this->content);
     }
 
     public function getTeaser()
@@ -223,6 +228,14 @@ class Wiki extends \yii\db\ActiveRecord
     {
         // this relation skips selecting content from the table for performance reasons
         return $this->getRevisions()->select(['wiki_id', 'revision', 'updater_id', 'updated_at', 'memo'])->limit(10);
+    }
+
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getCategory()
+    {
+        return $this->hasOne(WikiCategory::className(), ['id' => 'category_id']);
     }
 
     /**

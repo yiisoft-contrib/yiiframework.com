@@ -62,7 +62,7 @@ class m161012_085513_wiki_tables extends BaseMigration
             'category_id' => $this->integer()->notNull(),
 
             // note about what has changed
-            'memo' => $this->string(255)->notNull(),
+            'memo' => $this->string(255),
 
             'updater_id' => $this->integer(),
             'updated_at' => $this->dateTime(),
