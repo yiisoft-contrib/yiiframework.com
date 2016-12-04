@@ -46,15 +46,27 @@ $this->params['breadcrumbs'][] = $this->title;
                                         return ['value' => $model->revision];
                                     },
                                 ],
-                                'revision',
+                                'revision:integer:#',
                                 [
                                     'attribute' => 'memo',
                                     'content' => function($model) {
                                         return Html::a(empty($model->memo) ? Yii::$app->formatter->asText(null) : Html::encode($model->memo), ['wiki/view', 'id' => $model->wiki_id, 'revision' => $model->revision]);
                                     },
                                 ],
-                                'updater_id',
-                                'updated_at:datetime'
+                                'updater.rankLink:raw:Updater',
+                                'updated_at:datetime',
+                                [
+                                    'label' => 'Actions',
+                                    'content' => function($model) {
+                                        return implode("<br>\n", [
+                                            Html::a('view diff', ['wiki/revision', 'id' => $model->wiki_id, 'r1' => $model->revision]),
+                                            Html::a('revert to', ['wiki/update', 'id' => $model->wiki_id, 'revision' => $model->revision]),
+                                        ]);
+                                    },
+                                    'contentOptions' => [
+                                        'class' => 'action-column',
+                                    ]
+                                ]
                             ],
                         ]) ?>
 

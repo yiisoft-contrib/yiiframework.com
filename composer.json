@@ -24,7 +24,7 @@
         "knplabs/github-api": "~1.2",
 
         "scrivo/highlight.php": "8.*",
-        "phpspec/php-diff": "^1.1",
+        "yetanotherape/diff-match-patch": "~1.0.0",
 
         "imagine/imagine": "^0.6.3",
 

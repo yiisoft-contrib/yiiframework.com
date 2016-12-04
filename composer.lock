@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "158c70bf59daf81ec1eea5960d0da641",
-    "content-hash": "e8ed00525064084a0aba2c9859f1e307",
+    "hash": "1125f36e45438db4914df28f66db8937",
+    "content-hash": "95fcc19f794f437c7c83fc92254b3e1c",
     "packages": [
         {
             "name": "2amigos/yii2-selectize-widget",
@@ -1430,44 +1430,6 @@
             "time": "2015-02-03 12:10:50"
         },
         {
-            "name": "phpspec/php-diff",
-            "version": "v1.1.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/phpspec/php-diff.git",
-                "reference": "0464787bfa7cd13576c5a1e318709768798bec6a"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/phpspec/php-diff/zipball/0464787bfa7cd13576c5a1e318709768798bec6a",
-                "reference": "0464787bfa7cd13576c5a1e318709768798bec6a",
-                "shasum": ""
-            },
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "1.0.x-dev"
-                }
-            },
-            "autoload": {
-                "psr-0": {
-                    "Diff": "lib/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "BSD-3-Clause"
-            ],
-            "authors": [
-                {
-                    "name": "Chris Boulton",
-                    "homepage": "http://github.com/chrisboulton"
-                }
-            ],
-            "description": "A comprehensive library for generating differences between two hashable objects (strings or arrays).",
-            "time": "2016-04-07 12:29:16"
-        },
-        {
             "name": "psr/log",
             "version": "1.0.2",
             "source": {
@@ -1703,6 +1665,59 @@
             "time": "2016-10-13 01:43:15"
         },
         {
+            "name": "yetanotherape/diff-match-patch",
+            "version": "v1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/yetanotherape/diff-match-patch.git",
+                "reference": "8096755ec6592b154ceb2b577577477ce69aadb4"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/yetanotherape/diff-match-patch/zipball/8096755ec6592b154ceb2b577577477ce69aadb4",
+                "reference": "8096755ec6592b154ceb2b577577477ce69aadb4",
+                "shasum": ""
+            },
+            "require": {
+                "ext-mbstring": "*",
+                "lib-iconv": "*",
+                "php": ">=5.3"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "3.7.*"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-0": {
+                    "DiffMatchPatch": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "Apache-2.0"
+            ],
+            "authors": [
+                {
+                    "name": "Daniil Skrobov",
+                    "email": "yetanotherape@gmail.com"
+                },
+                {
+                    "name": "Neil Fraser",
+                    "email": "fraser@google.com",
+                    "homepage": "http://neil.fraser.name/"
+                }
+            ],
+            "description": "Port of the google-diff-match-patch (https://code.google.com/p/google-diff-match-patch/) lib to PHP",
+            "homepage": "https://code.google.com/p/google-diff-match-patch/",
+            "keywords": [
+                "Fuzzy search",
+                "Match",
+                "diff",
+                "patch"
+            ],
+            "time": "2014-11-24 06:47:22"
+        },
+        {
             "name": "yiisoft/yii2",
             "version": "dev-master",
             "source": {
@@ -1802,12 +1817,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/yiisoft/yii2-apidoc.git",
-                "reference": "efc5ea818c4588d75cd40756270ad8105a9a9776"
+                "reference": "464963287bc34a70b352dd0d43c7a6ffb010155c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/yiisoft/yii2-apidoc/zipball/efc5ea818c4588d75cd40756270ad8105a9a9776",
-                "reference": "efc5ea818c4588d75cd40756270ad8105a9a9776",
+                "url": "https://api.github.com/repos/yiisoft/yii2-apidoc/zipball/464963287bc34a70b352dd0d43c7a6ffb010155c",
+                "reference": "464963287bc34a70b352dd0d43c7a6ffb010155c",
                 "shasum": ""
             },
             "require": {
@@ -1858,7 +1873,7 @@
                 "phpdoc",
                 "yii2"
             ],
-            "time": "2016-11-23 12:49:29"
+            "time": "2016-12-04 14:43:53"
         },
         {
             "name": "yiisoft/yii2-authclient",
@@ -2397,6 +2412,44 @@
                 }
             ],
             "time": "2015-04-20 18:58:01"
+        },
+        {
+            "name": "phpspec/php-diff",
+            "version": "v1.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/phpspec/php-diff.git",
+                "reference": "0464787bfa7cd13576c5a1e318709768798bec6a"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/phpspec/php-diff/zipball/0464787bfa7cd13576c5a1e318709768798bec6a",
+                "reference": "0464787bfa7cd13576c5a1e318709768798bec6a",
+                "shasum": ""
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-0": {
+                    "Diff": "lib/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-3-Clause"
+            ],
+            "authors": [
+                {
+                    "name": "Chris Boulton",
+                    "homepage": "http://github.com/chrisboulton"
+                }
+            ],
+            "description": "A comprehensive library for generating differences between two hashable objects (strings or arrays).",
+            "time": "2016-04-07 12:29:16"
         },
         {
             "name": "psy/psysh",

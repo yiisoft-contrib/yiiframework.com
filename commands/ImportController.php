@@ -230,7 +230,6 @@ class ImportController extends Controller
 
 	private function importWiki()
 	{
-		WikiCategory::deleteAll();
 		if (Wiki::find()->count() > 0 || WikiCategory::find()->count() > 0) {
 			$this->stdout("Wiki table is already populated, skipping.\n");
 			return;
@@ -291,7 +290,7 @@ class ImportController extends Controller
 					'revision' => $rev['revision'],
 					'title' => $rev['title'],
 					'content' => $this->convertMarkdown($rev['content']),
-					// TODO 'tagNames' => $rev['tags'],
+					'tagNames' => $rev['tags'],
 					'category_id' => $rev['category_id'],
 					'memo' => !empty($rev['memo']) ? $rev['memo'] : '',
 					'updater_id' => $rev['updater_id'],

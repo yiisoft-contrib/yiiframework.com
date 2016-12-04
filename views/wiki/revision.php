@@ -1,6 +1,7 @@
 <?php
 
 use app\models\WikiRevision;
+use Neos\Diff\Renderer\Html\HtmlInlineRenderer;
 use yii\helpers\Html;
 
 /** @var $model \app\models\Wiki */
@@ -34,72 +35,100 @@ $this->params['breadcrumbs'][] = $this->title;
             <div class="row">
                 <div class="col-md-12 col-lg-9">
                     <div class="content wiki-row">
-                        <h2 class="title">Difference between #<?= $left->revision; ?> and #<?= $right->revision; ?> of <?= Html::a(Html::encode($model->title), ['wiki/view', 'id' => $model->id, 'name' => $model->slug]) ?></h2>
+                        <h2 class="title">
+                            Difference between
+                            #<?= Html::a(Html::encode($left->revision), ['wiki/view', 'id' => $model->id, 'name' => $model->slug, 'revision' => $left->revision]) ?>
+                            and
+                            #<?= Html::a(Html::encode($right->revision), ['wiki/view', 'id' => $model->id, 'name' => $model->slug, 'revision' => $right->revision]) ?>
+                            of<br>
+                            <?= Html::a(Html::encode($model->title), ['wiki/view', 'id' => $model->id, 'name' => $model->slug]) ?>
+                        </h2>
 
-                        <div class="revert">
-                            <?php echo Html::a('Revert to #'.$left->revision, array('wiki/update','id'=>$model->id,'revision'=>$left->revision)); ?> |
-                            <?php echo Html::a('Revert to #'.$right->revision, array('wiki/update','id'=>$model->id,'revision'=>$right->revision)); ?>
-                        </div>
+                        <?php if ($left->equals($right)): ?>
+                            You can not compare a revision with itself!
+                        <?php else: ?>
+                            <?php if ($diffSingle): ?>
+                                <p>
+                                    Revision #<?= $diffSingle->revision ?>
+                                    has been created by <?= $diffSingle->updater->rankLink ?>
+                                    on <?= Yii::$app->formatter->asDateTime($diffSingle->updated_at) ?> with the memo:
+                                </p>
+                                <div class="memo">
+                                    <?= $right->memo ?>
+                                </div>
+
+                                <?php if ($previous = $diffSingle->findPrevious()): ?>
+                                    <?= Html::a(
+                                        '&laquo; previous (#' . $previous->revision . ')',
+                                        ['wiki/revision', 'id' => $previous->wiki_id, 'r1' => $previous->revision],
+                                        ['class' => 'prev-revision']
+                                    ) ?>
+                                <?php endif; ?>
+                                <?php if ($next = $diffSingle->findNext()): ?>
+                                    <?= Html::a(
+                                        'next (#' . $next->revision . ') &raquo;',
+                                        ['wiki/revision', 'id' => $next->wiki_id, 'r1' => $next->revision],
+                                        ['class' => 'next-revision']
+                                    ) ?>
+                                <?php endif; ?>
+                            <?php endif; ?>
 
 
-                        <h4>Title</h4>
-                        <div class="entry">
-                            <?php $diff = WikiRevision::diff($right, $left, 'title'); ?>
-                            <?php echo empty($diff->getGroupedOpcodes()) ? '<div class="unchanged">unchanged</div>' : '<div class="changed">changed</div>'; ?>
-                            <div class="label">Title</div>
-                            <div class="diff">
-                                <?php /*echo empty($diff->getGroupedOpcodes()) ? '<span>'.Html::encode($right->title).'</span>' : '<pre>'.trim(wordwrap($diff,80)).'</pre>';*/ ?>
-                                <?= $diff->render(new \Diff_Renderer_Html_Inline)?>
-                            </div>
-                        </div>
-                        <h4>Content</h4>
-                        <div class="entry">
-                            <?php $diff = WikiRevision::diff($right, $left, 'content'); ?>
-                            <?php echo empty($diff->getGroupedOpcodes()) ? '<div class="unchanged">unchanged</div>' : '<div class="changed">changed</div>'; ?>
-                            <div class="label">Title</div>
-                            <div class="diff">
-                                <?php /*echo empty($diff->getGroupedOpcodes()) ? '<span>'.Html::encode($right->title).'</span>' : '<pre>'.trim(wordwrap($diff,80)).'</pre>';*/ ?>
-                                <?= $diff->render(new \Diff_Renderer_Html_Inline)?>
-                            </div>
-                        </div>
-                        <?php /*
-                        <div class="entry">
-                            <?php $diff=TextDiff::compare((string)$right->category,(string)$left->category); ?>
-                            <?php echo empty($diff) ? '<div class="unchanged">unchanged</div>' : '<div class="changed">changed</div>'; ?>
-                            <div class="label">Category</div>
-                            <div class="diff">
-                                <?php echo empty($diff) ? '<span>'.Html::encode($right->category).'</span>' : '<pre>'.trim(wordwrap($diff,80)).'</pre>'; ?>
-                            </div>
-                        </div>
-                        <div class="entry">
-                            <?php $diff=TextDiff::compare($right->tags,$left->tags); ?>
-                            <?php echo empty($diff) ? '<div class="unchanged">unchanged</div>' : '<div class="changed">changed</div>'; ?>
-                            <div class="label">Tags</div>
-                            <div class="diff">
-                                <?php echo empty($diff) ? '<span>'.Html::encode($right->tags).'</span>' : '<pre>'.trim(wordwrap($diff,80)).'</pre>'; ?>
-                            </div>
-                        </div>
-                        <div class="entry">
-                            <?php $diff=TextDiff::compare($right->content,$left->content); ?>
-                            <?php echo empty($diff) ? '<div class="unchanged">unchanged</div>' : '<div class="changed">changed</div>'; ?>
-                            <div class="label">Content</div>
-                            <div class="diff">
-                                <pre><?php echo wordwrap(empty($diff) ? h($right->content) : $diff,80); ?></pre>
-                            </div>
-                        </div>
-*/ ?>
+                            <h3>Changes</h3>
 
-                        <div class="text">
-                            <?= $model->contentHtml ?>
-                        </div>
+                            <?php $diff = WikiRevision::diff($left, $right, 'title'); ?>
+                            <h4>
+                                Title
+                                <small><?php echo count($diff) <= 1 ? '<span class="label unchanged">unchanged</span>' : '<span class="label changed">changed</span>'; ?></small>
+                            </h4>
+                            <div class="diff">
+                                <?= trim(WikiRevision::diffPrettyHtml($diff)) ?>
+                            </div>
+
+                            <?php $diff = WikiRevision::diff($left, $right, 'category.name'); ?>
+                            <h4>
+                                Category
+                                <small><?php echo count($diff) <= 1 ? '<span class="label unchanged">unchanged</span>' : '<span class="label changed">changed</span>'; ?></small>
+                            </h4>
+                            <div class="diff">
+                                <?= trim(WikiRevision::diffPrettyHtml($diff)) ?>
+                            </div>
+
+                            <?php $diff = WikiRevision::diff($left, $right, 'tagNames'); ?>
+                            <h4>
+                                Tags
+                                <small><?php echo count($diff) <= 1 ? '<span class="label unchanged">unchanged</span>' : '<span class="label changed">changed</span>'; ?></small>
+                            </h4>
+                            <div class="diff">
+                                <?= trim(WikiRevision::diffPrettyHtml($diff)) ?>
+                            </div>
+
+                            <?php $diff = WikiRevision::diff($left, $right, 'content'); ?>
+                            <h4>
+                                Content
+                                <small><?php echo count($diff) <= 1 ? '<span class="label unchanged">unchanged</span>' : '<span class="label changed">changed</span>'; ?></small>
+                            </h4>
+                            <div class="diff">
+                                <?= trim(WikiRevision::diffPrettyHtml($diff)) ?>
+                            </div>
+
+
+                        <?php endif; ?>
                     </div>
                 </div>
                 <div class="col-md-12 col-lg-3">
-                    <?= $this->render('_metadata.php', ['model' => $model]) ?>
+                    <?= $this->render('_metadata.php', [
+                        'model' => $model,
+                        'extended' => true
+                    ]) ?>
 
                     <?= Html::a('Update Article', ['wiki/update', 'id' => $model->id])?>
 
 
+                    <div class="revert">
+                        <?php echo Html::a('Revert to #'.$left->revision, array('wiki/update','id'=>$model->id,'revision'=>$left->revision)); ?> |
+                        <?php echo Html::a('Revert to #'.$right->revision, array('wiki/update','id'=>$model->id,'revision'=>$right->revision)); ?>
+                    </div>
                     <h3>Revisions</h3>
 
                     <?= $this->render('_revisions.php', ['model' => $model]) ?>

@@ -57,9 +57,10 @@ class m161012_085513_wiki_tables extends BaseMigration
             'title' => $this->string(255)->notNull(),
             'content' => $this->text()->notNull(),
 
-            // TODO tags
+            'tagNames' => $this->string(255),
 
             'category_id' => $this->integer()->notNull(),
+            'yii_version' => $this->string(5),
 
             // note about what has changed
             'memo' => $this->string(255),

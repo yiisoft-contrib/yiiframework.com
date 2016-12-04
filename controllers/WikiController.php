@@ -2,6 +2,7 @@
 
 namespace app\controllers;
 
+use app\models\Star;
 use app\models\Wiki;
 use app\models\WikiCategory;
 use app\models\WikiRevision;
@@ -149,6 +150,7 @@ class WikiController extends Controller
 
         return $this->render('view', [
             'model' => $model,
+            'revision' => $revision !== null ? $this->findRevision($id, $revision) : null,
         ]);
     }
 
@@ -172,36 +174,29 @@ class WikiController extends Controller
         ));
     }
 
-    public function actionUpdate($id,$revision=0)
+    public function actionUpdate($id, $revision = null)
     {
         // TODO
 //        if(!user()->dbUser->canCreateWiki())
 //            throw new CHttpException(403,'Sorry, you are too new to write a wiki article. Please try posting it in our forum first.');
 
-        $model = $this->findModel($id);
+        $model = $this->findModel($id, $revision);
         $model->scenario = 'update';
+
+        if ($revision !== null) {
+            $rev = $this->findRevision($id, $revision);
+            $model->memo='Reverted to revision #' . $rev->revision;
+        }
 
         if ($model->load(\Yii::$app->request->post()) && $model->save()) {
 
+            // TODO
 //            if(($changes=$model->findChanges($oldAttributes))!='')
 //                $model->notifyFollowers($changes);
 
-//            Star::model()->castStar('Wiki',$model->id,user()->id,1);
+            Star::castStar($model, Yii::$app->user->id, 1);
             return $this->redirect(['view', 'id' => $model->id]);
         }
-
-//        else if(($revision=(int)$revision)!==0)
-//        {
-//            $rev=WikiRevision::model()->findByPk(array('wiki_id'=>$model->id,'revision'=>$revision));
-//            if($rev!==null)
-//            {
-//                $model->title=$rev->title;
-//                $model->content=$rev->content;
-//                $model->tags=$rev->tags;
-//                $model->memo='Reverted to revision #'.$rev->revision;
-//                $model->category_id=$rev->category_id;
-//            }
-//        }
 
         return $this->render('update',array(
             'model' => $model,
@@ -234,13 +229,18 @@ class WikiController extends Controller
             'dataProvider' => new ActiveDataProvider([
                 'query' => $model->getRevisions(),
                 'pagination' => false,
-                'sort' => [
+                'sort' => false, /*[
                     'defaultOrder' => ['updated_at' => SORT_DESC],
-                ]
+                ]*/
             ])
         ]);
     }
 
+    /**
+     * Display the Diff of one revision (r1 is set) or the diff between two revisions (r1 and r2).
+     *
+     * Optionally the revision ids can be passed as array r (used by gridview select.
+     */
     public function actionRevision($id, $r1 = null, $r2 = null, array $r = [])
     {
         // if input revisions are given as array
@@ -256,27 +256,34 @@ class WikiController extends Controller
         $model = $left->wiki;
 
         if ($r2 !== null) {
-            $right = WikiRevision::findOne(['wiki_id' => $id, 'revision' => $r2]);
+            if ($r2 === 'latest') {
+                $right = WikiRevision::findLatest($id);
+            } else {
+                $right = WikiRevision::findOne(['wiki_id' => $id, 'revision' => $r2]);
+            }
             if ($right === null) {
                 throw new NotFoundHttpException('The requested revision does not exist.');
             }
+            $diffSingle = null;
         } else {
-            $right = WikiRevision::findOne(['wiki_id' => $id, 'revision' => $r1 - 1]);
+            $right = $left;
+            $left = $right->findPrevious();
+            $diffSingle = $right;
         }
-        if ($right === null) {
-            return $this->redirect(['view', 'id' => $model->id, 'name' => $model->slug]);
+        if ($left === null) {
+            return $this->redirect(['view', 'id' => $model->id, 'name' => $model->slug, 'revision' => $right->revision]);
         }
 
         return $this->render('revision', [
             'model' => $model,
             'left' => $left,
             'right' => $right,
+            'diffSingle' => $diffSingle,
         ]);
     }
 
-
     /**
-     * Finds the News model based on its primary key value.
+     * Finds the Wiki model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
      * @param integer $id
      * @return Wiki the loaded model
@@ -290,17 +297,37 @@ class WikiController extends Controller
 
             if ($revision === null) {
                 return $model;
-            } else {
-                $revisionModel = WikiRevision::findOne(['wiki_id' => $model->id, 'revision' => (int) $revision]);
-                if ($revisionModel !== null) {
-
-                    Yii::trace(print_r($revisionModel->attributes, true));
-                    $model->loadRevision($revisionModel);
-                    Yii::trace(print_r($model->attributes, true));
-                    return $model;
-                }
             }
+
+            $revisionModel = $this->findRevision($model->id, $revision);
+            Yii::trace(print_r($revisionModel->attributes, true));
+            $model->loadRevision($revisionModel);
+            Yii::trace(print_r($model->attributes, true));
+            return $model;
         }
         throw new NotFoundHttpException('The requested page does not exist.');
+    }
+
+    private $_revisions = [];
+
+    /**
+     * @param $id
+     * @param $revision
+     * @return WikiRevision
+     * @throws NotFoundHttpException
+     */
+    protected function findRevision($id, $revision)
+    {
+        if (isset($this->_revisions[$id][$revision])) {
+            return $this->_revisions[$id][$revision];
+        }
+        $model = WikiRevision::findOne(['wiki_id' => $id, 'revision' => (int) $revision]);
+
+        if ($model === null) {
+            throw new NotFoundHttpException('The requested page does not exist.');
+        }
+
+        $this->_revisions[$id][$revision] = $model;
+        return $model;
     }
 }

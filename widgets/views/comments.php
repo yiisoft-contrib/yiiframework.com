@@ -74,6 +74,13 @@ use yii\helpers\Html;
         <span class="heading">Leave a comment</span>
     </div>
 </div>
+<?php if (isset($prompt)): ?>
+<div class="row">
+    <div class="col-md-offset-2 col-md-9">
+        <?= $prompt ?>
+    </div>
+</div>
+<?php endif; ?>
 <div class="row">
     <div class="col-md-offset-2 col-md-9">
         <?php if (!Yii::$app->user->isGuest): ?>

@@ -26,6 +26,8 @@ class Comments extends Widget
     public $objectType;
     public $objectId;
 
+    public $prompt;
+
     /**
      * @inheritdoc
      */
@@ -64,6 +66,7 @@ class Comments extends Widget
         return $this->render('comments', [
             'comments' => $comments,
             'commentForm' => $commentForm,
+            'prompt' => $this->prompt,
         ]);
     }
 

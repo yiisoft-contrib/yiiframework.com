@@ -115,6 +115,7 @@ class Wiki extends \yii\db\ActiveRecord
 
     public function afterSave($insert, $changedAttributes)
     {
+        // TODO do not store a revision if nothing has changed!
         $revision = new WikiRevision(['scenario' => 'create']);
         $revision->wiki_id = $this->id;
         $revision->setAttributes($this->attributes);
@@ -218,7 +219,7 @@ class Wiki extends \yii\db\ActiveRecord
      */
     public function getRevisions()
     {
-        return $this->hasMany(WikiRevision::className(), ['wiki_id' => 'id'])->orderBy(['updated_at' => SORT_DESC]);
+        return $this->hasMany(WikiRevision::className(), ['wiki_id' => 'id'])->orderBy(['revision' => SORT_DESC]);
     }
 
     /**
