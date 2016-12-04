@@ -11,7 +11,8 @@ return [
     'bootstrap' => ['log'],
     'controllerNamespace' => 'app\commands',
     'aliases' => [
-        'yii\apidoc\templates\' . $template'
+        'yii\apidoc\templates\' . $template',
+        '@webroot' => '@app/web'
     ],
     'controllerMap' => [
         'migrate' => [
@@ -25,6 +26,13 @@ return [
         'elasticsearch' => $params['components.elasticsearch'],
         'cache' => $params['components.cache'],
         'mailer' => $params['components.mailer'],
+        'urlManager' => array_merge(
+            $params['components.urlManager'],
+            [
+                'baseUrl' => '',
+                'hostInfo' => $params['siteAbsoluteUrl']
+            ]
+        ),
         'log' => [
             'targets' => [
                 [

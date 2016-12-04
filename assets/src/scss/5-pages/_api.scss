@@ -140,6 +140,11 @@ $api-box-padding-y: ceil($font-size-base / 2);
         padding: $api-box-padding-y $api-box-padding-x;
         margin: 0;
     }
+    .doc-description.deprecated {
+        background: lightpink;
+        border-top: solid 1px #ddd;
+        border-bottom: solid 1px #ddd;
+    }
 
     .event-doc .doc-description {
         border-bottom: solid 1px #ddd;

@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "742e0e518fa49d20956aba206cc9a2dc",
-    "content-hash": "23d73415ad7539fd80b13434849d169a",
+    "hash": "158c70bf59daf81ec1eea5960d0da641",
+    "content-hash": "e8ed00525064084a0aba2c9859f1e307",
     "packages": [
         {
             "name": "2amigos/yii2-selectize-widget",
@@ -1513,6 +1513,47 @@
                 "psr-3"
             ],
             "time": "2016-10-10 12:19:37"
+        },
+        {
+            "name": "samdark/sitemap",
+            "version": "2.0.6",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/samdark/sitemap.git",
+                "reference": "697223b1a035e72ce63994935b9622e6e1d41a0d"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/samdark/sitemap/zipball/697223b1a035e72ce63994935b9622e6e1d41a0d",
+                "reference": "697223b1a035e72ce63994935b9622e6e1d41a0d",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "samdark\\sitemap\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-3-Clause"
+            ],
+            "authors": [
+                {
+                    "name": "Alexander Makarov",
+                    "email": "sam@rmcreative.ru",
+                    "homepage": "http://rmcreative.ru/"
+                }
+            ],
+            "description": "Sitemap and sitemap index builder",
+            "homepage": "https://github.com/samdark/sitemap",
+            "keywords": [
+                "Sitemap"
+            ],
+            "time": "2016-10-04 07:11:43"
         },
         {
             "name": "scrivo/highlight.php",

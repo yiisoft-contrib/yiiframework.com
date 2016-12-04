@@ -66,7 +66,7 @@ $this->params['breadcrumbs'][] = $this->title;
 				<p class="small">After installing Composer, run the following command to install the <a target="_blank" href="https://github.com/francoispluchino/composer-asset-plugin">Composer Asset Plugin</a>, which is required by Yii:</p>
 
 				<pre>
-					<code class="hljs bash language-bash">php composer.phar global require "fxp/composer-asset-plugin:~1.1.1"</code>
+					<code class="hljs bash language-bash">php composer.phar global require "fxp/composer-asset-plugin:^1.2.0"</code>
 				</pre>
 
 				<p class="small">
@@ -151,7 +151,7 @@ $this->params['breadcrumbs'][] = $this->title;
 				<p class="small">First, make sure you have the latest version of the Composer Asset Plugin:</p>
 
 				<pre>
-					<code class="hljs bash language-bash">php composer.phar global require "fxp/composer-asset-plugin:~1.1.1"</code>
+					<code class="hljs bash language-bash">php composer.phar global require "fxp/composer-asset-plugin:^1.2.0"</code>
 				</pre>
 
 				<p class="small">Then upgrade Yii and its dependencies by running:</p>

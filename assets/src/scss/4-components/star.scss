@@ -1,0 +1,15 @@
+.star-wrapper {
+  .icon {
+    font-size: fontsize(h4);
+    font-style: normal;
+    cursor: pointer;
+  }
+
+  .icon-star:before {
+    content: "★";
+  }
+
+  .icon-star-empty:before {
+    content: "☆";
+  }
+}

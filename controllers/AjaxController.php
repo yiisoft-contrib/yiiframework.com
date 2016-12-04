@@ -3,6 +3,7 @@
 namespace app\controllers;
 
 use app\models\Rating;
+use app\models\Star;
 use yii\db\ActiveRecord;
 use yii\filters\AccessControl;
 use yii\filters\VerbFilter;
@@ -35,6 +36,7 @@ class AjaxController extends Controller
                 'class' => VerbFilter::class,
                 'actions' => [
                     'vote' => ['post'],
+                    'star' => ['post']
                 ],
             ],
         ];
@@ -71,6 +73,37 @@ class AjaxController extends Controller
             'up' => $up,
             'down' => $total - $up,
             'total' => $total,
+        ];
+    }
+
+    /**
+     * Casts a star to the specified content object.
+     *
+     * @param string $type the model type to add the star.
+     * @param integer $id the ID of the model.
+     *
+     * @return array
+     * @throws NotFoundHttpException
+     */
+    public function actionStar($type, $id)
+    {
+        $model = null;
+        if (in_array($type, Star::$modelClasses, true)) {
+            /** @var $modelClass ActiveRecord */
+            $modelClass = "app\\models\\$type";
+            $model = $modelClass::findOne($id);
+        }
+
+        if ($model === null) {
+            throw new NotFoundHttpException();
+        }
+
+        $star = Star::castStar($model, Yii::$app->user->id);
+        $starCount = Star::getStarCount($model);
+
+        return [
+            'star' => $star,
+            'starCount' => $starCount
         ];
     }
 }

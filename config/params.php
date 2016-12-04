@@ -29,6 +29,12 @@ return [
             // configure more hosts if you have a cluster
         ],
     ],
+    'components.urlManager' => [
+        'enablePrettyUrl' => true,
+        'showScriptName' => false,
+        'enableStrictParsing' => true,
+        'rules' => require(__DIR__ . '/urls.php')
+    ],
 
     // api and guide
 
@@ -137,4 +143,6 @@ return [
     // cache
     'cache.extensions.search' => 300,
     'cache.extensions.get' => 300,
+
+    'sitemap.indexMaxUrls' => 10000, //Count url in one sitemap index file
 ];

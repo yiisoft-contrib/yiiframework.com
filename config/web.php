@@ -59,12 +59,7 @@ $config = [
             'linkAssets' => true,
             'appendTimestamp' => true,
         ],
-        'urlManager' => [
-            'enablePrettyUrl' => true,
-            'showScriptName' => false,
-            'enableStrictParsing' => true,
-            'rules' => require(__DIR__ . '/urls.php'),
-        ],
+        'urlManager' => $params['components.urlManager'],
         'authManager' => [
             'class' => yii\rbac\PhpManager::class,
             'itemFile' => '@app/config/rbac/items.php',

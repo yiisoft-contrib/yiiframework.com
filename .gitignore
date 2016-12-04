@@ -44,3 +44,6 @@ phpunit.phar
 /web/css/*
 /web/js/*
 /web/fonts/*
+
+/web/sitemap.xml
+/web/sitemap/
