@@ -10,9 +10,10 @@ use yii\helpers\Url;
 
 ?>
 
-<span class="star-wrapper">
+<div class="star-wrapper">
     <?= Html::tag('span', '', [
         'class' => 'icon ' . ($starValue ? 'icon-star' : 'icon-star-empty'),
         'data-star-url' => $ajaxUrl
     ]) ?>
-</span>
+    <span class="star-count"><?= (int) $starValue ?></span> followers
+</div>

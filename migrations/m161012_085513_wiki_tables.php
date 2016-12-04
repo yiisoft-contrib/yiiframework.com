@@ -29,9 +29,9 @@ class m161012_085513_wiki_tables extends BaseMigration
 
             // TODO language field
 
-            // TODO tags
-
-            // TODO total votes + up votes + rating
+            'total_votes' => $this->integer()->notNull()->defaultValue(0),
+            'up_votes' => $this->integer()->notNull()->defaultValue(0),
+            'rating' => $this->double()->notNull()->defaultValue(0),
 
             // TODO comment_count +
             'view_count' => $this->integer()->notNull()->defaultValue(0),

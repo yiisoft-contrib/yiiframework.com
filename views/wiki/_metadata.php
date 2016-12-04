@@ -7,16 +7,9 @@ use yii\helpers\Html;
 
 ?>
 <div class="vote-box content">
-    <div class="thumbs">
-        <span class="up">
-            <span class="votes">1</span>
-            <a href="#"><i class="fa fa-thumbs-up" aria-hidden="true"></i></a>
-        </span>
-        <span class="down">
-            <span class="votes">0</span>
-            <a href="#"><i class="fa fa-thumbs-down" aria-hidden="true"></i></a>
-        </span>
-    </div>
+    <?= \app\widgets\Voter::widget(['model' => $model]) ?>
+    <?= \app\widgets\Star::widget(['model' => $model]) ?>
+
     <div class="viewed"><span>Viewed:</span> <?= Yii::$app->formatter->asInteger($model->view_count) ?> times</div>
     <div class="version"><span>Version:</span> <?= Html::encode($model->yii_version) ?></div>
     <div class="group"><span>Category:</span> <?= Html::a(Html::encode($model->category->name), ['wiki/index', 'category' => $model->category_id]) ?></div>

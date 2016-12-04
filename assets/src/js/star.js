@@ -12,9 +12,14 @@ $(function($) {
                 } else {
                     el.addClass('icon-star-empty');
                 }
+                var count = el.parent().find('.star-count');
+                if (count) {
+                    count.text(data['starCount']);
+                }
             },
             error: function() {
-                location.href = '/login';
+                // TODO redirect when user is not logged in
+                alert('Error: failed to bookmark item.'); // TODO make this nicer
             }
         });
     });

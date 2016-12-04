@@ -19,7 +19,7 @@ use yii\db\ActiveRecord;
  */
 class Rating extends \yii\db\ActiveRecord
 {
-    public static $modelClasses = ['Comment'];
+    public static $modelClasses = ['Comment', 'Wiki'];
 
     /**
      * @inheritdoc

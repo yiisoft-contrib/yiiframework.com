@@ -102,36 +102,13 @@ ul.wiki-side-menu {
   a {
     color: #70c1b3;
   }
-  .votes {
-    font-weight: bold;
-    padding-right: 0.8rem;
-  }
-  .thumbs {
+  .voting {
     text-align: center;
     margin-bottom: 1.5rem;
-
-    .up {
-      a {
-        color: #70c1b3;
-        font-size: 2rem;
-      }
-      .votes {
-        color: #70c1b3;
-        font-size: 1.2rem;
-      }
-    }
-    .down {
-      padding-left: 2rem;
-
-      a {
-        color: #ff1654;
-        font-size: 2rem;
-      }
-      .votes {
-        color: #ff1654;
-        font-size: 1.2rem;
-      }
-    }
+  }
+  .star-wrapper {
+    text-align: center;
+    margin-bottom: 1.5rem;
   }
   .viewed, .version, .group, .tags, .people, .dates {
     color: #959595;
