@@ -56,7 +56,7 @@ class WikiController extends Controller
 
     public function actionIndex($category = null, $tag = null)
     {
-        $query = Wiki::find()->with(['creator', 'updater', 'category']);
+        $query = Wiki::find()->active()->with(['creator', 'updater', 'category']);
 
         if ($category !== null) {
             $category = (int) $category;
@@ -138,7 +138,9 @@ class WikiController extends Controller
         }
 
         // update view count
-        $model->updateCounters(['view_count' => 1]);
+        if (Yii::$app->request->isGet) {
+            $model->updateCounters(['view_count' => 1]);
+        }
 
         return $this->render('view', [
             'model' => $model,
@@ -246,6 +248,9 @@ class WikiController extends Controller
             throw new NotFoundHttpException('The requested revision does not exist.');
         }
         $model = $left->wiki;
+        if ($model->status !== Wiki::STATUS_PUBLISHED) {
+            throw new NotFoundHttpException('The requested page does not exist.');
+        }
 
         if ($r2 !== null) {
             if ($r2 === 'latest') {
@@ -283,7 +288,7 @@ class WikiController extends Controller
      */
     protected function findModel($id, $revision = null)
     {
-        if (($model = Wiki::findOne($id)) !== null) {
+        if (($model = Wiki::find()->where(['id' => $id])->active()->one()) !== null) {
 
             Yii::trace(print_r($model->attributes, true));
 

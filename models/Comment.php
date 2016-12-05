@@ -35,6 +35,14 @@ class Comment extends \yii\db\ActiveRecord
     }
 
     /**
+     * @return CommentQuery
+     */
+    public static function find()
+    {
+        return Yii::createObject(CommentQuery::class, [get_called_class()]);
+    }
+
+    /**
      * @inheritdoc
      */
     public function behaviors()

@@ -10,6 +10,8 @@ namespace app\commands;
 
 use app\models\Comment;
 use app\models\News;
+use app\models\Rating;
+use app\models\Star;
 use app\models\User;
 use app\models\Wiki;
 use app\models\WikiCategory;
@@ -82,9 +84,8 @@ class ImportController extends Controller
 
 		$this->importComments();
 
-
-        // TODO
-        //$this->importStars();
+        $this->importStars();
+        $this->importRatings();
 
 		return 0;
 	}
@@ -250,62 +251,70 @@ class ImportController extends Controller
 		$count = $wikiQuery->count('*', $this->sourceDb);
 		Console::startProgress(0, $count, 'Importing wiki...');
 		$i = 0;
+		$err = 0;
 		foreach($wikiQuery->each(100, $this->sourceDb) as $wiki) {
 
-			$model = new Wiki([
-				'id' => $wiki['id'],
-				'title' => $wiki['title'],
-				'content' => $this->convertMarkdown($wiki['content']),
-				'category_id' => $wiki['category_id'],
-				'tagNames' => $wiki['tags'],
-				'creator_id' => $wiki['creator_id'],
-				'updater_id' => $wiki['updater_id'],
-				'created_at' => date('Y-m-d H:i:s', $wiki['create_time']),
-				'updated_at' => date('Y-m-d H:i:s', $wiki['update_time']),
+			try {
+				$model = new Wiki([
+					'id' => $wiki['id'],
+					'title' => $wiki['title'],
+					'content' => $this->convertMarkdown($wiki['content']),
+					'category_id' => $wiki['category_id'],
+					'tagNames' => $wiki['tags'],
+					'creator_id' => $wiki['creator_id'],
+					'updater_id' => $wiki['updater_id'],
+					'created_at' => date('Y-m-d H:i:s', $wiki['create_time']),
+					'updated_at' => date('Y-m-d H:i:s', $wiki['update_time']),
 
-				'yii_version' => $wiki['yii_version'],
+					'yii_version' => $wiki['yii_version'],
 
-				// TODO rating
-				// TODO comment count
-				// TODO view count
+					'total_votes' => $wiki['total_votes'],
+					'up_votes' => $wiki['up_votes'],
+					'rating' => $wiki['rating'],
 
-				// TODO total_votes
-				// TODO up_votes
+					'view_count' => $wiki['view_count'],
+					'comment_count' => $wiki['comment_count'],
 
-				// TODO status
-
-				// TODO featured
-			]);
-			$model->detachBehavior('timestamp');
-			$model->detachBehavior('blameable');
-			$model->save(false);
-
-			// remove first revision automatically created by Wiki model
-			WikiRevision::deleteAll(['wiki_id' => $wiki['id']]);
-			// import revisions:
-			$revisionQuery = (new Query)->from('tbl_wiki_revision')->where(['wiki_id' => $wiki['id']]);
-			foreach($revisionQuery->all($this->sourceDb) as $rev) {
-				$revModel = new WikiRevision([
-					'wiki_id' => $rev['wiki_id'],
-					'revision' => $rev['revision'],
-					'title' => $rev['title'],
-					'content' => $this->convertMarkdown($rev['content']),
-					'tagNames' => $rev['tags'],
-					'category_id' => $rev['category_id'],
-					'memo' => !empty($rev['memo']) ? $rev['memo'] : '',
-					'updater_id' => $rev['updater_id'],
-					'updated_at' => date('Y-m-d H:i:s', $rev['update_time']),
+					'status' => $wiki['status'],
+					'featured' => $wiki['featured'],
 				]);
-				$revModel->detachBehavior('timestamp');
-				$revModel->detachBehavior('blameable');
-				$revModel->save(false);
-			}
+				$model->detachBehavior('timestamp');
+				$model->detachBehavior('blameable');
+				$model->save(false);
 
+				// remove first revision automatically created by Wiki model
+				WikiRevision::deleteAll(['wiki_id' => $wiki['id']]);
+				// import revisions:
+				$revisionQuery = (new Query)->from('tbl_wiki_revision')->where(['wiki_id' => $wiki['id']]);
+				foreach ($revisionQuery->all($this->sourceDb) as $rev) {
+					$revModel = new WikiRevision([
+						'wiki_id' => $rev['wiki_id'],
+						'revision' => $rev['revision'],
+						'title' => $rev['title'],
+						'content' => $this->convertMarkdown($rev['content']),
+						'tagNames' => $rev['tags'],
+						'category_id' => $rev['category_id'],
+						'memo' => !empty($rev['memo']) ? $rev['memo'] : '',
+						'updater_id' => $rev['updater_id'],
+						'updated_at' => date('Y-m-d H:i:s', $rev['update_time']),
+					]);
+					$revModel->detachBehavior('timestamp');
+					$revModel->detachBehavior('blameable');
+					$revModel->save(false);
+				}
+			}catch (\Exception $e) {
+				$this->stdout($e->getMessage()."\n", Console::FG_RED);
+				$err++;
+			}
 			Console::updateProgress(++$i, $count);
 		}
 		Console::endProgress(true);
 		$this->stdout("done.", Console::FG_GREEN, Console::BOLD);
-		$this->stdout(" $count records imported.\n");
+		$this->stdout(" $count records imported.");
+		if ($err > 0) {
+			$this->stdout(" $err errors occurred.", Console::FG_RED, Console::BOLD);
+		}
+		$this->stdout("\n");
 	}
 
 	private function importComments()
@@ -327,14 +336,16 @@ class ImportController extends Controller
 				\Yii::$app->db->createCommand()->insert('{{%comment}}', [
 					'id' => $comment['id'],
 					'user_id' => $comment['creator_id'],
-					'object_type' => $comment['object_type'],
+					'object_type' => $this->convertCommentType($comment['object_type']),
 					'object_id' => $comment['object_id'],
 					'text' => (empty($comment['title']) ? '' : '#### ' . $comment['title'] . "\n\n")
 						. $this->convertMarkdown($comment['content']),
 					'created_at' => date('Y-m-d H:i:s', $comment['create_time']),
 					'updated_at' => date('Y-m-d H:i:s', $comment['update_time']),
-
-					// TODO votes, rating and status
+					'total_votes' => $comment['total_votes'],
+					'up_votes' => $comment['up_votes'],
+					'rating' => $comment['rating'],
+					'status' => $this->convertCommentStatus($comment['status'])
 				])->execute();
 			}catch (\Exception $e) {
 				$err++;
@@ -348,6 +359,16 @@ class ImportController extends Controller
 			$this->stdout(" $err errors occurred.", Console::FG_RED, Console::BOLD);
 		}
 		$this->stdout("\n");
+	}
+
+	private function convertCommentType($type)
+	{
+		return $type;
+	}
+
+	private function convertCommentStatus($status)
+	{
+		return $status == 3 ? Comment::STATUS_ACTIVE : Comment::STATUS_DELETED;
 	}
 
 	private function importNews()
@@ -397,6 +418,74 @@ class ImportController extends Controller
 		Console::endProgress(true);
 		$this->stdout("done.", Console::FG_GREEN, Console::BOLD);
 		$this->stdout(" $count records imported.\n");
+	}
+
+	public function importRatings()
+	{
+		if (Rating::find()->count() > 0) {
+			$this->stdout("Rating table is already populated, skipping.\n");
+			return;
+		}
+
+		$ratingQuery = (new Query)->from('tbl_rating');
+
+		$count = $ratingQuery->count('*', $this->sourceDb);
+		Console::startProgress(0, $count, 'Importing ratings...');
+		$i = 0;
+		$err = 0;
+		foreach($ratingQuery->each(100, $this->sourceDb) as $rating) {
+
+			try {
+				$rating['created_at'] = date('Y-m-d H:i:s', $rating['create_time']);
+				unset($rating['create_time']);
+				Rating::getDb()->createCommand()->insert(Rating::tableName(), $rating)->execute();
+			} catch (\Exception $e) {
+				$this->stdout($e->getMessage()."\n", Console::FG_RED);
+				$err++;
+			}
+			Console::updateProgress(++$i, $count);
+		}
+		Console::endProgress(true);
+		$this->stdout("done.", Console::FG_GREEN, Console::BOLD);
+		$this->stdout(" $count records imported.");
+		if ($err > 0) {
+			$this->stdout(" $err errors occurred.", Console::FG_RED, Console::BOLD);
+		}
+		$this->stdout("\n");
+	}
+
+	public function importStars()
+	{
+		if (Star::find()->count() > 0) {
+			$this->stdout("Star table is already populated, skipping.\n");
+			return;
+		}
+
+		$starQuery = (new Query)->from('tbl_star');
+
+		$count = $starQuery->count('*', $this->sourceDb);
+		Console::startProgress(0, $count, 'Importing stars...');
+		$i = 0;
+		$err = 0;
+		foreach($starQuery->each(100, $this->sourceDb) as $star) {
+
+			try {
+				$star['created_at'] = date('Y-m-d H:i:s', $star['create_time']);
+				unset($star['create_time']);
+				Star::getDb()->createCommand()->insert(Star::tableName(), $star)->execute();
+			} catch (\Exception $e) {
+				$this->stdout($e->getMessage()."\n", Console::FG_RED);
+				$err++;
+			}
+			Console::updateProgress(++$i, $count);
+		}
+		Console::endProgress(true);
+		$this->stdout("done.", Console::FG_GREEN, Console::BOLD);
+		$this->stdout(" $count records imported.");
+		if ($err > 0) {
+			$this->stdout(" $err errors occurred.", Console::FG_RED, Console::BOLD);
+		}
+		$this->stdout("\n");
 	}
 
 	protected function convertMarkdown($markdown)

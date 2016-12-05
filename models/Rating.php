@@ -5,6 +5,7 @@ namespace app\models;
 use Yii;
 use yii\base\InvalidParamException;
 use yii\db\ActiveRecord;
+use yii\db\Expression;
 
 /**
  * This is the model class for table "rating".
@@ -30,41 +31,12 @@ class Rating extends \yii\db\ActiveRecord
     }
 
     /**
-     * @inheritdoc
-     */
-    public function rules()
-    {
-        return [
-            [['user_id', 'object_type', 'object_id', 'rating', 'created_at'], 'required'],
-            [['user_id', 'object_id', 'rating'], 'integer'],
-            [['created_at'], 'safe'],
-            [['object_type'], 'string', 'max' => 128],
-            [['user_id'], 'exist', 'skipOnError' => true, 'targetClass' => User::className(), 'targetAttribute' => ['user_id' => 'id']],
-        ];
-    }
-
-    /**
-     * @inheritdoc
-     */
-    public function attributeLabels()
-    {
-        return [
-            'user_id' => 'User ID',
-            'object_type' => 'Object Type',
-            'object_id' => 'Object ID',
-            'rating' => 'Rating',
-            'created_at' => 'Created At',
-        ];
-    }
-
-    /**
      * @return \yii\db\ActiveQuery
      */
     public function getUser()
     {
         return $this->hasOne(User::className(), ['id' => 'user_id']);
     }
-
 
     /**
      * Returns the vote counts for the specified model.
@@ -127,6 +99,14 @@ class Rating extends \yii\db\ActiveRecord
         ]);
 
         return $votes;
+    }
+
+    public function beforeSave($insert)
+    {
+        if ($insert) {
+            $this->created_at = new Expression('NOW()');
+        }
+        return parent::beforeSave($insert);
     }
 
     public function afterSave($insert, $changedAttributes)

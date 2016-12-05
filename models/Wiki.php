@@ -6,9 +6,11 @@ use app\components\SluggableBehavior;
 use dosamigos\taggable\Taggable;
 use Yii;
 use yii\apidoc\helpers\ApiMarkdown;
+use yii\base\Event;
 use yii\behaviors\BlameableBehavior;
 use yii\behaviors\TimestampBehavior;
 use yii\db\Expression;
+use yii\helpers\HtmlPurifier;
 use yii\helpers\Markdown;
 use yii\helpers\StringHelper;
 
@@ -38,8 +40,14 @@ use yii\helpers\StringHelper;
 class Wiki extends \yii\db\ActiveRecord
 {
     const STATUS_DRAFT = 1;
-    const STATUS_PUBLISHED = 2;
-    const STATUS_DELETED = 3;
+    const STATUS_PENDING_APPROVAL = 2;
+    const STATUS_PUBLISHED = 3;
+    const STATUS_DELETED = 5;
+
+    /**
+     * object type used for wiki comments
+     */
+    const COMMENT_TYPE = 'wiki';
 
     /**
      * @var string editor note on upate
@@ -87,6 +95,14 @@ class Wiki extends \yii\db\ActiveRecord
     }
 
     /**
+     * @return WikiQuery
+     */
+    public static function find()
+    {
+        return Yii::createObject(WikiQuery::class, [get_called_class()]);
+    }
+
+    /**
      * @inheritdoc
      */
     public function rules()
@@ -116,6 +132,7 @@ class Wiki extends \yii\db\ActiveRecord
     public function afterSave($insert, $changedAttributes)
     {
         // TODO do not store a revision if nothing has changed!
+        // TODO make that a validation rule?
         $revision = new WikiRevision(['scenario' => 'create']);
         $revision->wiki_id = $this->id;
         $revision->setAttributes($this->attributes);
@@ -161,20 +178,7 @@ class Wiki extends \yii\db\ActiveRecord
 
     public function getContentHtml()
     {
-
-        //        $content=preg_replace_callback('!<h(2|3)>(.+?)</h\d>!', array($this, 'processHeadings'), $model->htmlContent);
-//        if(count($this->headings)>=2 && strlen($content)>5000) // sufficiently long
-//        {
-//            $toc=array();
-//            foreach($this->headings as $heading)
-//                $toc[]="<div class=\"ref level-{$heading['level']}\">".l($heading['title'],'#'.$heading['id']).'</div>';
-//            $content='<div class="toc">'.implode("\n",$toc)."</div>\n".$content;
-//        }
-
-        // TODO replace h tags
-
-        // TODO HTML Purify
-        return ApiMarkdown::process($this->content);
+        return Yii::$app->formatter->asGuideMarkdown($this->content);
     }
 
     public function getTeaser()
@@ -256,4 +260,17 @@ class Wiki extends \yii\db\ActiveRecord
             ->viaTable('wiki2wiki_tags', ['wiki_id' => 'id']);
     }
 
+    /**
+     * Event handler for comment creation. Update comment_count on wiki table.
+     * @param Event $event
+     */
+    public static function onComment($event)
+    {
+        /** @var $comment Comment */
+        $comment = $event->sender;
+        if ($comment->object_type === Wiki::COMMENT_TYPE) {
+            $count = Comment::find()->forObject(Wiki::COMMENT_TYPE, $comment->object_id)->active()->count();
+            static::updateAll(['comment_count' => $count], ['id' => $comment->object_id]);
+        }
+    }
 }

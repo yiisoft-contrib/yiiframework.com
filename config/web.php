@@ -8,7 +8,11 @@ $params = array_merge(
 $config = [
     'id' => 'yiiframework.com',
     'basePath' => dirname(__DIR__),
-    'bootstrap' => ['log'],
+    'bootstrap' => [
+        'log',
+        app\components\BootstrapEvents::class
+    ],
+    'language' => 'en',
     'components' => [
         'db' => $params['components.db'],
         'elasticsearch' => $params['components.elasticsearch'],
@@ -20,6 +24,7 @@ $config = [
             'loginUrl' => ['auth/login'],
         ],
         'formatter' => [
+            'class' => app\components\Formatter::class,
             'thousandSeparator' => '&thinsp;',
         ],
 

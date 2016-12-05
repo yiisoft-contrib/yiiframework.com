@@ -95,7 +95,7 @@ $this->params['breadcrumbs'][] = $this->title;
 <div class="comments-wrapper">
     <div class="container comments">
         <?= \app\widgets\Comments::widget([
-            'objectType' => 'wiki',
+            'objectType' => \app\models\Wiki::COMMENT_TYPE,
             'objectId' => "$model->id",
             'prompt' => 'Please only use comments to help explain the above article.<br/>If you have any questions, please ask in '.Html::a('the forum', Yii::$app->request->baseUrl . '/forum').' instead.',
         ]) ?>

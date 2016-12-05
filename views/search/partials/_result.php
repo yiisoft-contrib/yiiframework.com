@@ -5,7 +5,6 @@ use app\models\SearchApiPrimitive;
 use app\models\SearchApiType;
 use app\models\SearchGuideSection;
 use yii\helpers\Url;
-use yii\helpers\Markdown;
 
 /* @var $model app\models\ApiType|app\models\SearchApiPrimitive */
 

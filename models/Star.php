@@ -140,18 +140,21 @@ class Star extends \yii\db\ActiveRecord
     public static function getTargets($userID)
     {
         $models=[];
-        // TODO implement
-//        foreach(self::$contentClasses as $class)
-//        {
-//            $finder=CActiveRecord::model($class);
-//            $title=$finder->hasAttribute('title') ? 'title' : 'name';
-//            $models=array_merge($models, $finder->findAllBySql(
-//                "SELECT id, $title FROM ".$finder->tableName()
-//                . " INNER JOIN tbl_star ON object_type='$class' AND user_id=$userID AND star=1 AND object_id=id"
-//                . " WHERE status=".self::STATUS_PUBLISHED
-//                . " ORDER BY $title"
-//            ));
-//        }
+        foreach(self::$modelClasses as $class)
+        {
+            /** @var $modelClass ActiveRecord */
+            $modelClass = "app\\models\\$class";
+
+            $ids = static::find()
+                ->select('object_id')
+                ->where(['user_id' => $userID, 'object_type' => $class, 'star' => 1])
+                ->column();
+
+            $models = array_merge(
+                $modelClass::find()->active()->andWhere(['id' => $ids])->all(),
+                $models
+            );
+        }
         return $models;
     }
 
@@ -159,12 +162,27 @@ class Star extends \yii\db\ActiveRecord
      * @param ActiveRecord $model
      * @return User[]
      */
-    public function getFollowers($model)
+//    public static function getFollowers($model)
+//    {
+//        $class = $model->formName();
+//        return User::find()
+//            ->where(['star' => 1, 'object_type' => $class, 'object_id' => (int)$model->primaryKey])
+//            ->all();
+//    }
+
+    /**
+     * Return current follower count
+     *
+     * @param ActiveRecord $model
+     *
+     * @return int
+     */
+    public static function getFollowerCount($model)
     {
-        $class = $model->formName();
-        return User::find()
-            ->where(['star' => 1, 'object_type' => $class, 'object_id' => (int)$model->primaryKey])
-            ->all();
+        return static::find()->where([
+            'object_type' => $model->formName(),
+            'object_id' => (int) $model->primaryKey,
+        ])->count();
     }
 
     /**

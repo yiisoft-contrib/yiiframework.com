@@ -27,21 +27,17 @@ class m161012_085513_wiki_tables extends BaseMigration
             'created_at' => $this->dateTime()->notNull(),
             'updated_at' => $this->dateTime(),
 
-            // TODO language field
-
             'total_votes' => $this->integer()->notNull()->defaultValue(0),
             'up_votes' => $this->integer()->notNull()->defaultValue(0),
             'rating' => $this->double()->notNull()->defaultValue(0),
+            'featured' => $this->boolean()->notNull()->defaultValue(0),
 
-            // TODO comment_count +
+            'comment_count' => $this->integer()->notNull()->defaultValue(0),
             'view_count' => $this->integer()->notNull()->defaultValue(0),
 
             'yii_version' => $this->string(5),
-            // TODO link to other versions
-            // TODO link to other languages
 
-            // TODO status
-            // TODO featured
+            'status' => $this->smallInteger()->notNull()->defaultValue(\app\models\Wiki::STATUS_PUBLISHED),
 
         ], $this->tableOptions);
 

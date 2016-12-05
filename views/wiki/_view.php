@@ -19,7 +19,10 @@ use yii\helpers\Html;
             </div>
             <h2 class="title"><?= Html::a(Html::encode($model->title), ['wiki/view', 'id' => $model->id, 'name' => $model->slug]) ?></h2>
             <div class="text"><?= $model->teaser ?></div>
-            <div class="comments"><a href="#">0 comments</a></div>
+            <div class="comments"><?= Html::a(
+                    Yii::$app->i18n->format('{n, number} {n, plural, one{comment} other{comments}}', ['n' => $model->comment_count], Yii::$app->language),
+                    ['wiki/view', 'id' => $model->id, 'name' => $model->slug, '#' => 'comments']
+            ) ?></div>
         </div>
     </div>
     <div class="col-md-12 col-lg-3">

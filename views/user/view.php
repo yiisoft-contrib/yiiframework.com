@@ -51,19 +51,13 @@ $this->registerMetaTag(['name' => 'keywords', 'value' => 'yii framework, communi
         ]) ?>
 
 
-       	<?php /*if($model->id==user()->id && ($targets=Star::model()->getTargets($model->id))!==array()): ?>
-       	<h2>Following</h2>
-       	<ul class="g-list-none">
-       		<?php foreach($targets as $target): ?>
-       		<li>
-       			<?php $this->widget('Follower', array(
-       				'model'=>$target,
-       				'verbose'=>false,
-       			)); ?>
-       			<?php echo '['.strtolower(get_class($target)).'] '.l(h($target->title), $target->url); ?></li>
-       		<?php endforeach; ?>
-       	</ul>
-       	<?php endif;*/ ?>
+        <h2>Wiki Articles</h2>
+
+        <ul>
+            <?php foreach($model->getWikis()->orderBy('title')->active()->all() as $wiki) {
+                echo "<li>[Wiki] " . Html::a(Html::encode($wiki->title), ['wiki/view', 'id' => $wiki->id, 'name' => $wiki->slug]) . '</li>';
+            } ?>
+        </ul>
 
         <h2>Extensions</h2>
 

@@ -51,17 +51,17 @@ class Comments extends Widget
                 // reset form
                 $commentForm = $this->getNewCommentForm($this->objectType, $this->objectId);
                 // take user to the newly created comment
-                \Yii::$app->getResponse()
+                Yii::$app->getResponse()
                     ->refresh(sprintf("#c%d", $id))
                     ->send();
+                Yii::$app->end();
             }
         }
 
-        $comments = Comment::find()->where([
-            'status' => Comment::STATUS_ACTIVE,
-            'object_type' => $this->objectType,
-            'object_id' => $this->objectId,
-        ])->with('user')->all();
+        $comments = Comment::find()
+            ->forObject($this->objectType, $this->objectId)
+            ->active()
+            ->with('user')->all();
 
         return $this->render('comments', [
             'comments' => $comments,

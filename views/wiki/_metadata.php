@@ -11,7 +11,7 @@ use yii\helpers\Html;
     <?= \app\widgets\Star::widget(['model' => $model]) ?>
 
     <div class="viewed"><span>Viewed:</span> <?= Yii::$app->formatter->asInteger($model->view_count) ?> times</div>
-    <div class="version"><span>Version:</span> <?= Html::encode($model->yii_version) ?></div>
+    <div class="version"><span>Version:</span> <?= empty($model->yii_version) ? 'Unknown (' . Html::a('update', ['wiki/update', 'id' => $model->id]) . ')' : Html::encode($model->yii_version) ?></div>
     <div class="group"><span>Category:</span> <?= Html::a(Html::encode($model->category->name), ['wiki/index', 'category' => $model->category_id]) ?></div>
     <div class="tags"><span>Tags:</span> <?= \app\widgets\WikiTaglist::widget(['wiki' => $model]) ?></div>
     <?php if ($extended): ?>

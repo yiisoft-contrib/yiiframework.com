@@ -15,5 +15,5 @@ use yii\helpers\Url;
         'class' => 'icon ' . ($starValue ? 'icon-star' : 'icon-star-empty'),
         'data-star-url' => $ajaxUrl
     ]) ?>
-    <span class="star-count"><?= (int) $starValue ?></span> followers
+    <span class="star-count"><?= (int) $starCount ?></span> followers
 </div>

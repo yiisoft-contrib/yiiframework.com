@@ -70,6 +70,7 @@ $this->params['breadcrumbs'][] = $this->title;
                             ],
                         ]) ?>
 
+                        <p>Select exactly two versions for comparison.</p>
 
                         <?= Html::submitButton('Compare Versions') ?>
 

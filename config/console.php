@@ -21,6 +21,7 @@ return [
             'templateFile' => '@app/migrations/migration_template.php',
         ],
     ],
+    'language' => 'en',
     'components' => [
         'db' => $params['components.db'],
         'elasticsearch' => $params['components.elasticsearch'],

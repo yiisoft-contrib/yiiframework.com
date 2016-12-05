@@ -158,7 +158,7 @@ $this->params['breadcrumbs'][] = $this->title;
 
         <?php if (!empty($readme)): ?>
             <hr>
-            <?= \yii\apidoc\helpers\ApiMarkdown::process($readme) ?>
+            <?= Yii::$app->formatter->asGuideMarkdown($readme) ?>
         <?php endif ?>
     <?php endif ?>
     <br>

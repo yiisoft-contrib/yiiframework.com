@@ -38,7 +38,8 @@ class Star extends Widget
 
         return $this->render('star', [
             'ajaxUrl' => Url::to(['/ajax/star', 'type' => $modelClass, 'id' => $modelId]),
-            'starValue' => $starValue
+            'starValue' => $starValue,
+            'starCount' => \app\models\Star::getFollowerCount($this->model),
         ]);
     }
 }
