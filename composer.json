@@ -9,7 +9,7 @@
     "require": {
         "php": ">=5.6.0",
 
-        "yiisoft/yii2": "2.0.9",
+        "yiisoft/yii2": "~2.0.10@dev",
 
         "yiisoft/yii2-apidoc": "~2.1.0@dev",
         "cebe/markdown-latex": "^1.1.3@dev",
@@ -19,9 +19,12 @@
         "yiisoft/yii2-swiftmailer": "~2.0.0",
         "cebe/yii2-gravatar": "1.1",
 
+        "samdark/sitemap": "^2.0",
+
         "knplabs/github-api": "~1.2",
 
         "scrivo/highlight.php": "8.*",
+        "yetanotherape/diff-match-patch": "~1.0.0",
 
         "imagine/imagine": "^0.6.3",
 
@@ -38,14 +41,13 @@
         "bower-asset/sass-rem": "^1.2",
         "bower-asset/scrollup": "^2.4",
         "bower-asset/codemirror": "~5.9.0",
-        "bower-asset/codemirror-buttons": "~1.0.0",
-
-        "samdark/sitemap": "^2.0"
+        "bower-asset/codemirror-buttons": "~1.0.0"
     },
     "require-dev": {
         "yiisoft/yii2-debug": "~2.0.0",
         "yiisoft/yii2-gii": "~2.0.0",
-        "yiisoft/yii2-faker": "~2.0.0"
+        "yiisoft/yii2-faker": "~2.0.0",
+        "yiisoft/yii2-shell": "~2.0.0"
     },
     "config": {
         "process-timeout": 1800

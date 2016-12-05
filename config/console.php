@@ -14,6 +14,14 @@ return [
         'yii\apidoc\templates\' . $template',
         '@webroot' => '@app/web'
     ],
+    'controllerMap' => [
+        'migrate' => [
+            'class' => yii\console\controllers\MigrateController::class,
+            // use custom migration template
+            'templateFile' => '@app/migrations/migration_template.php',
+        ],
+    ],
+    'language' => 'en',
     'components' => [
         'db' => $params['components.db'],
         'elasticsearch' => $params['components.elasticsearch'],

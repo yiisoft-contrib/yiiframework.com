@@ -25,7 +25,7 @@ class m160825_210900_add_user_ranking_system extends BaseMigration
             'id' => $this->primaryKey(),
             'user_id' => $this->integer()->notNull(),
         ], $this->tableOptions);
-        $this->addForeignKey('fk-badge_queue-user_id-user-id', '{{%badge_queue}}', 'user_id', '{{%user}}', 'id');
+        $this->addForeignKey('fk-badge_queue-user_id-user-id', '{{%badge_queue}}', 'user_id', '{{%user}}', 'id', 'CASCADE', 'CASCADE');
 
         $this->createTable('{{%user_badges}}', [
             'id' => $this->primaryKey(),
@@ -37,8 +37,8 @@ class m160825_210900_add_user_ranking_system extends BaseMigration
             'message' => $this->string(),
             'notified' => $this->boolean()->notNull()->defaultValue(0),
         ], $this->tableOptions);
-        $this->addForeignKey('fk-user_badges-user_id-user-id', '{{%user_badges}}', 'user_id', '{{%user}}', 'id');
-        $this->addForeignKey('fk-user_badges-badge_id-bages-id', '{{%user_badges}}', 'badge_id', '{{%badges}}', 'id');
+        $this->addForeignKey('fk-user_badges-user_id-user-id', '{{%user_badges}}', 'user_id', '{{%user}}', 'id', 'CASCADE', 'CASCADE');
+        $this->addForeignKey('fk-user_badges-badge_id-bages-id', '{{%user_badges}}', 'badge_id', '{{%badges}}', 'id', 'CASCADE', 'CASCADE');
     }
 
     public function down()

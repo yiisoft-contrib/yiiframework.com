@@ -7,7 +7,9 @@
 // - admin gridview
 // - apidoc edit and view source links
 
-.grid-view a.asc:after, .grid-view a.desc:after, .glyphicon:after {
+.sorter a.asc:after, .sorter a.desc:after,
+.grid-view a.asc:after, .grid-view a.desc:after,
+.glyphicon:after {
   position: relative;
   top: 1px;
   display: inline-block;
@@ -29,7 +31,9 @@
 }
 
 /* add sorting icons to gridview sort links */
+.sorter a.asc:after,
 .grid-view a.asc:after    { content: "\f160"; } // http://fontawesome.io/icon/sort-amount-asc/
+.sorter a.desc:after,
 .grid-view a.desc:after   { content: "\f161"; } // http://fontawesome.io/icon/sort-amount-desc/
 
 /* define fontawesome counterpart for some glyphicons used */

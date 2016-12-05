@@ -1,6 +1,7 @@
 <?php
 
 use app\models\Badge;
+use app\models\Star;
 use yii\helpers\Html;
 use yii\widgets\DetailView;
 
@@ -107,6 +108,27 @@ echo $this->render('//site/partials/common/_admin_heading.php', [
                     <h2>Your Wiki entries</h2>
 
                     TODO
+
+                    <h2>Your Stars (following)</h2>
+
+                    <?php
+                        $targets = Star::getTargets($model->id);
+                    ?>
+                    <ul class="g-list-none">
+                        <?php foreach($targets as $target): ?>
+                        <li>
+                            <?php switch(get_class($target))
+                            {
+                                case \app\models\Wiki::class:
+                                    echo "[Wiki] " . Html::a(Html::encode($target->title), ['wiki/view', 'id' => $target->id, 'name' => $target->slug]);
+//                                case \app\models\Extension::class:
+//                                    echo "[Extension] " . Html::a(Html::a($target->title), ['extension/view', 'id' => $model->id, 'name' => $model->slug]);
+                            } ?>
+                        </li>
+                        <?php endforeach; ?>
+                    </ul>
+
+
             </div>
         </div>
 

@@ -14,7 +14,7 @@ class m160908_131246_bookmark_star_table extends BaseMigration
             'created_at' => $this->dateTime()->notNull(),
             'PRIMARY KEY(user_id, object_type, object_id)'
         ], $this->tableOptions);
-        $this->addForeignKey('fk-star-user_id-user-id', '{{%star}}', 'user_id', '{{%user}}', 'id');
+        $this->addForeignKey('fk-star-user_id-user-id', '{{%star}}', 'user_id', '{{%user}}', 'id', 'CASCADE', 'CASCADE');
     }
 
     public function down()

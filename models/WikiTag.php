@@ -4,18 +4,19 @@ namespace app\models;
 
 use Yii;
 use app\components\SluggableBehavior;
+use yii\db\ActiveQuery;
 
 /**
- * This is the model class for table "news_tags".
+ * This is the model class for table "wiki_tags".
  *
  * @property integer $id
  * @property integer $frequency
  * @property string $name
  * @property string $slug
  *
- * @property News[] $news
+ * @property Wiki[] $wikis
  */
-class NewsTag extends \yii\db\ActiveRecord
+class WikiTag extends \yii\db\ActiveRecord
 {
     public function behaviors()
     {
@@ -35,7 +36,7 @@ class NewsTag extends \yii\db\ActiveRecord
      */
     public static function tableName()
     {
-        return '{{%news_tags}}';
+        return '{{%wiki_tags}}';
     }
 
     /**
@@ -62,11 +63,11 @@ class NewsTag extends \yii\db\ActiveRecord
     }
 
     /**
-     * @return NewsQuery
+     * @return ActiveQuery
      */
-    public function getNews()
+    public function getWikis()
     {
-        return $this->hasMany(News::className(), ['id' => 'news_id'])
-            ->viaTable('news2news_tags', ['news_tag_id' => 'id']);
+        return $this->hasMany(Wiki::class, ['id' => 'wiki_id'])
+            ->viaTable('wiki2wiki_tags', ['wiki_tag_id' => 'id']);
     }
 }

@@ -43,21 +43,7 @@ use yii\helpers\Html;
                                 <div class="comment-body">
                                     <div class="text">
                                         <?php
-                                            $pre_processed_text = \yii\helpers\Markdown::process($comment->text);
-                                            $highlighter = new \Highlight\Highlighter();
-                                            $highlighter->setAutodetectLanguages(array("php", "javascript", "html"));
-                                            $matches = array();
-                                            $pattern = "/<code>(.*?)<\\/code>/is";
-                                            preg_match_all($pattern, $pre_processed_text, $matches);
-                                            if(count($matches) > 0) {
-                                                foreach($matches[1] as $match){
-                                                    $processed = $highlighter->highlightAuto(html_entity_decode($match));
-                                                    $pre_processed_text = str_replace($match, $processed->value, $pre_processed_text);
-                                                    $pre_processed_text = str_replace('<code>', '<pre><code class="hljs '.$processed->language.'">', $pre_processed_text);
-                                                    $pre_processed_text = str_replace('</code>', '</code></pre>', $pre_processed_text);
-                                                }
-                                            }
-                                            echo $pre_processed_text;
+                                            echo Yii::$app->formatter->asCommentMarkdown($comment->text);
                                         ?>
                                     </div>
                                 </div>
@@ -74,6 +60,13 @@ use yii\helpers\Html;
         <span class="heading">Leave a comment</span>
     </div>
 </div>
+<?php if (isset($prompt)): ?>
+<div class="row">
+    <div class="col-md-offset-2 col-md-9">
+        <?= $prompt ?>
+    </div>
+</div>
+<?php endif; ?>
 <div class="row">
     <div class="col-md-offset-2 col-md-9">
         <?php if (!Yii::$app->user->isGuest): ?>

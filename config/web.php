@@ -8,7 +8,11 @@ $params = array_merge(
 $config = [
     'id' => 'yiiframework.com',
     'basePath' => dirname(__DIR__),
-    'bootstrap' => ['log'],
+    'bootstrap' => [
+        'log',
+        app\components\BootstrapEvents::class
+    ],
+    'language' => 'en',
     'components' => [
         'db' => $params['components.db'],
         'elasticsearch' => $params['components.elasticsearch'],
@@ -19,6 +23,11 @@ $config = [
             'enableAutoLogin' => true,
             'loginUrl' => ['auth/login'],
         ],
+        'formatter' => [
+            'class' => app\components\Formatter::class,
+            'thousandSeparator' => '&thinsp;',
+        ],
+
         'errorHandler' => [
             'errorAction' => 'site/error',
         ],
@@ -39,6 +48,11 @@ $config = [
                 'yii\widgets\ActiveFormAsset' => false,
                 'yii\bootstrap\BootstrapPluginAsset' => false,
                 'yii\web\JqueryAsset' => false,
+                'dosamigos\selectize\SelectizeAsset' => [
+                    'depends' => [
+                        \app\assets\AppAsset::class,
+                    ],
+                ],
                 'yii\jui\JuiAsset' => [
                     'depends' => [
                         \app\assets\AppAsset::class,
