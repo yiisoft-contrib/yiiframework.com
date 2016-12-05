@@ -33,7 +33,7 @@ class WikiController extends Controller
                     ],
                     [
                         'allow' => true,
-                        'actions' => ['create', 'list-tags', 'update'],
+                        'actions' => ['create', 'list-tags', 'update', 'keep-alive'],
                         'roles' => ['@'],
                     ],
 //                    [
@@ -277,6 +277,16 @@ class WikiController extends Controller
             'right' => $right,
             'diffSingle' => $diffSingle,
         ]);
+    }
+
+    /**
+     * Just reply with a 'pong' to the session keep alive call.
+     * This method is only accessable for logged in users, so session will be opened.
+     * @return string
+     */
+    public function actionKeepAlive()
+    {
+        return 'pong';
     }
 
     /**

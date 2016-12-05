@@ -62,6 +62,17 @@ use yii\widgets\ActiveForm;
 
 </div><!-- wiki-_form -->
 
+<?php
 
+// register a JS function that repeatedly calls the server to keep the session alive
+// this prevents issues with users getting logged out when editing wiki for long time,
+$this->registerJs(<<<JS
+    window.setInterval(function()
+    {
+        $.get(yiiBaseUrl + '/wiki/keep-alive');
+        // TODO show a nice warning when user go logged out and allow log in in other window before submitting the form
+    }, 300000 /* call every 5 min */);
+JS
+);
 
-<?php //TODO JS for keeping session alive? Yii::app()->clientScript->registerScript('keepAlive', 'site.keepAlive();', CClientScript::POS_READY); ?>
+?>

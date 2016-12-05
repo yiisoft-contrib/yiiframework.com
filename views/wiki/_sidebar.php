@@ -49,3 +49,7 @@ use yii\helpers\Html;
         </li>
     <?php endforeach; ?>
 </ul>
+
+<h3 class="wiki-side-title">Recent Comments</h3>
+
+TODO

@@ -48,6 +48,11 @@ $config = [
                 'yii\widgets\ActiveFormAsset' => false,
                 'yii\bootstrap\BootstrapPluginAsset' => false,
                 'yii\web\JqueryAsset' => false,
+                'dosamigos\selectize\SelectizeAsset' => [
+                    'depends' => [
+                        \app\assets\AppAsset::class,
+                    ],
+                ],
                 'yii\jui\JuiAsset' => [
                     'depends' => [
                         \app\assets\AppAsset::class,
