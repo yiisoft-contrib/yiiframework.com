@@ -138,7 +138,7 @@ class GuideController extends Controller
 
         $guide = Guide::load('2.0', 'en');
         if ($guide && ($section = $guide->loadSection($section))) {
-            return $this->redirect(['view', 'version' => '2.0', 'section' => $section->name, 'language' => 'en'], 301); // Moved Permanently
+            return $this->redirect(['view', 'version' => '2.0', 'section' => $section->name, 'language' => 'en', 'type' => 'guide'], 301); // Moved Permanently
         } else {
             throw new NotFoundHttpException('The requested page was not found.');
         }
