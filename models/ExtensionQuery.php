@@ -2,21 +2,24 @@
 
 namespace app\models;
 
-use yii\db\ActiveQuery;
-
-class WikiQuery extends ActiveQuery
+/**
+ * This is the ActiveQuery class for [[Extension]].
+ *
+ * @see Extension
+ */
+class ExtensionQuery extends \yii\db\ActiveQuery
 {
     /**
      * @return $this
      */
     public function active()
     {
-        return $this->andWhere(['status' => Wiki::STATUS_PUBLISHED]);
+        return $this->andWhere(['status' => Extension::STATUS_PUBLISHED]);
     }
 
     /**
      * @inheritdoc
-     * @return Wiki[]|array
+     * @return Extension[]|array
      */
     public function all($db = null)
     {
@@ -25,7 +28,7 @@ class WikiQuery extends ActiveQuery
 
     /**
      * @inheritdoc
-     * @return Wiki|array|null
+     * @return Extension|array|null
      */
     public function one($db = null)
     {

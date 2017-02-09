@@ -9,6 +9,8 @@ namespace app\commands;
 
 
 use app\models\Comment;
+use app\models\Extension;
+use app\models\ExtensionCategory;
 use app\models\News;
 use app\models\Rating;
 use app\models\Star;
@@ -78,7 +80,7 @@ class ImportController extends Controller
 
 		$this->importWiki();
 
-		// TODO extensions
+		$this->importExtensions();
 
 		$this->importNews();
 
@@ -302,6 +304,78 @@ class ImportController extends Controller
 					$revModel->detachBehavior('blameable');
 					$revModel->save(false);
 				}
+			}catch (\Exception $e) {
+				$this->stdout($e->getMessage()."\n", Console::FG_RED);
+				$err++;
+			}
+			Console::updateProgress(++$i, $count);
+		}
+		Console::endProgress(true);
+		$this->stdout("done.", Console::FG_GREEN, Console::BOLD);
+		$this->stdout(" $count records imported.");
+		if ($err > 0) {
+			$this->stdout(" $err errors occurred.", Console::FG_RED, Console::BOLD);
+		}
+		$this->stdout("\n");
+	}
+
+	private function importExtensions()
+	{
+		if (Extension::find()->count() > 0 || ExtensionCategory::find()->count() > 0) {
+			$this->stdout("Extension table is already populated, skipping.\n");
+			return;
+		}
+
+		// creating extension categories
+		$categoryQuery = (new Query)->from('tbl_lookup')->where(['type' => 'ExtensionCategory']);
+		foreach($categoryQuery->all($this->sourceDb) as $cat) {
+			$model = new ExtensionCategory();
+			$model->id = $cat['code'];
+			$model->name = $cat['name'];
+			$model->sequence = $cat['sequence'];
+			$model->save(false);
+		}
+
+		// import extensions
+		$extensionQuery = (new Query)->from('tbl_extension')->orderBy('id');
+		$count = $extensionQuery->count('*', $this->sourceDb);
+		Console::startProgress(0, $count, 'Importing extension...');
+		$i = 0;
+		$err = 0;
+		foreach($extensionQuery->each(100, $this->sourceDb) as $extension) {
+
+			try {
+				$model = new Extension([
+					'id' => $extension['id'],
+					'name' => $extension['name'],
+					'tagline' => $extension['tagline'],
+					'description' => $this->convertMarkdown($extension['description']),
+					'category_id' => $extension['category_id'],
+					'tagNames' => $extension['tags'],
+					'owner_id' => $extension['owner_id'],
+					'created_at' => date('Y-m-d H:i:s', $extension['create_time']),
+					'updated_at' => date('Y-m-d H:i:s', $extension['update_time']),
+
+					'license_id' => $extension['owner_id'],
+
+					'yii_version' => $extension['yii_version'],
+
+					'total_votes' => $extension['total_votes'],
+					'up_votes' => $extension['up_votes'],
+					'rating' => $extension['rating'],
+
+					'download_count' => $extension['download_count'],
+					'comment_count' => $extension['comment_count'],
+
+					'status' => $extension['status'],
+					'featured' => $extension['featured'],
+
+					// TODO mark these as default, not pacakgist
+				]);
+				$model->detachBehavior('timestamp');
+				$model->detachBehavior('blameable');
+				$model->save(false);
+
 			}catch (\Exception $e) {
 				$this->stdout($e->getMessage()."\n", Console::FG_RED);
 				$err++;

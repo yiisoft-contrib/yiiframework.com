@@ -3,34 +3,32 @@
 namespace app\models;
 
 use Yii;
-use yii\db\ActiveQuery;
-use yii\helpers\ArrayHelper;
 
 /**
- * This is the model class for table "wiki_categories".
+ * This is the model class for table "{{%extension_categories}}".
  *
  * @property integer $id
  * @property string $name
  * @property integer $sequence
  *
- * @property Wiki[] $wikis
+ * @property Extension[] $extensions
  */
-class WikiCategory extends BaseCategory
+class ExtensionCategory extends BaseCategory
 {
     /**
      * @inheritdoc
      */
     public static function tableName()
     {
-        return 'wiki_categories';
+        return '{{%extension_categories}}';
     }
 
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getWikis()
+    public function getExtensions()
     {
-        return $this->hasMany(Wiki::className(), ['category_id' => 'id']);
+        return $this->hasMany(Extension::className(), ['category_id' => 'id']);
     }
 
     /**
@@ -38,6 +36,6 @@ class WikiCategory extends BaseCategory
      */
     protected static function getObjectRelationName()
     {
-        return 'wikis';
+        return 'extensions';
     }
 }
