@@ -135,6 +135,9 @@ $blue-navbar: true;
 // $headings-line-height:    1.1;
 // $headings-color:          inherit;
 
+// This font-size is used on mobile screen only, where max width is 768px
+// Assumes font-size-base is 14px
+$font-size-xtra-small:    ceil(($font-size-base * 0.75)) !default; // ~11px
 
 //== Iconography
 //
