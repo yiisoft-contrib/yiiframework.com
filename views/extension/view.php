@@ -2,11 +2,11 @@
 
 use yii\helpers\Html;
 
-/** @var $model \app\models\Wiki */
+/** @var $model \app\models\Extension */
 /** @var $revision int */
 
 
-$this->title = 'Wiki - ' . $model->title;
+$this->title = 'Extension - ' . $model->name;
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="guide-header-wrap">
@@ -31,25 +31,25 @@ $this->params['breadcrumbs'][] = $this->title;
 
             <div class="row">
                 <div class="col-md-12 col-lg-9">
-                    <div class="content wiki-row">
-                        <h2 class="title"><?= Html::a(Html::encode($model->title), ['wiki/view', 'id' => $model->id, 'name' => $model->slug]) ?></h2>
+                    <div class="content extension-row">
+                        <h2 class="title"><?= Html::encode($model->name) ?> <small><?= Html::encode($model->tagline) ?></small></h2>
                         <div class="text">
 
-                            <?php if ($model->yii_version === null && $revision === null) {
+                            <?php /*if ($model->yii_version === null && $revision === null) {
                                 echo '<blockquote class="note"><p>'
-                                   . "This wiki article has not been tagged with a corresponding Yii version yet.<br>\nHelp us improve the wiki by "
-                                   . Html::a('updating the version information', ['wiki/update', 'id' => $model->id]) . '.</p></blockquote>';
+                                   . "This extension article has not been tagged with a corresponding Yii version yet.<br>\nHelp us improve the extension by "
+                                   . Html::a('updating the version information', ['extension/update', 'id' => $model->id]) . '.</p></blockquote>';
                             } ?>
                             <?php if ($revision !== null) {
                                 echo '<blockquote class="note"><p>'
-                                   . "You are viewing revision #" . ((int) $revision->revision) . " of this wiki article.<br>";
+                                   . "You are viewing revision #" . ((int) $revision->revision) . " of this extension article.<br>";
                                 if ($revision->isLatest()) {
                                     echo "This is the latest version of this article.<br>"
-                                        . "You may want to " . Html::a('see the changes made in this revision', ['wiki/revision', 'id' => $model->id, 'r1' => $revision->revision]) . '.';
+                                        . "You may want to " . Html::a('see the changes made in this revision', ['extension/revision', 'id' => $model->id, 'r1' => $revision->revision]) . '.';
                                 } else {
                                     echo "This version may not be up to date with the latest version.<br>"
-                                        . "You may want to " . Html::a('view the differences to the latest version', ['wiki/revision', 'id' => $model->id, 'r1' => $revision->revision, 'r2' => 'latest'])
-                                        . " or " . Html::a('see the changes made in this revision', ['wiki/revision', 'id' => $model->id, 'r1' => $revision->revision]) . '.';
+                                        . "You may want to " . Html::a('view the differences to the latest version', ['extension/revision', 'id' => $model->id, 'r1' => $revision->revision, 'r2' => 'latest'])
+                                        . " or " . Html::a('see the changes made in this revision', ['extension/revision', 'id' => $model->id, 'r1' => $revision->revision]) . '.';
                                 }
                                 $previous = $revision->findPrevious();
                                 $next = $revision->findNext();
@@ -57,20 +57,20 @@ $this->params['breadcrumbs'][] = $this->title;
                                 if ($previous) {
                                     echo Html::a(
                                         '&laquo; previous (#' . $previous->revision . ')',
-                                        ['wiki/view', 'id' => $model->id, 'name' => $model->slug, 'revision' => $previous->revision],
+                                        ['extension/view', 'id' => $model->id, 'name' => $model->slug, 'revision' => $previous->revision],
                                         ['class' => 'prev-revision']
                                     );
                                 }
                                 if ($next) {
                                     echo Html::a(
                                         'next (#' . $next->revision . ') &raquo;',
-                                        ['wiki/view', 'id' => $model->id, 'name' => $model->slug, 'revision' => $next->revision],
+                                        ['extension/view', 'id' => $model->id, 'name' => $model->slug, 'revision' => $next->revision],
                                         ['class' => 'next-revision']
                                     );
                                 }
                                 echo '</p></blockquote>';
 
-                            } ?>
+                            }*/ ?>
 
                             <?= $model->contentHtml ?>
                         </div>
@@ -79,12 +79,17 @@ $this->params['breadcrumbs'][] = $this->title;
                 <div class="col-md-12 col-lg-3">
                     <?= $this->render('_metadata.php', ['model' => $model, 'extended' => true]) ?>
 
-                    <?= Html::a('Update Article', ['wiki/update', 'id' => $model->id])?>
+                    <?= Html::a('Update Extension', ['extension/update', 'name' => $model->name])?>
+                    <?= Html::a('Manage Downloads', ['extension/files', 'name' => $model->name])?>
+
+                    <h3>Downloads</h3>
 
 
-                    <h3>Revisions</h3>
 
-                    <?= $this->render('_revisions.php', ['model' => $model]) ?>
+                    <h3>Related Extensions</h3>
+
+                    TODO
+
                 </div>
             </div>
 
@@ -95,9 +100,9 @@ $this->params['breadcrumbs'][] = $this->title;
 <div class="comments-wrapper">
     <div class="container comments">
         <?= \app\widgets\Comments::widget([
-            'objectType' => \app\models\Wiki::COMMENT_TYPE,
+            'objectType' => \app\models\Extension::COMMENT_TYPE,
             'objectId' => "$model->id",
-            'prompt' => 'Please only use comments to help explain the above article.<br/>If you have any questions, please ask in '.Html::a('the forum', Yii::$app->request->baseUrl . '/forum').' instead.',
+            'prompt' => 'Please only use comments to help explain the above extension.<br/>If you have any questions, please ask in '.Html::a('the forum', Yii::$app->request->baseUrl . '/forum').' instead.',
         ]) ?>
     </div>
 </div>

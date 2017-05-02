@@ -4,9 +4,9 @@ use yii\helpers\Html;
 use yii\widgets\ListView;
 
 /* @var $this yii\web\View */
-/* @var $model app\models\Wiki */
+/* @var $model app\models\Extension */
 
-$this->title = 'Update Wiki Article';
+$this->title = 'Update Extension ' . Html::encode($model->name);
 echo $this->render('//site/partials/common/_admin_heading.php', [
     'title' => $this->title,
 //    'menu' => [

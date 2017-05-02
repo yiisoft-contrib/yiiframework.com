@@ -56,7 +56,11 @@ use yii\widgets\ActiveForm;
     <div class="form-group">
         <?= Html::submitButton('Submit', ['class' => 'btn btn-primary']) ?>
         <a class="g-markdown-preview" href="#" rel="#wiki_content">Preview</a>
-        <?= Html::a('Abort', ['view', 'id' => $model->id, 'name' => $model->slug], ['class' => 'btn btn-danger']) ?>
+        <?php if ($model->isNewRecord) {
+            echo Html::a('Abort', ['index'], ['class' => 'btn btn-danger']);
+        } else {
+            echo Html::a('Abort', ['view', 'id' => $model->id, 'name' => $model->slug], ['class' => 'btn btn-danger']);
+        } ?>
     </div>
     <?php ActiveForm::end(); ?>
 

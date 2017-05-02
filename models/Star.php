@@ -21,7 +21,7 @@ class Star extends \yii\db\ActiveRecord
     /**
      * @var array Allow class for star
      */
-    public static $modelClasses = ['Wiki'];
+    public static $modelClasses = ['Wiki', 'Extension'];
 
     /**
      * @inheritdoc

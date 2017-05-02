@@ -20,7 +20,7 @@ use yii\db\Expression;
  */
 class Rating extends \yii\db\ActiveRecord
 {
-    public static $modelClasses = ['Comment', 'Wiki'];
+    public static $modelClasses = ['Comment', 'Wiki', 'Extension'];
 
     /**
      * @inheritdoc

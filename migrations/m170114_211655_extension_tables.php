@@ -18,8 +18,12 @@ class m170114_211655_extension_tables extends BaseMigration
             'name' => $this->string(32)->notNull(),
             'tagline' => $this->string(128)->notNull(),
 
+            'from_packagist' => $this->boolean()->notNull(),
+            'packagist_url' => $this->string(255),
+
             'category_id' => $this->integer()->notNull(),
-            'license_id' => $this->integer()->notNull(),
+            // https://spdx.org/licenses/
+            'license_id' => $this->string(128)->notNull(),
 
             // TODO is packagist or not?
 
@@ -36,13 +40,16 @@ class m170114_211655_extension_tables extends BaseMigration
             'comment_count' => $this->integer()->notNull()->defaultValue(0),
             'download_count' => $this->integer()->notNull()->defaultValue(0),
 
-            'yii_version' => $this->string(5),
+            // accept composer version constraint
+            'yii_version' => $this->string(32),
 
             'status' => $this->smallInteger()->notNull()->defaultValue(3), // published
 
             'description' => $this->text(),
 
         ], $this->tableOptions);
+
+        $this->createIndex('idx-extension-name', 'extension', 'name', true);
 
         $this->addForeignKey('fk-extension-category_id-extension_category-id', '{{%extension}}', 'category_id', '{{%extension_categories}}', 'id', 'RESTRICT', 'CASCADE');
         $this->addForeignKey('fk-extension-owner_id-user-id', '{{%extension}}', 'owner_id', '{{%user}}', 'id', 'RESTRICT', 'CASCADE');

@@ -124,24 +124,17 @@ class ExtensionController extends Controller
         ]);
     }
 
-    public function actionView($name) // TODO find by name
+    public function actionView($name)
     {
-        $model = $this->findModel($id);
+        $model = $this->findModel($name);
 
-        // normalize slug URL
-        $slug = Yii::$app->request->get('name');
-        if ($model->slug !== $slug) {
-            return $this->redirect(['extension/view', 'id' => $model->id, 'name' => $model->slug, 'revision' => $revision], 301);
-        }
-
-        // update view count
-        if (Yii::$app->request->isGet) {
-            $model->updateCounters(['view_count' => 1]);
+        // normalize URL, redirect non-case sensitive URLs
+        if ($model->name !== $name) {
+            return $this->redirect(['view', 'name' => $model->name], 301);
         }
 
         return $this->render('view', [
             'model' => $model,
-            'revision' => $revision !== null ? $this->findRevision($id, $revision) : null,
         ]);
     }
 
@@ -152,46 +145,54 @@ class ExtensionController extends Controller
 //            throw new CHttpException(403,'Sorry, you are too new to write a extension article. Please try posting it in our forum first.');
 
         $model = new Extension();
-        $model->scenario = 'create';
+        $model->initDefaults();
+        $post = Yii::$app->request->post('Extension', []);
+        if (isset($post['from_packagist'])) {
 
-        if ($model->load(\Yii::$app->request->post()) && $model->save()) {
+            $model->from_packagist = $post['from_packagist'];
+            $model->scenario = 'create_' . ($model->from_packagist == 1 ? 'packagist' : 'custom');
 
-            Star::castStar($model, Yii::$app->user->id, 1);
-            return $this->redirect(['view', 'id' => $model->id]);
+            if ($model->load(Yii::$app->request->post()) && $model->validate()) {
+
+                if ($model->from_packagist) {
+                    // TODO import data
+                    $model->name = md5(time());
+
+                    $model->save(false);
+                } else {
+                    $model->save(false);
+                }
+
+
+                Star::castStar($model, Yii::$app->user->id, 1);
+                return $this->redirect(['view', 'name' => $model->name]);
+            }
         }
 
-        return $this->render('create',array(
+        return $this->render('create', [
             'model' => $model,
-        ));
+        ]);
     }
 
-    public function actionUpdate($id, $revision = null)
+    public function actionUpdate($name)
     {
         // TODO permission
-//        if(!user()->dbUser->canCreateExtension())
-//            throw new CHttpException(403,'Sorry, you are too new to write a extension article. Please try posting it in our forum first.');
+        $model = $this->findModel($name);
+        $model->scenario = 'update_' . ($model->from_packagist == 1 ? 'packagist' : 'custom');
 
-        $model = $this->findModel($id, $revision);
-        $model->scenario = 'update';
-
-        if ($revision !== null) {
-            $rev = $this->findRevision($id, $revision);
-            $model->memo='Reverted to revision #' . $rev->revision;
-        }
-
-        if ($model->load(\Yii::$app->request->post()) && $model->save()) {
+        if ($model->load(Yii::$app->request->post()) && $model->save()) {
 
             // TODO notification email for followers
 //            if(($changes=$model->findChanges($oldAttributes))!='')
 //                $model->notifyFollowers($changes);
 
             Star::castStar($model, Yii::$app->user->id, 1);
-            return $this->redirect(['view', 'id' => $model->id]);
+            return $this->redirect(['view', 'name' => $model->name]);
         }
 
-        return $this->render('update',array(
+        return $this->render('update', [
             'model' => $model,
-        ));
+        ]);
     }
 
     /**
@@ -228,55 +229,6 @@ class ExtensionController extends Controller
     }
 
     /**
-     * Display the Diff of one revision (r1 is set) or the diff between two revisions (r1 and r2).
-     *
-     * Optionally the revision ids can be passed as array r (used by gridview select.
-     */
-    public function actionRevision($id, $r1 = null, $r2 = null, array $r = [])
-    {
-        // if input revisions are given as array
-        if (is_array($r) && count($r) == 2) {
-            asort($r);
-            list($r1, $r2) = array_values($r);
-        }
-
-        $left = ExtensionRevision::findOne(['extension_id' => $id, 'revision' => $r1]);
-        if ($left === null) {
-            throw new NotFoundHttpException('The requested revision does not exist.');
-        }
-        $model = $left->extension;
-        if ($model->status !== Extension::STATUS_PUBLISHED) {
-            throw new NotFoundHttpException('The requested page does not exist.');
-        }
-
-        if ($r2 !== null) {
-            if ($r2 === 'latest') {
-                $right = ExtensionRevision::findLatest($id);
-            } else {
-                $right = ExtensionRevision::findOne(['extension_id' => $id, 'revision' => $r2]);
-            }
-            if ($right === null) {
-                throw new NotFoundHttpException('The requested revision does not exist.');
-            }
-            $diffSingle = null;
-        } else {
-            $right = $left;
-            $left = $right->findPrevious();
-            $diffSingle = $right;
-        }
-        if ($left === null) {
-            return $this->redirect(['view', 'id' => $model->id, 'name' => $model->slug, 'revision' => $right->revision]);
-        }
-
-        return $this->render('revision', [
-            'model' => $model,
-            'left' => $left,
-            'right' => $right,
-            'diffSingle' => $diffSingle,
-        ]);
-    }
-
-    /**
      * Just reply with a 'pong' to the session keep alive call.
      * This method is only accessable for logged in users, so session will be opened.
      * @return string
@@ -287,30 +239,17 @@ class ExtensionController extends Controller
     }
 
     /**
-     * Finds the Extension model based on its primary key value.
+     * Finds the Extension model based on its name.
      * If the model is not found, a 404 HTTP exception will be thrown.
-     * @param integer $id
+     * @param string $name
      * @return Extension the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
-    protected function findModel($id, $revision = null)
+    protected function findModel($name)
     {
-        if (($model = Extension::find()->where(['id' => $id])->active()->one()) !== null) {
-
-            Yii::trace(print_r($model->attributes, true));
-
-            if ($revision === null) {
-                return $model;
-            }
-
-            $revisionModel = $this->findRevision($model->id, $revision);
-            Yii::trace(print_r($revisionModel->attributes, true));
-            $model->loadRevision($revisionModel);
-            Yii::trace(print_r($model->attributes, true));
+        if (($model = Extension::find()->where(['name' => $name])->active()->one()) !== null) {
             return $model;
         }
         throw new NotFoundHttpException('The requested page does not exist.');
     }
-
-    private $_revisions = [];
 }
