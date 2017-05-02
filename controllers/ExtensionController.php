@@ -113,7 +113,7 @@ class ExtensionController extends Controller
                 'defaultOrder'=> ['create'=>SORT_DESC],
             ],
             'pagination' => [
-                'pageSize' => 154,
+                'pageSize' => 12,
             ],
         ]);
 
@@ -209,23 +209,6 @@ class ExtensionController extends Controller
 
         Yii::$app->response->format = Response::FORMAT_JSON;
         return $items;
-    }
-
-
-    public function actionHistory($id)
-    {
-        $model = $this->findModel($id);
-
-        return $this->render('history', [
-            'model'=>$model,
-            'dataProvider' => new ActiveDataProvider([
-                'query' => $model->getRevisions(),
-                'pagination' => false,
-                'sort' => false, /*[
-                    'defaultOrder' => ['updated_at' => SORT_DESC],
-                ]*/
-            ])
-        ]);
     }
 
     /**

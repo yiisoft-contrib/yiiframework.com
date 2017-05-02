@@ -6,7 +6,7 @@ use yii\helpers\Html;
 /** @var $revision int */
 
 
-$this->title = 'Wiki - ' . $model->title;
+$this->title = 'Wiki';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="guide-header-wrap">

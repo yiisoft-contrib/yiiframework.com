@@ -35,6 +35,8 @@ $this->params['breadcrumbs'][] = $this->title;
             <?= \yii\widgets\ListView::widget([
                 'dataProvider' => $dataProvider,
                 'itemView' => '_view',
+                'itemOptions' => ['class' => 'col-xs-12 col-sm-6 col-lg-4'],
+                'options' => ['class' => 'list-view row'],
             ]) ?>
 
 <!--            <nav class="extension-pagination-holder">

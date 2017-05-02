@@ -355,6 +355,14 @@ class User extends ActiveRecord implements IdentityInterface
         return $this->hasMany(Wiki::class, ['creator_id' => 'id']);
     }
 
+    /**
+     * @return ExtensionQuery
+     */
+    public function getExtensions()
+    {
+        return $this->hasMany(Extension::class, ['owner_id' => 'id']);
+    }
+
     public function getRankLink()
     {
         $class='g-user-rank-link';

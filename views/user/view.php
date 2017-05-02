@@ -61,7 +61,11 @@ $this->registerMetaTag(['name' => 'keywords', 'value' => 'yii framework, communi
 
         <h2>Extensions</h2>
 
-        TODO
+        <ul>
+            <?php foreach($model->getExtensions()->orderBy('name')->active()->all() as $extension) {
+                echo "<li>[Extension] " . Html::a(Html::encode($extension->name), ['extension/view', 'name' => $extension->name]) . '</li>';
+            } ?>
+        </ul>
 
        	<?php /*if($model->extension_count>0): ?>
        	<h2>Extensions</h2>

@@ -9,6 +9,7 @@ use Yii;
 use yii\behaviors\BlameableBehavior;
 use yii\behaviors\TimestampBehavior;
 use yii\db\Expression;
+use yii\helpers\Html;
 
 /**
  * This is the model class for table "{{%extension}}".
@@ -251,6 +252,13 @@ MARKDOWN;
     public function getContentHtml()
     {
         return Yii::$app->formatter->asGuideMarkdown($this->description);
+    }
+
+    public function getLicenseLink()
+    {
+        $spdx = new SpdxLicenses();
+        $license = $spdx->getLicenseByIdentifier($this->license_id);
+        return $license === null ? null : Html::a($this->license_id, $license[2], ['title' => $license[0]]);
     }
 
     public static function getLicenseSelect()

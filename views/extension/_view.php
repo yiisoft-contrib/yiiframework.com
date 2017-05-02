@@ -8,23 +8,38 @@ use yii\helpers\Html;
 /** @var $widget yii\widgets\ListView the widget instance */
 
 ?>
-<div class="row">
-    <div class="col-md-12 col-lg-9">
-        <div class="content extension-row">
-            <div class="suptitle">
-                Created <?= Yii::$app->formatter->asRelativeTime($model->created_at) ?> by <?= $model->owner->rankLink ?>.
-            </div>
-            <h2 class="title"><?= Html::a(Html::encode($model->name), ['extension/view', 'name' => $model->name]) ?></h2>
-            <div class="text"><?php /*= $model->teaser*/ ?></div>
-            <div class="comments"><?= Html::a(
-                    Yii::$app->i18n->format('{n, number} {n, plural, one{comment} other{comments}}', ['n' => $model->comment_count], Yii::$app->language),
-                    ['extension/view', 'name' => $model->name, '#' => 'comments']
-            ) ?></div>
+    <div class="extension-box">
+        <h2 class="title"><?= Html::a(Html::encode($model->name), ['extension/view', 'name' => $model->name]) ?></h2>
+        <div class="extension-stats">
+            <?= Html::encode($model->category->name) ?>
+
+            <?= Html::a(
+                '<i class="fa fa-comments-o"></i> ' . $model->comment_count,
+                ['extension/view', 'name' => $model->name, '#' => 'comments'],
+                [
+                    'aria-label' => $model->comment_count.' Comments',
+                    'title' => $model->comment_count.' Comments',
+                ]
+            ) ?>
+
+            <?= Html::a(
+                '<i class="fa fa-download"></i> ' . $model->download_count,
+                ['extension/view', 'name' => $model->name, '#' => 'downloads'],
+                [
+                    'aria-label' => $model->comment_count.' Downloads',
+                    'title' => $model->comment_count.' Downloads',
+                ]
+            ) ?>
         </div>
+
+        <div class="extension-tagline">
+            <?= Html::encode($model->tagline) ?>
+        </div>
+
+        <div class="extension-author">
+            By <?= $model->owner->rankLink ?>, created <?= Yii::$app->formatter->asRelativeTime($model->created_at) ?>.
+        </div>
+
     </div>
-    <div class="col-md-12 col-lg-3">
-        <?= $this->render('_metadata.php', ['model' => $model, 'extended' => false]) ?>
-    </div>
-</div>
 
 

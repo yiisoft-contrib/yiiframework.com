@@ -347,6 +347,9 @@ class ImportController extends Controller
 			try {
 				$model = new Extension([
 					'id' => $extension['id'],
+
+					'from_packagist' => 0,
+
 					'name' => $extension['name'],
 					'tagline' => $extension['tagline'],
 					'description' => $this->convertMarkdown($extension['description']),
@@ -356,7 +359,7 @@ class ImportController extends Controller
 					'created_at' => date('Y-m-d H:i:s', $extension['create_time']),
 					'updated_at' => date('Y-m-d H:i:s', $extension['update_time']),
 
-					'license_id' => $extension['owner_id'],
+					'license_id' => $this->convertLicense($extension['license_id']),
 
 					'yii_version' => $extension['yii_version'],
 
@@ -389,6 +392,28 @@ class ImportController extends Controller
 			$this->stdout(" $err errors occurred.", Console::FG_RED, Console::BOLD);
 		}
 		$this->stdout("\n");
+	}
+
+	/**
+	 * Convert licence ID to SPDX identifier
+	 * @param integer $id
+	 * @return string
+	 */
+	private function convertLicense($id)
+	{
+		$licenses = [
+			1 => 'Apache-2.0', // Apache License 2.0|http://www.opensource.org/licenses/apache2.0.php
+			2 => 'EPL-1.0', // Eclipse Public License 1.0|http://www.opensource.org/licenses/eclipse-1.0.php
+			3 => 'GPL-2.0', // GNU General Public License v2|http://www.opensource.org/licenses/gpl-2.0.php
+			4 => 'GPL-3.0', // GNU General Public License v3|http://www.opensource.org/licenses/gpl-3.0.html
+			5 => 'LGPL-3.0', // GNU Lesser General Public License|http://www.opensource.org/licenses/lgpl-3.0.html
+			6 => 'MIT', // MIT License|http://www.opensource.org/licenses/mit-license.php
+			7 => 'MPL-1.1', // Mozilla Public License 1.1|http://www.opensource.org/licenses/mozilla1.1.php
+			8 => 'BSD-2-Clause', // New BSD License|http://www.opensource.org/licenses/bsd-license.php
+			9 => 'PHP-3.0', // PHP License 3.0|http://www.opensource.org/licenses/php.php
+			10 => 'other', // Other Open Source License
+		];
+		return $licenses[$id];
 	}
 
 	private function importComments()

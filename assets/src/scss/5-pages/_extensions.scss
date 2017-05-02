@@ -1,3 +1,5 @@
+
+// radio buttons for selection of extension type in extension create form
 label.radiolist-label {
   font-weight: normal;
 
@@ -8,5 +10,34 @@ label.radiolist-label {
 
   p {
     margin-left: 25px;
+  }
+}
+
+.extension-box {
+  @extend .box;
+
+  min-height: 300px;
+  margin-bottom: 30px;
+
+  h2.title {
+    font-size: 16pt;
+    margin: 0;
+  }
+
+  .extension-stats {
+    text-transform: uppercase;
+    color: #808080;
+
+    a {
+      text-decoration: none;
+    }
+  }
+
+  .extension-tagline {
+    margin: 1em 0;
+  }
+
+  .extension-author {
+    color: #808080;
   }
 }
