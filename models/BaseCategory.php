@@ -25,8 +25,8 @@ abstract class BaseCategory extends \yii\db\ActiveRecord
      */
     public static function findWithCountData()
     {
-        return static::find()->alias('c')->joinWith(static::getObjectRelationName())
-            ->select(['c.id', 'c.name', 'COUNT(*) AS count'])
+        return static::find()->alias('c')->joinWith(static::getObjectRelationName() . ' as r')
+            ->select(['c.id', 'c.name', 'COUNT(r.id) AS count'])
             ->groupBy(['c.id', 'c.name']);
     }
 
