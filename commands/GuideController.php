@@ -209,52 +209,51 @@ class GuideController extends \yii\apidoc\commands\GuideController
     {
         $this->stdout('populating elasticsearch index...');
 
-        try {
+        // first delete all records for this version
+        $version = $this->version;
 
-            // first delete all records for this version
-            $version = $this->version;
+        $chapters = [];
+        $sections = [];
+        $data = $this->findRenderer(null)->loadGuideStructure([$source . '/README.md']);
+        foreach ($data as $i => $chapter) {
+            foreach ($chapter['content'] as $j => $section) {
+                $file = basename($section['file'], '.md');
+                if ($file === 'README') {
+                    continue;
+                }
 
-            $chapters = [];
-            $sections = [];
-            $data = $this->findRenderer(null)->loadGuideStructure([$source . '/README.md']);
-            foreach ($data as $i => $chapter) {
-                foreach ($chapter['content'] as $j => $section) {
-                    $file = basename($section['file'], '.md');
-                    if ($file === 'README') {
-                        continue;
-                    }
+                // index file
+                $chapters[$chapter['headline']][$section['headline']] = $file;
+                $sections[$file] = [$chapter['headline'], $section['headline']];
 
-                    // index file
-                    $chapters[$chapter['headline']][$section['headline']] = $file;
-                    $sections[$file] = [$chapter['headline'], $section['headline']];
-
-                    // elasticsearch
-                    $file = $target . '/' . $file . '.html';
-                    if (!file_exists($file)) {
-                        echo "file not found: $file\n";
-                        continue;
-                    }
-                    $html = file_get_contents($file);
+                // elasticsearch
+                $file = $target . '/' . $file . '.html';
+                if (!file_exists($file)) {
+                    echo "file not found: $file\n";
+                    continue;
+                }
+                $html = file_get_contents($file);
+                try {
                     SearchGuideSection::createRecord(basename($file, '.html'), $section['headline'], $html, $this->version, $this->language);
+                } catch (\Exception $e) {
+                    if (YII_DEBUG) {
+                        $this->stdout("!!! FAILED !!! Search will not be available.\n", Console::FG_RED, Console::BOLD);
+                        $this->stdout(((string) $e) . "\n\n");
+                    } else {
+                        throw $e;
+                    }
                 }
             }
-            $lines = file($source . '/README.md');
-            if (($title = trim($lines[0])) === '') {
-                $title = "The Definitive Guide for Yii {$this->version}";
-            }
-
-            FileHelper::createDirectory($target);
-            file_put_contents("$target/index.data", serialize([$title, $chapters, $sections]));
-
-            $this->stdout("done.\n", Console::FG_GREEN);
-        } catch (\Exception $e) {
-            if (YII_DEBUG) {
-                $this->stdout("!!! FAILED !!! Search will not be available.\n", Console::FG_RED, Console::BOLD);
-                $this->stdout(((string) $e) . "\n\n");
-            } else {
-                throw $e;
-            }
         }
+        $lines = file($source . '/README.md');
+        if (($title = trim($lines[0])) === '') {
+            $title = "The Definitive Guide for Yii {$this->version}";
+        }
+
+        FileHelper::createDirectory($target);
+        file_put_contents("$target/index.data", serialize([$title, $chapters, $sections]));
+
+        $this->stdout("done.\n", Console::FG_GREEN);
     }
 
     protected function generateIndexYii1($source, $target, $version, $language, $type = 'guide')

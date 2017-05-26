@@ -48,6 +48,7 @@ return [
             'en' => 'English',
             'es' => 'Español',     // Spanish
             'fr' => 'Français',     // French
+            'id' => 'Bahasa Indonesia', // Indonesian
             'ja' => '日本語',       // Japanese
             'pl' => 'Polski',       // Polish
             'pt-br' => 'Português brasileiro',  // Brazilian Portuguese
@@ -97,6 +98,7 @@ return [
         'en' => 'british',
         'es' => 'spanish',
         'fr' => 'frenchb',
+        'id' => 'bahasai', // https://tex.stackexchange.com/questions/224231/what-is-difference-indonesian-babel-with-bahasa-babel
 //        'ja' => '', // custom code in GuideController
         'pl' => 'polish',
         'pt-br' => 'brazilian',
