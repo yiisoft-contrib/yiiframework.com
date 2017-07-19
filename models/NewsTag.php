@@ -15,7 +15,7 @@ use app\components\SluggableBehavior;
  *
  * @property News[] $news
  */
-class NewsTag extends \yii\db\ActiveRecord
+class NewsTag extends ActiveRecord
 {
     public function behaviors()
     {

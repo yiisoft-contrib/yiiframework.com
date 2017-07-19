@@ -6,7 +6,7 @@ use yii\widgets\ListView;
 /* @var $this yii\web\View */
 /* @var $model app\models\Wiki */
 
-$this->title = 'Create Wiki Article';
+$this->title = 'Create Exension';
 echo $this->render('//site/partials/common/_admin_heading.php', [
     'title' => $this->title,
 //    'menu' => [

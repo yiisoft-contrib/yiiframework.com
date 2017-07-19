@@ -18,7 +18,7 @@ use yii\db\Expression;
  *
  * @property User $user
  */
-class Rating extends \yii\db\ActiveRecord
+class Rating extends ActiveRecord
 {
     public static $modelClasses = ['Comment', 'Wiki', 'Extension'];
 

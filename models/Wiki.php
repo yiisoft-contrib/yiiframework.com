@@ -37,7 +37,7 @@ use yii\helpers\StringHelper;
  *
  * @property string $contentHtml
  */
-class Wiki extends \yii\db\ActiveRecord
+class Wiki extends ActiveRecord
 {
     const STATUS_DRAFT = 1;
     const STATUS_PENDING_APPROVAL = 2;
@@ -58,14 +58,7 @@ class Wiki extends \yii\db\ActiveRecord
     public function behaviors()
     {
         return [
-            'timestamp' => [
-                'class' => TimestampBehavior::class,
-                'value' => new Expression('NOW()'),
-                'attributes' => [
-                    self::EVENT_BEFORE_INSERT => 'created_at', // do not set updated_at on insert
-                    self::EVENT_BEFORE_UPDATE => 'updated_at',
-                ],
-            ],
+            'timestamp' => $this->timeStampBehavior(),
             'blameable' => [
                 'class' => BlameableBehavior::class,
                 'createdByAttribute' => 'creator_id',

@@ -5,17 +5,22 @@ return [
     // components
 
     'components.db' => [
-        'class' => 'yii\db\Connection',
+        'class' => yii\db\Connection::class,
         'dsn' => 'mysql:host=localhost;dbname=yiiframework',
         'username' => 'root',
         'password' => '',
         'charset' => 'utf8',
+        'on afterOpen' => function($event) {
+            /** @var $db \yii\db\Connection */
+            $db = $event->sender;
+            $db->createCommand("SET time_zone = '+00:00';")->execute();
+        }
     ],
     'components.cache' => [
-        'class' => YII_DEBUG ? 'yii\caching\DummyCache' : 'yii\caching\FileCache',
+        'class' => YII_DEBUG ? yii\caching\DummyCache::class : yii\caching\FileCache::class,
     ],
     'components.mailer' => [
-        'class' => 'yii\swiftmailer\Mailer',
+        'class' => yii\swiftmailer\Mailer::class,
         'viewPath' => '@app/mail',
         // send all mails to a file by default. You have to set
         // 'useFileTransport' to false and configure a transport
@@ -23,10 +28,20 @@ return [
         'useFileTransport' => true,
     ],
     'components.elasticsearch' => [
-        'class' => 'yii\elasticsearch\Connection',
+        'class' => yii\elasticsearch\Connection::class,
         'nodes' => [
             ['http_address' => '127.0.0.1:9200'],
             // configure more hosts if you have a cluster
+        ],
+    ],
+    'components.queue' => [
+        'class' => yii\queue\db\Queue::class,
+        'db' => 'db', // DB connection component or its config
+        'tableName' => '{{%queue}}', // Table name
+        'channel' => 'default', // Queue channel key
+        'mutex' => [
+            'class' => yii\mutex\MysqlMutex::class, // Mutex that used to sync queries
+            'db' => 'db',
         ],
     ],
     'components.urlManager' => [

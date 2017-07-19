@@ -9,7 +9,7 @@ use yii\helpers\ArrayHelper;
 /**
  *
  */
-abstract class BaseCategory extends \yii\db\ActiveRecord
+abstract class BaseCategory extends ActiveRecord
 {
     protected static $objectRelation;
 

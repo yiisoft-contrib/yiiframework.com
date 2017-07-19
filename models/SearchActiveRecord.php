@@ -1,17 +1,9 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: cebe
- * Date: 10.04.15
- * Time: 00:24
- */
 
 namespace app\models;
 
 
-use yii\elasticsearch\ActiveRecord;
-
-abstract class SearchActiveRecord extends ActiveRecord
+abstract class SearchActiveRecord extends \yii\elasticsearch\ActiveRecord
 {
     public static $languages = [
         // lang => analyzer name

@@ -19,13 +19,13 @@ use yii\widgets\ActiveForm;
 
 <?php if ($model->isNewRecord) {
     echo Html::activeRadioList($model, 'from_packagist', [
-        1 => '<strong>Import from Packagist</strong><p>Select this option if your extension is available on packagist. We will import most of the information from Packagist and Github.</p>',
-        0 => '<strong>Custom Description</strong><p>Select this option if you want to manage Version information and Description on yiiframework.com and not import anything.</p>',
+        1 => '<strong>Import from Packagist</strong><p>Select this option if your extension is available on packagist. We will import most of the information from Packagist and Github.<br>This is the <strong>recommended</strong> option for Yii 2 extensions.</p>',
+        0 => '<strong>Custom Description</strong><p>Select this option if you want to manage version information and description on yiiframework.com and not import anything.<br>This option is used for code that is not hosted on github and not installable via composer, mainly Yii 1.1 extensions.</p>',
     ], [
         'encode' => false,
         'separator' => '<br>',
         'itemOptions' => [
-            'labelOptions' => ['class' => 'radiolist-label']
+            'labelOptions' => ['class' => 'radiolist-label alert alert-warning'],
         ],
         'id' => 'extension-packagist',
     ]);
@@ -39,13 +39,15 @@ use yii\widgets\ActiveForm;
     <div class="row">
         <div class="col-md-9">
 
-            <?php if ($model->isNewRecord) {
-                echo $form->field($model, 'name', ['options' => ['class' => 'nopackagist']])
-                    ->textInput()
+            <?=$form->field($model, 'name', ['options' => ['class' => 'nopackagist']])
+                    ->textInput(['disabled' => !$model->isNewRecord])
                     ->hint('Name must start with a letter and contain lower-case word characters only.<br>Name cannot be changed once the extension is created.');
-            } ?>
+            ?>
 
-            <?= $form->field($model, 'packagist_url', ['options' => ['class' => 'packagist']])->textInput()->hint('TODO') ?>
+            <?= $form->field($model, 'packagist_url', ['options' => ['class' => 'packagist']])
+                     ->textInput(['disabled' => !$model->isNewRecord])
+                     ->error(['encode' => false])
+                     ->hint('Enter the URL of the package registered on Packagist or the composer package name.<br>For example <code>http://packagist.org/p/yiisoft/yii2-redis</code> or <code>yiisoft/yii2-redis</code>.') ?>
 
             <?= $form->field($model, 'category_id')->dropDownList(ExtensionCategory::getSelectData(), ['prompt' => 'Please select...']) ?>
             <?= $form->field($model, 'yii_version', ['options' => ['class' => 'nopackagist']])
@@ -56,6 +58,10 @@ use yii\widgets\ActiveForm;
                 ->dropDownList(Extension::getLicenseSelect(), ['prompt' => 'Please select...'])
                 ->hint('All extensions shared on yiiframework.com must be open source.<br>We encourage you to use one of the licenses listed in the above drop-down list. For more information you may visit <a href="https://choosealicense.com/" target="_blank">choosealicense.com</a>.');
             ?>
+
+            <?= $form->field($model, 'github_url', ['options' => ['class' => 'nopackagist']])
+                ->textInput()
+                ->hint('If your code is hosted somewhere publicly for example on Github, enter the URL here.' . ($model->isNewRecord ? '<br>If your code is on github and packagist, consider importing details instead.' : '')) ?>
 
             <?= $form->field($model, 'tagline', ['options' => ['class' => 'nopackagist']])->textInput()->hint('A short summary') ?>
 

@@ -1,18 +1,6 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: cebe
- * Date: 09.04.15
- * Time: 19:41
- */
 
 namespace app\models;
-
-
-use yii\apidoc\models\ClassDoc;
-use yii\apidoc\models\InterfaceDoc;
-use yii\apidoc\models\TraitDoc;
-use yii\apidoc\models\TypeDoc;
 
 /**
  * API documentation type, i.e. class, interface or trait

@@ -29,6 +29,8 @@ $this->params['breadcrumbs'][] = $this->title;
 
         <div class="col-sm-9 col-md-10 col-lg-10" role="main">
 
+            <?= \app\widgets\Alert::widget() ?>
+
             <div class="row">
                 <div class="col-md-12 col-lg-9">
                     <div class="content extension-row">
@@ -72,15 +74,35 @@ $this->params['breadcrumbs'][] = $this->title;
 
                             }*/ ?>
 
-                            <?= $model->contentHtml ?>
+                            <?php $html = $model->contentHtml;
+                            if ($model->from_packagist && $model->update_status == \app\models\Extension::UPDATE_STATUS_NEW) {
+                                $this->registerJs(<<<JS
+                                    setTimeout(function () {
+                                        location.reload();
+                                    }, 3000);
+JS
+                                );
+                                echo '<div class="packagist-spinner"><i class="fa fa-spinner fa-spin" aria-hidden="true"></i><br>updating data from Packagist...</div>';
+                            } else {
+                                echo $html;
+                            } ?>
                         </div>
                     </div>
                 </div>
                 <div class="col-md-12 col-lg-3">
                     <?= $this->render('_metadata.php', ['model' => $model, 'extended' => true]) ?>
 
-                    <?= Html::a('Update Extension', ['extension/update', 'name' => $model->name])?>
-                    <?= Html::a('Manage Downloads', ['extension/files', 'name' => $model->name])?>
+                    <?= Html::a('Update Extension', ['extension/update', 'id' => $model->id])?><br>
+
+                    <?php if ($model->from_packagist): ?>
+                        <?= Html::a('Packagist Profile', $model->packagist_url) ?><br>
+                        <?= Html::a('Update Packagist Data', ['extension/update-packagist', 'id' => $model->id], ['data-method' => 'post'])?><br>
+                    <?php endif; ?>
+                    <?php if ($model->github_url): ?>
+                        <?= Html::a(strpos($model->github_url, 'github.com/') !== false ? 'Github Repository' : 'Code Repository', $model->github_url) ?><br>
+                    <?php endif; ?>
+
+                    <?= Html::a('Manage Downloads', ['extension/files', 'id' => $model->id])?><br>
 
                     <h3>Downloads</h3>
 

@@ -41,3 +41,13 @@ label.radiolist-label {
     color: #808080;
   }
 }
+
+.packagist-spinner {
+  margin-top: 50px;
+  text-align: center;
+  font-size: 20px;
+  .fa-spin {
+    margin-top: 25px;
+    font-size: 48px;
+  }
+}

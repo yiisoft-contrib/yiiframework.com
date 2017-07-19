@@ -101,7 +101,10 @@ class PackagistApi
         try {
             $data = Json::decode(file_get_contents($url), true);
         } catch (\Exception $e) {
-            return false;
+            if (strpos($e->getMessage(), '404') !== false) {
+                return false;
+            }
+            throw $e;
         }
 
         if (!is_array($data) || !isset($data['package'])) {
@@ -120,7 +123,7 @@ class PackagistApi
      */
     public function getReadmeFromRepository($repositoryUrl)
     {
-        if (!preg_match('/^https?:\/\/github\.com\/([^\/]+\/[^\/]+)\.git$/i', $repositoryUrl, $matches)) {
+        if (!preg_match('~^https?://github\.com/([^/]+/[^/]+)(\.git)?$~i', $repositoryUrl, $matches)) {
             return null;
         }
 

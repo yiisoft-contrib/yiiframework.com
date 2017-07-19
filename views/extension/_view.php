@@ -9,13 +9,13 @@ use yii\helpers\Html;
 
 ?>
     <div class="extension-box">
-        <h2 class="title"><?= Html::a(Html::encode($model->name), ['extension/view', 'name' => $model->name]) ?></h2>
+        <h2 class="title"><?= Html::a(Html::encode($model->name), $model->url) ?></h2>
         <div class="extension-stats">
             <?= Html::encode($model->category->name) ?>
 
             <?= Html::a(
                 '<i class="fa fa-comments-o"></i> ' . $model->comment_count,
-                ['extension/view', 'name' => $model->name, '#' => 'comments'],
+                $model->getUrl(['#' => 'comments']),
                 [
                     'aria-label' => $model->comment_count.' Comments',
                     'title' => $model->comment_count.' Comments',
@@ -24,7 +24,7 @@ use yii\helpers\Html;
 
             <?= Html::a(
                 '<i class="fa fa-download"></i> ' . $model->download_count,
-                ['extension/view', 'name' => $model->name, '#' => 'downloads'],
+                $model->getUrl(['#' => 'downloads']),
                 [
                     'aria-label' => $model->comment_count.' Downloads',
                     'title' => $model->comment_count.' Downloads',

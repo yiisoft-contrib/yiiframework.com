@@ -2,14 +2,19 @@
 
 namespace app\models;
 
+use app\components\packagist\Package;
+use app\components\packagist\PackagistApi;
 use app\components\SluggableBehavior;
 use Composer\Spdx\SpdxLicenses;
 use dosamigos\taggable\Taggable;
 use Yii;
+use yii\base\Exception;
 use yii\behaviors\BlameableBehavior;
 use yii\behaviors\TimestampBehavior;
 use yii\db\Expression;
 use yii\helpers\Html;
+use yii\helpers\Url;
+use yii\web\HttpException;
 
 /**
  * This is the model class for table "{{%extension}}".
@@ -20,7 +25,10 @@ use yii\helpers\Html;
  * @property integer $category_id
  * @property integer $license_id
  * @property integer $from_packagist
- * @property integer $packagist_url
+ * @property integer $update_status
+ * @property string $update_time
+ * @property string $packagist_url
+ * @property string $github_url
  * @property integer $owner_id
  * @property string $created_at
  * @property string $updated_at
@@ -37,12 +45,25 @@ use yii\helpers\Html;
  * @property User $owner
  * @property ExtensionCategory $category
  */
-class Extension extends \yii\db\ActiveRecord
+class Extension extends ActiveRecord
 {
     const STATUS_DRAFT = 1;
     const STATUS_PENDING_APPROVAL = 2;
     const STATUS_PUBLISHED = 3;
     const STATUS_DELETED = 5;
+
+    /**
+     * Extension is new, no data has been populated.
+     */
+    const UPDATE_STATUS_NEW = 0;
+    /**
+     * Extension data is up to date.
+     */
+    const UPDATE_STATUS_UPTODATE = 1;
+    /**
+     * Extension data needs to be refreshed.
+     */
+    const UPDATE_STATUS_EXPIRED = 2;
 
     const NAME_PATTERN = '[a-z][a-z0-9\-]*';
 
@@ -60,14 +81,7 @@ class Extension extends \yii\db\ActiveRecord
     public function behaviors()
     {
         return [
-            'timestamp' => [
-                'class' => TimestampBehavior::class,
-                'value' => new Expression('NOW()'),
-                'attributes' => [
-                    self::EVENT_BEFORE_INSERT => 'created_at', // do not set updated_at on insert
-                    self::EVENT_BEFORE_UPDATE => 'updated_at',
-                ],
-            ],
+            'timestamp' => $this->timeStampBehavior(),
             'blameable' => [
                 'class' => BlameableBehavior::class,
                 'createdByAttribute' => 'owner_id', // TODO owner is must have and should not be changed
@@ -124,7 +138,7 @@ $model->save();
 MARKDOWN;
 
         $this->license_id = 'BSD-3-Clause';
-
+        $this->update_status = self::UPDATE_STATUS_NEW;
     }
 
     /**
@@ -159,9 +173,9 @@ MARKDOWN;
     {
         return [
             'create_packagist' => ['packagist_url', 'category_id', 'tagNames'],
-            'create_custom' => ['name', 'category_id', 'yii_version', 'license_id', 'tagline', 'description', 'tagNames'],
+            'create_custom' => ['name', 'category_id', 'github_url', 'yii_version', 'license_id', 'tagline', 'description', 'tagNames'],
             'update_packagist' => ['category_id', 'tagNames'],
-            'update_custom' => ['category_id', 'yii_version', 'license_id', 'tagline', 'description', 'tagNames'],
+            'update_custom' => ['category_id', 'github_url', 'yii_version', 'license_id', 'tagline', 'description', 'tagNames'],
 
         ];
     }
@@ -172,7 +186,32 @@ MARKDOWN;
             $this->addError($attribute, 'Packagist URL is invalid.');
             return;
         }
-        $url = parse_url($this->$attribute);
+        $this->$attribute = $this->normalizePackagistUrl($this->$attribute);
+        $res = $this->parsePackagistUrl($this->$attribute);
+        if ($res === false) {
+            $this->addError($attribute, 'Packagist URL is invalid.');
+        }
+        if (($ext = static::find()->where(['name' => "{$res[0]}/{$res[1]}", 'from_packagist' => 1])->one()) !== null) {
+            $this->addError($attribute, 'This Package has already been added: ' . Html::a(Html::encode($ext->name), $ext->getUrl()));
+            return;
+        }
+        if (!(new PackagistApi)->getPackage($res[0], $res[1])) {
+            $this->addError($attribute, 'The Package does not exist on Packagist.');
+            return;
+        }
+
+        // TODO disallow non-admins to add things from http://packagist.org/p/yiisoft
+    }
+
+    private function normalizePackagistUrl($url)
+    {
+        if (Url::isRelative($url)) {
+            $url = 'https://packagist.org/p/' . ltrim($url, '/');
+        }
+        if (strpos($url, 'http://') === 0) {
+            $url = 'https://' . substr($url, 7);
+        }
+        return $url;
     }
 
     public function validateLicenseId($attribute)
@@ -258,7 +297,7 @@ MARKDOWN;
     {
         $spdx = new SpdxLicenses();
         $license = $spdx->getLicenseByIdentifier($this->license_id);
-        return $license === null ? null : Html::a($this->license_id, $license[2], ['title' => $license[0]]);
+        return $license === null ? Yii::$app->formatter->nullDisplay : Html::a($this->license_id, $license[2], ['title' => $license[0]]);
     }
 
     public static function getLicenseSelect()
@@ -291,4 +330,117 @@ MARKDOWN;
         $result['other'] = 'Other Open Source License';
         return $result;
     }
+
+    /**
+     * Extract vendor and package name from packagist URL
+     * @param string $url
+     * @return array|false
+     */
+    private function parsePackagistUrl($url)
+    {
+        $parts = parse_url($url);
+        if (!$parts || !isset($parts['host']) || $parts['host'] !== 'packagist.org' || !isset($parts['path'])) {
+            return false;
+        }
+        if (!preg_match('~^/p(?:ackages)?/([^/]+)/([^/]+)$~', $parts['path'], $matches)) {
+            return false;
+        }
+        return [$matches[1], $matches[2]];
+    }
+
+    public function populatePackagistName()
+    {
+        $url = $this->parsePackagistUrl($this->packagist_url);
+        if ($url === false) {
+            throw new Exception('Can not load extension data from Packagist. Invalid packagist URL.');
+        }
+        list($vendorName, $packageName) = $url;
+        $this->name = "$vendorName/$packageName";
+    }
+
+    /**
+     * Populate current model properties from packagist API.
+     */
+    public function populateFromPackagist()
+    {
+        $url = $this->parsePackagistUrl($this->packagist_url);
+        if ($url === false) {
+            throw new Exception('Can not load extension data from Packagist. Invalid packagist URL.');
+        }
+        list($vendorName, $packageName) = $url;
+
+        $keyCache = 'extension/package__package_' . md5(serialize([$vendorName, $packageName]));
+
+        /** @var Package $package */
+        $package = \Yii::$app->cache->get($keyCache);
+        if ($package === false) {
+            try {
+                $package = (new PackagistApi())->getPackage($vendorName, $packageName);
+            } catch (\Exception $e) {
+                throw new HttpException(503, 'Packagist is currently unavailable.', 0, $e);
+            }
+            if (!$package) {
+                throw new Exception('Package does not exist on Packagist.'); // TODO make this catchable for 404
+            }
+            \Yii::$app->cache->set($keyCache, $package, Yii::$app->params['cache.extensions.get']);
+
+        }
+
+        $this->tagline = $package->getDescription();
+        $this->license_id = $package->getLicense();
+        $this->yii_version = $package->getYiiVersion();
+        $this->github_url = $package->getRepository();
+
+        $this->description = (new PackagistApi())->getReadmeFromRepository($package->getRepository());
+        $downloads = $package->getDownloads();
+        $this->download_count = isset($downloads['total']) ? $downloads['total'] : 0;
+        $this->update_status = self::UPDATE_STATUS_UPTODATE;
+        $this->update_time = date('Y-m-d H:i:s');
+
+//
+//        if ($selectedVersion) {
+//            foreach (['require', 'require-dev', 'suggest', 'provide', 'conflict', 'replace'] as $section) {
+//                $selectedVersionData[$section] = [];
+//
+//                if (!empty($selectedVersion[$section])) {
+//                    foreach ($selectedVersion[$section] as $kVersionItem => $vVersionItem) {
+//                        $versionItemName = Html::encode($kVersionItem);
+//                        if (preg_match('/^([\w\-\.]+)\/([\w\-\.]+)$/i', $kVersionItem, $match)) {
+//                            $versionItemName = Html::a($versionItemName, [
+//                                'extension/package',
+//                                'vendorName' => $match[1],
+//                                'packageName' => $match[2]
+//                            ]);
+//                        }
+//
+//                        $selectedVersionData[$section][] = $versionItemName . ': ' . Html::encode($vVersionItem);
+//                    }
+//                }
+//            }
+//        }
+//
+//        return $this->render(
+//            'package',
+//            [
+//                'package' => $package,
+//                'readme' => (new PackagistApi())->getReadmeFromRepository($package->getRepository()),
+//                'versions' => $versions,
+//                'selectedVersion' => $selectedVersion,
+//                'selectedVersionData' => $selectedVersionData
+//            ]
+//        );
+
+    }
+
+    public function getUrl($params = [])
+    {
+        if ($this->from_packagist && strpos($this->name, '/') !== false) {
+            list($vendor, $name) = explode('/', $this->name);
+            $url = ['extension/view', 'name' => $name, 'vendorName' => $vendor];
+        } else {
+            $url = ['extension/view', 'name' => $this->name];
+        }
+        return empty($params) ? $url : array_merge($url, $params);
+    }
+
 }

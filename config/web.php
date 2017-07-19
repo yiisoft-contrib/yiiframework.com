@@ -10,14 +10,16 @@ $config = [
     'basePath' => dirname(__DIR__),
     'bootstrap' => [
         'log',
-        app\components\BootstrapEvents::class
+        app\components\BootstrapEvents::class,
     ],
     'language' => 'en',
+    'timeZone' => 'UTC',
     'components' => [
         'db' => $params['components.db'],
         'elasticsearch' => $params['components.elasticsearch'],
         'cache' => $params['components.cache'],
         'mailer' => $params['components.mailer'],
+        'queue' => $params['components.queue'],
         'user' => [
             'identityClass' => app\models\User::class,
             'enableAutoLogin' => true,

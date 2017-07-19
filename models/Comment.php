@@ -21,7 +21,7 @@ use yii\db\Expression;
  *
  * @property User $user
  */
-class Comment extends \yii\db\ActiveRecord
+class Comment extends ActiveRecord
 {
     const STATUS_DELETED = 0;
     const STATUS_ACTIVE = 10;
@@ -48,14 +48,7 @@ class Comment extends \yii\db\ActiveRecord
     public function behaviors()
     {
         return [
-            'timestamp' => [
-                'class' => TimestampBehavior::class,
-                'value' => new Expression('NOW()'),
-                'attributes' => [
-                    self::EVENT_BEFORE_INSERT => ['created_at'],
-                    self::EVENT_BEFORE_UPDATE => ['updated_at'],
-                ]
-            ],
+            'timestamp' => $this->timeStampBehavior(),
             [
                  'class' => BlameableBehavior::className(),
                  'createdByAttribute' => 'user_id',

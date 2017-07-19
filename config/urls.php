@@ -58,12 +58,12 @@ return [
     'search/extension' => 'search/extension',
 
 	// extensions
+    'extension/<vendorName:[\w\-\.]+>/<name:[\w\-\.]+>' => 'extension/view',
 	'extension/<name:[a-z][a-z0-9\-]*>' => 'extension/view',
 	'extensions' => 'extension/index',
 	'extensions/<action:[\w-]+>' => 'extension/<action>',
 
 	// TODO handle URLs from old site
-    'extensions/package/<vendorName:[\w\-\.]+>/<packageName:[\w\-\.]+>' => 'extension/package',
     'extensions/page/<page:\d+>' => 'extension/index',
 
 	// wiki

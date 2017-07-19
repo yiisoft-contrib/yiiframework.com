@@ -19,13 +19,14 @@ class m170114_211655_extension_tables extends BaseMigration
             'tagline' => $this->string(128)->notNull(),
 
             'from_packagist' => $this->boolean()->notNull(),
+            'update_status' => $this->integer()->notNull()->defaultValue(0),
+            'update_time' => $this->dateTime(),
             'packagist_url' => $this->string(255),
+            'github_url' => $this->string(255),
 
             'category_id' => $this->integer()->notNull(),
             // https://spdx.org/licenses/
-            'license_id' => $this->string(128)->notNull(),
-
-            // TODO is packagist or not?
+            'license_id' => $this->string(128),
 
             'owner_id' => $this->integer()->notNull(),
 

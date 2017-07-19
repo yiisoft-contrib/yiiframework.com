@@ -2,6 +2,7 @@
 
 namespace app\controllers;
 
+use app\jobs\ExtensionImportJob;
 use app\models\Star;
 use app\models\Extension;
 use app\models\ExtensionCategory;
@@ -10,6 +11,7 @@ use Yii;
 use yii\data\ActiveDataProvider;
 use yii\filters\AccessControl;
 use yii\filters\VerbFilter;
+use yii\queue\Queue;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\web\Response;
@@ -32,7 +34,7 @@ class ExtensionController extends Controller
                     ],
                     [
                         'allow' => true,
-                        'actions' => ['create', 'list-tags', 'update', 'keep-alive'],
+                        'actions' => ['create', 'list-tags', 'update', 'update-packagist', 'keep-alive'],
                         'roles' => ['@'],
                     ],
 //                    [
@@ -48,6 +50,7 @@ class ExtensionController extends Controller
                 'class' => VerbFilter::class,
                 'actions' => [
                     'delete' => ['POST'],
+                    'update-packagist' => ['POST'],
                 ],
             ],
         ];
@@ -124,14 +127,19 @@ class ExtensionController extends Controller
         ]);
     }
 
-    public function actionView($name)
+    public function actionView($name, $vendorName = null)
     {
+        if ($vendorName) {
+            $name = "$vendorName/$name";
+        }
         $model = $this->findModel($name);
 
         // normalize URL, redirect non-case sensitive URLs
         if ($model->name !== $name) {
             return $this->redirect(['view', 'name' => $model->name], 301);
         }
+
+        // TODO implement measures to update packagist data
 
         return $this->render('view', [
             'model' => $model,
@@ -155,14 +163,20 @@ class ExtensionController extends Controller
             if ($model->load(Yii::$app->request->post()) && $model->validate()) {
 
                 if ($model->from_packagist) {
-                    // TODO import data
-                    $model->name = md5(time());
 
+                    // TODO validate github user name of developer
+
+                    $model->populatePackagistName();
+                    $model->description = null;
+                    $model->license_id = null;
                     $model->save(false);
+
+                    /** @var $queue Queue */
+                    $queue = Yii::$app->queue;
+                    $queue->push(new ExtensionImportJob(['extensionId' => $model->id]));
                 } else {
                     $model->save(false);
                 }
-
 
                 Star::castStar($model, Yii::$app->user->id, 1);
                 return $this->redirect(['view', 'name' => $model->name]);
@@ -174,10 +188,10 @@ class ExtensionController extends Controller
         ]);
     }
 
-    public function actionUpdate($name)
+    public function actionUpdate($id)
     {
         // TODO permission
-        $model = $this->findModel($name);
+        $model = $this->findModelById($id);
         $model->scenario = 'update_' . ($model->from_packagist == 1 ? 'packagist' : 'custom');
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
@@ -193,6 +207,27 @@ class ExtensionController extends Controller
         return $this->render('update', [
             'model' => $model,
         ]);
+    }
+
+    public function actionUpdatePackagist($id)
+    {
+        $model = $this->findModelById($id);
+        $model->updateAttributes(['update_status' => Extension::UPDATE_STATUS_EXPIRED]);
+
+        // allow one update every 5min
+        $delay = $model->update_time ? max(0, strtotime($model->update_time) - strtotime('now - 5 minutes')) : 0;
+        /** @var $queue Queue */
+        $queue = Yii::$app->queue;
+        $job = new ExtensionImportJob(['extensionId' => $model->id]);
+        if ($delay > 0) {
+            $queue->delay($delay)->push($job);
+        } else {
+            $queue->push($job);
+        }
+
+        Yii::$app->session->setFlash('success', 'Update for extension scheduled to be performed ' . Yii::$app->formatter->asRelativeTime($delay, 0) . '.');
+
+        return $this->redirect(['view', 'name' => $model->name]);
     }
 
     /**
@@ -231,6 +266,21 @@ class ExtensionController extends Controller
     protected function findModel($name)
     {
         if (($model = Extension::find()->where(['name' => $name])->active()->one()) !== null) {
+            return $model;
+        }
+        throw new NotFoundHttpException('The requested page does not exist.');
+    }
+
+    /**
+     * Finds the Extension model based on its name.
+     * If the model is not found, a 404 HTTP exception will be thrown.
+     * @param integer $id
+     * @return Extension the loaded model
+     * @throws NotFoundHttpException if the model cannot be found
+     */
+    protected function findModelById($id)
+    {
+        if (($model = Extension::find()->where(['id' => $id])->active()->one()) !== null) {
             return $model;
         }
         throw new NotFoundHttpException('The requested page does not exist.');
