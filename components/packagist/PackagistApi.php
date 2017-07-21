@@ -14,7 +14,7 @@ class PackagistApi
 {
     const ENDPOINT_SEARCH = 'https://packagist.org/search.json?%s';
     const ENDPOINT_PACKAGE = 'https://packagist.org/packages/%s/%s.json';
-    const ENDPOINT_GITHUB_FILE = 'https://raw.githubusercontent.com/%s/master/%s';
+    const ENDPOINT_GITHUB_FILE = 'https://raw.githubusercontent.com/%s/master/%s'; // TODO make this work when default branch is not master
 
     /**
      * Get a list of packages

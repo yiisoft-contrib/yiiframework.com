@@ -44,7 +44,9 @@ use yii\helpers\Html;
             'items' => array_map(function ($ver) use ($version, $section) {
                 return [
                     'label' => $ver,
-                    'url' => ['api/view', 'version' => $ver, 'section' => ($version[0] === $ver[0]) ? $section : 'index'],
+                    'url' => ($version[0] === $ver[0] || $section === 'index') ?
+                        ['api/index', 'version' => $ver] :
+                        ['api/view', 'version' => $ver, 'section' => $section],
                 ];
             }, $versions),
             'options' => [

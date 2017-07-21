@@ -16,6 +16,8 @@ use yii\helpers\Html;
 use yii\helpers\Url;
 use yii\web\HttpException;
 
+// TODO verify author via composer.json
+
 /**
  * This is the model class for table "{{%extension}}".
  *
@@ -71,6 +73,10 @@ class Extension extends ActiveRecord
      * object type used for wiki comments
      */
     const COMMENT_TYPE = 'extension';
+    /**
+     * object type used for file uploads
+     */
+    const FILE_TYPE = 'extension';
 
     /**
      * @var string editor note on upate
@@ -280,6 +286,14 @@ MARKDOWN;
     }
 
     /**
+     * @return FileQuery
+     */
+    public function getDownloads()
+    {
+        return $this->hasMany(File::className(), ['object_id' => 'id'])->onCondition(['object_type' => 'Extension']);
+    }
+
+    /**
      * @inheritdoc
      * @return ExtensionQuery the active query used by this AR class.
      */
@@ -432,13 +446,13 @@ MARKDOWN;
 
     }
 
-    public function getUrl($params = [])
+    public function getUrl($action = 'view', $params = [])
     {
         if ($this->from_packagist && strpos($this->name, '/') !== false) {
             list($vendor, $name) = explode('/', $this->name);
-            $url = ['extension/view', 'name' => $name, 'vendorName' => $vendor];
+            $url = ["extension/$action", 'name' => $name, 'vendorName' => $vendor];
         } else {
-            $url = ['extension/view', 'name' => $this->name];
+            $url = ["extension/$action", 'name' => $this->name];
         }
         return empty($params) ? $url : array_merge($url, $params);
     }

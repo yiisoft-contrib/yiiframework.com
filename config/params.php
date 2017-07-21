@@ -14,7 +14,7 @@ return [
             /** @var $db \yii\db\Connection */
             $db = $event->sender;
             $db->createCommand("SET time_zone = '+00:00';")->execute();
-        }
+        },
     ],
     'components.cache' => [
         'class' => YII_DEBUG ? yii\caching\DummyCache::class : yii\caching\FileCache::class,
@@ -43,6 +43,10 @@ return [
             'class' => yii\mutex\MysqlMutex::class, // Mutex that used to sync queries
             'db' => 'db',
         ],
+    ],
+    'components.fs' => [
+        'class' => creocoder\flysystem\LocalFilesystem::class,
+        'path' => '@app/data/files',
     ],
     'components.urlManager' => [
         'enablePrettyUrl' => true,

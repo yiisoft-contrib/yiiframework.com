@@ -13,7 +13,7 @@ $this->params['breadcrumbs'][] = $this->title;
     <div class="container guide-header common-heading">
         <div class="row">
             <div class="col-md-12">
-                <h1 class="guide-headline"><?= Html::encode($this->title) ?></h1>
+                <h1 class="guide-headline">Extensions</h1>
             </div>
         </div>
     </div>
@@ -90,27 +90,8 @@ JS
                     </div>
                 </div>
                 <div class="col-md-12 col-lg-3">
-                    <?= $this->render('_metadata.php', ['model' => $model, 'extended' => true]) ?>
 
-                    <?= Html::a('Update Extension', ['extension/update', 'id' => $model->id])?><br>
-
-                    <?php if ($model->from_packagist): ?>
-                        <?= Html::a('Packagist Profile', $model->packagist_url) ?><br>
-                        <?= Html::a('Update Packagist Data', ['extension/update-packagist', 'id' => $model->id], ['data-method' => 'post'])?><br>
-                    <?php endif; ?>
-                    <?php if ($model->github_url): ?>
-                        <?= Html::a(strpos($model->github_url, 'github.com/') !== false ? 'Github Repository' : 'Code Repository', $model->github_url) ?><br>
-                    <?php endif; ?>
-
-                    <?= Html::a('Manage Downloads', ['extension/files', 'id' => $model->id])?><br>
-
-                    <h3>Downloads</h3>
-
-
-
-                    <h3>Related Extensions</h3>
-
-                    TODO
+                    <?= $this->render('_info.php', ['model' => $model]) ?>
 
                 </div>
             </div>

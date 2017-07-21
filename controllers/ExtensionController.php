@@ -3,18 +3,22 @@
 namespace app\controllers;
 
 use app\jobs\ExtensionImportJob;
+use app\models\File;
 use app\models\Star;
 use app\models\Extension;
 use app\models\ExtensionCategory;
 use app\models\ExtensionTag;
+use League\Flysystem\FileNotFoundException;
 use Yii;
 use yii\data\ActiveDataProvider;
 use yii\filters\AccessControl;
 use yii\filters\VerbFilter;
 use yii\queue\Queue;
 use yii\web\Controller;
+use yii\web\ForbiddenHttpException;
 use yii\web\NotFoundHttpException;
 use yii\web\Response;
+use yii\web\UploadedFile;
 
 class ExtensionController extends Controller
 {
@@ -30,11 +34,11 @@ class ExtensionController extends Controller
                     [
                         // allow all to a access index and view action
                         'allow' => true,
-                        'actions' => ['index', 'view'],
+                        'actions' => ['index', 'view', 'files', 'download'],
                     ],
                     [
                         'allow' => true,
-                        'actions' => ['create', 'list-tags', 'update', 'update-packagist', 'keep-alive'],
+                        'actions' => ['create', 'list-tags', 'update', 'update-packagist', 'keep-alive', 'delete-file'],
                         'roles' => ['@'],
                     ],
 //                    [
@@ -255,6 +259,78 @@ class ExtensionController extends Controller
     {
         return 'pong';
     }
+
+    public function actionFiles($id)
+    {
+        $model = $this->findModelById($id);
+
+        if($model->owner_id === Yii::$app->user->id) { // TODO RBAC // TODO upload
+            $file = new File();
+            if ($file->load(Yii::$app->request->post())) {
+                $file->object_type = Extension::FILE_TYPE;
+                $file->object_id = $model->id;
+                $file->file_name = UploadedFile::getInstance($file, 'file_name');
+                if ($file->save()) {
+                    // TODO
+//                    $changes='A new file named "'.$file->file_name.'" was uploaded.';
+//                    $model->notifyFollowers($changes);
+                    $this->refresh();
+                }
+            }
+        } else {
+            $file = null;
+        }
+
+        return $this->render('files', [
+            'model' => $model,
+            'files' => $model->downloads,
+            'file' => $file,
+        ]);
+    }
+
+    public function actionDownload($filename, $name, $vendorName = null)
+    {
+        if ($vendorName) {
+            $name = "$vendorName/$name";
+        }
+        $model = $this->findModel($name);
+
+        // normalize URL, redirect non-case sensitive URLs
+        if ($model->name !== $name) {
+            return $this->redirect(['download', 'name' => $model->name, 'fileName' => $filename], 301);
+        }
+
+        /** @var $file File */
+        $file = $model->getDownloads()->where(['file_name' => $filename])->one();
+        if ($file === null) {
+            throw new NotFoundHttpException('The requested file does not exist.');
+        }
+        try {
+            return $file->download();
+        } catch (FileNotFoundException $e) {
+            throw new NotFoundHttpException('The requested file does not exist.', 0, $e);
+        }
+    }
+
+
+    public function actionDeleteFile($id, $file)
+    {
+        $model = $this->findModelById($id);
+        if($model->owner_id !== Yii::$app->user->id) { // TODO RBAC // TODO upload
+            throw new ForbiddenHttpException('You are not allowed to perform this operation.');
+        }
+
+        $download = $model->getDownloads()->where(['id' => $file])->one();
+        if ($download === null) {
+            throw new NotFoundHttpException('The requested file does not exist.');
+        }
+        $download->delete();
+
+        return $this->redirect(['files', 'id' => $model->id]);
+    }
+
+
+
 
     /**
      * Finds the Extension model based on its name.

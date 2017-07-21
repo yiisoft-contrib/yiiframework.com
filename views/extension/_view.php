@@ -15,7 +15,7 @@ use yii\helpers\Html;
 
             <?= Html::a(
                 '<i class="fa fa-comments-o"></i> ' . $model->comment_count,
-                $model->getUrl(['#' => 'comments']),
+                $model->getUrl('view', ['#' => 'comments']),
                 [
                     'aria-label' => $model->comment_count.' Comments',
                     'title' => $model->comment_count.' Comments',
@@ -24,10 +24,10 @@ use yii\helpers\Html;
 
             <?= Html::a(
                 '<i class="fa fa-download"></i> ' . $model->download_count,
-                $model->getUrl(['#' => 'downloads']),
+                $model->getUrl('view', ['#' => 'downloads']),
                 [
-                    'aria-label' => $model->comment_count.' Downloads',
-                    'title' => $model->comment_count.' Downloads',
+                    'aria-label' => $model->download_count.' Downloads',
+                    'title' => $model->download_count.' Downloads',
                 ]
             ) ?>
         </div>

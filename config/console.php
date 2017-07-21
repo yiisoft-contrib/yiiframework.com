@@ -28,9 +28,10 @@ return [
     'language' => 'en',
     'timeZone' => 'UTC',
     'components' => [
+        'cache' => $params['components.cache'],
         'db' => $params['components.db'],
         'elasticsearch' => $params['components.elasticsearch'],
-        'cache' => $params['components.cache'],
+        'fs' => $params['components.fs'],
         'mailer' => $params['components.mailer'],
         'queue' => $params['components.queue'],
         'urlManager' => array_merge(

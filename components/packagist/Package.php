@@ -234,8 +234,8 @@ class Package
                 $yiiVersions[] = $version['require']['yiisoft/yii2'];
             }
         }
-        $version = implode(' | ', array_unique($yiiVersions));
-        if ($version === '*') {
+        $version = implode(' | ', array_filter(array_unique($yiiVersions), function($i) { return $i !== '*'; }));
+        if ($version === '') {
             return null;
         }
         return $version;

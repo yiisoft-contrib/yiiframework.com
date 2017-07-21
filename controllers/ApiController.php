@@ -95,6 +95,7 @@ class ApiController extends Controller
                         'count' => count($classes),
                     ];
                 } else {
+                    throw new NotFoundHttpException();
                     return [
                         'TODO'
                     ];
