@@ -239,6 +239,13 @@ class Package
                 $yiiVersions[] = '1.1';
             }
         }
+        $yiiVersions = array_map(function($version) {
+            if (preg_match('/^(~|=|>=|>|\^|)(\d+\.\d+)/', $version, $matches)) {
+                return $matches[2];
+            }
+            return $version;
+        }, $yiiVersions);
+
         $version = implode(' | ', array_filter(array_unique($yiiVersions), function($i) { return $i !== '*'; }));
         if ($version === '') {
             return null;
