@@ -6,6 +6,9 @@ use yii\widgets\DetailView;
 
 /* @var $this yii\web\View */
 /* @var $model app\models\User */
+/* @var $userCount int */
+/* @var $wikis app\models\Wiki[] */
+/* @var $extensions app\models\Extension[] */
 
 $this->title = 'User: ' . $model->username;
 
@@ -51,21 +54,25 @@ $this->registerMetaTag(['name' => 'keywords', 'value' => 'yii framework, communi
         ]) ?>
 
 
-        <h2>Wiki Articles</h2>
+        <?php if (!empty($wikis)): ?>
+            <h2>Wiki Articles</h2>
 
-        <ul>
-            <?php foreach($model->getWikis()->orderBy('title')->active()->all() as $wiki) {
-                echo "<li>[Wiki] " . Html::a(Html::encode($wiki->title), ['wiki/view', 'id' => $wiki->id, 'name' => $wiki->slug]) . '</li>';
-            } ?>
-        </ul>
+            <ul>
+                <?php foreach($wikis as $wiki) {
+                    echo "<li>[Wiki] " . Html::a(Html::encode($wiki->getLinkTitle()), $wiki->getUrl()) . '</li>';
+                } ?>
+            </ul>
+        <?php endif; ?>
 
-        <h2>Extensions</h2>
+        <?php if (!empty($extensions)): ?>
+            <h2>Extensions</h2>
 
-        <ul>
-            <?php foreach($model->getExtensions()->orderBy('name')->active()->all() as $extension) {
-                echo "<li>[Extension] " . Html::a(Html::encode($extension->name), ['extension/view', 'name' => $extension->name]) . '</li>';
-            } ?>
-        </ul>
+            <ul>
+                <?php foreach($extensions as $extension) {
+                    echo "<li>[Extension] " . Html::a(Html::encode($extension->getLinkTitle()), $extension->getUrl()) . '</li>';
+                } ?>
+            </ul>
+        <?php endif; ?>
 
        	<?php /*if($model->extension_count>0): ?>
        	<h2>Extensions</h2>
