@@ -8,6 +8,7 @@ use yii\db\ActiveRecord;
 use yii\filters\AccessControl;
 use yii\filters\VerbFilter;
 use yii\web\Controller;
+use yii\web\ForbiddenHttpException;
 use yii\web\NotFoundHttpException;
 use yii\web\Response;
 use Yii;
@@ -31,6 +32,14 @@ class AjaxController extends Controller
                         'roles' => ['@'],
                     ],
                 ],
+                'denyCallback' => function() {
+                    if (Yii::$app->user->getIsGuest()) {
+                        // redirect the site to login when someone clicks on a button that needs login
+                        Yii::$app->user->loginRequired(true, false);
+                    } else {
+                        throw new ForbiddenHttpException(Yii::t('yii', 'You are not allowed to perform this action.'));
+                    }
+                }
             ],
             'verbs' => [
                 'class' => VerbFilter::class,

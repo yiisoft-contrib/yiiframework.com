@@ -27,6 +27,11 @@ class Comment extends ActiveRecord
     const STATUS_ACTIVE = 10;
 
     /**
+     * @var array Allow class for star
+     */
+    public static $modelClasses = ['Wiki', 'Extension'];
+
+    /**
      * @inheritdoc
      */
     public static function tableName()
@@ -89,5 +94,15 @@ class Comment extends ActiveRecord
     public function getUser()
     {
         return $this->hasOne(User::className(), ['id' => 'user_id']);
+    }
+
+    public function getModel()
+    {
+        if (!in_array($this->object_type, static::$modelClasses, true)) {
+            return null;
+        }
+        /** @var $modelClass ActiveRecord */
+        $modelClass = "app\\models\\{$this->object_type}";
+        return $modelClass::findOne($this->object_id);
     }
 }

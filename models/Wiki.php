@@ -37,7 +37,7 @@ use yii\helpers\StringHelper;
  *
  * @property string $contentHtml
  */
-class Wiki extends ActiveRecord
+class Wiki extends ActiveRecord implements Linkable
 {
     const STATUS_DRAFT = 1;
     const STATUS_PENDING_APPROVAL = 2;
@@ -265,5 +265,21 @@ class Wiki extends ActiveRecord
             $count = Comment::find()->forObject(Wiki::COMMENT_TYPE, $comment->object_id)->active()->count();
             static::updateAll(['comment_count' => $count], ['id' => $comment->object_id]);
         }
+    }
+
+    /**
+     * @return array url to this object. Should be something to be passed to [[\yii\helpers\Url::to()]].
+     */
+    public function getUrl($action = 'view', $params = [])
+    {
+        return array_merge($params, ["wiki/$action", 'id' => $this->id, 'name' => $this->slug]);
+    }
+
+    /**
+     * @return string title to display for a link to this object.
+     */
+    public function getLinkTitle()
+    {
+        return $this->title;
     }
 }

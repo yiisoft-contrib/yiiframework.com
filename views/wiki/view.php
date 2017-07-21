@@ -6,14 +6,14 @@ use yii\helpers\Html;
 /** @var $revision int */
 
 
-$this->title = 'Wiki';
+$this->title = 'Wiki - ' . $model->title;
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="guide-header-wrap">
     <div class="container guide-header common-heading">
         <div class="row">
             <div class="col-md-12">
-                <h1 class="guide-headline"><?= Html::encode($this->title) ?></h1>
+                <h1 class="guide-headline">Wiki</h1>
             </div>
         </div>
     </div>

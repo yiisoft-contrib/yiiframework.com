@@ -1,7 +1,9 @@
 <?php
 
+use app\models\Extension;
 use app\models\ExtensionCategory;
 use app\models\ExtensionTag;
+use app\widgets\RecentComments;
 use yii\helpers\Html;
 
 /** @var $this \yii\web\View */
@@ -50,6 +52,5 @@ use yii\helpers\Html;
     <?php endforeach; ?>
 </ul>
 
-<h3 class="extension-side-title">Recent Comments</h3>
+<?= RecentComments::widget(['objectType' => Extension::COMMENT_TYPE])?>
 
-TODO*/ ?>

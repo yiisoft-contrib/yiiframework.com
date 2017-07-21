@@ -21,4 +21,12 @@ class CommentQuery extends ActiveQuery
     {
         return $this->andWhere(['object_type' => $type, 'object_id' => $id]);
     }
+
+    /**
+     * @return $this
+     */
+    public function recentComments($type, $count)
+    {
+        return $this->andWhere(['object_type' => $type])->orderBy(['created_at' => SORT_DESC])->limit($count);
+    }
 }

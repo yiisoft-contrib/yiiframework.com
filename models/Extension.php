@@ -47,7 +47,7 @@ use yii\web\HttpException;
  * @property User $owner
  * @property ExtensionCategory $category
  */
-class Extension extends ActiveRecord
+class Extension extends ActiveRecord implements Linkable
 {
     const STATUS_DRAFT = 1;
     const STATUS_PENDING_APPROVAL = 2;
@@ -70,13 +70,13 @@ class Extension extends ActiveRecord
     const NAME_PATTERN = '[a-z][a-z0-9\-]*';
 
     /**
-     * object type used for wiki comments
+     * object type used for comments
      */
-    const COMMENT_TYPE = 'extension';
+    const COMMENT_TYPE = 'Extension';
     /**
      * object type used for file uploads
      */
-    const FILE_TYPE = 'extension';
+    const FILE_TYPE = 'Extension';
 
     /**
      * @var string editor note on upate
@@ -446,6 +446,9 @@ MARKDOWN;
 
     }
 
+    /**
+     * @return array url to this object. Should be something to be passed to [[\yii\helpers\Url::to()]].
+     */
     public function getUrl($action = 'view', $params = [])
     {
         if ($this->from_packagist && strpos($this->name, '/') !== false) {
@@ -457,4 +460,11 @@ MARKDOWN;
         return empty($params) ? $url : array_merge($url, $params);
     }
 
+    /**
+     * @return string title to display for a link to this object.
+     */
+    public function getLinkTitle()
+    {
+        return $this->name;
+    }
 }

@@ -11,6 +11,7 @@ namespace app\commands;
 use app\models\Comment;
 use app\models\Extension;
 use app\models\ExtensionCategory;
+use app\models\File;
 use app\models\News;
 use app\models\Rating;
 use app\models\Star;
@@ -25,6 +26,7 @@ use yii\db\Expression;
 use yii\db\Query;
 use yii\di\Instance;
 use yii\helpers\Console;
+use yii\helpers\FileHelper;
 
 /**
  * Populates the database with content from the old website
@@ -81,6 +83,8 @@ class ImportController extends Controller
 		$this->importWiki();
 
 		$this->importExtensions();
+
+		$this->importFiles();
 
 		$this->importNews();
 
@@ -393,6 +397,70 @@ class ImportController extends Controller
 		}
 		$this->stdout("\n");
 	}
+
+	private function importFiles()
+	{
+		if (File::find()->count() > 0) {
+			$this->stdout("File table is already populated, skipping.\n");
+			return;
+		}
+
+		// import files
+		$fileQuery = (new Query)->from('tbl_file')->orderBy('id');
+		$count = $fileQuery->count('*', $this->sourceDb);
+		Console::startProgress(0, $count, 'Importing files...');
+		$i = 0;
+		$err = 0;
+		foreach($fileQuery->each(100, $this->sourceDb) as $file) {
+
+			try {
+				$model = new File([
+					'id' => $file['id'],
+
+					'object_type' => $file['object_type'],
+					'object_id' => $file['object_id'],
+
+					'file_name' => $file['file_name'],
+					'file_size' => $file['file_size'],
+					'mime_type' => $file['mime_type'] ?: $this->fixMimeType($file['file_name']),
+
+					'download_count' => $file['download_count'],
+
+					'summary' => $file['summary'],
+
+                    // creator info is not available in old data
+					'created_by' => null,
+
+					'created_at' => date('Y-m-d H:i:s', $file['upload_time']),
+					'updated_at' => null,
+				]);
+				$model->detachBehavior('timestamp');
+				$model->detachBehavior('blameable');
+				$model->save(false);
+
+			}catch (\Exception $e) {
+				$this->stdout($e->getMessage()."\n", Console::FG_RED);
+				$err++;
+			}
+			Console::updateProgress(++$i, $count);
+		}
+		Console::endProgress(true);
+		$this->stdout("done.", Console::FG_GREEN, Console::BOLD);
+		$this->stdout(" $count records imported.");
+		if ($err > 0) {
+			$this->stdout(" $err errors occurred.", Console::FG_RED, Console::BOLD);
+		}
+		$this->stdout("\nTODO copy files from old site '/common/upload/' to new site '/data/files/'\n", Console::BOLD);
+	}
+
+	private function fixMimeType($fileName)
+    {
+        $type = FileHelper::getMimeTypeByExtension($fileName);
+        if ($type === null && substr($fileName, -4, 4) === '.tgz') {
+            return 'application/x-gzip';
+        }
+        return $type;
+    }
 
 	/**
 	 * Convert licence ID to SPDX identifier

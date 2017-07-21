@@ -232,6 +232,11 @@ class Package
         foreach($versions as $version) {
             if (isset($version['require']['yiisoft/yii2'])) {
                 $yiiVersions[] = $version['require']['yiisoft/yii2'];
+                $yiiVersions[] = '2.0';
+            }
+            if (isset($version['require']['yiisoft/yii'])) {
+                $yiiVersions[] = $version['require']['yiisoft/yii'];
+                $yiiVersions[] = '1.1';
             }
         }
         $version = implode(' | ', array_filter(array_unique($yiiVersions), function($i) { return $i !== '*'; }));
