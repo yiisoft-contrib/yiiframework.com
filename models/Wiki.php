@@ -10,6 +10,7 @@ use yii\base\Event;
 use yii\behaviors\BlameableBehavior;
 use yii\behaviors\TimestampBehavior;
 use yii\db\Expression;
+use yii\helpers\ArrayHelper;
 use yii\helpers\HtmlPurifier;
 use yii\helpers\Markdown;
 use yii\helpers\StringHelper;
@@ -251,6 +252,34 @@ class Wiki extends ActiveRecord implements Linkable
     {
         return $this->hasMany(WikiTag::className(), ['id' => 'wiki_tag_id'])
             ->viaTable('wiki2wiki_tags', ['wiki_id' => 'id']);
+    }
+
+    /**
+     * Finds the related models based on shared tags.
+     * @return static[] the related models
+     */
+    public function getRelatedWikis($limit = 5)
+    {
+        $tags = $this->getTags()->all();
+        if (empty($tags)) {
+            return [];
+        }
+        $tagNames = array_values(ArrayHelper::map($tags, 'id', 'name'));
+
+        $relatedIds = WikiTag::find()
+            ->select(['wiki_id', 'COUNT([[wiki_id]]) AS [[similarity]]'])
+            ->alias('t')
+            ->leftJoin('wiki2wiki_tags w2t', 'w2t.wiki_tag_id = t.id')
+            ->where(['t.name' => $tagNames])->andWhere('wiki_id != :id', [':id' => $this->id])
+            ->groupBy('wiki_id')
+            ->orderBy(['similarity' => SORT_DESC, new Expression('RAND()')])
+            ->limit($limit)
+            ->asArray()->all();
+
+        Yii::trace($relatedIds);
+
+        $relatedIds = array_values(ArrayHelper::map($relatedIds, 'wiki_id', 'wiki_id'));
+        return Wiki::findAll($relatedIds);
     }
 
     /**

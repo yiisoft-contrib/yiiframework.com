@@ -12,6 +12,7 @@ use yii\base\Exception;
 use yii\behaviors\BlameableBehavior;
 use yii\behaviors\TimestampBehavior;
 use yii\db\Expression;
+use yii\helpers\ArrayHelper;
 use yii\helpers\Html;
 use yii\helpers\Url;
 use yii\web\HttpException;
@@ -93,7 +94,7 @@ class Extension extends ActiveRecord implements Linkable
                 'createdByAttribute' => 'owner_id', // TODO owner is must have and should not be changed
                 'updatedByAttribute' => false, // TODO owner is must have and should not be changed
             ],
-            'tagable' => [
+            'taggable' => [
                 'class' => Taggable::className(),
             ],
         ];
@@ -444,6 +445,34 @@ MARKDOWN;
 //            ]
 //        );
 
+    }
+
+    /**
+     * Finds the related models based on shared tags.
+     * @return static[] the related models
+     */
+    public function getRelatedExtensions($limit = 5)
+    {
+        $tags = $this->getTags()->all();
+        if (empty($tags)) {
+            return [];
+        }
+        $tagNames = array_values(ArrayHelper::map($tags, 'id', 'name'));
+
+        $relatedIds = ExtensionTag::find()
+            ->select(['extension_id', 'COUNT([[extension_id]]) AS [[similarity]]'])
+            ->alias('t')
+            ->leftJoin('extension2extension_tags e2t', 'e2t.extension_tag_id = t.id')
+            ->where(['t.name' => $tagNames])->andWhere('extension_id != :id', [':id' => $this->id])
+            ->groupBy('extension_id')
+            ->orderBy(['similarity' => SORT_DESC, new Expression('RAND()')])
+            ->limit($limit)
+            ->asArray()->all();
+
+        Yii::trace($relatedIds);
+
+        $relatedIds = array_values(ArrayHelper::map($relatedIds, 'extension_id', 'extension_id'));
+        return Extension::findAll($relatedIds);
     }
 
     /**

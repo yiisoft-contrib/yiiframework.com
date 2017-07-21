@@ -39,7 +39,14 @@ if (!empty($downloads)): ?>
 
 <?php endif; ?>
 
+<?php $related = $model->getRelatedExtensions() ?>
+<?php if (!empty($related)): ?>
 
 <h3>Related Extensions</h3>
 
-TODO
+    <ul>
+        <?php foreach($related as $extension) {
+            echo "<li>" . Html::a(Html::encode($extension->getLinkTitle()), $extension->getUrl()) . '</li>';
+        } ?>
+    </ul>
+<?php endif; ?>
