@@ -76,9 +76,6 @@ class WikiController extends Controller
             $query->andWhere(['wiki_tag_id' => $tagModel->id]);
         }
 
-//        $criteria=new CDbCriteria;
-//        $criteria->addCondition('t.status='.self::STATUS_PUBLISHED);
-
         $dataProvider = new ActiveDataProvider([
             'query' => $query,
             'sort'=> [

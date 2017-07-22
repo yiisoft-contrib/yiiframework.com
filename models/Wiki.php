@@ -10,6 +10,7 @@ use yii\base\Event;
 use yii\behaviors\BlameableBehavior;
 use yii\behaviors\TimestampBehavior;
 use yii\db\Expression;
+use yii\helpers\ArrayHelper;
 use yii\helpers\HtmlPurifier;
 use yii\helpers\Markdown;
 use yii\helpers\StringHelper;
@@ -37,7 +38,7 @@ use yii\helpers\StringHelper;
  *
  * @property string $contentHtml
  */
-class Wiki extends \yii\db\ActiveRecord
+class Wiki extends ActiveRecord implements Linkable
 {
     const STATUS_DRAFT = 1;
     const STATUS_PENDING_APPROVAL = 2;
@@ -58,14 +59,7 @@ class Wiki extends \yii\db\ActiveRecord
     public function behaviors()
     {
         return [
-            'timestamp' => [
-                'class' => TimestampBehavior::class,
-                'value' => new Expression('NOW()'),
-                'attributes' => [
-                    self::EVENT_BEFORE_INSERT => 'created_at', // do not set updated_at on insert
-                    self::EVENT_BEFORE_UPDATE => 'updated_at',
-                ],
-            ],
+            'timestamp' => $this->timeStampBehavior(),
             'blameable' => [
                 'class' => BlameableBehavior::class,
                 'createdByAttribute' => 'creator_id',
@@ -261,6 +255,34 @@ class Wiki extends \yii\db\ActiveRecord
     }
 
     /**
+     * Finds the related models based on shared tags.
+     * @return static[] the related models
+     */
+    public function getRelatedWikis($limit = 5)
+    {
+        $tags = $this->getTags()->all();
+        if (empty($tags)) {
+            return [];
+        }
+        $tagNames = array_values(ArrayHelper::map($tags, 'id', 'name'));
+
+        $relatedIds = WikiTag::find()
+            ->select(['wiki_id', 'COUNT([[wiki_id]]) AS [[similarity]]'])
+            ->alias('t')
+            ->leftJoin('wiki2wiki_tags w2t', 'w2t.wiki_tag_id = t.id')
+            ->where(['t.name' => $tagNames])->andWhere('wiki_id != :id', [':id' => $this->id])
+            ->groupBy('wiki_id')
+            ->orderBy(['similarity' => SORT_DESC, new Expression('RAND()')])
+            ->limit($limit)
+            ->asArray()->all();
+
+        Yii::trace($relatedIds);
+
+        $relatedIds = array_values(ArrayHelper::map($relatedIds, 'wiki_id', 'wiki_id'));
+        return Wiki::findAll($relatedIds);
+    }
+
+    /**
      * Event handler for comment creation. Update comment_count on wiki table.
      * @param Event $event
      */
@@ -272,5 +294,21 @@ class Wiki extends \yii\db\ActiveRecord
             $count = Comment::find()->forObject(Wiki::COMMENT_TYPE, $comment->object_id)->active()->count();
             static::updateAll(['comment_count' => $count], ['id' => $comment->object_id]);
         }
+    }
+
+    /**
+     * @return array url to this object. Should be something to be passed to [[\yii\helpers\Url::to()]].
+     */
+    public function getUrl($action = 'view', $params = [])
+    {
+        return array_merge($params, ["wiki/$action", 'id' => $this->id, 'name' => $this->slug]);
+    }
+
+    /**
+     * @return string title to display for a link to this object.
+     */
+    public function getLinkTitle()
+    {
+        return $this->title;
     }
 }

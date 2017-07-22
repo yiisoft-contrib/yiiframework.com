@@ -27,7 +27,7 @@ use yii\db\Expression;
  * @property NewsTag[] $tags
  * @property News[] $relatedNews
  */
-class News extends \yii\db\ActiveRecord
+class News extends ActiveRecord
 {
     const STATUS_DRAFT = 1;
     const STATUS_PUBLISHED = 2;
@@ -36,10 +36,7 @@ class News extends \yii\db\ActiveRecord
     public function behaviors()
     {
         return [
-            'timestamp' => [
-                'class' => TimestampBehavior::class,
-                'value' => new Expression('NOW()'),
-            ],
+            'timestamp' => $this->timeStampBehavior(),
             'blameable' => [
                 'class' => BlameableBehavior::class,
                 'createdByAttribute' => 'creator_id',

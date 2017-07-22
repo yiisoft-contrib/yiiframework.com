@@ -8,7 +8,7 @@ $params = array_merge(
 return [
     'id' => 'yiiframework.com-console',
     'basePath' => dirname(__DIR__),
-    'bootstrap' => ['log'],
+    'bootstrap' => ['log', 'queue'],
     'controllerNamespace' => 'app\commands',
     'aliases' => [
         'yii\apidoc\templates\' . $template',
@@ -19,14 +19,21 @@ return [
             'class' => yii\console\controllers\MigrateController::class,
             // use custom migration template
             'templateFile' => '@app/migrations/migration_template.php',
+            'migrationPath' => '@app/migrations',
+            'migrationNamespaces' => [
+                'yii\queue\db\migrations',
+            ],
         ],
     ],
     'language' => 'en',
+    'timeZone' => 'UTC',
     'components' => [
+        'cache' => $params['components.cache'],
         'db' => $params['components.db'],
         'elasticsearch' => $params['components.elasticsearch'],
-        'cache' => $params['components.cache'],
+        'fs' => $params['components.fs'],
         'mailer' => $params['components.mailer'],
+        'queue' => $params['components.queue'],
         'urlManager' => array_merge(
             $params['components.urlManager'],
             [

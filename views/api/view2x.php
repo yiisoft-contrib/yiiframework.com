@@ -51,7 +51,7 @@ if (!empty($title)) {
             . '<li>' . Html::a("yii-docs-{$version}-en.tar.gz", ['guide/download', 'version' => $version, 'language' => 'en', 'format' => 'tar.gz']) . '</li>'
             . '</ul>'
             . '<p>This page is also available in <a href="?_format='.urlencode('json').'">JSON format</a>:<br>'
-            . '<code>curl ' . Url::to(['', 'version' => $version], true) . ' -H \'Accept: application/json\'</code></p>',
+            . '<code>curl ' . Url::to(['index', 'version' => $version], true) . ' -H \'Accept: application/json\'</code></p>',
     ]) ?>
 </div>
 

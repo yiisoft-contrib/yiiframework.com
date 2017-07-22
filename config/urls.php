@@ -19,7 +19,7 @@ return [
     'tour' => 'site/tour',
     'resources' => 'site/resources',
 
-	// file download
+	// static file download
     'download/<category:[\w-]+>/<file:[\w\d-.]+>' => 'site/file',
 
 	// news
@@ -29,14 +29,12 @@ return [
 	'news/<action:[\w-]+>' => 'news/<action>',
 
 	// auth, login and logout
-    'logout' => 'auth/logout',
-    'login' => 'auth/login',
-    'signup' => 'auth/signup',
+    '<action:login|logout|signup>' => 'auth/<action>',
     'auth/<action:[\w-]+>' => 'auth/<action>',
 
 	// class api docs
     'doc/api' => 'api/entry',
-    'doc/api/class-members' => 'api/class-members',
+    'doc/api/class-members' => 'api/class-members', // TODO allow versioning
     'doc/api/<version:\\d\\.\\d>' => 'api/index',
     'doc/api/<version:\\d\\.\\d>/<section:.+>' => 'api/view',
 	// definitive guide and Yii 1 blog tutorial
@@ -48,7 +46,7 @@ return [
     'doc/blog/<version:\\d\\.\\d>' => 'guide/blog-entry',
     'doc/blog' => 'guide/blog-entry',
 
-    'doc/download/yii-guide-<version:\\d\\.\\d>-<language:[\\w\\-]+>.<format:pdf>' => 'guide/download',
+    'doc/download/yii-guide-<version:\\d\\.\\d>-<language:[\\w\\-]+>.<format:pdf>' => 'guide/download', // TODO how is this different from site/download
     'doc/download/yii-docs-<version:\\d\\.\\d>-<language:[\\w\\-]+>.<format:tar\\.gz|tar\\.bz2>' => 'guide/download',
 
 	// search
@@ -58,10 +56,16 @@ return [
     'search/extension' => 'search/extension',
 
 	// extensions
+    'extension/<vendorName:[\w\-\.]+>/<name:[\w\-\.]+>/files/<filename>' => 'extension/download',
+	'extension/<name:[a-z][a-z0-9\-]*>/files/<filename>' => 'extension/download',
+    'extension/<vendorName:[\w\-\.]+>/<name:[\w\-\.]+>' => 'extension/view',
+	'extension/<name:[a-z][a-z0-9\-]*>' => 'extension/view',
+	'extensions' => 'extension/index',
+	'extensions/<action:[\w-]+>' => 'extension/<action>', // TODO forbidden names to avoid conflict!
+
 	// TODO handle URLs from old site
-    'extensions/package/<vendorName:[\w\-\.]+>/<packageName:[\w\-\.]+>' => 'extension/package',
+    // /ext/files/?id=864
     'extensions/page/<page:\d+>' => 'extension/index',
-    'extensions' => 'extension/index',
 
 	// wiki
 	// TODO handle URLs from old site

@@ -196,6 +196,9 @@ $this->params['breadcrumbs'][] = $this->title;
 						<span>
 						<?php
 							$guide = Guide::load($version, $locale);
+							if ($guide === null) {
+								continue;
+							}
 							$items = [];
 							if ($guide->getDownloadFile('pdf') !== false) {
 								echo Html::a(

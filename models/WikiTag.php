@@ -16,7 +16,7 @@ use yii\db\ActiveQuery;
  *
  * @property Wiki[] $wikis
  */
-class WikiTag extends \yii\db\ActiveRecord
+class WikiTag extends ActiveRecord
 {
     public function behaviors()
     {

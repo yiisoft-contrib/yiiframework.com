@@ -2,11 +2,6 @@
 
 namespace app\models;
 
-use Yii;
-use yii\behaviors\TimestampBehavior;
-use yii\db\ActiveRecord;
-use yii\db\Expression;
-
 /**
  * This is the model class for table "star".
  *
@@ -16,12 +11,12 @@ use yii\db\Expression;
  * @property integer $star
  * @property string $created_at
  */
-class Star extends \yii\db\ActiveRecord
+class Star extends ActiveRecord
 {
     /**
      * @var array Allow class for star
      */
-    public static $modelClasses = ['Wiki'];
+    public static $modelClasses = ['Wiki', 'Extension'];
 
     /**
      * @inheritdoc
@@ -37,11 +32,7 @@ class Star extends \yii\db\ActiveRecord
     public function behaviors()
     {
         return [
-            'timestamp' => [
-                'class' => TimestampBehavior::class,
-                'value' => new Expression('NOW()'),
-                'updatedAtAttribute' => false,
-            ],
+            'timestamp' => $this->timeStampBehavior(false),
         ];
     }
 

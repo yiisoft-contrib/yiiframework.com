@@ -16,8 +16,10 @@
 
         "yiisoft/yii2-authclient": "~2.1.0",
         "yiisoft/yii2-elasticsearch": "~2.0.0",
+        "yiisoft/yii2-queue": "~2.0.0",
         "yiisoft/yii2-swiftmailer": "~2.0.0",
         "cebe/yii2-gravatar": "1.1",
+        "creocoder/yii2-flysystem": "~0.9.0",
 
         "samdark/sitemap": "^2.0",
 
@@ -41,7 +43,8 @@
         "bower-asset/sass-rem": "^1.2",
         "bower-asset/scrollup": "^2.4",
         "bower-asset/codemirror": "~5.9.0",
-        "bower-asset/codemirror-buttons": "~1.0.0"
+        "bower-asset/codemirror-buttons": "~1.0.0",
+        "composer/spdx-licenses": "^1.1"
     },
     "require-dev": {
         "yiisoft/yii2-debug": "~2.0.0",

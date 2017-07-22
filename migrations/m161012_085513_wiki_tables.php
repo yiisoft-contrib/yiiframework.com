@@ -37,7 +37,7 @@ class m161012_085513_wiki_tables extends BaseMigration
 
             'yii_version' => $this->string(5),
 
-            'status' => $this->smallInteger()->notNull()->defaultValue(\app\models\Wiki::STATUS_PUBLISHED),
+            'status' => $this->smallInteger()->notNull()->defaultValue(3), // published
 
         ], $this->tableOptions);
 

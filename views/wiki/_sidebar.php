@@ -1,7 +1,9 @@
 <?php
 
+use app\models\Wiki;
 use app\models\WikiCategory;
 use app\models\WikiTag;
+use app\widgets\RecentComments;
 use yii\helpers\Html;
 
 /** @var $this \yii\web\View */
@@ -50,6 +52,4 @@ use yii\helpers\Html;
     <?php endforeach; ?>
 </ul>
 
-<h3 class="wiki-side-title">Recent Comments</h3>
-
-TODO
+<?= RecentComments::widget(['objectType' => Wiki::COMMENT_TYPE])?>

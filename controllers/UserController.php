@@ -112,9 +112,12 @@ class UserController extends Controller
      */
     public function actionView($id)
     {
+        $model = $this->findModel($id);
         return $this->render('view', [
-            'model' => $this->findModel($id),
+            'model' => $model,
             'userCount' => User::find()->count(),
+            'wikis' => $model->getWikis()->orderBy('title')->active()->all() ,
+            'extensions' => $model->getExtensions()->orderBy('name')->active()->all(),
         ]);
     }
 

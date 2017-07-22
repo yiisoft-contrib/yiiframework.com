@@ -15,7 +15,7 @@ use yii\db\Query;
  *
  * @property UserBadge[] $userBadges
  */
-abstract class Badge extends \yii\db\ActiveRecord
+abstract class Badge extends ActiveRecord
 {
     public $name;
     public $description;

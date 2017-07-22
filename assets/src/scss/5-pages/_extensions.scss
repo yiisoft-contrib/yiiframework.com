@@ -1,0 +1,53 @@
+
+// radio buttons for selection of extension type in extension create form
+label.radiolist-label {
+  font-weight: normal;
+
+  input {
+    width: 25px;
+    display: inline-block;
+  }
+
+  p {
+    margin-left: 25px;
+  }
+}
+
+.extension-box {
+  @extend .box;
+
+  min-height: 300px;
+  margin-bottom: 30px;
+
+  h2.title {
+    font-size: 16pt;
+    margin: 0;
+  }
+
+  .extension-stats {
+    text-transform: uppercase;
+    color: #808080;
+
+    a {
+      text-decoration: none;
+    }
+  }
+
+  .extension-tagline {
+    margin: 1em 0;
+  }
+
+  .extension-author {
+    color: #808080;
+  }
+}
+
+.packagist-spinner {
+  margin-top: 50px;
+  text-align: center;
+  font-size: 20px;
+  .fa-spin {
+    margin-top: 25px;
+    font-size: 48px;
+  }
+}

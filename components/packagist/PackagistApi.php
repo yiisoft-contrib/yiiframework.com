@@ -13,8 +13,9 @@ use yii\helpers\Json;
 class PackagistApi
 {
     const ENDPOINT_SEARCH = 'https://packagist.org/search.json?%s';
+    const ENDPOINT_LIST = 'https://packagist.org/packages/list.json?%s';
     const ENDPOINT_PACKAGE = 'https://packagist.org/packages/%s/%s.json';
-    const ENDPOINT_GITHUB_FILE = 'https://raw.githubusercontent.com/%s/master/%s';
+    const ENDPOINT_GITHUB_FILE = 'https://raw.githubusercontent.com/%s/master/%s'; // TODO make this work when default branch is not master
 
     /**
      * Get a list of packages
@@ -87,6 +88,29 @@ class PackagistApi
     }
 
     /**
+     * @param string|null $type e.g. 'yii2-extension'
+     * @return array
+     */
+    public function listPackageNames($type = null)
+    {
+        $queryParam = [
+            'type' => $type,
+        ];
+
+        $url = sprintf(self::ENDPOINT_LIST, http_build_query($queryParam));
+        try {
+            $data = Json::decode(file_get_contents($url), true);
+        } catch (\Exception $e) {
+            throw new PackagistException('Error getting data from packagist.org:' . $e->getMessage(), 0, $e);
+        }
+
+        if (!is_array($data) || !isset($data['packageNames'])) {
+            throw new PackagistException('Error getting data from packagist.org.');
+        }
+        return $data['packageNames'];
+    }
+
+    /**
      * Get a package
      *
      * @param string $vendorName
@@ -101,7 +125,10 @@ class PackagistApi
         try {
             $data = Json::decode(file_get_contents($url), true);
         } catch (\Exception $e) {
-            return false;
+            if (strpos($e->getMessage(), '404') !== false) {
+                return false;
+            }
+            throw $e;
         }
 
         if (!is_array($data) || !isset($data['package'])) {
@@ -120,7 +147,7 @@ class PackagistApi
      */
     public function getReadmeFromRepository($repositoryUrl)
     {
-        if (!preg_match('/^https?:\/\/github\.com\/([^\/]+\/[^\/]+)\.git$/i', $repositoryUrl, $matches)) {
+        if (!preg_match('~^https?://github\.com/([^/]+/[^/]+)(\.git)?$~i', $repositoryUrl, $matches)) {
             return null;
         }
 

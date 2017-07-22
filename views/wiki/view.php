@@ -13,7 +13,7 @@ $this->params['breadcrumbs'][] = $this->title;
     <div class="container guide-header common-heading">
         <div class="row">
             <div class="col-md-12">
-                <h1 class="guide-headline"><?= Html::encode($this->title) ?></h1>
+                <h1 class="guide-headline">Wiki</h1>
             </div>
         </div>
     </div>
@@ -85,6 +85,20 @@ $this->params['breadcrumbs'][] = $this->title;
                     <h3>Revisions</h3>
 
                     <?= $this->render('_revisions.php', ['model' => $model]) ?>
+
+
+                    <?php $related = $model->getRelatedWikis() ?>
+                    <?php if (!empty($related)): ?>
+
+                        <h3>Related Articles</h3>
+
+                        <ul>
+                            <?php foreach($related as $wiki) {
+                                echo "<li>" . Html::a(Html::encode($wiki->getLinkTitle()), $wiki->getUrl()) . '</li>';
+                            } ?>
+                        </ul>
+                    <?php endif; ?>
+
                 </div>
             </div>
 

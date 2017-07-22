@@ -21,7 +21,7 @@ use yii\db\Expression;
  * @property Badge $badge
  * @property User $user
  */
-class UserBadge extends \yii\db\ActiveRecord
+class UserBadge extends ActiveRecord
 {
     /**
      * @inheritdoc

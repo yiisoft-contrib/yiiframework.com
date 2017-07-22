@@ -15,7 +15,7 @@ use yii\base\Widget;
  * Could be used on any page like the following:
  *
  * ```php
- * <?= \app\components\Comments::widget([
+ * <?= \app\widgets\Comments::widget([
          'objectType' => 'page',
          'objectId' => 'about',
      ]) ?>

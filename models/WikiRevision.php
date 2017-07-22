@@ -27,14 +27,14 @@ use yii\helpers\ArrayHelper;
  * @property User $updater
  * @property Wiki $wiki
  */
-class WikiRevision extends \yii\db\ActiveRecord
+class WikiRevision extends ActiveRecord
 {
     public function behaviors()
     {
         return [
             'timestamp' => [
                 'class' => TimestampBehavior::class,
-                'value' => new Expression('NOW()'),
+                'value' => $this->timeStampBehavior()['value'],
                 'createdAtAttribute' => false,
             ],
             'blameable' => [
