@@ -239,4 +239,13 @@ class WikiRevision extends ActiveRecord
         }
     }
 
+    /**
+     * @return array url to this object. Should be something to be passed to [[\yii\helpers\Url::to()]].
+     */
+    public function getUrl($action = null, $params = [])
+    {
+        $url = ["wiki/revision", 'id' => $this->wiki_id, 'r1' => $this->revision];
+        return empty($params) ? $url : array_merge($url, $params);
+    }
+
 }

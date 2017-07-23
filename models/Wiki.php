@@ -54,6 +54,10 @@ class Wiki extends ActiveRecord implements Linkable
      * @var string editor note on upate
      */
     public $memo;
+    /**
+     * @var WikiRevision the revision saved after update
+     */
+    public $savedRevision;
 
 
     public function behaviors()
@@ -132,6 +136,7 @@ class Wiki extends ActiveRecord implements Linkable
         $revision->setAttributes($this->attributes);
         $revision->memo = $insert ? null : $this->memo;
         $revision->save(false);
+        $this->savedRevision = $revision;
 
         return parent::afterSave($insert, $changedAttributes);
     }

@@ -1,6 +1,7 @@
 <?php
 
 namespace app\models;
+use yii\db\ActiveQuery;
 
 /**
  * This is the model class for table "star".
@@ -151,15 +152,17 @@ class Star extends ActiveRecord
 
     /**
      * @param ActiveRecord $model
-     * @return User[]
+     * @return ActiveQuery
      */
-//    public static function getFollowers($model)
-//    {
-//        $class = $model->formName();
-//        return User::find()
-//            ->where(['star' => 1, 'object_type' => $class, 'object_id' => (int)$model->primaryKey])
-//            ->all();
-//    }
+    public static function getFollowers($model)
+    {
+        $class = $model->formName();
+        return User::find()->where([
+            'id' => Star::find()
+                ->select('user_id')
+                ->where(['star' => 1, 'object_type' => $class, 'object_id' => (int)$model->primaryKey])
+        ]);
+    }
 
     /**
      * Return current follower count

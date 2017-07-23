@@ -425,4 +425,16 @@ class User extends ActiveRecord implements IdentityInterface
     {
         return $this->hasMany(Auth::class, ['user_id' => 'id']);
     }
+
+    /**
+     * @return array url to this object. Should be something to be passed to [[\yii\helpers\Url::to()]].
+     */
+    public function getUrl($action = 'view', $params = [])
+    {
+        if ($action !== 'profile') {
+            $params['id'] = $this->id;
+        }
+        $url = ["user/$action"];
+        return empty($params) ? $url : array_merge($url, $params);
+    }
 }

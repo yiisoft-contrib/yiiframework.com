@@ -159,6 +159,7 @@ return [
 
     'adminEmail' => 'yii@cebe.cc',
     'supportEmail' => 'yii@cebe.cc',
+    'notificationEmail' => ['admin@yiiframework.com' => 'Yii Framework'],
     'user.passwordResetTokenExpire' => 3600 * 3, // 3 hours
 
     // cache
@@ -166,4 +167,7 @@ return [
     'cache.extensions.get' => 300,
 
     'sitemap.indexMaxUrls' => 10000, //Count url in one sitemap index file
+
+    // configure this in local config
+    'siteAbsoluteUrl' => null,
 ];

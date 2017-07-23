@@ -144,7 +144,7 @@ class ImportController extends Controller
 			$model = new User([
 				'id' => $user['member_id'],
 				'username' => $user['name'],
-				'email' => $user['email'],
+				'email' => YII_DEBUG ? $this->debugEmail($user['email']) : $user['email'],
 				'display_name' => empty($user['members_display_name']) ? $user['name'] : $user['members_display_name'],
 				'created_at' => date('Y-m-d H:i:s', $user['joined']),
 				'password_hash' => $passwordHash,
@@ -168,6 +168,12 @@ class ImportController extends Controller
 		$this->stdout("done.", Console::FG_GREEN, Console::BOLD);
 		$this->stdout(" $count records imported.\n");
 	}
+
+	private function debugEmail($email)
+    {
+        list($user, $domain) = explode('@', $email);
+        return "test+$user.at.$domain@cebe.cc";
+    }
 
 	private function importBadges()
 	{

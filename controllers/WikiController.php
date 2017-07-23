@@ -7,6 +7,7 @@ use app\models\Wiki;
 use app\models\WikiCategory;
 use app\models\WikiRevision;
 use app\models\WikiTag;
+use app\notifications\WikiUpdateNotification;
 use Yii;
 use yii\data\ActiveDataProvider;
 use yii\filters\AccessControl;
@@ -181,9 +182,16 @@ class WikiController extends Controller
 
         if ($model->load(\Yii::$app->request->post()) && $model->save()) {
 
-            // TODO notification email for followers
-//            if(($changes=$model->findChanges($oldAttributes))!='')
-//                $model->notifyFollowers($changes);
+            if ($model->savedRevision !== null) {
+                // update timestamps from DB
+                $model->refresh();
+                $model->savedRevision->refresh();
+                WikiUpdateNotification::create([
+                    'wiki' => $model,
+                    'updater' => Yii::$app->user->identity,
+                    'changes' => $model->savedRevision,
+                ]);
+            }
 
             Star::castStar($model, Yii::$app->user->id, 1);
             return $this->redirect(['view', 'id' => $model->id]);
