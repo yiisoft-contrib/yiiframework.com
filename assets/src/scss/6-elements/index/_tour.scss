@@ -12,4 +12,8 @@
   @media (max-width: 380px) {
     @include rem(font-size, fontsize(base));
   }
+
+  a {
+    color: #ebf1f2;
+  }
 }

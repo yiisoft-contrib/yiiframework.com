@@ -1,3 +1,6 @@
+<?php
+use yii\helpers\Html;
+?>
 <li class="glide__slide">
     <div class="row">
         <div class="col-md-7">
@@ -16,9 +19,9 @@
                 <p>Check these helpful resources:</p>
 
                 <ul>
-                    <li>Documentation</li>
+                    <li><?= Html::a('Documentation', ['guide/entry']) ?></li>
                     <li>Community</li>
-                    <li>Extensions</li>
+                    <li><?= Html::a('Extensions', ['extension/index']) ?></li>
                 </ul>
             </div>
         </div>
