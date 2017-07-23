@@ -15,13 +15,7 @@ use yii\helpers\Html;
     <?= Html::a('Yii Tour', ['site/tour']) ?>
   </li>
   <li class="footerList_item">
-    <a href="#">Wiki</a>
-  </li>
-  <li class="footerList_item">
-    <a href="#">Tutorials</a>
-  </li>
-  <li class="footerList_item">
-    <a href="#">Screencasts</a>
+    <?= Html::a('Wiki', ['wiki/index']) ?>
   </li>
   <li class="footerList_item">
     <?= Html::a('Resources', ['site/resources']) ?>
