@@ -1,24 +1,37 @@
 <?php
-$quote_1 = <<<EOD1
-<p>Yii Framework met all our needs! It worked equally good for both rapid prototyping and large scale web applications. It allowed us to focus on our unique idea while still offering the flexibility to bend our application in all directions we want.</p>
-<p><b>Knut Urdalen</b><br>
-    Co-founder and CTO of <a href="http://www.stay.com">Stay.com</a>
+$quote_craft = <<<QUOTE
+<p>Choosing the right PHP framework was a vital decision when we set out to build Craft. With its elegant, modular architecture, rich internationalization support, and helpful documentation, Yii was a perfect fit.</p>
+<p><b>Brandon Kelly</b><br>
+    creator of Craft
 </p>
-EOD1;
+QUOTE;
+
+$quote_humhub = <<<QUOTE
+
+
+
+
+<p>Yii Framework is our rock solid foundation and provides us with numerous well designed features already out of the box.
+Especially the flexibility in form of modules or the event concept, perfectly match our requirements.
+In and above that, Yii has very active and helpful community!</p>
+<p><b>Lucas Bartholemy</b><br>
+    CEO of HumHub
+</p>
+QUOTE;
 
 return [
     [
-        'image' => '@web/image/testimonials/stay.png',
-        'title' => 'Stay.com',
-        'url' => '#',
-        'description' => 'A great way to plan your next travel. Time Magazine ranks Stay.com as one of the 50 best websites in 2010.',
-        'quote' => $quote_1,
+        'image' => '@web/image/testimonials/craft.png',
+        'title' => 'Craft CMS',
+        'url' => 'https://craftcms.com/3',
+        'description' => 'Craft is a content-first CMS that aims to make life enjoyable for developers and content managers alike.',
+        'quote' => $quote_craft,
     ],
     [
-        'image' => '@web/image/testimonials/stay.png',
-        'title' => 'Stay.com',
-        'url' => '#',
-        'description' => 'A great way to plan your next travel. Time Magazine ranks Stay.com as one of the 50 best websites in 2010.',
-        'quote' => $quote_1,
+        'image' => '@web/image/testimonials/humhub.png',
+        'title' => 'HumHub',
+        'url' => 'https://www.humhub.org/en',
+        'description' => 'HumHub is a free social network software and framework built to give you the tools to make communication and collaboration easy and successful.',
+        'quote' => $quote_humhub,
     ],
 ];

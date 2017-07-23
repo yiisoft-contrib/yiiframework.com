@@ -1,6 +1,4 @@
 <?php
-use yii\helpers\Url;
-
 $this->registerJs("
     $('#Glide2').glide({
         type: 'carousel',
@@ -40,6 +38,6 @@ $this->registerJs("
         </div>
     </div>
     <div class="row padded-row">
-        <a href="<?= Url::to(['site/projects']) ?>" class="btn btn-front btn-block">See more projects using Yii</a>
+        <a href="http://yiipowered.com/en" class="btn btn-front btn-block">See more projects using Yii</a>
     </div>
 </div>
