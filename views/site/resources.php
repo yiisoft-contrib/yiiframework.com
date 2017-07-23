@@ -36,17 +36,19 @@ $this->params['breadcrumbs'][] = $this->title;
                     unofficial articles, blogposts and tutorials. Anyone can suggest news. RSS provided.</p>
             </div>
             <div class="col-xs-12 col-md-6 col-lg-3 group">
-                <h3>Extensions</h3>
+                <h3>Showcase</h3>
 
                 <div class="image">
                     <a href="https://yiigist.com/">
-                    <img src="<?= Yii::getAlias('@web/image/resources/yiigist.png') ?>" alt="">
+                    <img src="<?= Yii::getAlias('@web/image/resources/yiipowered.png') ?>" alt="">
                     </a>
                 </div>
 
-                <h4><a href="https://yiigist.com/">YiiGist</a></h4>
+                <h4><a href="https://yiipowered.com/en">YiiPowered</a></h4>
 
-                <p>Until official extensions repository is ready you can use this community driven project based on packagist.</p>
+                <p>Community-powered showcase of projects and websites built with Yii including OpenSource projects.</p>
+
+                <p>Projects could be added by anyone and are published shortly after moderation.</p>
             </div>
             <div class="col-xs-12 col-md-6 col-lg-3 group">
                 <h3>Videos</h3>
