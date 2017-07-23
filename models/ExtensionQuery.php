@@ -9,6 +9,13 @@ namespace app\models;
  */
 class ExtensionQuery extends \yii\db\ActiveQuery
 {
+    public function latest()
+    {
+        return $this
+            ->andWhere(['status' => Extension::STATUS_PUBLISHED])
+            ->orderBy(['created_at' => SORT_DESC]);
+    }
+
     /**
      * @return $this
      */

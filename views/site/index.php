@@ -4,6 +4,7 @@
 /* @var $tour_slides array */
 /* @var $testimonials array */
 /* @var $news app\models\News[] */
+/* @var $extensions \app\models\Extension[] */
 ?>
 <?= $this->render('partials/index/_jumbo'); ?>
 
@@ -22,7 +23,7 @@
             <?= $this->render('partials/index/_tutorials'); ?>
         </div>
         <div class="col-md-4">
-            <?= $this->render('partials/index/_extensions'); ?>
+            <?= $this->render('partials/index/_extensions', ['extensions' => $extensions]); ?>
         </div>
     </div>
 </div>
