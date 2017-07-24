@@ -8,6 +8,7 @@ use app\models\Star;
 use app\models\Extension;
 use app\models\ExtensionCategory;
 use app\models\ExtensionTag;
+use app\notifications\ExtensionUpdateNotification;
 use League\Flysystem\FileNotFoundException;
 use Yii;
 use yii\data\ActiveDataProvider;
@@ -199,9 +200,14 @@ class ExtensionController extends Controller
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
 
-            // TODO notification email for followers
-//            if(($changes=$model->findChanges($oldAttributes))!='')
-//                $model->notifyFollowers($changes);
+            if (!$model->from_packagist) {
+                // notification email for followers
+                $model->refresh();
+                ExtensionUpdateNotification::create([
+                    'extension' => $model,
+                    'updater' => Yii::$app->user->identity,
+                ]);
+            }
 
             Star::castStar($model, Yii::$app->user->id, 1);
             return $this->redirect($model->getUrl());

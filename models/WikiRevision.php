@@ -2,6 +2,7 @@
 
 namespace app\models;
 
+use app\components\DiffBehavior;
 use DiffMatchPatch\Diff;
 use DiffMatchPatch\DiffMatchPatch;
 use Yii;
@@ -42,6 +43,7 @@ class WikiRevision extends ActiveRecord
                 'createdByAttribute' => false,
                 'updatedByAttribute' => 'updater_id',
             ],
+            'diff' => DiffBehavior::class,
             // TODO store tags
 //            'tagable' => [
 //                'class' => Taggable::className(),
@@ -162,81 +164,6 @@ class WikiRevision extends ActiveRecord
     public function isLatest()
     {
         return $this->equals($this->findLatest($this->wiki_id));
-    }
-
-    public static function diff(WikiRevision $a, WikiRevision $b, $attribute)
-    {
-        $diff = new DiffMatchPatch();
-        $diffs = $diff->diff_main(
-            (string) ArrayHelper::getValue($a, $attribute, ''),
-            (string) ArrayHelper::getValue($b, $attribute, '')
-        );
-        $diff->diff_cleanupSemantic($diffs);
-        return $diffs;
-    }
-
-    /**
-     * Convert a diff array into a pretty HTML report.
-     *
-     * @return string HTML representation.
-     */
-    public static function diffPrettyHtml($diffs)
-    {
-        $html = '';
-        $diffs = array_values($diffs);
-        $c = count($diffs);
-        for($i = 0; $i < $c; ++$i) {
-            $change = $diffs[$i];
-            $op = $change[0];
-            $data = $change[1];
-            $text = str_replace(array(
-                '&', '<', '>',
-            ), array(
-                '&amp;', '&lt;', '&gt;'
-            ), $data);
-
-            if ($op == Diff::INSERT) {
-                $html .= '<ins>' . nl2br($text) . '</ins>';
-            } elseif ($op == Diff::DELETE) {
-                $html .= '<del>' . nl2br($text) . '</del>';
-            } else {
-                $pos = ($i == 0 ? 'first' :
-                       (($i == $c - 1) ? 'last' : 'middle'));
-                $html .= static::trimContext($text, $pos);
-            }
-        }
-
-        return $html;
-    }
-
-    /**
-     * make long unchanged text smaller.
-     * @param string $text
-     */
-    private static function trimContext($text, $pos)
-    {
-        $threshold = 6;
-
-        $lines = explode("\n", $text);
-        $count = count($lines);
-
-        if ($count <= $threshold) {
-            return $text;
-        }
-
-        switch($pos)
-        {
-            case "first":
-                return '<div class="diff-snip">[...]</div>'
-                     . '<span>' . nl2br(ltrim(implode("\n", array_slice($lines, $count - $threshold)))) . '</span>';
-            case "last":
-                return '<span>' . nl2br(rtrim(implode("\n", array_slice($lines, 0, $threshold)))) . '</span>'
-                     . '<div class="diff-snip">[...]</div>';
-            default:
-                return '<span>' . nl2br(rtrim(implode("\n", array_slice($lines, 0, $threshold / 2)))) . '</span>'
-                     . '<div class="diff-snip">[...]</div>'
-                     . '<span>' . nl2br(ltrim(implode("\n", array_slice($lines, $count - $threshold / 2)))) . '</span>';
-        }
     }
 
     /**

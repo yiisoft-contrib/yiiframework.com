@@ -2,6 +2,7 @@
 
 namespace app\models;
 
+use app\components\DiffBehavior;
 use app\components\packagist\Package;
 use app\components\packagist\PackagistApi;
 use app\components\SluggableBehavior;
@@ -97,6 +98,7 @@ class Extension extends ActiveRecord implements Linkable
             'taggable' => [
                 'class' => Taggable::className(),
             ],
+            'diff' => DiffBehavior::class,
         ];
     }
 
