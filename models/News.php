@@ -26,6 +26,7 @@ use yii\db\Expression;
  *
  * @property NewsTag[] $tags
  * @property News[] $relatedNews
+ * @property User $creator
  */
 class News extends ActiveRecord
 {
@@ -173,5 +174,13 @@ class News extends ActiveRecord
             ->column();
 
         return News::findAll($ids);
+    }
+
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getCreator()
+    {
+        return $this->hasOne(User::className(), ['id' => 'creator_id']);
     }
 }

@@ -19,6 +19,9 @@ return [
     'tour' => 'site/tour',
     'resources' => 'site/resources',
 
+    // RSS
+    'rss.xml' => 'rss/all',
+
 	// static file download
     'download/<category:[\w-]+>/<file:[\w\d-.]+>' => 'site/file',
 

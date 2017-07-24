@@ -9,6 +9,9 @@ namespace app\models;
  */
 class ExtensionQuery extends \yii\db\ActiveQuery
 {
+    /**
+     * @return $this
+     */
     public function latest()
     {
         return $this

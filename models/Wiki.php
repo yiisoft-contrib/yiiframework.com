@@ -22,6 +22,13 @@ use yii\helpers\StringHelper;
  * @property string $title
  * @property string $slug
  * @property string $content
+ * @property string $contentHtml
+ * @property int $total_votes
+ * @property int $up_votes
+ * @property float $rating
+ * @property bool $featured
+ * @property int $comment_count
+ * @property int $status
  * @property integer $category_id
  * @property integer $creator_id
  * @property integer $updater_id
@@ -36,7 +43,6 @@ use yii\helpers\StringHelper;
  * @property WikiRevision[] $revisions
  * @property WikiRevision[] $latestRevisions
  *
- * @property string $contentHtml
  */
 class Wiki extends ActiveRecord implements Linkable
 {
