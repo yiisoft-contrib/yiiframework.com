@@ -134,6 +134,7 @@ class Wiki extends ActiveRecord implements Linkable
         $revision = new WikiRevision(['scenario' => 'create']);
         $revision->wiki_id = $this->id;
         $revision->setAttributes($this->attributes);
+        $revision->tagNames = $this->tagNames;
         $revision->memo = $insert ? null : $this->memo;
         $revision->save(false);
         $this->savedRevision = $revision;

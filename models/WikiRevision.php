@@ -44,10 +44,6 @@ class WikiRevision extends ActiveRecord
                 'updatedByAttribute' => 'updater_id',
             ],
             'diff' => DiffBehavior::class,
-            // TODO store tags
-//            'tagable' => [
-//                'class' => Taggable::className(),
-//            ],
         ];
     }
 

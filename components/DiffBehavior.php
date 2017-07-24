@@ -75,6 +75,19 @@ class DiffBehavior extends Behavior
         return $diffs;
     }
 
+    public static function hasChanges($diff)
+    {
+        $count = count($diff);
+        if ($count === 0) {
+            return false;
+        }
+        if ($count !== 1) {
+            return true;
+        }
+        $change = reset($diff);
+        return $change[0] === Diff::INSERT || $change[0] === Diff::DELETE;
+    }
+
     /**
      * Convert a diff array into a pretty text report.
      *

@@ -35,13 +35,13 @@ $left = $changes->findPrevious();
 $right = $changes;
 
 $diff = $left->diff($right, 'title');
-if (count($diff) > 1) {
+if (DiffBehavior::hasChanges($diff)) {
     echo "Old Category: " . $left->title . "\n";
     echo "New Category: " . $right->title . "\n\n";
 }
 
 $diff = $left->diff($right, 'category_id');
-if (count($diff) > 1) {
+if (DiffBehavior::hasChanges($diff)) {
     $oldCategory = WikiCategory::findOne($left->category_id);
     $newCategory = WikiCategory::findOne($right->category_id);
     echo "Old Category: " . ($oldCategory ? $oldCategory->name : '') . "\n";
@@ -49,19 +49,19 @@ if (count($diff) > 1) {
 }
 
 $diff = $left->diff($right, 'yii_version');
-if (count($diff) > 1) {
+if (DiffBehavior::hasChanges($diff)) {
     echo "Old Yii Version: " . $left->yii_version . "\n";
     echo "New Yii Version: " . $right->yii_version . "\n\n";
 }
 
 $diff = $left->diff($right, 'tagNames');
-if (count($diff) > 1) {
+if (DiffBehavior::hasChanges($diff)) {
     echo "Old Tags: " . $left->tagNames . "\n";
     echo "New Tags: " . $right->tagNames . "\n\n";
 }
 
 $diff = $left->diff($right, 'content');
-if (count($diff) > 1) {
+if (DiffBehavior::hasChanges($diff)) {
     echo "Content:\n";
     echo DiffBehavior::diffPrettyText($diff);
     echo "\n";

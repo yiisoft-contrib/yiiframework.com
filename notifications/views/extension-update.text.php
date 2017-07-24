@@ -52,7 +52,7 @@ if ($extension->getReallyOldAttribute('tagline') != $extension->getAttribute('ta
 }
 
 $diff = $extension->diffAttribute('description');
-if (count($diff) > 1) {
+if (DiffBehavior::hasChanges($diff)) {
     echo "Description:\n";
     echo DiffBehavior::diffPrettyText($diff);
     echo "\n";

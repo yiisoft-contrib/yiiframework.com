@@ -39,31 +39,31 @@ if ($extension->getReallyOldAttribute('category_id') != $extension->getAttribute
 }
 
 $diff = $extension->diffAttribute('yii_version');
-if (count($diff) > 1) {
+if (DiffBehavior::hasChanges($diff)) {
     echo "<h4>Yii Version</h4>\n";
     echo '<div class="diff">' . DiffBehavior::diffPrettyHtml($diff) . '</div>';
 }
 
 $diff = $extension->diffAttribute('license_id');
-if (count($diff) > 1) {
+if (DiffBehavior::hasChanges($diff)) {
     echo "<h4>License</h4>\n";
     echo '<div class="diff">' . DiffBehavior::diffPrettyHtml($diff) . '</div>';
 }
 
 $diff = $extension->diffAttribute('github_url');
-if (count($diff) > 1) {
+if (DiffBehavior::hasChanges($diff)) {
     echo "<h4>Github URL</h4>\n";
     echo '<div class="diff">' . DiffBehavior::diffPrettyHtml($diff) . '</div>';
 }
 
 $diff = $extension->diffAttribute('tagline');
-if (count($diff) > 1) {
+if (DiffBehavior::hasChanges($diff)) {
     echo "<h4>Tagline</h4>\n";
     echo '<div class="diff">' . DiffBehavior::diffPrettyHtml($diff) . '</div>';
 }
 
 $diff = $extension->diffAttribute('description');
-if (count($diff) > 1) {
+if (DiffBehavior::hasChanges($diff)) {
     echo "<h4>Description</h4>\n";
     echo '<div class="diff">' . DiffBehavior::diffPrettyHtml($diff) . '</div>';
 }

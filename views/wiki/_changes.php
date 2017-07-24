@@ -10,7 +10,7 @@ use app\components\DiffBehavior;
 <?php $diff = $left->diff($right, 'title'); ?>
 <h4>
     Title
-    <small><?php echo count($diff) <= 1 ? '<span class="label unchanged">unchanged</span>' : '<span class="label changed">changed</span>'; ?></small>
+    <small><?php echo !DiffBehavior::hasChanges($diff) ? '<span class="label unchanged">unchanged</span>' : '<span class="label changed">changed</span>'; ?></small>
 </h4>
 <div class="diff">
     <?= trim(DiffBehavior::diffPrettyHtml($diff)) ?>
@@ -19,7 +19,7 @@ use app\components\DiffBehavior;
 <?php $diff = $left->diff($right, 'category.name'); ?>
 <h4>
     Category
-    <small><?php echo count($diff) <= 1 ? '<span class="label unchanged">unchanged</span>' : '<span class="label changed">changed</span>'; ?></small>
+    <small><?php echo !DiffBehavior::hasChanges($diff) ? '<span class="label unchanged">unchanged</span>' : '<span class="label changed">changed</span>'; ?></small>
 </h4>
 <div class="diff">
     <?= trim(DiffBehavior::diffPrettyHtml($diff)) ?>
@@ -28,7 +28,7 @@ use app\components\DiffBehavior;
 <?php $diff = $left->diff($right, 'yii_version'); ?>
 <h4>
     Yii version
-    <small><?php echo count($diff) <= 1 ? '<span class="label unchanged">unchanged</span>' : '<span class="label changed">changed</span>'; ?></small>
+    <small><?php echo !DiffBehavior::hasChanges($diff) ? '<span class="label unchanged">unchanged</span>' : '<span class="label changed">changed</span>'; ?></small>
 </h4>
 <div class="diff">
     <?= trim(DiffBehavior::diffPrettyHtml($diff)) ?>
@@ -37,7 +37,7 @@ use app\components\DiffBehavior;
 <?php $diff = $left->diff($right, 'tagNames'); ?>
 <h4>
     Tags
-    <small><?php echo count($diff) <= 1 ? '<span class="label unchanged">unchanged</span>' : '<span class="label changed">changed</span>'; ?></small>
+    <small><?php echo !DiffBehavior::hasChanges($diff) ? '<span class="label unchanged">unchanged</span>' : '<span class="label changed">changed</span>'; ?></small>
 </h4>
 <div class="diff">
     <?= trim(DiffBehavior::diffPrettyHtml($diff)) ?>
@@ -46,7 +46,7 @@ use app\components\DiffBehavior;
 <?php $diff = $left->diff($right, 'content'); ?>
 <h4>
     Content
-    <small><?php echo count($diff) <= 1 ? '<span class="label unchanged">unchanged</span>' : '<span class="label changed">changed</span>'; ?></small>
+    <small><?php echo !DiffBehavior::hasChanges($diff) ? '<span class="label unchanged">unchanged</span>' : '<span class="label changed">changed</span>'; ?></small>
 </h4>
 <div class="diff">
     <?= trim(DiffBehavior::diffPrettyHtml($diff)) ?>
