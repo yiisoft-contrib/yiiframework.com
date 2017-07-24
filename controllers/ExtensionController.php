@@ -13,6 +13,7 @@ use Yii;
 use yii\data\ActiveDataProvider;
 use yii\filters\AccessControl;
 use yii\filters\VerbFilter;
+use yii\helpers\Html;
 use yii\queue\Queue;
 use yii\web\Controller;
 use yii\web\ForbiddenHttpException;
@@ -140,10 +141,8 @@ class ExtensionController extends Controller
 
         // normalize URL, redirect non-case sensitive URLs
         if ($model->name !== $name) {
-            return $this->redirect(['view', 'name' => $model->name], 301);
+            return $this->redirect($model->getUrl(), 301);
         }
-
-        // TODO implement measures to update packagist data
 
         return $this->render('view', [
             'model' => $model,
@@ -183,7 +182,7 @@ class ExtensionController extends Controller
                 }
 
                 Star::castStar($model, Yii::$app->user->id, 1);
-                return $this->redirect(['view', 'name' => $model->name]);
+                return $this->redirect($model->getUrl());
             }
         }
 
@@ -205,7 +204,7 @@ class ExtensionController extends Controller
 //                $model->notifyFollowers($changes);
 
             Star::castStar($model, Yii::$app->user->id, 1);
-            return $this->redirect(['view', 'name' => $model->name]);
+            return $this->redirect($model->getUrl());
         }
 
         return $this->render('update', [
@@ -229,9 +228,10 @@ class ExtensionController extends Controller
             $queue->push($job);
         }
 
-        Yii::$app->session->setFlash('success', 'Update for extension scheduled to be performed ' . Yii::$app->formatter->asRelativeTime($delay, 0) . '.');
+        $link = $delay < 15 ? ' ' . Html::a('refresh!', $model->getUrl()) : '';
+        Yii::$app->session->setFlash('success', 'Update for extension scheduled to be performed ' . Yii::$app->formatter->asRelativeTime($delay, 0) . '.' . $link);
 
-        return $this->redirect(['view', 'name' => $model->name]);
+        return $this->redirect($model->getUrl());
     }
 
     /**

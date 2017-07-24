@@ -8,9 +8,8 @@ return [
         'debug' => [
             'class' => 'yii\\debug\\Module',
             'panels' => [
-                'elasticsearch' => [
-                    'class' => 'yii\\elasticsearch\\DebugPanel',
-                ],
+                'elasticsearch' => yii\elasticsearch\DebugPanel::class,
+                'queue' => yii\queue\debug\Panel::class,
             ],
         ],
         'gii' => [

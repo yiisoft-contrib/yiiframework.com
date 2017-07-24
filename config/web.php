@@ -26,10 +26,7 @@ $config = [
             'enableAutoLogin' => true,
             'loginUrl' => ['auth/login'],
         ],
-        'formatter' => [
-            'class' => app\components\Formatter::class,
-            'thousandSeparator' => '&thinsp;',
-        ],
+        'formatter' => $params['components.formatter'],
 
         'errorHandler' => [
             'errorAction' => 'site/error',

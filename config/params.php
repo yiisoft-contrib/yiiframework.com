@@ -48,6 +48,10 @@ return [
         'class' => creocoder\flysystem\LocalFilesystem::class,
         'path' => '@app/data/files',
     ],
+    'components.formatter' => [
+        'class' => app\components\Formatter::class,
+        'thousandSeparator' => '&thinsp;',
+    ],
     'components.urlManager' => [
         'enablePrettyUrl' => true,
         'showScriptName' => false,

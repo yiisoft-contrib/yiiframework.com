@@ -1,17 +1,19 @@
 <?php
-/**
- * @var $wiki \app\models\Wiki the extension model object that has been changed
- * @var $user \app\models\User the user object to whom the email is sent
- * @var $changes \app\models\WikiRevision string, the changes
- */
+
+/* @var $this \yii\web\View */
+/* @var $wiki \app\models\Wiki the extension model object that has been changed */
+/* @var $user \app\models\User the user object to whom the email is sent */
+/* @var $changes \app\models\WikiRevision string, the changes */
+
 use yii\helpers\Html;
 use yii\helpers\Url;
 
 ?>
-<html>
-<head>
-    <title><?= Html::encode("Yii tutorial changed: {$wiki->title}"); ?></title>
-    <style>
+<?php $this->beginContent('@app/notifications/views/_layout.html.php', [
+    'model' => $wiki,
+    'user' => $user,
+    'title' => "Yii tutorial changed: {$wiki->title}",
+    'css' => <<<CSS
         diff, .memo {
             font-family: monospace;
             font-weight: normal;
@@ -50,12 +52,8 @@ use yii\helpers\Url;
             background: rgba(133, 215, 201, 0.71);
             color: #000;
         }
-    </style>
-</head>
-<body>
-<p>
-    Dear <?= Html::encode($user->display_name); ?>,
-</p>
+CSS
+]) ?>
 <p>
     The following tutorial that you are following was recently updated.
 </p>
@@ -72,18 +70,6 @@ use yii\helpers\Url;
     'left' => $changes->findPrevious(),
     'right' => $changes,
 ]) ?>
-
 <hr />
-<p>
-    To stop receiving such notification in the future, visit
-    <?= Html::a('the tutorial page', Url::to($wiki->getUrl(), true)); ?>
-    and click on the star icon to stop following it.<br/>
-    You may also manage your subscriptions at your
-    <?= Html::a('account profile page', Url::to($user->getUrl('profile'), true)); ?>.
-</p>
-<p>
-    <b>PLEASE DO NOT REPLY TO THIS EMAIL AS IT IS SENT FROM OUR AUTOMATED SYSTEM.</b><br/>
-    <?= Html::a('Yii Framework', 'http://www.yiiframework.com'); ?>
-</p>
-</body>
-</html>
+
+<?php $this->endContent(); ?>

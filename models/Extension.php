@@ -509,4 +509,12 @@ MARKDOWN;
     {
         return $this->name;
     }
+
+    /**
+     * @return string the type of this object, e.g. News, Extension, Wiki
+     */
+    public function getItemType()
+    {
+        return static::COMMENT_TYPE;
+    }
 }

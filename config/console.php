@@ -34,6 +34,7 @@ return [
         'fs' => $params['components.fs'],
         'mailer' => $params['components.mailer'],
         'queue' => $params['components.queue'],
+        'formatter' => $params['components.formatter'],
         'urlManager' => array_merge(
             $params['components.urlManager'],
             [

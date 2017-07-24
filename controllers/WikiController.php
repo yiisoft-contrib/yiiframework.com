@@ -186,6 +186,7 @@ class WikiController extends Controller
                 // update timestamps from DB
                 $model->refresh();
                 $model->savedRevision->refresh();
+                // notify followers
                 WikiUpdateNotification::create([
                     'wiki' => $model,
                     'updater' => Yii::$app->user->identity,

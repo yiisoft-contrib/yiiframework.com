@@ -48,7 +48,7 @@ class Wiki extends ActiveRecord implements Linkable
     /**
      * object type used for wiki comments
      */
-    const COMMENT_TYPE = 'wiki';
+    const COMMENT_TYPE = 'Wiki';
 
     /**
      * @var string editor note on upate
@@ -315,5 +315,13 @@ class Wiki extends ActiveRecord implements Linkable
     public function getLinkTitle()
     {
         return $this->title;
+    }
+
+    /**
+     * @return string the type of this object, e.g. News, Extension, Wiki
+     */
+    public function getItemType()
+    {
+        return static::COMMENT_TYPE;
     }
 }

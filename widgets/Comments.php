@@ -5,6 +5,8 @@ namespace app\widgets;
 
 
 use app\models\Comment;
+use app\models\Linkable;
+use app\notifications\CommentNewNotification;
 use Yii;
 use yii\base\InvalidConfigException;
 use yii\base\Widget;
@@ -47,6 +49,17 @@ class Comments extends Widget
 
         if ($commentForm->load(Yii::$app->request->post())) {
             if( $commentForm->save()) {
+
+                // notify followers
+                $model = $commentForm->getModel();
+                if ($model instanceof Linkable) {
+                    $commentForm->refresh();
+                    CommentNewNotification::create([
+                        'model' => $model,
+                        'comment' => $commentForm,
+                    ]);
+                }
+
                 $id = $commentForm->id;
                 // reset form
                 $commentForm = $this->getNewCommentForm($this->objectType, $this->objectId);
