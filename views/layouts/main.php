@@ -40,6 +40,8 @@ AppAsset::register($this);
         <meta name="msapplication-TileImage" content="<?= Yii::getAlias('@web/favico/ms-icon-144x144.png') ?>">
         <meta name="theme-color" content="#fff">
 
+        <link href="<?= Url::to(['rss/all'], true) ?>" type="application/rss+xml" rel="alternate" title="Lives News for Yii Framework">
+
         <!--[if lt IE 9]>
         <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
         <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>

@@ -88,7 +88,7 @@ class RssController extends Controller
         $entry->setDateModified($modified);
 
         // And finally, some content:
-        $entry->setContent($news->content);
+        $entry->setContent($news->contentHtml);
 
         return $entry;
     }
@@ -108,7 +108,7 @@ class RssController extends Controller
         $entry = $feed->createEntry();
 
         // Set the entry title:
-        $entry->setTitle('[Extension] ' . $extension->title);
+        $entry->setTitle('[Extension] ' . $extension->name);
 
         // Set the link to the entry:
         $entry->setLink(Url::to($extension->getUrl(), true));
@@ -126,7 +126,7 @@ class RssController extends Controller
         $entry->setDateModified($modified);
 
         // And finally, some content:
-        $entry->setContent($extension->description);
+        $entry->setContent($extension->contentHtml);
 
         return $entry;
     }
@@ -149,7 +149,7 @@ class RssController extends Controller
         $entry->setTitle('[Wiki] ' . $wikiPage->title);
 
         // Set the link to the entry:
-        $entry->setLink(Url::toRoute(['wiki/view', 'id' => $wikiPage->id, 'name' => $wikiPage->slug]));
+        $entry->setLink(Url::to($wikiPage->getUrl(), true));
 
         // Add an author, if you can. Each author entry should be an
         // array containing minimally a "name" key, and zero or more of
@@ -164,7 +164,7 @@ class RssController extends Controller
         $entry->setDateModified($modified);
 
         // And finally, some content:
-        $entry->setContent($wikiPage->content);
+        $entry->setContent($wikiPage->contentHtml);
 
         return $entry;
     }

@@ -4,6 +4,7 @@ namespace app\models;
 
 use dosamigos\taggable\Taggable;
 use Yii;
+use yii\apidoc\helpers\ApiMarkdown;
 use yii\behaviors\BlameableBehavior;
 use app\components\SluggableBehavior;
 use yii\behaviors\TimestampBehavior;
@@ -135,6 +136,13 @@ class News extends ActiveRecord
     public static function find()
     {
         return new NewsQuery(get_called_class());
+    }
+
+    public function getContentHtml()
+    {
+        ApiMarkdown::$renderer = new \app\apidoc\GuideRenderer();
+        ApiMarkdown::$renderer->apiContext = new \yii\apidoc\models\Context();
+        return ApiMarkdown::process($this->content);
     }
 
     // relations

@@ -42,13 +42,7 @@ echo $this->render('//site/partials/common/_admin_heading.php', [
                 <h2><?= Html::a(Html::encode($model->title), ['news/view', 'id' => $model->id, 'name' => $model->slug]) ?></h2>
                 <div class="text">
 
-                    <?php
-
-                    ApiMarkdown::$renderer = new \app\apidoc\GuideRenderer();
-                    ApiMarkdown::$renderer->apiContext = new \yii\apidoc\models\Context();
-                    echo ApiMarkdown::process($model->content)
-
-                    ?>
+                    <?= $model->contentHtml ?>
 
                 </div>
             </div>
