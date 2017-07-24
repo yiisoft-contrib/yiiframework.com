@@ -16,6 +16,10 @@ use Zend\Feed\Writer\Feed;
 
 class RssController extends Controller
 {
+    const LIMIT_NEWS = 20;
+    const LIMIT_WIKI = 20;
+    const LIMIT_EXTENSIONS = 20;
+
     public function actionAll()
     {
         $feed = new Feed();
@@ -94,7 +98,7 @@ class RssController extends Controller
         return News::find()
             ->with('creator')
             ->latest()
-            ->limit(5)
+            ->limit(self::LIMIT_NEWS)
             ->all();
     }
 
@@ -132,7 +136,7 @@ class RssController extends Controller
         return Extension::find()
             ->with('owner')
             ->latest()
-            ->limit(5)
+            ->limit(self::LIMIT_EXTENSIONS)
             ->all();
     }
 
@@ -170,7 +174,7 @@ class RssController extends Controller
         return Wiki::find()
             ->with('creator')
             ->latest()
-            ->limit(5)
+            ->limit(self::LIMIT_WIKI)
             ->all();
     }
 }
