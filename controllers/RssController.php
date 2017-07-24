@@ -9,6 +9,7 @@ use app\models\News;
 use app\models\Wiki;
 use DateTime;
 use yii\base\Exception;
+use yii\helpers\ArrayHelper;
 use yii\helpers\Url;
 use yii\web\Controller;
 use Zend\Feed\Writer\Feed;
@@ -35,7 +36,7 @@ class RssController extends Controller
             $this->getWikiPages()
         );
 
-        asort($data);
+        ArrayHelper::multisort($data, 'created_at', SORT_DESC);
 
         $latest = new DateTime('@0');
         foreach ($data as $datum) {
@@ -65,7 +66,7 @@ class RssController extends Controller
         $entry = $feed->createEntry();
 
         // Set the entry title:
-        $entry->setTitle($news->title);
+        $entry->setTitle('[News] ' . $news->title);
 
         // Set the link to the entry:
         $entry->setLink(Url::toRoute(['news/view', 'id' => $news->id, 'name' => $news->slug], true));
@@ -94,7 +95,6 @@ class RssController extends Controller
             ->with('creator')
             ->latest()
             ->limit(5)
-            ->indexBy('created_at')
             ->all();
     }
 
@@ -104,7 +104,7 @@ class RssController extends Controller
         $entry = $feed->createEntry();
 
         // Set the entry title:
-        $entry->setTitle($extension->title);
+        $entry->setTitle('[Extension] ' . $extension->title);
 
         // Set the link to the entry:
         $entry->setLink(Url::to($extension->getUrl(), true));
@@ -133,7 +133,6 @@ class RssController extends Controller
             ->with('owner')
             ->latest()
             ->limit(5)
-            ->indexBy('created_at')
             ->all();
     }
 
@@ -143,7 +142,7 @@ class RssController extends Controller
         $entry = $feed->createEntry();
 
         // Set the entry title:
-        $entry->setTitle($wikiPage->title);
+        $entry->setTitle('[Wiki] ' . $wikiPage->title);
 
         // Set the link to the entry:
         $entry->setLink(Url::toRoute(['wiki/view', 'id' => $wikiPage->id, 'name' => $wikiPage->slug]));
@@ -172,7 +171,6 @@ class RssController extends Controller
             ->with('creator')
             ->latest()
             ->limit(5)
-            ->indexBy('created_at')
             ->all();
     }
 }
