@@ -23,6 +23,12 @@ use yii\helpers\ArrayHelper;
  * @property integer $created_at
  * @property integer $updated_at
  * @property string $password write-only password
+ * @property int $rating
+ * @property int $rank
+ * @property int $extension_count
+ * @property int $wiki_count
+ * @property int $comment_count
+ * @property int $post_count
  */
 class User extends ActiveRecord implements IdentityInterface
 {
