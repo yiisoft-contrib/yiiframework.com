@@ -18,6 +18,9 @@ use yii\db\Expression;
  * @property integer $status
  * @property integer $created_at
  * @property integer $updated_at
+ * @property int $total_votes
+ * @property int $up_votes
+ * @property float $rating
  *
  * @property User $user
  */

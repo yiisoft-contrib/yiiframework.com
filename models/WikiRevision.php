@@ -24,6 +24,7 @@ use yii\helpers\ArrayHelper;
  * @property string $memo
  * @property integer $updater_id
  * @property string $updated_at
+ * @property string $tagNames
  *
  * @property User $updater
  * @property Wiki $wiki
