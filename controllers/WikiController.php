@@ -2,6 +2,7 @@
 
 namespace app\controllers;
 
+use app\components\UserPermissions;
 use app\models\Star;
 use app\models\Wiki;
 use app\models\WikiCategory;
@@ -13,6 +14,7 @@ use yii\data\ActiveDataProvider;
 use yii\filters\AccessControl;
 use yii\filters\VerbFilter;
 use yii\web\Controller;
+use yii\web\ForbiddenHttpException;
 use yii\web\NotFoundHttpException;
 use yii\web\Response;
 
@@ -148,9 +150,9 @@ class WikiController extends Controller
 
     public function actionCreate()
     {
-        // TODO permission
-//        if(!user()->dbUser->canCreateWiki())
-//            throw new CHttpException(403,'Sorry, you are too new to write a wiki article. Please try posting it in our forum first.');
+        if (!UserPermissions::canCreateWikiPage()) {
+            throw new ForbiddenHttpException('Sorry, you are too new to write a wiki article. Please try posting it in our forum first.');
+        }
 
         $model = new Wiki();
         $model->scenario = 'create';
@@ -168,11 +170,12 @@ class WikiController extends Controller
 
     public function actionUpdate($id, $revision = null)
     {
-        // TODO permission
-//        if(!user()->dbUser->canCreateWiki())
-//            throw new CHttpException(403,'Sorry, you are too new to write a wiki article. Please try posting it in our forum first.');
-
         $model = $this->findModel($id, $revision);
+
+        if (UserPermissions::canUpdateWikiPage($model)) {
+            throw new ForbiddenHttpException('Sorry, you are too new to write a wiki article. Please try posting it in our forum first.');
+        }
+
         $model->scenario = 'update';
 
         if ($revision !== null) {

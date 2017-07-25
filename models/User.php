@@ -29,6 +29,18 @@ use yii\helpers\ArrayHelper;
  * @property int $wiki_count
  * @property int $comment_count
  * @property int $post_count
+ * @property string $display_name
+ * @property string $login_time
+ * @property int $login_attempts
+ * @property string $login_ip
+ *
+ * Relations:
+ *
+ * @property Auth[] $authClients
+ * @property Wiki[] $wikis
+ * @property Extension[] $extensions
+ * @property Badge[] $badges
+ *
  */
 class User extends ActiveRecord implements IdentityInterface
 {
@@ -337,7 +349,7 @@ class User extends ActiveRecord implements IdentityInterface
 
     public function getStatusLabel()
     {
-        $statuses = $this->getStatuses();
+        $statuses = static::getStatuses();
         return ArrayHelper::getValue($statuses, $this->status);
     }
 
@@ -442,5 +454,18 @@ class User extends ActiveRecord implements IdentityInterface
         }
         $url = ["user/$action"];
         return empty($params) ? $url : array_merge($url, $params);
+    }
+
+    /**
+     * @return null|string github account if attached
+     */
+    public function getGithub()
+    {
+        foreach ($this->authClients as $client) {
+            if ($client->source === 'github') {
+                return $client->source_login;
+            }
+        }
+        return null;
     }
 }

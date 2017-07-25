@@ -2,6 +2,7 @@
 
 namespace app\controllers;
 
+use app\components\UserPermissions;
 use app\jobs\ExtensionImportJob;
 use app\models\File;
 use app\models\Star;
@@ -153,9 +154,9 @@ class ExtensionController extends Controller
 
     public function actionCreate()
     {
-        // TODO permission
-//        if(!user()->dbUser->canCreateExtension())
-//            throw new CHttpException(403,'Sorry, you are too new to write a extension article. Please try posting it in our forum first.');
+        if (UserPermissions::canAddOrUpdateExtension()) {
+            throw new ForbiddenHttpException('Sorry, you are too new to add an extension. Please try posting it in our forum first.');
+        }
 
         $model = new Extension();
         $model->initDefaults();
@@ -170,6 +171,7 @@ class ExtensionController extends Controller
                 if ($model->from_packagist) {
 
                     // TODO validate github user name of developer
+                    // Yii::$app->user->getIdentity()->getGithub();
 
                     $model->populatePackagistName();
                     $model->description = null;
@@ -195,8 +197,16 @@ class ExtensionController extends Controller
 
     public function actionUpdate($id)
     {
-        // TODO permission
         $model = $this->findModelById($id);
+
+        if (UserPermissions::canAddOrUpdateExtension()) {
+            throw new ForbiddenHttpException('Sorry, you are too new to add an extension. Please try posting it in our forum first.');
+        }
+
+        if (UserPermissions::canUpdateExtension($model)) {
+            throw new ForbiddenHttpException('You are not allowed to perform this operation.');
+        }
+
         $model->scenario = 'update_' . ($model->from_packagist == 1 ? 'packagist' : 'custom');
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
@@ -222,6 +232,15 @@ class ExtensionController extends Controller
     public function actionUpdatePackagist($id)
     {
         $model = $this->findModelById($id);
+
+        if (UserPermissions::canAddOrUpdateExtension()) {
+            throw new ForbiddenHttpException('Sorry, you are too new to add an extension. Please try posting it in our forum first.');
+        }
+
+        if (UserPermissions::canUpdateExtension($model)) {
+            throw new ForbiddenHttpException('You are not allowed to perform this operation.');
+        }
+
         $model->updateAttributes(['update_status' => Extension::UPDATE_STATUS_EXPIRED]);
 
         // allow one update every 5min
@@ -329,7 +348,12 @@ class ExtensionController extends Controller
     public function actionDeleteFile($id, $file)
     {
         $model = $this->findModelById($id);
-        if($model->owner_id !== Yii::$app->user->id) { // TODO RBAC // TODO upload
+
+        if (UserPermissions::canAddOrUpdateExtension()) {
+            throw new ForbiddenHttpException('Sorry, you are too new to add an extension. Please try posting it in our forum first.');
+        }
+
+        if (UserPermissions::canUpdateExtension($model)) {
             throw new ForbiddenHttpException('You are not allowed to perform this operation.');
         }
 
