@@ -171,7 +171,12 @@ class ImportController extends Controller
 
 	private function debugEmail($email)
     {
-        list($user, $domain) = explode('@', $email);
+        $parts = explode('@', $email);
+        if (empty($parts)) {
+            return 'test.at@cebe.cc';
+        }
+
+        list($user, $domain) = $parts;
         return "test+$user.at.$domain@cebe.cc";
     }
 
