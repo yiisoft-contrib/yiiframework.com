@@ -1,6 +1,13 @@
 <?php
 
-// Yii Framework Core team Members
+// Yii Framework team Members
+
+class TeamStatus
+{
+    const TEAM_STATUS_ACTIVE = 'status';
+    const TEAM_STATUS_INACTIVE = 'inactive';
+    const TEAM_STATUS_PAST = 'past';
+}
 
 return [
     [
@@ -13,7 +20,7 @@ return [
         'photo' => '@web/image/team/qiangxue.jpg',
         'github' => 'qiangxue',
         'twitter' => 'qiang_xue',
-        'active' => true,
+        'status' => TeamStatus::TEAM_STATUS_PAST,
     ],
     [
         'name' => 'Alexander Makarov',
@@ -25,7 +32,7 @@ return [
         'photo' => '@web/image/team/samdark.jpg',
         'github' => 'samdark',
         'twitter' => 'sam_dark',
-        'active' => true,
+        'status' => TeamStatus::TEAM_STATUS_ACTIVE,
     ],
     [
         'name' => 'Maurizio Domba Cerin',
@@ -37,7 +44,7 @@ return [
         'photo' => '@web/image/team/mdomba.jpg',
         'github' => 'mdomba',
         'twitter' => 'mdomba',
-        'active' => true,
+        'status' => TeamStatus::TEAM_STATUS_INACTIVE,
     ],
     [
         'name' => 'Carsten Brandt',
@@ -49,7 +56,7 @@ return [
         'photo' => '@web/image/team/cebe.png',
         'github' => 'cebe',
         'twitter' => 'cebe_cc',
-        'active' => true,
+        'status' => TeamStatus::TEAM_STATUS_ACTIVE,
     ],
     [
         'name' => 'Klimov Paul',
@@ -61,7 +68,7 @@ return [
         'photo' => '@web/image/team/klimov-paul.jpg',
         'github' => 'klimov-paul',
         'twitter' => 'klimov_paul',
-        'active' => true,
+        'status' => TeamStatus::TEAM_STATUS_ACTIVE,
     ],
     [
         'name' => 'Dmitry Naumenko',
@@ -73,7 +80,7 @@ return [
         'photo' => '@web/image/team/silverfire.jpg',
         'github' => 'SilverFire',
         'twitter' => 'S1lverF1re',
-        'active' => true,
+        'status' => TeamStatus::TEAM_STATUS_ACTIVE,
     ],
     [
         'name' => 'Antonio Ramirez',
@@ -85,7 +92,7 @@ return [
         'photo' => '@web/image/team/tonydspaniard.jpg',
         'github' => 'tonydspaniard',
         'twitter' => 'tonydspaniard',
-        'active' => false,
+        'status' => TeamStatus::TEAM_STATUS_PAST,
     ],
     [
         'name' => 'Timur Ruziev',
@@ -96,7 +103,7 @@ return [
         'duty' => 'Core framework development',
         'photo' => '@web/image/team/noimage.png',
         'github' => 'resurtm',
-        'active' => false,
+        'status' => TeamStatus::TEAM_STATUS_PAST,
     ],
     [
         'name' => 'Wei Zhuo',
@@ -107,7 +114,7 @@ return [
         'duty' => 'Project site maintenance and development',
         'photo' => '@web/image/team/xwz.jpg',
         'github' => 'xwz',
-        'active' => false,
+        'status' => TeamStatus::TEAM_STATUS_PAST,
     ],
     [
         'name' => 'Sebastián Thierer',
@@ -118,7 +125,7 @@ return [
         'duty' => 'Component development',
         'photo' => '@web/image/team/sebathi.png',
         'github' => 'sebathi',
-        'active' => false,
+        'status' => TeamStatus::TEAM_STATUS_PAST,
     ],
     [
         'name' => 'Jeffrey Winesett',
@@ -129,7 +136,7 @@ return [
         'duty' => 'Documentation and marketing',
         'photo' => '@web/image/team/jefftulsa.jpg',
         'github' => 'jefftulsa',
-        'active' => false,
+        'status' => TeamStatus::TEAM_STATUS_PAST,
     ],
     [
         'name' => 'Y!!',
@@ -139,7 +146,7 @@ return [
         'location' => 'Germany',
         'duty' => 'Core framework development',
         'photo' => '@web/image/team/noimage.png',
-        'active' => false,
+        'status' => TeamStatus::TEAM_STATUS_PAST,
     ],
     [
         'name' => 'Jonah Turnquist',
@@ -149,7 +156,7 @@ return [
         'location' => 'California, US',
         'duty' => 'Component development',
         'photo' => '@web/image/team/noimage.png',
-        'active' => false,
+        'status' => TeamStatus::TEAM_STATUS_PAST,
     ],
     [
         'name' => 'István Beregszászi',
@@ -160,7 +167,7 @@ return [
         'duty' => 'Core framework development',
         'photo' => '@web/image/team/pestaa.jpg',
         'github' => 'pestaa',
-        'active' => false,
+        'status' => TeamStatus::TEAM_STATUS_PAST,
     ],
     [
         'name' => 'Boudewijn Vahrmeijer',
@@ -171,7 +178,7 @@ return [
         'duty' => 'Core framework development',
         'photo' => '',
         'github' => 'dynasource',
-        'active' => true,
+        'status' => TeamStatus::TEAM_STATUS_ACTIVE,
     ],
     [
         'name' => 'Konstantin Sirotkin',
@@ -182,6 +189,29 @@ return [
         'duty' => 'ElasticSearch extension development',
         'photo' => '',
         'github' => 'beowulfenator',
-        'active' => true,
+        'status' => TeamStatus::TEAM_STATUS_ACTIVE,
     ],
+    [
+        'name' => 'Roman Zhuravlev',
+        'id' => '',
+        'forumName' => '',
+        'memberSince' => 'July 2017',
+        'location' => '',
+        'duty' => 'Queue extension development',
+        'photo' => '',
+        'github' => 'zhuravljov',
+        'status' => TeamStatus::TEAM_STATUS_ACTIVE,
+    ],
+    [
+        'name' => 'Alexey Rogachev',
+        'id' => '',
+        'forumName' => '',
+        'memberSince' => 'Mar 2017',
+        'location' => 'Petropavl, Kazakhstan',
+        'duty' => 'Core framework development',
+        'photo' => '',
+        'github' => 'arogachev',
+        'status' => TeamStatus::TEAM_STATUS_INACTIVE,
+    ],
+
 ];

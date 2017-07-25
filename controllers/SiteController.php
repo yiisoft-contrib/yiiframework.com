@@ -122,16 +122,24 @@ class SiteController extends Controller
 
         $activeMembers = [];
         $pastMembers = [];
+        $inactiveMembers = [];
 
         foreach ($members as $member) {
-            if ($member['active']) {
-                $activeMembers[] = $member;
-            } else {
-                $pastMembers[] = $member;
+            switch ($member['status']) {
+                case \TeamStatus::TEAM_STATUS_ACTIVE:
+                    $activeMembers[] = $member;
+                    break;
+                case \TeamStatus::TEAM_STATUS_PAST:
+                    $pastMembers[] = $member;
+                    break;
+                case \TeamStatus::TEAM_STATUS_INACTIVE:
+                    $inactiveMembers[] = $member;
+                    break;
             }
         }
 
         $activeMembers = RowHelper::split($activeMembers, 6);
+        $inactiveMembers = RowHelper::split($inactiveMembers, 6);
         $pastMembers = RowHelper::split($pastMembers, 6);
 
         $contributors = false;
@@ -143,6 +151,7 @@ class SiteController extends Controller
         }
 
         return $this->render('team', [
+            'inactiveMembers' => $inactiveMembers,
             'activeMembers' => $activeMembers,
             'pastMembers' => $pastMembers,
             'contributors' => $contributors,

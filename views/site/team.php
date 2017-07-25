@@ -5,6 +5,7 @@ use yii\helpers\HtmlPurifier;
 /* @var $this yii\web\View */
 /* @var $activeMembers array */
 /* @var $pastMembers array */
+/* @var $inactiveMembers array */
 /* @var $contributors array */
 $this->title = 'Team';
 $this->params['breadcrumbs'][] = $this->title;
@@ -65,6 +66,48 @@ $this->params['breadcrumbs'][] = $this->title;
                             </div>
                         <?php endforeach ?>
                     </div>
+                <?php endforeach ?>
+
+                <div class="heading-separator">
+                    <h2><span>Inactive Team Members</span></h2>
+                </div>
+
+                <?php foreach($inactiveMembers as $row): ?>
+                <div class="row">
+                    <?php foreach($row as $i=>$member):?>
+                        <div class="col-xs-4 col-sm-4 col-md-2 person-card <?= ($i==0 && count($row)<6)?'col-md-offset-'.(6-count($row)):'' ?>">
+                            <div class="team-card">
+                                <div class="avatar">
+                                    <img src="<?= Html::encode(Yii::getAlias($member['photo'])) ?>" class="img-responsive" alt="" />
+                                </div>
+                                <div class="team-content">
+                                    <ul class="links-inline links-circle">
+                                            <?php
+
+                                            if (isset($member['twitter'])) {
+                                                echo '<li class="twitter">' . Html::a('<span class="fa-stack fa-lg">
+                                                      <i class="fa fa-circle fa-stack-1-5x"></i>
+                                                      <i class="fa fa-twitter fa-stack-1x fa-inverse"></i>
+                                                    </span>', 'https://twitter.com/' . $member['twitter'], ['title' => $member['name'].' on Twitter']) . '</li>';
+                                            }
+                                            if (isset($member['github'])) {
+                                                echo '<li class="github">' . Html::a('<span class="fa-stack fa-lg">
+                                                      <i class="fa fa-github fa-stack-1-5x" style="
+                                                    "></i>
+
+                                                    </span>', 'https://github.com/' . $member['github'], ['title' => $member['name'].' on Github']) . '</li>';
+                                            }
+                                            ?>
+                                        </ul>
+                                        <h4><?= Html::encode($member['name'])?></h4>
+                                        <p class="duty"><?= HtmlPurifier::process($member['duty']) ?></p>
+                                        <p class="location"> <?= Html::encode($member['location'])?></p>
+                                        <p class="period">Since <?= Html::encode($member['memberSince']) ?></p>
+                                </div>
+                            </div>
+                        </div>
+                    <?php endforeach ?>
+                </div>
                 <?php endforeach ?>
 
 
