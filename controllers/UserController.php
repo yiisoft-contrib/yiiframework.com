@@ -3,7 +3,9 @@
 namespace app\controllers;
 
 use app\models\Badge;
+use app\models\Extension;
 use app\models\UserBadge;
+use app\models\Wiki;
 use Yii;
 use app\models\User;
 use yii\data\ActiveDataProvider;
@@ -123,8 +125,24 @@ class UserController extends Controller
 
     public function actionProfile()
     {
+        $userId = Yii::$app->user->getId();
+
+        $extensions = Extension::find()
+            ->active()
+            ->where(['owner_id' => $userId])
+            ->orderBy('created_at DESC')
+            ->all();
+
+        $wikiPages = Wiki::find()
+            ->active()
+            ->where(['creator_id' => $userId])
+            ->orderBy('created_at DESC')
+            ->all();
+
         return $this->render('profile', [
             'model' => Yii::$app->user->identity,
+            'extensions' => $extensions,
+            'wikiPages' => $wikiPages,
         ]);
     }
 
@@ -166,8 +184,7 @@ class UserController extends Controller
     {
         if (($model = User::findOne($id)) !== null) {
             return $model;
-        } else {
-            throw new NotFoundHttpException('The requested page does not exist.');
         }
+        throw new NotFoundHttpException('The requested page does not exist.');
     }
 }

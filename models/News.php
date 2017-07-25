@@ -29,7 +29,7 @@ use yii\db\Expression;
  * @property News[] $relatedNews
  * @property User $creator
  */
-class News extends ActiveRecord
+class News extends ActiveRecord implements Linkable
 {
     const STATUS_DRAFT = 1;
     const STATUS_PUBLISHED = 2;
@@ -190,5 +190,29 @@ class News extends ActiveRecord
     public function getCreator()
     {
         return $this->hasOne(User::className(), ['id' => 'creator_id']);
+    }
+
+    /**
+     * @return array url to this object. Should be something to be passed to [[\yii\helpers\Url::to()]].
+     */
+    public function getUrl($action = 'view', $params = [])
+    {
+        return ['news/view', 'id' => $this->id, 'name' => $this->slug];
+    }
+
+    /**
+     * @return string title to display for a link to this object.
+     */
+    public function getLinkTitle()
+    {
+        return $this->title;
+    }
+
+    /**
+     * @return string the type of this object, e.g. News, Extension, Wiki
+     */
+    public function getItemType()
+    {
+        return 'News';
     }
 }

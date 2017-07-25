@@ -7,6 +7,8 @@ use yii\widgets\DetailView;
 
 /* @var $this yii\web\View */
 /* @var $model app\models\User */
+/* @var $extensions \app\models\Extension[] */
+/* @var $wikiPages \app\models\Wiki[] */
 
 $this->title = 'Hi, ' . $model->username . '!';
 
@@ -30,7 +32,7 @@ echo $this->render('//site/partials/common/_admin_heading.php', [
                 <p>This is your private profile settings page.</p>
 
                 <ul>
-                    <li><?= Html::a('&raquo; View forum profile',$model->forumUrl); ?></li>
+                    <li><?= Html::a('&raquo; View forum profile', $model->forumUrl); ?></li>
                     <li><?= Html::a('&raquo; View public profile', ['view', 'id' => $model->id]); ?></li>
                 </ul>
 
@@ -101,13 +103,21 @@ echo $this->render('//site/partials/common/_admin_heading.php', [
                 </p>
             </div>
             <div class="col-md-4">
-                    <h2>Your Extensions</h2>
+                    <h2>Your Extensions (<?= Html::encode($model->extension_count) ?>) </h2>
 
-                    TODO
+                    <ul>
+                    <?php foreach ($extensions as $extension): ?>
+                        <li><?= Html::a(Html::encode($extension->getLinkTitle()), $extension->getUrl())?></li>
+                    <?php endforeach ?>
+                    </ul>
 
-                    <h2>Your Wiki entries</h2>
+                    <h2>Your Wiki entries (<?= Html::encode($model->wiki_count) ?>)</h2>
 
-                    TODO
+                    <ul>
+                    <?php foreach ($wikiPages as $wikiPage): ?>
+                        <li><?= Html::a(Html::encode($wikiPage->getLinkTitle()), $wikiPage->getUrl()) ?></li>
+                    <?php endforeach ?>
+                    </ul>
 
                     <h2>Your Stars (following)</h2>
 

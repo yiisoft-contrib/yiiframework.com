@@ -70,10 +70,10 @@ class RssController extends Controller
         $entry = $feed->createEntry();
 
         // Set the entry title:
-        $entry->setTitle('[News] ' . $news->title);
+        $entry->setTitle('[' . $news->getItemType() . '] ' . $news->getLinkTitle());
 
         // Set the link to the entry:
-        $entry->setLink(Url::toRoute(['news/view', 'id' => $news->id, 'name' => $news->slug], true));
+        $entry->setLink(Url::to($news->getUrl(), true));
 
         // Add an author, if you can. Each author entry should be an
         // array containing minimally a "name" key, and zero or more of
@@ -108,7 +108,7 @@ class RssController extends Controller
         $entry = $feed->createEntry();
 
         // Set the entry title:
-        $entry->setTitle('[Extension] ' . $extension->name);
+        $entry->setTitle('[' . $extension->getItemType() . '] ' . $extension->getLinkTitle());
 
         // Set the link to the entry:
         $entry->setLink(Url::to($extension->getUrl(), true));
@@ -146,7 +146,7 @@ class RssController extends Controller
         $entry = $feed->createEntry();
 
         // Set the entry title:
-        $entry->setTitle('[Wiki] ' . $wikiPage->title);
+        $entry->setTitle('[' . $wikiPage->getItemType() . '] ' . $wikiPage->getLinkTitle());
 
         // Set the link to the entry:
         $entry->setLink(Url::to($wikiPage->getUrl(), true));
