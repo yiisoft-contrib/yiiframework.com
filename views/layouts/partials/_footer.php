@@ -28,6 +28,9 @@
                             </div>
                         </div>
                     </div>
+                    <div class="col-xs-12 text-center">
+                        <?= $this->render('footer/_supporters'); ?>
+                    </div>
                 </div>
             </div>
         </div>
