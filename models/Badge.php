@@ -129,4 +129,12 @@ abstract class Badge extends ActiveRecord
         }
         return new static;
     }
+
+    /**
+     * @return array register events to trigger badge updates.
+     */
+    public static function updateEvents()
+    {
+        return [];
+    }
 }

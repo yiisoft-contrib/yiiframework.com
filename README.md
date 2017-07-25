@@ -3,13 +3,15 @@ yiiframework.com Website
 
 This project contains the source code for the [yiiframework.com](http://yiiframework.com/) Website.
 
-If you want to contribute please get in touch with us using the [issue tracker](https://github.com/yiisoft-contrib/yiiframework.com/issues). We will set up some contributions guidelines soon.
+If you want to contribute please get in touch with us using the [issue tracker](https://github.com/yiisoft-contrib/yiiframework.com/issues).
+We will set up some contribution guidelines soon.
 
 
 ## INSTALLATION
 
 Before you start, make sure you have installed [composer](https://getcomposer.org/) and [Node.js](http://nodejs.org/).
-If you are on Debian or Ubuntu you might also want to install the [libnotify-bin](https://packages.debian.org/jessie/libnotify-bin) package, which is used by Gulp to inform you about its status.
+If you are on Debian or Ubuntu you might also want to install the [libnotify-bin](https://packages.debian.org/jessie/libnotify-bin) package,
+which is used by Gulp to inform you about its status.
 
 If you intend to use the [Pageres client](https://github.com/sindresorhus/pageres-cli) to generate screen shots for testing purposes, you need to install the `pageres.cli` tool globally:
 ~~~
@@ -27,7 +29,7 @@ git clone https://github.com/yiisoft-contrib/yiiframework.com.git
 cd yiiframework.com
 
 # install the composer asset plugin globally, if you haven't done so before
-composer global require "fxp/composer-asset-plugin:~1.1.1"
+composer global require "fxp/composer-asset-plugin:~1.3.1"
 
 # install the dependent composer packages
 composer install
@@ -71,7 +73,6 @@ gulp build
 # You may also build only parts of the docs, run  make help  for the available commands.
 make docs
 
-
 ```
 
 
@@ -94,6 +95,13 @@ RewriteCond %{REQUEST_FILENAME} !-d
 # otherwise forward it to index.php
 RewriteRule . index.php
 ```
+
+### Data Import
+
+For importing data from the old website, the following steps are necessary:
+
+- import data by running `./yii import` command
+- rebuild user badges by running `./yii badge/rebuild` 
 
 ### DEPLOYMENT
 

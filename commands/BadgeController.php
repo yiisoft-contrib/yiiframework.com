@@ -1,19 +1,15 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: cebe
- * Date: 08.09.16
- * Time: 11:39
- */
 
 namespace app\commands;
-
 
 use app\models\Badge;
 use yii\console\Controller;
 use Yii;
 use yii\db\Query;
 
+/**
+ * Handles User Badge calculation
+ */
 class BadgeController extends Controller
 {
     public $cron = false;
@@ -66,14 +62,14 @@ class BadgeController extends Controller
 
     public function actionEnqueue()
     {
-        Yii::$app->db->createCommand('INSERT INTO {{%badge_queue}} (user_id) SELECT id FROM {{%tbl_user}}')->execute();
+        Yii::$app->db->createCommand('INSERT INTO {{%badge_queue}} (user_id) SELECT id FROM {{%user}}')->execute();
     }
 
     public function actionReset()
     {
-        $sql[] = 'UPDATE {{%badge}} SET achieved = 0';
-        $sql[] = 'TRUNCATE TABLE {{%badge_queue}}';
-        $sql[] = 'TRUNCATE TABLE {{%user_badge}}';
+        $sql[] = 'UPDATE {{%badges}} SET achieved = 0';
+        $sql[] = 'DELETE FROM {{%badge_queue}}';
+        $sql[] = 'DELETE FROM {{%user_badges}}';
         $db = Yii::$app->db;
         foreach($sql as $cmd) {
             $db->createCommand($cmd)->execute();

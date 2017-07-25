@@ -125,7 +125,7 @@ class UserBadge extends ActiveRecord
             'query' => $query,
             'sort' => false,
             'pagination' => [
-                'pageSize' => 50,
+                'defaultPageSize' => 50,
             ],
         ]);
     }
