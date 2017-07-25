@@ -5,6 +5,7 @@ namespace app\controllers;
 use app\components\RowHelper;
 use app\models\Extension;
 use app\models\News;
+use app\models\Wiki;
 use Yii;
 use yii\base\InvalidParamException;
 use yii\filters\AccessControl;
@@ -70,12 +71,14 @@ class SiteController extends Controller
         $books = array_slice(Yii::$app->params['books2'], 0, 5);
         $news = News::find()->latest()->limit(4)->all();
         $extensions = Extension::find()->latest()->limit(10)->all();
+        $tutorials = Wiki::find()->latest()->limit(10)->all();
 
         return $this->render('index', [
             'testimonials' => Yii::$app->params['testimonials'],
             'books' => $books,
             'news' => $news,
             'extensions' => $extensions,
+            'tutorials' => $tutorials,
         ]);
     }
 

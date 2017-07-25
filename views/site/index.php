@@ -5,6 +5,7 @@
 /* @var $testimonials array */
 /* @var $news app\models\News[] */
 /* @var $extensions \app\models\Extension[] */
+/* @var $tutorials \app\models\Wiki[] */
 ?>
 <?= $this->render('partials/index/_jumbo'); ?>
 
@@ -20,7 +21,7 @@
             <?= $this->render('partials/index/_testimonials', ['testimonials' => $testimonials]); ?>
         </div>
         <div class="col-md-4">
-            <?= $this->render('partials/index/_tutorials'); ?>
+            <?= $this->render('partials/index/_tutorials', ['tutorials' => $tutorials]); ?>
         </div>
         <div class="col-md-4">
             <?= $this->render('partials/index/_extensions', ['extensions' => $extensions]); ?>

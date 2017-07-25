@@ -11,7 +11,7 @@ use yii\helpers\Url;
     <ul class="latest-list">
         <?php foreach ($extensions as $extension): ?>
         <li>
-            <?= Html::a(Html::encode($extension->name), ['extension/view', 'name' => $extension->name]) ?>
+            <?= Html::a(Html::encode($extension->getLinkTitle()), Url::to($extension->getUrl())) ?>
             <p><?= Html::encode($extension->tagline) ?></p>
         </li>
         <?php endforeach ?>
