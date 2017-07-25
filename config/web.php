@@ -22,6 +22,7 @@ $config = [
         'mailer' => $params['components.mailer'],
         'queue' => $params['components.queue'],
         'user' => [
+            'as webuser' => app\components\WebUserBehavior::class,
             'identityClass' => app\models\User::class,
             'enableAutoLogin' => true,
             'loginUrl' => ['auth/login'],

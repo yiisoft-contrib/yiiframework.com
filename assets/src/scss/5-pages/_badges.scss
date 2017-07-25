@@ -1,0 +1,66 @@
+.userbadge {
+  border: 1px solid #d1dbdf;
+  height: 60px;
+  padding-left: 60px;
+
+  .userbadge-info {
+    float: left;
+    height: 60px;
+    width: 100%;
+    margin-top: -60px;
+    padding: 7px;
+
+    h2, h3 {
+      margin: 0;
+      font-size: 16px;
+      font-weight: bold;
+
+      a {
+        text-decoration: none;
+      }
+    }
+
+    .percent {
+      margin-top: -30px;
+      margin-right: 15px;
+      vertical-align: middle;
+      float: right;
+      color: #666;
+    }
+
+    .x {
+      color: #666;
+      margin-right: 4px;
+    }
+
+    .count {
+      font-weight: bold;
+    }
+  }
+}
+
+.userbadge-icon {
+  width: 60px;
+  height: 60px;
+  float: left;
+}
+
+.userbadge-progress-bar {
+  background: #effaff;
+  height: 60px - 2px;
+}
+
+// badge image sprites
+.userbadge, .userbadge-icon {
+  background-image: url(../../../image/user/badges.png);
+  background-repeat: no-repeat;
+}
+.userbadge-supporter       { background-position: 0 -325px; }
+.userbadge-greenhorn       { background-position: 0 -585px; }
+.userbadge-extension-smith { background-position: 0 -260px; }
+.userbadge-regular         { background-position: 0 -195px; }
+.userbadge-editor          { background-position: 0 -65px; }
+.userbadge-critic          { background-position: 0 -455px; }
+.userbadge-mogul           { background-position: 0 -520px; }
+.userbadge-civic-duty      { background-position: 0 -130px; }
+.userbadge-commentator     { background-position: 0 -390px; }

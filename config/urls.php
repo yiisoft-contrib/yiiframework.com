@@ -82,7 +82,7 @@ return [
 	'user/<id:\d+>' => 'user/view',
 	'user/<action:halloffame|profile>' => 'user/<action>',
 	'badges' => 'user/badges',
-	'badges/<name:[\w-]+>' => 'user/view-badge',
+	'badge/<name:[\w-]+>' => 'user/view-badge',
 
 	// ajax actions for handling user interactions
 	'ajax/<action:[\w-]+>' => 'ajax/<action>',

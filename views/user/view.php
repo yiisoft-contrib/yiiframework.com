@@ -96,7 +96,7 @@ $this->registerMetaTag(['name' => 'keywords', 'value' => 'yii framework, communi
 
             <h2>Badges</h2>
             <ul class="g-list-none">
-                <?php foreach($model->badges as $info): ?>
+                <?php foreach($model->getBadges()->with('badge')->all() as $info): ?>
                 <?php
                    if($info->complete_time)
                        $title = sprintf('%s earned this badge on %s', Html::encode($model->display_name), Yii::$app->formatter->asDate($info->complete_time));
@@ -104,18 +104,18 @@ $this->registerMetaTag(['name' => 'keywords', 'value' => 'yii framework, communi
                        $title = sprintf('%s started this badge on %s',Html::encode($model->display_name), Yii::$app->formatter->asDate($info->create_time));
                ?>
                    <li>
-                       <div class="badge" title="<?php echo $title ?>">
-                           <h3><?= Html::a(Html::encode($info->badge->name), ['user/view-badge', 'name' => $info->badge->urlname]) ?></h3>
-                           <p><?= Html::encode($info->badge->description) ?></p>
-                           <?php if($info->complete_time): ?>
-                               <span class="completed">Earned: <span class="date"><?php echo Yii::$app->formatter->asRelativeTime($info->complete_time) ?></span></span>
-                           <?php else: ?>
+                       <div class="userbadge userbadge-<?php echo $info->badge->urlname ?>" title="<?php echo $title ?>">
                            <?php $percent = min(100, $info->progress); ?>
-                           <div class="g-progress clearfix">
-                               <div class="bar" style="width: <?php echo round($percent) ?>%"></div>
-                               <div class="info">In progress</div>
+                           <div class="userbadge-progress-bar" style="width: <?php echo round($percent) ?>%"></div>
+                           <div class="userbadge-info">
+                               <h3><?= Html::a(Html::encode($info->badge->name), ['user/view-badge', 'name' => $info->badge->urlname]) ?></h3>
+                               <p><?= Html::encode($info->badge->description) ?></p>
+                               <?php if($info->complete_time): ?>
+                                   <span class="percent">Earned: <span class="date"><?php echo Yii::$app->formatter->asRelativeTime($info->complete_time) ?></span></span>
+                               <?php else: ?>
+                                   <span class="percent">In progress (<?= round($percent)?>%)</span>
+                               <?php endif ?>
                            </div>
-                           <?php endif ?>
                        </div>
                    </li>
                <?php endforeach ?>

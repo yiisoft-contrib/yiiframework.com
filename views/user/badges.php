@@ -34,9 +34,9 @@ $expand = $max < 0.45 ? 2 : 1;
         <?php foreach($badges as $badge): ?>
             <?php if(!isset($counts[$badge->id])) $counts[$badge->id]=0; ?>
             <?php $percent = $counts[$badge->id]/$total*100.0; ?>
-            <div class="badge g-progress badge-<?php echo $badge->urlname ?>">
-                <div class="bar" style="width: <?php echo round($percent*$expand) ?>%"></div>
-                <div class="info">
+            <div class="userbadge userbadge-<?php echo $badge->urlname ?>">
+                <div class="userbadge-progress-bar" style="width: <?php echo round($percent*$expand) ?>%"></div>
+                <div class="userbadge-info">
                     <h3>
                         <?= Html::a(Html::encode($badge->name), ['user/view-badge', 'name' => $badge->urlname]) ?>
                         <?php if(isset($counts[$badge->id])): ?>
@@ -44,7 +44,7 @@ $expand = $max < 0.45 ? 2 : 1;
                         <?php endif ?>
                     </h3>
                     <p><?php echo Html::encode($badge->description) ?></p>
-                    <span class="per"><?php printf('%0.1f%%', $percent) ?></span>
+                    <span class="percent"><?php printf('%0.1f%%', $percent) ?></span>
                 </div>
             </div>
             <br>

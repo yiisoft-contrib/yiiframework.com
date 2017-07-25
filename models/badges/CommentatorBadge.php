@@ -3,6 +3,7 @@
 namespace app\models\badges;
 
 use app\models\Badge;
+use app\models\Comment;
 use app\models\UserBadge;
 
 class CommentatorBadge extends Badge
@@ -12,8 +13,8 @@ class CommentatorBadge extends Badge
 
     public function earned(UserBadge $badge)
     {
-        $sql = sprintf('SELECT create_time FROM tbl_comment WHERE creator_id = %d ORDER BY create_time ASC LIMIT 10', $badge->user_id);
-        $time = $this->queryColumn($sql);
+        $sql = 'SELECT created_at FROM {{%comment}} WHERE user_id = :user_id ORDER BY created_at ASC LIMIT 10';
+        $time = $this->getDb()->createCommand($sql, ['user_id' => $badge->user_id])->queryColumn();
         $count = count($time);
         if($count > 0)
         {
@@ -22,6 +23,14 @@ class CommentatorBadge extends Badge
             if($count === 10)
                 $badge->complete_time = $time[9];
             return true;
-        } 
+        }
+        return false;
+    }
+
+    public static function updateEvents()
+    {
+        return [
+            [Comment::class, Comment::EVENT_AFTER_INSERT],
+        ];
     }
 }
