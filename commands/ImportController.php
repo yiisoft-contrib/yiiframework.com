@@ -21,6 +21,7 @@ use app\models\WikiCategory;
 use app\models\WikiRevision;
 use Faker\Factory;
 use yii\console\Controller;
+use yii\console\ExitCode;
 use yii\db\Connection;
 use yii\db\Expression;
 use yii\db\Query;
@@ -80,20 +81,7 @@ class ImportController extends Controller
 
 		$this->importBadges();
 
-		$this->importWiki();
-
-		$this->importExtensions();
-
-		$this->importFiles();
-
-		$this->importNews();
-
-		$this->importComments();
-
-        $this->importStars();
-        $this->importRatings();
-
-		return 0;
+		return ExitCode::OK;
 	}
 
 	private function importUsers()
