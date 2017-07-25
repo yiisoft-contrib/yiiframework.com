@@ -26,7 +26,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 </div>
                 <p class="text-center"><img class="icon" src="<?= Yii::getAlias('@web/image/contribute/ico_contribute_01.svg')?>" alt=""></p>
                 <p class="text-center">You like Yii? Built an outstanding website or application? Blog about it, tweet about it,
-                    and <a href="http://www.yiiframework.com/forum/index.php?/forum/14-yii-powered-applications/">let us know</a>.
+                    and <a href="http://yiipowered.com/en">add it to YiiPowered</a>.
                 </p>
                 <div class="row">
                     <div class="col-md-6">
