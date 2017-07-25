@@ -8,6 +8,7 @@ use app\models\Star;
 use app\models\Extension;
 use app\models\ExtensionCategory;
 use app\models\ExtensionTag;
+use app\notifications\ExtensionNewFileNotification;
 use app\notifications\ExtensionUpdateNotification;
 use League\Flysystem\FileNotFoundException;
 use Yii;
@@ -277,10 +278,16 @@ class ExtensionController extends Controller
                 $file->object_id = $model->id;
                 $file->file_name = UploadedFile::getInstance($file, 'file_name');
                 if ($file->save()) {
-                    // TODO
-//                    $changes='A new file named "'.$file->file_name.'" was uploaded.';
-//                    $model->notifyFollowers($changes);
-                    $this->refresh();
+
+                    // notification email for followers
+                    $file->refresh();
+                    ExtensionNewFileNotification::create([
+                        'extension' => $model,
+                        'updater' => Yii::$app->user->identity,
+                        'file' => $file,
+                    ]);
+
+                    return $this->refresh();
                 }
             }
         } else {
@@ -303,7 +310,7 @@ class ExtensionController extends Controller
 
         // normalize URL, redirect non-case sensitive URLs
         if ($model->name !== $name) {
-            return $this->redirect(['download', 'name' => $model->name, 'fileName' => $filename], 301);
+            return $this->redirect($model->getUrl('download', ['filename' => $filename]), 301);
         }
 
         /** @var $file File */

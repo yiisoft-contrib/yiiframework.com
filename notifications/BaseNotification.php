@@ -14,6 +14,7 @@ use app\models\ActiveRecord;
 use app\models\Star;
 use app\models\User;
 use Yii;
+use yii\base\Model;
 use yii\base\Object;
 use yii\helpers\Inflector;
 use yii\helpers\StringHelper;
@@ -65,6 +66,13 @@ abstract class BaseNotification extends Object
     {
         /** @var $queue Queue */
         $queue = Yii::$app->queue;
+        foreach ($params as $param) {
+            // clear validators which may contain closures, so objects can be serialized
+            if ($param instanceof Model) {
+                $validators = $param->getValidators();
+                $validators->exchangeArray([]);
+            }
+        }
         $queue->push(new NotificationJob(['notification' => new static($params)]));
     }
 
