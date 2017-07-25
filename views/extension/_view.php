@@ -41,7 +41,7 @@ use yii\helpers\Html;
             <?php
             $created = Yii::$app->formatter->asRelativeTime($model->created_at);
             $updated = Yii::$app->formatter->asRelativeTime($model->updated_at);
-            if ($created !== $updated) {
+            if ($created !== $updated && $model->updated_at !== null) {
                 echo "$created, updated $updated.";
             } else {
                 echo "$created.";
