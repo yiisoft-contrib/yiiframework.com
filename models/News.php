@@ -126,7 +126,8 @@ class News extends ActiveRecord implements Linkable
 
     public function getTeaser()
     {
-        return reset(preg_split("/\n\s+\n/", $this->content, -1, PREG_SPLIT_NO_EMPTY));
+        $lines = preg_split("/\n\s+\n/", $this->content, -1, PREG_SPLIT_NO_EMPTY);
+        return reset($lines);
     }
 
     /**
