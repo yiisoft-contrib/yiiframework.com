@@ -10,7 +10,7 @@ use yii\widgets\DetailView;
 /* @var $wikis app\models\Wiki[] */
 /* @var $extensions app\models\Extension[] */
 
-$this->title = 'User: ' . $model->username;
+$this->title = $model->username . ' profile';
 
 echo $this->render('//site/partials/common/_admin_heading.php', [
     'title' => $this->title,
@@ -25,11 +25,6 @@ $this->registerMetaTag(['name' => 'keywords', 'value' => 'yii framework, communi
 ?>
 <div class="container style_external_links">
     <div class="content">
-
-        <div class="forum-link">
-       		<?= Html::a('&raquo; View forum profile',$model->forumUrl); ?>
-       	</div>
-
         <?= DetailView::widget([
             'model' => $model,
             'attributes' => [
@@ -45,7 +40,11 @@ $this->registerMetaTag(['name' => 'keywords', 'value' => 'yii framework, communi
                 'username',
                 'created_at:datetime',
 
-                'post_count',
+                'post_count' => [
+                    'label' => 'Forum Posts',
+                    'value' => $model->post_count . ' (' . Html::a('view forum profile',$model->forumUrl) . ')',
+                    'format' => 'raw',
+                ],
                 'extension_count',
                 'wiki_count',
                 'comment_count',
@@ -59,7 +58,7 @@ $this->registerMetaTag(['name' => 'keywords', 'value' => 'yii framework, communi
 
             <ul>
                 <?php foreach($wikis as $wiki) {
-                    echo "<li>[Wiki] " . Html::a(Html::encode($wiki->getLinkTitle()), $wiki->getUrl()) . '</li>';
+                    echo "<li>" . Html::a(Html::encode($wiki->getLinkTitle()), $wiki->getUrl()) . '</li>';
                 } ?>
             </ul>
         <?php endif; ?>
@@ -69,28 +68,10 @@ $this->registerMetaTag(['name' => 'keywords', 'value' => 'yii framework, communi
 
             <ul>
                 <?php foreach($extensions as $extension) {
-                    echo "<li>[Extension] " . Html::a(Html::encode($extension->getLinkTitle()), $extension->getUrl()) . '</li>';
+                    echo "<li>" . Html::a(Html::encode($extension->getLinkTitle()), $extension->getUrl()) . '</li>';
                 } ?>
             </ul>
         <?php endif; ?>
-
-       	<?php /*if($model->extension_count>0): ?>
-       	<h2>Extensions</h2>
-       	<ul class="g-list-none">
-       		<?php foreach($extensions=$model->extensions as $extension): ?>
-       		<li>&raquo; <?php echo l(h($extension->name), $extension->url); ?></li>
-       		<?php endforeach; ?>
-       	</ul>
-       	<?php endif; ?>
-
-       	<?php if($model->wiki_count>0): ?>
-       	<h2>Wiki Articles</h2>
-       	<ul class="g-list-none">
-       		<?php foreach($wikis=$model->wikis as $wiki): ?>
-       		<li>&raquo; <?php echo l(h($wiki->title), $wiki->url); ?></li>
-       		<?php endforeach; ?>
-       	</ul>
-       	<?php endif;*/ ?>
 
         <?php if(!empty($model->badges)): ?>
 
