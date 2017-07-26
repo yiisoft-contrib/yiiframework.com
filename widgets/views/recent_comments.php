@@ -1,12 +1,16 @@
 <?php
 /* @var $comments app\models\Comment[] */
+/* @var $titleClass string */
+/* @var $menuClass string */
 
 use yii\helpers\Html;
 
 ?>
 <?php if (!empty($comments)): ?>
-<h3>Recent Comments</h3>
-<ul>
+    <?= Html::beginTag('h3', ['class' => $titleClass]) ?>
+        Recent Comments
+    <?= Html::endTag('h3') ?>
+<?= Html::beginTag('ul', ['class' => $menuClass]) ?>
     <?php foreach ($comments as $comment): ?>
         <li>
             <?= $comment->user->getRankLink() ?>
@@ -17,5 +21,5 @@ use yii\helpers\Html;
             <span class="date"><?=Yii::$app->formatter->format($comment->created_at, 'relativeTime')?></span>
         </li>
     <?php endforeach ?>
-</ul>
+<?= Html::endTag('ul') ?>
 <?php endif ?>

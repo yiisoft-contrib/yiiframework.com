@@ -24,6 +24,9 @@ use yii\base\Widget;
 class RecentComments extends Widget
 {
     public $objectType;
+    public $titleClass;
+    public $menuClass;
+
 
     /**
      * @inheritdoc
@@ -47,6 +50,8 @@ class RecentComments extends Widget
 
         return $this->render('recent_comments', [
             'comments' => $comments,
+            'titleClass' => $this->titleClass,
+            'menuClass' => $this->menuClass,
         ]);
     }
 }

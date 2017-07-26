@@ -44,7 +44,7 @@ use yii\helpers\Html;
 
 <h3 class="wiki-side-title">Popular Tags</h3>
 
-<ul class="wiki-side-menu last-side-menu">
+<ul class="wiki-side-menu">
     <?php foreach(WikiTag::find()->orderBy(['frequency' => SORT_DESC])->limit(10)->all() as $t): ?>
         <li<?= isset($tag) && $tag->equals($t) ? ' class="active"' : '' ?>>
             <a href="<?= \yii\helpers\Url::to(['wiki/index', 'tag' => $t->slug, 'category' => isset($category) ? $category : null])?>"><?= Html::encode($t->name) ?> <span class="count">(<?= (int) $t->frequency ?>)</span></a>
@@ -52,4 +52,8 @@ use yii\helpers\Html;
     <?php endforeach; ?>
 </ul>
 
-<?= RecentComments::widget(['objectType' => Wiki::COMMENT_TYPE])?>
+<?= RecentComments::widget([
+    'objectType' => Wiki::COMMENT_TYPE,
+    'titleClass' => 'wiki-side-title',
+    'menuClass' => 'wiki-side-comments last-side-menu',
+])?>

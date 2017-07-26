@@ -51,3 +51,121 @@ label.radiolist-label {
     font-size: 48px;
   }
 }
+
+.btn-new-extension {
+  font-size: 1.8rem;
+  font-family: "pt_sansregular", sans-serif;
+  color: $eshill-light-blue;
+  background-color: #F5FEC4;
+  border-color: #70c1b3;
+  margin-top: 1.5rem;
+
+  .big {
+    font-size: 2.4rem;
+    display: block;
+  }
+  .small {
+    display: block;
+  }
+  &:hover {
+    color: $link-color;
+    background-color: #BAD9C1;
+    border-color: #93c39e;
+  }
+  &:active {
+    color: $eshill-section-bgcolor;
+    background-color: #83BFB3;
+    border-color: #5baa9a;
+  }
+}
+.extension-search {
+  margin: 1.5rem 0 1.5rem 0;
+}
+h3.extension-side-title {
+  border-top: 1px solid $eshill-section-bgcolor;
+  border-bottom: 1px solid $eshill-section-bgcolor;
+  font-size: 1.2rem;
+  letter-spacing: 1px;
+  color: #4d4d4d;
+  text-transform: uppercase;
+  font-weight: bold;
+  margin: 0;
+  padding: 1.5rem 0 1.5rem 1rem;
+}
+ul.extension-side-menu {
+  background-color: #f2f9fa;
+  list-style: none;
+  margin: 0;
+  padding: 5px 0 5px 0;
+
+  &.last-side-menu {
+    margin-bottom: 2rem;
+  }
+  li a {
+    font-size: 1.3rem;
+    text-decoration: none;
+    display: block;
+    padding: 10px 16px;
+    cursor: pointer;
+
+    &:hover {
+      color: $eshill-blue;
+      background-color: #fff;
+    }
+  }
+  li a span.count {
+    font-size: 1.2rem;
+    display: inline;
+    color: #808080;
+  }
+  li a.asc, li a.asc:hover,
+  li a.desc, li a.desc:hover,
+  li.active a, li.active a:hover
+  {
+    background-color: #70c1b3;
+    color: #fff;
+  }
+}
+
+ul.extension-side-comments {
+  background-color: #f2f9fa;
+  list-style: none;
+  margin: 0;
+  padding: 5px 0 5px 0;
+
+  &.last-side-menu {
+    margin-bottom: 2rem;
+  }
+
+  li {
+    padding: 10px 16px;
+
+    .date {
+      font-size: $font-size-small;
+    }
+  }
+}
+
+.extension-row {
+  margin-bottom: 2rem;
+
+  .suptitle {
+    color: #70c1b3;
+    font-size: 1.4rem;
+  }
+  h2.title {
+    margin: 0.5rem 0 3rem 0;
+    font-size: 2.5rem;
+  }
+  .text {
+    margin-top: 1rem;
+  }
+  .comments {
+    margin-top: 0.5rem;
+
+    a {
+      color: #808080;
+      font-size: 1.4rem;
+    }
+  }
+}

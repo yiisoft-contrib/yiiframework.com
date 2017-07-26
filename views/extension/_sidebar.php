@@ -52,5 +52,9 @@ use yii\helpers\Html;
     <?php endforeach; ?>
 </ul>
 
-<?= RecentComments::widget(['objectType' => Extension::COMMENT_TYPE])?>
+<?= RecentComments::widget([
+    'objectType' => Extension::COMMENT_TYPE,
+    'titleClass' => 'extension-side-title',
+    'menuClass' => 'extension-side-comments last-side-menu',
+])?>
 

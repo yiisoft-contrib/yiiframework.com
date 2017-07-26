@@ -72,6 +72,26 @@ ul.wiki-side-menu {
     color: #fff;
   }
 }
+
+ul.wiki-side-comments {
+  background-color: #f2f9fa;
+  list-style: none;
+  margin: 0;
+  padding: 5px 0 5px 0;
+
+  &.last-side-menu {
+    margin-bottom: 2rem;
+  }
+
+  li {
+    padding: 10px 16px;
+
+    .date {
+      font-size: $font-size-small;
+    }
+  }
+}
+
 .wiki-row {
   margin-bottom: 2rem;
 
