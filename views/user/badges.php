@@ -47,7 +47,6 @@ $expand = $max < 0.45 ? 2 : 1;
                     <span class="percent"><?php printf('%0.1f%%', $percent) ?></span>
                 </div>
             </div>
-            <br>
         <?php endforeach ?>
     </div>
 </div>
