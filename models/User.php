@@ -379,7 +379,7 @@ class User extends ActiveRecord implements IdentityInterface
 
     public function getRankLink()
     {
-        $class='g-user-rank-link';
+        $class='user-rank-link';
 
         if($this->rank<=5)
             $class="{$class} gold";
