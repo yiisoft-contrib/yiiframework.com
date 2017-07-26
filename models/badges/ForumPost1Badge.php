@@ -2,6 +2,7 @@
 
 namespace app\models\badges;
 
+use app\components\ForumAdapter;
 use app\models\Badge;
 use app\models\UserBadge;
 
@@ -14,7 +15,7 @@ class ForumPost1Badge extends Badge
 
     public function earned(UserBadge $badge)
     {
-        $posts = $this->countPosts($badge->user_id, $this->threshold);
+        $posts = $this->countPosts($badge->user, $this->threshold);
         if($posts['count']>= $this->min && !empty($posts['start']))
         {
             $badge->create_time = $posts['start'];
@@ -29,15 +30,10 @@ class ForumPost1Badge extends Badge
 
     protected function countPosts($user, $threshold)
     {
-        $db = $this->getForumDb();
-        $sql = sprintf('SELECT post_date FROM ipb_posts WHERE author_id = %d ORDER BY post_date ASC LIMIT 1', $user);
-        $start = $db->createCommand($sql)->queryScalar();
-
-        $sql = sprintf('SELECT post_date FROM ipb_posts WHERE author_id = %d ORDER BY post_date ASC LIMIT %d,1', $user, $threshold-1);        
-        $complete = $db->createCommand($sql)->queryScalar();
-
-        $sql = sprintf('SELECT count(*) FROM ipb_posts WHERE author_id = %d', $user);
-        $count = min($db->createCommand($sql)->queryScalar(), $threshold);
+        $adapter = new ForumAdapter();
+        $start = $adapter->getPostDate($user, 1);
+        $complete = $adapter->getPostDate($user, $threshold);
+        $count = min($adapter->getPostCount($user), $threshold);
         return array('count' => $count, 'start' => $start, 'complete' => $complete ? $complete : null);
     }
 }

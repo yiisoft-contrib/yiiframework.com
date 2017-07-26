@@ -2,6 +2,7 @@
 
 namespace app\models\badges;
 
+use app\components\ForumAdapter;
 use app\models\Badge;
 use app\models\UserBadge;
 
@@ -14,7 +15,7 @@ class Reputation1Badge extends Badge
 
     public function earned(UserBadge $badge)
     {
-        $rep = $this->countReputations($badge->user_id, $this->min, $this->threshold);
+        $rep = $this->countReputations($badge->user, $this->min, $this->threshold);
         if($rep['rating']>0 && !empty($rep['start']))
         {
             $badge->create_time = $rep['start'];
@@ -48,9 +49,8 @@ class Reputation1Badge extends Badge
 
     protected function getReputations($user)
     {
-        $sql = sprintf('SELECT rep_date, rep_rating FROM ipb_reputation_index WHERE member_id = %d ORDER BY rep_date ASC', $user);
-        $cmd = $this->getForumDb()->createCommand($sql);
-        return $cmd->queryAll();
+        $adapter = new ForumAdapter();
+        return $adapter->getReputations($user);
     }
 }
 
