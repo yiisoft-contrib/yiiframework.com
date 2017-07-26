@@ -105,8 +105,8 @@ class ImportController extends Controller
 		}
 
 		// TODO find a way to migrate these accounts
-		$duplicateMail = $this->sourceDb->createCommand("SELECT `email` FROM `ipb_members` GROUP BY `email` HAVING COUNT(*) > 1")->queryColumn();
-		$duplicateUsername = $this->sourceDb->createCommand("SELECT `name` FROM `ipb_members` GROUP BY `name` HAVING COUNT(*) > 1")->queryColumn();
+		$duplicateMail = $this->sourceDb->createCommand("SELECT `email` FROM `ipb_members` WHERE member_banned = 0 GROUP BY `email` HAVING COUNT(*) > 1")->queryColumn();
+		$duplicateUsername = $this->sourceDb->createCommand("SELECT `name` FROM `ipb_members` WHERE member_banned = 0 GROUP BY `name` HAVING COUNT(*) > 1")->queryColumn();
 
 		//$userQuery = (new Query)->from('tbl_user');
 		$userQuery = (new Query)->from('ipb_members')
@@ -173,8 +173,9 @@ class ImportController extends Controller
 	private function debugEmail($email)
     {
         $parts = explode('@', $email);
-        if (empty($parts)) {
-            return 'test.at@cebe.cc';
+
+        if (count($parts) < 2) {
+            return 'test+' . $email .'.at@cebe.cc';
         }
 
         list($user, $domain) = $parts;
