@@ -81,6 +81,19 @@ class ImportController extends Controller
 
 		$this->importBadges();
 
+		$this->importWiki();
+
+		$this->importExtensions();
+
+		$this->importFiles();
+
+		$this->importNews();
+
+		$this->importComments();
+
+		$this->importStars();
+		$this->importRatings();
+
 		return ExitCode::OK;
 	}
 
