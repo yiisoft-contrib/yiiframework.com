@@ -116,6 +116,7 @@ class ImportController extends Controller
 		$count = $userQuery->count('*', $this->sourceDb);
 		Console::startProgress(0, $count, 'Importing users...');
 		$i = 0;
+		$err = 0;
 		foreach($userQuery->each(100, $this->sourceDb) as $user) {
 
 			$yiiUser = (new Query)->from('tbl_user')->where(['id' => $user['member_id']])->one($this->sourceDb);
@@ -161,13 +162,23 @@ class ImportController extends Controller
 
 			]);
 			$model->detachBehavior('timestamp');
-			$model->save(false);
+
+			try {
+                $model->save(false);
+            } catch (\Exception $e) {
+                $this->stdout($e->getMessage()."\n", Console::FG_RED);
+                $err++;
+            }
 
 			Console::updateProgress(++$i, $count);
 		}
 		Console::endProgress(true);
-		$this->stdout("done.", Console::FG_GREEN, Console::BOLD);
-		$this->stdout(" $count records imported.\n");
+        $this->stdout("done.", Console::FG_GREEN, Console::BOLD);
+        $this->stdout(" $count records imported.");
+        if ($err > 0) {
+            $this->stdout(" $err errors occurred.", Console::FG_RED, Console::BOLD);
+        }
+        $this->stdout("\n");
 	}
 
 	private function debugEmail($email)
@@ -194,15 +205,20 @@ class ImportController extends Controller
 		$count = $query->count('*', $this->sourceDb);
 		Console::startProgress(0, $count, 'Importing badges...');
 		$i = 0;
+		$err = 0;
 		foreach($query->each(100, $this->sourceDb) as $badge) {
 
-			\Yii::$app->db->createCommand()->insert('{{%badges}}', $badge)->execute();
+		    try {
+                \Yii::$app->db->createCommand()->insert('{{%badges}}', $badge)->execute();
+            } catch (\Exception $e) {
+                $this->stdout($e->getMessage()."\n", Console::FG_RED);
+                $err++;
+            }
 
 			Console::updateProgress(++$i, $count);
 		}
 		Console::endProgress(true);
-		$this->stdout("done.", Console::FG_GREEN, Console::BOLD);
-		$this->stdout(" $count records imported.\n");
+        $this->printImportSummary($count, $err);
 
 //		$this->importBadgeQueue();
 		$this->importUserBadges();
@@ -215,15 +231,20 @@ class ImportController extends Controller
 		$count = $query->count('*', $this->sourceDb);
 		Console::startProgress(0, $count, 'Importing badge queue...');
 		$i = 0;
+		$err = 0;
 		foreach($query->each(100, $this->sourceDb) as $badge) {
 
-			\Yii::$app->db->createCommand()->insert('{{%badge_queue}}', $badge)->execute();
+		    try {
+                \Yii::$app->db->createCommand()->insert('{{%badge_queue}}', $badge)->execute();
+            } catch (\Exception $e) {
+                $this->stdout($e->getMessage()."\n", Console::FG_RED);
+                $err++;
+            }
 
 			Console::updateProgress(++$i, $count);
 		}
 		Console::endProgress(true);
-		$this->stdout("done.", Console::FG_GREEN, Console::BOLD);
-		$this->stdout(" $count records imported.\n");
+        $this->printImportSummary($count, $err);
 	}
 
 	private function importUserBadges()
@@ -233,19 +254,25 @@ class ImportController extends Controller
 		$count = $query->count('*', $this->sourceDb);
 		Console::startProgress(0, $count, 'Importing user badges...');
 		$i = 0;
+		$err = 0;
 		foreach($query->each(100, $this->sourceDb) as $badge) {
 
 			$badge['create_time'] = date('Y-m-d H:i:s', $badge['create_time']);
 			if ($badge['complete_time'] !== null) {
 				$badge['complete_time'] = date('Y-m-d H:i:s', $badge['complete_time']);
 			}
-			\Yii::$app->db->createCommand()->insert('{{%user_badges}}', $badge)->execute();
+
+			try {
+                \Yii::$app->db->createCommand()->insert('{{%user_badges}}', $badge)->execute();
+            } catch (\Exception $e) {
+                $this->stdout($e->getMessage()."\n", Console::FG_RED);
+                $err++;
+            }
 
 			Console::updateProgress(++$i, $count);
 		}
 		Console::endProgress(true);
-		$this->stdout("done.", Console::FG_GREEN, Console::BOLD);
-		$this->stdout(" $count records imported.\n");
+        $this->printImportSummary($count, $err);
 	}
 
 	private function importWiki()
@@ -328,12 +355,7 @@ class ImportController extends Controller
 			Console::updateProgress(++$i, $count);
 		}
 		Console::endProgress(true);
-		$this->stdout("done.", Console::FG_GREEN, Console::BOLD);
-		$this->stdout(" $count records imported.");
-		if ($err > 0) {
-			$this->stdout(" $err errors occurred.", Console::FG_RED, Console::BOLD);
-		}
-		$this->stdout("\n");
+        $this->printImportSummary($count, $err);
 	}
 
 	private function importExtensions()
@@ -396,19 +418,14 @@ class ImportController extends Controller
 				$model->detachBehavior('blameable');
 				$model->save(false);
 
-			}catch (\Exception $e) {
+			} catch (\Exception $e) {
 				$this->stdout($e->getMessage()."\n", Console::FG_RED);
 				$err++;
 			}
 			Console::updateProgress(++$i, $count);
 		}
 		Console::endProgress(true);
-		$this->stdout("done.", Console::FG_GREEN, Console::BOLD);
-		$this->stdout(" $count records imported.");
-		if ($err > 0) {
-			$this->stdout(" $err errors occurred.", Console::FG_RED, Console::BOLD);
-		}
-		$this->stdout("\n");
+        $this->printImportSummary($count, $err);
 	}
 
 	private function importFiles()
@@ -458,11 +475,7 @@ class ImportController extends Controller
 			Console::updateProgress(++$i, $count);
 		}
 		Console::endProgress(true);
-		$this->stdout("done.", Console::FG_GREEN, Console::BOLD);
-		$this->stdout(" $count records imported.");
-		if ($err > 0) {
-			$this->stdout(" $err errors occurred.", Console::FG_RED, Console::BOLD);
-		}
+        $this->printImportSummary($count, $err);
 		$this->stdout("\nTODO copy files from old site '/common/upload/' to new site '/data/files/'\n", Console::BOLD);
 	}
 
@@ -527,18 +540,14 @@ class ImportController extends Controller
 					'rating' => $comment['rating'],
 					'status' => $this->convertCommentStatus($comment['status'])
 				])->execute();
-			}catch (\Exception $e) {
-				$err++;
+			} catch (\Exception $e) {
+                $this->stdout($e->getMessage()."\n", Console::FG_RED);
+                				$err++;
 			}
 			Console::updateProgress(++$i, $count);
 		}
 		Console::endProgress(true);
-		$this->stdout("done.", Console::FG_GREEN, Console::BOLD);
-		$this->stdout(" $count records imported.");
-		if ($err > 0) {
-			$this->stdout(" $err errors occurred.", Console::FG_RED, Console::BOLD);
-		}
-		$this->stdout("\n");
+        $this->printImportSummary($count, $err);
 	}
 
 	private function convertCommentType($type)
@@ -571,6 +580,7 @@ class ImportController extends Controller
 		$count = $newsQuery->count('*', $this->sourceDb);
 		Console::startProgress(0, $count, 'Importing news...');
 		$i = 0;
+        $err = 0;
 		foreach($newsQuery->each(100, $this->sourceDb) as $news) {
 
 			$content = $news['content'];
@@ -591,13 +601,18 @@ class ImportController extends Controller
 			]);
 			$model->detachBehavior('timestamp');
 			$model->detachBehavior('blameable');
-			$model->save(false);
+
+			try {
+                $model->save(false);
+            } catch (\Exception $e) {
+                $this->stdout($e->getMessage()."\n", Console::FG_RED);
+                $err++;
+            }
 
 			Console::updateProgress(++$i, $count);
 		}
 		Console::endProgress(true);
-		$this->stdout("done.", Console::FG_GREEN, Console::BOLD);
-		$this->stdout(" $count records imported.\n");
+        $this->printImportSummary($count, $err);
 	}
 
 	public function importRatings()
@@ -626,12 +641,7 @@ class ImportController extends Controller
 			Console::updateProgress(++$i, $count);
 		}
 		Console::endProgress(true);
-		$this->stdout("done.", Console::FG_GREEN, Console::BOLD);
-		$this->stdout(" $count records imported.");
-		if ($err > 0) {
-			$this->stdout(" $err errors occurred.", Console::FG_RED, Console::BOLD);
-		}
-		$this->stdout("\n");
+        $this->printImportSummary($count, $err);
 	}
 
 	public function importStars()
@@ -660,12 +670,7 @@ class ImportController extends Controller
 			Console::updateProgress(++$i, $count);
 		}
 		Console::endProgress(true);
-		$this->stdout("done.", Console::FG_GREEN, Console::BOLD);
-		$this->stdout(" $count records imported.");
-		if ($err > 0) {
-			$this->stdout(" $err errors occurred.", Console::FG_RED, Console::BOLD);
-		}
-		$this->stdout("\n");
+        $this->printImportSummary($count, $err);
 	}
 
 	protected function convertMarkdown($markdown)
@@ -685,6 +690,20 @@ class ImportController extends Controller
 	{
 		return Factory::create('en');
 	}
+
+    /**
+     * @param int $count
+     * @param int $err
+     */
+    private function printImportSummary($count, $err)
+    {
+        $this->stdout("done.", Console::FG_GREEN, Console::BOLD);
+        $this->stdout(" $count records imported.");
+        if ($err > 0) {
+            $this->stdout(" $err errors occurred.", Console::FG_RED, Console::BOLD);
+        }
+        $this->stdout("\n");
+    }
 
 
 }
