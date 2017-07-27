@@ -151,7 +151,7 @@ class ImportController extends Controller
 				'created_at' => date('Y-m-d H:i:s', $user['joined']),
 				'password_hash' => $passwordHash,
 
-				'login_time' => date('Y-m-d H:i:s', $yiiUser['login_time']),
+				'login_time' => $yiiUser['login_time'] ? date('Y-m-d H:i:s', $yiiUser['login_time']) : null,
 
 				'rank' => $yiiUser['rank'],
 				'rating' => $yiiUser['rating'],

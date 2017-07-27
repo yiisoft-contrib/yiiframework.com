@@ -10,7 +10,7 @@ use yii\widgets\DetailView;
 /* @var $wikis app\models\Wiki[] */
 /* @var $extensions app\models\Extension[] */
 
-$this->title = $model->username . ' profile';
+$this->title = $model->display_name . "'s profile";
 
 echo $this->render('//site/partials/common/_admin_heading.php', [
     'title' => $this->title,
@@ -29,6 +29,11 @@ $this->registerMetaTag(['name' => 'keywords', 'value' => 'yii framework, communi
             'model' => $model,
             'attributes' => [
                 [
+                    'attribute' => 'username',
+                    'value' => $model->rankLink,
+                    'format' => 'raw',
+                ],
+                [
                     'label' => 'Overall Rating',
                     'value' => "<strong>" . ((int)$model->rating) . "</strong> ("
                         . ($model->rank==999999 ? 'not ranked' :
@@ -37,7 +42,6 @@ $this->registerMetaTag(['name' => 'keywords', 'value' => 'yii framework, communi
                             )) . ')',
                     'format' => 'raw'
                 ],
-                'username',
                 'created_at:datetime',
 
                 'post_count' => [
@@ -52,6 +56,15 @@ $this->registerMetaTag(['name' => 'keywords', 'value' => 'yii framework, communi
             ],
         ]) ?>
 
+        <?php if (!empty($extensions)): ?>
+            <h2>Extensions</h2>
+
+            <ul>
+                <?php foreach($extensions as $extension) {
+                    echo "<li>" . Html::a(Html::encode($extension->getLinkTitle()), $extension->getUrl()) . '</li>';
+                } ?>
+            </ul>
+        <?php endif; ?>
 
         <?php if (!empty($wikis)): ?>
             <h2>Wiki Articles</h2>
@@ -59,16 +72,6 @@ $this->registerMetaTag(['name' => 'keywords', 'value' => 'yii framework, communi
             <ul>
                 <?php foreach($wikis as $wiki) {
                     echo "<li>" . Html::a(Html::encode($wiki->getLinkTitle()), $wiki->getUrl()) . '</li>';
-                } ?>
-            </ul>
-        <?php endif; ?>
-
-        <?php if (!empty($extensions)): ?>
-            <h2>Extensions</h2>
-
-            <ul>
-                <?php foreach($extensions as $extension) {
-                    echo "<li>" . Html::a(Html::encode($extension->getLinkTitle()), $extension->getUrl()) . '</li>';
                 } ?>
             </ul>
         <?php endif; ?>
@@ -101,8 +104,8 @@ $this->registerMetaTag(['name' => 'keywords', 'value' => 'yii framework, communi
                    </li>
                <?php endforeach ?>
            </ul>
-           <?php endif ?>
 
+        <?php endif ?>
 
     </div>
 </div>
