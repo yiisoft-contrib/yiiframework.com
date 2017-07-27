@@ -142,8 +142,6 @@ $this->params['breadcrumbs'][] = $this->title;
 					to learn how to use it.
 				</p>
 
-				</p>
-
 				<h1>Upgrade from Older Versions</h1>
 
 				<p class="small">If you are upgrading from Yii 2.0.x with Composer, simply run the following commands in your project's root directory:</p>
@@ -230,7 +228,7 @@ $this->params['breadcrumbs'][] = $this->title;
 				</div>
 				<?php $version = '1.1'; ?>
 
-				<p class="text-center medium">Yii 1.1 is currently under <a href="http://www.yiiframework.com/news/90/update-on-yii-1-1-support-and-end-of-life/">maintenance mode</a>.</p>
+				<p class="text-center medium">Yii 1.1 is currently under <a href="/news/90/update-on-yii-1-1-support-and-end-of-life/">maintenance mode</a>.</p>
 				<p class="text-center">Continued support and bug fixes for this version will be provided until <b><?= $versionInfo[$version]['support-until'] ?></b>.</p>
 				<p class="text-center">Security fixes until <b><?= $versionInfo[$version]['security-until'] ?></b>.</p>
 
@@ -268,6 +266,7 @@ $this->params['breadcrumbs'][] = $this->title;
 					<?php endforeach; ?>
 				</ul>
 
+<?php /*
 				<span id="archive">&nbsp;</span>
 				<div class="heading-separator">
 					<h2><span>Archive</span></h2>
@@ -281,6 +280,8 @@ $this->params['breadcrumbs'][] = $this->title;
 ?>
 
 				<!-- TODO release history -->
+
+ */ ?>
 
 
 			</div>

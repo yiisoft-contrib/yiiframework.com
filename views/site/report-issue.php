@@ -97,7 +97,7 @@ $this->params['breadcrumbs'][] = $this->title;
             </p>
 
             <p class="text-center">
-                Please note that Yii 1.1 is in <a href="http://www.yiiframework.com/news/90/update-on-yii-1-1-support-and-end-of-life/">maintenance mode</a>,
+                Please note that Yii 1.1 is in <a href="/news/90/update-on-yii-1-1-support-and-end-of-life/">maintenance mode</a>,
                 we will not introduce big features anymore. Please consider upgrading to Yii 2 instead.</p>
             </div>
         </div>
