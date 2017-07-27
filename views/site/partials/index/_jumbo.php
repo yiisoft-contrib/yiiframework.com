@@ -13,12 +13,14 @@ $this->registerJs("
     <div class="container">
         <div class="row">
             <div class="col-md-12">
-                <h1>The solid foundation for your PHP application</h1>
+                <h1>Yes, it is!</h1>
                 <p class="propaganda">
-                    <strong>Yii</strong> is <em>fast</em>, <em>secure</em> and <em>efficient</em> and works right out of the box using reasonable defaults.
+                    Fast, secure and efficient. <br>
+                    Flexible yet pragmatic.
                 </p>
                 <p class="propaganda">
-                    The framework is easy to adjust to meet your needs, because Yii is designed to be <em>flexible</em>.
+                    Works right out of the box. <br>
+                    Has reasonable defaults.
                 </p>
             </div>
         </div>
