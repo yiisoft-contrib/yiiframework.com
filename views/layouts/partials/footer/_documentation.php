@@ -11,9 +11,11 @@ use yii\helpers\Html;
   <li class="footerList_item">
     <?= Html::a('API', ['api/entry']) ?>
   </li>
+<?php /*
   <li class="footerList_item">
     <?= Html::a('Yii Tour', ['site/tour']) ?>
   </li>
+*/ ?>
   <li class="footerList_item">
     <?= Html::a('Wiki', ['wiki/index']) ?>
   </li>

@@ -13,9 +13,11 @@ use yii\helpers\Html;
     <li class="footerList_item">
         <?= Html::a('IRC (Live Chat)', ['site/chat']) ?>
     </li>
+<?php /*
     <li class="footerList_item">
         <a href="#">Gitter</a>
     </li>
+ */ ?>
     <li class="footerList_item">
         <a href="https://www.facebook.com/groups/yiitalk/">Facebook Group</a>
     </li>
