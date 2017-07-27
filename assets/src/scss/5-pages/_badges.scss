@@ -65,3 +65,24 @@
 .userbadge-mogul           { background-position: 0 -522px; }
 .userbadge-civic-duty      { background-position: 0 -134px; }
 .userbadge-commentator     { background-position: 0 -393px; }
+
+.view-user-view-badge {
+  .userbadge-icon {
+    border-radius: 60px;
+  }
+
+  h2, .description {
+    margin-top: 0;
+  }
+
+  .description {
+    text-transform: uppercase;
+    color: grey;
+    font-size: $font-size-h4;
+  }
+
+  .info {
+    clear: both;
+    margin-top: 2rem;
+  }
+}

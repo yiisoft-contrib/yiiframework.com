@@ -19,16 +19,21 @@ echo $this->render('//site/partials/common/_admin_heading.php', [
 $this->registerMetaTag(['name' => 'keywords', 'value' => 'yii framework, community, badges, ' . $badge->name]);
 
 ?>
-<div class="container style_external_links">
+<div class="container style_external_links view-user-view-badge">
     <div class="content">
 
-        <div class="userbadge-icon userbadge-<?php echo $badge->urlname ?>">
+        <div class="row">
+            <div class="col-xs-1">
+                <div class="userbadge-icon userbadge-<?= $badge->urlname ?>"></div>
+            </div>
+            <div class="col-xs-11">
+                <h2><?= Html::encode($badge->name) ?></h2>
+                <h3 class="description"><?= $badge->description ?></h3>
+            </div>
         </div>
-        <h2><?php echo Html::encode($badge->name) ?></h2>
-        <h3 class="description"><?php echo $badge->description ?></h3>
 
         <div class="info">
-            <strong class="count"><?php echo $count ?></strong>
+            <strong class="count"><?= $count ?></strong>
             users earned this badge. Recently awarded to:
         </div>
         <div class="g-list-view">

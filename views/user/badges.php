@@ -26,7 +26,7 @@ $max = empty($counts) ? 0 : max($counts) / $total;
 $expand = $max < 0.45 ? 2 : 1;
 
 ?>
-<div class="container style_external_links">
+<div class="container style_external_links view-user-badges">
     <div class="content">
 
         <p>It's easy to play an active role in the Yii community: add comments and cast votes throughout the site, ask and respond to questions posted in forum topics, write and help to improve on the wiki articles, contribute framework extensions, and more. As you participate you will earn badges which appear on your user page. Here are all available badges and the criteria for earning them:</p>
