@@ -37,7 +37,4 @@ $this->registerJs("
             </div>
         </div>
     </div>
-    <div class="row padded-row">
-        <a href="http://yiipowered.com/en" class="btn btn-front btn-block">See more projects using Yii</a>
-    </div>
 </div>

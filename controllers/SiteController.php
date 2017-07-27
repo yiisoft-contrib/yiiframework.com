@@ -70,7 +70,7 @@ class SiteController extends Controller
     {
         $books = array_slice(Yii::$app->params['books2'], 0, 5);
         $news = News::find()->latest()->limit(4)->all();
-        $extensions = Extension::find()->latest()->limit(10)->all();
+        $extensions = Extension::find()->latest()->limit(6)->all();
         $tutorials = Wiki::find()->latest()->limit(10)->all();
 
         return $this->render('index', [

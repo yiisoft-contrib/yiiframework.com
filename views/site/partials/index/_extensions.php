@@ -16,7 +16,4 @@ use yii\helpers\Url;
         </li>
         <?php endforeach ?>
     </ul>
-    <div class="row padded-row">
-        <a href="<?= Url::to(['extension/index']) ?>" class="btn btn-front btn-block">See all extensions</a>
-    </div>
 </div>
