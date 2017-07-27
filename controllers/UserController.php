@@ -4,6 +4,7 @@ namespace app\controllers;
 
 use app\models\Badge;
 use app\models\Extension;
+use app\models\Star;
 use app\models\UserBadge;
 use app\models\Wiki;
 use Yii;
@@ -126,23 +127,25 @@ class UserController extends Controller
     public function actionProfile()
     {
         $userId = Yii::$app->user->getId();
+        $user = Yii::$app->user->identity;
 
         $extensions = Extension::find()
             ->active()
             ->where(['owner_id' => $userId])
-            ->orderBy('created_at DESC')
+            ->orderBy('name')
             ->all();
 
         $wikiPages = Wiki::find()
             ->active()
             ->where(['creator_id' => $userId])
-            ->orderBy('created_at DESC')
+            ->orderBy('title')
             ->all();
 
         return $this->render('profile', [
-            'model' => Yii::$app->user->identity,
+            'model' => $user,
             'extensions' => $extensions,
             'wikiPages' => $wikiPages,
+            'starTargets' => Star::getTargets($user->id)
         ]);
     }
 

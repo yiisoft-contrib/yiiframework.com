@@ -1,7 +1,5 @@
 <?php
 
-use app\models\Badge;
-use app\models\Star;
 use yii\helpers\Html;
 use yii\widgets\DetailView;
 
@@ -9,6 +7,7 @@ use yii\widgets\DetailView;
 /* @var $model app\models\User */
 /* @var $extensions \app\models\Extension[] */
 /* @var $wikiPages \app\models\Wiki[] */
+/* @var $starTargets \app\models\Linkable[] */
 
 $this->title = 'Hi, ' . $model->username . '!';
 
@@ -103,42 +102,80 @@ echo $this->render('//site/partials/common/_admin_heading.php', [
                 </p>
             </div>
             <div class="col-md-4">
-                    <h2>Your Extensions (<?= Html::encode($model->extension_count) ?>) </h2>
+                <h3>Email addresses</h3>
+
+                <p>
+                    TODO
+                </p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <h2>Your Extensions (<?= Html::encode($model->extension_count) ?>) </h2>
+
+                <?php if (empty($extensions)): ?>
+                    <p>
+                        You have not published any extension yet.
+                        If you have created an extension, you may <?= Html::a('add it here', ['extension/create']) ?>.
+                    </p>
+                <?php else: ?>
 
                     <ul>
-                    <?php foreach ($extensions as $extension): ?>
-                        <li><?= Html::a(Html::encode($extension->getLinkTitle()), $extension->getUrl())?></li>
-                    <?php endforeach ?>
+                        <?php foreach ($extensions as $extension): ?>
+                            <li><?= Html::a(Html::encode($extension->getLinkTitle()), $extension->getUrl())?></li>
+                        <?php endforeach ?>
                     </ul>
+                <?php endif; ?>
+            </div>
+            <div class="col-md-6">
+                <h2>Your Wiki articles (<?= Html::encode($model->wiki_count) ?>)</h2>
 
-                    <h2>Your Wiki entries (<?= Html::encode($model->wiki_count) ?>)</h2>
+                    <?php if (empty($wikiPages)): ?>
+                        <p>
+                            You have not created any wiki articles yet.
+                            Wiki articles are extended documentation references about a Yii related topic.
+                            If you have an idea for a new article, you may <?= Html::a('create one now', ['wiki/create']) ?>.
+                        </p>
+                    <?php else: ?>
 
-                    <ul>
-                    <?php foreach ($wikiPages as $wikiPage): ?>
-                        <li><?= Html::a(Html::encode($wikiPage->getLinkTitle()), $wikiPage->getUrl()) ?></li>
-                    <?php endforeach ?>
-                    </ul>
+                        <ul>
+                            <?php foreach ($wikiPages as $wikiPage): ?>
+                                <li><?= Html::a(Html::encode($wikiPage->getLinkTitle()), $wikiPage->getUrl()) ?></li>
+                            <?php endforeach ?>
+                        </ul>
 
+                    <?php endif; ?>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
                     <h2>Your Stars (following)</h2>
 
-                    <?php
-                        $targets = Star::getTargets($model->id);
-                    ?>
-                    <ul class="g-list-none">
-                        <?php foreach($targets as $target): ?>
+                    <?php if (empty($starTargets)): ?>
+                    <p>
+                        You are currently not following any items.
+                        Click on the star icon on Wikis and Extensions to start following them to receive update notifications.
+                    </p>
+                    <?php else: ?>
+                    <p>
+                        You may click on a star to stop following an item.
+                        That means you will no longer be notified about changes for it.
+                    </p>
+
+                    <ul class="profile-star-list">
+                        <?php foreach($starTargets as $target): /** @var $target \app\models\Linkable*/ ?>
                         <li>
-                            <?php switch(get_class($target))
-                            {
-                                case \app\models\Wiki::class:
-                                    echo "[Wiki] " . Html::a(Html::encode($target->title), ['wiki/view', 'id' => $target->id, 'name' => $target->slug]);
-//                                case \app\models\Extension::class:
-//                                    echo "[Extension] " . Html::a(Html::a($target->title), ['extension/view', 'id' => $model->id, 'name' => $model->slug]);
-                            } ?>
+                            <?= \app\widgets\Star::widget([
+                                'model' => $target,
+                                'starValue' => 1,
+                            ]) ?>
+                            <?= '[' . $target->getItemType(). '] ' . Html::a(Html::encode($target->getLinkTitle()), $target->getUrl()); ?>
                         </li>
                         <?php endforeach; ?>
                     </ul>
 
+                    <?php endif; ?>
 
+                </div>
             </div>
         </div>
 

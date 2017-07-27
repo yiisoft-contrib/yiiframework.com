@@ -1,15 +1,16 @@
 .star-wrapper {
-  .icon {
+  .fa {
     font-size: fontsize(h4);
     font-style: normal;
     cursor: pointer;
   }
+}
 
-  .icon-star:before {
-    content: "★";
-  }
+.profile-star-list {
+  list-style: none;
+  padding: 0;
 
-  .icon-star-empty:before {
-    content: "☆";
+  .star-wrapper {
+    display: inline;
   }
 }

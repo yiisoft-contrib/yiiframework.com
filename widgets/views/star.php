@@ -12,8 +12,10 @@ use yii\helpers\Url;
 
 <div class="star-wrapper">
     <?= Html::tag('span', '', [
-        'class' => 'icon ' . ($starValue ? 'icon-star' : 'icon-star-empty'),
+        'class' => 'fa ' . ($starValue ? 'fa-star' : 'fa-star-o'),
         'data-star-url' => $ajaxUrl
     ]) ?>
-    <span class="star-count"><?= (int) $starCount ?></span> followers
+    <?php if (isset($starCount)): ?>
+        <span class="star-count"><?= (int) $starCount ?></span> followers
+    <?php endif; ?>
 </div>

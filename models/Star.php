@@ -2,6 +2,7 @@
 
 namespace app\models;
 use yii\db\ActiveQuery;
+use yii\helpers\ArrayHelper;
 
 /**
  * This is the model class for table "star".
@@ -147,6 +148,7 @@ class Star extends ActiveRecord
                 $models
             );
         }
+        ArrayHelper::multisort($models, ['itemType', 'linkTitle']);
         return $models;
     }
 

@@ -5,12 +5,11 @@ namespace app\widgets;
 use Yii;
 use yii\base\InvalidConfigException;
 use yii\base\Widget;
-use yii\db\ActiveRecord;
+use app\models\ActiveRecord;
 use yii\helpers\Url;
 
 /**
- * Class Star
- * @package app\widgets
+ * Star widget for following items
  */
 class Star extends Widget
 {
@@ -18,6 +17,8 @@ class Star extends Widget
      * @var ActiveRecord
      */
     public $model;
+
+    public $starValue;
 
     public function init()
     {
@@ -31,15 +32,23 @@ class Star extends Widget
         $modelClass = $this->model->formName();
         $modelId = $this->model->primaryKey;
 
-        $starValue = 0;
-        if (!Yii::$app->user->isGuest) {
-            $starValue = \app\models\Star::getStarValue($this->model, Yii::$app->user->id);
+        if ($this->starValue === null) {
+            // display start widget for an item
+            $starValue = 0;
+            if (!Yii::$app->user->isGuest) {
+                $starValue = \app\models\Star::getStarValue($this->model, Yii::$app->user->id);
+            }
+            $starCount = \app\models\Star::getFollowerCount($this->model);
+        } else {
+            // display start widget on user profile page
+            $starValue = $this->starValue;
+            $starCount = null;
         }
 
         return $this->render('star', [
             'ajaxUrl' => Url::to(['/ajax/star', 'type' => $modelClass, 'id' => $modelId]),
             'starValue' => $starValue,
-            'starCount' => \app\models\Star::getFollowerCount($this->model),
+            'starCount' => $starCount,
         ]);
     }
 }
