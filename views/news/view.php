@@ -12,7 +12,7 @@ $this->title = $model->title;
 $this->params['breadcrumbs'][] = ['label' => 'News', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 echo $this->render('//site/partials/common/_admin_heading.php', [
-    'title' => 'Latest News',
+    'title' => 'News',
     'menu' => Yii::$app->user->can('news:pAdmin') ? [
         ['label' => 'News Page', 'url' => ['news/index'] ],
         ['label' => 'News Admin', 'url' => ['news/admin'] ],
