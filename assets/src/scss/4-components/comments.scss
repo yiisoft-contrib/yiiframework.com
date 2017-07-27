@@ -21,9 +21,10 @@
      .component-comments {
        @include rem(margin-top, 32px);
        .comment {
-         border: 1px dashed #fff;
+         background: white;
+         border: 1px dashed $eshill-blue;
          @include rem(padding-bottom, 22px);
-         @include rem(margin-bottom, 40px);
+         @include rem(margin-bottom, 20px);
          @include rem(border-radius, 6px);
          .comment-header {
            margin: 0;
@@ -34,7 +35,7 @@
            background-color: #fff;
            @include rem(font-size, fontsize(small));
            .comment-id {
-             color: $comments-background-color;
+             color: lighten($comments-background-color, 5%);
              @include rem(font-size, fontsize(h3));
              font-weight: 600;
              text-decoration: none;
