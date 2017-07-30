@@ -14,8 +14,8 @@ $this->title = 'Hi, ' . $model->username . '!';
 echo $this->render('//site/partials/common/_admin_heading.php', [
     'title' => $this->title,
     'menu' => [
-        ['label' => 'User Admin', 'url' => ['user-admin/index'], 'visible' => Yii::$app->user->can('users:pAdmin') ],
-        ['label' => 'Update User', 'url' => ['user-admin/view', 'id' => $model->id], 'visible' => Yii::$app->user->can('users:pAdmin') ],
+        ['label' => 'User Admin', 'url' => ['user-admin/index'], 'visible' => Yii::$app->user->can('users:pAdmin')],
+        ['label' => 'Update User', 'url' => ['user-admin/view', 'id' => $model->id], 'visible' => Yii::$app->user->can('users:pAdmin')],
     ]
 ]);
 
@@ -26,62 +26,58 @@ echo $this->render('//site/partials/common/_admin_heading.php', [
         <?= \app\widgets\Alert::widget() ?>
 
         <div class="row">
-            <div class="col-md-4">
-                <h2>Your Profile</h2>
-                <p>This is your private profile settings page.</p>
+            <div class="col-xs-12">
+                <div class="heading-separator">
+                    <h2><span>Your Profile</span></h2>
+                </div>
 
                 <ul>
-                    <li><?= Html::a('&raquo; View forum profile', $model->forumUrl); ?></li>
-                    <li><?= Html::a('&raquo; View public profile', ['view', 'id' => $model->id]); ?></li>
+                    <li><?= Html::a('View forum profile', $model->forumUrl); ?></li>
+                    <li><?= Html::a('View public profile', ['view', 'id' => $model->id]); ?></li>
                 </ul>
-
-                <?= DetailView::widget([
-                    'model' => $model,
-                    'attributes' => [
-                        'username',
-                        'created_at:datetime',
-
-                    ],
-                ]) ?>
             </div>
-            <div class="col-md-4">
-                <h2>Authentification</h2>
+        </div>
 
+        <div class="row">
+            <div class="col-xs-12 heading-separator">
+                <h2><span>Authentication</span></h2>
+            </div>
+            <div class="col-xs-12 col-md-6">
                 <h3>OAuth login</h3>
                 <p>
-                <?php
+                    <?php
 
-                if (empty($model->authClients)) {
-                    echo 'Your account is not connected with your Github profile. ';
-                    echo 'Click ' . Html::a('here', ['auth/connect-auth', 'source' => 'github'], ['data-method' => 'post']) . ' to connect them. ';
-                } else {
-                    foreach($model->authClients as $client) {
-                        echo 'Your account is connected with your ' . ucfirst($client->source) . ' profile: '
-                            . Html::a('http://github.com/' . Html::encode($client->source_login), 'http://github.com/' . $client->source_login) . '. ';
+                    if (empty($model->authClients)) {
+                        echo 'Your account is not connected with Github yet. ';
+                        echo Html::a('Click here to connect', ['auth/connect-auth', 'source' => 'github'], ['data-method' => 'post']) . '.';
+                    } else {
+                        foreach ($model->authClients as $client) {
+                            echo 'Your account is connected with your ' . ucfirst($client->source) . ' profile: '
+                                . Html::a('http://github.com/' . Html::encode($client->source_login), 'http://github.com/' . $client->source_login) . '. ';
 
-                        if ($model->passwordType === 'NONE') {
-                            echo 'To remove the connection, you should enable Password login first.';
-                        } else {
-                            echo Html::a('Remove connection', ['/auth/remove-auth', 'source' => $client->source], [
-                                'data-confirm' => 'Are you sure you want to remove the connection to your ' . ucfirst($client->source) . ' profile?',
-                                'data-method' => 'post',
-                            ]);
+                            if ($model->passwordType === 'NONE') {
+                                echo 'To remove the connection, you should enable Password login first.';
+                            } else {
+                                echo Html::a('Remove connection', ['/auth/remove-auth', 'source' => $client->source], [
+                                    'data-confirm' => 'Are you sure you want to remove the connection to your ' . ucfirst($client->source) . ' profile?',
+                                    'data-method' => 'post',
+                                ]);
+                            }
                         }
+                        echo '</p><p>You can log in using that account without the need for defining a password for the Yii website.';
                     }
-                    echo '</p><p>You can log in using that account without the need for defining a password for the Yii website.';
-                }
 
-                ?>
+                    ?>
                 </p>
-
+            </div>
+            <div class="col-xs-12 col-md-6">
                 <h3>Password login</h3>
                 <p>
-                    <?php switch($model->passwordType)
-                    {
+                    <?php switch ($model->passwordType) {
                         case 'LEGACYMD5':
                         case 'LEGACYSHA':
                             echo '<strong>Your password is stored in the database using a deprecated hasing algorithm. Please log out and log in again to fix this.</strong></p><p>';
-                            // no break
+                        // no break
                         case 'NEW':
                             echo 'Password login is enabled. That means that you can log in with your username and password.';
 
@@ -101,6 +97,8 @@ echo $this->render('//site/partials/common/_admin_heading.php', [
                     ?>
                 </p>
             </div>
+        </div>
+        <?php /*
             <div class="col-md-4">
                 <h3>Email addresses</h3>
 
@@ -108,9 +106,12 @@ echo $this->render('//site/partials/common/_admin_heading.php', [
                     TODO
                 </p>
             </div>
+            */ ?>
+        <div class="col-xs-12 heading-separator">
+            <h2><span>Content</span></h2>
         </div>
         <div class="row">
-            <div class="col-md-6">
+            <div class="col-xs-12 col-md-6">
                 <h2>Your Extensions (<?= Html::encode($model->extension_count) ?>) </h2>
 
                 <?php if (empty($extensions)): ?>
@@ -122,65 +123,60 @@ echo $this->render('//site/partials/common/_admin_heading.php', [
 
                     <ul>
                         <?php foreach ($extensions as $extension): ?>
-                            <li><?= Html::a(Html::encode($extension->getLinkTitle()), $extension->getUrl())?></li>
+                            <li><?= Html::a(Html::encode($extension->getLinkTitle()), $extension->getUrl()) ?></li>
                         <?php endforeach ?>
                     </ul>
                 <?php endif; ?>
             </div>
-            <div class="col-md-6">
+            <div class="col-xs-12 col-md-6">
                 <h2>Your Wiki articles (<?= Html::encode($model->wiki_count) ?>)</h2>
 
-                    <?php if (empty($wikiPages)): ?>
-                        <p>
-                            You have not created any wiki articles yet.
-                            Wiki articles are extended documentation references about a Yii related topic.
-                            If you have an idea for a new article, you may <?= Html::a('create one now', ['wiki/create']) ?>.
-                        </p>
-                    <?php else: ?>
+                <?php if (empty($wikiPages)): ?>
+                    <p>
+                        You have not created any wiki articles yet.
+                        Wiki articles are extended documentation references about a Yii related topic.
+                        If you have an idea for a new article, you may <?= Html::a('create one now', ['wiki/create']) ?>
+                        .
+                    </p>
+                <?php else: ?>
 
-                        <ul>
-                            <?php foreach ($wikiPages as $wikiPage): ?>
-                                <li><?= Html::a(Html::encode($wikiPage->getLinkTitle()), $wikiPage->getUrl()) ?></li>
-                            <?php endforeach ?>
-                        </ul>
+                    <ul>
+                        <?php foreach ($wikiPages as $wikiPage): ?>
+                            <li><?= Html::a(Html::encode($wikiPage->getLinkTitle()), $wikiPage->getUrl()) ?></li>
+                        <?php endforeach ?>
+                    </ul>
 
-                    <?php endif; ?>
+                <?php endif; ?>
             </div>
-            <div class="row">
-                <div class="col-md-12">
-                    <h2>Your Stars (following)</h2>
 
-                    <?php if (empty($starTargets)): ?>
+            <div class="col-xs-12 col-md-12">
+                <h2>Your Stars (following)</h2>
+
+                <?php if (empty($starTargets)): ?>
                     <p>
                         You are currently not following any items.
-                        Click on the star icon on Wikis and Extensions to start following them to receive update notifications.
+                        Click on the star icon on Wikis and Extensions to start following them to receive update
+                        notifications.
                     </p>
-                    <?php else: ?>
+                <?php else: ?>
                     <p>
                         You may click on a star to stop following an item.
                         That means you will no longer be notified about changes for it.
                     </p>
 
                     <ul class="profile-star-list">
-                        <?php foreach($starTargets as $target): /** @var $target \app\models\Linkable*/ ?>
-                        <li>
-                            <?= \app\widgets\Star::widget([
-                                'model' => $target,
-                                'starValue' => 1,
-                            ]) ?>
-                            <?= '[' . $target->getItemType(). '] ' . Html::a(Html::encode($target->getLinkTitle()), $target->getUrl()); ?>
-                        </li>
-                        <?php endforeach; ?>
+                        <?php foreach ($starTargets as $target): /** @var $target \app\models\Linkable */ ?>
+                            <li>
+                                <?= \app\widgets\Star::widget([
+                                    'model' => $target,
+                                    'starValue' => 1,
+                                ]) ?>
+                                <?= '[' . $target->getItemType() . '] ' . Html::a(Html::encode($target->getLinkTitle()), $target->getUrl()); ?>
+                            </li>
+                        <?php endforeach ?>
                     </ul>
-
-                    <?php endif; ?>
-
-                </div>
+                <?php endif ?>
             </div>
         </div>
-
-
-
-
     </div>
 </div>
