@@ -196,7 +196,7 @@ class Wiki extends ActiveRecord implements Linkable
             $html = Markdown::process($teaser, 'gfm');
             // do not use as teaser if the element in this block is a HTML block element
             if (!preg_match('~^<(blockquote|h\d|pre)~', $html)) {
-                return $html;
+                return HtmlPurifier::process($html);
             }
         }
         return '';
