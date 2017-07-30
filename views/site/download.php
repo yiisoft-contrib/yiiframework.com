@@ -63,7 +63,7 @@ $this->params['breadcrumbs'][] = $this->title;
 
 				<p class="small">This is the prefered way of installing Yii 2.0. If you do not have Composer installed yet, you may install it following the instructions on the <a href="https://getcomposer.org/download/">Composer website</a>.</p>
 
-				<p class="small">After installing Composer, run the following command to install the <a target="_blank" href="https://github.com/francoispluchino/composer-asset-plugin">Composer Asset Plugin</a>, which is required by Yii:</p>
+				<p class="small">After installing Composer, run the following command to install the <a target="_blank" rel="noopener noreferrer" href="https://github.com/francoispluchino/composer-asset-plugin">Composer Asset Plugin</a>, which is required by Yii:</p>
 
 				<pre>
 					<code class="hljs bash language-bash">php composer.phar global require "fxp/composer-asset-plugin:^1.2.0"</code>

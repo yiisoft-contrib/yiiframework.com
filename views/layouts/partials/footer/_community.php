@@ -19,7 +19,7 @@ use yii\helpers\Html;
     </li>
  */ ?>
     <li class="footerList_item">
-        <a href="https://www.facebook.com/groups/yiitalk/">Facebook Group</a>
+        <a href="https://www.facebook.com/groups/yiitalk/" target="_blank" rel="noopener noreferrer">Facebook Group</a>
     </li>
     <li class="footerList_item">
         <?= Html::a('Hall of Fame', ['/user/halloffame']) ?>

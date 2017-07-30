@@ -140,6 +140,7 @@ $(".api-content .sourceCode a.show").on('click', function () {
 });
 $(".api-content a.sourceLink").click(function(){
     $(this).attr('target','_blank');
+    $(this).attr('rel','noopener noreferrer');
 });
 
 // make API redirection more straightforward

@@ -22,7 +22,7 @@ $this->params['breadcrumbs'][] = $this->title;
             </p>
 
             <p>
-                <a href="http://www.yiiframework.com/wiki/369/" target="_blank">Instructions on using MrFisk</a>
+                <a href="/wiki/369/" target="_blank">Instructions on using MrFisk</a>
             </p>
 
             <iframe src="http://webchat.freenode.net?channels=yii&uio=OT10cnVlJjExPTE5NSYxMj10cnVl09" width="100%" height="480" style="border:1px solid silver;"></iframe>

@@ -35,7 +35,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 <h2><span>Yii 2.0</span></h2>
             </div>
 
-            <p class="text-center medium">General issues, that affect the Yii core framework, should be reported on Github in the <a target="_blank" href="https://github.com/yiisoft/yii2/issues">yiisoft/yii2</a> repository.</p>
+            <p class="text-center medium">General issues, that affect the Yii core framework, should be reported on Github in the <a target="_blank" rel="noopener noreferrer" href="https://github.com/yiisoft/yii2/issues">yiisoft/yii2</a> repository.</p>
             <p class="text-center">
             <a class="btn btn-lg btn-default github-btn" href="https://github.com/yiisoft/yii2/issues/new"><i class="fa fa-github"></i><span>Report issue</span></a>
             </p>
@@ -91,7 +91,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 <h2><span>Yii 1.1</span></h2>
             </div>
 
-            <p class="text-center medium">If you want to report a bug for Yii 1.1, please open an issue in the <a target="_blank" href="https://github.com/yiisoft/yii">yiisoft/yii</a> repository.</p>
+            <p class="text-center medium">If you want to report a bug for Yii 1.1, please open an issue in the <a target="_blank" rel="noopener noreferrer" href="https://github.com/yiisoft/yii">yiisoft/yii</a> repository.</p>
             <p class="text-center">
             <a class="btn btn-lg btn-default github-btn" href="https://github.com/yiisoft/yii/issues/new"><i class="fa fa-github"></i> <span>Report issue</span></a>
             </p>

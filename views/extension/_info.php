@@ -18,10 +18,10 @@ use yii\helpers\Html;
 <?php endif; ?>
 
 <?php if ($model->from_packagist): ?>
-    <?= Html::a('Packagist Profile', $model->packagist_url, ['target' => '_blank']) ?><br>
+    <?= Html::a('Packagist Profile', $model->packagist_url, ['target' => '_blank', 'rel' => 'noopener noreferrer']) ?><br>
 <?php endif; ?>
 <?php if ($model->github_url): ?>
-    <?= Html::a(strpos($model->github_url, 'github.com/') !== false ? 'Github Repository' : 'Code Repository', $model->github_url, ['target' => '_blank']) ?><br>
+    <?= Html::a(strpos($model->github_url, 'github.com/') !== false ? 'Github Repository' : 'Code Repository', $model->github_url, ['target' => '_blank', 'rel' => 'noopener noreferrer']) ?><br>
 <?php endif; ?>
 
 

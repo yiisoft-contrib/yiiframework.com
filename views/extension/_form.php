@@ -19,7 +19,7 @@ use yii\widgets\ActiveForm;
 
 <?php if ($model->isNewRecord) {
     echo Html::activeRadioList($model, 'from_packagist', [
-        1 => '<strong>Import from <a href="https://packagist.org/about" target="_blank">Packagist</a></strong><p>Select this option if your extension is available on packagist. We will import most of the information from Packagist and Github.<br>This is the <strong>recommended</strong> option for Yii 2 extensions.</p>',
+        1 => '<strong>Import from <a href="https://packagist.org/about" target="_blank" rel="noopener noreferrer">Packagist</a></strong><p>Select this option if your extension is available on packagist. We will import most of the information from Packagist and Github.<br>This is the <strong>recommended</strong> option for Yii 2 extensions.</p>',
         0 => '<strong>Custom Description</strong><p>Select this option if you want to manage version information and description on yiiframework.com and not import anything.<br>This option is used for code that is not hosted on github and not installable via composer, mainly Yii 1.1 extensions.</p>',
     ], [
         'encode' => false,
@@ -56,7 +56,7 @@ use yii\widgets\ActiveForm;
             ?>
             <?= $form->field($model, 'license_id', ['options' => ['class' => 'nopackagist']])
                 ->dropDownList(Extension::getLicenseSelect(), ['prompt' => 'Please select...'])
-                ->hint('All extensions shared on yiiframework.com must be open source.<br>We encourage you to use one of the licenses listed in the above drop-down list. For more information you may visit <a href="https://choosealicense.com/" target="_blank">choosealicense.com</a>.');
+                ->hint('All extensions shared on yiiframework.com must be open source.<br>We encourage you to use one of the licenses listed in the above drop-down list. For more information you may visit <a href="https://choosealicense.com/" target="_blank" rel="noopener noreferrer">choosealicense.com</a>.');
             ?>
 
             <?= $form->field($model, 'github_url', ['options' => ['class' => 'nopackagist']])

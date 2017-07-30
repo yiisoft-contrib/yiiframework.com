@@ -4,9 +4,9 @@ use yii\helpers\Html;
 <ul class="footerList">
   <li class="footerList_item">
       <span class="social">
-          <a href="https://github.com/yiisoft"><i class="fa fa-github"></i></a>
-          <a href="https://twitter.com/yiiframework"><i class="fa fa-twitter"></i></a>
-          <a href="https://www.facebook.com/groups/yiitalk/"><i class="fa fa-facebook"></i></a>
+          <a href="https://github.com/yiisoft" target="_blank" rel="noopener noreferrer"><i class="fa fa-github"></i></a>
+          <a href="https://twitter.com/yiiframework" target="_blank" rel="noopener noreferrer"><i class="fa fa-twitter"></i></a>
+          <a href="https://www.facebook.com/groups/yiitalk/" target="_blank" rel="noopener noreferrer"><i class="fa fa-facebook"></i></a>
           <?= Html::a('<i class="fa fa-rss"></i>', ['rss/all'])?>
       </span>
   </li>
@@ -17,7 +17,7 @@ use yii\helpers\Html;
       <?= Html::a('License', ['site/license']) ?>
   </li>
   <li class="footerList_item">
-      <a href="https://github.com/yiisoft-contrib/yiiframework.com" target="_blank">Website Souce Code</a>
+      <a href="https://github.com/yiisoft-contrib/yiiframework.com" target="_blank" rel="noopener noreferrer">Website Souce Code</a>
   </li>
   <li class="footerList_item">
       &nbsp;
@@ -26,6 +26,6 @@ use yii\helpers\Html;
     &copy; 2008 - <?= date('Y') ?> Yii
   </li>
   <li class="footerList_item">
-      Design: <a href="http://www.eshill.ru/" target="_blank">Eshill</a>
+      Design: <a href="http://www.eshill.ru/" target="_blank" rel="noopener noreferrer">Eshill</a>
   </li>
 </ul>
