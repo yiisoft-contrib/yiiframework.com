@@ -3,11 +3,21 @@
 use yii\helpers\Html;
 
 /** @var $dataProvider \yii\data\ActiveDataProvider */
-/** @var $category string */
+/** @var $category \app\models\WikiCategory */
 /** @var $tag \app\models\WikiTag */
 
 
 $this->title = 'Wiki';
+
+if ($category === null) {
+    $this->title .= ' articles';
+} else {
+    $this->title .= ' ' . $category->name;
+}
+
+if ($tag !== null) {
+    $this->title .= ' taggeed with "' . $tag->name . '"';
+}
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="guide-header-wrap">
@@ -24,7 +34,7 @@ $this->params['breadcrumbs'][] = $this->title;
     <div class="row">
         <div class="col-sm-3 col-md-2 col-lg-2">
             <?= $this->render('_sidebar', [
-                'category' => $category,
+                'category' => $category ? $category->id : null,
                 'tag' => $tag,
                 'sort' => $dataProvider->sort,
             ]) ?>

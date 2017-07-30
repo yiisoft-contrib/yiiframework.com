@@ -61,9 +61,10 @@ class WikiController extends Controller
     {
         $query = Wiki::find()->active()->with(['creator', 'updater', 'category']);
 
+        $categoryModel = null;
         if ($category !== null) {
             $category = (int) $category;
-            if (WikiCategory::findOne($category) === null) {
+            if (($categoryModel = WikiCategory::findOne($category)) === null) {
                 throw new NotFoundHttpException('The requested category does not exist.');
             }
             $query->andWhere(['category_id' => $category]);
@@ -121,7 +122,7 @@ class WikiController extends Controller
         return $this->render('index', [
             'dataProvider' => $dataProvider,
             'tag' => $tagModel,
-            'category' => $category,
+            'category' => $categoryModel,
         ]);
     }
 
