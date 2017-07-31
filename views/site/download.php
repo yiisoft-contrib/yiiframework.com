@@ -256,7 +256,7 @@ $this->params['breadcrumbs'][] = $this->title;
 				<p class="small">or via SVN using:</p>
 				<p><code>svn checkout <?= $versionInfo[$version]['svn-url'] ?> yii</code></p>
 
-				<h3 class="text-center">Offline Documentation</h3>
+				<h3 class="text-center">Documentation</h3>
 
 				<ul class="offline-doc-v1">
 					<?php foreach(Yii::$app->params['guide.versions']['1.1'] as $locale => $language): ?>
