@@ -15,10 +15,8 @@ $this->registerJs("
             <div class="col-md-12">
                 <h1>Yes, it is!</h1>
                 <p class="propaganda">
-                    Yii is fast, secure and efficient PHP framework.<br>
-                    Flexible yet pragmatic.
-                </p>
-                <p class="propaganda">
+                    Yii is a fast, secure, and efficient PHP framework.<br>
+                    Flexible yet pragmatic. <br>
                     Works right out of the box. <br>
                     Has reasonable defaults.
                 </p>
