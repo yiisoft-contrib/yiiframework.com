@@ -41,19 +41,26 @@ $this->params['breadcrumbs'][] = $this->title;
                                    . Html::a('updating the version information', ['wiki/update', 'id' => $model->id]) . '.</p></blockquote>';
                             } ?>
                             <?php if ($revision !== null) {
+                                $previous = $revision->findPrevious();
+                                $next = $revision->findNext();
                                 echo '<blockquote class="note"><p>'
                                    . "You are viewing revision #" . ((int) $revision->revision) . " of this wiki article.<br>";
                                 if ($revision->isLatest()) {
-                                    echo "This is the latest version of this article.<br>"
-                                        . "You may want to " . Html::a('see the changes made in this revision', ['wiki/revision', 'id' => $model->id, 'r1' => $revision->revision]) . '.';
+                                    echo "This is the latest version of this article.<br>";
+                                    if ($previous !== null) {
+                                        echo "You may want to " . Html::a('see the changes made in this revision', ['wiki/revision', 'id' => $model->id, 'r1' => $revision->revision]) . '.';
+                                    }
                                 } else {
                                     echo "This version may not be up to date with the latest version.<br>"
-                                        . "You may want to " . Html::a('view the differences to the latest version', ['wiki/revision', 'id' => $model->id, 'r1' => $revision->revision, 'r2' => 'latest'])
-                                        . " or " . Html::a('see the changes made in this revision', ['wiki/revision', 'id' => $model->id, 'r1' => $revision->revision]) . '.';
+                                        . "You may want to " . Html::a('view the differences to the latest version', ['wiki/revision', 'id' => $model->id, 'r1' => $revision->revision, 'r2' => 'latest']);
+                                    if ($previous !== null) {
+                                        echo " or " . Html::a('see the changes made in this revision', ['wiki/revision', 'id' => $model->id, 'r1' => $revision->revision]);
+                                    }
+                                    echo '.';
                                 }
-                                $previous = $revision->findPrevious();
-                                $next = $revision->findNext();
-                                if ($previous || $next) echo '</p><p class="clearfix">';
+                                if ($previous || $next) {
+                                    echo '</p><p class="clearfix">';
+                                }
                                 if ($previous) {
                                     echo Html::a(
                                         '&laquo; previous (#' . $previous->revision . ')',
