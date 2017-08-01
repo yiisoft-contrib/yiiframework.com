@@ -1,6 +1,6 @@
 <?php
-use yii\helpers\Html;
-
+/* @var $books1 array */
+/* @var $books2 array */
 /* @var $this yii\web\View */
 $this->title = 'Books';
 $this->params['breadcrumbs'][] = $this->title;

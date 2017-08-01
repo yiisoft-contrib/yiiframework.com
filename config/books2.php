@@ -49,7 +49,19 @@ return [
         'level-description' => 'Recommended for intermediate-to-advanced developers.',
     ],
     [
-        'title' => 'Yii 2.0 Cookbook',
+        'title' => 'Yii2 Application Development Cookbook - Third Edition',
+        'author' => 'Andrew Bogdanov, Dmitry Eliseev',
+        'image' => '@web/image/books/yii2-app-development-cookbook-3.jpg',
+        'description' => 'The book is a set of individual independent recipes. Each recipe shows how to
+            do something useful with Yii explainig why it\'s done, how it\'s done, why it works and how exactly it works.',
+        'url' => 'https://www.packtpub.com/web-development/yii2-application-development-cookbook-third-edition',
+        'level' => 'all',
+        'level-text' => 'All levels',
+        'level-description' => 'Recommended for all levels',
+    ],
+
+    [
+        'title' => 'Yii 2.0 Community Cookbook',
         'author' => 'Alexander Makarov',
         'image' => '@web/image/books/yii2-cookbook.jpg',
         'description' => 'Although not finished, there are some nice recipes from one of the core team and community. Worth checking out.',

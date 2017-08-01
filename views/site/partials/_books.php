@@ -10,8 +10,13 @@ use yii\helpers\Html;
     <?php if ($i !== 0 && $i % 2 === 0): ?>
         <div class="clearfix visible-md"></div>
     <?php endif ?>
+
+    <?php if ($i !== 0 && $i % 5 === 0): ?>
+        <div class="clearfix visible-lg"></div>
+    <?php endif ?>
+
     <div
-        class="<?= $i === 4 ? 'col-md-offset-3 col-lg-offset-0 ' : '' ?>col-lg-5ths col-md-6 col-xs-12 books-item">
+        class="col-lg-5ths col-md-6 col-xs-12 books-item">
         <div class="books-image">
             <a href="<?= $book['url'] ?>" target="_blank" rel="noopener noreferrer">
                 <img src="<?= Yii::getAlias(Html::encode($book['image'])) ?>"
