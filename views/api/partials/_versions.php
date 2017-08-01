@@ -38,20 +38,29 @@ use yii\helpers\Html;
 				]);
 			}
 		?>
+
+        <?php
+        $versionItems = [];
+        foreach ($versions as $ver) {
+            if ($ver === $version) {
+                continue;
+            }
+
+            $versionItems[] = [
+                'label' => $ver,
+                'url' => ($version[0] === $ver[0] || $section === 'index') ?
+                    ['api/index', 'version' => $ver] :
+                    ['api/view', 'version' => $ver, 'section' => $section],
+            ];
+        }
+        ?>
         <?= DropdownList::widget([
             'tag' => 'div',
             'selection' => "Version {$version}",
-            'items' => array_map(function ($ver) use ($version, $section) {
-                return [
-                    'label' => $ver,
-                    'url' => ($version[0] === $ver[0] || $section === 'index') ?
-                        ['api/index', 'version' => $ver] :
-                        ['api/view', 'version' => $ver, 'section' => $section],
-                ];
-            }, $versions),
+            'items' => $versionItems,
             'options' => [
                 'class' => 'btn-group btn-group-sm'
-                ]
+            ],
         ]) ?>
     </div>
 </nav>

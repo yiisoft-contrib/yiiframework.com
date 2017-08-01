@@ -6,12 +6,11 @@
  */
 use app\widgets\DropdownList;
 use app\models\Guide;
-use yii\helpers\Html;
 
 ?>
 <nav class="version-selector">
         <div class="btn-group btn-group-justified">
-        <?php if ($guide->type == 'guide') {
+        <?php if ($guide->type === 'guide') {
             $items = [];
             if ($guide->getDownloadFile('pdf') !== false) {
                 $items[] = [
@@ -42,48 +41,69 @@ use yii\helpers\Html;
                 ]);
             }
         } ?>
+        <?php
+        $options = $guide->getLanguageOptions();
+        $languages = array_keys($options);
+        $languageItems = [];
+
+        foreach ($languages as $language) {
+            if ($guide->language === $language) {
+                continue;
+            }
+
+            if (isset($section)) {
+                $url = ['guide/view', 'section' => $section->name, 'version' => $guide->version, 'language' => $language, 'type' => $guide->typeUrlName];
+            } else {
+                $url = ['guide/index', 'version' => $guide->version, 'language' => $language, 'type' => $guide->typeUrlName];
+            }
+
+            $languageItems[] = [
+                'label' => $options[$language],
+                'url' => $url,
+            ];
+        }
+        ?>
         <?= DropdownList::widget([
             'tag' => 'div',
             'selection' => $guide->getLanguageName(),
-            'items' => array_map(function ($language) use ($section, $guide) {
-                $options = $guide->getLanguageOptions();
-                if (isset($section)) {
-                    $url = ['guide/view', 'section' => $section->name, 'version' => $guide->version, 'language' => $language, 'type' => $guide->typeUrlName];
-                } else {
-                    $url = ['guide/index', 'version' => $guide->version, 'language' => $language, 'type' => $guide->typeUrlName];
-                }
-                return [
-                    'label' => $options[$language],
-                    'url' => $url,
-                ];
-            }, array_keys($guide->getLanguageOptions())),
+            'items' => $languageItems,
             'options' => [
                 'class' => 'btn-group btn-group-sm'
                 ]
         ]) ?>
+
+        <?php
+        $versionItems = [];
+        $language = $guide->language;
+
+        foreach ($guide->getVersionOptions() as $version) {
+            if ($version === $guide->version) {
+                continue;
+            }
+
+            $otherGuide = Guide::load($version, $language, $guide->type);
+            if ($otherGuide === null) {
+                $language = 'en';
+                $otherGuide = Guide::load($version, $language, $guide->type);
+            }
+            if (isset($section) && $guide->version[0] === $version[0] && $otherGuide->loadSection($section->name) !== null) {
+                $url = ['guide/view', 'section' => $section->name, 'version' => $version, 'language' => $language, 'type' => $guide->typeUrlName];
+            } else {
+                $url = ['guide/index', 'version' => $version, 'language' => $language, 'type' => $guide->typeUrlName];
+            }
+            $versionItems[] = [
+                'label' => $version,
+                'url' => $url,
+            ];
+        }
+        ?>
         <?= DropdownList::widget([
             'tag' => 'div',
             'selection' => "Version {$guide->version}",
-            'items' => array_map(function ($version) use ($section, $guide) {
-                $language = $guide->language;
-                $otherGuide = Guide::load($version, $language, $guide->type);
-                if ($otherGuide === null) {
-                    $language = 'en';
-                    $otherGuide = Guide::load($version, $language, $guide->type);
-                }
-                if (isset($section) && $guide->version[0] === $version[0] && $otherGuide->loadSection($section->name) !== null) {
-                    $url = ['guide/view', 'section' => $section->name, 'version' => $version, 'language' => $language, 'type' => $guide->typeUrlName];
-                } else {
-                    $url = ['guide/index', 'version' => $version, 'language' => $language, 'type' => $guide->typeUrlName];
-                }
-                return [
-                    'label' => $version,
-                    'url' => $url,
-                ];
-            }, $guide->getVersionOptions()),
+            'items' => $versionItems,
             'options' => [
                 'class' => 'btn-group btn-group-sm'
-                ]
+            ]
         ]) ?>
     </div>
 </nav>
