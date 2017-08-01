@@ -200,11 +200,11 @@ class AuthController extends Controller
         $model = new LoginForm();
         if ($model->load(Yii::$app->request->post()) && $model->login()) {
             return $this->goBack();
-        } else {
-            return $this->render('login', [
-                'model' => $model,
-            ]);
         }
+
+        return $this->render('login', [
+            'model' => $model,
+        ]);
     }
 
     public function actionLogout()
@@ -244,9 +244,8 @@ class AuthController extends Controller
                 Yii::$app->getSession()->setFlash('success', 'Check your email for further instructions.');
 
                 return Yii::$app->user->isGuest ? $this->goHome() : $this->redirect(['user/profile']);
-            } else {
-                Yii::$app->getSession()->setFlash('error', 'Sorry, we are unable to reset password for email provided.');
             }
+            Yii::$app->getSession()->setFlash('error', 'Sorry, we are unable to reset password for email provided.');
         }
 
         return $this->render('requestPasswordResetToken', [

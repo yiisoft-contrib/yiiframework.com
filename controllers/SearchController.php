@@ -19,10 +19,10 @@ class SearchController extends Controller
 
     public function actionGlobal($q, $version = null, $language = null)
     {
-        if (!in_array($version, $this->getVersions())) {
+        if (!in_array($version, $this->getVersions(), true)) {
             $version = null;
         }
-        if (!in_array($language, array_keys($this->getLanguages()))) {
+        if (!array_key_exists($language, $this->getLanguages())) {
             $language = null;
         }
 
@@ -52,7 +52,7 @@ class SearchController extends Controller
         if (!in_array($version, $this->getVersions())) {
             $version = null;
         }
-        if (!in_array($language, array_keys($this->getLanguages()))) {
+        if (!array_key_exists($language, $this->getLanguages())) {
             $language = null;
         }
 
@@ -64,17 +64,17 @@ class SearchController extends Controller
         Yii::$app->response->format = Response::FORMAT_JSON;
         if (!$result) {
             return [];
-        } else {
-            return $result;
         }
+
+        return $result;
     }
 
     public function actionAsYouType($q, $version = null, $language = null)
     {
-        if (!in_array($version, $this->getVersions())) {
+        if (!in_array($version, $this->getVersions(), true)) {
             $version = null;
         }
-        if (!in_array($language, array_keys($this->getLanguages()))) {
+        if (!array_key_exists($language, $this->getLanguages())) {
             $language = null;
         }
 
@@ -85,21 +85,21 @@ class SearchController extends Controller
         Yii::$app->response->format = Response::FORMAT_JSON;
         if (!$result) {
             return [];
-        } else {
-            return array_values(
-                array_map(
-                    function ($r) {
-                        return [
-                            'title' => $r->title,
-                            'url' => Url::to($r->getUrl(), true),
-                            'version' => $r->version,
-                            'language' => $r->language,
-                        ];
-                    },
-                    $result
-                )
-            );
         }
+
+        return array_values(
+            array_map(
+                function ($r) {
+                    return [
+                        'title' => $r->title,
+                        'url' => Url::to($r->getUrl(), true),
+                        'version' => $r->version,
+                        'language' => $r->language,
+                    ];
+                },
+                $result
+            )
+        );
     }
 
     /**
@@ -122,19 +122,19 @@ class SearchController extends Controller
         Yii::$app->response->format = Response::FORMAT_JSON;
         if (!$packagistData['packages']) {
             return [];
-        } else {
-            return array_values(
-                array_map(
-                    function (Package $package) {
-                        return [
-                            'title' => $package->getName(),
-                            'url' => $package->getUrl()
-                        ];
-                    },
-                    $packagistData['packages']
-                )
-            );
         }
+
+        return array_values(
+            array_map(
+                function (Package $package) {
+                    return [
+                        'title' => $package->getName(),
+                        'url' => $package->getUrl()
+                    ];
+                },
+                $packagistData['packages']
+            )
+        );
     }
 
     public function getVersions()

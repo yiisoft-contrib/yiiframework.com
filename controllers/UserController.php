@@ -127,6 +127,8 @@ class UserController extends Controller
     public function actionProfile()
     {
         $userId = Yii::$app->user->getId();
+
+        /** @var User $user */
         $user = Yii::$app->user->identity;
 
         $extensions = Extension::find()
@@ -165,6 +167,7 @@ class UserController extends Controller
 
     public function actionViewBadge($name)
     {
+        /** @var Badge $badge */
         $badge = Badge::find()->where(['urlname' => $name])->one();
         if ($badge === null) {
             throw new NotFoundHttpException('Unknown badge');

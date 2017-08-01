@@ -14,21 +14,21 @@ class GuideController extends Controller
     {
         // normalize language, old yii 1.1 docs have _ in locale
         $normalizedLanguage = strtolower(str_replace('_', '-', $language));
-        $guide = Guide::load($version, $normalizedLanguage, $type == 'blog' ? 'blogtut' : $type);
+        $guide = Guide::load($version, $normalizedLanguage, $type === 'blog' ? 'blogtut' : $type);
         if ($guide) {
             if ($normalizedLanguage !== $language) {
                 $this->redirect(['index', 'language' => $normalizedLanguage, 'version' => $version, 'type' => $type]);
             }
             return $this->render('index', ['guide' => $guide]);
-        } else {
-            throw new NotFoundHttpException('The requested page was not found.');
         }
+
+        throw new NotFoundHttpException('The requested page was not found.');
     }
 
     public function actionView($section, $version, $language, $type = 'guide')
     {
         $normalizedLanguage = strtolower(str_replace('_', '-', $language));
-        $guide = Guide::load($version, $normalizedLanguage, $type == 'blog' ? 'blogtut' : $type);
+        $guide = Guide::load($version, $normalizedLanguage, $type === 'blog' ? 'blogtut' : $type);
         if ($guide && $normalizedLanguage !== $language) {
             $this->redirect(['view', 'language' => $normalizedLanguage, 'version' => $version, 'section' => $section, 'type' => $type]);
         }
@@ -40,16 +40,16 @@ class GuideController extends Controller
                 'missingTranslation' => $section->missingTranslation,
                 'type' => $type,
             ]);
-        } else {
-            throw new NotFoundHttpException('The requested page was not found.');
         }
+
+        throw new NotFoundHttpException('The requested page was not found.');
     }
 
     public function actionImage($image, $version, $language, $type = 'guide')
     {
-        $file = Guide::findImage($image, $version, $language, $type == 'blog' ? 'blogtut' : $type);
+        $file = Guide::findImage($image, $version, $language, $type === 'blog' ? 'blogtut' : $type);
         if ($file === false && $language !== 'en') {
-            $file = Guide::findImage($image, $version, 'en', $type == 'blog' ? 'blogtut' : $type);
+            $file = Guide::findImage($image, $version, 'en', $type === 'blog' ? 'blogtut' : $type);
         }
         if ($file === false) {
             throw new NotFoundHttpException("The requested image was not found: $image");
@@ -80,9 +80,9 @@ class GuideController extends Controller
             if ($cache->beforeAction(null)) {
                 return Yii::$app->response->sendFile($file['file'], $file['name']);
             }
-        } else {
-            throw new NotFoundHttpException('The requested page was not found.');
         }
+
+        throw new NotFoundHttpException('The requested page was not found.');
     }
 
     /**
@@ -139,8 +139,8 @@ class GuideController extends Controller
         $guide = Guide::load('2.0', 'en');
         if ($guide && ($section = $guide->loadSection($section))) {
             return $this->redirect(['view', 'version' => '2.0', 'section' => $section->name, 'language' => 'en', 'type' => 'guide'], 301); // Moved Permanently
-        } else {
-            throw new NotFoundHttpException('The requested page was not found.');
         }
+
+        throw new NotFoundHttpException('The requested page was not found.');
     }
 }

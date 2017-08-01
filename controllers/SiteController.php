@@ -58,12 +58,14 @@ class SiteController extends Controller
         ];
         if (isset($urlMap[$url])) {
             return $this->redirect($urlMap[$url], 301); // Moved Permanently
-        } elseif (preg_match('%doc/cookbook/(\d+)%', $url, $matches)) {
+        }
+
+        if (preg_match('%doc/cookbook/(\d+)%', $url, $matches)) {
             // old wiki URLs
             return $this->redirect(['wiki/view', 'id' => $matches[1]], 301); // Moved Permanently
-        } else {
-            throw new NotFoundHttpException('The requested page was not found.');
         }
+
+        throw new NotFoundHttpException('The requested page was not found.');
     }
 
     public function actionIndex()

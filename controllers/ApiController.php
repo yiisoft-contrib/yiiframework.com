@@ -157,7 +157,7 @@ class ApiController extends Controller
 
                 $members = Json::decode(file_get_contents(Yii::getAlias("@app/data/api-2.0/json/typeMembers.json")));
                 foreach($members as $m => $member) {
-                    $hash = $member['name'] . ($member['type'] == 'method' ? '()' : '') . '-detail';
+                    $hash = $member['name'] . ($member['type'] === 'method' ? '()' : '') . '-detail';
                     foreach($members[$m]['implemented'] as $i => $impl) {
                         $members[$m]['implemented'][$i] = [
                             'name' => $impl,
