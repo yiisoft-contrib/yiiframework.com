@@ -173,7 +173,7 @@ class WikiController extends Controller
     {
         $model = $this->findModel($id, $revision);
 
-        if (UserPermissions::canUpdateWikiPage($model)) {
+        if (!UserPermissions::canUpdateWikiPage($model)) {
             throw new ForbiddenHttpException('Sorry, you are too new to write a wiki article. Please try posting it in our forum first.');
         }
 
