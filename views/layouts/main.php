@@ -154,6 +154,7 @@ AppAsset::register($this);
                 </div>
             </header>
 
+            <?= \app\widgets\Alert::widget() ?>
             <?= $content ?>
 
             <?= $this->render('partials/_footer'); ?>

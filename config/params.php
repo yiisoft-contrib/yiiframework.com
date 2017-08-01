@@ -56,7 +56,7 @@ return [
         'enablePrettyUrl' => true,
         'showScriptName' => false,
         'enableStrictParsing' => true,
-        'rules' => require(__DIR__ . '/urls.php')
+        'rules' => require __DIR__ . '/urls.php'
     ],
 
     // api and guide
@@ -154,17 +154,18 @@ return [
         // these should be configured in local config
     ],
 
-	'versions' => require 'versions.php',
+	'versions' => require __DIR__ . '/versions.php',
 
-    'books2' => require 'books2.php',
-    'books1' => require 'books1.php',
-    'testimonials' => require 'testimonials.php',
-    'members' => require 'members.php',
+    'books2' => require __DIR__ . '/books2.php',
+    'books1' => require __DIR__ . '/books1.php',
+    'testimonials' => require __DIR__ . '/testimonials.php',
+    'members' => require __DIR__ . '/members.php',
 
     'adminEmail' => 'yii@cebe.cc',
     'supportEmail' => 'yii@cebe.cc',
     'notificationEmail' => ['admin@yiiframework.com' => 'Yii Framework'],
     'user.passwordResetTokenExpire' => 3600 * 3, // 3 hours
+    'user.rememberMeDuration' => 3600 * 24 * 30, // 30 days
 
     // cache
     'cache.extensions.search' => 300,
