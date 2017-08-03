@@ -39,12 +39,12 @@ $this->params['breadcrumbs'][] = $this->title;
                 <h3>Showcase</h3>
 
                 <div class="image">
-                    <a href="https://yiigist.com/">
+                    <a href="http://yiipowered.com/en">
                     <img src="<?= Yii::getAlias('@web/image/resources/yiipowered.png') ?>" alt="">
                     </a>
                 </div>
 
-                <h4><a href="https://yiipowered.com/en">YiiPowered</a></h4>
+                <h4><a href="http://yiipowered.com/en">YiiPowered</a></h4>
 
                 <p>Community-powered showcase of projects and websites built with Yii including OpenSource projects.</p>
 
