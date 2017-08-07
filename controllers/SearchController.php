@@ -6,6 +6,7 @@ use app\components\packagist\Package;
 use app\components\packagist\PackagistApi;
 use app\models\SearchActiveRecord;
 use Yii;
+use yii\helpers\Json;
 use yii\helpers\Url;
 use yii\web\Response;
 use yii\data\ActiveDataProvider;
@@ -150,5 +151,34 @@ class SearchController extends Controller
             $languages = array_merge($languages, $l);
         }
         return $languages;
+    }
+
+    public function actionOpensearchSuggest($q)
+    {
+        $query = SearchActiveRecord::searchAsYouType($q, null, null);
+        $query->fields(['title']);
+        $results = $query->search()['hits']['hits'];
+
+        Yii::$app->response->format = Response::FORMAT_RAW;
+        Yii::$app->response->headers->add('Content-Type', 'application/x-suggestions+json');
+
+        $searchTerms = [];
+        $descriptions = [];
+        $queryURLs = [];
+
+        foreach ($results as $result) {
+            $searchTerms[] = $result->title;
+            $descriptions[] = $result->title;
+            $queryURLs[] = Url::toRoute(['search/global', 'q' => $result->title]);
+        }
+
+        return Json::encode([$q, $searchTerms, $descriptions, $queryURLs], JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE);
+    }
+
+    public function actionOpensearchDescription()
+    {
+        Yii::$app->response->format = Response::FORMAT_RAW;
+        Yii::$app->response->headers->add('Content-Type', 'application/xml');
+        return $this->renderPartial('opensearch-description');
     }
 }

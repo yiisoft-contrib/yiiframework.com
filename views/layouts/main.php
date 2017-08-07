@@ -10,6 +10,12 @@ AppAsset::register($this);
 /* @var $this \yii\web\View */
 /* @var $content string */
 
+$this->registerLinkTag([
+    'rel' => 'search',
+    'type' => 'application/opensearchdescription+xml',
+    'title' => 'Yii Search',
+    'href' => Url::toRoute(['search/opensearch-description']),
+]);
 ?>
 <?php $this->beginPage() ?>
 <!DOCTYPE html>

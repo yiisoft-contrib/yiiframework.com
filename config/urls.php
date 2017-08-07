@@ -57,6 +57,8 @@ return [
     'search/suggest' => 'search/suggest',
     'search/as-you-type' => 'search/as-you-type',
     'search/extension' => 'search/extension',
+    'search/opensearch-suggest' => 'search/opensearch-suggest',
+    'opensearch.xml' => 'search/opensearch-description',
 
 	// extensions
     'extension/<vendorName:[\w\-\.]+>/<name:[\w\-\.]+>/files/<filename>' => 'extension/download',
