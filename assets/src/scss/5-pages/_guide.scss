@@ -29,6 +29,21 @@
     }
   }
 
+  ul {
+    @include rem(padding-left, 30px);
+    list-style-type: none;
+
+    li {
+      margin-bottom: 1rem;
+    }
+
+    li:before {
+      color: $eshill-green;
+      content: "■";
+      margin-right: 4pt;
+    }
+  }
+
 }
 
 .edit-box {
