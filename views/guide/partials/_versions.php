@@ -37,7 +37,7 @@ use app\models\Guide;
                     'items' => $items,
                     'options' => [
                         'class' => 'btn-group btn-group-sm'
-                        ]
+                    ]
                 ]);
             }
         } ?>

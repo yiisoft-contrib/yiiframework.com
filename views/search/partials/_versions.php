@@ -6,44 +6,75 @@
  * @var $searchQuery string
  */
 use app\widgets\DropdownList;
-use app\models\Guide;
-use yii\helpers\Html;
 
 ?>
-<nav class="version-selector" role="navigation">
-    <ul>
+<nav class="version-selector">
+    <div class="btn-group btn-group-justified">
+        <?php
+        $options = $this->context->getLanguages();
+        $languages = array_keys($options);
+        $languageItems = [];
+
+        if ($language) {
+            $languageItems[] = [
+                'label' => 'All Languages',
+                'url' => ['/search/global', 'q' => $searchQuery, 'version' => $version],
+            ];
+        }
+
+        foreach ($languages as $lang) {
+            if ($lang === $language) {
+                continue;
+            }
+
+            $url = ['/search/global', 'q' => $searchQuery, 'language' => $lang, 'version' => $version];
+
+
+
+            $languageItems[] = [
+                'label' => $this->context->getLanguages()[$lang],
+                'url' => $url,
+            ];
+        }
+        ?>
         <?= DropdownList::widget([
-            'tag' => 'li',
-            'selection' => $language ? $this->context->getLanguages()[$language] : 'Select Language',
-            'items' => array_merge(
-                $language ? [[
-                    'label' => 'All',
-                    'url' => ['/search/global', 'q' => $searchQuery, 'version' => $version],
-                ]] : [],
-                array_map(function ($language) use ($version, $searchQuery) {
-                    $url = ['/search/global', 'q' => $searchQuery, 'language' => $language, 'version' => $version];
-                    return [
-                        'label' => $this->context->getLanguages()[$language],
-                        'url' => $url,
-                    ];
-                }, array_keys($this->context->getLanguages()))
-            ),
+            'tag' => 'div',
+            'selection' => $language ? $this->context->getLanguages()[$language] : 'All Languages',
+            'items' => $languageItems,
+            'options' => [
+                'class' => 'btn-group btn-group-sm'
+            ]
         ]) ?>
+        <?php
+        $versionItems = [];
+
+        if ($version) {
+            $versionItems[] = [
+                'label' => 'All Versions',
+                'url' => ['/search/global', 'q' => $searchQuery, 'language' => $language],
+            ];
+        }
+
+        foreach ($this->context->getVersions() as $ver) {
+            if ($version === $ver) {
+                continue;
+            }
+
+            $url = ['/search/global', 'q' => $searchQuery, 'language' => $language, 'version' => $ver];
+
+            $versionItems[] = [
+                'label' => $ver,
+                'url' => $url,
+            ];
+        }
+        ?>
         <?= DropdownList::widget([
-            'tag' => 'li',
-            'selection' => $version ?: 'Select Version',
-            'items' => array_merge($version ? [[
-                    'label' => 'All',
-                    'url' => ['/search/global', 'q' => $searchQuery, 'language' => $language],
-                ]] : [],
-                array_map(function ($version) use ($language, $searchQuery) {
-                    $url = ['/search/global', 'q' => $searchQuery, 'language' => $language, 'version' => $version];
-                    return [
-                        'label' => $version,
-                        'url' => $url,
-                    ];
-                }, $this->context->getVersions())
-            ),
+            'tag' => 'div',
+            'selection' => $version ?: 'All Versions',
+            'items' => $versionItems,
+            'options' => [
+                'class' => 'btn-group btn-group-sm'
+            ]
         ]) ?>
-    </ul>
+    </div>
 </nav>

@@ -4,6 +4,8 @@
 use app\models\SearchApiPrimitive;
 use app\models\SearchApiType;
 use app\models\SearchGuideSection;
+use yii\helpers\Html;
+use yii\helpers\StringHelper;
 use yii\helpers\Url;
 
 /* @var $model app\models\ApiType|app\models\SearchApiPrimitive */
@@ -11,29 +13,22 @@ use yii\helpers\Url;
 ?>
 <div class="search-result">
     <div class="row">
-        <!--div class="col-sm-5"><img src="image/image_01.jpg" class="img-responsive" alt=""></div-->
-
         <div class="col-sm-12">
             <h3>
-                <a href="<?= Url::to($model->getUrl()) ?>">
-                    <?php if ($model instanceof SearchApiType) {
+                <a href="<?= Url::to($model->getUrl()) ?>" class="title"><?php
+                    if ($model instanceof SearchApiType) {
                         echo $model->name; // TODO add extends, implements, uses etc..
                     } elseif ($model instanceof SearchApiPrimitive) {
                         echo $model->definedBy . '::' . $model->name;
                     } elseif ($model instanceof SearchGuideSection) {
                         echo $model->title;
-                    } ?>
-                    <span class="label label-warning"><?= $model->type ?></span>
-                    <span class="label label-info"><?= $model->version ?></span>
-                    <?php if (isset($model->language)): ?>
-                        <span class="label label-success"><?= $model->language ?></span>
-                    <?php endif; ?>
-                </a>
-
-                <span class="pull-right">
-
-
-                </span>
+                    }
+                ?></a>
+                <a href="<?= Url::to($model->getUrl()) ?>" class="label label-warning"><?= $model->type ?></a>
+                <a href="<?= Url::to($model->getUrl()) ?>" class="label label-info"><?= $model->version ?></a>
+                <?php if (isset($model->language)): ?>
+                    <a href="<?= Url::to($model->getUrl()) ?>" class="label label-success"><?= $model->language ?></a>
+                <?php endif; ?>
             </h3>
             <?php
                 $highlight = $model->getHighlight();
@@ -45,13 +40,13 @@ use yii\helpers\Url;
                     if (!empty($highlight['shortDescription'])) {
                         echo '<p><strong>' . reset($highlight['shortDescription']) . '</strong></p>';
                     } else {
-                        echo '<p><strong>' . $model->shortDescription . '</strong></p>';
+                        echo '<p><strong>' . Html::encode($model->shortDescription) . '</strong></p>';
                     }
                     if (!in_array($model->type, ['property', 'const', 'event'])) {
                         if (!empty($highlight['description'])) {
                             echo '<p>...' . implode('...', $highlight['description']) . '...</p>';
                         } else {
-                            echo '<p>' . \yii\helpers\StringHelper::truncateWords($model->description, 100) . '</p>';
+                            echo '<p>' . Html::encode(StringHelper::truncateWords($model->description, 100)) . '</p>';
                         }
                     }
                 }
