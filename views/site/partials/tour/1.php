@@ -17,7 +17,6 @@
 
                 <ul>
                     <li>Install Composer</li>
-                    <li>Install assets plugin</li>
                     <li>Get basic project template</li>
                     <li>Run <kbd>./yii serve</kbd></li>
                 </ul>
