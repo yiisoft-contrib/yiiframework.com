@@ -26,17 +26,17 @@ renderResultList = function(resultName, limit) {
 
     var html = '';
     var limitHtml = '';
-    if (limit != '') {
+    if (limit) {
         limitHtml = '<span class="search-limit">' + limit + '</span>';
     }
 
     html += '<div class="result-head">' + searchResultCache[resultName].title + limitHtml + '</div>';
     if (searchResultCache[resultName].fetched) {
         html += '<ul>';
-        if (searchResultCache[resultName].data.length == 0) {
-            html += '<li><p>No results.</p></li>';
-        } else {
+        if (searchResultCache[resultName].data.length) {
             html += '<li>' + searchResultCache[resultName].data.join('</li><li>') + '</li>';
+        } else {
+            html += '<li><p>No results.</p></li>';
         }
         html += '</ul>';
     } else {
@@ -44,7 +44,7 @@ renderResultList = function(resultName, limit) {
     }
 
     return html;
-}
+};
 
 updateSearchResults = function() {
     var $results = $('#search-resultbox');
@@ -68,7 +68,9 @@ updateSearchResults = function() {
 
     html += renderResultList('api', apiLimit);
     html += renderResultList('guide', guideLimit);
-    html += renderResultList('forum', '');
+
+    // TODO: display when forum search is there
+    //html += renderResultList('forum', '');
     html += renderResultList('extension', '');
 
     $results.html(html);
@@ -189,7 +191,7 @@ searchGuide = function(query) {
             url: yiiBaseUrl + '/search/as-you-type' + apiUrl,
             dataType: "json",
             success: function(data) {
-                console.log(data);
+                //console.log(data);
                 searchGuideResults[query] = [];
                 for(var i = 0; i < data.length; ++i) {
                     searchGuideResults[query].push(renderGuide(data[i], query));
