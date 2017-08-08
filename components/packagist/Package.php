@@ -191,15 +191,15 @@ class Package
      */
     public static function createFromAPIData($data)
     {
+
         $package = new static();
 
         if (array_key_exists('name', $data)) {
             if (!preg_match('/^([\w\-\.]+)\/([\w\-\.]+)$/i', $data['name'], $matches)) {
                 return null;
-            } else {
-                $package->vendorName = $matches[1];
-                $package->packageName = $matches[2];
             }
+            $package->vendorName = $matches[1];
+            $package->packageName = $matches[2];
         }
 
         if (array_key_exists('time', $data)) {
@@ -207,13 +207,16 @@ class Package
 //            $package->updatedAt = strtotime($data['time']);
         }
 
-        $version = static::getLatestVersion($data['versions']);
-        $lastVersion = $data['versions'][$version];
-        $package->license = $lastVersion['license'];
-        $package->updatedAt = strtotime($lastVersion['time']);
-        $package->license = $lastVersion['license'];
-        $package->description = $lastVersion['description'];
-        $package->yii_version = static::determineYiiVersion($data['versions']);
+        if (array_key_exists('versions', $data)) {
+            $version = static::getLatestVersion($data['versions']);
+            $lastVersion = $data['versions'][$version];
+            $package->license = $lastVersion['license'];
+            $package->updatedAt = strtotime($lastVersion['time']);
+            $package->license = $lastVersion['license'];
+            $package->description = $lastVersion['description'];
+            $package->yii_version = static::determineYiiVersion($data['versions']);
+        }
+
         // TODO maintainers
 
 
