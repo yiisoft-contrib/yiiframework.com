@@ -69,7 +69,7 @@ yii-1.0:
 yii-1.1: composer
 	test -d data/yii-1.1 || git clone https://github.com/yiisoft/yii.git data/yii-1.1
 	cd data/yii-1.1 && git pull
-	cd data/yii-1.1 && (grep "phpunit/phpunit" composer.json > /dev/null || php ../composer.phar require --dev --prefer-dist "phpunit/phpunit:~3.7" "phpunit/phpunit-selenium:~1.4.0")
+	cd data/yii-1.1 && (grep "phpunit/phpunit" composer.lock > /dev/null || php ../composer.phar require --dev --prefer-dist "phpunit/phpunit:~3.7" "phpunit/phpunit-selenium:~1.4.0")
 
 yii-2.0:
 	test -d data/yii-2.0 || git clone https://github.com/yiisoft/yii2.git data/yii-2.0
