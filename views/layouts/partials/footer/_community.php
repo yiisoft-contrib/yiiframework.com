@@ -11,7 +11,7 @@ use yii\helpers\Html;
         <?= Html::a('Forum', '@web/forum') ?>
     </li>
     <li class="footerList_item">
-        <?= Html::a('IRC (Live Chat)', ['site/chat']) ?>
+        <?= Html::a('Live Chat', ['site/chat']) ?>
     </li>
 <?php /*
     <li class="footerList_item">
