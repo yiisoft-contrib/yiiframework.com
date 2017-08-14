@@ -159,7 +159,7 @@ class Star extends ActiveRecord
     public static function getFollowers($model)
     {
         $class = $model->formName();
-        return User::find()->where([
+        return User::find()->active()->andWhere([
             'id' => Star::find()
                 ->select('user_id')
                 ->where(['star' => 1, 'object_type' => $class, 'object_id' => (int)$model->primaryKey])
@@ -175,10 +175,7 @@ class Star extends ActiveRecord
      */
     public static function getFollowerCount($model)
     {
-        return static::find()->where([
-            'object_type' => $model->formName(),
-            'object_id' => (int) $model->primaryKey,
-        ])->count();
+        return static::getFollowers($model)->count();
     }
 
     /**

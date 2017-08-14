@@ -46,7 +46,7 @@ class UserController extends Controller
     public function actionIndex()
     {
         $dataProvider = new ActiveDataProvider([
-            'query' => User::find(),
+            'query' => User::find()->active(),
             'pagination' => [
                 'pageSize' => 50,
             ],
@@ -118,7 +118,7 @@ class UserController extends Controller
         $model = $this->findModel($id);
         return $this->render('view', [
             'model' => $model,
-            'userCount' => User::find()->count(),
+            'userCount' => User::find()->active()->count(),
             'wikis' => $model->getWikis()->orderBy('title')->active()->all() ,
             'extensions' => $model->getExtensions()->orderBy('name')->active()->all(),
         ]);
@@ -188,7 +188,7 @@ class UserController extends Controller
      */
     protected function findModel($id)
     {
-        if (($model = User::findOne($id)) !== null) {
+        if (($model = User::find()->active()->andWhere(['id' => $id])->one()) !== null) {
             return $model;
         }
         throw new NotFoundHttpException('The requested page does not exist.');

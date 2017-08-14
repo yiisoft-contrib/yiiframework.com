@@ -2,14 +2,41 @@
 
 namespace app\commands;
 
+use app\models\Comment;
+use app\models\Extension;
+use app\models\User;
+use app\models\Wiki;
+use app\models\WikiRevision;
 use yii\console\Controller;
 use Yii;
-use yii\helpers\ArrayHelper;
+use yii\helpers\Console;
 
 class UserController  extends Controller
 {
     /**
-     * Calculate member ranking
+     * @var bool whether to show a progress bar.
+     */
+    public $progress = false;
+
+
+    public function options($actionID)
+    {
+        if ($actionID === 'ranking') {
+            return array_merge(parent::options($actionID), ['progress']);
+        }
+        return parent::options($actionID);
+    }
+
+    /**
+     * Calculate member ranking.
+     *
+     * This action should be configured as a daily cronjob.
+     *
+     * For an interactive ouput with progress bar, call it like:
+     *
+     * ```
+     * yii user/ranking --progress
+     * ```
      *
      * member rating formula:
      *
@@ -31,61 +58,91 @@ class UserController  extends Controller
      */
     public function actionRanking()
     {
-        // TODO review code and make sure it works
-        // TODO depends on extensoins and wiki to be ready
-
         $db = Yii::$app->db;
-//        $lastMemberTime = strtotime($db->createCommand('SELECT MAX(created_at) FROM {{%user}}')->queryScalar())-3600*50;
 
-        // insert new users into tbl_user
-//        $members = $db->createCommand("SELECT member_id, name, members_display_name, posts, joined, last_visit FROM ipb_members WHERE joined>$lastMemberTime")->queryAll();
-//        foreach($members as $member)
-//        {
-//            if(User::model()->exists('id='.$member['member_id']))
-//                continue;
-//            $model=new User;
-//            $model->id=$member['member_id'];
-//            $model->username=$member['name'];
-//            $model->display_name=$member['members_display_name'];
-//            $model->register_time=$member['joined'];
-//            $model->login_time=$member['last_visit'];
-//            $model->save(false);
-//        }
+        $extensionScores = Extension::find()
+            ->active()
+            ->select(['score' => 'SUM(rating+0.1)*10'])
+            ->groupBy('owner_id')
+            ->indexBy('owner_id')
+            ->column($db);
+        $wikiScores = Wiki::find()
+            ->active()
+            ->select(['score' => 'SUM(rating+0.1)*20'])
+            ->groupBy('creator_id')
+            ->indexBy('creator_id')
+            ->column($db);
+        $commentScores = Comment::find()
+            ->active()
+            ->select(['score' => 'COUNT(*)'])
+            ->groupBy('user_id')
+            ->indexBy('user_id')
+            ->column($db);
+        $revisionScore = WikiRevision::find()
+            ->select(['score' => 'COUNT(*)*0.5'])
+            ->groupBy('updater_id')
+            ->indexBy('updater_id')
+            ->column($db);
 
-        $extensionScores = ArrayHelper::map($db->createCommand('SELECT owner_id, SUM(rating+0.1)*10 AS score FROM {{%extension}} WHERE status=3 GROUP BY owner_id')->queryAll(),'owner_id','score');
-        $wikiScores=ArrayHelper::map($db->createCommand('SELECT creator_id, SUM(rating+0.1)*20 AS score FROM {{%wiki}} WHERE status=3 GROUP BY creator_id')->queryAll(),'creator_id','score');
-        $commentScores=ArrayHelper::map($db->createCommand('SELECT creator_id, COUNT(*) AS score FROM {{%comment}} WHERE status=3 GROUP BY creator_id')->queryAll(),'creator_id','score');
-        $revisionScore=ArrayHelper::map($db->createCommand('SELECT updater_id, COUNT(*)*0.5 AS score FROM {{%wiki_revision}} GROUP BY updater_id')->queryAll(),'updater_id','score');
+        $extensionCounts = Extension::find()
+            ->active()
+            ->select(['score' => 'COUNT(*)'])
+            ->groupBy('owner_id')
+            ->indexBy('owner_id')
+            ->column($db);
+        $wikiCounts = Wiki::find()
+            ->active()
+            ->select(['score' => 'COUNT(*)'])
+            ->groupBy('creator_id')
+            ->indexBy('creator_id')
+            ->column($db);
+        // TODO forum connection
+//        $postCounts=ArrayHelper::map($db->createCommand('SELECT member_id, posts FROM ipb_members')->queryAll(),'member_id','posts');
+        $postCounts = [];
 
-        $extensionCounts=ArrayHelper::map($db->createCommand('SELECT owner_id, COUNT(*) AS score FROM {{%extension}} WHERE status=3 GROUP BY owner_id')->queryAll(),'owner_id','score');
-        $wikiCounts=ArrayHelper::map($db->createCommand('SELECT creator_id, COUNT(*) AS score FROM {{%wiki}} WHERE status=3 GROUP BY creator_id')->queryAll(),'creator_id','score');
-        $postCounts=ArrayHelper::map($db->createCommand('SELECT member_id, posts FROM ipb_members')->queryAll(),'member_id','posts');
+        $users = User::find()->asArray();
+        //$users = $db->createCommand('SELECT t.id, t.rating, t.post_count, t.wiki_count, t.extension_count, t.comment_count, f.last_visit, f.joined, f.posts FROM {{%user}} t, ipb_members f WHERE t.id=f.member_id')->queryAll();
+        $updateCommand = $db->createCommand("UPDATE {{%user}} SET rating=:rating, post_count=:posts, extension_count=:extensions, comment_count=:comments, wiki_count=:wiki WHERE id=:id");
+        if ($this->progress) {
+            Console::startProgress($i = 0, $c = $users->count(), 'Calculating user ratings...');
+        }
+        foreach($users->each(500, $db) as $user) {
+            $id = $user['id'];
 
-        $users=$db->createCommand('SELECT t.id, t.rating, t.post_count, t.wiki_count, t.extension_count, t.comment_count, f.last_visit, f.joined, f.posts FROM {{%user}} t, ipb_members f WHERE t.id=f.member_id')->queryAll();
-        $command=$db->createCommand("UPDATE {{%user}} SET rating=:rating, post_count=:posts, extension_count=:extensions, comment_count=:comments, wiki_count=:wiki WHERE id=:id");
-        foreach($users as $user)
-        {
-            $id=$user['id'];
-            $rating=$user['posts']/10;
-            if($user['last_visit']>$user['joined'] && $user['joined'])
-                $rating+=($user['last_visit']-$user['joined'])/(24*3600*30);
-            if(isset($extensionScores[$id]))
-                $rating+=$extensionScores[$id];
-            if(isset($wikiScores[$id]))
-                $rating+=$wikiScores[$id];
-            if(isset($commentScores[$id]))
-                $rating+=$commentScores[$id];
-            if(isset($revisionScore[$id]))
-                $rating+=$revisionScore[$id];
-            $rating=(int)$rating;
-            $comments=isset($commentScores[$id])?$commentScores[$id]:0;
-            $wiki=isset($wikiCounts[$id])?$wikiCounts[$id]:0;
-            $extensions=isset($extensionCounts[$id])?$extensionCounts[$id]:0;
-            $posts=isset($postCounts[$id])?$postCounts[$id]:0;
+            $posts = isset($postCounts[$id]) ? $postCounts[$id] : 0;
+            $rating = $posts / 10;
 
-            if($user['rating']!=$rating || $user['post_count']!=$posts || $user['wiki_count']!=$wiki || $user['extension_count']!=$extensions || $user['comment_count']!=$comments)
+            $lastLogin = strtotime($user['login_time']);
+            $joined = strtotime($user['created_at']);
+            if ($lastLogin > $joined && $joined) {
+                $rating += ($lastLogin - $joined) / (24 * 3600 * 30);
+            }
+            if (isset($extensionScores[$id])) {
+                $rating += $extensionScores[$id];
+            }
+            if (isset($wikiScores[$id])) {
+                $rating += $wikiScores[$id];
+            }
+            if (isset($commentScores[$id])) {
+                $rating += $commentScores[$id];
+            }
+            if (isset($revisionScore[$id])) {
+                $rating += $revisionScore[$id];
+            }
+            $rating = (int) $rating;
+            $comments = isset($commentScores[$id]) ? $commentScores[$id] : 0;
+            $wiki = isset($wikiCounts[$id]) ? $wikiCounts[$id] : 0;
+            $extensions = isset($extensionCounts[$id]) ? $extensionCounts[$id] : 0;
+            $posts = isset($postCounts[$id]) ? $postCounts[$id] : 0;
+
+            // update only if something has changed
+            if ($user['rating'] != $rating ||
+                $user['post_count'] != $posts ||
+                $user['wiki_count'] != $wiki ||
+                $user['extension_count'] != $extensions ||
+                $user['comment_count'] != $comments)
             {
-                $command
+                $updateCommand
                     ->bindValue(':rating',$rating)
                     ->bindValue(':posts',$posts)
                     ->bindValue(':wiki',$wiki)
@@ -94,16 +151,38 @@ class UserController  extends Controller
                     ->bindValue(':id',$id)
                     ->execute();
             }
+            if ($this->progress) {
+                Console::updateProgress(++$i, $c);
+            }
+        }
+        if ($this->progress) {
+            Console::endProgress();
         }
 
-        $users=$db->createCommand('SELECT id, rank FROM tbl_user ORDER BY rating DESC')->queryAll();
-        $command=$db->createCommand('UPDATE tbl_user SET rank=:rank WHERE id=:id');
-        foreach($users as $i=>$user)
-        {
-            $id=$user['id'];
-            $rank=$i+1;
-            if($rank!=$user['rank'])
-                $command->bindValue(':rank',$rank)->bindValue(':id',$id)->execute();
+        $users = User::find()
+            ->active()
+            ->select(['id', 'rank'])
+            ->orderBy(['rating' => SORT_DESC])
+            ->asArray()->all($db);
+        $updateCommand = $db->createCommand('UPDATE {{%user}} SET rank=:rank WHERE id=:id');
+        if ($this->progress) {
+            Console::startProgress($i = 0, $c = count($users), 'Updating user ranks...');
+        }
+        foreach($users as $i => $user) {
+            $id = $user['id'];
+            $rank = $i + 1;
+            if ($rank != $user['rank']) {
+                $updateCommand
+                    ->bindValue(':rank', $rank)
+                    ->bindValue(':id', $id)
+                    ->execute();
+            }
+            if ($this->progress) {
+                Console::updateProgress(++$i, $c);
+            }
+        }
+        if ($this->progress) {
+            Console::endProgress();
         }
     }
 }
