@@ -5,11 +5,12 @@ namespace app\controllers;
 use app\models\Guide;
 use Yii;
 use yii\filters\HttpCache;
-use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 
-class GuideController extends Controller
+class GuideController extends BaseController
 {
+    public $sectionTitle = 'The Definitive Guide to Yii';
+
     public function actionIndex($version, $language, $type = 'guide')
     {
         // normalize language, old yii 1.1 docs have _ in locale
@@ -19,6 +20,7 @@ class GuideController extends Controller
             if ($normalizedLanguage !== $language) {
                 $this->redirect(['index', 'language' => $normalizedLanguage, 'version' => $version, 'type' => $type]);
             }
+            $this->sectionTitle = $guide->title;
             return $this->render('index', ['guide' => $guide]);
         }
 
@@ -32,6 +34,8 @@ class GuideController extends Controller
         if ($guide && $normalizedLanguage !== $language) {
             $this->redirect(['view', 'language' => $normalizedLanguage, 'version' => $version, 'section' => $section, 'type' => $type]);
         }
+
+        $this->sectionTitle = $guide->title;
 
         if ($guide && ($section = $guide->loadSection($section))) {
             return $this->render('view', [

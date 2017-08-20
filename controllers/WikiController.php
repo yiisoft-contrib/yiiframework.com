@@ -13,13 +13,14 @@ use Yii;
 use yii\data\ActiveDataProvider;
 use yii\filters\AccessControl;
 use yii\filters\VerbFilter;
-use yii\web\Controller;
 use yii\web\ForbiddenHttpException;
 use yii\web\NotFoundHttpException;
 use yii\web\Response;
 
-class WikiController extends Controller
+class WikiController extends BaseController
 {
+    public $sectionTitle = 'Yii Framework Wiki';
+
     /**
      * @inheritdoc
      */

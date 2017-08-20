@@ -11,10 +11,9 @@ use yii\helpers\Url;
 use yii\web\Response;
 use yii\data\ActiveDataProvider;
 use yii\elasticsearch\Command;
-use yii\web\Controller;
-use yii\web\NotFoundHttpException;
 
-class SearchController extends Controller
+
+class SearchController extends BaseController
 {
     public $searchQuery;
 

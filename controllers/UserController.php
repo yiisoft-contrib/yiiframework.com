@@ -11,14 +11,15 @@ use Yii;
 use app\models\User;
 use yii\data\ActiveDataProvider;
 use yii\filters\AccessControl;
-use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 
 /**
  * UserController implements the CRUD actions for User model.
  */
-class UserController extends Controller
+class UserController extends BaseController
 {
+    public $sectionTitle = 'Yii Framework Community';
+
     /**
      * @inheritdoc
      */
@@ -126,6 +127,8 @@ class UserController extends Controller
 
     public function actionProfile()
     {
+        $this->sectionTitle = null;
+
         $userId = Yii::$app->user->getId();
 
         /** @var User $user */

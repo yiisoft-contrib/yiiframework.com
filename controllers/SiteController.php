@@ -7,19 +7,13 @@ use app\models\Extension;
 use app\models\News;
 use app\models\Wiki;
 use Yii;
-use yii\base\InvalidParamException;
-use yii\filters\AccessControl;
-use yii\helpers\ArrayHelper;
-use yii\web\BadRequestHttpException;
-use yii\web\Controller;
-use yii\filters\VerbFilter;
 use app\models\ContactForm;
 use yii\web\NotFoundHttpException;
 
 /**
  * SiteController serves the mostly static sites of the website.
  */
-class SiteController extends Controller
+class SiteController extends BaseController
 {
     /**
      * @inheritdoc

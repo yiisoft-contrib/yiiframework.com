@@ -18,14 +18,15 @@ use yii\filters\AccessControl;
 use yii\filters\VerbFilter;
 use yii\helpers\Html;
 use yii\queue\Queue;
-use yii\web\Controller;
 use yii\web\ForbiddenHttpException;
 use yii\web\NotFoundHttpException;
 use yii\web\Response;
 use yii\web\UploadedFile;
 
-class ExtensionController extends Controller
+class ExtensionController extends BaseController
 {
+    public $sectionTitle = 'Yii Framework Extensions';
+
     /**
      * @inheritdoc
      */

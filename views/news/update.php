@@ -7,14 +7,20 @@ use yii\widgets\ListView;
 /* @var $model app\models\News */
 
 $this->title = 'Update News: ' . $model->title;
-echo $this->render('//site/partials/common/_admin_heading.php', [
-    'title' => $this->title,
-    'menu' => [
-        ['label' => 'News Page', 'url' => ['news/index'] ],
-        ['label' => 'News Admin', 'url' => ['news/admin'] ],
-        ['label' => 'View this news', 'url' => ['news/view', 'id' => $model->id, 'name' => $model->slug] ],
-    ]
-]);
+
+if (Yii::$app->user->can('news:pAdmin')) {
+    $this->beginBlock('adminNav');
+    echo \yii\bootstrap\Nav::widget([
+        'id' => 'admin-nav',
+        'items' => [
+            ['label' => 'News Page', 'url' => ['news/index'] ],
+            ['label' => 'News Admin', 'url' => ['news/admin'] ],
+            ['label' => 'View this news', 'url' => ['news/view', 'id' => $model->id, 'name' => $model->slug] ],
+        ],
+    ]);
+    $this->endBlock();
+}
+
 ?>
 <div class="container style_external_links">
     <div class="row">

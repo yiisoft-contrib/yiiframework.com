@@ -11,14 +11,6 @@ use yii\widgets\DetailView;
 
 $this->title = 'Hi, ' . $model->username . '!';
 
-echo $this->render('//site/partials/common/_admin_heading.php', [
-    'title' => $this->title,
-    'menu' => [
-        ['label' => 'User Admin', 'url' => ['user-admin/index'], 'visible' => Yii::$app->user->can('users:pAdmin')],
-        ['label' => 'Update User', 'url' => ['user-admin/view', 'id' => $model->id], 'visible' => Yii::$app->user->can('users:pAdmin')],
-    ]
-]);
-
 ?>
 <div class="container style_external_links">
     <div class="content">

@@ -8,7 +8,6 @@ use app\models\News;
 use app\models\NewsSearch;
 use yii\data\ActiveDataProvider;
 use yii\filters\AccessControl;
-use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 use yii\web\Response;
@@ -16,8 +15,10 @@ use yii\web\Response;
 /**
  * NewsController implements the CRUD actions for News model.
  */
-class NewsController extends Controller
+class NewsController extends BaseController
 {
+    public $sectionTitle = 'Yii Framework News';
+
     /**
      * @inheritdoc
      */

@@ -1,5 +1,6 @@
 <?php
 
+use app\controllers\BaseController;
 use yii\helpers\Html;
 use yii\bootstrap\Nav;
 use yii\helpers\Url;
@@ -93,7 +94,7 @@ $this->registerLinkTag([
                             'dropDownCaret' => '<span class="caret"></span>',
                             'items' => [
                                 ['label' => 'Guide', 'url' => ['guide/entry'], 'options' => ['title' => 'The Definitive Guide to Yii'], 'active' => ($controller == 'guide')],
-                                ['label' => 'API', 'url' => ['api/index', 'version' => reset(Yii::$app->params['versions']['api'])], 'options' => ['title' => 'API Documentation'], 'active' => ($controller == 'api')],
+                                ['label' => 'API', 'url' => ['api/entry'], 'options' => ['title' => 'API Documentation'], 'active' => ($controller == 'api')],
                                 ['label' => 'Wiki', 'url' => ['wiki/index'], 'options' => ['title' => 'Community Wiki'], 'active' => ($controller == 'wiki')],
                                 ['label' => 'Extensions', 'url' => ['extension/index'], 'options' => ['title' => 'Extensions']],
                                 ['label' => 'Community', 'items' => [
@@ -159,6 +160,8 @@ $this->registerLinkTag([
                     </div>
                 </div>
             </header>
+
+            <?= $this->context instanceof BaseController && isset($this->context->sectionTitle) ? $this->render('partials/_sectionHeader', ['title' => $this->context->sectionTitle]) : ''; ?>
 
             <?= \app\widgets\Alert::widget() ?>
             <?= $content ?>

@@ -7,21 +7,12 @@ use yii\helpers\Html;
 
 $this->title = $guide->title;
 $blocksPerRow = 4;
+
+$this->beginBlock('contentSelectors');
+echo $this->render('partials/_versions.php', ['guide' => $guide, 'section' => null]);
+$this->endBlock();
+
 ?>
-<div class="guide-header-wrap">
-    <div class="container guide-header lang-<?= $guide->language ?>" xmlns="http://www.w3.org/1999/xhtml">
-        <div class="row">
-            <div class="col-xs-12 col-sm-12 col-md-12">
-                <div class="guide-headline"><?= Html::encode($guide->title) ?></div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-sm-12 col-md-offset-7 col-md-5">
-                <?= $this->render('partials/_versions.php', ['guide' => $guide, 'section' => null]) ?>
-            </div>
-        </div>
-    </div>
-</div>
 <div class="container guide-view lang-<?= $guide->language ?>">
     <div class="guide-content content">
 

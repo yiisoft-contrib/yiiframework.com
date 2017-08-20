@@ -7,16 +7,9 @@ use yii\widgets\ListView;
 /* @var $model app\models\Wiki */
 
 $this->title = 'Create Exension';
-echo $this->render('//site/partials/common/_admin_heading.php', [
-    'title' => $this->title,
-//    'menu' => [
-//        ['label' => 'News Page', 'url' => ['news/index'] ],
-//        ['label' => 'News Admin', 'url' => ['news/admin'] ],
-//        ['label' => 'Create News', 'url' => ['news/create'], 'active' => true ],
-//    ]
-]);
+
 ?>
-<div class="container guide-view lang-en" xmlns="http://www.w3.org/1999/xhtml">
+<div class="container">
     <div class="row">
         <div class="col-sm-3 col-md-2 col-lg-2">
             <?= $this->render('_sidebar', [
@@ -26,6 +19,8 @@ echo $this->render('//site/partials/common/_admin_heading.php', [
         </div>
 
         <div class="col-sm-9 col-md-10 col-lg-10" role="main">
+
+            <h1>Create an Extension</h1>
 
             <?= $this->render('_form', [
                 'model' => $model,

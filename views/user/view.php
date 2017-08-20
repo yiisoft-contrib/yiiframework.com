@@ -12,19 +12,26 @@ use yii\widgets\DetailView;
 
 $this->title = $model->display_name . "'s profile";
 
-echo $this->render('//site/partials/common/_admin_heading.php', [
-    'title' => $this->title,
-    'menu' => [
-        ['label' => 'User Admin', 'url' => ['user-admin/index'], 'visible' => Yii::$app->user->can('users:pAdmin') ],
-        ['label' => 'Update User', 'url' => ['user-admin/view', 'id' => $model->id], 'visible' => Yii::$app->user->can('users:pAdmin') ],
-    ]
-]);
+if (Yii::$app->user->can('users:pAdmin')) {
+    $this->beginBlock('adminNav');
+    echo \yii\bootstrap\Nav::widget([
+        'id' => 'admin-nav',
+        'items' => [
+            ['label' => 'User Admin', 'url' => ['user-admin/index'], 'visible' => Yii::$app->user->can('users:pAdmin') ],
+            ['label' => 'Update User', 'url' => ['user-admin/view', 'id' => $model->id], 'visible' => Yii::$app->user->can('users:pAdmin') ],
+        ],
+    ]);
+    $this->endBlock();
+}
 
 $this->registerMetaTag(['name' => 'keywords', 'value' => 'yii framework, community, members']);
 
 ?>
 <div class="container style_external_links">
     <div class="content">
+
+        <h1><?= Html::encode($this->title) ?></h1>
+
         <?= DetailView::widget([
             'model' => $model,
             'attributes' => [

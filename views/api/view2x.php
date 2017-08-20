@@ -22,21 +22,12 @@ $this->title = "API Documentation for Yii $version";
 if (!empty($title)) {
     $this->title = "$title - $this->title";
 }
+
+$this->beginBlock('contentSelectors');
+echo $this->render('partials/_versions.php', compact('version', 'versions', 'section'));
+$this->endBlock();
+
 ?>
-<div class="guide-header-wrap">
-    <div class="container guide-header">
-        <div class="row">
-            <div class="col-xs-12 col-sm-12 col-md-12">
-                <div class="guide-headline h1">API Documentation for Yii <?= $version ?></div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-sm-12 col-md-offset-7 col-md-5">
-                <?= $this->render('partials/_versions.php', compact('version', 'versions', 'section')) ?>
-            </div>
-        </div>
-    </div>
-</div>
 <div class="container api-content">
     <div class="row visible-xs">
         <div class="col-md-12">
