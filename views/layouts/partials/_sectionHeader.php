@@ -10,18 +10,18 @@ use yii\bootstrap\Html;
 ?>
 <div class="section-header-wrap">
     <div class="container section-header lang-<?= isset($language) ? $language : 'en' ?>">
-        <div class="row">
+        <div class="row headline-row">
             <div class="col-xs-12 col-md-7">
                 <div class="section-headline"><?= Html::encode($title) ?></div>
             </div>
             <?php if (!empty($this->blocks['adminNav'])): ?>
-                <div class="col-xs-12 col-md-5 admin-header">
+                <div class="col-xs-12 col-md-5 admin-nav">
                     <?= $this->blocks['adminNav'] ?>
                 </div>
             <?php endif; ?>
         </div>
         <?php if (!empty($this->blocks['contentSelectors'])): ?>
-        <div class="row">
+        <div class="row content-selector-row">
             <div class="col-xs-12 col-md-offset-7 col-md-5">
                 <?= $this->blocks['contentSelectors'] ?>
             </div>
