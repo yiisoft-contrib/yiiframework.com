@@ -67,4 +67,13 @@ page content, which is usually the page title on the left, illustrated by an ico
 Page titles
 -----------
 
-TBD
+HTML `<title>` content is generated base on the nesting of pages.
+The front page will have its own title: `Yii: the fast, secure, and efficient PHP framework`.
+All other pages will end the title in `Yii PHP Framework`.
+The title will be prefixed by the name of the page section if any and the page headline. e.g.
+
+```
+The definitive Guide to Yii | Yii PHP Framework
+Some cool article | Wiki | Yii PHP Framework
+...
+```

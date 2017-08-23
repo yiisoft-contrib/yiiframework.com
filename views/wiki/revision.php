@@ -9,8 +9,8 @@ use yii\helpers\Html;
 /** @var $right WikiRevision */
 
 
-$this->title = 'Wiki - ' . $model->title . ' - Compare Revisions';
-$this->params['breadcrumbs'][] = $this->title;
+$this->title = $model->title . ' | Compare Revisions';
+
 ?>
 <div class="container guide-view lang-en" xmlns="http://www.w3.org/1999/xhtml">
     <div class="row">

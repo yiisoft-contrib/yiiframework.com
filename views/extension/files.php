@@ -15,9 +15,8 @@ use yii\helpers\Html;
 
  */
 
-$this->title = 'Files of Extension - ' . $model->name;
-$this->params['breadcrumbs'][] = $this->title;
-$this->params['breadcrumbs'][] = 'Downloads';
+$this->title = "$model->name | Downloads";
+
 ?>
 <div class="container">
     <div class="row">

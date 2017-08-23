@@ -6,8 +6,7 @@ use yii\helpers\Html;
 /** @var $revision int */
 
 
-$this->title = 'Extension - ' . $model->name;
-$this->params['breadcrumbs'][] = $this->title;
+$this->title = $model->name;
 
 ?>
 <div class="container guide-view lang-en">

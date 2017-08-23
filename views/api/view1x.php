@@ -23,7 +23,7 @@ $this->registerJs("
 ");
 
 
-$this->title = Html::encode((!empty($title) ? "$title - " : '') .  "API Documentation for Yii $version");
+$this->title = (!empty($title) ? "$title | " : '') .  "API Documentation for Yii $version";
 
 $this->beginBlock('contentSelectors');
 echo $this->render('partials/_versions.php', compact('version', 'versions', 'section'));

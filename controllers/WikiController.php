@@ -20,6 +20,7 @@ use yii\web\Response;
 class WikiController extends BaseController
 {
     public $sectionTitle = 'Yii Framework Wiki';
+    public $headTitle = 'Wiki';
 
     /**
      * @inheritdoc

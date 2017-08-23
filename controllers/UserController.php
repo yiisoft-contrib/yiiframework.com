@@ -19,6 +19,7 @@ use yii\web\NotFoundHttpException;
 class UserController extends BaseController
 {
     public $sectionTitle = 'Yii Framework Community';
+    public $headTitle = 'Community';
 
     /**
      * @inheritdoc

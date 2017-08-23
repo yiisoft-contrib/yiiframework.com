@@ -6,7 +6,7 @@ use yii\widgets\ListView;
 /* @var $this yii\web\View */
 /* @var $model app\models\Wiki */
 
-$this->title = 'Create Exension';
+$this->title = 'Create an Exension';
 
 ?>
 <div class="container">
@@ -20,7 +20,7 @@ $this->title = 'Create Exension';
 
         <div class="col-sm-9 col-md-10 col-lg-10" role="main">
 
-            <h1>Create an Extension</h1>
+            <h1><?= Html::encode($this->title) ?></h1>
 
             <?= $this->render('_form', [
                 'model' => $model,

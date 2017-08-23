@@ -26,6 +26,7 @@ use yii\web\UploadedFile;
 class ExtensionController extends BaseController
 {
     public $sectionTitle = 'Yii Framework Extensions';
+    public $headTitle = 'Extensions';
 
     /**
      * @inheritdoc

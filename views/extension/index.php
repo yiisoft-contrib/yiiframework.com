@@ -8,7 +8,6 @@ use yii\helpers\Html;
 
 
 $this->title = 'Extensions';
-$this->params['breadcrumbs'][] = $this->title;
 
 $this->beginBlock('contentSelectors');
 echo 'TODO add version selector';

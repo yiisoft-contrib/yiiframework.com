@@ -6,7 +6,7 @@ use yii\widgets\ListView;
 /* @var $this yii\web\View */
 /* @var $model app\models\Extension */
 
-$this->title = 'Update Extension ' . Html::encode($model->name);
+$this->title = 'Update Extension ' . $model->name;
 
 ?>
 <div class="container guide-view lang-en" xmlns="http://www.w3.org/1999/xhtml">

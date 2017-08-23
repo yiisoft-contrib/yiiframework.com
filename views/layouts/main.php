@@ -45,7 +45,22 @@ $this->registerLinkTag([
         <?= Html::csrfMetaTags() ?>
         <?php $this->registerJs('yiiBaseUrl = ' . \yii\helpers\Json::htmlEncode(Yii::$app->request->getBaseUrl()), \yii\web\View::POS_HEAD); ?>
 
-        <title><?php if (!empty($this->title)): ?><?= Html::encode($this->title) ?> - <?php endif?>Yii PHP Framework</title>
+        <title><?php
+            $title = [];
+            if (!empty($this->title)) {
+                $title[] = $this->title;
+            }
+            if ($this->context instanceof BaseController) {
+                if ($this->context->headTitle !== null) {
+                    $title[] = $this->context->headTitle;
+                } elseif ($this->context->sectionTitle !== null) {
+                    $title[] = $this->context->sectionTitle;
+                }
+            }
+            $title[] = 'Yii PHP Framework';
+
+            echo Html::encode(implode(' | ', array_unique($title)));
+        ?></title>
 
         <meta property="og:site_name" content="Yii Framework" />
         <meta property="og:title" content="<?= !empty($this->title) ? Html::encode($this->title) : 'Yii Framework' ?>" />

@@ -6,8 +6,8 @@ use yii\helpers\Html;
 /** @var $model \app\models\Wiki */
 
 
-$this->title = 'Wiki';
-$this->params['breadcrumbs'][] = $this->title;
+$this->title = $model->title . ' | History';
+
 ?>
 <div class="container guide-view lang-en" xmlns="http://www.w3.org/1999/xhtml">
     <div class="row">

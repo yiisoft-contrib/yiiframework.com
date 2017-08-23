@@ -7,18 +7,11 @@ use yii\helpers\Html;
 /** @var $tag \app\models\WikiTag */
 
 
-$this->title = 'Wiki';
-
-if ($category === null) {
-    $this->title .= ' articles';
+if ($category !== null) {
+    $this->title = $category->name;
 } else {
-    $this->title .= ' ' . $category->name;
+    $this->title = 'Wiki';
 }
-
-if ($tag !== null) {
-    $this->title .= ' taggeed with "' . $tag->name . '"';
-}
-$this->params['breadcrumbs'][] = $this->title;
 
 $this->beginBlock('contentSelectors');
 echo 'TODO add version selector';
@@ -36,6 +29,15 @@ $this->endBlock();
         </div>
 
         <div class="col-sm-9 col-md-10 col-lg-10" role="main">
+
+            <h1>Wiki articles <small><?php
+                if (!empty($category)) {
+                    echo " in category " . Html::encode($category->name);
+                }
+                if ($tag !== null) {
+                    echo ' tagged with "' . Html::encode($tag->name) . '"';
+                }
+                ?></small></h1>
 
             <?= \yii\widgets\ListView::widget([
                 'dataProvider' => $dataProvider,

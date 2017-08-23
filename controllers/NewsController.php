@@ -18,6 +18,7 @@ use yii\web\Response;
 class NewsController extends BaseController
 {
     public $sectionTitle = 'Yii Framework News';
+    public $headTitle = 'News';
 
     /**
      * @inheritdoc
