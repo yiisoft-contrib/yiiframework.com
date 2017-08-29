@@ -56,7 +56,11 @@ return [
         'enablePrettyUrl' => true,
         'showScriptName' => false,
         'enableStrictParsing' => true,
-        'rules' => require __DIR__ . '/urls.php'
+        'rules' => require __DIR__ . '/urls.php',
+        'normalizer' => [
+            'class' => yii\web\UrlNormalizer::class,
+            'action' => YII_DEBUG ? \yii\web\UrlNormalizer::ACTION_REDIRECT_TEMPORARY : \yii\web\UrlNormalizer::ACTION_REDIRECT_PERMANENT,
+        ],
     ],
 
     // api and guide
