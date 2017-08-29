@@ -80,6 +80,7 @@ class SiteController extends BaseController
 
     public function actionContact()
     {
+        $this->sectionTitle = 'Contact Us';
         $model = new ContactForm();
         if ($model->load(Yii::$app->request->post()) && $model->contact(Yii::$app->params['adminEmail'])) {
             Yii::$app->session->setFlash('contactFormSubmitted');
@@ -104,6 +105,8 @@ class SiteController extends BaseController
 
     public function actionChat()
     {
+        $this->sectionTitle = 'Yii Framework Community';
+        $this->headTitle = 'Live Chat';
         return $this->render('chat');
     }
 
@@ -181,6 +184,7 @@ class SiteController extends BaseController
 
     public function actionLogo()
     {
+        $this->sectionTitle = 'Official Logos';
         return $this->render('logo');
     }
 

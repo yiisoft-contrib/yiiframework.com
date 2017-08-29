@@ -8,11 +8,7 @@ use yii\captcha\Captcha;
 /* @var $this yii\web\View */
 /* @var $form yii\bootstrap\ActiveForm */
 /* @var $model app\models\ContactForm */
-
-$this->title = 'Contact Us';
-$this->params['breadcrumbs'][] = $this->title;
 ?>
-<?= $this->render('partials/common/_heading.php', ['title' => $this->title]) ?>
 <div class="container">
     <div class="row">
         <div class="content">
