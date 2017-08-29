@@ -2,7 +2,6 @@
 
 namespace app\widgets;
 
-use Yii;
 use yii\base\Widget;
 use yii\bootstrap\BootstrapAsset;
 use yii\helpers\Html;

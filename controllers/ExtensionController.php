@@ -66,8 +66,12 @@ class ExtensionController extends BaseController
         ];
     }
 
-    public function actionIndex($category = null, $tag = null)
+    public function actionIndex($category = null, $tag = null, $version = '2.0')
     {
+        if (!in_array($version, ['1.1', '2.0'], true)) {
+            throw new NotFoundHttpException();
+        }
+
         $query = Extension::find()->active()->with(['owner', 'category']);
 
         if ($category !== null) {
@@ -86,6 +90,10 @@ class ExtensionController extends BaseController
             }
             $query->joinWith('tags', false);
             $query->andWhere(['extension_tag_id' => $tagModel->id]);
+        }
+
+        if ($version) {
+            $query->andWhere(['yii_version' => $version]);
         }
 
         $dataProvider = new ActiveDataProvider([
@@ -134,6 +142,7 @@ class ExtensionController extends BaseController
             'dataProvider' => $dataProvider,
             'tag' => $tagModel,
             'category' => $category,
+            'version' => $version,
         ]);
     }
 

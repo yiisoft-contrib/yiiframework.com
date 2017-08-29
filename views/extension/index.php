@@ -1,16 +1,20 @@
 <?php
 
-use yii\helpers\Html;
 
 /** @var $dataProvider \yii\data\ActiveDataProvider */
 /** @var $category string */
+/** @var $version string */
 /** @var $tag \app\models\ExtensionTag */
 
 
 $this->title = 'Extensions';
 
 $this->beginBlock('contentSelectors');
-echo 'TODO add version selector';
+    echo $this->render('partials/_versions', [
+        'currentVersion' => $version,
+        'category' => $category,
+        'tag' => $tag,
+    ]);
 $this->endBlock();
 
 ?>
@@ -21,6 +25,7 @@ $this->endBlock();
                 'category' => $category,
                 'tag' => $tag,
                 'sort' => $dataProvider->sort,
+                'version' => $version,
             ]) ?>
         </div>
 
