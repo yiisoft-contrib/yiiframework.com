@@ -40,7 +40,7 @@ use app\widgets\DropdownList;
         ?>
         <?= DropdownList::widget([
             'tag' => 'div',
-            'selection' => $currentVersion,
+            'selection' => 'For Yii ' . $currentVersion,
             'items' => $versionItems,
             'options' => [
                 'class' => 'btn-group btn-group-sm'
