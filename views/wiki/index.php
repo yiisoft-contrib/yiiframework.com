@@ -5,6 +5,7 @@ use yii\helpers\Html;
 /** @var $dataProvider \yii\data\ActiveDataProvider */
 /** @var $category \app\models\WikiCategory */
 /** @var $tag \app\models\WikiTag */
+/** @var $version string */
 
 
 if ($category !== null) {
@@ -14,7 +15,11 @@ if ($category !== null) {
 }
 
 $this->beginBlock('contentSelectors');
-echo 'TODO add version selector';
+    echo $this->render('partials/_versions', [
+        'currentVersion' => $version,
+        'category' => $category,
+        'tag' => $tag,
+    ]);
 $this->endBlock();
 
 ?>
@@ -25,6 +30,7 @@ $this->endBlock();
                 'category' => $category ? $category->id : null,
                 'tag' => $tag,
                 'sort' => $dataProvider->sort,
+                'version' => $version,
             ]) ?>
         </div>
 

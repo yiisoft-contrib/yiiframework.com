@@ -59,8 +59,12 @@ class WikiController extends BaseController
         ];
     }
 
-    public function actionIndex($category = null, $tag = null)
+    public function actionIndex($category = null, $tag = null, $version = '2.0')
     {
+        if (!in_array($version, [Wiki::YII_VERSION_10, Wiki::YII_VERSION_11, Wiki::YII_VERSION_20], true)) {
+            throw new NotFoundHttpException();
+        }
+
         $query = Wiki::find()->active()->with(['creator', 'updater', 'category']);
 
         $categoryModel = null;
@@ -80,6 +84,10 @@ class WikiController extends BaseController
             }
             $query->joinWith('tags', false);
             $query->andWhere(['wiki_tag_id' => $tagModel->id]);
+        }
+
+        if ($version) {
+            $query->andWhere(['yii_version' => $version]);
         }
 
         $dataProvider = new ActiveDataProvider([
@@ -125,6 +133,7 @@ class WikiController extends BaseController
             'dataProvider' => $dataProvider,
             'tag' => $tagModel,
             'category' => $categoryModel,
+            'version' => $version,
         ]);
     }
 

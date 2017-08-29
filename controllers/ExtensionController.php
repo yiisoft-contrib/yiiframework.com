@@ -68,7 +68,7 @@ class ExtensionController extends BaseController
 
     public function actionIndex($category = null, $tag = null, $version = '2.0')
     {
-        if (!in_array($version, ['1.1', '2.0'], true)) {
+        if (!in_array($version, [Extension::YII_VERSION_10, Extension::YII_VERSION_11, Extension::YII_VERSION_20], true)) {
             throw new NotFoundHttpException();
         }
 
