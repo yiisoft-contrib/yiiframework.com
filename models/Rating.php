@@ -4,7 +4,6 @@ namespace app\models;
 
 use Yii;
 use yii\base\InvalidParamException;
-use yii\db\ActiveRecord;
 use yii\db\Expression;
 
 /**
