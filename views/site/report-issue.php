@@ -53,16 +53,19 @@ $this->params['breadcrumbs'][] = $this->title;
                         'yii2-apidoc' => 'API Documentation Generator',
                         'yii2-authclient' => 'Auth client extension',
                         'yii2-bootstrap' => 'Bootstrap extension',
-                        'yii2-codeception' => 'Codeception extension',
                         'yii2-composer' => 'Composer Installer',
                         'yii2-debug' => 'Debug Toolbar',
                         'yii2-elasticsearch' => 'Elasticsearch extension',
                         'yii2-faker' => 'Faker extension',
                         'yii2-gii' => 'Gii Code Generator',
+                        'yii2-httpclient' => 'HTTP client',
+                        'yii2-imagine' => 'Imagine extension',
                         'yii2-jui' => 'jQuery UI extension',
                         'yii2-mongodb' => 'Mongo DB extension',
+                        'yii2-queue' => 'Queue extension',
                         'yii2-redis' => 'redis extension',
                         'yii2-smarty' => 'Smarty view renderer',
+                        'yii2-shell' => 'Shell extension',
                         'yii2-sphinx' => 'Sphinx Search extension',
                         'yii2-swiftmailer' => 'Swiftmailer extension',
                         'yii2-twig' => 'Twig view renderer',
@@ -72,12 +75,12 @@ $this->params['breadcrumbs'][] = $this->title;
 
                     foreach($extensionColumns as $column) {
 
-                        echo '<div class="col-md-3 col-sm-6 col-xs-6"><ul>';
                         foreach($column as $ext => $extName) {
+                            echo '<div class="col-md-3 col-sm-6 col-xs-6"><ul>';
                             echo "<li><a href=\"https://github.com/yiisoft/{$ext}/issues/new\">{$extName}</a><span>yiisoft/{$ext}</span></li>\n";
+                            echo'</ul></div>';
                         }
 
-                        echo'</ul></div>';
                     }
                 ?>
             </div>
