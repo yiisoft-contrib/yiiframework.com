@@ -12,11 +12,11 @@ $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="container site-header">
 	<div class="row">
-		<div class="col-md-6">
+		<div class="col-xs-7 col-md-6 col-lg-7">
 			<h1>Download</h1>
 			<h2>Yii Framework & Offline Documentation</h2>
 		</div>
-		<div class="col-md-6">
+		<div class="col-sm-5 col-md-6 col-lg-5">
 			<img class="background" src="<?= Yii::getAlias('@web/image/download/downloads.svg')?>" alt="">
 		</div>
 	</div>

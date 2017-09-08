@@ -2,8 +2,7 @@
 /* @var $this yii\web\View */
 ?>
 <div class="container style_external_links">
-    <div class="row">
-        <div class="content">
+       <div class="content">
            <div>
                <h2>Logo for dark backgrounds</h2>
                <div class="logo-download-dark">
@@ -27,5 +26,4 @@
                Derivative Works 3.0 Unported License</a>.
            </p>
        </div>
-    </div>
 </div>

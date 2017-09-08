@@ -7,11 +7,11 @@ $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="container site-header">
 	<div class="row">
-		<div class="col-md-7">
+		<div class="col-xs-7 col-sm-9 col-md-7">
             <h1>Books,</h1>
             <h2>that help you master the framework</h2>
 		</div>
-		<div class="col-md-5">
+		<div class="col-xs-5 col-sm-3 col-md-5">
 			<img class="background" src="<?= Yii::getAlias('@web/image/books/header.svg')?>" alt="">
 		</div>
 	</div>

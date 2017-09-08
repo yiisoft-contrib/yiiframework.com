@@ -62,7 +62,7 @@ function sprites() {
     var spriteData = gulp.src('data/avatars/*')
         .pipe($.spritesmith({
             imgName: 'sprite.png',
-            imgPath: '../../../image/',
+            imgPath: '../../../image/sprite.png',
             cssName: 'contributors.css',
             padding: 2
         }));
