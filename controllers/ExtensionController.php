@@ -18,14 +18,16 @@ use yii\filters\AccessControl;
 use yii\filters\VerbFilter;
 use yii\helpers\Html;
 use yii\queue\Queue;
-use yii\web\Controller;
 use yii\web\ForbiddenHttpException;
 use yii\web\NotFoundHttpException;
 use yii\web\Response;
 use yii\web\UploadedFile;
 
-class ExtensionController extends Controller
+class ExtensionController extends BaseController
 {
+    public $sectionTitle = 'Yii Framework Extensions';
+    public $headTitle = 'Extensions';
+
     /**
      * @inheritdoc
      */
@@ -64,8 +66,12 @@ class ExtensionController extends Controller
         ];
     }
 
-    public function actionIndex($category = null, $tag = null)
+    public function actionIndex($category = null, $tag = null, $version = '2.0')
     {
+        if (!in_array($version, [Extension::YII_VERSION_10, Extension::YII_VERSION_11, Extension::YII_VERSION_20], true)) {
+            throw new NotFoundHttpException();
+        }
+
         $query = Extension::find()->active()->with(['owner', 'category']);
 
         if ($category !== null) {
@@ -84,6 +90,10 @@ class ExtensionController extends Controller
             }
             $query->joinWith('tags', false);
             $query->andWhere(['extension_tag_id' => $tagModel->id]);
+        }
+
+        if ($version) {
+            $query->andWhere(['yii_version' => $version]);
         }
 
         $dataProvider = new ActiveDataProvider([
@@ -132,6 +142,7 @@ class ExtensionController extends Controller
             'dataProvider' => $dataProvider,
             'tag' => $tagModel,
             'category' => $category,
+            'version' => $version,
         ]);
     }
 

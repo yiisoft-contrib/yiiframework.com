@@ -7,19 +7,13 @@ use app\models\Extension;
 use app\models\News;
 use app\models\Wiki;
 use Yii;
-use yii\base\InvalidParamException;
-use yii\filters\AccessControl;
-use yii\helpers\ArrayHelper;
-use yii\web\BadRequestHttpException;
-use yii\web\Controller;
-use yii\filters\VerbFilter;
 use app\models\ContactForm;
 use yii\web\NotFoundHttpException;
 
 /**
  * SiteController serves the mostly static sites of the website.
  */
-class SiteController extends Controller
+class SiteController extends BaseController
 {
     /**
      * @inheritdoc
@@ -86,6 +80,7 @@ class SiteController extends Controller
 
     public function actionContact()
     {
+        $this->sectionTitle = 'Contact Us';
         $model = new ContactForm();
         if ($model->load(Yii::$app->request->post()) && $model->contact(Yii::$app->params['adminEmail'])) {
             Yii::$app->session->setFlash('contactFormSubmitted');
@@ -110,6 +105,8 @@ class SiteController extends Controller
 
     public function actionChat()
     {
+        $this->sectionTitle = 'Yii Framework Community';
+        $this->headTitle = 'Live Chat';
         return $this->render('chat');
     }
 
@@ -187,6 +184,7 @@ class SiteController extends Controller
 
     public function actionLogo()
     {
+        $this->sectionTitle = 'Official Logos';
         return $this->render('logo');
     }
 

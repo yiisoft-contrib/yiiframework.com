@@ -9,13 +9,6 @@ use yii\grid\GridView;
 
 $this->title = $badge->name . ' - Badges';
 
-echo $this->render('//site/partials/common/_admin_heading.php', [
-    'title' => 'Badges',
-    'menu' => [
-        ['label' => 'User Admin', 'url' => ['user-admin/index'], 'visible' => Yii::$app->user->can('news:pAdmin') ],
-    ]
-]);
-
 $this->registerMetaTag(['name' => 'keywords', 'value' => 'yii framework, community, badges, ' . $badge->name]);
 
 ?>
@@ -27,7 +20,7 @@ $this->registerMetaTag(['name' => 'keywords', 'value' => 'yii framework, communi
                 <div class="userbadge-icon userbadge-<?= $badge->urlname ?>"></div>
             </div>
             <div class="col-xs-11">
-                <h2><?= Html::encode($badge->name) ?></h2>
+                <h2><?= Html::encode($badge->name) ?> Badge</h2>
                 <h3 class="description"><?= $badge->description ?></h3>
             </div>
         </div>

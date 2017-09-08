@@ -1,13 +1,22 @@
-.guide-header-wrap {
+.section-header-wrap {
   background-color: $eshill-light-blue;
 }
-.guide-header {
-  .guide-headline {
+.section-header {
+  .section-headline {
     font-family: $bold-headings-font-family;
     font-size: fontsize(h1);
   }
   color: white;
-  @include rem(padding-top, 22px);
+  background-color: $eshill-light-blue;
+  @include rem(padding-top, 15px);
+
+  .headline-row {
+    @include rem(margin-bottom, 15px);
+  }
+  .content-selector-row {
+    @include rem(margin-top, -15px);
+  }
+
   .version-selector {
     border: none;
     margin-bottom: 0;

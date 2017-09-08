@@ -17,8 +17,10 @@ use yii\web\UnsupportedMediaTypeHttpException;
  *
  * Version 2.0 provides also json
  */
-class ApiController extends Controller
+class ApiController extends BaseController
 {
+    public $sectionTitle = "API Documentation for Yii";
+
     public function behaviors()
     {
         return [
@@ -47,6 +49,8 @@ class ApiController extends Controller
 
         switch (Yii::$app->response->format) {
             case Response::FORMAT_HTML:
+
+                $this->sectionTitle = "API Documentation for Yii $version";
 
                 $title = '';
                 $packages = [];

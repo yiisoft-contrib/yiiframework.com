@@ -7,7 +7,6 @@ use app\models\Star;
 use yii\db\ActiveRecord;
 use yii\filters\AccessControl;
 use yii\filters\VerbFilter;
-use yii\web\Controller;
 use yii\web\ForbiddenHttpException;
 use yii\web\NotFoundHttpException;
 use yii\web\Response;
@@ -16,7 +15,7 @@ use Yii;
 /**
  * AjaxController handles several ajax actions in the background
  */
-class AjaxController extends Controller
+class AjaxController extends BaseController
 {
     /**
      * @inheritdoc

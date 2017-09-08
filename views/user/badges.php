@@ -9,13 +9,6 @@ use yii\grid\GridView;
 
 $this->title = 'Badges';
 
-echo $this->render('//site/partials/common/_admin_heading.php', [
-    'title' => $this->title,
-    'menu' => [
-        ['label' => 'User Admin', 'url' => ['user-admin/index'], 'visible' => Yii::$app->user->can('news:pAdmin') ],
-    ]
-]);
-
 $this->registerMetaTag(['name' => 'keywords', 'value' => 'yii framework, community, badges']);
 
 $total = array_sum($counts);
@@ -28,6 +21,7 @@ $expand = $max < 0.45 ? 2 : 1;
 ?>
 <div class="container style_external_links view-user-badges">
     <div class="content">
+        <h1>Badges</h1>
 
         <p>It's easy to play an active role in the Yii community: add comments and cast votes throughout the site, ask and respond to questions posted in forum topics, write and help to improve on the wiki articles, contribute framework extensions, and more. As you participate you will earn badges which appear on your user page. Here are all available badges and the criteria for earning them:</p>
 

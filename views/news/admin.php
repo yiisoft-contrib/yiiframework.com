@@ -9,14 +9,17 @@ use yii\grid\GridView;
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
 $this->title = 'News Admin';
-echo $this->render('//site/partials/common/_admin_heading.php', [
-    'title' => $this->title,
-    'menu' => [
+
+$this->beginBlock('adminNav');
+echo \yii\bootstrap\Nav::widget([
+    'id' => 'admin-nav',
+    'items' => [
         ['label' => 'News Page', 'url' => ['news/index'] ],
         ['label' => 'News Admin', 'url' => ['news/admin'], 'active' => true ],
         ['label' => 'Create News', 'url' => ['news/create'] ],
-    ]
+    ],
 ]);
+$this->endBlock();
 
 ?>
 <div class="container style_external_links">

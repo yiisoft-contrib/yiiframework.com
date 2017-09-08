@@ -37,7 +37,12 @@ use yii\helpers\Html;
     <li<?= empty($category) ? ' class="active"' : '' ?>><a href="<?= \yii\helpers\Url::to(['wiki/index', 'tag' => isset($tag) ? $tag->slug : null])?>">All</a></li>
     <?php foreach(WikiCategory::findWithCountData()->all() as $cat): ?>
         <li<?= isset($category) && $category == $cat->id ? ' class="active"' : '' ?>>
-            <a href="<?= \yii\helpers\Url::to(['wiki/index', 'category' => $cat->id, 'tag' => isset($tag) ? $tag->slug : null])?>"><?= Html::encode($cat->name) ?> <span class="count">(<?= (int) $cat->count ?>)</span></a>
+            <a href="<?= \yii\helpers\Url::to([
+                'wiki/index',
+                'category' => $cat->id,
+                'tag' => isset($tag) ? $tag->slug : null,
+                'version' => isset($version) ? $version : '2.0',
+            ])?>"><?= Html::encode($cat->name) ?> <span class="count">(<?= (int) $cat->count ?>)</span></a>
         </li>
     <?php endforeach; ?>
 </ul>
@@ -47,7 +52,12 @@ use yii\helpers\Html;
 <ul class="wiki-side-menu">
     <?php foreach(WikiTag::find()->orderBy(['frequency' => SORT_DESC])->limit(10)->all() as $t): ?>
         <li<?= isset($tag) && $tag->equals($t) ? ' class="active"' : '' ?>>
-            <a href="<?= \yii\helpers\Url::to(['wiki/index', 'tag' => $t->slug, 'category' => isset($category) ? $category : null])?>"><?= Html::encode($t->name) ?> <span class="count">(<?= (int) $t->frequency ?>)</span></a>
+            <a href="<?= \yii\helpers\Url::to([
+                'wiki/index',
+                'tag' => $t->slug,
+                'category' => isset($category) ? $category : null,
+                'version' => isset($version) ? $version : '2.0',
+            ])?>"><?= Html::encode($t->name) ?> <span class="count">(<?= (int) $t->frequency ?>)</span></a>
         </li>
     <?php endforeach; ?>
 </ul>

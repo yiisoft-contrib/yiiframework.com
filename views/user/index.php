@@ -9,19 +9,23 @@ use yii\grid\GridView;
 
 $this->title = 'Members';
 
-echo $this->render('//site/partials/common/_admin_heading.php', [
-    'title' => $this->title,
-    'menu' => [
-        ['label' => 'User Admin', 'url' => ['user-admin/index'], 'visible' => Yii::$app->user->can('news:pAdmin') ],
-    ]
-]);
+if (Yii::$app->user->can('users:pAdmin')) {
+    $this->beginBlock('adminNav');
+    echo \yii\bootstrap\Nav::widget([
+        'id' => 'admin-nav',
+        'items' => [
+            ['label' => 'User Admin', 'url' => ['user-admin/index'], 'visible' => Yii::$app->user->can('users:pAdmin') ],
+        ],
+    ]);
+    $this->endBlock();
+}
 
 $this->registerMetaTag(['name' => 'keywords', 'value' => 'yii framework, community, members']);
 
 ?>
 <div class="container style_external_links">
     <div class="content">
-
+        <h1>Members</h1>
         <?= GridView::widget([
             'dataProvider' => $dataProvider,
             'summary' => 'Showing <b>{begin, number}-{end, number}</b> of <b>{totalCount, number}</b> {totalCount, plural, one{member} other{members}}.',

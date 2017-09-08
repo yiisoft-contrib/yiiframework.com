@@ -15,21 +15,10 @@ use yii\helpers\Html;
 
  */
 
-$this->title = 'Files of Extension - ' . $model->name;
-$this->params['breadcrumbs'][] = $this->title;
-$this->params['breadcrumbs'][] = 'Downloads';
-?>
-<div class="guide-header-wrap">
-    <div class="container guide-header common-heading">
-        <div class="row">
-            <div class="col-md-12">
-                <h1 class="guide-headline">Extensions</h1>
-            </div>
-        </div>
-    </div>
-</div>
+$this->title = "$model->name | Downloads";
 
-<div class="container guide-view lang-en" xmlns="http://www.w3.org/1999/xhtml">
+?>
+<div class="container">
     <div class="row">
         <div class="col-sm-3 col-md-2 col-lg-2">
             <?= $this->render('_sidebar', [

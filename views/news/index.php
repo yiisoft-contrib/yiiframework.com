@@ -20,12 +20,18 @@ if ($tag) {
 	$urlParams['tag'] = $tag->slug;
 	$this->title .= ' tagged with "' . Html::encode($tag->name) . '"';
 }
-echo $this->render('//site/partials/common/_admin_heading.php', [
-    'title' => $this->title,
-    'menu' => [
-        ['label' => 'News Admin', 'url' => ['news/admin'], 'visible' => Yii::$app->user->can('news:pAdmin') ],
-    ]
-]);
+
+if (Yii::$app->user->can('news:pAdmin')) {
+	$this->beginBlock('adminNav');
+	echo \yii\bootstrap\Nav::widget([
+		'id' => 'admin-nav',
+		'items' => [
+			['label' => 'News Admin', 'url' => ['news/admin'], 'visible' => Yii::$app->user->can('news:pAdmin') ],
+		],
+	]);
+	$this->endBlock();
+}
+
 ?>
 <div class="container style_external_links">
     <div class="content news-content">

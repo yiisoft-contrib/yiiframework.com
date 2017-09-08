@@ -15,13 +15,12 @@ use yii\base\InvalidParamException;
 use yii\filters\AccessControl;
 use yii\filters\VerbFilter;
 use yii\web\BadRequestHttpException;
-use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 
 /**
  * AuthController handles user authentification, i.e. Login, Signup and OAuth login.
  */
-class AuthController extends Controller
+class AuthController extends BaseController
 {
     /**
      * @inheritdoc

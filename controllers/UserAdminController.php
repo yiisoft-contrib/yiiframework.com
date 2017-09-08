@@ -6,14 +6,13 @@ use Yii;
 use app\models\User;
 use app\models\UserSearch;
 use yii\filters\AccessControl;
-use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 
 /**
  * UserController implements the CRUD actions for User model.
  */
-class UserAdminController extends Controller
+class UserAdminController extends BaseController
 {
     public $layout = 'admin';
 

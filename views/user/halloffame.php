@@ -10,18 +10,24 @@ use app\models\User;
 
 $this->title = 'Hall of Fame';
 
-echo $this->render('//site/partials/common/_admin_heading.php', [
-    'title' => $this->title,
-    'menu' => [
-        ['label' => 'User Admin', 'url' => ['user-admin/index'], 'visible' => Yii::$app->user->can('news:pAdmin')],
-    ]
-]);
+if (Yii::$app->user->can('users:pAdmin')) {
+    $this->beginBlock('adminNav');
+    echo \yii\bootstrap\Nav::widget([
+        'id' => 'admin-nav',
+        'items' => [
+            ['label' => 'User Admin', 'url' => ['user-admin/index'], 'visible' => Yii::$app->user->can('users:pAdmin') ],
+        ],
+    ]);
+    $this->endBlock();
+}
 
 $this->registerMetaTag(['name' => 'keywords', 'value' => 'yii framework, community, hall of fame']);
 
 ?>
 <div class="container style_external_links">
     <div class="content">
+        <h1>Hall of Fame</h1>
+
         <?php if ($this->beginCache('user/halloffame', ['duration' => 3600])) { ?>
             <div class="halloffame-members">
                 <h2>Top Rated Members</h2>

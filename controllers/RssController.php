@@ -1,8 +1,6 @@
 <?php
 
-
 namespace app\controllers;
-
 
 use app\models\Extension;
 use app\models\News;
@@ -11,10 +9,9 @@ use DateTime;
 use yii\base\Exception;
 use yii\helpers\ArrayHelper;
 use yii\helpers\Url;
-use yii\web\Controller;
 use Zend\Feed\Writer\Feed;
 
-class RssController extends Controller
+class RssController extends BaseController
 {
     const LIMIT_NEWS = 20;
     const LIMIT_WIKI = 20;

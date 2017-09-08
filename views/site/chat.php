@@ -2,13 +2,11 @@
 use yii\helpers\Html;
 
 /* @var $this yii\web\View */
-$this->title = 'Live Chat';
-$this->params['breadcrumbs'][] = $this->title;
 ?>
-<?= $this->render('partials/common/_heading.php', ['title' => $this->title]) ?>
 <div class="container style_external_links">
     <div class="row">
         <div class="site-chat content">
+            <h1>Live Chat</h1>
             <p>To get near-instant help or support with the Yii Framework you can join either Slack or IRC channel.</p>
 
             <p>

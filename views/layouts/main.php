@@ -1,5 +1,6 @@
 <?php
 
+use app\controllers\BaseController;
 use yii\helpers\Html;
 use yii\bootstrap\Nav;
 use yii\helpers\Url;
@@ -44,7 +45,22 @@ $this->registerLinkTag([
         <?= Html::csrfMetaTags() ?>
         <?php $this->registerJs('yiiBaseUrl = ' . \yii\helpers\Json::htmlEncode(Yii::$app->request->getBaseUrl()), \yii\web\View::POS_HEAD); ?>
 
-        <title><?php if (!empty($this->title)): ?><?= Html::encode($this->title) ?> - <?php endif?>Yii PHP Framework</title>
+        <title><?php
+            $title = [];
+            if (!empty($this->title)) {
+                $title[] = $this->title;
+            }
+            if ($this->context instanceof BaseController) {
+                if ($this->context->headTitle !== null) {
+                    $title[] = $this->context->headTitle;
+                } elseif ($this->context->sectionTitle !== null) {
+                    $title[] = $this->context->sectionTitle;
+                }
+            }
+            $title[] = 'Yii PHP Framework';
+
+            echo Html::encode(implode(' | ', array_unique($title)));
+        ?></title>
 
         <meta property="og:site_name" content="Yii Framework" />
         <meta property="og:title" content="<?= !empty($this->title) ? Html::encode($this->title) : 'Yii Framework' ?>" />
@@ -93,7 +109,7 @@ $this->registerLinkTag([
                             'dropDownCaret' => '<span class="caret"></span>',
                             'items' => [
                                 ['label' => 'Guide', 'url' => ['guide/entry'], 'options' => ['title' => 'The Definitive Guide to Yii'], 'active' => ($controller == 'guide')],
-                                ['label' => 'API', 'url' => ['api/index', 'version' => reset(Yii::$app->params['versions']['api'])], 'options' => ['title' => 'API Documentation'], 'active' => ($controller == 'api')],
+                                ['label' => 'API', 'url' => ['api/entry'], 'options' => ['title' => 'API Documentation'], 'active' => ($controller == 'api')],
                                 ['label' => 'Wiki', 'url' => ['wiki/index'], 'options' => ['title' => 'Community Wiki'], 'active' => ($controller == 'wiki')],
                                 ['label' => 'Extensions', 'url' => ['extension/index'], 'options' => ['title' => 'Extensions']],
                                 ['label' => 'Community', 'items' => [
@@ -159,6 +175,8 @@ $this->registerLinkTag([
                     </div>
                 </div>
             </header>
+
+            <?= $this->context instanceof BaseController && isset($this->context->sectionTitle) ? $this->render('partials/_sectionHeader', ['title' => $this->context->sectionTitle]) : ''; ?>
 
             <?= \app\widgets\Alert::widget() ?>
             <?= $content ?>

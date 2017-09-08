@@ -61,7 +61,7 @@ class GuideSection extends Object
     {
         if (isset($this->guide->sections[$this->name])) {
             list ($chapter, $section) = $this->guide->sections[$this->name];
-            return "$chapter: $section | {$this->guide->title}";
+            return "$chapter: $section";
         } else {
             return $this->guide->title;
         }
