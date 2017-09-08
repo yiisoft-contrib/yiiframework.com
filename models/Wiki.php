@@ -72,8 +72,10 @@ class Wiki extends ActiveRecord implements Linkable
             'timestamp' => $this->timeStampBehavior(),
             'blameable' => [
                 'class' => BlameableBehavior::class,
-                'createdByAttribute' => 'creator_id',
-                'updatedByAttribute' => 'updater_id',
+                'attributes' => [
+                    static::EVENT_BEFORE_INSERT => 'creator_id',
+                    static::EVENT_BEFORE_UPDATE => 'updater_id',
+                ],
             ],
             'slugable' => [
                 'class' => SluggableBehavior::class,
@@ -142,6 +144,7 @@ class Wiki extends ActiveRecord implements Linkable
         $revision->setAttributes($this->attributes);
         $revision->tagNames = $this->tagNames;
         $revision->memo = $insert ? null : $this->memo;
+        $revision->updater_id = $insert ? $this->creator_id : $this->updater_id;
         $revision->save(false);
         $this->savedRevision = $revision;
 

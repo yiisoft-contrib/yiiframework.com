@@ -39,11 +39,6 @@ class WikiRevision extends ActiveRecord
                 'value' => $this->timeStampBehavior()['value'],
                 'createdAtAttribute' => false,
             ],
-            'blameable' => [
-                'class' => BlameableBehavior::class,
-                'createdByAttribute' => false,
-                'updatedByAttribute' => 'updater_id',
-            ],
             'diff' => DiffBehavior::class,
         ];
     }

@@ -41,8 +41,10 @@ class News extends ActiveRecord implements Linkable
             'timestamp' => $this->timeStampBehavior(),
             'blameable' => [
                 'class' => BlameableBehavior::class,
-                'createdByAttribute' => 'creator_id',
-                'updatedByAttribute' => 'updater_id',
+                'attributes' => [
+                    static::EVENT_BEFORE_INSERT => 'creator_id',
+                    static::EVENT_BEFORE_UPDATE => 'updater_id',
+                ],
             ],
             [
                 'class' => SluggableBehavior::class,

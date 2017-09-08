@@ -28,6 +28,9 @@ class ExtensionImportJob extends Object implements RetryableJob
         echo "done.\n";
         $extension->update_status = Extension::UPDATE_STATUS_UPTODATE;
         $extension->update_time = new \yii\db\Expression('NOW()');
+        // do not update timestamps and blame on automated updates
+        $extension->detachBehavior('blameable');
+        $extension->detachBehavior('timestamp');
         $extension->save(false);
     }
 

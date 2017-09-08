@@ -92,8 +92,12 @@ class Extension extends ActiveRecord implements Linkable
             'timestamp' => $this->timeStampBehavior(),
             'blameable' => [
                 'class' => BlameableBehavior::class,
-                'createdByAttribute' => 'owner_id', // TODO owner is must have and should not be changed
-                'updatedByAttribute' => false, // TODO owner is must have and should not be changed
+//                'createdByAttribute' => 'owner_id', // TODO owner is must have and should not be changed
+//                'updatedByAttribute' => false, // TODO owner is must have and should not be changed
+                'attributes' => [
+                    static::EVENT_BEFORE_INSERT => 'owner_id',
+//                    static::EVENT_BEFORE_UPDATE => 'updater_id',
+                ],
             ],
             'taggable' => [
                 'class' => Taggable::className(),
@@ -220,13 +224,16 @@ MARKDOWN;
         if (strpos($url, 'http://') === 0) {
             $url = 'https://' . substr($url, 7);
         }
-        return $url;
+        return rtrim($url, '/');
     }
 
     public function validateLicenseId($attribute)
     {
         if (!is_string($this->$attribute)) {
             $this->addError($attribute, 'License must be a valid SPDX License Identifier.');
+            return;
+        }
+        if ($this->$attribute === 'other') {
             return;
         }
 
@@ -382,7 +389,7 @@ MARKDOWN;
     {
         $url = $this->parsePackagistUrl($this->packagist_url);
         if ($url === false) {
-            throw new Exception('Can not load extension data from Packagist. Invalid packagist URL.');
+            throw new Exception('Can not load extension data from Packagist. Invalid packagist URL: ' . $this->packagist_url);
         }
         list($vendorName, $packageName) = $url;
         $this->name = "$vendorName/$packageName";
@@ -395,7 +402,7 @@ MARKDOWN;
     {
         $url = $this->parsePackagistUrl($this->packagist_url);
         if ($url === false) {
-            throw new Exception('Can not load extension data from Packagist. Invalid packagist URL.');
+            throw new Exception('Can not load extension data from Packagist. Invalid packagist URL: ' . $this->packagist_url);
         }
         list($vendorName, $packageName) = $url;
 

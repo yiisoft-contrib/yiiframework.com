@@ -163,7 +163,7 @@ class ExtensionController extends Controller
         $post = Yii::$app->request->post('Extension', []);
         if (isset($post['from_packagist'])) {
 
-            $model->from_packagist = $post['from_packagist'];
+            $model->from_packagist = (int) $post['from_packagist'];
             $model->scenario = 'create_' . ($model->from_packagist == 1 ? 'packagist' : 'custom');
 
             if ($model->load(Yii::$app->request->post()) && $model->validate()) {

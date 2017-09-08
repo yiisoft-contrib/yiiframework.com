@@ -75,6 +75,7 @@ make docs
 
 ```
 
+To fill the database with dummy content, you may run the command `./yii fake-data`.
 
 ### Web Server Setup
 
