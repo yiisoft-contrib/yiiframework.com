@@ -1,8 +1,9 @@
 <?php
 
+use yii\helpers\Html;
 
 /** @var $dataProvider \yii\data\ActiveDataProvider */
-/** @var $category string */
+/** @var $category \app\models\ExtensionCategory */
 /** @var $version string */
 /** @var $tag \app\models\ExtensionTag */
 
@@ -12,7 +13,7 @@ $this->title = 'Extensions';
 $this->beginBlock('contentSelectors');
     echo $this->render('partials/_versions', [
         'currentVersion' => $version,
-        'category' => $category,
+        'category' => $category->id,
         'tag' => $tag,
     ]);
 $this->endBlock();
@@ -22,7 +23,7 @@ $this->endBlock();
     <div class="row">
         <div class="col-sm-3 col-md-2 col-lg-2">
             <?= $this->render('_sidebar', [
-                'category' => $category,
+                'category' => $category->id,
                 'tag' => $tag,
                 'sort' => $dataProvider->sort,
                 'version' => $version,
@@ -31,11 +32,21 @@ $this->endBlock();
 
         <div class="col-sm-9 col-md-10 col-lg-10" role="main">
 
+            <h1>Extensions <small><?php
+                $parts = [];
+                if (!empty($category)) {
+                    $parts [] = " in category " . Html::encode($category->name);
+                }
+                if ($tag !== null) {
+                    $parts [] = ' tagged with "' . Html::encode($tag->name) . '"';
+                }
+                echo implode(', ', $parts);
+                ?></small></h1>
             <?= \yii\widgets\ListView::widget([
                 'dataProvider' => $dataProvider,
                 'itemView' => '_view',
                 'itemOptions' => ['class' => 'col-xs-12 col-sm-6 col-lg-4'],
-                'options' => ['class' => 'list-view row'],
+                'layout' => "{summary}\n<div class=\"row\">{items}</div>\n{pager}",
             ]) ?>
 
 <!--            <nav class="extension-pagination-holder">

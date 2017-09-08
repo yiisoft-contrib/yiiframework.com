@@ -14,12 +14,11 @@ $this->params['breadcrumbs'][] = $this->title;
         <div class="col-md-4 col-sm-4">
             <img class="background" src="<?= Yii::getAlias('@web/image/contribute/contribute.svg')?>" alt="">
         </div>
-    </div
-        >
+    </div>
 </div>
 <div class="container contribute">
-    <div class="row">
-        <div class="content">
+    <div class="content">
+        <div class="row">
             <div class="col-md-12">
                 <div class="heading-separator">
                     <h2><span>Spread the word</span></h2>
@@ -46,7 +45,8 @@ $this->params['breadcrumbs'][] = $this->title;
                         <ul>
                             <li>Check if the issue is not already reported.</li>
                             <li>Don't use issue tracker to ask questions. There is a
-                                <a href="http://www.yiiframework.com/forum/index.php?/forum/29-general-discussion-for-yii-11x/">forum</a>.
+                                <a href="http://www.yiiframework.com/forum/index.php?/forum/29-general-discussion-for-yii-11x/">forum</a>
+                                and a <?= Html::a('chat', ['site/chat']) ?>.
                             </li>
                             <li>If you're not sure if it's a bug or not,
                                 <a href="http://www.yiiframework.com/forum/index.php?/forum/11-bug-discussions/">discuss it at the forum</a> first.
@@ -77,7 +77,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 <div class="row">
                     <div class="col-md-6">
                         <blockquote class="note">Note that if you've found a security issue, it's better to
-                            <?php echo Html::a('contact core team directly', ['site/security']); ?>.
+                            <?php echo Html::a('contact core team privately', ['site/security']); ?>.
                             We'll review the issue and will respond via email.
                         </blockquote>
                     </div>

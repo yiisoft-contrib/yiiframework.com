@@ -1,17 +1,4 @@
-.site-books {
-    .header {
-        h1 {
-            @include rem(font-size, 65px);
-            font-weight: bold;
-        }
-
-        margin-bottom: 2em;
-    }
-
-    .books {
-        @include rem(margin-top, 50px);
-        @include rem(margin-bottom, 50px);
-    }
+.container.books {
 
     .version h2 {
         @include dashed-heading-variant($eshill-header-color, #fff, fontsize(h1));

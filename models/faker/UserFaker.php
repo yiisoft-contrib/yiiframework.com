@@ -20,6 +20,7 @@ class UserFaker extends BaseFaker
 		$user->password = $this->password;
 		$user->email = $this->faker->email;
 		$user->display_name = $this->faker->name;
+		$user->login_time = $this->faker->dateTimeBetween('-2 years', 'now')->format('Y-m-d H:i:s');
 
 		$this->stdout("\n  generated user: $user->username  $user->email");
 		return $user;

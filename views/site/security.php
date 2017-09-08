@@ -9,7 +9,7 @@ $this->params['breadcrumbs'][] = $this->title;
 <div class="container site-header">
     <div class="row">
         <div class="col-md-6">
-            <h1 class="security">Report<br>a Security Issue</h1>
+            <h1 class="security">Report a<br>Security Issue</h1>
             <h2>Let's make Yii better</h2>
         </div>
         <div class="col-md-6">
@@ -19,9 +19,8 @@ $this->params['breadcrumbs'][] = $this->title;
 </div>
 
 <div class="container report">
-    <div class="row">
-        <div class="content">
-
+    <div class="content">
+        <div class="row">
             <div class="col-md-12">
                 <p>Please use the security issue form to report to us any security issue
                     you find in Yii. DO NOT use the issue tracker or discuss it in the public forum as it will cause more damage

@@ -10,7 +10,6 @@ use yii\captcha\Captcha;
 /* @var $model app\models\ContactForm */
 ?>
 <div class="container">
-    <div class="row">
         <div class="content">
             <div class="col-xs-12 col-sm-6">
                 <?php if (Yii::$app->session->hasFlash('contactFormSubmitted')): ?>
@@ -57,5 +56,4 @@ use yii\captcha\Captcha;
             </div>
             <div class="clearfix"></div>
         </div>
-    </div>
 </div>

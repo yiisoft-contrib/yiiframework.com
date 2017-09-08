@@ -23,7 +23,6 @@ $this->params['breadcrumbs'][] = $this->title;
 </div>
 
 <div class="container">
-    <div class="row">
         <div class="content">
             <div class="col-md-12">
                 <div class="heading-separator">
@@ -186,5 +185,4 @@ $this->params['breadcrumbs'][] = $this->title;
                 <p>&nbsp;</p>
             </div>
         </div>
-    </div>
 </div>

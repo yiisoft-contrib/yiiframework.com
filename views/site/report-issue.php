@@ -9,11 +9,11 @@ $this->params['breadcrumbs'][] = $this->title;
 
 <div class="container site-header">
     <div class="row">
-        <div class="col-md-6">
+        <div class="col-md-7">
             <h1>Report an Issue</h1>
             <h2>Let's make Yii better</h2>
         </div>
-        <div class="col-md-6">
+        <div class="col-md-5">
             <img class="background" src="<?= Yii::getAlias('@web/image/issues/issues.svg')?>" alt="">
         </div>
     </div>
@@ -97,8 +97,8 @@ $this->params['breadcrumbs'][] = $this->title;
             </p>
 
             <p class="text-center">
-                Please note that Yii 1.1 is in <a href="/news/90/update-on-yii-1-1-support-and-end-of-life/">maintenance mode</a>,
-                we will not introduce big features anymore. Please consider upgrading to Yii 2 instead.</p>
+                Please note that Yii 1.1 is in <a href="<?= Yii::getAlias('@web/news/90/update-on-yii-1-1-support-and-end-of-life/') ?>">maintenance mode</a>,
+                we will only accept security fixed and changes for compatibility with PHP 7.<br>Please consider upgrading to Yii 2 instead.</p>
             </div>
         </div>
     </div>

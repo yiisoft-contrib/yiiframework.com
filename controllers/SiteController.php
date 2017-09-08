@@ -179,6 +179,7 @@ class SiteController extends BaseController
 
     public function actionTos()
     {
+        $this->sectionTitle = 'Terms of Service';
         return $this->render('tos');
     }
 
@@ -190,7 +191,7 @@ class SiteController extends BaseController
 
     public function actionTour()
     {
-        return $this->render('tour');
+        return $this->redirect(['site/index']);
     }
 
     public function actionResources()

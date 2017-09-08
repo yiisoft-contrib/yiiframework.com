@@ -75,11 +75,11 @@ class ExtensionController extends BaseController
         $query = Extension::find()->active()->with(['owner', 'category']);
 
         if ($category !== null) {
-            $category = (int) $category;
-            if (ExtensionCategory::findOne($category) === null) {
+            $categoryId = (int) $category;
+            if (($category = ExtensionCategory::findOne($categoryId)) === null) {
                 throw new NotFoundHttpException('The requested category does not exist.');
             }
-            $query->andWhere(['category_id' => $category]);
+            $query->andWhere(['category_id' => $category->id]);
         }
 
         $tagModel = null;

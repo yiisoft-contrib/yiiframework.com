@@ -24,8 +24,8 @@ $this->params['breadcrumbs'][] = $this->title;
 
 
 <div class="container download">
-	<div class="row">
-		<div class="content">
+	<div class="content">
+		<div class="row">
 			<div class="col-md-12">
 				<p>
 					Yii is an open source project released under the terms of the <?= Html::a('BSD License', ['site/license']) ?>.
@@ -229,8 +229,8 @@ $this->params['breadcrumbs'][] = $this->title;
 				<?php $version = '1.1'; ?>
 
 				<p class="text-center medium">Yii 1.1 is currently under <a href="/news/90/update-on-yii-1-1-support-and-end-of-life/">maintenance mode</a>.</p>
-				<p class="text-center">Continued support and bug fixes for this version will be provided until <b><?= $versionInfo[$version]['support-until'] ?></b>.</p>
-				<p class="text-center">Security fixes until <b><?= $versionInfo[$version]['security-until'] ?></b>.</p>
+				<p class="text-center">Continued support and bug fixes for this version have been provided until <b><?= $versionInfo[$version]['support-until'] ?></b>.</p>
+				<p class="text-center">Security fixes and PHP 7 compatibility until <b><?= $versionInfo[$version]['security-until'] ?></b>.</p>
 
 				<p class="small">
 					The latest release of Yii 1.1 is <strong><?= $latest = key($versions[$version]) ?></strong>

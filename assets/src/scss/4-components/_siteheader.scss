@@ -1,0 +1,33 @@
+
+.site-header {
+    color:#4d4d4d;
+    margin-top: 5rem;
+    margin-bottom: 1rem;
+
+    h1 {
+        font-size: 8rem;
+        margin-top: 10rem;
+        font-weight: bold;
+    }
+
+    h1.security {
+        margin-top: 5rem;
+    }
+
+    h2{
+        margin-top:0;
+    }
+
+    img.background {
+        max-height: 250px;
+        float: right;
+    }
+}
+
+@media (max-width: 992px) {
+    .site-header {
+        h1, h1.security {
+            margin-top: 0;
+        }
+    }
+}
