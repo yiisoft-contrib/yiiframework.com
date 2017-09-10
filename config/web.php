@@ -71,12 +71,7 @@ $config = [
             'appendTimestamp' => true,
         ],
         'urlManager' => $params['components.urlManager'],
-        'authManager' => [
-            'class' => yii\rbac\PhpManager::class,
-            'itemFile' => '@app/config/rbac/items.php',
-            'assignmentFile' => '@app/config/rbac/assignments.php',
-            'ruleFile' => '@app/rbac/rules.php',
-        ],
+        'authManager' => $params['components.authManager'],
         'authClientCollection' => [
             'class' => 'yii\authclient\Collection',
             'clients' => $params['authclients'],

@@ -1,5 +1,6 @@
 <?php
 
+use app\components\UserPermissions;
 use yii\helpers\Html;
 use yii\widgets\ListView;
 
@@ -21,12 +22,12 @@ if ($tag) {
 	$this->title .= ' tagged with "' . Html::encode($tag->name) . '"';
 }
 
-if (Yii::$app->user->can('news:pAdmin')) {
+if (UserPermissions::canManageNews()) {
 	$this->beginBlock('adminNav');
 	echo \yii\bootstrap\Nav::widget([
 		'id' => 'admin-nav',
 		'items' => [
-			['label' => 'News Admin', 'url' => ['news/admin'], 'visible' => Yii::$app->user->can('news:pAdmin') ],
+			['label' => 'News Admin', 'url' => ['news/admin']],
 		],
 	]);
 	$this->endBlock();

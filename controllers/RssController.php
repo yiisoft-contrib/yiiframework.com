@@ -95,6 +95,7 @@ class RssController extends BaseController
         return News::find()
             ->with('creator')
             ->latest()
+            ->published()
             ->limit(self::LIMIT_NEWS)
             ->all();
     }

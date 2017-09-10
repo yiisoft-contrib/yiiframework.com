@@ -3,8 +3,8 @@
 namespace app\widgets;
 
 
+use app\components\UserPermissions;
 use app\models\News;
-use Yii;
 use yii\base\Widget;
 use yii\helpers\Html;
 
@@ -22,8 +22,8 @@ class NewsArchive extends Widget
             ->groupBy(['YEAR(news_date)'])
             ->orderBy(['news_date' => SORT_ASC]);
 
-        if (!Yii::$app->user->can('news:pAdmin')) {
-            $query->andWhere(['status' => News::STATUS_PUBLISHED]);
+        if (!UserPermissions::canManageNews()) {
+            $query->published();
         }
 
         $years = $query->asArray()->all();

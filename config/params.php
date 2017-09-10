@@ -62,6 +62,9 @@ return [
             'action' => YII_DEBUG ? \yii\web\UrlNormalizer::ACTION_REDIRECT_TEMPORARY : \yii\web\UrlNormalizer::ACTION_REDIRECT_PERMANENT,
         ],
     ],
+    'components.authManager' => [
+        'class' => yii\rbac\DbManager::class,
+    ],
 
     // api and guide
 
