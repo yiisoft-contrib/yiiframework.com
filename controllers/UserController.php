@@ -2,6 +2,7 @@
 
 namespace app\controllers;
 
+use app\components\EmailVerificationMailer;
 use app\models\Badge;
 use app\models\Extension;
 use app\models\Star;
@@ -206,32 +207,10 @@ class UserController extends BaseController
         if ($user->email_verified) {
             Yii::$app->getSession()->setFlash('success', 'Your email is already verified.');
         } else {
-            $this->sendEmailVerificationEmail($user);
+            (new EmailVerificationMailer($user, EmailVerificationMailer::TYPE_PROFILE))->send();
             Yii::$app->getSession()->setFlash('success', 'Please check your email to verify it.');
         }
 
         return Yii::$app->user->isGuest ? $this->goHome() : $this->redirect(['user/profile']);
-    }
-
-    private function sendEmailVerificationEmail(User $user)
-    {
-        if ($user) {
-            if (!User::isEmailVerificationTokenValid($user->email_verification_token)) {
-                $user->generateEmailVerificationToken();
-            }
-
-            if ($user->save(false)) {
-                return \Yii::$app->mailer->compose([
-                    'html' => 'profileVerifyEmail-html',
-                    'text' => 'profileVerifyEmail-text',
-                ], ['user' => $user])
-                    ->setFrom([\Yii::$app->params['supportEmail'] => \Yii::$app->name . ' robot'])
-                    ->setTo($user->email)
-                    ->setSubject('Please confirm your email at Yii community')
-                    ->send();
-            }
-        }
-
-        return false;
     }
 }

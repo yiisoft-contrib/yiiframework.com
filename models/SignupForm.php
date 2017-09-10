@@ -1,6 +1,7 @@
 <?php
 namespace app\models;
 
+use app\components\EmailVerificationMailer;
 use yii\base\Model;
 use Yii;
 
@@ -44,33 +45,11 @@ class SignupForm extends Model
                 return null;
             }
 
-            $this->sendEmailVerificationEmail($user);
+            (new EmailVerificationMailer($user, EmailVerificationMailer::TYPE_SIGNUP))->send();
 
             return $user;
         }
 
         return null;
-    }
-
-    private function sendEmailVerificationEmail(User $user)
-    {
-        if ($user) {
-            if (!User::isEmailVerificationTokenValid($user->email_verification_token)) {
-                $user->generateEmailVerificationToken();
-            }
-
-            if ($user->save(false)) {
-                return \Yii::$app->mailer->compose([
-                    'html' => 'signupVerifyEmail-html',
-                    'text' => 'signupVerifyEmail-text',
-                ], ['user' => $user])
-                    ->setFrom([\Yii::$app->params['supportEmail'] => \Yii::$app->name . ' robot'])
-                    ->setTo($user->email)
-                    ->setSubject('Welcome to Yii community!')
-                    ->send();
-            }
-        }
-
-        return false;
     }
 }
