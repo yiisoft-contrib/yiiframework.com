@@ -521,11 +521,17 @@ class User extends ActiveRecord implements IdentityInterface
     }
 
     /**
-     * Removes used email verification token
+     * Validate email verification token
      */
-    public function removeEmailVerificationToken()
+    public static function validateEmailVerificationToken($token)
     {
-        $this->email_verification_token = null;
+        $user = static::findByEmailVerificationToken($token);
+        if ($user) {
+            $user->email_verified = true;
+            $user->email_verification_token = null;
+            return $user->save();
+        }
+        return false;
     }
 
     /**

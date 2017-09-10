@@ -223,15 +223,8 @@ class AuthController extends BaseController
 
     public function actionVerifyEmail($token)
     {
-        $user = User::findByEmailVerificationToken($token);
-        if ($user) {
-            $user->email_verified = true;
-            $user->removeEmailVerificationToken();
-            if ($user->save()) {
-                Yii::$app->getSession()->setFlash('success', 'Email was verified successfully.');
-            } else {
-                Yii::$app->getSession()->setFlash('error', 'Unable to save email verification status.');
-            }
+        if (User::validateEmailVerificationToken($token)) {
+            Yii::$app->getSession()->setFlash('success', 'Email was verified successfully.');
         } else {
             Yii::$app->getSession()->setFlash('error', 'Unable to verifiy email.');
         }
