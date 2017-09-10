@@ -13,7 +13,7 @@ $this->title = 'Extensions';
 $this->beginBlock('contentSelectors');
     echo $this->render('partials/_versions', [
         'currentVersion' => $version,
-        'category' => $category->id,
+        'category' => $category ? $category->id : null,
         'tag' => $tag,
     ]);
 $this->endBlock();
@@ -23,7 +23,7 @@ $this->endBlock();
     <div class="row">
         <div class="col-sm-3 col-md-2 col-lg-2">
             <?= $this->render('_sidebar', [
-                'category' => $category->id,
+                'category' => $category ? $category->id : null,
                 'tag' => $tag,
                 'sort' => $dataProvider->sort,
                 'version' => $version,
