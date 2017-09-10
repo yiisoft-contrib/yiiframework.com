@@ -29,12 +29,12 @@ class UserController extends BaseController
         return [
             'access' => [
                 'class' => AccessControl::class,
-                'only' => ['profile'],
+                'only' => ['profile', 'request-email-verification'],
                 'rules' => [
                     [
                         // allow all to a access index and view action
                         'allow' => true,
-                        'actions' => ['profile'],
+                        'actions' => ['profile', 'request-email-verification'],
                         'roles' => ['@'],
                     ],
                 ]
@@ -196,5 +196,42 @@ class UserController extends BaseController
             return $model;
         }
         throw new NotFoundHttpException('The requested page does not exist.');
+    }
+
+    public function actionRequestEmailVerification()
+    {
+        /** @var User $user */
+        $user = Yii::$app->user->identity;
+
+        if ($user->email_verified) {
+            Yii::$app->getSession()->setFlash('success', 'Your email is already verified.');
+        } else {
+            $this->sendEmailVerificationEmail($user);
+            Yii::$app->getSession()->setFlash('success', 'Please check your email to verify it.');
+        }
+
+        return Yii::$app->user->isGuest ? $this->goHome() : $this->redirect(['user/profile']);
+    }
+
+    private function sendEmailVerificationEmail(User $user)
+    {
+        if ($user) {
+            if (!User::isEmailVerificationTokenValid($user->email_verification_token)) {
+                $user->generateEmailVerificationToken();
+            }
+
+            if ($user->save(false)) {
+                return \Yii::$app->mailer->compose([
+                    'html' => 'profileVerifyEmail-html',
+                    'text' => 'profileVerifyEmail-text',
+                ], ['user' => $user])
+                    ->setFrom([\Yii::$app->params['supportEmail'] => \Yii::$app->name . ' robot'])
+                    ->setTo($user->email)
+                    ->setSubject('Please confirm your email at Yii community')
+                    ->send();
+            }
+        }
+
+        return false;
     }
 }

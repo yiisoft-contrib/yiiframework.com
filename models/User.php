@@ -4,9 +4,7 @@ namespace app\models;
 
 use Yii;
 use yii\base\NotSupportedException;
-use yii\behaviors\TimestampBehavior;
 use yii\db\ActiveQuery;
-use yii\db\Expression;
 use yii\helpers\Html;
 use yii\web\IdentityInterface;
 use yii\helpers\ArrayHelper;
@@ -33,6 +31,8 @@ use yii\helpers\ArrayHelper;
  * @property string $login_time
  * @property int $login_attempts
  * @property string $login_ip
+ * @property string $email_verification_token
+ * @property boolean $email_verified
  *
  * Relations:
  *
@@ -107,16 +107,21 @@ class User extends ActiveRecord implements IdentityInterface
 
     public function beforeSave($insert)
     {
-        if (parent::beforeSave($insert)) {
-
-            // generate auth_key on creation
-            if ($insert && $this->auth_key === null) {
-                $this->generateAuthKey();
-            }
-
-            return true;
+        if (!parent::beforeSave($insert)) {
+            return false;
         }
-        return false;
+
+        // generate auth_key on creation
+        if ($insert && $this->auth_key === null) {
+            $this->generateAuthKey();
+        }
+
+        if ($this->isAttributeChanged('email')) {
+            $this->email_verified = false;
+            $this->generateEmailVerificationToken();
+        }
+
+        return true;
     }
 
     /**
@@ -475,5 +480,56 @@ class User extends ActiveRecord implements IdentityInterface
             }
         }
         return null;
+    }
+
+    /**
+     * Finds user by email verification token
+     * @param string $token
+     * @return self
+     */
+    public static function findByEmailVerificationToken($token)
+    {
+        if (!static::isEmailVerificationTokenValid($token)) {
+            return null;
+        }
+
+        return static::findOne([
+            'email_verification_token' => $token,
+            'email_verified' => false,
+            'status' => self::STATUS_ACTIVE,
+        ]);
+    }
+
+    /**
+     * Generates new email verification token
+     */
+    public function generateEmailVerificationToken()
+    {
+        $this->email_verification_token = Yii::$app->security->generateRandomString() . '_' . time();
+    }
+
+    /**
+     * Removes used email verification token
+     */
+    public function removeEmailVerificationToken()
+    {
+        $this->email_verification_token = null;
+    }
+
+    /**
+     * Finds out if email verification token is valid
+     *
+     * @param string $token email verification token
+     * @return boolean
+     */
+    public static function isEmailVerificationTokenValid($token)
+    {
+        if (empty($token)) {
+            return false;
+        }
+        $expire = Yii::$app->params['user.emailVerificationTokenExpire'];
+        $parts = explode('_', $token);
+        $timestamp = (int) end($parts);
+        return $timestamp + $expire >= time();
     }
 }
