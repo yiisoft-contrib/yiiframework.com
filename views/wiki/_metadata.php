@@ -16,8 +16,12 @@ use yii\helpers\Html;
     <div class="tags"><span>Tags:</span> <?= \app\widgets\WikiTaglist::widget(['wiki' => $model]) ?></div>
     <?php if ($extended): ?>
         <div class="people"><span>Written by:</span> <?= $model->creator->rankLink ?></div>
-        <div class="people"><span>Last updated by:</span> <?= $model->updater->rankLink ?></div>
+        <?php if ($model->updater): ?>
+            <div class="people"><span>Last updated by:</span> <?= $model->updater->rankLink ?></div>
+        <?php endif ?>
         <div class="dates"><span>Created on:</span> <?= Yii::$app->formatter->asDate($model->created_at) ?></div>
-        <div class="dates"><span>Last updated:</span> <?= Yii::$app->formatter->asRelativeTime($model->updated_at) ?></div>
+        <?php if ($model->updated_at): ?>
+            <div class="dates"><span>Last updated:</span> <?= Yii::$app->formatter->asRelativeTime($model->updated_at) ?></div>
+        <?php endif ?>
     <?php endif; ?>
 </div>
