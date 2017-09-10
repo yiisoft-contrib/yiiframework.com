@@ -167,14 +167,20 @@ class User extends ActiveRecord implements IdentityInterface
      */
     public static function findByPasswordResetToken($token)
     {
+        $user = static::findOne([
+            'password_reset_token' => $token,
+            'status' => self::STATUS_ACTIVE,
+        ]);
+
+        if (!$user) {
+            return null;
+        }
+
         if (!static::isPasswordResetTokenValid($token)) {
             return null;
         }
 
-        return static::findOne([
-            'password_reset_token' => $token,
-            'status' => self::STATUS_ACTIVE,
-        ]);
+        return $user;
     }
 
     /**
@@ -489,15 +495,21 @@ class User extends ActiveRecord implements IdentityInterface
      */
     public static function findByEmailVerificationToken($token)
     {
-        if (!static::isEmailVerificationTokenValid($token)) {
-            return null;
-        }
-
-        return static::findOne([
+        $user = static::findOne([
             'email_verification_token' => $token,
             'email_verified' => false,
             'status' => self::STATUS_ACTIVE,
         ]);
+
+        if (!$user) {
+            return null;
+        }
+
+        if (!static::isEmailVerificationTokenValid($token)) {
+            return null;
+        }
+
+        return $user;
     }
 
     /**
