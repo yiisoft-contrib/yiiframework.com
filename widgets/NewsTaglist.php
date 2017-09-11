@@ -3,9 +3,9 @@
 namespace app\widgets;
 
 
+use app\components\UserPermissions;
 use app\models\News;
 use app\models\NewsTag;
-use Yii;
 use yii\base\Widget;
 use yii\helpers\Html;
 
@@ -25,7 +25,7 @@ class NewsTaglist extends Widget
         } else {
             $query = NewsTag::find();
 
-            if (Yii::$app->user->can('news:pAdmin')) {
+            if (UserPermissions::canManageNews()) {
                 $query->where('frequency > 1')
                       ->orderBy(['frequency' => SORT_DESC]);
             } else {

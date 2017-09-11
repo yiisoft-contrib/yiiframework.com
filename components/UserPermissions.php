@@ -11,6 +11,12 @@ use Yii;
 
 class UserPermissions
 {
+    const ROLE_NEWS_ADMIN = 'news_admin';
+    const ROLE_USER_ADMIN = 'user_admin';
+
+    const PERMISSION_MANAGE_NEWS = 'manage_news';
+    const PERMISSION_MANAGE_USERS = 'manage_users';
+
     /**
      * Authenticated user can create a Wiki page if either:
      *
@@ -101,5 +107,10 @@ class UserPermissions
         }
 
         return true;
+    }
+
+    public static function canManageNews()
+    {
+        return Yii::$app->user->can(self::PERMISSION_MANAGE_NEWS);
     }
 }

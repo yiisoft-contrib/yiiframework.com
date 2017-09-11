@@ -1,8 +1,7 @@
 <?php
 
-use yii\apidoc\helpers\ApiMarkdown;
+use app\components\UserPermissions;
 use yii\helpers\Html;
-use yii\helpers\Markdown;
 use yii\widgets\DetailView;
 
 /* @var $this yii\web\View */
@@ -12,7 +11,7 @@ $this->title = $model->title;
 $this->params['breadcrumbs'][] = ['label' => 'News', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 
-if (Yii::$app->user->can('news:pAdmin')) {
+if (UserPermissions::canManageNews()) {
     $this->beginBlock('adminNav');
     echo \yii\bootstrap\Nav::widget([
         'id' => 'admin-nav',
@@ -32,7 +31,7 @@ if (Yii::$app->user->can('news:pAdmin')) {
         <div class="row">
             <div class="col-md-9">
 
-                <?php if (Yii::$app->user->can('news:pAdmin') && $model->status != \app\models\News::STATUS_PUBLISHED) {
+                <?php if (UserPermissions::canManageNews() && $model->status != \app\models\News::STATUS_PUBLISHED) {
 
                     echo \yii\bootstrap\Alert::widget([
                         'body' =>
@@ -54,7 +53,7 @@ if (Yii::$app->user->can('news:pAdmin')) {
             </div>
             <div class="col-md-3">
 
-                <?php if (Yii::$app->user->can('news:pAdmin')): ?>
+                <?php if (UserPermissions::canManageNews()): ?>
                     <div class="panel panel-default">
                         <div class="panel-heading">
                             <strong>Admin Info</strong>

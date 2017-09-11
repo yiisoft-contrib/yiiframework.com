@@ -42,6 +42,7 @@ return [
                 'hostInfo' => $params['siteAbsoluteUrl']
             ]
         ),
+        'authManager' => $params['components.authManager'],
         'log' => [
             'targets' => [
                 [

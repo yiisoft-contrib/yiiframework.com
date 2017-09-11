@@ -1,14 +1,13 @@
 <?php
 
-use yii\helpers\Html;
-use yii\widgets\ListView;
+use app\components\UserPermissions;
 
 /* @var $this yii\web\View */
 /* @var $model app\models\News */
 
 $this->title = 'Create News';
 
-if (Yii::$app->user->can('news:pAdmin')) {
+if (UserPermissions::canManageNews()) {
     $this->beginBlock('adminNav');
     echo \yii\bootstrap\Nav::widget([
         'id' => 'admin-nav',

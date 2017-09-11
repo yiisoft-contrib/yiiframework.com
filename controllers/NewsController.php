@@ -2,6 +2,7 @@
 
 namespace app\controllers;
 
+use app\components\UserPermissions;
 use app\models\NewsTag;
 use Yii;
 use app\models\News;
@@ -38,7 +39,7 @@ class NewsController extends BaseController
 				        // allow all to a access index and view action
 				        'allow' => true,
 				        'actions' => ['admin', 'create', 'update', 'delete', 'list-tags'],
-				        'roles' => ['news:pAdmin'],
+				        'roles' => [UserPermissions::PERMISSION_MANAGE_NEWS],
 			        ],
 		        ]
 	        ],
@@ -62,9 +63,9 @@ class NewsController extends BaseController
             'query' => $query,
         ]);
 
-        // also show unublished news if user is not admin
-        if (Yii::$app->user->can('news:pAdmin')) {
-            $query->orWhere(['!=', 'status', News::STATUS_PUBLISHED]);
+        // show onlu published news if user is not admin
+        if (!Yii::$app->user->can(UserPermissions::PERMISSION_MANAGE_NEWS)) {
+            $query->published();
         }
 
         if ($year !== null) {
@@ -115,7 +116,7 @@ class NewsController extends BaseController
     {
 	    $model = $this->findModel($id);
 
-        if (!Yii::$app->user->can('news:pAdmin') && $model->status != News::STATUS_PUBLISHED) {
+        if (!UserPermissions::canManageNews() && $model->status != News::STATUS_PUBLISHED) {
    		    throw new NotFoundHttpException('The requested page does not exist.');
    	    }
 

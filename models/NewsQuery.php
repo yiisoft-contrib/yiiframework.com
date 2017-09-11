@@ -35,7 +35,12 @@ class NewsQuery extends \yii\db\ActiveQuery
     public function latest()
     {
         return $this
-            ->andWhere(['status' => News::STATUS_PUBLISHED])
             ->orderBy(['news_date' => SORT_DESC]);
+    }
+
+    public function published()
+    {
+        return $this
+            ->andWhere(['status' => News::STATUS_PUBLISHED]);
     }
 }

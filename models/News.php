@@ -177,6 +177,7 @@ class News extends ActiveRecord implements Linkable
         }
         $ids = News::find()
             ->latest()
+            ->published()
             ->select('news.id')->distinct()
             ->joinWith('tags AS tags')
             ->where(['or like', 'tags.name', $likes])
