@@ -63,8 +63,9 @@ class ApiController extends BaseController
                     $file = Yii::getAlias("@app/data/api-$version/$section.html");
                     $view = 'view2x';
                     $titles = require(Yii::getAlias("@app/data/api-$version/titles.php"));
-                    if (isset($titles[$section . '.html'])) {
-                        $title = $titles[$section . '.html'];
+                    $titleKey = $section . '.html';
+                    if (isset($titles[$titleKey])) {
+                        $title = $titles[$titleKey];
                     }
                 }
                 if (!preg_match('/^[\w\-]+$/', $section) || !is_file($file)) {
@@ -98,12 +99,9 @@ class ApiController extends BaseController
                         'version' => $version,
                         'count' => count($classes),
                     ];
-                } else {
-                    throw new NotFoundHttpException();
-                    return [
-                        'TODO'
-                    ];
                 }
+                throw new NotFoundHttpException();
+                // TODO
                 break;
         }
         throw new UnsupportedMediaTypeHttpException;

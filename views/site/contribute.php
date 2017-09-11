@@ -38,7 +38,7 @@ $this->params['breadcrumbs'][] = $this->title;
                             reporting it in one of the <?= Html::a('Yii issue trackers', ['site/report-issue']) ?>.
                         </p>
                         <p>
-                            Please use the <?php echo Html::a('contact form', ['site/security']) ?> to report any security issues.
+                            Please use the <?= Html::a('contact form', ['site/security']) ?> to report any security issues.
                             <strong>Do not</strong> use the issue tracker or discuss it in the public forum.
                         </p>
                         <p>To help us solve issues more efficiently please:</p>
@@ -77,7 +77,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 <div class="row">
                     <div class="col-md-6">
                         <blockquote class="note">Note that if you've found a security issue, it's better to
-                            <?php echo Html::a('contact core team privately', ['site/security']); ?>.
+                            <?= Html::a('contact core team privately', ['site/security']); ?>.
                             We'll review the issue and will respond via email.
                         </blockquote>
                     </div>

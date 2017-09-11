@@ -1,9 +1,12 @@
 <?php
 
+use app\components\UserPermissions;
+use app\models\File;
 use yii\helpers\Html;
 
 /** @var $model \app\models\Extension */
 /** @var $revision int */
+/** @var $file File */
 
 
 /* TODO
@@ -43,9 +46,9 @@ $this->title = "$model->name | Downloads";
 
                                 <?php foreach($downloads as $download): ?>
                                 <div class="file">
-                    <b><?php echo Html::a(Html::encode($download->file_name), $model->getUrl('download', ['filename' => $download->file_name])); ?></b>
-                            (<?php echo Yii::$app->formatter->asShortSize($download->file_size); ?>)
-                            <?php if($model->owner_id === Yii::$app->user->id): // TODO RBAC ?>
+                    <b><?= Html::a(Html::encode($download->file_name), $model->getUrl('download', ['filename' => $download->file_name])); ?></b>
+                            (<?= Yii::$app->formatter->asShortSize($download->file_size); ?>)
+                            <?php if (UserPermissions::canUpdateExtension($model)): ?>
                                 [<?= Html::a(
                                     'delete this file',
                                     ['extension/delete-file', 'id' => $model->id, 'file' => $download->id],
@@ -55,8 +58,8 @@ $this->title = "$model->name | Downloads";
                                     ]]
                                 ); ?>]
                             <?php endif; ?>
-                            <br/><i><?php echo Html::encode($download->summary); ?></i>
-                            <br/>Released on <?php echo Yii::$app->formatter->asDate($download->created_at); ?>; downloaded <?php echo number_format($download->download_count); ?> times.
+                            <br/><i><?= Html::encode($download->summary); ?></i>
+                            <br/>Released on <?= Yii::$app->formatter->asDate($download->created_at); ?>; downloaded <?= number_format($download->download_count); ?> times.
                         </div>
 
                                 <?php endforeach; ?>

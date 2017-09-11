@@ -95,14 +95,14 @@ $this->registerMetaTag(['name' => 'keywords', 'value' => 'yii framework, communi
                        $title = sprintf('%s started this badge on %s',Html::encode($model->display_name), Yii::$app->formatter->asDate($info->create_time));
                ?>
                    <li>
-                       <div class="userbadge userbadge-<?php echo $info->badge->urlname ?>" title="<?php echo $title ?>">
+                       <div class="userbadge userbadge-<?= $info->badge->urlname ?>" title="<?= $title ?>">
                            <?php $percent = min(100, $info->progress); ?>
-                           <div class="userbadge-progress-bar" style="width: <?php echo round($percent) ?>%"></div>
+                           <div class="userbadge-progress-bar" style="width: <?= round($percent) ?>%"></div>
                            <div class="userbadge-info">
                                <h3><?= Html::a(Html::encode($info->badge->name), ['user/view-badge', 'name' => $info->badge->urlname]) ?></h3>
                                <p><?= Html::encode($info->badge->description) ?></p>
                                <?php if($info->complete_time): ?>
-                                   <span class="percent">Earned: <span class="date"><?php echo Yii::$app->formatter->asRelativeTime($info->complete_time) ?></span></span>
+                                   <span class="percent">Earned: <span class="date"><?= Yii::$app->formatter->asRelativeTime($info->complete_time) ?></span></span>
                                <?php else: ?>
                                    <span class="percent">In progress (<?= round($percent)?>%)</span>
                                <?php endif ?>

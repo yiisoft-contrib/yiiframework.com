@@ -23,7 +23,7 @@ $this->title = 'License';
 
                 <p>The Yii framework is free software. It is released under the terms of the following BSD License.</p>
 
-                <p>Copyright &copy; 2008-<?php echo date('Y'); ?> by <a href="http://www.yiisoft.com">Yii Software
+                <p>Copyright &copy; 2008-<?= date('Y'); ?> by <a href="http://www.yiisoft.com">Yii Software
                         LLC</a><br/>All rights reserved.</p>
 
                 <p>Redistribution and use in source and binary forms, with or without modification, are permitted

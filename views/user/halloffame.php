@@ -68,6 +68,6 @@ $this->registerMetaTag(['name' => 'keywords', 'value' => 'yii framework, communi
             <?php $this->endCache();
         } ?>
 
-        <div class="halloffame-all-members"><?php echo Html::a('View all members', ['user/index']); ?></div>
+        <div class="halloffame-all-members"><?= Html::a('View all members', ['user/index']); ?></div>
     </div>
 </div>

@@ -301,7 +301,7 @@ class ExtensionController extends BaseController
     {
         $model = $this->findModelById($id);
 
-        if($model->owner_id === Yii::$app->user->id) { // TODO RBAC // TODO upload
+        if (UserPermissions::canUpdateExtension($model)) {
             $file = new File();
             if ($file->load(Yii::$app->request->post())) {
                 $file->object_type = Extension::FILE_TYPE;

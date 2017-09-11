@@ -2,9 +2,9 @@
 
 namespace app\controllers;
 
+use app\models\ActiveRecord;
 use app\models\Rating;
 use app\models\Star;
-use yii\db\ActiveRecord;
 use yii\filters\AccessControl;
 use yii\filters\VerbFilter;
 use yii\web\ForbiddenHttpException;

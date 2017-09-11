@@ -185,7 +185,9 @@ class AuthController extends BaseController
 
         // prefill the form if it is requested by a logged in user
         if (!Yii::$app->user->isGuest) {
-            $model->email = Yii::$app->user->identity->email;
+            /** @var User $user */
+            $user = Yii::$app->user->identity;
+            $model->email = $user->email;
         }
 
         if ($model->load(Yii::$app->request->post()) && $model->validate()) {
