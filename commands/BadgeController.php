@@ -39,14 +39,12 @@ class BadgeController extends Controller
             return;
         }
         $badges = Badge::find()->all();
-        foreach($badges as $badge) {
+        foreach ($badges as $badge) {
             try {
                 // TODO batch per 100
                 /** @var $badge Badge */
                 $badge->updateBadges($userIds);
-            }
-            catch(\Exception $e)
-            {
+            } catch (\Exception $e) {
                 Yii::error($e);
                 echo $e;
             }
@@ -71,7 +69,7 @@ class BadgeController extends Controller
         $sql[] = 'DELETE FROM {{%badge_queue}}';
         $sql[] = 'DELETE FROM {{%user_badges}}';
         $db = Yii::$app->db;
-        foreach($sql as $cmd) {
+        foreach ($sql as $cmd) {
             $db->createCommand($cmd)->execute();
         }
         $this->actionEnqueue();
