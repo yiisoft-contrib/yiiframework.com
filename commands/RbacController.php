@@ -26,6 +26,12 @@ class RbacController extends Controller
 
         $this->stdout("Adding user admin.\n");
         $this->addUserAdmin($auth);
+
+        $this->stdout("Adding extension admin.\n");
+        $this->addExtensionAdmin($auth);
+
+        $this->stdout("Adding wiki admin.\n");
+        $this->addWikiAdmin($auth);
     }
 
     /**
@@ -68,6 +74,38 @@ class RbacController extends Controller
         $auth->add($manageUsers);
 
         $auth->addChild($userAdmin, $manageUsers);
+    }
+
+    /**
+     * @param ManagerInterface $auth
+     */
+    private function addExtensionAdmin($auth)
+    {
+        $extensionAdmin = $auth->createRole(UserPermissions::ROLE_EXTENSION_ADMIN);
+        $extensionAdmin->description = 'Extension admin.';
+        $auth->add($extensionAdmin);
+
+        $manageExtensions = $auth->createPermission(UserPermissions::PERMISSION_MANAGE_EXTENSIONS);
+        $manageExtensions->description = 'Manage extensions.';
+        $auth->add($manageExtensions);
+
+        $auth->addChild($extensionAdmin, $manageExtensions);
+    }
+
+    /**
+     * @param ManagerInterface $auth
+     */
+    private function addWikiAdmin($auth)
+    {
+        $wikiAdmin = $auth->createRole(UserPermissions::ROLE_WIKI_ADMIN);
+        $wikiAdmin->description = 'Wiki admin.';
+        $auth->add($wikiAdmin);
+
+        $manageWiki = $auth->createPermission(UserPermissions::PERMISSION_MANAGE_WIKI);
+        $manageWiki->description = 'Manage wiki.';
+        $auth->add($manageWiki);
+
+        $auth->addChild($wikiAdmin, $manageWiki);
     }
 
     public function actionAssign($username, $role)

@@ -51,6 +51,17 @@ npm install
 
 # initialize the application, choose "development"
 ./init
+```
+
+Configure database connection in `config/params-local.php`. You may copy-paste and adjust `components.db` from
+`config/params.php`.
+
+```
+# run migrations
+./yii migrate
+
+# fill RBAC
+./yii rbac/up
 
 # build contributors page (this may take some time as it downloads a lot of user avatars from github)
 ./yii contributors/generate
@@ -76,6 +87,8 @@ make docs
 ```
 
 To fill the database with dummy content, you may run the command `./yii fake-data`.
+
+To assign users extra permissions use `./yii rbac/assign`.
 
 ### Web Server Setup
 
