@@ -39,6 +39,7 @@ use yii\helpers\ArrayHelper;
  * @property Auth[] $authClients
  * @property Wiki[] $wikis
  * @property Extension[] $extensions
+ * @property bool $email_verfied [tinyint(1)]
  * @property Badge[] $badges
  *
  */

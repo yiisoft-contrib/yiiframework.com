@@ -166,7 +166,7 @@ class ExtensionController extends BaseController
     public function actionCreate()
     {
         if (UserPermissions::canAddOrUpdateExtension()) {
-            throw new ForbiddenHttpException('Sorry, you are too new to add an extension. Please try posting it in our forum first.');
+            throw new ForbiddenHttpException('Please go to profile and verify your email.');
         }
 
         $model = new Extension();
@@ -211,7 +211,7 @@ class ExtensionController extends BaseController
         $model = $this->findModelById($id);
 
         if (UserPermissions::canAddOrUpdateExtension()) {
-            throw new ForbiddenHttpException('Sorry, you are too new to add an extension. Please try posting it in our forum first.');
+            throw new ForbiddenHttpException('Please go to profile and verify your email.');
         }
 
         if (UserPermissions::canUpdateExtension($model)) {
@@ -245,7 +245,7 @@ class ExtensionController extends BaseController
         $model = $this->findModelById($id);
 
         if (UserPermissions::canAddOrUpdateExtension()) {
-            throw new ForbiddenHttpException('Sorry, you are too new to add an extension. Please try posting it in our forum first.');
+            throw new ForbiddenHttpException('Please go to profile and verify your email.');
         }
 
         if (UserPermissions::canUpdateExtension($model)) {
@@ -361,7 +361,7 @@ class ExtensionController extends BaseController
         $model = $this->findModelById($id);
 
         if (UserPermissions::canAddOrUpdateExtension()) {
-            throw new ForbiddenHttpException('Sorry, you are too new to add an extension. Please try posting it in our forum first.');
+            throw new ForbiddenHttpException('Please go to profile and verify your email.');
         }
 
         if (UserPermissions::canUpdateExtension($model)) {
