@@ -24,6 +24,16 @@ $this->title = 'Hi, ' . $model->username . '!';
                 </div>
 
                 <ul>
+                    <?php if ($model->email): ?>
+                        <li>
+                            Your email is <?= Html::encode($model->email) ?>.
+                            <?php if ($model->email_verified): ?>
+                                It is verified.
+                            <?php else: ?>
+                                It is not verified yet. <?= Html::a('Verify', ['user/request-email-verification']) ?>.
+                            <?php endif ?>
+                        </li>
+                    <?php endif ?>
                     <li><?= Html::a('View forum profile', $model->forumUrl); ?></li>
                     <li><?= Html::a('View public profile', ['view', 'id' => $model->id]); ?></li>
                 </ul>

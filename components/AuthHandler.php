@@ -72,6 +72,10 @@ class AuthHandler
                     $user->password = \Yii::$app->security->generateRandomString(6);
                     $user->email = $email;
 
+                    if (!empty($email)) {
+                        $user->email_verified = true;
+                    }
+
 //                    if ($this->client->getName() === 'twitter') {
 //                        $user->twitter = $login;
 //                    }

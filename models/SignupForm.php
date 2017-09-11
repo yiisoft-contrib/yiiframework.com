@@ -1,6 +1,7 @@
 <?php
 namespace app\models;
 
+use app\components\EmailVerificationMailer;
 use yii\base\Model;
 use Yii;
 
@@ -40,7 +41,12 @@ class SignupForm extends Model
             $user->display_name = $this->username;
             $user->email = $this->email;
             $user->setPassword($this->password);
-            $user->save(false);
+            if (!$user->save(false)) {
+                return null;
+            }
+
+            (new EmailVerificationMailer($user, EmailVerificationMailer::TYPE_SIGNUP))->send();
+
             return $user;
         }
 

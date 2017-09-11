@@ -2,6 +2,7 @@
 
 namespace app\controllers;
 
+use app\components\EmailVerificationMailer;
 use app\models\Badge;
 use app\models\Extension;
 use app\models\Star;
@@ -29,12 +30,12 @@ class UserController extends BaseController
         return [
             'access' => [
                 'class' => AccessControl::class,
-                'only' => ['profile'],
+                'only' => ['profile', 'request-email-verification'],
                 'rules' => [
                     [
                         // allow all to a access index and view action
                         'allow' => true,
-                        'actions' => ['profile'],
+                        'actions' => ['profile', 'request-email-verification'],
                         'roles' => ['@'],
                     ],
                 ]
@@ -196,5 +197,20 @@ class UserController extends BaseController
             return $model;
         }
         throw new NotFoundHttpException('The requested page does not exist.');
+    }
+
+    public function actionRequestEmailVerification()
+    {
+        /** @var User $user */
+        $user = Yii::$app->user->identity;
+
+        if ($user->email_verified) {
+            Yii::$app->getSession()->setFlash('success', 'Your email is already verified.');
+        } else {
+            (new EmailVerificationMailer($user, EmailVerificationMailer::TYPE_PROFILE))->send();
+            Yii::$app->getSession()->setFlash('success', 'Please check your email to verify it.');
+        }
+
+        return Yii::$app->user->isGuest ? $this->goHome() : $this->redirect(['user/profile']);
     }
 }
