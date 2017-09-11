@@ -225,4 +225,10 @@ class SiteController extends BaseController
         }
         throw new NotFoundHttpException('The requested page was not found.');
     }
+
+    public function actionCommunity()
+    {
+        $this->sectionTitle = 'Community Resources';
+        return $this->render('community');
+    }
 }

@@ -115,6 +115,7 @@ $this->registerLinkTag([
                                 ['label' => 'Community', 'items' => [
                                     ['label' => 'Forum', 'url' => '@web/forum', 'options' => ['title' => 'Community Forum']],
                                     ['label' => 'Live Chat', 'url' => ['site/chat']],
+                                    ['label' => 'Resources', 'url' => ['site/community']],
                                     ['label' => 'Members', 'url' => ['/user/index'], 'options' => ['title' => 'Community Members'], 'active' => ($controller == 'user' && in_array($action, ['index', 'view']))],
                                     ['label' => 'Hall of Fame', 'url' => ['/user/halloffame'], 'options' => ['title' => 'Community Hall of Fame']],
                                     ['label' => 'Badges', 'url' => ['/badges'], 'options' => ['title' => 'Community Badges'], 'active' => ($controller == 'user' && in_array($action, ['badges', 'view-badge']))],

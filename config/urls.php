@@ -18,6 +18,7 @@ return [
     'logo' => 'site/logo',
     'tour' => 'site/tour',
     'resources' => 'site/resources',
+    'community' => 'site/community',
 
     // RSS
     'rss.xml' => 'rss/all',
