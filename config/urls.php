@@ -96,6 +96,7 @@ return [
 	'<url:doc/terms>' => 'site/redirect',
 	'<url:about|performance|demos|doc>' => 'site/redirect',
     '<url:features>' => 'site/redirect',
+    '<url:tutorials>' => 'site/redirect',
 
 	// admin
 	'admin/<controller:user>' => '<controller>-admin/index',

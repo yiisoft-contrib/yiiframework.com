@@ -51,6 +51,8 @@ class SiteController extends BaseController
             'doc' => ['guide/entry'],
             // features page
             'features' => ['site/index'],
+            // tutorials page
+            'tutorials' => ['site/resources'],
         ];
         if (isset($urlMap[$url])) {
             return $this->redirect($urlMap[$url], 301); // Moved Permanently
