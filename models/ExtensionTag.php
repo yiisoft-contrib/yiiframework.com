@@ -2,7 +2,6 @@
 
 namespace app\models;
 
-use Yii;
 use app\components\SluggableBehavior;
 use yii\db\ActiveQuery;
 

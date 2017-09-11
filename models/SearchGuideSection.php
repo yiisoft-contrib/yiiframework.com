@@ -71,7 +71,7 @@ class SearchGuideSection extends SearchActiveRecord
     {
         // create an index for each language
         $command = static::getDb()->createCommand();
-        foreach(static::$languages as $lang => $analyzer) {
+        foreach (static::$languages as $lang => $analyzer) {
             $index = static::index() . "-$lang";
             if (!$command->indexExists($index)) {
                 $command->createIndex($index);

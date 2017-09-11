@@ -3,10 +3,10 @@
 namespace app\models;
 
 use Yii;
-use yii\base\Object;
+use yii\base\BaseObject;
 use yii\helpers\Json;
 
-class GuideSection extends Object
+class GuideSection extends BaseObject
 {
     /**
      * @var Guide
@@ -30,8 +30,10 @@ class GuideSection extends Object
     public $missingTranslation;
 
 
-    public function __construct($name, Guide $guide)
+    public function __construct($name, Guide $guide, $config = [])
     {
+        parent::__construct($config);
+
         $this->name = $name;
         $this->guide = $guide;
     }
@@ -45,10 +47,10 @@ class GuideSection extends Object
         $this->content = $this->loadContent($this->name, $this->guide->version, $this->guide->language);
         $this->headings = $this->loadHeadings($this->name, $this->guide->version, $this->guide->language);
         if ($this->content === false) {
-            if ($this->guide->language !== 'en') {
+            if ($this->guide->language !== Guide::LANGUAGE_EN) {
                 $this->missingTranslation = true;
-                $this->content = $this->loadContent($this->name, $this->guide->version, 'en');
-                $this->headings = $this->loadHeadings($this->name, $this->guide->version, 'en');
+                $this->content = $this->loadContent($this->name, $this->guide->version, Guide::LANGUAGE_EN);
+                $this->headings = $this->loadHeadings($this->name, $this->guide->version, Guide::LANGUAGE_EN);
             }
         }
         return $this->content !== false;
@@ -62,9 +64,9 @@ class GuideSection extends Object
         if (isset($this->guide->sections[$this->name])) {
             list ($chapter, $section) = $this->guide->sections[$this->name];
             return "$chapter: $section";
-        } else {
-            return $this->guide->title;
         }
+
+        return $this->guide->title;
     }
 
     /**
@@ -78,9 +80,9 @@ class GuideSection extends Object
         if (isset($this->guide->sections[$this->name])) {
             list ($chapter, $section) = $this->guide->sections[$this->name];
             return $section;
-        } else {
-            return false;
         }
+
+        return false;
     }
 
     /**
@@ -95,9 +97,9 @@ class GuideSection extends Object
             list ($chapter, $section) = $this->guide->sections[$name];
             if ($this->guide->sections[$this->name][0] === $chapter) {
                 return [$name, $section];
-            } else {
-                return [$name, "$chapter: $section"];
             }
+
+            return [$name, "$chapter: $section"];
         }
         return null;
     }
@@ -114,9 +116,9 @@ class GuideSection extends Object
             list ($chapter, $section) = $this->guide->sections[$name];
             if ($this->guide->sections[$this->name][0] === $chapter) {
                 return [$name, $section];
-            } else {
-                return [$name, "$chapter: $section"];
             }
+
+            return [$name, "$chapter: $section"];
         }
         return null;
     }
@@ -137,24 +139,26 @@ class GuideSection extends Object
     public function getEditUrl()
     {
         $version = $this->guide->version;
-        if ($version === '1.1') {
+        if ($version === Guide::VERSION_11) {
             if ($this->missingTranslation) {
                 $language = 'en';
             } else {
                 $language = str_replace('-', '_', strtolower($this->guide->language));
             }
-            $type = $this->guide->type == 'blogtut' ? 'blog' : 'guide';
-            return "https://github.com/yiisoft/yii/edit/master/docs/{$type}/" . ($language !== 'en' ? "$language/" : '') . "{$this->name}.txt";
-        } elseif ($version[0] === '2') {
+            $type = $this->guide->type == Guide::TYPE_BLOG ? 'blog' : 'guide';
+            return "https://github.com/yiisoft/yii/edit/master/docs/{$type}/" . ($language !== Guide::LANGUAGE_EN ? "$language/" : '') . "{$this->name}.txt";
+        }
+
+        if ($version[0] === Guide::VERSION_2) {
             if ($this->missingTranslation) {
-                $language = 'en';
+                $language = Guide::LANGUAGE_EN;
             } elseif (strpos($this->guide->language, '-') !== false) {
                 list($lang, $locale) = explode('-', $this->guide->language);
                 $language = $lang . (empty($locale) ? '' : '-' . strtoupper($locale));
             } else {
                 $language = $this->guide->language;
             }
-            return 'https://github.com/yiisoft/yii2/edit/master/docs/guide' . ($language !== 'en' ? "-$language" : '') . "/{$this->name}.md";
+            return 'https://github.com/yiisoft/yii2/edit/master/docs/guide' . ($language !== Guide::LANGUAGE_EN ? "-$language" : '') . "/{$this->name}.md";
         }
         return false;
     }

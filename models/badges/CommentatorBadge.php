@@ -13,14 +13,13 @@ class CommentatorBadge extends Badge
 
     public function earned(UserBadge $badge)
     {
-        $sql = 'SELECT created_at FROM {{%comment}} WHERE user_id = :user_id ORDER BY created_at ASC LIMIT 10';
-        $time = $this->getDb()->createCommand($sql, ['user_id' => $badge->user_id])->queryColumn();
+        $sql = 'SELECT created_at FROM {{%COMMENT}} WHERE user_id = :user_id ORDER BY created_at ASC LIMIT 10';
+        $time = static::getDb()->createCommand($sql, ['user_id' => $badge->user_id])->queryColumn();
         $count = count($time);
-        if($count > 0)
-        {
+        if ($count > 0) {
             $badge->create_time = $time[0];
-            $badge->progress = min(100,  $count * 10);
-            if($count === 10)
+            $badge->progress = min(100, $count * 10);
+            if ($count === 10)
                 $badge->complete_time = $time[9];
             return true;
         }

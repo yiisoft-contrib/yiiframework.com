@@ -136,7 +136,7 @@ class Wiki extends ActiveRecord implements Linkable
         return [
             'create' => ['title', 'content', 'category_id', 'yii_version', 'tagNames'],
             'update' => ['title', 'content', 'category_id', 'yii_version', 'tagNames', 'memo'],
-            'load'   => ['title', 'content', 'category_id', 'yii_version', 'tagNames'],
+            'load' => ['title', 'content', 'category_id', 'yii_version', 'tagNames'],
         ];
     }
 
@@ -144,7 +144,7 @@ class Wiki extends ActiveRecord implements Linkable
     {
         // TODO do not store a revision if nothing has changed!
         // TODO make that a validation rule?
-        $revision = new WikiRevision(['scenario' => 'create']);
+        $revision = new WikiRevision(['scenario' => WikiRevision::SCENARIO_CREATE]);
         $revision->wiki_id = $this->id;
         $revision->setAttributes($this->attributes);
         $revision->tagNames = $this->tagNames;
@@ -198,7 +198,7 @@ class Wiki extends ActiveRecord implements Linkable
     public function getTeaser()
     {
         $paragraphs = preg_split("/\n\s+\n/", $this->content, -1, PREG_SPLIT_NO_EMPTY);
-        while(count($paragraphs) > 0) {
+        while (count($paragraphs) > 0) {
             $teaser = array_shift($paragraphs);
             $teaser = StringHelper::truncate($teaser, 400);
             $html = Markdown::process($teaser, 'gfm');

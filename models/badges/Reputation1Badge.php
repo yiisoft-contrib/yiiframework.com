@@ -16,30 +16,28 @@ class Reputation1Badge extends Badge
     public function earned(UserBadge $badge)
     {
         $rep = $this->countReputations($badge->user, $this->min, $this->threshold);
-        if($rep['rating']>0 && !empty($rep['start']))
-        {
+        if ($rep['rating'] > 0 && !empty($rep['start'])) {
             $badge->create_time = $rep['start'];
             $requires = $this->threshold - $this->min + 1;
             $current = $rep['rating'] - $this->min + 1;
-            $badge->progress = round($current/$requires*100.0);
-            if(!empty($rep['complete']))
+            $badge->progress = round($current / $requires * 100.0);
+            if (!empty($rep['complete']))
                 $badge->complete_time = $rep['complete'];
             return true;
         }
+        return false;
     }
 
     protected function countReputations($user, $min, $threshold)
     {
         $rating = 0;
-        $start = null; 
+        $start = null;
         $complete = null;
-        foreach($this->getReputations($user) as $row)
-        {
-            $rating += intval($row['rep_rating']);
-            if($rating > $min && $start===null)
+        foreach ($this->getReputations($user) as $row) {
+            $rating += (int)$row['rep_rating'];
+            if ($rating > $min && $start === null)
                 $start = $row['rep_date'];
-            if($rating >= $threshold)
-            {
+            if ($rating >= $threshold) {
                 $complete = $row['rep_date'];
                 break;
             }

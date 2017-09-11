@@ -3,12 +3,9 @@
 namespace app\models;
 
 use dosamigos\taggable\Taggable;
-use Yii;
 use yii\apidoc\helpers\ApiMarkdown;
 use yii\behaviors\BlameableBehavior;
 use app\components\SluggableBehavior;
-use yii\behaviors\TimestampBehavior;
-use yii\db\Expression;
 
 /**
  * This is the model class for table "news".

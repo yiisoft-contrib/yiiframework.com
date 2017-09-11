@@ -89,7 +89,7 @@ class SearchApiPrimitive extends SearchActiveRecord
 
     /**
      *
-     * @param ApiType $parent
+     * @param SearchApiType $parent
      * @param MethodDoc|PropertyDoc|ConstDoc|EventDoc $primitive
      * @param $version
      */

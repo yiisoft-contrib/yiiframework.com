@@ -68,7 +68,7 @@ abstract class Badge extends ActiveRecord
      */
     public function updateBadges($userIds)
     {
-        foreach($this->getUnprocessedUsers($userIds) as $userId) {
+        foreach ($this->getUnprocessedUsers($userIds) as $userId) {
             $userBadge = UserBadge::findOrCreate($userId, $this->id);
             if ($this->earned($userBadge)) {
                 $userBadge->save();
@@ -81,9 +81,9 @@ abstract class Badge extends ActiveRecord
      */
     public static function check()
     {
+        /** @var User $user */
         $user = Yii::$app->user->identity;
-        if($user)
-        {
+        if ($user) {
             $userID = $user->id;
             static::addCandidate($userID);
         }
@@ -108,8 +108,7 @@ abstract class Badge extends ActiveRecord
      */
     protected function getUnprocessedUsers($userIds)
     {
-        if (!$this->allowMultiple && count($userIds) > 0)
-        {
+        if (!$this->allowMultiple && count($userIds) > 0) {
             $query = UserBadge::find()
                 ->select('user_id')
                 ->where(['badge_id' => $this->id])

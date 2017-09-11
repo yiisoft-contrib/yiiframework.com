@@ -3,10 +3,18 @@
 namespace app\models;
 
 use Yii;
-use yii\base\Object;
+use yii\base\BaseObject;
 
-class Guide extends Object
+class Guide extends BaseObject
 {
+    const TYPE_BLOG = 'blogtut';
+    const TYPE_GUIDE = 'guide';
+
+    const LANGUAGE_EN = 'en';
+
+    const VERSION_11 = '1.1';
+    const VERSION_2 = '2';
+
     /**
      * @var string the version of this guide
      */
@@ -30,7 +38,7 @@ class Guide extends Object
     /**
      * @var string the type of guide, e.g. 'guide' or 'blogtut'
      */
-    public $type = 'guide';
+    public $type = self::TYPE_GUIDE;
 
 
     /**
@@ -39,37 +47,38 @@ class Guide extends Object
      * @param string $language
      * @return Guide the loaded guide, or null if the guide does not exist.
      */
-    public static function load($version, $language, $type = 'guide')
+    public static function load($version, $language, $type = self::TYPE_GUIDE)
     {
-        if (!in_array($type, ['guide', 'blogtut'])) {
+        if (!in_array($type, [self::TYPE_GUIDE, self::TYPE_BLOG], true)) {
             return null;
         }
         $guide = new self($version, $language, $type);
         if ($guide->validate() && $guide->loadIndex()) {
             return $guide;
-        } else {
-            return null;
         }
+
+        return null;
     }
 
     /**
      * @param string $image image file name (without directory part)
      * @param string $version
      * @param string $language
+     * @param string $type
      * @return bool|string the image file path, or false if the image file does not exist
      */
-    public static function findImage($image, $version, $language, $type = 'guide')
+    public static function findImage($image, $version, $language, $type = self::TYPE_GUIDE)
     {
-        if (!in_array($type, ['guide', 'blogtut'])) {
+        if (!in_array($type, [self::TYPE_GUIDE, self::TYPE_BLOG], true)) {
             return false;
         }
         $versions = Yii::$app->params["$type.versions"];
         if (isset($versions[$version]) && isset($versions[$version][$language]) && preg_match('/^[\w\-\.]+\.(png|jpg|gif)$/i', $image)) {
             $file = Yii::getAlias("@app/data/$type-$version/$language/images/$image");
             return is_file($file) ? $file : false;
-        } else {
-            return false;
         }
+
+        return false;
     }
 
     /**
@@ -84,6 +93,7 @@ class Guide extends Object
                 return $section;
             }
         }
+
         return null;
     }
 
@@ -112,8 +122,10 @@ class Guide extends Object
         return $languages[$this->language];
     }
 
-    public function __construct($version, $language, $type = 'guide')
+    public function __construct($version, $language, $type = self::TYPE_GUIDE, $config = [])
     {
+        parent::__construct($config);
+
         $this->version = $version;
         $this->language = $language;
         $this->type = $type;
@@ -140,7 +152,7 @@ class Guide extends Object
 
     public function getTypeUrlName()
     {
-        return $this->type == 'blogtut' ? 'blog' : $this->type;
+        return $this->type == self::TYPE_BLOG ? 'blog' : $this->type;
     }
 
     public function getDownloadFile($format)

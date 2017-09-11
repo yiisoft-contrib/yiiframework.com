@@ -31,6 +31,8 @@ use yii\helpers\ArrayHelper;
  */
 class WikiRevision extends ActiveRecord
 {
+    const SCENARIO_CREATE = 'create';
+
     public function behaviors()
     {
         return [
@@ -69,7 +71,7 @@ class WikiRevision extends ActiveRecord
     public function scenarios()
     {
         return [
-            'create' => ['title', 'content', 'category_id', 'memo', 'yii_version']
+            self::SCENARIO_CREATE => ['title', 'content', 'category_id', 'memo', 'yii_version']
         ];
     }
 
@@ -80,7 +82,7 @@ class WikiRevision extends ActiveRecord
         }
 
         if ($insert && $this->revision === null) {
-            $this->revision = (int) static::find()->where(['wiki_id' => $this->wiki_id])->max('revision');
+            $this->revision = (int)static::find()->where(['wiki_id' => $this->wiki_id])->max('revision');
             $this->revision++;
         }
         return parent::beforeSave($insert);
@@ -155,7 +157,7 @@ class WikiRevision extends ActiveRecord
 
     public function isLatest()
     {
-        return $this->equals($this->findLatest($this->wiki_id));
+        return $this->equals(static::findLatest($this->wiki_id));
     }
 
     /**
@@ -163,7 +165,7 @@ class WikiRevision extends ActiveRecord
      */
     public function getUrl($action = null, $params = [])
     {
-        $url = ["wiki/revision", 'id' => $this->wiki_id, 'r1' => $this->revision];
+        $url = ['wiki/revision', 'id' => $this->wiki_id, 'r1' => $this->revision];
         return empty($params) ? $url : array_merge($url, $params);
     }
 

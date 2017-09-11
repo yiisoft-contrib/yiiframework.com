@@ -14,8 +14,7 @@ class ExtensionBadge extends Badge
     public function earned(UserBadge $badge)
     {
         $sql = 'SELECT created_at FROM {{%extension}} WHERE owner_id = :user_id ORDER BY created_at ASC LIMIT 1';
-        if($date = $this->getDb()->createCommand($sql, [':user_id' => $badge->user_id])->queryScalar())
-        {
+        if ($date = static::getDb()->createCommand($sql, [':user_id' => $badge->user_id])->queryScalar()) {
             $badge->progress = 100;
             $badge->create_time = $date;
             $badge->complete_time = $date;

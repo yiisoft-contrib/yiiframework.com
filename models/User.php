@@ -8,6 +8,7 @@ use yii\db\ActiveQuery;
 use yii\helpers\Html;
 use yii\web\IdentityInterface;
 use yii\helpers\ArrayHelper;
+
 /**
  * User model
  *
@@ -39,7 +40,6 @@ use yii\helpers\ArrayHelper;
  * @property Auth[] $authClients
  * @property Wiki[] $wikis
  * @property Extension[] $extensions
- * @property bool $email_verfied [tinyint(1)]
  * @property Badge[] $badges
  *
  */
@@ -99,7 +99,9 @@ class User extends ActiveRecord implements IdentityInterface
         return [
             ['email', 'filter', 'filter' => 'trim'],
             ['email', 'required'],
-            ['email', 'filter', 'filter' => function($value) { return mb_strtolower($value, Yii::$app->charset); }],
+            ['email', 'filter', 'filter' => function ($value) {
+                return mb_strtolower($value, Yii::$app->charset);
+            }],
             ['email', 'string', 'max' => 255],
             ['email', 'email'],
             ['email', 'unique', 'targetClass' => User::class, 'message' => 'There is already an account with this email address.'],
@@ -197,7 +199,7 @@ class User extends ActiveRecord implements IdentityInterface
         }
         $expire = Yii::$app->params['user.passwordResetTokenExpire'];
         $parts = explode('_', $token);
-        $timestamp = (int) end($parts);
+        $timestamp = (int)end($parts);
         return $timestamp + $expire >= time();
     }
 
@@ -274,7 +276,7 @@ class User extends ActiveRecord implements IdentityInterface
      */
     private function validateLegacyPasswordSHA($password, $hash)
     {
-        $password=$this->parseLegacyPasswordValue($password);
+        $password = $this->parseLegacyPasswordValue($password);
         return (sha1(strtolower($this->username) . $password) === $hash);
     }
 
@@ -283,8 +285,8 @@ class User extends ActiveRecord implements IdentityInterface
      */
     private function validateLegacyPasswordMD5($password, $hash, $salt)
     {
-        $password=$this->parseLegacyPasswordValue($password);
-        return (md5(md5($salt).md5($password)) === $hash);
+        $password = $this->parseLegacyPasswordValue($password);
+        return (md5(md5($salt) . md5($password)) === $hash);
     }
 
     /*
@@ -377,7 +379,7 @@ class User extends ActiveRecord implements IdentityInterface
     {
         return [
             self::STATUS_DELETED => 'Delete',
-            self::STATUS_ACTIVE  => 'Active',
+            self::STATUS_ACTIVE => 'Active',
         ];
     }
 
@@ -399,16 +401,17 @@ class User extends ActiveRecord implements IdentityInterface
 
     public function getRankLink()
     {
-        $class='user-rank-link';
+        $class = 'user-rank-link';
 
-        if($this->rank<=5)
-            $class="{$class} gold";
-        elseif($this->rank<=20)
-            $class="{$class} silver";
-        elseif($this->rank<=50)
-            $class="{$class} bronze";
+        if ($this->rank <= 5) {
+            $class = "{$class} gold";
+        } elseif ($this->rank <= 20) {
+            $class = "{$class} silver";
+        } elseif ($this->rank <= 50) {
+            $class = "{$class} bronze";
+        }
 
-        return Html::a(Html::encode($this->display_name), ['user/view', 'id' => $this->id], array('class'=>$class));
+        return Html::a(Html::encode($this->display_name), ['user/view', 'id' => $this->id], array('class' => $class));
     }
 
     public function getForumUrl()
@@ -548,7 +551,7 @@ class User extends ActiveRecord implements IdentityInterface
         }
         $expire = Yii::$app->params['user.emailVerificationTokenExpire'];
         $parts = explode('_', $token);
-        $timestamp = (int) end($parts);
+        $timestamp = (int)end($parts);
         return $timestamp + $expire >= time();
     }
 }

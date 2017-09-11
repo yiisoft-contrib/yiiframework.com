@@ -1,4 +1,5 @@
 <?php
+
 namespace app\models\badges;
 
 use app\models\Badge;

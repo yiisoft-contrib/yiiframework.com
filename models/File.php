@@ -92,9 +92,9 @@ class File extends ActiveRecord
     {
         if (($pos = strrpos($this->file_name, '.')) !== false) {
             return strtolower(substr($this->file_name, $pos + 1));
-        } else {
-            return '';
         }
+
+        return '';
     }
 
     /**
@@ -128,9 +128,9 @@ class File extends ActiveRecord
                 }
             }
             return true;
-        } else {
-            return false;
         }
+
+        return false;
     }
 
     public function afterSave($insert, $changedAttributes)

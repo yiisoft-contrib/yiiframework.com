@@ -1,6 +1,7 @@
 <?php
 
 namespace app\models;
+
 use yii\db\ActiveQuery;
 use yii\helpers\ArrayHelper;
 
@@ -93,29 +94,22 @@ class Star extends ActiveRecord
             'user_id' => $userID,
         ]);
 
-        if ($star === null)
-        {
+        if ($star === null) {
             $star = new static;
             $star->object_type = $model->formName();
             $star->object_id = (int)$model->primaryKey;
             $star->user_id = $userID;
             $star->star = 1;
             $star->save(false);
-        }
-        else
-        {
-            if(-1==$starValue)
-            {
-                $star->star = (0==$star->star) ? 1 : 0;
+        } else {
+            if (-1 == $starValue) {
+                $star->star = (0 == $star->star) ? 1 : 0;
                 $star->save(false);
-            }
-            else
-            {
+            } else {
                 /*
                  * If record already exist, allow only unstar (no automatic starring)
                  */
-                if($starValue==0 && $star->star!=$starValue)
-                {
+                if ($starValue == 0 && $star->star != $starValue) {
                     $star->star = $starValue;
                     $star->save(false);
                 }
@@ -132,9 +126,8 @@ class Star extends ActiveRecord
      */
     public static function getTargets($userID)
     {
-        $models=[];
-        foreach(self::$modelClasses as $class)
-        {
+        $models = [];
+        foreach (self::$modelClasses as $class) {
             /** @var $modelClass ActiveRecord */
             $modelClass = "app\\models\\$class";
 
@@ -191,7 +184,7 @@ class Star extends ActiveRecord
         /** @var $star Star */
         $star = static::findOne([
             'object_type' => $model->formName(),
-            'object_id' => (int) $model->primaryKey,
+            'object_id' => (int)$model->primaryKey,
             'user_id' => $userID,
         ]);
 

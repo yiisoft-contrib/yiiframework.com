@@ -5,13 +5,11 @@ namespace app\models;
 use app\components\DiffBehavior;
 use app\components\packagist\Package;
 use app\components\packagist\PackagistApi;
-use app\components\SluggableBehavior;
 use Composer\Spdx\SpdxLicenses;
 use dosamigos\taggable\Taggable;
 use Yii;
 use yii\base\Exception;
 use yii\behaviors\BlameableBehavior;
-use yii\behaviors\TimestampBehavior;
 use yii\db\Expression;
 use yii\helpers\ArrayHelper;
 use yii\helpers\Html;
@@ -348,7 +346,7 @@ MARKDOWN;
             'Sleepycat',
         ];
         $result = [];
-        foreach($identifiers as $i) {
+        foreach ($identifiers as $i) {
             $license = $spdx->getLicenseByIdentifier($i);
             if ($license) {
                 $result[$i] = $license[0];

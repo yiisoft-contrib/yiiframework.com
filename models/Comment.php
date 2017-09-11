@@ -4,8 +4,6 @@ namespace app\models;
 
 use Yii;
 use yii\behaviors\BlameableBehavior;
-use yii\behaviors\TimestampBehavior;
-use yii\db\Expression;
 
 /**
  * This is the model class for table "comment".
@@ -58,10 +56,10 @@ class Comment extends ActiveRecord
         return [
             'timestamp' => $this->timeStampBehavior(),
             [
-                 'class' => BlameableBehavior::className(),
-                 'createdByAttribute' => 'user_id',
-                 'updatedByAttribute' => false,
-             ],
+                'class' => BlameableBehavior::className(),
+                'createdByAttribute' => 'user_id',
+                'updatedByAttribute' => false,
+            ],
         ];
     }
 

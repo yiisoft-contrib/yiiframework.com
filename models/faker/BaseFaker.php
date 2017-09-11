@@ -69,6 +69,10 @@ abstract class BaseFaker extends Component
 	 */
 	abstract public function generateModel();
 
+    /**
+     * @param ActiveRecord $model
+     * @throws Exception
+     */
 	protected function saveModel($model)
 	{
 		if (!$model->save()) {

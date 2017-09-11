@@ -15,6 +15,8 @@ class CommentQuery extends ActiveQuery
     }
 
     /**
+     * @param string $type
+     * @param int $id
      * @return $this
      */
     public function forObject($type, $id)
@@ -23,6 +25,8 @@ class CommentQuery extends ActiveQuery
     }
 
     /**
+     * @param string $type
+     * @param int $count
      * @return $this
      */
     public function recentComments($type, $count)
