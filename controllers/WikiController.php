@@ -163,7 +163,7 @@ class WikiController extends BaseController
     public function actionCreate()
     {
         if (!UserPermissions::canCreateWikiPage()) {
-            throw new ForbiddenHttpException('Sorry, you are too new to write a wiki article. Please try posting it in our forum first.');
+            throw new ForbiddenHttpException('Please go to your profile and validate email before creating a wiki article.');
         }
 
         $model = new Wiki();

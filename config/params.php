@@ -172,6 +172,7 @@ return [
     'supportEmail' => 'yii@cebe.cc',
     'notificationEmail' => ['admin@yiiframework.com' => 'Yii Framework'],
     'user.passwordResetTokenExpire' => 3600 * 3, // 3 hours
+    'user.emailVerificationTokenExpire' => 3600 * 3, // 3 hours
     'user.rememberMeDuration' => 3600 * 24 * 30, // 30 days
 
     // cache

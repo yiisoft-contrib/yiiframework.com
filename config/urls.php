@@ -82,7 +82,7 @@ return [
     // user profiles and user ranking
 	'user' => 'user/index',
 	'user/<id:\d+>' => 'user/view',
-	'user/<action:halloffame|profile>' => 'user/<action>',
+	'user/<action:halloffame|profile|request-email-verification>' => 'user/<action>',
 	'badges' => 'user/badges',
 	'badge/<name:[\w-]+>' => 'user/view-badge',
 

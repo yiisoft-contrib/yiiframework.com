@@ -32,17 +32,29 @@ class AuthController extends BaseController
                 'class' => AccessControl::class,
                 'rules' => [
                     [
-                        'actions' => ['signup', 'login', 'request-password-reset', 'reset-password', 'auth'],
+                        'actions' => [
+                            'request-password-reset',
+                            'reset-password',
+                            'auth',
+                            'verify-email',
+                        ],
+                        'allow' => true,
+                    ],
+                    [
+                        'actions' => [
+                            'signup',
+                            'login',
+                        ],
                         'allow' => true,
                         'roles' => ['?'],
                     ],
                     [
-                        'actions' => ['logout', 'request-password-reset', 'reset-password', 'auth'],
-                        'allow' => true,
-                        'roles' => ['@'],
-                    ],
-                    [
-                        'actions' => ['remove-auth', 'connect-auth', 'disable-password'],
+                        'actions' => [
+                            'logout',
+                            'remove-auth',
+                            'connect-auth',
+                            'disable-password',
+                        ],
                         'allow' => true,
                         'roles' => ['@'],
                     ],
@@ -207,5 +219,16 @@ class AuthController extends BaseController
         return $this->render('resetPassword', [
             'model' => $model,
         ]);
+    }
+
+    public function actionVerifyEmail($token)
+    {
+        if (User::validateEmailVerificationToken($token)) {
+            Yii::$app->getSession()->setFlash('success', 'Email was verified successfully.');
+        } else {
+            Yii::$app->getSession()->setFlash('error', 'Unable to verifiy email.');
+        }
+
+        return Yii::$app->user->isGuest ? $this->goHome() : $this->redirect(['user/profile']);
     }
 }
