@@ -55,6 +55,10 @@ class Wiki extends ActiveRecord implements Linkable
     const YII_VERSION_11 = '1.1';
     const YII_VERSION_10 = '1.0';
 
+    const SCENARIO_CREATE = 'create';
+    const SCENARIO_UPDATE = 'update';
+    const SCENARIO_LOAD = 'load';
+
 
     /**
      * object type used for wiki comments
@@ -134,9 +138,9 @@ class Wiki extends ActiveRecord implements Linkable
     public function scenarios()
     {
         return [
-            'create' => ['title', 'content', 'category_id', 'yii_version', 'tagNames'],
-            'update' => ['title', 'content', 'category_id', 'yii_version', 'tagNames', 'memo'],
-            'load' => ['title', 'content', 'category_id', 'yii_version', 'tagNames'],
+            self::SCENARIO_CREATE => ['title', 'content', 'category_id', 'yii_version', 'tagNames'],
+            self::SCENARIO_UPDATE => ['title', 'content', 'category_id', 'yii_version', 'tagNames', 'memo'],
+            self::SCENARIO_LOAD => ['title', 'content', 'category_id', 'yii_version', 'tagNames'],
         ];
     }
 
@@ -167,7 +171,7 @@ class Wiki extends ActiveRecord implements Linkable
     public function loadRevision(WikiRevision $revision)
     {
         $oldScenario = $this->scenario;
-        $this->scenario = 'load';
+        $this->scenario = self::SCENARIO_LOAD;
         $this->setAttributes($revision->attributes);
         $this->scenario = $oldScenario;
     }
