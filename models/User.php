@@ -21,18 +21,18 @@ use yii\helpers\ArrayHelper;
  * @property integer $created_at
  * @property integer $updated_at
  * @property string $password write-only password
- * @property int $rating
- * @property int $rank
- * @property int $extension_count
- * @property int $wiki_count
- * @property int $comment_count
+ * @property int $rating user absolute rating value
+ * @property int $rank place number in the whole community
+ * @property int $extension_count number of extensions user created
+ * @property int $wiki_count number of wiki pages user created
+ * @property int $comment_count number of comments user left
  * @property int $post_count
  * @property string $display_name
  * @property string $login_time
  * @property int $login_attempts
  * @property string $login_ip
  * @property string $email_verification_token
- * @property boolean $email_verified
+ * @property bool $email_verified if email was confirmed
  *
  * Relations:
  *

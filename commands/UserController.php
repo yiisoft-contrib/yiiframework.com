@@ -32,13 +32,13 @@ class UserController  extends Controller
      *
      * This action should be configured as a daily cronjob.
      *
-     * For an interactive ouput with progress bar, call it like:
+     * For an interactive output with progress bar, call it like:
      *
      * ```
      * yii user/ranking --progress
      * ```
      *
-     * member rating formula:
+     * Member rating formula:
      *
      * FP: forum posts: 0 ~ 5485 posts
      * MA: member activity: 0 ~ 2*12 months (recent active time - register time)

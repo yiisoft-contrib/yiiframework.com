@@ -22,6 +22,8 @@ class UserPermissions
     const PERMISSION_MANAGE_EXTENSIONS = 'manage_extensions';
     const PERMISSION_MANAGE_WIKI = 'manage_wiki';
 
+    const MIN_RATING_EDIT_WIKI = 50;
+
     /**
      * Authenticated user can create a Wiki page if either:
      *
@@ -55,7 +57,8 @@ class UserPermissions
      * Authenticated user can edit Wiki page if either:
      *
      * - It's his own page.
-     * - He is Wiki admin.
+     * - He is Wiki admin.'
+     * - He has 50 or more rating.
      *
      * @param Wiki $wikiPage
      * @return bool
@@ -74,7 +77,13 @@ class UserPermissions
             return true;
         }
 
-        return true;
+        /** @var User $user */
+        $user = Yii::$app->user->identity;
+        if ($user->rating >= self::MIN_RATING_EDIT_WIKI) {
+            return true;
+        }
+
+        return false;
     }
 
     /**
