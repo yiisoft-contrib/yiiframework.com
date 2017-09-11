@@ -5,9 +5,9 @@ namespace app\jobs;
 use Swift_RfcComplianceException;
 use Swift_SwiftException;
 use Yii;
+use yii\base\BaseObject;
 use yii\base\Exception;
 use yii\base\InvalidConfigException;
-use yii\base\Object;
 use yii\mail\MessageInterface;
 use yii\queue\Queue;
 use yii\queue\RetryableJob;
@@ -15,7 +15,7 @@ use yii\queue\RetryableJob;
 /**
  * EmailNotificationJob sends notification emails to users.
  */
-class EmailNotificationJob extends Object implements RetryableJob
+class EmailNotificationJob extends BaseObject implements RetryableJob
 {
     /**
      * @var MessageInterface

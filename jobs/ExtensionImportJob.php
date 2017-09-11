@@ -3,12 +3,12 @@
 namespace app\jobs;
 
 use app\models\Extension;
-use yii\base\Object;
+use yii\base\BaseObject;
 use yii\queue\Queue;
 use yii\queue\RetryableJob;
 use yii\web\HttpException;
 
-class ExtensionImportJob extends Object implements RetryableJob
+class ExtensionImportJob extends BaseObject implements RetryableJob
 {
     public $extensionId;
 

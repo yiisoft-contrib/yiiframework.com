@@ -15,12 +15,12 @@ use app\models\Star;
 use app\models\User;
 use Yii;
 use yii\base\Model;
-use yii\base\Object;
+use yii\base\BaseObject;
 use yii\helpers\Inflector;
 use yii\helpers\StringHelper;
 use yii\queue\Queue;
 
-abstract class BaseNotification extends Object
+abstract class BaseNotification extends BaseObject
 {
     /**
      * @param ActiveRecord $model

@@ -3,15 +3,15 @@
 namespace app\jobs;
 
 use app\notifications\BaseNotification;
+use yii\base\BaseObject;
 use yii\base\InvalidConfigException;
-use yii\base\Object;
 use yii\queue\Job;
 use yii\queue\Queue;
 
 /**
  * NotificationJob generates emails to send for notifying user about changes in items they follow.
  */
-class NotificationJob extends Object implements Job
+class NotificationJob extends BaseObject implements Job
 {
     /**
      * @var BaseNotification
