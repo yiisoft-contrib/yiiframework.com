@@ -95,7 +95,7 @@ return [
     '<url:doc/cookbook/.*>' => 'site/redirect',
 	'<url:doc/terms>' => 'site/redirect',
 	'<url:about|performance|demos|doc>' => 'site/redirect',
-
+    '<url:features>' => 'site/redirect',
 
 	// admin
 	'admin/<controller:user>' => '<controller>-admin/index',
