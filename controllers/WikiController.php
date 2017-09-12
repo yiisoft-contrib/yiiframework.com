@@ -61,7 +61,7 @@ class WikiController extends BaseController
 
     public function actionIndex($category = null, $tag = null, $version = '2.0')
     {
-        if (!in_array($version, [Wiki::YII_VERSION_10, Wiki::YII_VERSION_11, Wiki::YII_VERSION_20], true)) {
+        if (!in_array($version, [Wiki::YII_VERSION_10, Wiki::YII_VERSION_11, Wiki::YII_VERSION_20, Wiki::YII_VERSION_ALL], true)) {
             throw new NotFoundHttpException();
         }
 
@@ -86,8 +86,10 @@ class WikiController extends BaseController
             $query->andWhere(['wiki_tag_id' => $tagModel->id]);
         }
 
-        if ($version) {
-            $query->andWhere(['yii_version' => $version]);
+        if ($version && $version !== 'all') {
+            $query->andWhere(['or', ['yii_version' => $version], ['yii_version' => 'all']]);
+        } else {
+            $version = Wiki::YII_VERSION_ALL;
         }
 
         $dataProvider = new ActiveDataProvider([

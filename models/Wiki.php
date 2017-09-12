@@ -54,6 +54,7 @@ class Wiki extends ActiveRecord implements Linkable
     const YII_VERSION_20 = '2.0';
     const YII_VERSION_11 = '1.1';
     const YII_VERSION_10 = '1.0';
+    const YII_VERSION_ALL = 'all';
 
     const SCENARIO_CREATE = 'create';
     const SCENARIO_UPDATE = 'update';
@@ -350,8 +351,9 @@ class Wiki extends ActiveRecord implements Linkable
     public static function getYiiVersionOptions()
     {
         return [
-            self::YII_VERSION_20 => '2.0',
-            self::YII_VERSION_11 => '1.1',
+            self::YII_VERSION_20 => 'Version 2.0',
+            self::YII_VERSION_11 => 'Version 1.1',
+            self::YII_VERSION_ALL => 'All Versions',
         ];
     }
 }
