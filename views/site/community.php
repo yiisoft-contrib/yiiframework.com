@@ -23,6 +23,7 @@
            <ul>
                <li><a href="https://www.facebook.com/groups/yiitalk/">Official Facebook group</a></li>
                <li><a href="https://www.reddit.com/r/yii/">Reddit</a></li>
+               <li><a href="https://twitter.com/yiiframework">Twitter</a></li>
            </ul>
 
            <h2>Russian and Ukrainian</h2>
