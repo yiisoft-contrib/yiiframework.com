@@ -87,6 +87,14 @@ $yii-btn-border-radius-base: 6px;
   @include border-bottom-radius(0);
 }
 
+// ensure a single button in a button group has correct rounded corners
+.btn-group > .btn-group:first-child:last-child > .btn:last-child:first-child,
+.btn-group > .btn-group:first-child:last-child > .dropdown-toggle {
+  @include border-top-radius($yii-btn-border-radius-base);
+  @include border-bottom-radius(0);
+}
+
+
 // On active and open, don't show outline
 .btn-group .dropdown-toggle:active,
 .btn-group.open .dropdown-toggle {

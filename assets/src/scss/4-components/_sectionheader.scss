@@ -61,7 +61,9 @@
     .dropdown-menu {
       margin-top: -1px;
       background-color: $eshill-yellow;
-      width: 200%;
+      width: 100%;
+      @include border-top-radius(0);
+      @include border-bottom-radius($yii-btn-border-radius-base);
       > li > a {
         color: $yii-blue;
         &:hover,
@@ -69,6 +71,26 @@
           text-decoration: underline;
           background-color: $version-buttons;
         }
+      }
+    }
+    &> .btn-group {
+      float: right;
+    }
+    .btn-group.btn-group-1-element {
+      max-width: 50%;
+    }
+    .btn-group.btn-group-2-element {
+      max-width: 75%;
+      &> .btn-group:first-child > .dropdown-menu {
+        width: 200%;
+      }
+    }
+    .btn-group.btn-group-3-element {
+      &> .btn-group:first-child > .dropdown-menu {
+        width: 300%;
+      }
+      &> .btn-group:not(:first-child):not(:last-child) > .dropdown-menu {
+        width: 200%;
       }
     }
   }

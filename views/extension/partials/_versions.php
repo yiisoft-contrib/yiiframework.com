@@ -9,7 +9,7 @@ use app\widgets\DropdownList;
 
 ?>
 <nav class="version-selector">
-        <div class="btn-group btn-group-justified">
+        <div class="btn-group btn-group-justified btn-group-1-element">
         <?php
         $versionItems = [];
 

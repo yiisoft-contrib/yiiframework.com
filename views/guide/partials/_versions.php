@@ -9,7 +9,7 @@ use app\models\Guide;
 
 ?>
 <nav class="version-selector">
-        <div class="btn-group btn-group-justified">
+        <div class="btn-group btn-group-justified btn-group-3-element">
         <?php if ($guide->type === 'guide') {
             $items = [];
             if ($guide->getDownloadFile('pdf') !== false) {

@@ -11,7 +11,7 @@ use yii\helpers\Html;
 
 ?>
 <nav class="version-selector" role="navigation">
-    <div class="btn-group btn-group-justified">
+    <div class="btn-group btn-group-justified btn-group-2-element">
 	    <?php
 	        $guide = Guide::load($version, 'en');
 			$items = [];
