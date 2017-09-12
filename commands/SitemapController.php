@@ -72,10 +72,11 @@ class SitemapController extends Controller
             'extension/index', 'user/index', 'user/badges'
         ];
         foreach ($baseUrls as $baseUrl) {
-            $sitemap->addItem(Url::toRoute($baseUrl, true), null, Sitemap::DAILY, 0.2);
+            $sitemap->addItem(Url::toRoute($baseUrl, true), null, Sitemap::WEEKLY, 0.2);
         }
 
         foreach ($this->getDocUrls() as $docsUrl) {
+            // TODO different prio per version
             $sitemap->addItem(Url::to($docsUrl, true), null, Sitemap::DAILY, 0.3);
         }
 
@@ -86,6 +87,10 @@ class SitemapController extends Controller
             $url = Url::to(['news/view', 'id' => $news['id'], 'name' => $news['slug']], true);
             $sitemap->addItem($url, $news['updated_at'], null, 0.3);
         }
+
+        // TODO wiki
+
+        // TODO extensions
     }
 
     /**
