@@ -165,7 +165,7 @@ class ExtensionController extends BaseController
 
     public function actionCreate()
     {
-        if (UserPermissions::canAddOrUpdateExtension()) {
+        if (!UserPermissions::canAddOrUpdateExtension()) {
             throw new ForbiddenHttpException('Please go to profile and verify your email.');
         }
 
@@ -210,11 +210,11 @@ class ExtensionController extends BaseController
     {
         $model = $this->findModelById($id);
 
-        if (UserPermissions::canAddOrUpdateExtension()) {
+        if (!UserPermissions::canAddOrUpdateExtension()) {
             throw new ForbiddenHttpException('Please go to profile and verify your email.');
         }
 
-        if (UserPermissions::canUpdateExtension($model)) {
+        if (!UserPermissions::canUpdateExtension($model)) {
             throw new ForbiddenHttpException('You are not allowed to perform this operation.');
         }
 
