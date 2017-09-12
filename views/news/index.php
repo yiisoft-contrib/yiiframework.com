@@ -67,6 +67,16 @@ if (UserPermissions::canManageNews()) {
 					</div>
 				</div>
 
+				<div class="panel panel-default">
+					<div class="panel-heading">
+						<strong>RSS Feed</strong>
+					</div>
+					<div class="panel-body">
+						Get notified of news as soon as they are available by
+						using our <?= Html::a('RSS Feed', ['rss/all'])?>.
+					</div>
+				</div>
+
 			</div>
 		</div>
 
