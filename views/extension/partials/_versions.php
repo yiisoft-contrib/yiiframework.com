@@ -29,7 +29,7 @@ use app\widgets\DropdownList;
             }
 
             if ($tag) {
-                $url['tag'] = $tag->name;
+                $url['tag'] = $tag->slug;
             }
 
             $versionItems[] = [
