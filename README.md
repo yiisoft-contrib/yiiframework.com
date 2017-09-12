@@ -86,10 +86,6 @@ make docs
 
 ```
 
-To fill the database with dummy content, you may run the command `./yii fake-data`.
-
-To assign users extra permissions use `./yii rbac/assign`.
-
 ### Web Server Setup
 
 Define a host name `local.yiiframework.com` that points to `localhost`.
@@ -116,6 +112,16 @@ For importing data from the old website, the following steps are necessary:
 
 - import data by running `./yii import` command
 - rebuild user badges by running `./yii badge/rebuild` 
+- calculate user ranking `./yii user/ranking`.
+
+If you don't have that data, you can work with dummy content:
+
+- To fill the database with dummy content, you may run the command `./yii fake-data`.
+  You may run it multiple times to generate more data.
+- rebuild user badges by running `./yii badge/rebuild`.
+- calculate user ranking `./yii user/ranking`.
+
+To assign users extra permissions use `./yii rbac/assign`.
 
 ### DEPLOYMENT
 

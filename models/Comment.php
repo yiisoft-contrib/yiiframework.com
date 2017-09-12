@@ -55,7 +55,7 @@ class Comment extends ActiveRecord
     {
         return [
             'timestamp' => $this->timeStampBehavior(),
-            [
+            'blameable' => [
                 'class' => BlameableBehavior::className(),
                 'createdByAttribute' => 'user_id',
                 'updatedByAttribute' => false,

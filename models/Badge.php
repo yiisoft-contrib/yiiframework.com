@@ -81,6 +81,9 @@ abstract class Badge extends ActiveRecord
      */
     public static function check()
     {
+        if (!Yii::$app->has('user')) {
+            return;
+        }
         /** @var User $user */
         $user = Yii::$app->user->identity;
         if ($user) {
