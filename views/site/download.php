@@ -44,6 +44,8 @@ $this->params['breadcrumbs'][] = $this->title;
 				released on <strong><?= $versions[$version][$latest] ?></strong>.
 				For changes in this and older Versions, see the <?= Html::a('CHANGELOG', "https://github.com/yiisoft/yii2/$latest/framework/CHANGELOG.md") ?> file.
 				Instructions on how to upgrade to this version can be found in the <?= Html::a('UPGRADE', "https://github.com/yiisoft/yii2/blob/$latest/framework/UPGRADE.md") ?> file.
+
+				A list of all Yii 2.x releases can be found on the <a href="https://github.com/yiisoft/yii2/releases">github repository</a>.
 				</p>
 
 <!--            <div class="row text-center ptrem2">
@@ -61,13 +63,22 @@ $this->params['breadcrumbs'][] = $this->title;
 
 				<h1 id="install-composer">Install via Composer</h1>
 
-				<p class="small">This is the prefered way of installing Yii 2.0. If you do not have Composer installed yet, you may install it following the instructions on the <a href="https://getcomposer.org/download/">Composer website</a>.</p>
+				<p class="small">This is the recommended way of installing Yii 2.0.
+				The installation instructions described here are a short summary, you may want to check the
+					<?= Html::a('Definitive Guide', [
+						'guide/view',
+						'type' => 'guide',
+						'version' => '2.0',
+						'language' => 'en',
+						'section' => 'start-installation',
+						'#' => 'installing-via-composer',
+					]) ?> for more detailed instructions.</p>
 
-				<p class="small">After installing Composer, run the following command to install the <a target="_blank" rel="noopener noreferrer" href="https://github.com/francoispluchino/composer-asset-plugin">Composer Asset Plugin</a>, which is required by Yii:</p>
+				<p class="small">If you do not have Composer installed yet, you may install it following the instructions on the <a href="https://getcomposer.org/download/">Composer website</a>.</p>
 
-				<pre>
-					<code class="hljs bash language-bash">php composer.phar global require "fxp/composer-asset-plugin:^1.2.0"</code>
-				</pre>
+				<p class="small">After installing Composer, run the following command to install the <a target="_blank" rel="noopener noreferrer" href="https://github.com/francoispluchino/composer-asset-plugin">Composer Asset Plugin</a>, which is required by Yii 2.0:</p>
+
+				<pre><code class="hljs bash language-bash">php composer.phar global require "fxp/composer-asset-plugin:^1.2.0"</code></pre>
 
 				<p class="small">
 					Now choose one of the application templates to start installing Yii 2.0.
@@ -78,7 +89,7 @@ $this->params['breadcrumbs'][] = $this->title;
 
 				<div class="row ptrem1">
 					<div class="col-md-3">
-					<p class="small install">To install the <b>basic</b> application template, run the command below:</p>
+					<p class="small install">To install the <b>basic</b> application template, run the following command:</p>
 					</div>
 					<div class="col-md-9">
 					<pre><code class="hljs bash language-bash">php composer.phar create-project yiisoft/yii-app-basic <?= $latest ?> basic</code></pre>
@@ -99,7 +110,7 @@ $this->params['breadcrumbs'][] = $this->title;
 
 				<div class="row ptrem1">
 					<div class="col-md-3">
-					<p class="small install">To install the <b>advanced</b> application template, run the command below:</p>
+					<p class="small install">To install the <b>advanced</b> application template, run the following command:</p>
 					</div>
 					<div class="col-md-9">
 					<pre><code class="hljs bash language-bash">php composer.phar create-project yiisoft/yii-app-advanced <?= $latest ?> advanced</code></pre>
@@ -118,12 +129,12 @@ $this->params['breadcrumbs'][] = $this->title;
 				<div class="row extensions">
 					<div class="col-md-6 col-sm-12 col-xs-12">
 						<a class="btn btn-lg btn-default btn-block download-btn" href="https://github.com/yiisoft/yii2/releases/download/<?= $latest ?>/yii-basic-app-<?= $latest ?>.tgz">
-						<img style="height:5rem;"src="<?= Yii::getAlias('@web/image/tgz.svg')?>" />
+						<img style="height:5rem;" src="<?= Yii::getAlias('@web/image/tgz.svg')?>" />
 						<span>Yii 2 with basic application template</span></a>
 					</div>
 					<div class="col-md-6 col-sm-12 col-xs-12">
 						<a class="btn btn-lg btn-default btn-block download-btn" href="https://github.com/yiisoft/yii2/releases/download/<?= $latest ?>/yii-advanced-app-<?= $latest ?>.tgz">
-						<img style="height:5rem;"src="<?= Yii::getAlias('@web/image/tgz.svg')?>" />
+						<img style="height:5rem;" src="<?= Yii::getAlias('@web/image/tgz.svg')?>" />
 						<span>Yii 2 with advanced application template</span></a>
 					</div>
 				</div>
@@ -148,15 +159,17 @@ $this->params['breadcrumbs'][] = $this->title;
 
 				<p class="small">First, make sure you have the latest version of the Composer Asset Plugin:</p>
 
-				<pre>
-					<code class="hljs bash language-bash">php composer.phar global require "fxp/composer-asset-plugin:^1.2.0"</code>
-				</pre>
+				<pre><code class="hljs bash language-bash">php composer.phar global require "fxp/composer-asset-plugin:^1.2.0"</code></pre>
 
 				<p class="small">Then upgrade Yii and its dependencies by running:</p>
 
-				<pre>
-					<code class="hljs bash language-bash">php composer.phar update yiisoft/yii2 yiisoft/yii2-composer bower-asset/jquery.inputmask</code>
-				</pre>
+				<pre><code class="hljs bash language-bash">php composer.phar update yiisoft/yii2 yiisoft/yii2-composer bower-asset/jquery.inputmask</code></pre>
+
+				<p class="small">
+					When upgrading Yii there might be changes that require adjustment in you application code, so you should always check
+					the <?= Html::a('UPGRADE', "https://github.com/yiisoft/yii2/blob/$latest/framework/UPGRADE.md") ?> notes. These also contain
+					more detailed instructions on how to upgrade Yii with composer.
+				</p>
 
 				<p class="small">
 					If you installed Yii using an archive file, you can either follow the progress described above using Composer,
@@ -235,7 +248,7 @@ $this->params['breadcrumbs'][] = $this->title;
 				<p class="small">
 					The latest release of Yii 1.1 is <strong><?= $latest = key($versions[$version]) ?></strong>
 					released on <strong><?= $versions[$version][$latest] ?></strong>.
-					For changes in this and older Versions, see the <?= Html::a('CHANGELOG', "https://github.com/yiisoft/yii/$latest/CHANGELOG") ?> file.
+					For changes in this and older Versions, see the <?= Html::a('CHANGELOG', "https://github.com/yiisoft/yii/blob/$latest/CHANGELOG") ?> file.
 					Instructions on how to upgrade to this version can be found in the <?= Html::a('UPGRADE', "https://github.com/yiisoft/yii/blob/$latest/UPGRADE") ?> file.
 				</p>
 
@@ -256,6 +269,8 @@ $this->params['breadcrumbs'][] = $this->title;
 				<p class="small">or via SVN using:</p>
 				<p><code>svn checkout <?= $versionInfo[$version]['svn-url'] ?> yii</code></p>
 
+				<p class="small">A list of all Yii 1.x releases can be found on github: <a href="https://github.com/yiisoft/yii/releases">https://github.com/yiisoft/yii/releases</a>.</p>
+
 				<h3 class="text-center">Documentation</h3>
 
 				<ul class="offline-doc-v1">
@@ -266,23 +281,13 @@ $this->params['breadcrumbs'][] = $this->title;
 					<?php endforeach; ?>
 				</ul>
 
-<?php /*
+
 				<span id="archive">&nbsp;</span>
 				<div class="heading-separator">
 					<h2><span>Archive</span></h2>
 				</div>
 
-				<p class="text-center">coming soon...</p>
-				<?php
-				//$file = "yii-docs-2.0-$locale.tar";
-				//                            echo Html::a(".gz", ['site/file', 'category' => 'docs-offline', 'file' => "$file.gz"]);
-				//                            echo Html::a(".bz2", ['site/file', 'category' => 'docs-offline', 'file' => "$file.bz2"]);
-?>
-
-				<!-- TODO release history -->
-
- */ ?>
-
+				<p class="text-center">If you are looking for Yii 1.0 and other really old resources, you may find them at the <a href="https://github.com/yiisoft-contrib/museum">museum</a>.</p>
 
 			</div>
 		</div>
