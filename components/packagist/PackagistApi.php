@@ -115,8 +115,8 @@ class PackagistApi
      *
      * @param string $vendorName
      * @param string $packageName
-     *
-     * @return Package|bool
+     * @return Package|false
+     * @throws \Exception
      */
     public function getPackage($vendorName, $packageName)
     {

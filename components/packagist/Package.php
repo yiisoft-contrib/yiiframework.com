@@ -232,7 +232,7 @@ class Package
     private static function determineYiiVersion($versions)
     {
         $yiiVersions = [];
-        foreach($versions as $version) {
+        foreach ($versions as $version) {
             if (isset($version['require']['yiisoft/yii2'])) {
                 $yiiVersions[] = $version['require']['yiisoft/yii2'];
                 $yiiVersions[] = '2.0';

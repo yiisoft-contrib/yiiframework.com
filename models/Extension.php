@@ -5,6 +5,7 @@ namespace app\models;
 use app\components\DiffBehavior;
 use app\components\packagist\Package;
 use app\components\packagist\PackagistApi;
+use app\components\UserPermissions;
 use Composer\Spdx\SpdxLicenses;
 use dosamigos\taggable\Taggable;
 use Yii;
@@ -215,7 +216,9 @@ MARKDOWN;
             return;
         }
 
-        // TODO disallow non-admins to add things from http://packagist.org/p/yiisoft
+        if ($res[0] === 'yiisoft' && !UserPermissions::canManageExtensions()) {
+            $this->addError($attribute, 'You can not add packages made by yiisoft.');
+        }
     }
 
     public static function normalizePackagistUrl($url)

@@ -101,7 +101,7 @@ class UserPermissions
             return false;
         }
 
-        if (Yii::$app->user->can(self::PERMISSION_MANAGE_EXTENSIONS)) {
+        if (self::canManageExtensions()) {
             return true;
         }
 
@@ -127,7 +127,7 @@ class UserPermissions
      */
     public static function canUpdateExtension(Extension $extension)
     {
-        if (Yii::$app->user->can(self::PERMISSION_MANAGE_EXTENSIONS)) {
+        if (self::canManageExtensions()) {
             return true;
         }
 
@@ -141,6 +141,14 @@ class UserPermissions
         }
 
         return true;
+    }
+
+    /**
+     * Authenticated user can manage extensions if he's extension admin.
+     */
+    public static function canManageExtensions()
+    {
+        return Yii::$app->user->can(self::PERMISSION_MANAGE_EXTENSIONS);
     }
 
     /**
