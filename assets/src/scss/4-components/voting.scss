@@ -10,6 +10,18 @@
   .votes-down {
     color: $eshill-red;
   }
+
+  .votes-down.voted a {
+    background: lighten($eshill-red, 30%);
+    box-shadow: 0px 0px 10px lighten($eshill-red, 10%);
+    border-radius: 20px;
+  }
+  .votes-up.voted a {
+    background: lighten(#70C1B3, 25%);
+    box-shadow: 0px 0px 10px lighten(#70C1B3, 5%);
+    border-radius: 20px;
+  }
+
 }
 
 %thumbs {
@@ -20,15 +32,18 @@
   display: inline-block;
   min-height: 14px;
   vertical-align: center;
+  background-color: transparent;
 }
 .thumbs-up {
   @extend %thumbs;
   top: 2px;
+  left: 2px;
   background-image: url(../../../image/guide/ico_like.svg);
 }
 .thumbs-down {
   @extend %thumbs;
   top: 6px;
+  left: 2px;
   background-image: url(../../../image/guide/ico_dislike.svg);
 }
 // onclick animation

@@ -67,6 +67,7 @@ class AjaxController extends BaseController
      */
     public function actionVote($type, $id, $vote)
     {
+        $userVote = $vote ? 1 : 0;
         if (in_array($type, Rating::$modelClasses, true)) {
             /** @var $modelClass ActiveRecord */
             $modelClass = "app\\models\\$type";
@@ -76,11 +77,22 @@ class AjaxController extends BaseController
             throw new NotFoundHttpException();
         }
 
-        list($total, $up) = Rating::castVote($model, Yii::$app->user->id, $vote);
+        // check if user has already voted
+        /** @var $userRating Rating */
+        $userRating = Rating::find()->where(['object_type' => $type, 'object_id' => $id, 'user_id' => Yii::$app->user->id])->one();
+        if ($userRating !== null && $userRating->rating == $userVote) {
+            $userRating->delete();
+            list($total, $up) = Rating::getVotes($model);
+            $userVote = -1;
+        } else {
+            list($total, $up) = Rating::castVote($model, Yii::$app->user->id, $userVote);
+        }
+
         return [
             'up' => $up,
             'down' => $total - $up,
             'total' => $total,
+            'userVote' => $userVote,
         ];
     }
 

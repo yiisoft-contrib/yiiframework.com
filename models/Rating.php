@@ -37,6 +37,19 @@ class Rating extends ActiveRecord
     }
 
     /**
+     * @return null|Comment|Wiki|Extension
+     */
+    public function getModel()
+    {
+        if (!in_array($this->object_type, static::$modelClasses, true)) {
+            return null;
+        }
+        /** @var $modelClass ActiveRecord */
+        $modelClass = "app\\models\\{$this->object_type}";
+        return $modelClass::findOne($this->object_id);
+    }
+
+    /**
      * Returns the vote counts for the specified model.
      * @param ActiveRecord $model the specified model
      * @return array the vote counts (total votes, up votes)
@@ -94,6 +107,21 @@ class Rating extends ActiveRecord
         ]);
 
         return $votes;
+    }
+
+    public function afterDelete()
+    {
+        parent::afterDelete();
+
+        // update model rating
+        $model = $this->getModel();
+        $votes = static::getVotes($model);
+
+        $model->updateAttributes([
+            'total_votes' => $votes[0],
+            'up_votes' => $votes[1],
+            'rating' => static::wilsonLowerInterval($votes[1], $votes[0]),
+        ]);
     }
 
     public function beforeSave($insert)
