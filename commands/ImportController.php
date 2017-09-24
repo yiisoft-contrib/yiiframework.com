@@ -101,6 +101,22 @@ class ImportController extends Controller
         return User::find()->where(['username' => $username])->exists();
     }
 
+    private function chooseUser($users)
+    {
+        $result = $users[0];
+        for ($i = 1, $length = count($users); $i < $length; $i++) {
+            if ($this->getUserWeight($result) < $this->getUserWeight($users[$i])) {
+                $result = $users[$i];
+            }
+        }
+        return $result;
+    }
+
+    private function getUserWeight($user)
+    {
+        return 10 * $user['wiki_count'] + 10 * $user['extension_count'] + 2 * $user['comment_count'] + $user['post_count'];
+    }
+
 	private function importUsers()
 	{
 		if (User::find()->count() > 0) {
@@ -130,11 +146,21 @@ SQL
 		foreach ($userQuery->each(100, $this->sourceDb) as $user) {
 		    $user['name'] = trim($user['name']);
 
-			$yiiUser = (new Query)->from('tbl_user')->where(['id' => $user['member_id']])->one($this->sourceDb);
-			if ($yiiUser === false) {
+			$yiiUsers = (new Query)->from('tbl_user')->where(['id' => $user['member_id']])->all($this->sourceDb);
+
+
+			if ($yiiUsers === []) {
 				$this->stdout('NO YII USER for: ' . $user['member_id'] . ' - ' . $user['name']. "\n");
                 continue;
 			}
+
+            if (count($yiiUsers) > 1) {
+                $this->stdout('Multiple users with ID ' . $user['member_id'] . " in tbl_user. Choosing one...\n");
+                $yiiUser = $this->chooseUser($yiiUsers);
+            } else {
+                $yiiUser = $yiiUsers[0];
+            }
+
 			if (trim($yiiUser['username']) !== $user['name']) {
 				$this->stdout('NAME MISMATCH with YII USER for: ' . $user['member_id'] . ' - ' . $user['name'] . ' - ' . $yiiUser['username'] . "\n");
 				continue;
