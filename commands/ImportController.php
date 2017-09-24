@@ -23,7 +23,6 @@ use Faker\Factory;
 use yii\console\Controller;
 use yii\console\ExitCode;
 use yii\db\Connection;
-use yii\db\Expression;
 use yii\db\Query;
 use yii\di\Instance;
 use yii\helpers\Console;
@@ -74,7 +73,7 @@ class ImportController extends Controller
 	public function actionImport()
 	{
 		if (!$this->confirm('Populate database with content from old website?')) {
-			return 1;
+			return ExitCode::OK;
 		}
 
 		$this->importUsers();
@@ -97,6 +96,11 @@ class ImportController extends Controller
 		return ExitCode::OK;
 	}
 
+	private function isDuplicateUsername($username)
+    {
+        return User::find()->where(['username' => $username])->exists();
+    }
+
 	private function importUsers()
 	{
 		if (User::find()->count() > 0) {
@@ -104,11 +108,17 @@ class ImportController extends Controller
 			return;
 		}
 
-		// TODO find a way to migrate these accounts
-		$duplicateMail = $this->sourceDb->createCommand("SELECT `email` FROM `ipb_members` WHERE member_banned = 0 GROUP BY `email` HAVING COUNT(*) > 1")->queryColumn();
-		$duplicateUsername = $this->sourceDb->createCommand("SELECT `name` FROM `ipb_members` WHERE member_banned = 0 GROUP BY `name` HAVING COUNT(*) > 1")->queryColumn();
+		// Same email accounts should be skipped. Out of two prefer to keep one with more posts.
+		$excludedDuplicateIDs = $this->sourceDb->createCommand(<<<SQL
+SELECT member_id
+FROM ipb_members a
+WHERE member_banned = 0
+GROUP BY email
+HAVING COUNT(*) > 1
+ORDER BY posts ASC;
+SQL
+)->queryColumn();
 
-		//$userQuery = (new Query)->from('tbl_user');
 		$userQuery = (new Query)->from('ipb_members')
 			->select(['member_id', 'name', 'email', 'joined', 'last_visit', 'last_activity', 'members_display_name', 'members_pass_hash', 'members_pass_salt', 'conv_password'])
 			->where(['member_banned' => 0]);
@@ -117,21 +127,19 @@ class ImportController extends Controller
 		Console::startProgress(0, $count, 'Importing users...');
 		$i = 0;
 		$err = 0;
-		foreach($userQuery->each(100, $this->sourceDb) as $user) {
+		foreach ($userQuery->each(100, $this->sourceDb) as $user) {
+		    $user['name'] = trim($user['name']);
 
 			$yiiUser = (new Query)->from('tbl_user')->where(['id' => $user['member_id']])->one($this->sourceDb);
 			if ($yiiUser === false) {
 				$this->stdout('NO YII USER for: ' . $user['member_id'] . ' - ' . $user['name']. "\n");
+                continue;
 			}
-			if ($yiiUser['username'] !== $user['name']) {
+			if (trim($yiiUser['username']) !== $user['name']) {
 				$this->stdout('NAME MISMATCH with YII USER for: ' . $user['member_id'] . ' - ' . $user['name'] . ' - ' . $yiiUser['username'] . "\n");
 				continue;
 			}
-			if (in_array($user['name'], $duplicateUsername)) {
-				$this->stdout('NOT IMPORTED DUPLICATE USERNAME: ' . $user['member_id'] . ' - ' . $user['name'] . ' - ' . $user['email'] . "\n");
-				continue;
-			}
-			if (in_array($user['email'], $duplicateMail)) {
+			if (in_array($user['member_id'], $excludedDuplicateIDs)) {
 				$this->stdout('NOT IMPORTED DUPLICATE EMAIL: ' . $user['member_id'] . ' - ' . $user['name'] . ' - ' . $user['email'] . "\n");
 				continue;
 			}
@@ -166,14 +174,29 @@ class ImportController extends Controller
 			try {
                 $model->save(false);
             } catch (\Exception $e) {
-                $this->stdout($e->getMessage()."\n", Console::FG_RED);
-                $err++;
+			    // check if the error was because of duplicate username and try to import with
+                // adding "-" to username
+			    if ($this->isDuplicateUsername($model->username)) {
+                    $model->username .= '-';
+
+                    $this->stdout("Duplicate username. Importing with $model->username as username.\n");
+
+			        try {
+                        $model->save(false);
+                    } catch (\Exception $e) {
+                        $this->stdout($e->getMessage()."\n", Console::FG_RED);
+                        $err++;
+                    }
+                } else {
+                    $this->stdout($e->getMessage() . "\n", Console::FG_RED);
+                    $err++;
+                }
             }
 
 			Console::updateProgress(++$i, $count);
 		}
 		Console::endProgress(true);
-        $this->stdout("done.", Console::FG_GREEN, Console::BOLD);
+        $this->stdout('done.', Console::FG_GREEN, Console::BOLD);
         $this->stdout(" $count records imported.");
         if ($err > 0) {
             $this->stdout(" $err errors occurred.", Console::FG_RED, Console::BOLD);
