@@ -127,7 +127,7 @@ class ImportController extends Controller
 		// Same email accounts should be skipped. Out of two prefer to keep one with more posts.
 		$excludedDuplicateIDs = $this->sourceDb->createCommand(<<<SQL
 SELECT member_id
-FROM ipb_members a
+FROM ipb_members
 WHERE member_banned = 0
 GROUP BY email
 HAVING COUNT(*) > 1
@@ -135,9 +135,11 @@ ORDER BY posts ASC;
 SQL
 )->queryColumn();
 
-		$userQuery = (new Query)->from('ipb_members')
-			->select(['member_id', 'name', 'email', 'joined', 'last_visit', 'last_activity', 'members_display_name', 'members_pass_hash', 'members_pass_salt', 'conv_password'])
-			->where(['member_banned' => 0]);
+		$userQuery = (new Query)
+            ->select(['m.member_id', 'm.name', 'm.email', 'm.joined', 'm.last_visit', 'm.last_activity', 'm.members_display_name', 'm.members_pass_hash', 'm.members_pass_salt', 'm.conv_password'])
+            ->from('ipb_members m')
+            ->leftJoin('tbl_user u', 'u.id = m.member_id')
+			->where('m.member_banned = 0 || u.wiki_count > 0 || u.comment_count > 0 || u.extension_count > 0');
 
 		$count = $userQuery->count('*', $this->sourceDb);
 		Console::startProgress(0, $count, 'Importing users...');
@@ -147,7 +149,6 @@ SQL
 		    $user['name'] = trim($user['name']);
 
 			$yiiUsers = (new Query)->from('tbl_user')->where(['id' => $user['member_id']])->all($this->sourceDb);
-
 
 			if ($yiiUsers === []) {
 				$this->stdout('NO YII USER for: ' . $user['member_id'] . ' - ' . $user['name']. "\n");
