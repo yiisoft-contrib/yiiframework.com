@@ -94,19 +94,9 @@ class Rating extends ActiveRecord
             $rating->rating = $vote;
             $rating->save(false);
         } else {
-            // TODO ensure model has these properties
-            return array($model->total_votes, $model->up_votes);
+            return [$model->total_votes, $model->up_votes];
         }
-
-        $votes = static::getVotes($model);
-
-        $model->updateAttributes([
-            'total_votes' => $votes[0],
-            'up_votes' => $votes[1],
-            'rating' => static::wilsonLowerInterval($votes[1], $votes[0]),
-        ]);
-
-        return $votes;
+        return static::updateModelRating($model);
     }
 
     public function afterDelete()
@@ -115,13 +105,22 @@ class Rating extends ActiveRecord
 
         // update model rating
         $model = $this->getModel();
-        $votes = static::getVotes($model);
+        static::updateModelRating($model);
+    }
 
+    /**
+     * @param ActiveRecord $model
+     * @return array
+     */
+    public static function updateModelRating($model)
+    {
+        $votes = static::getVotes($model);
         $model->updateAttributes([
             'total_votes' => $votes[0],
             'up_votes' => $votes[1],
             'rating' => static::wilsonLowerInterval($votes[1], $votes[0]),
         ]);
+        return $votes;
     }
 
     public function beforeSave($insert)

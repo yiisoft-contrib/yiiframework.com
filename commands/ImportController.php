@@ -92,6 +92,7 @@ class ImportController extends Controller
 
 		$this->importStars();
 		$this->importRatings();
+		$this->updateRatings();
 
 		return ExitCode::OK;
 	}
@@ -692,6 +693,39 @@ SQL
 		}
 		Console::endProgress(true);
         $this->printImportSummary($count, $err);
+	}
+
+	public function updateRatings()
+	{
+		$count = Extension::find()->count();
+		Console::startProgress(0, $count, 'Update ratings for extensions...');
+		$i = 0;
+		foreach(Extension::find()->each(100) as $extension) {
+			Rating::updateModelRating($extension);
+			Console::updateProgress(++$i, $count);
+		}
+		Console::endProgress(true);
+        $this->printImportSummary($count, 0);
+
+		$count = Wiki::find()->count();
+		Console::startProgress(0, $count, 'Update ratings for wikis...');
+		$i = 0;
+		foreach(Wiki::find()->each(100) as $wiki) {
+			Rating::updateModelRating($wiki);
+			Console::updateProgress(++$i, $count);
+		}
+		Console::endProgress(true);
+        $this->printImportSummary($count, 0);
+
+		$count = Comment::find()->count();
+		Console::startProgress(0, $count, 'Update ratings for comments...');
+		$i = 0;
+		foreach(Comment::find()->each(100) as $comment) {
+			Rating::updateModelRating($comment);
+			Console::updateProgress(++$i, $count);
+		}
+		Console::endProgress(true);
+        $this->printImportSummary($count, 0);
 	}
 
 	public function importStars()
