@@ -2,7 +2,7 @@
 
 namespace app\controllers;
 
-use app\components\EmailVerificationMailer;
+use app\components\mailers\EmailVerificationMailer;
 use app\models\Badge;
 use app\models\Extension;
 use app\models\Star;
