@@ -86,13 +86,13 @@ $this->registerMetaTag(['name' => 'keywords', 'value' => 'yii framework, communi
         <?php if(!empty($model->badges)): ?>
 
             <h2>Badges</h2>
-            <ul class="g-list-none">
+            <ul class="list-unstyled">
                 <?php foreach($model->getBadges()->with('badge')->all() as $info): ?>
                 <?php
                    if($info->complete_time)
                        $title = sprintf('%s earned this badge on %s', Html::encode($model->display_name), Yii::$app->formatter->asDate($info->complete_time));
                    else
-                       $title = sprintf('%s started this badge on %s',Html::encode($model->display_name), Yii::$app->formatter->asDate($info->create_time));
+                       $title = sprintf('%s started this badge on %s', Html::encode($model->display_name), Yii::$app->formatter->asDate($info->create_time));
                ?>
                    <li>
                        <div class="userbadge userbadge-<?= $info->badge->urlname ?>" title="<?= $title ?>">
@@ -101,7 +101,7 @@ $this->registerMetaTag(['name' => 'keywords', 'value' => 'yii framework, communi
                            <div class="userbadge-info">
                                <h3><?= Html::a(Html::encode($info->badge->name), ['user/view-badge', 'name' => $info->badge->urlname]) ?></h3>
                                <p><?= Html::encode($info->badge->description) ?></p>
-                               <?php if($info->complete_time): ?>
+                               <?php if ($info->complete_time): ?>
                                    <span class="percent">Earned: <span class="date"><?= Yii::$app->formatter->asRelativeTime($info->complete_time) ?></span></span>
                                <?php else: ?>
                                    <span class="percent">In progress (<?= round($percent)?>%)</span>

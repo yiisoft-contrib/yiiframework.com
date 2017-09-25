@@ -21,7 +21,7 @@ $this->registerMetaTag(['name' => 'keywords', 'value' => 'yii framework, communi
             </div>
             <div class="col-xs-11">
                 <h2><?= Html::encode($badge->name) ?> Badge</h2>
-                <h3 class="description"><?= $badge->description ?></h3>
+                <h3 class="description"><?= Html::encode($badge->description) ?></h3>
             </div>
         </div>
 
