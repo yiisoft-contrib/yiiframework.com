@@ -74,12 +74,13 @@ class ExtensionController extends BaseController
 
         $query = Extension::find()->active()->with(['owner', 'category']);
 
+        $categoryModel = null;
         if ($category !== null) {
             $categoryId = (int) $category;
-            if (($category = ExtensionCategory::findOne($categoryId)) === null) {
+            if (($categoryModel = ExtensionCategory::findOne($categoryId)) === null) {
                 throw new NotFoundHttpException('The requested category does not exist.');
             }
-            $query->andWhere(['category_id' => $category->id]);
+            $query->andWhere(['category_id' => $categoryModel->id]);
         }
 
         $tagModel = null;
@@ -93,7 +94,7 @@ class ExtensionController extends BaseController
         }
 
         if ($version) {
-            $query->andWhere(['yii_version' => $version]);
+            $query->andWhere(['like', 'yii_version', $version]);
         }
 
         $dataProvider = new ActiveDataProvider([
@@ -141,7 +142,7 @@ class ExtensionController extends BaseController
         return $this->render('index', [
             'dataProvider' => $dataProvider,
             'tag' => $tagModel,
-            'category' => $category,
+            'category' => $categoryModel,
             'version' => $version,
         ]);
     }

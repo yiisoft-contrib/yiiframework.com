@@ -1,4 +1,5 @@
 <?php
+
 namespace app\components\packagist;
 
 use yii\helpers\Url;
@@ -124,7 +125,7 @@ class Package
      */
     public function getUrl()
     {
-        return Url::to( [
+        return Url::to([
             'extension/package',
             'vendorName' => $this->getVendorName(),
             'packageName' => $this->getPackageName()
@@ -191,7 +192,6 @@ class Package
      */
     public static function createFromAPIData($data)
     {
-
         $package = new static();
 
         if (array_key_exists('name', $data)) {
@@ -234,26 +234,29 @@ class Package
         $yiiVersions = [];
         foreach ($versions as $version) {
             if (isset($version['require']['yiisoft/yii2'])) {
-                $yiiVersions[] = $version['require']['yiisoft/yii2'];
-                $yiiVersions[] = '2.0';
-            }
-            if (isset($version['require']['yiisoft/yii'])) {
-                $yiiVersions[] = $version['require']['yiisoft/yii'];
-                $yiiVersions[] = '1.1';
+                $version = static::getYiiVersionFromConstraint($version['require']['yiisoft/yii2']);
+                $yiiVersions[] = $version ?: '2.0';
+            } elseif (isset($version['require']['yiisoft/yii'])) {
+                $version = static::getYiiVersionFromConstraint($version['require']['yiisoft/yii']);
+                $yiiVersions[] = $version ?: '1.1';
             }
         }
-        $yiiVersions = array_map(function($version) {
-            if (preg_match('/^(~|=|>=|>|\^|)(\d+\.\d+)/', $version, $matches)) {
-                return $matches[2];
-            }
-            return $version;
-        }, $yiiVersions);
 
-        $version = implode(' | ', array_filter(array_unique($yiiVersions), function($i) { return $i !== '*'; }));
+        $version = implode(' | ', array_filter(array_unique($yiiVersions), function ($i) {
+            return $i !== '*';
+        }));
         if ($version === '') {
             return null;
         }
         return $version;
+    }
+
+    private static function getYiiVersionFromConstraint($constraint)
+    {
+        if (preg_match('/^(~|=|>=|>|\^|)(\d+\.\d+)/', $constraint, $matches)) {
+            return $matches[2];
+        }
+        return null;
     }
 
     private static function getLatestVersion($versions, $preferRelease = true)
@@ -272,7 +275,9 @@ class Package
             } else {
                 if (!$preferRelease) {
                     break;
-                } elseif (strpos($versionItem['version_normalized'], 'dev') === false) {
+                }
+
+                if (strpos($versionItem['version_normalized'], 'dev') === false) {
                     $version = $v;
                     break;
                 }
