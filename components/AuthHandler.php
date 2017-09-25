@@ -71,6 +71,7 @@ class AuthHandler
                     $user->display_name = $fullname;
                     $user->password = \Yii::$app->security->generateRandomString(6);
                     $user->email = $email;
+                    $this->updateUserInfo($user);
 
                     if (!empty($email)) {
                         $user->email_verified = true;
