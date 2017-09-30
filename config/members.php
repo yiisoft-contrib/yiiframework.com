@@ -2,11 +2,13 @@
 
 // Yii Framework team Members
 
-class TeamStatus
-{
-    const TEAM_STATUS_ACTIVE = 'status';
-    const TEAM_STATUS_INACTIVE = 'inactive';
-    const TEAM_STATUS_PAST = 'past';
+if (!class_exists('TeamStatus')) {
+    class TeamStatus
+    {
+        const TEAM_STATUS_ACTIVE = 'status';
+        const TEAM_STATUS_INACTIVE = 'inactive';
+        const TEAM_STATUS_PAST = 'past';
+    }
 }
 
 return [

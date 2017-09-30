@@ -51,7 +51,8 @@
         "yiisoft/yii2-debug": "~2.0.0",
         "yiisoft/yii2-gii": "~2.0.0",
         "yiisoft/yii2-faker": "~2.0.0",
-        "yiisoft/yii2-shell": "~2.0.0"
+        "yiisoft/yii2-shell": "~2.0.0",
+        "codeception/base": "^2.2.3"
     },
     "config": {
         "process-timeout": 1800
