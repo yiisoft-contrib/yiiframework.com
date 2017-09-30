@@ -6,13 +6,12 @@ use Yii;
 use yii\base\Model;
 
 /**
- * ContactForm is the model behind the contact form.
+ * SecurityForm is the model behind the contact form.
  */
-class ContactForm extends Model
+class SecurityForm extends Model
 {
     public $name;
     public $email;
-    public $subject;
     public $body;
     public $verifyCode;
 
@@ -22,11 +21,8 @@ class ContactForm extends Model
     public function rules()
     {
         return [
-            // name, email, subject and body are required
-            [['name', 'email', 'subject', 'body'], 'required'],
-            // email has to be a valid email address
+            [['name', 'email', 'body'], 'required'],
             ['email', 'email'],
-            // verifyCode needs to be entered correctly
             ['verifyCode', 'captcha'],
         ];
     }
@@ -38,24 +34,23 @@ class ContactForm extends Model
     {
         return [
             'verifyCode' => 'Verification Code',
-            'name' => 'Your Name',
             'email' => 'Your Email',
+            'name' => 'Your Name',
             'body' => 'Message',
         ];
     }
 
     /**
      * Sends an email to the specified email address using the information collected by this model.
-     * @param  string  $email the target email address
      * @return boolean whether the model passes validation
      */
-    public function contact($email)
+    public function send()
     {
         if ($this->validate()) {
             Yii::$app->mailer->compose()
-                ->setTo($email)
+                ->setCc(Yii::$app->params['securityEmails'])
                 ->setFrom([$this->email => $this->name])
-                ->setSubject('[Contact] ' . $this->subject)
+                ->setSubject('[Security] Report by ' . $this->name)
                 ->setTextBody($this->body)
                 ->send();
 

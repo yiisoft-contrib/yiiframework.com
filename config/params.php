@@ -170,6 +170,12 @@ return [
 
     'adminEmail' => 'yii@cebe.cc',
     'supportEmail' => 'yii@cebe.cc',
+    'securityEmails' => [
+        'sam@rmcreative.ru',
+        'mail@cebe.cc',
+        'd.naumenko.a@gmail.com',
+        'klimov.paul@gmail.com',
+    ],
     'notificationEmail' => ['admin@yiiframework.com' => 'Yii Framework'],
     'user.passwordResetTokenExpire' => 3600 * 3, // 3 hours
     'user.emailVerificationTokenExpire' => 3600 * 3, // 3 hours

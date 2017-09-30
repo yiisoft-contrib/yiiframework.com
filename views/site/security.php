@@ -1,7 +1,11 @@
 <?php
+use yii\bootstrap\ActiveForm;
+use yii\captcha\Captcha;
 use yii\helpers\Html;
 
 /* @var $this yii\web\View */
+/* @var $model app\models\SecurityForm */
+
 $this->title = 'Report a Security Issue';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
@@ -22,10 +26,15 @@ $this->params['breadcrumbs'][] = $this->title;
     <div class="content">
         <div class="row">
             <div class="col-md-12">
-                <p>Please use the security issue form to report to us any security issue
-                    you find in Yii. DO NOT use the issue tracker or discuss it in the public forum as it will cause more damage
-                    than help.</p>
-            
+                <?php if (Yii::$app->session->hasFlash('securityFormSubmitted')): ?>
+                    <div class="alert alert-success">
+                        Thank you for contacting us. We will respond to you as soon as possible.
+                    </div>
+                <?php else: ?>
+                    <p>Please use the security issue form to report to us any security issue
+                        you find in Yii. DO NOT use the issue tracker or discuss it in the public forum as it will cause more damage
+                        than help.</p>
+                <?php endif ?>
 
                 <div class="heading-separator">
                     <h2><span>Security Issue Form</span></h2>
@@ -33,23 +42,28 @@ $this->params['breadcrumbs'][] = $this->title;
             </div>
 
             <div class="col-md-9">
-                <form>
-                    <div class="form-group">
-                    <label for="name">Name</label>
-                    <input type="text" class="form-control" id="name" placeholder="">
-                  </div>
+                <?php $form = ActiveForm::begin() ?>
+                <?= $form->field($model, 'name', [
+                    'inputOptions' => ['placeholder' => $model->getAttributeLabel('name')]
+                ])->label(false) ?>
 
-                  <div class="form-group">
-                    <label for="email">Email</label>
-                    <input type="email" class="form-control" id="email" placeholder="">
-                  </div>
-                  
-                  <div class="form-group">
-                    <label for="issue">Issue</label>
-                    <textarea class="form-control" id="issue" rows="10"></textarea>
-                  </div>
-                  <button type="submit" class="btn btn-lg btn-primary btn-send">Send</button>
-                </form>
+                <?= $form->field($model, 'email', [
+                    'inputOptions' => ['placeholder' => $model->getAttributeLabel('email')]
+                ])->label(false) ?>
+
+                <?= $form->field($model, 'body', [
+                    'inputOptions' => ['placeholder' => $model->getAttributeLabel('body')]
+                ])->label(false)->textarea(['rows' => 6]) ?>
+
+
+                <?= $form->field($model, 'verifyCode', [
+                    'inputOptions' => ['placeholder' => 'Verification Code']
+                ])->label('Verification code: ')->widget(Captcha::className(), [
+                    'template' => '{image}{input}',
+                ]) ?>
+
+                <?= Html::submitButton('Submit', ['class' => 'btn btn-primary', 'name' => 'contact-button']) ?>
+                <?php ActiveForm::end() ?>
             </div>
             <div class="col-md-3">
                 <p class="small">Once we receive your issue report, we will treat it as our highest priority. We will generally take the

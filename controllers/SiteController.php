@@ -5,6 +5,7 @@ namespace app\controllers;
 use app\components\RowHelper;
 use app\models\Extension;
 use app\models\News;
+use app\models\SecurityForm;
 use app\models\Wiki;
 use Yii;
 use app\models\ContactForm;
@@ -170,7 +171,16 @@ class SiteController extends BaseController
 
     public function actionSecurity()
     {
-        return $this->render('security');
+        $model = new SecurityForm();
+        if ($model->load(Yii::$app->request->post()) && $model->send()) {
+            Yii::$app->session->setFlash('securityFormSubmitted');
+
+            return $this->refresh();
+        }
+
+        return $this->render('security', [
+            'model' => $model,
+        ]);
     }
 
     public function actionDownload()
