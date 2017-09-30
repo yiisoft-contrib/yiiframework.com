@@ -39,9 +39,6 @@ composer install
 # install gulp globally if you haven't done so before
 npm install -g gulp-cli
 
-# install browsersync globally if you haven't done so before
-npm install -g browser-sync
-
 # At this stage if you're on Windows and having trouble
 npm install -g npm
 npm -v
