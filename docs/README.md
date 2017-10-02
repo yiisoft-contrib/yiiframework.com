@@ -10,3 +10,8 @@ UI Concepts
 - TODO flash messages
 
 - TODO language dependent stylings
+
+
+Search
+------
+

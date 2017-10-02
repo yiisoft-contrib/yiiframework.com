@@ -64,6 +64,9 @@ Configure database connection in `config/params-local.php`. You may copy-paste a
 'components.db' => [
     // copy from params.php and adjust to your environment
 ],
+'components.elasticsearch' => [
+    // copy from params.php and adjust to your environment
+],
 // only if you want to test github auth:
 'authclients' => [
     'github' => [
