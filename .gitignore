@@ -47,3 +47,8 @@ phpunit.phar
 
 /web/sitemap.xml
 /web/sitemap/
+
+# tests
+
+tests/_output/*
+tests/_support/_generated
