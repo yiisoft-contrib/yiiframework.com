@@ -22,6 +22,14 @@ $this->endBlock();
 <div class="container">
     <div class="content">
 
+        <?= \app\widgets\SearchForm::widget([
+            'type' => $type,
+            'version' => $version,
+            'language' => $language,
+            'placeholder' => 'Search…',
+            'value' => $queryString,
+        ]) ?>
+
         <?= \yii\widgets\ListView::widget([
             'dataProvider' => $results,
             'itemView' => 'partials/_result',

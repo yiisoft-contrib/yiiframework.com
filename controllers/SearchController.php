@@ -169,11 +169,11 @@ class SearchController extends BaseController
     public function getTypes()
     {
         return [
-            'news' => 'News',
-            'wiki' => 'Wiki',
-            'extension' => 'Extensions',
             'guide' => 'Guide',
             'api' => 'API',
+            'extension' => 'Extensions',
+            'wiki' => 'Wiki',
+            'news' => 'News',
         ];
     }
 

@@ -68,6 +68,12 @@ $this->endBlock();
     </div>
     <div class="row row-offcanvas">
         <div class="col-sm-2 col-md-2 col-lg-2">
+            <?= \app\widgets\SearchForm::widget([
+                'type' => 'guide',
+                'version' => isset($version) ? $version : '2.0',
+                'language' => $guide->language,
+                'placeholder' => 'Search the Guide…',
+            ]) ?>
             <?= SideNav::widget(['id' => 'guide-navigation', 'items' => $nav, 'options' => ['class' => 'sidenav-offcanvas']]) ?>
         </div>
         <div class="col-sm-10 col-md-10 col-lg-10" role="main">

@@ -1,0 +1,18 @@
+.mini-search-form {
+  @include rem(margin-top, 15px);
+  @include rem(margin-bottom, 15px);
+}
+
+.news-content {
+  .mini-search-form {
+    @include rem(margin-top, 0px);
+    @include rem(margin-bottom, 15px);
+  }
+}
+
+.guide-content {
+  .mini-search-form {
+    @include rem(margin-left, 15px);
+    @include rem(margin-right, 15px);
+  }
+}
