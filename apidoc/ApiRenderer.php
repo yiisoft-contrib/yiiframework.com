@@ -78,53 +78,6 @@ class ApiRenderer extends \yii\apidoc\templates\html\ApiRenderer
             $titles[$this->generateFileName($type->name)] = StringHelper::basename($type->name) . ", {$type->name}";
         }
         file_put_contents($targetDir . '/titles.php', '<?php return ' . VarDumper::export($titles) . ';');
-
-        try {
-            if ($this->controller !== null) {
-                Console::startProgress(0, $count = count($types), 'populating elasticsearch index...', false);
-            }
-            // first delete all records for this version
-            $version = $this->version;
-            SearchApiType::setMappings();
-            SearchApiPrimitive::setMappings();
-//        ApiPrimitive::deleteAllForVersion($version);
-            SearchApiType::deleteAllForVersion($version);
-            sleep(1);
-            $i = 0;
-            foreach ($types as $type) {
-                SearchApiType::createRecord($type, $version);
-                if ($this->controller !== null) {
-                    Console::updateProgress(++$i, $count);
-                }
-            }
-            if ($this->controller !== null) {
-
-                Console::endProgress(true, true);
-                $this->controller->stdout("done.\n", Console::FG_GREEN);
-            }
-        } catch (\Exception $e) {
-            if (YII_DEBUG && $this->controller !== null) {
-                $this->controller->stdout("!!! FAILED !!! Search will not be available.\n", Console::FG_RED, Console::BOLD);
-                $this->controller->stdout(((string) $e) . "\n\n");
-            } else {
-                throw $e;
-            }
-        }
-
-
-//        if ($this->controller !== null) {
-//            $this->controller->stdout('done.' . PHP_EOL, Console::FG_GREEN);
-//            $this->controller->stdout('generating search index...');
-//        }
-//
-//        $indexer = new ApiIndexer();
-//        $indexer->indexFiles(FileHelper::findFiles($targetDir, ['only' => ['*.html']]), $targetDir);
-//        $js = $indexer->exportJs();
-//        file_put_contents($targetDir . '/jssearch.index.js', $js);
-//
-//        if ($this->controller !== null) {
-//            $this->controller->stdout('done.' . PHP_EOL, Console::FG_GREEN);
-//        }
     }
 
     public function getSourceUrl($type, $line = null)
@@ -136,9 +89,9 @@ class ApiRenderer extends \yii\apidoc\templates\html\ApiRenderer
         $baseUrl = 'https://github.com/yiisoft/yii2/blob/master';
         switch ($this->getTypeCategory($type)) {
             case 'yii':
-                if ($type->name == 'Yii') {
+                if ($type->name === 'Yii') {
                     $url = '/framework/Yii.php';
-                } elseif ($type->name == 'YiiRequirementChecker') {
+                } elseif ($type->name === 'YiiRequirementChecker') {
                     $url = '/framework/requirements/YiiRequirementChecker.php';
                 } else {
                     $url = '/framework/' . str_replace('\\', '/', substr($type->name, 4)) . '.php';
@@ -151,10 +104,11 @@ class ApiRenderer extends \yii\apidoc\templates\html\ApiRenderer
                 break;
         }
 
-        if ($line === null)
+        if ($line === null) {
             return $baseUrl . $url;
-        else
+        } else {
             return $baseUrl . $url . '#L' . $line;
+        }
     }
 
     public function generateGuideUrl($file)

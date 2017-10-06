@@ -84,10 +84,6 @@ class ApiController extends \yii\apidoc\commands\ApiController
             }
             file_put_contents("$target/api/index.html", str_replace('<h1>Class Reference</h1>', '<h1>Yii Framework ' . $version . ' API Documentation</h1>', file_get_contents("$target/api/index.html")));
 
-            if (!$this->populateElasticsearch1x($source, $target)) {
-                return 1;
-            }
-
             $this->stdout("Finished API $version.\n\n", Console::FG_GREEN);
         }
 
