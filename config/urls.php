@@ -55,9 +55,8 @@ return [
 
 	// search
     'search' => 'search/global',
-    'search/suggest' => 'search/suggest',
-    'search/as-you-type' => 'search/as-you-type',
-    'search/extension' => 'search/extension',
+//    'search/suggest' => 'search/suggest',
+//    'search/as-you-type' => 'search/as-you-type',
     'search/opensearch-suggest' => 'search/opensearch-suggest',
     'opensearch.xml' => 'search/opensearch-description',
 

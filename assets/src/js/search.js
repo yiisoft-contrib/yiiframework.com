@@ -5,18 +5,8 @@ searchResultCache = {
         fetched: false,
         data: []
     },
-    guide: {
-        title: 'Guide',
-        fetched: false,
-        data: []
-    },
-    forum: {
-        title: 'Forum',
-        fetched: false,
-        data: []
-    },
-    extension: {
-        title: 'Extension',
+    other: {
+        title: 'Other results',
         fetched: false,
         data: []
     }
@@ -38,6 +28,10 @@ renderResultList = function(resultName, limit) {
         } else {
             html += '<li><p>No results.</p></li>';
         }
+        html += '</ul>';
+    } else if (resultName == 'other' ){
+        html += '<ul>';
+        html += '<li>hit enter to view more search results.</li>';
         html += '</ul>';
     } else {
         html += 'loading...';
@@ -67,11 +61,12 @@ updateSearchResults = function() {
     }
 
     html += renderResultList('api', apiLimit);
-    html += renderResultList('guide', guideLimit);
+    html += renderResultList('other', guideLimit);
+    //html += renderResultList('guide', guideLimit);
 
     // TODO: display when forum search is there
     //html += renderResultList('forum', '');
-    html += renderResultList('extension', '');
+    //html += renderResultList('extension', '');
 
     $results.html(html);
 };
@@ -169,11 +164,11 @@ renderGuide = function(t, query) {
     ).prop('outerHTML');
 };
 
+/* TODO currently no live results for other types than api
 searchGuideResults = {};
 searchGuideResultsStatus = {};
 
 searchGuide = function(query) {
-
     // request is pending
     if (typeof searchGuideResultsStatus[query] == 'undefined') {
         searchGuideResultsStatus[query] = false;
@@ -242,7 +237,7 @@ searchExtension = function(query) {
 
 renderExtension = function(t, query) {
     return $('<a>').attr('href', t.url).html(highlight(t.title, query)).prop('outerHTML');
-};
+};*/
 
 highlight = function(s, h) {
     if (typeof h === "undefined" || h == '') {
@@ -259,7 +254,7 @@ highlight = function(s, h) {
     }
 
     return result + s;
-}
+};
 
 renderType = function(t, query) {
     return $('<a>').attr('href', t.url).html(highlight(t.name, query) + ' ').prop('outerHTML');
@@ -481,8 +476,8 @@ jQuery(document).ready(function () {
         }
 
         searchApidoc(query);
-        searchGuide(query);
-        searchExtension(query);
+        //searchGuide(query);
+        //searchExtension(query);
 
         // TODO search guide and others
     });

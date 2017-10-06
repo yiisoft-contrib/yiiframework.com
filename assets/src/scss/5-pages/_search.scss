@@ -52,7 +52,7 @@
 
     list-style: none;
 
-    @include rem(max-height, 150px);
+    @include rem(max-height, 300px);
     overflow-y: auto;
 
     li {

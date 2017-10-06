@@ -109,6 +109,8 @@ gulp build
 # You may also build only parts of the docs, run  make help  for the available commands.
 make docs
 
+# populate the search index by running
+./yii search/rebuild
 ```
 
 ### Web Server Setup

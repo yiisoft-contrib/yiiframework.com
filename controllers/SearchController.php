@@ -60,7 +60,7 @@ class SearchController extends BaseController
             ]
         );
     }
-
+/*
     public function actionSuggest($q, $version = null, $language = null)
     {
         if (!in_array($version, $this->getVersions())) {
@@ -70,7 +70,7 @@ class SearchController extends BaseController
             $language = null;
         }
 
-        /** @var Command $command */
+        /** @var Command $command * /
         $command = Yii::$app->elasticsearch->createCommand();
         $command->index = SearchActiveRecord::index() . '-en';
         $result = $command->suggest(['my-suggestion' => ['text' => $q, 'term' => ['field' => 'body']]]);
@@ -115,41 +115,7 @@ class SearchController extends BaseController
             )
         );
     }
-
-    /**
-     * Extension search
-     *
-     * @param string $q query
-     *
-     * @return array
-     */
-    public function actionExtension($q)
-    {
-        $keyCache = 'search/extension__dataPackagist_' . md5(serialize([$q]));
-        $packagistData = \Yii::$app->cache->get($keyCache);
-        if ($packagistData === false) {
-            $packagistData = (new PackagistApi())->search($q);
-            \Yii::$app->cache->set($keyCache, $packagistData, Yii::$app->params['cache.extensions.search']);
-        }
-
-        $this->searchQuery = $q;
-        Yii::$app->response->format = Response::FORMAT_JSON;
-        if (!$packagistData['packages']) {
-            return [];
-        }
-
-        return array_values(
-            array_map(
-                function (Package $package) {
-                    return [
-                        'title' => $package->getName(),
-                        'url' => $package->getUrl()
-                    ];
-                },
-                $packagistData['packages']
-            )
-        );
-    }
+*/
 
     public function getVersions()
     {
