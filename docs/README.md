@@ -15,3 +15,11 @@ UI Concepts
 Search
 ------
 
+Search is implemented based on elasticsearch. For searching accross multiple languages, a set of
+different indexes is created.
+
+We also differentiate between indices that are rebuilt completely when docs are generated and indexes that
+are update on the fly when data changes.
+
+```
+language-en

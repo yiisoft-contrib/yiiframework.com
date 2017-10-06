@@ -1,6 +1,6 @@
 <?php
 
-namespace app\models;
+namespace app\models\search;
 
 use yii\apidoc\models\ConstDoc;
 use yii\apidoc\models\EventDoc;
@@ -231,5 +231,20 @@ class SearchApiPrimitive extends SearchActiveRecord
         $parent = strtolower(str_replace('\\', '-', $this->definedBy));
         $name = $this->name . ($this->type === 'method' ? '()' : '') . '-detail';
         return ['api/view', 'version' => $this->version, 'section' => $parent, '#' => $name];
+    }
+
+    public function getTitle()
+    {
+        return $this->definedBy . '::' . $this->name;
+    }
+
+    public function getDescription()
+    {
+        // TODO: Implement getDescription() method.
+    }
+
+    public function getType()
+    {
+        // TODO: Implement getTitle() method.
     }
 }

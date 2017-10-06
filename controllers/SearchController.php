@@ -4,7 +4,7 @@ namespace app\controllers;
 
 use app\components\packagist\Package;
 use app\components\packagist\PackagistApi;
-use app\models\SearchActiveRecord;
+use app\models\search\SearchActiveRecord;
 use Yii;
 use yii\helpers\Json;
 use yii\helpers\Url;
@@ -17,7 +17,7 @@ class SearchController extends BaseController
 {
     public $searchQuery;
 
-    public function actionGlobal($q, $version = null, $language = null)
+    public function actionGlobal($q, $version = null, $language = null, $type = null)
     {
         if (!in_array($version, $this->getVersions(), true)) {
             $version = null;
@@ -25,14 +25,27 @@ class SearchController extends BaseController
         if (!array_key_exists($language, $this->getLanguages())) {
             $language = null;
         }
+        if (!array_key_exists($type, $this->getTypes())) {
+            $type = null;
+        }
+        // reset version an language restrictions for types that do not have the selection option
+        if ($type === 'news') {
+            $language = null;
+            $version = null;
+        } elseif (in_array($type, ['wiki', 'extension', 'api'], true)) {
+            $language = null;
+        }
 
         $results = new ActiveDataProvider(
             [
-                'query' => SearchActiveRecord::search($q, $version, $language),
+                'query' => SearchActiveRecord::search($q, $version, $language, $type),
                 'key' => 'primaryKey',
                 'sort' => false,
             ]
         );
+
+        $this->sectionTitle = 'Search results';
+        $this->headTitle = "Search results for \"$q\"";
 
         $this->searchQuery = $q;
 
@@ -43,6 +56,7 @@ class SearchController extends BaseController
                 'queryString' => $q,
                 'version' => $version,
                 'language' => $language,
+                'type' => $type,
             ]
         );
     }
@@ -150,6 +164,17 @@ class SearchController extends BaseController
             $languages = array_merge($languages, $l);
         }
         return $languages;
+    }
+
+    public function getTypes()
+    {
+        return [
+            'news' => 'News',
+            'wiki' => 'Wiki',
+            'extension' => 'Extensions',
+            'guide' => 'Guide',
+            'api' => 'API',
+        ];
     }
 
     public function actionOpensearchSuggest($q)

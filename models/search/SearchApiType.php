@@ -1,12 +1,13 @@
 <?php
 
-namespace app\models;
+namespace app\models\search;
 
 
 use yii\apidoc\models\ClassDoc;
 use yii\apidoc\models\InterfaceDoc;
 use yii\apidoc\models\TraitDoc;
 use yii\apidoc\models\TypeDoc;
+use yii\helpers\StringHelper;
 
 /**
  * API documentation type, i.e. class, interface or trait
@@ -16,8 +17,8 @@ use yii\apidoc\models\TypeDoc;
  * @property string $type class, interface, trait
  * @property string $name
  * @property string $namespace
- * @property string $shortDescription
- * @property string $description
+ * @property string $title
+ * @property string $content
  * @property string $since
  * @property string $deprecatedSince
  * @property string $deprecatedReason
@@ -36,8 +37,8 @@ class SearchApiType extends SearchActiveRecord
 
             'name',
             'namespace',
-            'shortDescription',
-            'description',
+            'title',
+            'content',
             'since',
             'deprecatedSince',
             'deprecatedReason',
@@ -64,21 +65,23 @@ class SearchApiType extends SearchActiveRecord
         /** @var SearchApiType $model */
         $model = new static();
         $model->version = $version;
-        $model->name = $type->name;
-        $model->namespace = $type->namespace;
-        $model->shortDescription = $type->shortDescription;
-        $model->description = $type->description;
-        $model->since = $type->since;
-        $model->deprecatedSince = $type->deprecatedSince;
-        $model->deprecatedReason = $type->deprecatedReason;
+        $model->name = StringHelper::basename($type['name']);
+        $model->namespace = StringHelper::dirname($type['name']);
+        $model->title = $type['description'];
+        $model->content = static::filterHtml($type['description']);
+//        $model->description = $type['name']; // TODO
+//        $model->since = $type->since;
+//        $model->deprecatedSince = $type->deprecatedSince;
+//        $model->deprecatedReason = $type->deprecatedReason;
 
-        if ($type instanceof ClassDoc) {
-            $model->type = 'class';
-        } elseif ($type instanceof InterfaceDoc) {
-            $model->type = 'interface';
-        } elseif ($type instanceof TraitDoc) {
-            $model->type = 'trait';
-        }
+        // TODO
+//        if ($type instanceof ClassDoc) {
+//            $model->type = 'class';
+//        } elseif ($type instanceof InterfaceDoc) {
+//            $model->type = 'interface';
+//        } elseif ($type instanceof TraitDoc) {
+//            $model->type = 'trait';
+//        }
 
         $model->insert(false);
 
@@ -128,21 +131,32 @@ class SearchApiType extends SearchActiveRecord
                 static::type() => [
                     // TODO improve mappings for search
                     'properties' => [
-                        'version' => ['type' => 'string', 'index' => 'not_analyzed'],
-                        'type' => ['type' => 'string', 'index' => 'not_analyzed'],
+                        'version' => ['type' => 'keyword'],
+                        'type' => ['type' => 'keyword'],
 
-                        'name' => ['type' => 'string'],
-                        'namespace' => ['type' => 'string'],
-                        'shortDescription' => ['type' => 'string'],
-                        'description' => ['type' => 'string'],
-                        'since' => ['type' => 'string', 'index' => 'not_analyzed'],
-                        'deprecatedSince' => ['type' => 'string', 'index' => 'not_analyzed'],
-                        'deprecatedReason' => ['type' => 'string'],
+                        'name' => ['type' => 'keyword'], // TODO partial match
+                        'namespace' => ['type' => 'keyword'],
+
+                        'title' => [
+                            'type' => 'text',
+                            // sub-fields added for language
+                            'fields' => [
+                                'stemmed' => [
+                                    'type' => 'text',
+                                    'analyzer' => 'english',
+                                ],
+                            ],
+                        ],
+
+                        'content' => ['type' => 'text'],
+                        'since' => ['type' => 'keyword'],
+                        'deprecatedSince' => ['type' => 'keyword'],
+                        'deprecatedReason' => ['type' => 'keyword'],
 
                         // for classes
-                        'extends' => ['type' => 'string'],
-                        'implements' => ['type' => 'string'],
-                        'traits' => ['type' => 'string'],
+                        'extends' => ['type' => 'keyword'],
+                        'implements' => ['type' => 'keyword'],
+                        'traits' => ['type' => 'keyword'],
                     ]
                 ]
             ]);
@@ -159,4 +173,19 @@ class SearchApiType extends SearchActiveRecord
         }
         return ['api/view', 'version' => $this->version, 'section' => $name];
     }
-} 
+
+    public function getTitle()
+    {
+        return $this->name;
+    }
+
+    public function getDescription()
+    {
+        return $this->getAttribute('title');
+    }
+
+    public function getType()
+    {
+        // TODO: Implement getType() method.
+    }
+}

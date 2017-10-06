@@ -2,7 +2,10 @@
 
 namespace app\models;
 
+use app\models\search\SearchNews;
+use app\models\search\SearchableBehavior;
 use dosamigos\taggable\Taggable;
+use Yii;
 use yii\apidoc\helpers\ApiMarkdown;
 use yii\behaviors\BlameableBehavior;
 use app\components\SluggableBehavior;
@@ -54,6 +57,10 @@ class News extends ActiveRecord implements Linkable
             [
                 'class' => Taggable::className(),
             ],
+            'search' => [
+                'class' => SearchableBehavior::class,
+                'searchClass' => SearchNews::class,
+            ],
         ];
     }
 
@@ -103,6 +110,11 @@ class News extends ActiveRecord implements Linkable
         return isset($statusList[$this->status]) ? $statusList[$this->status] : 'Unknown';
     }
 
+    public function getShowInSearch()
+    {
+        return $this->status == self::STATUS_PUBLISHED;
+    }
+
     /**
      * @inheritdoc
      */
@@ -140,9 +152,7 @@ class News extends ActiveRecord implements Linkable
 
     public function getContentHtml()
     {
-        ApiMarkdown::$renderer = new \app\apidoc\GuideRenderer();
-        ApiMarkdown::$renderer->apiContext = new \yii\apidoc\models\Context();
-        return ApiMarkdown::process($this->content);
+        return Yii::$app->formatter->asGuideMarkdown($this->content);
     }
 
     // relations

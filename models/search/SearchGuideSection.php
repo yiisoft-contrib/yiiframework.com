@@ -1,6 +1,6 @@
 <?php
 
-namespace app\models;
+namespace app\models\search;
 
 /**
  * API documentation type, i.e. class, interface or trait
@@ -11,7 +11,7 @@ namespace app\models;
  * @property string $type
  * @property string $name
  * @property string $title
- * @property string $body
+ * @property string $content
  */
 class SearchGuideSection extends SearchActiveRecord
 {
@@ -25,7 +25,7 @@ class SearchGuideSection extends SearchActiveRecord
 
             'name',
             'title',
-            'body',
+            'content',
         ];
     }
 
@@ -40,8 +40,7 @@ class SearchGuideSection extends SearchActiveRecord
     public static function createRecord($name, $title, $body, $version, $language, $type = 'guide')
     {
         // filter out code blocks
-        $body = preg_replace('~<pre><code>.*?</code></pre>~', '', $body);
-        $body = strip_tags($body);
+        $body = static::filterHtml($body);
 
         /** @var SearchGuideSection $model */
         $model = new static();
@@ -51,7 +50,7 @@ class SearchGuideSection extends SearchActiveRecord
 
         $model->name = $name;
         $model->title = $title;
-        $model->body = $body;
+        $model->content = $body;
 
         $values = $model->getDirtyAttributes();
         static::getDb()->createCommand()->insert(
@@ -78,27 +77,27 @@ class SearchGuideSection extends SearchActiveRecord
                 $command->setMapping($index, static::type(), [
                     static::type() => [
                         'properties' => [
-                            'version' => ['type' => 'string', 'index' => 'not_analyzed'],
-                            'language' => ['type' => 'string', 'index' => 'not_analyzed'],
-                            'name' => ['type' => 'string', 'index' => 'not_analyzed'],
-                            'type' => ['type' => 'string', 'index' => 'not_analyzed'],
+                            'version' => ['type' => 'keyword'],
+                            'language' => ['type' => 'keyword'],
+                            'name' => ['type' => 'keyword'],
+                            'type' => ['type' => 'keyword'],
 
                             'title' => [
-                                'type' => 'string',
+                                'type' => 'text',
                                 // sub-fields added for language
                                 'fields' => [
                                     'stemmed' => [
-                                        'type' => 'string',
+                                        'type' => 'text',
                                         'analyzer' => $analyzer,
                                     ],
                                 ],
                             ],
-                            'body' => [
-                                'type' => 'string',
+                            'content' => [
+                                'type' => 'text',
                                 // sub-fields added for language
                                 'fields' => [
                                     'stemmed' => [
-                                        'type' => 'string',
+                                        'type' => 'text',
                                         'analyzer' => $analyzer,
                                     ],
                                 ],
@@ -120,4 +119,14 @@ class SearchGuideSection extends SearchActiveRecord
         }
         return ['guide/view', 'version' => $this->version, 'language' => $this->language, 'section' => $name, 'type' => $this->type];
     }
-} 
+
+    public function getTitle()
+    {
+        return $this->getAttribute('title');
+    }
+
+    public function getDescription()
+    {
+        return 'TODO'; // TODO
+    }
+}
