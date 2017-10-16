@@ -68,8 +68,8 @@ class SearchApiType extends SearchActiveRecord
         $model->type = isset($type['type']) ? $type['type'] : 'class';
         $model->name = StringHelper::basename($type['name']);
         $model->namespace = StringHelper::dirname($type['name']);
-        $model->title = $type['shortDescription'];
-        $model->content = static::filterHtml($type['description']);
+        $model->title = isset($type['shortDescription']) ? $type['shortDescription'] : null;
+        $model->content = isset($type['description']) ? static::filterHtml($type['description']) : null;
         $model->since = isset($type['since']) ? $type['since'] : null;
         $model->deprecatedSince = isset($type['deprecatedSince']) ? $type['deprecatedSince'] : null;
         $model->deprecatedReason = isset($type['deprecatedReason']) ? $type['deprecatedReason'] : null;
