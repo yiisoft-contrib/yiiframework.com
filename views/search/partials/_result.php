@@ -2,7 +2,9 @@
 
 use app\models\search\SearchApiType;
 use app\models\search\SearchApiPrimitive;
+use app\models\search\SearchExtension;
 use app\models\search\SearchGuideSection;
+use app\models\search\SearchWiki;
 use yii\helpers\Html;
 use yii\helpers\StringHelper;
 use yii\helpers\Url;
@@ -28,6 +30,12 @@ $highlight = $model->getHighlight();
                         } else {
                             echo Html::encode(($model->namespace ? $model->namespace . '\\' : '') . $model->name);
                         }
+                    } elseif ($model instanceof SearchExtension) {
+                        if (isset($highlight['name'])) {
+                            echo $encodeHighlight(implode(' ... ', $highlight['name']));
+                        } else {
+                            echo Html::encode($model->name);
+                        }
                     } else {
                         if (isset($highlight['title'])) {
                             echo $encodeHighlight(implode(' ... ', $highlight['title']));
@@ -38,7 +46,10 @@ $highlight = $model->getHighlight();
                         }
                     }
                 ?></a>
-                <a href="<?= Url::to($model->getUrl()) ?>" class="label label-warning"><?= Html::encode($model->type) ?></a>
+                <a href="<?= Url::to($model->getUrl()) ?>" class="label label-warning"><?= Html::encode(ucfirst($model->type)) ?></a>
+                <?php if ($model instanceof SearchExtension || $model instanceof SearchWiki): ?>
+                    <a href="<?= Url::to($model->getUrl()) ?>" class="label label-default"><?= Html::encode($model->category) ?></a>
+                <?php endif; ?>
                 <a href="<?= Url::to($model->getUrl()) ?>" class="label label-info"><?= Html::encode($model->version) ?></a>
                 <?php if (isset($model->language)): ?>
                     <a href="<?= Url::to($model->getUrl()) ?>" class="label label-success"><?= Html::encode($model->language) ?></a>
@@ -50,14 +61,14 @@ $highlight = $model->getHighlight();
             <?php
                 // echo "<pre>" . print_r($highlight, true) . "</pre>";
 
-                if ($model instanceof SearchApiType) {
+                if ($model instanceof SearchApiType || $model instanceof SearchExtension) {
                     echo '<p><strong>';
                     if (isset($highlight['title'])) {
                         echo $encodeHighlight(implode(' ... ', $highlight['title']));
                     } elseif (isset($highlight['title.stemmed'])) {
                         echo $encodeHighlight(implode(' ... ', $highlight['title.stemmed']));
                     } else {
-                        echo Html::encode($model->getTitle());
+                        echo Html::encode($model->getDescription());
                     }
                     echo '</strong></p>';
                 }
@@ -68,8 +79,6 @@ $highlight = $model->getHighlight();
                 } elseif (!$model instanceof SearchApiType) {
                     echo '<p>' . Html::encode($model->getDescription()) . '</p>';
                 }
-
-                // TODO remove markdown markers!
 
 //                if (!in_array($model->type, ['property', 'const', 'event'])) {
 //                    if (!empty($highlight['content'])) {

@@ -13,6 +13,7 @@ use app\models\Wiki;
  * @property string $id
  * @property string $version
  * @property string $category_id
+ * @property string $category
  * @property string $title
  * @property string $content
  */
@@ -26,6 +27,7 @@ class SearchWiki extends SearchActiveRecord
 
             'version',
             'category_id',
+            'category',
 
             'title',
             'content',
@@ -51,6 +53,7 @@ class SearchWiki extends SearchActiveRecord
         $model->id = $wiki->id;
         $model->version = $wiki->yii_version;
         $model->category_id = $wiki->category_id;
+        $model->category = $wiki->category->name;
         $model->title = $wiki->title;
         $model->content = $wiki->content;
 
@@ -69,6 +72,7 @@ class SearchWiki extends SearchActiveRecord
         $model->id = $wiki->id;
         $model->version = $wiki->yii_version;
         $model->category_id = $wiki->category_id;
+        $model->category = $wiki->category->name;
         $model->title = $wiki->title;
         $model->content = static::filterHtml($wiki->getContentHtml());
 
@@ -101,7 +105,6 @@ class SearchWiki extends SearchActiveRecord
         if (empty($mapping)) {
             $command->setMapping(static::index(), static::type(), [
                 static::type() => [
-                    // TODO improve mappings for search
                     'properties' => [
                         'version' => ['type' => 'keyword'],
                         'category_id' => ['type' => 'integer'],
@@ -135,7 +138,7 @@ class SearchWiki extends SearchActiveRecord
 
     public function getUrl()
     {
-        $wiki = Wiki::findOne($this->id); // TODO eager loading
+        $wiki = Wiki::findOne($this->id); // TODO eager loading, better put URL into ES
         return $wiki ? $wiki->getUrl() : null;
     }
 
@@ -146,12 +149,11 @@ class SearchWiki extends SearchActiveRecord
 
     public function getDescription()
     {
-        return 'TODO'; // TODO
+        return '';
     }
 
     public function getType()
     {
         return 'Wiki';
     }
-
 }

@@ -70,10 +70,9 @@ class SearchApiType extends SearchActiveRecord
         $model->namespace = StringHelper::dirname($type['name']);
         $model->title = $type['shortDescription'];
         $model->content = static::filterHtml($type['description']);
-//        $model->description = $type['name']; // TODO
-//        $model->since = $type->since;
-//        $model->deprecatedSince = $type->deprecatedSince;
-//        $model->deprecatedReason = $type->deprecatedReason;
+        $model->since = isset($type['since']) ? $type['since'] : null;
+        $model->deprecatedSince = isset($type['deprecatedSince']) ? $type['deprecatedSince'] : null;
+        $model->deprecatedReason = isset($type['deprecatedReason']) ? $type['deprecatedReason'] : null;
 
         $model->primaryKey = "$version/" . strtolower(ltrim(str_replace('\\', '-', "$model->namespace\\$model->name"), '-'));
 
@@ -137,7 +136,6 @@ class SearchApiType extends SearchActiveRecord
         if (empty($mapping)) {
             $command->setMapping(static::index(), static::type(), [
                 static::type() => [
-                    // TODO improve mappings for search
                     'properties' => [
                         'version' => ['type' => 'keyword'],
                         'type' => ['type' => 'keyword'],

@@ -13,6 +13,7 @@ use app\models\Extension;
  * @property string $id
  * @property string $version
  * @property string $category_id
+ * @property string $category
  * @property string $name
  * @property string $title
  * @property string $content
@@ -29,6 +30,7 @@ class SearchExtension extends SearchActiveRecord
 
             'version',
             'category_id',
+            'category',
 
             'title',
             'content',
@@ -56,6 +58,7 @@ class SearchExtension extends SearchActiveRecord
         $model->name = $extension->name;
         $model->version = $extension->yii_version;
         $model->category_id = $extension->category_id;
+        $model->category = $extension->category->name;
         $model->title = $extension->tagline;
         $model->content = $extension->description;
 
@@ -76,6 +79,7 @@ class SearchExtension extends SearchActiveRecord
         $model->name = $extension->name;
         $model->version = $extension->yii_version;
         $model->category_id = $extension->category_id;
+        $model->category = $extension->category->name;
         $model->title = $extension->tagline;
         $model->content = static::filterHtml($extension->getContentHtml());
 
@@ -108,7 +112,6 @@ class SearchExtension extends SearchActiveRecord
         if (empty($mapping)) {
             $command->setMapping(static::index(), static::type(), [
                 static::type() => [
-                    // TODO improve mappings for search
                     'properties' => [
                         'version' => ['type' => 'keyword'],
                         'category_id' => ['type' => 'integer'],
@@ -161,5 +164,4 @@ class SearchExtension extends SearchActiveRecord
     {
         return 'Extension';
     }
-
 }

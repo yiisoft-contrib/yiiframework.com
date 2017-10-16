@@ -132,12 +132,12 @@ class SearchController  extends Controller
                 case 'extension':
                     SearchExtension::deleteAll();
                     SearchExtension::setMappings();
-                    $this->rebuildIndexFor(Extension::class, SearchExtension::class);
+                    $this->rebuildIndexFor(Extension::class, SearchExtension::class, ['category']);
                     break;
                 case 'wiki':
                     SearchWiki::deleteAll();
                     SearchWiki::setMappings();
-                    $this->rebuildIndexFor(Wiki::class, SearchWiki::class);
+                    $this->rebuildIndexFor(Wiki::class, SearchWiki::class, ['category']);
                     break;
                 case 'news':
                     SearchNews::deleteAll();
@@ -155,12 +155,12 @@ class SearchController  extends Controller
      * @param ActiveRecord $modelClass
      * @param SearchActiveRecord $searchClass
      */
-    private function rebuildIndexFor($modelClass, $searchClass)
+    private function rebuildIndexFor($modelClass, $searchClass, $with = [])
     {
         $count = $modelClass::find()->count();
         Console::startProgress(0, $count, 'Reindexing ' . Inflector::pluralize(StringHelper::basename($modelClass)) . ' ');
         $i = 0;
-        foreach($modelClass::find()->each() as $model) {
+        foreach($modelClass::find()->with($with)->each() as $model) {
             $searchClass::updateRecord($model);
             Console::updateProgress(++$i, $count);
         }

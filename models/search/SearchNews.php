@@ -98,7 +98,6 @@ class SearchNews extends SearchActiveRecord
         if (empty($mapping)) {
             $command->setMapping(static::index(), static::type(), [
                 static::type() => [
-                    // TODO improve mappings for search
                     'properties' => [
                         'title' => [
                             'type' => 'text',
@@ -140,7 +139,7 @@ class SearchNews extends SearchActiveRecord
 
     public function getDescription()
     {
-        return 'TODO'; // TODO
+        return '';
     }
 
     public function getType()

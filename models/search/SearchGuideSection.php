@@ -127,6 +127,6 @@ class SearchGuideSection extends SearchActiveRecord
 
     public function getDescription()
     {
-        return 'TODO'; // TODO
+        return '';
     }
 }
