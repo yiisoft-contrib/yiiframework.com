@@ -157,8 +157,8 @@ class SearchController extends BaseController
         $queryURLs = [];
 
         $suggests = array_merge(
-            $results['suggest-name'] ?? [],
-            $results['suggest-title'] ?? []
+            isset($results['suggest-name']) ? $results['suggest-name'] : [],
+            isset($results['suggest-title']) ? $results['suggest-title'] : []
         );
 
         foreach ($suggests as $suggest) {
