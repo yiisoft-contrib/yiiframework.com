@@ -5,11 +5,14 @@ namespace app\commands;
 use app\models\SearchApiPrimitive;
 use app\models\SearchApiType;
 use Yii;
+use yii\apidoc\models\ClassDoc;
 use yii\apidoc\models\ConstDoc;
 use yii\apidoc\models\Context;
 use yii\apidoc\models\EventDoc;
+use yii\apidoc\models\InterfaceDoc;
 use yii\apidoc\models\MethodDoc;
 use yii\apidoc\models\PropertyDoc;
+use yii\apidoc\models\TraitDoc;
 use yii\base\ErrorHandler;
 use yii\helpers\Console;
 use app\apidoc\ApiRenderer;
@@ -154,9 +157,18 @@ class ApiController extends \yii\apidoc\commands\ApiController
         // write types file:
         file_put_contents("$target/json/typeNames.json", Json::encode(
             array_values(array_map(function($type) {
+                $classType = null;
+                if ($type instanceof ClassDoc) {
+                    $classType = 'class';
+                } elseif ($type instanceof InterfaceDoc) {
+                    $classType = 'interface';
+                } elseif ($type instanceof TraitDoc) {
+                    $classType = 'trait';
+                }
                 return [
                     'name' => $type->name,
                     'description' => $type->shortDescription,
+                    'type' => $classType,
                 ];
             }, $types))
         ));

@@ -65,7 +65,7 @@ class SearchApiType extends SearchActiveRecord
         /** @var SearchApiType $model */
         $model = new static();
         $model->version = $version;
-        $model->type = $type['type'];
+        $model->type = $type['type'] ?? 'class';
         $model->name = StringHelper::basename($type['name']);
         $model->namespace = StringHelper::dirname($type['name']);
         $model->title = $type['shortDescription'];
