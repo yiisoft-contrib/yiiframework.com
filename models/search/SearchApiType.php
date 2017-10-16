@@ -78,6 +78,7 @@ class SearchApiType extends SearchActiveRecord
 
         $model->insert(false, null, ['op_type' => 'index']);
 
+        /*
         if ($type->methods !== null) {
             foreach($type->methods as $method) {
                 if ($method->visibility === 'private') {
@@ -104,7 +105,7 @@ class SearchApiType extends SearchActiveRecord
             foreach($type->events as $event) {
                 SearchApiPrimitive::createRecord($model, $event, $version);
             }
-        }
+        }*/
     }
 
     public static function type()
