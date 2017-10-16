@@ -12,7 +12,9 @@ use yii\helpers\Url;
 
 $encodeHighlight = function($h) {
     return strip_tags($h, '<em>');
-}
+};
+
+$highlight = $model->getHighlight();
 
 ?>
 <div class="search-result">
@@ -20,29 +22,54 @@ $encodeHighlight = function($h) {
         <div class="col-sm-12">
             <h3>
                 <a href="<?= Url::to($model->getUrl()) ?>" class="title"><?php
-                        echo $model->getTitle();
+                    if ($model instanceof SearchApiType) {
+                        if (isset($highlight['name'])) {
+                            echo $encodeHighlight(implode('...', $highlight['name']));
+                        } else {
+                            echo Html::encode($model->getTitle());
+                        }
+                    } else {
+                        if (isset($highlight['title'])) {
+                            echo $encodeHighlight(implode('...', $highlight['title']));
+                        } elseif (isset($highlight['title.stemmed'])) {
+                            echo $encodeHighlight(implode('...', $highlight['title.stemmed']));
+                        } else {
+                            echo Html::encode($model->getTitle());
+                        }
+                    }
                 ?></a>
-                <a href="<?= Url::to($model->getUrl()) ?>" class="label label-warning"><?= $model->type ?></a>
-                <a href="<?= Url::to($model->getUrl()) ?>" class="label label-info"><?= $model->version ?></a>
+                <a href="<?= Url::to($model->getUrl()) ?>" class="label label-warning"><?= Html::encode($model->type) ?></a>
+                <a href="<?= Url::to($model->getUrl()) ?>" class="label label-info"><?= Html::encode($model->version) ?></a>
                 <?php if (isset($model->language)): ?>
-                    <a href="<?= Url::to($model->getUrl()) ?>" class="label label-success"><?= $model->language ?></a>
+                    <a href="<?= Url::to($model->getUrl()) ?>" class="label label-success"><?= Html::encode($model->language) ?></a>
                 <?php endif; ?>
                 <?php if (YII_DEBUG) {
                     echo "<small>score: " . $model->getScore() . "</small>";
                 } ?>
             </h3>
             <?php
-                $highlight = $model->getHighlight();
-//                echo "<pre>" . print_r($highlight, true) . "</pre>";
+                // echo "<pre>" . print_r($highlight, true) . "</pre>";
 
-                if (!empty($highlight['shortDescription'])) {
-                    echo '<p><strong>' . $encodeHighlight(reset($highlight['shortDescription'])) . '</strong></p>';
+                if ($model instanceof SearchApiType) {
+                    echo '<p><strong>';
+                    if (isset($highlight['title'])) {
+                        echo $encodeHighlight(implode('...', $highlight['title']));
+                    } elseif (isset($highlight['title.stemmed'])) {
+                        echo $encodeHighlight(implode('...', $highlight['title.stemmed']));
+                    } else {
+                        echo Html::encode($model->getTitle());
+                    }
+                    echo '</strong></p>';
                 }
-                if (!empty($highlight['content'])) {
+                if (isset($highlight['content'])) {
                     echo '<p>...' . $encodeHighlight(implode('...', $highlight['content'])) . '...</p>';
+                } elseif (isset($highlight['content.stemmed'])) {
+                    echo '<p>...' . $encodeHighlight(implode('...', $highlight['content.stemmed'])) . '...</p>';
+                } elseif (!$model instanceof SearchApiType) {
+                    echo '<p>' . Html::encode($model->getDescription()) . '</p>';
                 }
 
-            // TODO sanitize output!
+                // TODO remove markdown markers!
 
 //                if (!in_array($model->type, ['property', 'const', 'event'])) {
 //                    if (!empty($highlight['content'])) {

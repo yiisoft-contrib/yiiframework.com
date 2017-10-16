@@ -53,6 +53,44 @@ class SearchController  extends Controller
     }
 
     /**
+     * Test how good common search queries work.
+     */
+    public function actionTest()
+    {
+        $queries = [
+            'Install Yii',
+            'How the hell do I isntall Yii?', // typo intentionally added
+            'Active Record',
+            'ActiveRecord',
+            'Dataprovider',
+            'logging',
+            'logs',
+            'asset management',
+            'theme yii',
+            'how to get started?',
+            'grid view',
+            'gridview',
+            'cgridview',
+        ];
+
+        foreach ($queries as $query) {
+            $this->stdout("$query\n", Console::BOLD);
+            $q = SearchActiveRecord::search($query);
+            foreach($q->limit(5)->all() as $item) {
+                $this->stdout(" - ");
+                $this->stdout("$item->type ", Console::FG_YELLOW);
+                if ($item->hasAttribute('version')) {
+                    $this->stdout("$item->version ", Console::FG_BLUE);
+                }
+                if ($item->hasAttribute('language')) {
+                    $this->stdout("$item->language ", Console::FG_GREEN);
+                }
+                $this->stdout($item->getTitle() . "\n");
+            }
+        }
+    }
+
+    /**
      * Drop all search indices
      */
     public function actionClear()
@@ -76,7 +114,7 @@ class SearchController  extends Controller
     /**
      * Rebuild search index.
      */
-    public function actionRebuild(array $items = ['guide', 'extension', 'wiki', 'news'])
+    public function actionRebuild(array $items = ['guide', 'api', 'extension', 'wiki', 'news'])
     {
         foreach($items as $item) {
             switch($item) {

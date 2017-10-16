@@ -79,7 +79,7 @@ class SearchGuideSection extends SearchActiveRecord
                         'properties' => [
                             'version' => ['type' => 'keyword'],
                             'language' => ['type' => 'keyword'],
-                            'name' => ['type' => 'keyword'],
+                            'name' => ['type' => 'text'],
                             'type' => ['type' => 'keyword'],
 
                             'title' => [

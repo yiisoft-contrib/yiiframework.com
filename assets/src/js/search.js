@@ -29,7 +29,7 @@ renderResultList = function(resultName, limit) {
             html += '<li><p>No results.</p></li>';
         }
         html += '</ul>';
-    } else if (resultName == 'other' ){
+    } else if (resultName === 'other' ){
         html += '<ul>';
         html += '<li>hit enter to view more search results.</li>';
         html += '</ul>';

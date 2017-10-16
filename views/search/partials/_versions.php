@@ -8,18 +8,21 @@
  */
 use app\widgets\DropdownList;
 
+$columns = 3;
 $hideVersion = false;
 $hideLanguage = false;
 if ($type === 'news') {
     $hideLanguage = true;
     $hideVersion = true;
+    $columns = 1;
 } elseif (in_array($type, ['wiki', 'extension', 'api'], true)) {
     $hideLanguage = true;
+    $columns = 2;
 }
 
 ?>
 <nav class="version-selector">
-    <div class="btn-group btn-group-justified">
+    <div class="btn-group btn-group-justified btn-group-<?= $columns ?>-element">
         <?php
         $options = $this->context->getTypes();
         $types = array_keys($options);

@@ -100,8 +100,26 @@ class SearchNews extends SearchActiveRecord
                 static::type() => [
                     // TODO improve mappings for search
                     'properties' => [
-                        'title' => ['type' => 'text'],
-                        'content' => ['type' => 'text'],
+                        'title' => [
+                            'type' => 'text',
+                            // sub-fields added for language
+                            'fields' => [
+                                'stemmed' => [
+                                    'type' => 'text',
+                                    'analyzer' => 'english',
+                                ],
+                            ],
+                        ],
+                        'content' => [
+                            'type' => 'text',
+                            // sub-fields added for language
+                            'fields' => [
+                                'stemmed' => [
+                                    'type' => 'text',
+                                    'analyzer' => 'english',
+                                ],
+                            ],
+                        ],
                     ]
                 ]
             ]);

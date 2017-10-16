@@ -111,6 +111,7 @@ class ApiController extends \yii\apidoc\commands\ApiController
         file_put_contents("$target/json/typeNames.json", Json::encode(
             array_values(array_map(function($type) {
                 return [
+                    'type' => $type['type'],
                     'name' => $type['name'],
                     'description' => isset($type['shortDescription']) ? $type['shortDescription'] : '',
                 ];

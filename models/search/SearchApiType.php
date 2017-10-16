@@ -65,23 +65,15 @@ class SearchApiType extends SearchActiveRecord
         /** @var SearchApiType $model */
         $model = new static();
         $model->version = $version;
+        $model->type = $type['type'];
         $model->name = StringHelper::basename($type['name']);
         $model->namespace = StringHelper::dirname($type['name']);
         $model->title = $type['description'];
-        $model->content = static::filterHtml($type['description']);
+        $model->content = static::filterHtml($type['description']); // TODO make this the long description
 //        $model->description = $type['name']; // TODO
 //        $model->since = $type->since;
 //        $model->deprecatedSince = $type->deprecatedSince;
 //        $model->deprecatedReason = $type->deprecatedReason;
-
-        // TODO
-//        if ($type instanceof ClassDoc) {
-//            $model->type = 'class';
-//        } elseif ($type instanceof InterfaceDoc) {
-//            $model->type = 'interface';
-//        } elseif ($type instanceof TraitDoc) {
-//            $model->type = 'trait';
-//        }
 
         $model->insert(false);
 
@@ -134,7 +126,7 @@ class SearchApiType extends SearchActiveRecord
                         'version' => ['type' => 'keyword'],
                         'type' => ['type' => 'keyword'],
 
-                        'name' => ['type' => 'keyword'], // TODO partial match
+                        'name' => ['type' => 'text'],
                         'namespace' => ['type' => 'keyword'],
 
                         'title' => [
@@ -147,8 +139,16 @@ class SearchApiType extends SearchActiveRecord
                                 ],
                             ],
                         ],
-
-                        'content' => ['type' => 'text'],
+                        'content' => [
+                            'type' => 'text',
+                            // sub-fields added for language
+                            'fields' => [
+                                'stemmed' => [
+                                    'type' => 'text',
+                                    'analyzer' => 'english',
+                                ],
+                            ],
+                        ],
                         'since' => ['type' => 'keyword'],
                         'deprecatedSince' => ['type' => 'keyword'],
                         'deprecatedReason' => ['type' => 'keyword'],
@@ -169,7 +169,7 @@ class SearchApiType extends SearchActiveRecord
         if ($this->version[0] === '1') {
             $name = $this->name;
         } else {
-            $name = strtolower(str_replace('\\', '-', $this->name));
+            $name = strtolower(str_replace('\\', '-', "$this->namespace\\$this->name"));
         }
         return ['api/view', 'version' => $this->version, 'section' => $name];
     }
@@ -186,6 +186,6 @@ class SearchApiType extends SearchActiveRecord
 
     public function getType()
     {
-        // TODO: Implement getType() method.
+        return $this->getAttribute('type');
     }
 }

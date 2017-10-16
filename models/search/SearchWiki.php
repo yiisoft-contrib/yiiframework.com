@@ -106,8 +106,26 @@ class SearchWiki extends SearchActiveRecord
                         'version' => ['type' => 'keyword'],
                         'category_id' => ['type' => 'integer'],
 
-                        'title' => ['type' => 'text'],
-                        'content' => ['type' => 'text'],
+                        'title' => [
+                            'type' => 'text',
+                            // sub-fields added for language
+                            'fields' => [
+                                'stemmed' => [
+                                    'type' => 'text',
+                                    'analyzer' => 'english',
+                                ],
+                            ],
+                        ],
+                        'content' => [
+                            'type' => 'text',
+                            // sub-fields added for language
+                            'fields' => [
+                                'stemmed' => [
+                                    'type' => 'text',
+                                    'analyzer' => 'english',
+                                ],
+                            ],
+                        ],
                     ]
                 ]
             ]);

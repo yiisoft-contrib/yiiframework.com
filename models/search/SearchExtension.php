@@ -113,9 +113,27 @@ class SearchExtension extends SearchActiveRecord
                         'version' => ['type' => 'keyword'],
                         'category_id' => ['type' => 'integer'],
 
-                        'name' => ['type' => 'keyword'], // TODO also partial matching
-                        'title' => ['type' => 'text'],
-                        'content' => ['type' => 'text'],
+                        'name' => ['type' => 'text'],
+                        'title' => [
+                            'type' => 'text',
+                            // sub-fields added for language
+                            'fields' => [
+                                'stemmed' => [
+                                    'type' => 'text',
+                                    'analyzer' => 'english',
+                                ],
+                            ],
+                        ],
+                        'content' => [
+                            'type' => 'text',
+                            // sub-fields added for language
+                            'fields' => [
+                                'stemmed' => [
+                                    'type' => 'text',
+                                    'analyzer' => 'english',
+                                ],
+                            ],
+                        ],
                     ]
                 ]
             ]);

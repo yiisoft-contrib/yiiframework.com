@@ -5,6 +5,7 @@ namespace app\models\search;
 
 use Yii;
 use yii\base\Exception;
+use yii\helpers\Inflector;
 
 abstract class SearchActiveRecord extends \yii\elasticsearch\ActiveRecord
 {
@@ -72,121 +73,115 @@ abstract class SearchActiveRecord extends \yii\elasticsearch\ActiveRecord
             throw new Exception('Unkown search type given!');
         }
 
+        // TODO detect API names in search string and find that API item
+
+        // add synonyms
+        $synonyms = [
+            'javascript' => 'Client Script',
+            'js' => 'javascript',
+            'ar' => 'Active Record',
+        ];
+        $words = preg_split('~\s+~', ucwords($queryString));
+        foreach($words as $word) {
+            if (isset($synonyms[$l = mb_strtolower($word)])) {
+                $queryString .= ' ' . $synonyms[$l];
+            }
+        }
+
+        $queryParts = [];
+
+        // exact match on name field, which is a keyword and not analyzed
+        // exact match on unanalyzed title
+        $queryParts[] = [
+            'bool' => [
+                'should' => [
+                    ['term' => ['name' => $queryString]],
+                    ['term' => ['title' => $queryString]],
+                    ['match' => ['name' => $queryString]],
+                ],
+                'minimum_should_match' => 1,
+//                'boost' => 4,
+            ]
+        ];
+
+
+        // Array Helper -> search for ArrayHelper too
+        $camelQuery = implode('', $words);
+        if (mb_strtolower($queryString) !== mb_strtolower($camelQuery)) {
+            Yii::warning('adding additional things: ' . $camelQuery);
+            // exact match on name field, which is a keyword and not analyzed
+            $queryParts[] = [
+                'bool' => [
+                    'should' => [
+                        ['term' => ['name' => $camelQuery]],
+                        ['term' => ['title' => $camelQuery]],
+                        ['match' => ['name' => $camelQuery]],
+                        ['match' => ['title.stemmed' => $camelQuery]],
+                    ],
+                    'minimum_should_match' => 1,
+//                    'boost' => 4,
+                ]
+            ];
+        }
+
+        // analyzed match on title and content, boost exact matches over typos
+        $queryParts[] = [
+            'multi_match' => [
+                'query' => $queryString,
+                'analyzer' => $analyzer,
+                'fields' => [
+                    'title.stemmed',
+                    'content.stemmed',
+                ],
+                'type' => 'best_fields',
+            ],
+        ];
+
+        // analyzed match on content, allow fuzzyness, i.e. typos in the words
+        $queryParts[] = [
+            'multi_match' => [
+                'query' => $queryString,
+                'analyzer' => $analyzer,
+                // https://www.elastic.co/guide/en/elasticsearch/reference/5.6/common-options.html#fuzziness
+                'fuzziness' => 'AUTO',
+                'fields' => [
+                    'title.stemmed',
+                    'content.stemmed',
+                ],
+                'type' => 'best_fields',
+            ],
+        ];
+
         $query->from($indexes, $types);
         $q = [
             'bool' => [
-                'should' => [
-                    [
-                        // exact match on name field, which is a keyword and not analyzed
-                        'match' => [
-                            'name' => $queryString,
-                        ],
-                    ],
-                    [
-                        // analyzed match on title and content, boost exact matches over typos
-                        'multi_match' => [
-                            'query' => $queryString,
-                            'analyzer' => $analyzer,
-                            'fields' => [
-                                'title^3',
-                                'content^2',
-                            ],
-                            'type' => 'most_fields',
-                        ],
-                    ],
-//                    [
-//                        // phrase match on title and content, boost exact matches over typos
-//                        'multi_match' => [
-//                            'query' => $queryString,
-//                            'analyzer' => $analyzer,
-//                            'fields' => [
-//                                'title^2',
-//                                'content^2',
-//                            ],
-//                            'type' => 'phrase',
-//                        ],
-//                    ],
-                    [
-                        // analyzed match on content, allow fuzzyness, i.e. typos in the words
-                        'multi_match' => [
-                            'query' => $queryString,
-                            'analyzer' => $analyzer,
-                            // https://www.elastic.co/guide/en/elasticsearch/reference/5.6/common-options.html#fuzziness
-                            'fuzziness' => 'AUTO',
-                            'fields' => [
-                                'content',
-                            ],
-                            'type' => 'most_fields',
-                        ],
-                    ],
-//                    [
-//                        // analyzed match on title and content, using phrase query
-//                        'match_phrase' => [
-//                            'title' => [
-//                                'query' => $queryString,
-//                                'analyzer' => $analyzer,
-//                            ],
-//                        ],
-//                    ],
-
-                    // TODO match_phrase would be nice maybe
-
-                    // match title and description for keywords, boost title by 3
-//                    ['multi_match' => [
-//                        'query' => $queryString,
-//                        'fields' => [
-//                            // match title indexed by analyzer
-//                            'title.stemmed^5',
-//                            // match name exactly unstemmed (name is from API doc)
-//                            'name^5',
-////                            'shortDescription^2',
-////                            'description',
-//                            'content.stemmed^2',
-//                        ],
-//                        //'operator' => 'and',
-//                        //'minimum_should_match' => '75%',
-//                        'type' => 'most_fields',
-//                        'analyzer' => $analyzer,
-//                        'fuzziness' =>  '2',
-//                    ]],
-//                    ['multi_match' => [
-//                        'query' => $queryString,
-//                        'fields' => [
-//                            // match the unanalyzed title to match exact words
-//                            'title.stemmed^3',
-//                            'title^3',
-//                            // match name exactly unstemmed (name is from API doc)
-//                            'name^3',
-//                            'shortDescription^2',
-//                            'content',
-//                            'content.stemmed',
-//                        ],
-//                        //'operator' => 'and',
-//                        'minimum_should_match' => '20%',
-//                        'type' => 'most_fields',
-//                        'analyzer' => 'standard',
-//                        'fuzziness' =>  '2',
-//                    ]],
-                    // check for comments that match keywords
-// TODO
-//                    ['has_child' => [
-//                        'type' => 'api-primitive',
-//                        'query' => [
-//                            'match' => ['description' => $queryString],
-//                        ]
-//                    ]],
-                ],
-                'minimum_should_match' => 1
+                'should' => $queryParts,
+                'minimum_should_match' => 1,
             ],
         ];
         if ($version !== null) {
             $q['bool']['filter'] = ['term' => ['version' => $version]];
+        } else {
+            // in case 1.1 and 2.0 version matches, boost 2.0 to a higher rank
+            // https://stackoverflow.com/questions/19123556/boosting-matched-documents-in-elasticsearch-which-have-a-certain-tag
+            $q = [
+                'function_score' => [
+                    'query' => $q,
+                    'functions' => [
+                        ['filter' => ['term' => ['version' => '2.0']], "weight" => 4],
+                        ['filter' => ['term' => ['version' => '1.1']], "weight" => 2],
+                    ],
+                ]
+            ];
         }
         $query->query($q);
         $query->highlight([
             'fields' => [
-//                'shortDescription' => ["fragment_size" => 5000, "number_of_fragments" => 1],
+                'name' => ["fragment_size" => 5000, "number_of_fragments" => 1],
+                'title' => ["fragment_size" => 5000, "number_of_fragments" => 1],
+                'title.stemmed' => ["fragment_size" => 5000, "number_of_fragments" => 1],
                 'content' => ["fragment_size" => 100, "number_of_fragments" => 5],
+                'content.stemmed' => ["fragment_size" => 100, "number_of_fragments" => 5],
             ],
         ]);
         return $query;
