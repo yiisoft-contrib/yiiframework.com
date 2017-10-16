@@ -68,14 +68,16 @@ class SearchApiType extends SearchActiveRecord
         $model->type = $type['type'];
         $model->name = StringHelper::basename($type['name']);
         $model->namespace = StringHelper::dirname($type['name']);
-        $model->title = $type['description'];
-        $model->content = static::filterHtml($type['description']); // TODO make this the long description
+        $model->title = $type['shortDescription'];
+        $model->content = static::filterHtml($type['description']);
 //        $model->description = $type['name']; // TODO
 //        $model->since = $type->since;
 //        $model->deprecatedSince = $type->deprecatedSince;
 //        $model->deprecatedReason = $type->deprecatedReason;
 
-        $model->insert(false);
+        $model->primaryKey = "$version/" . strtolower(ltrim(str_replace('\\', '-', "$model->namespace\\$model->name"), '-'));
+
+        $model->insert(false, null, ['op_type' => 'index']);
 
         if ($type->methods !== null) {
             foreach($type->methods as $method) {
@@ -117,6 +119,20 @@ class SearchApiType extends SearchActiveRecord
         if (!$command->indexExists(static::index())) {
             $command->createIndex(static::index());
         }
+        $command->updateAnalyzers(static::index(), [
+            'settings' => [
+                // create a camelcase analyzer
+                // https://www.elastic.co/guide/en/elasticsearch/reference/5.6/analysis-pattern-analyzer.html#_camelcase_tokenizer
+                'analysis' => [
+                    'analyzer' => [
+                        'camel' => [
+                            'type' => 'pattern',
+                            'pattern' => '([^\\p{L}\\d]+)|(?<=\\D)(?=\\d)|(?<=\\d)(?=\\D)|(?<=[\\p{L}&&[^\\p{Lu}]])(?=\\p{Lu})|(?<=\\p{Lu})(?=\\p{Lu}[\\p{L}&&[^\\p{Lu}]])',
+                        ]
+                    ]
+                ]
+            ],
+        ]);
         $mapping = $command->getMapping(static::index(), static::type());
         if (empty($mapping)) {
             $command->setMapping(static::index(), static::type(), [
@@ -126,7 +142,15 @@ class SearchApiType extends SearchActiveRecord
                         'version' => ['type' => 'keyword'],
                         'type' => ['type' => 'keyword'],
 
-                        'name' => ['type' => 'text'],
+                        'name' => [
+                            'type' => 'text',
+                            'fields' => [
+                                'camel' => [
+                                    'type' => 'text',
+                                    'analyzer' => 'camel',
+                                ],
+                            ],
+                        ],
                         'namespace' => ['type' => 'keyword'],
 
                         'title' => [

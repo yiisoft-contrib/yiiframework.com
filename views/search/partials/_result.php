@@ -24,15 +24,15 @@ $highlight = $model->getHighlight();
                 <a href="<?= Url::to($model->getUrl()) ?>" class="title"><?php
                     if ($model instanceof SearchApiType) {
                         if (isset($highlight['name'])) {
-                            echo $encodeHighlight(implode('...', $highlight['name']));
+                            echo $encodeHighlight(($model->namespace ? $model->namespace . '\\' : '') . implode(' ... ', $highlight['name']));
                         } else {
-                            echo Html::encode($model->getTitle());
+                            echo Html::encode(($model->namespace ? $model->namespace . '\\' : '') . $model->name);
                         }
                     } else {
                         if (isset($highlight['title'])) {
-                            echo $encodeHighlight(implode('...', $highlight['title']));
+                            echo $encodeHighlight(implode(' ... ', $highlight['title']));
                         } elseif (isset($highlight['title.stemmed'])) {
-                            echo $encodeHighlight(implode('...', $highlight['title.stemmed']));
+                            echo $encodeHighlight(implode(' ... ', $highlight['title.stemmed']));
                         } else {
                             echo Html::encode($model->getTitle());
                         }
@@ -53,18 +53,18 @@ $highlight = $model->getHighlight();
                 if ($model instanceof SearchApiType) {
                     echo '<p><strong>';
                     if (isset($highlight['title'])) {
-                        echo $encodeHighlight(implode('...', $highlight['title']));
+                        echo $encodeHighlight(implode(' ... ', $highlight['title']));
                     } elseif (isset($highlight['title.stemmed'])) {
-                        echo $encodeHighlight(implode('...', $highlight['title.stemmed']));
+                        echo $encodeHighlight(implode(' ... ', $highlight['title.stemmed']));
                     } else {
                         echo Html::encode($model->getTitle());
                     }
                     echo '</strong></p>';
                 }
                 if (isset($highlight['content'])) {
-                    echo '<p>...' . $encodeHighlight(implode('...', $highlight['content'])) . '...</p>';
+                    echo '<p>... ' . $encodeHighlight(implode('...', $highlight['content'])) . ' ...</p>';
                 } elseif (isset($highlight['content.stemmed'])) {
-                    echo '<p>...' . $encodeHighlight(implode('...', $highlight['content.stemmed'])) . '...</p>';
+                    echo '<p>... ' . $encodeHighlight(implode('...', $highlight['content.stemmed'])) . ' ...</p>';
                 } elseif (!$model instanceof SearchApiType) {
                     echo '<p>' . Html::encode($model->getDescription()) . '</p>';
                 }

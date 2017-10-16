@@ -9,6 +9,10 @@ use yii\helpers\Inflector;
 
 abstract class SearchActiveRecord extends \yii\elasticsearch\ActiveRecord
 {
+    /**
+     * @var array language analyzers for elasticsearch based on
+     * https://www.elastic.co/guide/en/elasticsearch/reference/5.6/analysis-lang-analyzer.html
+     */
     public static $languages = [
         // lang => analyzer name
         'en' => 'english',
@@ -73,8 +77,6 @@ abstract class SearchActiveRecord extends \yii\elasticsearch\ActiveRecord
             throw new Exception('Unkown search type given!');
         }
 
-        // TODO detect API names in search string and find that API item
-
         // add synonyms
         $synonyms = [
             'javascript' => 'Client Script',
@@ -98,6 +100,7 @@ abstract class SearchActiveRecord extends \yii\elasticsearch\ActiveRecord
                     ['term' => ['name' => $queryString]],
                     ['term' => ['title' => $queryString]],
                     ['match' => ['name' => $queryString]],
+                    ['match' => ['name.camel' => $queryString]],
                 ],
                 'minimum_should_match' => 1,
 //                'boost' => 4,

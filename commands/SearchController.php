@@ -58,6 +58,7 @@ class SearchController  extends Controller
     public function actionTest()
     {
         $queries = [
+            'Yii',
             'Install Yii',
             'How the hell do I isntall Yii?', // typo intentionally added
             'Active Record',
@@ -321,15 +322,35 @@ class SearchController  extends Controller
 
     protected function generateApiIndex($target, $version)
     {
-        $data = Json::decode(file_get_contents("$target/json/typeNames.json"));
-        $count = count($data);
-        $i = 0;
-        Console::startProgress(0, $count, "Reindexing api $version ...");
-        foreach ($data as $type) {
-            SearchApiType::createRecord($type, $version);
-            Console::updateProgress(++$i, $count);
+        // exists in all versions
+        $simpleFile = "$target/json/typeNames.json";
+        // exists since 2.0
+        $detailFile = "$target/types.json";
+        if (is_file($detailFile)) {
+            $data = Json::decode(file_get_contents($detailFile));
+            $count = count($data);
+            $i = 0;
+            Console::startProgress(0, $count, "Reindexing api $version ...");
+
+            foreach ($data as $name => $type) {
+                $type['name'] = $name;
+                SearchApiType::createRecord($type, $version);
+                Console::updateProgress(++$i, $count);
+            }
+            Console::endProgress(true, true);
+        } else {
+            $data = Json::decode(file_get_contents($simpleFile));
+            $count = count($data);
+            $i = 0;
+            Console::startProgress(0, $count, "Reindexing api $version ...");
+            foreach ($data as $type) {
+                $type['shortDescription'] = $type['description'];
+                unset($type['description']);
+                SearchApiType::createRecord($type, $version);
+                Console::updateProgress(++$i, $count);
+            }
+            Console::endProgress(true, true);
         }
-        Console::endProgress(true, true);
 
         $this->stdout("done.\n", Console::BOLD, Console::FG_GREEN);
     }
