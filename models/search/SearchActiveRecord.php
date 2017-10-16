@@ -82,6 +82,8 @@ abstract class SearchActiveRecord extends \yii\elasticsearch\ActiveRecord
             'javascript' => 'Client Script',
             'js' => 'javascript',
             'ar' => 'Active Record',
+            'i18n' => 'Internationalization',
+            'internationalization' => 'i18n',
         ];
         $words = preg_split('~\s+~', ucwords($queryString));
         foreach($words as $word) {
