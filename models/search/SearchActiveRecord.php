@@ -174,6 +174,16 @@ abstract class SearchActiveRecord extends \yii\elasticsearch\ActiveRecord
                 ]
             ];
         }
+        // boost official content over unofficial content
+        $q = [
+            'function_score' => [
+                'query' => $q,
+                'functions' => [
+                    ['filter' => ['term' => ['_type' => 'api-type']], "weight" => 1.5],
+                    ['filter' => ['term' => ['_type' => 'guide-section']], "weight" => 1.5],
+                ],
+            ]
+        ];
         $query->query($q);
         $query->highlight([
             'fields' => [
