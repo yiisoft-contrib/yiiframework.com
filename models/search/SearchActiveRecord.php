@@ -209,17 +209,37 @@ abstract class SearchActiveRecord extends \yii\elasticsearch\ActiveRecord
         if ($language === null) {
             $indexes = array_map(function($i) { return static::index() . "-$i"; }, array_keys(static::$languages));
             $query->indicesBoost = [
-                static::index() . '-en' => 10,
+                static::index() . '-en' => 20,
             ];
         } elseif (isset(static::$languages[$language])) {
             $indexes = [static::index() . "-$language"];
             $analyzer = static::$languages[$language];
         }
 
-        // TODO find also dataprovider when searching for "data provider":
-        // https://www.elastic.co/guide/en/elasticsearch/guide/current/ngrams-compound-words.html
-
-        $query->from($indexes, [/*'api-type', 'api-primitive',*/ 'guide-section']);
+        $query->from($indexes, ['api-type',/* 'api-primitive',*/ 'guide-section', 'wiki', 'extension', 'news']);
+        $query->addSuggester('suggest-title', [
+            'prefix' => $queryString,
+            'completion' => [
+                'field' => 'title.suggest',
+                // number of suggestions to return
+                'size' => 10,
+                'fuzzy' => [
+                    'fuzziness' => 'AUTO',
+                ],
+            ],
+        ]);
+        $query->addSuggester('suggest-name', [
+            'prefix' => $queryString,
+            'completion' => [
+                'field' => 'name.suggest',
+                // number of suggestions to return
+                'size' => 10,
+                'fuzzy' => [
+                    'fuzziness' => 'AUTO',
+                ],
+            ],
+        ]);
+/*
         $query->query([
             'bool' => [
                 'must' => [
@@ -236,7 +256,7 @@ abstract class SearchActiveRecord extends \yii\elasticsearch\ActiveRecord
                                 ],
                             ]],
                             ['match_phrase_prefix' => [
-                                'title' => [
+                                'name' => [
                                     'query' => $queryString,
                                     'slop' => 10,
                                     'max_expansions' => 50,
@@ -266,7 +286,7 @@ abstract class SearchActiveRecord extends \yii\elasticsearch\ActiveRecord
         ]);
         if ($version !== null) {
             $query->andWhere(['version' => $version]);
-        }
+        }*/
         return $query;
     }
 

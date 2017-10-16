@@ -90,6 +90,10 @@ class SearchGuideSection extends SearchActiveRecord
                                         'type' => 'text',
                                         'analyzer' => $analyzer,
                                     ],
+                                    // mapping for search-as-you-type completion
+                                    'suggest' => [
+                                        'type' => 'completion',
+                                    ],
                                 ],
                             ],
                             'content' => [

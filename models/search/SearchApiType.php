@@ -147,6 +147,11 @@ class SearchApiType extends SearchActiveRecord
                                     'type' => 'text',
                                     'analyzer' => 'camel',
                                 ],
+                                // mapping for search-as-you-type completion
+                                'suggest' => [
+                                    'type' => 'completion',
+                                    'analyzer' => 'camel',
+                                ],
                             ],
                         ],
                         'namespace' => ['type' => 'keyword'],

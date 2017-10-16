@@ -125,6 +125,10 @@ class SearchExtension extends SearchActiveRecord
                                     'type' => 'text',
                                     'analyzer' => 'english',
                                 ],
+                                // mapping for search-as-you-type completion
+                                'suggest' => [
+                                    'type' => 'completion',
+                                ],
                             ],
                         ],
                         'content' => [

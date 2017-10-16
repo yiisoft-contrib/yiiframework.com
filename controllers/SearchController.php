@@ -145,9 +145,9 @@ class SearchController extends BaseController
 
     public function actionOpensearchSuggest($q)
     {
+        Yii::$app->response->format = Response::FORMAT_JSON;
         $query = SearchActiveRecord::searchAsYouType($q, null, null);
-        $query->fields(['title']);
-        $results = $query->search()['hits']['hits'];
+        $results = $query->search()['suggest'];
 
         Yii::$app->response->format = Response::FORMAT_RAW;
         Yii::$app->response->headers->add('Content-Type', 'application/x-suggestions+json');
@@ -156,10 +156,17 @@ class SearchController extends BaseController
         $descriptions = [];
         $queryURLs = [];
 
-        foreach ($results as $result) {
-            $searchTerms[] = $result->title;
-            $descriptions[] = $result->title;
-            $queryURLs[] = Url::toRoute(['search/global', 'q' => $result->title]);
+        $suggests = array_merge(
+            $results['suggest-name'] ?? [],
+            $results['suggest-title'] ?? []
+        );
+
+        foreach ($suggests as $suggest) {
+            foreach ($suggest['options'] as $result) {
+                $searchTerms[] = $result['text'];
+                $descriptions[] = '';
+                $queryURLs[] = Url::toRoute(['search/global', 'q' => $result['text']]);
+            }
         }
 
         return Json::encode([$q, $searchTerms, $descriptions, $queryURLs], JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE);
