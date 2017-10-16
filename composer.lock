@@ -2308,12 +2308,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/yiisoft/yii2-elasticsearch.git",
-                "reference": "83d535bed7ae3e05008e7271759b3f12bd66b43c"
+                "reference": "1e66c78f10beee3b51bcea6cbefc85f1ae3b9ee7"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/yiisoft/yii2-elasticsearch/zipball/83d535bed7ae3e05008e7271759b3f12bd66b43c",
-                "reference": "83d535bed7ae3e05008e7271759b3f12bd66b43c",
+                "url": "https://api.github.com/repos/yiisoft/yii2-elasticsearch/zipball/1e66c78f10beee3b51bcea6cbefc85f1ae3b9ee7",
+                "reference": "1e66c78f10beee3b51bcea6cbefc85f1ae3b9ee7",
                 "shasum": ""
             },
             "require": {
@@ -2349,7 +2349,7 @@
                 "search",
                 "yii2"
             ],
-            "time": "2017-09-13 11:19:58"
+            "time": "2017-10-06 13:49:44"
         },
         {
             "name": "yiisoft/yii2-httpclient",
