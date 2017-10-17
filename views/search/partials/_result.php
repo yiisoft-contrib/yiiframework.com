@@ -47,10 +47,12 @@ $highlight = $model->getHighlight();
                     }
                 ?></a>
                 <a href="<?= Url::to($model->getUrl()) ?>" class="label label-warning"><?= Html::encode(ucfirst($model->type)) ?></a>
-                <?php if ($model instanceof SearchExtension || $model instanceof SearchWiki): ?>
+                <?php if ($model instanceof SearchExtension || $model instanceof SearchWiki || $model instanceof SearchGuideSection): ?>
                     <a href="<?= Url::to($model->getUrl()) ?>" class="label label-default"><?= Html::encode($model->category) ?></a>
                 <?php endif; ?>
+                <?php if (!$model instanceof \app\models\search\SearchNews): ?>
                 <a href="<?= Url::to($model->getUrl()) ?>" class="label label-info"><?= Html::encode($model->version) ?></a>
+                <?php endif; ?>
                 <?php if (isset($model->language)): ?>
                     <a href="<?= Url::to($model->getUrl()) ?>" class="label label-success"><?= Html::encode($model->language) ?></a>
                 <?php endif; ?>

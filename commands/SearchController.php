@@ -249,7 +249,7 @@ class SearchController  extends Controller
                 }
                 echo '.';
                 $html = file_get_contents($file);
-                SearchGuideSection::createRecord(basename($file, '.html'), $section['headline'], $html, $version, $language);
+                SearchGuideSection::createRecord(basename($file, '.html'), $chapter['headline'], $section['headline'], $html, $version, $language);
             }
         }
         $lines = file($source . '/README.md');
@@ -291,7 +291,7 @@ class SearchController  extends Controller
                 }
                 echo '.';
                 $html = file_get_contents($file);
-                SearchGuideSection::createRecord(basename($file, '.html'), $matches[1], $html, $version, $language, $type);
+                SearchGuideSection::createRecord(basename($file, '.html'), $chapter, $matches[1], $html, $version, $language, $type);
             }
         }
 

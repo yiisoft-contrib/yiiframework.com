@@ -10,6 +10,7 @@ namespace app\models\search;
  * @property string $language
  * @property string $type
  * @property string $name
+ * @property string $category
  * @property string $title
  * @property string $content
  */
@@ -25,6 +26,7 @@ class SearchGuideSection extends SearchActiveRecord
             'language',
             'type',
 
+            'category', // chapter headline
             'name',
             'title',
             'content',
@@ -39,7 +41,7 @@ class SearchGuideSection extends SearchActiveRecord
     /**
      *
      */
-    public static function createRecord($name, $title, $body, $version, $language, $type = 'guide')
+    public static function createRecord($name, $category, $title, $body, $version, $language, $type = 'guide')
     {
         // filter out code blocks
         $body = static::filterHtml($body);
@@ -50,6 +52,7 @@ class SearchGuideSection extends SearchActiveRecord
         $model->language = $language;
         $model->type = $type;
 
+        $model->category = $category;
         $model->name = $name;
         $model->title = $title;
         $model->content = $body;
