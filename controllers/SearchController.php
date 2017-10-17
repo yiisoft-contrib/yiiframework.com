@@ -6,6 +6,7 @@ use app\components\packagist\Package;
 use app\components\packagist\PackagistApi;
 use app\models\search\SearchActiveRecord;
 use Yii;
+use yii\data\ArrayDataProvider;
 use yii\helpers\Json;
 use yii\helpers\Url;
 use yii\web\Response;
@@ -17,7 +18,7 @@ class SearchController extends BaseController
 {
     public $searchQuery;
 
-    public function actionGlobal($q, $version = null, $language = null, $type = null)
+    public function actionGlobal($q = null, $version = null, $language = null, $type = null)
     {
         if (!in_array($version, $this->getVersions(), true)) {
             $version = null;
@@ -36,18 +37,22 @@ class SearchController extends BaseController
             $language = null;
         }
 
-        $results = new ActiveDataProvider(
-            [
-                'query' => SearchActiveRecord::search($q, $version, $language, $type),
-                'key' => 'primaryKey',
-                'sort' => false,
-            ]
-        );
-
-        $this->sectionTitle = 'Search results';
-        $this->headTitle = "Search results for \"$q\"";
-
         $this->searchQuery = $q;
+        if (empty($q)) {
+            $this->sectionTitle = 'Search';
+            $this->headTitle = "Search";
+            $results = new ArrayDataProvider();
+        } else {
+            $this->sectionTitle = 'Search results';
+            $this->headTitle = "Search results for \"$q\"";
+            $results = new ActiveDataProvider(
+                [
+                    'query' => SearchActiveRecord::search($q, $version, $language, $type),
+                    'key' => 'primaryKey',
+                    'sort' => false,
+                ]
+            );
+        }
 
         return $this->render(
             'results',
