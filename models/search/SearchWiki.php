@@ -2,9 +2,7 @@
 
 namespace app\models\search;
 
-
 use app\models\Wiki;
-
 
 /**
  * Search record for Wiki
@@ -19,6 +17,8 @@ use app\models\Wiki;
  */
 class SearchWiki extends SearchActiveRecord
 {
+    const TYPE = 'wiki';
+
 
     public function attributes()
     {
@@ -92,7 +92,7 @@ class SearchWiki extends SearchActiveRecord
 
     public static function type()
     {
-        return 'wiki';
+        return self::TYPE;
     }
 
     public static function setMappings()

@@ -2,30 +2,25 @@
 
 namespace app\models\search;
 
-
 use app\models\News;
-
 
 /**
  * Search record for News
  *
  *
  * @property string $id
- * @property string $version
- * @property string $category_id
  * @property string $title
  * @property string $content
  */
 class SearchNews extends SearchActiveRecord
 {
+    const TYPE = 'news';
+
 
     public function attributes()
     {
         return [
             'id',
-
-            'version',
-            'category_id',
 
             'title',
             'content',
@@ -85,7 +80,7 @@ class SearchNews extends SearchActiveRecord
 
     public static function type()
     {
-        return 'news';
+        return self::TYPE;
     }
 
     public static function setMappings()
@@ -132,7 +127,7 @@ class SearchNews extends SearchActiveRecord
 
     public function getUrl()
     {
-        $news = News::findOne($this->id); // TODO eager loading
+        $news = News::findOne($this->id); // TODO eager loading, better put URL into ES
         return $news ? $news->getUrl() : null;
     }
 

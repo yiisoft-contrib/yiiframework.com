@@ -15,6 +15,8 @@ namespace app\models\search;
  */
 class SearchGuideSection extends SearchActiveRecord
 {
+    const TYPE = 'guide-section';
+
 
     public function attributes()
     {
@@ -52,6 +54,7 @@ class SearchGuideSection extends SearchActiveRecord
         $model->title = $title;
         $model->content = $body;
 
+        $language = str_replace('_', '-', $language);
         $values = $model->getDirtyAttributes();
         static::getDb()->createCommand()->insert(
             static::index() . "-$language",
@@ -63,7 +66,7 @@ class SearchGuideSection extends SearchActiveRecord
 
     public static function type()
     {
-        return 'guide-section';
+        return self::TYPE;
     }
 
     public static function setMappings()

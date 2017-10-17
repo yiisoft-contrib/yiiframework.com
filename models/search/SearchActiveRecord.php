@@ -2,13 +2,25 @@
 
 namespace app\models\search;
 
-
 use Yii;
 use yii\base\Exception;
 use yii\helpers\Inflector;
 
+/**
+ * Base class for all search records
+ *
+ * @author Carsten Brandt <mail@cebe.cc>
+ */
 abstract class SearchActiveRecord extends \yii\elasticsearch\ActiveRecord
 {
+    // categories selectable for search
+    const SEARCH_API = 'api';
+    const SEARCH_GUIDE = 'guide';
+    const SEARCH_NEWS = 'news';
+    const SEARCH_WIKI = 'wiki';
+    const SEARCH_EXTENSION = 'extension';
+
+
     /**
      * @var array language analyzers for elasticsearch based on
      * https://www.elastic.co/guide/en/elasticsearch/reference/5.6/analysis-lang-analyzer.html
@@ -66,13 +78,21 @@ abstract class SearchActiveRecord extends \yii\elasticsearch\ActiveRecord
 
         $types = [];
         if ($type === null) {
-            $types = ['api-type',/* 'api-primitive',*/ 'guide-section', 'wiki', 'extension', 'news'];
-        } elseif (in_array($type, ['wiki', 'extension', 'news'], true)) {
+            $types = [
+                SearchApiType::TYPE,
+                // SearchApiPrimitive::TYPE,
+                SearchGuideSection::TYPE,
+                SearchWiki::TYPE,
+                SearchExtension::TYPE,
+                SearchNews::TYPE
+            ];
+        } elseif (in_array($type, [self::SEARCH_WIKI, self::SEARCH_EXTENSION, self::SEARCH_NEWS], true)) {
             $types = [$type];
-        } elseif ($type === 'api') {
-            $types = ['api-type',/* 'api-primitive',*/];
-        } elseif ($type === 'guide') {
-            $types = ['guide-section']; // TODO add possibility to search for guide subsections
+        } elseif ($type === self::SEARCH_API) {
+            $types = [SearchApiType::TYPE,/* SearchApiPrimitive::TYPE,*/];
+        } elseif ($type === self::SEARCH_GUIDE) {
+            // TODO add possibility to search for guide subsections: https://github.com/yiisoft-contrib/yiiframework.com/issues/228
+            $types = [SearchGuideSection::TYPE];
         } else {
             throw new Exception('Unkown search type given!');
         }
@@ -80,15 +100,15 @@ abstract class SearchActiveRecord extends \yii\elasticsearch\ActiveRecord
         // add synonyms
         $synonyms = [
             'javascript' => 'Client Script',
-            'js' => 'javascript',
+            'js' => 'JavaScript',
             'ar' => 'Active Record',
             'i18n' => 'Internationalization',
             'internationalization' => 'i18n',
         ];
-        $words = preg_split('~\s+~', ucwords($queryString));
+        $words = preg_split('~\s+~', ucwords($queryString), PREG_SPLIT_NO_EMPTY);
         foreach($words as $word) {
-            if (isset($synonyms[$l = mb_strtolower($word)])) {
-                $queryString .= ' ' . $synonyms[$l];
+            if (isset($synonyms[$lword = mb_strtolower($word)])) {
+                $queryString .= ' ' . $synonyms[$lword];
             }
         }
 
@@ -105,7 +125,6 @@ abstract class SearchActiveRecord extends \yii\elasticsearch\ActiveRecord
                     ['match' => ['name.camel' => $queryString]],
                 ],
                 'minimum_should_match' => 1,
-//                'boost' => 4,
             ]
         ];
 
@@ -124,7 +143,6 @@ abstract class SearchActiveRecord extends \yii\elasticsearch\ActiveRecord
                         ['match' => ['title.stemmed' => $camelQuery]],
                     ],
                     'minimum_should_match' => 1,
-//                    'boost' => 4,
                 ]
             ];
         }
@@ -175,6 +193,9 @@ abstract class SearchActiveRecord extends \yii\elasticsearch\ActiveRecord
                     'functions' => [
                         ['filter' => ['term' => ['version' => '2.0']], "weight" => 4],
                         ['filter' => ['term' => ['version' => '1.1']], "weight" => 2],
+                        // news have no version so they would be ranked lower i.e. equally ranked as version 1.0
+                        // make sure they are on the same level as version 2.0
+                        ['filter' => ['term' => ['_type' => 'news']], "weight" => 4],
                     ],
                 ]
             ];
@@ -184,6 +205,7 @@ abstract class SearchActiveRecord extends \yii\elasticsearch\ActiveRecord
             'function_score' => [
                 'query' => $q,
                 'functions' => [
+                    ['filter' => ['term' => ['_type' => 'news']], "weight" => 1.5],
                     ['filter' => ['term' => ['_type' => 'api-type']], "weight" => 1.5],
                     ['filter' => ['term' => ['_type' => 'guide-section']], "weight" => 1.5],
                 ],
@@ -218,7 +240,15 @@ abstract class SearchActiveRecord extends \yii\elasticsearch\ActiveRecord
             $analyzer = static::$languages[$language];
         }
 
-        $query->from($indexes, ['api-type',/* 'api-primitive',*/ 'guide-section', 'wiki', 'extension', 'news']);
+        $types = [
+            SearchApiType::TYPE,
+            // SearchApiPrimitive::TYPE,
+            SearchGuideSection::TYPE,
+            SearchWiki::TYPE,
+            SearchExtension::TYPE,
+            SearchNews::TYPE
+        ];
+        $query->from($indexes, $types);
         $query->addSuggester('suggest-title', [
             'prefix' => $queryString,
             'completion' => [
@@ -241,54 +271,7 @@ abstract class SearchActiveRecord extends \yii\elasticsearch\ActiveRecord
                 ],
             ],
         ]);
-/*
-        $query->query([
-            'bool' => [
-                'must' => [
-                    'bool' => [
-                        'should' => [
-                            // TODO this can be optimized
-                            // https://www.elastic.co/guide/en/elasticsearch/guide/current/_index_time_search_as_you_type.html
-                            ['match_phrase_prefix' => [
-                                'title.stemmed' => [
-                                    'query' => $queryString,
-                                    'slop' => 10,
-                                    'max_expansions' => 15,
-                                    'analyzer' => $analyzer,
-                                ],
-                            ]],
-                            ['match_phrase_prefix' => [
-                                'name' => [
-                                    'query' => $queryString,
-                                    'slop' => 10,
-                                    'max_expansions' => 50,
-                                    'analyzer' => 'standard',
-                                ],
-                            ]],
-                        ],
-                        'minimum_should_match' => 1,
-                    ],
-                ],
-                'should' => [
-                    // boost english docs
-                    ['term' => [
-                        'language' => [
-                            'value' => 'en',
-                            'boost' => 2,
-                        ],
-                    ]],
-                    ['term' => [
-                        'version' => [
-                            'value' => '2.0',
-                            'boost' => 2,
-                        ],
-                    ]],
-                ]
-            ]
-        ]);
-        if ($version !== null) {
-            $query->andWhere(['version' => $version]);
-        }*/
+
         return $query;
     }
 
@@ -296,12 +279,12 @@ abstract class SearchActiveRecord extends \yii\elasticsearch\ActiveRecord
     {
         switch($row['_type'])
         {
-            case 'api-type': return new SearchApiType();
-            case 'api-primitive': return new SearchApiPrimitive();
-            case 'guide-section': return new SearchGuideSection();
-            case 'extension': return new SearchExtension();
-            case 'news': return new SearchNews();
-            case 'wiki': return new SearchWiki();
+            case SearchApiType::TYPE: return new SearchApiType();
+            case SearchApiPrimitive::TYPE: return new SearchApiPrimitive();
+            case SearchGuideSection::TYPE: return new SearchGuideSection();
+            case SearchExtension::TYPE: return new SearchExtension();
+            case SearchNews::TYPE: return new SearchNews();
+            case SearchWiki::TYPE: return new SearchWiki();
         }
         return new static;
     }

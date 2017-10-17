@@ -1,12 +1,6 @@
 <?php
-/**
- *
- *
- * @author Carsten Brandt <mail@cebe.cc>
- */
 
 namespace app\models\search;
-
 
 use yii\base\Behavior;
 use yii\base\Event;
@@ -14,9 +8,14 @@ use yii\db\ActiveRecord;
 
 /**
  * Behavior updates search index when a model changes.
+ *
+ * @author Carsten Brandt <mail@cebe.cc>
  */
 class SearchableBehavior extends Behavior
 {
+    /**
+     * @var string class name of the search model.
+     */
     public $searchClass;
 
     public function events()

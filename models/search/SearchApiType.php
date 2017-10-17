@@ -2,10 +2,6 @@
 
 namespace app\models\search;
 
-
-use yii\apidoc\models\ClassDoc;
-use yii\apidoc\models\InterfaceDoc;
-use yii\apidoc\models\TraitDoc;
 use yii\apidoc\models\TypeDoc;
 use yii\helpers\StringHelper;
 
@@ -28,6 +24,8 @@ use yii\helpers\StringHelper;
  */
 class SearchApiType extends SearchActiveRecord
 {
+    const TYPE = 'api-type';
+
 
     public function attributes()
     {
@@ -110,7 +108,7 @@ class SearchApiType extends SearchActiveRecord
 
     public static function type()
     {
-        return 'api-type';
+        return self::TYPE;
     }
 
     public static function setMappings()

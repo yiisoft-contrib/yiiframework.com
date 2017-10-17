@@ -2,9 +2,7 @@
 
 namespace app\models\search;
 
-
 use app\models\Extension;
-
 
 /**
  * Search record for Extensions
@@ -20,6 +18,8 @@ use app\models\Extension;
  */
 class SearchExtension extends SearchActiveRecord
 {
+    const TYPE = 'extension';
+
 
     public function attributes()
     {
@@ -99,7 +99,7 @@ class SearchExtension extends SearchActiveRecord
 
     public static function type()
     {
-        return 'extension';
+        return self::TYPE;
     }
 
     public static function setMappings()
@@ -150,7 +150,7 @@ class SearchExtension extends SearchActiveRecord
 
     public function getUrl()
     {
-        $extension = Extension::findOne($this->id); // TODO eager loading
+        $extension = Extension::findOne($this->id); // TODO eager loading, better put URL into ES
         return $extension ? $extension->getUrl() : null;
     }
 

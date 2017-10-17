@@ -1,4 +1,7 @@
 <?php
+
+use app\widgets\DropdownList;
+
 /**
  * @var $this yii\web\View
  * @var $language string
@@ -6,7 +9,6 @@
  * @var $type string
  * @var $searchQuery string
  */
-use app\widgets\DropdownList;
 
 $columns = 3;
 $hideVersion = false;

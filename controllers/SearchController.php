@@ -135,11 +135,11 @@ class SearchController extends BaseController
     public function getTypes()
     {
         return [
-            'guide' => 'Guide',
-            'api' => 'API',
-            'extension' => 'Extensions',
-            'wiki' => 'Wiki',
-            'news' => 'News',
+            SearchActiveRecord::SEARCH_GUIDE => 'Guide',
+            SearchActiveRecord::SEARCH_API => 'API',
+            SearchActiveRecord::SEARCH_EXTENSION => 'Extensions',
+            SearchActiveRecord::SEARCH_WIKI => 'Wiki',
+            SearchActiveRecord::SEARCH_NEWS => 'News',
         ];
     }
 

@@ -59,8 +59,6 @@ $highlight = $model->getHighlight();
                 } ?>
             </h3>
             <?php
-                // echo "<pre>" . print_r($highlight, true) . "</pre>";
-
                 if ($model instanceof SearchApiType || $model instanceof SearchExtension) {
                     echo '<p><strong>';
                     if (isset($highlight['title'])) {
@@ -91,5 +89,4 @@ $highlight = $model->getHighlight();
         </div>
 
     </div>
-    <!--div class="search-info"><span>Technologies</span> - <span>11/10/2014</span> - <span><a href="#">John Doe</a></span></div-->
 </div>

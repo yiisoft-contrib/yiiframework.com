@@ -48,8 +48,6 @@ class SearchController  extends Controller
         $this->stdout('Elasticsearch config: ' . print_r($es->nodes, true));
 
         $this->stdout('Elasticsearch indices: ' . print_r(array_keys($es->createCommand()->getIndexStats()['indices']), true));
-
-
     }
 
     /**
@@ -246,8 +244,7 @@ class SearchController  extends Controller
                 // elasticsearch
                 $file = $target . '/' . $file . '.html';
                 if (!file_exists($file)) {
-//                    echo "file not found: $file\n";
-                    echo "f";
+                    echo "f"; // indicates that a file does not exist in this guide
                     continue;
                 }
                 echo '.';
@@ -263,7 +260,6 @@ class SearchController  extends Controller
         FileHelper::createDirectory($target);
         file_put_contents("$target/index.data", serialize([$title, $chapters, $sections]));
     }
-
 
     protected function generateIndexYii1($source, $target, $version, $language, $type = 'guide')
     {

@@ -39,6 +39,8 @@ use yii\apidoc\models\PropertyDoc;
  */
 class SearchApiPrimitive extends SearchActiveRecord
 {
+    const TYPE = 'api-primitive';
+
 
     public function attributes()
     {
@@ -166,7 +168,7 @@ class SearchApiPrimitive extends SearchActiveRecord
 
     public static function type()
     {
-        return 'api-primitive';
+        return self::TYPE;
     }
 
     public static function setMappings()

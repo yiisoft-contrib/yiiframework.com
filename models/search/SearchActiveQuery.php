@@ -1,13 +1,6 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: cebe
- * Date: 13.10.15
- * Time: 17:42
- */
 
 namespace app\models\search;
-
 
 use yii\elasticsearch\ActiveQuery;
 use yii\elasticsearch\Command;
@@ -33,4 +26,4 @@ class SearchActiveQuery extends ActiveQuery
 
         return $command;
     }
-} 
+}
