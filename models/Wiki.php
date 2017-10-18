@@ -133,6 +133,7 @@ class Wiki extends ActiveRecord implements Linkable
             [['tagNames'], 'safe'],
 
             ['memo', 'required', 'on' => 'update'],
+            ['status', 'integer']
         ];
     }
 
@@ -157,6 +158,10 @@ class Wiki extends ActiveRecord implements Linkable
         $revision->updater_id = $insert ? $this->creator_id : $this->updater_id;
         $revision->save(false);
         $this->savedRevision = $revision;
+
+        if (array_key_exists('status', $changedAttributes) && $changedAttributes['status'] != $this->status && $this->status == self::STATUS_PUBLISHED) {
+            ContentShare::addJobs(ContentShare::OBJECT_TYPE_WIKI, $this->id);
+        }
 
         return parent::afterSave($insert, $changedAttributes);
     }

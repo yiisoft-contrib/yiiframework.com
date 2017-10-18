@@ -169,6 +169,7 @@ class WikiController extends BaseController
         }
 
         $model = new Wiki();
+        $model->loadDefaultValues();
         $model->scenario = 'create';
 
         if ($model->load(\Yii::$app->request->post()) && $model->save()) {

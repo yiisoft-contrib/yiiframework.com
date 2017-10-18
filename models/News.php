@@ -216,4 +216,16 @@ class News extends ActiveRecord implements Linkable
     {
         return 'News';
     }
+
+    /**
+     * @inheritdoc
+     */
+    public function afterSave($insert, $changedAttributes)
+    {
+        if (array_key_exists('status', $changedAttributes) && $changedAttributes['status'] != $this->status && $this->status == self::STATUS_PUBLISHED) {
+            ContentShare::addJobs(ContentShare::OBJECT_TYPE_NEWS, $this->id);
+        }
+
+        parent::afterSave($insert, $changedAttributes);
+    }
 }

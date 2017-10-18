@@ -45,7 +45,8 @@
         "bower-asset/codemirror": "~5.9.0",
         "bower-asset/codemirror-buttons": "~1.0.0",
         "composer/spdx-licenses": "^1.1",
-        "zendframework/zend-feed": "^2.8"
+        "zendframework/zend-feed": "^2.8",
+        "abraham/twitteroauth": "~0.7.4"
     },
     "require-dev": {
         "yiisoft/yii2-debug": "~2.0.0",
