@@ -44,7 +44,7 @@ use yii\helpers\StringHelper;
  * @property WikiRevision[] $latestRevisions
  *
  */
-class Wiki extends ActiveRecord implements Linkable
+class Wiki extends ActiveRecord implements Linkable, Tweetable
 {
     const STATUS_DRAFT = 1;
     const STATUS_PENDING_APPROVAL = 2;
@@ -157,6 +157,10 @@ class Wiki extends ActiveRecord implements Linkable
         $revision->updater_id = $insert ? $this->creator_id : $this->updater_id;
         $revision->save(false);
         $this->savedRevision = $revision;
+
+        if ((int)$this->status === self::STATUS_PUBLISHED) {
+            Tweet::fromTweetable($this)->enqueue();
+        }
 
         return parent::afterSave($insert, $changedAttributes);
     }
@@ -355,5 +359,20 @@ class Wiki extends ActiveRecord implements Linkable
             self::YII_VERSION_11 => 'Version 1.1',
             self::YII_VERSION_ALL => 'All Versions',
         ];
+    }
+
+    public function getTweetedObjectID()
+    {
+        return $this->id;
+    }
+
+    public function getTweetedObjectType()
+    {
+        return 'wiki';
+    }
+
+    public function getTweetedText()
+    {
+        return '[wiki] ' . $this->getLinkTitle() . ' ' . $this->getUrl();
     }
 }

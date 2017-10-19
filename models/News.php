@@ -26,7 +26,7 @@ use app\components\SluggableBehavior;
  * @property News[] $relatedNews
  * @property User $creator
  */
-class News extends ActiveRecord implements Linkable
+class News extends ActiveRecord implements Linkable, Tweetable
 {
     const STATUS_DRAFT = 1;
     const STATUS_PUBLISHED = 2;
@@ -215,5 +215,29 @@ class News extends ActiveRecord implements Linkable
     public function getItemType()
     {
         return 'News';
+    }
+
+    public function getTweetedObjectID()
+    {
+        return $this->id;
+    }
+
+    public function getTweetedObjectType()
+    {
+        return 'news';
+    }
+
+    public function getTweetedText()
+    {
+       return '[news] ' . $this->getLinkTitle() . ' ' . $this->getUrl();
+    }
+
+    public function afterSave($insert, $changedAttributes)
+    {
+        if ((int)$this->status === self::STATUS_PUBLISHED) {
+            Tweet::fromTweetable($this)->enqueue();
+        }
+
+        parent::afterSave($insert, $changedAttributes);
     }
 }
