@@ -1,35 +1,23 @@
 <?php
 
 use app\migrations\BaseMigration;
-use app\models\ContentShare;
 
 class m171018_174853_content_share extends BaseMigration
 {
     public function safeUp()
     {
         $this->createTable('{{%content_share}}', [
-            'object_type_id' => $this->smallInteger()->notNull(),
+            'id' => $this->primaryKey(),
+            'object_type_id' => $this->string()->notNull(),
             'object_id' => $this->integer()->notNull(),
-            'service_id' => $this->smallInteger()->notNull(),
+            'service_id' => $this->string()->notNull(),
+            'status_id' => $this->smallInteger()->notNull()->defaultValue(10),
             'created_at' => $this->integer()->notNull(),
-            'PRIMARY KEY(object_type_id, object_id, service_id)'
+            'posted_at' => $this->integer(),
+            'message' => $this->text()->notNull()
         ], $this->tableOptions);
 
-        foreach (ContentShare::$objectTypesData as $objectTypeId => $objectTypeData) {
-            /** @var string $tableName */
-            $tableName = $objectTypeData['className']::tableName();
-            foreach (ContentShare::$availableServiceIds as $serviceId) {
-                $sql = "INSERT IGNORE content_share (object_type_id, object_id, service_id, created_at) 
-                    (SELECT :object_type_id, id, :service_id, UNIX_TIMESTAMP() FROM {$tableName} 
-                     WHERE [[{$objectTypeData['objectStatusPropertyName']}]] = :objectStatusPublishedId)";
-
-                $this->execute($sql, [
-                    'object_type_id' => $objectTypeId,
-                    'service_id' => $serviceId,
-                    'objectStatusPublishedId' => $objectTypeData['objectStatusPublishedId']
-                ]);
-            }
-        }
+        $this->createIndex('idx-content_share-object_type_id-object_id-service_id-unique', '{{%content_share}}', ['object_type_id', 'object_id', 'service_id'], true);
     }
 
     public function safeDown()

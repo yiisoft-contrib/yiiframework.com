@@ -2,47 +2,52 @@
 
 namespace app\models;
 
+use app\components\contentShare\EntityInterface;
+use app\components\contentShare\services\BaseService;
+use app\components\contentShare\services\TwitterService;
 use app\jobs\ContentShareJob;
 use Yii;
 use yii\behaviors\TimestampBehavior;
 use yii\db\ActiveRecord;
+use yii\base\Exception;
 
 /**
  * This is the model class for table "{{%content_share}}".
  *
+ * @property integer $id
  * @property integer $object_type_id
  * @property integer $object_id
  * @property integer $service_id
+ * @property integer $status_id
+ * @property string $message
  * @property integer $created_at
+ * @property integer $posted_at
+ *
+ * @property BaseService $service
  */
 class ContentShare extends ActiveRecord
 {
-    const OBJECT_TYPE_NEWS = 1;
-    const OBJECT_TYPE_WIKI = 2;
-    const OBJECT_TYPE_EXTENSION = 3;
+    const STATUS_NEW = 10;
+    const STATUS_PUBLISHED = 20;
+    const STATUS_FAILED = 30;
 
-    const SERVICE_TWITTER = 1;
+    const OBJECT_TYPE_NEWS = 'news';
+    const OBJECT_TYPE_WIKI = 'wiki';
+    const OBJECT_TYPE_EXTENSION = 'extension';
+
+    const SERVICE_TWITTER = 'twitter';
+
+    /**
+     * @var BaseService
+     */
+    private $_service;
+
+    public static $serviceClasses = [
+        ContentShare::SERVICE_TWITTER => TwitterService::class
+    ];
 
     public static $availableObjectTypeIds = [self::OBJECT_TYPE_NEWS, self::OBJECT_TYPE_WIKI, self::OBJECT_TYPE_EXTENSION];
     public static $availableServiceIds = [self::SERVICE_TWITTER];
-
-    public static $objectTypesData = [
-        ContentShare::OBJECT_TYPE_NEWS => [
-            'className' => News::class,
-            'objectStatusPropertyName' => 'status',
-            'objectStatusPublishedId' => News::STATUS_PUBLISHED
-        ],
-        ContentShare::OBJECT_TYPE_WIKI => [
-            'className' => Wiki::class,
-            'objectStatusPropertyName' => 'status',
-            'objectStatusPublishedId' => Wiki::STATUS_PUBLISHED
-        ],
-        ContentShare::OBJECT_TYPE_EXTENSION => [
-            'className' => Extension::class,
-            'objectStatusPropertyName' => 'status',
-            'objectStatusPublishedId' => Extension::STATUS_PUBLISHED
-        ]
-    ];
 
     /**
      * @inheritdoc
@@ -58,25 +63,14 @@ class ContentShare extends ActiveRecord
     public function rules()
     {
         return [
-            [['object_type_id', 'object_id', 'service_id'], 'required'],
-            [['object_type_id', 'object_id', 'service_id'], 'integer'],
+            [['object_type_id', 'object_id', 'service_id', 'status_id', 'message'], 'required'],
+            [['object_id', 'status_id'], 'integer'],
+            [['object_type_id', 'service_id', 'message'], 'string'],
+
             ['object_type_id', 'unique', 'targetAttribute' => ['object_type_id', 'object_id', 'service_id']],
 
             ['object_type_id', 'in', 'range' => static::$availableObjectTypeIds],
             ['service_id', 'in', 'range' => static::$availableServiceIds]
-        ];
-    }
-
-    /**
-     * @inheritdoc
-     */
-    public function attributeLabels()
-    {
-        return [
-            'object_type_id' => Yii::t('app', 'Object type'),
-            'object_id' => Yii::t('app', 'Object ID'),
-            'service_id' => Yii::t('app', 'Service ID'),
-            'created_at' => Yii::t('app', 'Created At'),
         ];
     }
 
@@ -94,62 +88,113 @@ class ContentShare extends ActiveRecord
     }
 
     /**
-     * @param int $objectTypeId
-     * @param int $objectId
-     * @param int $serviceId
+     * @param EntityInterface $entity
      *
-     * @return bool
+     * @param bool $forceReCreate
      */
-    public static function exists($objectTypeId, $objectId, $serviceId)
+    public static function addJobs(EntityInterface $entity, $forceReCreate = false)
     {
-        return static::find()
+        /** @var ContentShare[] $listOfExistingContentShare */
+        $listOfExistingContentShare = static::find()
             ->andWhere([
-                'object_type_id' => $objectTypeId,
-                'object_id' => $objectId,
-                'service_id' => $serviceId
+                'object_type_id' => $entity->getContentShareObjectTypeId(),
+                'object_id' => $entity->getContentShareObjectId(),
+                'service_id' => static::$availableServiceIds
             ])
-            ->exists();
-    }
+            ->indexBy('service_id')
+            ->all();
 
-    /**
-     * @param int $objectTypeId
-     * @param int $objectId
-     * @param int $serviceId
-     *
-     * @return bool
-     */
-    public static function push($objectTypeId, $objectId, $serviceId)
-    {
-        $contentShare = new static();
-        $contentShare->loadDefaultValues();
+        $newListContentShare = [];
+        foreach (array_diff(static::$availableServiceIds, array_keys($listOfExistingContentShare)) as $serviceId) {
+            $contentShare = new static();
+            $contentShare->loadDefaultValues();
 
-        $contentShare->object_type_id = $objectTypeId;
-        $contentShare->object_id = $objectId;
-        $contentShare->service_id = $serviceId;
+            $contentShare->object_type_id = $entity->getContentShareObjectTypeId();
+            $contentShare->object_id = $entity->getContentShareObjectId();
+            $contentShare->service_id = $serviceId;
 
-        return $contentShare->save();
-    }
+            $message = $contentShare->service->getMessage($entity);
+            if ($message === false) {
+                continue;
+            }
+            $contentShare->message = $message;
 
-    /**
-     * @param int $objectTypeId
-     * @param int $objectId
-     */
-    public static function addJobs($objectTypeId, $objectId)
-    {
-        $existingServiceIds = static::find()
-            ->select('service_id')
-            ->andWhere([
-                'object_type_id' => $objectTypeId,
-                'object_id' => $objectId
-            ])
-            ->column();
-
-        foreach (array_diff(static::$availableServiceIds, $existingServiceIds) as $serviceId) {
-            Yii::$app->queue->push(new ContentShareJob([
-                'objectTypeId' => $objectTypeId,
-                'objectId' => $objectId,
-                'serviceId' => $serviceId,
-            ]));
+            if ($contentShare->save()) {
+                $newListContentShare[$serviceId] = $contentShare;
+            } else {
+                Yii::error('Failed creating contentShare to add to the queue: ' . json_encode($contentShare->getErrors()));
+            }
         }
+
+        $listContentShare = $forceReCreate === true ? array_merge($listOfExistingContentShare, $newListContentShare) : $newListContentShare;
+        foreach ($listContentShare as $contentShare) {
+            Yii::$app->queue->push(new ContentShareJob(['contentShareId' => $contentShare->id]));
+        }
+    }
+
+    /**
+     * @inheritdoc
+     */
+    public function beforeSave($insert)
+    {
+        if (parent::beforeSave($insert)) {
+            if ($insert && $this->status_id === null) {
+                $this->status_id = self::STATUS_NEW;
+            }
+
+            return true;
+        }
+
+        return false;
+    }
+
+    /**
+     * @inheritdoc
+     *
+     * @return ContentShareQuery the active query used by this AR class.
+     */
+    public static function find()
+    {
+        return new ContentShareQuery(get_called_class());
+    }
+
+    /**
+     * @return BaseService|object
+     * @throws Exception
+     */
+    public function getService()
+    {
+        if ($this->_service === null) {
+            if (!array_key_exists($this->service_id, static::$serviceClasses)) {
+                throw new Exception("Service {$this->service_id} not exists.");
+            }
+
+            $this->_service = Yii::createObject(static::$serviceClasses[$this->service_id], [$this]);
+        }
+
+        return $this->_service;
+    }
+
+    /**
+     * @return bool
+     */
+    public function publish()
+    {
+        if ($this->service->publish()) {
+            $this->status_id = self::STATUS_PUBLISHED;
+            $this->posted_at = time();
+        } else {
+            $this->status_id = self::STATUS_FAILED;
+        }
+
+        if (!$this->save()) {
+            Yii::error("Failed saving contentShare id = {$this->id} after publishing.");
+        }
+
+        if ((int) $this->status_id === self::STATUS_PUBLISHED) {
+            return true;
+        }
+
+        return false;
     }
 }

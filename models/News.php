@@ -2,10 +2,13 @@
 
 namespace app\models;
 
+use app\components\contentShare\EntityInterface;
 use dosamigos\taggable\Taggable;
 use yii\apidoc\helpers\ApiMarkdown;
 use yii\behaviors\BlameableBehavior;
 use app\components\SluggableBehavior;
+use yii\helpers\StringHelper;
+use yii\helpers\Url;
 
 /**
  * This is the model class for table "news".
@@ -26,7 +29,7 @@ use app\components\SluggableBehavior;
  * @property News[] $relatedNews
  * @property User $creator
  */
-class News extends ActiveRecord implements Linkable
+class News extends ActiveRecord implements Linkable, EntityInterface
 {
     const STATUS_DRAFT = 1;
     const STATUS_PUBLISHED = 2;
@@ -222,10 +225,39 @@ class News extends ActiveRecord implements Linkable
      */
     public function afterSave($insert, $changedAttributes)
     {
-        if (array_key_exists('status', $changedAttributes) && $changedAttributes['status'] != $this->status && $this->status == self::STATUS_PUBLISHED) {
-            ContentShare::addJobs(ContentShare::OBJECT_TYPE_NEWS, $this->id);
+        if (array_key_exists('status', $changedAttributes) && $changedAttributes['status'] != $this->status && (int) $this->status === self::STATUS_PUBLISHED) {
+            ContentShare::addJobs($this);
         }
 
         parent::afterSave($insert, $changedAttributes);
+    }
+
+    /**
+     * @inheritdoc
+     */
+    public function getContentShareObjectId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * @inheritdoc
+     */
+    public function getContentShareObjectTypeId()
+    {
+        return ContentShare::OBJECT_TYPE_NEWS;
+    }
+
+    /**
+     * @inheritdoc
+     */
+    public function getContentShareTwitterMessage()
+    {
+        $url = Url::to($this->getUrl(), true);
+        $text = '[news] ' . $this->getLinkTitle();
+
+        $message = StringHelper::truncate($text, 108) . " {$url} #yii";
+
+        return $message;
     }
 }
