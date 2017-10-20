@@ -8,6 +8,7 @@ use app\components\packagist\PackagistApi;
 use app\components\UserPermissions;
 use Composer\Spdx\SpdxLicenses;
 use dosamigos\taggable\Taggable;
+use Imagine\Image\Profile;
 use Yii;
 use yii\base\Exception;
 use yii\behaviors\BlameableBehavior;
@@ -48,7 +49,7 @@ use yii\web\HttpException;
  * @property User $owner
  * @property ExtensionCategory $category
  */
-class Extension extends ActiveRecord implements Linkable
+class Extension extends ActiveRecord implements Linkable, Tweetable
 {
     const STATUS_DRAFT = 1;
     const STATUS_PENDING_APPROVAL = 2;
@@ -542,4 +543,30 @@ MARKDOWN;
             self::YII_VERSION_20 => '2.0',
         ];
     }
+
+    public function getTweetedObjectID()
+    {
+        return $this->id;
+    }
+
+    public function getTweetedObjectType()
+    {
+        return 'extension';
+    }
+
+    public function getTweetedText()
+    {
+        return '[extension] ' . $this->name . ': ' . $this->tagline . ' ' . $this->getUrl();
+    }
+
+    public function afterSave($insert, $changedAttributes)
+    {
+        if ((int)$this->status === self::STATUS_PUBLISHED) {
+            Tweet::fromTweetable($this)->enqueue();
+        }
+
+        parent::afterSave($insert, $changedAttributes);
+    }
+
+
 }
