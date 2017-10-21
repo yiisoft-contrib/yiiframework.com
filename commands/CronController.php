@@ -11,12 +11,9 @@ namespace app\commands;
 
 use app\components\packagist\PackagistApi;
 use app\jobs\ExtensionImportJob;
-use app\models\ContentShare;
 use app\models\Extension;
 use Yii;
 use yii\console\Controller;
-use yii\db\Expression;
-use yii\db\Query;
 use yii\helpers\Console;
 use yii\queue\Queue;
 
@@ -83,37 +80,4 @@ class CronController extends Controller
 
     }
 
-    /**
-     * Adds jobs for automatically publication contents (news, wiki, extension) to social networks.
-     *
-     * NOTE: For new content jobs are created automatically.
-     */
-    public function actionAddContentShareJobs()
-    {
-        foreach (ContentShare::$objectTypesData as $objectTypeId => $objectTypeData) {
-            $queryIds = (new Query())
-                ->from(['o' => $objectTypeData['className']::tableName()])
-                ->select('o.id')
-                ->andWhere([$objectTypeData['objectStatusPropertyName'] => $objectTypeData['objectStatusPublishedId']])
-                ->andWhere([
-                    'NOT EXISTS',
-                    ContentShare::find()
-                        ->alias('cs')
-                        ->select(new Expression('1'))
-                        ->andWhere(['object_type_id' => $objectTypeId])
-                        ->andWhere('cs.object_id = o.id')
-                        ->limit(1)
-                ]);
-
-            $this->stdout("Start objectTypeId = {$objectTypeId}:\n");
-            $current = 0;
-            foreach ($queryIds->each(1000) as $arId) {
-                $current++;
-
-                $this->stdout("[{$current}] id = {$arId['id']}\n");
-                ContentShare::addJobs($objectTypeId, $arId['id']);
-            }
-            $this->stdout("end;\n\n");
-        }
-    }
 }
