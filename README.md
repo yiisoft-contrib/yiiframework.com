@@ -70,7 +70,19 @@ Configure database connection in `config/params-local.php`. You may copy-paste a
         'scope' => 'user:email',
     ],
 ],
-'siteAbsoluteUrl' => 'http://yiiframework.local'
+'siteAbsoluteUrl' => 'http://yiiframework.local',
+
+/**
+ * @see https://apps.twitter.com/app/new
+ *
+ * After creating an app you need to fill accessToken and accessTokenSecret:
+ *
+ * Open App -> Keys and Access Tokens -> You Access Token -> Create my access token
+ */
+'twitter.consumerKey' => '',
+'twitter.consumerSecret' => '',
+'twitter.accessToken' => '',
+'twitter.accessTokenSecret' => ''
 ```
 
 Continure with the following commands:

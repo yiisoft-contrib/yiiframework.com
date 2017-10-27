@@ -2,6 +2,7 @@
 
 namespace app\models;
 
+use app\components\contentShare\EntityInterface;
 use app\components\DiffBehavior;
 use app\components\packagist\Package;
 use app\components\packagist\PackagistApi;
@@ -14,6 +15,7 @@ use yii\behaviors\BlameableBehavior;
 use yii\db\Expression;
 use yii\helpers\ArrayHelper;
 use yii\helpers\Html;
+use yii\helpers\StringHelper;
 use yii\helpers\Url;
 use yii\web\HttpException;
 
@@ -48,7 +50,7 @@ use yii\web\HttpException;
  * @property User $owner
  * @property ExtensionCategory $category
  */
-class Extension extends ActiveRecord implements Linkable
+class Extension extends ActiveRecord implements Linkable, EntityInterface
 {
     const STATUS_DRAFT = 1;
     const STATUS_PENDING_APPROVAL = 2;
@@ -541,5 +543,46 @@ MARKDOWN;
             self::YII_VERSION_11 => '1.1',
             self::YII_VERSION_20 => '2.0',
         ];
+    }
+
+    /**
+     * @inheritdoc
+     */
+    public function afterSave($insert, $changedAttributes)
+    {
+        if (array_key_exists('status', $changedAttributes) && $changedAttributes['status'] != $this->status && (int) $this->status === self::STATUS_PUBLISHED) {
+            ContentShare::addJobs($this);
+        }
+
+        parent::afterSave($insert, $changedAttributes);
+    }
+
+    /**
+     * @inheritdoc
+     */
+    public function getContentShareObjectId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * @inheritdoc
+     */
+    public function getContentShareObjectTypeId()
+    {
+        return ContentShare::OBJECT_TYPE_EXTENSION;
+    }
+
+    /**
+     * @inheritdoc
+     */
+    public function getContentShareTwitterMessage()
+    {
+        $url = Url::to($this->getUrl(), true);
+        $text = '[extension] ' . $this->name . ': ' . $this->tagline;
+
+        $message = StringHelper::truncate($text, 108) . " {$url} #yii";
+
+        return $message;
     }
 }

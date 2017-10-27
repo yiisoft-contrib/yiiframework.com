@@ -2,6 +2,7 @@
 
 namespace app\models;
 
+use app\components\contentShare\EntityInterface;
 use app\components\SluggableBehavior;
 use dosamigos\taggable\Taggable;
 use Yii;
@@ -14,6 +15,7 @@ use yii\helpers\ArrayHelper;
 use yii\helpers\HtmlPurifier;
 use yii\helpers\Markdown;
 use yii\helpers\StringHelper;
+use yii\helpers\Url;
 
 /**
  * This is the model class for table "wiki".
@@ -44,7 +46,7 @@ use yii\helpers\StringHelper;
  * @property WikiRevision[] $latestRevisions
  *
  */
-class Wiki extends ActiveRecord implements Linkable
+class Wiki extends ActiveRecord implements Linkable, EntityInterface
 {
     const STATUS_DRAFT = 1;
     const STATUS_PENDING_APPROVAL = 2;
@@ -133,6 +135,7 @@ class Wiki extends ActiveRecord implements Linkable
             [['tagNames'], 'safe'],
 
             ['memo', 'required', 'on' => 'update'],
+            ['status', 'integer']
         ];
     }
 
@@ -157,6 +160,10 @@ class Wiki extends ActiveRecord implements Linkable
         $revision->updater_id = $insert ? $this->creator_id : $this->updater_id;
         $revision->save(false);
         $this->savedRevision = $revision;
+
+        if (array_key_exists('status', $changedAttributes) && $changedAttributes['status'] != $this->status && (int) $this->status === self::STATUS_PUBLISHED) {
+            ContentShare::addJobs($this);
+        }
 
         return parent::afterSave($insert, $changedAttributes);
     }
@@ -355,5 +362,34 @@ class Wiki extends ActiveRecord implements Linkable
             self::YII_VERSION_11 => 'Version 1.1',
             self::YII_VERSION_ALL => 'All Versions',
         ];
+    }
+
+    /**
+     * @inheritdoc
+     */
+    public function getContentShareObjectId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * @inheritdoc
+     */
+    public function getContentShareObjectTypeId()
+    {
+        return ContentShare::OBJECT_TYPE_WIKI;
+    }
+
+    /**
+     * @inheritdoc
+     */
+    public function getContentShareTwitterMessage()
+    {
+        $url = Url::to($this->getUrl(), true);
+        $text = '[wiki] ' . $this->getLinkTitle();
+
+        $message = StringHelper::truncate($text, 108) . " {$url} #yii";
+
+        return $message;
     }
 }
