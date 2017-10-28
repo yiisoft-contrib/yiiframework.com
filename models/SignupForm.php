@@ -2,7 +2,7 @@
 
 namespace app\models;
 
-use app\components\EmailVerificationMailer;
+use app\components\mailers\EmailVerificationMailer;
 use yii\base\Model;
 use Yii;
 
