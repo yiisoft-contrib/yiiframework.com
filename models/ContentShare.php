@@ -6,6 +6,7 @@ use app\components\contentShare\EntityInterface;
 use app\components\contentShare\services\BaseService;
 use app\components\contentShare\services\TwitterService;
 use app\components\objectKey\ObjectKeyHelper;
+use app\components\objectKey\ObjectKeyInterface;
 use app\jobs\ContentShareJob;
 use Yii;
 use yii\behaviors\TimestampBehavior;
@@ -26,7 +27,7 @@ use yii\base\Exception;
  *
  * @property BaseService $service
  */
-class ContentShare extends ActiveRecord
+class ContentShare extends ActiveRecord implements ObjectKeyInterface
 {
     const STATUS_NEW = 10;
     const STATUS_PUBLISHED = 20;
@@ -193,5 +194,21 @@ class ContentShare extends ActiveRecord
         }
 
         return false;
+    }
+
+    /**
+     * @return string
+     */
+    public function getObjectType()
+    {
+        return $this->object_type_id;
+    }
+
+    /**
+     * @return int
+     */
+    public function getObjectId()
+    {
+        return $this->object_id;
     }
 }

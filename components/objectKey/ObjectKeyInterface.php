@@ -1,6 +1,6 @@
 <?php
 
-namespace app\components;
+namespace app\components\objectKey;
 
 interface ObjectKeyInterface
 {
@@ -10,7 +10,7 @@ interface ObjectKeyInterface
     public function getObjectType();
 
     /**
-     * @return int
+     * @return int|string
      */
     public function getObjectId();
 }

@@ -1,10 +1,11 @@
 <?php
+/**
+ * @var Extension $model
+ * @var int $revision
+ */
 
+use app\models\Extension;
 use yii\helpers\Html;
-
-/** @var $model \app\models\Extension */
-/** @var $revision int */
-
 
 $this->title = $model->name;
 
@@ -65,7 +66,7 @@ $this->title = $model->name;
                             }*/ ?>
 
                             <?php $html = $model->contentHtml;
-                            if ($model->from_packagist && $model->update_status == \app\models\Extension::UPDATE_STATUS_NEW) {
+                            if ($model->from_packagist && $model->update_status == Extension::UPDATE_STATUS_NEW) {
                                 $this->registerJs(<<<JS
                                     setTimeout(function () {
                                         location.reload();
@@ -93,8 +94,8 @@ JS
 <div class="comments-wrapper">
     <div class="container comments">
         <?= \app\widgets\Comments::widget([
-            'objectType' => \app\models\Extension::COMMENT_TYPE,
-            'objectId' => "$model->id",
+            'objectType' => $model->getObjectId(),
+            'objectId' => $model->getObjectId(),
             'prompt' => 'Please only use comments to help explain the above extension.<br/>If you have any questions, please ask in '.Html::a('the forum', Yii::$app->request->baseUrl . '/forum').' instead.',
         ]) ?>
     </div>

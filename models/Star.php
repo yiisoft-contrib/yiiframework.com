@@ -2,6 +2,8 @@
 
 namespace app\models;
 
+use app\components\objectKey\ObjectKeyHelper;
+use app\components\objectKey\ObjectKeyInterface;
 use yii\db\ActiveQuery;
 use yii\helpers\ArrayHelper;
 
@@ -14,12 +16,12 @@ use yii\helpers\ArrayHelper;
  * @property integer $star
  * @property string $created_at
  */
-class Star extends ActiveRecord
+class Star extends ActiveRecord implements ObjectKeyInterface
 {
     /**
-     * @var array Allow class for star
+     * @var string[] Available object types for stars.
      */
-    public static $modelClasses = ['Wiki', 'Extension'];
+    public static $availableObjectTypes = [ObjectKeyHelper::TYPE_WIKI, ObjectKeyHelper::TYPE_EXTENSION];
 
     /**
      * @inheritdoc
@@ -68,19 +70,20 @@ class Star extends ActiveRecord
 
     /**
      * Returns the total stars for the specified model (how many users stared the object).
-     * @param ActiveRecord $model the specified model
+     * @param ObjectKeyInterface|ActiveRecord $model the specified model
+     *
      * @return int the star counts
      */
-    public static function getStarCount($model)
+    public static function getStarCount(ObjectKeyInterface $model)
     {
         return static::find()
-            ->where(['object_type' => $model->formName(), 'object_id' => (int)$model->primaryKey])
+            ->where(['object_type' => $model->getObjectType(), 'object_id' => $model->getObjectId()])
             ->sum('star');
     }
 
     /**
      * Casts a star to the specified content object.
-     * @param ActiveRecord $model the type of the content object
+     * @param ActiveRecord|ObjectKeyInterface $model the type of the content object
      * @param integer $userID the user ID
      * @param integer $starValue the star value (1 means star, 0 means unstar, -1 means toggle)
      * @return int the updated star information of the content object. False if the content object is invalid.
@@ -89,15 +92,15 @@ class Star extends ActiveRecord
     {
         /** @var $star Star */
         $star = static::findOne([
-            'object_type' => $model->formName(),
-            'object_id' => (int)$model->primaryKey,
+            'object_type' => $model->getObjectType(),
+            'object_id' => $model->getObjectId(),
             'user_id' => $userID,
         ]);
 
         if ($star === null) {
             $star = new static;
-            $star->object_type = $model->formName();
-            $star->object_id = (int)$model->primaryKey;
+            $star->object_type = $model->getObjectType();
+            $star->object_id = $model->getObjectId();
             $star->user_id = $userID;
             $star->star = 1;
             $star->save(false);
@@ -127,13 +130,13 @@ class Star extends ActiveRecord
     public static function getTargets($userID)
     {
         $models = [];
-        foreach (self::$modelClasses as $class) {
-            /** @var $modelClass ActiveRecord */
-            $modelClass = "app\\models\\$class";
+        foreach (static::$availableObjectTypes as $objectType) {
+            /** @var ActiveRecord $modelClass */
+            $modelClass = ObjectKeyHelper::getClass($objectType);
 
             $ids = static::find()
                 ->select('object_id')
-                ->where(['user_id' => $userID, 'object_type' => $class, 'star' => 1])
+                ->where(['user_id' => $userID, 'object_type' => $objectType, 'star' => 1])
                 ->column();
 
             $models = array_merge(
@@ -146,23 +149,22 @@ class Star extends ActiveRecord
     }
 
     /**
-     * @param ActiveRecord $model
+     * @param ObjectKeyInterface $model
      * @return ActiveQuery
      */
     public static function getFollowers($model)
     {
-        $class = $model->formName();
         return User::find()->active()->andWhere([
             'id' => Star::find()
                 ->select('user_id')
-                ->where(['star' => 1, 'object_type' => $class, 'object_id' => (int)$model->primaryKey])
+                ->where(['star' => 1, 'object_type' => $model->getObjectType(), 'object_id' => $model->getObjectId()])
         ]);
     }
 
     /**
      * Return current follower count
      *
-     * @param ActiveRecord $model
+     * @param ObjectKeyInterface $model
      *
      * @return int
      */
@@ -174,7 +176,7 @@ class Star extends ActiveRecord
     /**
      * Return current star value
      *
-     * @param ActiveRecord $model
+     * @param ObjectKeyInterface $model
      * @param $userID
      *
      * @return int
@@ -183,11 +185,27 @@ class Star extends ActiveRecord
     {
         /** @var $star Star */
         $star = static::findOne([
-            'object_type' => $model->formName(),
-            'object_id' => (int)$model->primaryKey,
+            'object_type' => $model->getObjectType(),
+            'object_id' => $model->getObjectId(),
             'user_id' => $userID,
         ]);
 
         return $star === null ? 0 : $star->star;
+    }
+
+    /**
+     * @return string
+     */
+    public function getObjectType()
+    {
+        return $this->object_type;
+    }
+
+    /**
+     * @return int
+     */
+    public function getObjectId()
+    {
+        return $this->object_id;
     }
 }

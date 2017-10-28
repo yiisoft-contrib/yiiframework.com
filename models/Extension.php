@@ -5,6 +5,7 @@ namespace app\models;
 use app\components\contentShare\EntityInterface;
 use app\components\DiffBehavior;
 use app\components\objectKey\ObjectKeyHelper;
+use app\components\objectKey\ObjectKeyInterface;
 use app\components\packagist\Package;
 use app\components\packagist\PackagistApi;
 use app\components\UserPermissions;
@@ -51,7 +52,7 @@ use yii\web\HttpException;
  * @property User $owner
  * @property ExtensionCategory $category
  */
-class Extension extends ActiveRecord implements Linkable, EntityInterface
+class Extension extends ActiveRecord implements Linkable, ObjectKeyInterface, EntityInterface
 {
     const STATUS_DRAFT = 1;
     const STATUS_PENDING_APPROVAL = 2;
@@ -77,10 +78,6 @@ class Extension extends ActiveRecord implements Linkable, EntityInterface
 
     const NAME_PATTERN = '[a-z][a-z0-9\-]*';
 
-    /**
-     * object type used for comments
-     */
-    const COMMENT_TYPE = 'Extension';
     /**
      * object type used for file uploads
      */
@@ -525,14 +522,6 @@ MARKDOWN;
     public function getLinkTitle()
     {
         return $this->name;
-    }
-
-    /**
-     * @return string the type of this object, e.g. News, Extension, Wiki
-     */
-    public function getItemType()
-    {
-        return static::COMMENT_TYPE;
     }
 
     /**

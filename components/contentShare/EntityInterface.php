@@ -2,7 +2,7 @@
 
 namespace app\components\contentShare;
 
-use app\components\ObjectKeyInterface;
+use app\components\objectKey\ObjectKeyInterface;
 
 interface EntityInterface extends ObjectKeyInterface
 {

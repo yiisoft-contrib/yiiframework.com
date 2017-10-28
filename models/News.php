@@ -4,6 +4,7 @@ namespace app\models;
 
 use app\components\contentShare\EntityInterface;
 use app\components\objectKey\ObjectKeyHelper;
+use app\components\objectKey\ObjectKeyInterface;
 use dosamigos\taggable\Taggable;
 use yii\apidoc\helpers\ApiMarkdown;
 use yii\behaviors\BlameableBehavior;
@@ -30,7 +31,7 @@ use yii\helpers\Url;
  * @property News[] $relatedNews
  * @property User $creator
  */
-class News extends ActiveRecord implements Linkable, EntityInterface
+class News extends ActiveRecord implements Linkable, ObjectKeyInterface, EntityInterface
 {
     const STATUS_DRAFT = 1;
     const STATUS_PUBLISHED = 2;
@@ -211,14 +212,6 @@ class News extends ActiveRecord implements Linkable, EntityInterface
     public function getLinkTitle()
     {
         return $this->title;
-    }
-
-    /**
-     * @return string the type of this object, e.g. News, Extension, Wiki
-     */
-    public function getItemType()
-    {
-        return 'News';
     }
 
     /**

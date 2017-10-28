@@ -7,6 +7,7 @@
  * @var $content string the API page content
  */
 
+use app\components\objectKey\ObjectKeyHelper;
 use yii\helpers\Html;
 use yii\helpers\Url;
 
@@ -50,7 +51,7 @@ $this->endBlock();
 <div class="comments-wrapper">
     <div class="container comments">
         <?= \app\widgets\Comments::widget([
-            'objectType' => 'api',
+            'objectType' => ObjectKeyHelper::TYPE_API,
             'objectId' => $version . '/' . $section,
         ]) ?>
     </div>

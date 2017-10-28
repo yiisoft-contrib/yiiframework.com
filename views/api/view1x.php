@@ -8,6 +8,7 @@
  * @var $packages array the API page menu structure
  */
 
+use app\components\objectKey\ObjectKeyHelper;
 use app\widgets\SideNav;
 use yii\apidoc\templates\bootstrap\SideNavWidget;
 use yii\helpers\Html;
@@ -88,7 +89,7 @@ $this->endBlock();
 <div class="comments-wrapper">
     <div class="container comments">
         <?= \app\widgets\Comments::widget([
-            'objectType' => 'api',
+            'objectType' => ObjectKeyHelper::TYPE_API,
             'objectId' => $version . '/' . $section,
         ]) ?>
     </div>

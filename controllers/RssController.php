@@ -67,7 +67,7 @@ class RssController extends BaseController
         $entry = $feed->createEntry();
 
         // Set the entry title:
-        $entry->setTitle('[' . $news->getItemType() . '] ' . $news->getLinkTitle());
+        $entry->setTitle('[' . $news->getObjectType() . '] ' . $news->getLinkTitle());
 
         // Set the link to the entry:
         $entry->setLink(Url::to($news->getUrl(), true));
@@ -106,7 +106,7 @@ class RssController extends BaseController
         $entry = $feed->createEntry();
 
         // Set the entry title:
-        $entry->setTitle('[' . $extension->getItemType() . '] ' . $extension->getLinkTitle());
+        $entry->setTitle('[' . $extension->getObjectType() . '] ' . $extension->getLinkTitle());
 
         // Set the link to the entry:
         $entry->setLink(Url::to($extension->getUrl(), true));
@@ -144,7 +144,7 @@ class RssController extends BaseController
         $entry = $feed->createEntry();
 
         // Set the entry title:
-        $entry->setTitle('[' . $wikiPage->getItemType() . '] ' . $wikiPage->getLinkTitle());
+        $entry->setTitle('[' . $wikiPage->getObjectType() . '] ' . $wikiPage->getLinkTitle());
 
         // Set the link to the entry:
         $entry->setLink(Url::to($wikiPage->getUrl(), true));

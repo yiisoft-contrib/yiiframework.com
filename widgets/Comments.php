@@ -25,7 +25,13 @@ use yii\base\Widget;
  */
 class Comments extends Widget
 {
+    /**
+     * @var string
+     */
     public $objectType;
+    /**
+     * @var string
+     */
     public $objectId;
 
     public $prompt;

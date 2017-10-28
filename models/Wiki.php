@@ -4,6 +4,7 @@ namespace app\models;
 
 use app\components\contentShare\EntityInterface;
 use app\components\objectKey\ObjectKeyHelper;
+use app\components\objectKey\ObjectKeyInterface;
 use app\components\SluggableBehavior;
 use dosamigos\taggable\Taggable;
 use Yii;
@@ -47,7 +48,7 @@ use yii\helpers\Url;
  * @property WikiRevision[] $latestRevisions
  *
  */
-class Wiki extends ActiveRecord implements Linkable, EntityInterface
+class Wiki extends ActiveRecord implements Linkable, ObjectKeyInterface, EntityInterface
 {
     const STATUS_DRAFT = 1;
     const STATUS_PENDING_APPROVAL = 2;
@@ -62,12 +63,6 @@ class Wiki extends ActiveRecord implements Linkable, EntityInterface
     const SCENARIO_CREATE = 'create';
     const SCENARIO_UPDATE = 'update';
     const SCENARIO_LOAD = 'load';
-
-
-    /**
-     * object type used for wiki comments
-     */
-    const COMMENT_TYPE = 'Wiki';
 
     /**
      * @var string editor note on upate
@@ -323,9 +318,9 @@ class Wiki extends ActiveRecord implements Linkable, EntityInterface
     {
         /** @var $comment Comment */
         $comment = $event->sender;
-        if ($comment->object_type === Wiki::COMMENT_TYPE) {
-            $count = Comment::find()->forObject(Wiki::COMMENT_TYPE, $comment->object_id)->active()->count();
-            static::updateAll(['comment_count' => $count], ['id' => $comment->object_id]);
+        if ($comment->getObjectType() === ObjectKeyHelper::TYPE_WIKI) {
+            $count = Comment::find()->forObject($comment->getObjectType(), $comment->getObjectId())->active()->count();
+            static::updateAll(['comment_count' => $count], ['id' => $comment->getObjectId()]);
         }
     }
 
@@ -343,14 +338,6 @@ class Wiki extends ActiveRecord implements Linkable, EntityInterface
     public function getLinkTitle()
     {
         return $this->title;
-    }
-
-    /**
-     * @return string the type of this object, e.g. News, Extension, Wiki
-     */
-    public function getItemType()
-    {
-        return static::COMMENT_TYPE;
     }
 
     /**

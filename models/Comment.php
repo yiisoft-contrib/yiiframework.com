@@ -2,6 +2,8 @@
 
 namespace app\models;
 
+use app\components\objectKey\ObjectKeyHelper;
+use app\components\objectKey\ObjectKeyInterface;
 use Yii;
 use yii\behaviors\BlameableBehavior;
 
@@ -22,15 +24,15 @@ use yii\behaviors\BlameableBehavior;
  *
  * @property User $user
  */
-class Comment extends ActiveRecord
+class Comment extends ActiveRecord implements ObjectKeyInterface
 {
     const STATUS_DELETED = 0;
     const STATUS_ACTIVE = 10;
 
     /**
-     * @var array Allow class for star
+     * @var string[] Available object types for comments.
      */
-    public static $modelClasses = ['Wiki', 'Extension'];
+    public static $availableObjectTypes = [ObjectKeyHelper::TYPE_WIKI, ObjectKeyHelper::TYPE_EXTENSION];
 
     /**
      * @inheritdoc
@@ -97,13 +99,33 @@ class Comment extends ActiveRecord
         return $this->hasOne(User::className(), ['id' => 'user_id']);
     }
 
+    /**
+     * @return ActiveRecord
+     */
     public function getModel()
     {
-        if (!in_array($this->object_type, static::$modelClasses, true)) {
+        if (!in_array($this->getObjectType(), static::$availableObjectTypes, true)) {
             return null;
         }
-        /** @var $modelClass ActiveRecord */
-        $modelClass = "app\\models\\{$this->object_type}";
-        return $modelClass::findOne($this->object_id);
+
+        /** @var ActiveRecord $modelClass */
+        $modelClass = ObjectKeyHelper::getClassByObject($this);
+        return $modelClass::findOne($this->getObjectId());
+    }
+
+    /**
+     * @return string
+     */
+    public function getObjectType()
+    {
+        return $this->object_type;
+    }
+
+    /**
+     * @return string
+     */
+    public function getObjectId()
+    {
+        return $this->object_id;
     }
 }
