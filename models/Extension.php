@@ -4,6 +4,7 @@ namespace app\models;
 
 use app\components\contentShare\EntityInterface;
 use app\components\DiffBehavior;
+use app\components\objectKey\ObjectKeyHelper;
 use app\components\packagist\Package;
 use app\components\packagist\PackagistApi;
 use app\components\UserPermissions;
@@ -560,7 +561,7 @@ MARKDOWN;
     /**
      * @inheritdoc
      */
-    public function getContentShareObjectId()
+    public function getObjectId()
     {
         return $this->id;
     }
@@ -568,9 +569,9 @@ MARKDOWN;
     /**
      * @inheritdoc
      */
-    public function getContentShareObjectTypeId()
+    public function getObjectType()
     {
-        return ContentShare::OBJECT_TYPE_EXTENSION;
+        return ObjectKeyHelper::TYPE_EXTENSION;
     }
 
     /**

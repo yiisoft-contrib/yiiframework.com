@@ -3,6 +3,7 @@
 namespace app\models;
 
 use app\components\contentShare\EntityInterface;
+use app\components\objectKey\ObjectKeyHelper;
 use app\components\SluggableBehavior;
 use dosamigos\taggable\Taggable;
 use Yii;
@@ -367,7 +368,7 @@ class Wiki extends ActiveRecord implements Linkable, EntityInterface
     /**
      * @inheritdoc
      */
-    public function getContentShareObjectId()
+    public function getObjectId()
     {
         return $this->id;
     }
@@ -375,9 +376,9 @@ class Wiki extends ActiveRecord implements Linkable, EntityInterface
     /**
      * @inheritdoc
      */
-    public function getContentShareObjectTypeId()
+    public function getObjectType()
     {
-        return ContentShare::OBJECT_TYPE_WIKI;
+        return ObjectKeyHelper::TYPE_WIKI;
     }
 
     /**

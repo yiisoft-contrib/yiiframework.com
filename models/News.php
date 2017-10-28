@@ -3,6 +3,7 @@
 namespace app\models;
 
 use app\components\contentShare\EntityInterface;
+use app\components\objectKey\ObjectKeyHelper;
 use dosamigos\taggable\Taggable;
 use yii\apidoc\helpers\ApiMarkdown;
 use yii\behaviors\BlameableBehavior;
@@ -235,7 +236,7 @@ class News extends ActiveRecord implements Linkable, EntityInterface
     /**
      * @inheritdoc
      */
-    public function getContentShareObjectId()
+    public function getObjectId()
     {
         return $this->id;
     }
@@ -243,9 +244,9 @@ class News extends ActiveRecord implements Linkable, EntityInterface
     /**
      * @inheritdoc
      */
-    public function getContentShareObjectTypeId()
+    public function getObjectType()
     {
-        return ContentShare::OBJECT_TYPE_NEWS;
+        return ObjectKeyHelper::TYPE_NEWS;
     }
 
     /**
