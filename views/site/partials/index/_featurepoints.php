@@ -18,7 +18,7 @@
               </div>
               <div class="media-body">
                 <div class="media-heading secure">Secure</div>
-                    Sane defaults and built in tools helps you write solid and secure code
+                    Sane defaults and built-in tools helps you write solid and secure code
               </div>
             </div>
         </div>

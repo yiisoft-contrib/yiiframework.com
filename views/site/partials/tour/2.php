@@ -13,7 +13,7 @@
                 Welcome Page
             </div>
             <div class="tour-content">
-                <p>You're getting nice template which includes:</p>
+                <p>You get a nice template which includes:</p>
 
                 <ul>
                     <li>MVC</li>
