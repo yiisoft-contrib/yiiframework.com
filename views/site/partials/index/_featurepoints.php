@@ -7,7 +7,7 @@
               </div>
               <div class="media-body">
                 <div class="media-heading fast">Fast</div>
-                Yii gives you maximum performance by minimizing overhead
+                Yii gives you the maximum functionality by adding the least possible overhead
               </div>
             </div>
         </div>
