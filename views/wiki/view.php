@@ -108,7 +108,7 @@ $this->title = $model->title;
     <div class="container comments">
         <?= \app\widgets\Comments::widget([
             'objectType' => $model->getObjectType(),
-            'objectId' => $model->getObjectId(),
+            'objectId' => (string) $model->getObjectId(),
             'prompt' => 'Please only use comments to help explain the above article.<br/>If you have any questions, please ask in '.Html::a('the forum', Yii::$app->request->baseUrl . '/forum').' instead.',
         ]) ?>
     </div>

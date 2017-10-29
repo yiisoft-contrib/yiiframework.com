@@ -17,7 +17,7 @@ class ObjectKeyHelper
     const TYPE_COMMENT = 'comment';
     const TYPE_FILE = 'file';
 
-    const TYPE_GUIDE = 'guid';
+    const TYPE_GUIDE = 'guide';
     const TYPE_API = 'api';
 
     public static $typeClasses = [
@@ -39,16 +39,6 @@ class ObjectKeyHelper
             return static::$typeClasses[$type];
         }
 
-        throw new InvalidValueException("Type '{$type}' not found.");
-    }
-
-    /**
-     * @param ObjectKeyInterface $object
-     *
-     * @return string
-     */
-    public static function getClassByObject(ObjectKeyInterface $object)
-    {
-        return static::getClass($object->getObjectType());
+        throw new InvalidValueException("Type is '{$type}' not found.");
     }
 }

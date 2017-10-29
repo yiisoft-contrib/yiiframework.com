@@ -31,7 +31,7 @@ use yii\web\UploadedFile;
  * @property User $creator
  * @property string $extension
  */
-class File extends ActiveRecord implements ObjectKeyInterface
+class File extends ActiveRecord
 {
     /**
      * @inheritdoc
@@ -159,34 +159,39 @@ class File extends ActiveRecord implements ObjectKeyInterface
     /**
      * Saves a file based on an uploaded file and the content object associated with this file.
      * @param UploadedFile $upload the uploaded file.
-     * @param File the File object associated with the content object. If null, a new File object will be created.
-     * @param ActiveRecord the content object that the file is associated with
-     * @param string the name of the attribute that stores the ID of the related file object.
+     * @param File $file the File object associated with the content object. If null, a new File object will be created.
+     * @param ActiveRecord|ObjectKeyInterface $object the content object that the file is associated with
+     * @param string $attribute the name of the attribute that stores the ID of the related file object.
      * If null, it means no need to store the file ID.
+     *
      * @return boolean whether the saving is successful
      */
-    public function upload($upload,$file,$object,$attribute=null)
+    public function upload($upload, $file, $object, $attribute = null)
     {
-        if(!$upload instanceof UploadedFile || $upload->hasError)
+        if (!$upload instanceof UploadedFile || $upload->hasError) {
             return false;
-
-        if($file===null)
-            $file=new File;
-
-        $file->object_type=get_class($object);
-        $file->object_id=$object->id;
-        $file->file_name=$upload;
-        if(trim($file->summary)==='')
-            $file->summary=$upload->name;
-
-        if(!$file->save())
-            return false;
-
-        if($attribute!==null && $object->$attribute!=$file->id)
-        {
-            $object->$attribute=$file->id;
-            $object->updateByPk($object->primaryKey,array($attribute=>$file->id));
         }
+
+        if ($file === null) {
+            $file = new static();
+        }
+
+        $file->object_type = $object->getObjectType();
+        $file->object_id = $object->getObjectId();
+        $file->file_name = $upload;
+
+        if (trim($file->summary) === '') {
+            $file->summary = $upload->name;
+        }
+
+        if (!$file->save()) {
+            return false;
+        }
+
+        if ($attribute !== null && $object->$attribute != $file->id) {
+            $object->updateAttributes([$attribute => $file->id]);
+        }
+
         return true;
     }
 
@@ -265,21 +270,5 @@ class File extends ActiveRecord implements ObjectKeyInterface
     public function getCreator()
     {
         return $this->hasOne(User::className(), ['id' => 'created_by']);
-    }
-
-    /**
-     * @return string
-     */
-    public function getObjectType()
-    {
-        return $this->object_type;
-    }
-
-    /**
-     * @return int
-     */
-    public function getObjectId()
-    {
-        return $this->object_id;
     }
 }

@@ -18,12 +18,12 @@ use yii\db\Expression;
  *
  * @property User $user
  */
-class Rating extends ActiveRecord implements ObjectKeyInterface
+class Rating extends ActiveRecord
 {
     /**
      * @var string[] Available object types for rating.
      */
-    public static $availableObjectTypes = [ObjectKeyHelper::TYPE_WIKI, ObjectKeyHelper::TYPE_EXTENSION, ObjectKeyHelper::TYPE_EXTENSION];
+    public static $availableObjectTypes = [ObjectKeyHelper::TYPE_WIKI, ObjectKeyHelper::TYPE_EXTENSION, ObjectKeyHelper::TYPE_COMMENT];
 
     /**
      * @inheritdoc
@@ -46,13 +46,13 @@ class Rating extends ActiveRecord implements ObjectKeyInterface
      */
     public function getModel()
     {
-        if (!in_array($this->getObjectType(), static::$availableObjectTypes, true)) {
+        if (!in_array($this->object_type, static::$availableObjectTypes, true)) {
             return null;
         }
 
         /** @var Comment|Wiki|Extension $modelClass */
-        $modelClass = ObjectKeyHelper::getClass($this);
-        return $modelClass::findOne($this->getObjectId());
+        $modelClass = ObjectKeyHelper::getClass($this->object_type);
+        return $modelClass::findOne($this->object_id);
     }
 
     /**
@@ -177,21 +177,5 @@ class Rating extends ActiveRecord implements ObjectKeyInterface
         $z2 = $z * $z;
         $v = ($p + $z2 / (2.0 * $n) - $z * sqrt($p * (1.0 - $p) / $n + $z2 / (4 * $n * $n))) / (1.0 + $z2 / $n);
         return $v < 0 ? 0 : $v;
-    }
-
-    /**
-     * @return string
-     */
-    public function getObjectType()
-    {
-        return $this->object_type;
-    }
-
-    /**
-     * @return int
-     */
-    public function getObjectId()
-    {
-        return $this->object_id;
     }
 }

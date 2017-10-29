@@ -10,7 +10,7 @@ interface ObjectKeyInterface
     public function getObjectType();
 
     /**
-     * @return int|string
+     * @return int
      */
     public function getObjectId();
 }

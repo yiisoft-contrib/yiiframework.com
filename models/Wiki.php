@@ -316,11 +316,11 @@ class Wiki extends ActiveRecord implements Linkable, ObjectKeyInterface, EntityI
      */
     public static function onComment($event)
     {
-        /** @var $comment Comment */
+        /** @var Comment $comment */
         $comment = $event->sender;
-        if ($comment->getObjectType() === ObjectKeyHelper::TYPE_WIKI) {
-            $count = Comment::find()->forObject($comment->getObjectType(), $comment->getObjectId())->active()->count();
-            static::updateAll(['comment_count' => $count], ['id' => $comment->getObjectId()]);
+        if ($comment->object_type === ObjectKeyHelper::TYPE_WIKI) {
+            $count = Comment::find()->forObject(ObjectKeyHelper::TYPE_WIKI, $comment->object_id)->active()->count();
+            static::updateAll(['comment_count' => $count], ['id' => $comment->object_id]);
         }
     }
 

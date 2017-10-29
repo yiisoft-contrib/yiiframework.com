@@ -94,8 +94,8 @@ JS
 <div class="comments-wrapper">
     <div class="container comments">
         <?= \app\widgets\Comments::widget([
-            'objectType' => $model->getObjectId(),
-            'objectId' => $model->getObjectId(),
+            'objectType' => $model->getObjectType(),
+            'objectId' => (string) $model->getObjectId(),
             'prompt' => 'Please only use comments to help explain the above extension.<br/>If you have any questions, please ask in '.Html::a('the forum', Yii::$app->request->baseUrl . '/forum').' instead.',
         ]) ?>
     </div>

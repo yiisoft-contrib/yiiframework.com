@@ -16,7 +16,7 @@ use yii\helpers\ArrayHelper;
  * @property integer $star
  * @property string $created_at
  */
-class Star extends ActiveRecord implements ObjectKeyInterface
+class Star extends ActiveRecord
 {
     /**
      * @var string[] Available object types for stars.
@@ -70,11 +70,11 @@ class Star extends ActiveRecord implements ObjectKeyInterface
 
     /**
      * Returns the total stars for the specified model (how many users stared the object).
-     * @param ObjectKeyInterface|ActiveRecord $model the specified model
+     * @param ActiveRecord|ObjectKeyInterface $model the specified model
      *
      * @return int the star counts
      */
-    public static function getStarCount(ObjectKeyInterface $model)
+    public static function getStarCount($model)
     {
         return static::find()
             ->where(['object_type' => $model->getObjectType(), 'object_id' => $model->getObjectId()])
@@ -144,12 +144,14 @@ class Star extends ActiveRecord implements ObjectKeyInterface
                 $models
             );
         }
-        ArrayHelper::multisort($models, ['itemType', 'linkTitle']);
+        ArrayHelper::multisort($models, ['objectType', 'linkTitle']);
+
         return $models;
     }
 
     /**
-     * @param ObjectKeyInterface $model
+     * @param ActiveRecord|ObjectKeyInterface $model
+     *
      * @return ActiveQuery
      */
     public static function getFollowers($model)
@@ -164,7 +166,7 @@ class Star extends ActiveRecord implements ObjectKeyInterface
     /**
      * Return current follower count
      *
-     * @param ObjectKeyInterface $model
+     * @param ActiveRecord|ObjectKeyInterface $model
      *
      * @return int
      */
@@ -176,7 +178,7 @@ class Star extends ActiveRecord implements ObjectKeyInterface
     /**
      * Return current star value
      *
-     * @param ObjectKeyInterface $model
+     * @param ActiveRecord|ObjectKeyInterface $model
      * @param $userID
      *
      * @return int
@@ -191,21 +193,5 @@ class Star extends ActiveRecord implements ObjectKeyInterface
         ]);
 
         return $star === null ? 0 : $star->star;
-    }
-
-    /**
-     * @return string
-     */
-    public function getObjectType()
-    {
-        return $this->object_type;
-    }
-
-    /**
-     * @return int
-     */
-    public function getObjectId()
-    {
-        return $this->object_id;
     }
 }

@@ -7,7 +7,7 @@
 
 namespace app\commands;
 
-
+use app\components\objectKey\ObjectKeyHelper;
 use app\models\Comment;
 use app\models\Extension;
 use app\models\ExtensionCategory;
@@ -33,6 +33,19 @@ use yii\helpers\FileHelper;
  */
 class ImportController extends Controller
 {
+    /**
+     * @var string[]
+     */
+    public static $objectTypesMap = [
+        'News' => ObjectKeyHelper::TYPE_NEWS,
+        'Wiki' => ObjectKeyHelper::TYPE_WIKI,
+        'Extension' => ObjectKeyHelper::TYPE_EXTENSION,
+        'Comment' => ObjectKeyHelper::TYPE_COMMENT,
+        'File' => ObjectKeyHelper::TYPE_FILE,
+        'tutorial' => ObjectKeyHelper::TYPE_GUIDE,
+        'api' => ObjectKeyHelper::TYPE_API,
+    ];
+
 	public $defaultAction = 'import';
 
 	/**
@@ -493,12 +506,16 @@ SQL
 		$i = 0;
 		$err = 0;
 		foreach($fileQuery->each(100, $this->sourceDb) as $file) {
-
 			try {
+                $objectType = $this->convertObjectType($file['object_type']);
+                if ($objectType === false) {
+                    throw new \Exception('Object type is "' . $file['object_type'] . '" not found.');
+                }
+
 				$model = new File([
 					'id' => $file['id'],
 
-					'object_type' => $file['object_type'],
+					'object_type' => $objectType,
 					'object_id' => $file['object_id'],
 
 					'file_name' => $file['file_name'],
@@ -519,7 +536,7 @@ SQL
 				$model->detachBehavior('blameable');
 				$model->save(false);
 
-			}catch (\Exception $e) {
+			} catch (\Exception $e) {
 				$this->stdout($e->getMessage()."\n", Console::FG_RED);
 				$err++;
 			}
@@ -575,12 +592,16 @@ SQL
 		$i = 0;
 		$err = 0;
 		foreach($query->each(100, $this->sourceDb) as $comment) {
-
 			try {
+			    $objectType = $this->convertObjectType($comment['object_type']);
+                if ($objectType === false) {
+                    throw new \Exception('Object type is "' . $comment['object_type'] . '" not found.');
+                }
+
 				\Yii::$app->db->createCommand()->insert('{{%comment}}', [
 					'id' => $comment['id'],
 					'user_id' => $comment['creator_id'],
-					'object_type' => $this->convertCommentType($comment['object_type']),
+					'object_type' => $objectType,
 					'object_id' => $comment['object_id'],
 					'text' => (empty($comment['title']) ? '' : '#### ' . $comment['title'] . "\n\n")
 						. $this->convertMarkdown($comment['content']),
@@ -593,17 +614,27 @@ SQL
 				])->execute();
 			} catch (\Exception $e) {
                 $this->stdout($e->getMessage()."\n", Console::FG_RED);
-                				$err++;
+                $err++;
 			}
+
 			Console::updateProgress(++$i, $count);
 		}
 		Console::endProgress(true);
         $this->printImportSummary($count, $err);
 	}
 
-	private function convertCommentType($type)
+    /**
+     * @param string $type
+     *
+     * @return string
+     */
+	private function convertObjectType($type)
 	{
-		return $type;
+		if (array_key_exists($type, static::$objectTypesMap)) {
+		    return static::$objectTypesMap[$type];
+        }
+
+        return false;
 	}
 
 	private function convertCommentStatus($status)
@@ -680,8 +711,13 @@ SQL
 		$i = 0;
 		$err = 0;
 		foreach($ratingQuery->each(100, $this->sourceDb) as $rating) {
-
 			try {
+                $objectType = $this->convertObjectType($rating['object_type']);
+                if ($objectType === false) {
+                    throw new \Exception('Object type is "' . $rating['object_type'] . '" not found.');
+                }
+                $rating['object_type'] = $objectType;
+
 				$rating['created_at'] = date('Y-m-d H:i:s', $rating['create_time']);
 				unset($rating['create_time']);
 				Rating::getDb()->createCommand()->insert(Rating::tableName(), $rating)->execute();
@@ -742,8 +778,13 @@ SQL
 		$i = 0;
 		$err = 0;
 		foreach($starQuery->each(100, $this->sourceDb) as $star) {
-
 			try {
+                $objectType = $this->convertObjectType($star['object_type']);
+                if ($objectType === false) {
+                    throw new \Exception('Object type is "' . $star['object_type'] . '" not found.');
+                }
+                $star['object_type'] = $objectType;
+
 				$star['created_at'] = date('Y-m-d H:i:s', $star['create_time']);
 				unset($star['create_time']);
 				Star::getDb()->createCommand()->insert(Star::tableName(), $star)->execute();

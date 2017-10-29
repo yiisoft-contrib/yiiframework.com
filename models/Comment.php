@@ -104,28 +104,28 @@ class Comment extends ActiveRecord implements ObjectKeyInterface
      */
     public function getModel()
     {
-        if (!in_array($this->getObjectType(), static::$availableObjectTypes, true)) {
+        if (!in_array($this->object_type, static::$availableObjectTypes, true)) {
             return null;
         }
 
         /** @var ActiveRecord $modelClass */
-        $modelClass = ObjectKeyHelper::getClassByObject($this);
-        return $modelClass::findOne($this->getObjectId());
+        $modelClass = ObjectKeyHelper::getClass($this->object_type);
+        return $modelClass::findOne($this->object_id);
     }
 
     /**
-     * @return string
+     * @inheritdoc
      */
     public function getObjectType()
     {
-        return $this->object_type;
+        return ObjectKeyHelper::TYPE_COMMENT;
     }
 
     /**
-     * @return string
+     * @inheritdoc
      */
     public function getObjectId()
     {
-        return $this->object_id;
+        return $this->id;
     }
 }
