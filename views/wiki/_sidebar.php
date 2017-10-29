@@ -1,6 +1,6 @@
 <?php
 
-use app\components\objectKey\ClassType;
+use app\components\object\ClassType;
 use app\models\WikiCategory;
 use app\models\WikiTag;
 use app\widgets\RecentComments;

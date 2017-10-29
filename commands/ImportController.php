@@ -7,7 +7,7 @@
 
 namespace app\commands;
 
-use app\components\objectKey\ClassType;
+use app\components\object\ClassType;
 use app\models\Comment;
 use app\models\Extension;
 use app\models\ExtensionCategory;

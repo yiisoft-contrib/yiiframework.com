@@ -3,8 +3,8 @@
 namespace app\models;
 
 use app\components\contentShare\EntityInterface;
-use app\components\objectKey\ClassType;
-use app\components\objectKey\ObjectKeyInterface;
+use app\components\object\ClassType;
+use app\components\object\ObjectIdentityInterface;
 use app\components\SluggableBehavior;
 use dosamigos\taggable\Taggable;
 use Yii;
@@ -48,7 +48,7 @@ use yii\helpers\Url;
  * @property WikiRevision[] $latestRevisions
  *
  */
-class Wiki extends ActiveRecord implements Linkable, ObjectKeyInterface, EntityInterface
+class Wiki extends ActiveRecord implements Linkable, ObjectIdentityInterface, EntityInterface
 {
     const STATUS_DRAFT = 1;
     const STATUS_PENDING_APPROVAL = 2;

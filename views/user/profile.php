@@ -1,6 +1,6 @@
 <?php
 
-use app\components\objectKey\ObjectKeyInterface;
+use app\components\object\ObjectIdentityInterface;
 use app\models\Linkable;
 use yii\helpers\Html;
 
@@ -8,7 +8,7 @@ use yii\helpers\Html;
 /* @var $model app\models\User */
 /* @var $extensions \app\models\Extension[] */
 /* @var $wikiPages \app\models\Wiki[] */
-/* @var Linkable[]|ObjectKeyInterface[] $starTargets */
+/* @var Linkable[]|ObjectIdentityInterface[] $starTargets */
 
 $this->title = 'Hi, ' . $model->username . '!';
 

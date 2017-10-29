@@ -5,7 +5,7 @@
  * @var $section app\models\GuideSection
  */
 
-use app\components\objectKey\ClassType;
+use app\components\object\ClassType;
 use app\widgets\SideNav;
 use yii\helpers\Html;
 

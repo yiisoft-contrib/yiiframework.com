@@ -2,8 +2,8 @@
 
 namespace app\models;
 
-use app\components\objectKey\ClassType;
-use app\components\objectKey\ObjectKeyInterface;
+use app\components\object\ClassType;
+use app\components\object\ObjectIdentityInterface;
 use yii\db\ActiveQuery;
 use yii\helpers\ArrayHelper;
 
@@ -70,7 +70,8 @@ class Star extends ActiveRecord
 
     /**
      * Returns the total stars for the specified model (how many users stared the object).
-     * @param ActiveRecord|ObjectKeyInterface $model the specified model
+     *
+     * @param ActiveRecord|ObjectIdentityInterface $model the specified model
      *
      * @return int the star counts
      */
@@ -83,7 +84,7 @@ class Star extends ActiveRecord
 
     /**
      * Casts a star to the specified content object.
-     * @param ActiveRecord|ObjectKeyInterface $model the type of the content object
+     * @param ActiveRecord|ObjectIdentityInterface $model the type of the content object
      * @param integer $userID the user ID
      * @param integer $starValue the star value (1 means star, 0 means unstar, -1 means toggle)
      * @return int the updated star information of the content object. False if the content object is invalid.
@@ -150,7 +151,7 @@ class Star extends ActiveRecord
     }
 
     /**
-     * @param ActiveRecord|ObjectKeyInterface $model
+     * @param ActiveRecord|ObjectIdentityInterface $model
      *
      * @return ActiveQuery
      */
@@ -166,7 +167,7 @@ class Star extends ActiveRecord
     /**
      * Return current follower count
      *
-     * @param ActiveRecord|ObjectKeyInterface $model
+     * @param ActiveRecord|ObjectIdentityInterface $model
      *
      * @return int
      */
@@ -178,7 +179,7 @@ class Star extends ActiveRecord
     /**
      * Return current star value
      *
-     * @param ActiveRecord|ObjectKeyInterface $model
+     * @param ActiveRecord|ObjectIdentityInterface $model
      * @param $userID
      *
      * @return int

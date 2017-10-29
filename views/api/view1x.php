@@ -8,7 +8,7 @@
  * @var $packages array the API page menu structure
  */
 
-use app\components\objectKey\ClassType;
+use app\components\object\ClassType;
 use app\widgets\SideNav;
 use yii\apidoc\templates\bootstrap\SideNavWidget;
 use yii\helpers\Html;

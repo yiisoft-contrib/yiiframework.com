@@ -8,7 +8,7 @@
 
 namespace app\widgets;
 
-use app\components\objectKey\ObjectKeyInterface;
+use app\components\object\ObjectIdentityInterface;
 use app\models\ActiveRecord;
 use app\models\Rating;
 use Yii;
@@ -23,7 +23,7 @@ use yii\helpers\Url;
 class Voter extends Widget
 {
     /**
-     * @var ActiveRecord|ObjectKeyInterface
+     * @var ActiveRecord|ObjectIdentityInterface
      */
     public $model;
 

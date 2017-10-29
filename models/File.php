@@ -2,7 +2,7 @@
 
 namespace app\models;
 
-use app\components\objectKey\ObjectKeyInterface;
+use app\components\object\ObjectIdentityInterface;
 use creocoder\flysystem\Filesystem;
 use League\Flysystem\FileNotFoundException;
 use Yii;
@@ -158,9 +158,10 @@ class File extends ActiveRecord
 
     /**
      * Saves a file based on an uploaded file and the content object associated with this file.
+     *
      * @param UploadedFile $upload the uploaded file.
      * @param File $file the File object associated with the content object. If null, a new File object will be created.
-     * @param ActiveRecord|ObjectKeyInterface $object the content object that the file is associated with
+     * @param ActiveRecord|ObjectIdentityInterface $object the content object that the file is associated with
      * @param string $attribute the name of the attribute that stores the ID of the related file object.
      * If null, it means no need to store the file ID.
      *

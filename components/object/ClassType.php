@@ -1,6 +1,6 @@
 <?php
 
-namespace app\components\objectKey;
+namespace app\components\object;
 
 use app\models\Comment;
 use app\models\Extension;

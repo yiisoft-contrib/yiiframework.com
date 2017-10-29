@@ -2,7 +2,7 @@
 
 namespace app\widgets;
 
-use app\components\objectKey\ObjectKeyInterface;
+use app\components\object\ObjectIdentityInterface;
 use Yii;
 use yii\base\InvalidConfigException;
 use yii\base\Widget;
@@ -15,7 +15,7 @@ use yii\helpers\Url;
 class Star extends Widget
 {
     /**
-     * @var ActiveRecord|ObjectKeyInterface
+     * @var ActiveRecord|ObjectIdentityInterface
      */
     public $model;
 

@@ -2,8 +2,8 @@
 
 namespace app\models;
 
-use app\components\objectKey\ClassType;
-use app\components\objectKey\ObjectKeyInterface;
+use app\components\object\ClassType;
+use app\components\object\ObjectIdentityInterface;
 use yii\base\InvalidParamException;
 use yii\db\Expression;
 
@@ -57,7 +57,8 @@ class Rating extends ActiveRecord
 
     /**
      * Returns the vote counts for the specified model.
-     * @param ObjectKeyInterface|ActiveRecord $model the specified model
+     *
+     * @param ObjectIdentityInterface|ActiveRecord $model the specified model
      *
      * @return array the vote counts (total votes, up votes)
      */
@@ -74,7 +75,7 @@ class Rating extends ActiveRecord
 
     /**
      * Casts a vote to the specified content object.
-     * @param ObjectKeyInterface $model the type of the content object
+     * @param ObjectIdentityInterface $model the type of the content object
      * @param integer $userID the user ID
      * @param integer $vote the vote (1 means up vote, 0 means down vote)
      *

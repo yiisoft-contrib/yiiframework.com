@@ -4,8 +4,8 @@ namespace app\models;
 
 use app\components\contentShare\EntityInterface;
 use app\components\DiffBehavior;
-use app\components\objectKey\ClassType;
-use app\components\objectKey\ObjectKeyInterface;
+use app\components\object\ClassType;
+use app\components\object\ObjectIdentityInterface;
 use app\components\packagist\Package;
 use app\components\packagist\PackagistApi;
 use app\components\UserPermissions;
@@ -52,7 +52,7 @@ use yii\web\HttpException;
  * @property User $owner
  * @property ExtensionCategory $category
  */
-class Extension extends ActiveRecord implements Linkable, ObjectKeyInterface, EntityInterface
+class Extension extends ActiveRecord implements Linkable, ObjectIdentityInterface, EntityInterface
 {
     const STATUS_DRAFT = 1;
     const STATUS_PENDING_APPROVAL = 2;

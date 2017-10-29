@@ -2,8 +2,8 @@
 
 namespace app\models;
 
-use app\components\objectKey\ClassType;
-use app\components\objectKey\ObjectKeyInterface;
+use app\components\object\ClassType;
+use app\components\object\ObjectIdentityInterface;
 use Yii;
 use yii\behaviors\BlameableBehavior;
 
@@ -24,7 +24,7 @@ use yii\behaviors\BlameableBehavior;
  *
  * @property User $user
  */
-class Comment extends ActiveRecord implements ObjectKeyInterface
+class Comment extends ActiveRecord implements ObjectIdentityInterface
 {
     const STATUS_DELETED = 0;
     const STATUS_ACTIVE = 10;

@@ -3,8 +3,8 @@
 namespace app\models;
 
 use app\components\contentShare\EntityInterface;
-use app\components\objectKey\ClassType;
-use app\components\objectKey\ObjectKeyInterface;
+use app\components\object\ClassType;
+use app\components\object\ObjectIdentityInterface;
 use dosamigos\taggable\Taggable;
 use yii\apidoc\helpers\ApiMarkdown;
 use yii\behaviors\BlameableBehavior;
@@ -31,7 +31,7 @@ use yii\helpers\Url;
  * @property News[] $relatedNews
  * @property User $creator
  */
-class News extends ActiveRecord implements Linkable, ObjectKeyInterface, EntityInterface
+class News extends ActiveRecord implements Linkable, ObjectIdentityInterface, EntityInterface
 {
     const STATUS_DRAFT = 1;
     const STATUS_PUBLISHED = 2;

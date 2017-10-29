@@ -5,7 +5,7 @@ namespace app\models;
 use app\components\contentShare\EntityInterface;
 use app\components\contentShare\services\BaseService;
 use app\components\contentShare\services\TwitterService;
-use app\components\objectKey\ClassType;
+use app\components\object\ClassType;
 use app\jobs\ContentShareJob;
 use Yii;
 use yii\behaviors\TimestampBehavior;

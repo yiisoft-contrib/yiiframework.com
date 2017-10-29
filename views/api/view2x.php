@@ -7,7 +7,7 @@
  * @var $content string the API page content
  */
 
-use app\components\objectKey\ClassType;
+use app\components\object\ClassType;
 use yii\helpers\Html;
 use yii\helpers\Url;
 

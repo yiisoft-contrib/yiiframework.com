@@ -2,7 +2,7 @@
 
 namespace app\controllers;
 
-use app\components\objectKey\ClassType;
+use app\components\object\ClassType;
 use app\models\ActiveRecord;
 use app\models\Rating;
 use app\models\Star;

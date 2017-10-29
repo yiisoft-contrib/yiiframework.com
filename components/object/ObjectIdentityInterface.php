@@ -1,8 +1,8 @@
 <?php
 
-namespace app\components\objectKey;
+namespace app\components\object;
 
-interface ObjectKeyInterface
+interface ObjectIdentityInterface
 {
     /**
      * @return string

@@ -1,11 +1,11 @@
 <?php
 /**
- * @var Linkable|ObjectKeyInterface $model the model object that just received a new comment
+ * @var Linkable|ObjectIdentityInterface $model the model object that just received a new comment
  * @var $comment \app\models\Comment the comment object
  * @var $user \app\models\User the user object to whom the email is sent
  */
 
-use app\components\objectKey\ObjectKeyInterface;
+use app\components\object\ObjectIdentityInterface;
 use app\models\Linkable;
 use yii\helpers\Url;
 use yii\helpers\Html;

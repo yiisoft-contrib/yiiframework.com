@@ -2,9 +2,9 @@
 
 namespace app\components\contentShare;
 
-use app\components\objectKey\ObjectKeyInterface;
+use app\components\object\ObjectIdentityInterface;
 
-interface EntityInterface extends ObjectKeyInterface
+interface EntityInterface extends ObjectIdentityInterface
 {
     /**
      * Return the message for twitter.
