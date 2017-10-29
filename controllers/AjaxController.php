@@ -72,7 +72,7 @@ class AjaxController extends BaseController
         if (in_array($type, Rating::$availableObjectTypes, true)) {
             /** @var ActiveRecord $modelClass */
             $modelClass = ClassType::getClass($type);
-            $model = $modelClass::findOne((int) $id);
+            $model = $modelClass::findOne($id);
         }
         if (!isset($model)) {
             throw new NotFoundHttpException();
@@ -112,7 +112,7 @@ class AjaxController extends BaseController
         if (in_array($type, Star::$availableObjectTypes, true)) {
             /** @var ActiveRecord $modelClass */
             $modelClass = ClassType::getClass($type);
-            $model = $modelClass::findOne((int) $id);
+            $model = $modelClass::findOne($id);
         }
 
         if ($model === null) {
