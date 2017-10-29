@@ -2,6 +2,7 @@
 
 namespace app\models;
 
+use app\components\objectKey\ObjectKeyInterface;
 use creocoder\flysystem\Filesystem;
 use League\Flysystem\FileNotFoundException;
 use Yii;
@@ -28,8 +29,9 @@ use yii\web\UploadedFile;
  * @property integer $updated_at
  *
  * @property User $creator
+ * @property string $extension
  */
-class File extends ActiveRecord
+class File extends ActiveRecord implements ObjectKeyInterface
 {
     /**
      * @inheritdoc
@@ -263,5 +265,21 @@ class File extends ActiveRecord
     public function getCreator()
     {
         return $this->hasOne(User::className(), ['id' => 'created_by']);
+    }
+
+    /**
+     * @return string
+     */
+    public function getObjectType()
+    {
+        return $this->object_type;
+    }
+
+    /**
+     * @return int
+     */
+    public function getObjectId()
+    {
+        return $this->object_id;
     }
 }

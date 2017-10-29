@@ -79,11 +79,6 @@ class Extension extends ActiveRecord implements Linkable, ObjectKeyInterface, En
     const NAME_PATTERN = '[a-z][a-z0-9\-]*';
 
     /**
-     * object type used for file uploads
-     */
-    const FILE_TYPE = 'Extension';
-
-    /**
      * @var string editor note on upate
      */
     public $memo;

@@ -305,8 +305,8 @@ class ExtensionController extends BaseController
         if (UserPermissions::canUpdateExtension($model)) {
             $file = new File();
             if ($file->load(Yii::$app->request->post())) {
-                $file->object_type = Extension::FILE_TYPE;
-                $file->object_id = $model->id;
+                $file->object_type = $model->getObjectType();
+                $file->object_id = $model->getObjectId();
                 $file->file_name = UploadedFile::getInstance($file, 'file_name');
                 if ($file->save()) {
 
