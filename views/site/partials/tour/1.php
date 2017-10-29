@@ -13,11 +13,11 @@
                 Installation
             </div>
             <div class="tour-content">
-                <p>Primary way of installing Yii is by using Composer.</p>
+                <p>The primary way of installing Yii is by using Composer.</p>
 
                 <ul>
                     <li>Install Composer</li>
-                    <li>Get basic project template</li>
+                    <li>Get a basic project template</li>
                     <li>Run <kbd>./yii serve</kbd></li>
                 </ul>
             </div>

@@ -15,7 +15,7 @@
             <div class="tour-content">
                 <p>While Yii can virtually eliminate most repetitive coding tasks, you are responsible for the real
                    creative work. This often starts with designing the whole system to be built, in terms of some
-                   database schema. The best way to do it is via migrations.</p>
+                   database schema. The best way to do this is by using migrations.</p>
             </div>
         </div>
     </div>

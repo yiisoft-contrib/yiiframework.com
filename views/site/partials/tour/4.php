@@ -13,9 +13,9 @@
                 Gii code generator
             </div>
             <div class="tour-content">
-                <p>After it's done, use generator to generate models, CRUD and more.</p>
+                <p>After it's done, use the code generator to generate models, CRUD and more.</p>
 
-                <p>Then customize code generated to fit your needs.</p>
+                <p>Then customize the generated code to suit your needs.</p>
             </div>
         </div>
     </div>
