@@ -9,23 +9,23 @@ use app\models\News;
 use app\models\Wiki;
 use yii\base\InvalidValueException;
 
-class ObjectKeyHelper
+class ClassType
 {
-    const TYPE_NEWS = 'news';
-    const TYPE_WIKI = 'wiki';
-    const TYPE_EXTENSION = 'extension';
-    const TYPE_COMMENT = 'comment';
-    const TYPE_FILE = 'file';
+    const NEWS = 'news';
+    const WIKI = 'wiki';
+    const EXTENSION = 'extension';
+    const COMMENT = 'comment';
+    const FILE = 'file';
 
-    const TYPE_GUIDE = 'guide';
-    const TYPE_API = 'api';
+    const GUIDE = 'guide';
+    const API = 'api';
 
     public static $typeClasses = [
-        self::TYPE_NEWS => News::class,
-        self::TYPE_WIKI => Wiki::class,
-        self::TYPE_EXTENSION => Extension::class,
-        self::TYPE_COMMENT => Comment::class,
-        self::TYPE_FILE => File::class,
+        self::NEWS => News::class,
+        self::WIKI => Wiki::class,
+        self::EXTENSION => Extension::class,
+        self::COMMENT => Comment::class,
+        self::FILE => File::class,
     ];
 
     /**

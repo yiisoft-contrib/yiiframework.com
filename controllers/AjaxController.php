@@ -2,7 +2,7 @@
 
 namespace app\controllers;
 
-use app\components\objectKey\ObjectKeyHelper;
+use app\components\objectKey\ClassType;
 use app\models\ActiveRecord;
 use app\models\Rating;
 use app\models\Star;
@@ -71,7 +71,7 @@ class AjaxController extends BaseController
         $userVote = $vote ? 1 : 0;
         if (in_array($type, Rating::$availableObjectTypes, true)) {
             /** @var ActiveRecord $modelClass */
-            $modelClass = ObjectKeyHelper::getClass($type);
+            $modelClass = ClassType::getClass($type);
             $model = $modelClass::findOne((int) $id);
         }
         if (!isset($model)) {
@@ -111,7 +111,7 @@ class AjaxController extends BaseController
         $model = null;
         if (in_array($type, Star::$availableObjectTypes, true)) {
             /** @var ActiveRecord $modelClass */
-            $modelClass = ObjectKeyHelper::getClass($type);
+            $modelClass = ClassType::getClass($type);
             $model = $modelClass::findOne((int) $id);
         }
 

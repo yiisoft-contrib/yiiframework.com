@@ -1,6 +1,6 @@
 <?php
 
-use app\components\objectKey\ObjectKeyHelper;
+use app\components\objectKey\ClassType;
 use app\models\ExtensionCategory;
 use app\models\ExtensionTag;
 use app\widgets\RecentComments;
@@ -63,7 +63,7 @@ use yii\helpers\Html;
 </ul>
 
 <?= RecentComments::widget([
-    'objectType' => ObjectKeyHelper::TYPE_COMMENT,
+    'objectType' => ClassType::COMMENT,
     'titleClass' => 'extension-side-title',
     'menuClass' => 'extension-side-comments last-side-menu',
 ])?>

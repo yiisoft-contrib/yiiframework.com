@@ -3,7 +3,7 @@
 namespace app\models;
 
 use app\components\contentShare\EntityInterface;
-use app\components\objectKey\ObjectKeyHelper;
+use app\components\objectKey\ClassType;
 use app\components\objectKey\ObjectKeyInterface;
 use dosamigos\taggable\Taggable;
 use yii\apidoc\helpers\ApiMarkdown;
@@ -239,7 +239,7 @@ class News extends ActiveRecord implements Linkable, ObjectKeyInterface, EntityI
      */
     public function getObjectType()
     {
-        return ObjectKeyHelper::TYPE_NEWS;
+        return ClassType::NEWS;
     }
 
     /**

@@ -7,7 +7,7 @@
 
 namespace app\commands;
 
-use app\components\objectKey\ObjectKeyHelper;
+use app\components\objectKey\ClassType;
 use app\models\Comment;
 use app\models\Extension;
 use app\models\ExtensionCategory;
@@ -37,13 +37,13 @@ class ImportController extends Controller
      * @var string[]
      */
     public static $objectTypesMap = [
-        'News' => ObjectKeyHelper::TYPE_NEWS,
-        'Wiki' => ObjectKeyHelper::TYPE_WIKI,
-        'Extension' => ObjectKeyHelper::TYPE_EXTENSION,
-        'Comment' => ObjectKeyHelper::TYPE_COMMENT,
-        'File' => ObjectKeyHelper::TYPE_FILE,
-        'tutorial' => ObjectKeyHelper::TYPE_GUIDE,
-        'api' => ObjectKeyHelper::TYPE_API,
+        'News' => ClassType::NEWS,
+        'Wiki' => ClassType::WIKI,
+        'Extension' => ClassType::EXTENSION,
+        'Comment' => ClassType::COMMENT,
+        'File' => ClassType::FILE,
+        'tutorial' => ClassType::GUIDE,
+        'api' => ClassType::API,
     ];
 
 	public $defaultAction = 'import';

@@ -2,7 +2,7 @@
 
 namespace app\models;
 
-use app\components\objectKey\ObjectKeyHelper;
+use app\components\objectKey\ClassType;
 use app\components\objectKey\ObjectKeyInterface;
 use yii\db\ActiveQuery;
 use yii\helpers\ArrayHelper;
@@ -21,7 +21,7 @@ class Star extends ActiveRecord
     /**
      * @var string[] Available object types for stars.
      */
-    public static $availableObjectTypes = [ObjectKeyHelper::TYPE_WIKI, ObjectKeyHelper::TYPE_EXTENSION];
+    public static $availableObjectTypes = [ClassType::WIKI, ClassType::EXTENSION];
 
     /**
      * @inheritdoc
@@ -132,7 +132,7 @@ class Star extends ActiveRecord
         $models = [];
         foreach (static::$availableObjectTypes as $objectType) {
             /** @var ActiveRecord $modelClass */
-            $modelClass = ObjectKeyHelper::getClass($objectType);
+            $modelClass = ClassType::getClass($objectType);
 
             $ids = static::find()
                 ->select('object_id')

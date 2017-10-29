@@ -3,7 +3,7 @@
 namespace app\models;
 
 use app\components\contentShare\EntityInterface;
-use app\components\objectKey\ObjectKeyHelper;
+use app\components\objectKey\ClassType;
 use app\components\objectKey\ObjectKeyInterface;
 use app\components\SluggableBehavior;
 use dosamigos\taggable\Taggable;
@@ -318,8 +318,8 @@ class Wiki extends ActiveRecord implements Linkable, ObjectKeyInterface, EntityI
     {
         /** @var Comment $comment */
         $comment = $event->sender;
-        if ($comment->object_type === ObjectKeyHelper::TYPE_WIKI) {
-            $count = Comment::find()->forObject(ObjectKeyHelper::TYPE_WIKI, $comment->object_id)->active()->count();
+        if ($comment->object_type === ClassType::WIKI) {
+            $count = Comment::find()->forObject(ClassType::WIKI, $comment->object_id)->active()->count();
             static::updateAll(['comment_count' => $count], ['id' => $comment->object_id]);
         }
     }
@@ -365,7 +365,7 @@ class Wiki extends ActiveRecord implements Linkable, ObjectKeyInterface, EntityI
      */
     public function getObjectType()
     {
-        return ObjectKeyHelper::TYPE_WIKI;
+        return ClassType::WIKI;
     }
 
     /**

@@ -2,7 +2,7 @@
 
 namespace app\models;
 
-use app\components\objectKey\ObjectKeyHelper;
+use app\components\objectKey\ClassType;
 use app\components\objectKey\ObjectKeyInterface;
 use Yii;
 use yii\behaviors\BlameableBehavior;
@@ -32,7 +32,7 @@ class Comment extends ActiveRecord implements ObjectKeyInterface
     /**
      * @var string[] Available object types for comments.
      */
-    public static $availableObjectTypes = [ObjectKeyHelper::TYPE_WIKI, ObjectKeyHelper::TYPE_EXTENSION];
+    public static $availableObjectTypes = [ClassType::WIKI, ClassType::EXTENSION];
 
     /**
      * @inheritdoc
@@ -109,7 +109,7 @@ class Comment extends ActiveRecord implements ObjectKeyInterface
         }
 
         /** @var ActiveRecord $modelClass */
-        $modelClass = ObjectKeyHelper::getClass($this->object_type);
+        $modelClass = ClassType::getClass($this->object_type);
         return $modelClass::findOne($this->object_id);
     }
 
@@ -118,7 +118,7 @@ class Comment extends ActiveRecord implements ObjectKeyInterface
      */
     public function getObjectType()
     {
-        return ObjectKeyHelper::TYPE_COMMENT;
+        return ClassType::COMMENT;
     }
 
     /**

@@ -5,7 +5,7 @@
  * @var $section app\models\GuideSection
  */
 
-use app\components\objectKey\ObjectKeyHelper;
+use app\components\objectKey\ClassType;
 use app\widgets\SideNav;
 use yii\helpers\Html;
 
@@ -118,7 +118,7 @@ $this->endBlock();
 <div class="comments-wrapper">
     <div class="container comments">
         <?= \app\widgets\Comments::widget([
-            'objectType' => ObjectKeyHelper::TYPE_GUIDE,
+            'objectType' => ClassType::GUIDE,
             'objectId' => "$type/$guide->version/$guide->language/$section->name",
         ]) ?>
     </div>

@@ -4,7 +4,7 @@ namespace app\models;
 
 use app\components\contentShare\EntityInterface;
 use app\components\DiffBehavior;
-use app\components\objectKey\ObjectKeyHelper;
+use app\components\objectKey\ClassType;
 use app\components\objectKey\ObjectKeyInterface;
 use app\components\packagist\Package;
 use app\components\packagist\PackagistApi;
@@ -555,7 +555,7 @@ MARKDOWN;
      */
     public function getObjectType()
     {
-        return ObjectKeyHelper::TYPE_EXTENSION;
+        return ClassType::EXTENSION;
     }
 
     /**

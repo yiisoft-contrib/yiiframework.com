@@ -5,7 +5,7 @@ namespace app\models;
 use app\components\contentShare\EntityInterface;
 use app\components\contentShare\services\BaseService;
 use app\components\contentShare\services\TwitterService;
-use app\components\objectKey\ObjectKeyHelper;
+use app\components\objectKey\ClassType;
 use app\jobs\ContentShareJob;
 use Yii;
 use yii\behaviors\TimestampBehavior;
@@ -43,7 +43,7 @@ class ContentShare extends ActiveRecord
         ContentShare::SERVICE_TWITTER => TwitterService::class
     ];
 
-    public static $availableObjectTypeIds = [ObjectKeyHelper::TYPE_NEWS, ObjectKeyHelper::TYPE_WIKI, ObjectKeyHelper::TYPE_EXTENSION];
+    public static $availableObjectTypeIds = [ClassType::NEWS, ClassType::WIKI, ClassType::EXTENSION];
     public static $availableServiceIds = [self::SERVICE_TWITTER];
 
     /**

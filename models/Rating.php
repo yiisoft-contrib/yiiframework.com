@@ -2,7 +2,7 @@
 
 namespace app\models;
 
-use app\components\objectKey\ObjectKeyHelper;
+use app\components\objectKey\ClassType;
 use app\components\objectKey\ObjectKeyInterface;
 use yii\base\InvalidParamException;
 use yii\db\Expression;
@@ -23,7 +23,7 @@ class Rating extends ActiveRecord
     /**
      * @var string[] Available object types for rating.
      */
-    public static $availableObjectTypes = [ObjectKeyHelper::TYPE_WIKI, ObjectKeyHelper::TYPE_EXTENSION, ObjectKeyHelper::TYPE_COMMENT];
+    public static $availableObjectTypes = [ClassType::WIKI, ClassType::EXTENSION, ClassType::COMMENT];
 
     /**
      * @inheritdoc
@@ -51,7 +51,7 @@ class Rating extends ActiveRecord
         }
 
         /** @var Comment|Wiki|Extension $modelClass */
-        $modelClass = ObjectKeyHelper::getClass($this->object_type);
+        $modelClass = ClassType::getClass($this->object_type);
         return $modelClass::findOne($this->object_id);
     }
 
