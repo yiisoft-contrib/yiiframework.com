@@ -20,7 +20,7 @@ class ClassType
     const GUIDE = 'guide';
     const API = 'api';
 
-    public static $typeClasses = [
+    public static $classes = [
         self::NEWS => News::class,
         self::WIKI => Wiki::class,
         self::EXTENSION => Extension::class,
@@ -35,8 +35,8 @@ class ClassType
      */
     public static function getClass($type)
     {
-        if (array_key_exists($type, static::$typeClasses)) {
-            return static::$typeClasses[$type];
+        if (array_key_exists($type, static::$classes)) {
+            return static::$classes[$type];
         }
 
         throw new InvalidValueException("Type is '{$type}' not found.");
