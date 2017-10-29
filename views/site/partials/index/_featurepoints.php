@@ -7,7 +7,7 @@
               </div>
               <div class="media-body">
                 <div class="media-heading fast">Fast</div>
-                Yii gives you the maximum functionality by adding the least possible overhead
+                Yii gives you maximum performance by minimizing overhead
               </div>
             </div>
         </div>
@@ -18,7 +18,7 @@
               </div>
               <div class="media-body">
                 <div class="media-heading secure">Secure</div>
-                    Sane defaults and built in tools helps you write solid and secure code
+                    Sane defaults and built-in tools helps you write solid and secure code
               </div>
             </div>
         </div>
