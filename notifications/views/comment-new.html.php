@@ -16,7 +16,7 @@ use yii\helpers\Html;
 	'user' => $user,
 	'title' => "A new comment was added: " . $model->getLinkTitle(),
 ]) ?>
-	<p>A new comment was added to the following <?= $model->getObjectType() ?> you are following:</p>
+	<p>A new comment was added to <?= Html::encode($model->getObjectType()) ?> you are following:</p>
 	<p><?= Html::a($model->getLinkTitle(), Url::to($model->getUrl(), true)) ?></p>
 	<hr />
 	<p>

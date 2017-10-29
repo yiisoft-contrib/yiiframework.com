@@ -39,6 +39,6 @@ class ClassType
             return static::$classes[$type];
         }
 
-        throw new InvalidValueException("Type is '{$type}' not found.");
+        throw new InvalidValueException("Object type \"{$type}\" was not found.");
     }
 }

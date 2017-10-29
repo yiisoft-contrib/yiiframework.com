@@ -509,7 +509,7 @@ SQL
 			try {
                 $objectType = $this->convertObjectType($file['object_type']);
                 if ($objectType === false) {
-                    throw new \Exception('Object type is "' . $file['object_type'] . '" not found.');
+                    throw new \Exception('Object type "' . $file['object_type'] . '" was not found.');
                 }
 
 				$model = new File([
@@ -595,7 +595,7 @@ SQL
 			try {
 			    $objectType = $this->convertObjectType($comment['object_type']);
                 if ($objectType === false) {
-                    throw new \Exception('Object type is "' . $comment['object_type'] . '" not found.');
+                    throw new \Exception('Object type "' . $comment['object_type'] . '" was not found.');
                 }
 
 				\Yii::$app->db->createCommand()->insert('{{%comment}}', [
@@ -714,7 +714,7 @@ SQL
 			try {
                 $objectType = $this->convertObjectType($rating['object_type']);
                 if ($objectType === false) {
-                    throw new \Exception('Object type is "' . $rating['object_type'] . '" not found.');
+                    throw new \Exception('Object type "' . $rating['object_type'] . '" was not found.');
                 }
                 $rating['object_type'] = $objectType;
 
@@ -781,7 +781,7 @@ SQL
 			try {
                 $objectType = $this->convertObjectType($star['object_type']);
                 if ($objectType === false) {
-                    throw new \Exception('Object type is "' . $star['object_type'] . '" not found.');
+                    throw new \Exception('Object type "' . $star['object_type'] . '" was not found.');
                 }
                 $star['object_type'] = $objectType;
 

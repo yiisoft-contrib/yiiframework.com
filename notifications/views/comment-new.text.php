@@ -14,7 +14,7 @@ use yii\helpers\Url;
     'model' => $model,
     'user' => $user,
 ]); ?>
-A new comment was added to the following content you are following:
+A new comment was added to the content you are following:
 
 [<?= $model->getObjectType() ?>] <?= $model->getLinkTitle(); ?>
 
