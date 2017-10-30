@@ -1,6 +1,6 @@
 <?php
 
-use app\models\Wiki;
+use app\components\object\ClassType;
 use app\models\WikiCategory;
 use app\models\WikiTag;
 use app\widgets\RecentComments;
@@ -63,7 +63,7 @@ use yii\helpers\Html;
 </ul>
 
 <?= RecentComments::widget([
-    'objectType' => Wiki::COMMENT_TYPE,
+    'objectType' => ClassType::WIKI,
     'titleClass' => 'wiki-side-title',
     'menuClass' => 'wiki-side-comments last-side-menu',
 ])?>

@@ -5,6 +5,7 @@ namespace app\models;
 use app\components\contentShare\EntityInterface;
 use app\components\contentShare\services\BaseService;
 use app\components\contentShare\services\TwitterService;
+use app\components\object\ClassType;
 use app\jobs\ContentShareJob;
 use Yii;
 use yii\behaviors\TimestampBehavior;
@@ -31,10 +32,6 @@ class ContentShare extends ActiveRecord
     const STATUS_PUBLISHED = 20;
     const STATUS_FAILED = 30;
 
-    const OBJECT_TYPE_NEWS = 'news';
-    const OBJECT_TYPE_WIKI = 'wiki';
-    const OBJECT_TYPE_EXTENSION = 'extension';
-
     const SERVICE_TWITTER = 'twitter';
 
     /**
@@ -46,7 +43,7 @@ class ContentShare extends ActiveRecord
         ContentShare::SERVICE_TWITTER => TwitterService::class
     ];
 
-    public static $availableObjectTypeIds = [self::OBJECT_TYPE_NEWS, self::OBJECT_TYPE_WIKI, self::OBJECT_TYPE_EXTENSION];
+    public static $availableObjectTypeIds = [ClassType::NEWS, ClassType::WIKI, ClassType::EXTENSION];
     public static $availableServiceIds = [self::SERVICE_TWITTER];
 
     /**
@@ -97,8 +94,8 @@ class ContentShare extends ActiveRecord
         /** @var ContentShare[] $listOfExistingContentShare */
         $listOfExistingContentShare = static::find()
             ->andWhere([
-                'object_type_id' => $entity->getContentShareObjectTypeId(),
-                'object_id' => $entity->getContentShareObjectId(),
+                'object_type_id' => $entity->getObjectType(),
+                'object_id' => $entity->getObjectId(),
                 'service_id' => static::$availableServiceIds
             ])
             ->indexBy('service_id')
@@ -109,8 +106,8 @@ class ContentShare extends ActiveRecord
             $contentShare = new static();
             $contentShare->loadDefaultValues();
 
-            $contentShare->object_type_id = $entity->getContentShareObjectTypeId();
-            $contentShare->object_id = $entity->getContentShareObjectId();
+            $contentShare->object_type_id = $entity->getObjectType();
+            $contentShare->object_id = $entity->getObjectId();
             $contentShare->service_id = $serviceId;
 
             $message = $contentShare->service->getMessage($entity);

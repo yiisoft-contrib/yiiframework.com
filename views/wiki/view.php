@@ -1,10 +1,11 @@
 <?php
+/**
+ * @var Wiki $model
+ * @var int $revision
+ */
 
+use app\models\Wiki;
 use yii\helpers\Html;
-
-/** @var $model \app\models\Wiki */
-/** @var $revision int */
-
 
 $this->title = $model->title;
 
@@ -106,8 +107,8 @@ $this->title = $model->title;
 <div class="comments-wrapper">
     <div class="container comments">
         <?= \app\widgets\Comments::widget([
-            'objectType' => \app\models\Wiki::COMMENT_TYPE,
-            'objectId' => "$model->id",
+            'objectType' => $model->getObjectType(),
+            'objectId' => $model->getObjectId(),
             'prompt' => 'Please only use comments to help explain the above article.<br/>If you have any questions, please ask in '.Html::a('the forum', Yii::$app->request->baseUrl . '/forum').' instead.',
         ]) ?>
     </div>

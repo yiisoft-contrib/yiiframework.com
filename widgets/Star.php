@@ -2,6 +2,7 @@
 
 namespace app\widgets;
 
+use app\components\object\ObjectIdentityInterface;
 use Yii;
 use yii\base\InvalidConfigException;
 use yii\base\Widget;
@@ -14,7 +15,7 @@ use yii\helpers\Url;
 class Star extends Widget
 {
     /**
-     * @var ActiveRecord
+     * @var ActiveRecord|ObjectIdentityInterface
      */
     public $model;
 
@@ -29,8 +30,8 @@ class Star extends Widget
 
     public function run()
     {
-        $modelClass = $this->model->formName();
-        $modelId = $this->model->primaryKey;
+        $modelType = $this->model->getObjectType();
+        $modelId = $this->model->getObjectId();
 
         if ($this->starValue === null) {
             // display start widget for an item
@@ -46,7 +47,7 @@ class Star extends Widget
         }
 
         return $this->render('star', [
-            'ajaxUrl' => Url::to(['/ajax/star', 'type' => $modelClass, 'id' => $modelId]),
+            'ajaxUrl' => Url::to(['/ajax/star', 'type' => $modelType, 'id' => $modelId]),
             'starValue' => $starValue,
             'starCount' => $starCount,
         ]);

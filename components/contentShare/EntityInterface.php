@@ -2,18 +2,10 @@
 
 namespace app\components\contentShare;
 
-interface EntityInterface
+use app\components\object\ObjectIdentityInterface;
+
+interface EntityInterface extends ObjectIdentityInterface
 {
-    /**
-     * @return string
-     */
-    public function getContentShareObjectTypeId();
-
-    /**
-     * @return int
-     */
-    public function getContentShareObjectId();
-
     /**
      * Return the message for twitter.
      *

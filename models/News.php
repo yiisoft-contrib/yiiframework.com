@@ -3,6 +3,8 @@
 namespace app\models;
 
 use app\components\contentShare\EntityInterface;
+use app\components\object\ClassType;
+use app\components\object\ObjectIdentityInterface;
 use dosamigos\taggable\Taggable;
 use yii\apidoc\helpers\ApiMarkdown;
 use yii\behaviors\BlameableBehavior;
@@ -29,7 +31,7 @@ use yii\helpers\Url;
  * @property News[] $relatedNews
  * @property User $creator
  */
-class News extends ActiveRecord implements Linkable, EntityInterface
+class News extends ActiveRecord implements Linkable, ObjectIdentityInterface, EntityInterface
 {
     const STATUS_DRAFT = 1;
     const STATUS_PUBLISHED = 2;
@@ -213,14 +215,6 @@ class News extends ActiveRecord implements Linkable, EntityInterface
     }
 
     /**
-     * @return string the type of this object, e.g. News, Extension, Wiki
-     */
-    public function getItemType()
-    {
-        return 'News';
-    }
-
-    /**
      * @inheritdoc
      */
     public function afterSave($insert, $changedAttributes)
@@ -235,7 +229,7 @@ class News extends ActiveRecord implements Linkable, EntityInterface
     /**
      * @inheritdoc
      */
-    public function getContentShareObjectId()
+    public function getObjectId()
     {
         return $this->id;
     }
@@ -243,9 +237,9 @@ class News extends ActiveRecord implements Linkable, EntityInterface
     /**
      * @inheritdoc
      */
-    public function getContentShareObjectTypeId()
+    public function getObjectType()
     {
-        return ContentShare::OBJECT_TYPE_NEWS;
+        return ClassType::NEWS;
     }
 
     /**

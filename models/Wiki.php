@@ -3,6 +3,8 @@
 namespace app\models;
 
 use app\components\contentShare\EntityInterface;
+use app\components\object\ClassType;
+use app\components\object\ObjectIdentityInterface;
 use app\components\SluggableBehavior;
 use dosamigos\taggable\Taggable;
 use Yii;
@@ -46,7 +48,7 @@ use yii\helpers\Url;
  * @property WikiRevision[] $latestRevisions
  *
  */
-class Wiki extends ActiveRecord implements Linkable, EntityInterface
+class Wiki extends ActiveRecord implements Linkable, ObjectIdentityInterface, EntityInterface
 {
     const STATUS_DRAFT = 1;
     const STATUS_PENDING_APPROVAL = 2;
@@ -61,12 +63,6 @@ class Wiki extends ActiveRecord implements Linkable, EntityInterface
     const SCENARIO_CREATE = 'create';
     const SCENARIO_UPDATE = 'update';
     const SCENARIO_LOAD = 'load';
-
-
-    /**
-     * object type used for wiki comments
-     */
-    const COMMENT_TYPE = 'Wiki';
 
     /**
      * @var string editor note on upate
@@ -320,10 +316,10 @@ class Wiki extends ActiveRecord implements Linkable, EntityInterface
      */
     public static function onComment($event)
     {
-        /** @var $comment Comment */
+        /** @var Comment $comment */
         $comment = $event->sender;
-        if ($comment->object_type === Wiki::COMMENT_TYPE) {
-            $count = Comment::find()->forObject(Wiki::COMMENT_TYPE, $comment->object_id)->active()->count();
+        if ($comment->object_type === ClassType::WIKI) {
+            $count = Comment::find()->forObject(ClassType::WIKI, $comment->object_id)->active()->count();
             static::updateAll(['comment_count' => $count], ['id' => $comment->object_id]);
         }
     }
@@ -345,14 +341,6 @@ class Wiki extends ActiveRecord implements Linkable, EntityInterface
     }
 
     /**
-     * @return string the type of this object, e.g. News, Extension, Wiki
-     */
-    public function getItemType()
-    {
-        return static::COMMENT_TYPE;
-    }
-
-    /**
      * @return array Yii version list
      */
     public static function getYiiVersionOptions()
@@ -367,7 +355,7 @@ class Wiki extends ActiveRecord implements Linkable, EntityInterface
     /**
      * @inheritdoc
      */
-    public function getContentShareObjectId()
+    public function getObjectId()
     {
         return $this->id;
     }
@@ -375,9 +363,9 @@ class Wiki extends ActiveRecord implements Linkable, EntityInterface
     /**
      * @inheritdoc
      */
-    public function getContentShareObjectTypeId()
+    public function getObjectType()
     {
-        return ContentShare::OBJECT_TYPE_WIKI;
+        return ClassType::WIKI;
     }
 
     /**

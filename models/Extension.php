@@ -4,6 +4,8 @@ namespace app\models;
 
 use app\components\contentShare\EntityInterface;
 use app\components\DiffBehavior;
+use app\components\object\ClassType;
+use app\components\object\ObjectIdentityInterface;
 use app\components\packagist\Package;
 use app\components\packagist\PackagistApi;
 use app\components\UserPermissions;
@@ -50,7 +52,7 @@ use yii\web\HttpException;
  * @property User $owner
  * @property ExtensionCategory $category
  */
-class Extension extends ActiveRecord implements Linkable, EntityInterface
+class Extension extends ActiveRecord implements Linkable, ObjectIdentityInterface, EntityInterface
 {
     const STATUS_DRAFT = 1;
     const STATUS_PENDING_APPROVAL = 2;
@@ -75,15 +77,6 @@ class Extension extends ActiveRecord implements Linkable, EntityInterface
     const UPDATE_STATUS_EXPIRED = 2;
 
     const NAME_PATTERN = '[a-z][a-z0-9\-]*';
-
-    /**
-     * object type used for comments
-     */
-    const COMMENT_TYPE = 'Extension';
-    /**
-     * object type used for file uploads
-     */
-    const FILE_TYPE = 'Extension';
 
     /**
      * @var string editor note on upate
@@ -527,14 +520,6 @@ MARKDOWN;
     }
 
     /**
-     * @return string the type of this object, e.g. News, Extension, Wiki
-     */
-    public function getItemType()
-    {
-        return static::COMMENT_TYPE;
-    }
-
-    /**
      * @return array Yii version list
      */
     public static function getYiiVersionOptions()
@@ -560,7 +545,7 @@ MARKDOWN;
     /**
      * @inheritdoc
      */
-    public function getContentShareObjectId()
+    public function getObjectId()
     {
         return $this->id;
     }
@@ -568,9 +553,9 @@ MARKDOWN;
     /**
      * @inheritdoc
      */
-    public function getContentShareObjectTypeId()
+    public function getObjectType()
     {
-        return ContentShare::OBJECT_TYPE_EXTENSION;
+        return ClassType::EXTENSION;
     }
 
     /**

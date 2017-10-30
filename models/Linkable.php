@@ -15,9 +15,4 @@ interface Linkable
      * @return string title to display for a link to this object.
      */
     public function getLinkTitle();
-
-    /**
-     * @return string the type of this object, e.g. News, Extension, Wiki
-     */
-    public function getItemType();
 }
