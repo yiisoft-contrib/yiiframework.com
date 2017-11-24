@@ -36,7 +36,7 @@ class TwitterService extends BaseService
         if ($status === 200) {
             return true;
         }
-        Yii::error("Tweeting failed with status {$status}:\n" . $twitter->getLastBody());
+        Yii::error("Tweeting failed with status {$status}:\n" . var_export($twitter->getLastBody(), true));
 
         return false;
     }
