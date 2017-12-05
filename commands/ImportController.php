@@ -439,6 +439,12 @@ SQL
 			$model->save(false);
 		}
 
+		$model = new ExtensionCategory();
+		$model->id = 'app';
+		$model->name = 'Application Template';
+		$model->sequence = 100;
+		$model->save(false);
+
 		// import extensions
 		$extensionQuery = (new Query)->from('tbl_extension')->orderBy('id');
 		$count = $extensionQuery->count('*', $this->sourceDb);
