@@ -3,9 +3,10 @@
  * @var $this yii\web\View
  * @var $guide app\models\Guide
  * @var $section app\models\GuideSection
+ * @var Doc $doc
  */
 
-use app\components\object\ClassType;
+use app\models\Doc;
 use app\widgets\SideNav;
 use yii\helpers\Html;
 
@@ -84,6 +85,9 @@ $this->endBlock();
                         helping us with translation</a>.
                     </div>
                 <?php endif ?>
+
+                <?= \app\widgets\Star::widget(['model' => $doc]) ?>
+
                 <?= $section->content ?>
 
                 <div class="prev-next clearfix">
@@ -115,11 +119,13 @@ $this->endBlock();
         </div>
     </div>
 </div>
-<div class="comments-wrapper">
-    <div class="container comments">
-        <?= \app\widgets\Comments::widget([
-            'objectType' => ClassType::GUIDE,
-            'objectId' => "$type/$guide->version/$guide->language/$section->name",
-        ]) ?>
+<?php if ($doc): ?>
+    <div class="comments-wrapper">
+        <div class="container comments">
+            <?= \app\widgets\Comments::widget([
+                'objectType' => $doc->getObjectType(),
+                'objectId' => $doc->getObjectId(),
+            ]) ?>
+        </div>
     </div>
-</div>
+<?php endif ?>

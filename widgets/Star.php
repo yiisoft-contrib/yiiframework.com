@@ -4,7 +4,6 @@ namespace app\widgets;
 
 use app\components\object\ObjectIdentityInterface;
 use Yii;
-use yii\base\InvalidConfigException;
 use yii\base\Widget;
 use app\models\ActiveRecord;
 use yii\helpers\Url;
@@ -21,15 +20,12 @@ class Star extends Widget
 
     public $starValue;
 
-    public function init()
-    {
-        if ($this->model === null) {
-            throw new InvalidConfigException('Star widget property model is not set.');
-        }
-    }
-
     public function run()
     {
+        if (!$this->model instanceof ObjectIdentityInterface) {
+            return '';
+        }
+
         $modelType = $this->model->getObjectType();
         $modelId = $this->model->getObjectId();
 

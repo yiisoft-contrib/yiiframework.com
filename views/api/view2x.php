@@ -5,9 +5,10 @@
  * @var $version string the currently chosen API version
  * @var $section string the currently active API file
  * @var $content string the API page content
+ * @var Doc $doc
  */
 
-use app\components\object\ClassType;
+use app\models\Doc;
 use yii\helpers\Html;
 use yii\helpers\Url;
 
@@ -38,6 +39,15 @@ $this->endBlock();
             </p>
         </div>
     </div>
+    <?php if ($doc): ?>
+    <br>
+    <div class="row">
+        <div class="col-sm-offset-10 text-right">
+            <?= \app\widgets\Star::widget(['model' => $doc]) ?>
+        </div>
+    </div>
+    <?php endif ?>
+
 	<?= strtr($content, [
         '<!-- YII_DOWNLOAD_OPTIONS -->' => '<p>You may download the API documentation for offline use: </p><ul>'
             . '<li>' . Html::a("yii-docs-{$version}-en.tar.bz2", ['guide/download', 'version' => $version, 'language' => 'en', 'format' => 'tar.bz2']) . '</li>'
@@ -47,15 +57,16 @@ $this->endBlock();
             . '<code>curl ' . Url::to(['index', 'version' => $version], true) . ' -H \'Accept: application/json\'</code></p>',
     ]) ?>
 </div>
-
+<?php if ($doc): ?>
 <div class="comments-wrapper">
     <div class="container comments">
         <?= \app\widgets\Comments::widget([
-            'objectType' => ClassType::API,
-            'objectId' => $version . '/' . $section,
+            'objectType' => $doc->getObjectType(),
+            'objectId' => $doc->getObjectId(),
         ]) ?>
     </div>
 </div>
+<?php endif ?>
 
 <?php
 
