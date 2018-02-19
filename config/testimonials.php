@@ -7,10 +7,6 @@ $quote_craft = <<<QUOTE
 QUOTE;
 
 $quote_humhub = <<<QUOTE
-
-
-
-
 <p>Yii Framework is our rock solid foundation and provides us with numerous well designed features already out of the box.
 Especially the flexibility in form of modules or the event concept, perfectly match our requirements.
 In and above that, Yii has very active and helpful community!</p>
@@ -18,6 +14,15 @@ In and above that, Yii has very active and helpful community!</p>
     CEO of HumHub
 </p>
 QUOTE;
+
+$quote_luya = <<<QUOTE
+<p>For us, the well-thought-out, solid Yii Framework is the giant upon whose shoulders LUYA is built.
+We are happy to be a part of the passionate Yii community.</p>
+<p><b>Basil Suter</b><br>
+    Lead developer of LUYA
+</p>
+QUOTE;
+
 
 return [
     [
@@ -33,5 +38,12 @@ return [
         'url' => 'https://www.humhub.org/en',
         'description' => 'HumHub is a free social network software and framework built to give you the tools to make communication and collaboration easy and successful.',
         'quote' => $quote_humhub,
+    ],
+    [
+        'image' => '@web/image/testimonials/luya.png',
+        'title' => 'LUYA',
+        'url' => 'https://luya.io/',
+        'description' => 'LUYA is a free and open-source toolbox to build websites and web applications of any size, extending the Yii Framework with an administration, a content management system and other useful modules.',
+        'quote' => $quote_luya,
     ],
 ];
