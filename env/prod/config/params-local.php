@@ -16,7 +16,7 @@ return [
 
     'components.db' => [
         'class' => yii\db\Connection::class,
-        'dsn' => $db['dns'],
+        'dsn' => $db['dsn'],
         'username' => $db['username'],
         'password' => $db['password'],
         'charset' => 'utf8',
