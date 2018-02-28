@@ -1,10 +1,8 @@
 <?php
 
 
-namespace app\components;
+namespace app\components\mailers;
 
-
-use app\components\mailers\MailerInterface;
 use app\models\User;
 
 class EmailVerificationMailer implements MailerInterface

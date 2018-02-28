@@ -147,7 +147,7 @@ class WikiController extends BaseController
 
         // normalize slug URL
         $slug = Yii::$app->request->get('name');
-        if ($model->slug !== $slug) {
+        if ($model->slug !== (string) $slug) {
             return $this->redirect(['wiki/view', 'id' => $model->id, 'name' => $model->slug, 'revision' => $revision], 301);
         }
 
@@ -169,6 +169,7 @@ class WikiController extends BaseController
         }
 
         $model = new Wiki();
+        $model->loadDefaultValues();
         $model->scenario = 'create';
 
         if ($model->load(\Yii::$app->request->post()) && $model->save()) {

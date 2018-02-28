@@ -1,13 +1,14 @@
 <?php
 
+use app\components\object\ObjectIdentityInterface;
+use app\models\Linkable;
 use yii\helpers\Html;
-use yii\widgets\DetailView;
 
 /* @var $this yii\web\View */
 /* @var $model app\models\User */
 /* @var $extensions \app\models\Extension[] */
 /* @var $wikiPages \app\models\Wiki[] */
-/* @var $starTargets \app\models\Linkable[] */
+/* @var Linkable[]|ObjectIdentityInterface[] $starTargets */
 
 $this->title = 'Hi, ' . $model->username . '!';
 
@@ -167,13 +168,13 @@ $this->title = 'Hi, ' . $model->username . '!';
                     </p>
 
                     <ul class="profile-star-list">
-                        <?php foreach ($starTargets as $target): /** @var $target \app\models\Linkable */ ?>
+                        <?php foreach ($starTargets as $target): ?>
                             <li>
                                 <?= \app\widgets\Star::widget([
                                     'model' => $target,
                                     'starValue' => 1,
                                 ]) ?>
-                                <?= '[' . $target->getItemType() . '] ' . Html::a(Html::encode($target->getLinkTitle()), $target->getUrl()); ?>
+                                <?= '[' . $target->getObjectType() . '] ' . Html::a(Html::encode($target->getLinkTitle()), $target->getUrl()); ?>
                             </li>
                         <?php endforeach ?>
                     </ul>

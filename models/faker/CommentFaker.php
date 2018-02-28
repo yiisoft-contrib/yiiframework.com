@@ -25,8 +25,8 @@ class CommentFaker extends BaseFaker
 		$user = $this->faker->randomElement($this->dependencies[UserFaker::class]);
 
 		$comment = new Comment([
-			'object_type' => $model::COMMENT_TYPE,
-			'object_id' => $model->id,
+			'object_type' => $model->getObjectType(),
+			'object_id' => $model->getObjectId(),
 			'text' => implode("\n\n", $this->faker->paragraphs($this->faker->randomDigit + 1)),
 		]);
 		$comment->detachBehavior('blameable');

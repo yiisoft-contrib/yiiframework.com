@@ -2,6 +2,9 @@
 
 namespace app\models;
 
+use app\components\contentShare\EntityInterface;
+use app\components\object\ClassType;
+use app\components\object\ObjectIdentityInterface;
 use app\components\SluggableBehavior;
 use app\models\search\SearchableBehavior;
 use app\models\search\SearchWiki;
@@ -16,6 +19,7 @@ use yii\helpers\ArrayHelper;
 use yii\helpers\HtmlPurifier;
 use yii\helpers\Markdown;
 use yii\helpers\StringHelper;
+use yii\helpers\Url;
 
 /**
  * This is the model class for table "wiki".
@@ -46,7 +50,7 @@ use yii\helpers\StringHelper;
  * @property WikiRevision[] $latestRevisions
  *
  */
-class Wiki extends ActiveRecord implements Linkable
+class Wiki extends ActiveRecord implements Linkable, ObjectIdentityInterface, EntityInterface
 {
     const STATUS_DRAFT = 1;
     const STATUS_PENDING_APPROVAL = 2;
@@ -61,12 +65,6 @@ class Wiki extends ActiveRecord implements Linkable
     const SCENARIO_CREATE = 'create';
     const SCENARIO_UPDATE = 'update';
     const SCENARIO_LOAD = 'load';
-
-
-    /**
-     * object type used for wiki comments
-     */
-    const COMMENT_TYPE = 'Wiki';
 
     /**
      * @var string editor note on upate
@@ -139,6 +137,7 @@ class Wiki extends ActiveRecord implements Linkable
             [['tagNames'], 'safe'],
 
             ['memo', 'required', 'on' => 'update'],
+            ['status', 'integer']
         ];
     }
 
@@ -168,6 +167,10 @@ class Wiki extends ActiveRecord implements Linkable
         $revision->updater_id = $insert ? $this->creator_id : $this->updater_id;
         $revision->save(false);
         $this->savedRevision = $revision;
+
+        if (array_key_exists('status', $changedAttributes) && $changedAttributes['status'] != $this->status && (int) $this->status === self::STATUS_PUBLISHED) {
+            ContentShare::addJobs($this);
+        }
 
         return parent::afterSave($insert, $changedAttributes);
     }
@@ -324,10 +327,10 @@ class Wiki extends ActiveRecord implements Linkable
      */
     public static function onComment($event)
     {
-        /** @var $comment Comment */
+        /** @var Comment $comment */
         $comment = $event->sender;
-        if ($comment->object_type === Wiki::COMMENT_TYPE) {
-            $count = Comment::find()->forObject(Wiki::COMMENT_TYPE, $comment->object_id)->active()->count();
+        if ($comment->object_type === ClassType::WIKI) {
+            $count = Comment::find()->forObject(ClassType::WIKI, $comment->object_id)->active()->count();
             static::updateAll(['comment_count' => $count], ['id' => $comment->object_id]);
         }
     }
@@ -349,14 +352,6 @@ class Wiki extends ActiveRecord implements Linkable
     }
 
     /**
-     * @return string the type of this object, e.g. News, Extension, Wiki
-     */
-    public function getItemType()
-    {
-        return static::COMMENT_TYPE;
-    }
-
-    /**
      * @return array Yii version list
      */
     public static function getYiiVersionOptions()
@@ -366,5 +361,34 @@ class Wiki extends ActiveRecord implements Linkable
             self::YII_VERSION_11 => 'Version 1.1',
             self::YII_VERSION_ALL => 'All Versions',
         ];
+    }
+
+    /**
+     * @inheritdoc
+     */
+    public function getObjectId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * @inheritdoc
+     */
+    public function getObjectType()
+    {
+        return ClassType::WIKI;
+    }
+
+    /**
+     * @inheritdoc
+     */
+    public function getContentShareTwitterMessage()
+    {
+        $url = Url::to($this->getUrl(), true);
+        $text = '[wiki] ' . $this->getLinkTitle();
+
+        $message = StringHelper::truncate($text, 108) . " {$url} #yii";
+
+        return $message;
     }
 }

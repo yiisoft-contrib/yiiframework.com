@@ -25,7 +25,7 @@ $this->params['breadcrumbs'][] = $this->title;
 
         <div class="row">
           <div class="col-md-9">
-            <?php $form = ActiveForm::begin(['id' => 'login-form', 'options' => ['class' => 'omb_loginForm', 'autocomplete' => 'off']]); ?>
+            <?php $form = ActiveForm::begin(['id' => 'signup-form', 'options' => ['class' => 'omb_loginForm', 'autocomplete' => 'off']]); ?>
                
             <?= $form->field($model, 'username', ['inputOptions' => ['class'=>'login-control','placeholder' => $model->getAttributeLabel('username')]])->label(false) ?>
 

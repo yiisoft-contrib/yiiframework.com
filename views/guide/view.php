@@ -4,6 +4,8 @@
  * @var $guide app\models\Guide
  * @var $section app\models\GuideSection
  */
+
+use app\components\object\ClassType;
 use app\widgets\SideNav;
 use yii\helpers\Html;
 
@@ -122,7 +124,7 @@ $this->endBlock();
 <div class="comments-wrapper">
     <div class="container comments">
         <?= \app\widgets\Comments::widget([
-            'objectType' => 'tutorial',
+            'objectType' => ClassType::GUIDE,
             'objectId' => "$type/$guide->version/$guide->language/$section->name",
         ]) ?>
     </div>

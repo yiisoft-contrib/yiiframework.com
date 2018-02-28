@@ -1,9 +1,12 @@
 <?php
 /**
- * @var $model \app\models\Linkable the model object that just received a new comment
+ * @var Linkable|ObjectIdentityInterface $model the model object that just received a new comment
  * @var $comment \app\models\Comment the comment object
  * @var $user \app\models\User the user object to whom the email is sent
  */
+
+use app\components\object\ObjectIdentityInterface;
+use app\models\Linkable;
 use yii\helpers\Url;
 
 ?>
@@ -11,9 +14,9 @@ use yii\helpers\Url;
     'model' => $model,
     'user' => $user,
 ]); ?>
-A new comment was added to the following content you are following:
+A new comment was added to the content you are following:
 
-[<?= $model->getItemType() ?>] <?= $model->getLinkTitle(); ?>
+[<?= $model->getObjectType() ?>] <?= $model->getLinkTitle(); ?>
 
 <?= Url::to($model->getUrl(), true); ?>
 

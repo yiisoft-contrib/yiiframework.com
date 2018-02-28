@@ -74,12 +74,13 @@ class ExtensionController extends BaseController
 
         $query = Extension::find()->active()->with(['owner', 'category']);
 
+        $categoryModel = null;
         if ($category !== null) {
             $categoryId = (int) $category;
-            if (($category = ExtensionCategory::findOne($categoryId)) === null) {
+            if (($categoryModel = ExtensionCategory::findOne($categoryId)) === null) {
                 throw new NotFoundHttpException('The requested category does not exist.');
             }
-            $query->andWhere(['category_id' => $category->id]);
+            $query->andWhere(['category_id' => $categoryModel->id]);
         }
 
         $tagModel = null;
@@ -93,7 +94,7 @@ class ExtensionController extends BaseController
         }
 
         if ($version) {
-            $query->andWhere(['yii_version' => $version]);
+            $query->andWhere(['like', 'yii_version', $version]);
         }
 
         $dataProvider = new ActiveDataProvider([
@@ -141,7 +142,7 @@ class ExtensionController extends BaseController
         return $this->render('index', [
             'dataProvider' => $dataProvider,
             'tag' => $tagModel,
-            'category' => $category,
+            'category' => $categoryModel,
             'version' => $version,
         ]);
     }
@@ -244,11 +245,11 @@ class ExtensionController extends BaseController
     {
         $model = $this->findModelById($id);
 
-        if (UserPermissions::canAddOrUpdateExtension()) {
+        if (!UserPermissions::canAddOrUpdateExtension()) {
             throw new ForbiddenHttpException('Please go to profile and verify your email.');
         }
 
-        if (UserPermissions::canUpdateExtension($model)) {
+        if (!UserPermissions::canUpdateExtension($model)) {
             throw new ForbiddenHttpException('You are not allowed to perform this operation.');
         }
 
@@ -304,8 +305,8 @@ class ExtensionController extends BaseController
         if (UserPermissions::canUpdateExtension($model)) {
             $file = new File();
             if ($file->load(Yii::$app->request->post())) {
-                $file->object_type = Extension::FILE_TYPE;
-                $file->object_id = $model->id;
+                $file->object_type = $model->getObjectType();
+                $file->object_id = $model->getObjectId();
                 $file->file_name = UploadedFile::getInstance($file, 'file_name');
                 if ($file->save()) {
 

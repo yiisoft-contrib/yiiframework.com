@@ -2,6 +2,8 @@
 
 namespace app\models;
 
+use app\components\object\ClassType;
+use app\components\object\ObjectIdentityInterface;
 use yii\base\InvalidParamException;
 use yii\db\Expression;
 
@@ -18,7 +20,10 @@ use yii\db\Expression;
  */
 class Rating extends ActiveRecord
 {
-    public static $modelClasses = ['Comment', 'Wiki', 'Extension'];
+    /**
+     * @var string[] Available object types for rating.
+     */
+    public static $availableObjectTypes = [ClassType::WIKI, ClassType::EXTENSION, ClassType::COMMENT];
 
     /**
      * @inheritdoc
@@ -41,24 +46,27 @@ class Rating extends ActiveRecord
      */
     public function getModel()
     {
-        if (!in_array($this->object_type, static::$modelClasses, true)) {
+        if (!in_array($this->object_type, static::$availableObjectTypes, true)) {
             return null;
         }
-        /** @var $modelClass ActiveRecord */
-        $modelClass = "app\\models\\{$this->object_type}";
+
+        /** @var Comment|Wiki|Extension $modelClass */
+        $modelClass = ClassType::getClass($this->object_type);
         return $modelClass::findOne($this->object_id);
     }
 
     /**
      * Returns the vote counts for the specified model.
-     * @param ActiveRecord $model the specified model
+     *
+     * @param ObjectIdentityInterface|ActiveRecord $model the specified model
+     *
      * @return array the vote counts (total votes, up votes)
      */
     public static function getVotes($model)
     {
         $row = static::find()
             ->select(['total_votes' => 'COUNT(*)', 'up_votes' => 'SUM(rating)'])
-            ->where(['object_type' => $model->formName(), 'object_id' => (int)$model->primaryKey])
+            ->where(['object_type' => $model->getObjectType(), 'object_id' => $model->getObjectId()])
             ->asArray()
             ->one();
 
@@ -67,17 +75,18 @@ class Rating extends ActiveRecord
 
     /**
      * Casts a vote to the specified content object.
-     * @param ActiveRecord $model the type of the content object
+     * @param ObjectIdentityInterface $model the type of the content object
      * @param integer $userID the user ID
      * @param integer $vote the vote (1 means up vote, 0 means down vote)
+     *
      * @return array the updated vote information of the content object (total votes, up votes). False if the content object is invalid.
      */
     public static function castVote($model, $userID, $vote)
     {
         /** @var $rating Rating */
         $rating = static::findOne([
-            'object_type' => $model->formName(),
-            'object_id' => (int)$model->primaryKey,
+            'object_type' => $model->getObjectType(),
+            'object_id' => $model->getObjectId(),
             'user_id' => $userID,
         ]);
 
@@ -85,8 +94,8 @@ class Rating extends ActiveRecord
 
         if ($rating === null) {
             $rating = new static;
-            $rating->object_type = $model->formName();
-            $rating->object_id = (int)$model->primaryKey;
+            $rating->object_type = $model->getObjectType();
+            $rating->object_id = $model->getObjectId();
             $rating->user_id = $userID;
             $rating->rating = $vote;
             $rating->save(false);
@@ -110,6 +119,7 @@ class Rating extends ActiveRecord
 
     /**
      * @param ActiveRecord $model
+     *
      * @return array
      */
     public static function updateModelRating($model)

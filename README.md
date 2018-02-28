@@ -31,16 +31,13 @@ git clone https://github.com/yiisoft-contrib/yiiframework.com.git
 cd yiiframework.com
 
 # install the composer asset plugin globally, if you haven't done so before
-composer global require "fxp/composer-asset-plugin:~1.3.1"
+composer global require "fxp/composer-asset-plugin:^1.4.2"
 
 # install the dependent composer packages
 composer install
 
 # install gulp globally if you haven't done so before
 npm install -g gulp-cli
-
-# install browsersync globally if you haven't done so before
-npm install -g browser-sync
 
 # At this stage if you're on Windows and having trouble
 npm install -g npm
@@ -76,7 +73,19 @@ Configure database connection in `config/params-local.php`. You may copy-paste a
         'scope' => 'user:email',
     ],
 ],
-'siteAbsoluteUrl' => 'http://yiiframework.local'
+'siteAbsoluteUrl' => 'http://yiiframework.local',
+
+/**
+ * @see https://apps.twitter.com/app/new
+ *
+ * After creating an app you need to fill accessToken and accessTokenSecret:
+ *
+ * Open App -> Keys and Access Tokens -> You Access Token -> Create my access token
+ */
+'twitter.consumerKey' => '',
+'twitter.consumerSecret' => '',
+'twitter.accessToken' => '',
+'twitter.accessTokenSecret' => ''
 ```
 
 Continure with the following commands:

@@ -2,7 +2,10 @@
 
 namespace app\models;
 
+use app\components\contentShare\EntityInterface;
 use app\components\DiffBehavior;
+use app\components\object\ClassType;
+use app\components\object\ObjectIdentityInterface;
 use app\components\packagist\Package;
 use app\components\packagist\PackagistApi;
 use app\components\UserPermissions;
@@ -16,6 +19,7 @@ use yii\behaviors\BlameableBehavior;
 use yii\db\Expression;
 use yii\helpers\ArrayHelper;
 use yii\helpers\Html;
+use yii\helpers\StringHelper;
 use yii\helpers\Url;
 use yii\web\HttpException;
 
@@ -50,7 +54,7 @@ use yii\web\HttpException;
  * @property User $owner
  * @property ExtensionCategory $category
  */
-class Extension extends ActiveRecord implements Linkable
+class Extension extends ActiveRecord implements Linkable, ObjectIdentityInterface, EntityInterface
 {
     const STATUS_DRAFT = 1;
     const STATUS_PENDING_APPROVAL = 2;
@@ -75,15 +79,6 @@ class Extension extends ActiveRecord implements Linkable
     const UPDATE_STATUS_EXPIRED = 2;
 
     const NAME_PATTERN = '[a-z][a-z0-9\-]*';
-
-    /**
-     * object type used for comments
-     */
-    const COMMENT_TYPE = 'Extension';
-    /**
-     * object type used for file uploads
-     */
-    const FILE_TYPE = 'Extension';
 
     /**
      * @var string editor note on upate
@@ -536,14 +531,6 @@ MARKDOWN;
     }
 
     /**
-     * @return string the type of this object, e.g. News, Extension, Wiki
-     */
-    public function getItemType()
-    {
-        return static::COMMENT_TYPE;
-    }
-
-    /**
      * @return array Yii version list
      */
     public static function getYiiVersionOptions()
@@ -552,5 +539,46 @@ MARKDOWN;
             self::YII_VERSION_11 => '1.1',
             self::YII_VERSION_20 => '2.0',
         ];
+    }
+
+    /**
+     * @inheritdoc
+     */
+    public function afterSave($insert, $changedAttributes)
+    {
+        if (array_key_exists('status', $changedAttributes) && $changedAttributes['status'] != $this->status && (int) $this->status === self::STATUS_PUBLISHED) {
+            ContentShare::addJobs($this);
+        }
+
+        parent::afterSave($insert, $changedAttributes);
+    }
+
+    /**
+     * @inheritdoc
+     */
+    public function getObjectId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * @inheritdoc
+     */
+    public function getObjectType()
+    {
+        return ClassType::EXTENSION;
+    }
+
+    /**
+     * @inheritdoc
+     */
+    public function getContentShareTwitterMessage()
+    {
+        $url = Url::to($this->getUrl(), true);
+        $text = '[extension] ' . $this->name . ': ' . $this->tagline;
+
+        $message = StringHelper::truncate($text, 108) . " {$url} #yii";
+
+        return $message;
     }
 }

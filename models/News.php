@@ -4,11 +4,16 @@ namespace app\models;
 
 use app\models\search\SearchNews;
 use app\models\search\SearchableBehavior;
+use app\components\contentShare\EntityInterface;
+use app\components\object\ClassType;
+use app\components\object\ObjectIdentityInterface;
 use dosamigos\taggable\Taggable;
 use Yii;
 use yii\apidoc\helpers\ApiMarkdown;
 use yii\behaviors\BlameableBehavior;
 use app\components\SluggableBehavior;
+use yii\helpers\StringHelper;
+use yii\helpers\Url;
 
 /**
  * This is the model class for table "news".
@@ -29,7 +34,7 @@ use app\components\SluggableBehavior;
  * @property News[] $relatedNews
  * @property User $creator
  */
-class News extends ActiveRecord implements Linkable
+class News extends ActiveRecord implements Linkable, ObjectIdentityInterface, EntityInterface
 {
     const STATUS_DRAFT = 1;
     const STATUS_PUBLISHED = 2;
@@ -220,10 +225,43 @@ class News extends ActiveRecord implements Linkable
     }
 
     /**
-     * @return string the type of this object, e.g. News, Extension, Wiki
+     * @inheritdoc
      */
-    public function getItemType()
+    public function afterSave($insert, $changedAttributes)
     {
-        return 'News';
+        if (array_key_exists('status', $changedAttributes) && $changedAttributes['status'] != $this->status && (int) $this->status === self::STATUS_PUBLISHED) {
+            ContentShare::addJobs($this);
+        }
+
+        parent::afterSave($insert, $changedAttributes);
+    }
+
+    /**
+     * @inheritdoc
+     */
+    public function getObjectId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * @inheritdoc
+     */
+    public function getObjectType()
+    {
+        return ClassType::NEWS;
+    }
+
+    /**
+     * @inheritdoc
+     */
+    public function getContentShareTwitterMessage()
+    {
+        $url = Url::to($this->getUrl(), true);
+        $text = '[news] ' . $this->getLinkTitle();
+
+        $message = StringHelper::truncate($text, 108) . " {$url} #yii";
+
+        return $message;
     }
 }

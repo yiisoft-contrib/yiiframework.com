@@ -122,7 +122,7 @@ class NewsController extends BaseController
 
         // normalize slug URL
         $slug = Yii::$app->request->get('name');
-        if ($model->slug !== $slug) {
+        if ($model->slug !== (string) $slug) {
             return $this->redirect(['news/view', 'id' => $model->id, 'name' => $model->slug], 301);
         }
 

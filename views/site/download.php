@@ -42,7 +42,7 @@ $this->params['breadcrumbs'][] = $this->title;
 				<p class="small">
 				The latest release of Yii 2 is <strong><?= $latest = key($versions[$version]) ?></strong>
 				released on <strong><?= $versions[$version][$latest] ?></strong>.
-				For changes in this and older Versions, see the <?= Html::a('CHANGELOG', "https://github.com/yiisoft/yii2/$latest/framework/CHANGELOG.md") ?> file.
+				For changes in this and older versions, see the <?= Html::a('CHANGELOG', "https://github.com/yiisoft/yii2/$latest/framework/CHANGELOG.md") ?> file.
 				Instructions on how to upgrade to this version can be found in the <?= Html::a('UPGRADE', "https://github.com/yiisoft/yii2/blob/$latest/framework/UPGRADE.md") ?> file.
 
 				A list of all Yii 2.x releases can be found on the <a href="https://github.com/yiisoft/yii2/releases">github repository</a>.
@@ -56,9 +56,9 @@ $this->params['breadcrumbs'][] = $this->title;
 
 				<p class="small">
 					There are two ways to install Yii 2:
-					<a href="#install-composer">using composer</a> or
-					<a href="#install-from-archive">downloading an application template</a>.
-					We highly recommend you to use former.
+					by <a href="#install-composer">using Composer</a> or
+					by <a href="#install-from-archive">downloading an application template</a>.
+					We highly recommend you to use Composer.
 				</p>
 
 				<h1 id="install-composer">Install via Composer</h1>
@@ -78,7 +78,7 @@ $this->params['breadcrumbs'][] = $this->title;
 
 				<p class="small">After installing Composer, run the following command to install the <a target="_blank" rel="noopener noreferrer" href="https://github.com/francoispluchino/composer-asset-plugin">Composer Asset Plugin</a>, which is required by Yii 2.0:</p>
 
-				<pre><code class="hljs bash language-bash">php composer.phar global require "fxp/composer-asset-plugin:^1.2.0"</code></pre>
+				<pre><code class="hljs bash language-bash">php composer.phar global require "fxp/composer-asset-plugin:^1.4.2"</code></pre>
 
 				<p class="small">
 					Now choose one of the application templates to start installing Yii 2.0.
@@ -159,7 +159,7 @@ $this->params['breadcrumbs'][] = $this->title;
 
 				<p class="small">First, make sure you have the latest version of the Composer Asset Plugin:</p>
 
-				<pre><code class="hljs bash language-bash">php composer.phar global require "fxp/composer-asset-plugin:^1.2.0"</code></pre>
+				<pre><code class="hljs bash language-bash">php composer.phar global require "fxp/composer-asset-plugin:^1.4.2"</code></pre>
 
 				<p class="small">Then upgrade Yii and its dependencies by running:</p>
 
@@ -195,7 +195,7 @@ $this->params['breadcrumbs'][] = $this->title;
 
 				<p class="small">
 					The Definitive Guide to Yii 2.0 and the API Documentation are available for offline browsing.
-					Below you will find the download packages including the HTML files of Guide and Api Documentation
+					Below you will find the download packages including the HTML files of Guide and API Documentation
 					as well as links to the PDF versions of the Guide in different languages.
 				</p>
 
@@ -241,14 +241,14 @@ $this->params['breadcrumbs'][] = $this->title;
 				</div>
 				<?php $version = '1.1'; ?>
 
-				<p class="text-center medium">Yii 1.1 is currently under <a href="/news/90/update-on-yii-1-1-support-and-end-of-life/">maintenance mode</a>.</p>
+				<p class="text-center medium">Yii 1.1 is currently in <a href="/news/90/update-on-yii-1-1-support-and-end-of-life/">maintenance mode</a>.</p>
 				<p class="text-center">Continued support and bug fixes for this version have been provided until <b><?= $versionInfo[$version]['support-until'] ?></b>.</p>
 				<p class="text-center">Security fixes and PHP 7 compatibility until <b><?= $versionInfo[$version]['security-until'] ?></b>.</p>
 
 				<p class="small">
 					The latest release of Yii 1.1 is <strong><?= $latest = key($versions[$version]) ?></strong>
 					released on <strong><?= $versions[$version][$latest] ?></strong>.
-					For changes in this and older Versions, see the <?= Html::a('CHANGELOG', "https://github.com/yiisoft/yii/blob/$latest/CHANGELOG") ?> file.
+					For changes in this and older versions, see the <?= Html::a('CHANGELOG', "https://github.com/yiisoft/yii/blob/$latest/CHANGELOG") ?> file.
 					Instructions on how to upgrade to this version can be found in the <?= Html::a('UPGRADE', "https://github.com/yiisoft/yii/blob/$latest/UPGRADE") ?> file.
 				</p>
 

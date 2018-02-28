@@ -38,6 +38,9 @@ class ContactForm extends Model
     {
         return [
             'verifyCode' => 'Verification Code',
+            'name' => 'Your Name',
+            'email' => 'Your Email',
+            'body' => 'Message',
         ];
     }
 
@@ -52,7 +55,7 @@ class ContactForm extends Model
             Yii::$app->mailer->compose()
                 ->setTo($email)
                 ->setFrom([$this->email => $this->name])
-                ->setSubject($this->subject)
+                ->setSubject('[Contact] ' . $this->subject)
                 ->setTextBody($this->body)
                 ->send();
 

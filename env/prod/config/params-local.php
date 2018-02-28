@@ -1,4 +1,7 @@
 <?php
+
+$db = require __DIR__ . '/db.php';
+
 return [
     'authclients' => [
         'github' => [
@@ -9,5 +12,30 @@ return [
         ],
     ],
 
-    'siteAbsoluteUrl' => 'https://yiiframework.com'
+    'siteAbsoluteUrl' => 'https://www.yiiframework.com',
+
+    'components.db' => [
+        'class' => yii\db\Connection::class,
+        'dsn' => $db['dsn'],
+        'username' => $db['username'],
+        'password' => $db['password'],
+        'charset' => 'utf8',
+        'on afterOpen' => function($event) {
+            /** @var $db \yii\db\Connection */
+            $db = $event->sender;
+            $db->createCommand("SET time_zone = '+00:00';")->execute();
+        },
+    ],
+
+    /**
+     * @see https://apps.twitter.com/app/new
+     *
+     * After creating an app you need to fill accessToken and accessTokenSecret:
+     *
+     * Open App -> Keys and Access Tokens -> You Access Token -> Create my access token
+     */
+    'twitter.consumerKey' => '',
+    'twitter.consumerSecret' => '',
+    'twitter.accessToken' => '',
+    'twitter.accessTokenSecret' => ''
 ];

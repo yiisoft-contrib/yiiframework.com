@@ -2,6 +2,8 @@
 
 namespace app\models;
 
+use app\components\object\ClassType;
+use app\components\object\ObjectIdentityInterface;
 use Yii;
 use yii\behaviors\BlameableBehavior;
 
@@ -22,15 +24,15 @@ use yii\behaviors\BlameableBehavior;
  *
  * @property User $user
  */
-class Comment extends ActiveRecord
+class Comment extends ActiveRecord implements ObjectIdentityInterface
 {
     const STATUS_DELETED = 0;
     const STATUS_ACTIVE = 10;
 
     /**
-     * @var array Allow class for star
+     * @var string[] Available object types for comments.
      */
-    public static $modelClasses = ['Wiki', 'Extension'];
+    public static $availableObjectTypes = [ClassType::WIKI, ClassType::EXTENSION];
 
     /**
      * @inheritdoc
@@ -97,13 +99,33 @@ class Comment extends ActiveRecord
         return $this->hasOne(User::className(), ['id' => 'user_id']);
     }
 
+    /**
+     * @return ActiveRecord
+     */
     public function getModel()
     {
-        if (!in_array($this->object_type, static::$modelClasses, true)) {
+        if (!in_array($this->object_type, static::$availableObjectTypes, true)) {
             return null;
         }
-        /** @var $modelClass ActiveRecord */
-        $modelClass = "app\\models\\{$this->object_type}";
+
+        /** @var ActiveRecord $modelClass */
+        $modelClass = ClassType::getClass($this->object_type);
         return $modelClass::findOne($this->object_id);
+    }
+
+    /**
+     * @inheritdoc
+     */
+    public function getObjectType()
+    {
+        return ClassType::COMMENT;
+    }
+
+    /**
+     * @inheritdoc
+     */
+    public function getObjectId()
+    {
+        return $this->id;
     }
 }
