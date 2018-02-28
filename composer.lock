@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "fe138293a5464d9690012e4344b42580",
+    "content-hash": "51a412750387c5b0367b865f84887c09",
     "packages": [
         {
             "name": "2amigos/yii2-selectize-widget",
@@ -518,16 +518,16 @@
         },
         {
             "name": "bower-asset/jquery",
-            "version": "3.2.1",
+            "version": "2.2.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/jquery/jquery-dist.git",
-                "reference": "77d2a51d0520d2ee44173afdf4e40a9201f5964e"
+                "reference": "c0185ab7c75aab88762c5aae780b9d83b80eda72"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/jquery/jquery-dist/zipball/77d2a51d0520d2ee44173afdf4e40a9201f5964e",
-                "reference": "77d2a51d0520d2ee44173afdf4e40a9201f5964e",
+                "url": "https://api.github.com/repos/jquery/jquery-dist/zipball/c0185ab7c75aab88762c5aae780b9d83b80eda72",
+                "reference": "c0185ab7c75aab88762c5aae780b9d83b80eda72",
                 "shasum": ""
             },
             "type": "bower-asset-library",
@@ -545,8 +545,7 @@
                 "javascript",
                 "jquery",
                 "library"
-            ],
-            "time": "2017-03-20T19:02:00+00:00"
+            ]
         },
         {
             "name": "bower-asset/jquery-ui",
@@ -2047,12 +2046,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/yiisoft/yii2-framework.git",
-                "reference": "32da118f1254572ca53e472299cd096ac7a39efd"
+                "reference": "d2786914e120294a8f9ab97d760cd67d84b6ee8e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/yiisoft/yii2-framework/zipball/32da118f1254572ca53e472299cd096ac7a39efd",
-                "reference": "32da118f1254572ca53e472299cd096ac7a39efd",
+                "url": "https://api.github.com/repos/yiisoft/yii2-framework/zipball/d2786914e120294a8f9ab97d760cd67d84b6ee8e",
+                "reference": "d2786914e120294a8f9ab97d760cd67d84b6ee8e",
                 "shasum": ""
             },
             "require": {
@@ -2139,7 +2138,7 @@
                 "framework",
                 "yii2"
             ],
-            "time": "2017-10-19 22:28:05"
+            "time": "2018-02-27T21:16:29+00:00"
         },
         {
             "name": "yiisoft/yii2-apidoc",
@@ -2147,12 +2146,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/yiisoft/yii2-apidoc.git",
-                "reference": "ac3581f9c8db805da5a2637a27ded7dc620c5bf8"
+                "reference": "a42bd9b3e2649f16c5521bf40ba2a06ff96e09bb"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/yiisoft/yii2-apidoc/zipball/ac3581f9c8db805da5a2637a27ded7dc620c5bf8",
-                "reference": "ac3581f9c8db805da5a2637a27ded7dc620c5bf8",
+                "url": "https://api.github.com/repos/yiisoft/yii2-apidoc/zipball/a42bd9b3e2649f16c5521bf40ba2a06ff96e09bb",
+                "reference": "a42bd9b3e2649f16c5521bf40ba2a06ff96e09bb",
                 "shasum": ""
             },
             "require": {
@@ -2164,7 +2163,7 @@
                 "phpdocumentor/reflection": "^3.0.1",
                 "phpdocumentor/reflection-docblock": "^2.0.4",
                 "scrivo/highlight.php": "~8.0",
-                "yiisoft/yii2": "~2.0.4",
+                "yiisoft/yii2": "~2.0.13",
                 "yiisoft/yii2-bootstrap": "~2.0.0"
             },
             "bin": [
@@ -2174,10 +2173,6 @@
             "extra": {
                 "branch-alias": {
                     "dev-master": "2.1.x-dev"
-                },
-                "asset-installer-paths": {
-                    "npm-asset-library": "vendor/npm",
-                    "bower-asset-library": "vendor/bower"
                 }
             },
             "autoload": {
@@ -2203,7 +2198,7 @@
                 "phpdoc",
                 "yii2"
             ],
-            "time": "2017-10-16 09:17:26"
+            "time": "2018-01-19T20:05:02+00:00"
         },
         {
             "name": "yiisoft/yii2-authclient",
