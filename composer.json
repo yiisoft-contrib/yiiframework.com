@@ -37,6 +37,7 @@
         "yiisoft/yii2-jui": "~2.0.6",
 
         "bower-asset/bootstrap-sass": "3.3.6",
+        "bower-asset/jquery": "^2.2",
         "bower-asset/font-awesome": "^4.5",
         "bower-asset/bootstrap-social": "^4.11",
         "bower-asset/glidejs": "^2.0",

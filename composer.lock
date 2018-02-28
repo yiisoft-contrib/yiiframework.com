@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "3c8a960f9f2c04d2939a9a5bddf5d34e",
+    "content-hash": "86885c952ac5a780d14f3b4d436b7d3f",
     "packages": [
         {
             "name": "2amigos/yii2-selectize-widget",
@@ -2084,7 +2084,7 @@
                 "framework",
                 "yii2"
             ],
-            "time": "2017-09-12 22:32:57"
+            "time": "2017-09-12T22:32:57+00:00"
         },
         {
             "name": "yiisoft/yii2-apidoc",
@@ -2148,7 +2148,7 @@
                 "phpdoc",
                 "yii2"
             ],
-            "time": "2017-10-16 09:17:26"
+            "time": "2017-10-16T09:17:26+00:00"
         },
         {
             "name": "yiisoft/yii2-authclient",
@@ -2349,7 +2349,7 @@
                 "search",
                 "yii2"
             ],
-            "time": "2017-10-06 13:49:44"
+            "time": "2017-10-06T13:49:44+00:00"
         },
         {
             "name": "yiisoft/yii2-httpclient",
