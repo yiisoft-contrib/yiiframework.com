@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "3e545fc8cfe1cd7865e0f7460d638dd2",
+    "content-hash": "3a80f4bf95891ba497842a83ff4060fd",
     "packages": [
         {
             "name": "2amigos/yii2-selectize-widget",
@@ -181,6 +181,56 @@
                 "twitter"
             ],
             "time": "2017-06-30T22:02:01+00:00"
+        },
+        {
+            "name": "baibaratsky/yii2-rollbar",
+            "version": "v1.7.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/baibaratsky/yii2-rollbar.git",
+                "reference": "7332c97aacadbc241c52bdef7387ad7bda33ceb6"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/baibaratsky/yii2-rollbar/zipball/7332c97aacadbc241c52bdef7387ad7bda33ceb6",
+                "reference": "7332c97aacadbc241c52bdef7387ad7bda33ceb6",
+                "shasum": ""
+            },
+            "require": {
+                "rollbar/rollbar": "1.3.1",
+                "yiisoft/yii2": ">=2.0.13"
+            },
+            "type": "yii2-extension",
+            "autoload": {
+                "psr-4": {
+                    "baibaratsky\\yii\\rollbar\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-3-Clause"
+            ],
+            "authors": [
+                {
+                    "name": "Andrei Baibaratsky",
+                    "email": "andrei@baibaratsky.com"
+                }
+            ],
+            "description": "Rollbar for Yii2",
+            "homepage": "http://github.com/baibaratsky/yii2-rollbar",
+            "keywords": [
+                "debug",
+                "error",
+                "exception",
+                "log",
+                "monitoring",
+                "ratchet.io",
+                "ratchetio",
+                "rollbar",
+                "yii",
+                "yii2"
+            ],
+            "time": "2018-02-26T20:18:48+00:00"
         },
         {
             "name": "bower-asset/bootstrap",
@@ -905,6 +955,59 @@
             "time": "2018-02-23T01:58:20+00:00"
         },
         {
+            "name": "fluent/logger",
+            "version": "v1.0.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/fluent/fluent-logger-php.git",
+                "reference": "c5a19ba8eb5e15f9ade72afeffba6b6e7eb51155"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/fluent/fluent-logger-php/zipball/c5a19ba8eb5e15f9ade72afeffba6b6e7eb51155",
+                "reference": "c5a19ba8eb5e15f9ade72afeffba6b6e7eb51155",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.0"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "~4.3",
+                "phpunit/phpunit-mock-objects": "2.3.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Fluent\\Logger\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "Apache"
+            ],
+            "authors": [
+                {
+                    "name": "Shuhei Tanuma",
+                    "email": "chobieee@gmail.com"
+                },
+                {
+                    "name": "Sotaro Karasawa",
+                    "email": "sotarok@crocos.co.jp"
+                },
+                {
+                    "name": "DQNEO",
+                    "email": "dqneoo@gmail.com"
+                }
+            ],
+            "description": "a logging library for Fluentd",
+            "homepage": "http://github.com/fluent/fluent-logger-php",
+            "keywords": [
+                "log",
+                "logging"
+            ],
+            "time": "2017-02-15T07:14:53+00:00"
+        },
+        {
             "name": "guzzle/guzzle",
             "version": "v3.9.3",
             "source": {
@@ -1436,6 +1539,66 @@
                 "psr-3"
             ],
             "time": "2016-10-10T12:19:37+00:00"
+        },
+        {
+            "name": "rollbar/rollbar",
+            "version": "v1.3.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/rollbar/rollbar-php.git",
+                "reference": "0fbaf82e8da7612e3f296d6e81ce3db1c8b3e951"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/rollbar/rollbar-php/zipball/0fbaf82e8da7612e3f296d6e81ce3db1c8b3e951",
+                "reference": "0fbaf82e8da7612e3f296d6e81ce3db1c8b3e951",
+                "shasum": ""
+            },
+            "require": {
+                "ext-curl": "*",
+                "fluent/logger": "^1.0",
+                "psr/log": "~1.0.2"
+            },
+            "require-dev": {
+                "codeclimate/php-test-reporter": "dev-master",
+                "mockery/mockery": "0.9.*",
+                "monolog/monolog": "*",
+                "packfire/php5.3-compat": "*",
+                "phpmd/phpmd": "@stable",
+                "phpunit/phpunit": "4.8.*",
+                "squizlabs/php_codesniffer": "2.*"
+            },
+            "suggest": {
+                "fluent/logger": "Needed to use the 'fluent' handler for fluentd support",
+                "packfire/php5.3-compat": "for backward compatibility with PHP 5.3"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Rollbar\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Rollbar, Inc.",
+                    "email": "support@rollbar.com",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Monitors errors and exceptions and reports them to Rollbar",
+            "homepage": "http://github.com/rollbar/rollbar-php",
+            "keywords": [
+                "debugging",
+                "errors",
+                "exceptions",
+                "logging",
+                "monitoring"
+            ],
+            "time": "2017-08-02T19:32:28+00:00"
         },
         {
             "name": "samdark/sitemap",
