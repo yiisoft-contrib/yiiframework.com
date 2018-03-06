@@ -12,6 +12,10 @@ $config = [
         'log',
         app\components\BootstrapEvents::class,
     ],
+    'aliases' => [
+        '@bower' => '@vendor/bower-asset',
+        '@npm' => '@vendor/npm-asset',
+    ],
     'language' => 'en',
     'timeZone' => 'UTC',
     'components' => [

@@ -36,6 +36,7 @@
         "yiisoft/yii2-bootstrap": "~2.0.6",
         "yiisoft/yii2-jui": "~2.0.6",
 
+        "bower-asset/jquery": "2.2.*@stable",
         "bower-asset/bootstrap-sass": "3.3.6",
         "bower-asset/font-awesome": "^4.5",
         "bower-asset/bootstrap-social": "^4.11",
@@ -56,12 +57,15 @@
         "codeception/base": "^2.2.3"
     },
     "config": {
-        "process-timeout": 1800
-    },
-    "extra": {
-        "asset-installer-paths": {
-            "npm-asset-library": "vendor/npm",
-            "bower-asset-library": "vendor/bower"
+        "process-timeout": 1800,
+        "fxp-asset": {
+           "enabled": false
         }
-    }
+    },
+    "repositories": [
+        {
+            "type": "composer",
+            "url": "https://asset-packagist.org"
+        }
+    ]
 }
