@@ -18,7 +18,7 @@ PATHS:
     - "vendor/bower-asset/bootstrap/fonts/**/*"
     - "assets/src/fonts/ptsans-bold/**/*"
     - "assets/src/fonts/ptsans-regular/**/*"
-    - "assets/src/fonts/sourcecodepro/**/*"
+    - "assets/src/fonts/fira-mono/**/*"
   # Paths to Sass libraries, which can then be loaded with @import
   sass:
     - "vendor/bower-asset/bootstrap-sass/assets/stylesheets"
