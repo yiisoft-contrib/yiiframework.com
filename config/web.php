@@ -1,8 +1,8 @@
 <?php
 
 $params = array_merge(
-    require(__DIR__ . '/params.php'),
-    require(__DIR__ . '/params-local.php')
+    require __DIR__ . '/params.php',
+    require __DIR__ . '/params-local.php'
 );
 
 $config = [
@@ -41,7 +41,13 @@ $config = [
             'targets' => [
                 [
                     'class' => 'yii\log\FileTarget',
-                    'levels' => ['error', 'warning'],
+                    'levels' => ['error'],
+                    'logFile' => '@runtime/logs/web_errors.log'
+                ],
+                [
+                    'class' => 'yii\log\FileTarget',
+                    'levels' => ['warning'],
+                    'logFile' => '@runtime/logs/web_warnings.log'
                 ],
             ],
         ],
