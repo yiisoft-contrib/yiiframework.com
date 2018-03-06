@@ -167,7 +167,8 @@ class ExtensionController extends BaseController
     public function actionCreate()
     {
         if (!UserPermissions::canAddOrUpdateExtension()) {
-            throw new ForbiddenHttpException('Please go to profile and verify your email.');
+            Yii::$app->session->addFlash('warning', 'Please confirm your email.');
+            return $this->redirect(['/user/profile']);
         }
 
         $model = new Extension();
@@ -212,7 +213,8 @@ class ExtensionController extends BaseController
         $model = $this->findModelById($id);
 
         if (!UserPermissions::canAddOrUpdateExtension()) {
-            throw new ForbiddenHttpException('Please go to profile and verify your email.');
+            Yii::$app->session->addFlash('warning', 'Please confirm your email.');
+            return $this->redirect(['/user/profile']);
         }
 
         if (!UserPermissions::canUpdateExtension($model)) {
@@ -246,7 +248,8 @@ class ExtensionController extends BaseController
         $model = $this->findModelById($id);
 
         if (!UserPermissions::canAddOrUpdateExtension()) {
-            throw new ForbiddenHttpException('Please go to profile and verify your email.');
+            Yii::$app->session->addFlash('warning', 'Please confirm your email.');
+            return $this->redirect(['/user/profile']);
         }
 
         if (!UserPermissions::canUpdateExtension($model)) {
@@ -362,7 +365,8 @@ class ExtensionController extends BaseController
         $model = $this->findModelById($id);
 
         if (UserPermissions::canAddOrUpdateExtension()) {
-            throw new ForbiddenHttpException('Please go to profile and verify your email.');
+            Yii::$app->session->addFlash('warning', 'Please confirm your email.');
+            return $this->redirect(['/user/profile']);
         }
 
         if (UserPermissions::canUpdateExtension($model)) {

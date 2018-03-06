@@ -165,7 +165,8 @@ class WikiController extends BaseController
     public function actionCreate()
     {
         if (!UserPermissions::canCreateWikiPage()) {
-            throw new ForbiddenHttpException('Please go to your profile and validate email before creating a wiki article.');
+            Yii::$app->session->addFlash('warning', 'Please confirm your email, before creating a wiki article.');
+            return $this->redirect(['/user/profile']);
         }
 
         $model = new Wiki();
