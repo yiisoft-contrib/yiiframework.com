@@ -65,6 +65,42 @@ class SearchController extends BaseController
             ]
         );
     }
+
+    public function actionSuggest($q, $version = null, $language = null)
+    {
+        Yii::$app->response->format = Response::FORMAT_JSON;
+        $query = SearchActiveRecord::searchAsYouType($q, $version, $language);
+        $results = $query->search()['suggest'];
+
+        Yii::$app->response->format = Response::FORMAT_RAW;
+        Yii::$app->response->headers->add('Content-Type', 'application/json');
+
+        $suggests = array_merge(
+            isset($results['suggest-name']) ? $results['suggest-name'] : [],
+            isset($results['suggest-title']) ? $results['suggest-title'] : []
+        );
+
+        $response = [
+            'q' => $q,
+            'suggestions' => [],
+        ];
+        $uniqueTitles = [];
+        foreach ($suggests as $suggest) {
+            foreach ($suggest['options'] as $result) {
+                if (isset($uniqueTitles[$result['text']])) {
+                    continue;
+                }
+                $uniqueTitles[$result['text']] = true;
+                $response['suggestions'][] = [
+                    'title' => $result['text'],
+                    'url' => Url::toRoute(['search/global', 'q' => $result['text']]),
+                ];
+            }
+        }
+
+        return Json::encode($response, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE);
+    }
+
 /*
     public function actionSuggest($q, $version = null, $language = null)
     {
@@ -166,8 +202,13 @@ class SearchController extends BaseController
             isset($results['suggest-title']) ? $results['suggest-title'] : []
         );
 
+        $uniqueTitles = [];
         foreach ($suggests as $suggest) {
             foreach ($suggest['options'] as $result) {
+                if (isset($uniqueTitles[$result['text']])) {
+                    continue;
+                }
+                $uniqueTitles[$result['text']] = true;
                 $searchTerms[] = $result['text'];
                 $descriptions[] = '';
                 $queryURLs[] = Url::toRoute(['search/global', 'q' => $result['text']]);

@@ -29,10 +29,6 @@ renderResultList = function(resultName, limit) {
             html += '<li><p>No results.</p></li>';
         }
         html += '</ul>';
-    } else if (resultName === 'other' ){
-        html += '<ul>';
-        html += '<li>hit enter to view more search results.</li>';
-        html += '</ul>';
     } else {
         html += 'loading...';
     }
@@ -157,6 +153,53 @@ searchApidoc = function(query) {
     }
     updateSearchResults();
 };
+
+// suggestions
+
+renderSuggest = function(t, query) {
+    return $('<a />').attr('href', t.url).text(t.title).prop('outerHTML');
+};
+
+searchSuggestResults = {};
+searchSuggestResultsStatus = {};
+
+searchSuggest = function(query) {
+    // request is pending
+    if (typeof searchSuggestResultsStatus[query] == 'undefined') {
+        searchSuggestResultsStatus[query] = false;
+
+        var apiUrl = '?q=' + encodeURIComponent(query);
+        if (typeof yiiSearchVersion != 'undefined') {
+            apiUrl += '&version=' + encodeURIComponent(yiiSearchVersion);
+        }
+        if (typeof yiiSearchLanguage != 'undefined') {
+            apiUrl += '&language=' + encodeURIComponent(yiiSearchLanguage);
+        }
+
+
+        $.ajax({
+            url: yiiBaseUrl + '/search/suggest' + apiUrl,
+            dataType: "json",
+            success: function(data) {
+                //console.log(data);
+                searchSuggestResults[query] = [];
+                for(var i = 0; i < data.suggestions.length; ++i) {
+                    searchSuggestResults[query].push(renderSuggest(data.suggestions[i], query));
+                }
+                searchSuggestResultsStatus[query] = true;
+
+                searchResultCache.other.data = searchSuggestResults[query];
+                searchResultCache.other.fetched = true;
+                updateSearchResults();
+            }
+        });
+    } else if (searchSuggestResultsStatus[query] == true) {
+        searchResultCache.other.data = searchSuggestResults[query];
+        searchResultCache.other.fetched = true;
+        updateSearchResults();
+    }
+};
+
 
 renderGuide = function(t, query) {
     return $('<a />').attr('href', t.url).text(t.title).append(
@@ -476,7 +519,7 @@ jQuery(document).ready(function () {
         }
 
         searchApidoc(query);
-        //searchGuide(query);
+        searchSuggest(query);
         //searchExtension(query);
 
         // TODO search guide and others

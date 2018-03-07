@@ -249,6 +249,7 @@ abstract class SearchActiveRecord extends \yii\elasticsearch\ActiveRecord
             SearchNews::TYPE
         ];
         $query->from($indexes, $types);
+        // TODO filter by version if possible
         $query->addSuggester('suggest-title', [
             'prefix' => $queryString,
             'completion' => [
