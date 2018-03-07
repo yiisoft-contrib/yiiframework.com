@@ -4,8 +4,9 @@ namespace app\controllers;
 
 use app\components\packagist\Package;
 use app\components\packagist\PackagistApi;
-use app\models\SearchActiveRecord;
+use app\models\search\SearchActiveRecord;
 use Yii;
+use yii\data\ArrayDataProvider;
 use yii\helpers\Json;
 use yii\helpers\Url;
 use yii\web\Response;
@@ -17,7 +18,7 @@ class SearchController extends BaseController
 {
     public $searchQuery;
 
-    public function actionGlobal($q, $version = null, $language = null)
+    public function actionGlobal($q = null, $version = null, $language = null, $type = null)
     {
         if (!in_array($version, $this->getVersions(), true)) {
             $version = null;
@@ -25,16 +26,33 @@ class SearchController extends BaseController
         if (!array_key_exists($language, $this->getLanguages())) {
             $language = null;
         }
-
-        $results = new ActiveDataProvider(
-            [
-                'query' => SearchActiveRecord::search($q, $version, $language),
-                'key' => 'primaryKey',
-                'sort' => false,
-            ]
-        );
+        if (!array_key_exists($type, $this->getTypes())) {
+            $type = null;
+        }
+        // reset version an language restrictions for types that do not have the selection option
+        if ($type === 'news') {
+            $language = null;
+            $version = null;
+        } elseif (in_array($type, ['wiki', 'extension', 'api'], true)) {
+            $language = null;
+        }
 
         $this->searchQuery = $q;
+        if (empty($q)) {
+            $this->sectionTitle = 'Search';
+            $this->headTitle = "Search";
+            $results = new ArrayDataProvider();
+        } else {
+            $this->sectionTitle = 'Search results';
+            $this->headTitle = "Search results for \"$q\"";
+            $results = new ActiveDataProvider(
+                [
+                    'query' => SearchActiveRecord::search($q, $version, $language, $type),
+                    'key' => 'primaryKey',
+                    'sort' => false,
+                ]
+            );
+        }
 
         return $this->render(
             'results',
@@ -43,10 +61,47 @@ class SearchController extends BaseController
                 'queryString' => $q,
                 'version' => $version,
                 'language' => $language,
+                'type' => $type,
             ]
         );
     }
 
+    public function actionSuggest($q, $version = null, $language = null)
+    {
+        Yii::$app->response->format = Response::FORMAT_JSON;
+        $query = SearchActiveRecord::searchAsYouType($q, $version, $language);
+        $results = $query->search()['suggest'];
+
+        Yii::$app->response->format = Response::FORMAT_RAW;
+        Yii::$app->response->headers->add('Content-Type', 'application/json');
+
+        $suggests = array_merge(
+            isset($results['suggest-name']) ? $results['suggest-name'] : [],
+            isset($results['suggest-title']) ? $results['suggest-title'] : []
+        );
+
+        $response = [
+            'q' => $q,
+            'suggestions' => [],
+        ];
+        $uniqueTitles = [];
+        foreach ($suggests as $suggest) {
+            foreach ($suggest['options'] as $result) {
+                if (isset($uniqueTitles[$result['text']])) {
+                    continue;
+                }
+                $uniqueTitles[$result['text']] = true;
+                $response['suggestions'][] = [
+                    'title' => $result['text'],
+                    'url' => Url::toRoute(['search/global', 'q' => $result['text']]),
+                ];
+            }
+        }
+
+        return Json::encode($response, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE);
+    }
+
+/*
     public function actionSuggest($q, $version = null, $language = null)
     {
         if (!in_array($version, $this->getVersions())) {
@@ -56,7 +111,7 @@ class SearchController extends BaseController
             $language = null;
         }
 
-        /** @var Command $command */
+        /** @var Command $command * /
         $command = Yii::$app->elasticsearch->createCommand();
         $command->index = SearchActiveRecord::index() . '-en';
         $result = $command->suggest(['my-suggestion' => ['text' => $q, 'term' => ['field' => 'body']]]);
@@ -101,41 +156,7 @@ class SearchController extends BaseController
             )
         );
     }
-
-    /**
-     * Extension search
-     *
-     * @param string $q query
-     *
-     * @return array
-     */
-    public function actionExtension($q)
-    {
-        $keyCache = 'search/extension__dataPackagist_' . md5(serialize([$q]));
-        $packagistData = \Yii::$app->cache->get($keyCache);
-        if ($packagistData === false) {
-            $packagistData = (new PackagistApi())->search($q);
-            \Yii::$app->cache->set($keyCache, $packagistData, Yii::$app->params['cache.extensions.search']);
-        }
-
-        $this->searchQuery = $q;
-        Yii::$app->response->format = Response::FORMAT_JSON;
-        if (!$packagistData['packages']) {
-            return [];
-        }
-
-        return array_values(
-            array_map(
-                function (Package $package) {
-                    return [
-                        'title' => $package->getName(),
-                        'url' => $package->getUrl()
-                    ];
-                },
-                $packagistData['packages']
-            )
-        );
-    }
+*/
 
     public function getVersions()
     {
@@ -152,11 +173,22 @@ class SearchController extends BaseController
         return $languages;
     }
 
+    public function getTypes()
+    {
+        return [
+            SearchActiveRecord::SEARCH_GUIDE => 'Guide',
+            SearchActiveRecord::SEARCH_API => 'API',
+            SearchActiveRecord::SEARCH_EXTENSION => 'Extensions',
+            SearchActiveRecord::SEARCH_WIKI => 'Wiki',
+            SearchActiveRecord::SEARCH_NEWS => 'News',
+        ];
+    }
+
     public function actionOpensearchSuggest($q)
     {
+        Yii::$app->response->format = Response::FORMAT_JSON;
         $query = SearchActiveRecord::searchAsYouType($q, null, null);
-        $query->fields(['title']);
-        $results = $query->search()['hits']['hits'];
+        $results = $query->search()['suggest'];
 
         Yii::$app->response->format = Response::FORMAT_RAW;
         Yii::$app->response->headers->add('Content-Type', 'application/x-suggestions+json');
@@ -165,10 +197,22 @@ class SearchController extends BaseController
         $descriptions = [];
         $queryURLs = [];
 
-        foreach ($results as $result) {
-            $searchTerms[] = $result->title;
-            $descriptions[] = $result->title;
-            $queryURLs[] = Url::toRoute(['search/global', 'q' => $result->title]);
+        $suggests = array_merge(
+            isset($results['suggest-name']) ? $results['suggest-name'] : [],
+            isset($results['suggest-title']) ? $results['suggest-title'] : []
+        );
+
+        $uniqueTitles = [];
+        foreach ($suggests as $suggest) {
+            foreach ($suggest['options'] as $result) {
+                if (isset($uniqueTitles[$result['text']])) {
+                    continue;
+                }
+                $uniqueTitles[$result['text']] = true;
+                $searchTerms[] = $result['text'];
+                $descriptions[] = '';
+                $queryURLs[] = Url::toRoute(['search/global', 'q' => $result['text']]);
+            }
         }
 
         return Json::encode([$q, $searchTerms, $descriptions, $queryURLs], JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE);

@@ -11,7 +11,11 @@ use yii\helpers\Html;
 /** @var $tag \app\models\ExtensionTag */
 ?>
 <?= Html::a('<span class="big">Create</span><span class="small">new extension</span>', ['create'], ['class' => 'btn btn-block btn-new-extension']) ?>
-<input type="text" class="form-control extension-search" id="search" name="q" placeholder="Search extension…" autocomplete="off" value="">
+<?= \app\widgets\SearchForm::widget([
+    'type' => 'extension',
+    'version' => isset($version) ? $version : '2.0',
+    'placeholder' => 'Search Extensions…',
+]) ?>
 
 <?php if (isset($sort)): ?>
     <h3 class="extension-side-title">Sorting by</h3>

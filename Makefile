@@ -26,8 +26,11 @@ deploy:
 docs: api guide download
 
 api: api-1.0 api-1.1 api-2.0
+	./yii search/rebuild api
+
 guide: guide-1.0 guide-1.1 guide-2.0
-# TODO: blog tutorial
+	./yii search/rebuild guide
+
 download: download-2.0
 
 api-%: yii-%
@@ -79,7 +82,3 @@ yii-2.0:
 
 composer:
 	cd data && (test -f composer.phar || (php -r "readfile('https://getcomposer.org/installer');" | php))
-
-clean-es:
-	./yii api/drop-elasticsearch-index --interactive=0
-
