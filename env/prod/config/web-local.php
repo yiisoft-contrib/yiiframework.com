@@ -21,6 +21,7 @@ return [
         'rollbar' =>  [
             'class' => 'baibaratsky\yii\rollbar\Rollbar',
             'accessToken' => '',
+            'environment' => YII_ENV,
         ],
     ],
 ];
