@@ -14,6 +14,10 @@ return [
                 'class' => yii\redis\Connection::class,
                 'database' => 0,
             ],
+            'cookieParams' => [
+                'httponly' => true,
+                'secure' => true,
+            ],
         ],
         'cache' => [
             'class' => yii\redis\Cache::class,
