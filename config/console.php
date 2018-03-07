@@ -7,6 +7,7 @@ $params = array_merge(
 
 return [
     'id' => 'yiiframework.com-console',
+    'name' => 'Yii Framework',
     'basePath' => dirname(__DIR__),
     'bootstrap' => ['log', 'queue'],
     'controllerNamespace' => 'app\commands',

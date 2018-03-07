@@ -26,6 +26,12 @@ return [
             $db->createCommand("SET time_zone = '+00:00';")->execute();
         },
     ],
+    'components.mailer' => [
+        'class' => yii\swiftmailer\Mailer::class,
+        'viewPath' => '@app/mail',
+//        'transport' => new Swift_SmtpTransport,
+        'useFileTransport' => false,
+    ],
 
     /**
      * @see https://apps.twitter.com/app/new

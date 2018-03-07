@@ -7,6 +7,7 @@ $params = array_merge(
 
 $config = [
     'id' => 'yiiframework.com',
+    'name' => 'Yii Framework',
     'basePath' => dirname(__DIR__),
     'bootstrap' => [
         'log',
