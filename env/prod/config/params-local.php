@@ -13,6 +13,8 @@ return [
     ],
 
     'siteAbsoluteUrl' => 'https://www.yiiframework.com',
+    'adminEmail' => 'admin@yiiframework.com',
+    'supportEmail' => 'admin@yiiframework.com',
 
     'components.db' => [
         'class' => yii\db\Connection::class,
