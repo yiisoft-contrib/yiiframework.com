@@ -39,6 +39,8 @@ class SearchForm extends Widget
             'autocomplete' => 'off',
         ]);
 
+        $html .= ' ' . Html::submitButton('Search', ['class' => 'btn btn-primary sr-only']);
+
         $html .= Html::endForm();
         return $html;
     }

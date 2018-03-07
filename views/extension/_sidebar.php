@@ -11,11 +11,6 @@ use yii\helpers\Html;
 /** @var $tag \app\models\ExtensionTag */
 ?>
 <?= Html::a('<span class="big">Create</span><span class="small">new extension</span>', ['create'], ['class' => 'btn btn-block btn-new-extension']) ?>
-<?= \app\widgets\SearchForm::widget([
-    'type' => 'extension',
-    'version' => isset($version) ? $version : '2.0',
-    'placeholder' => 'Search Extensions…',
-]) ?>
 
 <?php if (isset($sort)): ?>
     <h3 class="extension-side-title">Sorting by</h3>

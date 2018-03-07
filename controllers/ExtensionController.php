@@ -5,6 +5,7 @@ namespace app\controllers;
 use app\components\UserPermissions;
 use app\jobs\ExtensionImportJob;
 use app\models\File;
+use app\models\search\SearchActiveRecord;
 use app\models\Star;
 use app\models\Extension;
 use app\models\ExtensionCategory;
@@ -27,6 +28,8 @@ class ExtensionController extends BaseController
 {
     public $sectionTitle = 'Yii Framework Extensions';
     public $headTitle = 'Extensions';
+    public $searchScope = SearchActiveRecord::SEARCH_EXTENSION;
+
 
     /**
      * @inheritdoc

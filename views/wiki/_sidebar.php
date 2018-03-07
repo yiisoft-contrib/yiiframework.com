@@ -13,12 +13,6 @@ use yii\helpers\Html;
 ?>
 <?= Html::a('<span class="big">Write</span><span class="small">new article</span>', ['create'], ['class' => 'btn btn-block btn-new-wiki-article']) ?>
 
-<?= \app\widgets\SearchForm::widget([
-    'type' => 'wiki',
-    'version' => isset($version) ? $version : '2.0',
-    'placeholder' => 'Search Wiki…',
-]) ?>
-
 <?php if (isset($sort)): ?>
     <h3 class="wiki-side-title">Sorting by</h3>
     <!--ul class="wiki-side-menu">

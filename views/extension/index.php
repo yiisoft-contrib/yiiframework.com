@@ -42,6 +42,16 @@ $this->endBlock();
                 }
                 echo implode(', ', $parts);
                 ?></small></h1>
+
+	        <?php if (empty($category) && empty($tag)) {
+	        	echo \app\widgets\SearchForm::widget([
+                    'type' => \app\models\search\SearchActiveRecord::SEARCH_EXTENSION,
+                    'version' => isset($version) ? $version : '2.0',
+                    'placeholder' => 'Search Extensions…',
+                ]);
+			} ?>
+
+
             <?= \yii\widgets\ListView::widget([
                 'dataProvider' => $dataProvider,
                 'itemView' => '_view',

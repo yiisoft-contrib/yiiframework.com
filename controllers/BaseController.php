@@ -15,4 +15,9 @@ abstract class BaseController extends Controller
      * Defaults to [[sectionTitle]], if not explicitly set.
      */
     public $headTitle;
+    /**
+     * @var string limit the global search field scope. Make it aware of the current site context, e.g. only
+     * search Wiki when looking at the Wiki.
+     */
+    public $searchScope;
 }

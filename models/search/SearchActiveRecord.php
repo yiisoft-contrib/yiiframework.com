@@ -308,4 +308,20 @@ abstract class SearchActiveRecord extends \yii\elasticsearch\ActiveRecord
         $body = strip_tags($body);
         return $body;
     }
+
+    public static function getTypeName($type)
+    {
+        return static::getTypes()[$type] ?? '';
+    }
+
+    public static function getTypes()
+    {
+        return [
+            SearchActiveRecord::SEARCH_GUIDE => 'Guide',
+            SearchActiveRecord::SEARCH_API => 'API',
+            SearchActiveRecord::SEARCH_EXTENSION => 'Extensions',
+            SearchActiveRecord::SEARCH_WIKI => 'Wiki',
+            SearchActiveRecord::SEARCH_NEWS => 'News',
+        ];
+    }
 }

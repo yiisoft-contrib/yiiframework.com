@@ -3,6 +3,7 @@
 namespace app\controllers;
 
 use app\models\Guide;
+use app\models\search\SearchActiveRecord;
 use Yii;
 use yii\filters\HttpCache;
 use yii\web\NotFoundHttpException;
@@ -10,6 +11,8 @@ use yii\web\NotFoundHttpException;
 class GuideController extends BaseController
 {
     public $sectionTitle = 'The Definitive Guide to Yii';
+    public $searchScope = SearchActiveRecord::SEARCH_GUIDE;
+
 
     public function actionIndex($version, $language, $type = 'guide')
     {

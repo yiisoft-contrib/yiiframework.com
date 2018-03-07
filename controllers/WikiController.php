@@ -3,6 +3,7 @@
 namespace app\controllers;
 
 use app\components\UserPermissions;
+use app\models\search\SearchActiveRecord;
 use app\models\Star;
 use app\models\Wiki;
 use app\models\WikiCategory;
@@ -21,6 +22,8 @@ class WikiController extends BaseController
 {
     public $sectionTitle = 'Yii Framework Wiki';
     public $headTitle = 'Wiki';
+    public $searchScope = SearchActiveRecord::SEARCH_WIKI;
+
 
     /**
      * @inheritdoc

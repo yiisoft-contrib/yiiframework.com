@@ -3,6 +3,7 @@
 namespace app\controllers;
 
 use app\apidoc\ApiRenderer;
+use app\models\search\SearchActiveRecord;
 use Yii;
 use yii\helpers\Json;
 use yii\web\Controller;
@@ -20,6 +21,8 @@ use yii\web\UnsupportedMediaTypeHttpException;
 class ApiController extends BaseController
 {
     public $sectionTitle = "API Documentation for Yii";
+    public $searchScope = SearchActiveRecord::SEARCH_API;
+
 
     public function behaviors()
     {
