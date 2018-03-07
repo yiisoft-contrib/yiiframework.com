@@ -118,11 +118,15 @@ class SearchController  extends Controller
         foreach($items as $item) {
             switch($item) {
                 case 'guide':
+                    // do not delete to make search still work while rebuilding
+                    // guide and API objects are expected to not disappear
                     // SearchGuideSection::deleteAll();
                     SearchGuideSection::setMappings();
                     $this->rebuildGuideIndex();
                     break;
                 case 'api':
+                    // do not delete to make search still work while rebuilding
+                    // guide and API objects are expected to not disappear
                     // SearchGuideSection::deleteAll();
                     SearchApiType::setMappings();
                     $this->rebuildApiIndex();
@@ -150,8 +154,8 @@ class SearchController  extends Controller
     }
 
     /**
-     * @param ActiveRecord $modelClass
-     * @param SearchActiveRecord $searchClass
+     * @param ActiveRecord|string $modelClass
+     * @param SearchActiveRecord|string $searchClass
      */
     private function rebuildIndexFor($modelClass, $searchClass, $with = [])
     {
@@ -285,8 +289,7 @@ class SearchController  extends Controller
                 // elasticsearch
                 $file = $target . '/' . $matches[2] . '.html';
                 if (!file_exists($file)) {
-//                    echo "file not found: $file\n";
-                    echo "f";
+                    echo "f"; // file not found
                     continue;
                 }
                 echo '.';
