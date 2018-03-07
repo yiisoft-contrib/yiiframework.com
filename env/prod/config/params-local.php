@@ -1,4 +1,7 @@
 <?php
+
+$db = require __DIR__ . '/db.php';
+
 return [
     'authclients' => [
         'github' => [
@@ -9,7 +12,28 @@ return [
         ],
     ],
 
-    'siteAbsoluteUrl' => 'https://yiiframework.com',
+    'siteAbsoluteUrl' => 'https://www.yiiframework.com',
+    'adminEmail' => 'admin@yiiframework.com',
+    'supportEmail' => 'admin@yiiframework.com',
+
+    'components.db' => [
+        'class' => yii\db\Connection::class,
+        'dsn' => $db['dsn'],
+        'username' => $db['username'],
+        'password' => $db['password'],
+        'charset' => 'utf8',
+        'on afterOpen' => function($event) {
+            /** @var $db \yii\db\Connection */
+            $db = $event->sender;
+            $db->createCommand("SET time_zone = '+00:00';")->execute();
+        },
+    ],
+    'components.mailer' => [
+        'class' => yii\swiftmailer\Mailer::class,
+        'viewPath' => '@app/mail',
+//        'transport' => new Swift_SmtpTransport,
+        'useFileTransport' => false,
+    ],
 
     /**
      * @see https://apps.twitter.com/app/new

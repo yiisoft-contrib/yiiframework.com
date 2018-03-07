@@ -5,11 +5,14 @@ namespace app\commands;
 use app\models\SearchApiPrimitive;
 use app\models\SearchApiType;
 use Yii;
+use yii\apidoc\models\ClassDoc;
 use yii\apidoc\models\ConstDoc;
 use yii\apidoc\models\Context;
 use yii\apidoc\models\EventDoc;
+use yii\apidoc\models\InterfaceDoc;
 use yii\apidoc\models\MethodDoc;
 use yii\apidoc\models\PropertyDoc;
+use yii\apidoc\models\TraitDoc;
 use yii\base\ErrorHandler;
 use yii\helpers\Console;
 use app\apidoc\ApiRenderer;
@@ -84,10 +87,6 @@ class ApiController extends \yii\apidoc\commands\ApiController
             }
             file_put_contents("$target/api/index.html", str_replace('<h1>Class Reference</h1>', '<h1>Yii Framework ' . $version . ' API Documentation</h1>', file_get_contents("$target/api/index.html")));
 
-            if (!$this->populateElasticsearch1x($source, $target)) {
-                return 1;
-            }
-
             $this->stdout("Finished API $version.\n\n", Console::FG_GREEN);
         }
 
@@ -104,96 +103,6 @@ class ApiController extends \yii\apidoc\commands\ApiController
         ]);
     }
 
-    public function actionDropElasticsearchIndex()
-    {
-        echo "currently not implemented\n";
-// TODO adjust this
-//        if ($this->confirm('really drop the whole elasticsearch index? You need to rebuild it afterwards!')) {
-//            SearchApiType::getDb()->createCommand()->deleteIndex(SearchApiType::index());
-//            sleep(1);
-//            SearchApiType::setMappings();
-//            SearchApiPrimitive::setMappings();
-//            return 0;
-//        }
-        return 1;
-    }
-
-    protected function populateElasticsearch1x($source, $target)
-    {
-        // search for files to process
-        if (($files = $this->searchFiles($source)) === false) {
-            return false;
-        }
-
-        // load context from cache
-        $context = $this->loadContext($target);
-        $this->stdout('Checking for updated files... ');
-        foreach ($context->files as $file => $sha) {
-            if (!file_exists($file)) {
-                $this->stdout('At least one file has been removed. Rebuilding the context...');
-                $context = new Context();
-                if (($files = $this->searchFiles($source)) === false) {
-                    return false;
-                }
-                break;
-            }
-            if (sha1_file($file) === $sha) {
-                unset($files[$file]);
-            }
-        }
-        $this->stdout('done.' . PHP_EOL, Console::FG_GREEN);
-
-        // process files
-        $fileCount = count($files);
-        $this->stdout($fileCount . ' file' . ($fileCount == 1 ? '' : 's') . ' to update.' . PHP_EOL);
-        Console::startProgress(0, $fileCount, 'Processing files... ', false);
-        $done = 0;
-        foreach ($files as $file) {
-            if (file_exists("$target/api/" . basename($file, '.php') . '.html')) {
-                $context->addFile($file);
-            }
-            Console::updateProgress(++$done, $fileCount);
-        }
-        Console::endProgress(true);
-        $this->stdout('done.' . PHP_EOL, Console::FG_GREEN);
-
-        // save processed data to cache
-        $this->storeContext($context, $target);
-
-        $this->updateContext($context);
-
-        $types = array_merge($context->classes, $context->interfaces, $context->traits);
-
-        try {
-            Console::startProgress(0, $count = count($types), 'populating elasticsearch index...', false);
-            $version = $this->version;
-            // first delete all records for this version
-            SearchApiType::setMappings();
-            SearchApiPrimitive::setMappings();
-//        ApiPrimitive::deleteAllForVersion($version);
-//        SearchApiType::deleteAllForVersion($version);
-            sleep(1);
-            $i = 0;
-            foreach ($types as $type) {
-                SearchApiType::createRecord($type, $version);
-                Console::updateProgress(++$i, $count);
-            }
-            Console::endProgress(true, true);
-            $this->stdout("done.\n", Console::FG_GREEN);
-        } catch (\Exception $e) {
-            if (YII_DEBUG) {
-                $this->stdout("!!! FAILED !!! Search will not be available.\n", Console::FG_RED, Console::BOLD);
-                $this->stdout(((string) $e) . "\n\n");
-            } else {
-                throw $e;
-            }
-        }
-
-        $this->writeJsonFiles1x($target, $types);
-
-        return true;
-    }
-
     public function splitJson($target)
     {
         $json = file_get_contents("$target/types.json");
@@ -205,6 +114,7 @@ class ApiController extends \yii\apidoc\commands\ApiController
         file_put_contents("$target/json/typeNames.json", Json::encode(
             array_values(array_map(function($type) {
                 return [
+                    'type' => $type['type'],
                     'name' => $type['name'],
                     'description' => isset($type['shortDescription']) ? $type['shortDescription'] : '',
                 ];
@@ -247,9 +157,18 @@ class ApiController extends \yii\apidoc\commands\ApiController
         // write types file:
         file_put_contents("$target/json/typeNames.json", Json::encode(
             array_values(array_map(function($type) {
+                $classType = null;
+                if ($type instanceof ClassDoc) {
+                    $classType = 'class';
+                } elseif ($type instanceof InterfaceDoc) {
+                    $classType = 'interface';
+                } elseif ($type instanceof TraitDoc) {
+                    $classType = 'trait';
+                }
                 return [
                     'name' => $type->name,
                     'description' => $type->shortDescription,
+                    'type' => $classType,
                 ];
             }, $types))
         ));

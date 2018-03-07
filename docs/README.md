@@ -10,3 +10,17 @@ UI Concepts
 - TODO flash messages
 
 - TODO language dependent stylings
+
+
+Search
+------
+
+Search is implemented based on elasticsearch. For searching accross multiple languages, a set of
+different indexes is created.
+
+We also differentiate between indices that are rebuilt completely when docs are generated and indexes that
+are update on the fly when data changes.
+
+For each language a different index is created.
+
+All indexed data can be updated using the `./yii search/rebuild` command.

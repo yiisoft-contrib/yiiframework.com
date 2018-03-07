@@ -45,7 +45,7 @@ $state-warning-text:             $yii-yellow;
 
 $font-family-sans-serif: 'pt_sansregular', sans-serif;
 $font-family-base: $font-family-sans-serif;
-$font-family-monospace:   'source_code_proregular', monospace;
+$font-family-monospace:   'Fira Mono', monospace;
 
 $bold-headings-font-family: 'pt_sansbold', sans-serif;
 //$headings-color: $gray;
@@ -90,18 +90,14 @@ $grid-float-breakpoint: 1100px;
 $link-visited-color: $yii-blue;
 $font-size-codeblocks: $font-size-base;
 
-$blue-navbar: true;
-
-@if $blue-navbar {
-  $navbar-inverse-color:                      lighten($gray-light, 20%);
-  $navbar-inverse-bg:                         $eshill-blue;//darken($yii-blue, 15%);
-  // Inverted navbar links
-  $navbar-inverse-link-color:                 #fff;
-  // Inverted navbar toggle
-  $navbar-inverse-toggle-hover-bg:            $navbar-inverse-bg;
-  // $navbar-inverse-toggle-icon-bar-bg:         #fff;
-  $navbar-inverse-toggle-border-color:        darken($navbar-inverse-bg, 5%);
-}
+$navbar-inverse-color:                      lighten($gray-light, 20%);
+$navbar-inverse-bg:                         $eshill-blue;//darken($yii-blue, 15%);
+// Inverted navbar links
+$navbar-inverse-link-color:                 #fff;
+// Inverted navbar toggle
+$navbar-inverse-toggle-hover-bg:            $navbar-inverse-bg;
+// $navbar-inverse-toggle-icon-bar-bg:         #fff;
+$navbar-inverse-toggle-border-color:        darken($navbar-inverse-bg, 5%);
 
 //== Typography
 //

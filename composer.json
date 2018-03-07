@@ -7,7 +7,8 @@
     "license": "BSD-3-Clause",
     "minimum-stability": "stable",
     "require": {
-        "php": ">=5.6.0",
+        "php": ">=7.0.0",
+        "roave/security-advisories": "dev-master",
 
         "yiisoft/yii2": "~2.0.10@dev",
 
@@ -15,7 +16,8 @@
         "cebe/markdown-latex": "^1.1.3@dev",
 
         "yiisoft/yii2-authclient": "~2.1.0",
-        "yiisoft/yii2-elasticsearch": "~2.0.0",
+        "yiisoft/yii2-elasticsearch": "~2.1.0@dev",
+        "yiisoft/yii2-redis": "~2.0.0",
         "yiisoft/yii2-queue": "~2.0.0",
         "yiisoft/yii2-swiftmailer": "~2.0.0",
         "cebe/yii2-gravatar": "1.1",
@@ -36,6 +38,7 @@
         "yiisoft/yii2-bootstrap": "~2.0.6",
         "yiisoft/yii2-jui": "~2.0.6",
 
+        "bower-asset/jquery": "2.2.*@stable",
         "bower-asset/bootstrap-sass": "3.3.6",
         "bower-asset/font-awesome": "^4.5",
         "bower-asset/bootstrap-social": "^4.11",
@@ -46,7 +49,8 @@
         "bower-asset/codemirror-buttons": "~1.0.0",
         "composer/spdx-licenses": "^1.1",
         "zendframework/zend-feed": "^2.8",
-        "abraham/twitteroauth": "~0.7.4"
+        "abraham/twitteroauth": "~0.7.4",
+        "baibaratsky/yii2-rollbar": "^1.7"
     },
     "require-dev": {
         "yiisoft/yii2-debug": "~2.0.0",
@@ -56,12 +60,16 @@
         "codeception/base": "^2.2.3"
     },
     "config": {
-        "process-timeout": 1800
+        "process-timeout": 1800,
+        "fxp-asset": {
+           "enabled": false
+        },
+        "platform": {"php": "7.0"}
     },
-    "extra": {
-        "asset-installer-paths": {
-            "npm-asset-library": "vendor/npm",
-            "bower-asset-library": "vendor/bower"
+    "repositories": [
+        {
+            "type": "composer",
+            "url": "https://asset-packagist.org"
         }
-    }
+    ]
 }

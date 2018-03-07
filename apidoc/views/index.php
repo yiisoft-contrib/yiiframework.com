@@ -27,6 +27,10 @@ if (isset($readme)) {
     On this page you find all the classes included in version <?= $this->context->version ?>
     of the framework. You can use the dropdown menu on the top right to switch between versions.
 </p>
+<p>
+    <strong>You can search API documentation using the search form on the top.</strong>
+	You can search for class names and also method and property names, e.g. <code>ActiveRecord.save()</code> or just <code>.save()</code> or <code>::save()</code>.
+</p>
 <!-- YII_DOWNLOAD_OPTIONS -->
 
 <table class="summaryTable docIndex table table-bordered table-striped table-hover">

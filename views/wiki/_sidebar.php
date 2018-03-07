@@ -8,10 +8,10 @@ use yii\helpers\Html;
 
 /** @var $this \yii\web\View */
 /** @var $category string */
+/** @var $version string */
 /** @var $tag \app\models\WikiTag */
 ?>
 <?= Html::a('<span class="big">Write</span><span class="small">new article</span>', ['create'], ['class' => 'btn btn-block btn-new-wiki-article']) ?>
-<input type="text" class="form-control wiki-search" id="search" name="q" placeholder="Search wiki…" autocomplete="off" value="">
 
 <?php if (isset($sort)): ?>
     <h3 class="wiki-side-title">Sorting by</h3>

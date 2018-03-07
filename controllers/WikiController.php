@@ -3,6 +3,7 @@
 namespace app\controllers;
 
 use app\components\UserPermissions;
+use app\models\search\SearchActiveRecord;
 use app\models\Star;
 use app\models\Wiki;
 use app\models\WikiCategory;
@@ -21,6 +22,8 @@ class WikiController extends BaseController
 {
     public $sectionTitle = 'Yii Framework Wiki';
     public $headTitle = 'Wiki';
+    public $searchScope = SearchActiveRecord::SEARCH_WIKI;
+
 
     /**
      * @inheritdoc
@@ -165,7 +168,8 @@ class WikiController extends BaseController
     public function actionCreate()
     {
         if (!UserPermissions::canCreateWikiPage()) {
-            throw new ForbiddenHttpException('Please go to your profile and validate email before creating a wiki article.');
+            Yii::$app->session->addFlash('warning', 'Please confirm your email, before creating a wiki article.');
+            return $this->redirect(['/user/profile']);
         }
 
         $model = new Wiki();

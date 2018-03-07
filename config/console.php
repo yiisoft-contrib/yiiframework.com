@@ -1,12 +1,13 @@
 <?php
 
 $params = array_merge(
-    require(__DIR__ . '/params.php'),
-    require(__DIR__ . '/params-local.php')
+    require __DIR__ . '/params.php',
+    require __DIR__ . '/params-local.php'
 );
 
 return [
     'id' => 'yiiframework.com-console',
+    'name' => 'Yii Framework',
     'basePath' => dirname(__DIR__),
     'bootstrap' => ['log', 'queue'],
     'controllerNamespace' => 'app\commands',
@@ -47,7 +48,13 @@ return [
             'targets' => [
                 [
                     'class' => 'yii\log\FileTarget',
-                    'levels' => ['error', 'warning'],
+                    'levels' => ['error'],
+                    'logFile' => '@runtime/logs/console_errors.log'
+                ],
+                [
+                    'class' => 'yii\log\FileTarget',
+                    'levels' => ['warning'],
+                    'logFile' => '@runtime/logs/console_warnings.log'
                 ],
             ],
         ],

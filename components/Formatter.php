@@ -2,7 +2,9 @@
 
 namespace app\components;
 
+use Yii;
 use yii\apidoc\helpers\ApiMarkdown;
+use yii\apidoc\models\Context;
 use yii\helpers\HtmlPurifier;
 use yii\helpers\Markdown;
 
@@ -86,6 +88,19 @@ class Formatter extends \yii\i18n\Formatter
      */
    	public function asGuideMarkdown($markdown)
    	{
+        if (ApiMarkdown::$renderer === null) {
+            ApiMarkdown::$renderer = new \app\apidoc\GuideRenderer();
+        }
+        if (ApiMarkdown::$renderer->apiContext === null) {
+            $cacheFile = Yii::getAlias('@app/data/api-2.0/cache/apidoc.data');
+            if (file_exists($cacheFile)) {
+                $context = unserialize(file_get_contents($cacheFile));
+            } else {
+                $context = new Context();
+            }
+            ApiMarkdown::$renderer->apiContext = $context;
+        }
+
         $html = ApiMarkdown::process($markdown);
 
         $html = $this->replaceHeadlines($html);

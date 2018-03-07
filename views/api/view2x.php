@@ -55,6 +55,12 @@ $this->endBlock();
             . '</ul>'
             . '<p>This page is also available in <a href="?_format='.urlencode('json').'">JSON format</a>:<br>'
             . '<code>curl ' . Url::to(['index', 'version' => $version], true) . ' -H \'Accept: application/json\'</code></p>',
+
+//        '<div class="col-sm-2 col-md-2 col-lg-2">' => '<div class="col-sm-2 col-md-2 col-lg-2">' . \app\widgets\SearchForm::widget([
+//            'type' => 'api',
+//            'version' => $version,
+//            'placeholder' => 'Search API Docs…',
+//        ]),
     ]) ?>
 </div>
 <?php if ($doc): ?>

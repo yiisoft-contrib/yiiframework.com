@@ -16,6 +16,13 @@ $this->endBlock();
 <div class="container guide-view lang-<?= $guide->language ?>">
     <div class="guide-content content">
 
+        <?= \app\widgets\SearchForm::widget([
+            'type' => 'guide',
+            'version' => isset($version) ? $version : '2.0',
+            'language' => $guide->language,
+            'placeholder' => 'Search the Guide…',
+        ]) ?>
+
         <div class="row">
     <?php
     $count = 0;

@@ -61,6 +61,9 @@ Configure database connection in `config/params-local.php`. You may copy-paste a
 'components.db' => [
     // copy from params.php and adjust to your environment
 ],
+'components.elasticsearch' => [
+    // copy from params.php and adjust to your environment
+],
 // only if you want to test github auth:
 'authclients' => [
     'github' => [
@@ -115,6 +118,8 @@ gulp build
 # You may also build only parts of the docs, run  make help  for the available commands.
 make docs
 
+# populate the search index by running
+./yii search/rebuild
 ```
 
 ### Web Server Setup

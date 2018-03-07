@@ -4,6 +4,7 @@ namespace app\controllers;
 
 use app\components\UserPermissions;
 use app\models\NewsTag;
+use app\models\search\SearchActiveRecord;
 use Yii;
 use app\models\News;
 use app\models\NewsSearch;
@@ -20,6 +21,8 @@ class NewsController extends BaseController
 {
     public $sectionTitle = 'Yii Framework News';
     public $headTitle = 'News';
+    public $searchScope = SearchActiveRecord::SEARCH_NEWS;
+
 
     /**
      * @inheritdoc

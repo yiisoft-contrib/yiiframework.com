@@ -5,18 +5,8 @@ searchResultCache = {
         fetched: false,
         data: []
     },
-    guide: {
-        title: 'Guide',
-        fetched: false,
-        data: []
-    },
-    forum: {
-        title: 'Forum',
-        fetched: false,
-        data: []
-    },
-    extension: {
-        title: 'Extension',
+    other: {
+        title: 'Other results',
         fetched: false,
         data: []
     }
@@ -67,11 +57,12 @@ updateSearchResults = function() {
     }
 
     html += renderResultList('api', apiLimit);
-    html += renderResultList('guide', guideLimit);
+    html += renderResultList('other', guideLimit);
+    //html += renderResultList('guide', guideLimit);
 
     // TODO: display when forum search is there
     //html += renderResultList('forum', '');
-    html += renderResultList('extension', '');
+    //html += renderResultList('extension', '');
 
     $results.html(html);
 };
@@ -163,17 +154,64 @@ searchApidoc = function(query) {
     updateSearchResults();
 };
 
+// suggestions
+
+renderSuggest = function(t, query) {
+    return $('<a />').attr('href', t.url).text(t.title).prop('outerHTML');
+};
+
+searchSuggestResults = {};
+searchSuggestResultsStatus = {};
+
+searchSuggest = function(query) {
+    // request is pending
+    if (typeof searchSuggestResultsStatus[query] == 'undefined') {
+        searchSuggestResultsStatus[query] = false;
+
+        var apiUrl = '?q=' + encodeURIComponent(query);
+        if (typeof yiiSearchVersion != 'undefined') {
+            apiUrl += '&version=' + encodeURIComponent(yiiSearchVersion);
+        }
+        if (typeof yiiSearchLanguage != 'undefined') {
+            apiUrl += '&language=' + encodeURIComponent(yiiSearchLanguage);
+        }
+
+
+        $.ajax({
+            url: yiiBaseUrl + '/search/suggest' + apiUrl,
+            dataType: "json",
+            success: function(data) {
+                //console.log(data);
+                searchSuggestResults[query] = [];
+                for(var i = 0; i < data.suggestions.length; ++i) {
+                    searchSuggestResults[query].push(renderSuggest(data.suggestions[i], query));
+                }
+                searchSuggestResultsStatus[query] = true;
+
+                searchResultCache.other.data = searchSuggestResults[query];
+                searchResultCache.other.fetched = true;
+                updateSearchResults();
+            }
+        });
+    } else if (searchSuggestResultsStatus[query] == true) {
+        searchResultCache.other.data = searchSuggestResults[query];
+        searchResultCache.other.fetched = true;
+        updateSearchResults();
+    }
+};
+
+
 renderGuide = function(t, query) {
     return $('<a />').attr('href', t.url).text(t.title).append(
         $('<span class="result-annotation">').text(t.language + ', ' + t.version)
     ).prop('outerHTML');
 };
 
+/* TODO currently no live results for other types than api
 searchGuideResults = {};
 searchGuideResultsStatus = {};
 
 searchGuide = function(query) {
-
     // request is pending
     if (typeof searchGuideResultsStatus[query] == 'undefined') {
         searchGuideResultsStatus[query] = false;
@@ -242,7 +280,7 @@ searchExtension = function(query) {
 
 renderExtension = function(t, query) {
     return $('<a>').attr('href', t.url).html(highlight(t.title, query)).prop('outerHTML');
-};
+};*/
 
 highlight = function(s, h) {
     if (typeof h === "undefined" || h == '') {
@@ -259,7 +297,7 @@ highlight = function(s, h) {
     }
 
     return result + s;
-}
+};
 
 renderType = function(t, query) {
     return $('<a>').attr('href', t.url).html(highlight(t.name, query) + ' ').prop('outerHTML');
@@ -481,8 +519,8 @@ jQuery(document).ready(function () {
         }
 
         searchApidoc(query);
-        searchGuide(query);
-        searchExtension(query);
+        searchSuggest(query);
+        //searchExtension(query);
 
         // TODO search guide and others
     });

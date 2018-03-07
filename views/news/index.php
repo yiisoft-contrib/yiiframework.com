@@ -52,6 +52,12 @@ if (UserPermissions::canManageNews()) {
 			</div>
 			<div class="col-md-3">
 
+
+				<?= \app\widgets\SearchForm::widget([
+					'type' => 'news',
+					'placeholder' => 'Search News…',
+				]) ?>
+
 				<?= \app\widgets\NewsArchive::widget(['urlParams' => $urlParams]) ?>
 
 				<?= \app\widgets\NewsTaglist::widget(['urlParams' => $urlParams]) ?>

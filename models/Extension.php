@@ -9,6 +9,8 @@ use app\components\object\ObjectIdentityInterface;
 use app\components\packagist\Package;
 use app\components\packagist\PackagistApi;
 use app\components\UserPermissions;
+use app\models\search\SearchableBehavior;
+use app\models\search\SearchExtension;
 use Composer\Spdx\SpdxLicenses;
 use dosamigos\taggable\Taggable;
 use Yii;
@@ -99,6 +101,10 @@ class Extension extends ActiveRecord implements Linkable, ObjectIdentityInterfac
             ],
             'taggable' => [
                 'class' => Taggable::className(),
+            ],
+            'search' => [
+                'class' => SearchableBehavior::class,
+                'searchClass' => SearchExtension::class,
             ],
             'diff' => DiffBehavior::class,
         ];
@@ -242,6 +248,11 @@ MARKDOWN;
             $this->addError($attribute, 'License must be a valid SPDX License Identifier.');
             return;
         }
+    }
+
+    public function getShowInSearch()
+    {
+        return $this->status == self::STATUS_PUBLISHED;
     }
 
     /**

@@ -6,6 +6,8 @@ use app\components\contentShare\EntityInterface;
 use app\components\object\ClassType;
 use app\components\object\ObjectIdentityInterface;
 use app\components\SluggableBehavior;
+use app\models\search\SearchableBehavior;
+use app\models\search\SearchWiki;
 use dosamigos\taggable\Taggable;
 use Yii;
 use yii\apidoc\helpers\ApiMarkdown;
@@ -94,7 +96,11 @@ class Wiki extends ActiveRecord implements Linkable, ObjectIdentityInterface, En
                 ],
             ],
             'tagable' => [
-                'class' => Taggable::className(),
+                'class' => Taggable::class,
+            ],
+            'search' => [
+                'class' => SearchableBehavior::class,
+                'searchClass' => SearchWiki::class,
             ],
         ];
     }
@@ -142,6 +148,11 @@ class Wiki extends ActiveRecord implements Linkable, ObjectIdentityInterface, En
             self::SCENARIO_UPDATE => ['title', 'content', 'category_id', 'yii_version', 'tagNames', 'memo'],
             self::SCENARIO_LOAD => ['title', 'content', 'category_id', 'yii_version', 'tagNames'],
         ];
+    }
+
+    public function getShowInSearch()
+    {
+        return $this->status == self::STATUS_PUBLISHED;
     }
 
     public function afterSave($insert, $changedAttributes)

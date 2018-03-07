@@ -1,16 +1,21 @@
 <?php
 
 $params = array_merge(
-    require(__DIR__ . '/params.php'),
-    require(__DIR__ . '/params-local.php')
+    require __DIR__ . '/params.php',
+    require __DIR__ . '/params-local.php'
 );
 
 $config = [
     'id' => 'yiiframework.com',
+    'name' => 'Yii Framework',
     'basePath' => dirname(__DIR__),
     'bootstrap' => [
         'log',
         app\components\BootstrapEvents::class,
+    ],
+    'aliases' => [
+        '@bower' => '@vendor/bower-asset',
+        '@npm' => '@vendor/npm-asset',
     ],
     'language' => 'en',
     'timeZone' => 'UTC',
@@ -37,7 +42,13 @@ $config = [
             'targets' => [
                 [
                     'class' => 'yii\log\FileTarget',
-                    'levels' => ['error', 'warning'],
+                    'levels' => ['error'],
+                    'logFile' => '@runtime/logs/web_errors.log'
+                ],
+                [
+                    'class' => 'yii\log\FileTarget',
+                    'levels' => ['warning'],
+                    'logFile' => '@runtime/logs/web_warnings.log'
                 ],
             ],
         ],
