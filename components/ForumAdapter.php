@@ -2,7 +2,7 @@
 
 namespace app\components;
 
-use User;
+use app\models\User;
 use yii\base\Component;
 use yii\base\InvalidArgumentException;
 use yii\base\InvalidConfigException;

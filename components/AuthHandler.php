@@ -69,7 +69,8 @@ class AuthHandler
 
                     $user->username = $login;
                     $user->display_name = $fullname;
-                    $user->password = \Yii::$app->security->generateRandomString(6);
+                    $password = \Yii::$app->security->generateRandomString(6);
+                    $user->password = $password;
                     $user->email = $email;
                     $this->updateUserInfo($user);
 
@@ -103,6 +104,11 @@ class AuthHandler
                         ]);
                         if ($auth->save()) {
                             $transaction->commit();
+
+                            /** @var ForumAdapter $forumAdapter */
+                            $forumAdapter = Yii::$app->forumAdpater;
+                            $forumAdapter->createForumUser($user, $password);
+
                             Yii::$app->user->login($user, Yii::$app->params['user.rememberMeDuration']);
                         } else {
                             Yii::$app->getSession()->setFlash('error', [

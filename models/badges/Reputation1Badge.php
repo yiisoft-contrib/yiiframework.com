@@ -5,6 +5,7 @@ namespace app\models\badges;
 use app\components\ForumAdapter;
 use app\models\Badge;
 use app\models\UserBadge;
+use Yii;
 
 class Reputation1Badge extends Badge
 {
@@ -47,7 +48,8 @@ class Reputation1Badge extends Badge
 
     protected function getReputations($user)
     {
-        $adapter = new ForumAdapter();
+        /** @var ForumAdapter $adapter */
+        $adapter = Yii::$app->forumAdapter;
         return $adapter->getReputations($user);
     }
 }
