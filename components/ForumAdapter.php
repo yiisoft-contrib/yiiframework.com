@@ -2,17 +2,62 @@
 
 namespace app\components;
 
+use User;
 use yii\base\Component;
+use yii\base\InvalidArgumentException;
+use yii\base\InvalidConfigException;
 use yii\db\Connection;
+use yii\db\Query;
+use yii\di\Instance;
+use yii\helpers\Inflector;
 
+/**
+ * ForumAdapter implements a bridge between the IPB 3.1 and the application.
+ * Configure as follows:
+ *
+ * 'forumBridge' => [
+ *      'class' => \app\components\ForumBridge::class,
+ *      'db' => 'forumDb',
+ *      'membersTable' => 'ipb_members',
+ *  ],
+ */
 class ForumAdapter extends Component
 {
+    const GROUP_VALIDATING = 1;
+    const GROUP_MEMBERS = 3;
+
+    /**
+     * @var Connection|array|string the DB connection object or the application component ID of the DB connection.
+     */
+    public $db = 'db';
+
+    /**
+     * @var string IPB members table
+     */
+    public $membersTable = 'ipb_members';
+
+    /**
+     * @var int group to add user to
+     */
+    public $group = self::GROUP_VALIDATING;
+
+    /**
+     * Initializes the ForumBridge component.
+     * This method will initialize the [[db]] property to make sure it refers to a valid DB connection.
+     * @throws InvalidConfigException if [[db]] is invalid.
+     */
+    public function init()
+    {
+        parent::init();
+        $this->db = Instance::ensure($this->db, Connection::className());
+    }
+
     public function getReputations($user)
     {
         return [];
         // TODO make this work via oauth or API, forum user may not share ID in new setup
         $sql = 'SELECT rep_date, rep_rating FROM ipb_reputation_index WHERE member_id = :user_id ORDER BY rep_date ASC';
-        $cmd = $this->getForumDb()->createCommand($sql, [':user_id' => $user->id]);
+        $cmd = $this->db->createCommand($sql, [':user_id' => $user->id]);
         return $cmd->queryAll();
     }
 
@@ -22,7 +67,7 @@ class ForumAdapter extends Component
         // TODO make this work via oauth or API, forum user may not share ID in new setup
         $n = ((int) $number) - 1;
         $sql = 'SELECT post_date FROM ipb_posts WHERE author_id = :user_id ORDER BY post_date ASC LIMIT '.($n > 0 ? "$n," : '').'1';
-        $cmd = $this->getForumDb()->createCommand($sql, [':user_id' => $user->id]);
+        $cmd = $this->db->createCommand($sql, [':user_id' => $user->id]);
         return $cmd->queryScalar();
     }
 
@@ -31,15 +76,125 @@ class ForumAdapter extends Component
         return 0;
         // TODO make this work via oauth or API, forum user may not share ID in new setup
         $sql = 'SELECT count(*) FROM ipb_posts WHERE author_id = :user_id';
-        $cmd = $this->getForumDb()->createCommand($sql, [':user_id' => $user->id]);
+        $cmd = $this->db->createCommand($sql, [':user_id' => $user->id]);
         return $cmd->queryScalar();
     }
 
     /**
-     * @return Connection
+     * Creates forum user, assigns ID to user model passed
+     *
+     * @param User $user
+     * @param string $password
      */
-    private function getForumDb()
+    public function createForumUser(User $user, $password)
     {
-        // TODO
+        if (!$user->isNewRecord) {
+            throw new InvalidArgumentException('User should be new.');
+        }
+
+        $ipbSalt = $this->generateIPBPasswordSalt();
+
+        $forumUserId = (new Query())
+            ->select('member_id')
+            ->from($this->membersTable)
+            ->where(['email' => $user->email])
+            ->scalar($this->db);
+
+        if (!$forumUserId) {
+            $username = $user->username;
+            $displayName = !empty($user->display_name) ? $user->display_name : $user->username;
+
+            $now = time();
+
+            $this->db->createCommand()->insert($this->membersTable, [
+                'name' => $username,
+                'members_l_username' => mb_strtolower($username, \Yii::$app->charset),
+
+                'members_display_name' => $displayName,
+                'members_l_display_name' => mb_strtolower($displayName, \Yii::$app->charset),
+
+                'members_seo_name' => Inflector::transliterate($displayName),
+
+                'member_login_key' => $this->generateIPBAutoLoginKey(),
+                'member_login_key_expire' => $now + 86400,
+
+                'email' => $user->email,
+
+                'member_group_id' => $this->group,
+
+                'joined' => $now,
+                'last_visit' => $now,
+                'last_activity' => $now,
+
+                'ip_address' => $this->getCurrentIp(),
+                'allow_admin_mails' => 1,
+                'hide_email' => 1,
+                'language' => 1,
+
+                'members_pass_hash' => $this->getIPBPasswordHash($ipbSalt, $password),
+                'members_pass_salt' => $ipbSalt,
+            ])->execute();
+
+            $forumUserId = $this->db->getLastInsertID();
+        }
+
+        $user->id = $forumUserId;
+    }
+
+    /**
+     * Generates a password salt.
+     * Returns n length string of any char except backslash
+     *
+     * Taken from IPB 3.1
+     *
+     * @param int Length of desired salt, 5 by default
+     * @return string n character random string
+     */
+    private function generateIPBPasswordSalt($len = 5)
+    {
+        $salt = '';
+
+        for ($i = 0; $i < $len; $i++) {
+            $num = mt_rand(33, 126);
+
+            if ($num == '92') {
+                $num = 93;
+            }
+
+            $salt .= chr($num);
+        }
+
+        return $salt;
+    }
+
+    /**
+     * Generates a log in key
+     *
+     * Taken from IPB 3.1
+     *
+     * @param int Length of desired random chars to MD5
+     * @return string MD5 hash of random characters
+     */
+    private function generateIPBAutoLoginKey($len = 60)
+    {
+        $pass = $this->generateIPBPasswordSalt($len);
+        return md5($pass);
+    }
+
+    /**
+     * Get IPB-compatible password hash
+     *
+     * @param string $ipbSalt
+     * @param string $plainPassword
+     * @return string
+     */
+    private function getIPBPasswordHash($ipbSalt, $plainPassword)
+    {
+        return md5(md5($ipbSalt) . md5($plainPassword));
+    }
+
+    private function getCurrentIp()
+    {
+        return isset($_SERVER['REMOTE_ADDR']) ? $_SERVER['REMOTE_ADDR'] : '127.0.0.1';
     }
 }
