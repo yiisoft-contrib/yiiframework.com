@@ -18,7 +18,7 @@ use yii\helpers\Inflector;
  * 'forumBridge' => [
  *      'class' => \app\components\ForumBridge::class,
  *      'db' => 'forumDb',
- *      'membersTable' => 'ipb_members',
+ *      'tablePrefix' => 'ipb_',
  *  ],
  */
 class ForumAdapter extends Component
@@ -32,9 +32,9 @@ class ForumAdapter extends Component
     public $db = 'db';
 
     /**
-     * @var string IPB members table
+     * @var string IPB table prefix
      */
-    public $membersTable = 'ipb_members';
+    public $tablePrefix = 'ipb_';
 
     /**
      * @var int group to add user to
@@ -54,28 +54,25 @@ class ForumAdapter extends Component
 
     public function getReputations($user)
     {
-        return [];
-        // TODO make this work via oauth or API, forum user may not share ID in new setup
-        $sql = 'SELECT rep_date, rep_rating FROM ipb_reputation_index WHERE member_id = :user_id ORDER BY rep_date ASC';
+        $tablePrefix = $this->tablePrefix;
+        $sql = "SELECT rep_date, rep_rating FROM {$tablePrefix}reputation_index WHERE member_id = :user_id ORDER BY rep_date ASC";
         $cmd = $this->db->createCommand($sql, [':user_id' => $user->id]);
         return $cmd->queryAll();
     }
 
     public function getPostDate($user, $number)
     {
-        return false;
-        // TODO make this work via oauth or API, forum user may not share ID in new setup
+        $tablePrefix = $this->tablePrefix;
         $n = ((int) $number) - 1;
-        $sql = 'SELECT post_date FROM ipb_posts WHERE author_id = :user_id ORDER BY post_date ASC LIMIT '.($n > 0 ? "$n," : '').'1';
+        $sql = "SELECT post_date FROM {$tablePrefix}posts WHERE author_id = :user_id ORDER BY post_date ASC LIMIT " . ($n > 0 ? "$n," : '') . '1';
         $cmd = $this->db->createCommand($sql, [':user_id' => $user->id]);
         return $cmd->queryScalar();
     }
 
     public function getPostCount($user)
     {
-        return 0;
-        // TODO make this work via oauth or API, forum user may not share ID in new setup
-        $sql = 'SELECT count(*) FROM ipb_posts WHERE author_id = :user_id';
+        $tablePrefix = $this->tablePrefix;
+        $sql = "SELECT count(*) FROM {$tablePrefix}posts WHERE author_id = :user_id";
         $cmd = $this->db->createCommand($sql, [':user_id' => $user->id]);
         return $cmd->queryScalar();
     }
@@ -96,7 +93,7 @@ class ForumAdapter extends Component
 
         $forumUserId = (new Query())
             ->select('member_id')
-            ->from($this->membersTable)
+            ->from($this->tablePrefix . 'members')
             ->where(['email' => $user->email])
             ->scalar($this->db);
 
@@ -106,7 +103,7 @@ class ForumAdapter extends Component
 
             $now = time();
 
-            $this->db->createCommand()->insert($this->membersTable, [
+            $this->db->createCommand()->insert($this->tablePrefix . 'members', [
                 'name' => $username,
                 'members_l_username' => mb_strtolower($username, \Yii::$app->charset),
 
