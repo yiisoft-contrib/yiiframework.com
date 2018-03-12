@@ -54,41 +54,50 @@ class ForumAdapter extends Component
 
     public function getReputations($user)
     {
+        if (!$user->forum_id) {
+            return [];
+        }
+
         $tablePrefix = $this->tablePrefix;
         $sql = "SELECT rep_date, rep_rating FROM {$tablePrefix}reputation_index WHERE member_id = :user_id ORDER BY rep_date ASC";
-        $cmd = $this->db->createCommand($sql, [':user_id' => $user->id]);
+        $cmd = $this->db->createCommand($sql, [':user_id' => $user->forum_id]);
         return $cmd->queryAll();
     }
 
     public function getPostDate($user, $number)
     {
+        if (!$user->forum_id) {
+            return false;
+        }
+
         $tablePrefix = $this->tablePrefix;
         $n = ((int) $number) - 1;
         $sql = "SELECT post_date FROM {$tablePrefix}posts WHERE author_id = :user_id ORDER BY post_date ASC LIMIT " . ($n > 0 ? "$n," : '') . '1';
-        $cmd = $this->db->createCommand($sql, [':user_id' => $user->id]);
+        $cmd = $this->db->createCommand($sql, [':user_id' => $user->forum_id]);
         return $cmd->queryScalar();
     }
 
     public function getPostCount($user)
     {
+        if (!$user->forum_id) {
+            return 0;
+        }
+
         $tablePrefix = $this->tablePrefix;
         $sql = "SELECT count(*) FROM {$tablePrefix}posts WHERE author_id = :user_id";
-        $cmd = $this->db->createCommand($sql, [':user_id' => $user->id]);
+        $cmd = $this->db->createCommand($sql, [':user_id' => $user->forum_id]);
         return $cmd->queryScalar();
     }
 
     /**
-     * Creates forum user, assigns ID to user model passed
+     * Creates forum user
      *
      * @param User $user
      * @param string $password
+     * @return int forum user ID
      */
-    public function createForumUser(User $user, $password)
+    public function ensureForumUser(User $user, $password)
     {
-        if (!$user->isNewRecord) {
-            throw new InvalidArgumentException('User should be new.');
-        }
-
         $ipbSalt = $this->generateIPBPasswordSalt();
 
         $forumUserId = (new Query())
@@ -97,45 +106,45 @@ class ForumAdapter extends Component
             ->where(['email' => $user->email])
             ->scalar($this->db);
 
-        if (!$forumUserId) {
-            $username = $user->username;
-            $displayName = !empty($user->display_name) ? $user->display_name : $user->username;
-
-            $now = time();
-
-            $this->db->createCommand()->insert($this->tablePrefix . 'members', [
-                'name' => $username,
-                'members_l_username' => mb_strtolower($username, \Yii::$app->charset),
-
-                'members_display_name' => $displayName,
-                'members_l_display_name' => mb_strtolower($displayName, \Yii::$app->charset),
-
-                'members_seo_name' => Inflector::transliterate($displayName),
-
-                'member_login_key' => $this->generateIPBAutoLoginKey(),
-                'member_login_key_expire' => $now + 86400,
-
-                'email' => $user->email,
-
-                'member_group_id' => $this->group,
-
-                'joined' => $now,
-                'last_visit' => $now,
-                'last_activity' => $now,
-
-                'ip_address' => $this->getCurrentIp(),
-                'allow_admin_mails' => 1,
-                'hide_email' => 1,
-                'language' => 1,
-
-                'members_pass_hash' => $this->getIPBPasswordHash($ipbSalt, $password),
-                'members_pass_salt' => $ipbSalt,
-            ])->execute();
-
-            $forumUserId = $this->db->getLastInsertID();
+        if ($forumUserId) {
+            return $forumUserId;
         }
 
-        $user->id = $forumUserId;
+        $username = $user->username;
+        $displayName = !empty($user->display_name) ? $user->display_name : $user->username;
+
+        $now = time();
+
+        $this->db->createCommand()->insert($this->tablePrefix . 'members', [
+            'name' => $username,
+            'members_l_username' => mb_strtolower($username, \Yii::$app->charset),
+
+            'members_display_name' => $displayName,
+            'members_l_display_name' => mb_strtolower($displayName, \Yii::$app->charset),
+
+            'members_seo_name' => Inflector::transliterate($displayName),
+
+            'member_login_key' => $this->generateIPBAutoLoginKey(),
+            'member_login_key_expire' => $now + 86400,
+
+            'email' => $user->email,
+
+            'member_group_id' => $this->group,
+
+            'joined' => $now,
+            'last_visit' => $now,
+            'last_activity' => $now,
+
+            'ip_address' => $this->getCurrentIp(),
+            'allow_admin_mails' => 1,
+            'hide_email' => 1,
+            'language' => 1,
+
+            'members_pass_hash' => $this->getIPBPasswordHash($ipbSalt, $password),
+            'members_pass_salt' => $ipbSalt,
+        ])->execute();
+
+        return $this->db->getLastInsertID();
     }
 
     /**

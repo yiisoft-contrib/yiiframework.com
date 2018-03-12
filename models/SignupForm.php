@@ -46,7 +46,8 @@ class SignupForm extends Model
 
             /** @var ForumAdapter $forumAdapter */
             $forumAdapter = Yii::$app->forumAdpater;
-            $forumAdapter->createForumUser($user, $this->password);
+            $forumID = $forumAdapter->ensureForumUser($user, $this->password);
+            $user->forum_id = $forumID;
 
             if (!$user->save(false)) {
                 return null;

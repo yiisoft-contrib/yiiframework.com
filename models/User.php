@@ -12,7 +12,7 @@ use yii\helpers\ArrayHelper;
 /**
  * User model
  *
- * @property integer $id
+ * @property int $id
  * @property string $username
  * @property string $password_hash
  * @property string $password_reset_token
@@ -34,6 +34,7 @@ use yii\helpers\ArrayHelper;
  * @property string $login_ip
  * @property string $email_verification_token
  * @property bool $email_verified if email was confirmed
+ * @property int $forum_id id in the IPB forum database
  *
  * Relations:
  *
@@ -416,7 +417,7 @@ class User extends ActiveRecord implements IdentityInterface
 
     public function getForumUrl()
     {
-        return '@web/forum/index.php?showuser=' . urlencode($this->id);
+        return '@web/forum/index.php?showuser=' . urlencode($this->forum_id);
     }
 
     /**

@@ -194,6 +194,7 @@ SQL
 
 			$model = new User([
 				'id' => $user['member_id'],
+				'forum_id' => $user['member_id'],
 				'username' => $user['name'],
 				'email' => YII_DEBUG ? $this->debugEmail($user['email']) : $user['email'],
 				'display_name' => empty($user['members_display_name']) ? $user['name'] : $user['members_display_name'],

@@ -107,7 +107,9 @@ class AuthHandler
 
                             /** @var ForumAdapter $forumAdapter */
                             $forumAdapter = Yii::$app->forumAdpater;
-                            $forumAdapter->createForumUser($user, $password);
+                            $forumID = $forumAdapter->ensureForumUser($user, $password);
+                            $user->forum_id = $forumID;
+                            $user->save(false);
 
                             Yii::$app->user->login($user, Yii::$app->params['user.rememberMeDuration']);
                         } else {
