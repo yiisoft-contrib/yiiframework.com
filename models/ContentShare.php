@@ -9,7 +9,6 @@ use app\components\object\ClassType;
 use app\jobs\ContentShareJob;
 use Yii;
 use yii\behaviors\TimestampBehavior;
-use yii\db\ActiveRecord;
 use yii\base\Exception;
 
 /**
@@ -77,10 +76,7 @@ class ContentShare extends ActiveRecord
     public function behaviors()
     {
         return [
-            'timestamp' => [
-                'class' => TimestampBehavior::className(),
-                'updatedAtAttribute' => false
-            ]
+            'timestamp' => $this->timeStampBehavior(false),
         ];
     }
 

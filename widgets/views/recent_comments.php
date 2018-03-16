@@ -3,6 +3,7 @@
 /* @var $titleClass string */
 /* @var $menuClass string */
 
+use app\models\User;
 use yii\helpers\Html;
 
 ?>
@@ -13,7 +14,7 @@ use yii\helpers\Html;
 <?= Html::beginTag('ul', ['class' => $menuClass]) ?>
     <?php foreach ($comments as $comment): ?>
         <li>
-            <?= $comment->user->getRankLink() ?>
+            <?= $comment->user->getRankLink() ?? User::DELETED_USER_HTML ?>
             <?php $model = $comment->model;
             if ($model instanceof \app\models\Linkable) {
                 echo ' on ' . Html::a($model->getLinkTitle(), $model->getUrl('view', ['#' => "c{$comment->id}"]));

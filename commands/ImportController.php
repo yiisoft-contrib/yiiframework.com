@@ -9,6 +9,7 @@ namespace app\commands;
 
 use app\components\object\ClassType;
 use app\models\Comment;
+use app\models\ContentShare;
 use app\models\Extension;
 use app\models\ExtensionCategory;
 use app\models\File;
@@ -33,18 +34,18 @@ use yii\helpers\FileHelper;
  */
 class ImportController extends Controller
 {
-    /**
-     * @var string[]
-     */
-    public static $objectTypesMap = [
-        'News' => ClassType::NEWS,
-        'Wiki' => ClassType::WIKI,
-        'Extension' => ClassType::EXTENSION,
-        'Comment' => ClassType::COMMENT,
-        'File' => ClassType::FILE,
-        'tutorial' => ClassType::GUIDE,
-        'api' => ClassType::API,
-    ];
+	/**
+	 * @var string[]
+	 */
+	public static $objectTypesMap = [
+		'News' => ClassType::NEWS,
+		'Wiki' => ClassType::WIKI,
+		'Extension' => ClassType::EXTENSION,
+		'Comment' => ClassType::COMMENT,
+		'File' => ClassType::FILE,
+		'tutorial' => ClassType::GUIDE,
+		'api' => ClassType::API,
+	];
 
 	public $defaultAction = 'import';
 
@@ -89,6 +90,10 @@ class ImportController extends Controller
 			return ExitCode::OK;
 		}
 
+		// disable twitter content sharing
+		ContentShare::$availableObjectTypeIds = [];
+		ContentShare::$availableServiceIds = [];
+
 		$this->importUsers();
 
 		$this->importBadges();
@@ -111,25 +116,25 @@ class ImportController extends Controller
 	}
 
 	private function isDuplicateUsername($username)
-    {
-        return User::find()->where(['username' => $username])->exists();
-    }
+	{
+		return User::find()->where(['username' => $username])->exists();
+	}
 
-    private function chooseUser($users)
-    {
-        $result = $users[0];
-        for ($i = 1, $length = count($users); $i < $length; $i++) {
-            if ($this->getUserWeight($result) < $this->getUserWeight($users[$i])) {
-                $result = $users[$i];
-            }
-        }
-        return $result;
-    }
+	private function chooseUser($users)
+	{
+		$result = $users[0];
+		for ($i = 1, $length = count($users); $i < $length; $i++) {
+			if ($this->getUserWeight($result) < $this->getUserWeight($users[$i])) {
+				$result = $users[$i];
+			}
+		}
+		return $result;
+	}
 
-    private function getUserWeight($user)
-    {
-        return 10 * $user['wiki_count'] + 10 * $user['extension_count'] + 2 * $user['comment_count'] + $user['post_count'];
-    }
+	private function getUserWeight($user)
+	{
+		return 10 * $user['wiki_count'] + 10 * $user['extension_count'] + 2 * $user['comment_count'] + $user['post_count'];
+	}
 
 	private function importUsers()
 	{
@@ -138,50 +143,72 @@ class ImportController extends Controller
 			return;
 		}
 
-		// Same email accounts should be skipped. Out of two prefer to keep one with more posts.
-		$excludedDuplicateIDs = $this->sourceDb->createCommand(<<<SQL
-SELECT member_id
-FROM ipb_members
-WHERE member_banned = 0
-GROUP BY email
-HAVING COUNT(*) > 1
-ORDER BY posts ASC;
+		// Same username accounts should be skipped.
+		$duplicateUserNames = $this->sourceDb->createCommand(<<<SQL
+SELECT `name` FROM `ipb_members` GROUP BY name HAVING COUNT(*) > 1;
+SQL
+		)->queryColumn();
+
+		// Same email accounts should be skipped.
+		$excludedDuplicateEmails = $this->sourceDb->createCommand(<<<SQL
+SELECT email FROM `ipb_members` WHERE member_id > 2 GROUP BY email HAVING COUNT(*) > 1;
 SQL
 )->queryColumn();
 
 		$userQuery = (new Query)
-            ->select(['m.member_id', 'm.name', 'm.email', 'm.joined', 'm.last_visit', 'm.last_activity', 'm.members_display_name', 'm.members_pass_hash', 'm.members_pass_salt', 'm.conv_password'])
-            ->from('ipb_members m')
-            ->leftJoin('tbl_user u', 'u.id = m.member_id')
-			->where('m.member_banned = 0 || u.wiki_count > 0 || u.comment_count > 0 || u.extension_count > 0');
+			->select(['m.member_id', 'm.name', 'm.email', 'm.joined', 'm.last_visit', 'm.posts', 'm.last_activity', 'm.members_display_name', 'm.members_pass_hash', 'm.members_pass_salt', 'm.conv_password'])
+			->from('ipb_members m')
+			->leftJoin('tbl_user u', 'u.id = m.member_id')
+			->where('m.member_banned = 0')
+			// exclude duplicated and spam usernames
+			->andWhere(['not like', 'm.name', 'Сонцепекин'])
+			->andWhere(['not like', 'm.name', 'раскрутка сайта'])
+			->andWhere(['not like', 'm.name', 'Здоровленк'])
+			->andWhere(['not like', 'm.name', 'Мебель каталог'])
+			->andWhere(['not in', 'm.name', $duplicateUserNames])
+			->andWhere(['not in', 'm.email', $excludedDuplicateEmails])
+			->orWhere("u.wiki_count > 0 || u.comment_count > 0 || u.extension_count > 0");
 
 		$count = $userQuery->count('*', $this->sourceDb);
 		Console::startProgress(0, $count, 'Importing users...');
 		$i = 0;
 		$err = 0;
 		foreach ($userQuery->each(100, $this->sourceDb) as $user) {
-		    $user['name'] = trim($user['name']);
+			$user['name'] = trim($user['name']);
+
+			if (empty($user['name'])) {
+				continue;
+			}
+
+			if (in_array($user['member_id'], [992, 998])) {
+				// exclude some weird/broken user accounts
+				continue;
+			}
+
+			// fix duplicate email for admin user
+			if ($user['member_id'] == 1 && $user['name'] === 'admin') {
+				$user['email'] = 'admin@yiiframework.com';
+			}
 
 			$yiiUsers = (new Query)->from('tbl_user')->where(['id' => $user['member_id']])->all($this->sourceDb);
 
 			if ($yiiUsers === []) {
-				$this->stdout('NO YII USER for: ' . $user['member_id'] . ' - ' . $user['name']. "\n");
-                continue;
+				if ($user['posts'] > 0 && $user['last_activity'] > strtotime('now - 2years')) {
+					// report only if user has done anything relevant
+					$this->stdout('NO YII USER for: ' . $user['member_id'] . ' - ' . $user['name'] . "\n");
+				}
+				continue;
 			}
 
-            if (count($yiiUsers) > 1) {
-                $this->stdout('Multiple users with ID ' . $user['member_id'] . " in tbl_user. Choosing one...\n");
-                $yiiUser = $this->chooseUser($yiiUsers);
-            } else {
-                $yiiUser = $yiiUsers[0];
-            }
+			if (count($yiiUsers) > 1) {
+				$this->stdout('Multiple users with ID ' . $user['member_id'] . " in tbl_user. Choosing one...\n");
+				$yiiUser = $this->chooseUser($yiiUsers);
+			} else {
+				$yiiUser = $yiiUsers[0];
+			}
 
 			if (trim($yiiUser['username']) !== $user['name']) {
 				$this->stdout('NAME MISMATCH with YII USER for: ' . $user['member_id'] . ' - ' . $user['name'] . ' - ' . $yiiUser['username'] . "\n");
-				continue;
-			}
-			if (in_array($user['member_id'], $excludedDuplicateIDs)) {
-				$this->stdout('NOT IMPORTED DUPLICATE EMAIL: ' . $user['member_id'] . ' - ' . $user['name'] . ' - ' . $user['email'] . "\n");
 				continue;
 			}
 
@@ -214,49 +241,49 @@ SQL
 			$model->detachBehavior('timestamp');
 
 			try {
-                $model->save(false);
-            } catch (\Exception $e) {
-			    // check if the error was because of duplicate username and try to import with
-                // adding "-" to username
-			    if ($this->isDuplicateUsername($model->username)) {
-                    $model->username .= '-';
+				$model->save(false);
+			} catch (\Exception $e) {
+				// check if the error was because of duplicate username and try to import with
+				// adding "-" to username
+				if ($this->isDuplicateUsername($model->username)) {
+					$model->username .= '-';
 
-                    $this->stdout("Duplicate username. Importing with $model->username as username.\n");
+					$this->stdout("Duplicate username. ID: {$user['member_id']} , Importing with $model->username as username.\n");
 
-			        try {
-                        $model->save(false);
-                    } catch (\Exception $e) {
-                        $this->stdout($e->getMessage()."\n", Console::FG_RED);
-                        $err++;
-                    }
-                } else {
-                    $this->stdout($e->getMessage() . "\n", Console::FG_RED);
-                    $err++;
-                }
-            }
+					try {
+						$model->save(false);
+					} catch (\Exception $e) {
+						$this->stdout($e->getMessage()."\n", Console::FG_RED);
+						$err++;
+					}
+				} else {
+					$this->stdout($e->getMessage() . "\n", Console::FG_RED);
+					$err++;
+				}
+			}
 
 			Console::updateProgress(++$i, $count);
 		}
 		Console::endProgress(true);
-        $this->stdout('done.', Console::FG_GREEN, Console::BOLD);
-        $this->stdout(" $count records imported.");
-        if ($err > 0) {
-            $this->stdout(" $err errors occurred.", Console::FG_RED, Console::BOLD);
-        }
-        $this->stdout("\n");
+		$this->stdout('done.', Console::FG_GREEN, Console::BOLD);
+		$this->stdout(" $count records imported.");
+		if ($err > 0) {
+			$this->stdout(" $err errors occurred.", Console::FG_RED, Console::BOLD);
+		}
+		$this->stdout("\n");
 	}
 
 	private function debugEmail($email)
-    {
-        $parts = explode('@', $email);
+	{
+		$parts = explode('@', $email);
 
-        if (count($parts) < 2) {
-            return 'test+' . $email .'.at@cebe.cc';
-        }
+		if (count($parts) < 2) {
+			return 'test+' . $email .'.at@cebe.cc';
+		}
 
-        list($user, $domain) = $parts;
-        return "test+$user.at.$domain@cebe.cc";
-    }
+		list($user, $domain) = $parts;
+		return "test+$user.at.$domain@cebe.cc";
+	}
 
 	private function importBadges()
 	{
@@ -273,17 +300,17 @@ SQL
 		$err = 0;
 		foreach($query->each(100, $this->sourceDb) as $badge) {
 
-		    try {
-                \Yii::$app->db->createCommand()->insert('{{%badges}}', $badge)->execute();
-            } catch (\Exception $e) {
-                $this->stdout($e->getMessage()."\n", Console::FG_RED);
-                $err++;
-            }
+			try {
+				\Yii::$app->db->createCommand()->insert('{{%badges}}', $badge)->execute();
+			} catch (\Exception $e) {
+				$this->stdout($e->getMessage()."\n", Console::FG_RED);
+				$err++;
+			}
 
 			Console::updateProgress(++$i, $count);
 		}
 		Console::endProgress(true);
-        $this->printImportSummary($count, $err);
+		$this->printImportSummary($count, $err);
 
 //		$this->importBadgeQueue();
 		$this->importUserBadges();
@@ -299,22 +326,23 @@ SQL
 		$err = 0;
 		foreach($query->each(100, $this->sourceDb) as $badge) {
 
-		    try {
-                \Yii::$app->db->createCommand()->insert('{{%badge_queue}}', $badge)->execute();
-            } catch (\Exception $e) {
-                $this->stdout($e->getMessage()."\n", Console::FG_RED);
-                $err++;
-            }
+			try {
+				\Yii::$app->db->createCommand()->insert('{{%badge_queue}}', $badge)->execute();
+			} catch (\Exception $e) {
+				$this->stdout($e->getMessage()."\n", Console::FG_RED);
+				$err++;
+			}
 
 			Console::updateProgress(++$i, $count);
 		}
 		Console::endProgress(true);
-        $this->printImportSummary($count, $err);
+		$this->printImportSummary($count, $err);
 	}
 
 	private function importUserBadges()
 	{
 		$query = (new Query)->from('tbl_user_badge');
+		$userIds = (new Query)->select('id')->from('{{%user}}')->column();
 
 		$count = $query->count('*', $this->sourceDb);
 		Console::startProgress(0, $count, 'Importing user badges...');
@@ -322,22 +350,27 @@ SQL
 		$err = 0;
 		foreach($query->each(100, $this->sourceDb) as $badge) {
 
+			// ignore badges for users that have not been imported
+			if (!in_array($badge['user_id'], $userIds, true)) {
+				continue;
+			}
+
 			$badge['create_time'] = date('Y-m-d H:i:s', $badge['create_time']);
 			if ($badge['complete_time'] !== null) {
 				$badge['complete_time'] = date('Y-m-d H:i:s', $badge['complete_time']);
 			}
 
 			try {
-                \Yii::$app->db->createCommand()->insert('{{%user_badges}}', $badge)->execute();
-            } catch (\Exception $e) {
-                $this->stdout($e->getMessage()."\n", Console::FG_RED);
-                $err++;
-            }
+				\Yii::$app->db->createCommand()->insert('{{%user_badges}}', $badge)->execute();
+			} catch (\Exception $e) {
+				$this->stdout($e->getMessage()."\n", Console::FG_RED);
+				$err++;
+			}
 
 			Console::updateProgress(++$i, $count);
 		}
 		Console::endProgress(true);
-        $this->printImportSummary($count, $err);
+		$this->printImportSummary($count, $err);
 	}
 
 	private function importWiki()
@@ -391,6 +424,7 @@ SQL
 				]);
 				$model->detachBehavior('timestamp');
 				$model->detachBehavior('blameable');
+				$model->detachBehavior('search');
 				$model->save(false);
 
 				// remove first revision automatically created by Wiki model
@@ -420,7 +454,7 @@ SQL
 			Console::updateProgress(++$i, $count);
 		}
 		Console::endProgress(true);
-        $this->printImportSummary($count, $err);
+		$this->printImportSummary($count, $err);
 	}
 
 	private function importExtensions()
@@ -487,6 +521,7 @@ SQL
 				]);
 				$model->detachBehavior('timestamp');
 				$model->detachBehavior('blameable');
+				$model->detachBehavior('search');
 				$model->save(false);
 
 			} catch (\Exception $e) {
@@ -496,7 +531,7 @@ SQL
 			Console::updateProgress(++$i, $count);
 		}
 		Console::endProgress(true);
-        $this->printImportSummary($count, $err);
+		$this->printImportSummary($count, $err);
 	}
 
 	private function importFiles()
@@ -514,10 +549,10 @@ SQL
 		$err = 0;
 		foreach($fileQuery->each(100, $this->sourceDb) as $file) {
 			try {
-                $objectType = $this->convertObjectType($file['object_type']);
-                if ($objectType === false) {
-                    throw new \Exception('Object type "' . $file['object_type'] . '" was not found.');
-                }
+				$objectType = $this->convertObjectType($file['object_type']);
+				if ($objectType === false) {
+					throw new \Exception('Object type "' . $file['object_type'] . '" was not found.');
+				}
 
 				$model = new File([
 					'id' => $file['id'],
@@ -533,7 +568,7 @@ SQL
 
 					'summary' => $file['summary'],
 
-                    // creator info is not available in old data
+					// creator info is not available in old data
 					'created_by' => null,
 
 					'created_at' => date('Y-m-d H:i:s', $file['upload_time']),
@@ -550,18 +585,18 @@ SQL
 			Console::updateProgress(++$i, $count);
 		}
 		Console::endProgress(true);
-        $this->printImportSummary($count, $err);
+		$this->printImportSummary($count, $err);
 		$this->stdout("\nTODO copy files from old site '/common/upload/' to new site '/data/files/'\n", Console::BOLD);
 	}
 
 	private function fixMimeType($fileName)
-    {
-        $type = FileHelper::getMimeTypeByExtension($fileName);
-        if ($type === null && substr($fileName, -4, 4) === '.tgz') {
-            return 'application/x-gzip';
-        }
-        return $type;
-    }
+	{
+		$type = FileHelper::getMimeTypeByExtension($fileName);
+		if ($type === null && substr($fileName, -4, 4) === '.tgz') {
+			return 'application/x-gzip';
+		}
+		return $type;
+	}
 
 	/**
 	 * Convert licence ID to SPDX identifier
@@ -592,7 +627,8 @@ SQL
 			return;
 		}
 
-		$query = (new Query)->from('tbl_comment');
+		$query = (new Query)->from('tbl_comment')->where('status = 3');
+		$userIds = (new Query)->select('id')->from('{{%user}}')->column();
 
 		$count = $query->count('*', $this->sourceDb);
 		Console::startProgress(0, $count, 'Importing comments...');
@@ -600,10 +636,15 @@ SQL
 		$err = 0;
 		foreach($query->each(100, $this->sourceDb) as $comment) {
 			try {
-			    $objectType = $this->convertObjectType($comment['object_type']);
-                if ($objectType === false) {
-                    throw new \Exception('Object type "' . $comment['object_type'] . '" was not found.');
-                }
+				$objectType = $this->convertObjectType($comment['object_type']);
+				if ($objectType === false) {
+					throw new \Exception('Object type "' . $comment['object_type'] . '" was not found.');
+				}
+
+				// set user_id = NULL if comment creator has been deleted
+				if (!in_array($comment['creator_id'], $userIds, true)) {
+					$comment['creator_id'] = null;
+				}
 
 				\Yii::$app->db->createCommand()->insert('{{%comment}}', [
 					'id' => $comment['id'],
@@ -620,28 +661,28 @@ SQL
 					'status' => $this->convertCommentStatus($comment['status'])
 				])->execute();
 			} catch (\Exception $e) {
-                $this->stdout($e->getMessage()."\n", Console::FG_RED);
-                $err++;
+				$this->stdout($e->getMessage()."\n", Console::FG_RED);
+				$err++;
 			}
 
 			Console::updateProgress(++$i, $count);
 		}
 		Console::endProgress(true);
-        $this->printImportSummary($count, $err);
+		$this->printImportSummary($count, $err);
 	}
 
-    /**
-     * @param string $type
-     *
-     * @return string
-     */
+	/**
+	 * @param string $type
+	 *
+	 * @return string
+	 */
 	private function convertObjectType($type)
 	{
 		if (array_key_exists($type, static::$objectTypesMap)) {
-		    return static::$objectTypesMap[$type];
-        }
+			return static::$objectTypesMap[$type];
+		}
 
-        return false;
+		return false;
 	}
 
 	private function convertCommentStatus($status)
@@ -669,7 +710,7 @@ SQL
 		$count = $newsQuery->count('*', $this->sourceDb);
 		Console::startProgress(0, $count, 'Importing news...');
 		$i = 0;
-        $err = 0;
+		$err = 0;
 		foreach($newsQuery->each(100, $this->sourceDb) as $news) {
 
 			$content = $news['content'];
@@ -690,18 +731,19 @@ SQL
 			]);
 			$model->detachBehavior('timestamp');
 			$model->detachBehavior('blameable');
+			$model->detachBehavior('search');
 
 			try {
-                $model->save(false);
-            } catch (\Exception $e) {
-                $this->stdout($e->getMessage()."\n", Console::FG_RED);
-                $err++;
-            }
+				$model->save(false);
+			} catch (\Exception $e) {
+				$this->stdout($e->getMessage()."\n", Console::FG_RED);
+				$err++;
+			}
 
 			Console::updateProgress(++$i, $count);
 		}
 		Console::endProgress(true);
-        $this->printImportSummary($count, $err);
+		$this->printImportSummary($count, $err);
 	}
 
 	public function importRatings()
@@ -719,11 +761,11 @@ SQL
 		$err = 0;
 		foreach($ratingQuery->each(100, $this->sourceDb) as $rating) {
 			try {
-                $objectType = $this->convertObjectType($rating['object_type']);
-                if ($objectType === false) {
-                    throw new \Exception('Object type "' . $rating['object_type'] . '" was not found.');
-                }
-                $rating['object_type'] = $objectType;
+				$objectType = $this->convertObjectType($rating['object_type']);
+				if ($objectType === false) {
+					throw new \Exception('Object type "' . $rating['object_type'] . '" was not found.');
+				}
+				$rating['object_type'] = $objectType;
 
 				$rating['created_at'] = date('Y-m-d H:i:s', $rating['create_time']);
 				unset($rating['create_time']);
@@ -735,7 +777,7 @@ SQL
 			Console::updateProgress(++$i, $count);
 		}
 		Console::endProgress(true);
-        $this->printImportSummary($count, $err);
+		$this->printImportSummary($count, $err);
 	}
 
 	public function updateRatings()
@@ -748,7 +790,7 @@ SQL
 			Console::updateProgress(++$i, $count);
 		}
 		Console::endProgress(true);
-        $this->printImportSummary($count, 0);
+		$this->printImportSummary($count, 0);
 
 		$count = Wiki::find()->count();
 		Console::startProgress(0, $count, 'Update ratings for wikis...');
@@ -758,7 +800,7 @@ SQL
 			Console::updateProgress(++$i, $count);
 		}
 		Console::endProgress(true);
-        $this->printImportSummary($count, 0);
+		$this->printImportSummary($count, 0);
 
 		$count = Comment::find()->count();
 		Console::startProgress(0, $count, 'Update ratings for comments...');
@@ -768,7 +810,7 @@ SQL
 			Console::updateProgress(++$i, $count);
 		}
 		Console::endProgress(true);
-        $this->printImportSummary($count, 0);
+		$this->printImportSummary($count, 0);
 	}
 
 	public function importStars()
@@ -786,11 +828,11 @@ SQL
 		$err = 0;
 		foreach($starQuery->each(100, $this->sourceDb) as $star) {
 			try {
-                $objectType = $this->convertObjectType($star['object_type']);
-                if ($objectType === false) {
-                    throw new \Exception('Object type "' . $star['object_type'] . '" was not found.');
-                }
-                $star['object_type'] = $objectType;
+				$objectType = $this->convertObjectType($star['object_type']);
+				if ($objectType === false) {
+					throw new \Exception('Object type "' . $star['object_type'] . '" was not found.');
+				}
+				$star['object_type'] = $objectType;
 
 				$star['created_at'] = date('Y-m-d H:i:s', $star['create_time']);
 				unset($star['create_time']);
@@ -802,7 +844,7 @@ SQL
 			Console::updateProgress(++$i, $count);
 		}
 		Console::endProgress(true);
-        $this->printImportSummary($count, $err);
+		$this->printImportSummary($count, $err);
 	}
 
 	protected function convertMarkdown($markdown)
@@ -823,19 +865,19 @@ SQL
 		return Factory::create('en');
 	}
 
-    /**
-     * @param int $count
-     * @param int $err
-     */
-    private function printImportSummary($count, $err)
-    {
-        $this->stdout("done.", Console::FG_GREEN, Console::BOLD);
-        $this->stdout(" $count records imported.");
-        if ($err > 0) {
-            $this->stdout(" $err errors occurred.", Console::FG_RED, Console::BOLD);
-        }
-        $this->stdout("\n");
-    }
+	/**
+	 * @param int $count
+	 * @param int $err
+	 */
+	private function printImportSummary($count, $err)
+	{
+		$this->stdout("done.", Console::FG_GREEN, Console::BOLD);
+		$this->stdout(" $count records imported.");
+		if ($err > 0) {
+			$this->stdout(" $err errors occurred.", Console::FG_RED, Console::BOLD);
+		}
+		$this->stdout("\n");
+	}
 
 
 }

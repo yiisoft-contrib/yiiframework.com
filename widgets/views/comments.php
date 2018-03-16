@@ -1,10 +1,11 @@
 <?php
+
 /* @var $comments app\models\Comment[] */
 /* @var $form yii\widgets\ActiveForm */
 /* @var $commentForm app\models\Comment */
-?>
 
-<?php
+use app\models\User;
+use app\widgets\Voter;
 use yii\widgets\ActiveForm;
 use yii\helpers\Html;
 ?>
@@ -32,11 +33,11 @@ use yii\helpers\Html;
                                             <a href="#c<?= $comment->id ?>" class="comment-id">#<?= $comment->id ?></a>
                                         </div>
                                         <div class="col-md-9 details">
-                                            <a href="#"><?= $comment->user->username; ?></a> at
+                                            <a href="#"><?= $comment->user->username ?? User::DELETED_USER_HTML; ?></a> at
                                             <span class="date"><?=Yii::$app->formatter->format($comment->created_at, 'datetime')?></span>
                                         </div>
                                         <div class="col-md-2">
-                                            <?= \app\widgets\Voter::widget(['model' => $comment]) ?>
+                                            <?= Voter::widget(['model' => $comment]) ?>
                                         </div>
                                     </div>
                                 </div>
