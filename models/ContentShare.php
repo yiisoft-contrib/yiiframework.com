@@ -76,7 +76,10 @@ class ContentShare extends ActiveRecord
     public function behaviors()
     {
         return [
-            'timestamp' => $this->timeStampBehavior(false),
+            'timestamp' => [
+                'class' => TimestampBehavior::class,
+                'updatedAtAttribute' => false,
+            ]
         ];
     }
 
