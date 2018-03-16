@@ -46,15 +46,22 @@ $this->title = 'Hi, ' . $model->username . '!';
                 <h2><span>Authentication</span></h2>
             </div>
             <div class="col-xs-12 col-md-6">
-                <h3>OAuth login</h3>
+                <h3>OAuth login <i class="fa fa-github"></i></h3>
                 <p>
                     <?php
 
                     if (empty($model->authClients)) {
+                        echo ' <i class="fa fa-github"></i> ';
                         echo 'Your account is not connected with Github yet. ';
                         echo Html::a('Click here to connect', ['auth/connect-auth', 'source' => 'github'], ['data-method' => 'post']) . '.';
                     } else {
                         foreach ($model->authClients as $client) {
+                            switch ($client->source) {
+                                case 'github':
+                                    echo ' <i class="fa fa-github"></i> ';
+                                    break;
+                            }
+
                             echo 'Your account is connected with your ' . ucfirst($client->source) . ' profile: '
                                 . Html::a('http://github.com/' . Html::encode($client->source_login), 'http://github.com/' . $client->source_login) . '. ';
 
