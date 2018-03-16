@@ -30,7 +30,8 @@ class ForumPost1Badge extends Badge
 
     protected function countPosts($user, $threshold)
     {
-        $adapter = new ForumAdapter();
+        /** @var ForumAdapter $adapter */
+        $adapter = \Yii::$app->forumAdapter;
         $start = $adapter->getPostDate($user, 1);
         $complete = $adapter->getPostDate($user, $threshold);
         $count = min($adapter->getPostCount($user), $threshold);

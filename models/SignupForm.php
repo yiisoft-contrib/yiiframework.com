@@ -2,6 +2,7 @@
 
 namespace app\models;
 
+use app\components\ForumAdapter;
 use app\components\mailers\EmailVerificationMailer;
 use yii\base\Model;
 use Yii;
@@ -42,6 +43,12 @@ class SignupForm extends Model
             $user->display_name = $this->username;
             $user->email = $this->email;
             $user->setPassword($this->password);
+
+            /** @var ForumAdapter $forumAdapter */
+            $forumAdapter = Yii::$app->forumAdpater;
+            $forumID = $forumAdapter->ensureForumUser($user, $this->password);
+            $user->forum_id = $forumID;
+
             if (!$user->save(false)) {
                 return null;
             }
