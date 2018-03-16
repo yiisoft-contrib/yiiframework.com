@@ -88,7 +88,7 @@ class AuthController extends BaseController
      */
     public function onAuthSuccess($client)
     {
-        (new AuthHandler($client))->handle();
+        return (new AuthHandler($client))->handle();
     }
 
     /**

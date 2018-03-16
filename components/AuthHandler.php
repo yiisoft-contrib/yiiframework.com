@@ -6,6 +6,7 @@ use app\models\Auth;
 use app\models\User;
 use yii\authclient\ClientInterface;
 use yii\helpers\ArrayHelper;
+use yii\web\Response;
 
 /**
  *  AuthHandler handles successful authentication via Yii auth component
@@ -28,6 +29,7 @@ class AuthHandler
 
     /**
      * Handles by the $client
+     * @return Response|null
      */
     public function handle()
     {
@@ -64,19 +66,29 @@ class AuthHandler
                             "User with the same email as in {client} account already exists but isn't linked to it. Login using email first to link it.",
                             ['client' => $this->client->getTitle()]),
                     ]);
-                } else {
-                    $user = new User();
+                    return Yii::$app->response->redirect(Yii::$app->user->loginUrl);
+                }
+                if ($login !== null && User::find()->where(['username' => $login])->exists()) {
+                    Yii::$app->getSession()->setFlash('error', [
+                        Yii::t('app',
+                            "User with the same name as in {client} account already exists but isn't linked to it. Login in to link your existing account to {client}, or sign up manually if you do not have an account.",
+                            ['client' => $this->client->getTitle()]),
+                    ]);
+                    return Yii::$app->response->redirect(Yii::$app->user->loginUrl);
+                }
 
-                    $user->username = $login;
-                    $user->display_name = $fullname;
-                    $password = \Yii::$app->security->generateRandomString(6);
-                    $user->password = $password;
-                    $user->email = $email;
-                    $this->updateUserInfo($user);
+                $user = new User();
 
-                    if (!empty($email)) {
-                        $user->email_verified = true;
-                    }
+                $user->username = $login;
+                $user->display_name = $fullname;
+                $password = \Yii::$app->security->generateRandomString(6);
+                $user->password = $password;
+                $user->email = $email;
+                $this->updateUserInfo($user);
+
+                if (!empty($email)) {
+                    $user->email_verified = true;
+                }
 
 //                    if ($this->client->getName() === 'twitter') {
 //                        $user->twitter = $login;
@@ -90,44 +102,48 @@ class AuthHandler
 //                        $user->github = $login;
 //                    }
 
-                    $user->generateAuthKey();
-                    $user->generatePasswordResetToken();
+                $user->generateAuthKey();
+                $user->generatePasswordResetToken();
 
-                    $transaction = User::getDb()->beginTransaction();
+                $transaction = User::getDb()->beginTransaction();
 
-                    if ($user->save()) {
-                        $auth = new Auth([
-                            'user_id' => $user->id,
-                            'source' => $this->client->getId(),
-                            'source_id' => (string)$id,
-                            'source_login' => (string)$login,
-                        ]);
-                        if ($auth->save()) {
-                            $transaction->commit();
+                if ($user->save()) {
+                    $auth = new Auth([
+                        'user_id' => $user->id,
+                        'source' => $this->client->getId(),
+                        'source_id' => (string)$id,
+                        'source_login' => (string)$login,
+                    ]);
+                    if ($auth->save()) {
 
-                            /** @var ForumAdapter $forumAdapter */
-                            $forumAdapter = Yii::$app->forumAdpater;
-                            $forumID = $forumAdapter->ensureForumUser($user, $password);
-                            $user->forum_id = $forumID;
-                            $user->save(false);
+                        /** @var ForumAdapter $forumAdapter */
+                        $forumAdapter = Yii::$app->forumAdpater;
+                        $forumID = $forumAdapter->ensureForumUser($user, $password);
+                        $user->forum_id = $forumID;
+                        $user->save(false);
 
-                            Yii::$app->user->login($user, Yii::$app->params['user.rememberMeDuration']);
-                        } else {
-                            Yii::$app->getSession()->setFlash('error', [
-                                Yii::t('app', 'Unable to save {client} account: {errors}', [
-                                    'client' => $this->client->getTitle(),
-                                    'errors' => json_encode($auth->getErrors()),
-                                ]),
-                            ]);
-                        }
+                        $transaction->commit();
+
+                        Yii::$app->user->login($user, Yii::$app->params['user.rememberMeDuration']);
                     } else {
+                        $transaction->rollBack();
                         Yii::$app->getSession()->setFlash('error', [
-                            Yii::t('app', 'Unable to save user: {errors}', [
+                            Yii::t('app', 'Unable to save {client} account: {errors}', [
                                 'client' => $this->client->getTitle(),
-                                'errors' => json_encode($user->getErrors(), JSON_UNESCAPED_UNICODE),
+                                'errors' => json_encode($auth->getErrors()),
                             ]),
                         ]);
+                        return Yii::$app->response->redirect(Yii::$app->user->loginUrl);
                     }
+                } else {
+                    $transaction->rollBack();
+                    Yii::$app->getSession()->setFlash('error', [
+                        Yii::t('app', 'Unable to save user: {errors}', [
+                            'client' => $this->client->getTitle(),
+                            'errors' => json_encode($user->getErrors(), JSON_UNESCAPED_UNICODE),
+                        ]),
+                    ]);
+                    return Yii::$app->response->redirect(Yii::$app->user->loginUrl);
                 }
             }
         } else { // user already logged in
