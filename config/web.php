@@ -23,6 +23,7 @@ $config = [
         'cache' => $params['components.cache'],
         'db' => $params['components.db'],
         'elasticsearch' => $params['components.elasticsearch'],
+        'forumAdapter' => $params['components.forumAdapter'],
         'fs' => $params['components.fs'],
         'mailer' => $params['components.mailer'],
         'queue' => $params['components.queue'],

@@ -31,6 +31,7 @@ return [
     'components' => [
         'cache' => $params['components.cache'],
         'db' => $params['components.db'],
+        'forumAdapter' => $params['components.forumAdapter'],
         'elasticsearch' => $params['components.elasticsearch'],
         'fs' => $params['components.fs'],
         'mailer' => $params['components.mailer'],

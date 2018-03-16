@@ -28,6 +28,21 @@ return [
             $db->createCommand("SET time_zone = '+00:00';")->execute();
         },
     ],
+    'components.forumAdapter' => [
+        'class' => app\components\ForumAdapter::class,
+        'db' => [
+            'class' => 'yii\db\Connection',
+            'dsn' => 'mysql:host=localhost;dbname=yiisite',
+            'username' => 'root',
+            'password' => '',
+            'charset' => 'utf8',
+            'on afterOpen' => function($event) {
+                /** @var $db \yii\db\Connection */
+                $db = $event->sender;
+                $db->createCommand("SET time_zone = '+00:00';")->execute();
+            },
+        ],
+    ],
     'components.mailer' => [
         'class' => yii\swiftmailer\Mailer::class,
         'viewPath' => '@app/mail',

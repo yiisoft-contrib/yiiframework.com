@@ -16,6 +16,9 @@ return [
             $db->createCommand("SET time_zone = '+00:00';")->execute();
         },
     ],
+    'components.forumAdapter' => [
+        'class' => app\components\ForumAdapter::class
+    ],
     'components.cache' => [
         'class' => YII_DEBUG ? yii\caching\DummyCache::class : yii\caching\FileCache::class,
     ],

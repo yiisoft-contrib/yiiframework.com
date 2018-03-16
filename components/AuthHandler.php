@@ -117,7 +117,7 @@ class AuthHandler
                     if ($auth->save()) {
 
                         /** @var ForumAdapter $forumAdapter */
-                        $forumAdapter = Yii::$app->forumAdpater;
+                        $forumAdapter = Yii::$app->forumAdapter;
                         $forumID = $forumAdapter->ensureForumUser($user, $password);
                         $user->forum_id = $forumID;
                         $user->save(false);
