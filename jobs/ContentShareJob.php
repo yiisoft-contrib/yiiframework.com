@@ -4,11 +4,11 @@ namespace app\jobs;
 
 use Yii;
 use app\models\ContentShare;
-use yii\queue\closure\Job;
+use yii\base\BaseObject;
 use yii\queue\Queue;
-use yii\queue\RetryableJob;
+use yii\queue\RetryableJobInterface;
 
-class ContentShareJob extends Job implements RetryableJob
+class ContentShareJob extends BaseObject implements RetryableJobInterface
 {
     /**
      * @var int
