@@ -8,7 +8,6 @@ use app\components\contentShare\services\TwitterService;
 use app\components\object\ClassType;
 use app\jobs\ContentShareJob;
 use Yii;
-use yii\behaviors\TimestampBehavior;
 use yii\base\Exception;
 
 /**
@@ -20,8 +19,8 @@ use yii\base\Exception;
  * @property integer $service_id
  * @property integer $status_id
  * @property string $message
- * @property integer $created_at
- * @property integer $posted_at
+ * @property string $created_at
+ * @property string $posted_at
  *
  * @property BaseService $service
  */
@@ -175,7 +174,7 @@ class ContentShare extends ActiveRecord
     {
         if ($this->service->publish()) {
             $this->status_id = self::STATUS_PUBLISHED;
-            $this->posted_at = time();
+            $this->posted_at = date('Y-m-d H:i:s');
         } else {
             $this->status_id = self::STATUS_FAILED;
         }
