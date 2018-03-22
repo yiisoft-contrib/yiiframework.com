@@ -40,7 +40,7 @@ class Doc extends ActiveRecord implements Linkable, ObjectIdentityInterface
         return [
             [['object_type', 'object_key'], 'required'],
             [['object_type', 'object_key', 'title', 'url'], 'string', 'max' => 255],
-            ['url', 'required'],
+//            ['url', 'required'],
             [['title', 'url'], 'trim'],
             ['object_type', 'in', 'range' => static::$availableObjectTypes],
         ];
@@ -94,6 +94,12 @@ class Doc extends ActiveRecord implements Linkable, ObjectIdentityInterface
         ]);
 
         if ($doc) {
+            $doc->url = $url;
+            $doc->title = $title;
+            if ($doc->isAttributeChanged('url') || $doc->isAttributeChanged('title')) {
+                $doc->save(false);
+            }
+
             return $doc;
         }
 
