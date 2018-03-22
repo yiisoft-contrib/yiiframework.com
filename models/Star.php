@@ -21,7 +21,7 @@ class Star extends ActiveRecord
     /**
      * @var string[] Available object types for stars.
      */
-    public static $availableObjectTypes = [ClassType::WIKI, ClassType::EXTENSION];
+    public static $availableObjectTypes = [ClassType::WIKI, ClassType::EXTENSION, ClassType::DOC];
 
     /**
      * @inheritdoc

@@ -6,9 +6,10 @@
  * @var $section string the currently active API file
  * @var $content string the API page content
  * @var $packages array the API page menu structure
+ * @var Doc $doc
  */
 
-use app\components\object\ClassType;
+use app\models\Doc;
 use app\widgets\SideNav;
 use yii\apidoc\templates\bootstrap\SideNavWidget;
 use yii\helpers\Html;
@@ -85,20 +86,24 @@ $this->endBlock();
         </div>
         <div class="col-sm-10 col-md-10 col-lg-10" role="main">
             <div class="content api1">
+            <?= \app\widgets\Star::widget(['model' => $doc]) ?>
+
             <?= $content ?>
             </div>
         </div>
     </div>
 </div>
 
+<?php if ($doc): ?>
 <div class="comments-wrapper">
     <div class="container comments">
         <?= \app\widgets\Comments::widget([
-            'objectType' => ClassType::API,
-            'objectId' => $version . '/' . $section,
+            'objectType' => $doc->getObjectType(),
+            'objectId' => $doc->getObjectId(),
         ]) ?>
     </div>
 </div>
+<?php endif ?>
 
 <?php
 

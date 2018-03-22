@@ -2,10 +2,13 @@
 
 namespace app\controllers;
 
+use app\components\object\ClassType;
+use app\models\Doc;
 use app\models\Guide;
 use app\models\search\SearchActiveRecord;
 use Yii;
 use yii\filters\HttpCache;
+use yii\helpers\Url;
 use yii\web\NotFoundHttpException;
 
 class GuideController extends BaseController
@@ -41,11 +44,16 @@ class GuideController extends BaseController
         $this->sectionTitle = $guide->title;
 
         if ($guide && ($section = $guide->loadSection($section))) {
+            $urlParams = ['type' => $guide->typeUrlName, 'version' => $guide->version, 'language' => $guide->language, 'section' => $section->name];
+            $docUrl = Url::to(array_merge(['guide/view'], $urlParams));
+            $doc = Doc::getObject(ClassType::GUIDE, implode("/", $urlParams), $docUrl, $section->getPageTitle());
+
             return $this->render('view', [
                 'guide' => $guide,
                 'section' => $section,
                 'missingTranslation' => $section->missingTranslation,
                 'type' => $type,
+                'doc' => $doc,
             ]);
         }
 

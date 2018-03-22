@@ -3,6 +3,7 @@
 namespace app\components\object;
 
 use app\models\Comment;
+use app\models\Doc;
 use app\models\Extension;
 use app\models\File;
 use app\models\News;
@@ -19,6 +20,7 @@ class ClassType
 
     const GUIDE = 'guide';
     const API = 'api';
+    const DOC = 'doc';
 
     public static $classes = [
         self::NEWS => News::class,
@@ -26,6 +28,7 @@ class ClassType
         self::EXTENSION => Extension::class,
         self::COMMENT => Comment::class,
         self::FILE => File::class,
+        self::DOC => Doc::class,
     ];
 
     /**

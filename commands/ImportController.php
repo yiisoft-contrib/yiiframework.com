@@ -10,6 +10,7 @@ namespace app\commands;
 use app\components\object\ClassType;
 use app\models\Comment;
 use app\models\ContentShare;
+use app\models\Doc;
 use app\models\Extension;
 use app\models\ExtensionCategory;
 use app\models\File;
@@ -645,6 +646,15 @@ SQL
 				if (!in_array($comment['creator_id'], $userIds, true)) {
 					$comment['creator_id'] = null;
 				}
+
+                if ($objectType === ClassType::API || $objectType === ClassType::GUIDE) {
+                    $doc = Doc::getObject($objectType, $comment['object_id'], null, null);
+                    if ($doc === false) {
+                        throw new \Exception("Failed to save $objectType object.");
+                    }
+                    $objectType = ClassType::DOC;
+                    $comment['object_id'] = $doc->id;
+                }
 
 				\Yii::$app->db->createCommand()->insert('{{%comment}}', [
 					'id' => $comment['id'],

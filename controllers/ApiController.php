@@ -3,9 +3,12 @@
 namespace app\controllers;
 
 use app\apidoc\ApiRenderer;
+use app\components\object\ClassType;
+use app\models\Doc;
 use app\models\search\SearchActiveRecord;
 use Yii;
 use yii\helpers\Json;
+use yii\helpers\Url;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\web\Response;
@@ -75,6 +78,15 @@ class ApiController extends BaseController
                     throw new NotFoundHttpException('The requested page was not found.');
                 }
 
+                if ($section === 'index') {
+                    $urlParams = ['version' => $version];
+                    $docUrl = Url::to(array_merge(['api/index'], $urlParams));
+                } else {
+                    $urlParams = ['version' => $version, 'section' => $section];
+                    $docUrl = Url::to(array_merge(['api/view'], $urlParams));
+                }
+                $doc = Doc::getObject(ClassType::API, implode("/", $urlParams), $docUrl, $title);
+
                 return $this->render($view, [
                     'content' => file_get_contents($file),
                     'section' => $section,
@@ -82,6 +94,7 @@ class ApiController extends BaseController
                     'version' => $version,
                     'title' => $title,
                     'packages' => $packages,
+                    'doc' => $doc,
                 ]);
 
                 break;

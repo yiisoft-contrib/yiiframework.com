@@ -32,7 +32,7 @@ class Comment extends ActiveRecord implements ObjectIdentityInterface
     /**
      * @var string[] Available object types for comments.
      */
-    public static $availableObjectTypes = [ClassType::WIKI, ClassType::EXTENSION];
+    public static $availableObjectTypes = [ClassType::WIKI, ClassType::EXTENSION, ClassType::DOC];
 
     /**
      * @inheritdoc
