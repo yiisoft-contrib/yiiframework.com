@@ -22,10 +22,7 @@ $(function($) {
                     voting.children('.votes-down').addClass('voted');
                 }
             },
-            error: function() {
-                // TODO redirect when user is not logged in
-                alert('Error: failed to cast vote.'); // TODO make this nicer
-            }
+            error: function() {}
         });
 
 

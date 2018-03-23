@@ -19,10 +19,7 @@ $(function($) {
                     count.text(data['starCount']);
                 }
             },
-            error: function() {
-                // TODO redirect when user is not logged in
-                alert('Error: failed to bookmark item.'); // TODO make this nicer
-            }
+            error: function() {}
         });
     });
 });
