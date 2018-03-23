@@ -140,10 +140,17 @@ class Star extends ActiveRecord
                 ->where(['user_id' => $userID, 'object_type' => $objectType, 'star' => 1])
                 ->column();
 
-            $models = array_merge(
-                $modelClass::find()->active()->andWhere(['id' => $ids])->all(),
-                $models
-            );
+            if ($modelClass !== Doc::class) {
+                $models = array_merge(
+                    $modelClass::find()->active()->andWhere(['id' => $ids])->all(),
+                    $models
+                );
+            } else {
+                $models = array_merge(
+                    $modelClass::find()->andWhere(['id' => $ids])->all(),
+                    $models
+                );
+            }
         }
         ArrayHelper::multisort($models, ['objectType', 'linkTitle']);
 
