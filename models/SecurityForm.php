@@ -22,7 +22,7 @@ class SecurityForm extends Model
     {
         return [
             [['name', 'email', 'body'], 'required'],
-            ['email', 'email'],
+            ['name', 'email'],
             ['verifyCode', 'captcha'],
         ];
     }
@@ -34,8 +34,8 @@ class SecurityForm extends Model
     {
         return [
             'verifyCode' => 'Verification Code',
-            'email' => 'Your Email',
-            'name' => 'Your Name',
+            'name' => 'Your Email',
+            'email' => 'Your Name',
             'body' => 'Message',
         ];
     }
@@ -47,10 +47,13 @@ class SecurityForm extends Model
     public function send()
     {
         if ($this->validate()) {
+            $fromEmail = $this->name;
+            $name = $this->email;
+
             Yii::$app->mailer->compose()
                 ->setCc(Yii::$app->params['securityEmails'])
-                ->setFrom([$this->email => $this->name])
-                ->setSubject('[Security] Report by ' . $this->name)
+                ->setFrom([$fromEmail => $name])
+                ->setSubject('[Security] Report by ' . $name)
                 ->setTextBody($this->body)
                 ->send();
 
