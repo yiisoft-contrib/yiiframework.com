@@ -41,20 +41,24 @@ class GuideController extends BaseController
             $this->redirect(['view', 'language' => $normalizedLanguage, 'version' => $version, 'section' => $section, 'type' => $type]);
         }
 
-        $this->sectionTitle = $guide->title;
+        if ($guide) {
+            $this->sectionTitle = $guide->title;
+            $section = $guide->loadSection($section);
 
-        if ($guide && ($section = $guide->loadSection($section))) {
-            $urlParams = ['type' => $guide->typeUrlName, 'version' => $guide->version, 'language' => $guide->language, 'section' => $section->name];
-            $docUrl = Url::to(array_merge(['guide/view'], $urlParams));
-            $doc = Doc::getObject(ClassType::GUIDE, implode("/", $urlParams), $docUrl, $section->getPageTitle());
+            if ($section) {
+                $urlParams = ['type' => $guide->typeUrlName, 'version' => $guide->version, 'language' => $guide->language, 'section' => $section->name];
+                $docUrl = Url::to(array_merge(['guide/view'], $urlParams));
+                $doc = Doc::getObject(ClassType::GUIDE, implode("/", $urlParams), $docUrl, $section->getPageTitle());
 
-            return $this->render('view', [
-                'guide' => $guide,
-                'section' => $section,
-                'missingTranslation' => $section->missingTranslation,
-                'type' => $type,
-                'doc' => $doc,
-            ]);
+                return $this->render('view', [
+                  'guide' => $guide,
+                  'section' => $section,
+                  'missingTranslation' => $section->missingTranslation,
+                  'type' => $type,
+                  'doc' => $doc,
+                ]);
+            }
+
         }
 
         throw new NotFoundHttpException('The requested page was not found.');
