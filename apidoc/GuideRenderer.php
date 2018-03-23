@@ -4,6 +4,7 @@ namespace app\apidoc;
 
 use app\models\SearchGuideSection;
 use Yii;
+use yii\base\InvalidArgumentException;
 use yii\helpers\Console;
 use yii\helpers\Json;
 
@@ -59,7 +60,11 @@ class GuideRenderer extends \yii\apidoc\templates\html\GuideRenderer
             $headings['h1'] = $matches[1];
             $headings['id'] = isset($matches[3]) ? $matches[3] : '';
         }
-        file_put_contents($this->targetDir . '/' . basename($file, 'md') . 'json', Json::encode($headings));
+        try {
+            file_put_contents($this->targetDir . '/' . basename($file, 'md') . 'json', Json::encode($headings));
+        } catch (InvalidArgumentException $e) {
+            throw new \yii\base\Exception("JSON error while storing structure of file '$file': " . $e->getMessage(), $e->getCode(), $e);
+        }
 
         // replace heading ids <span id=> => <hX id=>
         $output = preg_replace('/<h(\d)>(.+?)(<span id="(.+?)"><\/span>)(.*?)<\/h\1>/i', '<h\1 id="\4">\2\5</h\1>', $output);
