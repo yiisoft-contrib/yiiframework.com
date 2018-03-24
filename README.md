@@ -171,6 +171,7 @@ The following commands need to be set up to run on a regular basis:
 | yii badge/update          | hourly   | update badges for users in badge_queue
 | yii cron/update-packagist | hourly   | update packagist extension data
 | yii user/ranking          | daily    | update user ranking
+| find `appRoot`/runtime/storageProxyFile -type f -mtime +30 -delete | daily | delete old proxy files
 
 Additionally, `queue/listen` should run as a daemon or `queue/run` as a cronjob.
 

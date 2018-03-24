@@ -104,6 +104,7 @@ class Formatter extends \yii\i18n\Formatter
         $html = ApiMarkdown::process($markdown);
 
         $html = $this->replaceHeadlines($html);
+        $html = $this->replaceImageUrlForProxy($html);
 
         $output = HtmlPurifier::process($html, $this->purifierConfig);
 
@@ -134,5 +135,17 @@ class Formatter extends \yii\i18n\Formatter
     private function replaceCommentHeadlines($html)
     {
         return preg_replace('/<h\d+.*?>(.*?)<\\/h\d+>/i',"<p><strong>\\1</strong></p>", $html);
+    }
+
+    /**
+     * @param string $html
+     *
+     * @return string
+     */
+    private function replaceImageUrlForProxy($html)
+    {
+        return preg_replace_callback('/(<img[^>]+?)src="(.+?)"/i', function($matches) {
+            return $matches[1] . 'src="' . Yii::$app->proxyFile->getConvertUrl($matches[2]) . '""';
+        }, $html);
     }
 }

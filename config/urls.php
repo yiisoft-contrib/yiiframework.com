@@ -19,6 +19,7 @@ return [
     'tour' => 'site/tour',
     'resources' => 'site/resources',
     'community' => 'site/community',
+    'proxy-file' => 'site/proxy-file',
 
     // RSS
     'rss.xml' => 'rss/all',

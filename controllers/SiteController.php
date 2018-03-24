@@ -9,6 +9,9 @@ use app\models\SecurityForm;
 use app\models\Wiki;
 use Yii;
 use app\models\ContactForm;
+use yii\helpers\FileHelper;
+use yii\helpers\StringHelper;
+use yii\validators\UrlValidator;
 use yii\web\NotFoundHttpException;
 
 /**
@@ -241,4 +244,17 @@ class SiteController extends BaseController
         $this->sectionTitle = 'Community Resources';
         return $this->render('community');
     }
+
+    /**
+     * @param string $data
+     *
+     * @throws NotFoundHttpException
+     */
+    public function actionProxyFile($data)
+    {
+        if (!Yii::$app->proxyFile->sendFile($data)) {
+            throw new NotFoundHttpException('File not found.');
+        }
+    }
+
 }
