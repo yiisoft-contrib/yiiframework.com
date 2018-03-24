@@ -25,7 +25,7 @@ use yii\widgets\ActiveForm;
         'encode' => false,
         'separator' => '<br>',
         'itemOptions' => [
-            'labelOptions' => ['class' => 'radiolist-label alert alert-warning'],
+            'labelOptions' => ['class' => 'radiolist-label'],
         ],
         'id' => 'extension-packagist',
     ]);

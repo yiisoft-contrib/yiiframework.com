@@ -2,11 +2,11 @@
 // but should not prevent keyboard users from getting feedback
 
 textarea:hover,
-input:hover,
+input[type=text]:hover,
 textarea:active,
-input:active,
+input[type=text]:active,
 textarea:focus,
-input:focus,
+input[type=text]:focus,
 button:focus,
 button:active,
 button:hover
