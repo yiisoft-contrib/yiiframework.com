@@ -85,7 +85,27 @@ class ApiController extends \yii\apidoc\commands\ApiController
                     file_get_contents($file))
                 );
             }
-            file_put_contents("$target/api/index.html", str_replace('<h1>Class Reference</h1>', '<h1>Yii Framework ' . $version . ' API Documentation</h1>', file_get_contents("$target/api/index.html")));
+            file_put_contents("$target/api/index.html", str_replace(
+                '<h1>Class Reference</h1>',
+                <<<HTML
+<h1>Yii Framework $version API Documentation</h1>
+<p>
+    This is the Yii Framework API Documentation. Here you will find detailed information about all classes
+    provided by the Framework. Below you find a list of the existing classes, interfaces, and traits, ordered by their
+    fully qualified name (including the namespace). Each of them has a dedicated page which contains a description about the
+    purpose of the class, a list of the available methods, properties and constants, and detailed description
+    on how to use each of them.
+</p>
+<p>
+    On this page you find all the classes included in version $version
+    of the framework. You can use the dropdown menu on the top right to switch between versions.
+</p>
+<p>
+    <strong>You can search API documentation using the search form on the top.</strong>
+	You can search for class names and also method and property names, e.g. <code>ActiveRecord.save()</code> or just <code>.save()</code> or <code>::save()</code>.
+</p>
+HTML
+                , file_get_contents("$target/api/index.html")));
 
             $this->stdout("Finished API $version.\n\n", Console::FG_GREEN);
         }
