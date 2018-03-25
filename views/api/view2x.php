@@ -39,14 +39,6 @@ $this->endBlock();
             </p>
         </div>
     </div>
-    <?php if ($doc): ?>
-    <br>
-    <div class="row">
-        <div class="col-sm-offset-10 text-right">
-            <?= \app\widgets\Star::widget(['model' => $doc]) ?>
-        </div>
-    </div>
-    <?php endif ?>
 
 	<?= strtr($content, [
         '<!-- YII_DOWNLOAD_OPTIONS -->' => '<p>You may download the API documentation for offline use: </p><ul>'
@@ -55,6 +47,8 @@ $this->endBlock();
             . '</ul>'
             . '<p>This page is also available in <a href="?_format='.urlencode('json').'">JSON format</a>:<br>'
             . '<code>curl ' . Url::to(['index', 'version' => $version], true) . ' -H \'Accept: application/json\'</code></p>',
+        '<!-- YII_VERSION_SELECTOR -->' => $doc ? '<div class="pull-right content">' . \app\widgets\Star::widget(['model' => $doc]) . '</div>' : '',
+
 
 //        '<div class="col-sm-2 col-md-2 col-lg-2">' => '<div class="col-sm-2 col-md-2 col-lg-2">' . \app\widgets\SearchForm::widget([
 //            'type' => 'api',

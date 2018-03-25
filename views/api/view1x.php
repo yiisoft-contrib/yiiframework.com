@@ -86,9 +86,11 @@ $this->endBlock();
         </div>
         <div class="col-sm-10 col-md-10 col-lg-10" role="main">
             <div class="content api1">
-            <?= \app\widgets\Star::widget(['model' => $doc]) ?>
+                <div class="pull-right">
+                    <?= \app\widgets\Star::widget(['model' => $doc]) ?>
+                </div>
 
-            <?= $content ?>
+                <?= $content ?>
             </div>
         </div>
     </div>
