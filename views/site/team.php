@@ -58,7 +58,7 @@ $this->params['breadcrumbs'][] = $this->title;
                                         <h4><?= Html::encode($member['name'])?></h4>
                                         <p class="duty"><?= HtmlPurifier::process($member['duty']) ?></p>
                                         <p class="location"> <?= Html::encode($member['location'])?></p>
-                                        <p class="period">Since <?= Html::encode($member['memberSince']) ?></p>
+                                        <p class="period"><?= Html::encode($member['period']) ?></p>
 
 
                                     </div>
@@ -101,7 +101,7 @@ $this->params['breadcrumbs'][] = $this->title;
                                         <h4><?= Html::encode($member['name'])?></h4>
                                         <p class="duty"><?= HtmlPurifier::process($member['duty']) ?></p>
                                         <p class="location"> <?= Html::encode($member['location'])?></p>
-                                        <p class="period">Since <?= Html::encode($member['memberSince']) ?></p>
+                                        <p class="period"><?= Html::encode($member['period']) ?></p>
                                 </div>
                             </div>
                         </div>
@@ -144,7 +144,7 @@ $this->params['breadcrumbs'][] = $this->title;
                                         <h4><?= Html::encode($member['name'])?></h4>
                                         <p class="duty"><?= HtmlPurifier::process($member['duty']) ?></p>
                                         <p class="location"> <?= Html::encode($member['location'])?></p>
-                                        <p class="period">Since <?= Html::encode($member['memberSince']) ?></p>
+                                        <p class="period"><?= Html::encode($member['period']) ?></p>
                                 </div>
                             </div>
                         </div>
