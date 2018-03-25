@@ -42,7 +42,7 @@ class ProxyFile extends Component
     /**
      * @param string $url
      *
-     * @return mixed
+     * @return string
      */
     public function getConvertUrl($url)
     {
@@ -50,8 +50,7 @@ class ProxyFile extends Component
              return $url;
         }
 
-        $data = \Yii::$app->security->hashData($url, $this->secretKey);
-        $data = base64_encode($data);
+        $data = base64_encode(\Yii::$app->security->hashData($url, $this->secretKey));
         $url = Url::to(['/site/proxy-file', 'data' => $data]);
 
         return $url;
@@ -64,15 +63,9 @@ class ProxyFile extends Component
      */
     public function validateUrl($url)
     {
-        if (
-            (new UrlValidator(['skipOnEmpty' => false]))->validate($url) &&
+        return (new UrlValidator(['skipOnEmpty' => false]))->validate($url) &&
             StringHelper::startsWith($url, 'http://') &&
-            !StringHelper::startsWith($url, Yii::$app->params['siteAbsoluteUrl'])
-        ) {
-            return true;
-        }
-
-        return false;
+            !StringHelper::startsWith($url, Yii::$app->params['siteAbsoluteUrl']);
     }
 
     /**
@@ -94,7 +87,9 @@ class ProxyFile extends Component
         $fileData = null;
         try {
             $fileData = file_get_contents($fileUrl);
-        } catch (\Exception $ex) {}
+        } catch (\Exception $ex) {
+            // ignore exception
+        }
 
         if (!$fileData) {
             return false;

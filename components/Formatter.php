@@ -144,7 +144,7 @@ class Formatter extends \yii\i18n\Formatter
      */
     private function replaceImageUrlForProxy($html)
     {
-        return preg_replace_callback('/(<img[^>]+?)src="(.+?)"/i', function($matches) {
+        return preg_replace_callback('/(<img[^>]+?)src=(?:["\']([^"\']+)["\']|([^\s"\'`=<>]+))/i', function($matches) {
             return $matches[1] . 'src="' . Yii::$app->proxyFile->getConvertUrl($matches[2]) . '""';
         }, $html);
     }
