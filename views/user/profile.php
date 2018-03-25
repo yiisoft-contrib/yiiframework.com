@@ -37,6 +37,7 @@ $this->title = 'Hi, ' . $model->username . '!';
                     <?php endif ?>
                     <li><?= Html::a('View forum profile', $model->forumUrl); ?></li>
                     <li><?= Html::a('View public profile', ['view', 'id' => $model->id]); ?></li>
+                    <li><?= Html::a('Change password', ['/user/change-password']) ?></li>
                 </ul>
             </div>
         </div>
