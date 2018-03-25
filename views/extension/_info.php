@@ -1,5 +1,6 @@
 <?php
 
+use app\components\UserPermissions;
 use yii\helpers\Html;
 
 /** @var $model app\models\Extension the data model */
@@ -9,12 +10,14 @@ use yii\helpers\Html;
 
 <?= $this->render('_metadata.php', ['model' => $model, 'extended' => true]) ?>
 
-<?= Html::a('Update Extension', ['extension/update', 'id' => $model->id])?><br>
-<?php if (!$model->from_packagist): ?>
-    <?= Html::a('Manage Downloads', ['extension/files', 'id' => $model->id])?><br>
-<?php endif; ?>
-<?php if ($model->from_packagist): ?>
-    <?= Html::a('Update Packagist Data', ['extension/update-packagist', 'id' => $model->id], ['data-method' => 'post'])?><br>
+<?php if (UserPermissions::canUpdateExtension($model)): ?>
+    <?= Html::a('Update Extension', ['extension/update', 'id' => $model->id])?><br>
+    <?php if (!$model->from_packagist): ?>
+        <?= Html::a('Manage Downloads', ['extension/files', 'id' => $model->id])?><br>
+    <?php endif; ?>
+    <?php if ($model->from_packagist): ?>
+        <?= Html::a('Update Packagist Data', ['extension/update-packagist', 'id' => $model->id], ['data-method' => 'post'])?><br>
+    <?php endif; ?>
 <?php endif; ?>
 
 <?php if ($model->from_packagist): ?>
