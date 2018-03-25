@@ -27,7 +27,7 @@ $this->title = "Change password";
                     <?= $form->field($changePasswordForm, 'password')->passwordInput([
                         'autocomplete' => 'off',
                     ])->hint('The minimum length is 6 characters.') ?>
-                    <?= $form->field($changePasswordForm, 'passwordRe')->passwordInput([
+                    <?= $form->field($changePasswordForm, 'passwordRepeat')->passwordInput([
                         'autocomplete' => 'off',
                     ]) ?>
 

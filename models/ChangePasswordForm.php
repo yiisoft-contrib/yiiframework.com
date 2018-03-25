@@ -21,7 +21,7 @@ class ChangePasswordForm extends Model
     /**
      * @var string
      */
-    public $passwordRe;
+    public $passwordRepeat;
 
     /**
      * @var User
@@ -38,10 +38,10 @@ class ChangePasswordForm extends Model
     public function rules()
     {
         return [
-            [['currentPassword', 'password', 'passwordRe'], 'required'],
+            [['currentPassword', 'password', 'passwordRepeat'], 'required'],
             ['currentPassword', 'validateCurrentPassword'],
             ['password', 'string', 'min' => 6],
-            ['passwordRe', 'compare', 'compareAttribute' => 'password', 'message' => 'Passwords do not match.'],
+            ['passwordRepeat', 'compare', 'compareAttribute' => 'password', 'message' => 'Passwords do not match.'],
         ];
     }
 
@@ -60,7 +60,7 @@ class ChangePasswordForm extends Model
         return [
             'currentPassword' => 'Current password',
             'password' => 'New password',
-            'passwordRe' => 'Repeat password',
+            'passwordRepeat' => 'Repeat password',
         ];
     }
 
