@@ -91,8 +91,9 @@ $this->endBlock();
                         helping us with translation</a>.
                     </div>
                 <?php endif ?>
-
-                <?= \app\widgets\Star::widget(['model' => $doc]) ?>
+                <div class="pull-right">
+                    <?= \app\widgets\Star::widget(['model' => $doc]) ?>
+                </div>
 
                 <?= $section->content ?>
 
