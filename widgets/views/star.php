@@ -16,6 +16,6 @@ use yii\helpers\Url;
         'data-star-url' => $ajaxUrl
     ]) ?>
     <?php if (isset($starCount)): ?>
-        <span class="star-count"><?= (int) $starCount ?></span> followers
+        <span class="star-count"><?= (int) $starCount ?></span> follower<?= $starCount > 1 ? 's' : '' ?>
     <?php endif; ?>
 </div>
