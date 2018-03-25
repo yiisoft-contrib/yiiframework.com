@@ -14,7 +14,7 @@ use yii\helpers\Html;
             <div class="suptitle">
                 Created <?= Yii::$app->formatter->asRelativeTime($model->created_at) ?> by <?= $model->creator->rankLink ?><?php
                 if ($model->updated_at !== null): ?>,
-                    updated <?= Yii::$app->formatter->asRelativeTime($model->created_at) ?> by <?= $model->updater->rankLink ?><?php
+                    updated <?= Yii::$app->formatter->asRelativeTime($model->updated_at) ?> by <?= $model->updater->rankLink ?><?php
                 endif; ?>.
             </div>
             <h2 class="title"><?= Html::a(Html::encode($model->title), ['wiki/view', 'id' => $model->id, 'name' => $model->slug]) ?></h2>
