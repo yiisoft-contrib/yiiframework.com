@@ -2,6 +2,7 @@
 
 namespace app\controllers;
 
+use app\components\UserPermissions;
 use Yii;
 use app\models\User;
 use app\models\UserSearch;
@@ -29,7 +30,7 @@ class UserAdminController extends BaseController
    				        // allow all to a access index and view action
    				        'allow' => true,
    				        'actions' => ['index', 'view', 'update', 'delete'],
-   				        'roles' => ['users:pAdmin'],
+                        'roles' => [UserPermissions::PERMISSION_MANAGE_USERS],
    			        ],
    		        ]
    	        ],
