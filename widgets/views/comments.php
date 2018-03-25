@@ -33,7 +33,7 @@ use yii\helpers\Html;
                                             <a href="#c<?= $comment->id ?>" class="comment-id">#<?= $comment->id ?></a>
                                         </div>
                                         <div class="col-md-9 details">
-                                            <a href="#"><?= $comment->user->username ?? User::DELETED_USER_HTML; ?></a> at
+                                            <?= $comment->user ? $comment->user->rankLink : User::DELETED_USER_HTML ?> at
                                             <span class="date"><?=Yii::$app->formatter->format($comment->created_at, 'datetime')?></span>
                                         </div>
                                         <div class="col-md-2">
