@@ -35,7 +35,7 @@ $this->title = 'Hi, ' . $model->username . '!';
                             <?php endif ?>
                         </li>
                     <?php endif ?>
-                    <li><?= Html::a('View forum profile', $model->forumUrl); ?></li>
+                    <li><?= Html::a('View forum profile', $model->forumUrl); ?> (log in using your website username and password)</li>
                     <li><?= Html::a('View public profile', ['view', 'id' => $model->id]); ?></li>
                     <li><?= Html::a('Change password', ['/user/change-password']) ?></li>
                 </ul>
@@ -119,7 +119,7 @@ $this->title = 'Hi, ' . $model->username . '!';
             </div>
             */ ?>
         <div class="col-xs-12 heading-separator">
-            <h2><span>Content</span></h2>
+            <h2><span>Your Content</span></h2>
         </div>
         <div class="row">
             <div class="col-xs-12 col-md-6">
