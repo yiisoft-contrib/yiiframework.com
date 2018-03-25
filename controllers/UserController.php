@@ -4,6 +4,7 @@ namespace app\controllers;
 
 use app\components\mailers\EmailVerificationMailer;
 use app\models\Badge;
+use app\models\ChangePasswordForm;
 use app\models\Extension;
 use app\models\Star;
 use app\models\UserBadge;
@@ -30,12 +31,12 @@ class UserController extends BaseController
         return [
             'access' => [
                 'class' => AccessControl::class,
-                'only' => ['profile', 'request-email-verification'],
+                'only' => ['profile', 'request-email-verification', 'change-password'],
                 'rules' => [
                     [
                         // allow all to a access index and view action
                         'allow' => true,
-                        'actions' => ['profile', 'request-email-verification'],
+                        'actions' => ['profile', 'request-email-verification', 'change-password'],
                         'roles' => ['@'],
                     ],
                 ]
@@ -212,5 +213,23 @@ class UserController extends BaseController
         }
 
         return Yii::$app->user->isGuest ? $this->goHome() : $this->redirect(['user/profile']);
+    }
+
+    public function actionChangePassword()
+    {
+        /** @var User $user */
+        $user = Yii::$app->user->identity;
+
+        $this->sectionTitle = null;
+
+        $changePasswordForm = new ChangePasswordForm($user);
+        if ($changePasswordForm->load(Yii::$app->request->post()) && $changePasswordForm->save()) {
+            Yii::$app->getSession()->setFlash('success', 'The password has been changed.');
+            return $this->redirect(['/user/profile']);
+        }
+
+        return $this->render('changePassword', [
+            'changePasswordForm' => $changePasswordForm,
+        ]);
     }
 }
