@@ -367,12 +367,12 @@ class ExtensionController extends BaseController
     {
         $model = $this->findModelById($id);
 
-        if (UserPermissions::canAddOrUpdateExtension()) {
+        if (!UserPermissions::canAddOrUpdateExtension()) {
             Yii::$app->session->addFlash('warning', 'Please confirm your email.');
             return $this->redirect(['/user/profile']);
         }
 
-        if (UserPermissions::canUpdateExtension($model)) {
+        if (!UserPermissions::canUpdateExtension($model)) {
             throw new ForbiddenHttpException('You are not allowed to perform this operation.');
         }
 
