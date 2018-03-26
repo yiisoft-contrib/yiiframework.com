@@ -3,7 +3,6 @@
 namespace app\commands;
 
 use app\apidoc\Yii1GuideRenderer;
-use app\models\SearchGuideSection;
 use Yii;
 use yii\helpers\Console;
 use app\apidoc\GuideRenderer;
