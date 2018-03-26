@@ -261,17 +261,21 @@ abstract class SearchActiveRecord extends \yii\elasticsearch\ActiveRecord
                 ],
             ],
         ]);
-        $query->addSuggester('suggest-name', [
-            'prefix' => $queryString,
-            'completion' => [
-                'field' => 'name.suggest',
-                // number of suggestions to return
-                'size' => 10,
-                'fuzzy' => [
-                    'fuzziness' => 'AUTO',
+        // if language is specified, do not suggest on name only on title
+        // language specific indexes have no name field
+        if ($language === null || $language === 'en') {
+            $query->addSuggester('suggest-name', [
+                'prefix' => $queryString,
+                'completion' => [
+                    'field' => 'name.suggest',
+                    // number of suggestions to return
+                    'size' => 10,
+                    'fuzzy' => [
+                        'fuzziness' => 'AUTO',
+                    ],
                 ],
-            ],
-        ]);
+            ]);
+        }
 
         return $query;
     }
