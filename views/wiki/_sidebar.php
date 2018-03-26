@@ -50,6 +50,7 @@ use yii\helpers\Html;
 <h3 class="wiki-side-title">Popular Tags</h3>
 
 <ul class="wiki-side-menu">
+    <li<?= empty($tag) ? ' class="active"' : '' ?>><a href="<?= \yii\helpers\Url::to(['wiki/index', 'category' => isset($category) ? $category->id : null])?>">All</a></li>
     <?php foreach(WikiTag::find()->orderBy(['frequency' => SORT_DESC])->limit(10)->all() as $t): ?>
         <li<?= isset($tag) && $tag->equals($t) ? ' class="active"' : '' ?>>
             <a href="<?= \yii\helpers\Url::to([
