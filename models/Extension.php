@@ -289,6 +289,16 @@ MARKDOWN;
         return $this->hasOne(User::className(), ['id' => 'owner_id']);
     }
 
+    public function getIsOfficialExtension()
+    {
+        return $this->from_packagist && strncmp($this->name, 'yiisoft/', 8) === 0;
+    }
+
+    public function getOwnerLink()
+    {
+        return $this->getIsOfficialExtension() ? Html::a('The Yii Team', ['site/team']) : $this->owner->rankLink;
+    }
+
     /**
      * @return \yii\db\ActiveQuery
      */
