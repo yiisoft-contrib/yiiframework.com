@@ -66,7 +66,7 @@ class ResetPasswordForm extends Model
         if ($result) {
             /** @var ForumAdapter $forumAdapter */
             $forumAdapter = Yii::$app->forumAdapter;
-            $forumAdapter->changeUserPassword($this->user, $this->password);
+            $forumAdapter->changeUserPassword($user, $this->password);
         }
 
         return $result;
