@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "4c2d9ef4656893655bfac97b36a073c9",
+    "content-hash": "a45553e916e4c01e11b9af342bcab8de",
     "packages": [
         {
             "name": "2amigos/yii2-selectize-widget",
@@ -670,16 +670,16 @@
         },
         {
             "name": "cebe/markdown",
-            "version": "1.0.2",
+            "version": "1.0.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/cebe/markdown.git",
-                "reference": "f681fee8303310415b746f3758eeda0a7ad08bda"
+                "reference": "8efb4268c90add2eee0edacf503ae71f22ccc745"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/cebe/markdown/zipball/f681fee8303310415b746f3758eeda0a7ad08bda",
-                "reference": "f681fee8303310415b746f3758eeda0a7ad08bda",
+                "url": "https://api.github.com/repos/cebe/markdown/zipball/8efb4268c90add2eee0edacf503ae71f22ccc745",
+                "reference": "8efb4268c90add2eee0edacf503ae71f22ccc745",
                 "shasum": ""
             },
             "require": {
@@ -726,7 +726,7 @@
                 "markdown",
                 "markdown-extra"
             ],
-            "time": "2015-03-06T05:21:16+00:00"
+            "time": "2018-03-26T11:15:02+00:00"
         },
         {
             "name": "cebe/markdown-latex",
@@ -2200,7 +2200,7 @@
                 "framework",
                 "yii2"
             ],
-            "time": "2018-03-05 09:52:08"
+            "time": "2018-03-05T09:52:08+00:00"
         },
         {
             "name": "yiisoft/yii2-apidoc",
@@ -2260,7 +2260,7 @@
                 "phpdoc",
                 "yii2"
             ],
-            "time": "2018-03-01 00:12:24"
+            "time": "2018-03-01T00:12:24+00:00"
         },
         {
             "name": "yiisoft/yii2-authclient",
@@ -2471,7 +2471,7 @@
                 "search",
                 "yii2"
             ],
-            "time": "2018-03-07 00:41:45"
+            "time": "2018-03-07T00:41:45+00:00"
         },
         {
             "name": "yiisoft/yii2-httpclient",
