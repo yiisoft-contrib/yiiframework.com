@@ -49,7 +49,14 @@
            }
          }
          .comment-body {
-           @include rem(padding, 22px);
+           @include rem(padding-left, 22px);
+           @include rem(padding-top, 10px);
+           @include rem(padding-right, 22px);
+           @include rem(padding-bottom, 10px);
+         }
+         .comment-footer {
+           @include rem(padding-left, 22px);
+           @include rem(padding-right, 22px);
          }
        }
      }
