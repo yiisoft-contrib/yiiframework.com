@@ -37,7 +37,7 @@ use yii\helpers\Html;
         </div>
 
         <div class="extension-author">
-            Created by <?= $model->owner->rankLink ?>,
+            Created by <?= $model->getOwnerLink() ?>,
             <?php
             $created = Yii::$app->formatter->asRelativeTime($model->created_at);
             $updated = Yii::$app->formatter->asRelativeTime($model->updated_at);

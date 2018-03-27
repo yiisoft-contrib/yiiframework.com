@@ -24,7 +24,7 @@ use yii\helpers\Html;
     <div class="group"><span>Category:</span> <?= Html::a(Html::encode($model->category->name), ['extension/index', 'category' => $model->category_id]) ?></div>
     <div class="tags"><span>Tags:</span> <?= \app\widgets\ExtensionTaglist::widget(['extension' => $model]) ?></div>
     <?php if ($extended): ?>
-        <div class="people"><span>Developed by:</span> <?= $model->owner->rankLink ?></div>
+        <div class="people"><span>Developed by:</span> <?= $model->getOwnerLink() ?></div>
         <div class="dates"><span>Created on:</span> <?= Yii::$app->formatter->asDate($model->created_at) ?></div>
         <div class="dates"><span>Last updated:</span> <?= Yii::$app->formatter->asRelativeTime($model->updated_at) ?></div>
     <?php endif; ?>

@@ -46,15 +46,12 @@ $this->params['breadcrumbs'][] = $this->title;
 					<h2><span>Yii 2.0</span></h2>
 				</div>
 				<?php $version = '2.0'; ?>
-				<p class="small">
-
-                <ul>
-                    <li>Latest release is <strong><?= $latest = key($versions[$version]) ?></strong> (<strong><?= $versions[$version][$latest] ?></strong>)</li>
-                    <li><?= Html::a('Changes in this and older versions', "https://github.com/yiisoft/yii2/$latest/framework/CHANGELOG.md") ?></li>
-                    <li><?= Html::a('Upgrade instructions', "https://github.com/yiisoft/yii2/blob/$latest/framework/UPGRADE.md") ?></li>
-                    <li><a href="https://github.com/yiisoft/yii2/releases">List of all Yii 2.x releases</a></li>
-                </ul>
-
+        <ul>
+            <li>Latest release is <strong><?= $latest = key($versions[$version]) ?></strong> (<strong><?= $versions[$version][$latest] ?></strong>)</li>
+            <li><?= Html::a('Changes in this and older versions', "https://github.com/yiisoft/yii2/$latest/framework/CHANGELOG.md") ?></li>
+            <li><?= Html::a('Upgrade instructions', "https://github.com/yiisoft/yii2/blob/$latest/framework/UPGRADE.md") ?></li>
+            <li><a href="https://github.com/yiisoft/yii2/releases">List of all Yii 2.x releases</a></li>
+        </ul>
 
 				<h1 id="install-composer">Install via Composer (recommended)</h1>
 
@@ -81,7 +78,7 @@ $this->params['breadcrumbs'][] = $this->title;
 					<p class="small install">To install the <b>basic</b> application template, run the following command:</p>
 					</div>
 					<div class="col-md-9">
-					<pre><code class="hljs bash language-bash">php composer.phar create-project yiisoft/yii2-app-basic <?= $latest ?> basic</code></pre>
+					<pre><code class="hljs bash language-bash">php composer.phar create-project yiisoft/yii2-app-basic basic</code></pre>
 					</div>
 				</div>
 
@@ -102,7 +99,7 @@ $this->params['breadcrumbs'][] = $this->title;
 					<p class="small install">To install the <b>advanced</b> application template, run the following command:</p>
 					</div>
 					<div class="col-md-9">
-					<pre><code class="hljs bash language-bash">php composer.phar create-project yiisoft/yii2-app-advanced <?= $latest ?> advanced</code></pre>
+					<pre><code class="hljs bash language-bash">php composer.phar create-project yiisoft/yii2-app-advanced advanced</code></pre>
 					</div>
 				</div>
 

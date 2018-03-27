@@ -43,7 +43,7 @@ class ExtensionController extends BaseController
                     [
                         // allow all to a access index and view action
                         'allow' => true,
-                        'actions' => ['index', 'view', 'files', 'download'],
+                        'actions' => ['index', 'view', 'files', 'download', 'redirect'],
                     ],
                     [
                         'allow' => true,
@@ -416,5 +416,13 @@ class ExtensionController extends BaseController
             return $model;
         }
         throw new NotFoundHttpException('The requested page does not exist.');
+    }
+
+    /**
+     * This action redirects old urls http://www.yiiframework.com/doc-2.0/ext-*.html to the new location.
+     */
+    public function actionRedirect($name)
+    {
+        return $this->redirect(['extension/view', 'name' => "yii2-$name", 'vendorName' => 'yiisoft']);
     }
 }

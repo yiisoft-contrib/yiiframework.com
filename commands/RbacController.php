@@ -9,6 +9,8 @@ use app\models\User;
 use Yii;
 use yii\base\InvalidParamException;
 use yii\console\Controller;
+use yii\db\Query;
+use yii\rbac\DbManager;
 use yii\rbac\ManagerInterface;
 
 class RbacController extends Controller
@@ -17,7 +19,13 @@ class RbacController extends Controller
     {
         /** @var ManagerInterface $auth */
         $auth = \Yii::$app->authManager;
-        
+
+        if ($auth instanceof DbManager) {
+            $this->stdout("Backing up assignments.\n");
+            $assignments = (new Query())
+                ->from($auth->assignmentTable)->all($auth->db);
+        }
+
         $this->stdout("Cleaning up.\n");
         $this->cleanup($auth);
 
@@ -32,6 +40,18 @@ class RbacController extends Controller
 
         $this->stdout("Adding wiki admin.\n");
         $this->addWikiAdmin($auth);
+
+        if ($auth instanceof DbManager) {
+            $this->stdout("Restoring assignments.\n");
+            $auth->db->createCommand()->batchInsert(
+                $auth->assignmentTable, [
+                    'item_name',
+                    'user_id',
+                    'created_at',
+                ],
+                $assignments
+            )->execute();
+        }
     }
 
     /**

@@ -5,6 +5,7 @@ use app\models\WikiCategory;
 use app\models\WikiTag;
 use app\widgets\RecentComments;
 use yii\helpers\Html;
+use yii\helpers\Url;
 
 /** @var $this \yii\web\View */
 /** @var $category string */
@@ -34,10 +35,10 @@ use yii\helpers\Html;
 <h3 class="wiki-side-title">Categories</h3>
 
 <ul class="wiki-side-menu">
-    <li<?= empty($category) ? ' class="active"' : '' ?>><a href="<?= \yii\helpers\Url::to(['wiki/index', 'tag' => isset($tag) ? $tag->slug : null])?>">All</a></li>
+    <li<?= empty($category) ? ' class="active"' : '' ?>><a href="<?= Url::to(['wiki/index', 'tag' => isset($tag) ? $tag->slug : null])?>">All</a></li>
     <?php foreach(WikiCategory::findWithCountData()->all() as $cat): ?>
         <li<?= isset($category) && $category == $cat->id ? ' class="active"' : '' ?>>
-            <a href="<?= \yii\helpers\Url::to([
+            <a href="<?= Url::to([
                 'wiki/index',
                 'category' => $cat->id,
                 'tag' => isset($tag) ? $tag->slug : null,
@@ -50,9 +51,10 @@ use yii\helpers\Html;
 <h3 class="wiki-side-title">Popular Tags</h3>
 
 <ul class="wiki-side-menu">
+    <li<?= empty($tag) ? ' class="active"' : '' ?>><a href="<?= Url::to(['wiki/index', 'category' => isset($category) ? $category : null])?>">All</a></li>
     <?php foreach(WikiTag::find()->orderBy(['frequency' => SORT_DESC])->limit(10)->all() as $t): ?>
         <li<?= isset($tag) && $tag->equals($t) ? ' class="active"' : '' ?>>
-            <a href="<?= \yii\helpers\Url::to([
+            <a href="<?= Url::to([
                 'wiki/index',
                 'tag' => $t->slug,
                 'category' => isset($category) ? $category : null,

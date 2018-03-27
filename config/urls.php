@@ -82,7 +82,7 @@ return [
     // user profiles and user ranking
 	'user' => 'user/index',
 	'user/<id:\d+>' => 'user/view',
-	'user/<action:halloffame|profile|request-email-verification>' => 'user/<action>',
+	'user/<action:halloffame|profile|request-email-verification|change-password>' => 'user/<action>',
 	'badges' => 'user/badges',
 	'badge/<name:[\w-]+>' => 'user/view-badge',
 
@@ -91,6 +91,7 @@ return [
 
 	// urls from old site redirect to new location
 	'doc-2.0/guide-<section:[A-z0-9\\.\\-]+>.html' => 'guide/redirect',
+	'doc-2.0/ext-<name:\w+>-index.html' => 'extension/redirect',
 	'doc-2.0/<section:.+>.html' => 'api/redirect',
     '<url:doc/cookbook/.*>' => 'site/redirect',
 	'<url:doc/terms>' => 'site/redirect',

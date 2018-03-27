@@ -147,6 +147,18 @@ class ForumAdapter extends Component
         return $this->db->getLastInsertID();
     }
 
+    public function changeUserPassword(User $user, $password)
+    {
+        $ipbSalt = $this->generateIPBPasswordSalt();
+
+        $this->db->createCommand()->update($this->tablePrefix . 'members', [
+            'members_pass_hash' => $this->getIPBPasswordHash($ipbSalt, $password),
+            'members_pass_salt' => $ipbSalt,
+        ], [
+            'member_id' => $user->forum_id
+        ])->execute();
+    }
+
     /**
      * Generates a password salt.
      * Returns n length string of any char except backslash

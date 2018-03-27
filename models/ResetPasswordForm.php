@@ -2,6 +2,7 @@
 
 namespace app\models;
 
+use app\components\ForumAdapter;
 use yii\base\InvalidParamException;
 use yii\base\Model;
 use Yii;
@@ -60,6 +61,14 @@ class ResetPasswordForm extends Model
         $user->password = $this->password;
         $user->removePasswordResetToken();
 
-        return $user->save();
+        $result = $user->save();
+
+        if ($result) {
+            /** @var ForumAdapter $forumAdapter */
+            $forumAdapter = Yii::$app->forumAdapter;
+            $forumAdapter->changeUserPassword($user, $this->password);
+        }
+
+        return $result;
     }
 }
