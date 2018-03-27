@@ -42,7 +42,7 @@ $this->params['breadcrumbs'][] = $this->title;
 				<p class="small">
 				The latest release of Yii 2 is <strong><?= $latest = key($versions[$version]) ?></strong>
 				released on <strong><?= $versions[$version][$latest] ?></strong>.
-				For changes in this and older versions, see the <?= Html::a('CHANGELOG', "https://github.com/yiisoft/yii2/$latest/framework/CHANGELOG.md") ?> file.
+				For changes in this and older versions, see the <?= Html::a('CHANGELOG', "https://github.com/yiisoft/yii2/blob/$latest/framework/CHANGELOG.md") ?> file.
 				Instructions on how to upgrade to this version can be found in the <?= Html::a('UPGRADE', "https://github.com/yiisoft/yii2/blob/$latest/framework/UPGRADE.md") ?> file.
 
 				A list of all Yii 2.x releases can be found on the <a href="https://github.com/yiisoft/yii2/releases">github repository</a>.
