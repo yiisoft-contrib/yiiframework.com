@@ -28,6 +28,11 @@ $this->params['breadcrumbs'][] = $this->title;
 		<div class="row">
             <div class="col-md-12">
                 <p class="small">
+                    Yii is an open source project released under the terms of the <?= Html::a('BSD License', ['site/license']) ?>.
+				    This means that you can use Yii for free to develop either open-source or proprietary Web applications.>
+                </p>
+                
+                <p class="small">
                     There are two ways to install Yii:
                     by using Composer or
                     by downloading an application template.
