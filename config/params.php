@@ -86,7 +86,9 @@ return [
             'pl' => 'Polski',       // Polish
             'pt-br' => 'Português brasileiro',  // Brazilian Portuguese
             'ru' => 'Русский',     // Russian
+            'uk' => 'Українська мова', // Ukrainian
             'zh-cn' => '简体中文',  // Simplified Chinese
+            'vi' => 'Vietnamese', // Vietnamese
         ],
         '1.1' => [
             'de' => 'Deutsch',      // German
