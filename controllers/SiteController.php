@@ -9,6 +9,7 @@ use app\models\SecurityForm;
 use app\models\Wiki;
 use Yii;
 use app\models\ContactForm;
+use yii\filters\AccessControl;
 use yii\web\NotFoundHttpException;
 
 /**
@@ -31,6 +32,26 @@ class SiteController extends BaseController
             ],
         ];
     }
+
+    /**
+     * @inheritdoc
+     */
+    public function behaviors()
+    {
+        return [
+            'access' => [
+                'class' => AccessControl::class,
+                'only' => ['render-markdown'],
+                'rules' => [
+                    [
+                        'allow' => true,
+                        'roles' => ['@'],
+                    ],
+                ]
+            ]
+        ];
+    }
+
 
     /**
      * This action redirects old urls to the new location.
