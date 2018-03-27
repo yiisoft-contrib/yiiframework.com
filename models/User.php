@@ -130,6 +130,14 @@ class User extends ActiveRecord implements IdentityInterface
         return true;
     }
 
+    public function beforeDelete()
+    {
+        if (parent::beforeDelete()) {
+            $this->updateAttributes(['status' => static::STATUS_DELETED]);
+        }
+        return false;
+    }
+
     /**
      * @return UserQuery
      */
