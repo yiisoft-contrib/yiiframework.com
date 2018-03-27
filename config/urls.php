@@ -68,6 +68,10 @@ return [
 	'extensions' => 'extension/index',
 	'extensions/<action:[\w-]+>' => 'extension/<action>', // TODO forbidden names to avoid conflict!
 
+    // content reporting
+
+    'reports/<action:[\w-]+>' => 'report/<action>',
+
 	// TODO handle URLs from old site
     // /ext/files/?id=864
     'extensions/page/<page:\d+>' => 'extension/index',

@@ -2,6 +2,7 @@
 
 namespace app\models;
 
+use app\components\object\ClassType;
 use yii\behaviors\BlameableBehavior;
 
 /**
@@ -24,6 +25,15 @@ class Report extends ActiveRecord
 {
     const STATUS_OPEN = 10;
     const STATUS_DONE = 20;
+
+    /**
+     * @var string[] Available object types for reporting.
+     */
+    public static $availableObjectTypes = [
+        ClassType::WIKI,
+        ClassType::EXTENSION,
+        ClassType::COMMENT,
+    ];
 
     /**
      * @inheritdoc
@@ -71,7 +81,7 @@ class Report extends ActiveRecord
             'status' => 'Status',
             'object_type' => 'Object Type',
             'object_id' => 'Object ID',
-            'content' => 'Content',
+            'content' => 'What\'s wrong with it?',
             'created_at' => 'Created At',
             'updated_at' => 'Updated At',
             'creator_id' => 'Creator ID',
@@ -102,5 +112,29 @@ class Report extends ActiveRecord
     public static function find()
     {
         return new ReportQuery(static::class);
+    }
+
+    /**
+     * @return Extension|Wiki|Comment|null
+     */
+    public function getObject()
+    {
+        $query = null;
+        switch ($this->object_type) {
+            case ClassType::WIKI:
+                $query = Wiki::find()->active();
+                break;
+            case ClassType::EXTENSION:
+                $query = Extension::find()->active();
+                break;
+            case ClassType::COMMENT:
+                $query = Comment::find()->active();
+        }
+
+        if ($query === null) {
+            return null;
+        }
+
+        return $query->where(['id' => $this->object_id])->one();
     }
 }
