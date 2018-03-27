@@ -198,13 +198,13 @@ $this->params['breadcrumbs'][] = $this->title;
 							}
 							if ($guide->getDownloadFile('tar.gz') !== false) {
 								echo Html::a(
-									'.tar.gz',
+									'HTML in .tar.gz',
 									['guide/download', 'version' => $guide->version, 'language' => $guide->language, 'format' => 'tar.gz']
 								) . ' - ';
 							}
 							if ($guide->getDownloadFile('tar.bz2') !== false) {
 								echo Html::a(
-									'.tar.bz2',
+									'HTML in .tar.bz2',
 									['guide/download', 'version' => $guide->version, 'language' => $guide->language, 'format' => 'tar.bz2']
 								);
 							}
