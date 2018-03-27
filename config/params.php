@@ -88,7 +88,7 @@ return [
             'ru' => 'Русский',     // Russian
             'uk' => 'Українська мова', // Ukrainian
             'zh-cn' => '简体中文',  // Simplified Chinese
-            'vi' => 'Vietnamese', // Vietnamese
+            'vi' => 'Tiếng Việt', // Vietnamese
         ],
         '1.1' => [
             'de' => 'Deutsch',      // German
