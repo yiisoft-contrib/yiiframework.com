@@ -19,6 +19,7 @@ return [
     'tour' => 'site/tour',
     'resources' => 'site/resources',
     'community' => 'site/community',
+    'render-markdown' => 'site/render-markdown',
 
     // RSS
     'rss.xml' => 'rss/all',
