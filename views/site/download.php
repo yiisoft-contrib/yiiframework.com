@@ -234,7 +234,7 @@ $this->params['breadcrumbs'][] = $this->title;
 				<p class="small">or via SVN using:</p>
 				<p><code>svn checkout <?= $versionInfo[$version]['svn-url'] ?> yii</code></p>
 
-                <p><code>yiisoft/yii</code> composer package is available as well.</p>
+                <p><a href="https://packagist.org/packages/yiisoft/yii">yiisoft/yii</a> composer package is available as well.</p>
 
 				<h3 class="text-center">Documentation</h3>
 
