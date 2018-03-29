@@ -43,7 +43,8 @@ class GuideController extends BaseController
 
         if ($guide) {
             $this->sectionTitle = $guide->title;
-            $section = $guide->loadSection($section);
+            $sectionName = $section;
+            $section = $guide->loadSection($sectionName);
 
             if ($section) {
                 $urlParams = ['type' => $guide->typeUrlName, 'version' => $guide->version, 'language' => $guide->language, 'section' => $section->name];
@@ -59,6 +60,10 @@ class GuideController extends BaseController
                 ]);
             }
 
+            // redirect old URLs to extension docs
+            if ($sectionName === 'tool-gii' || $sectionName === 'tool-debugger') {
+                return $this->actionRedirect($sectionName);
+            }
         }
 
         throw new NotFoundHttpException('The requested page was not found.');
@@ -151,10 +156,20 @@ class GuideController extends BaseController
      */
     public function actionRedirect($section)
     {
+        // index page
         if ($section === 'README' || $section === 'index') {
             return $this->redirect(['index', 'version' => '2.0', 'language' => 'en', 'type' => 'guide'], 301); // Moved Permanently
         }
 
+        // old extension documentation
+        if ($section === 'tool-debugger') {
+            return $this->redirect(['extension/view', 'name' => 'yii2-debug', 'vendorName' => 'yiisoft'], 301); // Moved Permanently
+        }
+        if ($section === 'tool-gii') {
+            return $this->redirect(['extension/view', 'name' => 'yii2-gii', 'vendorName' => 'yiisoft'], 301); // Moved Permanently
+        }
+
+        // existing guide sections
         $guide = Guide::load('2.0', 'en');
         if ($guide && ($section = $guide->loadSection($section))) {
             return $this->redirect(['view', 'version' => '2.0', 'section' => $section->name, 'language' => 'en', 'type' => 'guide'], 301); // Moved Permanently
