@@ -207,15 +207,28 @@ class ApiController extends BaseController
     }
 
     /**
-     * This action redirects old urls http://www.yiiframework.com/doc-2.0/*.html to the new location.
+     * This action redirects old urls to the new location.
+     *
+     * - http://www.yiiframework.com/doc-2.0/*.html URLs are redirected to 2.0 apidoc
+     * - http://www.yiiframework.com/doc/api/ClassName are redirected to 1.1 apidoc
      */
     public function actionRedirect($section)
     {
-        $file = Yii::getAlias("@app/data/api-2.0/$section.html");
-        if (!preg_match('/^[\w\-]+$/', $section) || !is_file($file)) {
-            throw new NotFoundHttpException('The requested page was not found.');
+        if (preg_match('/^[\w\-]+$/', $section)) {
+
+            // check 2.0 apidoc
+            $file = Yii::getAlias("@app/data/api-2.0/$section.html");
+            if (is_file($file)) {
+                return $this->redirect(['view', 'version' => '2.0', 'section' => $section], 301); // Moved Permanently
+            }
+            // check 1.1 apidoc
+            $file = Yii::getAlias("@app/data/api-1.1/api/$section.html");
+            if (is_file($file)) {
+                return $this->redirect(['view', 'version' => '1.1', 'section' => $section], 301); // Moved Permanently
+            }
+
         }
-        return $this->redirect(['view', 'version' => '2.0', 'section' => $section], 301); // Moved Permanently
+        throw new NotFoundHttpException('The requested page was not found.');
     }
 
     protected function validateVersion($version)

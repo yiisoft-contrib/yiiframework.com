@@ -41,6 +41,7 @@ return [
     'doc/api/class-members' => 'api/class-members', // TODO allow versioning
     'doc/api/<version:\\d\\.\\d>' => 'api/index',
     'doc/api/<version:\\d\\.\\d>/<section:.+>' => 'api/view',
+    'doc/api/<section:[^\\d].+>' => 'api/redirect',
 	// definitive guide and Yii 1 blog tutorial
     'doc/<type:guide|blog>/<version:\\d\\.\\d>/<language:[\\w\\-]+>' => 'guide/index',
     'doc/<type:guide|blog>/<version:\\d\\.\\d>/<language:[\\w\\-]+>/<section:[a-z0-9\\.\\-]+>' => 'guide/view',
