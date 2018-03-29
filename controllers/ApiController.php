@@ -7,6 +7,7 @@ use app\components\object\ClassType;
 use app\models\Doc;
 use app\models\search\SearchActiveRecord;
 use Yii;
+use yii\helpers\FileHelper;
 use yii\helpers\Json;
 use yii\helpers\Url;
 use yii\web\Controller;
@@ -221,10 +222,12 @@ class ApiController extends BaseController
             if (is_file($file)) {
                 return $this->redirect(['view', 'version' => '2.0', 'section' => $section], 301); // Moved Permanently
             }
-            // check 1.1 apidoc
-            $file = Yii::getAlias("@app/data/api-1.1/api/$section.html");
-            if (is_file($file)) {
-                return $this->redirect(['view', 'version' => '1.1', 'section' => $section], 301); // Moved Permanently
+            // check 1.1 apidoc, case insensitive search
+            foreach(FileHelper::findFiles(Yii::getAlias('@app/data/api-1.1/api'), ['only' => ['*.html']]) as $file) {
+                $baseName = basename($file, '.html');
+                if (strcasecmp($baseName, $section) === 0) {
+                    return $this->redirect(['view', 'version' => '1.1', 'section' => $baseName], 301); // Moved Permanently
+                }
             }
 
         }
