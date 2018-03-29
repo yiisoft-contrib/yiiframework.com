@@ -5,10 +5,10 @@ namespace app\jobs;
 use app\models\Extension;
 use yii\base\BaseObject;
 use yii\queue\Queue;
-use yii\queue\RetryableJob;
+use yii\queue\RetryableJobInterface;
 use yii\web\HttpException;
 
-class ExtensionImportJob extends BaseObject implements RetryableJob
+class ExtensionImportJob extends BaseObject implements RetryableJobInterface
 {
     public $extensionId;
 

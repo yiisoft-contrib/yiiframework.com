@@ -10,12 +10,12 @@ use yii\base\Exception;
 use yii\base\InvalidConfigException;
 use yii\mail\MessageInterface;
 use yii\queue\Queue;
-use yii\queue\RetryableJob;
+use yii\queue\RetryableJobInterface;
 
 /**
  * EmailNotificationJob sends notification emails to users.
  */
-class EmailNotificationJob extends BaseObject implements RetryableJob
+class EmailNotificationJob extends BaseObject implements RetryableJobInterface
 {
     /**
      * @var MessageInterface
