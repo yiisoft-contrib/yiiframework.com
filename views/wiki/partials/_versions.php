@@ -25,7 +25,7 @@ use app\widgets\DropdownList;
             }
 
             if ($category) {
-                $url['category'] = $category->name;
+                $url['category'] = $category->id;
             }
 
             if ($tag) {
