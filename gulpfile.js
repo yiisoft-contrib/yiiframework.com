@@ -42,6 +42,7 @@ function styles() {
     .pipe($.if(PRODUCTION, $.cssnano()))
     .pipe($.if(!PRODUCTION, $.sourcemaps.write('.', { sourceRoot: '../../assets/src/scss/' })))
     .pipe(gulp.dest(config.PATHS.dist + '/css'))
+    .pipe(browsersync.stream())
     .pipe($.notify({ message: 'Styles task complete' }));
 };
 
