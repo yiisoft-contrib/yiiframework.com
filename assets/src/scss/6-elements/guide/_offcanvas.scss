@@ -14,17 +14,17 @@
 
   .row-offcanvas
   .sidenav-offcanvas {
-    left: -50%; /* 6 columns */
+    left: -50vw; /* 6 columns */
   }
 
   .row-offcanvas.active {
-    left: 50%; /* 6 columns */
+    left: 50vw; /* 6 columns */
   }
 
   .sidenav-offcanvas {
     position: absolute;
     top: 0;
-    width: 50%; /* 6 columns */
+    width: 50vw; /* 6 columns */
   }
 }
 
