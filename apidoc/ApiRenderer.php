@@ -2,8 +2,6 @@
 
 namespace app\apidoc;
 
-use app\models\SearchApiPrimitive;
-use app\models\SearchApiType;
 use Yii;
 use yii\apidoc\helpers\ApiIndexer;
 use yii\base\ErrorHandler;

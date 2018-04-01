@@ -5,6 +5,7 @@ namespace app\controllers;
 use app\apidoc\ApiRenderer;
 use app\components\object\ClassType;
 use app\models\Doc;
+use app\models\Extension;
 use app\models\search\SearchActiveRecord;
 use Yii;
 use yii\helpers\FileHelper;
@@ -48,6 +49,11 @@ class ApiController extends BaseController
     public function actionIndex($version)
     {
         return $this->actionView($version, 'index');
+    }
+
+    public function actionExtensionIndex($vendorName, $name, $version)
+    {
+        return $this->actionExtensionView($vendorName, $name, $version, 'index');
     }
 
     public function actionView($version, $section)
@@ -120,6 +126,70 @@ class ApiController extends BaseController
                 throw new NotFoundHttpException();
                 // TODO
                 break;
+        }
+        throw new UnsupportedMediaTypeHttpException;
+    }
+
+    public function actionExtensionView($vendorName, $name, $version, $section)
+    {
+        if (($extension = Extension::find()->where(['name' => "$vendorName/$name"])->active()->one()) === null) {
+            throw new NotFoundHttpException('The requested page does not exist.');
+        }
+
+        // TODO $this->validateVersion($version);
+
+        switch (Yii::$app->response->format) {
+            case Response::FORMAT_HTML:
+
+                $this->sectionTitle = [
+//                    'Extensions' => ['extensions/index'],
+                    $extension->name => $extension->getUrl(),
+                    'API Documentation' => $extension->getUrl('doc', ['type' => 'api']),
+                ];
+
+                $title = '';
+                $packages = [];
+                $file = Yii::getAlias("@app/data/extensions/{$extension->name}/api-$version/$section.html");
+                $titles = require(Yii::getAlias("@app/data/extensions/{$extension->name}/api-$version/titles.php"));
+                $titleKey = $section . '.html';
+                if (isset($titles[$titleKey])) {
+                    $title = $titles[$titleKey];
+                }
+                if (!preg_match('/^[\w\-]+$/', $section) || !is_file($file)) {
+                    throw new NotFoundHttpException('The requested page was not found.');
+                }
+
+                return $this->render('view2x', [
+                    'content' => file_get_contents($file),
+                    'section' => $section,
+                    'versions' => Yii::$app->params['versions']['api'],
+                    'version' => $version,
+                    'title' => $title,
+                    'packages' => $packages,
+                ]);
+
+                break;
+//            case Response::FORMAT_JSON:
+//
+//                if ($section === 'index') {
+//                    $apiRenderer = new ApiRenderer([
+//                        'version' => $version,
+//                    ]);
+//
+//                    $classes = Json::decode(file_get_contents(Yii::getAlias("@app/data/api-$version/json/typeNames.json")));
+//                    foreach($classes as $i => $class) {
+//                        $classes[$i]['url'] = Yii::$app->request->hostInfo . $apiRenderer->generateApiUrl($class['name']);
+//                    }
+//
+//                    return [
+//                        'classes' => $classes,
+//                        'version' => $version,
+//                        'count' => count($classes),
+//                    ];
+//                }
+//                throw new NotFoundHttpException();
+//                // TODO
+//                break;
         }
         throw new UnsupportedMediaTypeHttpException;
     }

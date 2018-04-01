@@ -75,6 +75,7 @@ return [
     'api.baseUrl' => '/doc/api',
     'guide.baseUrl' => '/doc/guide',
     'blogtut.baseUrl' => '/doc/blog',
+    'baseUrl' => '',
 
     'guide.versions' => [
         '2.0' => [

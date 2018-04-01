@@ -54,7 +54,13 @@ $this->registerLinkTag([
                 if ($this->context->headTitle !== null) {
                     $title[] = $this->context->headTitle;
                 } elseif ($this->context->sectionTitle !== null) {
-                    $title[] = $this->context->sectionTitle;
+                    if (is_array($this->context->sectionTitle)) {
+                        foreach(array_reverse($this->context->sectionTitle) as $name => $url) {
+                            $title[] = $name;
+                        }
+                    } else {
+                        $title[] = $this->context->sectionTitle;
+                    }
                 }
             }
             $title[] = 'Yii PHP Framework';
@@ -111,7 +117,7 @@ $this->registerLinkTag([
                                 ['label' => 'Guide', 'url' => ['guide/entry'], 'options' => ['title' => 'The Definitive Guide to Yii'], 'active' => ($controller == 'guide')],
                                 ['label' => 'API', 'url' => ['api/entry'], 'options' => ['title' => 'API Documentation'], 'active' => ($controller == 'api')],
                                 ['label' => 'Wiki', 'url' => ['wiki/index'], 'options' => ['title' => 'Community Wiki'], 'active' => ($controller == 'wiki')],
-                                ['label' => 'Extensions', 'url' => ['extension/index'], 'options' => ['title' => 'Extensions']],
+                                ['label' => 'Extensions', 'url' => ['extension/index'], 'options' => ['title' => 'Extensions'], 'active' => ($controller == 'extension' || strncmp($action, 'extension-', 10) === 0)],
                                 ['label' => 'Community', 'items' => [
                                     ['label' => 'Forum', 'url' => '@web/forum', 'options' => ['title' => 'Community Forum']],
                                     ['label' => 'Live Chat', 'url' => ['site/chat']],

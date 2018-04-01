@@ -4,6 +4,7 @@ namespace app\controllers;
 
 use app\components\object\ClassType;
 use app\models\Doc;
+use app\models\Extension;
 use app\models\Guide;
 use app\models\search\SearchActiveRecord;
 use Yii;
@@ -33,12 +34,35 @@ class GuideController extends BaseController
         throw new NotFoundHttpException('The requested page was not found.');
     }
 
+    public function actionExtensionIndex($vendorName, $name, $version, $language)
+    {
+        if (($model = Extension::find()->where(['name' => "$vendorName/$name"])->active()->one()) === null) {
+            throw new NotFoundHttpException('The requested page does not exist.');
+        }
+
+        $normalizedLanguage = strtolower(str_replace('_', '-', $language));
+        $guide = Guide::loadExtension($model, $version, $normalizedLanguage);
+        if ($guide) {
+            if ($normalizedLanguage !== $language) {
+                $this->redirect(['extension-index', 'language' => $normalizedLanguage, 'version' => $version, 'vendorName' => $vendorName, 'name' => $name]);
+            }
+            $this->sectionTitle = [$guide->title => ['extension/view', 'vendorName' => $vendorName, 'name' => $name]];
+            return $this->render('extension-index', [
+                'guide' => $guide,
+                'extensionName' => $name,
+                'extensionVendor' => $vendorName
+            ]);
+        }
+
+        throw new NotFoundHttpException('The requested page was not found.');
+    }
+
     public function actionView($section, $version, $language, $type = 'guide')
     {
         $normalizedLanguage = strtolower(str_replace('_', '-', $language));
         $guide = Guide::load($version, $normalizedLanguage, $type === 'blog' ? 'blogtut' : $type);
         if ($guide && $normalizedLanguage !== $language) {
-            $this->redirect(['view', 'language' => $normalizedLanguage, 'version' => $version, 'section' => $section, 'type' => $type]);
+            return $this->redirect(['view', 'language' => $normalizedLanguage, 'version' => $version, 'section' => $section, 'type' => $type]);
         }
 
         if ($guide) {
@@ -63,6 +87,37 @@ class GuideController extends BaseController
             // redirect old URLs to extension docs
             if ($sectionName === 'tool-gii' || $sectionName === 'tool-debugger') {
                 return $this->actionRedirect($sectionName);
+            }
+        }
+
+        throw new NotFoundHttpException('The requested page was not found.');
+    }
+
+    public function actionExtensionView($vendorName, $name, $section, $version, $language)
+    {
+        if (($model = Extension::find()->where(['name' => "$vendorName/$name"])->active()->one()) === null) {
+            throw new NotFoundHttpException('The requested page does not exist.');
+        }
+
+        $normalizedLanguage = strtolower(str_replace('_', '-', $language));
+        $guide = Guide::loadExtension($model, $version, $normalizedLanguage);
+        if ($guide && $normalizedLanguage !== $language) {
+            return $this->redirect(['extension-view', 'language' => $normalizedLanguage, 'version' => $version, 'section' => $section, 'vendorName' => $vendorName, 'name' => $name]);
+        }
+
+        if ($guide) {
+            $this->sectionTitle = [$guide->title => ['guide/extension-index', 'vendorName' => $vendorName, 'name' => $name, 'version' => $version, 'language' => $language]];
+            $sectionName = $section;
+            $section = $guide->loadSection($sectionName);
+
+            if ($section) {
+                return $this->render('extension-view', [
+                    'guide' => $guide,
+                    'section' => $section,
+                    'missingTranslation' => $section->missingTranslation,
+                    'extensionName' => $name,
+                    'extensionVendor' => $vendorName
+                ]);
             }
         }
 

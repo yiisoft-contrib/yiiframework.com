@@ -3,6 +3,8 @@
  * @var $this yii\web\View
  * @var $guide app\models\Guide
  * @var $section app\models\GuideSection
+ * @var $extensionName string
+ * @var $extensionVendor string
  */
 use app\widgets\DropdownList;
 use app\models\Guide;
@@ -51,10 +53,18 @@ use app\models\Guide;
                 continue;
             }
 
-            if (isset($section)) {
-                $url = ['guide/view', 'section' => $section->name, 'version' => $guide->version, 'language' => $language, 'type' => $guide->typeUrlName];
+            if (isset($extensionName)) {
+                if (isset($section)) {
+                    $url = ['guide/extension-view', 'section' => $section->name, 'version' => $guide->version, 'language' => $language, 'vendorName' => $extensionVendor, 'name' => $extensionName];
+                } else {
+                    $url = ['guide/extension-index', 'version' => $guide->version, 'language' => $language, 'vendorName' => $extensionVendor, 'name' => $extensionName];
+                }
             } else {
-                $url = ['guide/index', 'version' => $guide->version, 'language' => $language, 'type' => $guide->typeUrlName];
+                if (isset($section)) {
+                    $url = ['guide/view', 'section' => $section->name, 'version' => $guide->version, 'language' => $language, 'type' => $guide->typeUrlName];
+                } else {
+                    $url = ['guide/index', 'version' => $guide->version, 'language' => $language, 'type' => $guide->typeUrlName];
+                }
             }
 
             $languageItems[] = [

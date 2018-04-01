@@ -20,9 +20,7 @@ $this->registerJs("
     $('.has-children.active + div').addClass('active-parent');
 ");
 
-if (empty($title)) {
-    $this->title = "API Documentation for Yii $version";
-} else {
+if (!empty($title)) {
     $this->title = $title;
 }
 
@@ -47,7 +45,7 @@ $this->endBlock();
             . '</ul>'
             . '<p>This page is also available in <a href="?_format='.urlencode('json').'">JSON format</a>:<br>'
             . '<code>curl ' . Url::to(['index', 'version' => $version], true) . ' -H \'Accept: application/json\'</code></p>',
-        '<!-- YII_VERSION_SELECTOR -->' => $doc ? '<div class="pull-right content">' . \app\widgets\Star::widget(['model' => $doc]) . '</div>' : '',
+        '<!-- YII_VERSION_SELECTOR -->' => isset($doc) ? '<div class="pull-right content">' . \app\widgets\Star::widget(['model' => $doc]) . '</div>' : '',
 
 
 //        '<div class="col-sm-2 col-md-2 col-lg-2">' => '<div class="col-sm-2 col-md-2 col-lg-2">' . \app\widgets\SearchForm::widget([
@@ -57,7 +55,7 @@ $this->endBlock();
 //        ]),
     ]) ?>
 </div>
-<?php if ($doc): ?>
+<?php if (isset($doc)): ?>
 <div class="comments-wrapper">
     <div class="container comments">
         <?= \app\widgets\Comments::widget([

@@ -18,6 +18,7 @@ use yii\data\ActiveDataProvider;
 use yii\filters\AccessControl;
 use yii\filters\VerbFilter;
 use yii\helpers\Html;
+use yii\helpers\Json;
 use yii\queue\Queue;
 use yii\web\ForbiddenHttpException;
 use yii\web\NotFoundHttpException;
@@ -43,7 +44,7 @@ class ExtensionController extends BaseController
                     [
                         // allow all to a access index and view action
                         'allow' => true,
-                        'actions' => ['index', 'view', 'files', 'download', 'redirect'],
+                        'actions' => ['index', 'view', 'files', 'download', 'redirect', 'doc'],
                     ],
                     [
                         'allow' => true,
@@ -424,5 +425,54 @@ class ExtensionController extends BaseController
     public function actionRedirect($name)
     {
         return $this->redirect(['extension/view', 'name' => "yii2-$name", 'vendorName' => 'yiisoft']);
+    }
+
+    /**
+     * This action redirects to the latest docs for an extension
+     */
+    public function actionDoc($name, $vendorName, $type)
+    {
+        // ensure model exists, throws 404 error if not
+        $model = $this->findModel("$vendorName/$name");
+
+        if ($type === 'guide') {
+            $guideInfo = Yii::getAlias("@app/data/extensions/$vendorName/$name/guide.json");
+            if (file_exists($guideInfo)) {
+                $metadata = Json::decode(file_get_contents($guideInfo));
+                $versions = array_keys($metadata);
+                if (!empty($versions)) {
+                    asort($versions);
+                    $latest = end($versions);
+
+                    return $this->redirect([
+                        'guide/extension-index',
+                        'name' => $name,
+                        'vendorName' => $vendorName,
+                        'language' => 'en',
+                        'version' => $latest
+                    ]);
+                }
+            }
+        }
+
+        if ($type === 'api') {
+            $apiInfo = Yii::getAlias("@app/data/extensions/$vendorName/$name/api.json");
+            if (file_exists($apiInfo)) {
+                $versions = Json::decode(file_get_contents($apiInfo));
+                if (!empty($versions)) {
+                    asort($versions);
+                    $latest = end($versions);
+
+                    return $this->redirect([
+                        'api/extension-index',
+                        'name' => $name,
+                        'vendorName' => $vendorName,
+                        'version' => $latest
+                    ]);
+                }
+            }
+        }
+
+        throw new NotFoundHttpException('The requested page does not exist.');
     }
 }

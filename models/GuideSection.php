@@ -125,13 +125,21 @@ class GuideSection extends BaseObject
 
     protected function loadContent($name, $version, $language)
     {
-        $file = Yii::getAlias("@app/data/{$this->guide->type}-$version/$language/$name.html");
+        if ($this->guide->type === Guide::TYPE_EXTENSION) {
+            $file = Yii::getAlias("@app/data/extensions/{$this->guide->extension->name}/guide-$version/$language/$name.html");
+        } else {
+            $file = Yii::getAlias("@app/data/{$this->guide->type}-$version/$language/$name.html");
+        }
         return @file_get_contents($file);
     }
 
     protected function loadHeadings($name, $version, $language)
     {
-        $file = Yii::getAlias("@app/data/{$this->guide->type}-$version/$language/$name.json");
+        if ($this->guide->type === Guide::TYPE_EXTENSION) {
+            $file = Yii::getAlias("@app/data/extensions/{$this->guide->extension->name}/guide-$version/$language/$name.json");
+        } else {
+            $file = Yii::getAlias("@app/data/{$this->guide->type}-$version/$language/$name.json");
+        }
         $json = @file_get_contents($file);
         return empty($json) ? [] : Json::decode($json);
     }

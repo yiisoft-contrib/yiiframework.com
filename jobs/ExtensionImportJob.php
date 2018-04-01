@@ -31,7 +31,25 @@ class ExtensionImportJob extends BaseObject implements RetryableJobInterface
         // do not update timestamps and blame on automated updates
         $extension->detachBehavior('blameable');
         $extension->detachBehavior('timestamp');
+        $extension->detachBehavior('timestamp');
         $extension->save(false);
+
+        if ($extension->isOfficialExtension) {
+            echo "updating extension {$extension->name} docs...\n";
+            passthru(\Yii::getAlias('@app/yii') . ' guide/extension ' . escapeshellarg($extension->name) . ' --interactive=0', $ret);
+            if ($ret != 0) {
+                throw new \Exception("Failed to generate guide docs for extension {$extension->name}.");
+            }
+            passthru(\Yii::getAlias('@app/yii') . ' api/extension ' . escapeshellarg($extension->name) . ' --interactive=0', $ret);
+            if ($ret != 0) {
+                throw new \Exception("Failed to generate api docs for extension {$extension->name}.");
+            }
+            passthru(\Yii::getAlias('@app/yii') . ' guide/extension ' . escapeshellarg($extension->name) . ' --interactive=0', $ret);
+            if ($ret != 0) {
+                throw new \Exception("Failed to generate guide docs for extension {$extension->name}.");
+            }
+            echo "done.\n";
+        }
     }
 
     /**
