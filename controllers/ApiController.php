@@ -54,6 +54,10 @@ class ApiController extends BaseController
     {
         $this->validateVersion($version);
 
+        if (!preg_match('/^[\w\-]+$/', $section)) {
+            throw new NotFoundHttpException('The requested page was not found.');
+        }
+
         switch (Yii::$app->response->format) {
             case Response::FORMAT_HTML:
 
@@ -63,6 +67,10 @@ class ApiController extends BaseController
                 $packages = [];
                 if ($version[0] === '1') {
                     $file = Yii::getAlias("@app/data/api-$version/api/$section.html");
+                    if (!is_file($file)) {
+                        // if class is not found as a file, try to find name in a different case and redirect. Throws 404 otherwise.
+                        return $this->actionRedirect($section, '1.1');
+                    }
                     $packages = unserialize(file_get_contents(Yii::getAlias("@app/data/api-$version/api/packages.txt")));
                     $view = 'view1x';
                     $title = $section !== 'index' ? $section : '';
@@ -75,7 +83,7 @@ class ApiController extends BaseController
                         $title = $titles[$titleKey];
                     }
                 }
-                if (!preg_match('/^[\w\-]+$/', $section) || !is_file($file)) {
+                if (!is_file($file)) {
                     throw new NotFoundHttpException('The requested page was not found.');
                 }
 
@@ -213,20 +221,24 @@ class ApiController extends BaseController
      * - http://www.yiiframework.com/doc-2.0/*.html URLs are redirected to 2.0 apidoc
      * - http://www.yiiframework.com/doc/api/ClassName are redirected to 1.1 apidoc
      */
-    public function actionRedirect($section)
+    public function actionRedirect($section, $version = null)
     {
         if (preg_match('/^[\w\-]+$/', $section)) {
 
             // check 2.0 apidoc
-            $file = Yii::getAlias("@app/data/api-2.0/$section.html");
-            if (is_file($file)) {
-                return $this->redirect(['view', 'version' => '2.0', 'section' => $section], 301); // Moved Permanently
+            if ($version === null || $version[0] === '2') {
+                $file = Yii::getAlias("@app/data/api-2.0/$section.html");
+                if (is_file($file)) {
+                    return $this->redirect(['view', 'version' => '2.0', 'section' => $section], 301); // Moved Permanently
+                }
             }
             // check 1.1 apidoc, case insensitive search
-            foreach(FileHelper::findFiles(Yii::getAlias('@app/data/api-1.1/api'), ['only' => ['*.html']]) as $file) {
-                $baseName = basename($file, '.html');
-                if (strcasecmp($baseName, $section) === 0) {
-                    return $this->redirect(['view', 'version' => '1.1', 'section' => $baseName], 301); // Moved Permanently
+            if ($version === null || $version[0] === '1') {
+                foreach (FileHelper::findFiles(Yii::getAlias('@app/data/api-1.1/api'), ['only' => ['*.html']]) as $file) {
+                    $baseName = basename($file, '.html');
+                    if (strcasecmp($baseName, $section) === 0) {
+                        return $this->redirect(['view', 'version' => '1.1', 'section' => $baseName], 301); // Moved Permanently
+                    }
                 }
             }
 
