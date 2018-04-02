@@ -102,6 +102,10 @@ $config = [
             'class' => 'yii\authclient\Collection',
             'clients' => $params['authclients'],
         ],
+
+        'proxyFile' => [
+            'class' => \app\components\ProxyFile::class,
+        ],
     ],
     'params' => $params,
 ];
