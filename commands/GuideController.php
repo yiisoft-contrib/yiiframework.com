@@ -5,6 +5,7 @@ namespace app\commands;
 use app\apidoc\Yii1GuideRenderer;
 use app\models\Extension;
 use Yii;
+use yii\console\ExitCode;
 use yii\helpers\Console;
 use app\apidoc\GuideRenderer;
 use yii\helpers\FileHelper;
@@ -31,7 +32,7 @@ class GuideController extends \yii\apidoc\commands\GuideController
         $versions = Yii::$app->params['guide.versions'];
         if (!isset($versions[$version])) {
             $this->stderr("Unknown version $version. Valid versions are " . implode(', ', array_keys($versions)) . "\n\n", Console::FG_RED);
-            return 1;
+            return ExitCode::UNSPECIFIED_ERROR;
         }
 
         $languages = $versions[$version];
@@ -163,7 +164,7 @@ class GuideController extends \yii\apidoc\commands\GuideController
             }
         }
 
-        return 0;
+        return ExitCode::OK;
     }
 
     public function actionExtension($extensionName)
@@ -172,7 +173,7 @@ class GuideController extends \yii\apidoc\commands\GuideController
 
         if ($extension === null) {
             $this->stderr("Unknown extension $extensionName.\n", Console::FG_RED);
-            return 1;
+            return ExitCode::UNSPECIFIED_ERROR;
         }
         $this->_extension = $extension;
 
@@ -184,8 +185,9 @@ class GuideController extends \yii\apidoc\commands\GuideController
         foreach($versions as $version => $gitRef) {
 
             $sourcePath = Yii::getAlias("@app/data/extensions/$extensionName/$version");
-            if (!$extension->cloneGitRepo($sourcePath, $gitRef, $this)) {
-                return 1;
+            if (!$extension->cloneGitRepo($sourcePath, $gitRef)) {
+                $this->stderr("Failed to clone git repo for extension {$extension->name}.\n", Console::FG_RED);
+                return ExitCode::UNSPECIFIED_ERROR;
             }
 
             if (!is_dir("$sourcePath/docs")) {
@@ -229,7 +231,7 @@ class GuideController extends \yii\apidoc\commands\GuideController
         }
         file_put_contents("$targetPath/guide.json", Json::encode($metadata));
 
-        return 0;
+        return ExitCode::OK;
     }
 
     private $_extension;

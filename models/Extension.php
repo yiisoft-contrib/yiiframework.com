@@ -599,24 +599,21 @@ MARKDOWN;
         return $message;
     }
 
-    public function cloneGitRepo($sourcePath, $gitRef, Controller $out = null)
+    public function cloneGitRepo($sourcePath, $gitRef)
     {
         if (!file_exists($sourcePath)) {
             passthru('git clone ' . escapeshellarg($this->github_url) . ' ' . escapeshellarg($sourcePath),$exitCode);
             if ($exitCode != 0) {
-                $out and $out->stderr("Failed to clone git repo for extension {$this->name}.\n", Console::FG_RED);
                 return false;
             }
         } else {
             passthru('git -C ' . escapeshellarg($sourcePath) . ' fetch', $exitCode);
             if ($exitCode != 0) {
-                $out and $out->stderr("Failed to update git repo for extension {$this->name}.\n", Console::FG_RED);
                 return false;
             }
         }
         passthru('git -C ' . escapeshellarg($sourcePath) . ' checkout ' . escapeshellarg($gitRef), $exitCode);
         if ($exitCode != 0) {
-            $out and $out->stderr("Failed to checkout git ref for extension {$this->name}.\n", Console::FG_RED);
             return false;
         }
         return true;

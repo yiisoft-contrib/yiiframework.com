@@ -7,6 +7,7 @@ use app\models\News;
 use Yii;
 use yii\base\Exception;
 use yii\console\Controller;
+use yii\console\ExitCode;
 use yii\helpers\Console;
 use yii\helpers\FileHelper;
 
@@ -35,16 +36,16 @@ class FakeDataController extends Controller
 	{
 		if (!YII_DEBUG || YII_ENV_PROD) {
 			$this->stdout('You should only do this in a development environment!', Console::BOLD, Console::FG_RED);
-			return 1;
+			return ExitCode::UNSPECIFIED_ERROR;
 		}
 		if (!$this->confirm('Populate database with fake data?')) {
-			return 1;
+			return ExitCode::UNSPECIFIED_ERROR;
 		}
 
 		$fakers = $this->loadFakers();
 		$this->runFakers($fakers);
 
-		return 0;
+		return ExitCode::OK;
 	}
 
 	protected function loadFakers()
