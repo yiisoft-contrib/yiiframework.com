@@ -3,7 +3,9 @@
 namespace app\commands;
 
 use app\apidoc\Yii1GuideRenderer;
+use app\models\Extension;
 use Yii;
+use yii\console\ExitCode;
 use yii\helpers\Console;
 use app\apidoc\GuideRenderer;
 use yii\helpers\FileHelper;
@@ -30,7 +32,7 @@ class GuideController extends \yii\apidoc\commands\GuideController
         $versions = Yii::$app->params['guide.versions'];
         if (!isset($versions[$version])) {
             $this->stderr("Unknown version $version. Valid versions are " . implode(', ', array_keys($versions)) . "\n\n", Console::FG_RED);
-            return 1;
+            return ExitCode::UNSPECIFIED_ERROR;
         }
 
         $languages = $versions[$version];
@@ -162,7 +164,103 @@ class GuideController extends \yii\apidoc\commands\GuideController
             }
         }
 
-        return 0;
+        return ExitCode::OK;
+    }
+
+    public function actionExtension($extensionName)
+    {
+        $extension = Extension::find()->where(['name' => $extensionName])->active()->one();
+
+        if ($extension === null) {
+            $this->stderr("Unknown extension $extensionName.\n", Console::FG_RED);
+            return ExitCode::UNSPECIFIED_ERROR;
+        }
+        $this->_extension = $extension;
+
+        $metadata = [];
+        $targetPath = Yii::getAlias("@app/data/extensions/$extensionName");
+
+        $versions = Json::decode($extension->version_references);
+
+        foreach($versions as $version => $gitRef) {
+
+            $sourcePath = Yii::getAlias("@app/data/extensions/$extensionName/$version");
+            if (!$extension->cloneGitRepo($sourcePath, $gitRef)) {
+                $this->stderr("Failed to clone git repo for extension {$extension->name}.\n", Console::FG_RED);
+                return ExitCode::UNSPECIFIED_ERROR;
+            }
+
+            if (!is_dir("$sourcePath/docs")) {
+                continue;
+            }
+
+            // determine languages
+            $languages = [];
+            foreach(FileHelper::findDirectories("$sourcePath/docs") as $directory) {
+                if (basename($directory) === 'guide') {
+                    $languages[] = 'en';
+                } elseif (preg_match('/^guide-([a-z]{2}(?:-[a-zA-Z]{2})?)$/', basename($directory), $m)) {
+                    $languages[] = strtolower($m[1]);
+                }
+            }
+
+            foreach ($languages as $language) {
+                $source = "$sourcePath/docs/guide";
+                $source = static::normalizeGuideDirectory($source, $language);
+
+                // do not generate docs if directory does not exist
+                if (!is_dir($source)) {
+                    continue;
+                }
+
+                $target = "$targetPath/guide-$version/$language";
+                $this->version = $version;
+                $this->language = $language;
+                // TODO enable cross linking between different guides, also cross link to framework api docs
+                $this->apiDocs = "$targetPath/api-$version";
+
+                $this->stdout("Start generating $extensionName guide $version in $language...\n", Console::FG_CYAN);
+                $this->template = 'extension';
+                $this->actionIndex([$source], $target);
+                $this->generateExtensionGuideIndex($source, $target, $version, $language, $extension);
+                $this->stdout("Finished $extensionName guide $version in $language.\n\n", Console::FG_CYAN);
+
+                $metadata[$version][] = $language;
+            }
+
+        }
+        file_put_contents("$targetPath/guide.json", Json::encode($metadata));
+
+        return ExitCode::OK;
+    }
+
+    private $_extension;
+
+    // TODO this method is duplicated with SearchController::generateIndex(), refactor
+    private function generateExtensionGuideIndex($source, $target, $version, $language, $extension)
+    {
+        $chapters = [];
+        $sections = [];
+        $data = $this->findRenderer(null)->loadGuideStructure([$source . '/README.md']);
+        foreach ($data as $i => $chapter) {
+            foreach ($chapter['content'] as $j => $section) {
+                $file = basename($section['file'], '.md');
+                if ($file === 'README') {
+                    continue;
+                }
+
+                // index file
+                $chapters[$chapter['headline']][$section['headline']] = $file;
+                $sections[$file] = [$chapter['headline'], $section['headline']];
+            }
+        }
+        $lines = file($source . '/README.md');
+        if (($title = trim($lines[0])) === '') {
+            $title = "The Definitive Guide for {$extension->name} {$version}";
+        }
+
+        FileHelper::createDirectory($target);
+        file_put_contents("$target/index.data", serialize([$title, $chapters, $sections]));
     }
 
     public static function normalizeGuideDirectory($source, $language)
@@ -184,6 +282,13 @@ class GuideController extends \yii\apidoc\commands\GuideController
         if ($template === 'pdf') {
             $rendererClass = 'yii\\apidoc\\templates\\' . $template . '\\GuideRenderer';
             return new $rendererClass();
+        }
+
+        if ($template === 'extension') {
+            return new GuideRenderer([
+                'guideUrl' => Yii::$app->params['baseUrl'] . "/extension/{$this->_extension->name}/doc/guide/{$this->version}/{$this->language}",
+                'apiUrl' => Yii::$app->params['baseUrl'] .  "/extension/{$this->_extension->name}/doc/api/{$this->version}",
+            ]);
         }
 
         return new GuideRenderer([

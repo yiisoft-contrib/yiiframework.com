@@ -18,7 +18,7 @@ class ExtensionImportJob extends BaseObject implements RetryableJobInterface
     public function execute($queue)
     {
         $extension = Extension::findOne($this->extensionId);
-        if ($extension->update_status != Extension::UPDATE_STATUS_NEW && $extension->update_status != Extension::UPDATE_STATUS_EXPIRED) {
+        if (!$extension || ($extension->update_status != Extension::UPDATE_STATUS_NEW && $extension->update_status != Extension::UPDATE_STATUS_EXPIRED)) {
             echo "skipping update from Packagist.\n";
             return;
         }
@@ -31,7 +31,30 @@ class ExtensionImportJob extends BaseObject implements RetryableJobInterface
         // do not update timestamps and blame on automated updates
         $extension->detachBehavior('blameable');
         $extension->detachBehavior('timestamp');
+        $extension->detachBehavior('timestamp');
         $extension->save(false);
+
+        if ($extension->isOfficialExtension) {
+            echo "updating extension {$extension->name} docs...\n";
+            $failed = false;
+            passthru(\Yii::getAlias('@app/yii') . ' guide/extension ' . escapeshellarg($extension->name) . ' --interactive=0', $exitCode);
+            if ($exitCode != 0) {
+                $failed = true;
+            }
+            passthru(\Yii::getAlias('@app/yii') . ' api/extension ' . escapeshellarg($extension->name) . ' --interactive=0', $exitCode);
+            if ($exitCode != 0) {
+                $failed = true;
+            }
+            passthru(\Yii::getAlias('@app/yii') . ' guide/extension ' . escapeshellarg($extension->name) . ' --interactive=0', $exitCode);
+            if ($exitCode != 0) {
+                $failed = true;
+            }
+
+            if ($failed) {
+                throw new \Exception("Failed to generate docs for extension {$extension->name}.");
+            }
+            echo "done.\n";
+        }
     }
 
     /**

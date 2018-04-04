@@ -16,9 +16,12 @@ use dosamigos\taggable\Taggable;
 use Yii;
 use yii\base\Exception;
 use yii\behaviors\BlameableBehavior;
+use yii\console\Controller;
 use yii\db\Expression;
 use yii\helpers\ArrayHelper;
+use yii\helpers\Console;
 use yii\helpers\Html;
+use yii\helpers\Json;
 use yii\helpers\StringHelper;
 use yii\helpers\Url;
 use yii\web\HttpException;
@@ -48,8 +51,11 @@ use yii\web\HttpException;
  * @property integer $comment_count
  * @property integer $download_count
  * @property string $yii_version
+ * @property string $version_references
  * @property integer $status
  * @property string $description
+ *
+ * @property bool $isOfficialExtension
  *
  * @property User $owner
  * @property ExtensionCategory $category
@@ -448,6 +454,7 @@ MARKDOWN;
         $this->license_id = $package->getLicense();
         $this->yii_version = $package->getYiiVersion();
         $this->github_url = $package->getRepository();
+        $this->version_references = Json::encode($package->getVersionReferences());
 
         $this->description = (new PackagistApi())->getReadmeFromRepository($package->getRepository());
         $downloads = $package->getDownloads();
@@ -590,5 +597,70 @@ MARKDOWN;
         $message = StringHelper::truncate($text, 108) . " {$url} #yii";
 
         return $message;
+    }
+
+    public function cloneGitRepo($sourcePath, $gitRef)
+    {
+        if (!file_exists($sourcePath)) {
+            passthru('git clone ' . escapeshellarg($this->github_url) . ' ' . escapeshellarg($sourcePath),$exitCode);
+            if ($exitCode != 0) {
+                return false;
+            }
+        } else {
+            passthru('git -C ' . escapeshellarg($sourcePath) . ' fetch', $exitCode);
+            if ($exitCode != 0) {
+                return false;
+            }
+        }
+        passthru('git -C ' . escapeshellarg($sourcePath) . ' checkout ' . escapeshellarg($gitRef), $exitCode);
+        if ($exitCode != 0) {
+            return false;
+        }
+        return true;
+    }
+
+    public function hasApiDoc($version = null)
+    {
+        $versionsFile = Yii::getAlias("@app/data/extensions/{$this->name}/api.json");
+        if (!is_file($versionsFile)) {
+            return false;
+        }
+        $versions = Json::decode(file_get_contents($versionsFile));
+
+        if (empty($versions)) {
+            return false;
+        }
+
+        return $version === null || in_array($version, $versions, true);
+    }
+
+    public function getApiVersions()
+    {
+        $versionsFile = Yii::getAlias("@app/data/extensions/{$this->name}/api.json");
+        if (!is_file($versionsFile)) {
+            return [];
+        }
+        $versions = Json::decode(file_get_contents($versionsFile));
+
+        if (empty($versions)) {
+            return [];
+        }
+
+        return $versions;
+    }
+
+    public function hasGuideDoc($version = null)
+    {
+        $versionsFile = Yii::getAlias("@app/data/extensions/{$this->name}/guide.json");
+        if (!is_file($versionsFile)) {
+            return false;
+        }
+        $versions = Json::decode(file_get_contents($versionsFile));
+
+        if (empty($versions)) {
+            return false;
+        }
+
+        return $version === null || in_array($version, $versions, true);
     }
 }

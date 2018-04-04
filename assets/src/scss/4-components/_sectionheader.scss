@@ -5,6 +5,11 @@
   .section-headline {
     font-family: $bold-headings-font-family;
     font-size: fontsize(h1);
+
+    a {
+      color: white;
+      text-decoration: none;
+    }
   }
   color: white;
   background-color: $eshill-light-blue;

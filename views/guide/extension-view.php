@@ -3,7 +3,8 @@
  * @var $this yii\web\View
  * @var $guide app\models\Guide
  * @var $section app\models\GuideSection
- * @var Doc $doc
+ * @var $extensionName string
+ * @var $extensionVendor string
  */
 
 use app\models\Doc;
@@ -16,7 +17,7 @@ foreach ($guide->chapters as $chapterTitle => $sections) {
     foreach ($sections as $sectionTitle => $sectionName) {
         $items[] = [
             'label' => $sectionTitle,
-            'url' => ['guide/view', 'section' => $sectionName, 'language' => $guide->language, 'version' => $guide->version, 'type' => $guide->typeUrlName],
+            'url' => ['guide/extension-view', 'section' => $sectionName, 'language' => $guide->language, 'version' => $guide->version, 'name' => $extensionName, 'vendorName' => $extensionVendor],
             'active' => $section->name === $sectionName,
         ];
     }
@@ -34,10 +35,11 @@ $this->registerJs('
 ');
 
 $this->beginBlock('contentSelectors');
-echo $this->render('partials/_versions.php', ['guide' => $guide, 'section' => $section]);
+echo $this->render('partials/_versions.php', ['guide' => $guide, 'section' => $section, 'extensionName' => $extensionName, 'extensionVendor' => $extensionVendor]);
 $this->endBlock();
 
-echo $this->render('partials/_scrollspy.php', ['guide' => $guide, 'section' => $section, 'notes' => true]);
+echo $this->render('partials/_scrollspy.php', ['guide' => $guide, 'section' => $section]);
+
 ?>
 <div class="container guide-view lang-<?= $guide->language ?>" xmlns="http://www.w3.org/1999/xhtml">
     <div class="row visible-xs">
@@ -69,9 +71,6 @@ echo $this->render('partials/_scrollspy.php', ['guide' => $guide, 'section' => $
                         helping us with translation</a>.
                     </div>
                 <?php endif ?>
-                <div class="pull-right">
-                    <?= \app\widgets\Star::widget(['model' => $doc]) ?>
-                </div>
 
                 <?= $section->content ?>
 
@@ -89,28 +88,10 @@ echo $this->render('partials/_scrollspy.php', ['guide' => $guide, 'section' => $
                     ?>
                 </div>
 
-                <?php if (($editUrl = $section->editUrl) !== false): ?>
-                <div class="edit-box">
-                    <div class="edit-icon"><i class="fa fa-github"></i></div>
-                    <p class="lang-en">
-                        Found a typo or you think this page needs improvement?<br />
-                            <a href="<?= $editUrl; ?>">Edit it on github</a> !
-                    </p>
-                </div>
-                <?php endif; ?>
             </div>
             </div>
             </div>
         </div>
     </div>
 </div>
-<?php if ($doc): ?>
-    <div class="comments-wrapper">
-        <div class="container comments">
-            <?= \app\widgets\Comments::widget([
-                'objectType' => $doc->getObjectType(),
-                'objectId' => $doc->getObjectId(),
-            ]) ?>
-        </div>
-    </div>
-<?php endif ?>
+

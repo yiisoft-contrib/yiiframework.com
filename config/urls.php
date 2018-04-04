@@ -63,19 +63,19 @@ return [
     'opensearch.xml' => 'search/opensearch-description',
 
 	// extensions
+    'extension/<vendorName:[\w\-\.]+>/<name:[\w\-\.]+>/doc/<type:api|guide>' => 'extension/doc',
+    'extension/<vendorName:[\w\-\.]+>/<name:[\w\-\.]+>/doc/guide/<version:\\d\\.\\d>/<language:[\\w\\-]+>' => 'guide/extension-index',
+    'extension/<vendorName:[\w\-\.]+>/<name:[\w\-\.]+>/doc/guide/<version:\\d\\.\\d>/<language:[\\w\\-]+>/<section:[a-z0-9\\.\\-]+>' => 'guide/extension-view',
+    'extension/<vendorName:[\w\-\.]+>/<name:[\w\-\.]+>/doc/api/<version:\\d\\.\\d>' => 'api/extension-index',
+    'extension/<vendorName:[\w\-\.]+>/<name:[\w\-\.]+>/doc/api/<version:\\d\\.\\d>/<section:.+>' => 'api/extension-view',
     'extension/<vendorName:[\w\-\.]+>/<name:[\w\-\.]+>/files/<filename>' => 'extension/download',
 	'extension/<name:[A-z][A-z0-9\-]*>/files/<filename>' => 'extension/download',
     'extension/<vendorName:[\w\-\.]+>/<name:[\w\-\.]+>' => 'extension/view',
 	'extension/<name:[A-z][A-z0-9\-]*>' => 'extension/view',
 	'extensions' => 'extension/index',
-	'extensions/<action:[\w-]+>' => 'extension/<action>', // TODO forbidden names to avoid conflict!
-
-	// TODO handle URLs from old site
-    // /ext/files/?id=864
-    'extensions/page/<page:\d+>' => 'extension/index',
+	'extensions/<action:[\w-]+>' => 'extension/<action>',
 
 	// wiki
-	// TODO handle URLs from old site
 	'wiki' => 'wiki/index',
     'wiki/<id:\d+>/<name>' => 'wiki/view',
     'wiki/<id:\d+>' => 'wiki/view',

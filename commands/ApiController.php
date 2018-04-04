@@ -2,18 +2,18 @@
 
 namespace app\commands;
 
-use app\models\SearchApiPrimitive;
-use app\models\SearchApiType;
+use app\apidoc\ExtensionApiRenderer;
+use app\models\Extension;
 use Yii;
 use yii\apidoc\models\ClassDoc;
 use yii\apidoc\models\ConstDoc;
-use yii\apidoc\models\Context;
 use yii\apidoc\models\EventDoc;
 use yii\apidoc\models\InterfaceDoc;
 use yii\apidoc\models\MethodDoc;
 use yii\apidoc\models\PropertyDoc;
 use yii\apidoc\models\TraitDoc;
 use yii\base\ErrorHandler;
+use yii\console\ExitCode;
 use yii\helpers\Console;
 use app\apidoc\ApiRenderer;
 use yii\helpers\FileHelper;
@@ -38,7 +38,7 @@ class ApiController extends \yii\apidoc\commands\ApiController
         $versions = Yii::$app->params['versions']['api'];
         if (!in_array($version, $versions)) {
             $this->stderr("Unknown version $version. Valid versions are " . implode(', ', $versions) . "\n\n", Console::FG_RED);
-            return 1;
+            return ExitCode::UNSPECIFIED_ERROR;
         }
         $this->version = $version;
 
@@ -110,11 +110,74 @@ HTML
             $this->stdout("Finished API $version.\n\n", Console::FG_GREEN);
         }
 
-        return 0;
+        return ExitCode::OK;
     }
+
+    public function actionExtension($extensionName)
+    {
+        $extension = Extension::find()->where(['name' => $extensionName])->active()->one();
+
+        if ($extension === null) {
+            $this->stderr("Unknown extension $extensionName.\n", Console::FG_RED);
+            return ExitCode::UNSPECIFIED_ERROR;
+        }
+        $this->_extension = $extension;
+
+        $targetPath = Yii::getAlias("@app/data/extensions/$extensionName");
+
+        $versions = Json::decode($extension->version_references);
+        $apiVersions = [];
+        foreach($versions as $version => $gitRef) {
+
+            $this->version = $version;
+
+            try {
+                $sourcePath = Yii::getAlias("@app/data/extensions/$extensionName/$version");
+                if (!$extension->cloneGitRepo($sourcePath, $gitRef)) {
+                    $this->stderr("Failed to clone git repo for extension {$extension->name}.\n", Console::FG_RED);
+                    return ExitCode::UNSPECIFIED_ERROR;
+                }
+
+                if (is_dir("$sourcePath/src")) {
+                    $source = ["$sourcePath/src"];
+                } else {
+                    $source = [$sourcePath];
+                }
+                $target = "$targetPath/api-$version";
+                $this->guide = "/extension/$extensionName/doc/guide/{$this->version}/en";
+
+                $this->stdout("Start generating $extensionName API $version...\n");
+                $this->template = 'extension';
+                $this->actionIndex($source, $target);
+
+                $this->stdout("Start generating $extensionName API $version JSON Info...\n");
+                $this->template = 'json';
+                $this->actionIndex($source, $target);
+                $this->splitJson($target);
+
+                $this->stdout("Finished $extensionName API $version.\n\n", Console::FG_GREEN);
+                $apiVersions[] = $version;
+            } catch (\Throwable $e) {
+                $this->stderr("Failed to generate $extensionName API $version.\n\n", Console::FG_RED);
+                $this->stderr((string) $e, Console::FG_RED);
+                Yii::error($e);
+            }
+        }
+        file_put_contents("$targetPath/api.json", Json::encode($apiVersions));
+
+        return ExitCode::OK;
+    }
+
+    private $_extension;
 
     protected function findRenderer($template)
     {
+        if ($template === 'extension') {
+            return new ExtensionApiRenderer([
+                'version' => $this->version,
+                'extension' => $this->_extension,
+            ]);
+        }
         if ($template === 'json') {
             return new \yii\apidoc\templates\json\ApiRenderer();
         }

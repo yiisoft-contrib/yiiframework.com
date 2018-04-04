@@ -3,6 +3,8 @@
  * @var $this yii\web\View
  * @var $guide app\models\Guide
  * @var $section app\models\GuideSection
+ * @var $extensionName string
+ * @var $extensionVendor string
  */
 use app\widgets\DropdownList;
 use app\models\Guide;
@@ -51,10 +53,18 @@ use app\models\Guide;
                 continue;
             }
 
-            if (isset($section)) {
-                $url = ['guide/view', 'section' => $section->name, 'version' => $guide->version, 'language' => $language, 'type' => $guide->typeUrlName];
+            if (isset($extensionName)) {
+                if (isset($section)) {
+                    $url = ['guide/extension-view', 'section' => $section->name, 'version' => $guide->version, 'language' => $language, 'vendorName' => $extensionVendor, 'name' => $extensionName];
+                } else {
+                    $url = ['guide/extension-index', 'version' => $guide->version, 'language' => $language, 'vendorName' => $extensionVendor, 'name' => $extensionName];
+                }
             } else {
-                $url = ['guide/index', 'version' => $guide->version, 'language' => $language, 'type' => $guide->typeUrlName];
+                if (isset($section)) {
+                    $url = ['guide/view', 'section' => $section->name, 'version' => $guide->version, 'language' => $language, 'type' => $guide->typeUrlName];
+                } else {
+                    $url = ['guide/index', 'version' => $guide->version, 'language' => $language, 'type' => $guide->typeUrlName];
+                }
             }
 
             $languageItems[] = [
@@ -81,15 +91,28 @@ use app\models\Guide;
                 continue;
             }
 
-            $otherGuide = Guide::load($version, $language, $guide->type);
-            if ($otherGuide === null) {
-                $language = 'en';
-                $otherGuide = Guide::load($version, $language, $guide->type);
-            }
-            if (isset($section) && $guide->version[0] === $version[0] && $otherGuide->loadSection($section->name) !== null) {
-                $url = ['guide/view', 'section' => $section->name, 'version' => $version, 'language' => $language, 'type' => $guide->typeUrlName];
+            if (isset($extensionName)) {
+                $otherGuide = Guide::loadExtension($guide->extension, $version, $language);
+                if ($otherGuide === null) {
+                    $language = 'en';
+                    $otherGuide = Guide::loadExtension($guide->extension, $version, $language);
+                }
+                if (isset($section) && $guide->version[0] === $version[0] && $otherGuide->loadSection($section->name) !== null) {
+                    $url = ['guide/extension-view', 'section' => $section->name, 'version' => $version, 'language' => $language, 'vendorName' => $extensionVendor, 'name' => $extensionName];
+                } else {
+                    $url = ['guide/extension-index', 'version' => $version, 'language' => $language, 'vendorName' => $extensionVendor, 'name' => $extensionName];
+                }
             } else {
-                $url = ['guide/index', 'version' => $version, 'language' => $language, 'type' => $guide->typeUrlName];
+                $otherGuide = Guide::load($version, $language, $guide->type);
+                if ($otherGuide === null) {
+                    $language = 'en';
+                    $otherGuide = Guide::load($version, $language, $guide->type);
+                }
+                if (isset($section) && $guide->version[0] === $version[0] && $otherGuide->loadSection($section->name) !== null) {
+                    $url = ['guide/view', 'section' => $section->name, 'version' => $version, 'language' => $language, 'type' => $guide->typeUrlName];
+                } else {
+                    $url = ['guide/index', 'version' => $version, 'language' => $language, 'type' => $guide->typeUrlName];
+                }
             }
             $versionItems[] = [
                 'label' => $version,

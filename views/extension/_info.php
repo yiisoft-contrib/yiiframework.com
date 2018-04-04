@@ -10,6 +10,12 @@ use yii\helpers\Html;
 
 <?= $this->render('_metadata.php', ['model' => $model, 'extended' => true]) ?>
 
+<?php if ($model->hasApiDoc() || $model->hasGuideDoc()): ?>
+    <?= $model->hasGuideDoc() ? Html::a('Guide Documentation', $model->getUrl('doc', ['type' => 'guide'])) . '<br>' : '' ?>
+    <?= $model->hasApiDoc() ? Html::a('API Documentation', $model->getUrl('doc', ['type' => 'api'])) . '<br>' : '' ?>
+    <hr>
+<?php endif; ?>
+
 <?php if (UserPermissions::canUpdateExtension($model)): ?>
     <?= Html::a('Update Extension', ['extension/update', 'id' => $model->id])?><br>
     <?php if (!$model->from_packagist): ?>
