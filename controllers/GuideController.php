@@ -136,8 +136,11 @@ class GuideController extends BaseController
 
         $cache = new HttpCache([
             'cacheControlHeader' => 'public, max-age=86400',
-            'lastModified' => function ($file) {
+            'lastModified' => function() use ($file) {
                 return filemtime($file);
+            },
+            'etagSeed' => function() use ($file) {
+                return sha1_file($file);
             },
         ]);
         if ($cache->beforeAction(null)) {
@@ -152,8 +155,8 @@ class GuideController extends BaseController
 
             $cache = new HttpCache([
                 'cacheControlHeader' => 'public, max-age=86400',
-                'lastModified' => function ($file) {
-                    return filemtime($file); // TODO does this work?
+                'lastModified' => function() use ($file) {
+                    return filemtime($file['file']);
                 },
             ]);
             if ($cache->beforeAction(null)) {

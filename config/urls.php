@@ -72,14 +72,9 @@ return [
     'extension/<vendorName:[\w\-\.]+>/<name:[\w\-\.]+>' => 'extension/view',
 	'extension/<name:[A-z][A-z0-9\-]*>' => 'extension/view',
 	'extensions' => 'extension/index',
-	'extensions/<action:[\w-]+>' => 'extension/<action>', // TODO forbidden names to avoid conflict!
-
-	// TODO handle URLs from old site
-    // /ext/files/?id=864
-    'extensions/page/<page:\d+>' => 'extension/index',
+	'extensions/<action:[\w-]+>' => 'extension/<action>',
 
 	// wiki
-	// TODO handle URLs from old site
 	'wiki' => 'wiki/index',
     'wiki/<id:\d+>/<name>' => 'wiki/view',
     'wiki/<id:\d+>' => 'wiki/view',
