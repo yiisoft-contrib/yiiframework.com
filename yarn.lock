@@ -1943,6 +1943,13 @@ gulp-sourcemaps@^1.6.0:
     through2 "2.X"
     vinyl "1.X"
 
+gulp-touch@^1.0.1:
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/gulp-touch/-/gulp-touch-1.0.1.tgz#07e5d7d29e5e01f0baa4fa7664d83fcea8a6e958"
+  dependencies:
+    graceful-fs "^4.1.2"
+    map-stream "0.0.6"
+
 gulp-uglify@^1.2.0:
   version "1.5.4"
   resolved "https://registry.yarnpkg.com/gulp-uglify/-/gulp-uglify-1.5.4.tgz#524788d87666d09f9d0c21fb2177f90039a658c9"
@@ -2957,6 +2964,10 @@ map-cache@^0.2.0, map-cache@^0.2.2:
 map-obj@^1.0.0, map-obj@^1.0.1:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/map-obj/-/map-obj-1.0.1.tgz#d933ceb9205d82bdcf4886f6742bdc2b4dea146d"
+
+map-stream@0.0.6:
+  version "0.0.6"
+  resolved "https://registry.yarnpkg.com/map-stream/-/map-stream-0.0.6.tgz#d2ef4eb811a28644c7a8989985c69c2fdd496827"
 
 map-visit@^1.0.0:
   version "1.0.0"

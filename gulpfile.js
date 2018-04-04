@@ -42,6 +42,7 @@ function styles() {
     .pipe($.if(PRODUCTION, $.cssnano()))
     .pipe($.if(!PRODUCTION, $.sourcemaps.write('.', { sourceRoot: '../../assets/src/scss/' })))
     .pipe(gulp.dest(config.PATHS.dist + '/css'))
+    .pipe($.touch())
     .pipe($.if(!PRODUCTION, browsersync.stream()))
     .pipe($.notify({ message: 'Styles task complete' }));
 };
@@ -55,6 +56,7 @@ function scripts() {
     .pipe($.if(PRODUCTION, $.uglify()))
     .pipe($.if(!PRODUCTION, $.sourcemaps.write('.', { sourceRoot: '../../assets/src/js/' })))
     .pipe(gulp.dest(config.PATHS.dist + '/js'))
+    .pipe($.touch())
     .pipe($.notify({ message: 'Scripts task complete' }));
 };
 
