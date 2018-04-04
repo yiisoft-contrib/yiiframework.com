@@ -4,12 +4,9 @@ namespace app\commands;
 
 use app\apidoc\ExtensionApiRenderer;
 use app\models\Extension;
-use app\models\SearchApiPrimitive;
-use app\models\SearchApiType;
 use Yii;
 use yii\apidoc\models\ClassDoc;
 use yii\apidoc\models\ConstDoc;
-use yii\apidoc\models\Context;
 use yii\apidoc\models\EventDoc;
 use yii\apidoc\models\InterfaceDoc;
 use yii\apidoc\models\MethodDoc;
