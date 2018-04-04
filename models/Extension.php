@@ -341,7 +341,17 @@ MARKDOWN;
 
     public function getContentHtml()
     {
-        return Yii::$app->formatter->asGuideMarkdown($this->description);
+        $content = Yii::$app->formatter->asGuideMarkdown($this->description);
+
+        if ($this->isOfficialExtension) {
+            // replace guide link that works on github but not here
+            $content = strtr($content, [
+                'href="docs/guide/README.md"' => 'href="' . Html::encode(Url::to($this->getUrl('doc', ['type' => 'guide']))) . '"',
+                'href="LICENSE.md"' => 'href="' . $this->github_url . '/blob/master/LICENSE.md"',
+            ]);
+        }
+
+        return $content;
     }
 
     public function getLicenseLink()

@@ -213,19 +213,25 @@ class GuideController extends \yii\apidoc\commands\GuideController
                     continue;
                 }
 
-                $target = "$targetPath/guide-$version/$language";
-                $this->version = $version;
-                $this->language = $language;
-                // TODO enable cross linking between different guides, also cross link to framework api docs
-                $this->apiDocs = "$targetPath/api-$version";
+                try {
+                    $target = "$targetPath/guide-$version/$language";
+                    $this->version = $version;
+                    $this->language = $language;
+                    // TODO enable cross linking between different guides, also cross link to framework api docs
+                    $this->apiDocs = "$targetPath/api-$version";
 
-                $this->stdout("Start generating $extensionName guide $version in $language...\n", Console::FG_CYAN);
-                $this->template = 'extension';
-                $this->actionIndex([$source], $target);
-                $this->generateExtensionGuideIndex($source, $target, $version, $language, $extension);
-                $this->stdout("Finished $extensionName guide $version in $language.\n\n", Console::FG_CYAN);
+                    $this->stdout("Start generating $extensionName guide $version in $language...\n", Console::FG_CYAN);
+                    $this->template = 'extension';
+                    $this->actionIndex([$source], $target);
+                    $this->generateExtensionGuideIndex($source, $target, $version, $language, $extension);
+                    $this->stdout("Finished $extensionName guide $version in $language.\n\n", Console::FG_CYAN);
 
-                $metadata[$version][] = $language;
+                    $metadata[$version][] = $language;
+                } catch (\Throwable $e) {
+                    $this->stderr("Failed to generate $extensionName guide $version in $language.\n\n", Console::FG_RED);
+                    $this->stderr((string) $e, Console::FG_RED);
+                    Yii::error($e);
+                }
             }
 
         }
