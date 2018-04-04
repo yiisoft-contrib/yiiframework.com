@@ -92,6 +92,7 @@ return [
 	'ajax/<action:[\w-]+>' => 'ajax/<action>',
 
 	// urls from old site redirect to new location
+	'doc-2.0' => 'guide/redirect',
 	'doc-2.0/guide-<section:[A-z0-9\\.\\-]+>.html' => 'guide/redirect',
 	'doc-2.0/ext-<name:\w+>-index.html' => 'extension/redirect',
 	'doc-2.0/<section:.+>.html' => 'api/redirect',
