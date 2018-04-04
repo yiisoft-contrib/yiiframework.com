@@ -7,3 +7,15 @@
     margin: 0 2px 2px 0;
   }
 }
+
+.CodeMirror-preview {
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  padding: 6px 12px;
+  background-color: #fff;
+  z-index: 10;
+  overflow-y: auto;
+}

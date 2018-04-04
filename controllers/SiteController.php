@@ -9,6 +9,7 @@ use app\models\SecurityForm;
 use app\models\Wiki;
 use Yii;
 use app\models\ContactForm;
+use yii\filters\AccessControl;
 use yii\web\NotFoundHttpException;
 
 /**
@@ -31,6 +32,26 @@ class SiteController extends BaseController
             ],
         ];
     }
+
+    /**
+     * @inheritdoc
+     */
+    public function behaviors()
+    {
+        return [
+            'access' => [
+                'class' => AccessControl::class,
+                'only' => ['render-markdown'],
+                'rules' => [
+                    [
+                        'allow' => true,
+                        'roles' => ['@'],
+                    ],
+                ]
+            ]
+        ];
+    }
+
 
     /**
      * This action redirects old urls to the new location.
@@ -148,7 +169,6 @@ class SiteController extends BaseController
         $inactiveMembers = RowHelper::split($inactiveMembers, 6);
         $pastMembers = RowHelper::split($pastMembers, 6);
 
-        $contributors = false;
         try {
             $data_dir = Yii::getAlias('@app/data');
             $contributors = json_decode(file_get_contents($data_dir . '/contributors.json'), true);
@@ -220,7 +240,7 @@ class SiteController extends BaseController
      */
     public function actionFile($category, $file)
     {
-        if (!preg_match('~^[\w\d-.]+$~', $file)) {
+        if (!preg_match('~^[\w-.]+$~', $file)) {
             throw new NotFoundHttpException('The requested page was not found.');
         }
 
@@ -240,5 +260,11 @@ class SiteController extends BaseController
     {
         $this->sectionTitle = 'Community Resources';
         return $this->render('community');
+    }
+
+    public function actionRenderMarkdown()
+    {
+        $markdown = Yii::$app->request->post('content');
+        return Yii::$app->formatter->asGuideMarkdown($markdown);
     }
 }
