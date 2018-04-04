@@ -15,10 +15,17 @@ $nav = [];
 foreach ($guide->chapters as $chapterTitle => $sections) {
     $items = [];
     foreach ($sections as $sectionTitle => $sectionName) {
+        if (preg_match('~^https?://~', $sectionName)) {
+            $url = $sectionName;
+            $active = false;
+        } else {
+            $url = ['guide/extension-view', 'section' => $sectionName, 'language' => $guide->language, 'version' => $guide->version, 'name' => $extensionName, 'vendorName' => $extensionVendor];
+            $active = $section->name === $sectionName;
+        }
         $items[] = [
             'label' => $sectionTitle,
-            'url' => ['guide/extension-view', 'section' => $sectionName, 'language' => $guide->language, 'version' => $guide->version, 'name' => $extensionName, 'vendorName' => $extensionVendor],
-            'active' => $section->name === $sectionName,
+            'url' => $url,
+            'active' => $active,
         ];
     }
     $nav[] = [
