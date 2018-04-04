@@ -5,7 +5,8 @@
  * @var $version string the currently chosen API version
  * @var $section string the currently active API file
  * @var $content string the API page content
- * @var Doc $doc
+ * @var $doc Doc
+ * @var $extension \app\models\Extension
  */
 
 use app\models\Doc;
@@ -25,7 +26,7 @@ if (!empty($title)) {
 }
 
 $this->beginBlock('contentSelectors');
-echo $this->render('partials/_versions.php', compact('version', 'versions', 'section'));
+echo $this->render('partials/_versions.php', compact('version', 'versions', 'section', 'extension'));
 $this->endBlock();
 
 ?>

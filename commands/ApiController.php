@@ -127,35 +127,44 @@ HTML
 
         $targetPath = Yii::getAlias("@app/data/extensions/$extensionName");
 
-        // TODO determine versions
-        $versions = ['2.0'];
-
-        foreach($versions as $version) {
+        $versions = Json::decode($extension->version_references);
+        $apiVersions = [];
+        foreach($versions as $version => $gitRef) {
 
             $this->version = $version;
 
-            $sourcePath = Yii::getAlias("@app/data/extensions/$extensionName/$version");
+            try {
+                $sourcePath = Yii::getAlias("@app/data/extensions/$extensionName/$version");
+                if (!$extension->cloneGitRepo($sourcePath, $gitRef, $this)) {
+                    return 1;
+                }
 
-            if (is_dir("$sourcePath/src")) {
-                $source = ["$sourcePath/src"];
-            } else {
-                $source = [$sourcePath];
+                if (is_dir("$sourcePath/src")) {
+                    $source = ["$sourcePath/src"];
+                } else {
+                    $source = [$sourcePath];
+                }
+                $target = "$targetPath/api-$version";
+                $this->guide = "/extension/$extensionName/doc/guide/{$this->version}/en";
+
+                $this->stdout("Start generating $extensionName API $version...\n");
+                $this->template = 'extension';
+                $this->actionIndex($source, $target);
+
+                $this->stdout("Start generating $extensionName API $version JSON Info...\n");
+                $this->template = 'json';
+                $this->actionIndex($source, $target);
+                $this->splitJson($target);
+
+                $this->stdout("Finished $extensionName API $version.\n\n", Console::FG_GREEN);
+                $apiVersions[] = $version;
+            } catch (\Throwable $e) {
+                $this->stderr("Failed to generate $extensionName API $version.\n\n", Console::FG_RED);
+                $this->stderr((string) $e, Console::FG_RED);
+                Yii::error($e);
             }
-            $target = "$targetPath/api-$version";
-            $this->guide = "/extension/$extensionName/doc/guide/{$this->version}/en";
-
-            $this->stdout("Start generating $extensionName API $version...\n");
-            $this->template = 'extension';
-            $this->actionIndex($source, $target);
-
-            $this->stdout("Start generating $extensionName API $version JSON Info...\n");
-            $this->template = 'json';
-            $this->actionIndex($source, $target);
-            $this->splitJson($target);
-
-            $this->stdout("Finished $extensionName API $version.\n\n", Console::FG_GREEN);
         }
-        file_put_contents("$targetPath/api.json", Json::encode($versions));
+        file_put_contents("$targetPath/api.json", Json::encode($apiVersions));
 
         return 0;
     }

@@ -18,7 +18,7 @@ class ExtensionImportJob extends BaseObject implements RetryableJobInterface
     public function execute($queue)
     {
         $extension = Extension::findOne($this->extensionId);
-        if ($extension->update_status != Extension::UPDATE_STATUS_NEW && $extension->update_status != Extension::UPDATE_STATUS_EXPIRED) {
+        if (!$extension || ($extension->update_status != Extension::UPDATE_STATUS_NEW && $extension->update_status != Extension::UPDATE_STATUS_EXPIRED)) {
             echo "skipping update from Packagist.\n";
             return;
         }
@@ -36,17 +36,22 @@ class ExtensionImportJob extends BaseObject implements RetryableJobInterface
 
         if ($extension->isOfficialExtension) {
             echo "updating extension {$extension->name} docs...\n";
-            passthru(\Yii::getAlias('@app/yii') . ' guide/extension ' . escapeshellarg($extension->name) . ' --interactive=0', $ret);
-            if ($ret != 0) {
-                throw new \Exception("Failed to generate guide docs for extension {$extension->name}.");
+            $failed = false;
+            passthru(\Yii::getAlias('@app/yii') . ' guide/extension ' . escapeshellarg($extension->name) . ' --interactive=0', $exitCode);
+            if ($exitCode != 0) {
+                $failed = true;
             }
-            passthru(\Yii::getAlias('@app/yii') . ' api/extension ' . escapeshellarg($extension->name) . ' --interactive=0', $ret);
-            if ($ret != 0) {
-                throw new \Exception("Failed to generate api docs for extension {$extension->name}.");
+            passthru(\Yii::getAlias('@app/yii') . ' api/extension ' . escapeshellarg($extension->name) . ' --interactive=0', $exitCode);
+            if ($exitCode != 0) {
+                $failed = true;
             }
-            passthru(\Yii::getAlias('@app/yii') . ' guide/extension ' . escapeshellarg($extension->name) . ' --interactive=0', $ret);
-            if ($ret != 0) {
-                throw new \Exception("Failed to generate guide docs for extension {$extension->name}.");
+            passthru(\Yii::getAlias('@app/yii') . ' guide/extension ' . escapeshellarg($extension->name) . ' --interactive=0', $exitCode);
+            if ($exitCode != 0) {
+                $failed = true;
+            }
+
+            if ($failed) {
+                throw new \Exception("Failed to generate docs for extension {$extension->name}.");
             }
             echo "done.\n";
         }

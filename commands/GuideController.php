@@ -179,26 +179,13 @@ class GuideController extends \yii\apidoc\commands\GuideController
         $metadata = [];
         $targetPath = Yii::getAlias("@app/data/extensions/$extensionName");
 
-        // TODO determine versions
-        $versions = ['2.0'];
+        $versions = Json::decode($extension->version_references);
 
-        foreach($versions as $version) {
+        foreach($versions as $version => $gitRef) {
 
             $sourcePath = Yii::getAlias("@app/data/extensions/$extensionName/$version");
-
-            if (!file_exists($sourcePath)) {
-                passthru('git clone ' . escapeshellarg($extension->github_url) . ' ' . escapeshellarg($sourcePath),$ret);
-                if ($ret != 0) {
-                    $this->stderr("Failed to clone git repo for extension $extensionName.\n", Console::FG_RED);
-                    return 1;
-                }
-                // TODO check out correct branch
-            } else {
-                passthru('git -C ' . escapeshellarg($sourcePath) . ' pull', $ret);
-                if ($ret != 0) {
-                    $this->stderr("Failed to update git repo for extension $extensionName.\n", Console::FG_RED);
-                    return 1;
-                }
+            if (!$extension->cloneGitRepo($sourcePath, $gitRef, $this)) {
+                return 1;
             }
 
             if (!is_dir("$sourcePath/docs")) {
@@ -211,7 +198,7 @@ class GuideController extends \yii\apidoc\commands\GuideController
                 if (basename($directory) === 'guide') {
                     $languages[] = 'en';
                 } elseif (preg_match('/^guide-([a-z]{2}(?:-[a-zA-Z]{2})?)$/', basename($directory), $m)) {
-                    $languages[] = $m[1];
+                    $languages[] = strtolower($m[1]);
                 }
             }
 

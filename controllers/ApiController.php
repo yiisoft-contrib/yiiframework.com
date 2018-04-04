@@ -60,6 +60,10 @@ class ApiController extends BaseController
     {
         $this->validateVersion($version);
 
+        if (!preg_match('/^[\w\-]+$/', $section)) {
+            throw new NotFoundHttpException('The requested page was not found.');
+        }
+
         switch (Yii::$app->response->format) {
             case Response::FORMAT_HTML:
 
@@ -81,7 +85,7 @@ class ApiController extends BaseController
                         $title = $titles[$titleKey];
                     }
                 }
-                if (!preg_match('/^[\w\-]+$/', $section) || !is_file($file)) {
+                if (!is_file($file)) {
                     throw new NotFoundHttpException('The requested page was not found.');
                 }
 
@@ -102,6 +106,7 @@ class ApiController extends BaseController
                     'title' => $title,
                     'packages' => $packages,
                     'doc' => $doc,
+                    'extension' => null,
                 ]);
 
                 break;
@@ -136,7 +141,13 @@ class ApiController extends BaseController
             throw new NotFoundHttpException('The requested page does not exist.');
         }
 
-        // TODO $this->validateVersion($version);
+        if (!preg_match('/^[\w\-]+$/', $section)) {
+            throw new NotFoundHttpException('The requested page was not found.');
+        }
+
+        if (!$extension->hasApiDoc($version)) {
+            throw new NotFoundHttpException('The requested page does not exist.');
+        }
 
         switch (Yii::$app->response->format) {
             case Response::FORMAT_HTML:
@@ -155,17 +166,18 @@ class ApiController extends BaseController
                 if (isset($titles[$titleKey])) {
                     $title = $titles[$titleKey];
                 }
-                if (!preg_match('/^[\w\-]+$/', $section) || !is_file($file)) {
+                if (!is_file($file)) {
                     throw new NotFoundHttpException('The requested page was not found.');
                 }
 
                 return $this->render('view2x', [
                     'content' => file_get_contents($file),
                     'section' => $section,
-                    'versions' => Yii::$app->params['versions']['api'],
+                    'versions' => $extension->getApiVersions(),
                     'version' => $version,
                     'title' => $title,
                     'packages' => $packages,
+                    'extension' => $extension,
                 ]);
 
                 break;

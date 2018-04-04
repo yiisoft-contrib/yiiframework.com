@@ -142,11 +142,17 @@ class Guide extends BaseObject
     public function getVersionOptions()
     {
         if ($this->type === self::TYPE_EXTENSION) {
-            // TODO
-            return ['2.0'];
+            $guideInfo = Yii::getAlias("@app/data/extensions/{$this->extension->name}/guide.json");
+            if (!file_exists($guideInfo)) {
+                return [];
+            }
+            $metadata = Json::decode(file_get_contents($guideInfo));
+            $versions = array_keys($metadata);
         } else {
-            return array_keys(Yii::$app->params["{$this->type}.versions"]);
+            $versions = array_keys(Yii::$app->params["{$this->type}.versions"]);
         }
+        arsort($versions);
+        return $versions;
     }
 
     /**

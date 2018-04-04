@@ -18,7 +18,7 @@ if (isset($readme)) {
 ?><h1><?= Html::encode($this->context->extension->name) ?> API Documentation <?= $this->context->version ?></h1>
 
 <p>
-    This is the API Documentation for the <?= Html::encode($this->context->extension->name) ?> extension. Here you will find detailed information about all classes
+    This is the API Documentation for the <?= Html::a(Html::encode($this->context->extension->name), Yii::$app->params['baseUrl'] . "/extension/{$this->context->extension->name}") ?> extension. Here you will find detailed information about all classes
     provided by this extension. Below you find a list of the existing classes, interfaces, and traits, ordered by their
     fully qualified name (including the namespace). Each of them has a dedicated page which contains a description about the
     purpose of the class, a list of the available methods, properties and constants, and detailed description
