@@ -311,6 +311,19 @@ class ApiController extends BaseController
                     return $this->redirect(['view', 'version' => '1.1', 'section' => $baseName], 301); // Moved Permanently
                 }
             }
+            // check extension classes e.g. /doc-2.0/yii-imagine-baseimage.html
+            $extensions = Extension::find()->where("name LIKE 'yiisoft/yii2-%'")->all();
+            foreach($extensions as $extension) {
+                $versions = $extension->getApiVersions();
+                arsort($versions);
+                foreach($versions as $version) {
+                    if (is_file(Yii::getAlias("@app/data/extensions/{$extension->name}/api-$version/$section.html"))) {
+                        list($vendorName, $extensionName) = explode('/', $extension->name);
+                        return $this->redirect(['extension-view', 'version' => $version, 'section' => $section, 'vendorName' => $vendorName, 'name' => $extensionName], 301); // Moved Permanently
+                    }
+                }
+            }
+
 
         }
         throw new NotFoundHttpException('The requested page was not found.');
