@@ -45,7 +45,7 @@ use yii\helpers\Html;
                                     </div>
                                 </div>
                                 <div class="comment-footer">
-                                    <a href="#"><?= $comment->user ? $comment->user->rankLink : User::DELETED_USER_HTML ?></a> at
+                                    <?= $comment->user ? $comment->user->rankLink : User::DELETED_USER_HTML ?> at
                                     <span class="date"><?=Yii::$app->formatter->format($comment->created_at, 'datetime')?></span>
                                 </div>
                             </div>
