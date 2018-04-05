@@ -32,11 +32,7 @@ use yii\helpers\Html;
                                         <div class="col-md-1">
                                             <a href="#c<?= $comment->id ?>" class="comment-id">#<?= $comment->id ?></a>
                                         </div>
-                                        <div class="col-md-9 details">
-                                            <?= $comment->user ? $comment->user->rankLink : User::DELETED_USER_HTML ?> at
-                                            <span class="date"><?=Yii::$app->formatter->format($comment->created_at, 'datetime')?></span>
-                                        </div>
-                                        <div class="col-md-2">
+                                        <div class="col-md-2 pull-right">
                                             <?= Voter::widget(['model' => $comment]) ?>
                                         </div>
                                     </div>
@@ -47,6 +43,10 @@ use yii\helpers\Html;
                                             echo Yii::$app->formatter->asCommentMarkdown($comment->text);
                                         ?>
                                     </div>
+                                </div>
+                                <div class="comment-footer">
+                                    <?= $comment->user ? $comment->user->rankLink : User::DELETED_USER_HTML ?> at
+                                    <span class="date"><?=Yii::$app->formatter->format($comment->created_at, 'datetime')?></span>
                                 </div>
                             </div>
                         </div>
