@@ -139,6 +139,7 @@ class UserController extends BaseController
 
         $extensions = Extension::find()
             ->active()
+            ->excludeOfficial()
             ->where(['owner_id' => $userId])
             ->orderBy('name')
             ->all();

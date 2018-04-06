@@ -62,6 +62,7 @@ class UserController  extends Controller
 
         $extensionScores = Extension::find()
             ->active()
+            ->excludeOfficial()
             ->select(['score' => 'SUM(rating+0.1)*10'])
             ->groupBy('owner_id')
             ->indexBy('owner_id')
@@ -86,6 +87,7 @@ class UserController  extends Controller
 
         $extensionCounts = Extension::find()
             ->active()
+            ->excludeOfficial()
             ->select(['score' => 'COUNT(*)'])
             ->groupBy('owner_id')
             ->indexBy('owner_id')
