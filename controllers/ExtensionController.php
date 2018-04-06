@@ -122,7 +122,7 @@ class ExtensionController extends BaseController
 
     public function actionOfficial()
     {
-        $query = Extension::find()->active()->with(['owner', 'category'])->where("name LIKE 'yiisoft/yii2-%'");
+        $query = Extension::find()->active()->official()->with(['owner', 'category']);
 
         $dataProvider = new ActiveDataProvider([
             'query' => $query,
