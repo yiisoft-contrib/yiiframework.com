@@ -9,6 +9,7 @@ use yii\base\InvalidConfigException;
 use yii\db\Connection;
 use yii\db\Query;
 use yii\di\Instance;
+use yii\helpers\ArrayHelper;
 use yii\helpers\Inflector;
 
 /**
@@ -87,6 +88,13 @@ class ForumAdapter extends Component
         $sql = "SELECT count(*) FROM {$tablePrefix}posts WHERE author_id = :user_id";
         $cmd = $this->db->createCommand($sql, [':user_id' => $user->forum_id]);
         return $cmd->queryScalar();
+    }
+
+    public function getPostCounts()
+    {
+        $tablePrefix = $this->tablePrefix;
+        $sql = "SELECT member_id, posts FROM {$tablePrefix}members";
+        return ArrayHelper::map($this->db->createCommand($sql)->queryAll(),'member_id','posts');
     }
 
     /**

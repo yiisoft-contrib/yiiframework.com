@@ -96,9 +96,8 @@ class UserController  extends Controller
             ->groupBy('creator_id')
             ->indexBy('creator_id')
             ->column($db);
-        // TODO forum connection
-//        $postCounts=ArrayHelper::map($db->createCommand('SELECT member_id, posts FROM ipb_members')->queryAll(),'member_id','posts');
-        $postCounts = [];
+
+        $postCounts=Yii::$app->forumAdapter->getPostCounts();
 
         $users = User::find()->asArray();
         //$users = $db->createCommand('SELECT t.id, t.rating, t.post_count, t.wiki_count, t.extension_count, t.comment_count, f.last_visit, f.joined, f.posts FROM {{%user}} t, ipb_members f WHERE t.id=f.member_id')->queryAll();
