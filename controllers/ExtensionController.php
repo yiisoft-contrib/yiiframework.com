@@ -44,7 +44,7 @@ class ExtensionController extends BaseController
                     [
                         // allow all to a access index and view action
                         'allow' => true,
-                        'actions' => ['index', 'view', 'files', 'download', 'redirect', 'doc'],
+                        'actions' => ['index', 'official', 'view', 'files', 'download', 'redirect', 'doc'],
                     ],
                     [
                         'allow' => true,
@@ -104,38 +104,7 @@ class ExtensionController extends BaseController
         $dataProvider = new ActiveDataProvider([
             'query' => $query,
             'sort'=> [
-                'attributes'=> [
-                    'create'=> [
-                        'asc'=>['created_at' => SORT_ASC],
-                        'desc'=>['created_at' => SORT_DESC],
-                        'label'=>'Sorted by date',
-                        'default'=>'desc',
-                    ],
-                    'update'=> [
-                        'asc'=>['updated_at' => SORT_ASC],
-                        'desc'=>['updated_at' => SORT_DESC],
-                        'label'=>'Sorted by date (updated)',
-                        'default'=>'desc',
-                    ],
-                    'rating'=> [
-                        'asc'=>['rating' => SORT_ASC],
-                        'desc'=>['rating' => SORT_DESC],
-                        'label'=>'Sorted by rating',
-                        'default'=>'desc',
-                    ],
-                    'comments'=> [
-                        'asc'=>['comment_count' => SORT_ASC],
-                        'desc'=>['comment_count' => SORT_DESC],
-                        'label'=>'Sorted by comments',
-                        'default'=>'desc',
-                    ],
-                    'downloads'=> [
-                        'asc'=>['download_count' => SORT_ASC],
-                        'desc'=>['download_count' => SORT_DESC],
-                        'label'=>'Sorted by downloads',
-                        'default'=>'desc',
-                    ],
-                ],
+                'attributes'=> $this->sortAttributes(),
                 'defaultOrder'=> ['create'=>SORT_DESC],
             ],
             'pagination' => [
@@ -149,6 +118,60 @@ class ExtensionController extends BaseController
             'category' => $categoryModel,
             'version' => $version,
         ]);
+    }
+
+    public function actionOfficial()
+    {
+        $query = Extension::find()->active()->with(['owner', 'category'])->where("name LIKE 'yiisoft/yii2-%'");
+
+        $dataProvider = new ActiveDataProvider([
+            'query' => $query,
+            'sort'=> [
+                'attributes'=> $this->sortAttributes(),
+                'defaultOrder'=> ['downloads'=>SORT_DESC],
+            ],
+            'pagination' => false,
+        ]);
+
+        return $this->render('index-official', [
+            'dataProvider' => $dataProvider,
+        ]);
+    }
+
+    public function sortAttributes()
+    {
+        return [
+            'create'=> [
+                'asc'=>['created_at' => SORT_ASC],
+                'desc'=>['created_at' => SORT_DESC],
+                'label'=>'Sorted by date',
+                'default'=>'desc',
+            ],
+            'update'=> [
+                'asc'=>['updated_at' => SORT_ASC],
+                'desc'=>['updated_at' => SORT_DESC],
+                'label'=>'Sorted by date (updated)',
+                'default'=>'desc',
+            ],
+            'rating'=> [
+                'asc'=>['rating' => SORT_ASC],
+                'desc'=>['rating' => SORT_DESC],
+                'label'=>'Sorted by rating',
+                'default'=>'desc',
+            ],
+            'comments'=> [
+                'asc'=>['comment_count' => SORT_ASC],
+                'desc'=>['comment_count' => SORT_DESC],
+                'label'=>'Sorted by comments',
+                'default'=>'desc',
+            ],
+            'downloads'=> [
+                'asc'=>['download_count' => SORT_ASC],
+                'desc'=>['download_count' => SORT_DESC],
+                'label'=>'Sorted by downloads',
+                'default'=>'desc',
+            ],
+        ];
     }
 
     public function actionView($name, $vendorName = null)
