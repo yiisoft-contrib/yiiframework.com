@@ -140,13 +140,13 @@ class UserController extends BaseController
         $extensions = Extension::find()
             ->active()
             ->excludeOfficial()
-            ->where(['owner_id' => $userId])
+            ->andWhere(['owner_id' => $userId])
             ->orderBy('name')
             ->all();
 
         $wikiPages = Wiki::find()
             ->active()
-            ->where(['creator_id' => $userId])
+            ->andWhere(['creator_id' => $userId])
             ->orderBy('title')
             ->all();
 
