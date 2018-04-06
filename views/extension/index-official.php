@@ -48,27 +48,6 @@ $this->title = 'Official Extensions';
                 'layout' => "<div class=\"row\">{items}</div>\n{pager}",
             ]) ?>
 
-<!--            <nav class="extension-pagination-holder">
-              <ul class="pagination pagination-lg extension-pagination">
-                <li class="prev disabled">
-                    <span><i class="fa fa-chevron-left" aria-hidden="true"></i></span>
-                </li>
-                <li class="active"><a href="#">1</a></li>
-                <li><a href="#">2</a></li>
-                <li><a href="#">3</a></li>
-                <li><a href="#">4</a></li>
-                <li><a href="#">5</a></li>
-                <li><a href="#">6</a></li>
-                <li><a href="#">7</a></li>
-                <li><a href="#">8</a></li>
-                <li><a href="#">9</a></li>
-                <li><a href="#">10</a></li>
-                <li class="next">
-                    <a href="#"><i class="fa fa-chevron-right" aria-hidden="true"></i></a>
-                </li>
-              </ul>
-            </nav>-->
-
         </div>
     </div>
 </div>
