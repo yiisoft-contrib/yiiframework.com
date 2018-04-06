@@ -28,6 +28,16 @@ class ExtensionQuery extends \yii\db\ActiveQuery
     }
 
     /**
+     * Select only Official Extensions
+     *
+     * @return $this
+     */
+    public function official()
+    {
+        return $this->where("name LIKE 'yiisoft/yii2-%'");
+    }
+
+    /**
      * @inheritdoc
      * @return Extension[]|array
      */

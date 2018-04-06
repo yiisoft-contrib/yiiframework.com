@@ -98,7 +98,7 @@ use yii\widgets\ActiveForm;
         <?php if ($model->isNewRecord) {
             echo Html::a('Abort', ['index'], ['class' => 'btn btn-danger']);
         } else {
-            echo Html::a('Abort', ['view', 'name' => $model->name], ['class' => 'btn btn-danger']);
+            echo Html::a('Abort', $model->getUrl(), ['class' => 'btn btn-danger']);
         } ?>
     </div>
 
