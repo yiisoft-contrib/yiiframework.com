@@ -124,7 +124,7 @@ class UserController extends BaseController
             'model' => $model,
             'userCount' => User::find()->active()->count(),
             'wikis' => $model->getWikis()->orderBy('title')->active()->all() ,
-            'extensions' => $model->getExtensions()->orderBy('name')->active()->all(),
+            'extensions' => $model->getExtensions()->excludeOfficial()->orderBy('name')->active()->all(),
         ]);
     }
 
