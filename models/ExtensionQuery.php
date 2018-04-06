@@ -34,7 +34,7 @@ class ExtensionQuery extends \yii\db\ActiveQuery
      */
     public function official()
     {
-        return $this->where("name LIKE 'yiisoft/yii2-%'");
+        return $this->andWhere("name LIKE 'yiisoft/yii2-%'");
     }
 
     /**
@@ -44,7 +44,7 @@ class ExtensionQuery extends \yii\db\ActiveQuery
      */
     public function excludeOfficial()
     {
-        return $this->where("name NOT LIKE 'yiisoft/yii2-%'");
+        return $this->andWhere("name NOT LIKE 'yiisoft/yii2-%'");
     }
 
     /**
