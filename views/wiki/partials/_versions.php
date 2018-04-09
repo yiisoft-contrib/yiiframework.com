@@ -40,7 +40,7 @@ use app\widgets\DropdownList;
         ?>
         <?= DropdownList::widget([
             'tag' => 'div',
-            'selection' => \app\models\Wiki::getYiiVersionOptions()[$currentVersion],
+            'selection' => \app\models\Wiki::getYiiVersionOptions()[$currentVersion] ?? null,
             'items' => $versionItems,
             'options' => [
                 'class' => 'btn-group btn-group-sm'

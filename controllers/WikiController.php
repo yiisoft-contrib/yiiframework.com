@@ -64,7 +64,7 @@ class WikiController extends BaseController
 
     public function actionIndex($category = null, $tag = null, $version = '2.0')
     {
-        if (!in_array($version, [Wiki::YII_VERSION_10, Wiki::YII_VERSION_11, Wiki::YII_VERSION_20, Wiki::YII_VERSION_ALL], true)) {
+        if (!in_array($version, [Wiki::YII_VERSION_11, Wiki::YII_VERSION_20, Wiki::YII_VERSION_ALL], true)) {
             throw new NotFoundHttpException();
         }
 
