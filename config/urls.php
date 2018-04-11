@@ -104,6 +104,7 @@ return [
     '<url:screencasts>' => 'site/redirect',
 
 	// admin
+	'admin' => 'admin/index',
 	'admin/<controller:user>' => '<controller>-admin/index',
 	'admin/<controller:user>/<action:[\w-]+>' => '<controller>-admin/<action>',
 
