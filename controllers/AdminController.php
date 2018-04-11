@@ -35,6 +35,7 @@ class AdminController extends BaseController
                             UserPermissions::PERMISSION_MANAGE_EXTENSIONS,
                             UserPermissions::PERMISSION_MANAGE_NEWS,
                             UserPermissions::PERMISSION_MANAGE_WIKI,
+                            UserPermissions::PERMISSION_MANAGE_COMMENTS,
                         ],
    			        ],
    		        ]

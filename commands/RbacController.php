@@ -41,6 +41,9 @@ class RbacController extends Controller
         $this->stdout("Adding wiki admin.\n");
         $this->addWikiAdmin($auth);
 
+        $this->stdout("Adding comment admin.\n");
+        $this->addCommentAdmin($auth);
+
         if ($auth instanceof DbManager) {
             $this->stdout("Restoring assignments.\n");
             $auth->db->createCommand()->batchInsert(
@@ -126,6 +129,22 @@ class RbacController extends Controller
         $auth->add($manageWiki);
 
         $auth->addChild($wikiAdmin, $manageWiki);
+    }
+
+    /**
+     * @param ManagerInterface $auth
+     */
+    private function addCommentAdmin($auth)
+    {
+        $commentAdmin = $auth->createRole(UserPermissions::ROLE_COMMENT_ADMIN);
+        $commentAdmin->description = 'Comment admin.';
+        $auth->add($commentAdmin);
+
+        $manageComments = $auth->createPermission(UserPermissions::PERMISSION_MANAGE_COMMENTS);
+        $manageComments->description = 'Manage comments.';
+        $auth->add($manageComments);
+
+        $auth->addChild($commentAdmin, $manageComments);
     }
 
     public function actionAssign($username, $role)

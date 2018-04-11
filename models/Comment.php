@@ -114,6 +114,25 @@ class Comment extends ActiveRecord implements ObjectIdentityInterface
     }
 
     /**
+     * @return array
+     */
+    public function getUrl()
+    {
+        /** @var $model Linkable */
+        $model = $this->getModel();
+        if (!$this->model instanceof Linkable) {
+            return null;
+        }
+
+        $url = $model->getUrl();
+        if (is_array($url)) {
+            $url['#'] = "c{$this->id}";
+            return $url;
+        }
+        return "$url#c{$this->id}";
+    }
+
+    /**
      * @inheritdoc
      */
     public function getObjectType()

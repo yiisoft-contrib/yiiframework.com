@@ -12,6 +12,10 @@ $this->beginContent('@app/views/layouts/main.php');
     if (isset($this->params['breadcrumbs'])) {
         echo \yii\widgets\Breadcrumbs::widget([
             'links' => $this->params['breadcrumbs'],
+            'homeLink' => [
+                'label' => 'Admin',
+                'url' => ['admin/index'],
+            ],
         ]);
     }
 

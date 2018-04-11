@@ -16,11 +16,13 @@ class UserPermissions
     const ROLE_USER_ADMIN = 'user_admin';
     const ROLE_EXTENSION_ADMIN = 'extension_admin';
     const ROLE_WIKI_ADMIN = 'wiki_admin';
+    const ROLE_COMMENT_ADMIN = 'comment_admin';
 
     const PERMISSION_MANAGE_NEWS = 'manage_news';
     const PERMISSION_MANAGE_USERS = 'manage_users';
     const PERMISSION_MANAGE_EXTENSIONS = 'manage_extensions';
     const PERMISSION_MANAGE_WIKI = 'manage_wiki';
+    const PERMISSION_MANAGE_COMMENTS = 'manage_comments';
 
     const MIN_RATING_EDIT_WIKI = 50;
 

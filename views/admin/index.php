@@ -19,6 +19,10 @@ use yii\helpers\Html;
     <li><?= Html::a('Manage News', ['news/admin']) ?></li>
 <?php endif?>
 
+<?php if (Yii::$app->user->can(\app\components\UserPermissions::PERMISSION_MANAGE_COMMENTS)): ?>
+    <li><?= Html::a('Manage Comments', ['comment-admin/index']) ?></li>
+<?php endif?>
+
 <?php if (Yii::$app->user->can(\app\components\UserPermissions::PERMISSION_MANAGE_WIKI)): ?>
     <li><?= Html::a('Manage Wiki', ['wiki/index']) ?> (Currently no separate admin interface)</li>
 <?php endif?>

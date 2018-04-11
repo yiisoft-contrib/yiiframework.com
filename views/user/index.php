@@ -9,12 +9,12 @@ use yii\grid\GridView;
 
 $this->title = 'Members';
 
-if (Yii::$app->user->can('users:pAdmin')) {
+if (Yii::$app->user->can(\app\components\UserPermissions::PERMISSION_MANAGE_USERS)) {
     $this->beginBlock('adminNav');
     echo \yii\bootstrap\Nav::widget([
         'id' => 'admin-nav',
         'items' => [
-            ['label' => 'User Admin', 'url' => ['user-admin/index'], 'visible' => Yii::$app->user->can('users:pAdmin') ],
+            ['label' => 'User Admin', 'url' => ['user-admin/index']],
         ],
     ]);
     $this->endBlock();
