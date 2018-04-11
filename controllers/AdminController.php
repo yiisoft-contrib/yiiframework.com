@@ -44,6 +44,17 @@ class AdminController extends BaseController
 
     public function actionIndex()
     {
-        return $this->render('index', []);
+        $roles = array_merge(Yii::$app->authManager->getRoles(), Yii::$app->authManager->getPermissions());
+        $roleUsers = [];
+        foreach($roles as $role) {
+            $users = User::findAll(Yii::$app->authManager->getUserIdsByRole($role->name));
+            if (!empty($users)) {
+                $roleUsers[$role->name] = $users;
+            }
+        }
+
+        return $this->render('index', [
+            'roleUsers' => $roleUsers,
+        ]);
     }
 }
