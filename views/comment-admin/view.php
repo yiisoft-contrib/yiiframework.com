@@ -55,7 +55,9 @@ $this->params['breadcrumbs'][] = $this->title;
     <?= Html::a($model->status == Comment::STATUS_DELETED ? 'Undo Delete' : 'Delete', ['delete', 'id' => $model->id], [
         'class' => 'btn btn-danger',
         'data' => [
-            'confirm' => 'Are you sure you want to delete this item?',
+            'confirm' => $model->status == Comment::STATUS_DELETED ?
+                'Are you sure you want to undo deletion of this item?' :
+                'Are you sure you want to delete this item?',
             'method' => 'post',
         ],
     ]) ?>

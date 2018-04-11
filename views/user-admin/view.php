@@ -15,6 +15,7 @@ $this->params['breadcrumbs'][] = $this->title;
 
 <p>
     <?= Html::a('View Profile', ['user/view', 'id' => $model->id], ['class' => 'btn btn-default']) ?>
+    <?= Html::a('View Comments', ['comment-admin/index', 'CommentSearch[user.username]' => $model->username], ['class' => 'btn btn-default']) ?>
     <?= Html::a('Update', ['update', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
     <?= Html::a('Delete', ['delete', 'id' => $model->id], [
         'class' => 'btn btn-danger',

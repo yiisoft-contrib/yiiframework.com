@@ -23,11 +23,16 @@ $this->params['breadcrumbs'][] = $this->title;
             [
                 'attribute' => 'id',
                 'content' => function(Comment $model) {
+                    if ($model->status == Comment::STATUS_DELETED) {
+                        return Html::a(Html::encode($model->id), ['view', 'id' => $model->id]);
+                    }
                     return Html::a(Html::encode($model->id), $model->getUrl());
                 },
             ],
             [
                 'attribute' => 'user.username',
+                'value' => 'user.rankLink',
+                'format' => 'raw',
             ],
             [
                 'attribute' => 'object_type',

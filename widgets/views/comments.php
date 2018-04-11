@@ -4,6 +4,7 @@
 /* @var $form yii\widgets\ActiveForm */
 /* @var $commentForm app\models\Comment */
 
+use app\components\UserPermissions;
 use app\models\User;
 use app\widgets\Voter;
 use yii\widgets\ActiveForm;
@@ -47,6 +48,9 @@ use yii\helpers\Html;
                                 <div class="comment-footer">
                                     <?= $comment->user ? $comment->user->rankLink : User::DELETED_USER_HTML ?> at
                                     <span class="date"><?=Yii::$app->formatter->format($comment->created_at, 'datetime')?></span>
+                                    <?php if (Yii::$app->user->can(UserPermissions::PERMISSION_MANAGE_COMMENTS)) {
+                                        echo Html::a('View in comment admin', ['comment-admin/view', 'id' => $comment->id], ['class' => 'pull-right']);
+                                    } ?>
                                 </div>
                             </div>
                         </div>
