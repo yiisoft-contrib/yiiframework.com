@@ -52,7 +52,7 @@ $this->params['breadcrumbs'][] = $this->title;
 <p>
     <?= Html::a('View in Context', $model->getUrl(), ['class' => 'btn btn-default']) ?>
     <?= Html::a('Update', ['update', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
-    <?= Html::a('Delete', ['delete', 'id' => $model->id], [
+    <?= Html::a($model->status == Comment::STATUS_DELETED ? 'Undo Delete' : 'Delete', ['delete', 'id' => $model->id], [
         'class' => 'btn btn-danger',
         'data' => [
             'confirm' => 'Are you sure you want to delete this item?',

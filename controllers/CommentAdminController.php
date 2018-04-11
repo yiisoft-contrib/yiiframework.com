@@ -30,7 +30,7 @@ class CommentAdminController extends BaseController
    				        // allow all to a access index and view action
    				        'allow' => true,
    				        'actions' => ['index', 'view', 'update', 'delete'],
-                        'roles' => [UserPermissions::PERMISSION_MANAGE_USERS],
+                        'roles' => [UserPermissions::PERMISSION_MANAGE_COMMENTS],
    			        ],
    		        ]
    	        ],
@@ -100,9 +100,13 @@ class CommentAdminController extends BaseController
      */
     public function actionDelete($id)
     {
-        $this->findModel($id)->delete();
-
-        return $this->redirect(['index']);
+        $model = $this->findModel($id);
+        if ($model->status == Comment::STATUS_DELETED) {
+            $model->updateAttributes(['status' => Comment::STATUS_ACTIVE]);
+        } else {
+            $model->updateAttributes(['status' => Comment::STATUS_DELETED]);
+        }
+        return $this->redirect(['view', 'id' => $model->id]);
     }
 
     /**
