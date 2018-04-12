@@ -6,7 +6,7 @@ use yii\widgets\ListView;
 /* @var $this yii\web\View */
 /* @var $model app\models\Wiki */
 
-$this->title = 'Create an Exension';
+$this->title = 'Create an Extension';
 
 ?>
 <div class="container">
