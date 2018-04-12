@@ -85,7 +85,7 @@ class GuideController extends BaseController
             }
 
             // redirect old URLs to extension docs
-            if ($sectionName === 'tool-gii' || $sectionName === 'tool-debugger') {
+            if ($sectionName === 'tool-gii' || $sectionName === 'tool-debugger' || $sectionName === 'tutorial-advanced-app') {
                 return $this->actionRedirect($sectionName);
             }
         }
@@ -225,6 +225,9 @@ class GuideController extends BaseController
         }
         if ($section === 'tool-gii') {
             return $this->redirect(['extension/view', 'name' => 'yii2-gii', 'vendorName' => 'yiisoft'], 301); // Moved Permanently
+        }
+        if ($section === 'tutorial-advanced-app') {
+            return $this->redirect(['extension/doc', 'name' => 'yii2-app-advanced', 'vendorName' => 'yiisoft', 'type' => 'guide'], 301); // Moved Permanently
         }
 
         // existing guide sections
