@@ -7,6 +7,7 @@ use yii\apidoc\helpers\ApiMarkdown;
 use yii\apidoc\models\Context;
 use yii\helpers\HtmlPurifier;
 use yii\helpers\Markdown;
+use yii\helpers\StringHelper;
 
 class Formatter extends \yii\i18n\Formatter
 {
@@ -50,6 +51,8 @@ class Formatter extends \yii\i18n\Formatter
 
         $output = HtmlPurifier::process($html, $this->purifierConfig);
 
+        $output = $this->replaceImageUrlForProxy($output);
+
    		return '<div class="markdown">'.$output.'</div>';
    	}
 
@@ -71,6 +74,8 @@ class Formatter extends \yii\i18n\Formatter
         $html = $this->replaceCommentHeadlines($html);
 
         $output = HtmlPurifier::process($html, $this->purifierConfig);
+
+        $output = $this->replaceImageUrlForProxy($output);
 
    		return '<div class="markdown">'.$output.'</div>';
    	}
@@ -107,6 +112,8 @@ class Formatter extends \yii\i18n\Formatter
 
         $output = HtmlPurifier::process($html, $this->purifierConfig);
 
+        $output = $this->replaceImageUrlForProxy($output);
+
    		return '<div class="markdown">'.$output.'</div>';
    	}
 
@@ -134,5 +141,63 @@ class Formatter extends \yii\i18n\Formatter
     private function replaceCommentHeadlines($html)
     {
         return preg_replace('/<h\d+.*?>(.*?)<\\/h\d+>/i',"<p><strong>\\1</strong></p>", $html);
+    }
+
+
+    /**
+     * @param string $html
+     *
+     * @return string
+     */
+    private function replaceImageUrlForProxy($html)
+    {
+        if (!isset(Yii::$app->params['image-proxy'], Yii::$app->params['image-proxy-secret'])) {
+            return $html;
+        }
+
+        return preg_replace_callback('/(<img[^>]+?)src=(["\'])([^"\']+)\2/i', function($matches) {
+            return $matches[1] . 'src="' . $this->generateProxyUrl($matches[3]) . '"';
+        }, $html);
+    }
+
+    /**
+     * Proxy external images through a content filter.
+     *
+     * Avoid the following issues:
+     *
+     * - Blocking by Content-Security-Policy header
+     * - HTTPs vs. HTTP mixed content problems
+     * - content filter will only allow passing images of type gif, png, jpg, webm and svg
+     *   other content will be blocked.
+     * - proxied images are not able to set cookies, i.e. not able to track users.
+     *
+     * URLs will be replaced as follows:
+     *
+     * - Input: `http://example.com/somepath/someimage.png`
+     * - Output: `https://user-content.yiiframework.com/img/<hash>/http/example.com/somepath/someimage.png`
+     *
+     * `<hash>` is a value generated from the URL and a secret to avoid abuse of the proxy server.
+     */
+    private function generateProxyUrl($sourceUrl)
+    {
+        // generate proxy URL for all absolute URLs on http, https and protocol relative
+        if (preg_match('~^(https?:|)//([^/]+)/(.*)$~', $sourceUrl, $matches)) {
+
+            list( , $proto, $host, $uri) = $matches;
+            $proto = rtrim($proto, ':');
+            if (empty($proto)) {
+                $proto = 'http';
+            }
+
+            $proxy = rtrim(Yii::$app->params['image-proxy'] ?? 'https://user-content.yiiframework.com', '/');
+            $secret = Yii::$app->params['image-proxy-secret'];
+
+            // https://nginx.org/en/docs/http/ngx_http_secure_link_module.html#secure_link_md5
+            // echo "url secret" | openssl md5 -binary | openssl base64 | tr +/ -_ | tr -d =
+            $hash = rtrim(StringHelper::base64UrlEncode(md5("$proto://$host/$uri $secret", true)), '=');
+        	return "$proxy/img/$hash/$proto/$host/$uri";
+        }
+
+        return $sourceUrl;
     }
 }
