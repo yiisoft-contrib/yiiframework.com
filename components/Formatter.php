@@ -180,9 +180,14 @@ class Formatter extends \yii\i18n\Formatter
      */
     private function generateProxyUrl($sourceUrl)
     {
-        if (preg_match('~^(https?)://([^/]+)/(.*)$~', $sourceUrl, $matches)) {
+        // generate proxy URL for all absolute URLs on http, https and protocol relative
+        if (preg_match('~^(https?:|)//([^/]+)/(.*)$~', $sourceUrl, $matches)) {
 
             list( , $proto, $host, $uri) = $matches;
+            $proto = rtrim($proto, ':');
+            if (empty($proto)) {
+                $proto = 'http';
+            }
 
             $proxy = rtrim(Yii::$app->params['image-proxy'] ?? 'https://user-content.yiiframework.com', '/');
             $secret = Yii::$app->params['image-proxy-secret'];

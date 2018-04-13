@@ -42,7 +42,7 @@ return [
     'twitter.accessTokenSecret' => '',
 
     // configure these to enable proxying external images through an nginx content filter
-//    'image-proxy' => 'https://content.yiiframework.com',
+//    'image-proxy' => 'https://user-content.yiiframework.com',
 //    'image-proxy-secret' => '',
 
 ];
