@@ -39,5 +39,10 @@ return [
     'twitter.consumerKey' => '',
     'twitter.consumerSecret' => '',
     'twitter.accessToken' => '',
-    'twitter.accessTokenSecret' => ''
+    'twitter.accessTokenSecret' => '',
+
+    // configure these to enable proxying external images through an nginx content filter
+//    'image-proxy' => 'https://content.yiiframework.com',
+//    'image-proxy-secret' => '',
+
 ];
