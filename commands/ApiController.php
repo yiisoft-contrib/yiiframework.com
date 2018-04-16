@@ -163,7 +163,9 @@ HTML
                 Yii::error($e);
             }
         }
-        file_put_contents("$targetPath/api.json", Json::encode($apiVersions));
+        if (!empty($apiVersions) && is_dir($targetPath)) {
+            file_put_contents("$targetPath/api.json", Json::encode($apiVersions));
+        }
 
         return ExitCode::OK;
     }
