@@ -179,6 +179,10 @@ class GuideController extends BaseController
             $version = array_shift($versions);
         }
 
+        if (!isset(Yii::$app->params['guide.versions'][$version])) {
+            throw new NotFoundHttpException('The requested page was not found.');
+        }
+
         // negotiate language from browser preference
         if ($language === null) {
             $languages = array_keys(Yii::$app->params['guide.versions'][$version]);
