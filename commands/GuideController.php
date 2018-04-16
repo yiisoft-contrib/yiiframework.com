@@ -235,7 +235,9 @@ class GuideController extends \yii\apidoc\commands\GuideController
             }
 
         }
-        file_put_contents("$targetPath/guide.json", Json::encode($metadata));
+        if (!empty($metadata) && is_dir($targetPath)) {
+            file_put_contents("$targetPath/guide.json", Json::encode($metadata));
+        }
 
         return ExitCode::OK;
     }
