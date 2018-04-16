@@ -133,6 +133,9 @@ class WikiController extends BaseController
                 'defaultOrder'=> ['create'=>SORT_DESC],
             ],
         ]);
+        if ($dataProvider->getCount() === 0) {
+            Yii::$app->response->statusCode = 404;
+        }
 
         return $this->render('index', [
             'dataProvider' => $dataProvider,

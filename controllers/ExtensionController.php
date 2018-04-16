@@ -111,6 +111,9 @@ class ExtensionController extends BaseController
                 'pageSize' => 12,
             ],
         ]);
+        if ($dataProvider->getCount() === 0) {
+            Yii::$app->response->statusCode = 404;
+        }
 
         return $this->render('index', [
             'dataProvider' => $dataProvider,
