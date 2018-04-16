@@ -90,6 +90,7 @@ class PackagistApi
     /**
      * @param string|null $type e.g. 'yii2-extension'
      * @return array
+     * @throws PackagistException
      */
     public function listPackageNames($type = null)
     {
@@ -100,7 +101,7 @@ class PackagistApi
         $url = sprintf(self::ENDPOINT_LIST, http_build_query($queryParam));
         try {
             $data = Json::decode(file_get_contents($url), true);
-        } catch (\Exception $e) {
+        } catch (\Throwable $e) {
             throw new PackagistException('Error getting data from packagist.org:' . $e->getMessage(), 0, $e);
         }
 
@@ -116,7 +117,7 @@ class PackagistApi
      * @param string $vendorName
      * @param string $packageName
      * @return Package|false
-     * @throws \Exception
+     * @throws \Throwable
      */
     public function getPackage($vendorName, $packageName)
     {
@@ -124,7 +125,7 @@ class PackagistApi
 
         try {
             $data = Json::decode(file_get_contents($url), true);
-        } catch (\Exception $e) {
+        } catch (\Throwable $e) {
             if (strpos($e->getMessage(), '404') !== false) {
                 return false;
             }
@@ -153,7 +154,7 @@ class PackagistApi
 
         try {
             return file_get_contents(sprintf(self::ENDPOINT_GITHUB_FILE, $matches[1], 'README.md'));
-        } catch (\Exception $e) {
+        } catch (\Throwable $e) {
             return null;
         }
     }
