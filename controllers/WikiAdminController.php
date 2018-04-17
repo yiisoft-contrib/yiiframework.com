@@ -3,9 +3,11 @@
 namespace app\controllers;
 
 use app\components\UserPermissions;
+use app\models\search\SearchableBehavior;
 use app\models\Wiki;
 use app\models\WikiSearch;
 use Yii;
+use yii\base\Event;
 use yii\filters\AccessControl;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
@@ -84,6 +86,9 @@ class WikiAdminController extends BaseController
             $model->updateAttributes([
                 'status' => $model->status,
             ]);
+            /** @var $searchAble SearchableBehavior */
+            $searchAble = $model->getBehavior('search');
+            $searchAble->afterUpdate(new Event(['sender' => $model]));
             return $this->redirect(['view', 'id' => $model->id]);
         }
 
