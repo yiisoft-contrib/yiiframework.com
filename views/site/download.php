@@ -256,8 +256,12 @@ $this->params['breadcrumbs'][] = $this->title;
 					<div class="col-md-12">
 						<p class="small">
 							<a href="<?= $versionInfo[$version]['download-url'] ?>.tar.gz">Source Code</a> (<a href="<?= $versionInfo['1.1']['download-url'] ?>.zip">.zip</a>)
-							<span class="separator"></span><a href="https://raw.githubusercontent.com/yiisoft/yii/<?= $latest ?>/CHANGELOG">Change log</a>
-							<span class="separator"></span><a href="https://raw.githubusercontent.com/yiisoft/yii/<?= $latest ?>/UPGRADE">Upgrade instructions</a>
+							<span class="separator"></span>
+							<a href="https://raw.githubusercontent.com/yiisoft/yii/<?= $latest ?>/CHANGELOG">Change log</a>
+							<span class="separator"></span>
+							<a href="https://raw.githubusercontent.com/yiisoft/yii/<?= $latest ?>/UPGRADE">Upgrade instructions</a>
+							<span class="separator"></span>
+							<a href="<?= str_replace('yii-', 'yii-docs-', $versionInfo[$version]['download-url']) ?>.tar.gz">Offline Documentation</a> (<a href="<?= str_replace('yii-', 'yii-docs-', $versionInfo[$version]['download-url']) ?>.zip">.zip</a>)
 						</p>
 					</div>
 				</div>
