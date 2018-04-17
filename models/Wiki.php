@@ -65,6 +65,7 @@ class Wiki extends ActiveRecord implements Linkable, ObjectIdentityInterface, En
     const SCENARIO_CREATE = 'create';
     const SCENARIO_UPDATE = 'update';
     const SCENARIO_LOAD = 'load';
+    const SCENARIO_ADMIN = 'admin';
 
     /**
      * @var string editor note on upate
@@ -147,6 +148,7 @@ class Wiki extends ActiveRecord implements Linkable, ObjectIdentityInterface, En
             self::SCENARIO_CREATE => ['title', 'content', 'category_id', 'yii_version', 'tagNames'],
             self::SCENARIO_UPDATE => ['title', 'content', 'category_id', 'yii_version', 'tagNames', 'memo'],
             self::SCENARIO_LOAD => ['title', 'content', 'category_id', 'yii_version', 'tagNames'],
+            self::SCENARIO_ADMIN => ['status'],
         ];
     }
 
@@ -206,6 +208,14 @@ class Wiki extends ActiveRecord implements Linkable, ObjectIdentityInterface, En
             'created_at' => 'Created At',
             'updated_at' => 'Updated At',
             'yii_version' => 'Yii Version',
+        ];
+    }
+
+    public static function getStatuses()
+    {
+        return [
+            self::STATUS_PUBLISHED => 'Published',
+            self::STATUS_DELETED => 'Deleted',
         ];
     }
 

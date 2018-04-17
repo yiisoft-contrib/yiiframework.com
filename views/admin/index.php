@@ -24,7 +24,7 @@ use yii\helpers\Html;
 <?php endif?>
 
 <?php if (Yii::$app->user->can(\app\components\UserPermissions::PERMISSION_MANAGE_WIKI)): ?>
-    <li><?= Html::a('Manage Wiki', ['wiki/index']) ?> (Currently no separate admin interface)</li>
+    <li><?= Html::a('Manage Wiki', ['wiki-admin/index']) ?></li>
 <?php endif?>
 
 <?php if (Yii::$app->user->can(\app\components\UserPermissions::PERMISSION_MANAGE_EXTENSIONS)): ?>

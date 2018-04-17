@@ -49,7 +49,10 @@ $authClients = empty($authClients) ? '<span class="not-set">(none)</span>' : imp
         'login_attempts',
         'login_ip',
         'email:email',
-        'status',
+        [
+            'attribute' => 'status',
+            'value' => $model->statusLabel,
+        ],
         'created_at:datetime',
         'updated_at:datetime',
     ],

@@ -389,7 +389,7 @@ class User extends ActiveRecord implements IdentityInterface
     public static function getStatuses()
     {
         return [
-            self::STATUS_DELETED => 'Delete',
+            self::STATUS_DELETED => 'Deleted',
             self::STATUS_ACTIVE => 'Active',
         ];
     }

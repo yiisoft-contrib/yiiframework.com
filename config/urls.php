@@ -105,7 +105,7 @@ return [
 
 	// admin
 	'admin' => 'admin/index',
-	'admin/<controller:user|comment>' => '<controller>-admin/index',
-	'admin/<controller:user|comment>/<action:[\w-]+>' => '<controller>-admin/<action>',
+	'admin/<controller:user|comment|wiki>' => '<controller>-admin/index',
+	'admin/<controller:user|comment|wiki>/<action:[\w-]+>' => '<controller>-admin/<action>',
 
 ];
