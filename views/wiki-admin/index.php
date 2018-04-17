@@ -45,6 +45,26 @@ $this->params['breadcrumbs'][] = $this->title;
             'filter' => \app\models\WikiSearch::getCategoryFilter(),
         ],
         'yii_version',
+        [
+            'attribute' => 'creator.username',
+            'content' => function($model) {
+                if ($model->creator === null) {
+                    return Yii::$app->formatter->nullDisplay;
+                }
+                return Html::a(Html::encode($model->creator->username), ['user-admin/view', 'id' => $model->creator_id]);
+            },
+            'label' => 'Creator',
+        ],
+        [
+            'attribute' => 'updater.username',
+            'content' => function($model) {
+                if ($model->updater === null) {
+                    return Yii::$app->formatter->nullDisplay;
+                }
+                return Html::a(Html::encode($model->updater->username), ['user-admin/view', 'id' => $model->updater_id]);
+            },
+            'label' => 'Last Updated by',
+        ],
         'created_at:datetime',
         'updated_at:datetime',
         [

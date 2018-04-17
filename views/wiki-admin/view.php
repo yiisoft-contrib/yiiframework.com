@@ -39,6 +39,28 @@ $this->params['breadcrumbs'][] = $this->title;
         ],
         'yii_version',
         'category.name',
+        [
+            'attribute' => 'creator.username',
+            'value' => function($model) {
+                if ($model->creator === null) {
+                    return Yii::$app->formatter->nullDisplay;
+                }
+                return Html::a(Html::encode($model->creator->username), ['user-admin/view', 'id' => $model->creator_id]);
+            },
+            'format' => 'raw',
+            'label' => 'Creator',
+        ],
+        [
+            'attribute' => 'updater.username',
+            'value' => function($model) {
+                if ($model->updater === null) {
+                    return Yii::$app->formatter->nullDisplay;
+                }
+                return Html::a(Html::encode($model->updater->username), ['user-admin/view', 'id' => $model->updater_id]);
+            },
+            'format' => 'raw',
+            'label' => 'Last updated by',
+        ],
         'created_at:datetime',
         'updated_at:datetime',
     ],

@@ -16,7 +16,7 @@ class WikiSearch extends Wiki
     public function rules()
     {
         return [
-            [['id', 'title', 'yii_version', 'created_at', 'updated_at'], 'string'],
+            [['id', 'title', 'yii_version', 'created_at', 'updated_at', 'creator.username', 'updater.username'], 'string'],
             ['category.name', 'in', 'range' => array_keys(static::getCategoryFilter())],
             ['status', 'in', 'range' => array_keys(static::getStatuses())],
         ];
@@ -24,7 +24,7 @@ class WikiSearch extends Wiki
 
     public function attributes()
     {
-        return array_merge(parent::attributes(), ['category.name']);
+        return array_merge(parent::attributes(), ['category.name', 'creator.username', 'updater.username']);
     }
 
     /**
@@ -45,7 +45,10 @@ class WikiSearch extends Wiki
      */
     public function search($params)
     {
-        $query = Wiki::find()->joinWith('category AS category');
+        $query = Wiki::find()
+            ->joinWith('category AS category')
+            ->joinWith('updater AS updater')
+            ->joinWith('creator AS creator');
 
         // add conditions that should always apply here
 
@@ -57,6 +60,8 @@ class WikiSearch extends Wiki
                     'title',
                     'status',
                     'category.name',
+                    'creator.username',
+                    'updater.username',
                     'yii_version',
                     'created_at',
                     'updated_at',
@@ -84,6 +89,8 @@ class WikiSearch extends Wiki
 
         $query->andFilterWhere(['like', 'title', $this->title]);
         $query->andFilterWhere(['like', 'yii_version', $this->yii_version]);
+        $query->andFilterWhere(['like', 'creator.username', $this->getAttribute('creator.username')]);
+        $query->andFilterWhere(['like', 'updater.username', $this->getAttribute('updater.username')]);
 
         return $dataProvider;
     }
