@@ -55,12 +55,18 @@ use app\models\Guide;
 
             if (isset($extensionName)) {
                 if (isset($section)) {
+                    if (!$section->hasTranslation($language)) {
+                        continue;
+                    }
                     $url = ['guide/extension-view', 'section' => $section->name, 'version' => $guide->version, 'language' => $language, 'vendorName' => $extensionVendor, 'name' => $extensionName];
                 } else {
                     $url = ['guide/extension-index', 'version' => $guide->version, 'language' => $language, 'vendorName' => $extensionVendor, 'name' => $extensionName];
                 }
             } else {
                 if (isset($section)) {
+                    if (!$section->hasTranslation($language)) {
+                        continue;
+                    }
                     $url = ['guide/view', 'section' => $section->name, 'version' => $guide->version, 'language' => $language, 'type' => $guide->typeUrlName];
                 } else {
                     $url = ['guide/index', 'version' => $guide->version, 'language' => $language, 'type' => $guide->typeUrlName];

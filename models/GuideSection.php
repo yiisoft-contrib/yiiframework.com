@@ -56,6 +56,19 @@ class GuideSection extends BaseObject
         return $this->content !== false;
     }
 
+    public function hasTranslation($language)
+    {
+        if ($this->guide->type === Guide::TYPE_EXTENSION) {
+            $translationGuide = Guide::loadExtension($this->guide->extension, $this->guide->version, $language);
+        } else {
+            $translationGuide = Guide::load($this->guide->version, $language, $this->guide->type);
+        }
+        if (!$translationGuide) {
+            return false;
+        }
+        return $translationGuide->loadSection($this->name) !== null;
+    }
+
     /**
      * @return string the title is suitable for being used as a page title
      */

@@ -72,7 +72,7 @@ echo $this->render('partials/_scrollspy.php', ['guide' => $guide, 'section' => $
                     <div class="alert alert-warning">
                         <strong>This section is not translated yet.</strong> <br />
                         Please read it in English and consider
-                        <a href="https://github.com/yiisoft/yii2/blob/master/docs/internals/translation-workflow.md">
+                        <a href="https://github.com/yiisoft/yii2/blob/master/docs/internals/translation-workflow.md#documentation">
                         helping us with translation</a>.
                     </div>
                 <?php endif ?>
