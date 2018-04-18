@@ -67,8 +67,6 @@ class SiteController extends BaseController
             'about' => ['guide/view', 'type' => 'guide', 'version' => reset(Yii::$app->params['versions']['api']), 'language' => 'en', 'section' => 'intro-yii'],
             // there is no dedicated performance page, redirect to home page
             'performance' => ['site/index'],
-            // there is no demo page anymore, redirect to home  page
-            'demos' => ['site/index'],
             // send requests to /doc directly to the guide
             'doc' => ['guide/entry'],
             // features page
@@ -82,7 +80,12 @@ class SiteController extends BaseController
             return $this->redirect($urlMap[$url], 301); // Moved Permanently
         }
 
-        if (preg_match('%doc/cookbook/(\d+)%', $url, $matches)) {
+        if (preg_match('~^demos/.+$~', $url)) {
+            // old demo pages
+            return $this->redirect(['site/demos'], 301); // Moved Permanently
+        }
+
+        if (preg_match('~^doc/cookbook/(\d+)$~', $url, $matches)) {
             // old wiki URLs
             return $this->redirect(['wiki/view', 'id' => $matches[1]], 301); // Moved Permanently
         }
@@ -233,6 +236,13 @@ class SiteController extends BaseController
     public function actionResources()
     {
         return $this->render('resources');
+    }
+
+    public function actionDemos()
+    {
+        $this->sectionTitle = 'Demos';
+        Yii::$app->response->statusCode = 410; // Gone (no longer available)
+        return $this->render('demos');
     }
 
     /**
