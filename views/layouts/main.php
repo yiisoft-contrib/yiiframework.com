@@ -185,7 +185,7 @@ $this->registerLinkTag([
 
             <?= $this->context instanceof BaseController && isset($this->context->sectionTitle) ? $this->render('partials/_sectionHeader', ['title' => $this->context->sectionTitle]) : ''; ?>
 
-            <?= \app\widgets\Alert::widget() ?>
+            <?= \app\widgets\Alert::widget(['options' => ['class' => 'main-alert']]) ?>
             <?= $content ?>
 
             <?= $this->render('partials/_footer'); ?>
