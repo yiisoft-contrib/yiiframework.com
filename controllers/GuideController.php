@@ -25,7 +25,7 @@ class GuideController extends BaseController
         $guide = Guide::load($version, $normalizedLanguage, $type === 'blog' ? 'blogtut' : $type);
         if ($guide) {
             if ($normalizedLanguage !== $language) {
-                $this->redirect(['index', 'language' => $normalizedLanguage, 'version' => $version, 'type' => $type]);
+                return $this->redirect(['index', 'language' => $normalizedLanguage, 'version' => $version, 'type' => $type]);
             }
             $this->sectionTitle = $guide->title;
             return $this->render('index', ['guide' => $guide]);
@@ -44,7 +44,7 @@ class GuideController extends BaseController
         $guide = Guide::loadExtension($model, $version, $normalizedLanguage);
         if ($guide) {
             if ($normalizedLanguage !== $language) {
-                $this->redirect(['extension-index', 'language' => $normalizedLanguage, 'version' => $version, 'vendorName' => $vendorName, 'name' => $name]);
+                return $this->redirect(['extension-index', 'language' => $normalizedLanguage, 'version' => $version, 'vendorName' => $vendorName, 'name' => $name]);
             }
             $this->sectionTitle = [$guide->title => ['extension/view', 'vendorName' => $vendorName, 'name' => $name]];
             return $this->render('extension-index', [

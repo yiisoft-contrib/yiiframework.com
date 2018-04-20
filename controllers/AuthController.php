@@ -124,7 +124,7 @@ class AuthController extends BaseController
         } else {
             Yii::$app->session->setFlash('error', 'Your account has no ' . ucfirst($source) . ' login.');
         }
-        $this->redirect(['user/profile']);
+        return $this->redirect(['user/profile']);
     }
 
 
@@ -137,7 +137,7 @@ class AuthController extends BaseController
         $user = Yii::$app->user->identity;
         $user->disablePassword();
         Yii::$app->session->setFlash('success', 'You successfully disabled password login for your account.');
-        $this->redirect(['user/profile']);
+        return $this->redirect(['user/profile']);
     }
 
     public function actionLogin()
