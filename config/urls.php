@@ -22,6 +22,9 @@ return [
     'community' => 'site/community',
     'render-markdown' => 'site/render-markdown',
 
+    // status
+    'status' => 'status/index',
+
     // RSS
     'rss.xml' => 'rss/all',
 
