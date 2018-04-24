@@ -101,14 +101,15 @@ class GithubRepoStatus
         $today = new \DateTime();
         $daysSince = $today->diff($releaseDate)->format('%a');
 
-        $diffUrl = "https://github.com/yiisoft/yii2/compare/$releaseTag...master";
+        $diffUrl = "https://github.com/$this->username/$this->repository/compare/$releaseTag...master";
+        $statusUrl = "https://img.shields.io/travis/$this->username/$this->repository.svg";
 
         return [
             'repository' => "$this->username/$this->repository",
             'latest' => $releaseTag,
             'no_release_for' => $daysSince,
             'diff' => $diffUrl,
-            'status' => "https://img.shields.io/travis/$this->username/$this->repository.svg",
+            'status' => $statusUrl,
         ];
     }
 }
