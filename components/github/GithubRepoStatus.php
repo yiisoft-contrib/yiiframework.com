@@ -105,10 +105,10 @@ class GithubRepoStatus
 
         return [
             'repository' => "$this->username/$this->repository",
-            'release' => $releaseTag,
-            'days_since' => $daysSince,
-            'diff_url' => $diffUrl,
-            'status_url' => "https://img.shields.io/travis/$this->username/$this->repository.svg",
+            'latest' => $releaseTag,
+            'no_release_for' => $daysSince,
+            'diff' => $diffUrl,
+            'status' => "https://img.shields.io/travis/$this->username/$this->repository.svg",
         ];
     }
 }

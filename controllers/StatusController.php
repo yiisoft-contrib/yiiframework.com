@@ -4,6 +4,7 @@ namespace app\controllers;
 
 use app\components\github\GithubRepoStatus;
 use Yii;
+use yii\data\ArrayDataProvider;
 
 class StatusController extends BaseController
 {
@@ -49,6 +50,16 @@ class StatusController extends BaseController
             $data[] = $githubRepoStatus->getInfo();
         }
 
-        return $this->render('index', ['data' => $data]);
+        $dataProvider = new ArrayDataProvider([
+            'allModels' => $data,
+            'sort' => [
+                'attributes' => [
+                    'repository',
+                    'no_release_for',
+                ],
+            ],
+        ]);
+
+        return $this->render('index', ['dataProvider' => $dataProvider]);
     }
 }
