@@ -16,9 +16,20 @@ use yii\grid\GridView;
                   'columns' => [
                       'repository',
                       'latest',
-                      'no_release_for',
+                      [
+                          'attribute' => 'no_release_for',
+                          'value' => function($model) {
+                              return $model['no_release_for'] . ($model['no_release_for'] == 1 ? ' day' : ' days');
+                          }
+                      ],
                       'status:image',
-                      'diff:url'
+                      [
+                          'attribute' => 'diff',
+                          'content' => function($model) {
+                              $parts = explode('/', $model['diff']);
+                              return Html::a(Html::encode(end($parts)), $model['diff']);
+                          }
+                      ],
                   ],
               ]) ?>
         </div>

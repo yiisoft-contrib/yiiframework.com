@@ -56,7 +56,9 @@ class StatusController extends BaseController
                 'attributes' => [
                     'repository',
                     'no_release_for',
+                    'latest',
                 ],
+                'defaultOrder' => ['repository' => SORT_ASC],
             ],
         ]);
 

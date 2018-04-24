@@ -200,4 +200,24 @@ class Formatter extends \yii\i18n\Formatter
 
         return $sourceUrl;
     }
+
+    /**
+     * Formats the value as an image tag.
+     * @param mixed $value the value to be formatted.
+     * @param array $options the tag options in terms of name-value pairs. See [[Html::img()]].
+     * @return string the formatted result.
+     */
+    public function asImage($value, $options = [])
+    {
+        if ($value === null) {
+            return $this->nullDisplay;
+        }
+
+        if (isset(Yii::$app->params['image-proxy'], Yii::$app->params['image-proxy-secret'])) {
+            $value = $this->generateProxyUrl($value);
+        }
+
+        return parent::asImage($value, $options);
+    }
+
 }
