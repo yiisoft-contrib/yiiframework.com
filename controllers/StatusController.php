@@ -13,6 +13,7 @@ class StatusController extends BaseController
     private $githubClient;
 
     const REPOSITORIES = [
+        // 2.0
         ['yiisoft', 'yii2'],
         ['yiisoft', 'yii2-app-basic'],
         ['yiisoft', 'yii2-app-advanced'],
@@ -32,6 +33,25 @@ class StatusController extends BaseController
         ['yiisoft', 'yii2-sphinx'],
         ['yiisoft', 'yii2-elasticsearch'],
         ['yiisoft', 'yii2-queue'],
+        ['yiisoft', 'yii2-shell'],
+        ['yiisoft', 'yii2-composer'],
+        ['yiisoft', 'yii2-apidoc'],
+
+        // 2.1
+        ['yiisoft', 'yii2-docker'],
+        ['yiisoft', 'yii2-app'],
+        ['yiisoft', 'yii2-oracle'],
+        ['yiisoft', 'yii2-mssql'],
+        ['yiisoft', 'yii2-bootstrap4'],
+        ['yiisoft', 'yii2-maskedinput'],
+        ['yiisoft', 'yii2-collection'],
+        ['yiisoft', 'yii2-phpunit'],
+        ['yiisoft', 'yii2-jquery'],
+        ['yiisoft', 'yii2-captcha'],
+
+
+        // 1.1
+        ['yiisoft', 'yii'],
     ];
 
     public function actionIndex()
@@ -60,6 +80,7 @@ class StatusController extends BaseController
                 ],
                 'defaultOrder' => ['repository' => SORT_ASC],
             ],
+            'pagination' => false,
         ]);
 
         return $this->render('index', ['dataProvider' => $dataProvider]);

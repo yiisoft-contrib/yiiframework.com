@@ -36,16 +36,24 @@ class GithubRepoStatus
 
         usort($releases, function ($a, $b) {
             $a = explode('.', $a['name']);
-            if (count($a) < 4) {
+            while (count($a) < 4) {
                 $a[] = 0;
             }
 
             $b = explode('.', $b['name']);
-            if (count($b) < 4) {
+            while (count($b) < 4) {
                 $b[] = 0;
             }
 
             for ($i = 0; $i < 4; $i++) {
+                if (!is_numeric($a[$i])) {
+                    $a[$i] = -1;
+                }
+
+                if (!is_numeric($b[$i])) {
+                    $b[$i] = -1;
+                }
+
                 if ($a[$i] > $b[$i]) {
                     return -1;
                 }
@@ -90,9 +98,17 @@ class GithubRepoStatus
 
     public function getInfo()
     {
+        $data = [
+            'repository' => "$this->username/$this->repository",
+            'latest' => '',
+            'no_release_for' => null,
+            'diff' => '',
+            'status' => "https://img.shields.io/travis/$this->username/$this->repository.svg",
+        ];
+
         $latestTag = $this->fetchLatestTag();
         if ($latestTag === null) {
-            return null;
+            return $data;
         }
 
         $tagCommit = $this->fetchCommit($latestTag['commit']['sha']);
@@ -102,14 +118,11 @@ class GithubRepoStatus
         $daysSince = $today->diff($releaseDate)->format('%a');
 
         $diffUrl = "https://github.com/$this->username/$this->repository/compare/$releaseTag...master";
-        $statusUrl = "https://img.shields.io/travis/$this->username/$this->repository.svg";
 
-        return [
-            'repository' => "$this->username/$this->repository",
-            'latest' => $releaseTag,
-            'no_release_for' => $daysSince,
-            'diff' => $diffUrl,
-            'status' => $statusUrl,
-        ];
+        $data['latest'] = $releaseTag;
+        $data['no_release_for'] = $daysSince;
+        $data['diff'] = $diffUrl;
+
+        return $data;
     }
 }
