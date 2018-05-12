@@ -383,7 +383,8 @@ class User extends ActiveRecord implements IdentityInterface
     public function getStatusLabel()
     {
         $statuses = static::getStatuses();
-        return ArrayHelper::getValue($statuses, $this->status);
+        $color = $this->status === self::STATUS_ACTIVE ? 'success' : 'danger';
+        return "<span class=\"label label-$color\">" . ArrayHelper::getValue($statuses, $this->status) . '</span>';
     }
 
     public static function getStatuses()

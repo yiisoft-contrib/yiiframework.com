@@ -61,8 +61,8 @@ $this->params['breadcrumbs'][] = $this->title;
             'format' => 'raw',
             'label' => 'Last updated by',
         ],
-        'created_at:datetime',
-        'updated_at:datetime',
+        'created_at:datetimerel',
+        'updated_at:datetimerel',
     ],
 ]) ?>
 <div class="content wiki-row">

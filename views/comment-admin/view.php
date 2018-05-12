@@ -84,7 +84,7 @@ $this->params['breadcrumbs'][] = $this->title;
             },
             'format' => 'raw',
         ],
-        'created_at:datetime',
-        'updated_at:datetime',
+        'created_at:datetimerel',
+        'updated_at:datetimerel',
     ],
 ]) ?>

@@ -14,6 +14,7 @@ class Formatter extends \yii\i18n\Formatter
    	public $dateFormat = 'medium';
    	public $timeFormat = 'medium';
    	public $datetimeFormat = 'medium';
+   	public $timeZone = 'UTC';
 
     public $purifierConfig = [
         'HTML' => [
@@ -32,6 +33,29 @@ class Formatter extends \yii\i18n\Formatter
             'EnableID' => true,
         ],
     ];
+
+
+    /**
+     * {@inheritdoc}
+     */
+    public function init()
+    {
+        if ($this->booleanFormat === null) {
+            $this->booleanFormat = [
+                '<i class="fa fa-times" style="color:#c00;"></i> ' . Yii::t('yii', 'No', [], $this->locale),
+                '<i class="fa fa-check" style="color:green;"></i> ' . Yii::t('yii', 'Yes', [], $this->locale)
+            ];
+        }
+        parent::init();
+    }
+
+    public function asDatetimerel($value)
+    {
+        if ($value === null) {
+            return $this->nullDisplay;
+        }
+        return $this->asDatetime($value) . ' (' . $this->asRelativeTime($value) . ')';
+    }
 
     /**
      * Format as normal markdown without class link extensions.
