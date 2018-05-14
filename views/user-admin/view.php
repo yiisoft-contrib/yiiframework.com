@@ -29,7 +29,11 @@ $this->params['breadcrumbs'][] = $this->title;
 
 $authClients = [];
 foreach($model->authClients as $authClient) {
-    $authClients[] = Html::encode($authClient->source);
+    if ($authClient->source === 'github') {
+        $authClients[] = Html::a(Html::encode($authClient->source), 'https://github.com/' . $authClient->source_login, ['target' => '_blank', 'rel' => 'noopener']);
+    } else {
+        $authClients[] = Html::encode($authClient->source);
+    }
 }
 $authClients = empty($authClients) ? '<span class="not-set">(none)</span>' : implode(', ', $authClients);
 
