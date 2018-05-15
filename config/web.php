@@ -99,8 +99,14 @@ $config = [
         'urlManager' => $params['components.urlManager'],
         'authManager' => $params['components.authManager'],
         'authClientCollection' => [
-            'class' => 'yii\authclient\Collection',
+            'class' => \yii\authclient\Collection::class,
             'clients' => $params['authclients'],
+        ],
+        'reCaptcha' => [
+            'name' => 'reCaptcha',
+            'class' => \himiklab\yii2\recaptcha\ReCaptcha::class,
+            'siteKey' => $params['recaptcha.key'],
+            'secret' => $params['recaptcha.secret'],
         ],
     ],
     'params' => $params,

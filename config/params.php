@@ -195,4 +195,7 @@ return [
 
     // configure this in local config
     'siteAbsoluteUrl' => null,
+    'recaptcha.key' => null,
+    'recaptcha.secret' => null,
+    'recaptcha.enabled' => false,
 ];
