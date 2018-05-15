@@ -51,7 +51,8 @@
         "composer/spdx-licenses": "^1.1",
         "zendframework/zend-feed": "^2.8",
         "abraham/twitteroauth": "~0.7.4",
-        "baibaratsky/yii2-rollbar": "^1.7"
+        "baibaratsky/yii2-rollbar": "^1.7",
+        "himiklab/yii2-recaptcha-widget": "^1.2"
     },
     "require-dev": {
         "yiisoft/yii2-debug": "~2.0.0",

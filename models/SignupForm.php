@@ -15,13 +15,21 @@ class SignupForm extends Model
     public $username;
     public $email;
     public $password;
+    public $reCaptcha;
 
     /**
      * @inheritdoc
      */
     public function rules()
     {
+        $recaptcha = [];
+        if (Yii::$app->params['recaptcha.enabled']) {
+            $recaptcha = [
+                ['reCaptcha', \himiklab\yii2\recaptcha\ReCaptchaValidator::class],
+            ];
+        }
         return array_merge(
+            $recaptcha,
             User::usernameRules(),
             User::emailRules(), [
 
