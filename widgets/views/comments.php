@@ -47,7 +47,7 @@ use yii\helpers\Html;
                                 </div>
                                 <div class="comment-footer">
                                     <?= $comment->user ? $comment->user->rankLink : User::DELETED_USER_HTML ?> at
-                                    <span class="date"><?=Yii::$app->formatter->format($comment->created_at, 'datetime')?></span>
+                                    <span class="date text-muted"><small><?=Yii::$app->formatter->format($comment->created_at, 'datetime')?></small></span>
                                     <?php if (Yii::$app->user->can(UserPermissions::PERMISSION_MANAGE_COMMENTS)) {
                                         echo Html::a('View in comment admin', ['comment-admin/view', 'id' => $comment->id], ['class' => 'pull-right']);
                                     } ?>
