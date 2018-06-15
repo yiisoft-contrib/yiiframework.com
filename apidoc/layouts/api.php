@@ -59,7 +59,7 @@ $renderer = $this->context;
     <div class="col-sm-8 col-md-9 col-lg-9" role="main">
         <!-- YII_VERSION_SELECTOR -->
         <div class="content">
-        <?= $content ?>
+        <?= $content = str_replace('<a href="index.html">', '<a href="/doc/api/2.0">', $content) ?>
         </div>
     </div>
 </div>
