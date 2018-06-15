@@ -2,6 +2,7 @@
 
 namespace app\commands;
 
+use app\components\forum\ForumAdapterInterface;
 use app\models\Comment;
 use app\models\Extension;
 use app\models\User;
@@ -99,7 +100,9 @@ class UserController  extends Controller
             ->indexBy('creator_id')
             ->column($db);
 
-        $postCounts=Yii::$app->forumAdapter->getPostCounts();
+        /** @var ForumAdapterInterface $forumAdapter */
+        $forumAdapter = Yii::$app->forumAdapter;
+        $postCounts = $forumAdapter->getPostCounts();
 
         $users = User::find()->asArray();
         //$users = $db->createCommand('SELECT t.id, t.rating, t.post_count, t.wiki_count, t.extension_count, t.comment_count, f.last_visit, f.joined, f.posts FROM {{%user}} t, ipb_members f WHERE t.id=f.member_id')->queryAll();

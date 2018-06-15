@@ -29,7 +29,7 @@ return [
         },
     ],
     'components.forumAdapter' => [
-        'class' => app\components\ForumAdapter::class,
+        'class' => app\components\forum\IPBAdapter::class,
         'db' => [
             'class' => 'yii\db\Connection',
             'dsn' => 'mysql:host=localhost;dbname=yiisite',

@@ -1,6 +1,7 @@
 <?php
 namespace app\components;
 
+use app\components\forum\ForumAdapterInterface;
 use Yii;
 use app\models\Auth;
 use app\models\User;
@@ -116,7 +117,7 @@ class AuthHandler
                     ]);
                     if ($auth->save()) {
 
-                        /** @var ForumAdapter $forumAdapter */
+                        /** @var ForumAdapterInterface $forumAdapter */
                         $forumAdapter = Yii::$app->forumAdapter;
                         $forumID = $forumAdapter->ensureForumUser($user, $password);
                         $user->forum_id = $forumID;

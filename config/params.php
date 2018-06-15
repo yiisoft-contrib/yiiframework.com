@@ -17,7 +17,7 @@ return [
         },
     ],
     'components.forumAdapter' => [
-        'class' => app\components\ForumAdapter::class
+        'class' => app\components\forum\DummyAdapter::class
     ],
     'components.cache' => [
         'class' => YII_DEBUG ? yii\caching\DummyCache::class : yii\caching\FileCache::class,

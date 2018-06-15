@@ -1,10 +1,9 @@
 <?php
 
-namespace app\components;
+namespace app\components\forum;
 
 use app\models\User;
 use yii\base\Component;
-use yii\base\InvalidArgumentException;
 use yii\base\InvalidConfigException;
 use yii\db\Connection;
 use yii\db\Query;
@@ -13,16 +12,16 @@ use yii\helpers\ArrayHelper;
 use yii\helpers\Inflector;
 
 /**
- * ForumAdapter implements a bridge between the IPB 3.1 and the application.
+ * IPBAdapter implements a forum bridge between the IPB 3.1 and the application.
  * Configure as follows:
  *
  * 'forumBridge' => [
- *      'class' => \app\components\ForumBridge::class,
+ *      'class' => \app\components\forum\IPBBridge::class,
  *      'db' => 'forumDb',
  *      'tablePrefix' => 'ipb_',
  *  ],
  */
-class ForumAdapter extends Component
+class IPBAdapter extends Component implements ForumAdapterInterface
 {
     const GROUP_VALIDATING = 1;
     const GROUP_MEMBERS = 3;
