@@ -83,9 +83,11 @@ class SitemapController extends Controller
         //news
         $sitemap->addItem(Url::toRoute(['news/index'], true), null, Sitemap::HOURLY, 0.3);
         /** @var News $news */
-        foreach (News::find()->latest()->asArray()->each(100) as $news) {
+        foreach (News::find()->latest()->published()->asArray()->each(100) as $news) {
             $url = Url::to(['news/view', 'id' => $news['id'], 'name' => $news['slug']], true);
-            $sitemap->addItem($url, $news['updated_at'], null, 0.3);
+
+            $updateTime = strtotime($news['updated_at'] ?? $news['created_at']);
+            $sitemap->addItem($url, $updateTime, null, 0.3);
         }
 
         // TODO wiki
