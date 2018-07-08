@@ -63,7 +63,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 <ul>
                     <li><a href="https://www.youtube.com/playlist?list=PLMyGpiUTm106xkNQh9WeMsa-LXjanaLUm">Beginning Yii 2.0 by Tom King</a></li>
                     <li><a href="https://www.youtube.com/playlist?list=PLRd0zhQj3CBmusDbBzFgg3H20VxLx2mkF">Yii2 Lessons, DoingITeasyChannel</a></li>
-                    <li><a href="https://www.youtube.com/watch?v=aq0A2o6nGuA&list=PLpNYlUeSK_rn_3mWq_vPt_jKz6cp7a6sZ">Yii 2.0 by Luke Briner</a></li>
+                    <li><a href="https://www.youtube.com/watch?v=aq0A2o6nGuA&amp;list=PLpNYlUeSK_rn_3mWq_vPt_jKz6cp7a6sZ">Yii 2.0 by Luke Briner</a></li>
                 </ul>
             </div>
             <div class="col-xs-12 col-md-6 col-lg-3 group">
