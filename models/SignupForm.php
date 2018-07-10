@@ -4,6 +4,7 @@ namespace app\models;
 
 use app\components\forum\ForumAdapterInterface;
 use app\components\mailers\EmailVerificationMailer;
+use Helge\SpamProtection\SpamProtection;
 use yii\base\Model;
 use Yii;
 
@@ -32,10 +33,27 @@ class SignupForm extends Model
             $recaptcha,
             User::usernameRules(),
             User::emailRules(), [
-
+            [['username', 'email'], 'checkSpam'],
             ['password', 'required'],
             ['password', 'string', 'min' => 6],
         ]);
+    }
+
+    public function checkSpam($attribute, $params, $validator)
+    {
+        $spamProtection = new SpamProtection();
+
+        $message = 'Sorry, we can not register you. If you think it is a mistake, contact Yii team.';
+
+        $value = $this->$attribute;
+        if ($attribute === 'username' && $spamProtection->checkUsername($value)) {
+            $this->addError('username', $message);
+        }
+
+        if ($attribute === 'email' && $spamProtection->checkEmail($value)) {
+            // using username here on purpose
+            $this->addError('username', $message);
+        }
     }
 
     /**

@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "176dc49de62ff4ad14305ed2cc2ac4c0",
+    "content-hash": "f3438795cd458faad1e534db26aa1053",
     "packages": [
         {
             "name": "2amigos/yii2-selectize-widget",
@@ -445,7 +445,7 @@
             "version": "v0.0.3",
             "source": {
                 "type": "git",
-                "url": "https://github.com/brianreavis/microplugin.js.git",
+                "url": "git@github.com:brianreavis/microplugin.js.git",
                 "reference": "d8671e6cc769938648f8735610534427cdeeaf67"
             },
             "dist": {
@@ -464,7 +464,7 @@
             "version": "v1.3.2",
             "source": {
                 "type": "git",
-                "url": "https://github.com/bestiejs/punycode.js.git",
+                "url": "git@github.com:bestiejs/punycode.js.git",
                 "reference": "38c8d3131a82567bfef18da09f7f4db68c84f8a3"
             },
             "dist": {
@@ -499,7 +499,7 @@
             "version": "v2.4.1",
             "source": {
                 "type": "git",
-                "url": "https://github.com/markgoodyear/scrollup.git",
+                "url": "git@github.com:markgoodyear/scrollup.git",
                 "reference": "2167852df6d20548863a0786cb88abcff49f5261"
             },
             "dist": {
@@ -1102,6 +1102,49 @@
             ],
             "abandoned": "guzzlehttp/guzzle",
             "time": "2015-03-18T18:23:50+00:00"
+        },
+        {
+            "name": "helgesverre/spamprotection",
+            "version": "1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/HelgeSverre/SpamProtection.git",
+                "reference": "17cb90ddec4ee2b7ae8bf08215982e7357245ead"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/HelgeSverre/SpamProtection/zipball/17cb90ddec4ee2b7ae8bf08215982e7357245ead",
+                "reference": "17cb90ddec4ee2b7ae8bf08215982e7357245ead",
+                "shasum": ""
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Helge\\SpamProtection\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Helge Sverre",
+                    "email": "email@helgesverre.com",
+                    "homepage": "https://helgesverre.com",
+                    "role": "Developer"
+                }
+            ],
+            "description": "A Spam Protection class for use in contact forms and comment fields, uses the StopForumSpam API.  ",
+            "homepage": "https://helgesverre.com/products/spamprotection",
+            "keywords": [
+                "anti-spam",
+                "api",
+                "protection",
+                "spam",
+                "stopforumspam"
+            ],
+            "time": "2015-10-23T00:00:00+00:00"
         },
         {
             "name": "himiklab/yii2-recaptcha-widget",
