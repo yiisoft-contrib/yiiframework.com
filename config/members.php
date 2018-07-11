@@ -70,7 +70,7 @@ return [
         'photo' => '@web/image/team/klimov-paul.jpg',
         'github' => 'klimov-paul',
         'twitter' => 'klimov_paul',
-        'status' => TeamStatus::TEAM_STATUS_ACTIVE,
+        'status' => TeamStatus::TEAM_STATUS_INACTIVE,
     ],
     [
         'name' => 'Dmitry Naumenko',
