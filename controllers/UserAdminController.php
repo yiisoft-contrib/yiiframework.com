@@ -3,6 +3,9 @@
 namespace app\controllers;
 
 use app\components\UserPermissions;
+use app\models\Comment;
+use app\models\Extension;
+use app\models\Wiki;
 use Yii;
 use app\models\User;
 use app\models\UserSearch;
@@ -29,7 +32,7 @@ class UserAdminController extends BaseController
    			        [
    				        // allow all to a access index and view action
    				        'allow' => true,
-   				        'actions' => ['index', 'view', 'update', 'delete'],
+   				        'actions' => ['index', 'view', 'update', 'delete', 'unpublish-content'],
                         'roles' => [UserPermissions::PERMISSION_MANAGE_USERS],
    			        ],
    		        ]
@@ -38,6 +41,7 @@ class UserAdminController extends BaseController
                 'class' => VerbFilter::className(),
                 'actions' => [
                     'delete' => ['POST'],
+                    'unpublish-content' => ['POST'],
                 ],
             ],
         ];
@@ -100,6 +104,36 @@ class UserAdminController extends BaseController
         $this->findModel($id)->delete();
 
         return $this->redirect(['index']);
+    }
+
+    /**
+     * Unpublish all content added by this user
+     */
+    public function actionUnpublishContent($id)
+    {
+        $user = $this->findModel($id);
+
+        $w = 0;
+        foreach ($user->wikis as $wiki) {
+            $wiki->status = Wiki::STATUS_DELETED;
+            $wiki->save(false);
+            $w++;
+        }
+        $e = 0;
+        foreach ($user->extensions as $extension) {
+            $extension->status = Extension::STATUS_DELETED;
+            $extension->save(false);
+            $e++;
+        }
+        $c = 0;
+        foreach (Comment::find()->where(['user_id' => $user->id])->all() as $comment) {
+            $comment->status = Comment::STATUS_DELETED;
+            $comment->save(false);
+            $c++;
+        }
+        Yii::$app->session->setFlash('success', "Unpublished $w wikis, $e extensions and $c comments.");
+
+        return $this->redirect(['view', 'id' => $id]);
     }
 
     /**

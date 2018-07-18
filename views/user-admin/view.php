@@ -25,6 +25,13 @@ $this->params['breadcrumbs'][] = $this->title;
             'method' => 'post',
         ],
     ]) ?>
+    <?= Html::a('Unpublish content', ['unpublish-content', 'id' => $model->id], [
+        'class' => 'btn btn-danger',
+        'data' => [
+            'confirm' => 'Are you sure you want to unpublish ALL content added by this user?',
+            'method' => 'post',
+        ],
+    ]) ?>
 </p>
 <?php
 
