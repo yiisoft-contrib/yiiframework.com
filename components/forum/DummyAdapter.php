@@ -17,11 +17,6 @@ use app\models\User;
 class DummyAdapter implements ForumAdapterInterface
 {
 
-    public function getReputations($user)
-    {
-        return [];
-    }
-
     public function getPostDate($user, $number)
     {
         return false;

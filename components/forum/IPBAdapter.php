@@ -15,11 +15,13 @@ use yii\helpers\Inflector;
  * IPBAdapter implements a forum bridge between the IPB 3.1 and the application.
  * Configure as follows:
  *
+ * ```php
  * 'forumBridge' => [
  *      'class' => \app\components\forum\IPBBridge::class,
  *      'db' => 'forumDb',
  *      'tablePrefix' => 'ipb_',
  *  ],
+ * ```
  */
 class IPBAdapter extends Component implements ForumAdapterInterface
 {
@@ -50,18 +52,6 @@ class IPBAdapter extends Component implements ForumAdapterInterface
     {
         parent::init();
         $this->db = Instance::ensure($this->db, Connection::className());
-    }
-
-    public function getReputations($user)
-    {
-        if (!$user->forum_id) {
-            return [];
-        }
-
-        $tablePrefix = $this->tablePrefix;
-        $sql = "SELECT rep_date, rep_rating FROM {$tablePrefix}reputation_index WHERE member_id = :user_id ORDER BY rep_date ASC";
-        $cmd = $this->db->createCommand($sql, [':user_id' => $user->forum_id]);
-        return $cmd->queryAll();
     }
 
     public function getPostDate($user, $number)
