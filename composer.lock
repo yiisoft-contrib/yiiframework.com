@@ -1,10 +1,10 @@
 {
     "_readme": [
         "This file locks the dependencies of your project to a known state",
-        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
+        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "f3438795cd458faad1e534db26aa1053",
+    "content-hash": "4a5166f2a5fa5a9d7098b4653e610868",
     "packages": [
         {
             "name": "2amigos/yii2-selectize-widget",
@@ -518,7 +518,7 @@
             "version": "v0.12.4",
             "source": {
                 "type": "git",
-                "url": "https://github.com/selectize/selectize.js.git",
+                "url": "git@github.com:selectize/selectize.js.git",
                 "reference": "47e048662d865c4f1ea3b2337de5e06e92fd9530"
             },
             "dist": {
@@ -1105,16 +1105,16 @@
         },
         {
             "name": "helgesverre/spamprotection",
-            "version": "1.0.0",
+            "version": "dev-master",
             "source": {
                 "type": "git",
                 "url": "https://github.com/HelgeSverre/SpamProtection.git",
-                "reference": "17cb90ddec4ee2b7ae8bf08215982e7357245ead"
+                "reference": "acc7d5b8701b69beff1edbc285d38e8db1c572df"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/HelgeSverre/SpamProtection/zipball/17cb90ddec4ee2b7ae8bf08215982e7357245ead",
-                "reference": "17cb90ddec4ee2b7ae8bf08215982e7357245ead",
+                "url": "https://api.github.com/repos/HelgeSverre/SpamProtection/zipball/acc7d5b8701b69beff1edbc285d38e8db1c572df",
+                "reference": "acc7d5b8701b69beff1edbc285d38e8db1c572df",
                 "shasum": ""
             },
             "type": "library",
@@ -1144,7 +1144,7 @@
                 "spam",
                 "stopforumspam"
             ],
-            "time": "2015-10-23T00:00:00+00:00"
+            "time": "2015-10-28T12:46:54+00:00"
         },
         {
             "name": "himiklab/yii2-recaptcha-widget",
@@ -5550,7 +5550,8 @@
         "yiisoft/yii2-apidoc": 20,
         "cebe/markdown-latex": 20,
         "yiisoft/yii2-elasticsearch": 20,
-        "bower-asset/jquery": 0
+        "bower-asset/jquery": 0,
+        "helgesverre/spamprotection": 20
     },
     "prefer-stable": false,
     "prefer-lowest": false,

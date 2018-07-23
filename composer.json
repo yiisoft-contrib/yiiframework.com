@@ -53,7 +53,7 @@
         "abraham/twitteroauth": "~0.7.4",
         "baibaratsky/yii2-rollbar": "^1.7",
         "himiklab/yii2-recaptcha-widget": "^1.2",
-        "helgesverre/spamprotection": "^1.0"
+        "helgesverre/spamprotection": "dev-master"
     },
     "require-dev": {
         "yiisoft/yii2-debug": "~2.0.0",
