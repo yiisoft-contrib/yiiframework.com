@@ -79,7 +79,7 @@ $api-box-padding-y: ceil($font-size-base / 2);
 
         .detailHeaderTag {
             font-weight: normal;
-            @include rem(font-size, 10px);
+            @include rem(font-size, 20px);
         }
 
         .paramNameCol {
