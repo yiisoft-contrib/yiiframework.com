@@ -30,6 +30,8 @@ use yii\helpers\Html;
 <?php if (Yii::$app->user->can(\app\components\UserPermissions::PERMISSION_MANAGE_EXTENSIONS)): ?>
     <li><?= Html::a('Manage Extensions', ['extension/index']) ?> (Currently no separate admin interface)</li>
 <?php endif?>
+
+    <li><?= Html::a('View Repository Status', ['status/index']) ?> (publicly accessable)
 </ul>
 
 <h2>RBAC Assignments</h2>
