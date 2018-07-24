@@ -172,7 +172,7 @@ class IPBAdapter extends Component implements ForumAdapterInterface
      *
      * Taken from IPB 3.1
      *
-     * @param int Length of desired salt, 5 by default
+     * @param int $len Length of desired salt, 5 by default
      * @return string n character random string
      */
     private function generateIPBPasswordSalt($len = 5)
@@ -197,7 +197,7 @@ class IPBAdapter extends Component implements ForumAdapterInterface
      *
      * Taken from IPB 3.1
      *
-     * @param int Length of desired random chars to MD5
+     * @param int $len Length of desired random chars to MD5
      * @return string MD5 hash of random characters
      */
     private function generateIPBAutoLoginKey($len = 60)
@@ -215,6 +215,7 @@ class IPBAdapter extends Component implements ForumAdapterInterface
      */
     private function getIPBPasswordHash($ipbSalt, $plainPassword)
     {
+        $plainPassword = User::parseLegacyPasswordValue($plainPassword);
         return md5(md5($ipbSalt) . md5($plainPassword));
     }
 

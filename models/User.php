@@ -313,7 +313,7 @@ class User extends ActiveRecord implements IdentityInterface
      * Parse value (used in IPB to clean _GET _POST values)
      * NOTE: function taken from <IPB 3.1.2 source>/admin/sources/base/core.php line 4703
      */
-    private function parseLegacyPasswordValue($val)
+    public static function parseLegacyPasswordValue($val)
     {
         $val = str_replace("&", "&amp;", $val);
         $val = str_replace("<!--", "&#60;&#33;--", $val);
