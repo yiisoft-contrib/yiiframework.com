@@ -43,6 +43,10 @@ use yii\helpers\ArrayHelper;
  * @property Extension[] $extensions
  * @property Badge[] $badges
  *
+ * properties:
+ *
+ * @property string $passwordType
+ *
  */
 class User extends ActiveRecord implements IdentityInterface
 {
@@ -50,6 +54,11 @@ class User extends ActiveRecord implements IdentityInterface
     const STATUS_ACTIVE = 10;
 
     const DELETED_USER_HTML = '<i>Deleted User</i>';
+
+    const PASSWORD_TYPE_LEGACYMD5 = 'LEGACYMD5';
+    const PASSWORD_TYPE_LEGACYSHA = 'LEGACYSHA';
+    const PASSWORD_TYPE_NEW = 'NEW';
+    const PASSWORD_TYPE_NONE = 'NONE';
 
     /**
      * @inheritdoc
@@ -271,19 +280,19 @@ class User extends ActiveRecord implements IdentityInterface
     public function getPasswordType()
     {
         if (strpos($this->password_hash, '$') === 0) {
-            return 'NEW';
+            return self::PASSWORD_TYPE_NEW;
         }
         if (strpos($this->password_hash, 'LEGACYMD5:') === 0) {
-            return 'LEGACYMD5';
+            return self::PASSWORD_TYPE_LEGACYMD5;
         }
         if (strpos($this->password_hash, 'LEGACYSHA:') === 0) {
-            return 'LEGACYSHA';
+            return self::PASSWORD_TYPE_LEGACYSHA;
         }
-        return 'NONE';
+        return self::PASSWORD_TYPE_NONE;
     }
 
     /**
-     * Validate IPB Password usingan old SHA1 method
+     * Validate IPB Password using an old SHA1 method
      */
     private function validateLegacyPasswordSHA($password, $hash)
     {
