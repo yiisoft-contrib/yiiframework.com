@@ -1,9 +1,26 @@
 <?php
 
+/**
+ * This file renders the header navigation for the Yii website and also for the Yii Forum based on Discourse.
+ *
+ * IMPORTANT NOTE: If you change this file, make sure changes are reflected in the Discourse header also!
+ *
+ * If this file is rendered for Discourse, the $discourse variable is set to `true`.
+ */
+
 use yii\helpers\Html;
 use yii\bootstrap\Nav;
 
 /* @var $this \yii\web\View */
+/* @var $discourse boolean */
+
+if ($discourse) {
+    $controller = 'forum';
+    $action = 'index';
+} else {
+    $controller = Yii::$app->controller ? Yii::$app->controller->id : null;
+    $action = Yii::$app->controller && Yii::$app->controller->action ? Yii::$app->controller->action->id : null;
+}
 
 ?>
 <header class="navbar navbar-inverse navbar-static" id="top">
@@ -22,8 +39,6 @@ use yii\bootstrap\Nav;
             <?php
 
             // main navigation
-            $controller = Yii::$app->controller ? Yii::$app->controller->id : null;
-            $action = Yii::$app->controller && Yii::$app->controller->action ? Yii::$app->controller->action->id : null;
             echo Nav::widget([
                 'id' => 'main-nav',
                 'encodeLabels' => false,
@@ -37,7 +52,7 @@ use yii\bootstrap\Nav;
                     ['label' => 'Wiki', 'url' => ['wiki/index'], 'options' => ['title' => 'Community Wiki'], 'active' => ($controller == 'wiki')],
                     ['label' => 'Extensions', 'url' => ['extension/index'], 'options' => ['title' => 'Extensions'], 'active' => ($controller == 'extension' || strncmp($action, 'extension-', 10) === 0)],
                     ['label' => 'Community', 'items' => [
-                        ['label' => 'Forum', 'url' => '@web/forum', 'options' => ['title' => 'Community Forum']],
+                        ['label' => 'Forum', 'url' => '@web/forum', 'options' => ['title' => 'Community Forum'], 'active' => ($controller == 'forum')],
                         ['label' => 'Live Chat', 'url' => ['site/chat']],
                         ['label' => 'Resources', 'url' => ['site/community']],
                         ['label' => 'Members', 'url' => ['/user/index'], 'options' => ['title' => 'Community Members'], 'active' => ($controller == 'user' && in_array($action, ['index', 'view']))],
@@ -63,6 +78,9 @@ use yii\bootstrap\Nav;
                 ],
             ]);
             ?>
+
+            <?php if (!$discourse): ?>
+
             <div class="nav navbar-nav navbar-right">
                 <?php echo Nav::widget([
                     'id' => 'login-nav',
@@ -92,6 +110,9 @@ use yii\bootstrap\Nav;
             <div class="nav navbar-nav navbar-right">
                 <?= $this->render('_searchForm'); ?>
             </div>
+
+            <?php endif; ?>
+
         </div>
     </div>
 </header>

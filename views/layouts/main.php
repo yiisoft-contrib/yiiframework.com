@@ -89,7 +89,7 @@ $this->registerLinkTag([
 
         <div id="page-wrapper" class="">
 
-            <?= $this->render('partials/_header'); ?>
+            <?= $this->render('partials/_header', ['discourse' => false]); ?>
 
             <?= $this->context instanceof BaseController && isset($this->context->sectionTitle) ? $this->render('partials/_sectionHeader', ['title' => $this->context->sectionTitle]) : ''; ?>
 

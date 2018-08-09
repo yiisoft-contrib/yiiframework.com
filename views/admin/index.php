@@ -30,6 +30,10 @@ use yii\helpers\Html;
 <?php if (Yii::$app->user->can(\app\components\UserPermissions::PERMISSION_MANAGE_EXTENSIONS)): ?>
     <li><?= Html::a('Manage Extensions', ['extension/index']) ?> (Currently no separate admin interface)</li>
 <?php endif?>
+
+<?php if (Yii::$app->user->can(\app\components\UserPermissions::PERMISSION_MANAGE_FORUM)): ?>
+    <li><?= Html::a('Discourse Forum Integration', ['admin/discourse']) ?></li>
+<?php endif?>
 </ul>
 
 <h2>RBAC Assignments</h2>

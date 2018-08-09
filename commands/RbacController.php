@@ -44,6 +44,9 @@ class RbacController extends Controller
         $this->stdout("Adding comment admin.\n");
         $this->addCommentAdmin($auth);
 
+        $this->stdout("Adding forum admin.\n");
+        $this->addForumAdmin($auth);
+
         if ($auth instanceof DbManager) {
             $this->stdout("Restoring assignments.\n");
             $auth->db->createCommand()->batchInsert(
@@ -145,6 +148,22 @@ class RbacController extends Controller
         $auth->add($manageComments);
 
         $auth->addChild($commentAdmin, $manageComments);
+    }
+
+    /**
+     * @param ManagerInterface $auth
+     */
+    private function addForumAdmin($auth)
+    {
+        $forumAdmin = $auth->createRole(UserPermissions::ROLE_FORUM_ADMIN);
+        $forumAdmin->description = 'Forum admin.';
+        $auth->add($forumAdmin);
+
+        $manageForum = $auth->createPermission(UserPermissions::PERMISSION_MANAGE_FORUM);
+        $manageForum->description = 'Manage Forum Integration.';
+        $auth->add($manageForum);
+
+        $auth->addChild($forumAdmin, $manageForum);
     }
 
     public function actionAssign($username, $role)
