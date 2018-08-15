@@ -40,13 +40,18 @@ class AuthHandler
         $id = ArrayHelper::getValue($attributes, 'id');
         $login = ArrayHelper::getValue($attributes, 'login');
         $fullname = ArrayHelper::getValue($attributes, 'name');
-
+        
         if ($this->client->getName() === 'twitter') {
             $login = ArrayHelper::getValue($attributes, 'screen_name');
         }
 
         if ($this->client->getName() === 'facebook') {
             $login = ArrayHelper::getValue($attributes, 'id');
+        }
+
+        // use login for displayname if it is not filled in github account
+        if (empty($fullname)) {
+            $fullname = $login;
         }
 
         /** @var Auth $auth */
