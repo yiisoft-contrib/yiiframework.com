@@ -84,7 +84,9 @@ class ImportController extends Controller
 	}
 
 
-
+    /**
+     * Import database from old website
+     */
 	public function actionImport()
 	{
 		if (!$this->confirm('Populate database with content from old website?')) {

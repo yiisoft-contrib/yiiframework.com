@@ -6,6 +6,7 @@ use Yii;
 use yii\base\NotSupportedException;
 use yii\db\ActiveQuery;
 use yii\helpers\Html;
+use yii\helpers\Url;
 use yii\web\IdentityInterface;
 use yii\helpers\ArrayHelper;
 
@@ -575,4 +576,38 @@ class User extends ActiveRecord implements IdentityInterface
         $timestamp = (int)end($parts);
         return $timestamp + $expire >= time();
     }
+
+    public function getAvatarPath()
+    {
+        $parts = preg_split('//', sha1($this->id), 4, PREG_SPLIT_NO_EMPTY);
+        return Yii::getAlias("@app/data/user-avatars/{$parts[0]}/{$parts[1]}/{$this->id}.png");
+    }
+
+    public function hasAvatar()
+    {
+        return file_exists($this->getAvatarPath());
+    }
+
+    public function getAvatarUrl()
+    {
+        if ($this->hasAvatar()) {
+            return Url::to(['user/avatar', 'id' => $this->id]);
+        }
+        return null;
+    }
+
+    public function deleteAvatar()
+    {
+        $avatarPath = $this->getAvatarPath();
+        if (file_exists($avatarPath)) {
+            unlink($avatarPath);
+        }
+    }
+
+    public function afterDelete()
+    {
+        $this->deleteAvatar();
+        parent::afterDelete();
+    }
+
 }

@@ -20,10 +20,11 @@ $this->title = 'Hi, ' . $model->username . '!';
         <?= \app\widgets\Alert::widget() ?>
 
         <div class="row">
-            <div class="col-xs-12">
-                <div class="heading-separator">
-                    <h2><span>Your Profile</span></h2>
-                </div>
+            <div class="col-xs-12 heading-separator">
+                <h2><span>Your Profile</span></h2>
+            </div>
+
+            <div class="col-xs-12 col-md-6">
 
                 <ul>
                     <?php if ($model->email): ?>
@@ -42,6 +43,13 @@ $this->title = 'Hi, ' . $model->username . '!';
                     <li><?= Html::a('Change password', ['/user/change-password']) ?></li>
                     <?php endif ?>
                 </ul>
+
+            </div>
+
+            <div class="col-xs-12 col-md-6">
+
+                <?= $this->render('_avatar', ['model' => $model]) ?>
+
             </div>
         </div>
 

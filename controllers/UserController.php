@@ -7,13 +7,17 @@ use app\models\Badge;
 use app\models\ChangePasswordForm;
 use app\models\Extension;
 use app\models\Star;
+use app\models\UserAvatarUploadForm;
 use app\models\UserBadge;
 use app\models\Wiki;
 use Yii;
 use app\models\User;
 use yii\data\ActiveDataProvider;
 use yii\filters\AccessControl;
+use yii\filters\VerbFilter;
+use yii\helpers\Json;
 use yii\web\NotFoundHttpException;
+use yii\web\UploadedFile;
 
 /**
  * UserController implements the CRUD actions for User model.
@@ -31,16 +35,22 @@ class UserController extends BaseController
         return [
             'access' => [
                 'class' => AccessControl::class,
-                'only' => ['profile', 'request-email-verification', 'change-password'],
+                'only' => ['profile', 'request-email-verification', 'change-password', 'upload-avatar', 'delete-avatar'],
                 'rules' => [
                     [
-                        // allow all to a access index and view action
                         'allow' => true,
-                        'actions' => ['profile', 'request-email-verification', 'change-password'],
+                        'actions' => ['profile', 'request-email-verification', 'change-password', 'upload-avatar', 'delete-avatar'],
                         'roles' => ['@'],
                     ],
                 ]
             ],
+            'verb' => [
+                'class' => VerbFilter::class,
+                'actions' => [
+                    'upload-avatar' => ['POST'],
+                    'delete-avatar' => ['POST'],
+                ],
+            ]
         ];
     }
 
@@ -232,5 +242,65 @@ class UserController extends BaseController
         return $this->render('changePassword', [
             'changePasswordForm' => $changePasswordForm,
         ]);
+    }
+
+    /**
+     * Download avatar file (inline)
+     * @param int $id user id
+     * @throws NotFoundHttpException
+     */
+    public function actionAvatar($id)
+    {
+        $user = $this->findModel($id);
+        if ($user->hasAvatar()) {
+            return $this->sendFile($user->getAvatarPath());
+        }
+        throw new NotFoundHttpException('The requested page does not exist.');
+    }
+
+    /**
+     * Upload new user avatar file
+     */
+    public function actionUploadAvatar()
+    {
+        /** @var User $user */
+        $user = Yii::$app->user->identity;
+
+        $form = new UserAvatarUploadForm([
+            'user' => $user,
+        ]);
+        $form->load(Yii::$app->request->post());
+        $form->avatar = UploadedFile::getInstance($form, 'avatar');
+
+        $success = $form->upload();
+
+        if (Yii::$app->request->isAjax) {
+            // reply with JSON
+            if ($success) {
+                // success
+                return Json::encode([
+                    'url' => $user->getAvatarUrl(),
+                ]);
+            } else {
+                // error
+                Yii::$app->response->setStatusCode(422); // Unprocessable entity
+                return Json::encode([
+                    'error' => $form->getFirstError('avatar'),
+                ]);
+            }
+        } else {
+            if (!$success) {
+                Yii::$app->session->setFlash('error', 'Failed to upload file: ' . $form->getFirstError('avatar'));
+            }
+            return $this->redirect(['/user/profile']);
+        }
+    }
+
+    public function actionDeleteAvatar()
+    {
+        /** @var User $user */
+        $user = Yii::$app->user->identity;
+        $user->deleteAvatar();
+        return $this->redirect(['/user/profile']);
     }
 }
