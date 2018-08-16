@@ -2,6 +2,8 @@
 
 namespace app\models;
 
+use Yii;
+use yii\imagine\Image;
 use yii\base\InvalidConfigException;
 use yii\base\Model;
 use yii\helpers\FileHelper;
@@ -58,10 +60,17 @@ class UserAvatarUploadForm extends Model
     public function upload()
     {
         if ($this->validate()) {
-            // TODO crop image
-            FileHelper::createDirectory(dirname($this->user->getAvatarPath()));
-            $this->avatar->saveAs($this->user->getAvatarPath());
-            return true;
+
+            try {
+                $avatarPath = $this->user->getAvatarPath();
+                FileHelper::createDirectory(dirname($avatarPath));
+                $this->avatar->saveAs("$avatarPath.orig");
+                Image::thumbnail("$avatarPath.orig", 200, 200)->save($avatarPath);
+                return true;
+            } catch (\Throwable $e) {
+                Yii::error($e);
+                $this->addError('avatar', 'Unable to process image.');
+            }
         }
 
         return false;
