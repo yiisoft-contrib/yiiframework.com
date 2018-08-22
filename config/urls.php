@@ -89,7 +89,8 @@ return [
     // user profiles and user ranking
 	'user' => 'user/index',
 	'user/<id:\d+>' => 'user/view',
-	'user/<action:halloffame|profile|request-email-verification|change-password>' => 'user/<action>',
+	'user/avatar/<id:\d+>' => 'user/avatar',
+	'user/<action:halloffame|profile|request-email-verification|change-password|upload-avatar|delete-avatar>' => 'user/<action>',
 	'badges' => 'user/badges',
 	'badge/<name:[\w-]+>' => 'user/view-badge',
 

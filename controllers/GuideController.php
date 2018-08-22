@@ -162,23 +162,6 @@ class GuideController extends BaseController
         return $this->sendFile($file);
     }
 
-    private function sendFile($file)
-    {
-        $cache = new HttpCache([
-            'cacheControlHeader' => 'public, max-age=86400',
-            'lastModified' => function() use ($file) {
-                return filemtime($file);
-            },
-            'etagSeed' => function() use ($file) {
-                return sha1_file($file);
-            },
-        ]);
-        if ($cache->beforeAction(null)) {
-            return Yii::$app->response->sendFile($file, null, ['inline' => true]);
-        }
-        return null;
-    }
-
     public function actionDownload($version, $language, $format)
     {
         $guide = Guide::load($version, $language);
