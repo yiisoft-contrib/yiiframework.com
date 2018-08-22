@@ -21,7 +21,6 @@ $form = new UserAvatarUploadForm([
 <?php else: ?>
 
     <img class="user-avatar-image" alt="You currently don't have a profile picture.">
-    <?php /*<div class="user-avatar-image">You currently don't have a profile picture.</div>*/ ?>
 
 <?php endif; ?>
 
@@ -57,19 +56,5 @@ $form = new UserAvatarUploadForm([
     ]) ?>
 
 <?php endif; ?>
-
-
-<?php /*\raoul2000\jcrop\JCropWidget::widget([
-		'selector' => '#image_id',
-		'pluginOptions' => [
-			'aspectRatio' => 1,
-			'minSize' => [50,50],
-			'maxSize' => [200,200],
-			'setSelect' => [10,10,40,40],
-			'bgColor' => 'black',
-			'bgOpacity' => '0.5',
-			'onChange' => new yii\web\JsExpression('function(c){console.log(c.x);}')
-		]
-	]);*/ ?>
 
 </div>

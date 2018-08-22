@@ -29,6 +29,7 @@ use yii\db\Query;
 use yii\di\Instance;
 use yii\helpers\Console;
 use yii\helpers\FileHelper;
+use yii\imagine\Image;
 
 /**
  * Populates the database with content from the old website
@@ -84,9 +85,9 @@ class ImportController extends Controller
 	}
 
 
-    /**
-     * Import database from old website
-     */
+	/**
+	 * Import database from old website
+	 */
 	public function actionImport()
 	{
 		if (!$this->confirm('Populate database with content from old website?')) {
@@ -116,6 +117,57 @@ class ImportController extends Controller
 		$this->updateRatings();
 
 		return ExitCode::OK;
+	}
+
+	/**
+	 * Import user avatars from old website/forum
+	 */
+	public function actionAvatars($path)
+	{
+		if (!$this->confirm('Import user avatars from old website?')) {
+			return ExitCode::OK;
+		}
+
+		$files = FileHelper::findFiles($path, [
+			'recursive' => false,
+			'only' => ['photo-*'],
+		]);
+		Console::startProgress(0, $count = count($files), 'Importing user avatars...');
+		$i = 0;
+		$err = 0;
+		foreach($files as $file) {
+			if (preg_match('~photo-(\d+).\w+$~', basename($file), $m)) {
+				try {
+
+					$userId = $m[1];
+					$user = User::find()->where(['forum_id' => $userId])->one();
+					if ($user !== null) {
+
+						$avatarPath = $user->getAvatarPath();
+						FileHelper::createDirectory(dirname($avatarPath));
+						copy($file, "$avatarPath.orig");
+						Image::thumbnail("$avatarPath.orig", 200, 200)->save($avatarPath);
+
+					}
+
+				} catch (\Throwable $e) {
+					echo $e;
+					$err++;
+					if (file_exists("$avatarPath.orig")) {
+						unlink("$avatarPath.orig");
+					}
+				}
+			}
+			Console::updateProgress(++$i, $count);
+		}
+		Console::endProgress(true);
+
+		$this->stdout('done.', Console::FG_GREEN, Console::BOLD);
+			$this->stdout(" $count records imported.");
+			if ($err > 0) {
+				$this->stdout(" $err errors occurred.", Console::FG_RED, Console::BOLD);
+			}
+		$this->stdout("\n");
 	}
 
 	private function isDuplicateUsername($username)
@@ -649,14 +701,14 @@ SQL
 					$comment['creator_id'] = null;
 				}
 
-                if ($objectType === ClassType::API || $objectType === ClassType::GUIDE) {
-                    $doc = Doc::getObject($objectType, $comment['object_id'], null, null);
-                    if ($doc === false) {
-                        throw new \Exception("Failed to save $objectType object.");
-                    }
-                    $objectType = ClassType::DOC;
-                    $comment['object_id'] = $doc->id;
-                }
+				if ($objectType === ClassType::API || $objectType === ClassType::GUIDE) {
+					$doc = Doc::getObject($objectType, $comment['object_id'], null, null);
+					if ($doc === false) {
+						throw new \Exception("Failed to save $objectType object.");
+					}
+					$objectType = ClassType::DOC;
+					$comment['object_id'] = $doc->id;
+				}
 
 				\Yii::$app->db->createCommand()->insert('{{%comment}}', [
 					'id' => $comment['id'],

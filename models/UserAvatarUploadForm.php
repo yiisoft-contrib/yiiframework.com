@@ -70,6 +70,9 @@ class UserAvatarUploadForm extends Model
             } catch (\Throwable $e) {
                 Yii::error($e);
                 $this->addError('avatar', 'Unable to process image.');
+                if (file_exists("$avatarPath.orig")) {
+                    unlink("$avatarPath.orig");
+                }
             }
         }
 

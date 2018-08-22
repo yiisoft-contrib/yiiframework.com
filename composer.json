@@ -38,7 +38,6 @@
 
         "yiisoft/yii2-bootstrap": "~2.0.6",
         "yiisoft/yii2-jui": "~2.0.6",
-        "raoul2000/yii2-jcrop-widget": "~1.0.0",
         "bower-asset/blueimp-file-upload": "~9.22.0",
 
         "bower-asset/jquery": "2.2.*@stable",

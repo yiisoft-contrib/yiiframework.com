@@ -602,6 +602,9 @@ class User extends ActiveRecord implements IdentityInterface
         if (file_exists($avatarPath)) {
             unlink($avatarPath);
         }
+        if (file_exists("$avatarPath.orig")) {
+            unlink($avatarPath);
+        }
     }
 
     public function afterDelete()

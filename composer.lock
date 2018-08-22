@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "04c11d5a5d4f0492cfed7768125139ee",
+    "content-hash": "2622bac498bad481c41d4e349db19451",
     "packages": [
         {
             "name": "2amigos/yii2-selectize-widget",
@@ -1750,51 +1750,6 @@
                 "psr-3"
             ],
             "time": "2016-10-10T12:19:37+00:00"
-        },
-        {
-            "name": "raoul2000/yii2-jcrop-widget",
-            "version": "1.0.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/raoul2000/yii2-jcrop-widget.git",
-                "reference": "1a858a0cd0c3adeb5442017e098b182f2016a9b2"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/raoul2000/yii2-jcrop-widget/zipball/1a858a0cd0c3adeb5442017e098b182f2016a9b2",
-                "reference": "1a858a0cd0c3adeb5442017e098b182f2016a9b2",
-                "shasum": ""
-            },
-            "require": {
-                "yiisoft/yii2": "*"
-            },
-            "type": "yii2-extension",
-            "autoload": {
-                "psr-4": {
-                    "raoul2000\\jcrop\\": ""
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "BSD 3-Clause"
-            ],
-            "authors": [
-                {
-                    "name": "Raoul",
-                    "email": "raoul.boulard@gmail.com"
-                }
-            ],
-            "description": "This extension is a wrapper for the jQuery Image Cropping Plugin (jcrop)",
-            "homepage": "https://github.com/raoul2000/yii2-jcrop-widget",
-            "keywords": [
-                "crop",
-                "extension",
-                "image",
-                "jquery",
-                "yii",
-                "yii2"
-            ],
-            "time": "2014-07-30T15:40:38+00:00"
         },
         {
             "name": "roave/security-advisories",
