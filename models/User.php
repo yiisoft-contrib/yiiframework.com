@@ -6,6 +6,7 @@ use Yii;
 use yii\base\NotSupportedException;
 use yii\db\ActiveQuery;
 use yii\helpers\Html;
+use yii\helpers\Url;
 use yii\web\IdentityInterface;
 use yii\helpers\ArrayHelper;
 
@@ -43,6 +44,10 @@ use yii\helpers\ArrayHelper;
  * @property Extension[] $extensions
  * @property Badge[] $badges
  *
+ * properties:
+ *
+ * @property string $passwordType
+ *
  */
 class User extends ActiveRecord implements IdentityInterface
 {
@@ -50,6 +55,11 @@ class User extends ActiveRecord implements IdentityInterface
     const STATUS_ACTIVE = 10;
 
     const DELETED_USER_HTML = '<i>Deleted User</i>';
+
+    const PASSWORD_TYPE_LEGACYMD5 = 'LEGACYMD5';
+    const PASSWORD_TYPE_LEGACYSHA = 'LEGACYSHA';
+    const PASSWORD_TYPE_NEW = 'NEW';
+    const PASSWORD_TYPE_NONE = 'NONE';
 
     /**
      * @inheritdoc
@@ -271,19 +281,19 @@ class User extends ActiveRecord implements IdentityInterface
     public function getPasswordType()
     {
         if (strpos($this->password_hash, '$') === 0) {
-            return 'NEW';
+            return self::PASSWORD_TYPE_NEW;
         }
         if (strpos($this->password_hash, 'LEGACYMD5:') === 0) {
-            return 'LEGACYMD5';
+            return self::PASSWORD_TYPE_LEGACYMD5;
         }
         if (strpos($this->password_hash, 'LEGACYSHA:') === 0) {
-            return 'LEGACYSHA';
+            return self::PASSWORD_TYPE_LEGACYSHA;
         }
-        return 'NONE';
+        return self::PASSWORD_TYPE_NONE;
     }
 
     /**
-     * Validate IPB Password usingan old SHA1 method
+     * Validate IPB Password using an old SHA1 method
      */
     private function validateLegacyPasswordSHA($password, $hash)
     {
@@ -304,7 +314,7 @@ class User extends ActiveRecord implements IdentityInterface
      * Parse value (used in IPB to clean _GET _POST values)
      * NOTE: function taken from <IPB 3.1.2 source>/admin/sources/base/core.php line 4703
      */
-    private function parseLegacyPasswordValue($val)
+    public static function parseLegacyPasswordValue($val)
     {
         $val = str_replace("&", "&amp;", $val);
         $val = str_replace("<!--", "&#60;&#33;--", $val);
@@ -566,4 +576,41 @@ class User extends ActiveRecord implements IdentityInterface
         $timestamp = (int)end($parts);
         return $timestamp + $expire >= time();
     }
+
+    public function getAvatarPath()
+    {
+        $parts = preg_split('//', sha1($this->id), 4, PREG_SPLIT_NO_EMPTY);
+        return Yii::getAlias("@app/data/user-avatars/{$parts[0]}/{$parts[1]}/{$this->id}.png");
+    }
+
+    public function hasAvatar()
+    {
+        return file_exists($this->getAvatarPath());
+    }
+
+    public function getAvatarUrl()
+    {
+        if ($this->hasAvatar()) {
+            return Url::to(['user/avatar', 'id' => $this->id]);
+        }
+        return null;
+    }
+
+    public function deleteAvatar()
+    {
+        $avatarPath = $this->getAvatarPath();
+        if (file_exists($avatarPath)) {
+            unlink($avatarPath);
+        }
+        if (file_exists("$avatarPath.orig")) {
+            unlink($avatarPath);
+        }
+    }
+
+    public function afterDelete()
+    {
+        $this->deleteAvatar();
+        parent::afterDelete();
+    }
+
 }

@@ -18,6 +18,12 @@ $encodeHighlight = function($h) {
 
 $highlight = $model->getHighlight();
 
+if ($model->getUrl() === null) {
+    // do not display search results that have been removed from the
+    // site but are still in the search index (not yet removed)
+    return;
+}
+
 ?>
 <div class="search-result">
     <div class="row">

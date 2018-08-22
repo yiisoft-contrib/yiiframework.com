@@ -72,3 +72,17 @@ $authClients = empty($authClients) ? '<span class="not-set">(none)</span>' : imp
         'updated_at:datetimerel',
     ],
 ]) ?>
+
+<h2>Forum integration</h2>
+
+<?= DetailView::widget([
+    'model' => $model,
+    'attributes' => [
+        'forum_id',
+        [
+            'label' => 'Forum Profile',
+            'value' => Yii::getAlias($model->getForumUrl()),
+            'format' => 'url',
+        ],
+    ],
+]) ?>

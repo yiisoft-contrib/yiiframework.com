@@ -195,7 +195,7 @@ class SearchApiType extends SearchActiveRecord
         if ($this->version[0] === '1') {
             $name = $this->name;
         } else {
-            $name = strtolower(str_replace('\\', '-', "$this->namespace\\$this->name"));
+            $name = strtolower(str_replace('\\', '-', ltrim("$this->namespace\\$this->name", '\\')));
         }
         return ['api/view', 'version' => $this->version, 'section' => $name];
     }

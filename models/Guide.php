@@ -98,6 +98,24 @@ class Guide extends BaseObject
     }
 
     /**
+     * @param string $image image file name (without directory part)
+     * @return bool|string the image file path, or false if the image file does not exist
+     */
+    public function findExtensionImage($image)
+    {
+        if ($this->type !== self::TYPE_EXTENSION) {
+            return false;
+        }
+
+        if (preg_match('/^[\w\-\.]+\.(png|jpg|gif)$/i', $image)) {
+            $file = Yii::getAlias("@app/data/extensions/{$this->extension->name}/guide-{$this->version}/{$this->language}/images/$image");
+            return is_file($file) ? $file : false;
+        }
+
+        return false;
+    }
+
+    /**
      * @param string $name section name
      * @return GuideSection|null the guide section, or null if the section does not exist
      */

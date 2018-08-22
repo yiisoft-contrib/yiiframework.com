@@ -26,6 +26,7 @@ class UserPermissions
     const PERMISSION_MANAGE_COMMENTS = 'manage_comments';
     const PERMISSION_MANAGE_FORUM = 'manage_forum';
 
+    const MIN_RATING_CREATE_WIKI = 1;
     const MIN_RATING_EDIT_WIKI = 50;
 
     /**
@@ -51,6 +52,12 @@ class UserPermissions
         $user = Yii::$app->user->identity;
 
         if (!$user->email_verified && $user->getGithub() === null) {
+            return false;
+        }
+
+        /** @var User $user */
+        $user = Yii::$app->user->identity;
+        if ($user->rating < self::MIN_RATING_CREATE_WIKI) {
             return false;
         }
 

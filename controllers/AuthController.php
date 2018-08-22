@@ -38,12 +38,12 @@ class AuthController extends BaseController
                             'reset-password',
                             'auth',
                             'verify-email',
+                            'signup',
                         ],
                         'allow' => true,
                     ],
                     [
                         'actions' => [
-                            'signup',
                             'login',
                         ],
                         'allow' => true,
@@ -167,6 +167,11 @@ class AuthController extends BaseController
 
     public function actionSignup()
     {
+        if (!Yii::$app->user->isGuest) {
+            Yii::$app->session->setFlash('success', 'You are already logged in! In case you did not know: Your forum credentials are the same as for the website.');
+            return $this->redirect(['/user/profile']);
+        }
+
         $model = new SignupForm();
         if ($model->load(Yii::$app->request->post())) {
             if ($user = $model->signup()) {

@@ -70,6 +70,7 @@ return [
     'extension/<vendorName:[\w\-\.]+>/<name:[\w\-\.]+>/doc/<type:api|guide>' => 'extension/doc',
     'extension/<vendorName:[\w\-\.]+>/<name:[\w\-\.]+>/doc/guide/<version:\\d\\.\\d>/<language:[\\w\\-]+>' => 'guide/extension-index',
     'extension/<vendorName:[\w\-\.]+>/<name:[\w\-\.]+>/doc/guide/<version:\\d\\.\\d>/<language:[\\w\\-]+>/<section:[a-z0-9\\.\\-]+>' => 'guide/extension-view',
+    'extension/<vendorName:[\w\-\.]+>/<name:[\w\-\.]+>/doc/guide/<version:\\d\\.\\d>/<language:[\\w\\-]+>/images/<image>' => 'guide/extension-image',
     'extension/<vendorName:[\w\-\.]+>/<name:[\w\-\.]+>/doc/api/<version:\\d\\.\\d>' => 'api/extension-index',
     'extension/<vendorName:[\w\-\.]+>/<name:[\w\-\.]+>/doc/api/<version:\\d\\.\\d>/<section:.+>' => 'api/extension-view',
     'extension/<vendorName:[\w\-\.]+>/<name:[\w\-\.]+>/files/<filename>' => 'extension/download',
@@ -88,7 +89,8 @@ return [
     // user profiles and user ranking
 	'user' => 'user/index',
 	'user/<id:\d+>' => 'user/view',
-	'user/<action:halloffame|profile|request-email-verification|change-password>' => 'user/<action>',
+	'user/avatar/<id:\d+>' => 'user/avatar',
+	'user/<action:halloffame|profile|request-email-verification|change-password|upload-avatar|delete-avatar>' => 'user/<action>',
 	'badges' => 'user/badges',
 	'badge/<name:[\w-]+>' => 'user/view-badge',
 

@@ -42,6 +42,7 @@ PATHS:
     - "assets/src/js/search.js"
     - "assets/src/js/voting.js"
     - "assets/src/js/star.js"
+    # codemirror editor
     - "vendor/bower-asset/codemirror/lib/codemirror.js"
     - "vendor/bower-asset/codemirror/mode/shell/shell.js"
     - "vendor/bower-asset/codemirror/mode/clike/clike.js"
@@ -66,3 +67,7 @@ PATHS:
     - "vendor/bower-asset/codemirror/addon/display/panel.js"
     - "vendor/bower-asset/codemirror-buttons/buttons.js"
     - "assets/src/js/editor.js"
+    # jquery.fileupload plugin
+    - "vendor/bower-asset/jquery-ui/ui/widget.js"
+    - "vendor/bower-asset/blueimp-file-upload/js/jquery.fileupload.js"
+    - "assets/src/js/upload.js"

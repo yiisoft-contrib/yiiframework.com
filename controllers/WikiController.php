@@ -5,6 +5,7 @@ namespace app\controllers;
 use app\components\UserPermissions;
 use app\models\search\SearchActiveRecord;
 use app\models\Star;
+use app\models\User;
 use app\models\Wiki;
 use app\models\WikiCategory;
 use app\models\WikiRevision;
@@ -171,6 +172,16 @@ class WikiController extends BaseController
     public function actionCreate()
     {
         if (!UserPermissions::canCreateWikiPage()) {
+            /** @var User $user */
+            $user = Yii::$app->user->identity;
+            if ($user->rating < UserPermissions::MIN_RATING_CREATE_WIKI) {
+                Yii::$app->session->addFlash(
+                    'warning',
+                    'Sorry, you are too new to write a wiki article. Please try posting in our forum first. ' . "<br>\n"
+                    . 'When you gain a rating of at least ' . UserPermissions::MIN_RATING_CREATE_WIKI . ' you can create wikis.'
+                );
+                return $this->redirect(['index']);
+            }
             Yii::$app->session->addFlash('warning', 'Please confirm your email, before creating a wiki article.');
             return $this->redirect(['/user/profile']);
         }
@@ -195,7 +206,12 @@ class WikiController extends BaseController
         $model = $this->findModel($id, $revision);
 
         if (!UserPermissions::canUpdateWikiPage($model)) {
-            throw new ForbiddenHttpException('Sorry, you are too new to write a wiki article. Please try posting in our forum first.');
+            Yii::$app->session->addFlash(
+                'warning',
+                'Sorry, you are too new to edit wiki articles. Please try posting in our forum first or add a <a href="#comments">comment</a> to the wiki article. ' . "<br>\n"
+                . 'When you gain a rating of at least ' . UserPermissions::MIN_RATING_EDIT_WIKI . ' you can update wikis.'
+            );
+            return $this->redirect($model->getUrl());
         }
 
         $model->scenario = 'update';

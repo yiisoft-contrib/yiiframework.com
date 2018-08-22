@@ -40,13 +40,18 @@ class AuthHandler
         $id = ArrayHelper::getValue($attributes, 'id');
         $login = ArrayHelper::getValue($attributes, 'login');
         $fullname = ArrayHelper::getValue($attributes, 'name');
-
+        
         if ($this->client->getName() === 'twitter') {
             $login = ArrayHelper::getValue($attributes, 'screen_name');
         }
 
         if ($this->client->getName() === 'facebook') {
             $login = ArrayHelper::getValue($attributes, 'id');
+        }
+
+        // use login for displayname if it is not filled in github account
+        if (empty($fullname)) {
+            $fullname = $login;
         }
 
         /** @var Auth $auth */
@@ -66,7 +71,7 @@ class AuthHandler
                 $this->addAuthProvider($id, $login);
             } else { // there's existing auth
                 if ($auth->user_id == Yii::$app->user->id) {
-                    $this->disableClient($auth);
+                    // do nothing, login is already active
                 } else {
                     $this->clientAlreadyInUse();
                 }
@@ -256,27 +261,6 @@ class AuthHandler
                     'errors' => json_encode($auth->getErrors()),
                 ]),
             ]);
-        }
-    }
-
-    /**
-     * @param Auth $auth
-     * @throws \yii\db\Exception
-     */
-    private function disableClient(Auth $auth)
-    {
-        $transaction = Auth::getDb()->beginTransaction();
-        if ($auth->delete()) {
-            $user = $auth->user;
-            $user->{$this->client->getId()} = null;
-            if ($user->save()) {
-                $transaction->commit();
-                Yii::$app->getSession()->setFlash('success', [
-                    Yii::t('app',
-                        'Social network {client} has been successfully disabled.',
-                        ['client' => $this->client->getTitle()]),
-                ]);
-            }
         }
     }
 
