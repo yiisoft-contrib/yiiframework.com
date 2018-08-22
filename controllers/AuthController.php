@@ -14,6 +14,7 @@ use yii\authclient\ClientInterface;
 use yii\base\InvalidParamException;
 use yii\filters\AccessControl;
 use yii\filters\VerbFilter;
+use yii\helpers\Url;
 use yii\web\BadRequestHttpException;
 use yii\web\ForbiddenHttpException;
 use yii\web\NotFoundHttpException;
@@ -283,9 +284,9 @@ class AuthController extends BaseController
             // name will become the full name on Discourse if the user is new or SiteSetting.sso_overrides_name is set.
             'name' => $user->display_name,
             // avatar_url will be downloaded and set as the user’s avatar if the user is new or SiteSetting.sso_overrides_avatar is set.
-            'avatar_url' => null,
+            'avatar_url' => Url::to(['user/avatar', 'id' => $user->id]),
             // avatar_force_update is a boolean field. If set to true, it will force Discourse to update the user’s avatar, whether avatar_url has changed or not.
-            'avatar_force_update' => false,
+            'avatar_force_update' => true,
             // bio will become the contents of the user’s bio if the user is new, their bio is empty or SiteSetting.sso_overrides_bio is set.
             'bio' => '',
             // Additional boolean (“true” or “false”) fields are: admin, moderator, suppress_welcome_message
