@@ -603,7 +603,7 @@ class User extends ActiveRecord implements IdentityInterface
             unlink($avatarPath);
         }
         if (file_exists("$avatarPath.orig")) {
-            unlink($avatarPath);
+            unlink("$avatarPath.orig");
         }
     }
 
