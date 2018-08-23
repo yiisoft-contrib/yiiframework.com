@@ -39,7 +39,10 @@ class UserAvatarUploadForm extends Model
     {
         return [
             ['avatar', 'required'],
-            ['avatar', 'file', 'extensions' => ['png','jpg']],
+            ['avatar', 'file',
+                'extensions' => ['png','jpg','jpeg'],
+                'maxSize' => 4096 * 1024, // 4MB
+            ],
         ];
     }
 
