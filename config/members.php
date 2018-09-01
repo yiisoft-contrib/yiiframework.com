@@ -226,5 +226,17 @@ return [
         'github' => 'amarox',
         'status' => TeamStatus::TEAM_STATUS_INACTIVE,
     ],
+    [
+        'name' => 'Andrii Vasyliev',
+        'id' => '',
+        'forumName' => '',
+        'period' => 'July 2018',
+        'location' => ' Kiev, Ukraine',
+        'duty' => 'Yii 3.0 development',
+        'photo' => '@web/image/team/noimage.png',
+        'github' => 'hiqsol',
+        'twitter' => '',
+        'status' => TeamStatus::TEAM_STATUS_ACTIVE,
+    ],
 
 ];
