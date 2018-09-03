@@ -83,26 +83,5 @@ use yii\helpers\Url;
             <tr><th><code>allow_index_in_robots_txt</code></th><td>Yes</td></tr>
         </table>
 
-
-        <h2>Badges</h2>
-
-        <p>Create the following Badges in Discourse:</p>
-
-        <ul>
-            <li>
-                <dl>
-                    <dt>Name:</dt> <dd>Greenhorn</dd>
-                    <dt>Icon:</dt> <dd>...</dd>
-                    <dt>Badge Type:</dt> <dd>Bronze</dd>
-                    <dt>Group:</dt> <dd>Posting</dd>
-                    <dt>Description:</dt> <dd>25 Active Forum Posts</dd>
-                </dl>
-
-            </li>
-        -
-
-
-        </ul>
-
     </div>
 </div>
