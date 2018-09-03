@@ -41,4 +41,9 @@ class DummyAdapter implements ForumAdapterInterface
     {
         // do nothing
     }
+
+    public function getForumBadges()
+    {
+        return [];
+    }
 }

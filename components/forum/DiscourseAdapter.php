@@ -3,6 +3,7 @@
 namespace app\components\forum;
 
 use app\models\User;
+use Yii;
 use yii\base\Component;
 use yii\base\InvalidConfigException;
 use yii\db\Connection;
@@ -53,16 +54,7 @@ class DiscourseAdapter extends Component implements ForumAdapterInterface
 
     public function getPostDate($user, $number)
     {
-        // TODO implement
-        if (!$user->forum_id) {
-            return false;
-        }
-
-        $tablePrefix = $this->tablePrefix;
-        $n = ((int) $number) - 1;
-        $sql = "SELECT post_date FROM {$tablePrefix}posts WHERE author_id = :user_id ORDER BY post_date ASC LIMIT " . ($n > 0 ? "$n," : '') . '1';
-        $cmd = $this->db->createCommand($sql, [':user_id' => $user->forum_id]);
-        return $cmd->queryScalar();
+        return 0;
     }
 
     /**
@@ -87,6 +79,7 @@ class DiscourseAdapter extends Component implements ForumAdapterInterface
 
     public function getPostCounts()
     {
+        // not implemented for discourse
         return null;
     }
 
@@ -99,10 +92,39 @@ class DiscourseAdapter extends Component implements ForumAdapterInterface
      */
     public function ensureForumUser(User $user, $password)
     {
+        // forum users are created via SSO
         return null;
     }
 
     public function changeUserPassword(User $user, $password)
     {
+        // forum users are created via SSO, there is no password in discourse
+    }
+
+    /**
+     * List of badges provided by the forum
+     * @return array
+     */
+    public function getForumBadges()
+    {
+        $badges = Yii::$app->cache->get('discourse_badges');
+        if ($badges === false) {
+            $response = $this->getClient()->get(['/admin/badges.json', 'api_key' => $this->apiToken, 'api_username' => 'cebe'])->send();
+            if ($response->statusCode != 200) {
+                return [];
+            }
+            $badges = $response->data['badges'] ?? [];
+            foreach($badges as $b => $badge) {
+                if (!$badge['enabled']) {
+                    unset($badges[$b]);
+                    continue;
+                }
+                // make relative URLs absolute in badge description
+                $badges[$b]['description'] = preg_replace('~<a href="/([^"]+)"~', '<a href="'.rtrim($this->apiUrl,'/').'/\1"', $badge['description']);
+                $badges[$b]['url'] = rtrim($this->apiUrl,'/').'/badges/' . $badge['id'] . '/' . $badge['slug'];
+            }
+            Yii::$app->cache->set('discourse_badges', $badges, 1800);
+        }
+        return $badges;
     }
 }

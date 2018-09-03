@@ -38,7 +38,7 @@ class BadgeController extends Controller
         if (empty($userIds)) {
             return;
         }
-        $badges = Badge::find()->all();
+        $badges = Badge::find()->where(['active' => 1])->all();
         foreach ($badges as $badge) {
             try {
                 // TODO batch per 100
