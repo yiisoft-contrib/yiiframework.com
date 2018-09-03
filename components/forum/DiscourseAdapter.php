@@ -37,6 +37,10 @@ class DiscourseAdapter extends Component implements ForumAdapterInterface
      * @var string discourse API auth token.
      */
     public $apiToken;
+    /**
+     * @var string discourse API user name for requests that need admin permission.
+     */
+    public $apiAdminUser = 'cebe';
 
 
     /**
@@ -64,7 +68,7 @@ class DiscourseAdapter extends Component implements ForumAdapterInterface
     public function getPostCount($user)
     {
         if (!$user->forum_id) {
-            $userData = $this->getClient()->get([sprintf('/users/%s.json', $user->username), 'api_key' => $this->apiToken])->send();
+            $userData = $this->getClient()->get([sprintf('/users/%s.json', $user->username), 'api_key' => $this->apiToken, 'api_username' => $this->apiAdminUser])->send();
             if (isset($userData['user']['id'])) {
                 $user->updateAttributes(['forum_id' => $userData['user']['id']]);
             } else {
@@ -72,8 +76,11 @@ class DiscourseAdapter extends Component implements ForumAdapterInterface
             }
         }
 
-        $userData = $this->getClient()->get([sprintf('/admin/users/%d.json', $user->forum_id), 'api_key' => $this->apiToken])->send();
-
+        $response = $this->getClient()->get([sprintf('/admin/users/%d.json', $user->forum_id), 'api_key' => $this->apiToken, 'api_username' => $this->apiAdminUser])->send();
+        if ($response->statusCode != 200) {
+            return 0;
+        }
+        $userData = $response->data;
         return $userData['user']['post_count'] ?? 0;
     }
 
@@ -81,6 +88,34 @@ class DiscourseAdapter extends Component implements ForumAdapterInterface
     {
         // not implemented for discourse
         return null;
+    }
+
+    public function getPostCountsByUsername()
+    {
+        $postCounts = [];
+        $url = '/directory_items.json?period=all&order=post_count&api_key=' . urlencode($this->apiToken) . '&api_username=' . urlencode($this->apiAdminUser);
+        while (true) {
+            $response = $this->getClient()->get($url)->send();
+            if ($response->statusCode != 200) {
+                print_r($response);
+                return $postCounts;
+            }
+            $userData = $response->data;
+
+            foreach($userData['directory_items'] as $item) {
+                $postCounts[$item['user']['username']] = $item['topic_count'] + $item['post_count'];
+            }
+
+            if (!isset($userData['load_more_directory_items'])) {
+                break;
+            }
+            // workaround Discourse bug https://meta.discourse.org/t/directory-items-json-api-returns-wrong-link-for-next-page/96268
+            $moreItemsUrl = str_replace('?', '.json?', $userData['load_more_directory_items']);
+            $url = $moreItemsUrl . '&api_key=' . urlencode($this->apiToken) . '&api_username=' . urlencode($this->apiAdminUser);
+            //echo count($postCounts) . '/' . $userData['total_rows_directory_items'] . ' ' . number_format(count($postCounts) / $userData['total_rows_directory_items'], 2) . "%\n";
+        }
+
+        return $postCounts;
     }
 
     /**
@@ -109,7 +144,7 @@ class DiscourseAdapter extends Component implements ForumAdapterInterface
     {
         $badges = Yii::$app->cache->get('discourse_badges');
         if ($badges === false) {
-            $response = $this->getClient()->get(['/admin/badges.json', 'api_key' => $this->apiToken, 'api_username' => 'cebe'])->send();
+            $response = $this->getClient()->get(['/admin/badges.json', 'api_key' => $this->apiToken, 'api_username' => $this->apiAdminUser])->send();
             if ($response->statusCode != 200) {
                 return [];
             }

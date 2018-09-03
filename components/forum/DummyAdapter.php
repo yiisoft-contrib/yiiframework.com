@@ -29,7 +29,11 @@ class DummyAdapter implements ForumAdapterInterface
 
     public function getPostCounts()
     {
-        return [];
+        return null;
+    }
+    public function getPostCountsByUsername()
+    {
+        return null;
     }
 
     public function ensureForumUser(User $user, $password)

@@ -102,9 +102,9 @@ class UserController  extends Controller
 
         /** @var ForumAdapterInterface $forumAdapter */
         $forumAdapter = Yii::$app->forumAdapter;
-        $postCounts = $forumAdapter->getPostCounts();
+        $postCounts = $forumAdapter->getPostCountsByUsername();
 
-        $users = User::find()->asArray();
+        $users = User::find();
         //$users = $db->createCommand('SELECT t.id, t.rating, t.post_count, t.wiki_count, t.extension_count, t.comment_count, f.last_visit, f.joined, f.posts FROM {{%user}} t, ipb_members f WHERE t.id=f.member_id')->queryAll();
         $updateCommand = $db->createCommand("UPDATE {{%user}} SET rating=:rating, post_count=:posts, extension_count=:extensions, comment_count=:comments, wiki_count=:wiki WHERE id=:id");
         if ($this->progress) {
@@ -112,9 +112,10 @@ class UserController  extends Controller
         }
         foreach($users->each(500, $db) as $user) {
             $id = $user['id'];
+            $username = $user['username'];
 
             if ($postCounts !== null) {
-                $posts = isset($postCounts[$id]) ? $postCounts[$id] : 0;
+                $posts = isset($postCounts[$username]) ? $postCounts[$username] : 0;
             } else {
                 $posts = $forumAdapter->getPostCount($user);
             }

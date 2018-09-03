@@ -86,6 +86,13 @@ class IPBAdapter extends Component implements ForumAdapterInterface
         return ArrayHelper::map($this->db->createCommand($sql)->queryAll(),'member_id','posts');
     }
 
+    public function getPostCountsByUsername()
+    {
+        $tablePrefix = $this->tablePrefix;
+        $sql = "SELECT `name`, posts FROM {$tablePrefix}members";
+        return ArrayHelper::map($this->db->createCommand($sql)->queryAll(),'name','posts');
+    }
+
     /**
      * Creates forum user
      *

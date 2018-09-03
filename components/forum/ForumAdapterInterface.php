@@ -27,6 +27,14 @@ interface ForumAdapterInterface
      * @return array|null
      */
     public function getPostCounts();
+    /**
+     * Get post counts for all users indexed by user name.
+     *
+     * Can return null if it is not implemented.
+     *
+     * @return array|null
+     */
+    public function getPostCountsByUsername();
     public function ensureForumUser(User $user, $password);
     public function changeUserPassword(User $user, $password);
 
