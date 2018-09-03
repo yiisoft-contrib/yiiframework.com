@@ -113,7 +113,11 @@ class UserController  extends Controller
         foreach($users->each(500, $db) as $user) {
             $id = $user['id'];
 
-            $posts = isset($postCounts[$id]) ? $postCounts[$id] : 0;
+            if ($postCounts !== null) {
+                $posts = isset($postCounts[$id]) ? $postCounts[$id] : 0;
+            } else {
+                $posts = $forumAdapter->getPostCount($user);
+            }
             $rating = $posts / 10;
 
             $lastLogin = strtotime($user['login_time']);
@@ -137,7 +141,6 @@ class UserController  extends Controller
             $comments = isset($commentScores[$id]) ? $commentScores[$id] : 0;
             $wiki = isset($wikiCounts[$id]) ? $wikiCounts[$id] : 0;
             $extensions = isset($extensionCounts[$id]) ? $extensionCounts[$id] : 0;
-            $posts = isset($postCounts[$id]) ? $postCounts[$id] : 0;
 
             // update only if something has changed
             if ($user['rating'] != $rating ||

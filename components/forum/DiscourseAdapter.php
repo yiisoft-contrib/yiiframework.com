@@ -53,6 +53,7 @@ class DiscourseAdapter extends Component implements ForumAdapterInterface
 
     public function getPostDate($user, $number)
     {
+        // TODO implement
         if (!$user->forum_id) {
             return false;
         }
@@ -86,11 +87,7 @@ class DiscourseAdapter extends Component implements ForumAdapterInterface
 
     public function getPostCounts()
     {
-        // TODO implement
-        return [];
-//        $tablePrefix = $this->tablePrefix;
-//        $sql = "SELECT member_id, posts FROM {$tablePrefix}members";
-//        return ArrayHelper::map($this->db->createCommand($sql)->queryAll(),'member_id','posts');
+        return null;
     }
 
     /**
