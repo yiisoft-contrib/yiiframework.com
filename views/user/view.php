@@ -90,10 +90,15 @@ $this->registerMetaTag(['name' => 'keywords', 'value' => 'yii framework, communi
             <ul class="list-unstyled">
                 <?php foreach($model->getBadges()->with('badge')->all() as $info): ?>
                 <?php
-                   if($info->complete_time)
+                    if (!$info->badge->active) {
+                        continue;
+                    }
+
+                   if($info->complete_time) {
                        $title = sprintf('%s earned this badge on %s', Html::encode($model->display_name), Yii::$app->formatter->asDate($info->complete_time));
-                   else
+                   } else {
                        $title = sprintf('%s started this badge on %s', Html::encode($model->display_name), Yii::$app->formatter->asDate($info->create_time));
+                   }
                ?>
                    <li>
                        <div class="userbadge userbadge-<?= $info->badge->urlname ?>" title="<?= $title ?>">
