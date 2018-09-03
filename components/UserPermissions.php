@@ -171,4 +171,27 @@ class UserPermissions
     {
         return Yii::$app->user->can(self::PERMISSION_MANAGE_NEWS);
     }
+
+    /**
+     * Check whether authenticated user is an admin.
+     *
+     * @return bool
+     */
+    public static function isAdmin()
+    {
+        $adminRoles = [
+            self::ROLE_COMMENT_ADMIN,
+            self::ROLE_EXTENSION_ADMIN,
+            self::ROLE_FORUM_ADMIN,
+            self::ROLE_NEWS_ADMIN,
+            self::ROLE_USER_ADMIN,
+            self::ROLE_WIKI_ADMIN,
+        ];
+        foreach ($adminRoles as $role) {
+            if (Yii::$app->user->can($role)) {
+                return true;
+            }
+        }
+        return false;
+    }
 }
