@@ -131,21 +131,35 @@ class GuideController extends BaseController
             $file = Guide::findImage($image, $version, 'en', $type === 'blog' ? 'blogtut' : $type);
         }
         if ($file === false) {
-            throw new NotFoundHttpException("The requested image was not found: $image");
+            throw new NotFoundHttpException("The requested image was not found.");
         }
 
-        $cache = new HttpCache([
-            'cacheControlHeader' => 'public, max-age=86400',
-            'lastModified' => function() use ($file) {
-                return filemtime($file);
-            },
-            'etagSeed' => function() use ($file) {
-                return sha1_file($file);
-            },
-        ]);
-        if ($cache->beforeAction(null)) {
-            Yii::$app->response->sendFile($file, null, ['inline' => true]);
+        return $this->sendFile($file);
+    }
+
+    public function actionExtensionImage($vendorName, $name, $image, $version, $language, $type = 'guide')
+    {
+        if (($model = Extension::find()->where(['name' => "$vendorName/$name"])->active()->one()) === null) {
+            throw new NotFoundHttpException('The requested page does not exist.');
         }
+
+        $guide = Guide::loadExtension($model, $version, $language);
+        if (!$guide) {
+            throw new NotFoundHttpException('The requested page does not exist.');
+        }
+
+        $file = $guide->findExtensionImage($image);
+        if ($file === false && $language !== 'en') {
+            $guide = Guide::loadExtension($model, $version, 'en');
+            if ($guide) {
+                $file = $guide->findExtensionImage($image);
+            }
+        }
+        if ($file === false) {
+            throw new NotFoundHttpException("The requested image was not found.");
+        }
+
+        return $this->sendFile($file);
     }
 
     public function actionDownload($version, $language, $format)

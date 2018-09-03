@@ -2,6 +2,7 @@
 
 use app\components\object\ObjectIdentityInterface;
 use app\models\Linkable;
+use app\models\User;
 use yii\helpers\Html;
 
 /* @var $this yii\web\View */
@@ -19,10 +20,11 @@ $this->title = 'Hi, ' . $model->username . '!';
         <?= \app\widgets\Alert::widget() ?>
 
         <div class="row">
-            <div class="col-xs-12">
-                <div class="heading-separator">
-                    <h2><span>Your Profile</span></h2>
-                </div>
+            <div class="col-xs-12 heading-separator">
+                <h2><span>Your Profile</span></h2>
+            </div>
+
+            <div class="col-xs-12 col-md-6">
 
                 <ul>
                     <?php if ($model->email): ?>
@@ -37,8 +39,17 @@ $this->title = 'Hi, ' . $model->username . '!';
                     <?php endif ?>
                     <li><?= Html::a('View forum profile', $model->forumUrl); ?> (log in using your website username and password)</li>
                     <li><?= Html::a('View public profile', ['view', 'id' => $model->id]); ?></li>
+                    <?php if ($model->passwordType !== User::PASSWORD_TYPE_NONE): ?>
                     <li><?= Html::a('Change password', ['/user/change-password']) ?></li>
+                    <?php endif ?>
                 </ul>
+
+            </div>
+
+            <div class="col-xs-12 col-md-6">
+
+                <?= $this->render('_avatar', ['model' => $model]) ?>
+
             </div>
         </div>
 
@@ -66,7 +77,7 @@ $this->title = 'Hi, ' . $model->username . '!';
                             echo 'Your account is connected with your ' . ucfirst($client->source) . ' profile: '
                                 . Html::a('http://github.com/' . Html::encode($client->source_login), 'http://github.com/' . $client->source_login) . '. ';
 
-                            if ($model->passwordType === 'NONE') {
+                            if ($model->passwordType === User::PASSWORD_TYPE_NONE) {
                                 echo 'To remove the connection, you should enable Password login first.';
                             } else {
                                 echo Html::a('Remove connection', ['/auth/remove-auth', 'source' => $client->source], [
@@ -85,11 +96,11 @@ $this->title = 'Hi, ' . $model->username . '!';
                 <h3>Password login</h3>
                 <p>
                     <?php switch ($model->passwordType) {
-                        case 'LEGACYMD5':
-                        case 'LEGACYSHA':
+                        case User::PASSWORD_TYPE_LEGACYMD5:
+                        case User::PASSWORD_TYPE_LEGACYSHA:
                             echo '<strong>Your password is stored in the database using a deprecated hasing algorithm. Please log out and log in again to fix this.</strong></p><p>';
                         // no break
-                        case 'NEW':
+                        case User::PASSWORD_TYPE_NEW:
                             echo 'Password login is enabled. That means that you can log in with your username and password.';
 
                             if (empty($model->authClients)) {
@@ -101,7 +112,7 @@ $this->title = 'Hi, ' . $model->username . '!';
                                     ]) . '.';
                             }
                             break;
-                        case 'NONE':
+                        case User::PASSWORD_TYPE_NONE:
                             echo 'Password login is disabled. To enable it, you can request a new password ' . Html::a('here', ['auth/request-password-reset']) . '.';
                     }
 
