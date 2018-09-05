@@ -124,7 +124,7 @@ class SiteController extends BaseController
     public function actionRedirectForum($url = null)
     {
         // url must end with /
-        $forumUrl = 'https://discourse.yii.c.cebe.net/';
+        $forumUrl = 'https://forum.yiiframework.com/';
 
         if ($url === 'index.php' && count($_GET) > 1) {
             // https://www.yiiframework.com/forum/index.php?showuser=5951
@@ -161,6 +161,9 @@ class SiteController extends BaseController
         }
         if (trim($url, '/') === 'members') {
             $url = 'u?order=post_count&period=all';
+        }
+        if (preg_match('~^uploads/(.*)~', $url, $matches)) {
+            $url = "ipb_uploads/{$matches[1]}";
         }
         return $this->redirect($forumUrl . ltrim($url, '/'));
     }
