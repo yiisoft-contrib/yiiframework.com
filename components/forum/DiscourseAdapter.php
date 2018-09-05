@@ -151,6 +151,8 @@ class DiscourseAdapter extends Component implements ForumAdapterInterface
         if ($badges === false) {
             $response = $this->getClient()->get(['/admin/badges.json', 'api_key' => $this->apiToken, 'api_username' => $this->apiAdminUser])->send();
             if ($response->statusCode != 200) {
+                Yii::error("Discourse API request returned error: /admin/badges.json");
+                Yii::error($response);
                 return [];
             }
             $badges = $response->data['badges'] ?? [];
