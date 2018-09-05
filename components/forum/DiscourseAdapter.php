@@ -68,16 +68,21 @@ class DiscourseAdapter extends Component implements ForumAdapterInterface
     public function getPostCount($user)
     {
         if (!$user->forum_id) {
-            $userData = $this->getClient()->get([sprintf('/users/%s.json', $user->username), 'api_key' => $this->apiToken, 'api_username' => $this->apiAdminUser])->send();
+            $response = $this->getClient()->get([$url = sprintf('/users/%s.json', $user->username), 'api_key' => $this->apiToken, 'api_username' => $this->apiAdminUser])->send();
+            $userData = $response->data;
             if (isset($userData['user']['id'])) {
                 $user->updateAttributes(['forum_id' => $userData['user']['id']]);
             } else {
+                Yii::error("Discourse API request returned invalid response: $url");
+                Yii::error($response);
                 return 0;
             }
         }
 
-        $response = $this->getClient()->get([sprintf('/admin/users/%d.json', $user->forum_id), 'api_key' => $this->apiToken, 'api_username' => $this->apiAdminUser])->send();
+        $response = $this->getClient()->get([$url = sprintf('/admin/users/%d.json', $user->forum_id), 'api_key' => $this->apiToken, 'api_username' => $this->apiAdminUser])->send();
         if ($response->statusCode != 200) {
+            Yii::error("Discourse API request returned error: $url");
+            Yii::error($response);
             return 0;
         }
         $userData = $response->data;
@@ -97,7 +102,8 @@ class DiscourseAdapter extends Component implements ForumAdapterInterface
         while (true) {
             $response = $this->getClient()->get($url)->send();
             if ($response->statusCode != 200) {
-                print_r($response);
+                Yii::error("Discourse API request returned error: " . preg_replace('/api_key=.+?&/', 'api_key=...', $url));
+                Yii::error($response);
                 return $postCounts;
             }
             $userData = $response->data;
@@ -112,7 +118,6 @@ class DiscourseAdapter extends Component implements ForumAdapterInterface
             // workaround Discourse bug https://meta.discourse.org/t/directory-items-json-api-returns-wrong-link-for-next-page/96268
             $moreItemsUrl = str_replace('?', '.json?', $userData['load_more_directory_items']);
             $url = $moreItemsUrl . '&api_key=' . urlencode($this->apiToken) . '&api_username=' . urlencode($this->apiAdminUser);
-            //echo count($postCounts) . '/' . $userData['total_rows_directory_items'] . ' ' . number_format(count($postCounts) / $userData['total_rows_directory_items'], 2) . "%\n";
         }
 
         return $postCounts;
