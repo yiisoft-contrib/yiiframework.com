@@ -176,7 +176,7 @@ class UserController extends BaseController
 
     public function actionBadges()
     {
-        $badges = Badge::find()->where(['active' => 1])->orderBy('achieved DESC, urlname')->all();
+        $badges = Badge::find()->active()->orderBy('achieved DESC, urlname')->all();
 
         $forumBadges = Yii::$app->forumAdapter->getForumBadges();
         ArrayHelper::multisort($forumBadges, 'grant_count', SORT_DESC);
@@ -191,7 +191,7 @@ class UserController extends BaseController
     public function actionViewBadge($name)
     {
         /** @var Badge $badge */
-        $badge = Badge::find()->andWhere(['urlname' => $name, 'active' => 1])->one();
+        $badge = Badge::find()->active()->andWhere(['urlname' => $name])->one();
         if ($badge === null) {
             throw new NotFoundHttpException('Unknown badge');
         }
