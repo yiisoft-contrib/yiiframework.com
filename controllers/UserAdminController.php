@@ -103,7 +103,7 @@ class UserAdminController extends BaseController
     {
         $this->findModel($id)->delete();
 
-        return $this->redirect(['index']);
+        return $this->redirect(['view', 'id' => $id]);
     }
 
     /**

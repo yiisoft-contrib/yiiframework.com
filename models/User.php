@@ -438,7 +438,7 @@ class User extends ActiveRecord implements IdentityInterface
 
     public function getForumUrl()
     {
-        return '@web/forum/index.php?showuser=' . urlencode($this->forum_id);
+        return '@web/forum/index.php/user/' . urlencode($this->forum_id ?? 0) . '-' . urlencode($this->username);
     }
 
     /**

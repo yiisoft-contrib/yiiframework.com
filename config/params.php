@@ -198,4 +198,11 @@ return [
     'recaptcha.key' => null,
     'recaptcha.secret' => null,
     'recaptcha.enabled' => false,
+
+    // configuration for Discourse Forum SSO
+    // https://meta.discourse.org/t/official-single-sign-on-for-discourse-sso/13045
+    // configure Discourse to point SSO requests to https://www.yiiframework.com/auth/discourse-sso
+    'discourse.sso_secret' => '',
+    'discourse.sso_url' => 'https://forum.yiiframework.com',
+
 ];

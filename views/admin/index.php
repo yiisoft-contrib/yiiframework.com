@@ -31,7 +31,12 @@ use yii\helpers\Html;
     <li><?= Html::a('Manage Extensions', ['extension/index']) ?> (Currently no separate admin interface)</li>
 <?php endif?>
 
-    <li><?= Html::a('View Repository Status', ['status/index']) ?> (publicly accessable)
+<?php if (Yii::$app->user->can(\app\components\UserPermissions::PERMISSION_MANAGE_FORUM)): ?>
+    <li><?= Html::a('Discourse Forum Integration', ['admin/discourse']) ?></li>
+<?php endif?>
+
+	<li><?= Html::a('View Repository Status', ['status/index']) ?> (publicly accessable)
+
 </ul>
 
 <h2>RBAC Assignments</h2>

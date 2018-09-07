@@ -17,11 +17,6 @@ use app\models\User;
 class DummyAdapter implements ForumAdapterInterface
 {
 
-    public function getReputations($user)
-    {
-        return [];
-    }
-
     public function getPostDate($user, $number)
     {
         return false;
@@ -34,7 +29,11 @@ class DummyAdapter implements ForumAdapterInterface
 
     public function getPostCounts()
     {
-        return [];
+        return null;
+    }
+    public function getPostCountsByUsername()
+    {
+        return null;
     }
 
     public function ensureForumUser(User $user, $password)
@@ -45,5 +44,10 @@ class DummyAdapter implements ForumAdapterInterface
     public function changeUserPassword(User $user, $password)
     {
         // do nothing
+    }
+
+    public function getForumBadges()
+    {
+        return [];
     }
 }

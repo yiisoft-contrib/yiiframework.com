@@ -15,6 +15,7 @@ use app\models\User;
 use yii\data\ActiveDataProvider;
 use yii\filters\AccessControl;
 use yii\filters\VerbFilter;
+use yii\helpers\ArrayHelper;
 use yii\helpers\Json;
 use yii\web\NotFoundHttpException;
 use yii\web\UploadedFile;
@@ -175,9 +176,14 @@ class UserController extends BaseController
 
     public function actionBadges()
     {
-        $badges = Badge::find()->orderBy('achieved DESC, urlname')->all();
+        $badges = Badge::find()->active()->orderBy('achieved DESC, urlname')->all();
+
+        $forumBadges = Yii::$app->forumAdapter->getForumBadges();
+        ArrayHelper::multisort($forumBadges, 'grant_count', SORT_DESC);
+
         return $this->render('badges', [
             'badges' => $badges,
+            'forumBadges' => $forumBadges,
             'counts' => UserBadge::countUsers(),
         ]);
     }
@@ -185,7 +191,7 @@ class UserController extends BaseController
     public function actionViewBadge($name)
     {
         /** @var Badge $badge */
-        $badge = Badge::find()->where(['urlname' => $name])->one();
+        $badge = Badge::find()->active()->andWhere(['urlname' => $name])->one();
         if ($badge === null) {
             throw new NotFoundHttpException('Unknown badge');
         }

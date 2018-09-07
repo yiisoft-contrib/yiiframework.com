@@ -42,6 +42,9 @@ $this->title = 'Hi, ' . $model->username . '!';
                     <?php if ($model->passwordType !== User::PASSWORD_TYPE_NONE): ?>
                     <li><?= Html::a('Change password', ['/user/change-password']) ?></li>
                     <?php endif ?>
+                    <?php if (\app\components\UserPermissions::isAdmin()): ?>
+                    <li><?= Html::a('Site Admin Panel', ['/admin/index']) ?></li>
+                    <?php endif ?>
                 </ul>
 
             </div>

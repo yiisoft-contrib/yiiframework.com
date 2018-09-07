@@ -15,11 +15,13 @@ use yii\helpers\Inflector;
  * IPBAdapter implements a forum bridge between the IPB 3.1 and the application.
  * Configure as follows:
  *
+ * ```php
  * 'forumBridge' => [
  *      'class' => \app\components\forum\IPBBridge::class,
  *      'db' => 'forumDb',
  *      'tablePrefix' => 'ipb_',
  *  ],
+ * ```
  */
 class IPBAdapter extends Component implements ForumAdapterInterface
 {
@@ -52,18 +54,6 @@ class IPBAdapter extends Component implements ForumAdapterInterface
         $this->db = Instance::ensure($this->db, Connection::className());
     }
 
-    public function getReputations($user)
-    {
-        if (!$user->forum_id) {
-            return [];
-        }
-
-        $tablePrefix = $this->tablePrefix;
-        $sql = "SELECT rep_date, rep_rating FROM {$tablePrefix}reputation_index WHERE member_id = :user_id ORDER BY rep_date ASC";
-        $cmd = $this->db->createCommand($sql, [':user_id' => $user->forum_id]);
-        return $cmd->queryAll();
-    }
-
     public function getPostDate($user, $number)
     {
         if (!$user->forum_id) {
@@ -94,6 +84,13 @@ class IPBAdapter extends Component implements ForumAdapterInterface
         $tablePrefix = $this->tablePrefix;
         $sql = "SELECT member_id, posts FROM {$tablePrefix}members";
         return ArrayHelper::map($this->db->createCommand($sql)->queryAll(),'member_id','posts');
+    }
+
+    public function getPostCountsByUsername()
+    {
+        $tablePrefix = $this->tablePrefix;
+        $sql = "SELECT `name`, posts FROM {$tablePrefix}members";
+        return ArrayHelper::map($this->db->createCommand($sql)->queryAll(),'name','posts');
     }
 
     /**
@@ -222,5 +219,14 @@ class IPBAdapter extends Component implements ForumAdapterInterface
     private function getCurrentIp()
     {
         return isset($_SERVER['REMOTE_ADDR']) ? $_SERVER['REMOTE_ADDR'] : '127.0.0.1';
+    }
+
+    /**
+     * List of badges provided by the forum
+     * @return array
+     */
+    public function getForumBadges()
+    {
+        return [];
     }
 }
