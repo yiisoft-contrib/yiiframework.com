@@ -40,7 +40,7 @@ class DiscourseAdapter extends Component implements ForumAdapterInterface
     /**
      * @var string discourse API user name for requests that need admin permission.
      */
-    public $apiAdminUser = 'cebe';
+    public $apiAdminUser = 'system';
 
 
     /**
