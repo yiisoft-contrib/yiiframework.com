@@ -148,6 +148,7 @@ return [
         'location' => 'Germany',
         'duty' => 'Yii 1.x Core framework development',
         'photo' => '@web/image/team/noimage.png',
+        'github' => 'kidol',
         'status' => TeamStatus::TEAM_STATUS_PAST,
     ],
     [
