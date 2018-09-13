@@ -373,7 +373,10 @@ searchApiDocPopulateMembers = function(query, owner) {
                 name += '()';
             }
             var match = name.toLowerCase().indexOf(query.toLowerCase());
-            if (match == 0) {
+            // also match getter and setter names
+            var getmatch = name.toLowerCase().indexOf('get' + query.toLowerCase());
+            var setmatch = name.toLowerCase().indexOf('set' + query.toLowerCase());
+            if (match == 0 || getmatch == 0 || setmatch == 0) {
                 bestMatch.push(renderMember(m, query, owner));
             } else if (match == 1 && name.substring(0, 1) === '$') {
                 secondMatch.push(renderMember(m, query, owner));
@@ -435,7 +438,10 @@ searchApiDocPopulateTypes = function(query) {
                 name += '()';
             }
             var match = name.toLowerCase().indexOf(query.toLowerCase());
-            if (match == 0) {
+            // also match getter and setter names
+            var getmatch = name.toLowerCase().indexOf('get' + query.toLowerCase());
+            var setmatch = name.toLowerCase().indexOf('set' + query.toLowerCase());
+            if (match == 0 || getmatch == 0 || setmatch == 0) {
                 bestMatch.push(renderMember(m, query, ''));
             } else if (match == 1 && name.substring(0, 1) === '$') {
                 secondMatch.push(renderMember(m, query, ''));
