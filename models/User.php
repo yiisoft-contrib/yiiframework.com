@@ -194,11 +194,14 @@ class User extends ActiveRecord implements IdentityInterface
             [
                 'or',
                 [
-                    ['username' => $value],
-                    ['email' => $value]
+                    'username = :username',
+                    'email = :email'
                ]
             ]
-        )->active()->one();
+        )->active()->addParams([
+            'username' => $value,
+            'email' => $value,
+        ])->one();
     }
 
     /**
