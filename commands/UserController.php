@@ -198,7 +198,7 @@ class UserController  extends Controller
     public function actionSetPassword($email, $password)
     {
         /** @var User $user */
-        $user = User::find()->andWhere(['email' => $email]);
+        $user = User::find()->andWhere(['email' => $email])->one();
         if (!$user) {
             $this->stdout(Console::ansiFormat(sprintf('Unable to find user with email %s.', $email), [Console::FG_RED]));
             return ExitCode::NOUSER;
