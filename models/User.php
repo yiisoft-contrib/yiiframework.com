@@ -5,6 +5,7 @@ namespace app\models;
 use Yii;
 use yii\base\NotSupportedException;
 use yii\db\ActiveQuery;
+use yii\db\Query;
 use yii\helpers\Html;
 use yii\helpers\Url;
 use yii\web\IdentityInterface;
@@ -181,6 +182,20 @@ class User extends ActiveRecord implements IdentityInterface
     public static function findByUsername($username)
     {
         return static::findOne(['username' => $username, 'status' => self::STATUS_ACTIVE]);
+    }
+
+    /**
+     * Finds user by username or email
+     * @param string $value
+     * @return static|null
+     */
+    public static function findByUsernameOrEmail($value)
+    {
+        $query = (new Query())
+            ->where(['username' => $value])
+            ->orWhere(['email' => $value]);
+
+        return static::find()->where($query)->active()->one();
     }
 
     /**
