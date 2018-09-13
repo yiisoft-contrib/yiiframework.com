@@ -401,6 +401,6 @@ class ApiController extends BaseController
 
 
         }
-        throw new NotFoundHttpException('The requested page was not found.');
+        return $this->api404($section, $version);
     }
 }
