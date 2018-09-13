@@ -10,6 +10,7 @@ use app\models\Wiki;
 use app\models\WikiRevision;
 use yii\console\Controller;
 use Yii;
+use yii\console\ExitCode;
 use yii\helpers\Console;
 
 class UserController  extends Controller
@@ -192,5 +193,24 @@ class UserController  extends Controller
         if ($this->progress) {
             Console::endProgress();
         }
+    }
+
+    public function actionSetPassword($email, $password)
+    {
+        /** @var User $user */
+        $user = User::find()->andWhere(['email' => $email]);
+        if (!$user) {
+            $this->stdout(Console::ansiFormat(sprintf('Unable to find user with email %s.', $email), [Console::FG_RED]));
+            return ExitCode::NOUSER;
+        }
+
+        $user->setPassword($password);
+        if (!$user->save()) {
+            $this->stdout(Console::ansiFormat(sprintf('Unable to save user %s.', json_encode($user->getErrors())), [Console::FG_RED]));
+            return ExitCode::UNSPECIFIED_ERROR;
+        }
+
+        $this->stdout(Console::ansiFormat('Done.', [Console::FG_GREEN]));
+        return ExitCode::OK;
     }
 }
