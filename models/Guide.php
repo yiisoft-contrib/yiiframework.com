@@ -131,6 +131,40 @@ class Guide extends BaseObject
         return null;
     }
 
+    public function findSectionInOtherLanguages($name)
+    {
+        $result = [];
+        foreach($this->getVersionOptions() as $version) {
+            foreach($this->getLanguageOptions() as $language => $languageName) {
+
+                if ($this->type === self::TYPE_EXTENSION) {
+                    $guide = Guide::loadExtension($this->extension, $version, $language);
+                } else {
+                    $guide = Guide::load($version, $language, $this->type);
+                }
+                if ($guide === null) {
+                    continue;
+                }
+                $section = $guide->loadSection($name);
+                if ($section === null) {
+                    continue;
+                }
+                $result[$version][] = $section;
+            }
+        }
+
+        return $result;
+    }
+
+    public static function getExtensionOptions($extension)
+    {
+        $guideInfo = Yii::getAlias("@app/data/extensions/{$extension->name}/guide.json");
+        if (!file_exists($guideInfo)) {
+            return [];
+        }
+        return Json::decode(file_get_contents($guideInfo));
+    }
+
     /**
      * @return array language ID => language name
      */
