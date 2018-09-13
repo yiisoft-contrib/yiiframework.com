@@ -80,10 +80,7 @@ return [
     // content reporting
 
     'reports/<action:[\w-]+>' => 'report/<action>',
-
-	  // TODO handle URLs from old site
-    // /ext/files/?id=864
-    'extensions/page/<page:\d+>' => 'extension/index',
+    
     'extension/<name:[A-z][A-z0-9\-]*>' => 'extension/view',
     'extensions' => 'extension/index',
     'extensions/<action:[\w-]+>' => 'extension/<action>',
