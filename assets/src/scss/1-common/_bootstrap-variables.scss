@@ -121,7 +121,7 @@ $navbar-inverse-toggle-border-color:        darken($navbar-inverse-bg, 5%);
 // $font-size-h6:            ceil(($font-size-base * 0.85));
 
 //** Unit-less `line-height` for use in components like buttons.
-$line-height-base:        1.625; // 26/16
+$line-height-base: 1.4;
 //** Computed "line-height" (`font-size` * `line-height`) for use with `margin`, `padding`, etc.
 // $line-height-computed:    floor(($font-size-base * $line-height-base)); // ~20px
 

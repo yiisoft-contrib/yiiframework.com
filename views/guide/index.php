@@ -38,6 +38,9 @@ $this->endBlock();
                 </div>
                 <div class="panel-body">
                 <?= Html::ul($sections, ['item' => function ($name, $title) use ($guide) {
+                    if (preg_match('~^https?://~', $name)) {
+                        return '<li>' . Html::a(Html::encode($title), $name) . '</li>';
+                    }
                     return '<li>' . Html::a(Html::encode($title), ['guide/view',
                         'section' => $name,
                         'language' => $guide->language,

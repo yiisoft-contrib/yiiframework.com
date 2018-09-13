@@ -49,6 +49,9 @@ class SearchWiki extends SearchActiveRecord
      */
     public static function createRecord($wiki)
     {
+        if ($wiki->status != Wiki::STATUS_PUBLISHED) {
+            return;
+        }
         $model = new static();
         $model->id = $wiki->id;
         $model->version = $wiki->yii_version;
@@ -66,6 +69,14 @@ class SearchWiki extends SearchActiveRecord
     public static function updateRecord($wiki)
     {
         $model = static::findOne($wiki->id);
+
+        if ($wiki->status != Wiki::STATUS_PUBLISHED) {
+            if ($model !== null) {
+                $model->delete();
+            }
+            return;
+        }
+
         if ($model === null) {
             $model = new static();
         }

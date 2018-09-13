@@ -43,6 +43,9 @@ class SearchNews extends SearchActiveRecord
      */
     public static function createRecord($news)
     {
+        if ($news->status != News::STATUS_PUBLISHED) {
+            return;
+        }
         $model = new static();
         $model->id = $news->id;
         $model->title = $news->title;
@@ -57,6 +60,14 @@ class SearchNews extends SearchActiveRecord
     public static function updateRecord($news)
     {
         $model = static::findOne($news->id);
+
+        if ($news->status != News::STATUS_PUBLISHED) {
+            if ($model !== null) {
+                $model->delete();
+            }
+            return;
+        }
+
         if ($model === null) {
             $model = new static();
         }

@@ -49,7 +49,12 @@ $this->params['breadcrumbs'][] = $this->title;
         ],
 
         'email:email',
-        // 'status',
+        [
+            'attribute' => 'status',
+            'value' => 'statusLabel',
+            'format' => 'raw',
+            'filter' => \app\models\User::getStatuses(),
+        ],
         'created_at:datetime',
         // 'updated_at',
 

@@ -79,6 +79,10 @@ $this->title = $model->title;
 
                     <?= Html::a('Update Article', ['wiki/update', 'id' => $model->id])?>
 
+                    <?php if (Yii::$app->user->can(\app\components\UserPermissions::PERMISSION_MANAGE_WIKI)): ?>
+                        <br>
+                        <?= Html::a('View as Admin', ['wiki-admin/view', 'id' => $model->id]) ?>
+                    <?php endif; ?>
 
                     <h3>Revisions</h3>
 

@@ -43,13 +43,29 @@ $this->endBlock();
                 echo implode(', ', $parts);
                 ?></small></h1>
 
-	        <?php if (empty($category) && empty($tag)) {
-	        	echo \app\widgets\SearchForm::widget([
-                    'type' => \app\models\search\SearchActiveRecord::SEARCH_EXTENSION,
-                    'version' => isset($version) ? $version : '2.0',
-                    'placeholder' => 'Search Extensions…',
-                ]);
-			} ?>
+	        <?php if (empty($category) && empty($tag)): ?>
+                <div class="panel panel-default">
+                    <div class="panel-body">
+                        <p>
+                            The Yii community has developed a great amount of extensions that
+                            provide a lot of useful functionality.
+
+                        </p>
+                        <ul>
+                            <li>The extensions you find here are <strong>user contributed extensions</strong>.</li>
+                            <li>There is also a set of extensions maintained by the Yii team,
+                                we call these <?= Html::a('official extensions', ['extension/official']) ?>.</li>
+                        </ul>
+
+                        <?= \app\widgets\SearchForm::widget([
+                            'type' => \app\models\search\SearchActiveRecord::SEARCH_EXTENSION,
+                            'version' => isset($version) ? $version : '2.0',
+                            'placeholder' => 'Search Extensions…',
+                        ]) ?>
+                    </div>
+                </div>
+
+            <?php endif; ?>
 
 
             <?= \yii\widgets\ListView::widget([

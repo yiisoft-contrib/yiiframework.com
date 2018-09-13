@@ -17,7 +17,7 @@ return [
         },
     ],
     'components.forumAdapter' => [
-        'class' => app\components\ForumAdapter::class
+        'class' => app\components\forum\DummyAdapter::class
     ],
     'components.cache' => [
         'class' => YII_DEBUG ? yii\caching\DummyCache::class : yii\caching\FileCache::class,
@@ -75,6 +75,7 @@ return [
     'api.baseUrl' => '/doc/api',
     'guide.baseUrl' => '/doc/guide',
     'blogtut.baseUrl' => '/doc/blog',
+    'baseUrl' => '',
 
     'guide.versions' => [
         '2.0' => [
@@ -86,7 +87,9 @@ return [
             'pl' => 'Polski',       // Polish
             'pt-br' => 'Português brasileiro',  // Brazilian Portuguese
             'ru' => 'Русский',     // Russian
+            'uk' => 'Українська', // Ukrainian
             'zh-cn' => '简体中文',  // Simplified Chinese
+            'vi' => 'Tiếng Việt', // Vietnamese
         ],
         '1.1' => [
             'de' => 'Deutsch',      // German
@@ -192,4 +195,14 @@ return [
 
     // configure this in local config
     'siteAbsoluteUrl' => null,
+    'recaptcha.key' => null,
+    'recaptcha.secret' => null,
+    'recaptcha.enabled' => false,
+
+    // configuration for Discourse Forum SSO
+    // https://meta.discourse.org/t/official-single-sign-on-for-discourse-sso/13045
+    // configure Discourse to point SSO requests to https://www.yiiframework.com/auth/discourse-sso
+    'discourse.sso_secret' => '',
+    'discourse.sso_url' => 'https://forum.yiiframework.com',
+
 ];

@@ -2,7 +2,7 @@
 
 namespace app\models\badges;
 
-use app\components\ForumAdapter;
+use app\components\forum\ForumAdapterInterface;
 use app\models\Badge;
 use app\models\UserBadge;
 
@@ -30,7 +30,7 @@ class ForumPost1Badge extends Badge
 
     protected function countPosts($user, $threshold)
     {
-        /** @var ForumAdapter $adapter */
+        /** @var ForumAdapterInterface $adapter */
         $adapter = \Yii::$app->forumAdapter;
         $start = $adapter->getPostDate($user, 1);
         $complete = $adapter->getPostDate($user, $threshold);

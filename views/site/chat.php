@@ -18,23 +18,22 @@ use yii\helpers\Html;
 
         <p>
             We have a Slack channel:
-            <a href="https://join.slack.com/t/yii/shared_invite/MjIxMjMxMTk5MTU1LTE1MDE3MDAwMzMtM2VkMTMyMjY1Ng">yii.slack.com</a>.
+            <a href="https://join.slack.com/t/yii/shared_invite/enQtMzQ4MDExMDcyNTk2LWUzN2RlZmJiMDdiZDIwOWI4M2U3ODYwOTRjZDk5MTY1ZWM3YTY5MTVkNzRiN2RlMWQxODA5N2ZmY2E5NWI2YTM">yii.slack.com</a>.
             There are <a href="https://slack.com/downloads/">handy clients for Desktop and phones</a>.
         </p>
 
         <h2>IRC</h2>
         <p>
-            Our IRC channel is on the <a href="http://freenode.net/">freenode IRC network</a>. Simply click on
-            <a href="irc://irc.freenode.net/yii">#yii on the Freenode IRC network</a> if you have an IRC client,
-            or use the following Web-based IRC client to join the channel.
+            Our IRC channel is on the <a href="http://freenode.net/">Freenode IRC network</a>. If you already have
+            an IRC client installed, simply click on <a href="irc://irc.freenode.net/yii">#yii on the Freenode IRC network</a>.
+            Otherwise feel free to use the web-based IRC client below to join the channel and start the chat.
         </p>
-
 
         <p>
             We have two bots in the channel: <a href="<?= Yii::getAlias('@web/wiki/369/') ?>" target="_blank">MrFisk</a> and Gillette, which post
             documentation references about the code we talk about.
         </p>
 
-        <iframe src="https://webchat.freenode.net?channels=yii&uio=OT10cnVlJjExPTE5NSYxMj10cnVl09" width="100%" height="480" style="border:1px solid silver;"></iframe>
+        <iframe src="https://kiwiirc.com/nextclient/#irc://irc.freenode.net/#yii" width="100%" height="480" style="border:1px solid silver;"></iframe>
     </div>
 </div>

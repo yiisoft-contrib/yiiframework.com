@@ -33,6 +33,10 @@ $this->params['breadcrumbs'][] = $this->title;
 
             <?= $form->field($model, 'password', ['inputOptions' => ['class'=>'login-control','placeholder' => $model->getAttributeLabel('password')]])->passwordInput()->label(false) ?>
 
+            <?php if (Yii::$app->params['recaptcha.enabled']): ?>
+            <?= $form->field($model, 'reCaptcha')->widget(\himiklab\yii2\recaptcha\ReCaptcha::class)->label(false) ?>
+            <?php endif ?>
+
             <?= Html::submitButton('Create New Account', ['class' => 'btn btn-lg btn-block']) ?>
             
             <?php ActiveForm::end(); ?>

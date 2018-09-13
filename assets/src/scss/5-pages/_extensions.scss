@@ -168,4 +168,11 @@ ul.extension-side-comments {
       font-size: 1.4rem;
     }
   }
+  img {
+    max-width: 100%;
+  }
+}
+
+.panel-body p:last-child {
+  margin-bottom: 0;
 }

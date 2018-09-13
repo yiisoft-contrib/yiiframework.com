@@ -15,6 +15,9 @@ $this->params['breadcrumbs'][] = $this->title;
 
 <p>
     <?= Html::a('View Profile', ['user/view', 'id' => $model->id], ['class' => 'btn btn-default']) ?>
+    <?= Html::a("View Comments ({$model->comment_count})", ['comment-admin/index', 'CommentSearch[user.username]' => $model->username], ['class' => 'btn btn-default']) ?>
+    <?= Html::a("View Wikis ({$model->wiki_count})", ['wiki-admin/index', 'WikiSearch[creator.username]' => $model->username], ['class' => 'btn btn-default']) ?>
+    <?= Html::a("View Extensions ({$model->extension_count})", '#', ['class' => 'btn btn-default disabled']) ?>
     <?= Html::a('Update', ['update', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
     <?= Html::a('Delete', ['delete', 'id' => $model->id], [
         'class' => 'btn btn-danger',
@@ -23,12 +26,23 @@ $this->params['breadcrumbs'][] = $this->title;
             'method' => 'post',
         ],
     ]) ?>
+    <?= Html::a('Unpublish content', ['unpublish-content', 'id' => $model->id], [
+        'class' => 'btn btn-danger',
+        'data' => [
+            'confirm' => 'Are you sure you want to unpublish ALL content added by this user?',
+            'method' => 'post',
+        ],
+    ]) ?>
 </p>
 <?php
 
 $authClients = [];
 foreach($model->authClients as $authClient) {
-    $authClients[] = Html::encode($authClient->source);
+    if ($authClient->source === 'github') {
+        $authClients[] = Html::a(Html::encode($authClient->source), 'https://github.com/' . $authClient->source_login, ['target' => '_blank', 'rel' => 'noopener']);
+    } else {
+        $authClients[] = Html::encode($authClient->source);
+    }
 }
 $authClients = empty($authClients) ? '<span class="not-set">(none)</span>' : implode(', ', $authClients);
 
@@ -44,12 +58,31 @@ $authClients = empty($authClients) ? '<span class="not-set">(none)</span>' : imp
             'value' => $authClients,
             'format' => 'raw',
         ],
-        'login_time',
+        'login_time:datetimerel',
         'login_attempts',
         'login_ip',
         'email:email',
-        'status',
-        'created_at:datetime',
-        'updated_at:datetime',
+        'email_verified:boolean',
+        [
+            'attribute' => 'status',
+            'value' => $model->statusLabel,
+            'format' => 'raw',
+        ],
+        'created_at:datetimerel',
+        'updated_at:datetimerel',
+    ],
+]) ?>
+
+<h2>Forum integration</h2>
+
+<?= DetailView::widget([
+    'model' => $model,
+    'attributes' => [
+        'forum_id',
+        [
+            'label' => 'Forum Profile',
+            'value' => Yii::getAlias($model->getForumUrl()),
+            'format' => 'url',
+        ],
     ],
 ]) ?>

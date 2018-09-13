@@ -53,6 +53,10 @@ class SearchExtension extends SearchActiveRecord
      */
     public static function createRecord($extension)
     {
+        if ($extension->status != Extension::STATUS_PUBLISHED) {
+            return;
+        }
+
         $model = new static();
         $model->id = $extension->id;
         $model->name = $extension->name;
@@ -72,6 +76,14 @@ class SearchExtension extends SearchActiveRecord
     public static function updateRecord($extension)
     {
         $model = static::findOne($extension->id);
+
+        if ($extension->status != Extension::STATUS_PUBLISHED) {
+            if ($model !== null) {
+                $model->delete();
+            }
+            return;
+        }
+
         if ($model === null) {
             $model = new static();
         }

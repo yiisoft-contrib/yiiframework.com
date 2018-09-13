@@ -3,7 +3,6 @@
 namespace app\models;
 
 use Yii;
-use yii\db\Query;
 
 /**
  * This is the model class for table "badges".
@@ -27,6 +26,14 @@ abstract class Badge extends ActiveRecord
     public static function tableName()
     {
         return '{{%badges}}';
+    }
+
+    /**
+     * @return BadgeQuery
+     */
+    public static function find()
+    {
+        return Yii::createObject(BadgeQuery::class, [get_called_class()]);
     }
 
     /**

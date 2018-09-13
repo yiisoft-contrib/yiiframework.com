@@ -236,6 +236,14 @@ class SearchController  extends Controller
         $data = $guideController->findRenderer(null)->loadGuideStructure([$source . '/README.md']);
         foreach ($data as $i => $chapter) {
             foreach ($chapter['content'] as $j => $section) {
+
+                // if section is an external reference, do only add it to main navigation
+                if (preg_match('~^https?://~', $section['file'])) {
+                    // index file
+                    $chapters[$chapter['headline']][$section['headline']] = $section['file'];
+                    continue;
+                }
+
                 $file = basename($section['file'], '.md');
                 if ($file === 'README') {
                     continue;

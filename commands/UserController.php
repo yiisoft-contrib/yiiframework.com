@@ -2,6 +2,7 @@
 
 namespace app\commands;
 
+use app\components\forum\ForumAdapterInterface;
 use app\models\Comment;
 use app\models\Extension;
 use app\models\User;
@@ -9,6 +10,7 @@ use app\models\Wiki;
 use app\models\WikiRevision;
 use yii\console\Controller;
 use Yii;
+use yii\console\ExitCode;
 use yii\helpers\Console;
 
 class UserController  extends Controller
@@ -62,6 +64,7 @@ class UserController  extends Controller
 
         $extensionScores = Extension::find()
             ->active()
+            ->excludeOfficial()
             ->select(['score' => 'SUM(rating+0.1)*10'])
             ->groupBy('owner_id')
             ->indexBy('owner_id')
@@ -86,6 +89,7 @@ class UserController  extends Controller
 
         $extensionCounts = Extension::find()
             ->active()
+            ->excludeOfficial()
             ->select(['score' => 'COUNT(*)'])
             ->groupBy('owner_id')
             ->indexBy('owner_id')
@@ -96,11 +100,12 @@ class UserController  extends Controller
             ->groupBy('creator_id')
             ->indexBy('creator_id')
             ->column($db);
-        // TODO forum connection
-//        $postCounts=ArrayHelper::map($db->createCommand('SELECT member_id, posts FROM ipb_members')->queryAll(),'member_id','posts');
-        $postCounts = [];
 
-        $users = User::find()->asArray();
+        /** @var ForumAdapterInterface $forumAdapter */
+        $forumAdapter = Yii::$app->forumAdapter;
+        $postCounts = $forumAdapter->getPostCountsByUsername();
+
+        $users = User::find();
         //$users = $db->createCommand('SELECT t.id, t.rating, t.post_count, t.wiki_count, t.extension_count, t.comment_count, f.last_visit, f.joined, f.posts FROM {{%user}} t, ipb_members f WHERE t.id=f.member_id')->queryAll();
         $updateCommand = $db->createCommand("UPDATE {{%user}} SET rating=:rating, post_count=:posts, extension_count=:extensions, comment_count=:comments, wiki_count=:wiki WHERE id=:id");
         if ($this->progress) {
@@ -108,8 +113,13 @@ class UserController  extends Controller
         }
         foreach($users->each(500, $db) as $user) {
             $id = $user['id'];
+            $username = $user['username'];
 
-            $posts = isset($postCounts[$id]) ? $postCounts[$id] : 0;
+            if ($postCounts !== null) {
+                $posts = isset($postCounts[$username]) ? $postCounts[$username] : 0;
+            } else {
+                $posts = $forumAdapter->getPostCount($user);
+            }
             $rating = $posts / 10;
 
             $lastLogin = strtotime($user['login_time']);
@@ -133,7 +143,6 @@ class UserController  extends Controller
             $comments = isset($commentScores[$id]) ? $commentScores[$id] : 0;
             $wiki = isset($wikiCounts[$id]) ? $wikiCounts[$id] : 0;
             $extensions = isset($extensionCounts[$id]) ? $extensionCounts[$id] : 0;
-            $posts = isset($postCounts[$id]) ? $postCounts[$id] : 0;
 
             // update only if something has changed
             if ($user['rating'] != $rating ||
@@ -184,5 +193,24 @@ class UserController  extends Controller
         if ($this->progress) {
             Console::endProgress();
         }
+    }
+
+    public function actionSetPassword($email, $password)
+    {
+        /** @var User $user */
+        $user = User::find()->andWhere(['email' => $email])->one();
+        if (!$user) {
+            $this->stdout(Console::ansiFormat(sprintf('Unable to find user with email %s.', $email), [Console::FG_RED]));
+            return ExitCode::NOUSER;
+        }
+
+        $user->setPassword($password);
+        if (!$user->save()) {
+            $this->stdout(Console::ansiFormat(sprintf('Unable to save user %s.', json_encode($user->getErrors())), [Console::FG_RED]));
+            return ExitCode::UNSPECIFIED_ERROR;
+        }
+
+        $this->stdout(Console::ansiFormat('Done.', [Console::FG_GREEN]));
+        return ExitCode::OK;
     }
 }

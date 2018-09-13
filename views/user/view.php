@@ -1,5 +1,6 @@
 <?php
 
+use app\components\UserPermissions;
 use app\models\Badge;
 use yii\helpers\Html;
 use yii\widgets\DetailView;
@@ -12,13 +13,13 @@ use yii\widgets\DetailView;
 
 $this->title = $model->display_name . "'s profile";
 
-if (Yii::$app->user->can('users:pAdmin')) {
+if (Yii::$app->user->can(UserPermissions::PERMISSION_MANAGE_USERS)) {
     $this->beginBlock('adminNav');
     echo \yii\bootstrap\Nav::widget([
         'id' => 'admin-nav',
         'items' => [
-            ['label' => 'User Admin', 'url' => ['user-admin/index'], 'visible' => Yii::$app->user->can('users:pAdmin') ],
-            ['label' => 'Update User', 'url' => ['user-admin/view', 'id' => $model->id], 'visible' => Yii::$app->user->can('users:pAdmin') ],
+            ['label' => 'User Admin', 'url' => ['user-admin/index'], 'visible' => Yii::$app->user->can(UserPermissions::PERMISSION_MANAGE_USERS) ],
+            ['label' => 'View User as Admin', 'url' => ['user-admin/view', 'id' => $model->id], 'visible' => Yii::$app->user->can(UserPermissions::PERMISSION_MANAGE_USERS) ],
         ],
     ]);
     $this->endBlock();
@@ -89,10 +90,15 @@ $this->registerMetaTag(['name' => 'keywords', 'value' => 'yii framework, communi
             <ul class="list-unstyled">
                 <?php foreach($model->getBadges()->with('badge')->all() as $info): ?>
                 <?php
-                   if($info->complete_time)
+                    if (!$info->badge->active) {
+                        continue;
+                    }
+
+                   if($info->complete_time) {
                        $title = sprintf('%s earned this badge on %s', Html::encode($model->display_name), Yii::$app->formatter->asDate($info->complete_time));
-                   else
+                   } else {
                        $title = sprintf('%s started this badge on %s', Html::encode($model->display_name), Yii::$app->formatter->asDate($info->create_time));
+                   }
                ?>
                    <li>
                        <div class="userbadge userbadge-<?= $info->badge->urlname ?>" title="<?= $title ?>">

@@ -41,6 +41,12 @@ class RbacController extends Controller
         $this->stdout("Adding wiki admin.\n");
         $this->addWikiAdmin($auth);
 
+        $this->stdout("Adding comment admin.\n");
+        $this->addCommentAdmin($auth);
+
+        $this->stdout("Adding forum admin.\n");
+        $this->addForumAdmin($auth);
+
         if ($auth instanceof DbManager) {
             $this->stdout("Restoring assignments.\n");
             $auth->db->createCommand()->batchInsert(
@@ -126,6 +132,38 @@ class RbacController extends Controller
         $auth->add($manageWiki);
 
         $auth->addChild($wikiAdmin, $manageWiki);
+    }
+
+    /**
+     * @param ManagerInterface $auth
+     */
+    private function addCommentAdmin($auth)
+    {
+        $commentAdmin = $auth->createRole(UserPermissions::ROLE_COMMENT_ADMIN);
+        $commentAdmin->description = 'Comment admin.';
+        $auth->add($commentAdmin);
+
+        $manageComments = $auth->createPermission(UserPermissions::PERMISSION_MANAGE_COMMENTS);
+        $manageComments->description = 'Manage comments.';
+        $auth->add($manageComments);
+
+        $auth->addChild($commentAdmin, $manageComments);
+    }
+
+    /**
+     * @param ManagerInterface $auth
+     */
+    private function addForumAdmin($auth)
+    {
+        $forumAdmin = $auth->createRole(UserPermissions::ROLE_FORUM_ADMIN);
+        $forumAdmin->description = 'Forum admin.';
+        $auth->add($forumAdmin);
+
+        $manageForum = $auth->createPermission(UserPermissions::PERMISSION_MANAGE_FORUM);
+        $manageForum->description = 'Manage Forum Integration.';
+        $auth->add($manageForum);
+
+        $auth->addChild($forumAdmin, $manageForum);
     }
 
     public function actionAssign($username, $role)

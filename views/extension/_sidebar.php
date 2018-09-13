@@ -31,6 +31,8 @@ use yii\helpers\Url;
 
 <?php endif; ?>
 
+<?php if (!isset($hideCategoryAndTags)): ?>
+
 <h3 class="extension-side-title">Categories</h3>
 
 <ul class="extension-side-menu">
@@ -69,3 +71,4 @@ use yii\helpers\Url;
     'menuClass' => 'extension-side-comments last-side-menu',
 ])?>
 
+<?php endif; ?>

@@ -20,7 +20,7 @@ use yii\helpers\Html;
 
                 <ul>
                     <li><?= Html::a('Documentation', ['guide/entry']) ?></li>
-                    <li>Community</li>
+                    <li><?= Html::a('Community', ['site/community']) ?></li>
                     <li><?= Html::a('Extensions', ['extension/index']) ?></li>
                 </ul>
             </div>

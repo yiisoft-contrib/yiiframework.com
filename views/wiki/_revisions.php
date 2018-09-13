@@ -1,5 +1,6 @@
 <?php
 
+use app\models\User;
 use yii\helpers\Html;
 use yii\helpers\StringHelper;
 
@@ -14,7 +15,7 @@ use yii\helpers\StringHelper;
     <li>
         <?= Html::a(Yii::$app->formatter->asRelativeTime($revision->updated_at), ['wiki/view', 'id' => $model->id, 'name' => $model->slug, 'revision' => $revision->revision]) ?>
         by
-        <?= $revision->updater->getRankLink() ?>
+        <?= $revision->updater ? $revision->updater->getRankLink() : User::DELETED_USER_HTML ?>
         <div class="wiki-revision-memo"><?= Html::encode(StringHelper::truncate($revision->memo, 40)) ?></div>
     </li>
 <?php endforeach; ?>

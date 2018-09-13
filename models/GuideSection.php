@@ -56,6 +56,19 @@ class GuideSection extends BaseObject
         return $this->content !== false;
     }
 
+    public function hasTranslation($language)
+    {
+        if ($this->guide->type === Guide::TYPE_EXTENSION) {
+            $translationGuide = Guide::loadExtension($this->guide->extension, $this->guide->version, $language);
+        } else {
+            $translationGuide = Guide::load($this->guide->version, $language, $this->guide->type);
+        }
+        if (!$translationGuide) {
+            return false;
+        }
+        return $translationGuide->loadSection($this->name) !== null;
+    }
+
     /**
      * @return string the title is suitable for being used as a page title
      */
@@ -125,13 +138,21 @@ class GuideSection extends BaseObject
 
     protected function loadContent($name, $version, $language)
     {
-        $file = Yii::getAlias("@app/data/{$this->guide->type}-$version/$language/$name.html");
+        if ($this->guide->type === Guide::TYPE_EXTENSION) {
+            $file = Yii::getAlias("@app/data/extensions/{$this->guide->extension->name}/guide-$version/$language/$name.html");
+        } else {
+            $file = Yii::getAlias("@app/data/{$this->guide->type}-$version/$language/$name.html");
+        }
         return @file_get_contents($file);
     }
 
     protected function loadHeadings($name, $version, $language)
     {
-        $file = Yii::getAlias("@app/data/{$this->guide->type}-$version/$language/$name.json");
+        if ($this->guide->type === Guide::TYPE_EXTENSION) {
+            $file = Yii::getAlias("@app/data/extensions/{$this->guide->extension->name}/guide-$version/$language/$name.json");
+        } else {
+            $file = Yii::getAlias("@app/data/{$this->guide->type}-$version/$language/$name.json");
+        }
         $json = @file_get_contents($file);
         return empty($json) ? [] : Json::decode($json);
     }

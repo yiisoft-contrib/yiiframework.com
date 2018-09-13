@@ -70,7 +70,7 @@ return [
         'photo' => '@web/image/team/klimov-paul.jpg',
         'github' => 'klimov-paul',
         'twitter' => 'klimov_paul',
-        'status' => TeamStatus::TEAM_STATUS_ACTIVE,
+        'status' => TeamStatus::TEAM_STATUS_INACTIVE,
     ],
     [
         'name' => 'Dmitry Naumenko',
@@ -148,6 +148,7 @@ return [
         'location' => 'Germany',
         'duty' => 'Yii 1.x Core framework development',
         'photo' => '@web/image/team/noimage.png',
+        'github' => 'kidol',
         'status' => TeamStatus::TEAM_STATUS_PAST,
     ],
     [
@@ -206,8 +207,8 @@ return [
     ],
     [
         'name' => 'Alexey Rogachev',
-        'id' => '',
-        'forumName' => '',
+        'id' => '233116',
+        'forumName' => 'arogachev',
         'period' => 'Mar 2017 - May 2017',
         'location' => 'Petropavl, Kazakhstan',
         'duty' => 'Core framework development',
@@ -217,14 +218,26 @@ return [
     ],
     [
         'name' => 'Anton Gubarev',
-        'id' => '',
-        'forumName' => '',
+        'id' => '296750',
+        'forumName' => 'Anton Gubarev',
         'period' => 'Aug 2017',
         'location' => 'Russia',
         'duty' => 'Twig extension',
         'photo' => '@web/image/team/amarox.jpg',
         'github' => 'amarox',
         'status' => TeamStatus::TEAM_STATUS_INACTIVE,
+    ],
+    [
+        'name' => 'Andrii Vasyliev',
+        'id' => '290660',
+        'forumName' => 'hiqsol',
+        'period' => 'July 2018',
+        'location' => ' Kiev, Ukraine',
+        'duty' => 'Yii 3.0 development',
+        'photo' => '@web/image/team/hiqsol.jpg',
+        'github' => 'hiqsol',
+        'twitter' => 'hiqsol',
+        'status' => TeamStatus::TEAM_STATUS_ACTIVE,
     ],
 
 ];

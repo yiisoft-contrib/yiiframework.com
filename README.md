@@ -37,16 +37,10 @@ composer global require "fxp/composer-asset-plugin:^1.4.2"
 composer install
 
 # install gulp globally if you haven't done so before
-npm install -g gulp-cli
-
-# At this stage if you're on Windows and having trouble
-npm install -g npm
-npm -v
-# should output 3.x.x
-# Also make sure you have MS C++ build tools: https://www.microsoft.com/en-us/download/details.aspx?id=48159
+yarn global add gulp-cli
 
 # install dependent NPM modules
-npm install
+yarn install
 
 # initialize the application, choose "development"
 ./init
@@ -88,7 +82,7 @@ Configure database connection in `config/params-local.php`. You may copy-paste a
 'twitter.accessTokenSecret' => ''
 ```
 
-Continure with the following commands:
+Continue with the following commands:
 
 ```
 # run migrations
@@ -177,10 +171,10 @@ Additionally, `queue/listen` should run as a daemon or `queue/run` as a cronjob.
 
 ### DEPLOYMENT
 
-This section covers notes for deployment on a server, you may not need this for your dev env. OS is assumed to be debian Jessie.
+This section covers notes for deployment on a server, you may not need this for your dev env. OS is assumed to be debian Stretch.
 
 ```
-apt-get install texlive-full git nodejs npm make
+apt-get install texlive-full git nodejs make
 ```
 
 ## Maintenance

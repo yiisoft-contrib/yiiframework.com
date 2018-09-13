@@ -102,6 +102,17 @@ $this->params['breadcrumbs'][] = $this->title;
             <p class="text-center">
                 Please note that Yii 1.1 is in <a href="<?= Yii::getAlias('@web/news/90/update-on-yii-1-1-support-and-end-of-life/') ?>">maintenance mode</a>,
                 we will only accept security fixes and changes for compatibility with PHP 7.<br>Please consider upgrading to Yii 2 instead.</p>
+
+            <div class="heading-separator">
+                <h2><span>Website</span></h2>
+            </div>
+
+            <p class="text-center medium">If you want to report a bug for the yiiframework.com website, the code is open source too.</p>
+            <p class="text-center medium">Please open an issue in the <a target="_blank" rel="noopener noreferrer" href="https://github.com/yiisoft-contrib/yiiframework.com">yiisoft-contrib/yiiframework.com</a> repository.</p>
+            <p class="text-center">
+                <a class="btn btn-lg btn-default github-btn" href="https://github.com/yiisoft-contrib/yiiframework.com/issues/new"><i class="fa fa-github"></i> <span>Report issue</span></a>
+            </p>
+
             </div>
         </div>
     </div>

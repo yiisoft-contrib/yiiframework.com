@@ -1,27 +1,29 @@
 <?php
 
-namespace app\components;
+namespace app\components\forum;
 
 use app\models\User;
 use yii\base\Component;
-use yii\base\InvalidArgumentException;
 use yii\base\InvalidConfigException;
 use yii\db\Connection;
 use yii\db\Query;
 use yii\di\Instance;
+use yii\helpers\ArrayHelper;
 use yii\helpers\Inflector;
 
 /**
- * ForumAdapter implements a bridge between the IPB 3.1 and the application.
+ * IPBAdapter implements a forum bridge between the IPB 3.1 and the application.
  * Configure as follows:
  *
+ * ```php
  * 'forumBridge' => [
- *      'class' => \app\components\ForumBridge::class,
+ *      'class' => \app\components\forum\IPBBridge::class,
  *      'db' => 'forumDb',
  *      'tablePrefix' => 'ipb_',
  *  ],
+ * ```
  */
-class ForumAdapter extends Component
+class IPBAdapter extends Component implements ForumAdapterInterface
 {
     const GROUP_VALIDATING = 1;
     const GROUP_MEMBERS = 3;
@@ -52,18 +54,6 @@ class ForumAdapter extends Component
         $this->db = Instance::ensure($this->db, Connection::className());
     }
 
-    public function getReputations($user)
-    {
-        if (!$user->forum_id) {
-            return [];
-        }
-
-        $tablePrefix = $this->tablePrefix;
-        $sql = "SELECT rep_date, rep_rating FROM {$tablePrefix}reputation_index WHERE member_id = :user_id ORDER BY rep_date ASC";
-        $cmd = $this->db->createCommand($sql, [':user_id' => $user->forum_id]);
-        return $cmd->queryAll();
-    }
-
     public function getPostDate($user, $number)
     {
         if (!$user->forum_id) {
@@ -87,6 +77,20 @@ class ForumAdapter extends Component
         $sql = "SELECT count(*) FROM {$tablePrefix}posts WHERE author_id = :user_id";
         $cmd = $this->db->createCommand($sql, [':user_id' => $user->forum_id]);
         return $cmd->queryScalar();
+    }
+
+    public function getPostCounts()
+    {
+        $tablePrefix = $this->tablePrefix;
+        $sql = "SELECT member_id, posts FROM {$tablePrefix}members";
+        return ArrayHelper::map($this->db->createCommand($sql)->queryAll(),'member_id','posts');
+    }
+
+    public function getPostCountsByUsername()
+    {
+        $tablePrefix = $this->tablePrefix;
+        $sql = "SELECT `name`, posts FROM {$tablePrefix}members";
+        return ArrayHelper::map($this->db->createCommand($sql)->queryAll(),'name','posts');
     }
 
     /**
@@ -165,7 +169,7 @@ class ForumAdapter extends Component
      *
      * Taken from IPB 3.1
      *
-     * @param int Length of desired salt, 5 by default
+     * @param int $len Length of desired salt, 5 by default
      * @return string n character random string
      */
     private function generateIPBPasswordSalt($len = 5)
@@ -190,7 +194,7 @@ class ForumAdapter extends Component
      *
      * Taken from IPB 3.1
      *
-     * @param int Length of desired random chars to MD5
+     * @param int $len Length of desired random chars to MD5
      * @return string MD5 hash of random characters
      */
     private function generateIPBAutoLoginKey($len = 60)
@@ -208,11 +212,21 @@ class ForumAdapter extends Component
      */
     private function getIPBPasswordHash($ipbSalt, $plainPassword)
     {
+        $plainPassword = User::parseLegacyPasswordValue($plainPassword);
         return md5(md5($ipbSalt) . md5($plainPassword));
     }
 
     private function getCurrentIp()
     {
         return isset($_SERVER['REMOTE_ADDR']) ? $_SERVER['REMOTE_ADDR'] : '127.0.0.1';
+    }
+
+    /**
+     * List of badges provided by the forum
+     * @return array
+     */
+    public function getForumBadges()
+    {
+        return [];
     }
 }

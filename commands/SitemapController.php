@@ -3,8 +3,10 @@
 namespace app\commands;
 
 use app\apidoc\ApiRenderer;
+use app\models\Extension;
 use app\models\Guide;
 use app\models\News;
+use app\models\Wiki;
 use Yii;
 use yii\console\Controller;
 use samdark\sitemap\Sitemap;
@@ -82,15 +84,28 @@ class SitemapController extends Controller
 
         //news
         $sitemap->addItem(Url::toRoute(['news/index'], true), null, Sitemap::HOURLY, 0.3);
-        /** @var News $news */
-        foreach (News::find()->latest()->asArray()->each(100) as $news) {
+        foreach (News::find()->latest()->published()->asArray()->each(100) as $news) {
             $url = Url::to(['news/view', 'id' => $news['id'], 'name' => $news['slug']], true);
-            $sitemap->addItem($url, $news['updated_at'], null, 0.3);
+
+            $updateTime = strtotime($news['updated_at'] ?? $news['created_at']);
+            $sitemap->addItem($url, $updateTime, null, 0.3);
         }
 
-        // TODO wiki
+        // wiki
+        foreach (Wiki::find()->latest()->each(1000) as $wiki) {
+            /** @var Wiki $wiki */
+            $url = Url::to($wiki->getUrl(), true);
+            $updateTime = strtotime($wiki['updated_at'] ?? $wiki['created_at']);
+            $sitemap->addItem($url, $updateTime, null, 0.3);
+        }
 
-        // TODO extensions
+        // extensions
+        foreach (Extension::find()->latest()->each(1000) as $extension) {
+            /** @var Extension $extension */
+            $url = Url::to($extension->getUrl(), true);
+            $updateTime = strtotime($extension['updated_at'] ?? $extension['created_at']);
+            $sitemap->addItem($url, $updateTime, null, 0.3);
+        }
     }
 
     /**

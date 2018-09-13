@@ -23,9 +23,9 @@ class RssController extends BaseController
         // Title of the feed
         $feed->setTitle('Live News for Yii Framework');
         // Link to the feed's target, usually a homepage:
-        $feed->setLink('http://www.yiiframework.com/');
+        $feed->setLink(Url::toRoute(['site/index'], true));
         // Link to the feed itself, and the feed type:
-        $feed->setFeedLink('http://www.yiiframework.com/rss.xml', 'rss');
+        $feed->setFeedLink(Url::toRoute(['rss/all'], true), 'rss');
 
         // Feed description; only required for RSS:
         $feed->setDescription('News, fresh extensions and wiki articles about Yii framework.');

@@ -4,11 +4,13 @@ namespace app\models;
 
 use Yii;
 use yii\base\BaseObject;
+use yii\helpers\Json;
 
 class Guide extends BaseObject
 {
     const TYPE_BLOG = 'blogtut';
     const TYPE_GUIDE = 'guide';
+    const TYPE_EXTENSION = 'ext';
 
     const LANGUAGE_EN = 'en';
 
@@ -23,6 +25,10 @@ class Guide extends BaseObject
      * @var string the language ID of this guide
      */
     public $language;
+    /**
+     * @var Extension the extension this guide is for, if its an extension guide. null otherwise.
+     */
+    public $extension;
     /**
      * @var string the title of this guide
      */
@@ -60,6 +66,16 @@ class Guide extends BaseObject
         return null;
     }
 
+    public static function loadExtension(Extension $extension, $version, $language)
+    {
+        $guide = new self($version, $language, self::TYPE_EXTENSION);
+        $guide->extension = $extension;
+        if ($guide->validate() && $guide->loadIndex()) {
+            return $guide;
+        }
+        return null;
+    }
+
     /**
      * @param string $image image file name (without directory part)
      * @param string $version
@@ -82,6 +98,24 @@ class Guide extends BaseObject
     }
 
     /**
+     * @param string $image image file name (without directory part)
+     * @return bool|string the image file path, or false if the image file does not exist
+     */
+    public function findExtensionImage($image)
+    {
+        if ($this->type !== self::TYPE_EXTENSION) {
+            return false;
+        }
+
+        if (preg_match('/^[\w\-\.]+\.(png|jpg|gif)$/i', $image)) {
+            $file = Yii::getAlias("@app/data/extensions/{$this->extension->name}/guide-{$this->version}/{$this->language}/images/$image");
+            return is_file($file) ? $file : false;
+        }
+
+        return false;
+    }
+
+    /**
      * @param string $name section name
      * @return GuideSection|null the guide section, or null if the section does not exist
      */
@@ -97,12 +131,61 @@ class Guide extends BaseObject
         return null;
     }
 
+    public function findSectionInOtherLanguages($name)
+    {
+        $result = [];
+        foreach($this->getVersionOptions() as $version) {
+            foreach($this->getLanguageOptions() as $language => $languageName) {
+
+                if ($this->type === self::TYPE_EXTENSION) {
+                    $guide = Guide::loadExtension($this->extension, $version, $language);
+                } else {
+                    $guide = Guide::load($version, $language, $this->type);
+                }
+                if ($guide === null) {
+                    continue;
+                }
+                $section = $guide->loadSection($name);
+                if ($section === null) {
+                    continue;
+                }
+                $result[$version][] = $section;
+            }
+        }
+
+        return $result;
+    }
+
+    public static function getExtensionOptions($extension)
+    {
+        $guideInfo = Yii::getAlias("@app/data/extensions/{$extension->name}/guide.json");
+        if (!file_exists($guideInfo)) {
+            return [];
+        }
+        return Json::decode(file_get_contents($guideInfo));
+    }
+
     /**
      * @return array language ID => language name
      */
     public function getLanguageOptions()
     {
-        return Yii::$app->params["{$this->type}.versions"][$this->version];
+        if ($this->type === self::TYPE_EXTENSION) {
+            $guideInfo = Yii::getAlias("@app/data/extensions/{$this->extension->name}/guide.json");
+            if (!file_exists($guideInfo)) {
+                return ['en' => 'English'];
+            }
+            $metadata = Json::decode(file_get_contents($guideInfo));
+            $languages = ['en' => 'English'];
+            foreach($metadata as $version => $langs) {
+                foreach($langs as $lang) {
+                    $languages[$lang] = \Locale::getDisplayLanguage($lang, $lang);
+                }
+            }
+            return $languages;
+        } else {
+            return Yii::$app->params["{$this->type}.versions"][$this->version];
+        }
     }
 
     /**
@@ -110,7 +193,18 @@ class Guide extends BaseObject
      */
     public function getVersionOptions()
     {
-        return array_keys(Yii::$app->params["{$this->type}.versions"]);
+        if ($this->type === self::TYPE_EXTENSION) {
+            $guideInfo = Yii::getAlias("@app/data/extensions/{$this->extension->name}/guide.json");
+            if (!file_exists($guideInfo)) {
+                return [];
+            }
+            $metadata = Json::decode(file_get_contents($guideInfo));
+            $versions = array_keys($metadata);
+        } else {
+            $versions = array_keys(Yii::$app->params["{$this->type}.versions"]);
+        }
+        arsort($versions);
+        return $versions;
     }
 
     /**
@@ -133,13 +227,30 @@ class Guide extends BaseObject
 
     protected function validate()
     {
-        $versions = Yii::$app->params["{$this->type}.versions"];
-        return isset($versions[$this->version]) && isset($versions[$this->version][$this->language]);
+        if ($this->type === self::TYPE_EXTENSION) {
+            if (!$this->extension) {
+                return false;
+            }
+            $guideInfo = Yii::getAlias("@app/data/extensions/{$this->extension->name}/guide.json");
+            if (!file_exists($guideInfo)) {
+                return false;
+            }
+            $metadata = Json::decode(file_get_contents($guideInfo));
+
+            return isset($metadata[$this->version]) && in_array($this->language, $metadata[$this->version], true);
+        } else {
+            $versions = Yii::$app->params["{$this->type}.versions"];
+            return isset($versions[$this->version]) && isset($versions[$this->version][$this->language]);
+        }
     }
 
     protected function loadIndex()
     {
-        $indexFile = Yii::getAlias("@app/data/{$this->type}-{$this->version}/{$this->language}/index.data");
+        if ($this->type === self::TYPE_EXTENSION) {
+            $indexFile = Yii::getAlias("@app/data/extensions/{$this->extension->name}/guide-{$this->version}/{$this->language}/index.data");
+        } else {
+            $indexFile = Yii::getAlias("@app/data/{$this->type}-{$this->version}/{$this->language}/index.data");
+        }
         if (is_file($indexFile)) {
             $index = @unserialize(file_get_contents($indexFile));
             if (count($index) === 3) {

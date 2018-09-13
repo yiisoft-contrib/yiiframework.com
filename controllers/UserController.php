@@ -7,13 +7,18 @@ use app\models\Badge;
 use app\models\ChangePasswordForm;
 use app\models\Extension;
 use app\models\Star;
+use app\models\UserAvatarUploadForm;
 use app\models\UserBadge;
 use app\models\Wiki;
 use Yii;
 use app\models\User;
 use yii\data\ActiveDataProvider;
 use yii\filters\AccessControl;
+use yii\filters\VerbFilter;
+use yii\helpers\ArrayHelper;
+use yii\helpers\Json;
 use yii\web\NotFoundHttpException;
+use yii\web\UploadedFile;
 
 /**
  * UserController implements the CRUD actions for User model.
@@ -31,16 +36,22 @@ class UserController extends BaseController
         return [
             'access' => [
                 'class' => AccessControl::class,
-                'only' => ['profile', 'request-email-verification', 'change-password'],
+                'only' => ['profile', 'request-email-verification', 'change-password', 'upload-avatar', 'delete-avatar'],
                 'rules' => [
                     [
-                        // allow all to a access index and view action
                         'allow' => true,
-                        'actions' => ['profile', 'request-email-verification', 'change-password'],
+                        'actions' => ['profile', 'request-email-verification', 'change-password', 'upload-avatar', 'delete-avatar'],
                         'roles' => ['@'],
                     ],
                 ]
             ],
+            'verb' => [
+                'class' => VerbFilter::class,
+                'actions' => [
+                    'upload-avatar' => ['POST'],
+                    'delete-avatar' => ['POST'],
+                ],
+            ]
         ];
     }
 
@@ -124,7 +135,7 @@ class UserController extends BaseController
             'model' => $model,
             'userCount' => User::find()->active()->count(),
             'wikis' => $model->getWikis()->orderBy('title')->active()->all() ,
-            'extensions' => $model->getExtensions()->orderBy('name')->active()->all(),
+            'extensions' => $model->getExtensions()->excludeOfficial()->orderBy('name')->active()->all(),
         ]);
     }
 
@@ -139,13 +150,14 @@ class UserController extends BaseController
 
         $extensions = Extension::find()
             ->active()
-            ->where(['owner_id' => $userId])
+            ->excludeOfficial()
+            ->andWhere(['owner_id' => $userId])
             ->orderBy('name')
             ->all();
 
         $wikiPages = Wiki::find()
             ->active()
-            ->where(['creator_id' => $userId])
+            ->andWhere(['creator_id' => $userId])
             ->orderBy('title')
             ->all();
 
@@ -164,9 +176,14 @@ class UserController extends BaseController
 
     public function actionBadges()
     {
-        $badges = Badge::find()->orderBy('achieved DESC, urlname')->all();
+        $badges = Badge::find()->active()->orderBy('achieved DESC, urlname')->all();
+
+        $forumBadges = Yii::$app->forumAdapter->getForumBadges();
+        ArrayHelper::multisort($forumBadges, 'grant_count', SORT_DESC);
+
         return $this->render('badges', [
             'badges' => $badges,
+            'forumBadges' => $forumBadges,
             'counts' => UserBadge::countUsers(),
         ]);
     }
@@ -174,7 +191,7 @@ class UserController extends BaseController
     public function actionViewBadge($name)
     {
         /** @var Badge $badge */
-        $badge = Badge::find()->where(['urlname' => $name])->one();
+        $badge = Badge::find()->active()->andWhere(['urlname' => $name])->one();
         if ($badge === null) {
             throw new NotFoundHttpException('Unknown badge');
         }
@@ -231,5 +248,65 @@ class UserController extends BaseController
         return $this->render('changePassword', [
             'changePasswordForm' => $changePasswordForm,
         ]);
+    }
+
+    /**
+     * Download avatar file (inline)
+     * @param int $id user id
+     * @throws NotFoundHttpException
+     */
+    public function actionAvatar($id)
+    {
+        $user = $this->findModel($id);
+        if ($user->hasAvatar()) {
+            return $this->sendFile($user->getAvatarPath());
+        }
+        throw new NotFoundHttpException('The requested page does not exist.');
+    }
+
+    /**
+     * Upload new user avatar file
+     */
+    public function actionUploadAvatar()
+    {
+        /** @var User $user */
+        $user = Yii::$app->user->identity;
+
+        $form = new UserAvatarUploadForm([
+            'user' => $user,
+        ]);
+        $form->load(Yii::$app->request->post());
+        $form->avatar = UploadedFile::getInstance($form, 'avatar');
+
+        $success = $form->upload();
+
+        if (Yii::$app->request->isAjax) {
+            // reply with JSON
+            if ($success) {
+                // success
+                return Json::encode([
+                    'url' => $user->getAvatarUrl(),
+                ]);
+            } else {
+                // error
+                Yii::$app->response->setStatusCode(422); // Unprocessable entity
+                return Json::encode([
+                    'error' => $form->getFirstError('avatar'),
+                ]);
+            }
+        } else {
+            if (!$success) {
+                Yii::$app->session->setFlash('error', 'Failed to upload file: ' . $form->getFirstError('avatar'));
+            }
+            return $this->redirect(['/user/profile']);
+        }
+    }
+
+    public function actionDeleteAvatar()
+    {
+        /** @var User $user */
+        $user = Yii::$app->user->identity;
+        $user->deleteAvatar();
+        return $this->redirect(['/user/profile']);
     }
 }

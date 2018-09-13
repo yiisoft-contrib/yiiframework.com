@@ -23,6 +23,7 @@ class Package
     private $createdAt;
     private $license;
     private $yii_version;
+    private $majorVersionReferences;
 
     /**
      * @return mixed
@@ -94,6 +95,14 @@ class Package
     public function getVersions()
     {
         return $this->versions;
+    }
+
+    /**
+     * @return array
+     */
+    public function getVersionReferences()
+    {
+        return $this->majorVersionReferences;
     }
 
     /**
@@ -215,6 +224,7 @@ class Package
             $package->license = $lastVersion['license'];
             $package->description = $lastVersion['description'];
             $package->yii_version = static::determineYiiVersion($data['versions']);
+            $package->majorVersionReferences = static::extractMajorVersions($data['versions']);
         }
 
         // TODO maintainers
@@ -284,5 +294,35 @@ class Package
             }
         }
         return $version;
+    }
+
+    private static function extractMajorVersions($versions)
+    {
+        uasort(
+            $versions,
+            function ($a, $b) {
+                return $a['version_normalized'] > $b['version_normalized'] ? 1 : -1;
+            }
+        );
+
+        $majors = [];
+        foreach ($versions as $v => $versionItem) {
+
+            // currently only extract stable versions
+//            if (strpos($v, 'dev-') === 0) {
+//                if (isset($versionItem['extra']['branch-alias'][$v])) {
+//                    $v = $versionItem['extra']['branch-alias'][$v];
+//                }
+//            }
+
+            if (preg_match('~^(\d+\.\d+)~', $v, $m)) {
+                $major = $m[1];
+                if (isset($versionItem['source']['reference'])) {
+                    $majors[$major] = $versionItem['source']['reference'];
+                }
+            }
+        }
+
+        return $majors;
     }
 }

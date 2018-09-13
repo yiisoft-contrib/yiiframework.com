@@ -2,7 +2,7 @@
 
 namespace app\models;
 
-use app\components\ForumAdapter;
+use app\components\forum\ForumAdapterInterface;
 use Yii;
 use yii\base\Model;
 
@@ -74,7 +74,7 @@ class ChangePasswordForm extends Model
             $this->user->setPassword($this->password);
             $this->user->save(false);
 
-            /** @var ForumAdapter $forumAdapter */
+            /** @var ForumAdapterInterface $forumAdapter */
             $forumAdapter = Yii::$app->forumAdapter;
             $forumAdapter->changeUserPassword($this->user, $this->password);
 

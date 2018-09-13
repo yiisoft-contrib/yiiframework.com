@@ -4,7 +4,9 @@ namespace app\controllers;
 
 use app\components\object\ClassType;
 use app\models\Doc;
+use app\models\Extension;
 use app\models\Guide;
+use app\models\GuideSection;
 use app\models\search\SearchActiveRecord;
 use Yii;
 use yii\filters\HttpCache;
@@ -24,13 +26,50 @@ class GuideController extends BaseController
         $guide = Guide::load($version, $normalizedLanguage, $type === 'blog' ? 'blogtut' : $type);
         if ($guide) {
             if ($normalizedLanguage !== $language) {
-                $this->redirect(['index', 'language' => $normalizedLanguage, 'version' => $version, 'type' => $type]);
+                return $this->redirect(['index', 'language' => $normalizedLanguage, 'version' => $version, 'type' => $type]);
             }
             $this->sectionTitle = $guide->title;
             return $this->render('index', ['guide' => $guide]);
         }
 
-        throw new NotFoundHttpException('The requested page was not found.');
+        Yii::$app->response->statusCode = 404;
+        return $this->render('error-404-guide', [
+            'version' => $version,
+            'language' => $language,
+            'section' => null,
+        ]);
+    }
+
+    public function actionExtensionIndex($vendorName, $name, $version, $language)
+    {
+        if (($model = Extension::find()->where(['name' => "$vendorName/$name"])->active()->one()) === null) {
+            throw new NotFoundHttpException('The requested page does not exist.');
+        }
+
+        $normalizedLanguage = strtolower(str_replace('_', '-', $language));
+        $guide = Guide::loadExtension($model, $version, $normalizedLanguage);
+        if ($guide) {
+            if ($normalizedLanguage !== $language) {
+                return $this->redirect(['extension-index', 'language' => $normalizedLanguage, 'version' => $version, 'vendorName' => $vendorName, 'name' => $name]);
+            }
+            $this->sectionTitle = [$guide->title => ['extension/view', 'vendorName' => $vendorName, 'name' => $name]];
+            return $this->render('extension-index', [
+                'guide' => $guide,
+                'extensionName' => $name,
+                'extensionVendor' => $vendorName
+            ]);
+        }
+
+        $this->sectionTitle = [$model->name => ['extension/view', 'vendorName' => $vendorName, 'name' => $name]];
+        Yii::$app->response->statusCode = 404;
+        return $this->render('error-404-guide', [
+            'version' => $version,
+            'language' => $language,
+            'section' => null,
+            'extension' => $model,
+            'extensionName' => $name,
+            'extensionVendor' => $vendorName
+        ]);
     }
 
     public function actionView($section, $version, $language, $type = 'guide')
@@ -38,12 +77,13 @@ class GuideController extends BaseController
         $normalizedLanguage = strtolower(str_replace('_', '-', $language));
         $guide = Guide::load($version, $normalizedLanguage, $type === 'blog' ? 'blogtut' : $type);
         if ($guide && $normalizedLanguage !== $language) {
-            $this->redirect(['view', 'language' => $normalizedLanguage, 'version' => $version, 'section' => $section, 'type' => $type]);
+            return $this->redirect(['view', 'language' => $normalizedLanguage, 'version' => $version, 'section' => $section, 'type' => $type]);
         }
 
         if ($guide) {
             $this->sectionTitle = $guide->title;
-            $section = $guide->loadSection($section);
+            $sectionName = $section;
+            $section = $guide->loadSection($sectionName);
 
             if ($section) {
                 $urlParams = ['type' => $guide->typeUrlName, 'version' => $guide->version, 'language' => $guide->language, 'section' => $section->name];
@@ -59,9 +99,75 @@ class GuideController extends BaseController
                 ]);
             }
 
+            // redirect old URLs to extension docs
+            if ($sectionName === 'tool-gii' || $sectionName === 'tool-debugger' || $sectionName === 'tutorial-advanced-app') {
+                return $this->actionRedirect($sectionName);
+            }
+
+            // if guide is found but section is not available, show a better 404
+            Yii::$app->response->statusCode = 404;
+            return $this->render('error-404', [
+                'guide' => $guide,
+                'section' => new GuideSection($sectionName, $guide),
+            ]);
         }
 
-        throw new NotFoundHttpException('The requested page was not found.');
+        Yii::$app->response->statusCode = 404;
+        return $this->render('error-404-guide', [
+            'section' => $section,
+            'version' => $version,
+            'language' => $language,
+        ]);
+    }
+
+    public function actionExtensionView($vendorName, $name, $section, $version, $language)
+    {
+        if (($model = Extension::find()->where(['name' => "$vendorName/$name"])->active()->one()) === null) {
+            throw new NotFoundHttpException('The requested page does not exist.');
+        }
+
+        $normalizedLanguage = strtolower(str_replace('_', '-', $language));
+        $guide = Guide::loadExtension($model, $version, $normalizedLanguage);
+        if ($guide && $normalizedLanguage !== $language) {
+            return $this->redirect(['extension-view', 'language' => $normalizedLanguage, 'version' => $version, 'section' => $section, 'vendorName' => $vendorName, 'name' => $name]);
+        }
+
+        if ($guide) {
+            $this->sectionTitle = [$guide->title => ['guide/extension-index', 'vendorName' => $vendorName, 'name' => $name, 'version' => $version, 'language' => $language]];
+            $sectionName = $section;
+            $section = $guide->loadSection($sectionName);
+
+            if ($section) {
+                return $this->render('extension-view', [
+                    'guide' => $guide,
+                    'section' => $section,
+                    'missingTranslation' => $section->missingTranslation,
+                    'extensionName' => $name,
+                    'extensionVendor' => $vendorName
+                ]);
+            }
+
+            // if guide is found but section is not available, show a better 404
+            Yii::$app->response->statusCode = 404;
+            return $this->render('error-404', [
+                'guide' => $guide,
+                'section' => new GuideSection($sectionName, $guide),
+                'extension' => $model,
+                'extensionName' => $name,
+                'extensionVendor' => $vendorName
+            ]);
+        }
+
+        $this->sectionTitle = [$model->name => ['extension/view', 'vendorName' => $vendorName, 'name' => $name]];
+        Yii::$app->response->statusCode = 404;
+        return $this->render('error-404-guide', [
+            'version' => $version,
+            'language' => $language,
+            'section' => $section,
+            'extension' => $model,
+            'extensionName' => $name,
+            'extensionVendor' => $vendorName
+        ]);
     }
 
     public function actionImage($image, $version, $language, $type = 'guide')
@@ -71,18 +177,35 @@ class GuideController extends BaseController
             $file = Guide::findImage($image, $version, 'en', $type === 'blog' ? 'blogtut' : $type);
         }
         if ($file === false) {
-            throw new NotFoundHttpException("The requested image was not found: $image");
+            throw new NotFoundHttpException("The requested image was not found.");
         }
 
-        $cache = new HttpCache([
-            'cacheControlHeader' => 'public, max-age=86400',
-            'lastModified' => function ($file) {
-                return filemtime($file);
-            },
-        ]);
-        if ($cache->beforeAction(null)) {
-            Yii::$app->response->sendFile($file, null, ['inline' => true]);
+        return $this->sendFile($file);
+    }
+
+    public function actionExtensionImage($vendorName, $name, $image, $version, $language, $type = 'guide')
+    {
+        if (($model = Extension::find()->where(['name' => "$vendorName/$name"])->active()->one()) === null) {
+            throw new NotFoundHttpException('The requested page does not exist.');
         }
+
+        $guide = Guide::loadExtension($model, $version, $language);
+        if (!$guide) {
+            throw new NotFoundHttpException('The requested page does not exist.');
+        }
+
+        $file = $guide->findExtensionImage($image);
+        if ($file === false && $language !== 'en') {
+            $guide = Guide::loadExtension($model, $version, 'en');
+            if ($guide) {
+                $file = $guide->findExtensionImage($image);
+            }
+        }
+        if ($file === false) {
+            throw new NotFoundHttpException("The requested image was not found.");
+        }
+
+        return $this->sendFile($file);
     }
 
     public function actionDownload($version, $language, $format)
@@ -92,8 +215,8 @@ class GuideController extends BaseController
 
             $cache = new HttpCache([
                 'cacheControlHeader' => 'public, max-age=86400',
-                'lastModified' => function ($file) {
-                    return filemtime($file); // TODO does this work?
+                'lastModified' => function() use ($file) {
+                    return filemtime($file['file']);
                 },
             ]);
             if ($cache->beforeAction(null)) {
@@ -114,6 +237,10 @@ class GuideController extends BaseController
             $versions = array_keys(Yii::$app->params['guide.versions']);
             arsort($versions, SORT_NATURAL);
             $version = array_shift($versions);
+        }
+
+        if (!isset(Yii::$app->params['guide.versions'][$version])) {
+            throw new NotFoundHttpException('The requested page was not found.');
         }
 
         // negotiate language from browser preference
@@ -149,12 +276,25 @@ class GuideController extends BaseController
     /**
      * This action redirects old urls http://www.yiiframework.com/doc-2.0/guide-*.html to the new location.
      */
-    public function actionRedirect($section)
+    public function actionRedirect($section = 'index')
     {
+        // index page
         if ($section === 'README' || $section === 'index') {
             return $this->redirect(['index', 'version' => '2.0', 'language' => 'en', 'type' => 'guide'], 301); // Moved Permanently
         }
 
+        // old extension documentation
+        if ($section === 'tool-debugger') {
+            return $this->redirect(['extension/view', 'name' => 'yii2-debug', 'vendorName' => 'yiisoft'], 301); // Moved Permanently
+        }
+        if ($section === 'tool-gii') {
+            return $this->redirect(['extension/view', 'name' => 'yii2-gii', 'vendorName' => 'yiisoft'], 301); // Moved Permanently
+        }
+        if ($section === 'tutorial-advanced-app') {
+            return $this->redirect(['extension/doc', 'name' => 'yii2-app-advanced', 'vendorName' => 'yiisoft', 'type' => 'guide'], 301); // Moved Permanently
+        }
+
+        // existing guide sections
         $guide = Guide::load('2.0', 'en');
         if ($guide && ($section = $guide->loadSection($section))) {
             return $this->redirect(['view', 'version' => '2.0', 'section' => $section->name, 'language' => 'en', 'type' => 'guide'], 301); // Moved Permanently

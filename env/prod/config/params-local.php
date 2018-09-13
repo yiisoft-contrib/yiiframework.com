@@ -29,19 +29,10 @@ return [
         },
     ],
     'components.forumAdapter' => [
-        'class' => app\components\ForumAdapter::class,
-        'db' => [
-            'class' => 'yii\db\Connection',
-            'dsn' => 'mysql:host=localhost;dbname=yiisite',
-            'username' => 'root',
-            'password' => '',
-            'charset' => 'utf8',
-            'on afterOpen' => function($event) {
-                /** @var $db \yii\db\Connection */
-                $db = $event->sender;
-                $db->createCommand("SET time_zone = '+00:00';")->execute();
-            },
-        ],
+        'class' => app\components\forum\DiscourseAdapter::class,
+        'apiToken' => '',
+        'apiUrl' => 'https://forum.yiiframework.com',
+        'apiAdminUser' => 'system',
     ],
     'components.mailer' => [
         'class' => yii\swiftmailer\Mailer::class,
@@ -60,5 +51,17 @@ return [
     'twitter.consumerKey' => '',
     'twitter.consumerSecret' => '',
     'twitter.accessToken' => '',
-    'twitter.accessTokenSecret' => ''
+    'twitter.accessTokenSecret' => '',
+
+    // configure these to enable proxying external images through an nginx content filter
+    'image-proxy' => 'https://user-content.yiiframework.com',
+    'image-proxy-secret' => '',
+
+
+    // configuration for Discourse Forum SSO
+    // https://meta.discourse.org/t/official-single-sign-on-for-discourse-sso/13045
+    // configure Discourse to point SSO requests to https://www.yiiframework.com/auth/discourse-sso
+    'discourse.sso_secret' => '',
+    'discourse.sso_url' => 'https://forum.yiiframework.com',
+
 ];

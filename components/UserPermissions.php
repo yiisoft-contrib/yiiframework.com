@@ -16,12 +16,17 @@ class UserPermissions
     const ROLE_USER_ADMIN = 'user_admin';
     const ROLE_EXTENSION_ADMIN = 'extension_admin';
     const ROLE_WIKI_ADMIN = 'wiki_admin';
+    const ROLE_COMMENT_ADMIN = 'comment_admin';
+    const ROLE_FORUM_ADMIN = 'forum_admin';
 
     const PERMISSION_MANAGE_NEWS = 'manage_news';
     const PERMISSION_MANAGE_USERS = 'manage_users';
     const PERMISSION_MANAGE_EXTENSIONS = 'manage_extensions';
     const PERMISSION_MANAGE_WIKI = 'manage_wiki';
+    const PERMISSION_MANAGE_COMMENTS = 'manage_comments';
+    const PERMISSION_MANAGE_FORUM = 'manage_forum';
 
+    const MIN_RATING_CREATE_WIKI = 1;
     const MIN_RATING_EDIT_WIKI = 50;
 
     /**
@@ -47,6 +52,12 @@ class UserPermissions
         $user = Yii::$app->user->identity;
 
         if (!$user->email_verified && $user->getGithub() === null) {
+            return false;
+        }
+
+        /** @var User $user */
+        $user = Yii::$app->user->identity;
+        if ($user->rating < self::MIN_RATING_CREATE_WIKI) {
             return false;
         }
 
@@ -159,5 +170,28 @@ class UserPermissions
     public static function canManageNews()
     {
         return Yii::$app->user->can(self::PERMISSION_MANAGE_NEWS);
+    }
+
+    /**
+     * Check whether authenticated user is an admin.
+     *
+     * @return bool
+     */
+    public static function isAdmin()
+    {
+        $adminRoles = [
+            self::ROLE_COMMENT_ADMIN,
+            self::ROLE_EXTENSION_ADMIN,
+            self::ROLE_FORUM_ADMIN,
+            self::ROLE_NEWS_ADMIN,
+            self::ROLE_USER_ADMIN,
+            self::ROLE_WIKI_ADMIN,
+        ];
+        foreach ($adminRoles as $role) {
+            if (Yii::$app->user->can($role)) {
+                return true;
+            }
+        }
+        return false;
     }
 }

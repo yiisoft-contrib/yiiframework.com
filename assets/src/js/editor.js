@@ -1,5 +1,7 @@
 function initEditor(els) {
     jQuery(els).each(function(index, el) {
+        var isInPreviewMode = false;
+
         var editor = CodeMirror.fromTextArea(el, {
             mode: 'gfm',
             theme: 'default',
@@ -107,6 +109,39 @@ function initEditor(els) {
                         var selection = cm.getSelection();
                         cm.replaceSelection('<img src="' + url + '"' + selection + ' />');
 
+                    }
+                },
+                {
+                    class: 'img btn btn-default btn-preview',
+                    label: '<i class="fa fa-eye"></i>',
+                    callback: function (cm) {
+                        var button = $('.btn-preview');
+                        var wrap = $('.CodeMirror-wrap');
+                        var preview = wrap.find('.CodeMirror-preview');
+                        if (!preview.length) {
+                            wrap.append('<div class="CodeMirror-preview"></div>');
+                            preview = wrap.find('.CodeMirror-preview');
+                        }
+
+                        if (isInPreviewMode) {
+                            preview.hide();
+                            button.removeClass('active');
+                        } else {
+                            preview.show();
+                            button.addClass('active');
+
+                            $.ajax({
+                                method: 'post',
+                                url: '/render-markdown',
+                                data: {
+                                    content: cm.getValue()
+                                },
+                                success: function (data) {
+                                    preview.html(data);
+                                }
+                            });
+                        }
+                        isInPreviewMode = !isInPreviewMode;
                     }
                 },
                 {
