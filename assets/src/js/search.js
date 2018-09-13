@@ -78,79 +78,48 @@ var searchApiDocMembersStatus = false;
 
 searchApidoc = function(query) {
 
-    var memberSearch = false;
-    var memberSearchType = '';
-    var p;
-    if (query.substring(0, 1) == '.') {
-        memberSearch = true;
-        query = query.substring(1);
-    } else if ((p = query.indexOf('.')) > -1) {
-        memberSearch = true;
-        memberSearchType = query.substring(0, p);
-        query = query.substring(p + 1);
-    } else if (query.substring(0, 2) == '::') {
-        memberSearch = true;
-        query = query.substring(2);
-    } else if ((p = query.indexOf('::')) > -1) {
-        memberSearch = true;
-        memberSearchType = query.substring(0, p);
-        query = query.substring(p + 2);
+    // fetch methods if not loaded yet
+    if (!searchApiDocMembers) {
+
+        // request is pending
+        if (searchApiDocMembersStatus) {
+            return;
+        }
+        searchApiDocMembersStatus = true;
+        $.ajax({
+            url: yiiBaseUrl + '/doc/api/class-members',
+            dataType: "json",
+            success: function(data) {
+                searchApiDocMembers = data.members;
+                searchApiDocMembersStatus = false;
+
+                searchApiDocPopulate(query);
+                updateSearchResults();
+            }
+        });
     }
 
-    // search for a property, method, constant or event name
-    //
-    // e.g.
-    // .getId()
-    // ::$cache
-    // ::cache
-    //
-    if (memberSearch) {
-        // fetch methods if not loaded yet
-        if (!searchApiDocMembers) {
+    // fetch types if not loaded yet
+    if (!searchApiDocTypes) {
 
-            // request is pending
-            if (searchApiDocMembersStatus) {
-                return;
-            }
-            searchApiDocMembersStatus = true;
-            $.ajax({
-                url: yiiBaseUrl + '/doc/api/class-members',
-                dataType: "json",
-                success: function(data) {
-                    searchApiDocMembers = data.members;
-                    searchApiDocMembersStatus = false;
-
-                    searchApiDocPopulateMembers(query, memberSearchType);
-                    updateSearchResults();
-                }
-            });
-        } else {
-            searchApiDocPopulateMembers(query, memberSearchType);
+        // request is pending
+        if (searchApiDocTypeStatus) {
+            return;
         }
-    } else {
-        // fetch types if not loaded yet
-        if (!searchApiDocTypes) {
+        searchApiDocTypeStatus = true;
+        $.ajax({
+            url: yiiBaseUrl + '/doc/api',
+            dataType: "json",
+            success: function(data) {
+                searchApiDocTypes = data.classes;
+                searchApiDocTypeStatus = false;
 
-            // request is pending
-            if (searchApiDocTypeStatus) {
-                return;
+                searchApiDocPopulate(query);
+                updateSearchResults();
             }
-            searchApiDocTypeStatus = true;
-            $.ajax({
-                url: yiiBaseUrl + '/doc/api',
-                dataType: "json",
-                success: function(data) {
-                    searchApiDocTypes = data.classes;
-                    searchApiDocTypeStatus = false;
-
-                    searchApiDocPopulateTypes(query);
-                    updateSearchResults();
-                }
-            });
-        } else {
-            searchApiDocPopulateTypes(query);
-        }
+        });
     }
+    searchApiDocPopulate(query);
     updateSearchResults();
 };
 
@@ -329,11 +298,50 @@ renderMember = function(m, query, ownerFilter) {
     return html.join("</li>\n<li>");
 };
 
+searchApiDocPopulate = function(query) {
+
+    var memberSearch = false;
+    var memberSearchType = '';
+    var p;
+    if (query.substring(0, 1) == '.') {
+        memberSearch = true;
+        query = query.substring(1);
+    } else if ((p = query.indexOf('.')) > -1) {
+        memberSearch = true;
+        memberSearchType = query.substring(0, p);
+        query = query.substring(p + 1);
+    } else if (query.substring(0, 2) == '::') {
+        memberSearch = true;
+        query = query.substring(2);
+    } else if ((p = query.indexOf('::')) > -1) {
+        memberSearch = true;
+        memberSearchType = query.substring(0, p);
+        query = query.substring(p + 2);
+    }
+    // search for a property, method, constant or event name
+    //
+    // e.g.
+    // .getId()
+    // ::$cache
+    // ::cache
+    //
+    if (memberSearch) {
+        searchApiDocPopulateMembers(query, memberSearchType);
+    } else {
+        searchApiDocPopulateTypes(query);
+    }
+
+};
+
 // search in method, property, const, and event names
 searchApiDocPopulateMembers = function(query, owner) {
 
     var bestMatch = [];
     var secondMatch = [];
+
+    if (!searchApiDocMembers) {
+        return;
+    }
 
     if (query.length > 1 || owner != ''/* && query.length > 0*/) {
         var i, len;
@@ -385,30 +393,55 @@ searchApiDocPopulateTypes = function(query) {
     var secondMatch = [];
 
     var i, len;
-    for (i = 0, len = searchApiDocTypes.length; i < len; ++i) {
-        var c = searchApiDocTypes[i];
+    if (searchApiDocTypes) {
+        for (i = 0, len = searchApiDocTypes.length; i < len; ++i) {
+            var c = searchApiDocTypes[i];
 
-        // filter by version
-        if (typeof yiiSearchVersion !== 'undefined' && yiiSearchVersion != c.version) {
-            continue;
-        }
-
-        var baseNameMatch = -1;
-        if (query.indexOf('\\') < 0 && (p = c.name.lastIndexOf('\\')) >= 0) {
-            baseNameMatch = c.name.substring(p + 1).toLowerCase().indexOf(query.toLowerCase());
-//            console.log('bnm: ' + c.name + ' ' + c.name.substring(p) + '  '  + baseNameMatch);
-        }
-        var match = c.name.toLowerCase().indexOf(query.toLowerCase());
-        if (match == 0 || baseNameMatch == 0) {
-            bestMatch.push(renderType(c, query));
-        } else if (match > -1) {
-            // limit results to 5
-            if (secondMatch.length > 5) {
+            // filter by version
+            if (typeof yiiSearchVersion !== 'undefined' && yiiSearchVersion != c.version) {
                 continue;
             }
-            secondMatch.push(renderType(c, query));
-        }
 
+            var baseNameMatch = -1;
+            if (query.indexOf('\\') < 0 && (p = c.name.lastIndexOf('\\')) >= 0) {
+                baseNameMatch = c.name.substring(p + 1).toLowerCase().indexOf(query.toLowerCase());
+                //            console.log('bnm: ' + c.name + ' ' + c.name.substring(p) + '  '  + baseNameMatch);
+            }
+            var match = c.name.toLowerCase().indexOf(query.toLowerCase());
+            if (match == 0 || baseNameMatch == 0) {
+                bestMatch.push(renderType(c, query));
+            } else if (match > -1) {
+                // limit results to 5
+                if (secondMatch.length > 5) {
+                    continue;
+                }
+                secondMatch.push(renderType(c, query));
+            }
+
+        }
+    }
+    // also search for members on normal search
+    if (searchApiDocMembers) {
+        for (i = 0, len = searchApiDocMembers.length; i < len; ++i) {
+            var m = searchApiDocMembers[i];
+
+            // filter by version
+            if (typeof yiiSearchVersion !== 'undefined' && yiiSearchVersion != m.version) {
+                continue;
+            }
+
+            var name = m.name;
+            if (m.type == 'method') {
+                name += '()';
+            }
+            var match = name.toLowerCase().indexOf(query.toLowerCase());
+            if (match == 0) {
+                bestMatch.push(renderMember(m, query, ''));
+            } else if (match == 1 && name.substring(0, 1) === '$') {
+                secondMatch.push(renderMember(m, query, ''));
+            }
+
+        }
     }
 
     searchResultCache.api.data = bestMatch.concat(secondMatch);
