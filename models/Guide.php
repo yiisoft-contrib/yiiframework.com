@@ -131,6 +131,27 @@ class Guide extends BaseObject
         return null;
     }
 
+    public function findSectionInOtherLanguages($name)
+    {
+        $result = [];
+        foreach($this->getVersionOptions() as $version) {
+            foreach($this->getLanguageOptions() as $language => $languageName) {
+
+                $guide = Guide::load($version, $language, $this->type);
+                if ($guide === null) {
+                    continue;
+                }
+                $section = $guide->loadSection($name);
+                if ($section === null) {
+                    continue;
+                }
+                $result[$version][] = $section;
+            }
+        }
+
+        return $result;
+    }
+
     /**
      * @return array language ID => language name
      */

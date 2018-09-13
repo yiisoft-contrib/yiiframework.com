@@ -6,6 +6,7 @@ use app\components\object\ClassType;
 use app\models\Doc;
 use app\models\Extension;
 use app\models\Guide;
+use app\models\GuideSection;
 use app\models\search\SearchActiveRecord;
 use Yii;
 use yii\filters\HttpCache;
@@ -31,7 +32,11 @@ class GuideController extends BaseController
             return $this->render('index', ['guide' => $guide]);
         }
 
-        throw new NotFoundHttpException('The requested page was not found.');
+        Yii::$app->response->statusCode = 404;
+        return $this->render('error-404-guide', [
+            'version' => $version,
+            'language' => $language,
+        ]);
     }
 
     public function actionExtensionIndex($vendorName, $name, $version, $language)
@@ -88,9 +93,21 @@ class GuideController extends BaseController
             if ($sectionName === 'tool-gii' || $sectionName === 'tool-debugger' || $sectionName === 'tutorial-advanced-app') {
                 return $this->actionRedirect($sectionName);
             }
+
+            // if guide is found but section is not available, show a better 404
+            Yii::$app->response->statusCode = 404;
+            return $this->render('error-404', [
+                'guide' => $guide,
+                'section' => new GuideSection($sectionName, $guide),
+            ]);
         }
 
-        throw new NotFoundHttpException('The requested page was not found.');
+        Yii::$app->response->statusCode = 404;
+        return $this->render('error-404-guide', [
+            'section' => $section,
+            'version' => $version,
+            'language' => $language,
+        ]);
     }
 
     public function actionExtensionView($vendorName, $name, $section, $version, $language)
