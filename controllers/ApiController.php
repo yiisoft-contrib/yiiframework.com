@@ -58,9 +58,15 @@ class ApiController extends BaseController
 
     public function actionView($version, $section)
     {
-        $this->validateVersion($version);
+        $versions = Yii::$app->params['versions']['api'];
+        if (!in_array($version, $versions)) {
+            return $this->api404($section, $version);
+        }
 
         if (!preg_match('/^[\w\-]+$/', $section)) {
+            throw new NotFoundHttpException('The requested page was not found.');
+        }
+        if (!preg_match('/^[\d.]+$/', $version)) {
             throw new NotFoundHttpException('The requested page was not found.');
         }
 
@@ -90,7 +96,7 @@ class ApiController extends BaseController
                     }
                 }
                 if (!is_file($file)) {
-                    throw new NotFoundHttpException('The requested page was not found.');
+                    return $this->api404($section, $version);
                 }
 
                 if ($section === 'index') {
@@ -148,19 +154,22 @@ class ApiController extends BaseController
         if (!preg_match('/^[\w\-]+$/', $section)) {
             throw new NotFoundHttpException('The requested page was not found.');
         }
+        if (!preg_match('/^[\d.]+$/', $version)) {
+            throw new NotFoundHttpException('The requested page was not found.');
+        }
+
+        $this->sectionTitle = [
+//                    'Extensions' => ['extensions/index'],
+            $extension->name => $extension->getUrl(),
+            'API Documentation' => $extension->getUrl('doc', ['type' => 'api']),
+        ];
 
         if (!$extension->hasApiDoc($version)) {
-            throw new NotFoundHttpException('The requested page does not exist.');
+            return $this->extension404($extension, $version, $section);
         }
 
         switch (Yii::$app->response->format) {
             case Response::FORMAT_HTML:
-
-                $this->sectionTitle = [
-//                    'Extensions' => ['extensions/index'],
-                    $extension->name => $extension->getUrl(),
-                    'API Documentation' => $extension->getUrl('doc', ['type' => 'api']),
-                ];
 
                 $title = '';
                 $packages = [];
@@ -171,7 +180,7 @@ class ApiController extends BaseController
                     $title = $titles[$titleKey];
                 }
                 if (!is_file($file)) {
-                    throw new NotFoundHttpException('The requested page was not found.');
+                    return $this->extension404($extension, $version, $section);
                 }
 
                 return $this->render('view2x', [
@@ -208,6 +217,64 @@ class ApiController extends BaseController
 //                break;
         }
         throw new UnsupportedMediaTypeHttpException;
+    }
+
+    private function api404($section, $version)
+    {
+        // try to find the file in another version
+        $alternativeVersions = Yii::$app->params['versions']['api'];
+        rsort($alternativeVersions, SORT_NATURAL);
+        $alternatives = [];
+        $alternativeIndices = [];
+        foreach ($alternativeVersions as $altVersion) {
+            if ($section !== 'index') {
+                if ($altVersion[0] === '1') {
+                    $file = Yii::getAlias("@app/data/api-$altVersion/api/$section.html");
+                } else {
+                    $file = Yii::getAlias("@app/data/api-$altVersion/$section.html");
+                }
+                if (is_file($file)) {
+                    $alternatives[$altVersion] = ['api/view', 'version' => $altVersion, 'section' => $section];
+                }
+            }
+            $alternativeIndices[$altVersion] = ['api/index', 'version' => $altVersion];
+        }
+
+        // if class is not found, show a better 404
+        Yii::$app->response->statusCode = 404;
+        return $this->render('error-404', [
+            'alternatives' => $alternatives,
+            'alternativeVersions' => $alternativeIndices,
+        ]);
+
+    }
+
+    private function extension404($extension, $version, $section)
+    {
+        list($extensionVendor, $extensionName) = explode('/', $extension->name, 2);
+        // try to find the file in another version
+        $alternativeVersions = $extension->getApiVersions();
+        rsort($alternativeVersions, SORT_NATURAL);
+        $alternatives = [];
+        $alternativeIndices = [];
+        foreach ($alternativeVersions as $altVersion) {
+            if ($section !== 'index') {
+                $file = Yii::getAlias("@app/data/extensions/{$extension->name}/api-$altVersion/$section.html");
+                if (is_file($file)) {
+                    $alternatives[$altVersion] = ['api/extension-view', 'version' => $altVersion, 'section' => $section, 'name' => $extensionName, 'vendorName' => $extensionVendor];
+                }
+            }
+            $alternativeIndices[$altVersion] = ['api/extension-index', 'version' => $altVersion, 'name' => $extensionName, 'vendorName' => $extensionVendor];
+        }
+
+        // if class is not found, show a better 404
+        Yii::$app->response->statusCode = 404;
+        return $this->render('error-404', [
+            'extension' => $extension,
+            'alternatives' => $alternatives,
+            'alternativeVersions' => $alternativeIndices,
+        ]);
+
     }
 
     /**
@@ -335,14 +402,5 @@ class ApiController extends BaseController
 
         }
         throw new NotFoundHttpException('The requested page was not found.');
-    }
-
-    protected function validateVersion($version)
-    {
-        $versions = Yii::$app->params['versions']['api'];
-        if (!in_array($version, $versions)) {
-            // TODO make nicer error page (keep version and language selector)
-            throw new NotFoundHttpException('The requested version was not found.');
-        }
     }
 }
