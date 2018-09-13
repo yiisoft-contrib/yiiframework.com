@@ -6,10 +6,10 @@
  * @var $language string
  */
 
+use app\models\Guide;
 use app\widgets\SearchForm;
 use yii\helpers\Html;
 
-$also = '';
 $this->title = 'Not Found (#404)';
 ?>
 <?= $this->render('//site/partials/common/_heading.php', ['title' => $this->title]) ?>
@@ -23,16 +23,26 @@ $this->title = 'Not Found (#404)';
             <?php if (isset($section)):
 
                 /** @var \app\models\GuideSection[] $alternatives */
-                $alternatives = (new \app\models\Guide('2.0', 'en'))->findSectionInOtherLanguages($section);
+                if (isset($extension)) {
+                    $versionOptions = Guide::getExtensionOptions($extension);
+                    $alternativeGuide = Guide::loadExtension($extension, key($versionOptions), reset($versionOptions)[0]);
+                    $alternatives = $alternativeGuide->findSectionInOtherLanguages($section);
+                } else {
+                    $alternatives = (new Guide('2.0', 'en'))->findSectionInOtherLanguages($section);
+                }
                 if (!empty($alternatives)): ?>
 
                     <p>A page with this name exists in the following languages and versions:</p>
 
                     <ul>
-                    <?php foreach($alternatives as $version => $altSections) {
-                        echo "<li>Version $version:<br>";
+                    <?php foreach($alternatives as $oversion => $altSections) {
+                        echo "<li>Version $oversion:<br>";
                         foreach($altSections as $altSection) {
-                            $url = ['guide/view', 'section' => $altSection->name, 'version' => $altSection->guide->version, 'language' => $altSection->guide->language, 'type' => $altSection->guide->typeUrlName];
+                            if (isset($extensionName, $extensionVendor)) {
+                                $url = ['guide/extension-view', 'section' => $altSection->name, 'version' => $altSection->guide->version, 'language' => $altSection->guide->language, 'name' => $extensionName, 'vendorName' => $extensionVendor];
+                            } else {
+                                $url = ['guide/view', 'section' => $altSection->name, 'version' => $altSection->guide->version, 'language' => $altSection->guide->language, 'type' => $altSection->guide->typeUrlName];
+                            }
                             $linkName = $altSection->guide->getLanguageOptions()[$altSection->guide->language] ?? 'Unknown';
                             if ($altSection->guide->language === 'en') {
                                 $links[$altSection->guide->language] = '<strong>' . Html::a($linkName, $url) . '</strong>';
@@ -44,7 +54,6 @@ $this->title = 'Not Found (#404)';
                         echo implode(', ', $links);
                         echo "</li>";
                     }
-                    $also = ' also ';
                     ?>
                     </ul>
 
@@ -54,19 +63,33 @@ $this->title = 'Not Found (#404)';
             <p>The guide is available in the following languages and versions:</p>
             <ul>
             <?php
-                $guide = new \app\models\Guide('2.0', 'en');
+                if (isset($extension)) {
+                    $versionOptions = Guide::getExtensionOptions($extension);
+                } else {
+                    $guide = new Guide('2.0', 'en');
+                    $versionOptions = [];
+                    foreach($guide->getVersionOptions() as $oversion) {
+                        $versionGuide = new Guide($oversion, 'en');
+                        $versionOptions[$oversion] = array_keys($versionGuide->getLanguageOptions());
+                    }
+                }
+                krsort($versionOptions, SORT_NATURAL);
 
-                foreach($guide->getVersionOptions() as $version) {
-                    echo "<li>Version $version:<br>";
-                    $versionGuide = new \app\models\Guide($version, 'en');
+                foreach($versionOptions as $oversion => $languages) {
+                    echo "<li>Version $oversion:<br>";
 
                     $links = [];
-                    foreach($versionGuide->getLanguageOptions() as $language => $languageName) {
-                        $url = ['guide/index', 'version' => $versionGuide->version, 'language' => $language, 'type' => $versionGuide->typeUrlName];
-                        if ($language === 'en') {
-                            $links[$language] = '<strong>' . Html::a($languageName, $url) . '</strong>';
+                    foreach($languages as $olanguage) {
+                        $languageName = \Locale::getDisplayLanguage($olanguage, $olanguage);
+                        if (isset($extension)) {
+                            $url = ['guide/extension-index', 'version' => $oversion, 'language' => $olanguage, 'name' => $extensionName, 'vendorName' => $extensionVendor];
                         } else {
-                            $links[$language] = Html::a($languageName, $url);
+                            $url = ['guide/index', 'version' => $oversion, 'language' => $olanguage, 'type' => $versionGuide->typeUrlName];
+                        }
+                        if ($olanguage === 'en') {
+                            $links[$olanguage] = '<strong>' . Html::a($languageName, $url) . '</strong>';
+                        } else {
+                            $links[$olanguage] = Html::a($languageName, $url);
                         }
                     }
                     ksort($links);
@@ -76,14 +99,17 @@ $this->title = 'Not Found (#404)';
             ?>
             </ul>
 
+            <?php if (!isset($extension)): // TODO search currently does not work for extensions
+             ?>
 
-            <p>You may <?= $also ?> try searching for a guide page:</p>
+            <p>You may also try searching for a guide page:</p>
 
             <?= SearchForm::widget([
                 'type' => 'guide',
                 'placeholder' => 'Search the Guide…',
             ]) ?>
 
+            <?php endif; ?>
 
         </div>
 

@@ -137,7 +137,11 @@ class Guide extends BaseObject
         foreach($this->getVersionOptions() as $version) {
             foreach($this->getLanguageOptions() as $language => $languageName) {
 
-                $guide = Guide::load($version, $language, $this->type);
+                if ($this->type === self::TYPE_EXTENSION) {
+                    $guide = Guide::loadExtension($this->extension, $version, $language);
+                } else {
+                    $guide = Guide::load($version, $language, $this->type);
+                }
                 if ($guide === null) {
                     continue;
                 }
@@ -150,6 +154,15 @@ class Guide extends BaseObject
         }
 
         return $result;
+    }
+
+    public static function getExtensionOptions($extension)
+    {
+        $guideInfo = Yii::getAlias("@app/data/extensions/{$extension->name}/guide.json");
+        if (!file_exists($guideInfo)) {
+            return [];
+        }
+        return Json::decode(file_get_contents($guideInfo));
     }
 
     /**

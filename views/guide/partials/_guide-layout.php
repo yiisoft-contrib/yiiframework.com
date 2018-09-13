@@ -16,7 +16,11 @@ foreach ($guide->chapters as $chapterTitle => $sections) {
             $url = $sectionName;
             $active = false;
         } else {
-            $url = ['guide/view', 'section' => $sectionName, 'language' => $guide->language, 'version' => $guide->version, 'type' => $guide->typeUrlName];
+            if (isset($extensionName, $extensionVendor)) {
+                $url = ['guide/extension-view', 'section' => $sectionName, 'language' => $guide->language, 'version' => $guide->version, 'name' => $extensionName, 'vendorName' => $extensionVendor];
+            } else {
+                $url = ['guide/view', 'section' => $sectionName, 'language' => $guide->language, 'version' => $guide->version, 'type' => $guide->typeUrlName];
+            }
             $active = isset($section) && $section->name === $sectionName;
         }
         $items[] = [
@@ -39,7 +43,12 @@ $this->registerJs('
 ');
 
 $this->beginBlock('contentSelectors');
-echo $this->render('_versions.php', ['guide' => $guide, 'section' => $section ?? null]);
+echo $this->render('_versions.php', [
+    'guide' => $guide,
+    'section' => $section ?? null,
+    'extensionName' => $extensionName ?? null,
+    'extensionVendor' => $extensionVendor ?? null
+]);
 $this->endBlock();
 
 if (isset($section)) {
@@ -56,12 +65,15 @@ if (isset($section)) {
     </div>
     <div class="row row-offcanvas">
         <div class="col-sm-2 col-md-2 col-lg-2">
-            <?= SearchForm::widget([
-                'type' => 'guide',
-                'version' => $guide->version, // TODO verify search works for extensions
-                'language' => $guide->language,
-                'placeholder' => 'Search the Guide…',
-            ]) ?>
+            <?php if (!isset($extensionName, $extensionVendor)) {
+                // TODO search currently does not work for extensions
+                echo SearchForm::widget([
+                    'type' => 'guide',
+                    'version' => $guide->version,
+                    'language' => $guide->language,
+                    'placeholder' => 'Search the Guide…',
+                ]);
+            } ?>
             <?= SideNav::widget(['id' => 'guide-navigation', 'items' => $nav, 'options' => ['class' => 'sidenav-offcanvas']]) ?>
         </div>
     <div class="col-sm-10 col-md-10 col-lg-10" role="main">

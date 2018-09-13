@@ -36,6 +36,7 @@ class GuideController extends BaseController
         return $this->render('error-404-guide', [
             'version' => $version,
             'language' => $language,
+            'section' => null,
         ]);
     }
 
@@ -59,7 +60,16 @@ class GuideController extends BaseController
             ]);
         }
 
-        throw new NotFoundHttpException('The requested page was not found.');
+        $this->sectionTitle = [$model->name => ['extension/view', 'vendorName' => $vendorName, 'name' => $name]];
+        Yii::$app->response->statusCode = 404;
+        return $this->render('error-404-guide', [
+            'version' => $version,
+            'language' => $language,
+            'section' => null,
+            'extension' => $model,
+            'extensionName' => $name,
+            'extensionVendor' => $vendorName
+        ]);
     }
 
     public function actionView($section, $version, $language, $type = 'guide')
@@ -136,9 +146,28 @@ class GuideController extends BaseController
                     'extensionVendor' => $vendorName
                 ]);
             }
+
+            // if guide is found but section is not available, show a better 404
+            Yii::$app->response->statusCode = 404;
+            return $this->render('error-404', [
+                'guide' => $guide,
+                'section' => new GuideSection($sectionName, $guide),
+                'extension' => $model,
+                'extensionName' => $name,
+                'extensionVendor' => $vendorName
+            ]);
         }
 
-        throw new NotFoundHttpException('The requested page was not found.');
+        $this->sectionTitle = [$model->name => ['extension/view', 'vendorName' => $vendorName, 'name' => $name]];
+        Yii::$app->response->statusCode = 404;
+        return $this->render('error-404-guide', [
+            'version' => $version,
+            'language' => $language,
+            'section' => $section,
+            'extension' => $model,
+            'extensionName' => $name,
+            'extensionVendor' => $vendorName
+        ]);
     }
 
     public function actionImage($image, $version, $language, $type = 'guide')
