@@ -193,10 +193,8 @@ class User extends ActiveRecord implements IdentityInterface
         return static::find()->where(
             [
                 'or',
-                [
-                    'username = :username',
-                    'email = :email'
-               ]
+                'username = :username',
+                'email = :email',
             ]
         )->active()->addParams([
             'username' => $value,
