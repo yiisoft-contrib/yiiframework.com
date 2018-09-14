@@ -2,6 +2,7 @@
 
 namespace app\components\packagist;
 
+use Yii;
 use yii\base\Exception;
 use yii\helpers\Json;
 
@@ -152,10 +153,20 @@ class PackagistApi
             return null;
         }
 
-        try {
-            return file_get_contents(sprintf(self::ENDPOINT_GITHUB_FILE, $matches[1], 'README.md'));
-        } catch (\Throwable $e) {
-            return null;
+        $readmeNames = [
+            'README.md',
+            'readme.md',
+            'README',
+            'readme',
+        ];
+
+        foreach($readmeNames as $readmeName) {
+            try {
+                return file_get_contents(sprintf(self::ENDPOINT_GITHUB_FILE, $matches[1], $readmeName));
+            } catch (\Throwable $e) {
+            }
         }
+        Yii::error('Failed to read README from repository: ' . $repositoryUrl);
+        return null;
     }
 }
