@@ -223,7 +223,7 @@ class AuthController extends BaseController
         if ($model->load(Yii::$app->request->post()) && $model->validate() && $model->resetPassword()) {
             Yii::$app->getSession()->setFlash('success', 'New password was saved.');
 
-            return Yii::$app->user->isGuest ? $this->goHome() : $this->redirect(['user/profile']);
+            return Yii::$app->user->isGuest ? $this->redirect(['auth/login']) : $this->redirect(['user/profile']);
         }
 
         return $this->render('resetPassword', [
@@ -234,7 +234,7 @@ class AuthController extends BaseController
     public function actionVerifyEmail($token)
     {
         if (User::validateEmailVerificationToken($token)) {
-            Yii::$app->getSession()->setFlash('success', 'Email was verified successfully.');
+            Yii::$app->getSession()->setFlash('success', 'Email is verified successfully.');
         } else {
             Yii::$app->getSession()->setFlash('error', 'Unable to verifiy email.');
         }
