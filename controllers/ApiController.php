@@ -47,7 +47,9 @@ class ApiController extends BaseController
                 'class' => HttpCache::class,
                 'only' => ['class-members'],
                 'cacheControlHeader' => 'public, max-age=86400',
-                'lastModified' => strtotime('yesterday 00:00:00'),
+                'lastModified' => function() {
+                    return strtotime('yesterday 00:00:00');
+                },
             ],
         ];
     }
