@@ -457,7 +457,10 @@ class User extends ActiveRecord implements IdentityInterface
 
     public function getForumUrl()
     {
-        return '@web/forum/index.php/user/' . urlencode($this->forum_id ?? 0) . '-' . urlencode($this->username);
+        if ($this->forum_id) {
+            return 'https://forum.yiiframework.com/u/' . urlencode($this->username);
+        }
+        return null;
     }
 
     /**

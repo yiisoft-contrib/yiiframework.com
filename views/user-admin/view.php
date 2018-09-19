@@ -39,7 +39,8 @@ $this->params['breadcrumbs'][] = $this->title;
 $authClients = [];
 foreach($model->authClients as $authClient) {
     if ($authClient->source === 'github') {
-        $authClients[] = Html::a(Html::encode($authClient->source), 'https://github.com/' . $authClient->source_login, ['target' => '_blank', 'rel' => 'noopener']);
+        $authClients[] = Html::a(Html::encode($authClient->source), 'https://github.com/' . $authClient->source_login, ['target' => '_blank', 'rel' => 'noopener']) . ' '
+            . Html::encode("({$authClient->source_login}, {$authClient->source_email})");
     } else {
         $authClients[] = Html::encode($authClient->source);
     }

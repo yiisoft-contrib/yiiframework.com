@@ -62,16 +62,25 @@ class AuthHandler
 
         if (Yii::$app->user->isGuest) {
             if ($auth) { // login
-                $this->login($auth);
+                if ($this->login($auth)) {
+                    $auth->updateAttributes([
+                        'source_login' => $login,
+                        'source_email' => $email,
+                    ]);
+                }
             } else { // signup
                 return $this->signup($email, $login, $fullname, $id);
             }
         } else { // user already logged in
             if (!$auth) { // add auth provider
-                $this->addAuthProvider($id, $login);
+                $this->addAuthProvider($id, $login, $email);
             } else { // there's existing auth
                 if ($auth->user_id == Yii::$app->user->id) {
                     // do nothing, login is already active
+                    $auth->updateAttributes([
+                        'source_login' => $login,
+                        'source_email' => $email,
+                    ]);
                 } else {
                     $this->clientAlreadyInUse();
                 }
@@ -113,7 +122,7 @@ class AuthHandler
         /** @var User $user */
         $user = $auth->user;
         $this->updateUserInfo($user);
-        Yii::$app->user->login($user, Yii::$app->params['user.rememberMeDuration']);
+        return Yii::$app->user->login($user, Yii::$app->params['user.rememberMeDuration']);
     }
 
     /**
@@ -199,6 +208,7 @@ class AuthHandler
                 'source' => $this->client->getId(),
                 'source_id' => (string)$id,
                 'source_login' => (string)$login,
+                'source_email' => (string)$email,
             ]);
             if ($auth->save()) {
 
@@ -237,13 +247,14 @@ class AuthHandler
      * @param $id
      * @param $login
      */
-    private function addAuthProvider($id, $login)
+    private function addAuthProvider($id, $login, $email)
     {
         $auth = new Auth([
             'user_id' => Yii::$app->user->id,
             'source' => $this->client->getId(),
             'source_id' => (string)$id,
             'source_login' => $login,
+            'source_email' => $email,
         ]);
         if ($auth->save()) {
             /** @var User $user */

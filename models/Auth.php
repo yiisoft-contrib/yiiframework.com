@@ -12,6 +12,7 @@ use Yii;
  * @property string $source
  * @property string $source_id
  * @property string $source_login
+ * @property string $source_email
  *
  * @property User $user
  */
@@ -36,6 +37,7 @@ class Auth extends ActiveRecord
             'source' => 'Source',
             'source_id' => 'Source ID',
             'source_login' => 'Source Login',
+            'source_email' => 'Source Email',
         ];
     }
 
