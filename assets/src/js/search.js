@@ -12,6 +12,11 @@ searchResultCache = {
     }
 };
 
+var searchBox = $('#search');
+var searchResultBox = $('#search-resultbox');
+var openSearchWidth = 350;
+var closedSearchWidth = 200;
+
 renderResultList = function(resultName, limit) {
 
     var html = '';
@@ -93,7 +98,7 @@ searchApidoc = function(query) {
                 searchApiDocMembers = data.members;
                 searchApiDocMembersStatus = false;
 
-                searchApiDocPopulate(query);
+                searchApiDocPopulate(searchBox.val());
                 updateSearchResults();
             }
         });
@@ -114,7 +119,7 @@ searchApidoc = function(query) {
                 searchApiDocTypes = data.classes;
                 searchApiDocTypeStatus = false;
 
-                searchApiDocPopulate(query);
+                searchApiDocPopulate(searchBox.val());
                 updateSearchResults();
             }
         });
@@ -453,11 +458,6 @@ searchApiDocPopulateTypes = function(query) {
     searchResultCache.api.data = bestMatch.concat(secondMatch);
     searchResultCache.api.fetched = true;
 };
-
-var searchBox = $('#search');
-var searchResultBox = $('#search-resultbox');
-var openSearchWidth = 350;
-var closedSearchWidth = 200;
 
 adjustSearchBoxSize = function() {
 
