@@ -8,6 +8,7 @@ use app\models\Doc;
 use app\models\Extension;
 use app\models\search\SearchActiveRecord;
 use Yii;
+use yii\filters\HttpCache;
 use yii\helpers\FileHelper;
 use yii\helpers\Json;
 use yii\helpers\Url;
@@ -41,6 +42,12 @@ class ApiController extends BaseController
                     'application/json' => Response::FORMAT_JSON,
                     'json' => Response::FORMAT_JSON,
                 ],
+            ],
+            [
+                'class' => HttpCache::class,
+                'only' => ['class-members'],
+                'cacheControlHeader' => 'public, max-age=86400',
+                'lastModified' => strtotime('yesterday 00:00:00'),
             ],
         ];
     }

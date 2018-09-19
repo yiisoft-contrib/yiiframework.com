@@ -222,6 +222,7 @@ class GuideController extends BaseController
             if ($cache->beforeAction(null)) {
                 return Yii::$app->response->sendFile($file['file'], $file['name']);
             }
+            return;
         }
 
         throw new NotFoundHttpException('The requested page was not found.');
