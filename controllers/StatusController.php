@@ -36,19 +36,57 @@ class StatusController extends BaseController
         ['yiisoft', 'yii2-shell'],
         ['yiisoft', 'yii2-composer'],
         ['yiisoft', 'yii2-apidoc'],
-
-        // 2.1
         ['yiisoft', 'yii2-docker'],
-        ['yiisoft', 'yii2-app'],
-        ['yiisoft', 'yii2-oracle'],
-        ['yiisoft', 'yii2-mssql'],
-        ['yiisoft', 'yii2-bootstrap4'],
-        ['yiisoft', 'yii2-maskedinput'],
-        ['yiisoft', 'yii2-collection'],
-        ['yiisoft', 'yii2-phpunit'],
-        ['yiisoft', 'yii2-jquery'],
-        ['yiisoft', 'yii2-captcha'],
 
+        // 3.0 framework
+        ['yiisoft', 'yii-core'],
+        ['yiisoft', 'yii-console'],
+        ['yiisoft', 'yii-web'],
+        ['yiisoft', 'yii-rest'],
+
+        // 3.0 templates
+        ['yiisoft', 'yii-project-template'],
+        ['yiisoft', 'yii-base-web'],
+        ['yiisoft', 'yii-base-api'],
+        ['yiisoft', 'yii-base-cli'],
+
+        // 3.0 widgets and wrappers
+        ['yiisoft', 'yii-bootstrap3'],
+        ['yiisoft', 'yii-bootstrap4'],
+        ['yiisoft', 'yii-masked-input'],
+
+        // 3.0 tools
+        ['yiisoft', 'yii-debug'],
+        ['yiisoft', 'yii-gii'],
+
+        // 3.0 others
+        ['yiisoft', 'yii-jquery'],
+        ['yiisoft', 'yii-captcha'],
+        ['yiisoft', 'yii-swiftmailer'],
+        ['yiisoft', 'yii-twig'],
+        ['yiisoft', 'yii-http-client'],
+        ['yiisoft', 'yii-auth-client'],
+
+        // libraries
+        ['yiisoft', 'log'],
+        ['yiisoft', 'di'],
+        ['yiisoft', 'cache'],
+        ['yiisoft', 'db'],
+        ['yiisoft', 'active-record'],
+        ['yiisoft', 'rbac'],
+
+        // 3.0 DB drivers
+        ['yiisoft', 'db-mysql'],
+        ['yiisoft', 'db-mssql'],
+        ['yiisoft', 'db-pgsql'],
+        ['yiisoft', 'db-sqlite'],
+        ['yiisoft', 'db-oracle'],
+
+        // 3.0 NoSQL DB drivers
+        ['yiisoft', 'db-sphinx'],
+        ['yiisoft', 'db-redis'],
+        ['yiisoft', 'db-mongodb'],
+        ['yiisoft', 'db-elasticsearch'],
 
         // 1.1
         ['yiisoft', 'yii'],
