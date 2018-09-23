@@ -48,7 +48,7 @@ class StatusController extends BaseController
         ['yiisoft', 'yii-project-template'],
         ['yiisoft', 'yii-base-web'],
         ['yiisoft', 'yii-base-api'],
-        ['yiisoft', 'yii-base-cli'],
+        //['yiisoft', 'yii-base-cli'],
 
         // 3.0 widgets and wrappers
         ['yiisoft', 'yii-bootstrap3'],
