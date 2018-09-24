@@ -20,7 +20,9 @@ $form = new UserAvatarUploadForm([
 
 <?php else: ?>
 
-    <img class="user-avatar-image" alt="You currently don't have a profile picture.">
+    <object type="image/svg+xml" data="<?= Url::to('@web/image/user/default_user.svg') ?>">
+        default_user.svg; Your browser does not support SVG
+    </object>
 
 <?php endif; ?>
 
