@@ -19,10 +19,8 @@ $form = new UserAvatarUploadForm([
     <?= Html::img($model->getAvatarUrl(), ['alt' => 'Your Avatar Image', 'class' => 'user-avatar-image']) ?>
 
 <?php else: ?>
-
-    <object type="image/svg+xml" data="<?= Url::to('@web/image/user/default_user.svg') ?>">
-        default_user.svg; Your browser does not support SVG
-    </object>
+    
+    <img src="<?= Url::to('@web/image/user/default_user.svg') ?>" class="user-avatar-image" alt="You currently don't have a profile picture.">    
 
 <?php endif; ?>
 
