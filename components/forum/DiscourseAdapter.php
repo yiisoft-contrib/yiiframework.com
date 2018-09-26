@@ -132,19 +132,7 @@ class DiscourseAdapter extends Component implements ForumAdapterInterface
      */
     public function ensureForumUser(User $user, $password)
     {
-        if ($user->forum_id) {
-            return $user->forum_id;
-        }
-
-        $response = $this->getClient()->get([$url = sprintf('/users/%s.json', $user->username), 'api_key' => $this->apiToken, 'api_username' => $this->apiAdminUser])->send();
-        $userData = $response->data;
-        if (isset($userData['user']['id'])) {
-            $user->updateAttributes(['forum_id' => $userData['user']['id']]);
-            return $userData['user']['id'];
-        }
-
-        Yii::error("Discourse API request returned invalid response: $url");
-        Yii::error($response);
+        // forum users are created via SSO
         return null;
     }
 
