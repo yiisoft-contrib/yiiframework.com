@@ -20,7 +20,7 @@ $form = new UserAvatarUploadForm([
 
 <?php else: ?>
 
-    <img class="user-avatar-image" alt="You currently don't have a profile picture.">
+    <img src="<?= Url::to('@web/image/user/default_user.svg') ?>" class="user-avatar-image" alt="You currently don't have a profile picture.">
 
 <?php endif; ?>
 
