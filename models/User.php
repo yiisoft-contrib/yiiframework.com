@@ -2,6 +2,7 @@
 
 namespace app\models;
 
+use app\components\forum\ForumAdapterInterface;
 use Yii;
 use yii\base\NotSupportedException;
 use yii\db\ActiveQuery;
@@ -457,7 +458,11 @@ class User extends ActiveRecord implements IdentityInterface
 
     public function getForumUrl()
     {
-        if ($this->forum_id) {
+        /** @var ForumAdapterInterface $forumAdapter */
+        $forumAdapter = Yii::$app->forumAdapter;
+        $forumUserId = $forumAdapter->getForumUserId($this);
+
+        if ($forumUserId) {
             return 'https://forum.yiiframework.com/u/' . urlencode($this->username);
         }
         return null;

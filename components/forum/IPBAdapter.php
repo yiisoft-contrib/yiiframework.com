@@ -229,4 +229,9 @@ class IPBAdapter extends Component implements ForumAdapterInterface
     {
         return [];
     }
+
+    public function getForumUserId(User $user)
+    {
+        return $user->forum_id;
+    }
 }

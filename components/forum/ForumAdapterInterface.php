@@ -35,6 +35,8 @@ interface ForumAdapterInterface
      * @return array|null
      */
     public function getPostCountsByUsername();
+
+    public function getForumUserId(User $user);
     public function ensureForumUser(User $user, $password);
     public function changeUserPassword(User $user, $password);
 
