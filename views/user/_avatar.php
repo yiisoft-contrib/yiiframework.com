@@ -19,8 +19,8 @@ $form = new UserAvatarUploadForm([
     <?= Html::img($model->getAvatarUrl(), ['alt' => 'Your Avatar Image', 'class' => 'user-avatar-image']) ?>
 
 <?php else: ?>
-    
-    <img src="<?= Url::to('@web/image/user/default_user.svg') ?>" class="user-avatar-image" alt="You currently don't have a profile picture.">    
+
+    <img src="<?= Url::to('@web/image/user/default_user.svg') ?>" class="user-avatar-image" alt="You currently don't have a profile picture.">
 
 <?php endif; ?>
 
