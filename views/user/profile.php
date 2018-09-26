@@ -12,7 +12,7 @@ use yii\helpers\Html;
 /* @var Linkable[]|ObjectIdentityInterface[] $starTargets */
 
 $this->title = 'Hi, ' . $model->username . '!';
-
+$forumUrl = $model->getForumUrl();
 ?>
 <div class="container style_external_links">
     <div class="content">
@@ -37,7 +37,9 @@ $this->title = 'Hi, ' . $model->username . '!';
                             <?php endif ?>
                         </li>
                     <?php endif ?>
-                    <li><?= Html::a('View forum profile', $model->forumUrl); ?> (log in using your website username and password)</li>
+                    <?php if ($forumUrl): ?>
+                        <li><?= Html::a('View forum profile', $forumUrl); ?> (log in using your website username and password)</li>
+                    <?php endif ?>
                     <li><?= Html::a('View public profile', ['view', 'id' => $model->id]); ?></li>
                     <?php if ($model->passwordType !== User::PASSWORD_TYPE_NONE): ?>
                     <li><?= Html::a('Change password', ['/user/change-password']) ?></li>

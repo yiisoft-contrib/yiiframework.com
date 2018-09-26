@@ -12,6 +12,7 @@ use yii\widgets\DetailView;
 /* @var $extensions app\models\Extension[] */
 
 $this->title = $model->display_name . "'s profile";
+$forumUrl = $model->getForumUrl();
 
 if (Yii::$app->user->can(UserPermissions::PERMISSION_MANAGE_USERS)) {
     $this->beginBlock('adminNav');
@@ -54,7 +55,7 @@ $this->registerMetaTag(['name' => 'keywords', 'value' => 'yii framework, communi
 
                 'post_count' => [
                     'label' => 'Forum Posts',
-                    'value' => $model->post_count . ' (' . Html::a('view forum profile',$model->forumUrl) . ')',
+                    'value' => $model->post_count . ($forumUrl ? ' (' . Html::a('view forum profile', $forumUrl) . ')' : ''),
                     'format' => 'raw',
                 ],
                 'extension_count',
