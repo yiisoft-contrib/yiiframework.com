@@ -8,6 +8,7 @@ use app\models\Doc;
 use app\models\Extension;
 use app\models\search\SearchActiveRecord;
 use Yii;
+use Yii\filters\ContentNegotiator;
 use yii\filters\HttpCache;
 use yii\helpers\FileHelper;
 use yii\helpers\Json;
@@ -34,7 +35,7 @@ class ApiController extends BaseController
     {
         return [
             [
-                'class' => 'yii\filters\ContentNegotiator',
+                'class' => ContentNegotiator::class,
                 'only' => ['view', 'index', 'entry', 'class-members'],
                 'formats' => [
                     'text/html' => Response::FORMAT_HTML,
@@ -45,7 +46,7 @@ class ApiController extends BaseController
             ],
             [
                 'class' => HttpCache::class,
-                'only' => ['class-members', 'entry'],
+                'only' => ['class-members'],
                 'cacheControlHeader' => 'public, max-age=86400',
                 'lastModified' => function() {
                     return strtotime('yesterday 00:00:00');
@@ -297,6 +298,19 @@ class ApiController extends BaseController
                 return $this->redirect(['index', 'version' => '2.0'], 302); // Found, latest docs url is not permanent
 
             case Response::FORMAT_JSON:
+
+                // apply HTTP cache to JSON formatted API data to allow browsers to store these (improve search speed)
+                $httpCache = Yii::createObject([
+                    'class' => HttpCache::class,
+                    'cacheControlHeader' => 'public, max-age=86400',
+                    'lastModified' => function() {
+                        return strtotime('yesterday 00:00:00');
+                    },
+                ]);
+                if (!$httpCache->beforeAction($this->action)) {
+                    // HTTP 304 Not Modified
+                    return;
+                }
 
                 // 2.0 classes
                 $apiRenderer = new ApiRenderer([
