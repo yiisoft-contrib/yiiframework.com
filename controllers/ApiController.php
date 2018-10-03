@@ -8,7 +8,7 @@ use app\models\Doc;
 use app\models\Extension;
 use app\models\search\SearchActiveRecord;
 use Yii;
-use Yii\filters\ContentNegotiator;
+use yii\filters\ContentNegotiator;
 use yii\filters\HttpCache;
 use yii\helpers\FileHelper;
 use yii\helpers\Json;
