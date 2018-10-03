@@ -307,6 +307,8 @@ class ApiController extends BaseController
                         return strtotime('yesterday 00:00:00');
                     },
                 ]);
+                // tell browser that the cached content varies by Content-Type.
+                Yii::$app->response->headers->add('Vary', 'Accept');
                 if (!$httpCache->beforeAction($this->action)) {
                     // HTTP 304 Not Modified
                     return;
