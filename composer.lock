@@ -642,7 +642,7 @@
             "version": "v0.12.4",
             "source": {
                 "type": "git",
-                "url": "git@github.com:selectize/selectize.js.git",
+                "url": "https://github.com/selectize/selectize.js.git",
                 "reference": "47e048662d865c4f1ea3b2337de5e06e92fd9530"
             },
             "dist": {
@@ -2357,12 +2357,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/yiisoft/yii2-apidoc.git",
-                "reference": "f97f640a6e99d0a1e2e96eab996faf13bc54a217"
+                "reference": "71bee289ddd9b9d6cacaf04b93b48d16ea8e3480"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/yiisoft/yii2-apidoc/zipball/f97f640a6e99d0a1e2e96eab996faf13bc54a217",
-                "reference": "f97f640a6e99d0a1e2e96eab996faf13bc54a217",
+                "url": "https://api.github.com/repos/yiisoft/yii2-apidoc/zipball/71bee289ddd9b9d6cacaf04b93b48d16ea8e3480",
+                "reference": "71bee289ddd9b9d6cacaf04b93b48d16ea8e3480",
                 "shasum": ""
             },
             "require": {
@@ -2409,7 +2409,7 @@
                 "phpdoc",
                 "yii2"
             ],
-            "time": "2018-03-01T00:12:24+00:00"
+            "time": "2018-10-25T10:38:37+00:00"
         },
         {
             "name": "yiisoft/yii2-authclient",
