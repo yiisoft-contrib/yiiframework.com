@@ -88,7 +88,7 @@ return [
             'pt-br' => 'Português brasileiro',  // Brazilian Portuguese
             'ru' => 'Русский',     // Russian
             'uk' => 'Українська', // Ukrainian
-            'uz' => 'oʻzbekcha', // Uzbek
+            'uz' => 'Oʻzbekcha', // Uzbek
             'zh-cn' => '简体中文',  // Simplified Chinese
             'vi' => 'Tiếng Việt', // Vietnamese
         ],
