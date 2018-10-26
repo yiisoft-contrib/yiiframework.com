@@ -492,7 +492,7 @@ jQuery(document).ready(function () {
 
     // search when typing in search field
     searchBox.on("keyup", function(event) {
-        var query = $(this).val();
+        var query = $(this).val().trim();
 
         //console.log(event.which);
 
@@ -503,6 +503,7 @@ jQuery(document).ready(function () {
             var selectedLink = searchResultBox.find('a.selected');
             if (selectedLink.length != 0) {
                 document.location = selectedLink.attr('href');
+                event.preventDefault();
                 event.stopPropagation();
                 return;
             }
@@ -510,17 +511,17 @@ jQuery(document).ready(function () {
             searchResultBox.show();
 
             var selected = searchResultBox.find('a.selected');
-            if (selected.length == 0) {
+            if (selected.length === 0) {
                 searchResultBox.find('ul li a').first().addClass('selected');
             } else {
                 var next;
-                if (event.which == 40) {
+                if (event.which === 40) {
                     // down
                     next = selected.parent().next().find('a').first();
-                } else if (event.which == 38) {
+                } else if (event.which === 38) {
                     // up
                     next = selected.parent().prev().find('a').first();
-                } else if (event.which == 34) {
+                } else if (event.which === 34) {
                     // page down
                     var i = 0;
                     var n = selected;
@@ -528,7 +529,7 @@ jQuery(document).ready(function () {
                         next = n;
                         n = n.parent().next().find('a').first();
                     }
-                } else if (event.which == 33) {
+                } else if (event.which === 33) {
                     // page up
                     var i = 0;
                     var n = selected;
@@ -537,7 +538,26 @@ jQuery(document).ready(function () {
                         n = n.parent().prev().find('a').first();
                     }
                 }
-                if (next.length != 0) {
+                if (next.length === 0) {
+                    console.log('ul skip');
+                    // try if there is another <ul> element below the current
+                    var nextParent = selected.parents('ul');
+                    // jump over separators until we find <ul>
+                    if (event.which === 40 || event.which === 34) {
+                        // down
+                        while(nextParent.length && nextParent.next('ul').length === 0) {
+                            nextParent = nextParent.next();
+                        }
+                        next = nextParent.next('ul').find('a').first();
+                    } else {
+                        // up
+                        while(nextParent.length && nextParent.prev('ul').length === 0) {
+                            nextParent = nextParent.prev();
+                        }
+                        next = nextParent.prev('ul').find('a').last();
+                    }
+                }
+                if (next.length !== 0) {
                     // position of next relative to the top of the result bar
                     var position = Math.floor(next.position().top);
                     var resultUl = selected.parent().parent();
@@ -552,6 +572,7 @@ jQuery(document).ready(function () {
                 }
             }
 
+            event.preventDefault();
             event.stopPropagation();
 
             return;

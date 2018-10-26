@@ -38,6 +38,7 @@ PATHS:
     - "vendor/yiisoft/yii2/assets/yii.activeForm.js"
     - "vendor/yiisoft/yii2-authclient/src/assets/authchoice.js"
     - "vendor/bower-asset/glidejs/dist/glide.js"
+    - "assets/src/js/polyfill.js"
     - "assets/src/js/custom.js"
     - "assets/src/js/search.js"
     - "assets/src/js/voting.js"
