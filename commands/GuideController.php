@@ -71,8 +71,17 @@ class GuideController extends \yii\apidoc\commands\GuideController
                     // adjust LaTeX config for language
                     if ($language === 'ja') {
                         // https://en.wikibooks.org/wiki/LaTeX/Internationalization#Japanese
-                        // TODO this does not work yet. See https://github.com/yiisoft-contrib/yiiframework.com/issues/142
-                        file_put_contents("$pdfTarget/main.tex", str_replace('\usepackage[british]{babel}', '\usepackage{japanese}', file_get_contents("$pdfTarget/main.tex")));
+                        file_put_contents("$pdfTarget/main.tex", str_replace([
+                                '\usepackage[british]{babel}',
+                                '\begin{document}',
+                                '\end{document}'
+                            ], [
+                                '\usepackage{CJKutf8}',
+                                '\begin{document}' . PHP_EOL . '\begin{CJK}{UTF8}{min}',
+                                '\end{CJK}' . PHP_EOL . '\end{document}'
+                            ],
+                            file_get_contents("$pdfTarget/main.tex")
+                        ));
                     } elseif ($language === 'zh-cn') {
                         // https://en.wikibooks.org/wiki/LaTeX/Internationalization#Chinese
                         file_put_contents("$pdfTarget/main.tex", str_replace([

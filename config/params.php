@@ -136,7 +136,7 @@ return [
         'es' => 'spanish',
         'fr' => 'frenchb',
         'id' => 'bahasai', // https://tex.stackexchange.com/questions/224231/what-is-difference-indonesian-babel-with-bahasa-babel
-//        'ja' => '', // custom code in GuideController
+        'ja' => '', // custom code in GuideController
         'pl' => 'polish',
         'pt-br' => 'brazilian',
         'ru' => 'russian',
