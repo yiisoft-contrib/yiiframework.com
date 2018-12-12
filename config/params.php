@@ -140,7 +140,7 @@ return [
         'pl' => 'polish',
         'pt-br' => 'brazilian',
         'ru' => 'russian',
-//        'zh-cn' => '', // custom code in GuideController
+        'zh-cn' => '', // custom code in GuideController
     ],
 
     'blogtut.versions' => [

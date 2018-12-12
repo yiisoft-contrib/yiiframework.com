@@ -25,9 +25,11 @@ class GuideController extends \yii\apidoc\commands\GuideController
     /**
      * Generates the Definitive Guide for the specified version of Yii.
      * @param string $version version number, such as 1.1, 2.0
+     * @param string|null $languageOnly generate only for this language. Defaults to `null` which means
+     * to generate guide for all languages.
      * @return integer exit status
      */
-    public function actionGenerate($version)
+    public function actionGenerate($version, $languageOnly = null)
     {
         $versions = Yii::$app->params['guide.versions'];
         if (!isset($versions[$version])) {
@@ -41,6 +43,9 @@ class GuideController extends \yii\apidoc\commands\GuideController
 
         if ($version[0] === '2') {
             foreach ($languages as $language => $name) {
+                if ($languageOnly !== null && $languageOnly !== $language) {
+                    continue;
+                }
                 $source = "$sourcePath/yii-$version/docs/guide";
                 $source = static::normalizeGuideDirectory($source, $language);
                 $target = "$targetPath/guide-$version/$language";
@@ -70,7 +75,17 @@ class GuideController extends \yii\apidoc\commands\GuideController
                         file_put_contents("$pdfTarget/main.tex", str_replace('\usepackage[british]{babel}', '\usepackage{japanese}', file_get_contents("$pdfTarget/main.tex")));
                     } elseif ($language === 'zh-cn') {
                         // https://en.wikibooks.org/wiki/LaTeX/Internationalization#Chinese
-                        // TODO this does not work yet. See https://github.com/yiisoft-contrib/yiiframework.com/issues/142
+                        file_put_contents("$pdfTarget/main.tex", str_replace([
+                                '\usepackage[british]{babel}',
+                                '\begin{document}',
+                                '\end{document}'
+                            ], [
+                                '\usepackage{CJKutf8}',
+                                '\begin{document}' . PHP_EOL . '\begin{CJK}{UTF8}{gbsn}',
+                                '\end{CJK}' . PHP_EOL . '\end{document}'
+                            ],
+                            file_get_contents("$pdfTarget/main.tex")
+                        ));
                     } else {
                         file_put_contents("$pdfTarget/main.tex", str_replace('british', $languageMap[$language], file_get_contents("$pdfTarget/main.tex")));
                     }
@@ -117,6 +132,9 @@ class GuideController extends \yii\apidoc\commands\GuideController
 
         if ($version[0] === '1') {
             foreach ($languages as $language => $name) {
+                if ($languageOnly !== null && $languageOnly !== $language) {
+                    continue;
+                }
                 $unnormalizedLanguage = strtolower(str_replace('-', '_', $language));
 
                 $source = "$sourcePath/yii-$version/docs/guide";
@@ -141,6 +159,9 @@ class GuideController extends \yii\apidoc\commands\GuideController
             // generate blog tutorial
             if (isset(Yii::$app->params['blogtut.versions'][$version])) {
                 foreach(Yii::$app->params['blogtut.versions'][$version] as $language => $name) {
+                    if ($languageOnly !== null && $languageOnly !== $language) {
+                        continue;
+                    }
                     $unnormalizedLanguage = strtolower(str_replace('-', '_', $language));
 
                     $source = "$sourcePath/yii-$version/docs/blog";
