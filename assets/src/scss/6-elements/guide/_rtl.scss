@@ -1,4 +1,5 @@
 // adjustments for rtl languages
+.lang-ar,
 .lang-he {
   direction: rtl;
 
@@ -24,4 +25,35 @@
   p.lang-en {
     max-width: 100%;
   }
+
+  // ensure hashlinks on headlines do not jump
+  .hashlink {
+    //display: inline-block !important;
+  }
+
+  // pull-right should pull left on rtl pages
+  .guide-content .pull-right {
+    float: left !important;
+  }
+  // but not on the footer navigation
+  .guide-content .prev-next .pull-left {
+    float: left !important;
+
+    .chevron-left {
+      float: left;
+      margin-top: 0;
+    }
+  }
+  .guide-content .prev-next .pull-right {
+    float: right !important;
+
+    .chevron-right {
+      float: right;
+      margin-top: 0;
+    }
+  }
+}
+
+.guide-content img {
+  max-width: 100%;
 }
