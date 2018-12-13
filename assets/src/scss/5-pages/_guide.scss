@@ -40,7 +40,10 @@
     li:before {
       color: $eshill-green;
       content: "⁃";
-      margin-right: 4pt;
+      display: inline-block;
+      width: 6pt;
+      margin-left: -12pt;
+      margin-right: 6pt;
     }
   }
 

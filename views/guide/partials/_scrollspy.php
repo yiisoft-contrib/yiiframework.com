@@ -9,7 +9,7 @@
 use yii\helpers\Html;
 
 ?>
-<div class="visible-huge fixed">
+<div class="visible-huge fixed lang-<?= (!empty($missingTranslation)) ? 'en' : $guide->language ?>">
     <nav id="scrollnav" data-spy="affix" data-offset-top="120">
         <ul class="nav hidden-xs hidden-sm">
             <?php

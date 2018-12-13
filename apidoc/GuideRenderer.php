@@ -75,8 +75,13 @@ class GuideRenderer extends \yii\apidoc\templates\html\GuideRenderer
     protected function fixMarkdownLinks($content)
     {
         $guideUrl = rtrim($this->guideUrl, '/');
-        $content = preg_replace('/href\s*=\s*"([^"\/]+)\.md(#.*)?"/i', "href=\"$guideUrl/\\1\\2\"", $content);
-        return preg_replace('%<img src="(images/[^"]+)"%', "<img class=\"img-responsive\" src=\"$guideUrl/\\1\"", $content);
+        // 1. replace links to markdown files with the correct guide URL
+        // 2. replace relative links to english guide ("../guide"), this is useful for github,
+        //    but we have our own fallback mechanism
+        $content = preg_replace('~href\s*=\s*"(?:\.\./guide/)?([^"/]+)\.md(#.*)?"~i', "href=\"$guideUrl/\\1\\2\"", $content);
+        $content = preg_replace('%<img src="(images/[^"]+)"%', "<img class=\"img-responsive\" src=\"$guideUrl/\\1\"", $content);
+
+        return $content;
     }
 
     public function loadGuideStructure($files)

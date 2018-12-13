@@ -7,10 +7,6 @@
     direction: ltr;
   }
 
-  ul.list-unstyled {
-    padding-right: 0;
-  }
-
   .guide-headline {
     text-align: left;
   }
@@ -27,32 +23,76 @@
   }
 
   // pull-right should pull left on rtl pages
-  .guide-content .pull-right {
-    float: left !important;
-  }
-  // but not on the footer navigation
-  .guide-content .prev-next {
-    @include rem(padding-top, 30px);
-
-    .pull-left {
-      float: left !important;
-
-      .chevron-left {
-        float: left;
-        margin-top: 0;
-      }
-    }
+  &.guide-content {
     .pull-right {
-      float: right !important;
+      float: left !important;
+    }
+    // but not on the footer navigation
+    .prev-next {
+      @include rem(padding-top, 30px);
 
-      .chevron-right {
-        float: right;
-        margin-top: 0;
+      .pull-left {
+        float: left !important;
+
+        .chevron-left {
+          float: left;
+          margin-top: 0;
+        }
+      }
+      .pull-right {
+        float: right !important;
+
+        .chevron-right {
+          float: right;
+          margin-top: 0;
+        }
+      }
+      .text-center {
+        .chevron-up {
+          margin-top: 0;
+        }
       }
     }
-    .text-center {
-      .chevron-up {
-        margin-top: 0;
+    // columns in index page must float from right to left
+    .col-md-1,
+    .col-md-2,
+    .col-md-3,
+    .col-md-4,
+    .col-md-5,
+    .col-md-6,
+    .col-md-7,
+    .col-md-8,
+    .col-md-9,
+    .col-md-10,
+    .col-md-11,
+    .col-md-12,
+    .col-sm-1,
+    .col-sm-2,
+    .col-sm-3,
+    .col-sm-4,
+    .col-sm-5,
+    .col-sm-6,
+    .col-sm-7,
+    .col-sm-8,
+    .col-sm-9,
+    .col-sm-10,
+    .col-sm-11,
+    .col-sm-12 {
+      float: right !important;
+    }
+
+    ul {
+      padding-left: 0;
+      @include rem(padding-right, 30px);
+      list-style-type: none;
+
+      li:before {
+        color: $eshill-green;
+        content: "⁃";
+        display: inline-block;
+        width: 6pt;
+        margin-right: -12pt;
+        margin-left: 6pt;
       }
     }
   }

@@ -18,9 +18,9 @@ $this->beginContent('@app/views/guide/partials/_guide-layout.php', [
     'extensionVendor' => $extensionVendor,
 ]);
 ?>
-<div class="guide-content content">
+<div class="guide-content content lang-<?= (!empty($missingTranslation)) ? 'en' : $guide->language ?>">
     <?php if (!empty($missingTranslation)): ?>
-        <div class="alert alert-warning">
+        <div class="alert alert-warning lang-en">
             <strong>This section is not translated yet.</strong> <br />
             Please read it in English and consider
             <a href="https://github.com/yiisoft/yii2/blob/master/docs/internals/translation-workflow.md">
