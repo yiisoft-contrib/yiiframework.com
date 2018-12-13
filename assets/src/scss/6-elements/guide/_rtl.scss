@@ -58,6 +58,7 @@
   }
 
   // convert <div> to inline elements in headlines
+  // these are necesary for correctly displaying rtl language on github but mess up our CSS on the website.
   // https://github.com/yiisoft/yii2/pull/16952#issuecomment-446622984
   h1 div,
   h2 div,
