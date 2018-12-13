@@ -13,8 +13,8 @@ echo $this->render('partials/_versions.php', ['guide' => $guide, 'section' => nu
 $this->endBlock();
 
 ?>
-<div class="container guide-view lang-<?= $guide->language ?>">
-    <div class="guide-content content">
+<div class="container guide-view">
+    <div class="guide-content content lang-<?= $guide->language ?>">
 
         <?= \app\widgets\SearchForm::widget([
             'type' => 'guide',
