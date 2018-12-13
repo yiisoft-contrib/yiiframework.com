@@ -31,20 +31,29 @@
     float: left !important;
   }
   // but not on the footer navigation
-  .guide-content .prev-next .pull-left {
-    float: left !important;
+  .guide-content .prev-next {
+    @include rem(padding-top, 30px);
 
-    .chevron-left {
-      float: left;
-      margin-top: 0;
+    .pull-left {
+      float: left !important;
+
+      .chevron-left {
+        float: left;
+        margin-top: 0;
+      }
     }
-  }
-  .guide-content .prev-next .pull-right {
-    float: right !important;
+    .pull-right {
+      float: right !important;
 
-    .chevron-right {
-      float: right;
-      margin-top: 0;
+      .chevron-right {
+        float: right;
+        margin-top: 0;
+      }
+    }
+    .text-center {
+      .chevron-up {
+        margin-top: 0;
+      }
     }
   }
 
