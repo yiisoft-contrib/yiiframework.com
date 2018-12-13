@@ -26,11 +26,6 @@
     max-width: 100%;
   }
 
-  // ensure hashlinks on headlines do not jump
-  .hashlink {
-    //display: inline-block !important;
-  }
-
   // pull-right should pull left on rtl pages
   .guide-content .pull-right {
     float: left !important;
@@ -52,6 +47,19 @@
       margin-top: 0;
     }
   }
+
+  // convert <div> to inline elements in headlines
+  // https://github.com/yiisoft/yii2/pull/16952#issuecomment-446622984
+  h1 div,
+  h2 div,
+  h3 div,
+  h4 div,
+  h5 div,
+  h6 div {
+    display: inline;
+  }
+
+
 }
 
 .guide-content img {
