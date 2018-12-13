@@ -79,6 +79,7 @@ return [
 
     'guide.versions' => [
         '2.0' => [
+            'ar' => 'العربية',  // Arabic
             'en' => 'English',
             'es' => 'Español',     // Spanish
             'fr' => 'Français',     // French
