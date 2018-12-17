@@ -29,17 +29,17 @@ return [
     'rss.xml' => 'rss/all',
 
     // static file download
-    'download/<category:[\w-]+>/<file:[\w\d-.]+>' => 'site/file',
+    'download/<category:[\w\-]+>/<file:[\w\d\-.]+>' => 'site/file',
 
     // news
     'news' => 'news/index',
     'news/<id:\d+>/<name>' => 'news/view',
     'news/<id:\d+>' => 'news/view',
-    'news/<action:[\w-]+>' => 'news/<action>',
+    'news/<action:[\w\-]+>' => 'news/<action>',
 
     // auth, login and logout
     '<action:login|logout|signup>' => 'auth/<action>',
-    'auth/<action:[\w-]+>' => 'auth/<action>',
+    'auth/<action:[\w\-]+>' => 'auth/<action>',
 
     // class api docs
     'doc/api' => 'api/entry',
@@ -78,13 +78,13 @@ return [
     'extension/<vendorName:[\w\-\.]+>/<name:[\w\-\.]+>' => 'extension/view',
     'extension/<name:[A-z][A-z0-9\-]*>' => 'extension/view',
     'extensions' => 'extension/index',
-    'extensions/<action:[\w-]+>' => 'extension/<action>',
+    'extensions/<action:[\w\-]+>' => 'extension/<action>',
 
     // wiki
     'wiki' => 'wiki/index',
     'wiki/<id:\d+>/<name>' => 'wiki/view',
     'wiki/<id:\d+>' => 'wiki/view',
-    'wiki/<action:[\w-]+>' => 'wiki/<action>',
+    'wiki/<action:[\w\-]+>' => 'wiki/<action>',
 
     // user profiles and user ranking
     'user' => 'user/index',
@@ -92,10 +92,10 @@ return [
     'user/avatar/<id:\d+>' => 'user/avatar',
     'user/<action:halloffame|profile|request-email-verification|change-password|upload-avatar|delete-avatar>' => 'user/<action>',
     'badges' => 'user/badges',
-    'badge/<name:[\w-]+>' => 'user/view-badge',
+    'badge/<name:[\w\-]+>' => 'user/view-badge',
 
     // ajax actions for handling user interactions
-    'ajax/<action:[\w-]+>' => 'ajax/<action>',
+    'ajax/<action:[\w\-]+>' => 'ajax/<action>',
 
     // urls from old site redirect to new location
     'doc-2.0' => 'guide/redirect',
@@ -113,6 +113,6 @@ return [
     'admin' => 'admin/index',
     'admin/<action:discourse>' => 'admin/<action>',
     'admin/<controller:user|comment|wiki>' => '<controller>-admin/index',
-    'admin/<controller:user|comment|wiki>/<action:[\w-]+>' => '<controller>-admin/<action>',
+    'admin/<controller:user|comment|wiki>/<action:[\w\-]+>' => '<controller>-admin/<action>',
 
 ];
