@@ -50,4 +50,9 @@ class DummyAdapter implements ForumAdapterInterface
     {
         return [];
     }
+
+    public function getForumUserId(User $user)
+    {
+        return null;
+    }
 }
