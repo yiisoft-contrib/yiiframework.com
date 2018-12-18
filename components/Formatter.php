@@ -25,7 +25,7 @@ class Formatter extends \yii\i18n\Formatter
                 'table', 'tr', 'td', 'th', 'tbody', 'thead', 'tfoot',
                 'a', 'p', 'br',
                 'blockquote',
-                'details', 'summary',
+                'summary',
                 'ul', 'ol', 'li',
                 'img'
             ],
