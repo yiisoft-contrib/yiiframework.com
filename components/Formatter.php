@@ -22,9 +22,10 @@ class Formatter extends \yii\i18n\Formatter
                 'h1', 'h2', 'h3', 'h4', 'h5', 'h6',
                 'strong', 'em', 'b', 'i', 'u', 's', 'span',
                 'pre', 'code',
-                'table', 'tr', 'td', 'th',
+                'table', 'tr', 'td', 'th', 'tbody', 'thead', 'tfoot',
                 'a', 'p', 'br',
                 'blockquote',
+                'details', 'summary',
                 'ul', 'ol', 'li',
                 'img'
             ],
