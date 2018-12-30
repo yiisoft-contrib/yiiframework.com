@@ -1,5 +1,6 @@
 <?php
 
+use app\models\Wiki;
 use app\models\WikiCategory;
 use dosamigos\selectize\SelectizeTextInput;
 use yii\helpers\Html;
@@ -31,7 +32,7 @@ use yii\widgets\ActiveForm;
 
             <?= $form->field($model, 'category_id')->dropDownList(WikiCategory::getSelectData(), ['prompt' => 'Please select...']) ?>
             <?= $form->field($model, 'yii_version')
-                ->dropDownList(['2.0' => 'Version 2.0', '1.1' => 'Version 1.1', 'all' => 'Version independent'], ['prompt' => 'Please select...'])
+                ->dropDownList(Wiki::getYiiVersionOptions(), ['prompt' => 'Please select...'])
                 ->hint('Please select the Yii version for this article if the content is valid only for a specific version of Yii.')
             ?>
 

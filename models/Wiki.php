@@ -57,6 +57,7 @@ class Wiki extends ActiveRecord implements Linkable, ObjectIdentityInterface, En
     const STATUS_PUBLISHED = 3;
     const STATUS_DELETED = 5;
 
+    const YII_VERSION_30 = '3.0';
     const YII_VERSION_20 = '2.0';
     const YII_VERSION_11 = '1.1';
     const YII_VERSION_10 = '1.0';
@@ -367,6 +368,7 @@ class Wiki extends ActiveRecord implements Linkable, ObjectIdentityInterface, En
     public static function getYiiVersionOptions()
     {
         return [
+            self::YII_VERSION_30 => 'Version 3.0',
             self::YII_VERSION_20 => 'Version 2.0',
             self::YII_VERSION_11 => 'Version 1.1',
             self::YII_VERSION_ALL => 'All Versions',
