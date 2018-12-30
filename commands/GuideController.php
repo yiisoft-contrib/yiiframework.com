@@ -77,7 +77,7 @@ class GuideController extends \yii\apidoc\commands\GuideController
                                 '\end{document}'
                             ], [
                                 '\usepackage{CJKutf8}',
-                                '\begin{document}' . PHP_EOL . '\begin{CJK}{UTF8}{min}',
+                                '\begin{document}' . PHP_EOL . '\begin{CJK}{UTF8}{ipxm}',
                                 '\end{CJK}' . PHP_EOL . '\end{document}'
                             ],
                             file_get_contents("$pdfTarget/main.tex")
