@@ -34,9 +34,7 @@ use yii\helpers\Html;
 <?php endif; ?>
 
 <?php if (UserPermissions::canManageExtensions()): ?>
-    <div class="well danger">
-        <?= Html::a('Delete', ['extension/delete', 'id' => $model->id], ['data-method' => 'POST'])?><br>
-    </div>
+    <?= Html::a('Delete', ['extension/delete', 'id' => $model->id], ['data-method' => 'POST', 'class' => 'btn btn-danger'])?><br>
 <?php endif ?>
 
 <?php
