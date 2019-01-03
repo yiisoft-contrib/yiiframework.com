@@ -35,7 +35,7 @@ if ($discourse) {
                     class="fa fa-inverse fa-bars"></i></button>
         </div>
 
-        <div class="navbar-collapse collapse">
+        <div class="navbar-collapse collapse navbar-right">
             <?php
 
             // main navigation
@@ -63,12 +63,7 @@ if ($discourse) {
                         'label' => 'Wiki',
                         'url' => ['wiki/index'],
                         'options' => ['title' => 'Community Wiki'],
-                        'active' => $controller === 'wiki'],
-                    [
-                        'label' => 'Extensions',
-                        'url' => ['extension/index'],
-                        'options' => ['title' => 'Extensions'],
-                        'active' => $controller === 'extension' || strncmp($action, 'extension-', 10) === 0
+                        'active' => $controller === 'wiki'
                     ],
                     [
                         'label' => 'Forum',
@@ -82,6 +77,12 @@ if ($discourse) {
                             [
                                 'label' => 'Live Chat',
                                 'url' => ['site/chat']
+                            ],
+                            [
+                                'label' => 'Extensions',
+                                'url' => ['extension/index'],
+                                'options' => ['title' => 'Extensions'],
+                                'active' => $controller === 'extension' || strncmp($action, 'extension-', 10) === 0
                             ],
                             [
                                 'label' => 'Resources',
