@@ -17,7 +17,10 @@ use yii\helpers\Html;
 <?php endif; ?>
 
 <?php if (UserPermissions::canUpdateExtension($model)): ?>
-    <?= Html::a('Update Extension', ['extension/update', 'id' => $model->id])?><br>
+    <?= Html::a('Update', ['extension/update', 'id' => $model->id])?><br>
+    <?php if (UserPermissions::canManageExtensions()): ?>
+        <?= Html::a('Delete', ['extension/delete', 'id' => $model->id], ['data-method' => 'POST'])?><br>
+    <?php endif ?>
     <?php if (!$model->from_packagist): ?>
         <?= Html::a('Manage Downloads', ['extension/files', 'id' => $model->id])?><br>
     <?php endif; ?>

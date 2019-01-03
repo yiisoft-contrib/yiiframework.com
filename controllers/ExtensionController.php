@@ -51,12 +51,11 @@ class ExtensionController extends BaseController
                         'actions' => ['create', 'list-tags', 'update', 'update-packagist', 'keep-alive', 'delete-file'],
                         'roles' => ['@'],
                     ],
-//                    [
-//                        // allow all to a access index and view action
-//                        'allow' => true,
-//                        'actions' => ['admin', 'create', 'update', 'delete', 'list-tags'],
-//                        'roles' => ['news:pAdmin'],
-//                    ],
+                    [
+                        'allow' => true,
+                        'actions' => ['delete'],
+                        'roles' => [UserPermissions::PERMISSION_MANAGE_EXTENSIONS],
+                    ],
                 ]
             ],
 
@@ -72,7 +71,7 @@ class ExtensionController extends BaseController
 
     public function actionIndex($category = null, $tag = null, $version = '2.0')
     {
-        if (!in_array($version, [Extension::YII_VERSION_10, Extension::YII_VERSION_11, Extension::YII_VERSION_20], true)) {
+        if (!\in_array($version, [Extension::YII_VERSION_10, Extension::YII_VERSION_11, Extension::YII_VERSION_20], true)) {
             throw new NotFoundHttpException();
         }
 
@@ -412,8 +411,11 @@ class ExtensionController extends BaseController
         return $this->redirect(['files', 'id' => $model->id]);
     }
 
-
-
+    public function actionDelete($id)
+    {
+        $this->findModelById($id)->updateAttributes(['status' => Extension::STATUS_DELETED]);
+        $this->goBack();
+    }
 
     /**
      * Finds the Extension model based on its name.
@@ -459,7 +461,7 @@ class ExtensionController extends BaseController
     public function actionDoc($name, $vendorName, $type)
     {
         // ensure model exists, throws 404 error if not
-        $model = $this->findModel("$vendorName/$name");
+        $this->findModel("$vendorName/$name");
 
         if ($type === 'guide') {
             $guideInfo = Yii::getAlias("@app/data/extensions/$vendorName/$name/guide.json");
