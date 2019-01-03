@@ -35,7 +35,7 @@ if ($discourse) {
                     class="fa fa-inverse fa-bars"></i></button>
         </div>
 
-        <div class="navbar-collapse collapse navbar-right">
+        <div class="navbar-collapse collapse">
             <?php
 
             // main navigation
