@@ -26,7 +26,7 @@ $this->title = 'Not Found (#404)';
                 if (isset($extension)) {
                     $versionOptions = Guide::getExtensionOptions($extension);
                     $alternativeGuide = Guide::loadExtension($extension, key($versionOptions), reset($versionOptions)[0]);
-                    $alternatives = $alternativeGuide->findSectionInOtherLanguages($section);
+                    $alternatives = $alternativeGuide === null ? [] : $alternativeGuide->findSectionInOtherLanguages($section);
                 } else {
                     $alternatives = (new Guide('2.0', 'en'))->findSectionInOtherLanguages($section);
                 }
