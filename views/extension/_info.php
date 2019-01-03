@@ -25,7 +25,7 @@ use yii\helpers\Html;
         <?= Html::a('Manage Downloads', ['extension/files', 'id' => $model->id])?><br>
     <?php endif; ?>
     <?php if ($model->from_packagist): ?>
-        <?= Html::a('Update Packagist Data', ['extension/update-packagist', 'id' => $model->id], ['data-method' => 'post'])?><br>
+        <?= Html::a('Update Packagist Data', ['extension/update-packagist', 'id' => $model->id], ['data-method' => 'post', 'data-confirm' => 'Are you sure you want to delete this extension?'])?><br>
     <?php endif; ?>
 <?php endif; ?>
 

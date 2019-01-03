@@ -414,7 +414,7 @@ class ExtensionController extends BaseController
     public function actionDelete($id)
     {
         $this->findModelById($id)->updateAttributes(['status' => Extension::STATUS_DELETED]);
-        $this->goBack();
+        return $this->redirect(['index']);
     }
 
     /**
