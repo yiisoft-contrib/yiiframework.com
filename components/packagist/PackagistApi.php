@@ -67,10 +67,10 @@ class PackagistApi
             $errorMessage = 'Error getting data from packagist.org:' . $e->getMessage();
         }
 
-        if (!is_array($data) || array_diff(['results', 'total'], array_keys($data))) {
+        if (!\is_array($data) || array_diff(['results', 'total'], array_keys($data))) {
             $errorMessage = 'Error getting data from packagist.org';
         } else {
-            $currentPageCount = count($data['results']);
+            $currentPageCount = \count($data['results']);
             foreach ($data['results'] as $result) {
                 $package = Package::createFromAPIData($result);
                 if ($package instanceof Package) {
@@ -101,12 +101,12 @@ class PackagistApi
 
         $url = sprintf(self::ENDPOINT_LIST, http_build_query($queryParam));
         try {
-            $data = Json::decode(file_get_contents($url), true);
+            $data = Json::decode(@file_get_contents($url), true);
         } catch (\Throwable $e) {
             throw new PackagistException('Error getting data from packagist.org:' . $e->getMessage(), 0, $e);
         }
 
-        if (!is_array($data) || !isset($data['packageNames'])) {
+        if (!\is_array($data) || !isset($data['packageNames'])) {
             throw new PackagistException('Error getting data from packagist.org.');
         }
         return $data['packageNames'];
@@ -125,7 +125,7 @@ class PackagistApi
         $url = sprintf(self::ENDPOINT_PACKAGE, $vendorName, $packageName);
 
         try {
-            $data = Json::decode(file_get_contents($url), true);
+            $data = Json::decode(@file_get_contents($url), true);
         } catch (\Throwable $e) {
             if (strpos($e->getMessage(), '404') !== false) {
                 return false;
@@ -133,7 +133,7 @@ class PackagistApi
             throw $e;
         }
 
-        if (!is_array($data) || !isset($data['package'])) {
+        if (!\is_array($data) || !isset($data['package'])) {
             return false;
         }
 
@@ -162,8 +162,12 @@ class PackagistApi
 
         foreach($readmeNames as $readmeName) {
             try {
-                return file_get_contents(sprintf(self::ENDPOINT_GITHUB_FILE, $matches[1], $readmeName));
+                $result = @file_get_contents(sprintf(self::ENDPOINT_GITHUB_FILE, $matches[1], $readmeName));
+                if ($result !== false) {
+                    return $result;
+                }
             } catch (\Throwable $e) {
+                // do nothing
             }
         }
         Yii::error('Failed to read README from repository: ' . $repositoryUrl);
