@@ -62,7 +62,7 @@ class PackagistApi
         $url = sprintf(self::ENDPOINT_SEARCH, http_build_query($queryParam));
         $data = null;
         try {
-            $data = Json::decode(file_get_contents($url), true);
+            $data = Json::decode(@file_get_contents($url), true);
         } catch (\Exception $e) {
             $errorMessage = 'Error getting data from packagist.org:' . $e->getMessage();
         }
