@@ -42,11 +42,9 @@ class DiscourseAdapter extends Component implements ForumAdapterInterface
      */
     private function getClient()
     {
-        $client = new Client([
+        return new Client([
             'baseUrl' => $this->apiUrl,
         ]);
-
-        return $client;
     }
 
 
@@ -64,7 +62,7 @@ class DiscourseAdapter extends Component implements ForumAdapterInterface
         $this->getForumUserId($user);
 
         $response = $this->getClient()->get([$url = sprintf('/admin/users/%d.json', $user->forum_id), 'api_key' => $this->apiToken, 'api_username' => $this->apiAdminUser])->send();
-        if ($response->statusCode != 200) {
+        if (!$response->isOk) {
             Yii::error("Discourse API request returned error: $url");
             Yii::error($response);
             return 0;
@@ -80,10 +78,12 @@ class DiscourseAdapter extends Component implements ForumAdapterInterface
         }
 
         $response = $this->getClient()->get([$url = sprintf('/users/%s.json', $user->username), 'api_key' => $this->apiToken, 'api_username' => $this->apiAdminUser])->send();
-        $userData = $response->data;
-        if (isset($userData['user']['id'])) {
-            $user->updateAttributes(['forum_id' => $userData['user']['id']]);
-            return $userData['user']['id'];
+        if ($response->isOk) {
+            $userData = $response->data;
+            if (isset($userData['user']['id'])) {
+                $user->updateAttributes(['forum_id' => $userData['user']['id']]);
+                return $userData['user']['id'];
+            }
         }
 
         Yii::error("Discourse API request returned invalid response: $url");
@@ -103,7 +103,7 @@ class DiscourseAdapter extends Component implements ForumAdapterInterface
         $url = '/directory_items.json?period=all&order=post_count&api_key=' . urlencode($this->apiToken) . '&api_username=' . urlencode($this->apiAdminUser);
         while (true) {
             $response = $this->getClient()->get($url)->send();
-            if ($response->statusCode != 200) {
+            if (!$response->isOk) {
                 Yii::error('Discourse API request returned error: ' . preg_replace('/api_key=.+?&/', 'api_key=...', $url));
                 Yii::error($response);
                 return $postCounts;
@@ -152,7 +152,7 @@ class DiscourseAdapter extends Component implements ForumAdapterInterface
         $badges = Yii::$app->cache->get('discourse_badges');
         if ($badges === false) {
             $response = $this->getClient()->get(['/admin/badges.json', 'api_key' => $this->apiToken, 'api_username' => $this->apiAdminUser])->send();
-            if ($response->statusCode != 200) {
+            if (!$response->isOk) {
                 Yii::error('Discourse API request returned error: /admin/badges.json');
                 Yii::error($response);
                 return [];
