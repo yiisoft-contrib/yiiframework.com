@@ -18,9 +18,6 @@ use yii\helpers\Html;
 
 <?php if (UserPermissions::canUpdateExtension($model)): ?>
     <?= Html::a('Update', ['extension/update', 'id' => $model->id])?><br>
-    <?php if (UserPermissions::canManageExtensions()): ?>
-        <?= Html::a('Delete', ['extension/delete', 'id' => $model->id], ['data-method' => 'POST'])?><br>
-    <?php endif ?>
     <?php if (!$model->from_packagist): ?>
         <?= Html::a('Manage Downloads', ['extension/files', 'id' => $model->id])?><br>
     <?php endif; ?>
@@ -36,6 +33,11 @@ use yii\helpers\Html;
     <?= Html::a(strpos($model->github_url, 'github.com/') !== false ? 'Github Repository' : 'Code Repository', $model->github_url, ['target' => '_blank', 'rel' => 'noopener noreferrer']) ?><br>
 <?php endif; ?>
 
+<?php if (UserPermissions::canManageExtensions()): ?>
+    <div class="well danger">
+        <?= Html::a('Delete', ['extension/delete', 'id' => $model->id], ['data-method' => 'POST'])?><br>
+    </div>
+<?php endif ?>
 
 <?php
 $downloads = $model->getDownloads()->latest()->limit(3)->all();
