@@ -125,7 +125,7 @@ class PackagistApi
         $url = sprintf(self::ENDPOINT_PACKAGE, $vendorName, $packageName);
 
         try {
-            $data = Json::decode(@file_get_contents($url), true);
+            $data = Json::decode(file_get_contents($url), true);
         } catch (\Throwable $e) {
             if (strpos($e->getMessage(), '404') !== false) {
                 return false;
