@@ -451,7 +451,7 @@ MARKDOWN;
             try {
                 $package = (new PackagistApi())->getPackage($vendorName, $packageName);
             } catch (\Exception $e) {
-                throw new HttpException(503, 'Packagist is currently unavailable: ' . $e->getMessage(), 0, $e);
+                throw new HttpException(503, 'Packagist is currently unavailable: ' . $e->getMessage() . ' at ' . $e->getFile() . ' line ' . $e->getLine() . ': ' . $e->getTraceAsString(), 0, $e);
             }
             if (!$package) {
                 throw new Exception('Package does not exist on Packagist.'); // TODO make this catchable for 404
