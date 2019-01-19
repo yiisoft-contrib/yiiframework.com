@@ -188,7 +188,7 @@ class PackagistApi
                 $endpoint = self::ENDPOINT_GITHUB_RAW_FILE;
                 break;
             case 'gitlab.com':
-                $endpoint = self::ENDPOINT_GITHUB_RAW_FILE;
+                $endpoint = self::ENDPOINT_GITLAB_RAW_FILE;
                 break;
             default:
                 throw new InvalidArgumentException("Getting files from $service is not supported.");
