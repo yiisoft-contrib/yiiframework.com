@@ -22,7 +22,7 @@ use yii\helpers\Html;
         <?= Html::a('Manage Downloads', ['extension/files', 'id' => $model->id])?><br>
     <?php endif; ?>
     <?php if ($model->from_packagist): ?>
-        <?= Html::a('Update Packagist Data', ['extension/update-packagist', 'id' => $model->id], ['data-method' => 'post', 'data-confirm' => 'Are you sure you want to delete this extension?'])?><br>
+        <?= Html::a('Update Packagist Data', ['extension/update-packagist', 'id' => $model->id], ['data-method' => 'post'])?><br>
     <?php endif; ?>
 <?php endif; ?>
 
@@ -34,7 +34,7 @@ use yii\helpers\Html;
 <?php endif; ?>
 
 <?php if (UserPermissions::canManageExtensions()): ?>
-    <?= Html::a('Delete', ['extension/delete', 'id' => $model->id], ['data-method' => 'POST', 'class' => 'btn btn-danger'])?><br>
+    <?= Html::a('Delete', ['extension/delete', 'id' => $model->id], ['data-method' => 'POST', 'class' => 'btn btn-danger', 'data-confirm' => 'Are you sure you want to delete this extension?'])?><br>
 <?php endif ?>
 
 <?php
