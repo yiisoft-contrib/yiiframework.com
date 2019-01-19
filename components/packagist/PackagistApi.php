@@ -6,6 +6,8 @@ use Yii;
 use yii\base\Exception;
 use yii\base\InvalidArgumentException;
 use yii\helpers\Json;
+use yii\httpclient\Client;
+use yii\httpclient\CurlTransport;
 
 /**
  * Package manager for yii2-extension packagist.org packages
@@ -64,12 +66,7 @@ class PackagistApi
         }
 
         $url = sprintf(self::ENDPOINT_SEARCH, http_build_query($queryParam));
-        $data = null;
-        try {
-            $data = Json::decode(@file_get_contents($url), true);
-        } catch (\Exception $e) {
-            $errorMessage = 'Error getting data from packagist.org:' . $e->getMessage();
-        }
+        $data = $this->fetch($url);
 
         if (!\is_array($data) || array_diff(['results', 'total'], array_keys($data))) {
             $errorMessage = 'Error getting data from packagist.org';
@@ -104,11 +101,7 @@ class PackagistApi
         ];
 
         $url = sprintf(self::ENDPOINT_LIST, http_build_query($queryParam));
-        try {
-            $data = Json::decode(@file_get_contents($url), true);
-        } catch (\Throwable $e) {
-            throw new PackagistException('Error getting data from packagist.org:' . $e->getMessage(), 0, $e);
-        }
+        $data = $this->fetch($url);
 
         if (!\is_array($data) || !isset($data['packageNames'])) {
             throw new PackagistException('Error getting data from packagist.org.');
@@ -127,15 +120,7 @@ class PackagistApi
     public function getPackage($vendorName, $packageName)
     {
         $url = sprintf(self::ENDPOINT_PACKAGE, $vendorName, $packageName);
-
-        try {
-            $data = Json::decode(file_get_contents($url), true);
-        } catch (\Throwable $e) {
-            if (strpos($e->getMessage(), '404') !== false) {
-                return false;
-            }
-            throw $e;
-        }
+        $data = $this->fetch($url);
 
         if (!\is_array($data) || !isset($data['package'])) {
             return false;
@@ -153,7 +138,10 @@ class PackagistApi
      */
     public function getReadmeFromRepository($repositoryUrl)
     {
-        if (!preg_match('~^https?://(github\.com|gitlab\.com)/([^/]+/[^/]+)(\.git)?$~i', $repositoryUrl, $matches)) {
+        // we don't need .git at the end of URL
+        $repositoryUrl = preg_replace('~\.git$~i', '', $repositoryUrl);
+
+        if (!preg_match('~^https?://(github\.com|gitlab\.com)/([^/]+/[^/]+)$~i', $repositoryUrl, $matches)) {
             return null;
         }
 
@@ -163,9 +151,11 @@ class PackagistApi
         $readmeNames = [
             'README.md',
             'readme.md',
-            'README.MD',
             'README',
             'readme',
+            'README.MD',
+            'ReadMe.md',
+            'README.mkd',
         ];
 
         foreach ($readmeNames as $readmeName) {
@@ -196,13 +186,26 @@ class PackagistApi
         }
 
         $url = sprintf($endpoint, $package, $file);
+        return $this->fetch($url, true);
+    }
 
-        $headers = get_headers($url);
-        $responseCode = substr($headers[0], 9, 3);
-        if ($responseCode != 200) {
-            return false;
+    private function fetch($url, $raw = false)
+    {
+        $client = new Client([
+            'transport' => CurlTransport::class
+        ]);
+        $response = $client->createRequest()
+            ->setMethod('GET')
+            ->setUrl($url)
+            ->setOptions([
+                CURLOPT_TIMEOUT => 10, // data receiving timeout
+            ])
+            ->send();
+
+        if ($response->isOk) {
+            return $raw ? $response->content : $response->data;
         }
 
-        return @file_get_contents($url);
+        return false;
     }
 }

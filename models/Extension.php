@@ -162,6 +162,7 @@ MARKDOWN;
 
         $this->license_id = 'BSD-3-Clause';
         $this->update_status = self::UPDATE_STATUS_NEW;
+        $this->tagline = '';
     }
 
     /**

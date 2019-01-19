@@ -17,7 +17,7 @@
         "cebe/markdown": "~1.0.3",
 
         "yiisoft/yii2-authclient": "~2.1.0",
-        "yiisoft/yii2-httpclient": "~2.0.6",
+        "yiisoft/yii2-httpclient": "~2.0.0",
         "yiisoft/yii2-elasticsearch": "~2.1.0@dev",
         "yiisoft/yii2-redis": "~2.0.0",
         "yiisoft/yii2-queue": "~2.0.0",
@@ -55,7 +55,7 @@
         "abraham/twitteroauth": "~0.7.4",
         "baibaratsky/yii2-rollbar": "^1.7",
         "himiklab/yii2-recaptcha-widget": "^1.2",
-        "helgesverre/spamprotection": "dev-master",
+        "helgesverre/spamprotection": "~1.1.0",
         "yiisoft/yii2-imagine": "~2.1.0"
     },
     "require-dev": {
