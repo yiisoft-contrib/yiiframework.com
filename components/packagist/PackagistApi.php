@@ -200,7 +200,7 @@ class PackagistApi
         $headers = get_headers($url);
         $responseCode = substr($headers[0], 9, 3);
         if ($responseCode != 200) {
-            return null;
+            return false;
         }
 
         return @file_get_contents($url);
