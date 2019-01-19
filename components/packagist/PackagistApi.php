@@ -4,6 +4,7 @@ namespace app\components\packagist;
 
 use Yii;
 use yii\base\Exception;
+use yii\base\InvalidArgumentException;
 use yii\helpers\Json;
 
 /**
@@ -16,7 +17,10 @@ class PackagistApi
     const ENDPOINT_SEARCH = 'https://packagist.org/search.json?%s';
     const ENDPOINT_LIST = 'https://packagist.org/packages/list.json?%s';
     const ENDPOINT_PACKAGE = 'https://packagist.org/packages/%s/%s.json';
-    const ENDPOINT_GITHUB_FILE = 'https://raw.githubusercontent.com/%s/master/%s'; // TODO make this work when default branch is not master
+
+    // TODO make this work when default branch is not master
+    const ENDPOINT_GITHUB_RAW_FILE = 'https://raw.githubusercontent.com/%s/master/%s';
+    const ENDPOINT_GITLAB_RAW_FILE = 'https://gitlab.com/%s/raw/master/%s';
 
     /**
      * Get a list of packages
@@ -149,9 +153,12 @@ class PackagistApi
      */
     public function getReadmeFromRepository($repositoryUrl)
     {
-        if (!preg_match('~^https?://github\.com/([^/]+/[^/]+)(\.git)?$~i', $repositoryUrl, $matches)) {
+        if (!preg_match('~^https?://(github\.com|gitlab\.com)/([^/]+/[^/]+)(\.git)?$~i', $repositoryUrl, $matches)) {
             return null;
         }
+
+        $service = $matches[1];
+        $package = $matches[2];
 
         $readmeNames = [
             'README.md',
@@ -160,17 +167,33 @@ class PackagistApi
             'readme',
         ];
 
-        foreach($readmeNames as $readmeName) {
+        foreach ($readmeNames as $readmeName) {
             try {
-                $result = @file_get_contents(sprintf(self::ENDPOINT_GITHUB_FILE, $matches[1], $readmeName));
+                $result = $this->getRawFile($service, $package, $readmeName);
                 if ($result !== false) {
                     return $result;
                 }
             } catch (\Throwable $e) {
-                // do nothing
+                Yii::error('Failed to read README from repository: ' . $repositoryUrl . ' ' . $e->getMessage());
             }
         }
         Yii::error('Failed to read README from repository: ' . $repositoryUrl);
         return null;
+    }
+
+    private function getRawFile($service, $package, $file)
+    {
+        switch ($service) {
+            case 'github.com':
+                $endpoint = self::ENDPOINT_GITHUB_RAW_FILE;
+                break;
+            case 'gitlab.com':
+                $endpoint = self::ENDPOINT_GITHUB_RAW_FILE;
+                break;
+            default:
+                throw new InvalidArgumentException("Getting files from $service is not supported.");
+        }
+
+        return @file_get_contents(sprintf($endpoint, $package, $file));
     }
 }
