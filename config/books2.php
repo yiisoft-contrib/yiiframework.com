@@ -70,4 +70,16 @@ return [
         'level-text' => 'All levels',
         'level-description' => 'Recommended for all levels',
     ],
+
+    [
+        'title' => 'Yii2 By Example',
+        'author' => 'Fabrizio Caldarelli',
+        'image' => '@web/image/books/yii2-by-example.jpg',
+        'description' => 'Develop complete web applications from scratch through practical examples and tips for beginners and more advanced users',
+        'url' => 'https://www.packtpub.com/web-development/yii2-example',
+        'level' => 'all',
+        'level-text' => 'All levels',
+        'level-description' => 'Recommended for all levels',
+    ], 
+        
 ];
