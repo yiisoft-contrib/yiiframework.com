@@ -203,12 +203,13 @@ class Wiki extends ActiveRecord implements Linkable, ObjectIdentityInterface, En
             'id' => 'ID',
             'title' => 'Title',
             'content' => 'Content',
-            'category_id' => 'Category ID',
+            'category_id' => 'Category',
             'creator_id' => 'Creator ID',
             'updater_id' => 'Updater ID',
             'created_at' => 'Created At',
             'updated_at' => 'Updated At',
             'yii_version' => 'Yii Version',
+            'tagNames' => 'Tags'
         ];
     }
 
