@@ -271,9 +271,9 @@ MARKDOWN;
             'id' => 'ID',
             'name' => 'Name',
             'tagline' => 'Tagline',
-            'category_id' => 'Category ID',
-            'license_id' => 'License ID',
-            'owner_id' => 'Owner ID',
+            'category_id' => 'Category',
+            'license_id' => 'License',
+            'owner_id' => 'Owner',
             'created_at' => 'Created At',
             'updated_at' => 'Updated At',
             'total_votes' => 'Total Votes',
@@ -285,6 +285,7 @@ MARKDOWN;
             'yii_version' => 'Yii Version',
             'status' => 'Status',
             'description' => 'Description',
+            'tagNames' => 'Tags',
         ];
     }
 
