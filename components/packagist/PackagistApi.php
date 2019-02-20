@@ -151,6 +151,7 @@ class PackagistApi
         $readmeNames = [
             'README.md',
             'readme.md',
+            'Readme.md',
             'README',
             'readme',
             'README.MD',
