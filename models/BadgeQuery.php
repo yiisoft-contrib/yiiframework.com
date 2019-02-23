@@ -4,6 +4,11 @@ namespace app\models;
 
 use yii\db\ActiveQuery;
 
+/**
+ * Class BadgeQuery
+ *
+ * @see Badge
+ */
 class BadgeQuery extends ActiveQuery
 {
     /**

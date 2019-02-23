@@ -134,7 +134,7 @@ class ContributorsController extends Controller
     */
     protected function acquireMutex()
     {
-        $this->mutex = Instance::ensure($this->mutex, Mutex::className());
+        $this->mutex = Instance::ensure($this->mutex, Mutex::class);
         return $this->mutex->acquire($this->composeMutexName());
     }
     /**
@@ -151,7 +151,7 @@ class ContributorsController extends Controller
     */
     protected function composeMutexName()
     {
-        return $this->className() . '::' . $this->action->getUniqueId();
+        return self::class . '::' . $this->action->getUniqueId();
     }
 
 }

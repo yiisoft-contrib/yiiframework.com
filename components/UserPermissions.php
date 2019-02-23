@@ -5,7 +5,6 @@ namespace app\components;
 
 
 use app\models\Extension;
-use app\models\PasswordResetRequestForm;
 use app\models\User;
 use app\models\Wiki;
 use Yii;
@@ -57,11 +56,8 @@ class UserPermissions
 
         /** @var User $user */
         $user = Yii::$app->user->identity;
-        if ($user->rating < self::MIN_RATING_CREATE_WIKI) {
-            return false;
-        }
 
-        return true;
+        return $user->rating >= self::MIN_RATING_CREATE_WIKI;
     }
 
     /**
@@ -90,11 +86,8 @@ class UserPermissions
 
         /** @var User $user */
         $user = Yii::$app->user->identity;
-        if ($user->rating >= self::MIN_RATING_EDIT_WIKI) {
-            return true;
-        }
 
-        return false;
+        return $user->rating >= self::MIN_RATING_EDIT_WIKI;
     }
 
     /**
@@ -119,11 +112,7 @@ class UserPermissions
         /** @var User $user */
         $user = Yii::$app->user->identity;
 
-        if (!$user->email_verified && $user->getGithub() === null) {
-            return false;
-        }
-
-        return true;
+        return $user->email_verified || $user->getGithub() !== null;
     }
 
     /**

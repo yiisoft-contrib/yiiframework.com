@@ -287,19 +287,19 @@ class UserController extends BaseController
                 return Json::encode([
                     'url' => $user->getAvatarUrl(),
                 ]);
-            } else {
-                // error
-                Yii::$app->response->setStatusCode(422); // Unprocessable entity
-                return Json::encode([
-                    'error' => $form->getFirstError('avatar'),
-                ]);
             }
-        } else {
-            if (!$success) {
-                Yii::$app->session->setFlash('error', 'Failed to upload file: ' . $form->getFirstError('avatar'));
-            }
-            return $this->redirect(['/user/profile']);
+
+            // error
+            Yii::$app->response->setStatusCode(422); // Unprocessable entity
+            return Json::encode([
+                'error' => $form->getFirstError('avatar'),
+            ]);
         }
+
+        if (!$success) {
+            Yii::$app->session->setFlash('error', 'Failed to upload file: ' . $form->getFirstError('avatar'));
+        }
+        return $this->redirect(['/user/profile']);
     }
 
     public function actionDeleteAvatar()

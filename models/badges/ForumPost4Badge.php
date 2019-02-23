@@ -2,8 +2,6 @@
 
 namespace app\models\badges;
 
-use app\models\Badge;
-
 class ForumPost4Badge extends ForumPost1Badge
 {
     public $name = 'Super Star';

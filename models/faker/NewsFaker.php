@@ -29,7 +29,7 @@ class NewsFaker extends BaseFaker
 		]);
 		$news->detachBehavior('blameable');
 		$news->updater_id = $news->creator_id = $faker->randomElement($this->dependencies[UserFaker::class])->id;
-		$r = rand(0, 100);
+		$r = random_int(0, 100);
 		if ($r > 80) {
 			$news->tagNames .= ', Yii 2.0';
 		} else if ($r > 50) {

@@ -19,8 +19,9 @@ class CommentatorBadge extends Badge
         if ($count > 0) {
             $badge->create_time = $time[0];
             $badge->progress = min(100, $count * 10);
-            if ($count === 10)
+            if ($count === 10) {
                 $badge->complete_time = $time[9];
+            }
             return true;
         }
         return false;

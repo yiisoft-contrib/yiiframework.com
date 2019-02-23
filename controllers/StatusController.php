@@ -10,8 +10,6 @@ class StatusController extends BaseController
 {
     public $sectionTitle = 'Release Statuses';
 
-    private $githubClient;
-
     const REPOSITORIES = [
         // 2.0
         ['yiisoft', 'yii2'],

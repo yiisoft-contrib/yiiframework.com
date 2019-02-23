@@ -359,7 +359,6 @@ class ExtensionController extends BaseController
 
         return $this->render('files', [
             'model' => $model,
-            'files' => $model->downloads,
             'file' => $file,
         ]);
     }

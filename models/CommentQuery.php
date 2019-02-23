@@ -4,6 +4,11 @@ namespace app\models;
 
 use yii\db\ActiveQuery;
 
+/**
+ * Class CommentQuery
+ *
+ * @see Comment
+ */
 class CommentQuery extends ActiveQuery
 {
     /**

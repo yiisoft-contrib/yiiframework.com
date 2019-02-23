@@ -75,7 +75,7 @@ use yii\widgets\ActiveForm;
     </div>
     <div class="row">
         <div class="col-md-9">
-            <?= $form->field($model, 'tagNames')->widget(SelectizeTextInput::className(), [
+            <?= $form->field($model, 'tagNames')->widget(SelectizeTextInput::class, [
                 // calls an action that returns a JSON object with matched
                 // tags
                 'loadUrl' => ['extension/list-tags'],

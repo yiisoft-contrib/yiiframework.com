@@ -53,28 +53,26 @@ class Comments extends Widget
     {
         $commentForm = $this->getNewCommentForm($this->objectType, $this->objectId);
 
-        if ($commentForm->load(Yii::$app->request->post())) {
-            if( $commentForm->save()) {
+        if ($commentForm->load(Yii::$app->request->post()) && $commentForm->save()) {
 
-                // notify followers
-                $model = $commentForm->getModel();
-                if ($model instanceof Linkable) {
-                    $commentForm->refresh();
-                    CommentNewNotification::create([
-                        'model' => $model,
-                        'comment' => $commentForm,
-                    ]);
-                }
-
-                $id = $commentForm->id;
-                // reset form
-                $commentForm = $this->getNewCommentForm($this->objectType, $this->objectId);
-                // take user to the newly created comment
-                Yii::$app->getResponse()
-                    ->refresh(sprintf("#c%d", $id))
-                    ->send();
-                Yii::$app->end();
+            // notify followers
+            $model = $commentForm->getModel();
+            if ($model instanceof Linkable) {
+                $commentForm->refresh();
+                CommentNewNotification::create([
+                    'model' => $model,
+                    'comment' => $commentForm,
+                ]);
             }
+
+            $id = $commentForm->id;
+            // reset form
+            $commentForm = $this->getNewCommentForm($this->objectType, $this->objectId);
+            // take user to the newly created comment
+            Yii::$app->getResponse()
+                ->refresh(sprintf("#c%d", $id))
+                ->send();
+            Yii::$app->end();
         }
 
         $comments = Comment::find()

@@ -15,7 +15,7 @@ use yii\helpers\Html;
 <head>
     <title><?= Html::encode($title); ?></title>
     <style>
-        <?= isset($css) ? $css : '' ?>
+        <?= $css ?? '' ?>
     </style>
 </head>
 <body>

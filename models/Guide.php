@@ -138,9 +138,9 @@ class Guide extends BaseObject
             foreach($this->getLanguageOptions() as $language => $languageName) {
 
                 if ($this->type === self::TYPE_EXTENSION) {
-                    $guide = Guide::loadExtension($this->extension, $version, $language);
+                    $guide = self::loadExtension($this->extension, $version, $language);
                 } else {
-                    $guide = Guide::load($version, $language, $this->type);
+                    $guide = self::load($version, $language, $this->type);
                 }
                 if ($guide === null) {
                     continue;
@@ -183,9 +183,9 @@ class Guide extends BaseObject
                 }
             }
             return $languages;
-        } else {
-            return Yii::$app->params["{$this->type}.versions"][$this->version];
         }
+
+        return Yii::$app->params["{$this->type}.versions"][$this->version];
     }
 
     /**
@@ -238,10 +238,10 @@ class Guide extends BaseObject
             $metadata = Json::decode(file_get_contents($guideInfo));
 
             return isset($metadata[$this->version]) && in_array($this->language, $metadata[$this->version], true);
-        } else {
-            $versions = Yii::$app->params["{$this->type}.versions"];
-            return isset($versions[$this->version]) && isset($versions[$this->version][$this->language]);
         }
+
+        $versions = Yii::$app->params["{$this->type}.versions"];
+        return isset($versions[$this->version][$this->language]);
     }
 
     protected function loadIndex()

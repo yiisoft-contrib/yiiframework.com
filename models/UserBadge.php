@@ -2,7 +2,6 @@
 
 namespace app\models;
 
-use Yii;
 use yii\data\ActiveDataProvider;
 use yii\db\Expression;
 
@@ -41,8 +40,8 @@ class UserBadge extends ActiveRecord
             [['user_id', 'badge_id', 'progress', 'notified'], 'integer'],
             [['create_time', 'complete_time'], 'safe'],
             [['message'], 'string', 'max' => 255],
-            [['badge_id'], 'exist', 'skipOnError' => true, 'targetClass' => Badge::className(), 'targetAttribute' => ['badge_id' => 'id']],
-            [['user_id'], 'exist', 'skipOnError' => true, 'targetClass' => User::className(), 'targetAttribute' => ['user_id' => 'id']],
+            [['badge_id'], 'exist', 'skipOnError' => true, 'targetClass' => Badge::class, 'targetAttribute' => ['badge_id' => 'id']],
+            [['user_id'], 'exist', 'skipOnError' => true, 'targetClass' => User::class, 'targetAttribute' => ['user_id' => 'id']],
         ];
     }
 
@@ -68,7 +67,7 @@ class UserBadge extends ActiveRecord
      */
     public function getBadge()
     {
-        return $this->hasOne(Badge::className(), ['id' => 'badge_id']);
+        return $this->hasOne(Badge::class, ['id' => 'badge_id']);
     }
 
     /**
@@ -76,7 +75,7 @@ class UserBadge extends ActiveRecord
      */
     public function getUser()
     {
-        return $this->hasOne(User::className(), ['id' => 'user_id']);
+        return $this->hasOne(User::class, ['id' => 'user_id']);
     }
 
     public function beforeSave($insert)
@@ -136,16 +135,16 @@ class UserBadge extends ActiveRecord
         if ($badge !== null) {
             $query = static::find()->where(['badge_id' => $badge->id])->andWhere('complete_time IS NOT NULL');
             return $query->count();
-        } else {
-            $query = static::find()
-                ->select(['id' => 'badge_id', 'total' => 'COUNT(badge_id)'])
-                ->where('complete_time IS NOT NULL')
-                ->groupBy('badge_id');
-            $counts = [];
-            foreach($query->asArray()->all() as $row) {
-                $counts[$row['id']] = intval($row['total']);
-            }
-            return $counts;
         }
+
+        $query = static::find()
+            ->select(['id' => 'badge_id', 'total' => 'COUNT(badge_id)'])
+            ->where('complete_time IS NOT NULL')
+            ->groupBy('badge_id');
+        $counts = [];
+        foreach($query->asArray()->all() as $row) {
+            $counts[$row['id']] = (int)$row['total'];
+        }
+        return $counts;
     }
 }

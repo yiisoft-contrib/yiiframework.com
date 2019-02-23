@@ -19,7 +19,7 @@ class ExtensionCategoryFaker extends BaseFaker
 		$faker = $this->faker;
 		$model = new ExtensionCategory();
 		$model->name = ucfirst($faker->word);
-		$model->sequence = $this->i++;;
+		$model->sequence = $this->i++;
 		$this->stdout('.');
 		return $model;
 	}

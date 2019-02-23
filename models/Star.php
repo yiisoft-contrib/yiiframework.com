@@ -165,7 +165,7 @@ class Star extends ActiveRecord
     public static function getFollowers($model)
     {
         return User::find()->active()->andWhere([
-            'id' => Star::find()
+            'id' => self::find()
                 ->select('user_id')
                 ->where(['star' => 1, 'object_type' => $model->getObjectType(), 'object_id' => $model->getObjectId()])
         ]);
