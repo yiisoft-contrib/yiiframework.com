@@ -107,7 +107,7 @@ if ($discourse) {
                             ],
                         ],
                     ],
-                    ['label' => 'More&hellip;', 'items' => [
+                    ['label' => 'More', 'items' => [
                         ['label' => 'Learn', 'options' => ['class' => 'separator']],
                         ['label' => 'Books', 'url' => ['site/books']],
                         ['label' => 'Resources', 'url' => ['site/resources']],

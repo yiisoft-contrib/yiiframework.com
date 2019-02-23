@@ -79,6 +79,41 @@
       }
     }
   }
+  .navbar-collapse.in {
+    overflow-y: initial;
+  }
+  .navbar-nav {
+    margin: 1.5px -4px;
+
+    > li.open > .dropdown-menu {
+      position: absolute;
+      left: auto;
+      right: 0;
+      background: #287ba0;
+      z-index: 3;
+      box-shadow: 2px 3px 1px 0 #206888;
+    }
+  }
+  .nav > li {
+    display: inline-block;
+
+    > a {
+      padding: 10px 3px;
+    }
+  }
+  #main-nav + .navbar-right {
+    float: right;
+    margin-top: 6px;
+    margin-right: 10px;
+  }
+  .navbar-right .navbar-form {
+    margin: 0 -15px;
+    border: none;
+    box-shadow: none;
+  }
+  #login-nav .navbar-form {
+    margin-top: -10px;
+  }
 }
 
 // style navbar search form-control
@@ -86,3 +121,4 @@ form#search-form.navbar-form div.form-group.nospace div.input-group input#search
    width: 160px !important;
    border-radius: $btn-border-radius-base;
  }
+
