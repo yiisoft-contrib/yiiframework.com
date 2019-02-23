@@ -5,6 +5,9 @@ namespace app\models;
 use yii\db\ActiveQuery;
 
 /**
+ * @method ContentShare[]|array all($db = null)
+ * @method ContentShare|array|null one($db = null)
+ *
  * @see ContentShare
  */
 class ContentShareQuery extends ActiveQuery

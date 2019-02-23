@@ -5,6 +5,9 @@ namespace app\models;
 /**
  * This is the ActiveQuery class for [[Extension]].
  *
+ * @method Extension[]|array all($db = null)
+ * @method Extension|array|null one($db = null)
+ *
  * @see Extension
  */
 class ExtensionQuery extends \yii\db\ActiveQuery

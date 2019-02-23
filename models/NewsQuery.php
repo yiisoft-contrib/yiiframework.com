@@ -5,6 +5,9 @@ namespace app\models;
 /**
  * This is the ActiveQuery class for [[News]].
  *
+ * @method News[]|array all($db = null)
+ * @method News|array|null one($db = null)
+ *
  * @see News
  */
 class NewsQuery extends \yii\db\ActiveQuery

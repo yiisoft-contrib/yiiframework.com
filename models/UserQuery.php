@@ -7,6 +7,9 @@ use yii\db\ActiveQuery;
 /**
  * Class UserQuery
  *
+ * @method User[]|array all($db = null)
+ * @method User|array|null one($db = null)
+ *
  * @see User
  */
 class UserQuery extends ActiveQuery

@@ -7,6 +7,9 @@ use yii\db\ActiveQuery;
 /**
  * Class WikiQuery
  *
+ * @method Wiki[]|array all($db = null)
+ * @method Wiki|array|null one($db = null)
+ *
  * @see Wiki
  */
 class WikiQuery extends ActiveQuery
