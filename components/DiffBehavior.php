@@ -3,7 +3,6 @@
 namespace app\components;
 
 use DiffMatchPatch\Diff;
-use yii\base\ModelEvent;
 use yii\db\ActiveRecord;
 use DiffMatchPatch\DiffMatchPatch;
 use yii\base\Behavior;
@@ -48,11 +47,7 @@ class DiffBehavior extends Behavior
 
     public function getReallyOldAttribute($attribute)
     {
-        if (isset($this->_changedAttributes[$attribute])) {
-            return $this->_changedAttributes[$attribute];
-        } else {
-            return $this->owner->getAttribute($attribute);
-        }
+        return $this->_changedAttributes[$attribute] ?? $this->owner->getAttribute($attribute);
     }
 
     public function diff($record, $attribute)
@@ -111,9 +106,7 @@ class DiffBehavior extends Behavior
         $diffs = array_values($diffs);
         $c = count($diffs);
         for($i = 0; $i < $c; ++$i) {
-            $change = $diffs[$i];
-            $op = $change[0];
-            $data = $change[1];
+            list($op, $data) = $diffs[$i];
             $text = str_replace(array(
                 '&', '<', '>',
             ), array(
@@ -155,10 +148,10 @@ class DiffBehavior extends Behavior
 
         switch($pos)
         {
-            case "first":
+            case 'first':
                 return '<div class="diff-snip">[...]</div>'
                      . '<span>' . nl2br(ltrim(implode("\n", array_slice($lines, $count - $threshold)))) . '</span>';
-            case "last":
+            case 'last':
                 return '<span>' . nl2br(rtrim(implode("\n", array_slice($lines, 0, $threshold)))) . '</span>'
                      . '<div class="diff-snip">[...]</div>';
             default:

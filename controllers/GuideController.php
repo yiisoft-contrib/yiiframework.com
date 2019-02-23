@@ -88,7 +88,7 @@ class GuideController extends BaseController
             if ($section) {
                 $urlParams = ['type' => $guide->typeUrlName, 'version' => $guide->version, 'language' => $guide->language, 'section' => $section->name];
                 $docUrl = Url::to(array_merge(['guide/view'], $urlParams));
-                $doc = Doc::getObject(ClassType::GUIDE, implode("/", $urlParams), $docUrl, $section->getPageTitle());
+                $doc = Doc::getObject(ClassType::GUIDE, implode('/', $urlParams), $docUrl, $section->getPageTitle());
 
                 return $this->render('view', [
                   'guide' => $guide,
@@ -177,7 +177,7 @@ class GuideController extends BaseController
             $file = Guide::findImage($image, $version, 'en', $type === 'blog' ? 'blogtut' : $type);
         }
         if ($file === false) {
-            throw new NotFoundHttpException("The requested image was not found.");
+            throw new NotFoundHttpException('The requested image was not found.');
         }
 
         return $this->sendFile($file);
@@ -202,7 +202,7 @@ class GuideController extends BaseController
             }
         }
         if ($file === false) {
-            throw new NotFoundHttpException("The requested image was not found.");
+            throw new NotFoundHttpException('The requested image was not found.');
         }
 
         return $this->sendFile($file);

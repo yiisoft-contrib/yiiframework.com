@@ -10,10 +10,8 @@ use app\models\search\SearchableBehavior;
 use app\models\search\SearchWiki;
 use dosamigos\taggable\Taggable;
 use Yii;
-use yii\apidoc\helpers\ApiMarkdown;
 use yii\base\Event;
 use yii\behaviors\BlameableBehavior;
-use yii\behaviors\TimestampBehavior;
 use yii\db\Expression;
 use yii\helpers\ArrayHelper;
 use yii\helpers\HtmlPurifier;
@@ -121,7 +119,7 @@ class Wiki extends ActiveRecord implements Linkable, ObjectIdentityInterface, En
      */
     public static function find()
     {
-        return Yii::createObject(WikiQuery::class, [get_called_class()]);
+        return Yii::createObject(WikiQuery::class, [static::class]);
     }
 
     /**
@@ -260,7 +258,7 @@ class Wiki extends ActiveRecord implements Linkable, ObjectIdentityInterface, En
      */
     public function getUpdater()
     {
-        return $this->hasOne(User::className(), ['id' => 'updater_id']);
+        return $this->hasOne(User::class, ['id' => 'updater_id']);
     }
 
     /**
@@ -268,7 +266,7 @@ class Wiki extends ActiveRecord implements Linkable, ObjectIdentityInterface, En
      */
     public function getCreator()
     {
-        return $this->hasOne(User::className(), ['id' => 'creator_id']);
+        return $this->hasOne(User::class, ['id' => 'creator_id']);
     }
 
     /**
@@ -276,7 +274,7 @@ class Wiki extends ActiveRecord implements Linkable, ObjectIdentityInterface, En
      */
     public function getRevisions()
     {
-        return $this->hasMany(WikiRevision::className(), ['wiki_id' => 'id'])->orderBy(['revision' => SORT_DESC]);
+        return $this->hasMany(WikiRevision::class, ['wiki_id' => 'id'])->orderBy(['revision' => SORT_DESC]);
     }
 
     /**
@@ -293,7 +291,7 @@ class Wiki extends ActiveRecord implements Linkable, ObjectIdentityInterface, En
      */
     public function getCategory()
     {
-        return $this->hasOne(WikiCategory::className(), ['id' => 'category_id']);
+        return $this->hasOne(WikiCategory::class, ['id' => 'category_id']);
     }
 
     /**
@@ -301,7 +299,7 @@ class Wiki extends ActiveRecord implements Linkable, ObjectIdentityInterface, En
      */
     public function getTags()
     {
-        return $this->hasMany(WikiTag::className(), ['id' => 'wiki_tag_id'])
+        return $this->hasMany(WikiTag::class, ['id' => 'wiki_tag_id'])
             ->viaTable('wiki2wiki_tags', ['wiki_id' => 'id']);
     }
 
@@ -327,10 +325,10 @@ class Wiki extends ActiveRecord implements Linkable, ObjectIdentityInterface, En
             ->limit($limit)
             ->asArray()->all();
 
-        Yii::trace($relatedIds);
+        Yii::debug($relatedIds);
 
         $relatedIds = array_values(ArrayHelper::map($relatedIds, 'wiki_id', 'wiki_id'));
-        return Wiki::findAll($relatedIds);
+        return self::findAll($relatedIds);
     }
 
     /**
@@ -400,8 +398,6 @@ class Wiki extends ActiveRecord implements Linkable, ObjectIdentityInterface, En
         $url = Url::to($this->getUrl(), true);
         $text = '[wiki] ' . $this->getLinkTitle();
 
-        $message = StringHelper::truncate($text, 108) . " {$url} #yii";
-
-        return $message;
+        return StringHelper::truncate($text, 108) . " {$url} #yii";
     }
 }

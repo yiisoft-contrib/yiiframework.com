@@ -15,7 +15,6 @@ use Yii;
 use yii\data\ActiveDataProvider;
 use yii\filters\AccessControl;
 use yii\filters\VerbFilter;
-use yii\web\ForbiddenHttpException;
 use yii\web\NotFoundHttpException;
 use yii\web\Response;
 
@@ -347,16 +346,16 @@ class WikiController extends BaseController
     {
         if (($model = Wiki::find()->where(['id' => $id])->active()->one()) !== null) {
 
-            Yii::trace(print_r($model->attributes, true));
+            Yii::debug(print_r($model->attributes, true));
 
             if ($revision === null) {
                 return $model;
             }
 
             $revisionModel = $this->findRevision($model->id, $revision);
-            Yii::trace(print_r($revisionModel->attributes, true));
+            Yii::debug(print_r($revisionModel->attributes, true));
             $model->loadRevision($revisionModel);
-            Yii::trace(print_r($model->attributes, true));
+            Yii::debug(print_r($model->attributes, true));
             return $model;
         }
         throw new NotFoundHttpException('The requested page does not exist.');

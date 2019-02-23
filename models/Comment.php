@@ -47,7 +47,7 @@ class Comment extends ActiveRecord implements ObjectIdentityInterface
      */
     public static function find()
     {
-        return Yii::createObject(CommentQuery::class, [get_called_class()]);
+        return Yii::createObject(CommentQuery::class, [static::class]);
     }
 
     /**
@@ -58,7 +58,7 @@ class Comment extends ActiveRecord implements ObjectIdentityInterface
         return [
             'timestamp' => $this->timeStampBehavior(),
             'blameable' => [
-                'class' => BlameableBehavior::className(),
+                'class' => BlameableBehavior::class,
                 'createdByAttribute' => 'user_id',
                 'updatedByAttribute' => false,
             ],

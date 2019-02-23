@@ -46,7 +46,7 @@ use yii\captcha\Captcha;
 
                         <?= $form->field($model, 'verifyCode', [
                             'inputOptions' => ['placeholder' => 'Verification Code']
-                        ])->label('Verification code: ')->widget(Captcha::className(), [
+                        ])->label('Verification code: ')->widget(Captcha::class, [
                             'template' => '{image}{input}',
                         ]) ?>
 

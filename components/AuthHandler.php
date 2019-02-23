@@ -74,16 +74,14 @@ class AuthHandler
         } else { // user already logged in
             if (!$auth) { // add auth provider
                 $this->addAuthProvider($id, $login, $email);
-            } else { // there's existing auth
-                if ($auth->user_id == Yii::$app->user->id) {
-                    // do nothing, login is already active
-                    $auth->updateAttributes([
-                        'source_login' => $login,
-                        'source_email' => $email,
-                    ]);
-                } else {
-                    $this->clientAlreadyInUse();
-                }
+            } else if ($auth->user_id == Yii::$app->user->id) {
+                // do nothing, login is already active
+                $auth->updateAttributes([
+                    'source_login' => $login,
+                    'source_email' => $email,
+                ]);
+            } else {
+                $this->clientAlreadyInUse();
             }
         }
     }

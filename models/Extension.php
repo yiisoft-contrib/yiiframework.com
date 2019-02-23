@@ -16,10 +16,8 @@ use dosamigos\taggable\Taggable;
 use Yii;
 use yii\base\Exception;
 use yii\behaviors\BlameableBehavior;
-use yii\console\Controller;
 use yii\db\Expression;
 use yii\helpers\ArrayHelper;
-use yii\helpers\Console;
 use yii\helpers\Html;
 use yii\helpers\Json;
 use yii\helpers\StringHelper;
@@ -106,7 +104,7 @@ class Extension extends ActiveRecord implements Linkable, ObjectIdentityInterfac
                 ],
             ],
             'taggable' => [
-                'class' => Taggable::className(),
+                'class' => Taggable::class,
             ],
             'search' => [
                 'class' => SearchableBehavior::class,
@@ -179,7 +177,7 @@ MARKDOWN;
             ['name', 'string', 'min' => 3, 'max' => 32],
             ['name', 'unique'],
 
-            [['category_id'], 'exist', 'skipOnError' => true, 'targetClass' => ExtensionCategory::className(), 'targetAttribute' => ['category_id' => 'id']],
+            [['category_id'], 'exist', 'skipOnError' => true, 'targetClass' => ExtensionCategory::class, 'targetAttribute' => ['category_id' => 'id']],
             ['license_id', 'validateLicenseId'], // spdx
 
             ['packagist_url', 'validatePackagistUrl'],
@@ -294,7 +292,7 @@ MARKDOWN;
      */
     public function getOwner()
     {
-        return $this->hasOne(User::className(), ['id' => 'owner_id']);
+        return $this->hasOne(User::class, ['id' => 'owner_id']);
     }
 
     public function getIsOfficialExtension()
@@ -312,7 +310,7 @@ MARKDOWN;
      */
     public function getCategory()
     {
-        return $this->hasOne(ExtensionCategory::className(), ['id' => 'category_id']);
+        return $this->hasOne(ExtensionCategory::class, ['id' => 'category_id']);
     }
 
     /**
@@ -320,7 +318,7 @@ MARKDOWN;
      */
     public function getTags()
     {
-        return $this->hasMany(ExtensionTag::className(), ['id' => 'extension_tag_id'])
+        return $this->hasMany(ExtensionTag::class, ['id' => 'extension_tag_id'])
             ->viaTable('extension2extension_tags', ['extension_id' => 'id']);
     }
 
@@ -329,7 +327,7 @@ MARKDOWN;
      */
     public function getDownloads()
     {
-        return $this->hasMany(File::className(), ['object_id' => 'id'])->onCondition(['object_type' => 'Extension']);
+        return $this->hasMany(File::class, ['object_id' => 'id'])->onCondition(['object_type' => 'Extension']);
     }
 
     /**
@@ -338,7 +336,7 @@ MARKDOWN;
      */
     public static function find()
     {
-        return new ExtensionQuery(get_called_class());
+        return new ExtensionQuery(static::class);
     }
 
     public function getContentHtml()
@@ -470,7 +468,7 @@ MARKDOWN;
 
         $this->description = (new PackagistApi())->getReadmeFromRepository($package->getRepository());
         $downloads = $package->getDownloads();
-        $this->download_count = isset($downloads['total']) ? $downloads['total'] : 0;
+        $this->download_count = $downloads['total'] ?? 0;
         $this->update_status = self::UPDATE_STATUS_UPTODATE;
         $this->update_time = date('Y-m-d H:i:s');
 
@@ -531,10 +529,10 @@ MARKDOWN;
             ->limit($limit)
             ->asArray()->all();
 
-        Yii::trace($relatedIds);
+        Yii::debug($relatedIds);
 
         $relatedIds = array_values(ArrayHelper::map($relatedIds, 'extension_id', 'extension_id'));
-        return Extension::findAll($relatedIds);
+        return self::findAll($relatedIds);
     }
 
     /**
@@ -606,9 +604,7 @@ MARKDOWN;
         $url = Url::to($this->getUrl(), true);
         $text = '[extension] ' . $this->name . ': ' . $this->tagline;
 
-        $message = StringHelper::truncate($text, 108) . " {$url} #yii";
-
-        return $message;
+        return StringHelper::truncate($text, 108) . " {$url} #yii";
     }
 
     public function cloneGitRepo($sourcePath, $gitRef)
@@ -625,10 +621,7 @@ MARKDOWN;
             }
         }
         passthru('git -C ' . escapeshellarg($sourcePath) . ' checkout ' . escapeshellarg($gitRef), $exitCode);
-        if ($exitCode != 0) {
-            return false;
-        }
-        return true;
+        return $exitCode == 0;
     }
 
     public function hasApiDoc($version = null)

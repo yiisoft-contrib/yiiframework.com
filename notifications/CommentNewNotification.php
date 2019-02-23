@@ -47,6 +47,6 @@ class CommentNewNotification extends BaseNotification
 
     protected function getSubject()
     {
-        return "A new comment was added: " . $this->model->getLinkTitle();
+        return 'A new comment was added: ' . $this->model->getLinkTitle();
     }
 }

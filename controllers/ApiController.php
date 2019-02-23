@@ -13,7 +13,6 @@ use yii\filters\HttpCache;
 use yii\helpers\FileHelper;
 use yii\helpers\Json;
 use yii\helpers\Url;
-use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\web\Response;
 use yii\web\UnsupportedMediaTypeHttpException;
@@ -27,7 +26,7 @@ use yii\web\UnsupportedMediaTypeHttpException;
  */
 class ApiController extends BaseController
 {
-    public $sectionTitle = "API Documentation for Yii";
+    public $sectionTitle = 'API Documentation for Yii';
     public $searchScope = SearchActiveRecord::SEARCH_API;
 
 
@@ -99,7 +98,7 @@ class ApiController extends BaseController
                 } else {
                     $file = Yii::getAlias("@app/data/api-$version/$section.html");
                     $view = 'view2x';
-                    $titles = require(Yii::getAlias("@app/data/api-$version/titles.php"));
+                    $titles = require Yii::getAlias("@app/data/api-$version/titles.php");
                     $titleKey = $section . '.html';
                     if (isset($titles[$titleKey])) {
                         $title = $titles[$titleKey];
@@ -116,7 +115,7 @@ class ApiController extends BaseController
                     $urlParams = ['version' => $version, 'section' => $section];
                     $docUrl = Url::to(array_merge(['api/view'], $urlParams));
                 }
-                $doc = Doc::getObject(ClassType::API, implode("/", $urlParams), $docUrl, $title);
+                $doc = Doc::getObject(ClassType::API, implode('/', $urlParams), $docUrl, $title);
 
                 return $this->render($view, [
                     'content' => file_get_contents($file),
@@ -182,9 +181,8 @@ class ApiController extends BaseController
             case Response::FORMAT_HTML:
 
                 $title = '';
-                $packages = [];
                 $file = Yii::getAlias("@app/data/extensions/{$extension->name}/api-$version/$section.html");
-                $titles = require(Yii::getAlias("@app/data/extensions/{$extension->name}/api-$version/titles.php"));
+                $titles = require Yii::getAlias("@app/data/extensions/{$extension->name}/api-$version/titles.php");
                 $titleKey = $section . '.html';
                 if (isset($titles[$titleKey])) {
                     $title = $titles[$titleKey];
@@ -199,7 +197,6 @@ class ApiController extends BaseController
                     'versions' => $extension->getApiVersions(),
                     'version' => $version,
                     'title' => $title,
-                    'packages' => $packages,
                     'extension' => $extension,
                 ]);
 
@@ -259,6 +256,12 @@ class ApiController extends BaseController
 
     }
 
+    /**
+     * @param Extension $extension
+     * @param $version
+     * @param $section
+     * @return string
+     */
     private function extension404($extension, $version, $section)
     {
         list($extensionVendor, $extensionName) = explode('/', $extension->name, 2);
@@ -319,14 +322,14 @@ class ApiController extends BaseController
                     'version' => '2.0',
                 ]);
 
-                $classes = Json::decode(file_get_contents(Yii::getAlias("@app/data/api-2.0/json/typeNames.json")));
+                $classes = Json::decode(file_get_contents(Yii::getAlias('@app/data/api-2.0/json/typeNames.json')));
                 foreach($classes as $i => $class) {
                     $classes[$i]['url'] = Yii::$app->request->hostInfo . $apiRenderer->generateApiUrl($class['name']);
                     $classes[$i]['version'] = '2.0';
                 }
 
                 // 1.1 classes
-                $classes1 = Json::decode(file_get_contents(Yii::getAlias("@app/data/api-1.1/json/typeNames.json")));
+                $classes1 = Json::decode(file_get_contents(Yii::getAlias('@app/data/api-1.1/json/typeNames.json')));
                 foreach($classes1 as $i => $class) {
                     $classes1[$i]['url'] = Yii::$app->params['api.baseUrl'] . "/1.1/{$class['name']}";
                     $classes1[$i]['version'] = '1.1';
@@ -352,7 +355,7 @@ class ApiController extends BaseController
                     'version' => '2.0',
                 ]);
 
-                $members = Json::decode(file_get_contents(Yii::getAlias("@app/data/api-2.0/json/typeMembers.json")));
+                $members = Json::decode(file_get_contents(Yii::getAlias('@app/data/api-2.0/json/typeMembers.json')));
                 foreach($members as $m => $member) {
                     $hash = $member['name'] . ($member['type'] === 'method' ? '()' : '') . '-detail';
                     foreach($members[$m]['implemented'] as $i => $impl) {
@@ -365,7 +368,7 @@ class ApiController extends BaseController
                 }
 
                 // 1.1 classes
-                $members1 = Json::decode(file_get_contents(Yii::getAlias("@app/data/api-1.1/json/typeMembers.json")));
+                $members1 = Json::decode(file_get_contents(Yii::getAlias('@app/data/api-1.1/json/typeMembers.json')));
                 foreach($members1 as $m => $member) {
                     $hash = $member['name'] . '-detail';
                     foreach($members1[$m]['implemented'] as $i => $impl) {

@@ -4,6 +4,11 @@ namespace app\models;
 
 use yii\db\ActiveQuery;
 
+/**
+ * Class FileQuery
+ *
+ * @see File
+ */
 class FileQuery extends ActiveQuery
 {
     /**

@@ -2,7 +2,6 @@
 
 namespace app\models;
 
-use Yii;
 use app\components\SluggableBehavior;
 
 /**
@@ -66,7 +65,7 @@ class NewsTag extends ActiveRecord
      */
     public function getNews()
     {
-        return $this->hasMany(News::className(), ['id' => 'news_id'])
+        return $this->hasMany(News::class, ['id' => 'news_id'])
             ->viaTable('news2news_tags', ['news_tag_id' => 'id']);
     }
 }

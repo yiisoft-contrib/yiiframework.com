@@ -29,7 +29,7 @@ class WikiRevisionFaker extends BaseFaker
 
 		// add some paragraphs and remove some
 		foreach($content as $i => $c) {
-			$r = rand(0, 100);
+			$r = random_int(0, 100);
 			if ($r < 30) {
 				// remove paragraph
 				unset($content[$i]);
@@ -42,7 +42,7 @@ class WikiRevisionFaker extends BaseFaker
 			} else {
 				// typo change
 				$words = explode(' ', $content[$i]);
-				$words[rand(0, count($words) - 1)] = $faker->word;
+				$words[random_int(0, count($words) - 1)] = $faker->word;
 				$content[$i] = implode(' ', $words);
 			}
 		}
@@ -52,19 +52,19 @@ class WikiRevisionFaker extends BaseFaker
 		$wiki->content = implode("\n\n", $content);
 		$wiki->memo = $faker->sentence(12);
 
-		if (rand(0, 100) < 30) {
+		if (random_int(0, 100) < 30) {
 			$wiki->title = ucfirst($faker->sentence(7));
 		}
-		if (rand(0, 100) < 20) {
+		if (random_int(0, 100) < 20) {
 			$wiki->category_id = $faker->randomElement($this->dependencies[WikiCategoryFaker::class])->id;
 		}
-		if (rand(0, 100) < 10) {
+		if (random_int(0, 100) < 10) {
 			$wiki->yii_version = $faker->randomElement(['1.1', '2.0', 'all']);
 		}
 
 		$wiki->detachBehavior('blameable');
 		$wiki->updater_id = $faker->randomElement($this->dependencies[UserFaker::class])->id;
-		$r = rand(0, 100);
+		$r = random_int(0, 100);
 		if ($r > 70) {
 			$wiki->tagNames .= ', ' . $faker->word;
 		}

@@ -2,7 +2,6 @@
 
 namespace app\widgets;
 
-use Yii;
 use yii\base\InvalidConfigException;
 use yii\bootstrap\BootstrapAsset;
 use yii\helpers\ArrayHelper;
@@ -94,7 +93,7 @@ class SideNav extends \yii\bootstrap\Widget
             throw new InvalidConfigException("The 'label' option is required.");
         }
 
-        $encode = isset($item['encodeLabel']) ? $item['encodeLabel'] : $this->encodeLabels;
+        $encode = $item['encodeLabel'] ?? $this->encodeLabels;
         $label = $encode ? Html::encode($item['label']) : $item['label'];
 //		$options = ArrayHelper::getValue($item, 'options', []);
         $items = ArrayHelper::getValue($item, 'items');
@@ -129,7 +128,7 @@ class SideNav extends \yii\bootstrap\Widget
                     'encodeLabels' => $this->encodeLabels,
                     'view' => $this->getView(),
                     'options' => [
-                        'class' => "submenu panel-collapse collapse" . ($active || !$collapsed ? ' in' : '') . ($active ? ' active-parent' : '')
+                        'class' => 'submenu panel-collapse collapse' . ($active || !$collapsed ? ' in' : '') . ($active ? ' active-parent' : '')
                     ]
                 ]);
             }

@@ -147,7 +147,7 @@ class ContentShare extends ActiveRecord
      */
     public static function find()
     {
-        return new ContentShareQuery(get_called_class());
+        return new ContentShareQuery(static::class);
     }
 
     /**
@@ -183,10 +183,6 @@ class ContentShare extends ActiveRecord
             Yii::error("Failed saving contentShare id = {$this->id} after publishing.");
         }
 
-        if ((int) $this->status_id === self::STATUS_PUBLISHED) {
-            return true;
-        }
-
-        return false;
+        return (int)$this->status_id === self::STATUS_PUBLISHED;
     }
 }

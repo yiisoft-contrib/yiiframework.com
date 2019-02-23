@@ -50,7 +50,7 @@ class BootstrapEvents implements BootstrapInterface
             });
         }
         // add user as candidate for badge update after login
-        Event::on(\yii\web\User::class, User::EVENT_AFTER_LOGIN, function($event) {
+        Event::on(User::class, User::EVENT_AFTER_LOGIN, function($event) {
             Badge::addCandidate($event->sender->id);
         });
 

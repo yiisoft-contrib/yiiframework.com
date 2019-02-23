@@ -5,7 +5,6 @@ namespace app\widgets;
 
 
 use app\models\Comment;
-use Yii;
 use yii\base\InvalidConfigException;
 use yii\base\Widget;
 

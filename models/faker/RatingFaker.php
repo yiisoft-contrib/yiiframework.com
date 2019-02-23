@@ -34,7 +34,7 @@ class RatingFaker extends BaseFaker
 		$model = $this->faker->randomElement($this->dependencies[$modelClass]);
 		$user = $this->faker->randomElement($this->dependencies[UserFaker::class]);
 
-		Rating::castVote($model, $user->id, mt_rand(0, 100) > 30 ? 1 : 0);
+		Rating::castVote($model, $user->id, random_int(0, 100) > 30 ? 1 : 0);
 		return null;
 	}
 }

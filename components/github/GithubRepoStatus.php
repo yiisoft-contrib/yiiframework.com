@@ -75,11 +75,7 @@ class GithubRepoStatus
             $this->username . '/' . $this->repository . '/latestTag',
             function() {
                 $tags = $this->fetchTagsDesc();
-                if (isset($tags[0])) {
-                    return $tags[0];
-                }
-
-                return null;
+                return $tags[0] ?? null;
             },
             self::TAG_CACHE_DURATION
         );

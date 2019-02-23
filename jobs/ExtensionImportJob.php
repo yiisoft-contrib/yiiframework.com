@@ -72,9 +72,6 @@ class ExtensionImportJob extends BaseObject implements RetryableJobInterface
      */
     public function canRetry($attempt, $error)
     {
-        if ($error instanceof HttpException && $error->statusCode >= 500) {
-            return true;
-        }
-        return false;
+        return $error instanceof HttpException && $error->statusCode >= 500;
     }
 }

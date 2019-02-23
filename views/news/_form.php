@@ -16,13 +16,13 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'status')->dropDownList(News::getStatusList(), ['prompt' => 'Please choose...']) ?>
 
-    <?= $form->field($model, 'news_date')->widget(\yii\jui\DatePicker::className(), [
+    <?= $form->field($model, 'news_date')->widget(\yii\jui\DatePicker::class, [
         'options' => ['class' => 'form-control'],
     ]) ?>
 
     <?= $form->field($model, 'title')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'tagNames')->widget(SelectizeTextInput::className(), [
+    <?= $form->field($model, 'tagNames')->widget(SelectizeTextInput::class, [
         // calls an action that returns a JSON object with matched
         // tags
         'loadUrl' => ['news/list-tags'],

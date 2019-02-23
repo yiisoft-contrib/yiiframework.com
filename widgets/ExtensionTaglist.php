@@ -4,7 +4,6 @@ namespace app\widgets;
 
 use app\models\Extension;
 use app\models\ExtensionTag;
-use Yii;
 use yii\base\Widget;
 use yii\helpers\Html;
 
@@ -47,9 +46,9 @@ class ExtensionTaglist extends Widget
 
         if ($this->extension) {
             return implode(', ', $tagEntries);
-        } else {
-            return $this->render('extensionTaglist', ['tagEntries' => $tagEntries]);
         }
+
+        return $this->render('extensionTaglist', ['tagEntries' => $tagEntries]);
     }
 
 }

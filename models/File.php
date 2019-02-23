@@ -27,9 +27,10 @@ use yii\web\UploadedFile;
  * @property integer $created_by
  * @property integer $created_at
  * @property integer $updated_at
+ * @property string $extension
+ * @property string $path
  *
  * @property User $creator
- * @property string $extension
  */
 class File extends ActiveRecord
 {
@@ -46,7 +47,7 @@ class File extends ActiveRecord
      */
     public static function find()
     {
-        return Yii::createObject(FileQuery::class, [get_called_class()]);
+        return Yii::createObject(FileQuery::class, [static::class]);
     }
 
     /**
@@ -57,7 +58,7 @@ class File extends ActiveRecord
         return [
             'timestamp' => $this->timeStampBehavior(),
             [
-                 'class' => BlameableBehavior::className(),
+                 'class' => BlameableBehavior::class,
                  'createdByAttribute' => 'created_by',
                  'updatedByAttribute' => false,
              ],
@@ -270,6 +271,6 @@ class File extends ActiveRecord
      */
     public function getCreator()
     {
-        return $this->hasOne(User::className(), ['id' => 'created_by']);
+        return $this->hasOne(User::class, ['id' => 'created_by']);
     }
 }
