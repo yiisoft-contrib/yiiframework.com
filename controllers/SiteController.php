@@ -26,10 +26,10 @@ class SiteController extends BaseController
     {
         return [
             'error' => [
-                'class' => yii\web\ErrorAction::class,
+                'class' => \yii\web\ErrorAction::class,
             ],
             'captcha' => [
-                'class' => yii\captcha\CaptchaAction::class,
+                'class' => \yii\captcha\CaptchaAction::class,
                 'fixedVerifyCode' => YII_ENV_TEST ? 'testme' : null,
             ],
         ];
