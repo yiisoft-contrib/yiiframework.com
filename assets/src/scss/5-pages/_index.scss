@@ -2,41 +2,41 @@
   margin-top: 2em;
 }
 .btn-front {
-  color: #83BFB3;
+  color: $eshill-light-blue;
   background-color: transparent;
-  border-color: #83BFB3;
+  border-color: $eshill-light-blue;
 
   &:focus,
   &.focus {
-    color: #83BFB3;
+    color: $eshill-light-blue;
     background-color: #E6F8EA;
-    border-color: #83BFB3;
+    border-color: $eshill-light-blue;
   }
   &:hover {
-    color: darken(#83BFB3, 12%);
+    color: darken($eshill-light-blue, 12%);
     background-color: #E6F8EA;
-    border-color: darken(#83BFB3, 12%);
+    border-color: darken($eshill-light-blue, 12%);
   }
   &:active,
   &.active,
   .open > &.dropdown-toggle {
     color: $eshill-section-bgcolor;
-    background-color: #83BFB3;
-    border-color: darken(#83BFB3, 12%);
+    background-color: $eshill-light-blue;
+    border-color: darken($eshill-light-blue, 12%);
 
     //&:hover,
     &:focus,
     &.focus {
       color: $eshill-section-bgcolor;
-      background-color: #83BFB3;
-      border-color: darken(#83BFB3, 12%);
+      background-color: $eshill-light-blue;
+      border-color: darken($eshill-light-blue, 12%);
     }
   }
   @include rem(font-size, 22px);
   transition:color 0.4s ease-out, background 0.4s ease-in;
   //#D9F1E2 border hover
   //#E6F8EA background hover
-  //#83BFB3 background active
+  //$eshill-light-blue background active
   @media (max-width: 380px) {
     @include rem(font-size, 16px);
   }
@@ -47,7 +47,6 @@
 }
 
 ul.latest-list {
-  color: $eshill-green;
   list-style-type: square;
   @include rem(line-height, 36px);
   li {

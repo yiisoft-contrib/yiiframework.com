@@ -31,7 +31,7 @@ if ($discourse) {
                      alt="Yii PHP Framework"
                      width="165" height="35"/>
             </a>
-            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse"><i
+            <button type="button" class="navbar-toggle" data-toggle="collapse" aria-label="Toggle navigation" data-target=".navbar-collapse"><i
                     class="fa fa-inverse fa-bars"></i></button>
         </div>
 
