@@ -13,7 +13,8 @@ return [
     'controllerNamespace' => 'app\commands',
     'aliases' => [
         'yii\apidoc\templates\' . $template',
-        '@webroot' => '@app/web'
+        '@webroot' => '@app/web',
+        '@bower' => '@vendor/bower-asset',
     ],
     'controllerMap' => [
         'migrate' => [
