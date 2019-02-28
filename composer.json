@@ -28,7 +28,8 @@
         "samdark/sitemap": "^2.0",
 
         "knplabs/github-api": "^2.11",
-		"php-http/curl-client": "^1.7",
+        "php-http/curl-client": "^1.7",
+        "guzzlehttp/psr7": "^1.5",
 
         "scrivo/highlight.php": "8.*",
         "yetanotherape/diff-match-patch": "~1.0.0",
