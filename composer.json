@@ -27,7 +27,7 @@
 
         "samdark/sitemap": "^2.0",
 
-        "knplabs/github-api": "~1.2",
+        "knplabs/github-api": "^2.11",
 
         "scrivo/highlight.php": "8.*",
         "yetanotherape/diff-match-patch": "~1.0.0",
@@ -55,8 +55,9 @@
         "abraham/twitteroauth": "~0.7.4",
         "baibaratsky/yii2-rollbar": "^1.7",
         "himiklab/yii2-recaptcha-widget": "^1.2",
-        "helgesverre/spamprotection": "~1.1.0",
-        "yiisoft/yii2-imagine": "~2.1.0"
+        "helgesverre/spamprotection": "1.0.1",
+        "yiisoft/yii2-imagine": "~2.1.0",
+        "php-http/guzzle6-adapter": "^1.1"
     },
     "require-dev": {
         "yiisoft/yii2-debug": "~2.0.0",

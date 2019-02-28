@@ -2,123 +2,133 @@
 
 namespace app\components\github;
 
-use Github\Api\Repo;
 use Github\Client;
 use yii\caching\CacheInterface;
+use yii\helpers\ArrayHelper;
 
 class GithubRepoStatus
 {
-    const COMMIT_CACHE_DURATION = 2592000; // 30 days
-    const TAG_CACHE_DURATION = 3600; // 1 hour
-
-    /**
-     * @var Repo
-     */
-    private $repoApi;
+    const RELEASES_CACHE_DURATION = 3600; // 1 hour
 
     private $cache;
+    private $client;
+    private $repositories;
 
-    private $username;
-
-    private $repository;
-
-    public function __construct(CacheInterface $cache, Client $client, $username, $repository)
+    public function __construct(CacheInterface $cache, Client $client, $repositories)
     {
-        $this->repoApi = new Repo($client);
-        $this->username = $username;
-        $this->repository = $repository;
+        $this->client = $client;
         $this->cache = $cache;
+        $this->repositories = $repositories;
     }
 
-    private function fetchTagsDesc()
+    private function getGraphQLQuery()
     {
-        $releases = $this->repoApi->tags($this->username, $this->repository);
+        $query = '{';
+        foreach ($this->repositories as list($owner, $name)) {
 
-        usort($releases, function ($a, $b) {
-            $a = explode('.', $a['name']);
-            while (count($a) < 4) {
-                $a[] = 0;
+            $alias = $owner . '_' . str_replace('-', '_', $name);
+
+            $query .= <<<GRAPHQL
+$alias: repository(owner: "$owner", name: "$name") {
+  nameWithOwner
+  refs(refPrefix: "refs/tags/", last: 5) {
+    edges() {
+      node {
+        target {
+          ... on Tag {
+            name
+            target {
+              ... on Commit {
+                pushedDate
+              }
             }
+          }
+        }
+      }
+    }
+  }
+  releases(first: 1, orderBy: {field: CREATED_AT, direction: DESC}) {
+    edges {
+      node {
+        tagName
+        createdAt
+      }
+    }
+  }
+}
+GRAPHQL;
 
-            $b = explode('.', $b['name']);
-            while (count($b) < 4) {
-                $b[] = 0;
-            }
+        }
+        $query .= '}';
 
-            for ($i = 0; $i < 4; $i++) {
-                if (!is_numeric($a[$i])) {
-                    $a[$i] = -1;
-                }
-
-                if (!is_numeric($b[$i])) {
-                    $b[$i] = -1;
-                }
-
-                if ($a[$i] > $b[$i]) {
-                    return -1;
-                }
-
-                if ($a[$i] < $b[$i]) {
-                    return 1;
-                }
-            }
-
-            return 0;
-        });
-
-        return $releases;
+        return $query;
     }
 
-    private function fetchLatestTag()
-    {
-        return $this->cache->getOrSet(
-            $this->username . '/' . $this->repository . '/latestTag',
-            function() {
-                $tags = $this->fetchTagsDesc();
-                return $tags[0] ?? null;
-            },
-            self::TAG_CACHE_DURATION
-        );
-    }
+    /**
+     * Extracts tags & releases from a GraphQL repository result set, and returns an array
+     * of `version` => `date` entries.
+     *
+     * @param $repository
+     * @return array
+     */
+    private function getVersionsForRepository($repository) {
+        $tags = array_filter(ArrayHelper::map(
+            $repository['refs']['edges'],
+            'node.target.name',
+            'node.target.target.pushedDate'
+        ));
 
-    private function fetchCommit($sha)
-    {
-        return $this->cache->getOrSet(
-            $this->username . '/' . $this->repository . '/' . $sha,
-            function () use ($sha) {
-                return $this->repoApi->commits()->show($this->username, $this->repository, $sha);
-            },
-            self::COMMIT_CACHE_DURATION
-        );
-    }
-
-    public function getInfo()
-    {
-        $data = [
-            'repository' => "$this->username/$this->repository",
-            'latest' => '',
-            'no_release_for' => null,
-            'diff' => '',
-            'status' => "https://img.shields.io/travis/$this->username/$this->repository.svg",
-        ];
-
-        $latestTag = $this->fetchLatestTag();
-        if ($latestTag === null) {
-            return $data;
+        // Consolidate tags with last release
+        $lastRelease = ArrayHelper::getValue($repository, 'releases.edges.0.node', false);
+        if ($lastRelease) {
+            $tags[$lastRelease['tagName']] = $lastRelease['createdAt'];
         }
 
-        $tagCommit = $this->fetchCommit($latestTag['commit']['sha']);
-        $releaseTag = $latestTag['name'];
-        $releaseDate = new \DateTime($tagCommit['commit']['author']['date']);
-        $today = new \DateTime();
-        $daysSince = $today->diff($releaseDate)->format('%a');
-
-        $diffUrl = "https://github.com/$this->username/$this->repository/compare/$releaseTag...master";
-
-        $data['latest'] = $releaseTag;
-        $data['no_release_for'] = $daysSince;
-        $data['diff'] = $diffUrl;
-
-        return $data;
+        return $tags;
     }
+
+    public function getData()
+    {
+        return $this->cache->getOrSet(
+            'graphql/repositories-statuses',
+            function () {
+                $results = $this->client->api('graphql')->execute($this->getGraphQLQuery());
+
+                $data = [];
+                foreach ($results['data'] as $repository) {
+                    $datum = [
+                        'repository' => $repository['nameWithOwner'],
+                        'latest' => '',
+                        'no_release_for' => null,
+                        'diff' => '',
+                        'status' => "https://img.shields.io/travis/{$repository['nameWithOwner']}.svg",
+                    ];
+
+                    $versions = $this->getVersionsForRepository($repository);
+
+                    if (count($versions)) {
+                        uksort($versions, 'version_compare');
+
+                        $date = end($versions);
+                        $latest = key($versions);
+
+                        $datum['latest'] = $latest;
+
+                        $latestDate = new \DateTime($date);
+                        $today = new \DateTime();
+
+                        $datum['no_release_for'] = $today->diff($latestDate)->format('%a');
+
+                        $datum['diff'] = "https://github.com/{$repository['nameWithOwner']}/compare/$latest...master";
+                    }
+
+                    $data[] = $datum;
+                }
+
+                return $data;
+            },
+            self::RELEASES_CACHE_DURATION
+        );
+    }
+
 }
