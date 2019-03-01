@@ -21,6 +21,7 @@ return [
     'resources' => 'site/resources',
     'community' => 'site/community',
     'render-markdown' => 'site/render-markdown',
+    'roadmap' => 'site/roadmap',
 
     // status
     'status' => 'status/index',

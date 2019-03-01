@@ -175,6 +175,7 @@ return [
     'books1' => require __DIR__ . '/books1.php',
     'testimonials' => require __DIR__ . '/testimonials.php',
     'members' => require __DIR__ . '/members.php',
+    'roadmap' => require __DIR__ . '/roadmap.php',
 
     'adminEmail' => 'yii@cebe.cc',
     'supportEmail' => 'yii@cebe.cc',

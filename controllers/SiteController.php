@@ -347,6 +347,14 @@ class SiteController extends BaseController
         return $this->render('community');
     }
 
+    public function actionRoadmap()
+    {
+        $this->sectionTitle = 'Roadmap';
+        return $this->render('roadmap', [
+            'versions' => Yii::$app->params['roadmap'],
+        ]);
+    }
+
     public function actionRenderMarkdown()
     {
         $markdown = Yii::$app->request->post('content');
