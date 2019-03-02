@@ -33,12 +33,12 @@ use yii\helpers\Html;
                 <tr>
                     <td style="background: #9c9; width: 40px;"></td>
                     <td style="background: #9c9; width: 40px; opacity: 0.3"></td>
-                    <td>Active support. Enahcements, bug fixes, security fixes are accepted.</td>
+                    <td>Active support. Enhancements, bug fixes, security fixes are accepted.</td>
                 </tr>
                 <tr>
                     <td style="background: #71bdff; width: 40px;"></td>
                     <td style="background: #71bdff; width: 40px; opacity: 0.3;"></td>
-                    <td>Feature freeze. Enahncements are no longer accepted.</td>
+                    <td>Feature freeze. Enhancements are no longer accepted.</td>
                 </tr>
                 <tr>
                     <td style="background: #ffb95e; width: 40px;"></td>
@@ -57,28 +57,30 @@ use yii\helpers\Html;
 
             <h2>Details</h2>
 
-            <table class="table table-striped">
-                <thead>
-                <tr>
-                    <th>Version</th>
-                    <th>Release (active support)</th>
-                    <th>Feature freeze</th>
-                    <th>Security and PHP compatibility fixes only</th>
-                    <th>End of life</th>
-                </tr>
-                </thead>
-                <tbody>
-                <?php foreach ($versions as $branch => $data): ?>
+            <div class="table-responsive">
+                <table class="table table-striped">
+                    <thead>
                     <tr>
-                        <td><?= Html::encode($branch) ?></td>
-                        <td><?= Html::encode($data['release'] ?? 'To be announced') ?></td>
-                        <td><?= Html::encode($data['enhancements'] ?? 'To be announced') ?></td>
-                        <td><?= Html::encode($data['bugfixes'] ?? 'Next release +1 year') ?></td>
-                        <td><?= Html::encode($data['eol'] ?? 'Next release +3 years') ?></td>
+                        <th>Version</th>
+                        <th>Release (active support)</th>
+                        <th>Feature freeze</th>
+                        <th>Security and PHP compatibility fixes only</th>
+                        <th>End of life</th>
                     </tr>
-                <?php endforeach ?>
-                </tbody>
-            </table>
+                    </thead>
+                    <tbody>
+                    <?php foreach ($versions as $branch => $data): ?>
+                        <tr>
+                            <td><?= Html::encode($branch) ?></td>
+                            <td><?= Html::encode($data['release'] ?? 'To be announced') ?></td>
+                            <td><?= Html::encode($data['enhancements'] ?? 'To be announced') ?></td>
+                            <td><?= Html::encode($data['bugfixes'] ?? 'Next release +1 year') ?></td>
+                            <td><?= Html::encode($data['eol'] ?? 'Next release +3 years') ?></td>
+                        </tr>
+                    <?php endforeach ?>
+                    </tbody>
+                </table>
+            </div>
         </div>
     </div>
 </div>
