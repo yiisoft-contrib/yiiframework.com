@@ -55,7 +55,7 @@ use yii\helpers\Html; ?>
 			}
             g.feature-freeze rect,
             .branches rect.feature-freeze {
-                fill: #ffeb6b;
+                fill: #71bdff;
             }
 
             g.future rect {

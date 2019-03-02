@@ -36,8 +36,8 @@ use yii\helpers\Html;
                     <td>Active support. Enahcements, bug fixes, security fixes are accepted.</td>
                 </tr>
                 <tr>
-                    <td style="background: #ffeb6b; width: 40px;"></td>
-                    <td style="background: #ffeb6b; width: 40px; opacity: 0.3;"></td>
+                    <td style="background: #71bdff; width: 40px;"></td>
+                    <td style="background: #71bdff; width: 40px; opacity: 0.3;"></td>
                     <td>Feature freeze. Enahncements are no longer accepted.</td>
                 </tr>
                 <tr>
