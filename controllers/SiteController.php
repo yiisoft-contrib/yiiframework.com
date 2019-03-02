@@ -347,11 +347,11 @@ class SiteController extends BaseController
         return $this->render('community');
     }
 
-    public function actionRoadmap()
+    public function actionReleaseCycle()
     {
-        $this->sectionTitle = 'Roadmap';
-        return $this->render('roadmap', [
-            'versions' => Yii::$app->params['roadmap'],
+        $this->sectionTitle = 'Release Cycle';
+        return $this->render('release-cycle', [
+            'versions' => Yii::$app->params['release-cycle'],
         ]);
     }
 
