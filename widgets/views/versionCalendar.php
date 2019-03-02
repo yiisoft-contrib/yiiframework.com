@@ -117,7 +117,7 @@ use yii\helpers\Html; ?>
 	<!-- Year lines -->
 	<g class="years">
 		<?php foreach ($years as $date): ?>
-			<line x1="<?= $widget->dateHorizontalCoordinate($date) ?>" y1="<?= $headerHeight ?>" x2="<?= $widget->dateHorizontalCoordinate($date) ?>" y2="<?= $headerHeight + (count($versions) * $headerHeight) ?>" />
+			<line x1="<?= $widget->dateHorizontalCoordinate($date) ?>" y1="<?= $headerHeight ?>" x2="<?= $widget->dateHorizontalCoordinate($date) ?>" y2="<?= $headerHeight + (count($versions) * $branchHeight) ?>" />
 			<text x="<?= $widget->dateHorizontalCoordinate($date) ?>" y="<?= 0.8 * $headerHeight; ?>">
 				<?= $date->format('Y') ?>
 			</text>

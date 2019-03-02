@@ -26,18 +26,49 @@ use yii\helpers\Html;
 
             <?= VersionCalendar::widget(['versions' => $versions]) ?>
 
+            <h3>Legend</h3>
+
+            <table class="table">
+                <tbody>
+                <tr>
+                    <td style="background: #9c9; width: 40px;"></td>
+                    <td style="background: #9c9; width: 40px; opacity: 0.3"></td>
+                    <td>Active support. Enahcements, bug fixes, security fixes are accepted.</td>
+                </tr>
+                <tr>
+                    <td style="background: #ffeb6b; width: 40px;"></td>
+                    <td style="background: #ffeb6b; width: 40px; opacity: 0.3;"></td>
+                    <td>Feature freeze. Enahncements are no longer accepted.</td>
+                </tr>
+                <tr>
+                    <td style="background: #ffb95e; width: 40px;"></td>
+                    <td style="background: #ffb95e; width: 40px; opacity: 0.3;"></td>
+                    <td>Security and PHP compatibility fixes only.</td>
+                </tr>
+                <tr>
+                    <td style="background: #eee; width: 40px;"></td>
+                    <td></td>
+                    <td>Future version.</td>
+                </tr>
+                </tbody>
+            </table>
+
+            <p>Pale color means forecast in case next major version is released today.</p>
+
+            <h2>Details</h2>
+
             <table class="table table-striped">
                 <thead>
-                    <tr>
-                        <th>Version</th>
-                        <th>Initial release</th>
-                        <th>Enhancements until</th>
-                        <th>Bugfixes until</th>
-                        <th>Security and compatibility fixes until</th>
-                    </tr>
+                <tr>
+                    <th>Version</th>
+                    <th>Release (active support)</th>
+                    <th>Feature freeze</th>
+                    <th>Security and PHP compatibility fixes only</th>
+                    <th>End of life</th>
+                </tr>
                 </thead>
                 <tbody>
-                    <?php foreach ($versions as $branch => $data): ?>
+                <?php foreach ($versions as $branch => $data): ?>
                     <tr>
                         <td><?= Html::encode($branch) ?></td>
                         <td><?= Html::encode($data['release'] ?? 'To be announced') ?></td>
@@ -45,7 +76,7 @@ use yii\helpers\Html;
                         <td><?= Html::encode($data['bugfixes'] ?? 'Next release +1 year') ?></td>
                         <td><?= Html::encode($data['eol'] ?? 'Next release +3 years') ?></td>
                     </tr>
-                    <?php endforeach ?>
+                <?php endforeach ?>
                 </tbody>
             </table>
         </div>
