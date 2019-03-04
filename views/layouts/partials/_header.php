@@ -127,6 +127,7 @@ if ($discourse) {
                                 'section' => 'intro-yii'
                             ]
                         ],
+                        ['label' => 'Release Cycle', 'url' => ['site/release-cycle']],
                         [
                             'label' => 'News',
                             'url' => ['news/index'],
