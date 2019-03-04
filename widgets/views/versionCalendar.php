@@ -98,6 +98,10 @@ use yii\helpers\Html; ?>
 	<g class="branches">
 		<?php foreach ($versions as $branch => $version): ?>
 			<?php
+            if (!isset($version['release'])) {
+                continue;
+            }
+
 			$xRelease = $widget->dateHorizontalCoordinate($version['release'] ?? null);
 			$releaseClass = isset($version['enhancements']) ? 'active' : 'active predicted';
 
