@@ -44,7 +44,7 @@ class VersionCalendar extends Widget
 
     public function maxDate(): DateTime
     {
-        return (new DateTime('January 1'))->add(new DateInterval('P4Y'));
+        return (new DateTime('January 1'))->add(new DateInterval('P6Y'));
     }
 
     /**

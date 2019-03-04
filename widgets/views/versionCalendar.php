@@ -101,10 +101,10 @@ use yii\helpers\Html; ?>
 			$xRelease = $widget->dateHorizontalCoordinate($version['release'] ?? null);
 			$releaseClass = isset($version['enhancements']) ? 'active' : 'active predicted';
 
-            $xFeatureFreeze = $widget->dateHorizontalCoordinate($version['enhancements'] ?? null, new DateInterval('P1Y'));
+            $xFeatureFreeze = $widget->dateHorizontalCoordinate($version['enhancements'] ?? null, new DateInterval('P2Y'));
             $featureFreezeClass = isset($version['bugfixes']) ? 'feature-freeze' : 'feature-freeze predicted';
 
-			$xBugFreeze = $widget->dateHorizontalCoordinate($version['bugfixes'] ?? null, new DateInterval('P3Y'));
+			$xBugFreeze = $widget->dateHorizontalCoordinate($version['bugfixes'] ?? null, new DateInterval('P5Y'));
             $bugFreezeClass = isset($version['eol']) ? 'security' : 'security predicted';
 
 			$xEol = $widget->dateHorizontalCoordinate($version['eol'] ?? null);
