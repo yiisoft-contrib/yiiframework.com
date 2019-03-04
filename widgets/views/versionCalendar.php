@@ -101,13 +101,13 @@ use yii\helpers\Html; ?>
 			$xRelease = $widget->dateHorizontalCoordinate($version['release'] ?? null);
 			$releaseClass = isset($version['enhancements']) ? 'active' : 'active predicted';
 
-            $xFeatureFreeze = $widget->dateHorizontalCoordinate($version['enhancements'] ?? null, new DateInterval('P2Y'));
+            $xFeatureFreeze = $widget->dateHorizontalCoordinate($version['enhancements'] ?? null);
             $featureFreezeClass = isset($version['bugfixes']) ? 'feature-freeze' : 'feature-freeze predicted';
 
-			$xBugFreeze = $widget->dateHorizontalCoordinate($version['bugfixes'] ?? null, new DateInterval('P5Y'));
+			$xBugFreeze = $widget->dateHorizontalCoordinate($version['bugfixes'] ?? null, new DateInterval('P2Y'));
             $bugFreezeClass = isset($version['eol']) ? 'security' : 'security predicted';
 
-			$xEol = $widget->dateHorizontalCoordinate($version['eol'] ?? null);
+			$xEol = $widget->dateHorizontalCoordinate($version['eol'] ?? null, new DateInterval('P5Y'));
 			?>
 			<rect class="<?= $releaseClass ?>" x="<?= $xRelease ?>" y="<?= $version['top'] ?>" width="<?= $xFeatureFreeze - $xRelease ?>" height="<?= $branchHeight ?>" />
             <rect class="<?= $featureFreezeClass ?>" x="<?= $xFeatureFreeze ?>" y="<?= $version['top'] ?>" width="<?= $xBugFreeze - $xFeatureFreeze ?>" height="<?= $branchHeight ?>" />
