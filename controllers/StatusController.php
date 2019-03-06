@@ -92,14 +92,15 @@ class StatusController extends BaseController
 
     public function actionIndex()
     {
-        $client = new \Github\Client();
+//        $client = new \Github\Client();
         $tokenFile = Yii::getAlias('@app/data') . '/github.token';
+        $token = '';
         if (file_exists($tokenFile)) {
             $token = file_get_contents($tokenFile);
-            $client->authenticate($token, null, \Github\Client::AUTH_HTTP_TOKEN);
+//            $client->authenticate($token, null, \Github\Client::AUTH_HTTP_TOKEN);
         }
 
-        $githubRepoStatus = new GithubRepoStatus(Yii::$app->getCache(), $client, self::REPOSITORIES);
+        $githubRepoStatus = new GithubRepoStatus(Yii::$app->getCache(), $token, self::REPOSITORIES);
 
         $data = $githubRepoStatus->getData();
 

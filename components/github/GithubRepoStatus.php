@@ -2,21 +2,22 @@
 
 namespace app\components\github;
 
-use Github\Client;
+use Yii;
 use yii\caching\CacheInterface;
 use yii\helpers\ArrayHelper;
+use yii\httpclient\Client;
 
 class GithubRepoStatus
 {
     const RELEASES_CACHE_DURATION = 3600; // 1 hour
 
     private $cache;
-    private $client;
+    private $authToken;
     private $repositories;
 
-    public function __construct(CacheInterface $cache, Client $client, $repositories)
+    public function __construct(CacheInterface $cache, $authToken, $repositories)
     {
-        $this->client = $client;
+        $this->authToken = $authToken;
         $this->cache = $cache;
         $this->repositories = $repositories;
     }
@@ -92,7 +93,21 @@ GRAPHQL;
         return $this->cache->getOrSet(
             'graphql/repositories-statuses',
             function () {
-                $results = $this->client->api('graphql')->execute($this->getGraphQLQuery());
+                $client = new \yii\httpclient\Client([
+                    'baseUrl' => 'https://api.github.com',
+                    'requestConfig' => [
+                        'headers' => [
+                            'Authorization' => 'Basic ' . base64_encode(":". $this->authToken),
+                            'User-Agent' => 'Yii framework ' . Yii::getVersion() . ' at yiiframework.com',
+                        ],
+                        'format' => Client::FORMAT_JSON,
+                    ],
+                ]);
+                $response = $client->post('graphql', ['query' => $this->getGraphQLQuery()], [
+                    'Accept' => 'application/vnd.github.v4+json',
+                ])->send();
+
+                $results = $response->data;
 
                 $data = [];
                 foreach ($results['data'] as $repository) {
