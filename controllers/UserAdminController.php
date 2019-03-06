@@ -83,6 +83,7 @@ class UserAdminController extends BaseController
     public function actionUpdate($id)
     {
         $model = $this->findModel($id);
+        $model->scenario = User::SCENARIO_ADMIN_UPDATE;
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->id]);

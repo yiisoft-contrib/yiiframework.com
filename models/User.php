@@ -62,6 +62,8 @@ class User extends ActiveRecord implements IdentityInterface
     const PASSWORD_TYPE_NEW = 'NEW';
     const PASSWORD_TYPE_NONE = 'NONE';
 
+    const SCENARIO_ADMIN_UPDATE = 'admin-update';
+
     /**
      * @inheritdoc
      */
@@ -96,6 +98,14 @@ class User extends ActiveRecord implements IdentityInterface
             ['status', 'default', 'value' => self::STATUS_ACTIVE],
             ['status', 'in', 'range' => [self::STATUS_ACTIVE, self::STATUS_DELETED]],
         ]);
+    }
+
+    public function scenarios()
+    {
+        return [
+            self::SCENARIO_DEFAULT => parent::scenarios()[self::SCENARIO_DEFAULT],
+            self::SCENARIO_ADMIN_UPDATE => ['status', 'email'],
+        ];
     }
 
     public static function usernameRules()
