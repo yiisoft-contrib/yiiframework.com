@@ -34,6 +34,6 @@ use yii\helpers\Html;
             documentation references about the code we talk about.
         </p>
 
-        <iframe src="https://kiwiirc.com/nextclient/#irc://irc.freenode.net/#yii" width="100%" height="480" style="border:1px solid silver;"></iframe>
+        <iframe title="IRC Client" src="https://kiwiirc.com/nextclient/#irc://irc.freenode.net/#yii" width="100%" height="480" style="border:1px solid silver;"></iframe>
     </div>
 </div>
