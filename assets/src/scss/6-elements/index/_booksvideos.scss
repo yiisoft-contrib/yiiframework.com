@@ -30,7 +30,8 @@
     .author-publisher {
         @include rem(font-size, fontsize(smaller));
         .what {
-            color: $eshill-green;
+            color: $darkish-text;
+            font-weight: 600;
         }
         .who {
 
