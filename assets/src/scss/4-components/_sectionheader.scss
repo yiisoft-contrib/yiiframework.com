@@ -40,8 +40,8 @@
       }
       &:hover {
         color: $yii-blue;
-        background-color: #83BFB3;
-            border-color: darken(#83BFB3, 12%);
+        background-color: $eshill-yellow-diffuse;
+            border-color: darken($eshill-yellow-diffuse, 12%);
       }
       &:active,
       &.active,

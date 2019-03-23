@@ -5,7 +5,7 @@
     @include rem(margin-right, 7px);
   }
   .votes-up {
-    color: #70C1B3;
+    color: #4b8076;
   }
   .votes-down {
     color: $eshill-red;
@@ -17,8 +17,8 @@
     border-radius: 20px;
   }
   .votes-up.voted a {
-    background: lighten(#70C1B3, 25%);
-    box-shadow: 0px 0px 10px lighten(#70C1B3, 5%);
+    background: lighten(#4b8076, 25%);
+    box-shadow: 0px 0px 10px lighten(#4b8076, 5%);
     border-radius: 20px;
   }
 
@@ -56,10 +56,11 @@ a:active {
   @extend .box;
 
   font-size: 1.4rem;
-  color: #c1c1c1;
+  color: #717171;
 
   a {
-    color: #70c1b3;
+    color: $eshill-blue;
+    text-decoration: none;
   }
   .voting {
     text-align: center;
@@ -68,8 +69,5 @@ a:active {
   .star-wrapper {
     text-align: center;
     margin-bottom: 1.5rem;
-  }
-  .viewed, .version, .group, .tags, .people, .dates {
-    color: #959595;
   }
 }
