@@ -44,7 +44,7 @@ use yii\helpers\Url;
                 'category' => $cat->id,
                 'tag' => isset($tag) ? $tag->slug : null,
                 'version' => isset($version) ? $version : '2.0',
-            ])?>"><?= Html::encode($cat->name) ?> <span class="count">(<?= (int) $cat->count ?>)</span></a>
+            ])?>"><?= Html::encode($cat->name) ?> <span class="count"><?= (int) $cat->count ?></span></a>
         </li>
     <?php endforeach; ?>
 </ul>
@@ -60,7 +60,7 @@ use yii\helpers\Url;
                 'tag' => $t->slug,
                 'category' => isset($category) ? $category : null,
                 'version' => isset($version) ? $version : '2.0',
-            ])?>"><?= Html::encode($t->name) ?> <span class="count">(<?= (int) $t->frequency ?>)</span></a>
+            ])?>"><?= Html::encode($t->name) ?> <span class="count"><?= (int) $t->frequency ?></span></a>
         </li>
     <?php endforeach; ?>
 </ul>

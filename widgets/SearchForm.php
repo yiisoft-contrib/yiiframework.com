@@ -37,6 +37,7 @@ class SearchForm extends Widget
             'class' => 'form-control',
             'placeholder' => $this->placeholder,
             'autocomplete' => 'off',
+            'aria-label' => 'Search box',
         ]);
 
         $html .= ' ' . Html::submitButton('Search', ['class' => 'btn btn-primary sr-only']);
