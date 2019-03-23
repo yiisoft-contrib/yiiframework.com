@@ -10,8 +10,6 @@ class StatusController extends BaseController
 {
     public $sectionTitle = 'Release Statuses';
 
-    private $githubClient;
-
     const REPOSITORIES = [
         // 2.0
         ['yiisoft', 'yii2'],
@@ -101,12 +99,9 @@ class StatusController extends BaseController
             $client->authenticate($token, null, \Github\Client::AUTH_HTTP_TOKEN);
         }
 
-        $data = [];
+        $githubRepoStatus = new GithubRepoStatus(Yii::$app->getCache(), $client, self::REPOSITORIES);
 
-        foreach (self::REPOSITORIES as $repository) {
-            $githubRepoStatus = new GithubRepoStatus(Yii::$app->getCache(), $client, $repository[0], $repository[1]);
-            $data[] = $githubRepoStatus->getInfo();
-        }
+        $data = $githubRepoStatus->getData();
 
         $dataProvider = new ArrayDataProvider([
             'allModels' => $data,

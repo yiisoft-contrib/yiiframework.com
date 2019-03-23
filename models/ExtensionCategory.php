@@ -26,7 +26,7 @@ class ExtensionCategory extends BaseCategory
      */
     public function getExtensions()
     {
-        return $this->hasMany(Extension::className(), ['category_id' => 'id']);
+        return $this->hasMany(Extension::class, ['category_id' => 'id']);
     }
 
     /**

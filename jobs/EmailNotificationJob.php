@@ -34,7 +34,7 @@ class EmailNotificationJob extends BaseObject implements RetryableJobInterface
      */
     public function execute($queue)
     {
-        echo "sending email to " . $this->formatEmail($this->message->getTo()) . ": " . $this->message->getSubject() . "\n";
+        echo 'sending email to ' . $this->formatEmail($this->message->getTo()) . ': ' . $this->message->getSubject() . "\n";
         if (!Yii::$app->mailer->send($this->message)) {
             Yii::error('Failed to send email Message: ' . print_r($this->message, true));
             throw new Exception('Failed to send email Message.');

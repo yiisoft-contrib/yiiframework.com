@@ -9,7 +9,6 @@ use app\components\object\ClassType;
 use app\components\object\ObjectIdentityInterface;
 use dosamigos\taggable\Taggable;
 use Yii;
-use yii\apidoc\helpers\ApiMarkdown;
 use yii\behaviors\BlameableBehavior;
 use app\components\SluggableBehavior;
 use yii\helpers\StringHelper;
@@ -60,7 +59,7 @@ class News extends ActiveRecord implements Linkable, ObjectIdentityInterface, En
                 ],
             ],
             [
-                'class' => Taggable::className(),
+                'class' => Taggable::class,
             ],
             'search' => [
                 'class' => SearchableBehavior::class,
@@ -112,7 +111,7 @@ class News extends ActiveRecord implements Linkable, ObjectIdentityInterface, En
     public function getStatusName()
     {
         $statusList = static::getStatusList();
-        return isset($statusList[$this->status]) ? $statusList[$this->status] : 'Unknown';
+        return $statusList[$this->status] ?? 'Unknown';
     }
 
     public function getShowInSearch()
@@ -152,7 +151,7 @@ class News extends ActiveRecord implements Linkable, ObjectIdentityInterface, En
      */
     public static function find()
     {
-        return new NewsQuery(get_called_class());
+        return new NewsQuery(static::class);
     }
 
     public function getContentHtml()
@@ -167,7 +166,7 @@ class News extends ActiveRecord implements Linkable, ObjectIdentityInterface, En
      */
     public function getTags()
     {
-        return $this->hasMany(NewsTag::className(), ['id' => 'news_tag_id'])
+        return $this->hasMany(NewsTag::class, ['id' => 'news_tag_id'])
             ->viaTable('news2news_tags', ['news_id' => 'id']);
     }
 
@@ -187,7 +186,7 @@ class News extends ActiveRecord implements Linkable, ObjectIdentityInterface, En
             }
             $likes[] = $tag->name;
         }
-        $ids = News::find()
+        $ids = self::find()
             ->latest()
             ->published()
             ->select('news.id')->distinct()
@@ -197,7 +196,7 @@ class News extends ActiveRecord implements Linkable, ObjectIdentityInterface, En
             ->limit(5)
             ->column();
 
-        return News::findAll($ids);
+        return self::findAll($ids);
     }
 
     /**
@@ -205,7 +204,7 @@ class News extends ActiveRecord implements Linkable, ObjectIdentityInterface, En
      */
     public function getCreator()
     {
-        return $this->hasOne(User::className(), ['id' => 'creator_id']);
+        return $this->hasOne(User::class, ['id' => 'creator_id']);
     }
 
     /**
@@ -260,8 +259,6 @@ class News extends ActiveRecord implements Linkable, ObjectIdentityInterface, En
         $url = Url::to($this->getUrl(), true);
         $text = '[news] ' . $this->getLinkTitle();
 
-        $message = StringHelper::truncate($text, 108) . " {$url} #yii";
-
-        return $message;
+        return StringHelper::truncate($text, 108) . " {$url} #yii";
     }
 }

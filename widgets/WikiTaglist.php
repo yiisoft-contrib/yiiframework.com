@@ -3,11 +3,9 @@
 namespace app\widgets;
 
 
-use app\models\News;
 use app\models\NewsTag;
 use app\models\Wiki;
 use app\models\WikiTag;
-use Yii;
 use yii\base\Widget;
 use yii\helpers\Html;
 
@@ -50,9 +48,9 @@ class WikiTaglist extends Widget
 
         if ($this->wiki) {
             return implode(', ', $tagEntries);
-        } else {
-            return $this->render('wikiTaglist', ['tagEntries' => $tagEntries]);
         }
+
+        return $this->render('wikiTaglist', ['tagEntries' => $tagEntries]);
     }
 
 }

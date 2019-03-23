@@ -26,10 +26,10 @@ class SiteController extends BaseController
     {
         return [
             'error' => [
-                'class' => 'yii\web\ErrorAction',
+                'class' => \yii\web\ErrorAction::class,
             ],
             'captcha' => [
-                'class' => 'yii\captcha\CaptchaAction',
+                'class' => \yii\captcha\CaptchaAction::class,
                 'fixedVerifyCode' => YII_ENV_TEST ? 'testme' : null,
             ],
         ];
@@ -345,6 +345,14 @@ class SiteController extends BaseController
     {
         $this->sectionTitle = 'Community Resources';
         return $this->render('community');
+    }
+
+    public function actionReleaseCycle()
+    {
+        $this->sectionTitle = 'Release Cycle';
+        return $this->render('release-cycle', [
+            'versions' => Yii::$app->params['release-cycle'],
+        ]);
     }
 
     public function actionRenderMarkdown()

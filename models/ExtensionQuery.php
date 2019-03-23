@@ -5,6 +5,9 @@ namespace app\models;
 /**
  * This is the ActiveQuery class for [[Extension]].
  *
+ * @method Extension[]|array all($db = null)
+ * @method Extension|array|null one($db = null)
+ *
  * @see Extension
  */
 class ExtensionQuery extends \yii\db\ActiveQuery
@@ -47,21 +50,4 @@ class ExtensionQuery extends \yii\db\ActiveQuery
         return $this->andWhere("name NOT LIKE 'yiisoft/yii2-%'");
     }
 
-    /**
-     * @inheritdoc
-     * @return Extension[]|array
-     */
-    public function all($db = null)
-    {
-        return parent::all($db);
-    }
-
-    /**
-     * @inheritdoc
-     * @return Extension|array|null
-     */
-    public function one($db = null)
-    {
-        return parent::one($db);
-    }
 }

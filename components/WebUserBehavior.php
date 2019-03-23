@@ -9,7 +9,6 @@
 namespace app\components;
 
 
-use app\models\Badge;
 use Yii;
 use yii\base\Behavior;
 use yii\db\Expression;

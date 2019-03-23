@@ -21,8 +21,9 @@ class ForumPost1Badge extends Badge
             $requires = $this->threshold - $this->min + 1;
             $current = $posts['count'] - $this->min + 1;
             $badge->progress = round($current / $requires * 100.0);
-            if (!empty($posts['complete']))
+            if (!empty($posts['complete'])) {
                 $badge->complete_time = $posts['complete'];
+            }
             return true;
         }
         return false;
@@ -35,6 +36,6 @@ class ForumPost1Badge extends Badge
         $start = $adapter->getPostDate($user, 1);
         $complete = $adapter->getPostDate($user, $threshold);
         $count = min($adapter->getPostCount($user), $threshold);
-        return array('count' => $count, 'start' => $start, 'complete' => $complete ? $complete : null);
+        return array('count' => $count, 'start' => $start, 'complete' => $complete ?: null);
     }
 }

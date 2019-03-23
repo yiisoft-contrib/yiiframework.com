@@ -4,7 +4,6 @@ namespace app\models\search;
 
 use Yii;
 use yii\base\Exception;
-use yii\helpers\Inflector;
 
 /**
  * Base class for all search records
@@ -57,7 +56,7 @@ abstract class SearchActiveRecord extends \yii\elasticsearch\ActiveRecord
      */
     public static function find()
     {
-        return new SearchActiveQuery(get_called_class());
+        return new SearchActiveQuery(static::class);
     }
 
     public static function search($queryString, $version = null, $language = null, $type = null)
@@ -76,7 +75,6 @@ abstract class SearchActiveRecord extends \yii\elasticsearch\ActiveRecord
             ];
         }
 
-        $types = [];
         if ($type === null) {
             $types = [
                 SearchApiType::TYPE,
@@ -191,11 +189,11 @@ abstract class SearchActiveRecord extends \yii\elasticsearch\ActiveRecord
                 'function_score' => [
                     'query' => $q,
                     'functions' => [
-                        ['filter' => ['term' => ['version' => '2.0']], "weight" => 4],
-                        ['filter' => ['term' => ['version' => '1.1']], "weight" => 2],
+                        ['filter' => ['term' => ['version' => '2.0']], 'weight' => 4],
+                        ['filter' => ['term' => ['version' => '1.1']], 'weight' => 2],
                         // news have no version so they would be ranked lower i.e. equally ranked as version 1.0
                         // make sure they are on the same level as version 2.0
-                        ['filter' => ['term' => ['_type' => 'news']], "weight" => 4],
+                        ['filter' => ['term' => ['_type' => 'news']], 'weight' => 4],
                     ],
                 ]
             ];
@@ -205,20 +203,20 @@ abstract class SearchActiveRecord extends \yii\elasticsearch\ActiveRecord
             'function_score' => [
                 'query' => $q,
                 'functions' => [
-                    ['filter' => ['term' => ['_type' => 'news']], "weight" => 1.5],
-                    ['filter' => ['term' => ['_type' => 'api-type']], "weight" => 1.5],
-                    ['filter' => ['term' => ['_type' => 'guide-section']], "weight" => 1.5],
+                    ['filter' => ['term' => ['_type' => 'news']], 'weight' => 1.5],
+                    ['filter' => ['term' => ['_type' => 'api-type']], 'weight' => 1.5],
+                    ['filter' => ['term' => ['_type' => 'guide-section']], 'weight' => 1.5],
                 ],
             ]
         ];
         $query->query($q);
         $query->highlight([
             'fields' => [
-                'name' => ["fragment_size" => 5000, "number_of_fragments" => 1],
-                'title' => ["fragment_size" => 5000, "number_of_fragments" => 1],
-                'title.stemmed' => ["fragment_size" => 5000, "number_of_fragments" => 1],
-                'content' => ["fragment_size" => 100, "number_of_fragments" => 5],
-                'content.stemmed' => ["fragment_size" => 100, "number_of_fragments" => 5],
+                'name' => ['fragment_size' => 5000, 'number_of_fragments' => 1],
+                'title' => ['fragment_size' => 5000, 'number_of_fragments' => 1],
+                'title.stemmed' => ['fragment_size' => 5000, 'number_of_fragments' => 1],
+                'content' => ['fragment_size' => 100, 'number_of_fragments' => 5],
+                'content.stemmed' => ['fragment_size' => 100, 'number_of_fragments' => 5],
             ],
         ]);
         return $query;
@@ -229,7 +227,6 @@ abstract class SearchActiveRecord extends \yii\elasticsearch\ActiveRecord
         $query = static::find();
 
         $indexes = [static::index() . '-en'];
-        $analyzer = 'english';
         if ($language === null) {
             $indexes = array_map(function($i) { return static::index() . "-$i"; }, array_keys(static::$languages));
             $query->indicesBoost = [
@@ -237,7 +234,6 @@ abstract class SearchActiveRecord extends \yii\elasticsearch\ActiveRecord
             ];
         } elseif (isset(static::$languages[$language])) {
             $indexes = [static::index() . "-$language"];
-            $analyzer = static::$languages[$language];
         }
 
         $types = [
@@ -321,11 +317,11 @@ abstract class SearchActiveRecord extends \yii\elasticsearch\ActiveRecord
     public static function getTypes()
     {
         return [
-            SearchActiveRecord::SEARCH_GUIDE => 'Guide',
-            SearchActiveRecord::SEARCH_API => 'API',
-            SearchActiveRecord::SEARCH_EXTENSION => 'Extensions',
-            SearchActiveRecord::SEARCH_WIKI => 'Wiki',
-            SearchActiveRecord::SEARCH_NEWS => 'News',
+            self::SEARCH_GUIDE => 'Guide',
+            self::SEARCH_API => 'API',
+            self::SEARCH_EXTENSION => 'Extensions',
+            self::SEARCH_WIKI => 'Wiki',
+            self::SEARCH_NEWS => 'News',
         ];
     }
 }

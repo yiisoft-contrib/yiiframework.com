@@ -51,7 +51,7 @@ class IPBAdapter extends Component implements ForumAdapterInterface
     public function init()
     {
         parent::init();
-        $this->db = Instance::ensure($this->db, Connection::className());
+        $this->db = Instance::ensure($this->db, Connection::class);
     }
 
     public function getPostDate($user, $number)
@@ -177,7 +177,7 @@ class IPBAdapter extends Component implements ForumAdapterInterface
         $salt = '';
 
         for ($i = 0; $i < $len; $i++) {
-            $num = mt_rand(33, 126);
+            $num = random_int(33, 126);
 
             if ($num == '92') {
                 $num = 93;
@@ -218,7 +218,7 @@ class IPBAdapter extends Component implements ForumAdapterInterface
 
     private function getCurrentIp()
     {
-        return isset($_SERVER['REMOTE_ADDR']) ? $_SERVER['REMOTE_ADDR'] : '127.0.0.1';
+        return $_SERVER['REMOTE_ADDR'] ?? '127.0.0.1';
     }
 
     /**

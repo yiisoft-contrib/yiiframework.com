@@ -4,7 +4,6 @@ namespace app\models;
 
 use app\components\object\ClassType;
 use app\components\object\ObjectIdentityInterface;
-use Yii;
 
 /**
  * This is the model class for table "{{%doc}}".

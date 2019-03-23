@@ -4,6 +4,14 @@ namespace app\models;
 
 use yii\db\ActiveQuery;
 
+/**
+ * Class WikiQuery
+ *
+ * @method Wiki[]|array all($db = null)
+ * @method Wiki|array|null one($db = null)
+ *
+ * @see Wiki
+ */
 class WikiQuery extends ActiveQuery
 {
     /**
@@ -22,23 +30,5 @@ class WikiQuery extends ActiveQuery
     public function active()
     {
         return $this->andWhere(['status' => Wiki::STATUS_PUBLISHED]);
-    }
-
-    /**
-     * @inheritdoc
-     * @return Wiki[]|array
-     */
-    public function all($db = null)
-    {
-        return parent::all($db);
-    }
-
-    /**
-     * @inheritdoc
-     * @return Wiki|array|null
-     */
-    public function one($db = null)
-    {
-        return parent::one($db);
     }
 }

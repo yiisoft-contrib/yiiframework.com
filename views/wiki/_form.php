@@ -36,7 +36,7 @@ use yii\widgets\ActiveForm;
                 ->hint('Please select the Yii version for this article if the content is valid only for a specific version of Yii.')
             ?>
 
-            <?= $form->field($model, 'tagNames')->widget(SelectizeTextInput::className(), [
+            <?= $form->field($model, 'tagNames')->widget(SelectizeTextInput::class, [
                 // calls an action that returns a JSON object with matched
                 // tags
                 'loadUrl' => ['wiki/list-tags'],

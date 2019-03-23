@@ -35,7 +35,7 @@ class CommentAdminController extends BaseController
    		        ]
    	        ],
             'verbs' => [
-                'class' => VerbFilter::className(),
+                'class' => VerbFilter::class,
                 'actions' => [
                     'delete' => ['POST'],
                 ],

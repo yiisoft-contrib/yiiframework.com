@@ -3,14 +3,8 @@
 namespace app\models;
 
 use app\components\DiffBehavior;
-use DiffMatchPatch\Diff;
-use DiffMatchPatch\DiffMatchPatch;
-use Yii;
 use yii\base\InvalidCallException;
-use yii\behaviors\BlameableBehavior;
 use yii\behaviors\TimestampBehavior;
-use yii\db\Expression;
-use yii\helpers\ArrayHelper;
 
 /**
  * This is the model class for table "wiki_revision".
@@ -110,7 +104,7 @@ class WikiRevision extends ActiveRecord
      */
     public function getUpdater()
     {
-        return $this->hasOne(User::className(), ['id' => 'updater_id']);
+        return $this->hasOne(User::class, ['id' => 'updater_id']);
     }
 
     /**
@@ -118,7 +112,7 @@ class WikiRevision extends ActiveRecord
      */
     public function getWiki()
     {
-        return $this->hasOne(Wiki::className(), ['id' => 'wiki_id']);
+        return $this->hasOne(Wiki::class, ['id' => 'wiki_id']);
     }
 
     /**
@@ -126,7 +120,7 @@ class WikiRevision extends ActiveRecord
      */
     public function getCategory()
     {
-        return $this->hasOne(WikiCategory::className(), ['id' => 'category_id']);
+        return $this->hasOne(WikiCategory::class, ['id' => 'category_id']);
     }
 
     public function findPrevious()

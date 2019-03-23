@@ -33,7 +33,7 @@ abstract class Badge extends ActiveRecord
      */
     public static function find()
     {
-        return Yii::createObject(BadgeQuery::class, [get_called_class()]);
+        return Yii::createObject(BadgeQuery::class, [static::class]);
     }
 
     /**
@@ -67,7 +67,7 @@ abstract class Badge extends ActiveRecord
      */
     public function getUserBadges()
     {
-        return $this->hasMany(UserBadge::className(), ['badge_id' => 'id']);
+        return $this->hasMany(UserBadge::class, ['badge_id' => 'id']);
     }
 
     /**

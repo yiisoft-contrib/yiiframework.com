@@ -62,6 +62,8 @@ class User extends ActiveRecord implements IdentityInterface
     const PASSWORD_TYPE_NEW = 'NEW';
     const PASSWORD_TYPE_NONE = 'NONE';
 
+    const SCENARIO_ADMIN_UPDATE = 'admin-update';
+
     /**
      * @inheritdoc
      */
@@ -96,6 +98,14 @@ class User extends ActiveRecord implements IdentityInterface
             ['status', 'default', 'value' => self::STATUS_ACTIVE],
             ['status', 'in', 'range' => [self::STATUS_ACTIVE, self::STATUS_DELETED]],
         ]);
+    }
+
+    public function scenarios()
+    {
+        return [
+            self::SCENARIO_DEFAULT => parent::scenarios()[self::SCENARIO_DEFAULT],
+            self::SCENARIO_ADMIN_UPDATE => ['status', 'email'],
+        ];
     }
 
     public static function usernameRules()
@@ -154,7 +164,7 @@ class User extends ActiveRecord implements IdentityInterface
      */
     public static function find()
     {
-        return Yii::createObject(UserQuery::class, [get_called_class()]);
+        return Yii::createObject(UserQuery::class, [static::class]);
     }
 
     /**
@@ -317,7 +327,7 @@ class User extends ActiveRecord implements IdentityInterface
      */
     private function validateLegacyPasswordSHA($password, $hash)
     {
-        $password = $this->parseLegacyPasswordValue($password);
+        $password = self::parseLegacyPasswordValue($password);
         return (sha1(strtolower($this->username) . $password) === $hash);
     }
 
@@ -326,7 +336,7 @@ class User extends ActiveRecord implements IdentityInterface
      */
     private function validateLegacyPasswordMD5($password, $hash, $salt)
     {
-        $password = $this->parseLegacyPasswordValue($password);
+        $password = self::parseLegacyPasswordValue($password);
         return (md5(md5($salt) . md5($password)) === $hash);
     }
 
@@ -336,18 +346,18 @@ class User extends ActiveRecord implements IdentityInterface
      */
     public static function parseLegacyPasswordValue($val)
     {
-        $val = str_replace("&", "&amp;", $val);
-        $val = str_replace("<!--", "&#60;&#33;--", $val);
-        $val = str_replace("-->", "--&#62;", $val);
-        $val = str_ireplace("<script", "&#60;script", $val);
-        $val = str_replace(">", "&gt;", $val);
-        $val = str_replace("<", "&lt;", $val);
-        $val = str_replace('"', "&quot;", $val);
-        $val = str_replace("\n", "<br />", $val);
-        $val = str_replace("$", "&#036;", $val);
-        $val = str_replace("!", "&#33;", $val);
-        $val = str_replace("'", "&#39;", $val);
-        $val = preg_replace("/&amp;#([0-9]+);/s", "&#\\1;", $val);
+        $val = str_replace('&', '&amp;', $val);
+        $val = str_replace('<!--', '&#60;&#33;--', $val);
+        $val = str_replace('-->', '--&#62;', $val);
+        $val = str_ireplace('<script', '&#60;script', $val);
+        $val = str_replace('>', '&gt;', $val);
+        $val = str_replace('<', '&lt;', $val);
+        $val = str_replace('"', '&quot;', $val);
+        $val = str_replace("\n", '<br />', $val);
+        $val = str_replace('$', '&#036;', $val);
+        $val = str_replace('!', '&#33;', $val);
+        $val = str_replace("'", '&#39;', $val);
+        $val = preg_replace('/&amp;#([0-9]+);/s', "&#\\1;", $val);
         $val = preg_replace("/&#(\d+?)([^\d;])/i", "&#\\1;\\2", $val);
         return $val;
     }

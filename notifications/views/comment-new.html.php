@@ -14,7 +14,7 @@ use yii\helpers\Html;
 <?php $this->beginContent('@app/notifications/views/_layout.html.php', [
 	'model' => $model,
 	'user' => $user,
-	'title' => "A new comment was added: " . $model->getLinkTitle(),
+	'title' => 'A new comment was added: ' . $model->getLinkTitle(),
 ]) ?>
 	<p>A new comment was added to <?= Html::encode($model->getObjectType()) ?> you are following:</p>
 	<p><?= Html::a($model->getLinkTitle(), Url::to($model->getUrl(), true)) ?></p>

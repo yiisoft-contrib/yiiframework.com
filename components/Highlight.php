@@ -3,7 +3,6 @@
 namespace app\components;
 
 use yii\base\Widget;
-use yii\helpers\Html;
 
 /**
  * Highlight widget renders the content between it's begin end tags.
@@ -60,7 +59,7 @@ class Highlight extends Widget
         $content = ob_get_clean();
         $highlighter = $this->getHighlighter();
         $result = $highlighter->highlight($this->language, $content);
-        $rendered = "<pre><code class='hljs " . $result->language . "'>" . rtrim($result->value) . "</code></pre>";
+        $rendered = "<pre><code class='hljs " . $result->language . "'>" . rtrim($result->value) . '</code></pre>';
         if($this->capture) {
             $this->captured = $rendered;
             return;

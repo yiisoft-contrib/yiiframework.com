@@ -63,14 +63,14 @@ class SearchApiType extends SearchActiveRecord
         /** @var SearchApiType $model */
         $model = new static();
         $model->version = $version;
-        $model->type = isset($type['type']) ? $type['type'] : 'class';
+        $model->type = $type['type'] ?? 'class';
         $model->name = StringHelper::basename($type['name']);
         $model->namespace = StringHelper::dirname($type['name']);
-        $model->title = isset($type['shortDescription']) ? $type['shortDescription'] : null;
+        $model->title = $type['shortDescription'] ?? null;
         $model->content = isset($type['description']) ? static::filterHtml($type['description']) : null;
-        $model->since = isset($type['since']) ? $type['since'] : null;
-        $model->deprecatedSince = isset($type['deprecatedSince']) ? $type['deprecatedSince'] : null;
-        $model->deprecatedReason = isset($type['deprecatedReason']) ? $type['deprecatedReason'] : null;
+        $model->since = $type['since'] ?? null;
+        $model->deprecatedSince = $type['deprecatedSince'] ?? null;
+        $model->deprecatedReason = $type['deprecatedReason'] ?? null;
 
         $model->primaryKey = "$version/" . strtolower(ltrim(str_replace('\\', '-', "$model->namespace\\$model->name"), '-'));
 

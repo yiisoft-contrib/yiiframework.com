@@ -6,7 +6,6 @@
 /* @var $file \app\models\File the file object that has been uploaded */
 
 use app\components\DiffBehavior;
-use app\models\ExtensionCategory;
 use yii\helpers\Html;
 use yii\helpers\Url;
 

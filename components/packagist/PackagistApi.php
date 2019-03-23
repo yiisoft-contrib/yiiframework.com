@@ -3,9 +3,7 @@
 namespace app\components\packagist;
 
 use Yii;
-use yii\base\Exception;
 use yii\base\InvalidArgumentException;
-use yii\helpers\Json;
 use yii\httpclient\Client;
 use yii\httpclient\CurlTransport;
 

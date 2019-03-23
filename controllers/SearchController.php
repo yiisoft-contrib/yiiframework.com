@@ -2,8 +2,6 @@
 
 namespace app\controllers;
 
-use app\components\packagist\Package;
-use app\components\packagist\PackagistApi;
 use app\models\search\SearchActiveRecord;
 use Yii;
 use yii\data\ArrayDataProvider;
@@ -11,7 +9,6 @@ use yii\helpers\Json;
 use yii\helpers\Url;
 use yii\web\Response;
 use yii\data\ActiveDataProvider;
-use yii\elasticsearch\Command;
 
 
 class SearchController extends BaseController
@@ -40,7 +37,7 @@ class SearchController extends BaseController
         $this->searchQuery = $q;
         if (empty($q)) {
             $this->sectionTitle = 'Search';
-            $this->headTitle = "Search";
+            $this->headTitle = 'Search';
             $results = new ArrayDataProvider();
         } else {
             $this->sectionTitle = 'Search results';
@@ -76,8 +73,8 @@ class SearchController extends BaseController
         Yii::$app->response->headers->add('Content-Type', 'application/json');
 
         $suggests = array_merge(
-            isset($results['suggest-name']) ? $results['suggest-name'] : [],
-            isset($results['suggest-title']) ? $results['suggest-title'] : []
+            $results['suggest-name'] ?? [],
+            $results['suggest-title'] ?? []
         );
 
         $response = [
@@ -198,8 +195,8 @@ class SearchController extends BaseController
         $queryURLs = [];
 
         $suggests = array_merge(
-            isset($results['suggest-name']) ? $results['suggest-name'] : [],
-            isset($results['suggest-title']) ? $results['suggest-title'] : []
+            $results['suggest-name'] ?? [],
+            $results['suggest-title'] ?? []
         );
 
         $uniqueTitles = [];

@@ -2,7 +2,6 @@
 
 namespace app\jobs;
 
-use Yii;
 use app\models\ContentShare;
 use yii\base\BaseObject;
 use yii\queue\Queue;

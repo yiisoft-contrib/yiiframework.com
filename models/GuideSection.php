@@ -46,12 +46,10 @@ class GuideSection extends BaseObject
     {
         $this->content = $this->loadContent($this->name, $this->guide->version, $this->guide->language);
         $this->headings = $this->loadHeadings($this->name, $this->guide->version, $this->guide->language);
-        if ($this->content === false) {
-            if ($this->guide->language !== Guide::LANGUAGE_EN) {
-                $this->missingTranslation = true;
-                $this->content = $this->loadContent($this->name, $this->guide->version, Guide::LANGUAGE_EN);
-                $this->headings = $this->loadHeadings($this->name, $this->guide->version, Guide::LANGUAGE_EN);
-            }
+        if (($this->content === false) && $this->guide->language !== Guide::LANGUAGE_EN) {
+            $this->missingTranslation = true;
+            $this->content = $this->loadContent($this->name, $this->guide->version, Guide::LANGUAGE_EN);
+            $this->headings = $this->loadHeadings($this->name, $this->guide->version, Guide::LANGUAGE_EN);
         }
         return $this->content !== false;
     }
