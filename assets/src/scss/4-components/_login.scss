@@ -83,7 +83,7 @@ For .omb_spanOr use @body-bg instead of white.
       @include rem(margin-top, 10px);
 
       a {
-        color: #f3ffbd;
+        color: #fff;
         font-size: 1.7rem;
       }
     }
@@ -91,7 +91,7 @@ For .omb_spanOr use @body-bg instead of white.
     .btn{
       font-size: 1.8rem;
       font-family: "pt_sansregular", sans-serif;
-      color: #247ba0;
+      color: $eshill-blue;
       background-color: #F5FEC4;
       border-color: #ebfd88;
 
@@ -127,6 +127,7 @@ For .omb_spanOr use @body-bg instead of white.
           border-radius: 25px;
           @include rem(line-height, 50px);
           @include rem(width, 50px);
+          margin-left: -1px;
         }
       }
 

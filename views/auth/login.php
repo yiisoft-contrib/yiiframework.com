@@ -26,10 +26,14 @@ $this->params['breadcrumbs'][] = $this->title;
           <div class="col-md-9">
             <?php $form = ActiveForm::begin(['id' => 'login-form', 'options' => ['class' => 'omb_loginForm', 'autocomplete' => 'off']]); ?>
                
-            <?= $form->field($model, 'username', ['inputOptions' => ['class'=>'login-control','placeholder' => $model->getAttributeLabel('username')]])->label(false) ?>
+            <?= $form->field($model, 'username', [
+                    'inputOptions' => ['class'=>'login-control','placeholder' => $model->getAttributeLabel('username'),'aria-label' => $model->getAttributeLabel('username')]
+            ])->label(false) ?>
             <span class="help-block"></span>
 
-            <?= $form->field($model, 'password', ['inputOptions' => ['class'=>'login-control','placeholder' => $model->getAttributeLabel('password')]])->passwordInput()->label(false) ?>
+            <?= $form->field($model, 'password', [
+                    'inputOptions' => ['class'=>'login-control','placeholder' => $model->getAttributeLabel('password'),'aria-label' => $model->getAttributeLabel('password')]
+            ])->passwordInput()->label(false) ?>
 
             <?= $form->field($model, 'rememberMe')->checkbox() ?>
 
