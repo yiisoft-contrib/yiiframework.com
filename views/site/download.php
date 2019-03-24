@@ -17,7 +17,7 @@ $this->params['breadcrumbs'][] = $this->title;
 			<h2>Yii Framework & Offline Documentation</h2>
 		</div>
 		<div class="col-sm-5 col-md-6 col-lg-5">
-			<img class="background" src="<?= Yii::getAlias('@web/image/download/downloads.svg')?>" alt="">
+			<img class="background" src="<?= Yii::getAlias('@web/image/download/downloads.svg')?>" alt="Yii downloads">
 		</div>
 	</div>
 </div>
@@ -123,12 +123,12 @@ $this->params['breadcrumbs'][] = $this->title;
 				<div class="row extensions">
 					<div class="col-md-6 col-sm-12 col-xs-12">
 						<a class="btn btn-lg btn-default btn-block download-btn" href="https://github.com/yiisoft/yii2/releases/download/<?= $latest ?>/yii-basic-app-<?= $latest ?>.tgz">
-						<img style="height:5rem;" src="<?= Yii::getAlias('@web/image/tgz.svg')?>" />
+						<img alt="tar gz" src="<?= Yii::getAlias('@web/image/tgz.svg')?>" />
 						<span>Yii 2 with basic application template</span></a>
 					</div>
 					<div class="col-md-6 col-sm-12 col-xs-12">
 						<a class="btn btn-lg btn-default btn-block download-btn" href="https://github.com/yiisoft/yii2/releases/download/<?= $latest ?>/yii-advanced-app-<?= $latest ?>.tgz">
-						<img style="height:5rem;" src="<?= Yii::getAlias('@web/image/tgz.svg')?>" />
+						<img alt="tar gz" src="<?= Yii::getAlias('@web/image/tgz.svg')?>" />
 						<span>Yii 2 with advanced application template</span></a>
 					</div>
 				</div>
@@ -190,7 +190,7 @@ $this->params['breadcrumbs'][] = $this->title;
 				<ul class="offline-doc-v2">
 					<?php foreach(Yii::$app->params['guide.versions'][$version] as $locale => $language): ?>
 					<li>
-						<img src="<?= Yii::getAlias("@web/image/download/$locale.png") ?>" />
+						<img src="<?= Yii::getAlias("@web/image/download/$locale.png") ?>" alt="<?= $locale ?> language"/>
 						<span><?= $language ?></span>
 						<span>
 						<?php

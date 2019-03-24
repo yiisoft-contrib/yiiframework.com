@@ -44,15 +44,24 @@ $this->params['breadcrumbs'][] = $this->title;
             <div class="col-md-9">
                 <?php $form = ActiveForm::begin() ?>
                 <?= $form->field($model, 'name', [
-                    'inputOptions' => ['placeholder' => $model->getAttributeLabel('name')]
+                    'inputOptions' => [
+                        'placeholder' => $model->getAttributeLabel('name'),
+                        'aria-label' => $model->getAttributeLabel('name'),
+                    ]
                 ])->label(false) ?>
 
                 <?= $form->field($model, 'email', [
-                    'inputOptions' => ['placeholder' => $model->getAttributeLabel('email')]
+                    'inputOptions' => [
+                        'placeholder' => $model->getAttributeLabel('email'),
+                        'aria-label' => $model->getAttributeLabel('email'),
+                    ]
                 ])->label(false) ?>
 
                 <?= $form->field($model, 'body', [
-                    'inputOptions' => ['placeholder' => $model->getAttributeLabel('body')]
+                    'inputOptions' => [
+                        'placeholder' => $model->getAttributeLabel('body'),
+                        'aria-label' => $model->getAttributeLabel('body'),
+                    ]
                 ])->label(false)->textarea(['rows' => 6]) ?>
 
 

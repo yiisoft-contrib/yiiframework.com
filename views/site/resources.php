@@ -25,8 +25,8 @@ $this->params['breadcrumbs'][] = $this->title;
                 <h3>News</h3>
 
                 <div class="image">
-                    <a href="http://yiifeed.com/">
-                    <img src="<?= Yii::getAlias('@web/image/resources/yiifeed.png') ?>" alt="">
+                    <a href="http://yiifeed.com/" aria-label="YiiFeed">
+                    <img src="<?= Yii::getAlias('@web/image/resources/yiifeed.png') ?>" alt="YiiFeed">
                     </a>
                 </div>
 
@@ -39,8 +39,8 @@ $this->params['breadcrumbs'][] = $this->title;
                 <h3>Showcase</h3>
 
                 <div class="image">
-                    <a href="http://yiipowered.com/en">
-                    <img src="<?= Yii::getAlias('@web/image/resources/yiipowered.png') ?>" alt="">
+                    <a href="http://yiipowered.com/en" aria-label="YiiPowered">
+                    <img src="<?= Yii::getAlias('@web/image/resources/yiipowered.png') ?>" alt="YiiPowered">
                     </a>
                 </div>
 
@@ -54,7 +54,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 <h3>Videos</h3>
 
                 <div class="image">
-                    <img src="<?= Yii::getAlias('@web/image/resources/videos.png') ?>" alt="">
+                    <img src="<?= Yii::getAlias('@web/image/resources/videos.png') ?>" alt="Videos">
                 </div>
 
                 <p>There are many videos available. <a href="https://www.youtube.com/results?search_query=yii">Check YouTube for "yii"</a>.</p>
@@ -70,8 +70,8 @@ $this->params['breadcrumbs'][] = $this->title;
                 <h3>Yii 1.1</h3>
 
                 <div class="image">
-                    <a href="<?= Url::to(['guide/blog-entry']) ?>">
-                    <img src="<?= Yii::getAlias('@web/image/resources/yii11.png') ?>" alt="">
+                    <a href="<?= Url::to(['guide/blog-entry']) ?>" aria-label="Yii 1.1 Blog tutorial">
+                    <img src="<?= Yii::getAlias('@web/image/resources/yii11.png') ?>" alt="Yii 1.1">
                     </a>
                 </div>
 

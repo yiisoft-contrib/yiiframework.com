@@ -1,7 +1,7 @@
 .btn-new-wiki-article {
   font-size: 1.8rem;
   font-family: "pt_sansregular", sans-serif;
-  color: $eshill-light-blue;
+  color: $eshill-blue;
   background-color: #F5FEC4;
   border-color: #70c1b3;
   margin-top: 1.5rem;
@@ -62,14 +62,18 @@ ul.wiki-side-menu {
   li a span.count {
     font-size: 1.2rem;
     display: inline;
-    color: #808080;
+    color: #717171;
+    float: right;
   }
   li a.asc, li a.asc:hover,
   li a.desc, li a.desc:hover,
   li.active a, li.active a:hover
   {
-    background-color: #70c1b3;
+    background-color: $eshill-light-blue;
     color: #fff;
+    span.count {
+      color: #fff;
+    }
   }
 }
 
@@ -95,23 +99,24 @@ ul.wiki-side-comments {
 .wiki-row {
   margin-bottom: 2rem;
 
-  .suptitle {
-    color: #70c1b3;
+  .subtitle {
     font-size: 1.4rem;
+    color: #737373;
   }
   h2.title {
-    margin: 0.5rem 0 3rem 0;
+    margin: 0.5rem 0 1rem 0;
     font-size: 2.5rem;
   }
   .text {
     margin-top: 1rem;
   }
   .comments {
-    margin-top: 0.5rem;
+    float: right;
 
     a {
-      color: #808080;
+      color: #737373;
       font-size: 1.4rem;
+      text-decoration: none;
     }
   }
 }

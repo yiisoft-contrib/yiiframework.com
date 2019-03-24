@@ -26,7 +26,7 @@ label.radiolist-label {
 
   .extension-stats {
     text-transform: uppercase;
-    color: #808080;
+    color: #737373;
 
     a {
       text-decoration: none;
@@ -38,7 +38,7 @@ label.radiolist-label {
   }
 
   .extension-author {
-    color: #808080;
+    color: #737373;
   }
 }
 
@@ -52,10 +52,11 @@ label.radiolist-label {
   }
 }
 
+// TODO: All code below looks a lot like _wiki.scss, this needs to be refactored
 .btn-new-extension {
   font-size: 1.8rem;
   font-family: "pt_sansregular", sans-serif;
-  color: $eshill-light-blue;
+  color: $eshill-blue;
   background-color: #F5FEC4;
   border-color: #70c1b3;
   margin-top: 1.5rem;
@@ -116,14 +117,18 @@ ul.extension-side-menu {
   li a span.count {
     font-size: 1.2rem;
     display: inline;
-    color: #808080;
+    color: #717171;
+    float: right;
   }
   li a.asc, li a.asc:hover,
   li a.desc, li a.desc:hover,
   li.active a, li.active a:hover
   {
-    background-color: #70c1b3;
+    background-color: $eshill-light-blue;
     color: #fff;
+    span.count {
+      color: #fff;
+    }
   }
 }
 
