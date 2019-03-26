@@ -34,9 +34,6 @@ git clone https://github.com/yiisoft-contrib/yiiframework.com.git
 
 cd yiiframework.com
 
-# install the composer asset plugin globally, if you haven't done so before
-composer global require "fxp/composer-asset-plugin:^1.4.2"
-
 # install the dependent composer packages
 composer install
 
