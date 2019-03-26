@@ -1,10 +1,14 @@
-yiiframework.com Website
-========================
+<p align="center">
+    <a href="https://www.yiiframework.com/" target="_blank">
+        <img src="https://www.yiiframework.com/files/logo/yii.png" width="400" alt="Yii Framework Website" />
+    </a>
+</p>
 
 This project contains the source code for the [yiiframework.com](http://yiiframework.com/) Website.
 
 If you want to contribute please get in touch with us using the [issue tracker](https://github.com/yiisoft-contrib/yiiframework.com/issues).
-We will set up some contribution guidelines soon.
+
+[![Build Status](https://img.shields.io/travis/yiisoft-contrib/yiiframework.com.svg)](https://travis-ci.org/yiisoft-contrib/yiiframework.com)
 
 
 ## INSTALLATION
