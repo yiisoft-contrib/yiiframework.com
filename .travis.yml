@@ -37,7 +37,8 @@ install:
 
   # install clientside stuff
   - npm install -g gulp-cli
-  - npm install
+  - npm install -g yarn
+  - yarn install
 
 before_script:
   # show some versions and env information
