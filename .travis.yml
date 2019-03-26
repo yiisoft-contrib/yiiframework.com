@@ -45,6 +45,6 @@ before_script:
 
 script:
   # PHP tests
-  - vendor/bin/phpunit --verbose $PHPUNIT_FLAGS
+  - vendor/bin/phpunit
   - php -S localhost:8080 -t web > /dev/null 2>&1 &
   - vendor/bin/codecept run
