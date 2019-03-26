@@ -20,6 +20,7 @@ cache:
     - $HOME/.npm
 
 install:
+  - npm i -g npm
   - phpenv config-rm xdebug.ini || echo "xdebug is not installed"
 
   # install composer dependencies
@@ -27,12 +28,25 @@ install:
   - export PATH="$HOME/.composer/vendor/bin:$PATH"
   - travis_retry composer install $DEFAULT_COMPOSER_FLAGS
 
+  # setup application
+  - |
+    ./init --env=Development
+    sed -i s/'username' => 'yiiframeworkcom',/'username' => 'travis',/ config/params-local.php
+    sed -i s/'password' => 'yiiframeworkcom',/'password' => '',/ config/params-local.php
+    sed -i "s/'cookieValidationKey' => ''/'cookieValidationKey' => 'testkey'/" config/web-local.php
+
+  # install clientside stuff
+  - npm install -g gulp-cli
+  - npm install -g yarn
+  - yarn install
+
 before_script:
   # show some versions and env information
   - php --version
   - php -r "echo INTL_ICU_VERSION . \"\n\";"
   - php -r "echo INTL_ICU_DATA_VERSION . \"\n\";"
   - mysql --version
+  - npm --version
 
   # initialize databases
   #- |
@@ -44,7 +58,5 @@ before_script:
   #  fi
 
 script:
-  # PHP tests
-  - vendor/bin/phpunit --verbose $PHPUNIT_FLAGS
   - php -S localhost:8080 -t web > /dev/null 2>&1 &
   - vendor/bin/codecept run
