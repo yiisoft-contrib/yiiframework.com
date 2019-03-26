@@ -48,6 +48,9 @@ before_script:
   - mysql --version
   - npm --version
 
+  # compile assets
+  - gulp build
+
   # initialize databases
   #- |
   #  if [ $TASK_TESTS_PHP == 1 ]; then
