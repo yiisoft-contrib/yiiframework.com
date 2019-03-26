@@ -35,7 +35,7 @@ install:
     sed -i "s/'cookieValidationKey' => ''/'cookieValidationKey' => 'testkey'/" config/web-local.php
 
   # install clientside stuff
-  - npm global install gulp-cli
+  - npm install -g gulp-cli
   - npm install
 
 before_script:
