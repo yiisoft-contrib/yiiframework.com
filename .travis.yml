@@ -20,7 +20,7 @@ cache:
     - $HOME/.npm
 
 install:
-  - npm update -q
+  - npm i -g npm
   - phpenv config-rm xdebug.ini || echo "xdebug is not installed"
 
   # install composer dependencies
@@ -45,6 +45,7 @@ before_script:
   - php -r "echo INTL_ICU_VERSION . \"\n\";"
   - php -r "echo INTL_ICU_DATA_VERSION . \"\n\";"
   - mysql --version
+  - npm --version
 
   # initialize databases
   #- |
