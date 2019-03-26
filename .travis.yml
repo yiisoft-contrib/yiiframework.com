@@ -20,6 +20,7 @@ cache:
     - $HOME/.npm
 
 install:
+  - npm update -q
   - phpenv config-rm xdebug.ini || echo "xdebug is not installed"
 
   # install composer dependencies
