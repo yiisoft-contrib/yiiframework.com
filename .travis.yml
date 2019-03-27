@@ -31,8 +31,8 @@ install:
   # setup application
   - |
     ./init --env=Development
-    sed -i s/'username' => 'yiiframeworkcom',/'username' => 'travis',/ config/params-local.php
-    sed -i s/'password' => 'yiiframeworkcom',/'password' => '',/ config/params-local.php
+    sed -i "s/'username' => 'yiiframeworkcom',/'username' => 'travis',/" config/params-local.php
+    sed -i "s/'password' => 'yiiframeworkcom',/'password' => '',/" config/params-local.php
     sed -i "s/'cookieValidationKey' => ''/'cookieValidationKey' => 'testkey'/" config/web-local.php
 
   # install clientside stuff
@@ -47,6 +47,10 @@ before_script:
   - php -r "echo INTL_ICU_DATA_VERSION . \"\n\";"
   - mysql --version
   - npm --version
+
+  # compile assets
+  - touch assets/src/scss/2-vendors/contributors.css
+  - gulp build
 
   # initialize databases
   #- |

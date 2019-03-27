@@ -40,8 +40,8 @@ class SecurityFormCest
     public function submitFormSuccessfully(\FunctionalTester $I)
     {
         $I->submitForm('.content form', [
-            'SecurityForm[name]' => 'tester',
-            'SecurityForm[email]' => 'tester@example.com',
+            'SecurityForm[email]' => 'tester',
+            'SecurityForm[name]' => 'tester@example.com',
             'SecurityForm[body]' => 'test content',
             'SecurityForm[verifyCode]' => 'testme',
         ]);
