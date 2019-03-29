@@ -27,6 +27,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 <p class="text-center">You like Yii? Built an outstanding website or application? Blog about it, tweet about it,
                     and <a href="http://yiipowered.com/en">add it to YiiPowered</a>.
                 </p>
+                <p class="text-center">Have news to share? Add them to <a href="https://yiifeed.com/">YiiFeed</a>.</p>
                 <div class="row">
                     <div class="col-md-6">
                         <div class="heading-separator">
@@ -45,11 +46,8 @@ $this->params['breadcrumbs'][] = $this->title;
                         <ul>
                             <li>Check if the issue is not already reported.</li>
                             <li>Don't use issue tracker to ask questions. There is a
-                                <a href="http://www.yiiframework.com/forum/index.php?/forum/29-general-discussion-for-yii-11x/">forum</a>
+                                <a href="https://forum.yiiframework.com/">forum</a>
                                 and a <?= Html::a('chat', ['site/chat']) ?>.
-                            </li>
-                            <li>If you're not sure if it's a bug or not,
-                                <a href="http://www.yiiframework.com/forum/index.php?/forum/11-bug-discussions/">discuss it at the forum</a> first.
                             </li>
                         </ul>
                     </div>
@@ -58,7 +56,7 @@ $this->params['breadcrumbs'][] = $this->title;
                             <h2><span>Help us to fix bugs</span></h2>
                         </div>
                         <p class="text-center"><img class="icon" src="<?= Yii::getAlias('@web/image/contribute/ico_contribute_03.svg')?>" alt=""></p>
-                        <p>The most time consuming part of fixing a bug is reproducing it. So if
+                        <p>The most time consuming part of fixing a bug is reproducing it. If
                             you have some free time and want to dive into Yii internals fixing a bug,
                             the first step is to create a simple test case that contains the minimal code
                             to show the problem. Even better if you can convert it to
@@ -66,9 +64,8 @@ $this->params['breadcrumbs'][] = $this->title;
                             it you're doing a very good job already.
                         </p>
                         <p>If you've tried hard but still couldn't come up with the minimal code to
-                            reproduce the bug, it's fine too. Please describe it with details that you
-                            think may be helpful for us to reproduce the bug. In most cases, information
-                            that may be helpful for us include: the Yii version, the PHP version, the Web
+                            reproduce the bug, it's fine too. Please describe it with details that
+                            may be helpful for us to reproduce the bug: the Yii version, the PHP version, the Web
                             server type, the Web browser type, the application configuration, the error
                             call stack, the SQL statement being executed, and so on.
                         </p>
@@ -94,7 +91,7 @@ $this->params['breadcrumbs'][] = $this->title;
                         </div>
                         <p class="text-center"><img class="icon" src="<?= Yii::getAlias('@web/image/contribute/ico_contribute_04.svg')?>" alt=""></p>
                         <p>People do make mistakes. We do as well. If you're living on a cutting
-                            edge and interested in all new trunk features and bug fixes that will be
+                            edge and interested in all new features and bug fixes that will be
                             included in the next release, you probably will like reviewing
                             <a href="https://github.com/yiisoft/yii2/commits/master">changes we're making</a>.
                             Don't hesitate to comment either when everything is fine or when it looks
@@ -108,7 +105,7 @@ $this->params['breadcrumbs'][] = $this->title;
                         <p class="text-center"><img class="icon" src="<?= Yii::getAlias('@web/image/contribute/ico_contribute_05.svg')?>" alt=""></p>
                         <p>Have a brilliant idea on how to improve Yii? Let us know. You can
                             request features in
-                            <a href="https://github.com/yiisoft/yii2/issues">Yii issue tracker</a>.
+                            <a href="https://github.com/yiisoft/yii-core">Yii issue tracker</a>.
                         </p>
                         <p>When requesting a feature please:</p>
                         <ul>
@@ -121,10 +118,10 @@ $this->params['breadcrumbs'][] = $this->title;
                     </div>
                     <div class="col-md-4">
                         <div class="heading-separator">
-                            <h2><span>Unit tests</span></h2>
+                            <h2><span>Write tests</span></h2>
                         </div>
                         <p class="text-center"><img class="icon" src="<?= Yii::getAlias('@web/image/contribute/ico_contribute_06.svg')?>" alt=""></p>
-                        <p>To make Yii even more stable, you can contribute unit tests. Existing
+                        <p>To make Yii even more stable, you can contribute tests. Existing
                             unit tests aren't coming with Yii release packages but are
                             <a href="https://github.com/yiisoft/yii2/tree/master/tests">available from GitHub</a>.
                         </p>
@@ -135,9 +132,9 @@ $this->params['breadcrumbs'][] = $this->title;
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-md-6">
+                    <div class="col-md-4">
                         <div class="heading-separator">
-                            <h2><span>Improve documentation</span></h2>
+                            <h2><span>Documentation</span></h2>
                         </div>
                         <p class="text-center"><img class="icon" src="<?= Yii::getAlias('@web/image/contribute/ico_contribute_07.svg')?>" alt=""></p>
                         <p>Found a typo, wrong or unclear wording? Know how to explain things
@@ -148,7 +145,7 @@ $this->params['breadcrumbs'][] = $this->title;
                         <p>Also each page in the <?= Html::a('Definitive Guide', ['guide/entry']) ?> has an edit link
                         on the bottom, that lets you update the file and submit your changes directly via Github.</p>
                     </div>
-                    <div class="col-md-6">
+                    <div class="col-md-4">
                         <div class="heading-separator">
                             <h2><span>Translate</span></h2>
                         </div>
@@ -162,6 +159,25 @@ $this->params['breadcrumbs'][] = $this->title;
                             the <a href="https://github.com/yiisoft/yii2/blob/master/docs/internals/translation-workflow.md">Translation workflow</a> at GitHub.
                             Also if you need help, we are happy to help you get started, just ask.
                         </p>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="heading-separator">
+                            <h2><span>Donate</span></h2>
+                        </div>
+                        <p class="text-center"><img class="icon" src="<?= Yii::getAlias('@web/image/contribute/ico_contribute_05.svg')?>" alt=""></p>
+                        <p>Last but not least, there is an option to <a href="https://opencollective.com/yiisoft">fund Yii development through OpenCollective</a>.</p>
+
+                        <p>Funds will be spent on:</p>
+
+                        <ul>
+                            <li>Extra Yii time for core developers</li>
+                            <li>Servers and infrastructure</li>
+                            <li>Development tools</li>
+                            <li>Design</li>
+                            <li>Marketing</li>
+                        </ul>
+
+                        <p><a href="https://www.yiiframework.com/news/204/preparing-yii-for-the-long-run">More about OpenCollective</a>.</p>
                     </div>
                 </div>
             </div>
