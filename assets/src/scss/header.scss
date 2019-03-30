@@ -39,3 +39,20 @@
 .navbar-nav .dropdown-menu > li.separator {
   font-size: 13px;
 }
+
+@media screen and (max-width: 1100px) {
+  .nav > li > a {
+    padding: 0 8px;
+  }
+  .navbar-nav {
+    margin: 14.5px -15px;
+    display: flex;
+    align-items: center;
+    > .active > a, > li > a:hover {
+      height: auto;
+    }
+    > li.open > .dropdown-menu {
+      z-index: 1001;
+    }
+  }
+}
