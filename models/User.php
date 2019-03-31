@@ -28,15 +28,15 @@ use yii\helpers\ArrayHelper;
  * @property string $login_time
  * @property int $login_attempts
  * @property string $login_ip
- * @property int $rating
- * @property int $rank
- * @property int $extension_count
- * @property int $wiki_count
- * @property int $comment_count
+ * @property int $rating absolute user rating value
+ * @property int $rank place number in the whole community
+ * @property int $extension_count number of extensions user created
+ * @property int $wiki_count number of wiki pages user created
+ * @property int $comment_count number of comments user left
  * @property int $post_count
  * @property string $email_verification_token
- * @property bool $email_verified
- * @property int $forum_id
+ * @property bool $email_verified if email was confirmed
+ * @property int $forum_id id in the forum database
  *
  * Relations:
  *
