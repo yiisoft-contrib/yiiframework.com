@@ -14,40 +14,48 @@ use yii\helpers\ArrayHelper;
 /**
  * User model
  *
- * @property int $id
+ * @property int    $id
  * @property string $username
+ * @property string $display_name
+ * @property string $email
+ * @property int    $avatar_version
+ * @property string $auth_key
  * @property string $password_hash
  * @property string $password_reset_token
- * @property string $email
- * @property string $auth_key
- * @property integer $status
- * @property integer $created_at
- * @property integer $updated_at
- * @property string $password write-only password
- * @property int $rating user absolute rating value
- * @property int $rank place number in the whole community
- * @property int $extension_count number of extensions user created
- * @property int $wiki_count number of wiki pages user created
- * @property int $comment_count number of comments user left
- * @property int $post_count
- * @property string $display_name
+ * @property int    $status
+ * @property string $created_at
+ * @property string $updated_at
  * @property string $login_time
- * @property int $login_attempts
+ * @property int    $login_attempts
  * @property string $login_ip
+ * @property int    $rating
+ * @property int    $rank
+ * @property int    $extension_count
+ * @property int    $wiki_count
+ * @property int    $comment_count
+ * @property int    $post_count
  * @property string $email_verification_token
- * @property bool $email_verified if email was confirmed
- * @property int $forum_id id in the IPB forum database
+ * @property bool   $email_verified
+ * @property int    $forum_id
  *
  * Relations:
  *
- * @property Auth[] $authClients
- * @property Wiki[] $wikis
- * @property Extension[] $extensions
- * @property Badge[] $badges
+ * @property-read Auth[]      $authClients
+ * @property-read Wiki[]      $wikis
+ * @property-read Extension[] $extensions
+ * @property-read Badge[]     $badges
  *
  * properties:
  *
  * @property string $passwordType
+ *
+ * @property string      $authKey
+ * @property null|string $github
+ * @property bool|string $avatarPath
+ * @property string      $statusLabel
+ * @property string      $password
+ * @property null|string $forumUrl
+ * @property string      $rankLink
  *
  */
 class User extends ActiveRecord implements IdentityInterface
@@ -625,10 +633,10 @@ class User extends ActiveRecord implements IdentityInterface
         return file_exists($this->getAvatarPath());
     }
 
-    public function getAvatarUrl()
+    public function getAvatarUrl($schema = false)
     {
         if ($this->hasAvatar()) {
-            return Url::to(['user/avatar', 'id' => $this->id]);
+            return Url::to(['user/avatar', 'id' => $this->id, 'v' => $this->avatar_version ], $schema);
         }
         return null;
     }
