@@ -69,7 +69,10 @@ class UserAvatarUploadForm extends Model
                 FileHelper::createDirectory(dirname($avatarPath));
                 $this->avatar->saveAs("$avatarPath.orig");
                 Image::thumbnail("$avatarPath.orig", 200, 200)->save($avatarPath);
-                return true;
+
+                $this->user->avatar_version += 1;
+
+                return $this->user->save(false);
             } catch (\Throwable $e) {
                 Yii::error($e);
                 $this->addError('avatar', 'Unable to process image.');
