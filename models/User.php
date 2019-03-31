@@ -53,7 +53,7 @@ use yii\helpers\ArrayHelper;
  * @property null|string $github
  * @property bool|string $avatarPath
  * @property string $statusLabel
- * @property string $password
+ * @property string $password write-only password
  * @property null|string $forumUrl
  * @property string $rankLink
  *
