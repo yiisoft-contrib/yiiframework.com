@@ -14,48 +14,48 @@ use yii\helpers\ArrayHelper;
 /**
  * User model
  *
- * @property int    $id
+ * @property int $id
  * @property string $username
  * @property string $display_name
  * @property string $email
- * @property int    $avatar_version
+ * @property int $avatar_version
  * @property string $auth_key
  * @property string $password_hash
  * @property string $password_reset_token
- * @property int    $status
+ * @property int $status
  * @property string $created_at
  * @property string $updated_at
  * @property string $login_time
- * @property int    $login_attempts
+ * @property int $login_attempts
  * @property string $login_ip
- * @property int    $rating
- * @property int    $rank
- * @property int    $extension_count
- * @property int    $wiki_count
- * @property int    $comment_count
- * @property int    $post_count
+ * @property int $rating
+ * @property int $rank
+ * @property int $extension_count
+ * @property int $wiki_count
+ * @property int $comment_count
+ * @property int $post_count
  * @property string $email_verification_token
- * @property bool   $email_verified
- * @property int    $forum_id
+ * @property bool $email_verified
+ * @property int $forum_id
  *
  * Relations:
  *
- * @property-read Auth[]      $authClients
- * @property-read Wiki[]      $wikis
+ * @property-read Auth[] $authClients
+ * @property-read Wiki[] $wikis
  * @property-read Extension[] $extensions
- * @property-read Badge[]     $badges
+ * @property-read Badge[] $badges
  *
  * properties:
  *
  * @property string $passwordType
  *
- * @property string      $authKey
+ * @property string $authKey
  * @property null|string $github
  * @property bool|string $avatarPath
- * @property string      $statusLabel
- * @property string      $password
+ * @property string $statusLabel
+ * @property string $password
  * @property null|string $forumUrl
- * @property string      $rankLink
+ * @property string $rankLink
  *
  */
 class User extends ActiveRecord implements IdentityInterface
