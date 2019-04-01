@@ -7,15 +7,16 @@
 @import "1-common/colors";
 @import "1-common/bootstrap-variables";
 
-@import "bootstrap/variables";
-@import "bootstrap/mixins";
+@import "bootstrap/scss/functions";
+@import "bootstrap/scss/variables";
+@import "bootstrap/scss/mixins";
 
-@import "bootstrap/forms";
+@import "bootstrap/scss/forms";
 
 @import "2-vendors/custom-bootstrap/yii-dropdowns";
 
-@import "bootstrap/navs";
-@import "bootstrap/navbar";
+//@import "bootstrap/scss/navs";
+@import "bootstrap/scss/navbar";
 
 @import "rem";
 

@@ -4,7 +4,8 @@
 .section-header {
   .section-headline {
     font-family: $bold-headings-font-family;
-    font-size: fontsize(h1);
+    font-size: 1.8rem;
+    line-height: 4rem;
 
     a {
       color: white;
@@ -13,7 +14,7 @@
   }
   color: white;
   background-color: $eshill-light-blue;
-  @include rem(padding-top, 15px);
+  //padding: .5rem 0;
 
   .headline-row {
     @include rem(margin-bottom, 15px);
@@ -26,7 +27,23 @@
     border: none;
     margin-bottom: 0;
     padding-bottom: 0;
+
+    .btn-group:first-child {
+      border-bottom-left-radius: 0;
+      button {
+        border-bottom-left-radius: 0;
+      }
+    }
+    .btn-group:last-child {
+      border-bottom-right-radius: 0;
+      button {
+        border-bottom-right-radius: 0;
+      }
+    }
+
+
     .btn {
+      padding: .3rem 1rem;
       border: none;
       color: $yii-blue;
       background-color: $version-buttons;//#BAD9C1
@@ -68,7 +85,7 @@
       background-color: $eshill-yellow;
       width: 100%;
       @include border-top-radius(0);
-      @include border-bottom-radius($yii-btn-border-radius-base);
+      @include border-bottom-radius(0);
       > li > a {
         color: $yii-blue;
         &:hover,

@@ -1,45 +1,51 @@
-
-%blockquote{
+blockquote{
   display:block;
   background: #fff;
-  @include rem(font-size, 18px);
   @include rem(line-height, 26px);
   @include rem(padding-top, 15px);
-  @include rem(padding-right, 20px);
   @include rem(padding-bottom, 15px);
-  @include rem(padding-left, 85px);
+  padding: 1rem;
   border-radius: 6px;
-  min-height: 5em;
-  background-position: 20px;
-  background-repeat: no-repeat;
-	background-size: 40px 40px;
+  min-height: 3em;
+  &.tip {
+    background-color: #DDF7F2;
+    border-left: 4px solid #70C1B3;
+  }
+  &.note {
+    background-color: #FFF7E9;
+    border-left: 4px solid #FFAB19;
+  }
+  &.info {
+    background-color: #E3F7FF;
+    border-left: 4px solid #247BA0;
+  }
+  &.warn {
+    background-color: #FFF0F4;
+    border-left: 4px solid #FF1654;
+  }
 }
 
-blockquote.tip {
-  @extend %blockquote;
-  background-color: #DDF7F2;
-  background-image: url(../../../image/guide/ico_tip.svg);
-  border-left: 4px solid #70C1B3;
-  //color: darken(#70C1B3, 15%);
-}
-blockquote.note {
-  @extend %blockquote;
-  background-color: #FFF7E9;
-  background-image: url(../../../image/guide/ico_note.svg);
-  border-left: 4px solid #FFAB19;
-  //color: darken(#FFAB19, 15%);
-}
-blockquote.info {
-  @extend %blockquote;
-  background-color: #E3F7FF;
-  background-image: url(../../../image/guide/ico_info.svg);
-  border-left: 4px solid #247BA0;
-  //color: darken(#247BA0, 15%);
-}
-blockquote.warn {
-  @extend %blockquote;
-  background-color: #FFF0F4;
-  background-image: url(../../../image/guide/ico_attention.svg);
-  border-left: 4px solid #FF1654;
-  //color: darken(#FF1654, 15%);
+
+
+
+@include media-breakpoint-up('md') {
+  blockquote {
+    padding-left: 4.5rem;
+    background-position: 15px 25px;
+    background-repeat: no-repeat;
+    background-size: 40px 40px;
+    &.tip {
+      background-image: url(../../../image/guide/ico_tip.svg);
+    }
+    &.note {
+      background-image: url(../../../image/guide/ico_note.svg);
+    }
+    &.info {
+      background-image: url(../../../image/guide/ico_info.svg);
+    }
+    &.warn {
+      background-image: url(../../../image/guide/ico_attention.svg);
+    }
+  }
+
 }

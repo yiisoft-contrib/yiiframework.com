@@ -1,3 +1,16 @@
+pre {
+  font-size: 1rem;
+
+}
+
+blockquote {
+  min-height: 3em;
+  p {
+    font-size: 1rem;
+    line-height: 1.4rem;
+  }
+}
+
 .guide-content {
 
   .broken-link {
@@ -14,17 +27,22 @@
       vertical-align: middle;
     }
   }
+  .panel-body {
+    padding: 0 5px;
+  }
   .panel-heading {
+    padding: 5px;
     h3 {
-      text-transform: uppercase;
+      //text-transform: uppercase;
+      border-bottom: 1px dashed $gray;
+      @include rem(padding-bottom, 3px);
     }
   }
   .guide-panel .panel-body {
     > ul.list-unstyled {
-      border-top: 1px dashed $gray;
-      @include rem(padding-top, 12px);
+      padding-left: 1.5rem;
       li {
-        @include rem(margin-bottom, 12px);
+        margin-bottom: 0;
       }
     }
   }

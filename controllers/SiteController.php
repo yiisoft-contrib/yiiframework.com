@@ -19,7 +19,7 @@ use yii\web\NotFoundHttpException;
  */
 class SiteController extends BaseController
 {
-    /**
+	/**
      * @inheritdoc
      */
     public function actions()
@@ -170,7 +170,10 @@ class SiteController extends BaseController
 
     public function actionIndex()
     {
-        $books = array_slice(Yii::$app->params['books2'], 0, 5);
+    	$yii2books = Yii::$app->params['books2'];
+    	$random = array_rand($yii2books, 2);
+
+        $books = [$yii2books[$random[0]], $yii2books[$random[1]]];
         $news = News::find()->latest()->published()->limit(4)->all();
         $extensions = Extension::find()->latest()->limit(6)->all();
         $tutorials = Wiki::find()->latest()->limit(10)->all();

@@ -23,19 +23,17 @@ footer {
   }
 }
 .footerList {
-  list-style: outside none none;
-  @include rem(margin-top, 60px);
+  list-style: none;
+  padding-left: 1rem;
+  @include rem(margin-top, 30px);
 }
 .footerList_item {
-  @include rem(font-size, 14px);
-  @include rem(margin-bottom, 12px);
+  @include rem(margin-bottom, 5px);
   .social {
-    white-space: nowrap;
     a {
       border: none;
     }
     i {
-      @include rem(font-size, 14px);
       @include rem(margin-left, 3px);
       @include rem(padding, 6px 6px);
       display: inline-block;
@@ -54,9 +52,9 @@ footer {
 }
 .footerList_item:first-child {
   color: $footer-color;
-  @include rem(font-size, 18px);
+  font-size: 1.2rem;
   font-family: $bold-headings-font-family;
   @include rem(margin-top, 2px);
   margin-left: 0;
-  @include rem(margin-bottom, 30px);
+  @include rem(margin-bottom, 10px);
 }

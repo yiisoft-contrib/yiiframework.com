@@ -16,7 +16,7 @@ $forumUrl = $model->getForumUrl();
 
 if (Yii::$app->user->can(UserPermissions::PERMISSION_MANAGE_USERS)) {
     $this->beginBlock('adminNav');
-    echo \yii\bootstrap\Nav::widget([
+    echo \yii\bootstrap4\Nav::widget([
         'id' => 'admin-nav',
         'items' => [
             ['label' => 'User Admin', 'url' => ['user-admin/index'], 'visible' => Yii::$app->user->can(UserPermissions::PERMISSION_MANAGE_USERS) ],

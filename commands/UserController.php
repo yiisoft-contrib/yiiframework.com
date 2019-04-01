@@ -173,7 +173,7 @@ class UserController  extends Controller
             ->select(['id', 'rank'])
             ->orderBy(['rating' => SORT_DESC])
             ->asArray()->all($db);
-        $updateCommand = $db->createCommand('UPDATE {{%user}} SET rank=:rank WHERE id=:id');
+        $updateCommand = $db->createCommand('UPDATE {{%user}} SET `rank`=:rank WHERE id=:id');
         if ($this->progress) {
             Console::startProgress($i = 0, $c = count($users), 'Updating user ranks...');
         }

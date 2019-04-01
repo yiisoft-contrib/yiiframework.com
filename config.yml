@@ -21,7 +21,7 @@ PATHS:
     - "assets/src/fonts/fira-mono/**/*"
   # Paths to Sass libraries, which can then be loaded with @import
   sass:
-    - "vendor/bower-asset/bootstrap-sass/assets/stylesheets"
+    - "node_modules"
     - "vendor/bower-asset/glidejs/src/sass"
     - "vendor/bower-asset/bootstrap-social"
     - "vendor/scrivo/highlight.php"

@@ -1,7 +1,6 @@
 .voting {
   @include rem(padding-top, 7px);
   .votes {
-    @include rem(font-size, fontsize(smaller));
     @include rem(margin-right, 7px);
   }
   .votes-up {
@@ -55,7 +54,6 @@ a:active {
 .vote-box {
   @extend .box;
 
-  font-size: 1.4rem;
   color: #717171;
 
   a {

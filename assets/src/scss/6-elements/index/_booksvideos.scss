@@ -18,7 +18,7 @@
         @include rem(font-size, fontsize(large));
     }
     .books-image {
-
+        padding: 0;
     }
     .books-link {
         a {
@@ -41,9 +41,8 @@
     .thumbnail {
         padding: inherit;
         border-radius: inherit;
-    }
-    .img-responsive {
-        max-width: 75%;
+        max-height: 240px;
+        margin: 0 auto;
     }
 
     .skill {
@@ -63,3 +62,4 @@
         color: $yii-blue;
     }
 }
+

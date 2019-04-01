@@ -44,6 +44,7 @@ class FakeDataController extends Controller
 
 		$fakers = $this->loadFakers();
 		$this->runFakers($fakers);
+		$this->fixStatistics();
 
 		return ExitCode::OK;
 	}
@@ -86,9 +87,9 @@ class FakeDataController extends Controller
 		if (isset($this->_applied[$class])) {
 			if ($this->_applied[$class] === false) {
 				throw new Exception('Circular dependency detected between Fakers.');
-			} else {
-				return $this->_applied[$class];
 			}
+
+			return $this->_applied[$class];
 		}
 		$this->_applied[$class] = false;
 

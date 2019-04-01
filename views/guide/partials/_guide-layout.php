@@ -69,7 +69,7 @@ if (isset($section)) {
         </div>
     </div>
     <div class="row row-offcanvas">
-        <div class="col-sm-2 col-md-2 col-lg-2 lang-<?= $guide->language ?>">
+        <div class="col-sm-2 col-md-2 col-lg-3 lang-<?= $guide->language ?>">
             <?php if (!isset($extensionName, $extensionVendor)) {
                 // TODO search currently does not work for extensions
                 echo SearchForm::widget([

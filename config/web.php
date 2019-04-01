@@ -69,23 +69,23 @@ $config = [
         ],
         'assetManager' => [
             'bundles' => [
-                'yii\bootstrap\BootstrapAsset' => false,
-                'yii\validators\ValidationAsset' => false,
-                'yii\web\YiiAsset' => false,
-                'yii\widgets\ActiveFormAsset' => false,
-                'yii\bootstrap\BootstrapPluginAsset' => false,
-                'yii\web\JqueryAsset' => false,
-                'dosamigos\selectize\SelectizeAsset' => [
+                yii\bootstrap4\BootstrapAsset::class => false,
+                yii\validators\ValidationAsset::class => false,
+                yii\web\YiiAsset::class => false,
+                yii\widgets\ActiveFormAsset::class => false,
+                yii\bootstrap4\BootstrapPluginAsset::class => false,
+                yii\web\JqueryAsset::class => false,
+                dosamigos\selectize\SelectizeAsset::class => [
                     'depends' => [
                         \app\assets\AppAsset::class,
                     ],
                 ],
-                'yii\jui\JuiAsset' => [
+                yii\jui\JuiAsset::class => [
                     'depends' => [
                         \app\assets\AppAsset::class,
                     ],
                 ],
-                'yii\grid\GridViewAsset' => [
+                yii\grid\GridViewAsset::class => [
                     'depends' => [
                         \app\assets\AppAsset::class,
                     ],

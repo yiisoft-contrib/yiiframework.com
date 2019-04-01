@@ -5,7 +5,7 @@
  * @var string $ajaxUrl
  */
 
-use yii\bootstrap\Html;
+use yii\bootstrap4\Html;
 
 ?>
 

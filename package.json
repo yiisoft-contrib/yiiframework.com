@@ -35,5 +35,8 @@
     "js-yaml": "^3.4.6",
     "rimraf": "^2.4.3",
     "yargs": "^3.8.0"
+  },
+  "dependencies": {
+    "bootstrap": "^4.3.1"
   }
 }

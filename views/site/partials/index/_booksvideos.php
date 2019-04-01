@@ -8,7 +8,7 @@ use yii\helpers\Url;
         <div class="row">
             <div class="col-md-12">
                 <div class="dashed-heading-front-books">
-                    <span>Books and Videos on Yii</span>
+                    <span>Books about Yii</span>
                 </div>
             </div>
         </div>

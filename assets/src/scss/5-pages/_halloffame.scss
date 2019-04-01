@@ -1,6 +1,6 @@
 .halloffame-members {
   @extend .col-md-3;
-  @extend .col-xs-6;
+  @extend .col-6;
 
   ul {
     padding-left: 0;
@@ -18,7 +18,7 @@
 
   h2 {
     text-align: center;
-    font-size: $font-size-large;
+   // font-size: $font-size-large;
   }
 
   span {

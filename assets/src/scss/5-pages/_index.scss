@@ -48,10 +48,8 @@
 
 ul.latest-list {
   list-style-type: square;
-  @include rem(line-height, 36px);
+  @include rem(line-height, 20px);
   li {
-    a {
-      @include rem(font-size, 18px);
-    }
+    @include rem(margin-bottom, 10px);
   }
 }

@@ -3,6 +3,7 @@
 use app\components\UserPermissions;
 use app\models\File;
 use yii\helpers\Html;
+use yii\bootstrap4\ActiveForm;
 
 /** @var $model \app\models\Extension */
 /** @var $revision int */
@@ -72,7 +73,7 @@ $this->title = "$model->name | Downloads";
 
                                 <h3>Upload File</h3>
 
-                                <?php $form = \yii\bootstrap\ActiveForm::begin(['options' => ['enctype' => 'multipart/form-data']]) ?>
+                                <?php $form = ActiveForm::begin(['options' => ['enctype' => 'multipart/form-data']]) ?>
 
                                     <?= $form->field($file, 'file_name')->fileInput()->label('File')->hint('The file size must not exceed 2MB. Only gif, png, jpg, jpeg, bmp, zip, gz, tgz or bz2 files are allowed.') ?>
                                     <?= $form->field($file, 'summary') ?>
@@ -81,7 +82,7 @@ $this->title = "$model->name | Downloads";
                                         <?= Html::submitButton('Submit', ['class' => 'btn btn-primary']); ?>
                                     </div>
 
-                                <?php \yii\bootstrap\ActiveForm::end() ?>
+                                <?php ActiveForm::end() ?>
 
                             <?php endif; ?>
 

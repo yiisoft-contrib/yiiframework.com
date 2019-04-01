@@ -3,7 +3,7 @@
 use app\models\Extension;
 use app\models\ExtensionCategory;
 use dosamigos\selectize\SelectizeTextInput;
-use yii\bootstrap\Alert;
+use yii\bootstrap4\Alert;
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 

@@ -10,10 +10,12 @@
   height: 0;
   margin-left: 2px;
   vertical-align: middle;
+  /** FIXME
   border-top:   $caret-width-base dashed;
   border-top:   $caret-width-base solid \9; // IE8
   border-right: $caret-width-base solid transparent;
   border-left:  $caret-width-base solid transparent;
+   */
 }
 
 // The dropdown wrapper (div)
@@ -42,9 +44,12 @@
   font-size: $font-size-base;
   text-align: left; // Ensures proper alignment if parent has it changed (e.g., modal footer)
   background-color: $dropdown-bg;
+  /** FIXME
   border: 1px solid $dropdown-fallback-border; // IE8 fallback
   border: 1px solid $dropdown-border;
   border-radius: $border-radius-base;
+
+   */
   @include box-shadow(0 6px 12px rgba(0,0,0,.175));
   background-clip: padding-box;
 
@@ -112,8 +117,11 @@
     text-decoration: none;
     background-color: transparent;
     background-image: none; // Remove CSS gradient
+    /* FIXME
     @include reset-filter;
     cursor: $cursor-disabled;
+
+     */
   }
 }
 
@@ -153,7 +161,7 @@
 .dropdown-header {
   display: block;
   padding: 3px 20px;
-  font-size: $font-size-small;
+  font-size: 1rem; //$font-size-small;
   line-height: $line-height-base;
   color: $dropdown-header-color;
   white-space: nowrap; // as with > li > a
@@ -185,8 +193,10 @@
   // Reverse the caret
   .caret {
     border-top: 0;
+    /* FIXME
     border-bottom: $caret-width-base dashed;
     border-bottom: $caret-width-base solid \9; // IE8
+     */
     content: "";
   }
   // Different positioning for bottom up menu

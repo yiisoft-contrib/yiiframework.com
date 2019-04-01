@@ -11,9 +11,7 @@
 
 use app\models\Doc;
 use app\widgets\SideNav;
-use yii\apidoc\templates\bootstrap\SideNavWidget;
 use yii\helpers\Html;
-use yii\helpers\StringHelper;
 use yii\helpers\Url;
 
 $this->registerJs("

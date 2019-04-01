@@ -1,9 +1,9 @@
 html {
-  @include rem-baseline;
+  //@include rem-baseline;
 }
 
 a {
-  text-decoration: underline;
+  //text-decoration: underline;
   transition: all ease-in-out .2s;
   &:hover,
   &:active,
@@ -34,9 +34,9 @@ a {
 
 $font-sizes: (
   base: $font-size-base, // 1.0
-  large: $font-size-large, // 1.25
+  large: 1.25rem, // 1.25
   larger: $font-size-base * 1.5,
-  small: $font-size-small, // 0.85
+  small: 0.85rem, // 0.85
   smaller: $font-size-base * 0.7,
   h1: $font-size-h1, // 2.6
   h2: $font-size-h2, // 2.15

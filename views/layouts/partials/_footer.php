@@ -3,33 +3,26 @@
         <div class="container">
             <div class="footer-inner">
                 <div class="row">
-                    <div class="col-md-2 col-sm-4 hidden-xs">
-                        <?= $this->render('footer/_about'); ?>
+                    <div class="col-md-4 col-6">
+                        <?= $this->render('footer/_about') ?>
                     </div>
-                    <div class="col-md-2 col-sm-4 hidden-xs">
-                        <?= $this->render('footer/_downloads'); ?>
+                    <div class="col-md-4 col-6">
+                        <?= $this->render('footer/_downloads') ?>
                     </div>
-                    <div class="col-md-2 col-sm-4 hidden-xs">
-                        <?= $this->render('footer/_documentation'); ?>
+                    <div class="col-md-4 col-6">
+                        <?= $this->render('footer/_documentation') ?>
                     </div>
-                    <div class="col-md-2 col-sm-4 hidden-xs">
-                        <?= $this->render('footer/_development'); ?>
+                    <div class="col-md-4 col-6">
+                        <?= $this->render('footer/_development') ?>
                     </div>
-                    <div class="col-md-2 col-sm-4 hidden-xs">
-                        <?= $this->render('footer/_community'); ?>
+                    <div class="col-md-4 col-6">
+                        <?= $this->render('footer/_community') ?>
                     </div>
-                    <div class="col-md-2 col-sm-4 hidden-xs">
-                        <?= $this->render('footer/_socialcopyright'); ?>
-                    </div>
-                    <div class="col-xs-12 hidden-sm hidden-md hidden-lg">
-                        <div class="center-block">
-                            <div>
-                                <?= $this->render('footer/_socialcopyright'); ?>
-                            </div>
-                        </div>
+                    <div class="col-md-4 col-6">
+                        <?= $this->render('footer/_socialcopyright') ?>
                     </div>
                     <div class="col-xs-12 text-center">
-                        <?= $this->render('footer/_supporters'); ?>
+                        <?= $this->render('footer/_supporters') ?>
                     </div>
                 </div>
             </div>

@@ -6,6 +6,9 @@
     @include rem(font-size, fontsize(h2));
     font-family: $bold-headings-font-family;
     font-weight: 600;
+    img {
+      height: 40px;
+    }
   }
   .media-left {
     @include rem(padding-right, 20px);

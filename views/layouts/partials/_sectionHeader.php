@@ -1,6 +1,6 @@
 <?php
 
-use yii\bootstrap\Html;
+use yii\bootstrap4\Html;
 
 /** @var $this yii\web\View */
 /** @var $language string custom language tag for styling elements language dependent (optional, default 'en') */
@@ -9,9 +9,9 @@ use yii\bootstrap\Html;
 
 ?>
 <div class="section-header-wrap">
-    <div class="container section-header lang-<?= isset($language) ? $language : 'en' ?>">
-        <div class="row headline-row">
-            <div class="col-xs-12 <?php if (empty($this->blocks['adminNav'])): echo 'col-md-12'; else: echo 'col-md-7'; endif; ?>">
+    <div class="container section-header lang-<?= $language ?? 'en' ?>">
+        <div class="row">
+            <div class="col-12 <?php if (empty($this->blocks['adminNav'])): echo 'col-md-6'; else: echo 'col-md-7'; endif; ?>">
                 <div class="section-headline"><?php
                     if (is_array($title)) {
                         $items = [];
@@ -25,17 +25,15 @@ use yii\bootstrap\Html;
                 ?></div>
             </div>
             <?php if (!empty($this->blocks['adminNav'])): ?>
-                <div class="col-xs-12 col-md-5 admin-nav">
+                <div class="col-12 col-md-5 admin-nav">
                     <?= $this->blocks['adminNav'] ?>
                 </div>
             <?php endif; ?>
+			<?php if (!empty($this->blocks['contentSelectors'])): ?>
+                <div class="col-12 col-md-offset-7 col-md-6 align-self-end">
+                    <?= $this->blocks['contentSelectors'] ?>
+                </div>
+			<?php endif; ?>
         </div>
-        <?php if (!empty($this->blocks['contentSelectors'])): ?>
-        <div class="row content-selector-row">
-            <div class="col-xs-12 col-md-offset-7 col-md-5">
-                <?= $this->blocks['contentSelectors'] ?>
-            </div>
-        </div>
-        <?php endif; ?>
     </div>
 </div>

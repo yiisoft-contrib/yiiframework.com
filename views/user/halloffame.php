@@ -12,7 +12,7 @@ $this->title = 'Hall of Fame';
 
 if (Yii::$app->user->can(\app\components\UserPermissions::PERMISSION_MANAGE_USERS)) {
     $this->beginBlock('adminNav');
-    echo \yii\bootstrap\Nav::widget([
+    echo \yii\bootstrap4\Nav::widget([
         'id' => 'admin-nav',
         'items' => [
             ['label' => 'User Admin', 'url' => ['user-admin/index']],
@@ -28,6 +28,7 @@ $this->registerMetaTag(['name' => 'keywords', 'value' => 'yii framework, communi
     <div class="content">
         <h1>Hall of Fame</h1>
 
+        <div class="row">
         <?php if ($this->beginCache('user/halloffame', ['duration' => 3600])) { ?>
             <div class="halloffame-members">
                 <h2>Top Rated Members</h2>
@@ -67,6 +68,7 @@ $this->registerMetaTag(['name' => 'keywords', 'value' => 'yii framework, communi
 
             <?php $this->endCache();
         } ?>
+        </div>
 
         <div class="halloffame-all-members"><?= Html::a('View all members', ['user/index']); ?></div>
     </div>

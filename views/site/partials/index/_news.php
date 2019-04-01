@@ -13,14 +13,14 @@ use yii\helpers\Url;
                 <span>Latest News</span>
             </div>
 
-            <div class="row news">
+            <div class="row">
                 <?php
                 $i = 0;
                 foreach($news as $newsItem): ?>
 
-                    <div class="col-md-6">
-                        <span class="date"><?= Yii::$app->formatter->asDate($newsItem->news_date) ?></span>
+                    <div class="col-md-6 news-content">
                         <h2><?= Html::a(Html::encode($newsItem->title), ['news/view', 'id' => $newsItem->id, 'name' => $newsItem->slug]) ?></h2>
+                        <span class="date"><?= Yii::$app->formatter->asDate($newsItem->news_date) ?></span>
                         <div class="text">
                             <p><?= Markdown::process($newsItem->getTeaser(), 'gfm') ?></p>
                             <p><?= Html::a('&raquo; read more', ['news/view', 'id' => $newsItem->id, 'name' => $newsItem->slug]) ?></p>

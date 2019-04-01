@@ -3,6 +3,7 @@
 use app\components\UserPermissions;
 use yii\helpers\Html;
 use yii\widgets\DetailView;
+use yii\bootstrap4\Nav;
 
 /* @var $this yii\web\View */
 /* @var $model app\models\News */
@@ -13,7 +14,7 @@ $this->params['breadcrumbs'][] = $this->title;
 
 if (UserPermissions::canManageNews()) {
     $this->beginBlock('adminNav');
-    echo \yii\bootstrap\Nav::widget([
+    echo Nav::widget([
         'id' => 'admin-nav',
         'items' => [
             ['label' => 'News Page', 'url' => ['news/index'] ],
@@ -33,7 +34,7 @@ if (UserPermissions::canManageNews()) {
 
                 <?php if (UserPermissions::canManageNews() && $model->status != \app\models\News::STATUS_PUBLISHED) {
 
-                    echo \yii\bootstrap\Alert::widget([
+                    echo \yii\bootstrap4\Alert::widget([
                         'body' =>
                             '<strong>News Status: </strong>' . Html::encode(\app\models\News::getStatusList()[$model->status])
                             . ' &mdash; This post is not visibile to non-admins.',

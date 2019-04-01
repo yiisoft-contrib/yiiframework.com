@@ -9,7 +9,7 @@ $this->title = 'Create News';
 
 if (UserPermissions::canManageNews()) {
     $this->beginBlock('adminNav');
-    echo \yii\bootstrap\Nav::widget([
+    echo \yii\bootstrap4\Nav::widget([
         'id' => 'admin-nav',
         'items' => [
             ['label' => 'News Page', 'url' => ['news/index'] ],
