@@ -30,8 +30,10 @@ PATHS:
     - "vendor/bower-asset/codemirror/lib"
   # Paths to JavaScript libraries, which are combined into one file
   javascript:
-    - "vendor/bower-asset/jquery/dist/jquery.js"
-    - "vendor/bower-asset/bootstrap-sass/assets/javascripts/bootstrap.js"
+    - "node_modules/jquery/dist/jquery.js"
+    - "node_modules/bootstrap/js/dist/util.js"
+    - "node_modules/bootstrap/js/dist/collapse.js"
+    - "node_modules/bootstrap/js/dist/dropdown.js"
     - "vendor/bower-asset/scrollup/dist/jquery.scrollUp.js"
     - "vendor/yiisoft/yii2/assets/yii.js"
     - "vendor/yiisoft/yii2/assets/yii.validation.js"

@@ -1,7 +1,6 @@
 footer {
   background-color: $footer-background-color;
   color: darken($footer-color, 10%);
-  @include rem(min-height, 428px);
   a {
     text-decoration: none;
     color: darken($footer-color, 10%);
@@ -34,18 +33,28 @@ footer {
       border: none;
     }
     i {
-      @include rem(margin-left, 3px);
-      @include rem(padding, 6px 6px);
+      margin-left: 0;
+      padding: 0.6rem 0.5rem;
       display: inline-block;
-      background-color: $footer-color;
-      color: $footer-background-color;
-      border-radius:50%;
-      @include rem(width, 24px);
-      @include rem(height, 24px);
-      transition:color 0.4s ease-out, background 0.4s ease-in;
+      background-color: #cfcfcf;
+      color: #222222;
+      border-radius: 50%;
+      width: 2rem;
+      height: 2rem;
+      margin-bottom: .2em;
+      transition: color 0.4s ease-out, background 0.4s ease-in;
+      line-height: 1rem;
       &:hover {
         background-color: #fff;
-        color: $footer-background-color;
+        &.fa-facebook {
+          color: #4266b1;
+        }
+        &.fa-twitter {
+          color: #1ca1f3;
+        }
+        &.fa-rss {
+          color: #e5722e;
+        }
       }
     }
   }

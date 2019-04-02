@@ -3,26 +3,34 @@
         <div class="container">
             <div class="footer-inner">
                 <div class="row">
-                    <div class="col-md-4 col-6">
+                    <div class="col-md-2 col-6">
                         <?= $this->render('footer/_about') ?>
                     </div>
-                    <div class="col-md-4 col-6">
+                    <div class="col-md-2 col-6">
                         <?= $this->render('footer/_downloads') ?>
                     </div>
-                    <div class="col-md-4 col-6">
+                    <div class="col-md-2 col-6">
                         <?= $this->render('footer/_documentation') ?>
                     </div>
-                    <div class="col-md-4 col-6">
+                    <div class="col-md-2 col-6">
                         <?= $this->render('footer/_development') ?>
                     </div>
-                    <div class="col-md-4 col-6">
+                    <div class="col-md-2 col-6">
                         <?= $this->render('footer/_community') ?>
                     </div>
-                    <div class="col-md-4 col-6">
+                    <div class="col-md-2 col-6">
                         <?= $this->render('footer/_socialcopyright') ?>
                     </div>
-                    <div class="col-xs-12 text-center">
+                    <div class="col text-center">
                         <?= $this->render('footer/_supporters') ?>
+                    </div>
+                    <div class="col-12 mb-2">
+                        <small class="text-muted">
+                            &copy; 2008 - <?= date('Y') ?> Yii
+                        </small>
+                        <small class="text-muted float-right">
+                            Design: <a href="http://www.eshill.ru/" target="_blank" rel="noopener noreferrer">Eshill</a>
+                        </small>
                     </div>
                 </div>
             </div>

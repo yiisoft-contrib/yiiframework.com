@@ -20,7 +20,7 @@ label.radiolist-label {
   margin-bottom: 30px;
 
   h2.title {
-    font-size: 16pt;
+   // font-size: 16pt;
     margin: 0;
   }
 
@@ -54,7 +54,7 @@ label.radiolist-label {
 
 // TODO: All code below looks a lot like _wiki.scss, this needs to be refactored
 .btn-new-extension {
-  font-size: 1.8rem;
+  font-size: 1.2rem;
   font-family: "pt_sansregular", sans-serif;
   color: $eshill-blue;
   background-color: #F5FEC4;
@@ -62,7 +62,7 @@ label.radiolist-label {
   margin-top: 1.5rem;
 
   .big {
-    font-size: 2.4rem;
+    font-size: 1.4rem;
     display: block;
   }
   .small {
@@ -103,10 +103,8 @@ ul.extension-side-menu {
     margin-bottom: 2rem;
   }
   li a {
-    font-size: 1.3rem;
-    text-decoration: none;
     display: block;
-    padding: 10px 16px;
+    padding: 10px;
     cursor: pointer;
 
     &:hover {
