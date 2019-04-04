@@ -35,7 +35,7 @@ HTML
 			// - guide pdf
 			// - blog pdf
 			// - api html
-			'download-url'=>'https://github.com/yiisoft/yii/releases/download/1.1.20/yii-1.1.20.6ed384',
+			'download-url'=>'https://github.com/yiisoft/yii/releases/download/1.1.21/yii-1.1.21.733ac5',
 			'min-php-version' => '5.1.0',
 			'support-until' => 'December 31, 2016 ',
 			'security-until' => 'December 31, 2020 ',
@@ -67,7 +67,7 @@ HTML
 	],
 	'minor-versions' => [
 		'2.0' => [
-            '2.0.17' => 'March 23, 2019',
+			'2.0.17' => 'March 22, 2019',
 			'2.0.16' => 'January 30, 2019',
 			'2.0.15' => 'March 20, 2018',
 			'2.0.14' => 'February 19, 2018',
@@ -90,6 +90,7 @@ HTML
 			'2.0.0-alpha' => 'December 1, 2013',
 		],
 		'1.1' => [
+			'1.1.21' => 'April 2, 2019',
 			'1.1.20' => 'July 6, 2018',
 			'1.1.19' => 'June 8, 2017',
 			'1.1.18' => 'April 19, 2017',
