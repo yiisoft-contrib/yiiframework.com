@@ -16,10 +16,10 @@ $this->registerMetaTag(['name' => 'keywords', 'value' => 'yii framework, communi
     <div class="content">
 
         <div class="row">
-            <div class="col-xs-1">
+            <div class="col-1">
                 <div class="userbadge-icon userbadge-<?= $badge->urlname ?>"></div>
             </div>
-            <div class="col-xs-11">
+            <div class="col-11">
                 <h2><?= Html::encode($badge->name) ?> Badge</h2>
                 <h3 class="description"><?= Html::encode($badge->description) ?></h3>
             </div>

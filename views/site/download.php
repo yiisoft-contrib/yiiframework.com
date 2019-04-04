@@ -12,11 +12,11 @@ $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="container site-header">
 	<div class="row">
-		<div class="col-xs-7 col-md-6 col-lg-7">
+		<div class="col-7 col-md-6 col-lg-7">
 			<h1>Download</h1>
 			<h2>Yii Framework & Offline Documentation</h2>
 		</div>
-		<div class="col-sm-5 col-md-6 col-lg-5">
+		<div class="col-5 col-md-6 col-lg-5">
 			<img class="background" src="<?= Yii::getAlias('@web/image/download/downloads.svg')?>" alt="Yii downloads">
 		</div>
 	</div>
@@ -121,12 +121,12 @@ $this->params['breadcrumbs'][] = $this->title;
 				<p class="small">Download one of the following archive files, and then extract it to Web-accessible folder:</p>
 
 				<div class="row extensions">
-					<div class="col-md-6 col-sm-12 col-xs-12">
+					<div class="col-12 col-md-6">
 						<a class="btn btn-lg btn-default btn-block download-btn" href="https://github.com/yiisoft/yii2/releases/download/<?= $latest ?>/yii-basic-app-<?= $latest ?>.tgz">
 						<img alt="tar gz" src="<?= Yii::getAlias('@web/image/tgz.svg')?>" />
 						<span>Yii 2 with basic application template</span></a>
 					</div>
-					<div class="col-md-6 col-sm-12 col-xs-12">
+					<div class="col-12 col-md-6">
 						<a class="btn btn-lg btn-default btn-block download-btn" href="https://github.com/yiisoft/yii2/releases/download/<?= $latest ?>/yii-advanced-app-<?= $latest ?>.tgz">
 						<img alt="tar gz" src="<?= Yii::getAlias('@web/image/tgz.svg')?>" />
 						<span>Yii 2 with advanced application template</span></a>

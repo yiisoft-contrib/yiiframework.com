@@ -10,7 +10,7 @@ use yii\helpers\Html;
 ?>
 <div class="container">
         <div class="content">
-            <div class="col-xs-12 col-sm-6">
+            <div class="col-12 col-sm-6">
                 <?php if (Yii::$app->session->hasFlash('contactFormSubmitted')): ?>
                     <div class="alert alert-success">
                         Thank you for contacting us. We will respond to you as soon as possible.

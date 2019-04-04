@@ -5,6 +5,33 @@ use yii\helpers\Url;
 /* @var $this yii\web\View */
 $this->title = 'Report an Issue';
 $this->params['breadcrumbs'][] = $this->title;
+
+$extensions = [
+    'yii2-apidoc' => 'API Documentation Generator',
+    'yii2-authclient' => 'Auth client extension',
+    'yii2-bootstrap' => 'Bootstrap extension',
+    'yii2-bootstrap4' => 'Bootstrap 4 extension',
+    'yii2-composer' => 'Composer Installer',
+    'yii2-debug' => 'Debug Toolbar',
+    'yii2-elasticsearch' => 'Elasticsearch extension',
+    'yii2-faker' => 'Faker extension',
+    'yii2-gii' => 'Gii Code Generator',
+    'yii2-httpclient' => 'HTTP client',
+    'yii2-imagine' => 'Imagine extension',
+    'yii2-jui' => 'jQuery UI extension',
+    'yii2-mongodb' => 'Mongo DB extension',
+    'yii2-queue' => 'Queue extension',
+    'yii2-redis' => 'redis extension',
+    'yii2-smarty' => 'Smarty view renderer',
+    'yii2-shell' => 'Shell extension',
+    'yii2-sphinx' => 'Sphinx Search extension',
+    'yii2-swiftmailer' => 'Swiftmailer extension',
+    'yii2-twig' => 'Twig view renderer',
+];
+
+$extensionColumns = array_chunk($extensions, 4,true);
+
+
 ?>
 
 <div class="container site-header">
@@ -47,43 +74,17 @@ $this->params['breadcrumbs'][] = $this->title;
             <p class="text-center medium">If the error or feature request is for one of the official extensions, please select below:</p>
 
             <div class="row extensions">
-                <?php
-
-                    $extensions = [
-                        'yii2-apidoc' => 'API Documentation Generator',
-                        'yii2-authclient' => 'Auth client extension',
-						'yii2-bootstrap' => 'Bootstrap extension',
-						'yii2-bootstrap4' => 'Bootstrap 4 extension',
-                        'yii2-composer' => 'Composer Installer',
-                        'yii2-debug' => 'Debug Toolbar',
-                        'yii2-elasticsearch' => 'Elasticsearch extension',
-                        'yii2-faker' => 'Faker extension',
-                        'yii2-gii' => 'Gii Code Generator',
-                        'yii2-httpclient' => 'HTTP client',
-                        'yii2-imagine' => 'Imagine extension',
-                        'yii2-jui' => 'jQuery UI extension',
-                        'yii2-mongodb' => 'Mongo DB extension',
-                        'yii2-queue' => 'Queue extension',
-                        'yii2-redis' => 'redis extension',
-                        'yii2-smarty' => 'Smarty view renderer',
-                        'yii2-shell' => 'Shell extension',
-                        'yii2-sphinx' => 'Sphinx Search extension',
-                        'yii2-swiftmailer' => 'Swiftmailer extension',
-                        'yii2-twig' => 'Twig view renderer',
-                    ];
-
-                    $extensionColumns = array_chunk($extensions, 4,true);
-
-                    foreach($extensionColumns as $column) {
-
-                        foreach($column as $ext => $extName) {
-                            echo '<div class="col-md-3 col-sm-6 col-xs-6"><ul>';
-                            echo "<li><a href=\"https://github.com/yiisoft/{$ext}/issues/new\">{$extName}</a><span>yiisoft/{$ext}</span></li>\n";
-                            echo'</ul></div>';
-                        }
-
-                    }
-                ?>
+                <?php foreach($extensionColumns as $column) :
+                        foreach($column as $ext => $extName) : ?>
+                            <div class="col-6 col-md-3">
+                                <ul>
+                                    <li>
+                                        <a href="https://github.com/yiisoft/<?= $ext ?>/issues/new"><?= $extName ?><span>yiisoft/<?= $ext ?></span></a>
+                                    </li>
+                                </ul>
+                            </div>
+                        <?php endforeach;
+                    endforeach; ?>
             </div>
 
             <p>For other extensions that are created by other users please check the extension page on where to report issues.</p>

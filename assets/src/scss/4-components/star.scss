@@ -1,8 +1,12 @@
 .star-wrapper {
   .fa {
-    font-size: fontsize(h4);
+    font-size: 1.3rem;
     font-style: normal;
     cursor: pointer;
+    color: #666;
+    &.fa-star {
+      color: #f4a451;
+    }
   }
 }
 

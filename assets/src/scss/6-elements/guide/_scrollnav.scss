@@ -4,12 +4,14 @@
   -webkit-transition: top 0.5s, -webkit-transform 0.5s;
   transition: top 0.5s, transform 0.5s;
 
+  .nav {
+    flex-direction: column;
+  }
+
   .nav>li>a {
     display: block;
     @include rem(padding, 4px 20px);
-    @include rem(font-size, 14px);
     color: $link-color;
-    text-decoration: underline;
   }
 
   .nav>li>a:focus,
@@ -39,7 +41,6 @@
     @include rem(padding-top, 1px);
     @include rem(padding-bottom, 1px);
     @include rem(padding-left, 30px);
-    @include rem(font-size, 12px);
     font-weight: 400;
   }
   .nav .nav>li>a:focus,
