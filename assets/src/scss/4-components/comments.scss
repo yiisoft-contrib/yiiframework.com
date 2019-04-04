@@ -6,7 +6,7 @@
      color: $eshill-header-color;
      .heading {
        @include rem(font-size, fontsize(h3));
-       font-family: $bold-headings-font-family;
+       font-weight: 600;
        .badge {
          position: relative;
          @include rem(top, -12px);

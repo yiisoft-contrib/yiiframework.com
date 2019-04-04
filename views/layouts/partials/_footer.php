@@ -24,14 +24,14 @@
                     <div class="col text-center">
                         <?= $this->render('footer/_supporters') ?>
                     </div>
-                    <div class="col-12 mb-2">
-                        <small class="text-muted">
-                            &copy; 2008 - <?= date('Y') ?> Yii
-                        </small>
-                        <small class="text-muted float-right">
-                            Design: <a href="http://www.eshill.ru/" target="_blank" rel="noopener noreferrer">Eshill</a>
-                        </small>
-                    </div>
+                </div>
+                <div class="d-flex justify-content-between">
+                    <small class="text-muted">
+                        &copy; 2008 - <?= date('Y') ?> Yii
+                    </small>
+                    <small class="text-muted">
+                        Design: <a href="http://www.eshill.ru/" target="_blank" rel="noopener noreferrer">Eshill</a>
+                    </small>
                 </div>
             </div>
         </div>

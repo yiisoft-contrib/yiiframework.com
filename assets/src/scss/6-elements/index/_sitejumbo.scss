@@ -24,7 +24,6 @@
       @media (max-width: 380px) {
         @include rem(font-size, fontsize(h3));
       }
-      font-family: $bold-headings-font-family;
     }
     .propaganda {
       @include rem(font-size, fontsize(h3));

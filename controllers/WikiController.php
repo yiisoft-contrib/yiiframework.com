@@ -72,7 +72,7 @@ class WikiController extends BaseController
 
         $categoryModel = null;
         if ($category !== null) {
-            $category = (int) $category;
+            $category = (int)$category;
             if (($categoryModel = WikiCategory::findOne($category)) === null) {
                 throw new NotFoundHttpException('The requested category does not exist.');
             }
@@ -97,40 +97,40 @@ class WikiController extends BaseController
 
         $dataProvider = new ActiveDataProvider([
             'query' => $query,
-            'sort'=> [
-                'attributes'=> [
-                    'create'=> [
-                        'asc'=>['created_at' => SORT_ASC],
-                        'desc'=>['created_at' => SORT_DESC],
-                        'label'=>'Sorted by date',
-                        'default'=>'desc',
+            'sort' => [
+                'attributes' => [
+                    'create' => [
+                        'asc' => ['created_at' => SORT_ASC],
+                        'desc' => ['created_at' => SORT_DESC],
+                        'label' => 'publication date',
+                        'default' => 'desc',
                     ],
-                    'update'=> [
-                        'asc'=>['updated_at' => SORT_ASC],
-                        'desc'=>['updated_at' => SORT_DESC],
-                        'label'=>'Sorted by date (updated)',
-                        'default'=>'desc',
+                    'update' => [
+                        'asc' => ['updated_at' => SORT_ASC],
+                        'desc' => ['updated_at' => SORT_DESC],
+                        'label' => 'last modified',
+                        'default' => 'desc',
                     ],
-                    'rating'=> [
-                        'asc'=>['rating' => SORT_ASC],
-                        'desc'=>['rating' => SORT_DESC],
-                        'label'=>'Sorted by rating',
-                        'default'=>'desc',
+                    'rating' => [
+                        'asc' => ['rating' => SORT_ASC],
+                        'desc' => ['rating' => SORT_DESC],
+                        'label' => 'rating',
+                        'default' => 'desc',
                     ],
-                    'comments'=> [
-                        'asc'=>['comment_count' => SORT_ASC],
-                        'desc'=>['comment_count' => SORT_DESC],
-                        'label'=>'Sorted by comments',
-                        'default'=>'desc',
+                    'comments' => [
+                        'asc' => ['comment_count' => SORT_ASC],
+                        'desc' => ['comment_count' => SORT_DESC],
+                        'label' => 'comments',
+                        'default' => 'desc',
                     ],
-                    'views'=> [
-                        'asc'=>['view_count' => SORT_ASC],
-                        'desc'=>['view_count' => SORT_DESC],
-                        'label'=>'Sorted by views',
-                        'default'=>'desc',
+                    'views' => [
+                        'asc' => ['view_count' => SORT_ASC],
+                        'desc' => ['view_count' => SORT_DESC],
+                        'label' => 'views',
+                        'default' => 'desc',
                     ],
                 ],
-                'defaultOrder'=> ['create'=>SORT_DESC],
+                'defaultOrder' => ['create' => SORT_DESC],
             ],
         ]);
         if ($dataProvider->getCount() === 0) {
@@ -147,13 +147,13 @@ class WikiController extends BaseController
 
     public function actionView($id, $revision = null)
     {
-        $revision = empty($revision) ? null : (int) $revision;
+        $revision = empty($revision) ? null : (int)$revision;
 
         $model = $this->findModel($id, $revision);
 
         // normalize slug URL
         $slug = Yii::$app->request->get('name');
-        if ($model->slug !== (string) $slug) {
+        if ($model->slug !== (string)$slug) {
             return $this->redirect(['wiki/view', 'id' => $model->id, 'name' => $model->slug, 'revision' => $revision], 301);
         }
 
@@ -195,7 +195,7 @@ class WikiController extends BaseController
             return $this->redirect(['view', 'id' => $model->id]);
         }
 
-        return $this->render('create',array(
+        return $this->render('create', array(
             'model' => $model,
         ));
     }
@@ -217,7 +217,7 @@ class WikiController extends BaseController
 
         if ($revision !== null) {
             $rev = $this->findRevision($id, $revision);
-            $model->memo='Reverted to revision #' . $rev->revision;
+            $model->memo = 'Reverted to revision #' . $rev->revision;
         }
 
         if ($model->load(\Yii::$app->request->post()) && $model->save()) {
@@ -238,7 +238,7 @@ class WikiController extends BaseController
             return $this->redirect(['view', 'id' => $model->id]);
         }
 
-        return $this->render('update',array(
+        return $this->render('update', array(
             'model' => $model,
         ));
     }
@@ -265,7 +265,7 @@ class WikiController extends BaseController
         $model = $this->findModel($id);
 
         return $this->render('history', [
-            'model'=>$model,
+            'model' => $model,
             'dataProvider' => new ActiveDataProvider([
                 'query' => $model->getRevisions(),
                 'pagination' => false,
@@ -374,7 +374,7 @@ class WikiController extends BaseController
         if (isset($this->_revisions[$id][$revision])) {
             return $this->_revisions[$id][$revision];
         }
-        $model = WikiRevision::findOne(['wiki_id' => $id, 'revision' => (int) $revision]);
+        $model = WikiRevision::findOne(['wiki_id' => $id, 'revision' => (int)$revision]);
 
         if ($model === null) {
             throw new NotFoundHttpException('The requested page does not exist.');

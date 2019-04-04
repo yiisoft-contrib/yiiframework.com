@@ -5,7 +5,7 @@
 .tour-header {
   color: $eshill-yellow;
   @include rem(font-size, fontsize(h3));
-  font-family: $bold-headings-font-family;
+  font-weight: 600;
 }
 .tour-content {
   @include rem(font-size, fontsize(large));

@@ -3,7 +3,7 @@
         <div class="col-md-7">
             <img src="<?= Yii::getAlias('@web/image/tour/2.png') ?>"
                 alt=""
-                class="img-responsive"/>
+                class="img-fluid"/>
         </div>
         <div class="col-md-5">
             <div class="tour-subheader">

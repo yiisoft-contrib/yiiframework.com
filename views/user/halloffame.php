@@ -31,7 +31,7 @@ $this->registerMetaTag(['name' => 'keywords', 'value' => 'yii framework, communi
         <div class="row">
         <?php if ($this->beginCache('user/halloffame', ['duration' => 3600])) { ?>
             <div class="halloffame-members">
-                <h2>Top Rated Members</h2>
+                <h3>Top Rated Members</h3>
                 <ul>
                     <?php foreach (User::getTopUsers() as $model): ?>
                         <li><span><?=(int)$model->rating ?></span> <?= $model->rankLink ?></li>
@@ -40,7 +40,7 @@ $this->registerMetaTag(['name' => 'keywords', 'value' => 'yii framework, communi
             </div>
 
             <div class="halloffame-members">
-                <h2>Top Extension Developers</h2>
+                <h3>Top Extension Developers</h3>
                 <ul>
                     <?php foreach (User::getTopExtensionAuthors() as $model): ?>
                         <li><span><?= $model->extension_count ?></span> <?= $model->rankLink ?></li>
@@ -49,7 +49,7 @@ $this->registerMetaTag(['name' => 'keywords', 'value' => 'yii framework, communi
             </div>
 
             <div class="halloffame-members">
-                <h2>Top Wiki Authors</h2>
+                <h3>Top Wiki Authors</h3>
                 <ul>
                     <?php foreach (User::getTopWikiAuthors() as $model): ?>
                         <li><span><?= $model->wiki_count ?></span> <?= $model->rankLink ?></li>
@@ -58,7 +58,7 @@ $this->registerMetaTag(['name' => 'keywords', 'value' => 'yii framework, communi
             </div>
 
             <div class="halloffame-members">
-                <h2>Top Comment Authors</h2>
+                <h3>Top Comment Authors</h3>
                 <ul>
                     <?php foreach (User::getTopCommentAuthors() as $model): ?>
                         <li><span><?= $model->comment_count ?></span> <?= $model->rankLink ?></li>

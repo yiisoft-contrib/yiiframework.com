@@ -13,6 +13,9 @@ PATHS:
   # Path to source folder
   src: "assets/src"
   # Paths to fonts
+  npmfonts:
+    - "node_modules/typeface-pt-sans/files/*"
+    - "node_modules/typeface-fira-mono/files/*"
   fonts:
     - "vendor/bower-asset/font-awesome/fonts/**/*"
     - "vendor/bower-asset/bootstrap/fonts/**/*"

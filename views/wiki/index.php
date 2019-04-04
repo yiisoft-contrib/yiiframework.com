@@ -25,7 +25,7 @@ $this->endBlock();
 ?>
 <div class="container guide-view lang-en" xmlns="http://www.w3.org/1999/xhtml">
     <div class="row">
-        <div class="col-sm-3 col-md-2 col-lg-2">
+        <div class="col-sm-2">
             <?= $this->render('_sidebar', [
                 'category' => $category ? $category->id : null,
                 'tag' => $tag,
@@ -34,7 +34,7 @@ $this->endBlock();
             ]) ?>
         </div>
 
-        <div class="col-sm-9 col-md-10 col-lg-10" role="main">
+        <div class="col-sm-10" role="main">
 
             <h1>Wiki articles <small><?php
                 if (!empty($category)) {

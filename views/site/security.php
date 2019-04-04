@@ -33,7 +33,7 @@ $this->params['breadcrumbs'][] = $this->title;
                     </div>
                 <?php else: ?>
                     <p>Please use the security issue form to report to us any security issue
-                        you find in Yii. DO NOT use the issue tracker or discuss it in the public forum as it will cause more damage
+                        you find in Yii. <em>DO NOT</em> use the issue tracker or discuss it in the public forum as it will cause more damage
                         than help.</p>
                 <?php endif ?>
 
@@ -82,8 +82,8 @@ $this->params['breadcrumbs'][] = $this->title;
                 <?php ActiveForm::end() ?>
             </div>
             <div class="col-md-4" style="background: #f3ffbd; color: #464646; padding: 1rem;">
-                <p class="small">Once we receive your issue report, we will treat it as our highest priority. We will generally take the
-                    following steps in responding to security issues.</p>
+                <p>Once we receive your issue report, we will treat it as our highest priority. We will generally take the
+                    following steps in responding to security issues:</p>
 
                 <ol class="issue-process">
                     <li>Confirm the issue. We may contact with you for further discussion. We will send you an acknowledgement

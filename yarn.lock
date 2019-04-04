@@ -1948,12 +1948,13 @@ gulp-sourcemaps@^1.6.0:
     through2 "2.X"
     vinyl "1.X"
 
-gulp-touch@^1.0.1:
-  version "1.0.1"
-  resolved "https://registry.yarnpkg.com/gulp-touch/-/gulp-touch-1.0.1.tgz#07e5d7d29e5e01f0baa4fa7664d83fcea8a6e958"
+gulp-touch-cmd@^0.0.1:
+  version "0.0.1"
+  resolved "https://registry.yarnpkg.com/gulp-touch-cmd/-/gulp-touch-cmd-0.0.1.tgz#73aebd040f5cbfbf567a06e3fdb7976ef0fb88cc"
+  integrity sha1-c669BA9cv79Wegbj/beXbvD7iMw=
   dependencies:
     graceful-fs "^4.1.2"
-    map-stream "0.0.6"
+    through2 "^2.0.3"
 
 gulp-uglify@^1.2.0:
   version "1.5.4"
@@ -2974,10 +2975,6 @@ map-cache@^0.2.0, map-cache@^0.2.2:
 map-obj@^1.0.0, map-obj@^1.0.1:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/map-obj/-/map-obj-1.0.1.tgz#d933ceb9205d82bdcf4886f6742bdc2b4dea146d"
-
-map-stream@0.0.6:
-  version "0.0.6"
-  resolved "https://registry.yarnpkg.com/map-stream/-/map-stream-0.0.6.tgz#d2ef4eb811a28644c7a8989985c69c2fdd496827"
 
 map-visit@^1.0.0:
   version "1.0.0"
@@ -4904,6 +4901,16 @@ tweetnacl@^0.14.3, tweetnacl@~0.14.0:
 typedarray@^0.0.6, typedarray@~0.0.5:
   version "0.0.6"
   resolved "https://registry.yarnpkg.com/typedarray/-/typedarray-0.0.6.tgz#867ac74e3864187b1d3d47d996a78ec5c8830777"
+
+typeface-fira-mono@^0.0.72:
+  version "0.0.72"
+  resolved "https://registry.yarnpkg.com/typeface-fira-mono/-/typeface-fira-mono-0.0.72.tgz#b396d2a08814bb3a32d94ef71c74d37883c3475b"
+  integrity sha512-bouzjtniGMrakhazipUl6mskswe7UvH3qynU5Wsl0O7NMuL178VtZ0pOqUGsjBJ42l64GZo9nUMI1eSK4kvJbQ==
+
+typeface-pt-sans@^0.0.72:
+  version "0.0.72"
+  resolved "https://registry.yarnpkg.com/typeface-pt-sans/-/typeface-pt-sans-0.0.72.tgz#c47d198510b2ed1272ad6329cf1ae5f782ebf4cf"
+  integrity sha512-eDMv72dE+0dwjIDltzZAUusF+cDgOfZKazHZK08uKCOG/BEzY6oc/WqtQLN71j5/voTXFi5M4+nXNbZnCayDMQ==
 
 ua-parser-js@0.7.12:
   version "0.7.12"

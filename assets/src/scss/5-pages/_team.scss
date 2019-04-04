@@ -1,43 +1,32 @@
 
-
 .avatar img {
-    border: 2px solid $eshill-section-bgcolor;
-    margin-bottom: 1em;
+  border: 2px solid $eshill-section-bgcolor;
+  margin-bottom: 1em;
 }
 
 .heading-separator h2 {
-    @include dashed-heading-variant($eshill-header-color, #fff, fontsize(h1));
-    margin: 6.5rem 0;
+  @include dashed-heading-variant($eshill-header-color, #fff, fontsize(h1));
+  margin: 6.5rem 0;
 }
 
-.person-card {
-  height:45rem;
-}
 
 .team-content {
+  h4 {
+    font-weight: bold;
+    text-align: center;
+  }
 
-    h4{
-        font-weight: bold;
-        text-align:center;
-    }
+  p {
+    text-align: center;
+  }
 
-    p {
-        text-align:center;
-    }
+  p.duty {
+    font-weight: bold;
+  }
 
-    p.duty{
-        font-size: 1.4rem;
-        font-weight: bold;
-    }
-
-    p.period{
-        font-size: 1.4rem;
-    }
-
-    p.location{
-        color: #737373;
-        font-size: 1.4rem;
-    }
+  p.location {
+    color: #737373;
+  }
 
   .links-inline {
     list-style: none;
@@ -45,45 +34,44 @@
     padding: 0;
     min-height: 4rem;
 
-    .fa-stack-1-5x{
-        font-size:1.5em;
+    .fa-stack-1-5x {
+      font-size: 1.5em;
     }
 
-    .fa-twitter{
-        line-height: 2.2em;
-        font-size: 0.75em;
+    .fa-twitter {
+      line-height: 2.2em;
+      font-size: 0.75em;
     }
 
     li {
       display: inline;
+      span {
+        color: #999;
+      }
+
       a {
         color: $darkish-text;
         @include rem(padding, 3px);
       }
     }
-    li.github {
 
-      span {
-        color:#999;
-      }
+    li.github {
       span:hover {
-        color:#1e6887;
+        color: $sns-github;
       }
     }
+
     li.twitter {
-      span {
-        color:#999;
-      }
       span:hover {
-        color:#1e6887;
+        color: $sns-twitter;
       }
     }
   }
 }
 
 #contributors img {
-    display: inline-block;
-    @include rem(width, 42px);
-    @include rem(height, 42px);
-    @include rem(margin, 1px);
+  display: inline-block;
+  height: 3rem;
+  width: 3rem;
+  margin: .1rem;
 }

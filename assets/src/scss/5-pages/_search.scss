@@ -20,6 +20,9 @@
     }
 }
 
+#search-form {
+  position: relative;
+}
 #search-resultbox {
   position: absolute;
   @include rem(width, 255px);
@@ -32,6 +35,9 @@
   box-shadow: 0 1px 5px 0 rgba(0, 0, 0, 0.05);
 
   display: none;
+
+  top: 34px;
+  right: 0;
 
   .result-head {
     margin: 0;

@@ -47,10 +47,10 @@ footer {
       &:hover {
         background-color: #fff;
         &.fa-facebook {
-          color: #4266b1;
+          color: $sns-facebook;
         }
         &.fa-twitter {
-          color: #1ca1f3;
+          color: $sns-twitter;
         }
         &.fa-rss {
           color: #e5722e;
@@ -62,7 +62,7 @@ footer {
 .footerList_item:first-child {
   color: $footer-color;
   font-size: 1.2rem;
-  font-family: $bold-headings-font-family;
+  font-weight: 600;
   @include rem(margin-top, 2px);
   margin-left: 0;
   @include rem(margin-bottom, 10px);

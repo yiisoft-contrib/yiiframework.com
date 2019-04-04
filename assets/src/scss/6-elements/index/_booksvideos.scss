@@ -23,9 +23,9 @@
     .books-link {
         a {
             font-weight: bold;
-            font-size: 1.8rem;
+            font-size: 1.2rem;
         }
-        @include rem(margin-bottom, 16px);
+        margin-bottom: .6rem;
     }
     .author-publisher {
         @include rem(font-size, fontsize(smaller));
@@ -33,10 +33,7 @@
             color: $darkish-text;
             font-weight: 600;
         }
-        .who {
-
-        }
-        @include rem(margin-bottom, 16px);
+        margin-bottom: .6rem;
     }
     .thumbnail {
         padding: inherit;
@@ -46,20 +43,19 @@
     }
 
     .skill {
-        vertical-align: top;
         cursor: help;
+        font-size: 0.5rem;
+        &.beginner {
+            color: $yii-green;
+        }
+        &.pro {
+            color: $yii-yellow;
+        }
+        &.all {
+            color: $yii-blue;
+        }
     }
 
-    .skill.beginner {
-        color: $yii-green;
-    }
 
-    .skill.pro {
-        color: $yii-yellow;
-    }
-
-    .skill.all {
-        color: $yii-blue;
-    }
 }
 

@@ -1,18 +1,9 @@
-
-
-/*
-Note: It is best to use a less version of this file ( see http://css2less.cc
-For the media queries use @screen-sm-min instead of 768px.
-For .omb_spanOr use @body-bg instead of white.
-*/
-
-
 .login-container {
   background-color: $eshill-light-blue;
-  width: 100%;
 
   .omb_login {
 
+    color: #fff;
     @include rem(padding, 80px 0px);
 
     .omb_authTitle {
@@ -21,21 +12,19 @@ For .omb_spanOr use @body-bg instead of white.
 
       h3{
         color:#FFF;
-        @include rem(font-size, 45px);
+        font-size: 2rem;
         font-weight: bold;
         display: block;
-        margin: 0;
       }
 
-      span{
+      p {
         color: #fff;
-        @include rem(font-size, 20px);
         @include rem(padding-right, 6px);
       }
 
       a{
         color: #f3ffbd;
-        font-size: 2.5rem;
+        font-size: 1.5rem;
       }
     }
 
@@ -51,10 +40,8 @@ For .omb_spanOr use @body-bg instead of white.
         border-bottom: 2px solid #7abbd7;
         -webkit-box-shadow: 0 0 0 1000px $eshill-light-blue inset;
         @include rem(padding, 10px 0px);
-        font-size: 1.7rem;
-        color: #7abbd7;
+        color: #fff !important;
         width: 100%;
-        -webkit-text-fill-color: #7abbd7 !important;
 
         &:-moz-placeholder {
           color: #7abbd7;
@@ -84,19 +71,16 @@ For .omb_spanOr use @body-bg instead of white.
 
       a {
         color: #fff;
-        font-size: 1.7rem;
       }
     }
 
-    .btn{
-      font-size: 1.8rem;
-      font-family: "pt_sansregular", sans-serif;
-      color: $eshill-blue;
+    .btn {
+      color: $yii-dark-blue;
       background-color: #F5FEC4;
       border-color: #ebfd88;
 
       &:hover{
-        color: #1e6887;
+        color: $yii-dark-blue;
         background-color: #BAD9C1;
         border-color: #93c39e;
       }
@@ -110,20 +94,20 @@ For .omb_spanOr use @body-bg instead of white.
 
     .social-login{
       text-align: center;
-      border-left: 2px solid #1e6887;
-      @include rem(min-height, 400px);
+      border-left: 2px solid $yii-dark-blue;
+
       color:#fff;
 
       .github-icon{
-        background: #1e6887;
+        background: $yii-dark-blue;
         color: #fff;
         border-radius: 100px;
         @include rem(padding, 11px 22px);
         font-size: 6rem;
 
-        i{
+        i {
           background: #fff;
-          color: #1e6887;
+          color: $yii-dark-blue;
           border-radius: 25px;
           @include rem(line-height, 50px);
           @include rem(width, 50px);
@@ -131,8 +115,8 @@ For .omb_spanOr use @body-bg instead of white.
         }
       }
 
-      h4{
-        @include rem(margin, 30px 0px);
+      p {
+        margin: 1em 0;
       }
     }
   }

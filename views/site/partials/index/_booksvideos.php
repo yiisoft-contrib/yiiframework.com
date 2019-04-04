@@ -12,9 +12,7 @@ use yii\helpers\Url;
                 </div>
             </div>
         </div>
-        <div class="row">
-            <?= $this->render('/site/partials/_books.php', ['books' => $books]) ?>
-        </div>
+        <?= $this->render('/site/partials/_books.php', ['books' => $books]) ?>
         <div class="row see-all">
             <a href="<?= Url::to(['site/books']) ?>" class="btn btn-front btn-block">See all books</a>
         </div>

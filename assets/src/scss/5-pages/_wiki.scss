@@ -26,7 +26,7 @@
 .wiki-search {
   margin: 1.5rem 0 1.5rem 0;
 }
-h3.wiki-side-title {
+.wiki-side-title {
   border-top: 1px solid $eshill-section-bgcolor;
   border-bottom: 1px solid $eshill-section-bgcolor;
   letter-spacing: 1px;
@@ -34,8 +34,9 @@ h3.wiki-side-title {
   text-transform: uppercase;
   font-weight: bold;
   margin: 0;
-  padding: 1.5rem 0 1.5rem 1rem;
+  padding: 0.5rem 0;
 }
+
 ul.wiki-side-menu {
   background-color: #f2f9fa;
   list-style: none;
@@ -48,8 +49,9 @@ ul.wiki-side-menu {
   li a {
     text-decoration: none;
     display: block;
-    padding: 10px 16px;
+    padding: .5em;
     cursor: pointer;
+    font-size: .9rem;
 
     &:hover {
       color: $eshill-blue;

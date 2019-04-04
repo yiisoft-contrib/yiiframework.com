@@ -1,5 +1,5 @@
 .halloffame-members {
-  @extend .col-md-3;
+  @extend .col-lg-3;
   @extend .col-6;
 
   ul {
@@ -16,15 +16,18 @@
     border-bottom: none;
   }
 
-  h2 {
+  h3 {
     text-align: center;
-   // font-size: $font-size-large;
   }
 
   span {
     float: right;
     color: $eshill-green;
   }
+}
+
+.person-card {
+  margin-bottom: 2em;
 }
 
 .halloffame-members:nth-child(2n) {
@@ -34,6 +37,6 @@
 .halloffame-all-members {
   clear: both;
   text-align: center;
-  font-size: $font-size-h3;
+  font-size: 1.6rem;
   padding-top: 4rem;
 }
