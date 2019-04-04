@@ -5,6 +5,10 @@ $params = array_merge(
     require __DIR__ . '/params-local.php'
 );
 
+Yii::$container->set(yii\widgets\ListView::class, [
+    'pager' => ['class' => yii\bootstrap4\LinkPager::class],
+]);
+
 $config = [
     'id' => 'yiiframework.com',
     'name' => 'Yii Framework',

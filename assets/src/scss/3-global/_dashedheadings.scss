@@ -21,7 +21,7 @@
     }
     @include rem(font-size, $font-size);
     @include rem(top, -($font-size*0.80));
-    font-weight: $headings-font-weight;
+    font-weight: 600;
     background-color: $background;
     position: relative;
   }

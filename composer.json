@@ -56,7 +56,7 @@
         "himiklab/yii2-recaptcha-widget": "^1.2",
         "helgesverre/spamprotection": "1.0.1",
         "yiisoft/yii2-imagine": "~2.1.0",
-        "yiisoft/yii2-bootstrap4": "^2.0"
+        "yiisoft/yii2-bootstrap4": "dev-master"
     },
     "require-dev": {
         "yiisoft/yii2-debug": "~2.1.0@dev",

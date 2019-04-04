@@ -39,6 +39,7 @@
     "bootstrap": "^4.3.1",
     "gulp-touch-cmd": "^0.0.1",
     "jquery": "^3.3.1",
+    "popper.js": "^1.15.0",
     "typeface-fira-mono": "^0.0.72",
     "typeface-pt-sans": "^0.0.72"
   }

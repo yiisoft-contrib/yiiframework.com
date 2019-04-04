@@ -8,10 +8,8 @@ $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="site-resources">
     <div class="header container">
-        <div class="row">
-            <h1>Resources</h1>
-            <h2>Very helpful. Check these out.</h2>
-        </div>
+        <h1>Resources</h1>
+        <h2>Very helpful. Check these out.</h2>
         <img class="background" src="<?= Yii::getAlias('@web/image/resources/header.svg')?>" alt="">
     </div>
     <div class="container style_external_links">
@@ -21,7 +19,7 @@ $this->params['breadcrumbs'][] = $this->title;
             </div>
         </div>
         <div class="row">
-            <div class="col-xs-12 col-md-6 col-lg-3 group">
+            <div class="col-12 col-md-6 col-lg-3 group">
                 <h3>News</h3>
 
                 <div class="image">
@@ -35,7 +33,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 <p>is a community-driven news source for both official Yii announcements and
                     unofficial articles, blogposts and tutorials. Anyone can suggest news. RSS provided.</p>
             </div>
-            <div class="col-xs-12 col-md-6 col-lg-3 group">
+            <div class="col-12 col-md-6 col-lg-3 group">
                 <h3>Showcase</h3>
 
                 <div class="image">
@@ -50,7 +48,7 @@ $this->params['breadcrumbs'][] = $this->title;
 
                 <p>Projects could be added by anyone and are published shortly after moderation.</p>
             </div>
-            <div class="col-xs-12 col-md-6 col-lg-3 group">
+            <div class="col-12 col-md-6 col-lg-3 group">
                 <h3>Videos</h3>
 
                 <div class="image">
@@ -66,7 +64,7 @@ $this->params['breadcrumbs'][] = $this->title;
                     <li><a href="https://www.youtube.com/watch?v=aq0A2o6nGuA&amp;list=PLpNYlUeSK_rn_3mWq_vPt_jKz6cp7a6sZ">Yii 2.0 by Luke Briner</a></li>
                 </ul>
             </div>
-            <div class="col-xs-12 col-md-6 col-lg-3 group">
+            <div class="col-12 col-md-6 col-lg-3 group">
                 <h3>Yii 1.1</h3>
 
                 <div class="image">

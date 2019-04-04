@@ -19,9 +19,6 @@ PATHS:
   fonts:
     - "vendor/bower-asset/font-awesome/fonts/**/*"
     - "vendor/bower-asset/bootstrap/fonts/**/*"
-    - "assets/src/fonts/ptsans-bold/**/*"
-    - "assets/src/fonts/ptsans-regular/**/*"
-    - "assets/src/fonts/fira-mono/**/*"
   # Paths to Sass libraries, which can then be loaded with @import
   sass:
     - "node_modules"
@@ -34,6 +31,7 @@ PATHS:
   # Paths to JavaScript libraries, which are combined into one file
   javascript:
     - "node_modules/jquery/dist/jquery.js"
+    - "node_modules/popper.js/dist/umd/popper.min.js"
     - "node_modules/bootstrap/js/dist/util.js"
     - "node_modules/bootstrap/js/dist/collapse.js"
     - "node_modules/bootstrap/js/dist/dropdown.js"

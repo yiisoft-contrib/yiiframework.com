@@ -20,11 +20,11 @@ $forumUrl = $model->getForumUrl();
         <?= \app\widgets\Alert::widget() ?>
 
         <div class="row">
-            <div class="col-xs-12 heading-separator">
+            <div class="col-12 heading-separator">
                 <h2><span>Your Profile</span></h2>
             </div>
 
-            <div class="col-xs-12 col-md-6">
+            <div class="col-12 col-md-6">
 
                 <ul>
                     <?php if ($model->email): ?>
@@ -51,7 +51,7 @@ $forumUrl = $model->getForumUrl();
 
             </div>
 
-            <div class="col-xs-12 col-md-6">
+            <div class="col-12 col-md-6">
 
                 <?= $this->render('_avatar', ['model' => $model]) ?>
 
@@ -59,10 +59,10 @@ $forumUrl = $model->getForumUrl();
         </div>
 
         <div class="row">
-            <div class="col-xs-12 heading-separator">
+            <div class="col-12 heading-separator">
                 <h2><span>Authentication</span></h2>
             </div>
-            <div class="col-xs-12 col-md-6">
+            <div class="col-12 col-md-6">
                 <h3>OAuth login <i class="fa fa-github"></i></h3>
                 <p>
                     <?php
@@ -97,7 +97,7 @@ $forumUrl = $model->getForumUrl();
                     ?>
                 </p>
             </div>
-            <div class="col-xs-12 col-md-6">
+            <div class="col-12 col-md-6">
                 <h3>Password login</h3>
                 <p>
                     <?php switch ($model->passwordType) {
@@ -134,11 +134,11 @@ $forumUrl = $model->getForumUrl();
                 </p>
             </div>
             */ ?>
-        <div class="col-xs-12 heading-separator">
+        <div class="col-12 heading-separator">
             <h2><span>Your Content</span></h2>
         </div>
         <div class="row">
-            <div class="col-xs-12 col-md-6">
+            <div class="col-12 col-md-6">
                 <h2>Your Extensions (<?= Html::encode($model->extension_count) ?>) </h2>
 
                 <?php if (empty($extensions)): ?>
@@ -155,7 +155,7 @@ $forumUrl = $model->getForumUrl();
                     </ul>
                 <?php endif; ?>
             </div>
-            <div class="col-xs-12 col-md-6">
+            <div class="col-12 col-md-6">
                 <h2>Your Wiki articles (<?= Html::encode($model->wiki_count) ?>)</h2>
 
                 <?php if (empty($wikiPages)): ?>
@@ -176,7 +176,7 @@ $forumUrl = $model->getForumUrl();
                 <?php endif; ?>
             </div>
 
-            <div class="col-xs-12 col-md-12">
+            <div class="col-12 col-md-12">
                 <h2>Your Stars (following)</h2>
 
                 <?php if (empty($starTargets)): ?>

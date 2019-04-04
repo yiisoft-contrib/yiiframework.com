@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "9b6a1df6b7f570ca7260ee269392807c",
+    "content-hash": "9a2179b42987113d9070a20574220757",
     "packages": [
         {
             "name": "2amigos/yii2-selectize-widget",
@@ -531,7 +531,7 @@
             "version": "v1.2.4",
             "source": {
                 "type": "git",
-                "url": "https://github.com/pierreburel/sass-rem.git",
+                "url": "git@github.com:pierreburel/sass-rem.git",
                 "reference": "a156b7382651ef07dff7aa08e3310ed148875b0e"
             },
             "dist": {
@@ -3153,16 +3153,16 @@
         },
         {
             "name": "yiisoft/yii2-bootstrap4",
-            "version": "2.0.1",
+            "version": "dev-master",
             "source": {
                 "type": "git",
                 "url": "https://github.com/yiisoft/yii2-bootstrap4.git",
-                "reference": "c2c1277d720214e433ef915a6a45316b54d4be3e"
+                "reference": "bbabe9f0a154146ef8a59ee8b03a02fdf269baed"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/yiisoft/yii2-bootstrap4/zipball/c2c1277d720214e433ef915a6a45316b54d4be3e",
-                "reference": "c2c1277d720214e433ef915a6a45316b54d4be3e",
+                "url": "https://api.github.com/repos/yiisoft/yii2-bootstrap4/zipball/bbabe9f0a154146ef8a59ee8b03a02fdf269baed",
+                "reference": "bbabe9f0a154146ef8a59ee8b03a02fdf269baed",
                 "shasum": ""
             },
             "require": {
@@ -3218,7 +3218,7 @@
                 "bootstrap4",
                 "yii2"
             ],
-            "time": "2019-03-17T14:50:31+00:00"
+            "time": "2019-03-30T21:00:53+00:00"
         },
         {
             "name": "yiisoft/yii2-composer",
@@ -6384,6 +6384,7 @@
         "cebe/markdown-latex": 20,
         "yiisoft/yii2-elasticsearch": 20,
         "bower-asset/jquery": 0,
+        "yiisoft/yii2-bootstrap4": 20,
         "yiisoft/yii2-debug": 20
     },
     "prefer-stable": false,

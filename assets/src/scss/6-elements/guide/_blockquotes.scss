@@ -1,31 +1,31 @@
-blockquote{
-  display:block;
+blockquote {
+  display: block;
   background: #fff;
-  @include rem(line-height, 26px);
-  @include rem(padding-top, 15px);
-  @include rem(padding-bottom, 15px);
-  padding: 1rem;
+  line-height: 1.3rem;
+  padding: 1rem 1rem;
   border-radius: 6px;
   min-height: 3em;
+
   &.tip {
     background-color: #DDF7F2;
     border-left: 4px solid #70C1B3;
   }
+
   &.note {
     background-color: #FFF7E9;
     border-left: 4px solid #FFAB19;
   }
+
   &.info {
     background-color: #E3F7FF;
     border-left: 4px solid #247BA0;
   }
+
   &.warn {
     background-color: #FFF0F4;
     border-left: 4px solid #FF1654;
   }
 }
-
-
 
 
 @include media-breakpoint-up('md') {
@@ -34,15 +34,19 @@ blockquote{
     background-position: 15px 25px;
     background-repeat: no-repeat;
     background-size: 40px 40px;
+
     &.tip {
       background-image: url(../../../image/guide/ico_tip.svg);
     }
+
     &.note {
       background-image: url(../../../image/guide/ico_note.svg);
     }
+
     &.info {
       background-image: url(../../../image/guide/ico_info.svg);
     }
+
     &.warn {
       background-image: url(../../../image/guide/ico_attention.svg);
     }
