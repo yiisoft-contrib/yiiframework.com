@@ -95,34 +95,36 @@ GRAPHQL;
                 $results = $this->client->api('graphql')->execute($this->getGraphQLQuery());
 
                 $data = [];
-                foreach ($results['data'] as $repository) {
-                    $datum = [
-                        'repository' => $repository['nameWithOwner'],
-                        'latest' => '',
-                        'no_release_for' => null,
-                        'diff' => '',
-                        'status' => "https://img.shields.io/travis/{$repository['nameWithOwner']}.svg",
-                    ];
+                if (isset($results['data'])) {
+                    foreach ($results['data'] as $repository) {
+                        $datum = [
+                            'repository' => $repository['nameWithOwner'],
+                            'latest' => '',
+                            'no_release_for' => null,
+                            'diff' => '',
+                            'status' => "https://img.shields.io/travis/{$repository['nameWithOwner']}.svg",
+                        ];
 
-                    $versions = $this->getVersionsForRepository($repository);
+                        $versions = $this->getVersionsForRepository($repository);
 
-                    if (count($versions)) {
-                        uksort($versions, 'version_compare');
+                        if (count($versions)) {
+                            uksort($versions, 'version_compare');
 
-                        $date = end($versions);
-                        $latest = key($versions);
+                            $date = end($versions);
+                            $latest = key($versions);
 
-                        $datum['latest'] = $latest;
+                            $datum['latest'] = $latest;
 
-                        $latestDate = new \DateTime($date);
-                        $today = new \DateTime();
+                            $latestDate = new \DateTime($date);
+                            $today = new \DateTime();
 
-                        $datum['no_release_for'] = $today->diff($latestDate)->format('%a');
+                            $datum['no_release_for'] = $today->diff($latestDate)->format('%a');
 
-                        $datum['diff'] = "https://github.com/{$repository['nameWithOwner']}/compare/$latest...master";
+                            $datum['diff'] = "https://github.com/{$repository['nameWithOwner']}/compare/$latest...master";
+                        }
+
+                        $data[] = $datum;
                     }
-
-                    $data[] = $datum;
                 }
 
                 return $data;
