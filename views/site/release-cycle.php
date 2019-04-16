@@ -9,7 +9,7 @@ use yii\helpers\Html;
 <div class="container style_external_links">
     <div class="content">
         <div>
-            <h2>Releases</h2>
+            <h2>Release interval</h2>
 
             <ul>
                 <li>Extension releases are tagged every week if there are changes since last release.</li>
