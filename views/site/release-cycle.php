@@ -9,6 +9,13 @@ use yii\helpers\Html;
 <div class="container style_external_links">
     <div class="content">
         <div>
+            <h2>Releases</h2>
+
+            <ul>
+                <li>Extension releases are tagged every week if there are changes since last release.</li>
+                <li>Main framework package release is tagged about once a month if there are changes since last release.</li>
+            </ul>
+
             <h2>Maintenance policy</h2>
 
             <p>Major version is receiving enhancements until it is decided to start working on next major version.</p>
