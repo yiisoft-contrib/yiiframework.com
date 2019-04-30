@@ -25,6 +25,7 @@ class StatusController extends BaseController
         ['yiisoft', 'yii2-gii'],
         ['yiisoft', 'yii2-debug'],
         ['yiisoft', 'yii2-bootstrap'],
+        ['yiisoft', 'yii2-bootstrap4'],
         ['yiisoft', 'yii2-swiftmailer'],
         ['yiisoft', 'yii2-httpclient'],
         ['yiisoft', 'yii2-authclient'],
