@@ -48,7 +48,7 @@ class ContributorsController extends Controller
             $token_file = Yii::getAlias('@app/data') . '/github.token';
             if (file_exists($token_file)) {
                 $this->stdout("Authenticating with Github token.\n");
-                $token = file_get_contents($token_file);
+                $token = trim(file_get_contents($token_file));
                 $client->authenticate($token, null, \Github\Client::AUTH_URL_TOKEN);
             }
             $api = $client->api('repo');
