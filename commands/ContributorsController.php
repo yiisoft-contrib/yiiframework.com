@@ -1,15 +1,18 @@
 <?php
+
 namespace app\commands;
 
-use Yii;
-use yii\base\Exception;
-use yii\console\Controller;
-use yii\helpers\Console;
-use yii\helpers\FileHelper;
-use yii\mutex\Mutex;
-use yii\di\Instance;
 use Imagine\Gd\Imagine;
 use Imagine\Image\ImageInterface;
+use Yii;
+use yii\console\Controller;
+use yii\console\ExitCode;
+use yii\di\Instance;
+use yii\helpers\Console;
+use yii\helpers\FileHelper;
+use yii\helpers\VarDumper;
+use yii\mutex\Mutex;
+use yii\web\ErrorHandler;
 
 /**
  * Generates contributor data: images and a json list
@@ -17,64 +20,69 @@ use Imagine\Image\ImageInterface;
 class ContributorsController extends Controller
 {
     /**
-    * @var Mutex|array|string the mutex object or the application component ID of the mutex.
-    * After the controller object is created, if you want to change this property, you should only assign it
-    * with a mutex connection object.
-    */
+     * @var Mutex|array|string the mutex object or the application component ID of the mutex.
+     * After the controller object is created, if you want to change this property, you should only assign it
+     * with a mutex connection object.
+     */
     public $mutex = 'yii\mutex\MysqlMutex';
 
     /**
      * Generates contributor data and avatars
-     * @return success or fail
+     * @return int
      */
     public function actionGenerate()
     {
         if (!$this->acquireMutex()) {
             $this->stderr("Execution terminated: command is already running.\n", Console::FG_RED);
-            return self::EXIT_CODE_ERROR;
+            return ExitCode::UNSPECIFIED_ERROR;
         }
 
         $members = Yii::$app->params['members'];
-        $contributors = array();
-        $raw_contributors = array();
+        $contributors = [];
+        $rawContributors = [];
         $contributorLimit = 1000;
 
         // getting contributors from github
         try {
             $client = new \Github\Client();
             $token_file = Yii::getAlias('@app/data') . '/github.token';
-            if(file_exists($token_file)) {
+            if (file_exists($token_file)) {
                 $this->stdout("Authenticating with Github token.\n");
                 $token = file_get_contents($token_file);
                 $client->authenticate($token, null, \Github\Client::AUTH_URL_TOKEN);
             }
             $api = $client->api('repo');
-            $paginator  = new \Github\ResultPager($client);
+            $paginator = new \Github\ResultPager($client);
             $parameters = ['yiisoft', 'yii2'];
-            $raw_contributors = $paginator->fetch($api, 'contributors', $parameters);
-            while($paginator->hasNext() && count($raw_contributors) < $contributorLimit) {
-                $raw_contributors = array_merge($raw_contributors, $paginator->fetchNext());
+            $rawContributors = $paginator->fetch($api, 'contributors', $parameters);
+
+            while ($paginator->hasNext() && count($rawContributors) < $contributorLimit) {
+                $rawContributors = array_merge($rawContributors, $paginator->fetchNext());
             }
 
             // remove team members
-            $teamGithubs = array_filter(array_map(function($member) { return isset($member['github']) ? $member['github'] : false; }, $members));
-            foreach($raw_contributors as $key => $raw_contributor) {
-                if (in_array($raw_contributor['login'], $teamGithubs)) {
-                    unset($raw_contributors[$key]);
+            $teamGithubs = array_filter(array_map(function ($member) {
+                return $member['github'] ?? false;
+            }, $members));
+            foreach ($rawContributors as $key => $rawContributor) {
+                if (in_array($rawContributor['login'], $teamGithubs)) {
+                    unset($rawContributors[$key]);
                 }
             }
-            $raw_contributors = array_slice($raw_contributors, 0, $contributorLimit);
-        } catch(\Exception $e) {
-            $raw_contributors = false;
+            $rawContributors = array_slice($rawContributors, 0, $contributorLimit);
+        } catch (\Exception $e) {
+            $errorString = ErrorHandler::convertExceptionToVerboseString($e);
+            $this->stdout("Exception occured during fetching contributors: $errorString\n");
+            $rawContributors = false;
         }
 
-        if($raw_contributors) {
-            foreach($raw_contributors as $raw_contributor) {
+        if ($rawContributors) {
+            foreach ($rawContributors as $rawContributor) {
                 $contributor = array();
-                $contributor['login'] = $raw_contributor['login'];
-                $contributor['avatar_url'] = $raw_contributor['avatar_url'];
-                $contributor['html_url'] = $raw_contributor['html_url'];
-                $contributor['contributions'] = $raw_contributor['contributions'];
+                $contributor['login'] = $rawContributor['login'];
+                $contributor['avatar_url'] = $rawContributor['avatar_url'];
+                $contributor['html_url'] = $rawContributor['html_url'];
+                $contributor['contributions'] = $rawContributor['contributions'];
                 $contributors[] = $contributor;
             }
         }
@@ -84,15 +92,15 @@ class ContributorsController extends Controller
 
         // Generate avatar thumbnails and store them in data/avatars
         $thumbnail_dir = $data_dir . DIRECTORY_SEPARATOR . 'avatars';
-        if(!is_dir($thumbnail_dir)) {
+        if (!is_dir($thumbnail_dir)) {
             FileHelper::createDirectory($thumbnail_dir);
         }
 
         $imagine = new Imagine();
         $mode = ImageInterface::THUMBNAIL_OUTBOUND;
-        $size    = new \Imagine\Image\Box(48, 48);
+        $size = new \Imagine\Image\Box(48, 48);
 
-        foreach($contributors as $contributor) {
+        foreach ($contributors as $contributor) {
             $login = $contributor['login'];
 
             $thumbFile = $thumbnail_dir . DIRECTORY_SEPARATOR . $login . '.png';
@@ -118,7 +126,7 @@ class ContributorsController extends Controller
             }
         }
 
-        if(YII_ENV_DEV) {
+        if (YII_ENV_DEV) {
             exec('gulp sprites && gulp styles', $output, $ret);
         } else {
             exec('gulp sprites && gulp styles --production', $output, $ret);
@@ -129,26 +137,28 @@ class ContributorsController extends Controller
     }
 
     /**
-    * Acquires current action lock.
-    * @return boolean lock acquiring result.
-    */
+     * Acquires current action lock.
+     * @return boolean lock acquiring result.
+     */
     protected function acquireMutex()
     {
         $this->mutex = Instance::ensure($this->mutex, Mutex::class);
         return $this->mutex->acquire($this->composeMutexName());
     }
+
     /**
-    * Release current action lock.
-    * @return boolean lock release result.
-    */
+     * Release current action lock.
+     * @return boolean lock release result.
+     */
     protected function releaseMutex()
     {
         return $this->mutex->release($this->composeMutexName());
     }
+
     /**
-    * Composes the mutex name.
-    * @return string mutex name.
-    */
+     * Composes the mutex name.
+     * @return string mutex name.
+     */
     protected function composeMutexName()
     {
         return self::class . '::' . $this->action->getUniqueId();
