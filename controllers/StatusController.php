@@ -96,7 +96,7 @@ class StatusController extends BaseController
         $client = new \Github\Client();
         $tokenFile = Yii::getAlias('@app/data') . '/github.token';
         if (file_exists($tokenFile)) {
-            $token = file_get_contents($tokenFile);
+            $token = trim(file_get_contents($tokenFile));
             $client->authenticate($token, null, \Github\Client::AUTH_HTTP_TOKEN);
         }
 

@@ -45,10 +45,10 @@ class ContributorsController extends Controller
         // getting contributors from github
         try {
             $client = new \Github\Client();
-            $token_file = Yii::getAlias('@app/data') . '/github.token';
-            if (file_exists($token_file)) {
+            $tokenFile = Yii::getAlias('@app/data') . '/github.token';
+            if (file_exists($tokenFile)) {
                 $this->stdout("Authenticating with Github token.\n");
-                $token = trim(file_get_contents($token_file));
+                $token = trim(file_get_contents($tokenFile));
                 $client->authenticate($token, null, \Github\Client::AUTH_URL_TOKEN);
             }
             $api = $client->api('repo');
