@@ -239,5 +239,16 @@ return [
         'twitter' => 'hiqsol',
         'status' => TeamStatus::TEAM_STATUS_ACTIVE,
     ],
-
+    [
+        'name' => 'Mehdi Achour',
+        'id' => '254264',
+        'forumName' => 'machour',
+        'period' => 'May 2019',
+        'location' => ' Tunisia',
+        'duty' => 'Yii 3.0 development',
+        'photo' => '@web/image/team/machour.jpg',
+        'github' => 'machour',
+        'twitter' => 'mac_hour',
+        'status' => TeamStatus::TEAM_STATUS_ACTIVE,
+    ],
 ];
