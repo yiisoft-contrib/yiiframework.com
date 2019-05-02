@@ -1,6 +1,8 @@
 @import "typeface-pt-sans/index";
 @import "typeface-fira-mono/index";
 
+// Ours
+
 $sns-twitter: #1ca1f3;
 $sns-facebook: #4266b1;
 $sns-github: #24292e;
@@ -11,7 +13,13 @@ $yii-yellow: #DF6E35;
 $yii-blue: $yii-dark-blue;
 $yii-green: #64a228;
 
+$footer-color: #cfcfcf;
+$footer-bg: #222222;
+
+// BS
+
 $primary: $yii-light-blue;
+$body-color: #333;
 
 $colors: (
         "dark-blue": $yii-dark-blue,
@@ -25,7 +33,6 @@ $theme-colors: (
 
 $navbar-dark-color: #fff;
 $navbar-padding-y: 1rem;
-
 
 $h1-font-size: 2.5rem;
 $h2-font-size: 1.75rem;
@@ -43,6 +50,10 @@ $headings-font-weight: 500;
 
 .dropdown-header {
   text-transform: uppercase;
+}
+
+label {
+  font-weight: bold;
 }
 
 //

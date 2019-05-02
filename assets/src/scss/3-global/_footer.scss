@@ -1,8 +1,7 @@
 footer {
-  background-color: $footer-background-color;
+  background-color: $footer-bg;
   color: darken($footer-color, 10%);
   a {
-    text-decoration: none;
     color: darken($footer-color, 10%);
     &:hover {
       color: $footer-color;
@@ -13,39 +12,32 @@ footer {
     }
   }
 }
-.footer-inner {
-  .center-block {
-    white-space: nowrap;
-    width: 40%;
-    margin-left: 2rem;
-    margin-right: auto;
-  }
-}
+
 .footerList {
   list-style: none;
   padding-left: 1rem;
-  @include rem(margin-top, 30px);
+  margin-top: 2rem;
 }
 .footerList_item {
-  @include rem(margin-bottom, 5px);
+  margin-bottom: 0.2rem;
   .social {
-    a {
-      border: none;
-    }
     i {
       margin-left: 0;
       padding: 0.6rem 0.5rem;
       display: inline-block;
-      background-color: #cfcfcf;
-      color: #222222;
+      background-color: $footer-color;
+      color: $footer-bg;
       border-radius: 50%;
       width: 2rem;
       height: 2rem;
       margin-bottom: .2em;
-      transition: color 0.4s ease-out, background 0.4s ease-in;
+      transition: color 0.3s ease-out, background 0.3s ease-in;
       line-height: 1rem;
       &:hover {
         background-color: #fff;
+        &.fa-github {
+          color: $sns-github;
+        }
         &.fa-facebook {
           color: $sns-facebook;
         }
@@ -63,7 +55,8 @@ footer {
   color: $footer-color;
   font-size: 1.2rem;
   font-weight: 600;
-  @include rem(margin-top, 2px);
+  margin-top: .2rem;
   margin-left: 0;
-  @include rem(margin-bottom, 10px);
+  margin-bottom: 1rem;
 }
+

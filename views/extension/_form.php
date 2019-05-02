@@ -4,8 +4,8 @@ use app\models\Extension;
 use app\models\ExtensionCategory;
 use dosamigos\selectize\SelectizeTextInput;
 use yii\bootstrap4\Alert;
-use yii\helpers\Html;
-use yii\widgets\ActiveForm;
+use yii\bootstrap4\Html;
+use yii\bootstrap4\ActiveForm;
 
 /* @var $this yii\web\View */
 /* @var $model app\models\Extension */

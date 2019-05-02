@@ -3,6 +3,7 @@
 
   -webkit-transition: top 0.5s, -webkit-transform 0.5s;
   transition: top 0.5s, transform 0.5s;
+  font-size: .9rem;
 
   .nav {
     flex-direction: column;
@@ -10,8 +11,8 @@
 
   .nav>li>a {
     display: block;
-    @include rem(padding, 4px 20px);
-    color: $link-color;
+    padding: 0.2rem 2rem;
+    color: $primary;
   }
 
   .nav>li>a:focus,
@@ -54,10 +55,11 @@
     font-weight: 500;
   }
 }
-.fixed {
-  position: fixed;
-  @include rem(top, 220px);
-  @include rem(right, 2px);
+.sticky {
+  position: -webkit-sticky;
+  position: sticky;
+  top: 220px;
+  right: 2px;
 }
 .affix-top {
   position: fixed;

@@ -88,34 +88,39 @@ ol.hl-main pre {
   padding-left: 1rem;
   font-size: .9rem;
   line-height: 1.2rem;
-  color: #bababa;
-  background-color: #1c1f26;
+  color: #000;
+  background-color: #F2F9FA;
   border-left: 5px solid #EBF1F2;
   overflow: auto;
   word-wrap: normal;
   white-space: pre;
 
+  /*
   .hljs-title {
-    color: #bababa; //#d95171;
+    color: #d95171;
   }
   .hljs-string {
-    color: #26d84e; //#28a745;
+    color: #28a745;
   }
   .hljs-variable {
-    color: #ce67ff; //#d95171;
+    color: #d95171;
   }
+   */
   .hljs-comment {
     font-style: normal;
   }
+  /*
   .hljs-class {
     .hljs-title {
-      color: #bababa; //247ba0;
+      color: #247ba0;
     }
 
   }
   .hljs-preprocessor, .hljs-keyword {
     color: #ff7207;
   }
+
+   */
 }
 
 code {

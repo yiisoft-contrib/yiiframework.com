@@ -56,7 +56,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 </div>
 
                 <p>There are many videos available. <a href="https://www.youtube.com/results?search_query=yii">Check YouTube for "yii"</a>.</p>
-                <p>Below are links to two big video series community likes most.</p>
+                <p>Below are links to big video series community likes most.</p>
 
                 <ul>
                     <li><a href="https://www.youtube.com/playlist?list=PLMyGpiUTm106xkNQh9WeMsa-LXjanaLUm">Beginning Yii 2.0 by Tom King</a></li>

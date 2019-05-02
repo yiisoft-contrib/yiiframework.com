@@ -51,39 +51,48 @@ echo $this->render('_versions.php', [
 ]);
 $this->endBlock();
 
-if (isset($section)) {
-    echo $this->render('_scrollspy.php', [
-        'guide' => $guide,
-        'section' => $section,
-        'notes' => true,
-        'missingTranslation' => !empty($missingTranslation),
-    ]);
-}
 ?>
-<div class="container guide-view" xmlns="http://www.w3.org/1999/xhtml">
-    <div class="row visible-xs">
-        <div class="col-md-12">
-            <p class="pull-right topmost">
-                <button type="button" title="Toggle Side-Nav" class="btn btn-primary btn-xs" data-toggle="offcanvas">SideNav</button>
-            </p>
-        </div>
-    </div>
-    <div class="row row-offcanvas">
-        <div class="col-sm-2 col-md-2 col-lg-3 lang-<?= $guide->language ?>">
-            <?php if (!isset($extensionName, $extensionVendor)) {
-                // TODO search currently does not work for extensions
-                echo SearchForm::widget([
-                    'type' => 'guide',
-                    'version' => $guide->version,
-                    'language' => $guide->language,
-                    'placeholder' => 'Search the Guide…',
-                ]);
-            } ?>
-            <?= SideNav::widget(['id' => 'guide-navigation', 'items' => $nav, 'options' => ['class' => 'sidenav-offcanvas']]) ?>
-        </div>
-        <div class="col-sm-10 col-md-10 col-lg-9" role="main">
+<div>
 
-            <?= $content ?>
+<div class="guide-view" xmlns="http://www.w3.org/1999/xhtml">
+    <div class="container">
+        <div class="row d-block d-sm-none">
+            <div class="col-md-12">
+                <p class="pull-right topmost">
+                    <button type="button" title="Toggle Side-Nav" class="btn btn-primary btn-xs" data-toggle="offcanvas">SideNav</button>
+                </p>
+            </div>
+        </div>
+        <div class="row row-offcanvas">
+            <div class="col-sm-2 col-md-2 col-lg-3 lang-<?= $guide->language ?>">
+                <?php if (!isset($extensionName, $extensionVendor)) {
+                    // TODO search currently does not work for extensions
+                    echo SearchForm::widget([
+                        'type' => 'guide',
+                        'version' => $guide->version,
+                        'language' => $guide->language,
+                        'placeholder' => 'Search the Guide…',
+                    ]);
+                } ?>
+                <?= SideNav::widget(['id' => 'guide-navigation', 'items' => $nav, 'options' => ['class' => 'sidenav-offcanvas']]) ?>
+            </div>
+            <div class="col-sm-10 col-md-10 col-lg-8" role="main">
+
+                <?= $content ?>
+            </div>
         </div>
     </div>
+    <?php
+    if (isset($section)) {
+        echo $this->render('_scrollspy.php', [
+            'guide' => $guide,
+            'section' => $section,
+            'notes' => true,
+            'missingTranslation' => !empty($missingTranslation),
+        ]);
+    }
+
+    ?>
+</div>
+
 </div>

@@ -35,6 +35,7 @@ PATHS:
     - "node_modules/bootstrap/js/dist/util.js"
     - "node_modules/bootstrap/js/dist/collapse.js"
     - "node_modules/bootstrap/js/dist/dropdown.js"
+    - "node_modules/bootstrap/js/dist/scrollspy.js"
     - "vendor/bower-asset/scrollup/dist/jquery.scrollUp.js"
     - "vendor/yiisoft/yii2/assets/yii.js"
     - "vendor/yiisoft/yii2/assets/yii.validation.js"

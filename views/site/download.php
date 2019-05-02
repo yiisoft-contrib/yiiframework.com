@@ -27,19 +27,19 @@ $this->params['breadcrumbs'][] = $this->title;
 	<div class="content">
 		<div class="row">
             <div class="col-md-12">
-                <p class="small">
+                <p>
                     Yii is an open source project released under the terms of the <?= Html::a('BSD License', ['site/license']) ?>.
 				    This means that you can use Yii for free to develop either open-source or proprietary Web applications.
                 </p>
                 
-                <p class="small">
+                <p>
                     There are two ways to install Yii:
                     by using Composer or
                     by downloading an application template.
                     We highly recommend you to use Composer.
                 </p>
 
-                <p class="small">
+                <p>
                     If you do not have Composer installed yet,
                     you may install it following the instructions
                     on the <a href="https://getcomposer.org/download/">Composer website</a>.
@@ -63,7 +63,7 @@ $this->params['breadcrumbs'][] = $this->title;
 
 				<h1 id="install-composer">Install via Composer (recommended)</h1>
 
-				<p class="small">
+				<p>
 				The installation instructions described here are a short summary, you may want to check the
 					<?= Html::a('Definitive Guide', [
 						'guide/view',
@@ -74,23 +74,23 @@ $this->params['breadcrumbs'][] = $this->title;
 						'#' => 'installing-via-composer',
 					]) ?> for more detailed instructions.</p>
 
-				<p class="small">
+				<p>
 					Choose one of the application templates to start installing Yii 2.0.
 					An application template is a package that contains a skeleton Web application written in Yii
 					which you can start building your application from.
 					If you just start with Yii, we recommend the installation of the <strong>basic</strong> template.
 				</p>
 
-				<div class="row ptrem1">
+				<div class="row py-3">
 					<div class="col-md-3">
-					<p class="small">To install the <b>basic</b> application template, run the following command:</p>
+					<p>To install the <b>basic</b> application template, run the following command:</p>
 					</div>
 					<div class="col-md-9">
 					<pre><code class="hljs bash language-bash">php composer.phar create-project yiisoft/yii2-app-basic basic</code></pre>
 					</div>
 				</div>
 
-				<p class="small">
+				<p>
 					The best way to get started with the basic application template is to follow the
 					<?= Html::a('introduction in the definitive guide', [
 						'guide/view',
@@ -102,38 +102,38 @@ $this->params['breadcrumbs'][] = $this->title;
 					]) ?>.
 				</p>
 
-				<div class="row ptrem1">
+				<div class="row py-3">
 					<div class="col-md-3">
-					<p class="small">To install the <b>advanced</b> application template, run the following command:</p>
+					<p>To install the <b>advanced</b> application template, run the following command:</p>
 					</div>
 					<div class="col-md-9">
 					<pre><code class="hljs bash language-bash">php composer.phar create-project yiisoft/yii2-app-advanced advanced</code></pre>
 					</div>
 				</div>
 
-				<p class="small">
+				<p>
 					When you have installed the advanced application template, you should check out its <a href="<?= Yii::getAlias('@web/extension/yiisoft/yii2-app-advanced/doc/guide') ?>">documentation</a>
 					to learn how to use it.
 				</p>
 
 				<h1 id="install-from-archive">Install from an Archive File</h1>
 
-				<p class="small">Download one of the following archive files, and then extract it to Web-accessible folder:</p>
+				<p>Download one of the following archive files, and then extract it to Web-accessible folder:</p>
 
 				<div class="row extensions">
 					<div class="col-12 col-md-6">
-						<a class="btn btn-lg btn-default btn-block download-btn" href="https://github.com/yiisoft/yii2/releases/download/<?= $latest ?>/yii-basic-app-<?= $latest ?>.tgz">
+						<a class="btn btn-lg btn-outline-primary btn-block btn-download" href="https://github.com/yiisoft/yii2/releases/download/<?= $latest ?>/yii-basic-app-<?= $latest ?>.tgz">
 						<img alt="tar gz" src="<?= Yii::getAlias('@web/image/tgz.svg')?>" />
 						<span>Yii 2 with basic application template</span></a>
 					</div>
 					<div class="col-12 col-md-6">
-						<a class="btn btn-lg btn-default btn-block download-btn" href="https://github.com/yiisoft/yii2/releases/download/<?= $latest ?>/yii-advanced-app-<?= $latest ?>.tgz">
+						<a class="btn btn-lg btn-outline-primary btn-block btn-download" href="https://github.com/yiisoft/yii2/releases/download/<?= $latest ?>/yii-advanced-app-<?= $latest ?>.tgz">
 						<img alt="tar gz" src="<?= Yii::getAlias('@web/image/tgz.svg')?>" />
 						<span>Yii 2 with advanced application template</span></a>
 					</div>
 				</div>
 
-				<p class="small">
+				<p>
 					Afterwards you may want to follow the
 					<?= Html::a('introduction in the definitive guide', [
 						'guide/view',
@@ -149,23 +149,23 @@ $this->params['breadcrumbs'][] = $this->title;
 
 				<h1>Upgrade from Older Versions</h1>
 
-				<p class="small">If you are upgrading from Yii 2.0.x with Composer, simply run the following commands in your project's root directory:</p>
+				<p>If you are upgrading from Yii 2.0.x with Composer, simply run the following commands in your project's root directory:</p>
 
 				<pre><code class="hljs bash language-bash">php composer.phar update yiisoft/yii2 yiisoft/yii2-composer bower-asset/jquery.inputmask</code></pre>
 
-				<p class="small">
+				<p>
 					When upgrading Yii there might be changes that require adjustment in you application code, so you should always check
 					the <?= Html::a('UPGRADE', "https://github.com/yiisoft/yii2/blob/$latest/framework/UPGRADE.md") ?> notes. These also contain
 					more detailed instructions on how to upgrade Yii with composer.
 				</p>
 
-				<p class="small">
+				<p>
 					If you installed Yii using an archive file, you can either follow the progress described above using Composer,
 					or download a new release file and replace the contents of the <code>vendor/</code> directory in your application
 					with the files from the new archive file.
 				</p>
 
-				<p class="small">
+				<p>
 					Upgrading from Yii 1.1 is not trivial and requires rewriting a great part of your application code.
 					Please refer to the guide about
 					<?= Html::a('upgrading from Yii 1.1', [
@@ -181,13 +181,13 @@ $this->params['breadcrumbs'][] = $this->title;
 					<h2 id="offline-documentation"><span>Offline Documentation</span></h2>
 				</div>
 
-				<p class="small">
+				<p>
 					The Definitive Guide to Yii 2.0 and the API Documentation are available for offline browsing.
 					Below you will find the download packages including the HTML files of Guide and API Documentation
 					as well as links to the PDF versions of the Guide in different languages.
 				</p>
 
-				<ul class="offline-doc-v2">
+				<ul class="row offline-doc-v2">
 					<?php foreach(Yii::$app->params['guide.versions'][$version] as $locale => $language): ?>
 					<li>
 						<img src="<?= Yii::getAlias("@web/image/download/$locale.png") ?>" alt="<?= $locale ?> language"/>
@@ -243,11 +243,11 @@ $this->params['breadcrumbs'][] = $this->title;
                     <li><a href="https://github.com/yiisoft/yii/releases">List of all Yii 1.x releases</a></li>
                 </ul>
 
-				<p class="small">
+				<p>
 					You may obtain the latest development version of the Yii 1.1 code from the <?= Html::a('Github repository', $versionInfo[$version]['github-url']) ?> using git:
 				</p>
 				<p><code>git clone <?= $versionInfo[$version]['git-url'] ?> yii</code></p>
-				<p class="small">or via SVN using:</p>
+				<p>or via SVN using:</p>
 				<p><code>svn checkout <?= $versionInfo[$version]['svn-url'] ?> yii</code></p>
 
                 <p>The <a href="https://packagist.org/packages/yiisoft/yii">yiisoft/yii</a> composer package is available as well.</p>
