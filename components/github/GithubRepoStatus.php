@@ -40,6 +40,13 @@ $alias: repository(owner: "$owner", name: "$name") {
   pullRequests(states:OPEN) {
     totalCount
   }
+  mergedPRs: pullRequests(states:MERGED, last: 10) {
+    nodes {
+      number
+      title
+      mergedAt
+    }
+  }
   refs(refPrefix: "refs/tags/", last: 5) {
     edges() {
       node {
@@ -114,6 +121,7 @@ GRAPHQL;
                             'no_release_for' => null,
                             'diff' => '',
                             'status' => "https://img.shields.io/travis/{$repository['nameWithOwner']}.svg",
+                            'mergedSinceRelease' => [],
                         ];
 
                         $versions = $this->getVersionsForRepository($repository);
@@ -132,7 +140,19 @@ GRAPHQL;
                             $datum['no_release_for'] = $today->diff($latestDate)->format('%a');
 
                             $datum['diff'] = "https://github.com/{$repository['nameWithOwner']}/compare/$latest...master";
+
+                            $mergedSinceRelease = [];
+                            foreach ($repository['mergedPRs']['nodes'] as $pr) {
+                                $mergedAt = new \DateTime($pr['mergedAt']);
+                                if ($mergedAt > $latestDate) {
+                                    $mergedSinceRelease[] = $pr;
+                                }
+                            }
+
+                            $datum['mergedSinceRelease'] = $mergedSinceRelease;
+
                         }
+
 
                         $data[] = $datum;
                     }

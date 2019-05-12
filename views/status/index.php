@@ -66,7 +66,27 @@ $this->endBlock();
                     'attribute' => 'diff',
                     'content' => function ($model) {
                         $parts = explode('/', $model['diff']);
-                        return Html::a(Html::encode(end($parts)), $model['diff']);
+
+                        $changeLog = '';
+
+                        if (!empty($model['mergedSinceRelease'])) {
+                            $label = count($model['mergedSinceRelease']) . ' PRs';
+
+                            $link = 'https://github.com/' . $model['repository'] . '/blob/master/';
+                            $link .= $model['repository'] === 'yiisoft/yii2' ? 'framework/CHANGELOG.md' : 'CHANGELOG.md';
+
+                            $title = [];
+                            foreach ($model['mergedSinceRelease'] as $pr) {
+                                $title[] = '#' . $pr['number'] . ': ' . $pr['title'];
+                            }
+
+                            $changeLog = ' (' . Html::a($label,
+                                $link,
+                                ['title' => implode("\n", $title)]
+                            ) . ')';
+                        }
+
+                        return Html::a(Html::encode(end($parts)), $model['diff']) . $changeLog;
                     }
                 ],
             ],
