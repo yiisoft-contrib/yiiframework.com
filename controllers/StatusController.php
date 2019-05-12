@@ -25,6 +25,7 @@ class StatusController extends BaseController
         ['yiisoft', 'yii2-gii'],
         ['yiisoft', 'yii2-debug'],
         ['yiisoft', 'yii2-bootstrap'],
+        ['yiisoft', 'yii2-bootstrap4'],
         ['yiisoft', 'yii2-swiftmailer'],
         ['yiisoft', 'yii2-httpclient'],
         ['yiisoft', 'yii2-authclient'],
@@ -95,7 +96,7 @@ class StatusController extends BaseController
         $client = new \Github\Client();
         $tokenFile = Yii::getAlias('@app/data') . '/github.token';
         if (file_exists($tokenFile)) {
-            $token = file_get_contents($tokenFile);
+            $token = trim(file_get_contents($tokenFile));
             $client->authenticate($token, null, \Github\Client::AUTH_HTTP_TOKEN);
         }
 

@@ -35,6 +35,8 @@ $this->params['breadcrumbs'][] = $this->title;
                     <p>Please use the security issue form to report to us any security issue
                         you find in Yii. <em>DO NOT</em> use the issue tracker or discuss it in the public forum as it will cause more damage
                         than help.</p>
+
+                    <p>Please note that as a non-commerial OpenSource project we are not able to pay bounties at the moment.</p>
                 <?php endif ?>
 
                 <div class="heading-separator">
