@@ -4,6 +4,19 @@ use yii\helpers\Html;
 use yii\grid\GridView;
 
 /** @var \yii\data\ArrayDataProvider $dataProvider */
+/** @var string $version */
+/** @var string[] $versions */
+?>
+
+<?php
+
+$this->beginBlock('contentSelectors');
+echo $this->render('partials/_versions', [
+    'currentVersion' => $version,
+    'versions' => $versions
+]);
+$this->endBlock();
+
 ?>
 
 <div class="container">
@@ -31,6 +44,21 @@ use yii\grid\GridView;
                         }
 
                         return $model['no_release_for'] . ($model['no_release_for'] == 1 ? ' day' : ' days');
+                    }
+                ],
+                [
+                    'attribute' => 'issues',
+                    'format' => 'html',
+                    'value' => function ($model) {
+                        return $model['issues'] > 0 ? Html::a($model['issues'], 'https://github.com/' . $model['repository'] . '/issues') : 0;
+                    }
+                ],
+                [
+                    'attribute' => 'pullRequests',
+                    'label' => 'PRs',
+                    'format' => 'html',
+                    'value' => function ($model) {
+                        return $model['pullRequests'] > 0 ? Html::a($model['pullRequests'], 'https://github.com/' . $model['repository'] . '/pulls') : 0;
                     }
                 ],
                 'status:image',

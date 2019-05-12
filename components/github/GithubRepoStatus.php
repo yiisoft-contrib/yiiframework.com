@@ -13,12 +13,14 @@ class GithubRepoStatus
     private $cache;
     private $client;
     private $repositories;
+    private $version;
 
-    public function __construct(CacheInterface $cache, Client $client, $repositories)
+    public function __construct(CacheInterface $cache, Client $client, $repositories, $version)
     {
         $this->client = $client;
         $this->cache = $cache;
         $this->repositories = $repositories;
+        $this->version = $version;
     }
 
     private function getGraphQLQuery()
@@ -29,8 +31,15 @@ class GithubRepoStatus
             $alias = $owner . '_' . str_replace('-', '_', $name);
 
             $query .= <<<GRAPHQL
+
 $alias: repository(owner: "$owner", name: "$name") {
   nameWithOwner
+  issues(states:OPEN) {
+    totalCount
+  }
+  pullRequests(states:OPEN) {
+    totalCount
+  }
   refs(refPrefix: "refs/tags/", last: 5) {
     edges() {
       node {
@@ -90,7 +99,7 @@ GRAPHQL;
     public function getData()
     {
         return $this->cache->getOrSet(
-            'graphql/repositories-statuses',
+            'graphql/repositories-statuses/' . $this->version,
             function () {
                 $results = $this->client->api('graphql')->execute($this->getGraphQLQuery());
 
@@ -99,6 +108,8 @@ GRAPHQL;
                     foreach ($results['data'] as $repository) {
                         $datum = [
                             'repository' => $repository['nameWithOwner'],
+                            'issues' => $repository['issues']['totalCount'],
+                            'pullRequests' => $repository['pullRequests']['totalCount'],
                             'latest' => '',
                             'no_release_for' => null,
                             'diff' => '',
