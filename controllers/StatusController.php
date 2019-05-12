@@ -5,6 +5,7 @@ namespace app\controllers;
 use app\components\github\GithubRepoStatus;
 use Yii;
 use yii\data\ArrayDataProvider;
+use yii\web\NotFoundHttpException;
 
 class StatusController extends BaseController
 {
@@ -124,8 +125,19 @@ class StatusController extends BaseController
         ]
     ];
 
+    /**
+     * @param string $version
+     * @return string
+     * @throws NotFoundHttpException
+     */
     public function actionIndex($version = '2.0')
     {
+        $versions = array_keys(self::REPOSITORIES);
+
+        if (!in_array($version, $versions, true)) {
+            throw new NotFoundHttpException('The requested version does not exist.');
+        }
+
         $client = new \Github\Client();
         $tokenFile = Yii::getAlias('@app/data') . '/github.token';
         if (file_exists($tokenFile)) {
@@ -153,7 +165,7 @@ class StatusController extends BaseController
         return $this->render('index', [
             'version' => $version,
             'dataProvider' => $dataProvider,
-            'versions' => array_keys(self::REPOSITORIES),
+            'versions' => $versions,
         ]);
     }
 }
