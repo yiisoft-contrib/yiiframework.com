@@ -13,12 +13,14 @@ class GithubRepoStatus
     private $cache;
     private $client;
     private $repositories;
+    private $version;
 
-    public function __construct(CacheInterface $cache, Client $client, $repositories)
+    public function __construct(CacheInterface $cache, Client $client, $repositories, $version)
     {
         $this->client = $client;
         $this->cache = $cache;
         $this->repositories = $repositories;
+        $this->version = $version;
     }
 
     private function getGraphQLQuery()
@@ -29,8 +31,22 @@ class GithubRepoStatus
             $alias = $owner . '_' . str_replace('-', '_', $name);
 
             $query .= <<<GRAPHQL
+
 $alias: repository(owner: "$owner", name: "$name") {
   nameWithOwner
+  issues(states:OPEN) {
+    totalCount
+  }
+  pullRequests(states:OPEN) {
+    totalCount
+  }
+  mergedPRs: pullRequests(states:MERGED, last: 10) {
+    nodes {
+      number
+      title
+      mergedAt
+    }
+  }
   refs(refPrefix: "refs/tags/", last: 5) {
     edges() {
       node {
@@ -90,7 +106,7 @@ GRAPHQL;
     public function getData()
     {
         return $this->cache->getOrSet(
-            'graphql/repositories-statuses',
+            'graphql/repositories-statuses/' . $this->version,
             function () {
                 $results = $this->client->api('graphql')->execute($this->getGraphQLQuery());
 
@@ -99,10 +115,13 @@ GRAPHQL;
                     foreach ($results['data'] as $repository) {
                         $datum = [
                             'repository' => $repository['nameWithOwner'],
+                            'issues' => $repository['issues']['totalCount'],
+                            'pullRequests' => $repository['pullRequests']['totalCount'],
                             'latest' => '',
                             'no_release_for' => null,
                             'diff' => '',
                             'status' => "https://img.shields.io/travis/{$repository['nameWithOwner']}.svg",
+                            'mergedSinceRelease' => [],
                         ];
 
                         $versions = $this->getVersionsForRepository($repository);
@@ -121,7 +140,19 @@ GRAPHQL;
                             $datum['no_release_for'] = $today->diff($latestDate)->format('%a');
 
                             $datum['diff'] = "https://github.com/{$repository['nameWithOwner']}/compare/$latest...master";
+
+                            $mergedSinceRelease = [];
+                            foreach ($repository['mergedPRs']['nodes'] as $pr) {
+                                $mergedAt = new \DateTime($pr['mergedAt']);
+                                if ($mergedAt > $latestDate) {
+                                    $mergedSinceRelease[] = $pr;
+                                }
+                            }
+
+                            $datum['mergedSinceRelease'] = $mergedSinceRelease;
+
                         }
+
 
                         $data[] = $datum;
                     }
