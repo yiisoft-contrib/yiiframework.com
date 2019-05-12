@@ -24,6 +24,12 @@
     }
 }
 
+.dropdown-toggle:after {
+    position: relative;
+    top: 2px;
+}
+
+
 @media (max-width: 992px) {
     .site-header {
         h1, h1.security {
