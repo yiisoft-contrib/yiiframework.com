@@ -51,5 +51,16 @@ ul.latest-list {
   line-height: 1.3rem;
   li {
     margin-bottom: 0.5em;
+    p {
+      margin-bottom: 0;
+    }
+  }
+}
+
+.home-sections {
+  > .row > div {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
   }
 }

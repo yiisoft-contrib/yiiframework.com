@@ -1,23 +1,19 @@
 .testimonials {
   .testimonial {
-    padding: 1rem;
-
     .testimonial-content{
-      padding:1rem;
 
       .title {
-        font-size: 2rem;
+        font-size: 1.4rem;
         font-weight: bold;
-        text-decoration: underline;
-        margin: 2rem 0;
+        margin: .5rem 0;
       }
 
       .quote {
         border-left: 2px dashed #44b3a0;
-        padding-left: 1rem;
+        padding-left: .5rem;
         color: #737373;
         font-style: italic;
-        margin: 2rem .4rem 1rem 0;
+        margin: 1rem .4rem 1rem 1rem;
       }
 
       img{

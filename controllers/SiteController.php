@@ -175,7 +175,7 @@ class SiteController extends BaseController
 
         $books = [$yii2books[$random[0]], $yii2books[$random[1]]];
         $news = News::find()->latest()->published()->limit(4)->all();
-        $extensions = Extension::find()->latest()->limit(6)->all();
+        $extensions = Extension::find()->latest()->limit(8)->all();
         $tutorials = Wiki::find()->latest()->limit(10)->all();
 
         return $this->render('index', [

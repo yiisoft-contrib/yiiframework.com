@@ -19,7 +19,7 @@ use yii\helpers\Url;
 
 <?= $this->render('partials/index/_booksvideos', ['books' => $books]) ?>
 
-<div class="container content-separator">
+<div class="container content-separator home-sections">
     <div class="row">
         <div class="col-md-4">
             <?= $this->render('partials/index/_testimonials', ['testimonials' => $testimonials]) ?>
