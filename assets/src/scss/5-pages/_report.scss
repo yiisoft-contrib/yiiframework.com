@@ -1,4 +1,3 @@
-
 .container.report {
   color: #4d4d4d;
   margin-bottom: 6rem;
@@ -62,7 +61,7 @@
   }
 
   .heading-separator h2 {
-    @include dashed-heading-variant($eshill-header-color, #fff, fontsize(h1));
+    @include dashed-heading-variant($eshill-header-color, #fff, $font-size-h1);
     margin: 6.5rem 0;
   }
 

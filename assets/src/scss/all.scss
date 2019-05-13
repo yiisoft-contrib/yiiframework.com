@@ -13,7 +13,7 @@ This file is part of the
 
  Licensed under the modified BSD license.
 
- Copyright 2015 Yii Software LLC (yiisoft.com)
+ Copyright 2015 Yii Software LLC
 
 */
 // This is the master include file for the style
@@ -27,7 +27,6 @@ This file is part of the
 @import "1-common/colors";
 @import "1-common/bootstrap-variables";
 @import "1-common/fixes";
-@import "1-common/tricks";
 // Vendors
 @import "glide.core";
 @import "2-vendors/glide.theme";
@@ -41,7 +40,6 @@ This file is part of the
 @import "codemirror";
 @import "2-vendors/codemirror";
 // Global styling that makes use of vendors
-@import "3-global/5ths";
 @import "3-global/site";
 @import "3-global/externallinks";
 @import "3-global/highlight";
