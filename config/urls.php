@@ -24,7 +24,9 @@ return [
     'release-cycle' => 'site/release-cycle',
 
     // status
+    'status/<version:\\d\\.\\d>' => 'status/index',
     'status' => 'status/index',
+
 
     // RSS
     'rss.xml' => 'rss/all',
