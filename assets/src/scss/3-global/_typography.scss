@@ -1,16 +1,5 @@
-html {
-  //@include rem-baseline;
-}
-
 a {
-  //text-decoration: underline;
   transition: all ease-in-out .2s;
-
-  &:hover,
-  &:active,
-  &:focus {
-    text-decoration: underline;
-  }
 }
 
 .btn {

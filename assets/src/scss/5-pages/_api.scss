@@ -26,22 +26,20 @@ $api-box-padding-y: ceil($font-size-base / 2);
   a.tool-link {
     float: right;
     color: #ddd;
+    font-size: 1.4rem;
     @include rem(margin, 0 8px);
+    &:hover {
+      color: #bbb;
+    }
   }
-
 
   .icon-hash:before {
     content: '#';
-    @include rem(font-size, 32px);
+    font-size: 2.2rem;
     font-weight: bold;
-    /*top: -10px;*/
-    line-height: 0.5;
+    line-height: 1.7rem;
   }
 
-  .tool-link:hover {
-    color: #bbb;
-    text-decoration: none;
-  }
 
 
   // old Yii 1.1 and 1.0 API docs
@@ -122,15 +120,11 @@ $api-box-padding-y: ceil($font-size-base / 2);
   .signature, td.signature, td .signature2 {
     margin: 1em 0;
     padding: $api-box-padding-y $api-box-padding-x;
-
     color: #000000;
     background: #f9f9f9;
-
     border-top: 1px solid #ddd;
     border-bottom: 1px solid #ddd;
-
     font-family: $font-family-monospace;
-    //      white-space: pre-line;
     word-wrap: break-word;
     word-break: break-all;
   }
@@ -149,7 +143,7 @@ $api-box-padding-y: ceil($font-size-base / 2);
 
   .detail-header {
     font-size: floor($font-size-base * 1.5);
-    @include rem(margin, 30px 0 0 0);
+    margin: 2rem 0 0 0;
     border-left: solid 1px #ddd;
     border-right: solid 1px #ddd;
     padding: $api-box-padding-y $api-box-padding-x;
@@ -160,16 +154,16 @@ $api-box-padding-y: ceil($font-size-base / 2);
     border-right: solid 1px #ddd;
     padding: $api-box-padding-y $api-box-padding-x;
     margin: 0;
-  }
 
-  .doc-description.deprecated {
-    background: lightpink;
-    border-top: solid 1px #ddd;
-    border-bottom: solid 1px #ddd;
-  }
+    &.deprecated {
+      background: lightpink;
+      border-top: solid 1px #ddd;
+      border-bottom: solid 1px #ddd;
+    }
 
-  .event-doc .doc-description {
-    border-bottom: solid 1px #ddd;
+    .event-doc & {
+      border-bottom: solid 1px #ddd;
+    }
   }
 
   table {
@@ -194,18 +188,20 @@ $api-box-padding-y: ceil($font-size-base / 2);
   }
 
 
-  table.detail-table .param-name-col {
-    width: 15%;
-    min-width: 10em;
-  }
+  table.detail-table {
+    .param-name-col {
+      width: 15%;
+      min-width: 10em;
+    }
 
-  table.detail-table .param-type-col {
-    width: 20%;
-    min-width: 12em;
-  }
+    .param-type-col {
+      width: 20%;
+      min-width: 12em;
+    }
 
-  table.detail-table .param-desc-col {
-    width: 65%;
+    .param-desc-col {
+      width: 65%;
+    }
   }
 
   table.summary-table {
@@ -256,4 +252,9 @@ $api-box-padding-y: ceil($font-size-base / 2);
   .api-ns-level-2 {
     color: $eshill-blue;
   }
+}
+
+
+.property-doc {
+  margin-bottom: 2rem;
 }

@@ -30,7 +30,7 @@ $this->registerMetaTag(['name' => 'keywords', 'value' => 'yii framework, communi
 
         <div class="row">
         <?php if ($this->beginCache('user/halloffame', ['duration' => 3600])) { ?>
-            <div class="halloffame-members">
+            <div class="halloffame-members col-lg-3 col-6">
                 <h3>Top Rated Members</h3>
                 <ul>
                     <?php foreach (User::getTopUsers() as $model): ?>
@@ -39,7 +39,7 @@ $this->registerMetaTag(['name' => 'keywords', 'value' => 'yii framework, communi
                 </ul>
             </div>
 
-            <div class="halloffame-members">
+            <div class="halloffame-members col-lg-3 col-6">
                 <h3>Top Extension Developers</h3>
                 <ul>
                     <?php foreach (User::getTopExtensionAuthors() as $model): ?>
@@ -48,7 +48,7 @@ $this->registerMetaTag(['name' => 'keywords', 'value' => 'yii framework, communi
                 </ul>
             </div>
 
-            <div class="halloffame-members">
+            <div class="halloffame-members col-lg-3 col-6">
                 <h3>Top Wiki Authors</h3>
                 <ul>
                     <?php foreach (User::getTopWikiAuthors() as $model): ?>
@@ -57,7 +57,7 @@ $this->registerMetaTag(['name' => 'keywords', 'value' => 'yii framework, communi
                 </ul>
             </div>
 
-            <div class="halloffame-members">
+            <div class="halloffame-members col-lg-3 col-6">
                 <h3>Top Comment Authors</h3>
                 <ul>
                     <?php foreach (User::getTopCommentAuthors() as $model): ?>
