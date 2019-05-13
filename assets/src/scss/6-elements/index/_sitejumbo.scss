@@ -10,12 +10,14 @@
   padding-bottom: 0;
   margin-bottom: 0;
   z-index: -1;
+
   .container {
     padding-left: 1em;
     padding-top: 1em;
     padding-right: 1em;
     padding-bottom: 0;
     color: $eshill-section-bgcolor;
+
     h1 {
       @include rem(font-size, fontsize(h1));
       @media (max-width: 1140px) {
@@ -25,6 +27,7 @@
         @include rem(font-size, fontsize(h3));
       }
     }
+
     .propaganda {
       @include rem(font-size, fontsize(h3));
       @media (max-width: 1140px) {
@@ -35,6 +38,7 @@
       }
       color: darken($eshill-section-bgcolor, 8%);
     }
+
     .btn {
       @include rem(font-size, fontsize(larger));
       font-family: $font-family-base;
@@ -48,11 +52,13 @@
         background-color: #83BFB3;
         border-color: darken(#83BFB3, 12%);
       }
+
       &:hover {
         color: $yii-blue;
         background-color: #BAD9C1;
         border-color: darken(#BAD9C1, 12%);
       }
+
       &:active,
       &.active,
       .open > &.dropdown-toggle {
@@ -68,7 +74,9 @@
           border-color: darken(#83BFB3, 12%);
         }
       }
-    } // btn end
+    }
+
+    // btn end
   }
 }
 

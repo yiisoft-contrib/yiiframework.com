@@ -3,12 +3,15 @@
 .hl-default {
   color: Black;
 }
+
 .hl-code {
   color: Gray;
 }
+
 .hl-brackets {
   color: Olive;
 }
+
 .hl-comment {
   color: #808080;
   font-style: italic;
@@ -17,70 +20,81 @@
 .hl-quotes {
   color: red;
 }
+
 .hl-string {
   color: Red;
 }
+
 .hl-identifier {
   color: green;
 }
+
 .hl-builtin {
   color: Teal;
 }
+
 .hl-reserved {
   color: black;
   font-weight: bold;
 }
+
 .hl-inlinedoc {
   color: Blue;
 }
+
 .hl-var {
   color: blue;
 }
+
 .hl-url {
   color: Blue;
 }
+
 .hl-special {
   color: Navy;
 }
+
 .hl-number {
   color: Maroon;
 }
+
 .hl-inlinetags {
   color: Blue;
 }
+
 .hl-main {
   font-family: $font-family-monospace;
   font-weight: normal;
   @include rem(font-size, $font-size-codeblocks);
 }
+
 ol.hl-main pre {
   margin: 0;
   padding: 0;
 }
+
 .hl-gutter {
   background-color: #999999;
   color: White
 }
+
 .hl-table {
   font-family: $font-family-monospace;
   @include rem(font-size, $font-size-codeblocks);
   border: solid 1px #505050;
 }
 
-.source .copycode
-{
+.source .copycode {
   text-align: right;
   float: right;
 }
 
-.source .copycode a
-{
+.source .copycode a {
   cursor: pointer;
   color: blue;
 }
 
-.source .copycode_hover a
-{
+.source .copycode_hover a {
   color: red;
 }
 
@@ -109,6 +123,7 @@ ol.hl-main pre {
   .hljs-comment {
     font-style: normal;
   }
+
   /*
   .hljs-class {
     .hljs-title {

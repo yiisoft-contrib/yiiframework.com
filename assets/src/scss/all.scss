@@ -22,15 +22,12 @@ This file is part of the
 // Inspired by Sass Guidelines: http://sass-guidelin.es/
 // and using a variant of the 7-1 pattern for organizing
 // sass partials ( http://sass-guidelin.es/#the-7-1-pattern )
-
-
 // Common style and global variables/mixins
 // that does not depend on vendors
 @import "1-common/colors";
 @import "1-common/bootstrap-variables";
 @import "1-common/fixes";
 @import "1-common/tricks";
-
 // Vendors
 @import "glide.core";
 @import "2-vendors/glide.theme";
@@ -43,12 +40,12 @@ This file is part of the
 @import "2-vendors/contributors";
 @import "codemirror";
 @import "2-vendors/codemirror";
-
 // Global styling that makes use of vendors
 @import "3-global/5ths";
 @import "3-global/site";
 @import "3-global/externallinks";
-@import "3-global/highlight"; // guide code highlight
+@import "3-global/highlight";
+// guide code highlight
 @import "3-global/typography";
 @import "3-global/dashedheadings";
 @import "3-global/content";
@@ -58,7 +55,6 @@ This file is part of the
 @import "3-global/admin";
 @import "3-global/alert";
 @import "3-global/glyphicons";
-
 // Components that could be used in multiple pages
 @import "4-components/boxes";
 @import "4-components/comments";
@@ -70,7 +66,6 @@ This file is part of the
 @import "4-components/search";
 @import "4-components/siteheader";
 @import "4-components/user_avatar";
-
 // Page specific style
 @import "5-pages/index";
 @import "5-pages/guide";
@@ -89,7 +84,6 @@ This file is part of the
 @import "5-pages/download";
 @import "5-pages/contribute";
 @import "5-pages/halloffame";
-
 // Elements
 // When a style file becomes too big
 // it can be split up.

@@ -1,6 +1,7 @@
 .section-header-wrap {
   background-color: $eshill-light-blue;
 }
+
 .section-header {
   .section-headline {
     font-weight: 600;
@@ -12,6 +13,7 @@
       text-decoration: none;
     }
   }
+
   color: white;
   background-color: $eshill-light-blue;
   //padding: .5rem 0;
@@ -19,6 +21,7 @@
   .headline-row {
     @include rem(margin-bottom, 15px);
   }
+
   .content-selector-row {
     @include rem(margin-top, -15px);
   }
@@ -30,12 +33,15 @@
 
     .btn-group:first-child {
       border-bottom-left-radius: 0;
+
       button {
         border-bottom-left-radius: 0;
       }
     }
+
     .btn-group:last-child {
       border-bottom-right-radius: 0;
+
       button {
         border-bottom-right-radius: 0;
       }
@@ -46,26 +52,28 @@
       padding: .3rem 1rem;
       border: none;
       color: $yii-blue;
-      background-color: $version-buttons;//#BAD9C1
+      background-color: $version-buttons; //#BAD9C1
       border-color: darken($version-buttons, 12%);
 
       &:focus,
       &.focus {
         color: $yii-blue;
         background-color: #F5FEC4;
-            border-color: darken(#F5FEC4, 12%);
+        border-color: darken(#F5FEC4, 12%);
       }
+
       &:hover {
         color: $yii-blue;
         background-color: $eshill-yellow-diffuse;
-            border-color: darken($eshill-yellow-diffuse, 12%);
+        border-color: darken($eshill-yellow-diffuse, 12%);
       }
+
       &:active,
       &.active,
       .open > &.dropdown-toggle {
         color: $yii-blue;
         background-color: #F5FEC4;
-            border-color: darken(#F5FEC4, 12%);
+        border-color: darken(#F5FEC4, 12%);
 
         &:hover,
         &:focus,
@@ -75,19 +83,23 @@
           border-color: darken(#F5FEC4, 12%);
         }
       }
+
       font-family: $font-family-base;
       @media (max-width: 380px) {
         @include rem(font-size, 12px);
       }
     }
+
     .dropdown-menu {
       margin-top: -1px;
       background-color: $eshill-yellow;
       width: 100%;
       @include border-top-radius(0);
       @include border-bottom-radius(0);
+
       > li > a {
         color: $yii-blue;
+
         &:hover,
         &:active {
           text-decoration: underline;
@@ -95,23 +107,29 @@
         }
       }
     }
-    &> .btn-group {
+
+    & > .btn-group {
       float: right;
     }
+
     .btn-group.btn-group-1-element {
       max-width: 50%;
     }
+
     .btn-group.btn-group-2-element {
       max-width: 75%;
-      &> .btn-group:first-child > .dropdown-menu {
+
+      & > .btn-group:first-child > .dropdown-menu {
         width: 200%;
       }
     }
+
     .btn-group.btn-group-3-element {
-      &> .btn-group:first-child > .dropdown-menu {
+      & > .btn-group:first-child > .dropdown-menu {
         width: 300%;
       }
-      &> .btn-group:not(:first-child):not(:last-child) > .dropdown-menu {
+
+      & > .btn-group:not(:first-child):not(:last-child) > .dropdown-menu {
         width: 200%;
       }
     }

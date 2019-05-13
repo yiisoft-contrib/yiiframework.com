@@ -9,15 +9,14 @@ textarea:focus,
 input[type=text]:focus,
 button:focus,
 button:active,
-button:hover
-{
-    outline:0px !important;
-    -webkit-appearance:none;
+button:hover {
+  outline: 0px !important;
+  -webkit-appearance: none;
 }
 
 // yes, but there is outline on links by means of underline upon focus
 *:focus {
-    outline: 0 !important;
+  outline: 0 !important;
 }
 
 /* Always show the scrollbar to prevent "jumping" */

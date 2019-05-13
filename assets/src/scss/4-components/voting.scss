@@ -1,11 +1,14 @@
 .voting {
   @include rem(padding-top, 7px);
+
   .votes {
     @include rem(margin-right, 7px);
   }
+
   .votes-up {
     color: #4b8076;
   }
+
   .votes-down {
     color: $eshill-red;
   }
@@ -15,6 +18,7 @@
     box-shadow: 0px 0px 10px lighten($eshill-red, 10%);
     border-radius: 20px;
   }
+
   .votes-up.voted a {
     background: lighten(#4b8076, 25%);
     box-shadow: 0px 0px 10px lighten(#4b8076, 5%);
@@ -33,24 +37,28 @@
   vertical-align: center;
   background-color: transparent;
 }
+
 .thumbs-up {
   @extend %thumbs;
   top: 2px;
   left: 2px;
   background-image: url(../../../image/guide/ico_like.svg);
 }
+
 .thumbs-down {
   @extend %thumbs;
   top: 6px;
   left: 2px;
   background-image: url(../../../image/guide/ico_dislike.svg);
 }
+
 // onclick animation
 a:active {
   .thumbs-up, .thumbs-down {
     margin-bottom: -2px;
   }
 }
+
 .vote-box {
   @extend .box;
 
@@ -60,10 +68,12 @@ a:active {
     color: $eshill-blue;
     text-decoration: none;
   }
+
   .voting {
     text-align: center;
     margin-bottom: 1.5rem;
   }
+
   .star-wrapper {
     text-align: center;
     margin-bottom: 1.5rem;

@@ -27,6 +27,7 @@
     .pull-right {
       float: left !important;
     }
+
     // but not on the footer navigation
     .prev-next {
       @include rem(padding-top, 30px);
@@ -39,6 +40,7 @@
           margin-top: 0;
         }
       }
+
       .pull-right {
         float: right !important;
 
@@ -47,12 +49,14 @@
           margin-top: 0;
         }
       }
+
       .text-center {
         .chevron-up {
           margin-top: 0;
         }
       }
     }
+
     // columns in index page must float from right to left
     .col-md-1,
     .col-md-2,

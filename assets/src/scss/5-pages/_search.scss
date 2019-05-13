@@ -1,28 +1,29 @@
 
 .search-result {
-    em {
-        background: #ffff00;
-    }
+  em {
+    background: #ffff00;
+  }
 
-    .title {
-      margin-right: 1rem;
-    }
+  .title {
+    margin-right: 1rem;
+  }
 
-    h3, p {
-        width: 100%;
-        max-width: 100%;
-    }
+  h3, p {
+    width: 100%;
+    max-width: 100%;
+  }
 
-    .label {
-      text-decoration: none;
-      font-size: $font-size-base;
-      font-weight: normal;
-    }
+  .label {
+    text-decoration: none;
+    font-size: $font-size-base;
+    font-weight: normal;
+  }
 }
 
 #search-form {
   position: relative;
 }
+
 #search-resultbox {
   position: absolute;
   @include rem(width, 255px);

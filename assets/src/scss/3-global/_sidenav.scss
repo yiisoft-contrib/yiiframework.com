@@ -1,50 +1,61 @@
 %sidenav {
-//  @include rem(font-size, 13px);
-  > a {
   //  @include rem(font-size, 13px);
+  > a {
+    //  @include rem(font-size, 13px);
     @include rem(line-height, 13px);
     //@include rem(padding, 20px 10px);
     border-bottom: 1px solid $eshill-section-bgcolor;
   }
+
   > .in > a {
     background-color: $eshill-section-bgcolor-alternate;
   }
+
   > a.has-children {
     color: $separator-color;
     //text-decoration: none;
     //text-transform: uppercase;
     //@include rem(font-size, 13px);
     border-bottom: 1px solid $eshill-section-bgcolor;
+
     &:hover {
       text-decoration: none;
       background-color: $eshill-section-bgcolor;
     }
   }
+
   > a.active {
     background-color: $eshill-section-bgcolor;
   }
-  > .in a{
+
+  > .in a {
     color: $eshill-light-blue;
+
     &:hover {
       text-decoration: none;
       color: $eshill-light-blue;
       background-color: white;
     }
   }
+
   > .active-parent {
     background-color: $eshill-section-bgcolor;
+
     a.active {
       text-decoration: none;
       background-color: $eshill-green;
       color: #fff;
+
       &:active,
       &:hover {
         text-decoration: none;
         background-color: white;
       }
     }
+
     > a {
       color: $eshill-light-blue;
+
       &:hover {
         text-decoration: underline;
         background-color: white;

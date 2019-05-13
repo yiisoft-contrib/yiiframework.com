@@ -35,7 +35,7 @@ $navbar-dark-color: #fff;
 $navbar-padding-y: 1rem;
 
 $h1-font-size: 2.5rem;
-$h2-font-size: 1.75rem;
+$h2-font-size: 1.5rem;
 $h3-font-size: 1.25rem;
 $h4-font-size: 1.15rem;
 
@@ -72,31 +72,30 @@ label {
 // And it will be easier to spot what we have changed (and what we haven't.)
 
 
-
 //== Colors
 //
 //## Gray and brand colors for use across Bootstrap.
 
-$gray-base:              #000;
-$gray-darker:            lighten($gray-base, 13.5%); // #222
-$gray-dark:              lighten($gray-base, 20%);   // #333
-$gray:                   lighten($gray-base, 33.5%); // #555
-$gray-light:             lighten($gray-base, 46.7%); // #777
-$gray-lighter:           lighten($gray-base, 93.5%); // #eee
+$gray-base: #000;
+$gray-darker: lighten($gray-base, 13.5%); // #222
+$gray-dark: lighten($gray-base, 20%); // #333
+$gray: lighten($gray-base, 33.5%); // #555
+$gray-light: lighten($gray-base, 46.7%); // #777
+$gray-lighter: lighten($gray-base, 93.5%); // #eee
 
 // $brand-primary:         darken(#428bca, 6.5%); // #337ab7
 // $brand-success:         #5cb85c;
 // $brand-warning:         #f0ad4e;
-$brand-primary:         $eshill-blue;//$yii-blue;
-$brand-success:         $yii-green;
-$brand-warning:         $yii-yellow;
+$brand-primary: $eshill-blue; //$yii-blue;
+$brand-success: $yii-green;
+$brand-warning: $yii-yellow;
 // $brand-info:            #5bc0de
 // $brand-danger:          #d9534f
 
 
-$state-success-text:             $yii-green;
-$state-info-text:                $yii-blue;
-$state-warning-text:             $yii-yellow;
+$state-success-text: $yii-green;
+$state-info-text: $yii-blue;
+$state-warning-text: $yii-yellow;
 
 
 //$font-family-sans-serif: 'pt_sansregular', sans-serif;
@@ -116,26 +115,26 @@ $font-size-base: 1rem;
 //## Settings for some of the most global styles.
 
 //** Background color for `<body>`.
-$body-bg:               #fff;
+$body-bg: #fff;
 //$body-bg:               darken(#FEFEFE, 5%);
 //** Global text color on `<body>`.
-$text-color:            $gray-dark;
+$text-color: $gray-dark;
 
 //** Global textual link color.
-$link-color:            $brand-primary;
+$link-color: $brand-primary;
 //** Link hover color set via `darken()` function.
-$link-hover-color:      darken($link-color, 15%);
+$link-hover-color: darken($link-color, 15%);
 //** Link hover decoration.
 $link-hover-decoration: underline;
 
 
 $navbar-height: 80px;
-$navbar-inverse-link-active-bg:             transparent;
-$navbar-inverse-border:                     transparent;
+$navbar-inverse-link-active-bg: transparent;
+$navbar-inverse-border: transparent;
 $navbar-border-radius: 0;
 $navbar-margin-bottom: 0;
 
-$well-bg: rgb(245, 245, 245);//#F5F5F5
+$well-bg: rgb(245, 245, 245); //#F5F5F5
 
 $pre-bg: inherit;
 $pre-color: inherit;
@@ -147,21 +146,21 @@ $grid-float-breakpoint: 1100px;
 $link-visited-color: $yii-blue;
 $font-size-codeblocks: $font-size-base;
 
-$navbar-inverse-color:                      lighten($gray-light, 20%);
-$navbar-inverse-bg:                         $eshill-blue;//darken($yii-blue, 15%);
+$navbar-inverse-color: lighten($gray-light, 20%);
+$navbar-inverse-bg: $eshill-blue; //darken($yii-blue, 15%);
 // Inverted navbar links
-$navbar-inverse-link-color:                 #fff;
+$navbar-inverse-link-color: #fff;
 // Inverted navbar toggle
-$navbar-inverse-toggle-hover-bg:            $navbar-inverse-bg;
+$navbar-inverse-toggle-hover-bg: $navbar-inverse-bg;
 // $navbar-inverse-toggle-icon-bar-bg:         #fff;
-$navbar-inverse-toggle-border-color:        darken($navbar-inverse-bg, 5%);
+$navbar-inverse-toggle-border-color: darken($navbar-inverse-bg, 5%);
 
-$font-size-h1:            floor(($font-size-base * 2.2));
-$font-size-h2:            floor(($font-size-base * 2));
-$font-size-h3:            ceil(($font-size-base * 1.5));
-$font-size-h4:            ceil(($font-size-base * 1.25));
-$font-size-h5:            $font-size-base;
-$font-size-h6:            ceil(($font-size-base * 0.85));
+$font-size-h1: floor(($font-size-base * 2.2));
+$font-size-h2: floor(($font-size-base * 2));
+$font-size-h3: ceil(($font-size-base * 1.5));
+$font-size-h4: ceil(($font-size-base * 1.25));
+$font-size-h5: $font-size-base;
+$font-size-h6: ceil(($font-size-base * 0.85));
 
 //** Unit-less `line-height` for use in components like buttons.
 $line-height-base: 1.4;

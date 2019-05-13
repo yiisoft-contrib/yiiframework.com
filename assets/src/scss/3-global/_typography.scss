@@ -5,6 +5,7 @@ html {
 a {
   //text-decoration: underline;
   transition: all ease-in-out .2s;
+
   &:hover,
   &:active,
   &:focus {
@@ -15,6 +16,7 @@ a {
 .btn {
   text-decoration: none;
 }
+
 // Copied here from bootstrap 'type' for reference
 // $font-size-base:          14px !default;
 // $font-size-large:         ceil(($font-size-base * 1.25)) !default; // ~18px
@@ -33,18 +35,18 @@ a {
 // $line-height-computed:    floor(($font-size-base * $line-height-base)) !default; // ~20px
 
 $font-sizes: (
-  base: $font-size-base, // 1.0
-  large: 1.25rem, // 1.25
-  larger: $font-size-base * 1.5,
-  small: 0.85rem, // 0.85
-  smaller: $font-size-base * 0.7,
-  h1: $font-size-h1, // 2.6
-  h2: $font-size-h2, // 2.15
-  h3: $font-size-h3, // 1.7
-  h4: $font-size-h4, // 1.25
-  h5: $font-size-h5, // 1.0
-  h6: $font-size-h6, // 0.85
-  2up: $font-size-base * 2
+        base: $font-size-base, // 1.0
+        large: 1.25rem, // 1.25
+        larger: $font-size-base * 1.5,
+        small: 0.85rem, // 0.85
+        smaller: $font-size-base * 0.7,
+        h1: $font-size-h1, // 2.6
+        h2: $font-size-h2, // 2.15
+        h3: $font-size-h3, // 1.7
+        h4: $font-size-h4, // 1.25
+        h5: $font-size-h5, // 1.0
+        h6: $font-size-h6, // 0.85
+        2 up: $font-size-base * 2
 );
 
 @function fontsize($key) {

@@ -34,12 +34,15 @@
 .dashed-heading-jumbo {
   @include dashed-heading-variant($eshill-yellow, $eshill-light-blue, fontsize(h1));
 }
+
 .dashed-heading-front {
   @include dashed-heading-variant($eshill-header-color, $body-bg, fontsize(h1));
 }
+
 .dashed-heading-front-section {
   @include dashed-heading-variant($eshill-header-color, $body-bg, fontsize(h3));
 }
+
 .dashed-heading-front-books {
   @include dashed-heading-variant($eshill-header-color, #EBF1F2, fontsize(h1));
 }

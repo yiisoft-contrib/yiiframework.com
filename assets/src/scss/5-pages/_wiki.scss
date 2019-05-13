@@ -9,23 +9,28 @@
     font-size: $font-size-lg;
     display: block;
   }
+
   .small {
     display: block;
   }
+
   &:hover {
     color: $link-color;
     background-color: #BAD9C1;
     border-color: #93c39e;
   }
+
   &:active {
     color: $eshill-section-bgcolor;
     background-color: #83BFB3;
     border-color: #5baa9a;
   }
 }
+
 .wiki-search {
   margin: 1.5rem 0 1.5rem 0;
 }
+
 .wiki-side-title {
   border-top: 1px solid $eshill-section-bgcolor;
   border-bottom: 1px solid $eshill-section-bgcolor;
@@ -46,6 +51,7 @@ ul.wiki-side-menu {
   &.last-side-menu {
     margin-bottom: 2rem;
   }
+
   li a {
     text-decoration: none;
     display: block;
@@ -58,18 +64,20 @@ ul.wiki-side-menu {
       background-color: #fff;
     }
   }
+
   li a span.count {
     font-size: 1.2rem;
     display: inline;
     color: #717171;
     float: right;
   }
+
   li a.asc, li a.asc:hover,
   li a.desc, li a.desc:hover,
-  li.active a, li.active a:hover
-  {
+  li.active a, li.active a:hover {
     background-color: $eshill-light-blue;
     color: #fff;
+
     span.count {
       color: #fff;
     }
@@ -102,12 +110,15 @@ ul.wiki-side-comments {
     font-size: $font-size-sm;
     color: #737373;
   }
+
   h2.title {
     margin: 0.5rem 0 1rem 0;
   }
+
   .text {
     margin-top: 1rem;
   }
+
   .comments {
     float: right;
 
@@ -117,6 +128,7 @@ ul.wiki-side-comments {
     }
   }
 }
+
 /*
 TODO why should wiki pagination be styled differently from the rest of the site?
 nav.wiki-pagination-holder {
@@ -148,6 +160,7 @@ nav.wiki-pagination-holder {
   max-width: 100%;
   min-height: 350px;
 }
+
 .diff, .memo {
   font-family: $font-family-monospace;
   font-weight: normal;
@@ -179,16 +192,19 @@ nav.wiki-pagination-holder {
     text-decoration: line-through #f00;
   }
 }
+
 .changed {
   font-weight: normal;
   background: rgba(255, 22, 84, 0.6);
   color: #000;
 }
+
 .unchanged {
   font-weight: normal;
   background: rgba(133, 215, 201, 0.71);
   color: #000;
 }
+
 .next-revision {
   float: right;
 }

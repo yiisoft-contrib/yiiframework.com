@@ -10,8 +10,8 @@
 
       @include rem(margin-bottom, 20px);
 
-      h3{
-        color:#FFF;
+      h3 {
+        color: #FFF;
         font-size: 2rem;
         font-weight: bold;
         display: block;
@@ -22,19 +22,19 @@
         @include rem(padding-right, 6px);
       }
 
-      a{
+      a {
         color: #f3ffbd;
         font-size: 1.5rem;
       }
     }
 
-    .omb_loginForm{
+    .omb_loginForm {
 
       .help-block {
         color: red;
       }
 
-      .login-control{
+      .login-control {
         background: none;
         border: none;
         border-bottom: 2px solid #7abbd7;
@@ -46,9 +46,11 @@
         &:-moz-placeholder {
           color: #7abbd7;
         }
+
         &:-ms-input-placeholder {
           color: #7abbd7;
         }
+
         &::-webkit-input-placeholder {
           color: #7abbd7;
         }
@@ -66,7 +68,7 @@
       }
     }
 
-    .forgotPwd{
+    .forgotPwd {
       @include rem(margin-top, 10px);
 
       a {
@@ -79,26 +81,26 @@
       background-color: #F5FEC4;
       border-color: #ebfd88;
 
-      &:hover{
+      &:hover {
         color: $yii-dark-blue;
         background-color: #BAD9C1;
         border-color: #93c39e;
       }
 
-      &:active{
+      &:active {
         color: #ebf1f2;
         background-color: #83BFB3;
         border-color: #5baa9a;
       }
     }
 
-    .social-login{
+    .social-login {
       text-align: center;
       border-left: 2px solid $yii-dark-blue;
 
-      color:#fff;
+      color: #fff;
 
-      .github-icon{
+      .github-icon {
         background: $yii-dark-blue;
         color: #fff;
         border-radius: 100px;

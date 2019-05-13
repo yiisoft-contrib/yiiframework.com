@@ -1,64 +1,75 @@
 .comments-wrapper {
-   background-color: $comments-background-color;
-   @include rem(padding-top, 40px);
-   @include rem(padding-bottom, 40px);
-   .comments {
-     color: $eshill-header-color;
-     .heading {
-       @include rem(font-size, fontsize(h3));
-       font-weight: 600;
-       .badge {
-         position: relative;
-         @include rem(top, -12px);
-         background-color: $eshill-red;
-         @include rem(padding-left, 12px);
-         @include rem(padding-right, 12px);
-         @include rem(font-size, fontsize(smaller));
-         font-weight: 600;
-         font-family: $font-family-base;
-       }
-     }
-     .component-comments {
-       @include rem(margin-top, 32px);
-       .comment {
-         background: white;
-         border: 1px dashed $eshill-blue;
-         @include rem(padding-bottom, 22px);
-         @include rem(margin-bottom, 20px);
-         @include rem(border-radius, 6px);
-         .comment-header {
-           margin: 0;
-           @include rem(padding-left, 22px);
-           @include rem(padding-top, 3px);
-           @include rem(padding-right, 22px);
-           @include rem(padding-bottom, 2px);
-           background-color: #fff;
-           @include rem(font-size, fontsize(small));
-           .comment-id {
-             color: lighten($comments-background-color, 5%);
-             @include rem(font-size, fontsize(h3));
-             font-weight: 600;
-             text-decoration: none;
-           }
-           .details {
-             @include rem(padding-top, 7px);
-           }
-           .voting {
-             float: right;
-             text-align: right;
-           }
-         }
-         .comment-body {
-           @include rem(padding-left, 22px);
-           @include rem(padding-top, 10px);
-           @include rem(padding-right, 22px);
-           @include rem(padding-bottom, 10px);
-         }
-         .comment-footer {
-           @include rem(padding-left, 22px);
-           @include rem(padding-right, 22px);
-         }
-       }
-     }
-   }
+  background-color: $comments-background-color;
+  @include rem(padding-top, 40px);
+  @include rem(padding-bottom, 40px);
+
+  .comments {
+    color: $eshill-header-color;
+
+    .heading {
+      @include rem(font-size, fontsize(h3));
+      font-weight: 600;
+
+      .badge {
+        position: relative;
+        @include rem(top, -12px);
+        background-color: $eshill-red;
+        @include rem(padding-left, 12px);
+        @include rem(padding-right, 12px);
+        @include rem(font-size, fontsize(smaller));
+        font-weight: 600;
+        font-family: $font-family-base;
+      }
+    }
+
+    .component-comments {
+      @include rem(margin-top, 32px);
+
+      .comment {
+        background: white;
+        border: 1px dashed $eshill-blue;
+        @include rem(padding-bottom, 22px);
+        @include rem(margin-bottom, 20px);
+        @include rem(border-radius, 6px);
+
+        .comment-header {
+          margin: 0;
+          @include rem(padding-left, 22px);
+          @include rem(padding-top, 3px);
+          @include rem(padding-right, 22px);
+          @include rem(padding-bottom, 2px);
+          background-color: #fff;
+          @include rem(font-size, fontsize(small));
+
+          .comment-id {
+            color: lighten($comments-background-color, 5%);
+            @include rem(font-size, fontsize(h3));
+            font-weight: 600;
+            text-decoration: none;
+          }
+
+          .details {
+            @include rem(padding-top, 7px);
+          }
+
+          .voting {
+            float: right;
+            text-align: right;
+          }
+        }
+
+        .comment-body {
+          @include rem(padding-left, 22px);
+          @include rem(padding-top, 10px);
+          @include rem(padding-right, 22px);
+          @include rem(padding-bottom, 10px);
+        }
+
+        .comment-footer {
+          @include rem(padding-left, 22px);
+          @include rem(padding-right, 22px);
+        }
+      }
+    }
+  }
 }

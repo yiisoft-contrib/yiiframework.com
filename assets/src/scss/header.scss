@@ -1,25 +1,17 @@
 /* This file contains the CSS needed to render the header menu of the website */
-
 /*
  It is used to generate a CSS file that will be integrated in the Discourse Forum software to have the same header in forum and website.
 */
-
 @import "1-common/colors";
 @import "1-common/bootstrap-variables";
-
 @import "bootstrap/scss/functions";
 @import "bootstrap/scss/variables";
 @import "bootstrap/scss/mixins";
-
 @import "bootstrap/scss/forms";
-
 @import "2-vendors/custom-bootstrap/yii-dropdowns";
-
 //@import "bootstrap/scss/navs";
 @import "bootstrap/scss/navbar";
-
 @import "rem";
-
 @import "3-global/navbar";
 
 .dropdown-menu {
@@ -49,9 +41,11 @@
     margin: 14.5px -15px;
     display: flex;
     align-items: center;
+
     > .active > a, > li > a:hover {
       height: auto;
     }
+
     > li.open > .dropdown-menu {
       z-index: 1001;
     }

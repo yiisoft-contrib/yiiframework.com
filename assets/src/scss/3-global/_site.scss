@@ -6,30 +6,33 @@ html {
 }
 
 ::selection {
-    text-shadow: none !important;
-    background: $selection-color;
-    color: $gray-darker;
+  text-shadow: none !important;
+  background: $selection-color;
+  color: $gray-darker;
 }
 
 ::-moz-selection {
-    text-shadow: none !important;
-    background: $selection-color;
-    color: $gray-darker;
+  text-shadow: none !important;
+  background: $selection-color;
+  color: $gray-darker;
 }
 
 .visible-huge {
   display: none !important;
 }
+
 @media (min-width: 1650px) {
   .visible-huge {
     display: block !important;
   }
 }
+
 @media (min-width: 1650px) {
   .hidden-huge {
     display: none !important;
   }
 }
+
 .hidden-lg {
   @extend .hidden-huge;
 }

@@ -1,11 +1,14 @@
 footer {
   background-color: $footer-bg;
   color: darken($footer-color, 10%);
+
   a {
     color: darken($footer-color, 10%);
+
     &:hover {
       color: $footer-color;
     }
+
     &:focus {
       color: $footer-color;
       text-decoration: none;
@@ -18,8 +21,10 @@ footer {
   padding-left: 1rem;
   margin-top: 2rem;
 }
+
 .footerList_item {
   margin-bottom: 0.2rem;
+
   .social {
     i {
       margin-left: 0;
@@ -33,17 +38,22 @@ footer {
       margin-bottom: .2em;
       transition: color 0.3s ease-out, background 0.3s ease-in;
       line-height: 1rem;
+
       &:hover {
         background-color: #fff;
+
         &.fa-github {
           color: $sns-github;
         }
+
         &.fa-facebook {
           color: $sns-facebook;
         }
+
         &.fa-twitter {
           color: $sns-twitter;
         }
+
         &.fa-rss {
           color: #e5722e;
         }
@@ -51,6 +61,7 @@ footer {
     }
   }
 }
+
 .footerList_item:first-child {
   color: $footer-color;
   font-size: 1.2rem;

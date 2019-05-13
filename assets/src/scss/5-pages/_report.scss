@@ -1,70 +1,70 @@
 
 .container.report {
-    color:#4d4d4d;
-    margin-bottom: 6rem;
+  color: #4d4d4d;
+  margin-bottom: 6rem;
 
-    .small{
-        font-size: 1rem;
+  .small {
+    font-size: 1rem;
+  }
+
+  .medium {
+    font-size: 1.2rem;
+  }
+
+  .github-btn {
+    border-color: #1e6887;
+    color: #1e6887;
+    font-size: 1.6rem;
+    padding: 0.8rem 2.2rem;
+    font-weight: bold;
+    letter-spacing: 0.1rem;
+    margin: 1.6rem 0;
+
+    i {
+      font-size: 1.8rem;
     }
 
-    .medium{
-        font-size: 1.2rem;
+    span {
+      padding: 0.3rem 0 0.3rem .5rem;
     }
+  }
 
-    .github-btn{
-        border-color: #1e6887;
-        color: #1e6887;
-        font-size: 1.6rem;
-        padding: 0.8rem 2.2rem;
-        font-weight: bold;
-        letter-spacing: 0.1rem;
-        margin: 1.6rem 0;
+  .extensions {
+    margin-top: 2rem;
+    margin-bottom: 2rem;
 
-        i{
-            font-size:1.8rem;
+    ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+
+      li {
+        padding: 1.4rem;
+
+        a {
+          font-size: 1.6rem;
         }
 
-        span{
-            padding:0.3rem 0 0.3rem .5rem;
+        span {
+          display: block;
         }
+      }
     }
+  }
 
-    .extensions{
-        margin-top: 2rem;
-        margin-bottom: 2rem;
+  ol.issue-process li {
+    margin-top: 1rem;
+  }
 
-        ul{
-            list-style:none;
-            padding: 0;
-            margin: 0;
+  .btn.btn-send {
+    padding: 1rem 6rem;
+    margin-bottom: 3rem;
+  }
 
-            li{
-                padding: 1.4rem;
-
-                a{
-                    font-size:1.6rem;
-                }
-
-                span{
-                    display: block;
-                }
-            }
-        }
-    }
-
-    ol.issue-process li{
-        margin-top: 1rem;
-    }
-
-    .btn.btn-send{
-        padding:1rem 6rem;
-        margin-bottom: 3rem;
-    }
-
-    .heading-separator h2 {
-        @include dashed-heading-variant($eshill-header-color, #fff, fontsize(h1));
-        margin: 6.5rem 0;
-    }
+  .heading-separator h2 {
+    @include dashed-heading-variant($eshill-header-color, #fff, fontsize(h1));
+    margin: 6.5rem 0;
+  }
 
 }
 

@@ -32,12 +32,32 @@
 
 /* add sorting icons to gridview sort links */
 .sorter a.asc:after,
-.grid-view a.asc:after    { content: "\f160"; } // http://fontawesome.io/icon/sort-amount-asc/
+.grid-view a.asc:after {
+  content: "\f160";
+}
+
+// http://fontawesome.io/icon/sort-amount-asc/
 .sorter a.desc:after,
-.grid-view a.desc:after   { content: "\f161"; } // http://fontawesome.io/icon/sort-amount-desc/
+.grid-view a.desc:after {
+  content: "\f161";
+}
+
+// http://fontawesome.io/icon/sort-amount-desc/
 
 /* define fontawesome counterpart for some glyphicons used */
-.glyphicon-eye-open:after { content: "\f06e"; } // http://fontawesome.io/icon/eye/
-.glyphicon-pencil:after   { content: "\f040"; } // http://fontawesome.io/icon/pencil/
-.glyphicon-trash:after    { content: "\f1f8"; } // http://fontawesome.io/icon/trash/
+.glyphicon-eye-open:after {
+  content: "\f06e";
+}
+
+// http://fontawesome.io/icon/eye/
+.glyphicon-pencil:after {
+  content: "\f040";
+}
+
+// http://fontawesome.io/icon/pencil/
+.glyphicon-trash:after {
+  content: "\f1f8";
+}
+
+// http://fontawesome.io/icon/trash/
 

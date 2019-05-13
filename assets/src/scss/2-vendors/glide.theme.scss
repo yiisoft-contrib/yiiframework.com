@@ -2,13 +2,16 @@
   $that: '.glide' !default;
 
 
-  &__wrapper {}
+  &__wrapper {
+  }
 
 
-  &__track {}
+  &__track {
+  }
 
 
-  &__slide {}
+  &__slide {
+  }
 
 
   &__arrows {
@@ -40,21 +43,36 @@
     border-radius: 4px;
     transition: border 300ms ease-in-out;
 
-    &:focus { outline: none; }
-    &:hover { border-color: white; }
+    &:focus {
+      outline: none;
+    }
+
+    &:hover {
+      border-color: white;
+    }
 
     #{$that}--horizontal & {
       transform: translateY(-50%);
 
-      &.prev { left: 0; }
-      &.next { right: 0; }
+      &.prev {
+        left: 0;
+      }
+
+      &.next {
+        right: 0;
+      }
     }
 
     #{$that}--vertical & {
       transform: translateX(-50%);
 
-      &.prev { top: 0; }
-      &.next { bottom: 0; }
+      &.prev {
+        top: 0;
+      }
+
+      &.next {
+        bottom: 0;
+      }
     }
   }
 
@@ -64,7 +82,8 @@
     list-style: none;
 
     #{$that}--horizontal & {
-      bottom: 5%; left: 16%;
+      bottom: 5%;
+      left: 16%;
       z-index: 100;
       width: 100%;
       height: 12px;
@@ -72,7 +91,8 @@
     }
 
     #{$that}--vertical & {
-      top: 50%; right: 8%;
+      top: 50%;
+      right: 8%;
       width: 12px;
       height: auto;
       transform: translateY(-50%);
@@ -80,7 +100,7 @@
 
     & > * {
       display: inline-block;
-      background-color: transparent;//rgba(255, 255, 255, 0.5);
+      background-color: transparent; //rgba(255, 255, 255, 0.5);
       width: 22px;
       height: 22px;
       padding: 0;
@@ -101,7 +121,9 @@
         background-color: $eshill-yellow;
       }
 
-      &:focus { outline: none; }
+      &:focus {
+        outline: none;
+      }
 
       &:hover,
       &:focus {
@@ -125,8 +147,10 @@
   }
 
 
-  &--carousel {}
+  &--carousel {
+  }
 
 
-  &--slideshow {}
+  &--slideshow {
+  }
 }
