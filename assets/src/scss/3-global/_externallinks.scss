@@ -1,41 +1,13 @@
 // External links
-
-// for the guide
-.guide-content ul li a[href^="http://"]:not([href*="yiiframework.com"]):after,
-.guide-content ul li a[href^="https://"]:not([href*="yiiframework.com"]):after,
-.guide-content ul li a[href^="//"]:not([href*="yiiframework.com"]):after {
-  font-family: 'fontawesome';
-  font-size: 0.8em;
-  content: $fa-var-external-link;
-  padding-left: 2px;
-}
-
-.guide-content p a[href^="http://"]:not([href*="yiiframework.com"]):after,
-.guide-content p a[href^="https://"]:not([href*="yiiframework.com"]):after,
-.guide-content p a[href^="//"]:not([href*="yiiframework.com"]):after {
-  font-family: 'fontawesome';
-  font-size: 0.8em;
-  content: $fa-var-external-link;
-  padding-left: 2px;
-}
-
-.guide-content ol li a[href^="http://"]:not([href*="yiiframework.com"]):after,
-.guide-content ol li a[href^="https://"]:not([href*="yiiframework.com"]):after,
-.guide-content ol li a[href^="//"]:not([href*="yiiframework.com"]):after {
-  font-family: 'fontawesome';
-  font-size: 0.8em;
-  content: $fa-var-external-link;
-  padding-left: 2px;
-}
-
-// copy for other
-.style_external_links a[href^="http://"]:not([href*="yiiframework.com"]):after,
-.style_external_links a[href^="https://"]:not([href*="yiiframework.com"]):after,
-.style_external_links a[href^="//"]:not([href*="yiiframework.com"]):after {
-  font-family: 'fontawesome';
-  font-size: 0.8em;
-  content: $fa-var-external-link;
-  padding-left: 2px;
+.guide-content ul li, .guide-content p, .guide-content ol li, .style_external_links {
+  a[href^="http://"]:not([href*="yiiframework.com"]):after,
+  a[href^="https://"]:not([href*="yiiframework.com"]):after,
+  a[href^="//"]:not([href*="yiiframework.com"]):after {
+    font-family: 'fontawesome';
+    font-size: 0.8em;
+    content: $fa-var-external-link;
+    padding-left: 2px;
+  }
 }
 
 // do not display it on image links

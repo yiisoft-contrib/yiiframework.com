@@ -1,4 +1,3 @@
-
 .container.contribute {
   color: #4d4d4d;
   margin-bottom: 6rem;
@@ -14,10 +13,10 @@
 
   blockquote.note a {
     color: darken(#FFAB19, 15%);
-  }
 
-  blockquote.note a:hover {
-    color: darken(#FFAB19, 25%);
+    &:hover {
+      color: darken(#FFAB19, 25%);
+    }
   }
 
   .heading-separator h2 {

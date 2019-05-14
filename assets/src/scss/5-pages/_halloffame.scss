@@ -21,14 +21,13 @@
     float: right;
     color: $eshill-green;
   }
+  &:nth-child(2n) {
+    background: #f9f9f9;
+  }
 }
 
 .person-card {
   margin-bottom: 2em;
-}
-
-.halloffame-members:nth-child(2n) {
-  background: #f9f9f9;
 }
 
 .halloffame-all-members {

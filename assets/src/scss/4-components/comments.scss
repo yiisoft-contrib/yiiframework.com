@@ -1,7 +1,6 @@
 .comments-wrapper {
   background-color: $comments-background-color;
-  @include rem(padding-top, 40px);
-  @include rem(padding-bottom, 40px);
+  padding-top: 2rem;
 
   .comments {
     color: $eshill-header-color;
@@ -13,33 +12,33 @@
       .badge {
         position: relative;
         @include rem(top, -12px);
+        color: white;
         background-color: $eshill-red;
-        @include rem(padding-left, 12px);
-        @include rem(padding-right, 12px);
-        @include rem(font-size, fontsize(smaller));
+        padding-left: .5rem;
+        padding-right: .5rem;
+        border-radius: 25%;
+        font-size: fontsize(small);
         font-weight: 600;
         font-family: $font-family-base;
       }
     }
 
     .component-comments {
-      @include rem(margin-top, 32px);
+      margin-top: 2rem;
 
       .comment {
         background: white;
         border: 1px dashed $eshill-blue;
-        @include rem(padding-bottom, 22px);
-        @include rem(margin-bottom, 20px);
-        @include rem(border-radius, 6px);
+        padding-bottom: 2.2rem;
+        margin-bottom: 2rem;
+        border-radius: 0.6rem;
 
         .comment-header {
           margin: 0;
-          @include rem(padding-left, 22px);
-          @include rem(padding-top, 3px);
-          @include rem(padding-right, 22px);
-          @include rem(padding-bottom, 2px);
+          border-radius: 0.6rem;
+          padding: 0.3rem 2.2rem 0.2rem;
           background-color: #fff;
-          @include rem(font-size, fontsize(small));
+          font-size: fontsize(small);
 
           .comment-id {
             color: lighten($comments-background-color, 5%);
@@ -59,15 +58,12 @@
         }
 
         .comment-body {
-          @include rem(padding-left, 22px);
-          @include rem(padding-top, 10px);
-          @include rem(padding-right, 22px);
-          @include rem(padding-bottom, 10px);
+          padding: 1rem 2.2rem;
         }
 
         .comment-footer {
-          @include rem(padding-left, 22px);
-          @include rem(padding-right, 22px);
+          padding-left: 2.2rem;
+          padding-right: 2.2rem;
         }
       }
     }

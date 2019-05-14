@@ -57,40 +57,42 @@
   background-repeat: no-repeat;
 }
 
-.userbadge-supporter {
-  background-position: 0 -329px;
-}
+.userbadge {
+  &-supporter {
+    background-position: 0 -329px;
+  }
 
-.userbadge-greenhorn {
-  background-position: 0 -590px;
-}
+  &-greenhorn {
+    background-position: 0 -590px;
+  }
 
-.userbadge-extension-smith {
-  background-position: 0 -262px;
-}
+  &-extension-smith {
+    background-position: 0 -262px;
+  }
 
-.userbadge-regular {
-  background-position: 0 -195px;
-}
+  &-regular {
+    background-position: 0 -195px;
+  }
 
-.userbadge-editor {
-  background-position: 0 -68px;
-}
+  &-editor {
+    background-position: 0 -68px;
+  }
 
-.userbadge-critic {
-  background-position: 0 -455px;
-}
+  &-critic {
+    background-position: 0 -455px;
+  }
 
-.userbadge-mogul {
-  background-position: 0 -522px;
-}
+  &-mogul {
+    background-position: 0 -522px;
+  }
 
-.userbadge-civic-duty {
-  background-position: 0 -134px;
-}
+  &-civic-duty {
+    background-position: 0 -134px;
+  }
 
-.userbadge-commentator {
-  background-position: 0 -393px;
+  &-commentator {
+    background-position: 0 -393px;
+  }
 }
 
 .view-user-view-badge {

@@ -15,6 +15,6 @@ use yii\bootstrap4\Html;
         'data-star-url' => $ajaxUrl
     ]) ?>
     <?php if (isset($starCount)): ?>
-        <span class="star-count"><?= (int) $starCount ?></span> follower<?= $starCount > 1 ? 's' : '' ?>
+        <span class="star-count"><?= (int) $starCount ?></span>
     <?php endif; ?>
 </div>

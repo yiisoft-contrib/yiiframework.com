@@ -1,19 +1,6 @@
 .glide {
   $that: '.glide' !default;
 
-
-  &__wrapper {
-  }
-
-
-  &__track {
-  }
-
-
-  &__slide {
-  }
-
-
   &__arrows {
     position: absolute;
 
@@ -144,13 +131,5 @@
       }
     }
 
-  }
-
-
-  &--carousel {
-  }
-
-
-  &--slideshow {
   }
 }

@@ -8,10 +8,10 @@
     font-size: 4rem;
     margin-top: 3rem;
     font-weight: bold;
-  }
 
-  h1.security {
-    margin-top: 3rem;
+    &.security {
+      margin-top: 3rem;
+    }
   }
 
   h2 {

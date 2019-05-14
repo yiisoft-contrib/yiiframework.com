@@ -1,6 +1,3 @@
-@import "typeface-pt-sans/index";
-@import "typeface-fira-mono/index";
-
 // Ours
 
 $sns-twitter: #1ca1f3;
@@ -34,10 +31,12 @@ $theme-colors: (
 $navbar-dark-color: #fff;
 $navbar-padding-y: 1rem;
 
-$h1-font-size: 2.5rem;
+$h1-font-size: 2rem;
 $h2-font-size: 1.5rem;
-$h3-font-size: 1.25rem;
+$h3-font-size: 1.2rem;
 $h4-font-size: 1.15rem;
+
+
 
 $dropdown-bg: #f5fec3;
 $dropdown-link-hover-bg: #f5fec3;
@@ -47,6 +46,11 @@ $font-family-monospace: 'Fira Mono', SFMono-Regular, Menlo, Monaco, Consolas, "L
 
 $headings-font-family: 'PT Sans';
 $headings-font-weight: 500;
+
+$table-cell-padding: .5rem;
+
+$list-group-bg: inherit;
+$list-group-border-width: 0;
 
 .dropdown-header {
   text-transform: uppercase;

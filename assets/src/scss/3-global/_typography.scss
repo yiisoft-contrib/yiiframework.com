@@ -52,7 +52,7 @@ $font-sizes: (
 }
 
 // typeset <em> in bold instead of italic in japanese language
-// this is because italic has no good distincion from non-italic
+// this is because italic has no good distinction from non-italic
 // see https://github.com/yiisoft/yii2/issues/6195
 html[lang=jp] em {
   font-weight: bold;

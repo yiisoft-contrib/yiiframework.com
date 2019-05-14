@@ -1,5 +1,5 @@
 %sidenav {
-  //  @include rem(font-size, 13px);
+  font-size: .8rem;
   > a {
     //  @include rem(font-size, 13px);
     @include rem(line-height, 13px);
@@ -14,8 +14,7 @@
   > a.has-children {
     color: $separator-color;
     //text-decoration: none;
-    //text-transform: uppercase;
-    //@include rem(font-size, 13px);
+    text-transform: uppercase;
     border-bottom: 1px solid $eshill-section-bgcolor;
 
     &:hover {
@@ -40,6 +39,7 @@
 
   > .active-parent {
     background-color: $eshill-section-bgcolor;
+    display: initial;
 
     a.active {
       text-decoration: none;

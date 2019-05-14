@@ -63,8 +63,8 @@ $this->endBlock();
                 </p>
             </div>
         </div>
-        <div class="row row-offcanvas">
-            <div class="col-sm-2 col-md-2 col-lg-3 lang-<?= $guide->language ?>">
+        <div class="row row-offcanvas lang-<?= $guide->language ?>">
+            <div class="col col-lg-3">
                 <?php if (!isset($extensionName, $extensionVendor)) {
                     // TODO search currently does not work for extensions
                     echo SearchForm::widget([
@@ -76,7 +76,7 @@ $this->endBlock();
                 } ?>
                 <?= SideNav::widget(['id' => 'guide-navigation', 'items' => $nav, 'options' => ['class' => 'sidenav-offcanvas']]) ?>
             </div>
-            <div class="col-sm-10 col-md-10 col-lg-8" role="main">
+            <div class="col col-lg-9 col-xl-8" role="main">
 
                 <?= $content ?>
             </div>
