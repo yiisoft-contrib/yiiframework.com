@@ -21,6 +21,7 @@ class PackagistApi
     // TODO make this work when default branch is not master
     const ENDPOINT_GITHUB_RAW_FILE = 'https://raw.githubusercontent.com/%s/master/%s';
     const ENDPOINT_GITLAB_RAW_FILE = 'https://gitlab.com/%s/raw/master/%s';
+    const ENDPOINT_BITBUCKET_RAW_FILE = 'https://bitbucket.org/%s/raw/master/%s';
 
     /**
      * Get a list of packages
@@ -139,7 +140,7 @@ class PackagistApi
         // we don't need .git at the end of URL
         $repositoryUrl = preg_replace('~\.git$~i', '', $repositoryUrl);
 
-        if (!preg_match('~^https?://(github\.com|gitlab\.com)/([^/]+/[^/]+)$~i', $repositoryUrl, $matches)) {
+        if (!preg_match('~^https?://(github\.com|gitlab\.com|bitbucket\.org)/([^/]+/[^/]+)$~i', $repositoryUrl, $matches)) {
             return null;
         }
 
@@ -179,6 +180,9 @@ class PackagistApi
                 break;
             case 'gitlab.com':
                 $endpoint = self::ENDPOINT_GITLAB_RAW_FILE;
+                break;
+            case 'bitbucket.org':
+                $endpoint = self::ENDPOINT_BITBUCKET_RAW_FILE;
                 break;
             default:
                 throw new InvalidArgumentException("Getting files from $service is not supported.");
