@@ -76,7 +76,7 @@ $extensionColumns = array_chunk($extensions, 4,true);
             <div class="row extensions">
                 <?php foreach($extensionColumns as $column) :
                         foreach($column as $ext => $extName) : ?>
-                            <div class="col-6 col-md-3">
+                            <div class="col-12 col-md-4">
                                 <ul>
                                     <li>
                                         <a href="https://github.com/yiisoft/<?= $ext ?>/issues/new"><?= $extName ?><span>yiisoft/<?= $ext ?></span></a>

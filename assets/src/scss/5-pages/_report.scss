@@ -13,7 +13,7 @@
   .github-btn {
     border-color: #1e6887;
     color: #1e6887;
-    font-size: 1.6rem;
+    font-size: 1.5rem;
     padding: 0.8rem 2.2rem;
     font-weight: bold;
     letter-spacing: 0.1rem;
@@ -38,14 +38,11 @@
       margin: 0;
 
       li {
-        padding: 1.4rem;
-
-        a {
-          font-size: 1.6rem;
-        }
+        padding: .4rem;
 
         span {
           display: block;
+          color: #333;
         }
       }
     }

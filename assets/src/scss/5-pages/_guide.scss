@@ -81,11 +81,12 @@ blockquote {
   border: 1px solid #444;
   @include rem(border-radius, 6px);
   margin-top: 2.8rem;
-  @include rem(padding, 4px);
   line-height: 1.6rem;
   margin-bottom: 0.8em;
-  padding-right: 10%;
-  padding-left: 10%;
+  padding: 1rem;
+  @include media-breakpoint-up('sm') {
+    padding: 1rem 15%;
+  }
   color: #444;
 
   p {
@@ -94,6 +95,7 @@ blockquote {
   }
 
   .edit-icon {
+    margin-right: 1rem;
     i {
       font-size: 3.5em;
       color: #444;

@@ -4,7 +4,11 @@ $api-box-padding-y: ceil($font-size-base / 2);
 .api-content {
 
   ul {
-    @include rem(padding-left, 30px);
+    padding-left: 1rem;
+    @include media-breakpoint-up('sm') {
+      padding-left: 3rem;
+
+    }
     list-style-type: none;
 
     li {
@@ -167,6 +171,7 @@ $api-box-padding-y: ceil($font-size-base / 2);
   }
 
   table {
+    @extend .table-responsive;
     tbody > tr > td,
     tbody > tr > th {
       padding-left: $api-box-padding-x;

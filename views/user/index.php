@@ -26,8 +26,10 @@ $this->registerMetaTag(['name' => 'keywords', 'value' => 'yii framework, communi
 <div class="container style_external_links">
     <div class="content">
         <h1>Members</h1>
+
         <?= GridView::widget([
             'dataProvider' => $dataProvider,
+            'options' => ['class' => 'grid-view table-responsive'],
             'summary' => 'Showing <b>{begin, number}-{end, number}</b> of <b>{totalCount, number}</b> {totalCount, plural, one{member} other{members}}.',
             'columns' => [
                 [

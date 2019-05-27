@@ -5,7 +5,10 @@
 .section-header {
   .section-headline {
     font-weight: 600;
-    font-size: 1.8rem;
+    font-size: 1.6rem;
+    @include media-breakpoint-up('sm') {
+      font-size: 1.8rem;
+    }
     line-height: 4rem;
 
     a {
@@ -16,7 +19,6 @@
 
   color: white;
   background-color: $eshill-light-blue;
-  //padding: .5rem 0;
 
   .headline-row {
     @include rem(margin-bottom, 15px);
@@ -84,10 +86,6 @@
         }
       }
 
-      font-family: $font-family-base;
-      @media (max-width: 380px) {
-        @include rem(font-size, 12px);
-      }
     }
 
     .dropdown-menu {

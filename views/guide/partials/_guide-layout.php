@@ -58,13 +58,13 @@ $this->endBlock();
     <div class="container">
         <div class="row d-block d-sm-none">
             <div class="col-md-12">
-                <p class="pull-right topmost">
+                <p class="topmost">
                     <button type="button" title="Toggle Side-Nav" class="btn btn-primary btn-xs" data-toggle="offcanvas">SideNav</button>
                 </p>
             </div>
         </div>
         <div class="row row-offcanvas lang-<?= $guide->language ?>">
-            <div class="col col-lg-3">
+            <div class="col-lg-3">
                 <?php if (!isset($extensionName, $extensionVendor)) {
                     // TODO search currently does not work for extensions
                     echo SearchForm::widget([
