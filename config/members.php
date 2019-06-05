@@ -196,10 +196,10 @@ return [
     ],
     [
         'name' => 'Roman Zhuravlev',
-        'id' => '',
-        'forumName' => '',
+        'id' => '24032',
+        'forumName' => 'KiTE',
         'period' => 'July 2017',
-        'location' => '',
+        'location' => 'Ukraine',
         'duty' => 'Queue extension',
         'photo' => '@web/image/team/zhuravljov.jpg',
         'github' => 'zhuravljov',
