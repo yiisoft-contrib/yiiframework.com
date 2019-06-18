@@ -86,8 +86,10 @@ class DiscourseAdapter extends Component implements ForumAdapterInterface
             }
         }
 
-        Yii::error("Discourse API request returned invalid response: $url");
-        Yii::error($response);
+        if ($response->statusCode != 404) {
+            Yii::error("Discourse API request returned invalid response: $url");
+            Yii::error($response);
+        }
         return null;
     }
 
