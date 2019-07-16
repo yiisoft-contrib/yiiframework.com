@@ -2,6 +2,7 @@
 
 namespace app\components\github;
 
+use Github\Api\GraphQL;
 use Github\Client;
 use yii\caching\CacheInterface;
 use yii\helpers\ArrayHelper;
@@ -48,7 +49,7 @@ $alias: repository(owner: "$owner", name: "$name") {
     }
   }
   refs(refPrefix: "refs/tags/", last: 5) {
-    edges() {
+    edges {
       node {
         target {
           ... on Tag {
@@ -108,7 +109,8 @@ GRAPHQL;
         return $this->cache->getOrSet(
             'graphql/repositories-statuses/' . $this->version,
             function () {
-                $results = $this->client->api('graphql')->execute($this->getGraphQLQuery());
+                $query = $this->getGraphQLQuery();
+                $results = (new GraphQL($this->client))->execute($query);
 
                 $data = [];
                 if (isset($results['data'])) {
@@ -156,6 +158,19 @@ GRAPHQL;
 
                         $data[] = $datum;
                     }
+                } elseif (isset(
+                    $results['errors'][0]['message'],
+                    $results['errors'][0]['locations'][0]['line']
+                )) {
+                    throw new GithubParseException(
+                        $results['errors'][0]['message'],
+                        $query,
+                        $results['errors'][0]['locations'][0]['line']
+                    );
+                } elseif (isset($results['errors'][0]['message'])) {
+                    throw new GithubException($results['errors'][0]['message']);
+                } else {
+                    throw new GithubException('Unable to perform query.');
                 }
 
                 return $data;
