@@ -18,7 +18,7 @@ use yii\helpers\Html;
 
         <p>
             We have a Slack channel:
-            <a href="https://join.slack.com/t/yii/shared_invite/enQtMzQ4MDExMDcyNTk2LWUzN2RlZmJiMDdiZDIwOWI4M2U3ODYwOTRjZDk5MTY1ZWM3YTY5MTVkNzRiN2RlMWQxODA5N2ZmY2E5NWI2YTM">yii.slack.com</a>.
+            <a href="https://join.slack.com/t/yii/shared_invite/enQtMzQ4MDExMDcyNTk2LTc0NDQ2ZTZhNjkzZDgwYjE4YjZlNGQxZjFmZDBjZTU3NjViMDE4ZTMxNDRkZjVlNmM1ZTA1ODVmZGUwY2U3NDA">yii.slack.com</a>.
             There are <a href="https://slack.com/downloads/">handy clients for Desktop and phones</a>.
         </p>
 
