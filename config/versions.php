@@ -67,6 +67,7 @@ HTML
 	],
 	'minor-versions' => [
 		'2.0' => [
+            '2.0.28' => 'October 8, 2019',
             '2.0.27' => 'September 18, 2019',
             '2.0.26' => 'September 3, 2019',
             '2.0.25' => 'August 13, 2019',
