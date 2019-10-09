@@ -249,6 +249,6 @@ return [
         'photo' => '@web/image/team/machour.jpg',
         'github' => 'machour',
         'twitter' => 'mac_hour',
-        'status' => TeamStatus::TEAM_STATUS_INACTIVE,
+        'status' => TeamStatus::TEAM_STATUS_ACTIVE,
     ],
 ];
