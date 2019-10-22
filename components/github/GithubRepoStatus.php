@@ -89,11 +89,17 @@ GRAPHQL;
      * @return array
      */
     private function getVersionsForRepository($repository) {
-        $tags = array_filter(ArrayHelper::map(
-            $repository['refs']['edges'],
-            'node.target.name',
-            'node.target.target.pushedDate'
-        ));
+        if ($repository['refs']['edges'] === null) {
+            return [];
+        }
+
+        $tags = array_filter(
+            ArrayHelper::map(
+                $repository['refs']['edges'],
+                'node.target.name',
+                'node.target.target.pushedDate'
+            )
+        );
 
         // Consolidate tags with last release
         $lastRelease = ArrayHelper::getValue($repository, 'releases.edges.0.node', false);
