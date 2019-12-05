@@ -29,6 +29,16 @@ use yii\helpers\Html;
 
             <p>Above policy periods may be extended for individual versions.</p>
 
+            <h2>PHP versions support</h2>
+
+            <p>In order for the framework to work well in a range of PHP versions we are running framework tests using PHPUnit.
+               In case <a href="https://phpunit.de/supported-versions.html">newer version of PHPUnit does not work well with unsupported PHP version</a>
+               we may remove such PHP version from our test runs. It doesn't mean that older versions would break but
+               it significally increases chances for it.
+            </p>
+
+            <p>Therefore, it is recommended to use <a href="https://www.php.net/supported-versions.php">supported verison of PHP</a>.</p>
+
             <h2>Current versions</h2>
 
             <?= VersionCalendar::widget(['versions' => $versions]) ?>
@@ -69,6 +79,7 @@ use yii\helpers\Html;
                     <thead>
                     <tr>
                         <th>Version</th>
+                        <th>PHP Version</th>
                         <th>Release (active support)</th>
                         <th>Feature freeze</th>
                         <th>Security and PHP compatibility fixes only</th>
@@ -79,6 +90,7 @@ use yii\helpers\Html;
                     <?php foreach ($versions as $branch => $data): ?>
                         <tr>
                             <td><?= Html::encode($branch) ?></td>
+                            <td><?= Html::encode($data['php'] ?? 'To be announced') ?></td>
                             <td><?= Html::encode($data['release'] ?? 'To be announced') ?></td>
                             <td><?= Html::encode($data['enhancements'] ?? 'To be announced') ?></td>
                             <td><?= Html::encode($data['bugfixes'] ?? 'Next release +2 years') ?></td>
