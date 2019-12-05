@@ -39,43 +39,31 @@ class StatusController extends BaseController
             ['yiisoft', 'yii2-docker'],
         ],
         '3.0' => [
-            // 3.0 framework
-            ['yiisoft', 'yii-core'],
-            ['yiisoft', 'yii-console'],
-            ['yiisoft', 'yii-web'],
-            ['yiisoft', 'yii-rest'],
-
-            // 3.0 templates
-            ['yiisoft', 'yii-project-template'],
-            ['yiisoft', 'yii-base-web'],
-            ['yiisoft', 'yii-base-api'],
-            ['yiisoft', 'yii-base-cli'],
-
-            // 3.0 widgets and wrappers
-            ['yiisoft', 'yii-bootstrap3'],
-            ['yiisoft', 'yii-bootstrap4'],
-            ['yiisoft', 'yii-dataview'],
-            ['yiisoft', 'yii-masked-input'],
-
-            // 3.0 tools
-            ['yiisoft', 'yii-debug'],
-            ['yiisoft', 'yii-gii'],
-
-            // 3.0 others
-            ['yiisoft', 'yii-auth-client'],
-            ['yiisoft', 'yii-captcha'],
-            ['yiisoft', 'yii-http-client'],
-            ['yiisoft', 'yii-jquery'],
-            ['yiisoft', 'yii-queue'],
-            ['yiisoft', 'yii-swiftmailer'],
-            ['yiisoft', 'yii-twig'],
-
-            // libraries
+            // core packages
             ['yiisoft', 'di'],
+            ['yiisoft', 'injector'],
+            ['yiisoft', 'factory'],
+            ['yiisoft', 'access'],
+            ['yiisoft', 'event-dispatcher'],
+            ['yiisoft', 'security'],
+            ['yiisoft', 'data'],
+            ['yiisoft', 'profiler'],
+            ['yiisoft', 'aliases'],
+            ['yiisoft', 'serializer'],
+            ['yiisoft', 'network-utilities'],
+            ['yiisoft', 'auth'],
+
+            // cache
             ['yiisoft', 'cache'],
-            ['yiisoft', 'active-record'],
+            ['yiisoft', 'cache-apcu'],
+            ['yiisoft', 'cache-wincache'],
+            ['yiisoft', 'cache-file'],
+            ['yiisoft', 'cache-db'],
+
+            // RBAC
             ['yiisoft', 'rbac'],
-            ['yiisoft', 'view'],
+            ['yiisoft', 'rbac-db'],
+            ['yiisoft', 'rbac-php'],
 
             // log
             ['yiisoft', 'log'],
@@ -84,40 +72,89 @@ class StatusController extends BaseController
             ['yiisoft', 'log-target-file'],
             ['yiisoft', 'log-target-syslog'],
 
-            // mutex
-            ['yiisoft', 'mutex'],
-            ['yiisoft', 'mutex-db-mysql'],
-            ['yiisoft', 'mutex-db-oracle'],
-            ['yiisoft', 'mutex-db-pgsql'],
-            ['yiisoft', 'mutex-db-redis'],
-            ['yiisoft', 'mutex-file'],
-
             // i18n
             ['yiisoft', 'i18n'],
-            ['yiisoft', 'i18n-formatter-intl'],
-            ['yiisoft', 'i18n-message-gettext'],
             ['yiisoft', 'i18n-message-php'],
+            ['yiisoft', 'i18n-message-gettext'],
+            ['yiisoft', 'i18n-formatter-intl'],
 
+            // queue
+            ['yiisoft', 'yii-queue'],
+            ['yiisoft', 'yii-queue-interop'],
 
-            // 3.0 DB drivers
-            ['yiisoft', 'db'],
+            // mutex
+            ['yiisoft', 'mutex'],
+            ['yiisoft', 'mutex-file'],
+            ['yiisoft', 'mutex-db-pgsql'],
+            ['yiisoft', 'mutex-db-oracle'],
+            ['yiisoft', 'mutex-db-mysql'],
 
-            ['yiisoft', 'db-mysql'],
-            ['yiisoft', 'db-mssql'],
-            ['yiisoft', 'db-pgsql'],
-            ['yiisoft', 'db-sqlite'],
-            ['yiisoft', 'db-oracle'],
+            // mailer
+            ['yiisoft', 'mailer'],
+            ['yiisoft', 'mailer-swiftmailer'],
 
-            // 3.0 NoSQL DB drivers
-            ['yiisoft', 'db-sphinx'],
-            ['yiisoft', 'db-redis'],
-            ['yiisoft', 'db-mongodb'],
-            ['yiisoft', 'db-elasticsearch'],
-
-            // Helpers
+            // helpers
             ['yiisoft', 'arrays'],
             ['yiisoft', 'strings'],
+            ['yiisoft', 'files'],
             ['yiisoft', 'var-dumper'],
+            ['yiisoft', 'html'],
+            ['yiisoft', 'json'],
+
+            // console
+            ['yiisoft', 'yii-console'],
+
+            // api
+            ['yiisoft', 'yii-rest'],
+
+            // db
+            ['yiisoft', 'db'],
+            ['yiisoft', 'db-mysql'],
+            ['yiisoft', 'db-pgsql'],
+            ['yiisoft', 'db-sqlite'],
+            ['yiisoft', 'db-mssql'],
+            ['yiisoft', 'db-oracle'],
+            ['yiisoft', 'db-mongodb'],
+            ['yiisoft', 'active-record'],
+            //['yiisoft', 'migration'],
+            ['yiisoft', 'yii-cycle'],
+
+            // router
+            ['yiisoft', 'router'],
+            ['yiisoft', 'router-fastroute'],
+
+            // web
+            ['yiisoft', 'yii-web'],
+            ['yiisoft', 'view'],
+            ['yiisoft', 'yii-jquery'],
+            ['yiisoft', 'yii-masked-input'],
+            ['yiisoft', 'yii-dataview'],
+            ['yiisoft', 'yii-debug'],
+            ['yiisoft', 'yii-gii'],
+            ['yiisoft', 'yii-bootstrap4'],
+
+            ['yiisoft', 'yii-captcha'],
+
+            ['yiisoft', 'yii-auth-client'],
+
+            // project templates
+            ['yiisoft', 'yii-base-api'],
+            ['yiisoft', 'yii-base-web'],
+            ['yiisoft', 'yii-project-template'],
+
+            // demo
+            ['yiisoft', 'yii-demo'],
+
+            // other
+            ['yiisoft', 'yii-docker'],
+            ['yiisoft', 'validator'],
+            ['yiisoft', 'friendly-exception'],
+
+            // repository template
+            ['yiisoft', 'template'],
+
+            // requirements checker
+            ['yiisoft', 'requirements'],
         ],
 
         '1.1' => [
