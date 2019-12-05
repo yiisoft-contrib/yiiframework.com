@@ -128,7 +128,7 @@ GRAPHQL;
                             'latest' => '',
                             'no_release_for' => null,
                             'diff' => '',
-                            'status' => "https://img.shields.io/travis/{$repository['nameWithOwner']}.svg",
+                            'status' => "https://travis-ci.com/{$repository['nameWithOwner']}.svg",
                             'mergedSinceRelease' => [],
                         ];
 

@@ -208,4 +208,6 @@ return [
     'discourse.sso_secret' => '',
     'discourse.sso_url' => 'https://forum.yiiframework.com',
 
+    // packages list for status page
+    'packages' => require __DIR__ . '/packages.php',
 ];
