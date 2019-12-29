@@ -32,7 +32,7 @@
     "gulp-touch": "^1.0.1",
     "gulp-uglify": "^1.2.0",
     "gulp.spritesmith": "^6.2.1",
-    "js-yaml": "^3.4.6",
+    "js-yaml": "^3.13.1",
     "rimraf": "^2.4.3",
     "yargs": "^3.8.0"
   }
