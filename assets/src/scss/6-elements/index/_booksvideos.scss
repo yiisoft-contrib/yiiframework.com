@@ -1,65 +1,74 @@
 /** Front page books and videos widget */
 
 .books-videos {
-    background-color: #ebf1f2;
-    width: 100%;
+  background-color: #ebf1f2;
+  width: 100%;
 
-    .see-all {
-        margin: 2rem .6rem 3rem .6rem;
-    }
-    .dashed-heading-front-books {
-        margin-top: 6rem;
-    }
+  .see-all {
+    margin: 2rem .6rem 3rem .6rem;
+  }
+
+  .dashed-heading-front-books {
+    margin-top: 6rem;
+  }
 }
 
 .books-item {
-    @include rem(padding, 22px);
-    .books-header {
-        @include rem(font-size, fontsize(large));
-    }
-    .books-image {
+  @include rem(padding, 22px);
 
-    }
-    .books-link {
-        a {
-            font-weight: bold;
-            font-size: 1.8rem;
-        }
-        @include rem(margin-bottom, 16px);
-    }
-    .author-publisher {
-        @include rem(font-size, fontsize(smaller));
-        .what {
-            color: $darkish-text;
-            font-weight: 600;
-        }
-        .who {
+  .books-header {
+    @include rem(font-size, fontsize(large));
+  }
 
-        }
-        @include rem(margin-bottom, 16px);
-    }
-    .thumbnail {
-        padding: inherit;
-        border-radius: inherit;
-    }
-    .img-responsive {
-        max-width: 75%;
+  .books-image {
+    padding: 0;
+    text-align: center;
+  }
+
+  .books-link {
+    a {
+      font-weight: bold;
+      font-size: 1.2rem;
     }
 
-    .skill {
-        vertical-align: top;
-        cursor: help;
+    margin-bottom: .6rem;
+  }
+
+  .author-publisher {
+    @include rem(font-size, fontsize(smaller));
+
+    .what {
+      color: $darkish-text;
+      font-weight: 600;
     }
 
-    .skill.beginner {
-        color: $yii-green;
+    margin-bottom: .6rem;
+  }
+
+  .thumbnail {
+    padding: inherit;
+    border-radius: inherit;
+    max-height: 240px;
+    margin: 0 auto;
+  }
+
+  .skill {
+    cursor: help;
+    font-size: 0.5rem;
+
+    &.beginner {
+      color: $yii-green;
     }
 
-    .skill.pro {
-        color: $yii-yellow;
+    &.pro {
+      color: $yii-yellow;
     }
 
-    .skill.all {
-        color: $yii-blue;
+    &.all {
+      color: $yii-blue;
     }
+  }
+
+
 }
+

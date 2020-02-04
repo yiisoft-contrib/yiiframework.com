@@ -1,15 +1,13 @@
 <?php
 /**
- * @var View $this
- * @var ChangePasswordForm $changePasswordForm
+ * @var \yii\web\View $this
+ * @var \app\models\ChangePasswordForm $changePasswordForm
  */
 
-use app\models\ChangePasswordForm;
-use yii\helpers\Html;
-use yii\web\View;
-use yii\widgets\ActiveForm;
+use yii\bootstrap4\Html;
+use yii\bootstrap4\ActiveForm;
 
-$this->title = "Change password";
+$this->title = 'Change password';
 ?>
 <div class="container style_external_links">
     <div class="content">

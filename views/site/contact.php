@@ -1,17 +1,16 @@
 <?php
 
-use yii\helpers\Html;
-use yii\helpers\Url;
-use yii\bootstrap\ActiveForm;
+use yii\bootstrap4\ActiveForm;
 use yii\captcha\Captcha;
+use yii\helpers\Html;
 
 /* @var $this yii\web\View */
-/* @var $form yii\bootstrap\ActiveForm */
+/* @var $form yii\bootstrap4\ActiveForm */
 /* @var $model app\models\ContactForm */
 ?>
 <div class="container">
         <div class="content">
-            <div class="col-xs-12 col-sm-6">
+            <div class="col-12 col-sm-6">
                 <?php if (Yii::$app->session->hasFlash('contactFormSubmitted')): ?>
                     <div class="alert alert-success">
                         Thank you for contacting us. We will respond to you as soon as possible.

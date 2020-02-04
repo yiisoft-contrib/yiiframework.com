@@ -2,7 +2,6 @@
 
 use app\controllers\BaseController;
 use yii\helpers\Html;
-use yii\bootstrap\Nav;
 use yii\helpers\Url;
 use app\assets\AppAsset;
 

@@ -71,7 +71,7 @@ $this->endBlock();
             <?= \yii\widgets\ListView::widget([
                 'dataProvider' => $dataProvider,
                 'itemView' => '_view',
-                'itemOptions' => ['class' => 'col-xs-12 col-sm-6 col-lg-4'],
+                'itemOptions' => ['class' => 'col-12 col-sm-6 col-lg-4'],
                 'layout' => "{summary}\n<div class=\"row\">{items}</div>\n{pager}",
             ]) ?>
 

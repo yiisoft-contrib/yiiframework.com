@@ -1,5 +1,6 @@
 <?php
-use yii\bootstrap\ActiveForm;
+
+use yii\bootstrap4\ActiveForm;
 use yii\captcha\Captcha;
 use yii\helpers\Html;
 
@@ -32,7 +33,7 @@ $this->params['breadcrumbs'][] = $this->title;
                     </div>
                 <?php else: ?>
                     <p>Please use the security issue form to report to us any security issue
-                        you find in Yii. DO NOT use the issue tracker or discuss it in the public forum as it will cause more damage
+                        you find in Yii. <em>DO NOT</em> use the issue tracker or discuss it in the public forum as it will cause more damage
                         than help.</p>
 
                     <p>Please note that as a non-commerial OpenSource project we are not able to pay bounties at the moment.</p>
@@ -43,21 +44,27 @@ $this->params['breadcrumbs'][] = $this->title;
                 </div>
             </div>
 
-            <div class="col-md-9">
+            <div class="col-md-8">
                 <?php $form = ActiveForm::begin() ?>
-                <?= $form->field($model, 'name', [
-                    'inputOptions' => [
-                        'placeholder' => $model->getAttributeLabel('name'),
-                        'aria-label' => $model->getAttributeLabel('name'),
-                    ]
-                ])->label(false) ?>
+                <div class="row">
+                    <div class="col-md-6">
+						<?= $form->field($model, 'name', [
+							'inputOptions' => [
+								'placeholder' => $model->getAttributeLabel('name'),
+								'aria-label' => $model->getAttributeLabel('name'),
+							]
+						])->label(false) ?>
+                    </div>
+                    <div class="col-md-6">
+						<?= $form->field($model, 'email', [
+							'inputOptions' => [
+								'placeholder' => $model->getAttributeLabel('email'),
+								'aria-label' => $model->getAttributeLabel('email'),
+							]
+						])->label(false) ?>
+                    </div>
+                </div>
 
-                <?= $form->field($model, 'email', [
-                    'inputOptions' => [
-                        'placeholder' => $model->getAttributeLabel('email'),
-                        'aria-label' => $model->getAttributeLabel('email'),
-                    ]
-                ])->label(false) ?>
 
                 <?= $form->field($model, 'body', [
                     'inputOptions' => [
@@ -70,15 +77,15 @@ $this->params['breadcrumbs'][] = $this->title;
                 <?= $form->field($model, 'verifyCode', [
                     'inputOptions' => ['placeholder' => 'Verification Code']
                 ])->label('Verification code: ')->widget(Captcha::class, [
-                    'template' => '{image}{input}',
+                    'template' => '<div class="row"><div class="col-md-2">{image}</div><div class="col-md-4">{input}</div></div>',
                 ]) ?>
 
                 <?= Html::submitButton('Submit', ['class' => 'btn btn-primary', 'name' => 'contact-button']) ?>
                 <?php ActiveForm::end() ?>
             </div>
-            <div class="col-md-3">
-                <p class="small">Once we receive your issue report, we will treat it as our highest priority. We will generally take the
-                    following steps in responding to security issues.</p>
+            <div class="col-md-4" style="background: #f3ffbd; color: #464646; padding: 1rem;">
+                <p>Once we receive your issue report, we will treat it as our highest priority. We will generally take the
+                    following steps in responding to security issues:</p>
 
                 <ol class="issue-process">
                     <li>Confirm the issue. We may contact with you for further discussion. We will send you an acknowledgement

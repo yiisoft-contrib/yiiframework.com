@@ -17,15 +17,6 @@ use yii\helpers\Html;
       <?= Html::a('License', ['site/license']) ?>
   </li>
   <li class="footerList_item">
-      <a href="https://github.com/yiisoft-contrib/yiiframework.com" target="_blank" rel="noopener noreferrer">Website Source Code</a>
-  </li>
-  <li class="footerList_item">
-      &nbsp;
-  </li>
-  <li class="footerList_item">
-    &copy; 2008 - <?= date('Y') ?> Yii
-  </li>
-  <li class="footerList_item">
-      Design: <a href="http://www.eshill.ru/" target="_blank" rel="noopener noreferrer">Eshill</a>
+      <a href="https://github.com/yiisoft-contrib/yiiframework.com" target="_blank" rel="noopener noreferrer">Site Source Code</a>
   </li>
 </ul>

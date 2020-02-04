@@ -21,7 +21,7 @@ return [
         'author' => 'Alexander Makarov',
         'image' => '@web/image/books/yii1-cookbook.jpg',
         'description' => 'The book is a set of individual independent recipes written by Yii core developer. Each recipe shows how to
-            do something useful with Yii explainig why it\'s done, how it\'s done, why it works and how exactly it works.',
+            do something useful with Yii explaining why it\'s done, how it\'s done, why it works and how exactly it works.',
         'url' => 'http://yiicookbook.org/',
         'level' => 'pro',
         'level-text' => 'Pro',
@@ -33,7 +33,7 @@ return [
         'image' => '@web/image/books/yii1-app-development.jpg',
         'description' => 'Written by former Yii core developer, the book takes a strong learn-by-doing philosophy to introducing you
            to the Yii framework. After a brief introduction to the framework in chapters 1 and 2, the remaining 10
-           chapters are dedicated to building an entire project managemnt application.',
+           chapters are dedicated to building an entire project management application.',
         'url' => 'http://www.seesawlabs.com/yii-book',
         'level' => 'beginner',
         'level-text' => 'Beginners',

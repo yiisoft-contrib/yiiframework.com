@@ -20,7 +20,7 @@ $this->title = $name;
             </div>
             <img src="<?= Yii::getAlias('@web/image/404.jpg') ?>"
                 alt="Something is wrong: <?= Html::encode($this->title) ?>"
-                class="img-responsive" />
+                class="img-fluid" />
             <p>
                 The above error occurred while the Web server was processing your request.
             </p>

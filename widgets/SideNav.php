@@ -3,12 +3,12 @@
 namespace app\widgets;
 
 use yii\base\InvalidConfigException;
-use yii\bootstrap\BootstrapAsset;
+use yii\bootstrap4\BootstrapAsset;
 use yii\helpers\ArrayHelper;
 use yii\helpers\Url;
 use yii\helpers\Html;
 
-class SideNav extends \yii\bootstrap\Widget
+class SideNav extends \yii\bootstrap4\Widget
 {
     /**
      * @var array list of items in the nav widget. Each array element represents a single

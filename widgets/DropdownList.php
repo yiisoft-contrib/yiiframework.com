@@ -3,7 +3,7 @@
 namespace app\widgets;
 
 use yii\base\Widget;
-use yii\bootstrap\BootstrapAsset;
+use yii\bootstrap4\BootstrapAsset;
 use yii\helpers\Html;
 
 class DropdownList extends Widget

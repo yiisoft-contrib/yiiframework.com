@@ -44,7 +44,7 @@ $this->title = 'Official Extensions';
             <?= \yii\widgets\ListView::widget([
                 'dataProvider' => $dataProvider,
                 'itemView' => '_view',
-                'itemOptions' => ['class' => 'col-xs-12 col-sm-6 col-lg-4'],
+                'itemOptions' => ['class' => 'col-12 col-sm-6 col-lg-4'],
                 'layout' => "<div class=\"row\">{items}</div>\n{pager}",
             ]) ?>
 

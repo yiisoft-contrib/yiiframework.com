@@ -32,9 +32,9 @@ $this->params['breadcrumbs'][] = $this->title;
                 <?php foreach($activeMembers as $row): ?>
                     <div class="row">
                         <?php foreach($row as $i=>$member):?>
-                            <div class="col-xs-4 col-sm-4 col-md-2 person-card <?= ($i==0 && count($row)<6)?'col-md-offset-'.(6-count($row)):'' ?>">
+                            <div class="col-6 col-sm-4 col-md-2 person-card <?= ($i==0 && count($row)<6)?'col-md-offset-'.(6-count($row)):'' ?>">
                                     <div class="avatar">
-                                        <img src="<?= Html::encode(Yii::getAlias($member['photo'])) ?>" class="img-responsive" alt="" />
+                                        <img src="<?= Html::encode(Yii::getAlias($member['photo'])) ?>" class="img-fluid" alt="" />
                                     </div>
                                     <div class="team-content">
                                         <ul class="links-inline links-circle">
@@ -74,10 +74,10 @@ $this->params['breadcrumbs'][] = $this->title;
                 <?php foreach($inactiveMembers as $row): ?>
                 <div class="row">
                     <?php foreach($row as $i=>$member):?>
-                        <div class="col-xs-4 col-sm-4 col-md-2 person-card <?= ($i==0 && count($row)<6)?'col-md-offset-'.(6-count($row)):'' ?>">
+                        <div class="col-6 col-sm-4 col-md-2 person-card <?= ($i==0 && count($row)<6)?'col-md-offset-'.(6-count($row)):'' ?>">
                             <div class="team-card">
                                 <div class="avatar">
-                                    <img src="<?= Html::encode(Yii::getAlias($member['photo'])) ?>" class="img-responsive" alt="" />
+                                    <img src="<?= Html::encode(Yii::getAlias($member['photo'])) ?>" class="img-fluid" alt="" />
                                 </div>
                                 <div class="team-content">
                                     <ul class="links-inline links-circle">
@@ -117,10 +117,10 @@ $this->params['breadcrumbs'][] = $this->title;
                 <?php foreach($pastMembers as $row): ?>
                 <div class="row">
                     <?php foreach($row as $i=>$member):?>
-                        <div class="col-xs-4 col-sm-4 col-md-2 person-card <?= ($i==0 && count($row)<6)?'col-md-offset-'.(6-count($row)):'' ?>">
+                        <div class="col-6 col-sm-4 col-md-2 person-card <?= ($i==0 && count($row)<6)?'col-md-offset-'.(6-count($row)):'' ?>">
                             <div class="team-card">
                                 <div class="avatar">
-                                    <img src="<?= Html::encode(Yii::getAlias($member['photo'])) ?>" class="img-responsive" alt="" />
+                                    <img src="<?= Html::encode(Yii::getAlias($member['photo'])) ?>" class="img-fluid" alt="" />
                                 </div>
                                 <div class="team-content">
                                     <ul class="links-inline links-circle">

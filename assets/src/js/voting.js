@@ -6,13 +6,10 @@ $(function($) {
         $.ajax({
             url: link.attr('data-vote-url'),
             method: 'post',
-            dataType: "json",
+            dataType: 'json',
             success: function(data) {
 
-                console.log(data);
-
                 var voting = link.parents('.voting');
-                console.log(voting);
                 voting.children('.votes-up').removeClass('voted').children('.votes').html(data.up);
                 voting.children('.votes-down').removeClass('voted').children('.votes').html(data.down);
                 if (data.userVote == 1) {

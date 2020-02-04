@@ -54,7 +54,7 @@ $this->beginContent('@app/views/guide/partials/_guide-layout.php', [
         <div class="edit-icon"><i class="fa fa-github"></i></div>
         <p class="lang-en">
             Found a typo or you think this page needs improvement?<br />
-                <a href="<?= $editUrl; ?>">Edit it on github</a> !
+                <a href="<?= $editUrl ?>">Edit it on github</a> !
         </p>
     </div>
     <?php endif; ?>

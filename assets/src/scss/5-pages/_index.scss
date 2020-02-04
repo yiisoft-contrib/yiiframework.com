@@ -1,6 +1,7 @@
 .content-separator {
   margin-top: 2em;
 }
+
 .btn-front {
   color: $eshill-blue;
   background-color: transparent;
@@ -12,11 +13,13 @@
     background-color: #E6F8EA;
     border-color: $eshill-light-blue;
   }
+
   &:hover {
     color: darken($eshill-light-blue, 12%);
     background-color: #E6F8EA;
     border-color: darken($eshill-light-blue, 12%);
   }
+
   &:active,
   &.active,
   .open > &.dropdown-toggle {
@@ -32,8 +35,9 @@
       border-color: darken($eshill-light-blue, 12%);
     }
   }
-  @include rem(font-size, 22px);
-  transition:color 0.4s ease-out, background 0.4s ease-in;
+
+  font-size: 1.3rem;
+  transition: color 0.4s ease-out, background 0.4s ease-in;
   //#D9F1E2 border hover
   //#E6F8EA background hover
   //$eshill-light-blue background active
@@ -41,17 +45,30 @@
     @include rem(font-size, 16px);
   }
   @include rem(margin-bottom, 12px);
-} // btn end
+}
+
+// btn end
 .btn-frontf {
   @include button-variant($eshill-green, transparent, lighten($eshill-green, 20%));
 }
 
 ul.latest-list {
   list-style-type: square;
-  @include rem(line-height, 36px);
+  line-height: 1.3rem;
+
   li {
-    a {
-      @include rem(font-size, 18px);
+    margin-bottom: 0.5em;
+
+    p {
+      margin-bottom: 0;
     }
+  }
+}
+
+.home-sections {
+  > .row > div {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
   }
 }

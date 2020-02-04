@@ -425,6 +425,11 @@ boom@5.x.x:
   dependencies:
     hoek "4.x.x"
 
+bootstrap@^4.3.1:
+  version "4.3.1"
+  resolved "https://registry.yarnpkg.com/bootstrap/-/bootstrap-4.3.1.tgz#280ca8f610504d99d7b6b4bfc4b68cec601704ac"
+  integrity sha512-rXqOmH1VilAt2DyPzluTi2blhk17bO7ef+zLLPlWvG494pDxcM234pJ8wTc/6R40UWizAIIMgxjvxZg5kmsbag==
+
 brace-expansion@^1.1.7:
   version "1.1.11"
   resolved "https://registry.yarnpkg.com/brace-expansion/-/brace-expansion-1.1.11.tgz#3c7fcbf529d87226f3d2f52b966ff5271eb441dd"
@@ -1953,12 +1958,13 @@ gulp-sourcemaps@^1.6.0:
     through2 "2.X"
     vinyl "1.X"
 
-gulp-touch@^1.0.1:
-  version "1.0.1"
-  resolved "https://registry.yarnpkg.com/gulp-touch/-/gulp-touch-1.0.1.tgz#07e5d7d29e5e01f0baa4fa7664d83fcea8a6e958"
+gulp-touch-cmd@^0.0.1:
+  version "0.0.1"
+  resolved "https://registry.yarnpkg.com/gulp-touch-cmd/-/gulp-touch-cmd-0.0.1.tgz#73aebd040f5cbfbf567a06e3fdb7976ef0fb88cc"
+  integrity sha1-c669BA9cv79Wegbj/beXbvD7iMw=
   dependencies:
     graceful-fs "^4.1.2"
-    map-stream "0.0.6"
+    through2 "^2.0.3"
 
 gulp-uglify@^1.2.0:
   version "1.5.4"
@@ -2528,6 +2534,11 @@ jpeg-js@^0.1.1:
   version "0.1.2"
   resolved "https://registry.yarnpkg.com/jpeg-js/-/jpeg-js-0.1.2.tgz#135b992c0575c985cfa0f494a3227ed238583ece"
 
+jquery@^3.3.1:
+  version "3.3.1"
+  resolved "https://registry.yarnpkg.com/jquery/-/jquery-3.3.1.tgz#958ce29e81c9790f31be7792df5d4d95fc57fbca"
+  integrity sha512-Ubldcmxp5np52/ENotGxlLe6aGMvmF4R8S6tZjsP6Knsaxd/xp3Zrh50cG93lR6nPXyUFwzN3ZSOQI0wRJNdGg==
+
 js-base64@^2.1.8, js-base64@^2.1.9:
   version "2.4.3"
   resolved "https://registry.yarnpkg.com/js-base64/-/js-base64-2.4.3.tgz#2e545ec2b0f2957f41356510205214e98fad6582"
@@ -2978,10 +2989,6 @@ map-cache@^0.2.0, map-cache@^0.2.2:
 map-obj@^1.0.0, map-obj@^1.0.1:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/map-obj/-/map-obj-1.0.1.tgz#d933ceb9205d82bdcf4886f6742bdc2b4dea146d"
-
-map-stream@0.0.6:
-  version "0.0.6"
-  resolved "https://registry.yarnpkg.com/map-stream/-/map-stream-0.0.6.tgz#d2ef4eb811a28644c7a8989985c69c2fdd496827"
 
 map-visit@^1.0.0:
   version "1.0.0"
@@ -3652,6 +3659,11 @@ pngjs-nozlib@^1.0.0:
 pngjs@^2.0.0:
   version "2.3.1"
   resolved "https://registry.yarnpkg.com/pngjs/-/pngjs-2.3.1.tgz#11d1e12b9cb64d63e30c143a330f4c1f567da85f"
+
+popper.js@^1.15.0:
+  version "1.15.0"
+  resolved "https://registry.yarnpkg.com/popper.js/-/popper.js-1.15.0.tgz#5560b99bbad7647e9faa475c6b8056621f5a4ff2"
+  integrity sha512-w010cY1oCUmI+9KwwlWki+r5jxKfTFDVoadl7MSrIujHU5MJ5OR6HTDj6Xo8aoR/QsA56x8jKjA59qGH4ELtrA==
 
 portscanner@2.1.1:
   version "2.1.1"
@@ -4909,6 +4921,16 @@ tweetnacl@^0.14.3, tweetnacl@~0.14.0:
 typedarray@^0.0.6, typedarray@~0.0.5:
   version "0.0.6"
   resolved "https://registry.yarnpkg.com/typedarray/-/typedarray-0.0.6.tgz#867ac74e3864187b1d3d47d996a78ec5c8830777"
+
+typeface-fira-mono@^0.0.72:
+  version "0.0.72"
+  resolved "https://registry.yarnpkg.com/typeface-fira-mono/-/typeface-fira-mono-0.0.72.tgz#b396d2a08814bb3a32d94ef71c74d37883c3475b"
+  integrity sha512-bouzjtniGMrakhazipUl6mskswe7UvH3qynU5Wsl0O7NMuL178VtZ0pOqUGsjBJ42l64GZo9nUMI1eSK4kvJbQ==
+
+typeface-pt-sans@^0.0.72:
+  version "0.0.72"
+  resolved "https://registry.yarnpkg.com/typeface-pt-sans/-/typeface-pt-sans-0.0.72.tgz#c47d198510b2ed1272ad6329cf1ae5f782ebf4cf"
+  integrity sha512-eDMv72dE+0dwjIDltzZAUusF+cDgOfZKazHZK08uKCOG/BEzY6oc/WqtQLN71j5/voTXFi5M4+nXNbZnCayDMQ==
 
 ua-parser-js@0.7.12:
   version "0.7.12"

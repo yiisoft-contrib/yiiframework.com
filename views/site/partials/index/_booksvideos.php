@@ -8,13 +8,11 @@ use yii\helpers\Url;
         <div class="row">
             <div class="col-md-12">
                 <div class="dashed-heading-front-books">
-                    <span>Books and Videos on Yii</span>
+                    <span>Books about Yii</span>
                 </div>
             </div>
         </div>
-        <div class="row">
-            <?= $this->render('/site/partials/_books.php', ['books' => $books]) ?>
-        </div>
+        <?= $this->render('/site/partials/_books.php', ['books' => $books]) ?>
         <div class="row see-all">
             <a href="<?= Url::to(['site/books']) ?>" class="btn btn-front btn-block">See all books</a>
         </div>

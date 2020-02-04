@@ -11,9 +11,7 @@
 
 use app\models\Doc;
 use app\widgets\SideNav;
-use yii\apidoc\templates\bootstrap\SideNavWidget;
 use yii\helpers\Html;
-use yii\helpers\StringHelper;
 use yii\helpers\Url;
 
 $this->registerJs("
@@ -33,7 +31,7 @@ $this->endBlock();
 
 ?>
 <div class="container api-content">
-    <div class="row visible-xs">
+    <div class="row d-block d-sm-none">
         <div class="col-md-12">
             <p class="pull-right topmost">
                 <button type="button" title="Toggle Side-Nav" class="btn btn-primary btn-xs" data-toggle="offcanvas">SideNav</button>

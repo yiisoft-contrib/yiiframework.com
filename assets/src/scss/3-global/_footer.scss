@@ -1,62 +1,73 @@
 footer {
-  background-color: $footer-background-color;
+  background-color: $footer-bg;
   color: darken($footer-color, 10%);
-  @include rem(min-height, 428px);
+
   a {
-    text-decoration: none;
     color: darken($footer-color, 10%);
+
     &:hover {
       color: $footer-color;
     }
+
     &:focus {
       color: $footer-color;
       text-decoration: none;
     }
   }
 }
-.footer-inner {
-  .center-block {
-    white-space: nowrap;
-    width: 40%;
-    margin-left: 2rem;
-    margin-right: auto;
-  }
-}
+
 .footerList {
-  list-style: outside none none;
-  @include rem(margin-top, 60px);
+  list-style: none;
+  padding-left: 1rem;
+  margin-top: 2rem;
 }
+
 .footerList_item {
-  @include rem(font-size, 14px);
-  @include rem(margin-bottom, 12px);
+  margin-bottom: 0.2rem;
+
   .social {
-    white-space: nowrap;
-    a {
-      border: none;
-    }
     i {
-      @include rem(font-size, 14px);
-      @include rem(margin-left, 3px);
-      @include rem(padding, 6px 6px);
+      margin-left: 0;
+      padding: 0.6rem 0.5rem;
       display: inline-block;
       background-color: $footer-color;
-      color: $footer-background-color;
-      border-radius:50%;
-      @include rem(width, 24px);
-      @include rem(height, 24px);
-      transition:color 0.4s ease-out, background 0.4s ease-in;
+      color: $footer-bg;
+      border-radius: 50%;
+      width: 2rem;
+      height: 2rem;
+      margin-bottom: .2em;
+      transition: color 0.3s ease-out, background 0.3s ease-in;
+      line-height: 1rem;
+
       &:hover {
         background-color: #fff;
-        color: $footer-background-color;
+
+        &.fa-github {
+          color: $sns-github;
+        }
+
+        &.fa-facebook {
+          color: $sns-facebook;
+        }
+
+        &.fa-twitter {
+          color: $sns-twitter;
+        }
+
+        &.fa-rss {
+          color: #e5722e;
+        }
       }
     }
   }
 }
+
 .footerList_item:first-child {
   color: $footer-color;
-  @include rem(font-size, 18px);
-  font-family: $bold-headings-font-family;
-  @include rem(margin-top, 2px);
+  font-size: 1.2rem;
+  font-weight: 600;
+  margin-top: .2rem;
   margin-left: 0;
-  @include rem(margin-bottom, 30px);
+  margin-bottom: 1rem;
 }
+

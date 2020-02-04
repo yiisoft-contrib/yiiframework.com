@@ -24,7 +24,7 @@ if ($tag) {
 
 if (UserPermissions::canManageNews()) {
 	$this->beginBlock('adminNav');
-	echo \yii\bootstrap\Nav::widget([
+	echo \yii\bootstrap4\Nav::widget([
 		'id' => 'admin-nav',
 		'items' => [
 			['label' => 'News Admin', 'url' => ['news/admin']],

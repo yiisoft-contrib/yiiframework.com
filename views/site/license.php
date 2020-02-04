@@ -18,7 +18,7 @@ $this->title = 'License';
 <div class="container style_external_links">
     <div class="content license">
         <div class="row">
-            <div class="text col-xs-12">
+            <div class="text col-12">
                 <h2 id="framework">License of Yii Framework</h2>
 
                 <p>The Yii framework is free software. It is released under the terms of the following BSD License.</p>
@@ -54,14 +54,14 @@ $this->title = 'License';
         </div>
 
         <div class="row points">
-            <div class="col-md-4 col-xs-12 must">
+            <div class="col-12 col-md-4 must">
                 <h2>Must</h2>
 
                 <ul>
                     <li>Retain the original copyright notice shown on the left.</li>
                 </ul>
             </div>
-            <div class="col-md-4 col-xs-12 can">
+            <div class="col-12 col-md-4 can">
                 <h2>Can</h2>
 
                 <ul>
@@ -73,7 +73,7 @@ $this->title = 'License';
                     <li>Place a warranty on the software.</li>
                 </ul>
             </div>
-            <div class="col-md-4 col-xs-12 cannot">
+            <div class="col-12 col-md-4 cannot">
                 <h2>Cannot</h2>
 
                 <ul>
@@ -87,7 +87,7 @@ $this->title = 'License';
     </div>
     <div class="content license">
         <div class="row">
-            <div class="text col-xs-12">
+            <div class="col-12 text">
                 <h2 id="docs">License of Official and User-contributed Documentation</h2>
 
                 <p>The text contained in the official and user-contributed Yii documentation is
@@ -102,14 +102,14 @@ $this->title = 'License';
             </div>
         </div>
         <div class="row points">
-            <div class="col-md-6 col-xs-12 must">
+            <div class="col-12 col-md-6 must">
                 <h2>Must</h2>
                 <ul>
                     <li>Grant the same freedoms as in original license.</li>
                     <li>Acknowledge the authors in form of linking back to the original article.</li>
                 </ul>
             </div>
-            <div class="col-md-6 col-xs-12 can">
+            <div class="col-12 col-md-6 can">
                 <h2>Can</h2>
                 <ul>
                     <li>Copy.</li>

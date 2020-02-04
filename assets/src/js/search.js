@@ -465,20 +465,20 @@ adjustSearchBoxSize = function() {
     //openSearchWidth = ($('.container').width() - $('#main-nav').width() - $('#main-nav-head').width() - 120) * 0.7;
     //closedSearchWidth = Math.floor(openSearchWidth * 0.75);
 
-    if (searchBox.val() == "") {
+  /*  if (searchBox.val() == "") {
         searchBox.width(closedSearchWidth + "px");
     } else {
         searchBox.width(openSearchWidth + "px");
     }
-    searchResultBox.width((openSearchWidth - 2) + "px"); // -2 for border
+    searchResultBox.width((openSearchWidth - 2) + "px"); // -2 for border*/
 
 };
 
-jQuery(window).resize(adjustSearchBoxSize);
+//jQuery(window).resize(adjustSearchBoxSize);
 
 jQuery(document).ready(function () {
 
-    adjustSearchBoxSize();
+  /*  adjustSearchBoxSize();
     // animate search box to open on focus
     searchBox.focus(function() {
         $(this).animate({width: openSearchWidth + "px"}, 250);
@@ -489,7 +489,7 @@ jQuery(document).ready(function () {
             $this.animate({width: closedSearchWidth + "px"}, 250);
         }
     });
-
+*/
     // search when typing in search field
     searchBox.on("keyup", function(event) {
         var query = $(this).val().trim();

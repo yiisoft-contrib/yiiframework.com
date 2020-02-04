@@ -11,7 +11,6 @@
     @include rem(padding-right, $font-size*0.5);
     @include rem(padding-left, $font-size*0.5);
     color: $color;
-    font-family: $bold-headings-font-family;
     @media (max-width: 1140px) {
       @include rem(font-size, $font-size * 0.8);
       @include rem(top, -($font-size*0.65));
@@ -22,6 +21,7 @@
     }
     @include rem(font-size, $font-size);
     @include rem(top, -($font-size*0.80));
+    font-weight: 600;
     background-color: $background;
     position: relative;
   }
@@ -34,12 +34,15 @@
 .dashed-heading-jumbo {
   @include dashed-heading-variant($eshill-yellow, $eshill-light-blue, fontsize(h1));
 }
+
 .dashed-heading-front {
   @include dashed-heading-variant($eshill-header-color, $body-bg, fontsize(h1));
 }
+
 .dashed-heading-front-section {
   @include dashed-heading-variant($eshill-header-color, $body-bg, fontsize(h3));
 }
+
 .dashed-heading-front-books {
   @include dashed-heading-variant($eshill-header-color, #EBF1F2, fontsize(h1));
 }

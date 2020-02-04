@@ -11,25 +11,17 @@ $this->registerJs("
 ?>
 <div class="sitejumbo">
     <div class="container">
-        <div class="row">
-            <div class="col-md-12">
-                <h1>Yes, it is!</h1>
-                <p class="propaganda">
-                    Yii is a fast, secure, and efficient PHP framework.<br>
-                    Flexible yet pragmatic. <br>
-                    Works right out of the box. <br>
-                    Has reasonable defaults.
-                </p>
-            </div>
-        </div>
+        <h1>Yes, it is!</h1>
+        <p class="propaganda">
+            Yii is a fast, secure, and efficient PHP framework.<br>
+            Flexible yet pragmatic. <br>
+            Works right out of the box. <br>
+            Has reasonable defaults.
+        </p>
     </div>
     <div class="container">
-        <div class="row">
-            <div class="col-md-12">
-                <div class="dashed-heading-jumbo">
-                    <span><a href="<?= Url::to(['doc/guide/2.0/en/start-installation']) ?>" class="btn">Get Started</a> </span>
-                </div>
-            </div>
+        <div class="dashed-heading-jumbo">
+            <span><a href="<?= Url::to(['doc/guide/2.0/en/start-installation']) ?>" class="btn">Get Started</a> </span>
         </div>
     </div>
     <div class="container">

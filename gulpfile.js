@@ -10,6 +10,7 @@ var rimraf = require('rimraf');
 var yargs = require('yargs');
 var yaml = require('js-yaml');
 var fs = require('fs');
+var touch = require('gulp-touch-cmd');
 
 // Check for --production flag
 const PRODUCTION = !!(yargs.argv.production);
@@ -42,10 +43,10 @@ function styles() {
     .pipe($.if(PRODUCTION, $.cssnano()))
     .pipe($.if(!PRODUCTION, $.sourcemaps.write('.', { sourceRoot: '../../assets/src/scss/' })))
     .pipe(gulp.dest(config.PATHS.dist + '/css'))
-    .pipe($.touch())
+    .pipe(touch())
     .pipe($.if(!PRODUCTION, browsersync.stream()))
     .pipe($.notify({ message: 'Styles task complete' }));
-};
+}
 // forum header CSS file for discourse integration
 function forumheader() {
   return gulp.src(config.PATHS.src +'/scss/header.scss')
@@ -53,10 +54,9 @@ function forumheader() {
     .pipe($.sass(sassOptions).on('error', $.sass.logError))
     .pipe($.autoprefixer(autoprefixerOptions))
     .pipe(gulp.dest(config.PATHS.dist + '/css'))
-    .pipe($.touch())
+    .pipe(touch())
     .pipe($.notify({ message: 'Forum Header Styles task complete' }));
-};
-
+}
 // Scripts
 function scripts() {
   return gulp.src(config.PATHS.javascript)
@@ -66,10 +66,9 @@ function scripts() {
     .pipe($.if(PRODUCTION, $.uglify()))
     .pipe($.if(!PRODUCTION, $.sourcemaps.write('.', { sourceRoot: '../../assets/src/js/' })))
     .pipe(gulp.dest(config.PATHS.dist + '/js'))
-    .pipe($.touch())
+    .pipe(touch())
     .pipe($.notify({ message: 'Scripts task complete' }));
-};
-
+}
 // sprites
 function sprites() {
     var spriteData = gulp.src('data/avatars/*')
@@ -82,13 +81,17 @@ function sprites() {
     spriteData.img.pipe(gulp.dest('web/image'));
     spriteData.css.pipe(gulp.dest(config.PATHS.src + '/scss/2-vendors'));
     return spriteData;
-};
-
+}
 // Copy fonts
 function fonts() {
   return gulp.src(config.PATHS.fonts)
     .pipe(gulp.dest(config.PATHS.dist + '/fonts'));
-};
+}
+
+function npmfonts() {
+    return gulp.src(config.PATHS.npmfonts)
+        .pipe(gulp.dest(config.PATHS.dist + '/css/files'));
+}
 
 // Clean
 function clean(done) {
@@ -105,7 +108,7 @@ function clean(done) {
 gulp.task('build', gulp.series(
   clean,
   sprites,
-  gulp.parallel(styles, forumheader, scripts, fonts)
+  gulp.parallel(styles, forumheader, scripts, fonts, npmfonts)
 ));
 
 // Watch
@@ -126,14 +129,14 @@ function watch() {
   // Watch any files in 'assets/dist', reload on change
   gulp.watch([config.PATHS.dist + '/js/*']).on('change', browsersync.reload);
   gulp.watch([config.PATHS.dist + '/css/*']).on('change', browsersync.reload);
-};
-
+}
 // Default task runs build and then watch
 gulp.task('default', gulp.series('build', watch));
 
 // Export these functions to the Gulp client
 gulp.task('clean', clean);
 gulp.task('fonts', fonts);
+gulp.task('npmfonts', npmfonts);
 gulp.task('styles', styles);
 gulp.task('forumheader', forumheader);
 gulp.task('scripts', scripts);

@@ -1,23 +1,27 @@
 
 .search-result {
-    em {
-        background: #ffff00;
-    }
+  em {
+    background: #ffff00;
+  }
 
-    .title {
-      margin-right: 1rem;
-    }
+  .title {
+    margin-right: 1rem;
+  }
 
-    h3, p {
-        width: 100%;
-        max-width: 100%;
-    }
+  h3, p {
+    width: 100%;
+    max-width: 100%;
+  }
 
-    .label {
-      text-decoration: none;
-      font-size: $font-size-base;
-      font-weight: normal;
-    }
+  .label {
+    text-decoration: none;
+    font-size: $font-size-base;
+    font-weight: normal;
+  }
+}
+
+#search-form {
+  position: relative;
 }
 
 #search-resultbox {
@@ -32,6 +36,9 @@
   box-shadow: 0 1px 5px 0 rgba(0, 0, 0, 0.05);
 
   display: none;
+
+  top: 34px;
+  right: 0;
 
   .result-head {
     margin: 0;

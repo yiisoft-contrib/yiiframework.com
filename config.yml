@@ -13,15 +13,15 @@ PATHS:
   # Path to source folder
   src: "assets/src"
   # Paths to fonts
+  npmfonts:
+    - "node_modules/typeface-pt-sans/files/*"
+    - "node_modules/typeface-fira-mono/files/*"
   fonts:
     - "vendor/bower-asset/font-awesome/fonts/**/*"
     - "vendor/bower-asset/bootstrap/fonts/**/*"
-    - "assets/src/fonts/ptsans-bold/**/*"
-    - "assets/src/fonts/ptsans-regular/**/*"
-    - "assets/src/fonts/fira-mono/**/*"
   # Paths to Sass libraries, which can then be loaded with @import
   sass:
-    - "vendor/bower-asset/bootstrap-sass/assets/stylesheets"
+    - "node_modules"
     - "vendor/bower-asset/glidejs/src/sass"
     - "vendor/bower-asset/bootstrap-social"
     - "vendor/scrivo/highlight.php"
@@ -30,8 +30,12 @@ PATHS:
     - "vendor/bower-asset/codemirror/lib"
   # Paths to JavaScript libraries, which are combined into one file
   javascript:
-    - "vendor/bower-asset/jquery/dist/jquery.js"
-    - "vendor/bower-asset/bootstrap-sass/assets/javascripts/bootstrap.js"
+    - "node_modules/jquery/dist/jquery.js"
+    - "node_modules/popper.js/dist/umd/popper.min.js"
+    - "node_modules/bootstrap/js/dist/util.js"
+    - "node_modules/bootstrap/js/dist/collapse.js"
+    - "node_modules/bootstrap/js/dist/dropdown.js"
+    - "node_modules/bootstrap/js/dist/scrollspy.js"
     - "vendor/bower-asset/scrollup/dist/jquery.scrollUp.js"
     - "vendor/yiisoft/yii2/assets/yii.js"
     - "vendor/yiisoft/yii2/assets/yii.validation.js"
