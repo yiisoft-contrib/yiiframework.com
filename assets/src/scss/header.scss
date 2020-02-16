@@ -56,3 +56,14 @@
     }
   }
 }
+
+@media screen and (max-width: 375px) {
+  .nav>li>a {
+    padding: 10px 2px;
+    font-size: 14px;
+  }
+
+  .navbar-inverse .navbar-nav .open .dropdown-menu>li>a {
+    font-size: 14px;
+  }
+}
