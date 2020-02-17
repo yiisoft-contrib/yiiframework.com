@@ -122,3 +122,15 @@ form#search-form.navbar-form div.form-group.nospace div.input-group input#search
    border-radius: $btn-border-radius-base;
  }
 
+@media screen and (max-width: 375px) {
+  .nav > li > a {
+    padding: 10px 2px;
+    font-size: 14px;
+  }
+
+  .navbar-inverse .navbar-nav .open .dropdown-menu > li > a {
+    font-size: 14px;
+  }
+}
+
+
