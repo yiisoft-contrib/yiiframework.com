@@ -41,6 +41,7 @@ return [
         ['yiisoft', 'serializer'],
         ['yiisoft', 'network-utilities'],
         ['yiisoft', 'auth'],
+        ['yiisoft', 'http'],
 
         // cache
         ['yiisoft', 'cache'],
@@ -48,6 +49,7 @@ return [
         ['yiisoft', 'cache-wincache'],
         ['yiisoft', 'cache-file'],
         ['yiisoft', 'cache-db'],
+        ['yiisoft', 'cache-memcached'],
 
         // RBAC
         ['yiisoft', 'rbac'],
@@ -63,6 +65,7 @@ return [
 
         // i18n
         ['yiisoft', 'i18n'],
+        ['yiisoft', 'i18n-translator'],
         ['yiisoft', 'i18n-message-php'],
         ['yiisoft', 'i18n-message-gettext'],
         ['yiisoft', 'i18n-formatter-intl'],
@@ -104,6 +107,7 @@ return [
         ['yiisoft', 'db-mssql'],
         ['yiisoft', 'db-oracle'],
         ['yiisoft', 'db-mongodb'],
+        ['yiisoft', 'db-mariadb'],
         ['yiisoft', 'active-record'],
         //['yiisoft', 'migration'],
         ['yiisoft', 'yii-cycle'],
@@ -115,10 +119,14 @@ return [
         // web
         ['yiisoft', 'yii-web'],
         ['yiisoft', 'view'],
+        ['yiisoft', 'widget'],
+        ['yiisoft', 'yii-widgets'],
+        ['yiisoft', 'assets'],
         ['yiisoft', 'yii-jquery'],
         ['yiisoft', 'yii-masked-input'],
         ['yiisoft', 'yii-dataview'],
         ['yiisoft', 'yii-debug'],
+        ['yiisoft', 'yii-debug-viewer'],
         ['yiisoft', 'yii-gii'],
         ['yiisoft', 'yii-bootstrap4'],
 
