@@ -25,6 +25,7 @@ footer {
 .footerList {
   list-style: outside none none;
   @include rem(margin-top, 60px);
+  padding-left: 0;
 }
 .footerList_item {
   @include rem(font-size, 14px);
