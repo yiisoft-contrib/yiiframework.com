@@ -84,7 +84,7 @@ composer install
 npm install -g gulp-cli
 
 # install dependent NPM modules
-npm update
+npm install
 
 # initialize the application, choose "development"
 ./init
