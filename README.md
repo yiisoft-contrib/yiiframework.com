@@ -11,9 +11,49 @@ If you want to contribute please get in touch with us using the [issue tracker](
 [![Build Status](https://api.travis-ci.com/yiisoft-contrib/yiiframework.com.svg)](https://travis-ci.com/yiisoft-contrib/yiiframework.com)
 
 
-## INSTALLATION
+## PREREQUISITES
 
-Before you start, make sure you have installed [composer](https://getcomposer.org/) and [Node.js](http://nodejs.org/).
+### PHP
+
+PHP 7 is required. Preferrably PHP 7.4.
+
+There's a need to enable some extensions:
+
+- curl
+- fileinfo
+- gd2
+- intl
+- mbstring
+- pdo_mysql
+- php_opcache
+
+Under Windows make sure the following lines are in `php.ini` and aren't commented out:
+
+```ini
+extension=php_curl.dll
+extension=php_fileinfo.dll
+extension=php_gd2.dll
+extension=php_intl.dll
+extension=php_mbstring.dll
+extension=php_pdo_mysql.dll
+extension=php_openssl.dll
+zend_extension=php_opcache.dll
+```
+
+Under Linux or MacOS you need to intall these via your OS package manager.
+
+Also you need a package manager so install [Composer](https://getcomposer.org/download/).
+
+### Node.js
+
+Latest [Node.js](http://nodejs.org/) is needed.
+
+### MariaDB or MySQL 
+
+Latest version of [MariaDB](https://mariadb.org/) or [MySQL](https://www.mysql.com/) is needed.
+
+### Debian or Ubuntu extras
+
 If you are on Debian or Ubuntu you might also want to install the [libnotify-bin](https://packages.debian.org/jessie/libnotify-bin) package,
 which is used by Gulp to inform you about its status.
 
@@ -25,8 +65,7 @@ npm install --global pageres-cli
 
 And then you can use the script `run_pageres.sh` at the root of the source directory to generate screen shots.
 
-
-### Installation instructions
+## INSTALLATION
 
 ```sh
 # clone the project
@@ -37,11 +76,15 @@ cd yiiframework.com
 # install the dependent composer packages
 composer install
 
+# under Windows the folowing is necessary:
+# npm install --production -g windows-build-tools
+# npm config set msvs_version 2015 --global
+
 # install gulp globally if you haven't done so before
-yarn global add gulp-cli
+npm install -g gulp-cli
 
 # install dependent NPM modules
-yarn install
+npm update
 
 # initialize the application, choose "development"
 ./init
@@ -117,7 +160,15 @@ make docs
 ./yii search/rebuild
 ```
 
-### Web Server Setup
+### Using built-in PHP webserver
+
+Using built-in PHP webserver is fine for development:
+
+```
+./yii serve
+```
+
+### Real Web Server Setup
 
 Define a host name `yiiframework.local` that points to `localhost`.
 
@@ -221,7 +272,7 @@ If you generate a personal Github token (from your Github profile settings secti
 * During development, run `gulp` to watch view, Sass and JS file changes and automatically build target CSS/JS files. This command will also launch a browser window which is connected to browsersync.
 * At any time, run `gulp build` to manually rebuild target CSS/JS files from source Sass/JS files.
 * If you only want to watch for changes, you can issue the command `gulp watch`
-* To build the assets for production, specify the `production` flag: `gulp build --production`
+* To build the assets for production, specify the `production` flag: `gulp build --production` or run `npm run build`
 
 ### CSS Files
 
@@ -241,6 +292,7 @@ If you generate a personal Github token (from your Github profile settings secti
 
 
 ## Links
+
 * [Gulp](http://gulpjs.com/)
 * [Browsersync](http://www.browsersync.io/)
 * [Sass](http://sass-lang.com/)

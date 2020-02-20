@@ -10,6 +10,7 @@ var rimraf = require('rimraf');
 var yargs = require('yargs');
 var yaml = require('js-yaml');
 var fs = require('fs');
+var touch = require('gulp-touch-fd');
 
 // Check for --production flag
 const PRODUCTION = !!(yargs.argv.production);
@@ -29,7 +30,7 @@ var sassOptions = {
 };
 
 var autoprefixerOptions = {
-  browsers: config.COMPATIBILITY
+  overrideBrowserslist: config.COMPATIBILITY
 };
 
 // Styles
@@ -42,7 +43,7 @@ function styles() {
     .pipe($.if(PRODUCTION, $.cssnano()))
     .pipe($.if(!PRODUCTION, $.sourcemaps.write('.', { sourceRoot: '../../assets/src/scss/' })))
     .pipe(gulp.dest(config.PATHS.dist + '/css'))
-    .pipe($.touch())
+    .pipe(touch())
     .pipe($.if(!PRODUCTION, browsersync.stream()))
     .pipe($.notify({ message: 'Styles task complete' }));
 };
@@ -53,7 +54,7 @@ function forumheader() {
     .pipe($.sass(sassOptions).on('error', $.sass.logError))
     .pipe($.autoprefixer(autoprefixerOptions))
     .pipe(gulp.dest(config.PATHS.dist + '/css'))
-    .pipe($.touch())
+    .pipe(touch())
     .pipe($.notify({ message: 'Forum Header Styles task complete' }));
 };
 
@@ -66,7 +67,7 @@ function scripts() {
     .pipe($.if(PRODUCTION, $.uglify()))
     .pipe($.if(!PRODUCTION, $.sourcemaps.write('.', { sourceRoot: '../../assets/src/js/' })))
     .pipe(gulp.dest(config.PATHS.dist + '/js'))
-    .pipe($.touch())
+    .pipe(touch())
     .pipe($.notify({ message: 'Scripts task complete' }));
 };
 
