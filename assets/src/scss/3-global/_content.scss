@@ -3,3 +3,10 @@
   @include rem(margin-top, 25px);
   @include rem(margin-bottom, 25px);
 }
+
+@media (min-width: 768px) and (max-width: 991px)  {
+  .guide-content .row {
+    display: flex;
+    flex-wrap: wrap;
+  }
+}
