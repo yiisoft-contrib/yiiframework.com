@@ -17,7 +17,7 @@
   "devDependencies": {
     "browser-sync": "^2.18.13",
     "es6-promise": "*",
-    "gulp": "gulpjs/gulp#4.0",
+    "gulp": "^4.0.2",
     "gulp-autoprefixer": "^3.1.0",
     "gulp-concat": "^2.5.2",
     "gulp-cssnano": "^2.1.0",
