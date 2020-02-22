@@ -1,5 +1,6 @@
 .glide {
   $that: '.glide' !default;
+  margin-left: -1px;
 
 
   &__wrapper {}
@@ -8,7 +9,9 @@
   &__track {}
 
 
-  &__slide {}
+  &__slide {
+    padding-left: 1px;
+  }
 
 
   &__arrows {
@@ -130,3 +133,4 @@
 
   &--slideshow {}
 }
+
