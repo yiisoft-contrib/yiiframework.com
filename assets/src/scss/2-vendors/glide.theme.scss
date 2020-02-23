@@ -8,7 +8,11 @@
   &__track {}
 
 
-  &__slide {}
+  &__slide {
+    img {
+      padding-left: 1px;
+    }
+  }
 
 
   &__arrows {
