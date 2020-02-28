@@ -195,10 +195,8 @@ nav.wiki-pagination-holder {
 .next-revision {
   float: right;
 }
-@media screen and (max-width: 767px) {
-  .list-view {
-    a {
-      word-break: break-word;
-    }
+.list-view {
+  a {
+    word-break: break-word;
   }
 }
