@@ -76,6 +76,8 @@
       > li.separator {
         text-transform: uppercase;
         color: $eshill-section-bgcolor;
+        padding-left: 15px !important;
+        border-bottom: 1px solid rgba(255, 255, 255, .3) !important;
       }
     }
   }
