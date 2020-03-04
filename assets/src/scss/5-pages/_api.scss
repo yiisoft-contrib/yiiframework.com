@@ -45,6 +45,7 @@ $api-box-padding-y: ceil($font-size-base / 2);
             @extend .content;
             @extend pre;
             @extend code;
+            word-break: break-all;
         }
 
         div.code {
@@ -166,6 +167,10 @@ $api-box-padding-y: ceil($font-size-base / 2);
     }
 
     table {
+        display: block;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+        border: none !important;
         tbody > tr > td,
         tbody > tr > th {
             padding-left: $api-box-padding-x;
