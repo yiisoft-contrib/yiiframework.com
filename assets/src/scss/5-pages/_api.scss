@@ -45,7 +45,6 @@ $api-box-padding-y: ceil($font-size-base / 2);
             @extend .content;
             @extend pre;
             @extend code;
-            word-break: break-all;
         }
 
         div.code {
@@ -207,6 +206,10 @@ $api-box-padding-y: ceil($font-size-base / 2);
         @include rem(margin, 0 0 10px 0);
         border-top: 1px #ddd solid;
     }
+
+  code {
+    word-break: break-all;
+  }
 
 }
 #api-navigation {
