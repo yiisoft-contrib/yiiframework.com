@@ -190,11 +190,6 @@ $api-box-padding-y: ceil($font-size-base / 2);
         color: #693;
     }
 
-
-    table.detail-table .param-name-col { width: 15%; min-width: 10em; }
-    table.detail-table .param-type-col { width: 20%; min-width: 12em; }
-    table.detail-table .param-desc-col { width: 65%; }
-
     table.summary-table .col-method   { width: 20%; }
     table.summary-table .col-property { width: 20%; }
     table.summary-table .col-const    { width: 20%; }
@@ -209,6 +204,10 @@ $api-box-padding-y: ceil($font-size-base / 2);
 
   code {
     word-break: break-all;
+  }
+
+  pre {
+    display: grid;
   }
 
 }
