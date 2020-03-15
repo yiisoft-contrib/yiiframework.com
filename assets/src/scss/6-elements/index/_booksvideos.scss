@@ -44,6 +44,9 @@
     }
     .img-responsive {
         max-width: 75%;
+        @media (max-width: 767px) {
+          max-width: 210px;
+        }
     }
 
     .skill {
