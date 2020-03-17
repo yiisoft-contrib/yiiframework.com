@@ -3,6 +3,11 @@
 .avatar img {
     border: 2px solid $eshill-section-bgcolor;
     margin-bottom: 1em;
+    @media (max-width: 767px)  {
+      max-width: 210px;
+      margin-left: auto;
+      margin-right: auto;
+    }
 }
 
 .heading-separator h2 {
@@ -11,7 +16,9 @@
 }
 
 .person-card {
-  height:45rem;
+    @media (min-width: 767px)  {
+      height:45rem;
+    }
 }
 
 .team-content {
