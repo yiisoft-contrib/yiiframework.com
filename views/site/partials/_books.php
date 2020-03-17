@@ -8,7 +8,7 @@ use yii\helpers\Html;
 <div class="books-list">
 <?php foreach ($books as $i => $book): ?>
     <?php if ($i !== 0 && $i % 2 === 0): ?>
-        <div class="clearfix visible-md"></div>
+        <div class="clearfix visible-sm visible-md"></div>
     <?php endif ?>
 
     <?php if ($i !== 0 && $i % 5 === 0): ?>
@@ -16,7 +16,7 @@ use yii\helpers\Html;
     <?php endif ?>
 
     <div
-        class="col-lg-5ths col-md-6 col-xs-12 books-item">
+        class="col-lg-5ths col-md-6 col-sm-6 col-xs-12 books-item">
         <div class="books-image">
             <a href="<?= $book['url'] ?>" target="_blank" rel="noopener noreferrer">
                 <img src="<?= Yii::getAlias(Html::encode($book['image'])) ?>"
