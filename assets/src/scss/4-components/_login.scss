@@ -118,19 +118,21 @@ For .omb_spanOr use @body-bg instead of white.
       }
 
       .github-icon{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-left: auto;
+        margin-right: auto;
         background: #1e6887;
-        color: #fff;
         border-radius: 100px;
-        @include rem(padding, 11px 22px);
-        font-size: 6rem;
+        width: 90px;
+        height: 90px;
+        font-size: 4rem;
 
         i{
-          background: #fff;
-          color: #1e6887;
+          background-color: #1e6887;
+          color: #ffffff;
           border-radius: 25px;
-          @include rem(line-height, 50px);
-          @include rem(width, 50px);
-          margin-left: -1px;
         }
       }
 
