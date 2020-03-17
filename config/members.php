@@ -30,7 +30,7 @@ return [
         'forumName' => 'samdark',
         'period' => 'Mar 2010',
         'location' => 'Voronezh, Russia',
-        'duty' => 'Core framework development',
+        'duty' => 'Project lead',
         'photo' => '@web/image/team/samdark.jpg',
         'github' => 'samdark',
         'twitter' => 'sam_dark',
@@ -203,7 +203,7 @@ return [
         'duty' => 'Queue extension',
         'photo' => '@web/image/team/zhuravljov.jpg',
         'github' => 'zhuravljov',
-        'status' => TeamStatus::TEAM_STATUS_ACTIVE,
+        'status' => TeamStatus::TEAM_STATUS_INACTIVE,
     ],
     [
         'name' => 'Alexey Rogachev',
@@ -237,7 +237,7 @@ return [
         'photo' => '@web/image/team/hiqsol.jpg',
         'github' => 'hiqsol',
         'twitter' => 'hiqsol',
-        'status' => TeamStatus::TEAM_STATUS_ACTIVE,
+        'status' => TeamStatus::TEAM_STATUS_INACTIVE,
     ],
     [
         'name' => 'Mehdi Achour',
@@ -249,6 +249,6 @@ return [
         'photo' => '@web/image/team/machour.jpg',
         'github' => 'machour',
         'twitter' => 'mac_hour',
-        'status' => TeamStatus::TEAM_STATUS_ACTIVE,
+        'status' => TeamStatus::TEAM_STATUS_INACTIVE,
     ],
 ];
