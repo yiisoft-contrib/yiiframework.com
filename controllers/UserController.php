@@ -4,6 +4,7 @@ namespace app\controllers;
 
 use app\components\mailers\EmailVerificationMailer;
 use app\models\Badge;
+use app\models\ChangeEmailForm;
 use app\models\ChangePasswordForm;
 use app\models\Extension;
 use app\models\Star;
@@ -36,11 +37,11 @@ class UserController extends BaseController
         return [
             'access' => [
                 'class' => AccessControl::class,
-                'only' => ['profile', 'request-email-verification', 'change-password', 'upload-avatar', 'delete-avatar'],
+                'only' => ['profile', 'request-email-verification', 'change-password', 'upload-avatar', 'delete-avatar', 'change-email'],
                 'rules' => [
                     [
                         'allow' => true,
-                        'actions' => ['profile', 'request-email-verification', 'change-password', 'upload-avatar', 'delete-avatar'],
+                        'actions' => ['profile', 'request-email-verification', 'change-password', 'upload-avatar', 'delete-avatar', 'change-email'],
                         'roles' => ['@'],
                     ],
                 ]
@@ -247,6 +248,24 @@ class UserController extends BaseController
 
         return $this->render('changePassword', [
             'changePasswordForm' => $changePasswordForm,
+        ]);
+    }
+
+    public function actionChangeEmail()
+    {
+        /** @var User $user */
+        $user = Yii::$app->user->identity;
+
+        $this->sectionTitle = null;
+
+        $changeEmailForm = new ChangeEmailForm($user);
+        if ($changeEmailForm->load(Yii::$app->request->post()) && $changeEmailForm->save()) {
+            Yii::$app->getSession()->setFlash('success', 'The email has been changed.');
+            return $this->redirect(['/user/profile']);
+        }
+
+        return $this->render('changeEmail', [
+            'changeEmailForm' => $changeEmailForm,
         ]);
     }
 

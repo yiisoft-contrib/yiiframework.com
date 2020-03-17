@@ -93,7 +93,7 @@ return [
     'user' => 'user/index',
     'user/<id:\d+>' => 'user/view',
     'user/avatar/<id:\d+>' => 'user/avatar',
-    'user/<action:halloffame|profile|request-email-verification|change-password|upload-avatar|delete-avatar>' => 'user/<action>',
+    'user/<action:halloffame|profile|request-email-verification|change-password|change-email|upload-avatar|delete-avatar>' => 'user/<action>',
     'badges' => 'user/badges',
     'badge/<name:[\w\-]+>' => 'user/view-badge',
 
