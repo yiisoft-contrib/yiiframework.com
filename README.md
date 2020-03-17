@@ -30,14 +30,13 @@ There's a need to enable some extensions:
 Under Windows make sure the following lines are in `php.ini` and aren't commented out:
 
 ```ini
-extension=php_curl.dll
-extension=php_fileinfo.dll
-extension=php_gd2.dll
-extension=php_intl.dll
-extension=php_mbstring.dll
-extension=php_pdo_mysql.dll
-extension=php_openssl.dll
-zend_extension=php_opcache.dll
+extension=curl
+extension=fileinfo
+extension=gd2
+extension=intl
+extension=mbstring
+extension=pdo_mysql
+extension=openssl
 ```
 
 Under Linux or MacOS you need to intall these via your OS package manager.
