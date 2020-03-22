@@ -92,6 +92,9 @@ ol.hl-main pre {
   overflow: auto;
   word-wrap: normal;
   white-space: pre;
+  @media (max-width: 767px)  {
+    @include rem(padding-left, 10px);
+  }
 
   .hljs-comment {
     font-style: normal;
