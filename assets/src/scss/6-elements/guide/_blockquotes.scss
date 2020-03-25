@@ -18,6 +18,10 @@
     @include rem(padding-top, 75px);
     background-position: center 20px;
   }
+
+  a {
+    word-break: break-word;
+  }
 }
 
 blockquote.tip {
