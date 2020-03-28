@@ -171,3 +171,9 @@ div.image {
   @include rem(height, 12px);
   background-image: url(../../../image/guide/tarr.svg);
 }
+.guide-view {
+  code,
+  a {
+    word-break: break-all;
+  }
+}
