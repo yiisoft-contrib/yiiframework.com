@@ -154,6 +154,10 @@ $api-box-padding-y: ceil($font-size-base / 2);
         border-right: solid 1px #ddd;
         padding: $api-box-padding-y $api-box-padding-x;
         margin: 0;
+
+        a {
+          word-break: break-all;
+        }
     }
     .doc-description.deprecated {
         background: lightpink;
