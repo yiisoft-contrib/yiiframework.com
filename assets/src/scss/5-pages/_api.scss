@@ -155,8 +155,8 @@ $api-box-padding-y: ceil($font-size-base / 2);
         padding: $api-box-padding-y $api-box-padding-x;
         margin: 0;
 
-        a {
-          word-break: break-all;
+        li {
+          overflow-x: auto;
         }
     }
     .doc-description.deprecated {
