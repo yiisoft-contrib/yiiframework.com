@@ -69,7 +69,7 @@ if (isset($section)) {
         </div>
     </div>
     <div class="row row-offcanvas">
-        <div class="col-sm-2 col-md-2 col-lg-2 lang-<?= $guide->language ?>">
+        <div class="col-sm-3 col-md-3 col-lg-3 lang-<?= $guide->language ?>">
             <?php if (!isset($extensionName, $extensionVendor)) {
                 // TODO search currently does not work for extensions
                 echo SearchForm::widget([
@@ -81,7 +81,7 @@ if (isset($section)) {
             } ?>
             <?= SideNav::widget(['id' => 'guide-navigation', 'items' => $nav, 'options' => ['class' => 'sidenav-offcanvas']]) ?>
         </div>
-        <div class="col-sm-10 col-md-10 col-lg-9" role="main">
+        <div class="col-sm-9 col-md-9 col-lg-9" role="main">
 
             <?= $content ?>
         </div>
