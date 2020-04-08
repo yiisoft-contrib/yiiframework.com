@@ -1,8 +1,8 @@
 %sidenav {
-  @include rem(font-size, 13px);
+  @include rem(font-size, 14px);
   > a {
-    @include rem(font-size, 13px);
-    @include rem(line-height, 13px);
+    @include rem(font-size, 14px);
+    @include rem(line-height, 14px);
     @include rem(padding, 20px 10px);
     border-bottom: 1px solid $eshill-section-bgcolor;
   }
@@ -13,7 +13,7 @@
     color: $separator-color;
     text-decoration: none;
     text-transform: uppercase;
-    @include rem(font-size, 13px);
+    @include rem(font-size, 14px);
     border-bottom: 1px solid $eshill-section-bgcolor;
     &:hover {
       text-decoration: none;
