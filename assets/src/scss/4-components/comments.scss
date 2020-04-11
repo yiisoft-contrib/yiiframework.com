@@ -53,6 +53,9 @@
            @include rem(padding-top, 10px);
            @include rem(padding-right, 22px);
            @include rem(padding-bottom, 10px);
+           a {
+             word-break: break-word;
+           }
          }
          .comment-footer {
            @include rem(padding-left, 22px);
