@@ -56,6 +56,9 @@
            a {
              word-break: break-word;
            }
+           img {
+             max-width: 100%;
+           }
          }
          .comment-footer {
            @include rem(padding-left, 22px);
