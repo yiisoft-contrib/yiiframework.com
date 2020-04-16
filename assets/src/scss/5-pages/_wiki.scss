@@ -119,6 +119,9 @@ ul.wiki-side-comments {
       text-decoration: none;
     }
   }
+  img {
+    max-width: 100%;
+  }
 }
 /*
 TODO why should wiki pagination be styled differently from the rest of the site?
