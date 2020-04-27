@@ -22,15 +22,18 @@ $yii-btn-border-radius-base: 6px;
   }
 }
 
-.btn-group {
+.btn-group-justified {
   @media (max-width: 767px)  {
-    &:last-child {
-      .dropdown-menu {
-        right: 0;
+    .btn-group {
+      &:last-child {
+        .dropdown-menu {
+          right: 0;
+        }
       }
     }
   }
 }
+
 
 // Prevent double borders when buttons are next to each other
 .btn-group {
