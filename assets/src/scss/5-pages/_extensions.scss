@@ -15,9 +15,10 @@ label.radiolist-label {
 
 .extension-box {
   @extend .box;
-
-  min-height: 300px;
   margin-bottom: 30px;
+  @media (min-width: 768px)  {
+    min-height: 300px;
+  }
 
   h2.title {
     font-size: 16pt;
