@@ -2,6 +2,7 @@ $api-box-padding-x: $font-size-base;
 $api-box-padding-y: ceil($font-size-base / 2);
 
 .api-content {
+  overflow-x: hidden;
 
     ul {
         @include rem(padding-left, 30px);
