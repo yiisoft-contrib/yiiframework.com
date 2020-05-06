@@ -33,6 +33,8 @@ class StatusController extends BaseController
             $client->authenticate($token, null, \Github\Client::AUTH_HTTP_TOKEN);
         }
 
+        $packages[$version] = $this->getPackages($client, $version, $packages);
+
         $githubRepoStatus = new GithubRepoStatus(Yii::$app->getCache(), $client, $packages[$version], $version);
 
         $data = $githubRepoStatus->getData();
@@ -55,5 +57,34 @@ class StatusController extends BaseController
             'dataProvider' => $dataProvider,
             'versions' => $versions,
         ]);
+    }
+
+    private function getPackages($client, $version, $packages)
+    {
+        return Yii::$app->cache->getOrSet('packages' . $version, function () use ($client, $version, $packages) {
+            $i = 1;
+            try {
+                $httpClient = $client->getHttpClient();
+                while (!empty($packages)) {
+                    $response = $httpClient
+                        ->get("/orgs/yiisoft/repos?page=$i&per_page=100", ['Accept' => 'application/vnd.github.mercy-preview+json']);
+                    $packages = json_decode($response->getBody()->getContents());
+                    foreach ($packages as $package) {
+                        if (in_array('yii' . (int)$version, $package->topics)) {
+                            $packagesList[] = explode('/', $package->full_name);
+                        }
+                    }
+                    if ($response->getStatusCode() !== 200) {
+                        break;
+                    }
+                    $i++;
+                }
+                sort($packagesList);
+            } catch (\Exception $e) {
+                return $packages[$version];
+            }
+
+            return $packagesList;
+        }, 60 * 60 * 24);
     }
 }
