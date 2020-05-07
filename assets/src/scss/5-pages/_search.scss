@@ -41,7 +41,7 @@
   @media (min-width: 1100px) and (max-width: 1400px)  {
     max-width: 270px;
   }
-  
+
   @media (min-width: 1401px) {
     max-width: 350px;
   }
@@ -79,6 +79,7 @@
         margin: 0;
         @include rem(padding, 5px 5px 5px 15px);
         width: 100%;
+        word-break: break-word;
 
         span.result-annotation {
           float: right;
