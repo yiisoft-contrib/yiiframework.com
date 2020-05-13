@@ -5,9 +5,12 @@
     margin-bottom: 1rem;
 
     h1 {
-        font-size: 8rem;
+        font-size: 6rem;
         margin-top: 10rem;
         font-weight: bold;
+      @media (min-width: 768px) {
+        font-size: 8rem;
+      }
     }
 
     h1.security {
