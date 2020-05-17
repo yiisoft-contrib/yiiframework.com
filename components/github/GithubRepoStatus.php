@@ -129,6 +129,9 @@ GRAPHQL;
                             'no_release_for' => null,
                             'diff' => '',
                             'status' => "https://travis-ci.com/{$repository['nameWithOwner']}.svg",
+                            'githubStatus' => "https://github.com/{$repository['nameWithOwner']}/workflows/build/badge.svg",
+                            'coverage' => "https://scrutinizer-ci.com/g/{$repository['nameWithOwner']}/badges/coverage.png",
+                            'quality' => "https://scrutinizer-ci.com/g/{$repository['nameWithOwner']}/badges/quality-score.png",
                             'mergedSinceRelease' => [],
                         ];
 

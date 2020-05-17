@@ -62,6 +62,9 @@ $this->endBlock();
                     }
                 ],
                 'status:image',
+                'githubStatus:image',
+                'coverage:image',
+                'quality:image',
                 [
                     'attribute' => 'diff',
                     'content' => function ($model) {
