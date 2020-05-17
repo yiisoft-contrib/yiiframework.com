@@ -18,7 +18,11 @@ class StatusController extends BaseController
      */
     public function actionIndex($version = '2.0')
     {
-        $packages = Yii::$app->params['packages'];
+        $packages = [
+            '1.1' => [],
+            '2.0' => [],
+            '3.0' => [],
+        ];
 
         $versions = array_keys($packages);
 
@@ -62,6 +66,7 @@ class StatusController extends BaseController
     private function getPackages($client, $version, $packages)
     {
         return Yii::$app->cache->getOrSet('packages' . $version, function () use ($client, $version, $packages) {
+            $packagesList = [];
             $i = 1;
             try {
                 $httpClient = $client->getHttpClient();
@@ -70,7 +75,7 @@ class StatusController extends BaseController
                         ->get("/orgs/yiisoft/repos?page=$i&per_page=100", ['Accept' => 'application/vnd.github.mercy-preview+json']);
                     $packages = json_decode($response->getBody()->getContents());
                     foreach ($packages as $package) {
-                        if (in_array('yii' . (int)$version, $package->topics)) {
+                        if (in_array('yii' . (int)$version, $package->topics, true)) {
                             $packagesList[] = explode('/', $package->full_name);
                         }
                     }
