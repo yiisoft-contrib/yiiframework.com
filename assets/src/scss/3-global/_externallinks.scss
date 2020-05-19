@@ -40,3 +40,12 @@
 .style_external_links .image a:after {
   content: "" !important;
 }
+
+.style_external_links {
+  .table {
+    @media (max-width: 767px)  {
+      display: block;
+      overflow-x: auto;
+    }
+  }
+}
