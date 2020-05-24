@@ -71,19 +71,32 @@ class DiscourseAdapter extends Component implements ForumAdapterInterface
         return $userData['user']['post_count'] ?? 0;
     }
 
+    /**
+     * Normalizes username according to Discourse rules
+     * @see https://github.com/discourse/discourse/blob/master/lib/user_name_suggester.rb
+     *
+     * @param string $username
+     * @return string
+     */
+    private function normalizeUsername(string $username): string
+    {
+        $username = preg_replace('/[^\w.-]/', '_', $username);
+        $username = preg_replace('/^[^\p{Alnum}\p{M}_]+/u', '', $username);
+        $username = preg_replace('/\.(js|json|css|htm|html|xml|jpg|jpeg|png|gif|bmp|ico|tif|tiff|woff)$/i', '_', $username);
+        $username = preg_replace('/[^\p{Alnum}\p{M}]+$/u', '', $username);
+        $username = preg_replace('/[-_.]{2,}/', '_', $username);
+        return $username;
+    }
+
     public function getForumUserId(User $user)
     {
         if ($user->forum_id) {
             return $user->forum_id;
         }
 
-        $response = $this->getClient()->get([$url = sprintf('/users/%s.json', $user->username), 'api_key' => $this->apiToken, 'api_username' => $this->apiAdminUser])->send();
+        $response = $this->getClient()->get([$url = sprintf('/users/%s.json', $this->normalizeUsername($user->username)), 'api_key' => $this->apiToken, 'api_username' => $this->apiAdminUser])->send();
         if ($response->isOk) {
-            try {
-                $userData = $response->data;
-            } catch (\Exception $e) {
-                Yii::error("Discourse API request returned invalid data: $response->data");
-            }
+            $userData = $response->data;
             if (isset($userData['user']['id'])) {
                 $user->updateAttributes(['forum_id' => $userData['user']['id']]);
                 return $userData['user']['id'];
