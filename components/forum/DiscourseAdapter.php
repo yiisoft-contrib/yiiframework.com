@@ -79,7 +79,11 @@ class DiscourseAdapter extends Component implements ForumAdapterInterface
 
         $response = $this->getClient()->get([$url = sprintf('/users/%s.json', $user->username), 'api_key' => $this->apiToken, 'api_username' => $this->apiAdminUser])->send();
         if ($response->isOk) {
-            $userData = $response->data;
+            try {
+                $userData = $response->data;
+            } catch (\Exception $e) {
+                Yii::error("Discourse API request returned invalid data: $response->data");
+            }
             if (isset($userData['user']['id'])) {
                 $user->updateAttributes(['forum_id' => $userData['user']['id']]);
                 return $userData['user']['id'];
