@@ -55,4 +55,9 @@ class DummyAdapter implements ForumAdapterInterface
     {
         return null;
     }
+
+    public function normalizeUsername(string $username): string
+    {
+        return $username;
+    }
 }

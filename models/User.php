@@ -481,7 +481,8 @@ class User extends ActiveRecord implements IdentityInterface
         $forumUserId = $forumAdapter->getForumUserId($this);
 
         if ($forumUserId) {
-            return 'https://forum.yiiframework.com/u/' . urlencode($this->username);
+            $username = $forumAdapter->normalizeUsername($this->username);
+            return 'https://forum.yiiframework.com/u/' . urlencode($username);
         }
         return null;
     }

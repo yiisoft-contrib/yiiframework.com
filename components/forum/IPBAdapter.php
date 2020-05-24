@@ -234,4 +234,9 @@ class IPBAdapter extends Component implements ForumAdapterInterface
     {
         return $user->forum_id;
     }
+
+    public function normalizeUsername(string $username): string
+    {
+        return $username;
+    }
 }

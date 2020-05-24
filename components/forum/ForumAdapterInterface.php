@@ -45,4 +45,12 @@ interface ForumAdapterInterface
      * @return array
      */
     public function getForumBadges();
+
+    /**
+     * Normalize username
+     *
+     * @param string $username
+     * @return string
+     */
+    public function normalizeUsername(string $username): string;
 }
