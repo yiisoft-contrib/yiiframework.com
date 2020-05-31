@@ -1,16 +1,9 @@
 .glide {
   $that: '.glide' !default;
-
-
-  &__wrapper {}
-
-
-  &__track {}
-
-
   &__slide {
     img {
       padding-left: 1px;
+      width: 100%;
     }
   }
 
