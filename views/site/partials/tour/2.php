@@ -2,8 +2,9 @@
     <div class="row">
         <div class="col-md-7">
             <img src="<?= Yii::getAlias('@web/image/tour/2.png') ?>"
-                alt=""
-                class="img-responsive"/>
+                 alt="Welcome Page"
+                 srcset="<?= Yii::getAlias('@web/image/tour/2@2x.png') ?>"
+                 class="img-responsive"/>
         </div>
         <div class="col-md-5">
             <div class="tour-subheader">
