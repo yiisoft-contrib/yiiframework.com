@@ -3,7 +3,7 @@
         <div class="col-md-7">
             <img src="<?= Yii::getAlias('@web/image/tour/4.png') ?>"
                  alt="Gii code generator"
-                 srcset="<?= Yii::getAlias('@web/image/tour/4@2x.png') ?>"
+                 srcset="<?= Yii::getAlias('@web/image/tour/4.png 1x, @web/image/tour/4@2x.png 2x') ?>"
                  class="img-responsive"/>
         </div>
         <div class="col-md-5">
