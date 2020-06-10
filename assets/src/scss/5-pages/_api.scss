@@ -4,6 +4,16 @@ $api-box-padding-y: ceil($font-size-base / 2);
 .api-content {
   overflow-x: hidden;
 
+  @media (max-width: 767px)  {
+    .pull-right.content {
+      float: none !important;
+    }
+
+    h1 {
+      font-size: 28px;
+    }
+  }
+
     ul {
         @include rem(padding-left, 30px);
         list-style-type: none;
