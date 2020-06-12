@@ -4,6 +4,10 @@ $api-box-padding-y: ceil($font-size-base / 2);
 .api-content {
   overflow-x: hidden;
 
+  h1 {
+    word-break: break-word;
+  }
+
   @media (max-width: 767px)  {
     .pull-right.content {
       float: none !important;
