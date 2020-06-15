@@ -63,7 +63,7 @@ class SearchExtension extends SearchActiveRecord
         $model->version = $extension->yii_version;
         $model->category_id = $extension->category_id;
         $model->category = $extension->category->name;
-        $model->title = $extension->tagline;
+        $model->title = $extension->tagline ?? $extension->name;
         $model->content = $extension->description;
 
         $model->insert(false);
@@ -92,7 +92,7 @@ class SearchExtension extends SearchActiveRecord
         $model->version = $extension->yii_version;
         $model->category_id = $extension->category_id;
         $model->category = $extension->category->name;
-        $model->title = $extension->tagline;
+        $model->title = $extension->tagline ?? $extension->name;
         $model->content = static::filterHtml($extension->getContentHtml());
 
         $model->save(false);
