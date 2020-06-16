@@ -185,4 +185,14 @@ div.image {
   a {
     word-break: break-word;
   }
+
+  @media (max-width: 767px)  {
+    .pull-right.content {
+      float: none !important;
+    }
+
+    h1 {
+      font-size: 28px;
+    }
+  }
 }
