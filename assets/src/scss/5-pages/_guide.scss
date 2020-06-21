@@ -180,14 +180,13 @@ div.image {
 }
 
 .guide-view {
-  overflow-x: hidden;
   code,
   a {
     word-break: break-word;
   }
 
   @media (max-width: 767px)  {
-    .pull-right.content {
+    .pull-right {
       float: none !important;
     }
 
