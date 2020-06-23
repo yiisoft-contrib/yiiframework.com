@@ -9,15 +9,19 @@ $this->params['breadcrumbs'][] = $this->title;
 <div class="site-resources">
     <div class="header container">
         <div class="row">
-            <h1>Resources</h1>
-            <h2>Very helpful. Check these out.</h2>
+            <div class="col-xs-12">
+                <h1>Resources</h1>
+                <h2>Very helpful. Check these out.</h2>
+            </div>
         </div>
         <img class="background" src="<?= Yii::getAlias('@web/image/resources/header.svg')?>" alt="">
     </div>
     <div class="container style_external_links">
         <div class="row">
-            <div class="content">
-                <p>There are various resources that aren't part of official Yii website but are very helpful. Check these out.</p>
+            <div class="col-xs-12">
+                <div class="content">
+                    <p>There are various resources that aren't part of official Yii website but are very helpful. Check these out.</p>
+                </div>
             </div>
         </div>
         <div class="row">
