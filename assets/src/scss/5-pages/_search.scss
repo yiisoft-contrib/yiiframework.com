@@ -6,6 +6,11 @@
 
     .title {
       margin-right: 1rem;
+      font-size: 20px;
+      @media (min-width: 768px) {
+        font-size: 28px;
+      }
+
     }
 
     h3, p {
@@ -17,6 +22,10 @@
       text-decoration: none;
       font-size: $font-size-base;
       font-weight: normal;
+      padding: .1em .4em .2em;
+      @media (min-width: 768px) {
+        padding: .2em .6em .3em;
+      }
     }
 }
 
