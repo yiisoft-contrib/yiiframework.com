@@ -34,7 +34,7 @@ $this->params['breadcrumbs'][] = $this->title;
                         <?php foreach($row as $i=>$member):?>
                             <div class="col-sm-4 col-md-2 person-card <?= ($i==0 && count($row)<6)?'col-md-offset-'.(6-count($row)):'' ?>">
                                     <div class="avatar">
-                                        <img src="<?= Html::encode(Yii::getAlias($member['photo'])) ?>" class="img-responsive" alt="" />
+                                        <img src="<?= Html::encode(Yii::getAlias($member['photo'] ?? '@web/image/team/noimage.png')) ?>" class="img-responsive" alt="" />
                                     </div>
                                     <div class="team-content">
                                         <ul class="links-inline links-circle">
