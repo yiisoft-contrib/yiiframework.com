@@ -279,7 +279,7 @@ return [
         'id' => '',
         'forumName' => '',
         'period' => '2019',
-        'location' => 'Kiev',
+        'location' => 'Kiev, Ukraine',
         'duty' => 'Yii 3.0 development',
         'photo' => '@web/image/team/noimage.png',
         'github' => 'yiiliveext',
