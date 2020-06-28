@@ -276,8 +276,8 @@ return [
     ],
     [
         'name' => 'yiiliveext',
-        //'id' => '',
-        //'forumName' => '',
+        'id' => '',
+        'forumName' => '',
         'period' => '2019',
         'location' => 'Kiev',
         'duty' => 'Yii 3.0 development',
