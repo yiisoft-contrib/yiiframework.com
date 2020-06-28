@@ -281,6 +281,7 @@ return [
         'period' => '2019',
         'location' => 'Kiev',
         'duty' => 'Yii 3.0 development',
+        'photo' => '@web/image/team/noimage.png',
         'github' => 'yiiliveext',
         'status' => TeamStatus::TEAM_STATUS_ACTIVE,
     ],
