@@ -338,7 +338,7 @@ return [
         'location' => 'Chisinau, Moldova',
         'duty' => 'Yii 3.0 development',
         'photo' => '@web/image/team/thenotsoft.jpg',
-        'github' => 'https://github.com/thenotsoft',
+        'github' => 'thenotsoft',
         'status' => TeamStatus::TEAM_STATUS_ACTIVE,
     ],
 ];
