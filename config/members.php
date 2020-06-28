@@ -237,7 +237,7 @@ return [
         'photo' => '@web/image/team/hiqsol.jpg',
         'github' => 'hiqsol',
         'twitter' => 'hiqsol',
-        'status' => TeamStatus::TEAM_STATUS_INACTIVE,
+        'status' => TeamStatus::TEAM_STATUS_ACTIVE,
     ],
     [
         'name' => 'Mehdi Achour',
