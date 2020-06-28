@@ -317,6 +317,7 @@ return [
         'duty' => 'Yii 3.0 development',
         'photo' => '@web/image/team/roxblnfk.jpg',
         'github' => 'roxblnfk',
+        'twitter' => 'roxblnfk',
         'status' => TeamStatus::TEAM_STATUS_ACTIVE,
     ],
     [
