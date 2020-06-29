@@ -256,7 +256,7 @@ return [
         'id' => '235442',
         'forumName' => 'vanhelvzla',
         'period' => '2019',
-        'location' => 'Chile',
+        'location' => 'Chillan, Chile',
         'duty' => 'Yii 3.0 development',
         'photo' => '@web/image/team/terabytesoftw.jpg',
         'github' => 'terabytesoftw',
