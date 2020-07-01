@@ -57,6 +57,8 @@
 }
 
 .edit-box {
+  display: flex;
+  align-items: center;
   border: 1px solid $eshill-blue;
   @include rem(border-radius, 6px);
   @include rem(margin-top, 28px);
