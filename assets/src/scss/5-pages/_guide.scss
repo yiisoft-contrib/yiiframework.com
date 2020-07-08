@@ -59,6 +59,7 @@
 .edit-box {
   display: flex;
   align-items: center;
+  justify-content: center;
   border: 1px solid $eshill-blue;
   @include rem(border-radius, 6px);
   @include rem(margin-top, 28px);
@@ -66,16 +67,11 @@
   @include rem(line-height, 24px);
   margin-bottom: 0.8em;
   color: $eshill-blue;
-  @media (min-width: 768px) {
-    padding-right: 20%;
-    padding-left: 20%;
-  }
   p {
-    @include rem(margin-top, 2px);
+    margin: 0;
   }
   .edit-icon {
     margin-right: 1.5em;
-    margin-bottom: .5em;
     float: left;
     @media (min-width: 768px) {
       margin-left: 1.5em;
