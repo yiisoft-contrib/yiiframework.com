@@ -6,7 +6,7 @@ $this->title = 'Terms of Service';
 ?>
 <div class="container style_external_links">
     <div class="content">
-        <p>This web site is owned and operated by <a href="http://www.yiisoft.com/">Yii Software LLC</a>, (YiiSoft or we).
+        <p>This web site is owned and operated by Yii Software, (YiiSoft or we).
            We have created this page to share with you our privacy and legal policies regarding to your personal information
            and the contents on this site.</p>
 
