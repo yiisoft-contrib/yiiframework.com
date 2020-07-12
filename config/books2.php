@@ -53,7 +53,7 @@ return [
         'author' => 'Andrew Bogdanov, Dmitry Eliseev',
         'image' => '@web/image/books/yii2-app-development-cookbook-3.jpg',
         'description' => 'The book is a set of individual independent recipes. Each recipe shows how to
-            do something useful with Yii explainig why it\'s done, how it\'s done, why it works and how exactly it works.',
+            do something useful with Yii explaining why it\'s done, how it\'s done, why it works and how exactly it works.',
         'url' => 'https://www.packtpub.com/web-development/yii2-application-development-cookbook-third-edition',
         'level' => 'all',
         'level-text' => 'All levels',
@@ -80,6 +80,6 @@ return [
         'level' => 'all',
         'level-text' => 'All levels',
         'level-description' => 'Recommended for all levels',
-    ], 
-        
+    ],
+
 ];
