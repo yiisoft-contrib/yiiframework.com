@@ -12,7 +12,7 @@ $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="container site-header">
 	<div class="row">
-		<div class="col-xs-7 col-md-6 col-lg-7">
+		<div class="col-sm-7 col-md-6 col-lg-7">
 			<h1>Download</h1>
 			<h2>Yii Framework & Offline Documentation</h2>
 		</div>
@@ -31,7 +31,7 @@ $this->params['breadcrumbs'][] = $this->title;
                     Yii is an open source project released under the terms of the <?= Html::a('BSD License', ['site/license']) ?>.
 				    This means that you can use Yii for free to develop either open-source or proprietary Web applications.
                 </p>
-                
+
                 <p class="small">
                     There are two ways to install Yii:
                     by using Composer or
