@@ -12,7 +12,6 @@ use yii\apidoc\models\InterfaceDoc;
 use yii\apidoc\models\MethodDoc;
 use yii\apidoc\models\PropertyDoc;
 use yii\apidoc\models\TraitDoc;
-use yii\base\ErrorHandler;
 use yii\console\ExitCode;
 use yii\helpers\Console;
 use app\apidoc\ApiRenderer;
@@ -41,6 +40,11 @@ class ApiController extends \yii\apidoc\commands\ApiController
             return ExitCode::UNSPECIFIED_ERROR;
         }
         $this->version = $version;
+
+        if ($version === '1.0' && PHP_VERSION_ID >= 70000) {
+            $this->stderr('Can not generate 1.0 API using PHP 7. Skipping.');
+            return ExitCode::OK;
+        }
 
         $targetPath = Yii::getAlias('@app/data');
         $sourcePath = Yii::getAlias('@app/data');
