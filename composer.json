@@ -18,7 +18,7 @@
 
         "yiisoft/yii2-authclient": "~2.1.0",
         "yiisoft/yii2-httpclient": "~2.0.0",
-        "yiisoft/yii2-elasticsearch": "~2.1.0@dev",
+        "yiisoft/yii2-elasticsearch": "dev-master#d5c6d27d8bb49f13be799451dec40a780fdf4446",
         "yiisoft/yii2-redis": "~2.0.0",
         "yiisoft/yii2-queue": "~2.0.0",
         "yiisoft/yii2-swiftmailer": "~2.0.0",
