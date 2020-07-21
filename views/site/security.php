@@ -22,7 +22,7 @@ $this->params['breadcrumbs'][] = $this->title;
     </div>
 </div>
 
-<div class="container report">
+<div class="container report report-issue">
     <div class="content">
         <div class="row">
             <div class="col-md-12">
