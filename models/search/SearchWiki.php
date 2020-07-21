@@ -34,11 +34,6 @@ class SearchWiki extends SearchActiveRecord
         ];
     }
 
-    public static function primaryKey()
-    {
-        return ['id'];
-    }
-
     public static function index()
     {
         return parent::index() . '-en';

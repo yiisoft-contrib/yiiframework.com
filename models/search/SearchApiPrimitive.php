@@ -101,7 +101,7 @@ class SearchApiPrimitive extends SearchActiveRecord
         $model = new static();
         $model->version = $version;
         $model->name = $primitive->name;
-        $model->parentId = $parent->getPrimaryKey();
+        $model->parentId = $parent->get_id();
         $model->shortDescription = $primitive->shortDescription;
         $model->description = $primitive->description;
         $model->since = $primitive->since;
