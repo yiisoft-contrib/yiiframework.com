@@ -38,6 +38,7 @@ class SearchableBehavior extends Behavior
     public function afterInsert($event)
     {
         if ($this->owner->showInSearch) {
+            /** @var \yii\elasticsearch\ActiveRecord $modelClass */
             $modelClass = $this->searchClass;
             $modelClass::createRecord($event->sender);
         }
@@ -48,6 +49,7 @@ class SearchableBehavior extends Behavior
      */
     public function afterUpdate($event)
     {
+        /** @var \yii\elasticsearch\ActiveRecord $modelClass */
         $modelClass = $this->searchClass;
         if ($this->owner->showInSearch) {
             $modelClass::updateRecord($event->sender);
@@ -61,6 +63,7 @@ class SearchableBehavior extends Behavior
      */
     public function afterDelete($event)
     {
+        /** @var \yii\elasticsearch\ActiveRecord $modelClass */
         $modelClass = $this->searchClass;
         $modelClass::deleteRecord($event->sender);
     }

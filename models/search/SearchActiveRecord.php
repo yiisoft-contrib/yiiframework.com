@@ -92,7 +92,7 @@ abstract class SearchActiveRecord extends \yii\elasticsearch\ActiveRecord
             // TODO add possibility to search for guide subsections: https://github.com/yiisoft-contrib/yiiframework.com/issues/228
             $types = [SearchGuideSection::TYPE];
         } else {
-            throw new Exception('Unkown search type given!');
+            throw new Exception('Unknown search type given!');
         }
 
         // add synonyms

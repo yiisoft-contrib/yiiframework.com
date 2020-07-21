@@ -72,7 +72,7 @@ class SearchApiType extends SearchActiveRecord
         $model->deprecatedSince = $type['deprecatedSince'] ?? null;
         $model->deprecatedReason = $type['deprecatedReason'] ?? null;
 
-        $model->primaryKey = "$version/" . strtolower(ltrim(str_replace('\\', '-', "$model->namespace\\$model->name"), '-'));
+        $model->set_id("$version/" . strtolower(ltrim(str_replace('\\', '-', "$model->namespace\\$model->name"), '-')));
 
         $model->insert(false, null, ['op_type' => 'index']);
 
