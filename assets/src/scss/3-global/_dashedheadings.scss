@@ -19,6 +19,8 @@
     @media (max-width: 380px) {
       @include rem(font-size, $font-size * 0.6);
       @include rem(top, -($font-size*0.50));
+      @include rem(padding-right, $font-size*0.1);
+      @include rem(padding-left, $font-size*0.1);
     }
     @include rem(font-size, $font-size);
     @include rem(top, -($font-size*0.80));
