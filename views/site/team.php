@@ -41,17 +41,12 @@ $this->params['breadcrumbs'][] = $this->title;
                                             <?php
 
                                             if (isset($member['twitter'])) {
-                                                echo '<li class="twitter">' . Html::a('<span class="fa-stack fa-lg">
-                                                      <i class="fa fa-circle fa-stack-1-5x"></i>
-                                                      <i class="fa fa-twitter fa-stack-1x fa-inverse"></i>
-                                                    </span>', 'https://twitter.com/' . $member['twitter'], ['title' => $member['name'].' on Twitter']) . '</li>';
+                                                echo '<li class="twitter">' . Html::a('<i class="fa fa-twitter">
+                                                    </i>', 'https://twitter.com/' . $member['twitter'], ['title' => $member['name'].' on Twitter']) . '</li>';
                                             }
                                             if (isset($member['github'])) {
-                                                echo '<li class="github">' . Html::a('<span class="fa-stack fa-lg">
-                                                      <i class="fa fa-github fa-stack-1-5x" style="
-                                                    "></i>
-
-                                                    </span>', 'https://github.com/' . $member['github'], ['title' => $member['name'].' on Github']) . '</li>';
+                                                echo '<li class="github">' . Html::a('<i class="fa fa-github">
+                                                    </i>', 'https://github.com/' . $member['github'], ['title' => $member['name'].' on Github']) . '</li>';
                                             }
                                             ?>
                                         </ul>
@@ -84,17 +79,12 @@ $this->params['breadcrumbs'][] = $this->title;
                                             <?php
 
                                             if (isset($member['twitter'])) {
-                                                echo '<li class="twitter">' . Html::a('<span class="fa-stack fa-lg">
-                                                      <i class="fa fa-circle fa-stack-1-5x"></i>
-                                                      <i class="fa fa-twitter fa-stack-1x fa-inverse"></i>
-                                                    </span>', 'https://twitter.com/' . $member['twitter'], ['title' => $member['name'].' on Twitter']) . '</li>';
+                                                echo '<li class="twitter">' . Html::a('<i class="fa fa-twitter">
+                                                    </i>', 'https://twitter.com/' . $member['twitter'], ['title' => $member['name'].' on Twitter']) . '</li>';
                                             }
                                             if (isset($member['github'])) {
-                                                echo '<li class="github">' . Html::a('<span class="fa-stack fa-lg">
-                                                      <i class="fa fa-github fa-stack-1-5x" style="
-                                                    "></i>
-
-                                                    </span>', 'https://github.com/' . $member['github'], ['title' => $member['name'].' on Github']) . '</li>';
+                                                echo '<li class="github">' . Html::a('<i class="fa fa-github">
+                                                    </i>', 'https://github.com/' . $member['github'], ['title' => $member['name'].' on Github']) . '</li>';
                                             }
                                             ?>
                                         </ul>
@@ -127,17 +117,12 @@ $this->params['breadcrumbs'][] = $this->title;
                                             <?php
 
                                             if (isset($member['twitter'])) {
-                                                echo '<li class="twitter">' . Html::a('<span class="fa-stack fa-lg">
-                                                      <i class="fa fa-circle fa-stack-1-5x"></i>
-                                                      <i class="fa fa-twitter fa-stack-1x fa-inverse"></i>
-                                                    </span>', 'https://twitter.com/' . $member['twitter'], ['title' => $member['name'].' on Twitter']) . '</li>';
+                                                echo '<li class="twitter">' . Html::a('<i class="fa fa-twitter">
+                                                    </i>', 'https://twitter.com/' . $member['twitter'], ['title' => $member['name'].' on Twitter']) . '</li>';
                                             }
                                             if (isset($member['github'])) {
-                                                echo '<li class="github">' . Html::a('<span class="fa-stack fa-lg">
-                                                      <i class="fa fa-github fa-stack-1-5x" style="
-                                                    "></i>
-
-                                                    </span>', 'https://github.com/' . $member['github'], ['title' => $member['name'].' on Github']) . '</li>';
+                                                echo '<li class="github">' . Html::a('<i class="fa fa-github">
+                                                    </i>', 'https://github.com/' . $member['github'], ['title' => $member['name'].' on Github']) . '</li>';
                                             }
                                             ?>
                                         </ul>
