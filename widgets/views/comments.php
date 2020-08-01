@@ -30,10 +30,10 @@ use yii\helpers\Html;
                             <div class="comment">
                                 <div class="comment-header">
                                     <div class="row" id="c<?= $comment->id ?>">
-                                        <div class="col-md-1">
+                                        <div class="col-xs-6">
                                             <a href="#c<?= $comment->id ?>" class="comment-id">#<?= $comment->id ?></a>
                                         </div>
-                                        <div class="col-md-2 pull-right">
+                                        <div class="col-xs-6 pull-right">
                                             <?= Voter::widget(['model' => $comment]) ?>
                                         </div>
                                     </div>
