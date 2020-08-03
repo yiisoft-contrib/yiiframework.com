@@ -1,0 +1,13 @@
+.pagination {
+  @media (max-width: 375px)  {
+    display: flex;
+    justify-content: center;
+  }
+}
+
+.pagination>li>a,
+.pagination>li>span {
+  @media (max-width: 375px)  {
+    padding: 2px 6px;
+  }
+}
