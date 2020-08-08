@@ -56,6 +56,7 @@
       }
       > .active > a {
         background-color: $version-buttons;
+        color: $link-color;
         &:hover {
           color: $link-color;
         }
