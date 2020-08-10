@@ -63,15 +63,26 @@
       border-radius: 50%;
       margin: 3px;
       text-decoration: none;
+      transition: all .2s ease;
+      &:hover {
+        background-color: #1e6887;
+      }
     }
 
     li.github {
       a {
         background-color: transparent;
+        &:hover {
+          background-color: transparent;
+        }
       }
       .fa {
         font-size: 37px;
         color: #999;
+        transition: all .2s ease;
+        &:hover {
+          color: #1e6887;
+        }
       }
 
     }
