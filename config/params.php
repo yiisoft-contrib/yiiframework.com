@@ -108,7 +108,7 @@ return [
             'ro' => 'România',      // Romanian
             'ru' => 'Русский',      // Russian
             'sv' => 'Svenska',      // Swedish
-            'uk' => 'украї́нська', // Ukrainian
+            'uk' => 'Украї́нська', // Ukrainian
             'zh-cn' => '简体中文',  // Simplified Chinese
         ],
         '1.0' => [
@@ -154,7 +154,7 @@ return [
             'pt' => 'Português',    // Portuguese
             'pt-br' => 'Português brasileiro',  // Brazilian Portuguese
             'ru' => 'Русский',      // Russian
-            'uk' => 'украї́нська', // Ukrainian
+            'uk' => 'Украї́нська', // Ukrainian
             'zh-cn' => '简体中文',  // Simplified Chinese
         ],
         '1.0' => [
