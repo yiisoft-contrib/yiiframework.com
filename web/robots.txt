@@ -2,3 +2,5 @@ User-agent: *
 Disallow: /search
 Disallow: /forum/index.php/user
 
+# Delay for https://ahrefs.com/robot/ and other robots
+Crawl-Delay: 1
