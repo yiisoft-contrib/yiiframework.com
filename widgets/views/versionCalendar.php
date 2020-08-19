@@ -15,10 +15,7 @@ $i = 0;
 foreach ($versions as $branch => $version) {
     $versions[$branch]['top'] = $headerHeight + ($branchHeight * $i++);
 }
-if (!isset($non_standalone)) {
-	header('Content-Type: image/svg+xml');
-	echo '<?xml version="1.0"?>';
-}
+
 $years = iterator_to_array(new DatePeriod($widget->minDate(), new DateInterval('P1Y'), $widget->maxDate()));
 $width = $marginLeft + $marginRight + ((count($years) - 1) * $yearWidth);
 $height = $headerHeight + $footerHeight + (count($versions) * $branchHeight);
