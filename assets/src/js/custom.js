@@ -29,4 +29,6 @@ $(document).ready(function() {
       });
   });
 
+    $(".version-selector .dropdown-menu:empty").hide();
+
 });
