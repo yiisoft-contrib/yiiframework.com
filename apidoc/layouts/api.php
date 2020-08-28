@@ -14,7 +14,7 @@ use yii\helpers\StringHelper;
 $renderer = $this->context;
 ?>
 <div class="row row-offcanvas">
-    <div class="col-sm-4 col-md-3 col-lg-3">
+    <div class="col-sm-3 col-md-3 col-lg-3">
         <?php
         $types = $renderer->getNavTypes(isset($type) ? $type : null, $types);
         ksort($types);
@@ -56,7 +56,7 @@ $renderer = $this->context;
             'options' => ['class' => 'sidenav-offcanvas'],
         ])?>
     </div>
-    <div class="col-sm-8 col-md-9 col-lg-9" role="main">
+    <div class="col-sm-9 col-md-9 col-lg-9" role="main">
         <!-- YII_VERSION_SELECTOR -->
         <div class="content">
         <?= $content ?>
