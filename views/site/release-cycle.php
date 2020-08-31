@@ -55,7 +55,7 @@ use yii\helpers\Html;
                 <tr>
                     <td style="background: #71bdff; width: 40px;"></td>
                     <td style="background: #71bdff; width: 40px; opacity: 0.3;"></td>
-                    <td>Feature freeze. Enhancements are no longer accepted.</td>
+                    <td>Feature freeze. New features are no longer accepted.</td>
                 </tr>
                 <tr>
                     <td style="background: #ffb95e; width: 40px;"></td>
