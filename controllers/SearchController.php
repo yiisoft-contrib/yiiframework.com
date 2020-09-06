@@ -13,10 +13,26 @@ use yii\data\ActiveDataProvider;
 
 class SearchController extends BaseController
 {
+    const MAX_QUERY_LENGTH = 128;
+
     public $searchQuery;
+
+    /**
+     * Trim long search query.
+     * That is because too long query causes ElasticSearch to drown with 100% CPU consumption.
+     *
+     * @param string $q query
+     * @return string trimmed query
+     */
+    public function trimLongQuery($q)
+    {
+        return mb_substr($q, 0, self::MAX_QUERY_LENGTH);
+    }
 
     public function actionGlobal($q = null, $version = null, $language = null, $type = null)
     {
+        $q = $this->trimLongQuery($q);
+
         if (!in_array($version, $this->getVersions(), true)) {
             $version = null;
         }
@@ -65,6 +81,8 @@ class SearchController extends BaseController
 
     public function actionSuggest($q, $version = null, $language = null)
     {
+        $q = $this->trimLongQuery($q);
+
         Yii::$app->response->format = Response::FORMAT_JSON;
         $query = SearchActiveRecord::searchAsYouType($q, $version, $language);
         $results = $query->search()['suggest'];
@@ -183,6 +201,8 @@ class SearchController extends BaseController
 
     public function actionOpensearchSuggest($q)
     {
+        $q = $this->trimLongQuery($q);
+
         Yii::$app->response->format = Response::FORMAT_JSON;
         $query = SearchActiveRecord::searchAsYouType($q, null, null);
         $results = $query->search()['suggest'];
