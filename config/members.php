@@ -365,4 +365,15 @@ return [
         'twitter' => 'Bizley_',
         'status' => TeamStatus::TEAM_STATUS_ACTIVE,
     ],
+    [
+        'name' => 'Sergei Predvoditelev',
+        'id' => '347966',
+        'forumName' => 'vjik',
+        'period' => '2020',
+        'location' => 'Voronezh, Russia',
+        'duty' => 'Yii 3.0 development',
+        'photo' => '@web/image/team/vjik.png',
+        'github' => 'vjik',
+        'status' => TeamStatus::TEAM_STATUS_ACTIVE,
+    ],
 ];
