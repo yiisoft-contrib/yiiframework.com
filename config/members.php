@@ -360,7 +360,7 @@ return [
         'period' => '2020',
         'location' => 'Wrocław, Poland',
         'duty' => 'Yii 2.0 issues',
-        'photo' => '@web/image/team/bizley.png',
+        'photo' => '@web/image/team/bizley.jpg',
         'github' => 'bizley',
         'twitter' => 'Bizley_',
         'status' => TeamStatus::TEAM_STATUS_ACTIVE,
