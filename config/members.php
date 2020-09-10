@@ -353,4 +353,16 @@ return [
         'github' => 'xepozz',
         'status' => TeamStatus::TEAM_STATUS_ACTIVE,
     ],
+    [
+        'name' => 'Paweł Brzozowski',
+        'id' => '231563',
+        'forumName' => 'bizley',
+        'period' => '2020',
+        'location' => 'Wrocław, Poland',
+        'duty' => 'Yii 2.0 issues',
+        'photo' => '@web/image/team/bizley.png',
+        'github' => 'bizley',
+        'twitter' => 'Bizley_',
+        'status' => TeamStatus::TEAM_STATUS_ACTIVE,
+    ],
 ];
