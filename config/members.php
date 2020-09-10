@@ -342,4 +342,15 @@ return [
         'github' => 'thenotsoft',
         'status' => TeamStatus::TEAM_STATUS_ACTIVE,
     ],
+    [
+        'name' => 'Dmitry Derepko',
+        'id' => '312896',
+        'forumName' => 'xepozz',
+        'period' => '2019',
+        'location' => 'Voronezh, Russia',
+        'duty' => 'Yii 3.0 development',
+        'photo' => '@web/image/team/xepozz.png',
+        'github' => 'xepozz',
+        'status' => TeamStatus::TEAM_STATUS_ACTIVE,
+    ],
 ];
