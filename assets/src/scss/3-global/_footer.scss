@@ -46,7 +46,7 @@ footer {
       border-radius:50%;
       @include rem(width, 24px);
       @include rem(height, 24px);
-      transition:color 0.4s ease-out, background 0.4s ease-in;
+      transition:color 0.2s ease-out, background 0.2s ease-in;
       &:hover {
         background-color: #fff;
         color: $footer-background-color;
