@@ -376,4 +376,15 @@ return [
         'github' => 'vjik',
         'status' => TeamStatus::TEAM_STATUS_ACTIVE,
     ],
+    [
+        'name' => 'Marco van \'t Wout',
+        'id' => '6843',
+        'forumName' => 'marcovtwout',
+        'period' => '2020',
+        'location' => 'Delft, Netherlands',
+        'duty' => 'Yii 1.1 issues',
+        'photo' => '@web/image/team/marcovtwout.jpg',
+        'github' => 'marcovtwout',
+        'status' => TeamStatus::TEAM_STATUS_ACTIVE,
+    ],
 ];
