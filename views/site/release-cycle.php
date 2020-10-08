@@ -50,7 +50,7 @@ use yii\helpers\Html;
                 <tr>
                     <td style="background: #9c9; width: 40px;"></td>
                     <td style="background: #9c9; width: 40px; opacity: 0.3"></td>
-                    <td>Active support. Enhancements, bug fixes, security fixes are accepted.</td>
+                    <td>Active support. New features, enhancements, bug fixes, security fixes are accepted.</td>
                 </tr>
                 <tr>
                     <td style="background: #71bdff; width: 40px;"></td>
@@ -60,7 +60,7 @@ use yii\helpers\Html;
                 <tr>
                     <td style="background: #ffb95e; width: 40px;"></td>
                     <td style="background: #ffb95e; width: 40px; opacity: 0.3;"></td>
-                    <td>Security and PHP compatibility fixes only.</td>
+                    <td>Mainly security and PHP compatibility fixes.</td>
                 </tr>
                 <tr>
                     <td style="background: #eee; width: 40px;"></td>

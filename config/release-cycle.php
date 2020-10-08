@@ -1,4 +1,6 @@
 <?php
+$versions = require 'versions.php';
+
 return [
     '3.x' => [
         'php' => '>=7.4.0'
@@ -12,7 +14,7 @@ return [
         'release' => '2010-01-10',
         'enhancements' => '2015-11-22',
         'bugfixes' => '2017-01-01',
-        'eol' => '2020-12-31',
+        'eol' => '2021-12-31',
         'php' => '>=5.1.0'
     ],
 ];

@@ -11,6 +11,21 @@ return [
 
 	// detailed information about current major versions e.g. for display on the download page
 	'version-info' => [
+	    '3.0' => [
+            'status' => 'pre-alpha',
+            'min-php-version' => '7.4.0',
+            'support-until' => false,
+            'security-until' => false,
+            'github-url' => 'https://github.com/yiisoft/app',
+            'git-url' => 'git@github.com:yiisoft/app.git',
+            'svn-url' => 'https://github.com/yiisoft/app/trunk/',
+            'summary' => <<<HTML
+				Yii 3.0 is a new generation of Yii on top of PHP 7.4.0.
+				It is aimed at both fast and long-term project with testability and modularity in mind.
+				Yii 3.0 is not compatible with version 2.0.
+HTML
+        ],
+
 		'2.0' => [
 			'status' => 'stable',
 			// TODO doc download
@@ -38,14 +53,14 @@ HTML
 			'download-url'=>'https://github.com/yiisoft/yii/releases/download/1.1.22/yii-1.1.22.bf1d26',
 			'min-php-version' => '5.1.0',
 			'support-until' => 'December 31, 2016 ',
-			'security-until' => 'December 31, 2020 ',
+			'security-until' => 'December 31, 2021 ',
 			'github-url' => 'https://github.com/yiisoft/yii',
 			'git-url' => 'git@github.com:yiisoft/yii.git',
 			'svn-url' => 'https://github.com/yiisoft/yii/trunk/',
 			'summary' => <<<HTML
 				Yii 1.1 is currently under <a href="http://www.yiiframework.com/news/90/update-on-yii-1-1-support-and-end-of-life/">maintenance mode</a>.
 		        Continued support and bug fixes for this version have been provided until December 31, 2016.
-		        Security fixes will be provided until at least December 31, 2020 if necessary.
+		        Security fixes and compatibility for PHP 7 and PHP 8 will be provided until at least December 31, 2021.
 HTML
 		],
 		'1.0' => [
@@ -61,7 +76,7 @@ HTML
 			'git-url' => 'git@github.com:yiisoft/yii.git',
 			'svn-url' => 'https://github.com/yiisoft/yii/trunk/',
 			'summary' => <<<HTML
-				Yii 1.0 is the first version of Yii Framework. It is superseeded by Yii 1.1 and <strong>not supported anymore</strong>.
+				Yii 1.0 is the first version of Yii Framework. It is superseded by Yii 1.1 and <strong>not supported anymore</strong>.
 HTML
 		],
 	],
