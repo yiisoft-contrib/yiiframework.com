@@ -67,6 +67,7 @@
       margin-top: -1px;
       background-color: $eshill-yellow;
       width: 100%;
+      min-width: 100%;
       @include border-top-radius(0);
       @include border-bottom-radius($yii-btn-border-radius-base);
       > li > a {
