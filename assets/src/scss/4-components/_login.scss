@@ -50,9 +50,9 @@ For .omb_spanOr use @body-bg instead of white.
         -webkit-box-shadow: 0 0 0 1000px $eshill-light-blue inset;
         @include rem(padding, 10px 0px);
         font-size: 1.7rem;
-        color: #7abbd7;
+        color: #ffffff;
         width: 100%;
-        -webkit-text-fill-color: #7abbd7 !important;
+        -webkit-text-fill-color: #ffffff !important;
 
         &:-moz-placeholder {
           color: #7abbd7;
