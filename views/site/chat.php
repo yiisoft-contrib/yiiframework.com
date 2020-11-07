@@ -1,5 +1,5 @@
 <?php
-use yii\helpers\Html;
+use yii\helpers\Url;
 
 /* @var $this yii\web\View */
 ?>
@@ -18,7 +18,7 @@ use yii\helpers\Html;
 
         <p>
             We have a Slack channel:
-            <a href="https://join.slack.com/t/yii/shared_invite/enQtMzQ4MDExMDcyNTk2LTc0NDQ2ZTZhNjkzZDgwYjE4YjZlNGQxZjFmZDBjZTU3NjViMDE4ZTMxNDRkZjVlNmM1ZTA1ODVmZGUwY2U3NDA">yii.slack.com</a>.
+            <a href="<?= Url::to(['go/slack']) ?>">yii.slack.com</a>.
             There are <a href="https://slack.com/downloads/">handy clients for Desktop and phones</a>.
         </p>
 

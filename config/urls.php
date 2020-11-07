@@ -23,6 +23,9 @@ return [
     'render-markdown' => 'site/render-markdown',
     'release-cycle' => 'site/release-cycle',
 
+    // go
+    'go/slack' => 'go/slack',
+
     // status
     'status/<version:\\d\\.\\d>' => 'status/index',
     'status' => 'status/index',
