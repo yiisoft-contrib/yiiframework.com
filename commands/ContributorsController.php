@@ -49,7 +49,7 @@ class ContributorsController extends Controller
             if (file_exists($tokenFile)) {
                 $this->stdout("Authenticating with Github token.\n");
                 $token = trim(file_get_contents($tokenFile));
-                $client->authenticate($token, null, \Github\Client::AUTH_URL_TOKEN);
+                $client->authenticate($token, null, \Github\Client::AUTH_HTTP_TOKEN);
             }
             $api = $client->api('repo');
             $paginator = new \Github\ResultPager($client);
