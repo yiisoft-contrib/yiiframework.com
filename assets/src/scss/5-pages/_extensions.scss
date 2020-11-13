@@ -104,9 +104,11 @@ ul.extension-side-menu {
     margin-bottom: 2rem;
   }
   li a {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
     font-size: 1.3rem;
     text-decoration: none;
-    display: block;
     padding: 10px 16px;
     cursor: pointer;
 
