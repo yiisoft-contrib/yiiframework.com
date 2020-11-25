@@ -14,16 +14,16 @@
     font-family: $bold-headings-font-family;
     @media (max-width: 1140px) {
       @include rem(font-size, $font-size * 0.8);
-      @include rem(top, -($font-size*0.65));
+      @include rem(top, -($font-size*0.55));
     }
     @media (max-width: 380px) {
       @include rem(font-size, $font-size * 0.6);
-      @include rem(top, -($font-size*0.50));
+      @include rem(top, -($font-size*0.60));
       @include rem(padding-right, $font-size*0.1);
       @include rem(padding-left, $font-size*0.1);
     }
     @include rem(font-size, $font-size);
-    @include rem(top, -($font-size*0.80));
+    @include rem(top, -($font-size*0.65));
     background-color: $background;
     position: relative;
   }
