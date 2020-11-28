@@ -13,6 +13,10 @@
     @include rem(font-size, fontsize(base));
   }
 
+  @media (max-width: 991px) {
+    @include rem(margin-bottom, 15px);
+  }
+
   a {
     color: #ebf1f2;
   }
