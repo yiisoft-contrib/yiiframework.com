@@ -387,4 +387,16 @@ return [
         'github' => 'marcovtwout',
         'status' => TeamStatus::TEAM_STATUS_ACTIVE,
     ],
+    [
+        'name' => 'Evgeniy Zyubin',
+        'id' => '306959',
+        'forumName' => 'devanych',
+        'period' => '2020',
+        'location' => 'Rostov-on-Don, Russia',
+        'duty' => 'Yii 3.0 development',
+        'photo' => '@web/image/team/devanych.png',
+        'github' => 'devanych',
+        'twitter' => 'EvgeniyZyubin',
+        'status' => TeamStatus::TEAM_STATUS_ACTIVE,
+    ],
 ];
