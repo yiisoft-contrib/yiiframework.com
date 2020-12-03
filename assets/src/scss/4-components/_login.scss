@@ -112,7 +112,7 @@ For .omb_spanOr use @body-bg instead of white.
       @include rem(min-height, 400px);
       color:#fff;
       @media (max-width: 991px)  {
-        margin-top: 15px;
+        @include rem(margin-top, 15px);
       }
 
       .github-icon{
