@@ -1,9 +1,7 @@
 // scrollnav styles nicked from Bootstrap docs
 #scrollnav {
-
   -webkit-transition: top 0.5s, -webkit-transform 0.5s;
   transition: top 0.5s, transform 0.5s;
-
   .nav>li>a {
     display: block;
     @include rem(padding, 4px 20px);
@@ -31,6 +29,7 @@
     display: none;
     @include rem(padding-bottom, 2px);
   }
+
   .nav>li.active>.nav {
     display: block;
   }
@@ -42,10 +41,12 @@
     @include rem(font-size, 12px);
     font-weight: 400;
   }
+
   .nav .nav>li>a:focus,
   .nav .nav>li>a:hover {
     @include rem(padding-left, 29px);
   }
+
   .nav .nav>.active:focus>a,
   .nav .nav>.active:hover>a,
   .nav .nav>.active>a {
@@ -53,11 +54,13 @@
     font-weight: 500;
   }
 }
+
 .fixed {
   position: fixed;
   @include rem(top, 220px);
   @include rem(right, 2px);
 }
+
 .affix-top {
   position: fixed;
   @include rem(top, 220px);

@@ -2,10 +2,8 @@
   .testimonial {
     padding: 1rem;
     @include rem(min-height, 611px);
-
     .testimonial-content{
       padding:1rem;
-
       .title {
         font-size: 2rem;
         font-weight: bold;

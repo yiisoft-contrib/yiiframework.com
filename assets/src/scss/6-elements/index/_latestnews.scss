@@ -1,6 +1,4 @@
-
 .latest-news {
-
 	.row.news {
 		margin-bottom: 5rem;
 		margin-top: 5rem;
@@ -14,7 +12,6 @@
 		margin-top: 0;
 		line-height: 2.2rem;
 		margin-bottom: 3rem;
-
 		a {
 			color:#247ba0;
 			font-size: 2.3rem;
@@ -27,11 +24,10 @@
 		font-size: 1.3rem;
 		text-transform: uppercase;
 	}
-
 }
 
 @media (max-width: 992px) {
-    .latest-news .row.news { 
+    .latest-news .row.news {
     	margin-bottom: 0;
     }
 }

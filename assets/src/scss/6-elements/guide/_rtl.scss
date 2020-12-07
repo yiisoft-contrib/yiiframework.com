@@ -2,7 +2,6 @@
 .lang-ar,
 .lang-he {
   direction: rtl;
-
   pre, code {
     direction: ltr;
   }
@@ -27,32 +26,33 @@
     .pull-right {
       float: left !important;
     }
+
     // but not on the footer navigation
     .prev-next {
       @include rem(padding-top, 30px);
-
       .pull-left {
         float: left !important;
-
         .chevron-left {
           float: left;
           margin-top: 0;
         }
       }
+
       .pull-right {
         float: right !important;
-
         .chevron-right {
           float: right;
           margin-top: 0;
         }
       }
+
       .text-center {
         .chevron-up {
           margin-top: 0;
         }
       }
     }
+
     // columns in index page must float from right to left
     .col-md-1,
     .col-md-2,
@@ -85,7 +85,6 @@
       padding-left: 0;
       @include rem(padding-right, 30px);
       list-style-type: none;
-
       li:before {
         color: $eshill-green;
         content: "⁃";
@@ -108,8 +107,6 @@
   h6 div {
     display: inline;
   }
-
-
 }
 
 .guide-content img {
