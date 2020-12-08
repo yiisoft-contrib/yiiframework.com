@@ -1,5 +1,4 @@
 .container.books {
-
     .version h2 {
         @include dashed-heading-variant($eshill-header-color, #fff, fontsize(h1));
     }
@@ -10,22 +9,27 @@
             color: $gray;
             padding-bottom: 1em;
         }
+
         img {
             margin-bottom: 1em;
         }
+
         %level {
             color: #fff;
             padding: 1em;
             margin-top: 1em;
         }
+
         .beginner {
             @extend %level;
             background-color: $yii-green;
         }
+
         .pro {
             @extend %level;
             background-color: $yii-yellow;
         }
+
         .all {
             @extend %level;
             background-color: $yii-blue;

@@ -2,7 +2,7 @@ $api-box-padding-x: $font-size-base;
 $api-box-padding-y: ceil($font-size-base / 2);
 
 .api-content {
-  @media (max-width: 767px)  {
+  @media (max-width: 767px) {
     .pull-right.content {
       float: none !important;
     }
@@ -15,7 +15,6 @@ $api-box-padding-y: ceil($font-size-base / 2);
     ul {
         @include rem(padding-left, 30px);
         list-style-type: none;
-
         li {
             margin-bottom: 1rem;
         }
@@ -33,12 +32,10 @@ $api-box-padding-y: ceil($font-size-base / 2);
         @include rem(margin, 0 8px);
     }
 
-
     .icon-hash:before {
         content: '#';
         @include rem(font-size, 32px);
         font-weight: bold;
-        /*top: -10px;*/
         line-height: 0.5;
     }
 
@@ -105,7 +102,6 @@ $api-box-padding-y: ceil($font-size-base / 2);
             @include rem(padding, 5px);
             background: #f9f9f9;
             white-space: normal;
-
             a.show {
                 display: inline !important;
             }
@@ -123,21 +119,20 @@ $api-box-padding-y: ceil($font-size-base / 2);
         }
     }
 
-    .signature, td.signature, td .signature2 {
+    .signature,
+    td.signature,
+    td .signature2 {
         margin: 1em 0;
         padding: $api-box-padding-y $api-box-padding-x;
-
         color: #000000;
         background: #f9f9f9;
-
         border-top: 1px solid #ddd;
         border-bottom: 1px solid #ddd;
-
         font-family: $font-family-monospace;
-//      white-space: pre-line;
         word-wrap: break-word;
         word-break: break-all;
     }
+
     td .signature2 {
         margin: 0;
         border: none;
@@ -163,11 +158,11 @@ $api-box-padding-y: ceil($font-size-base / 2);
         border-right: solid 1px #ddd;
         padding: $api-box-padding-y $api-box-padding-x;
         margin: 0;
-
         li {
           overflow-x: auto;
         }
     }
+
     .doc-description.deprecated {
         background: lightpink;
         border-top: solid 1px #ddd;
@@ -217,19 +212,22 @@ $api-box-padding-y: ceil($font-size-base / 2);
   pre {
     display: grid;
   }
-
 }
+
 #api-navigation {
   @extend %sidenav;
   > a.has-children {
     text-transform: none;
   }
+
   .api-ns-level-0 {
     color: $eshill-green;
   }
+
   .api-ns-level-1 {
     color: #247BA0;
   }
+
   .api-ns-level-2 {
     color: $eshill-blue;
   }
