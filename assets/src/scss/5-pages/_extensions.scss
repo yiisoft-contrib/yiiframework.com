@@ -1,8 +1,6 @@
-
 // radio buttons for selection of extension type in extension create form
 label.radiolist-label {
   font-weight: normal;
-
   input {
     width: 25px;
     display: inline-block;
@@ -28,7 +26,6 @@ label.radiolist-label {
   .extension-stats {
     text-transform: uppercase;
     color: #737373;
-
     a {
       text-decoration: none;
     }
@@ -61,28 +58,32 @@ label.radiolist-label {
   background-color: #F5FEC4;
   border-color: #70c1b3;
   margin-top: 1.5rem;
-
   .big {
     font-size: 2.4rem;
     display: block;
   }
+
   .small {
     display: block;
   }
+
   &:hover {
     color: $link-color;
     background-color: #BAD9C1;
     border-color: #93c39e;
   }
+
   &:active {
     color: $eshill-section-bgcolor;
     background-color: #83BFB3;
     border-color: #5baa9a;
   }
 }
+
 .extension-search {
   margin: 1.5rem 0 1.5rem 0;
 }
+
 h3.extension-side-title {
   border-top: 1px solid $eshill-section-bgcolor;
   border-bottom: 1px solid $eshill-section-bgcolor;
@@ -94,15 +95,16 @@ h3.extension-side-title {
   margin: 0;
   padding: 1.5rem 0 1.5rem 1rem;
 }
+
 ul.extension-side-menu {
   background-color: #f2f9fa;
   list-style: none;
   margin: 0;
   padding: 5px 0 5px 0;
-
   &.last-side-menu {
     margin-bottom: 2rem;
   }
+
   li a {
     display: flex;
     justify-content: space-between;
@@ -111,22 +113,25 @@ ul.extension-side-menu {
     text-decoration: none;
     padding: 10px 16px;
     cursor: pointer;
-
     &:hover {
       color: $eshill-blue;
       background-color: #fff;
     }
   }
+
   li a span.count {
     font-size: 1.2rem;
     display: inline;
     color: #717171;
     float: right;
   }
-  li a.asc, li a.asc:hover,
-  li a.desc, li a.desc:hover,
-  li.active a, li.active a:hover
-  {
+
+  li a.asc,
+  li a.asc:hover,
+  li a.desc,
+  li a.desc:hover,
+  li.active a,
+  li.active a:hover {
     background-color: $eshill-light-blue;
     color: #fff;
     span.count {
@@ -140,14 +145,12 @@ ul.extension-side-comments {
   list-style: none;
   margin: 0;
   padding: 5px 0 5px 0;
-
   &.last-side-menu {
     margin-bottom: 2rem;
   }
 
   li {
     padding: 10px 16px;
-
     .date {
       font-size: $font-size-small;
     }
@@ -156,26 +159,28 @@ ul.extension-side-comments {
 
 .extension-row {
   margin-bottom: 2rem;
-
   .suptitle {
     color: #70c1b3;
     font-size: 1.4rem;
   }
+
   h2.title {
     margin: 0.5rem 0 3rem 0;
     font-size: 2.5rem;
   }
+
   .text {
     margin-top: 1rem;
   }
+
   .comments {
     margin-top: 0.5rem;
-
     a {
       color: #808080;
       font-size: 1.4rem;
     }
   }
+
   img {
     max-width: 100%;
   }

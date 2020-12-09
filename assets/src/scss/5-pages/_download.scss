@@ -1,38 +1,35 @@
-
 .container.download {
 	color:#4d4d4d;
 	margin-bottom: 6rem;
-
-	p{
+	p {
 		font-size:1.8rem;
 	}
 
-	.small{
+	.small {
 		font-size: 1.6rem;
 	}
 
-	.medium{
+	.medium {
 		font-size: 2.3rem;
 	}
-
-    .separator{
+    .separator {
         padding: 0 1rem;
     }
 
-    .install{
+    .install {
         line-height: 2.6rem;
         padding-top: 1.6rem;
     }
 
-    .ptrem1{
+    .ptrem1 {
         padding:1rem 0;
     }
 
-    .ptrem2{
+    .ptrem2 {
         padding:2rem 0;
     }
 
-	.download-btn{
+	.download-btn {
 		border-color: #1e6887;
 		color: #1e6887;
 		font-size: 2.3rem;
@@ -41,12 +38,11 @@
 		letter-spacing: 0rem;
 		margin: 1.6rem 0;
     white-space: inherit;
-
         img {
             height: 5rem;
         }
 
-		i{
+		i {
 			font-size:4rem;
 		}
 
@@ -60,43 +56,39 @@
 		margin: 6.5rem 0;
 	}
 
-    h1{
+    h1 {
         padding-top: 4rem;
         padding-bottom: 2rem;
     }
 
-    pre code{
+    pre code {
         padding: 2rem 4rem;
     }
 
 
-	ul.offline-doc-v2{
+	ul.offline-doc-v2 {
 		text-align: center;
         padding-left: 0;
-
-        li{
+        li {
             display:inline-block;
             margin:3rem;
-
-            img{
+            img {
                 box-shadow: 0 0 0.5rem #DDD;
                 margin-bottom: 2rem;
             }
 
-            span{
+            span {
                 display: block;
             }
         }
 	}
 
-    ul.offline-doc-v1{
+    ul.offline-doc-v1 {
         text-align: center;
         padding-left: 0;
-
-        li{
+        li {
             display:inline-block;
             margin:3rem;
         }
     }
-
 }
