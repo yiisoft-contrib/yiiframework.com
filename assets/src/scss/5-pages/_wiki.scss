@@ -5,28 +5,32 @@
   background-color: #F5FEC4;
   border-color: #70c1b3;
   margin-top: 1.5rem;
-
-  .big {
-    font-size: 2.4rem;
-    display: block;
-  }
-  .small {
-    display: block;
-  }
   &:hover {
     color: $link-color;
     background-color: #BAD9C1;
     border-color: #93c39e;
   }
+
   &:active {
     color: $eshill-section-bgcolor;
     background-color: #83BFB3;
     border-color: #5baa9a;
   }
+
+  .big {
+    font-size: 2.4rem;
+    display: block;
+  }
+
+  .small {
+    display: block;
+  }
 }
+
 .wiki-search {
   margin: 1.5rem 0 1.5rem 0;
 }
+
 h3.wiki-side-title {
   border-top: 1px solid $eshill-section-bgcolor;
   border-bottom: 1px solid $eshill-section-bgcolor;
@@ -38,37 +42,41 @@ h3.wiki-side-title {
   margin: 0;
   padding: 1.5rem 0 1.5rem 1rem;
 }
+
 ul.wiki-side-menu {
   background-color: #f2f9fa;
   list-style: none;
   margin: 0;
   padding: 5px 0 5px 0;
-
   &.last-side-menu {
     margin-bottom: 2rem;
   }
+
   li a {
     font-size: 1.3rem;
     text-decoration: none;
     display: block;
     padding: 10px 16px;
     cursor: pointer;
-
     &:hover {
       color: $eshill-blue;
       background-color: #fff;
     }
   }
+
   li a span.count {
     font-size: 1.2rem;
     display: inline;
     color: #717171;
     float: right;
   }
-  li a.asc, li a.asc:hover,
-  li a.desc, li a.desc:hover,
-  li.active a, li.active a:hover
-  {
+
+  li a.asc,
+  li a.asc:hover,
+  li a.desc,
+  li a.desc:hover,
+  li.active a,
+  li.active a:hover {
     background-color: $eshill-light-blue;
     color: #fff;
     span.count {
@@ -82,14 +90,12 @@ ul.wiki-side-comments {
   list-style: none;
   margin: 0;
   padding: 5px 0 5px 0;
-
   &.last-side-menu {
     margin-bottom: 2rem;
   }
 
   li {
     padding: 10px 16px;
-
     .date {
       font-size: $font-size-small;
     }
@@ -98,75 +104,52 @@ ul.wiki-side-comments {
 
 .wiki-row {
   margin-bottom: 2rem;
-
   .subtitle {
     font-size: 1.4rem;
     color: #737373;
   }
+
   h2.title {
     margin: 0.5rem 0 1rem 0;
     font-size: 2.5rem;
   }
+
   .text {
     margin-top: 1rem;
   }
+
   .comments {
     float: right;
-
     a {
       color: #737373;
       font-size: 1.4rem;
       text-decoration: none;
     }
   }
+
   img {
     max-width: 100%;
   }
 }
-/*
-TODO why should wiki pagination be styled differently from the rest of the site?
-nav.wiki-pagination-holder {
-  text-align: center;
 
-  .wiki-pagination {
-    li a, li a:hover {
-      border-color: #b2dbbf;
-      color: #b2dbbf;
-      border-radius: 0.7rem;
-      margin: 0 0.2rem 0 0.2rem;
-    }
-    li.active a, li.active a:hover {
-      color: #fff;
-      border-color: #b2dbbf;
-      background-color: #70c1b3;
-    }
-    li.disabled span, li.disabled span:hover {
-      border-radius: 0.7rem;
-      margin: 0 0.2rem 0 0.2rem;
-      color: #e8f4ec;
-      border-color: #e8f4ec;
-    }
-  }
-}*/
 #wiki-content {
   resize: vertical;
   min-width: 100%;
   max-width: 100%;
   min-height: 350px;
 }
-.diff, .memo {
+
+.diff,
+.memo {
   font-family: $font-family-monospace;
   font-weight: normal;
   @include rem(font-size, $font-size-codeblocks);
-
   color: #000;
   background-color: #fcfcfc;
   border-left: 5px solid #EBF1F2;
   overflow: auto;
   word-wrap: normal;
-
   padding: 15px;
-
   .diff-snip {
     color: #b2dbbf;
     font-style: italic;
@@ -174,30 +157,32 @@ nav.wiki-pagination-holder {
   }
 
   ins {
-    //background: #e6ffe6;
     background: rgba(133, 215, 201, 0.71);
     text-decoration: none;
   }
 
   del {
-    //background: #ffe6e6;
     background: rgba(255, 22, 84, 0.6);
     text-decoration: line-through #f00;
   }
 }
+
 .changed {
   font-weight: normal;
   background: rgba(255, 22, 84, 0.6);
   color: #000;
 }
+
 .unchanged {
   font-weight: normal;
   background: rgba(133, 215, 201, 0.71);
   color: #000;
 }
+
 .next-revision {
   float: right;
 }
+
 .list-view {
   a {
     word-break: break-word;
