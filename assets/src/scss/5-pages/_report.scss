@@ -1,21 +1,19 @@
-
 .container.report {
     color:#4d4d4d;
     margin-bottom: 6rem;
-
-    p{
+    p {
         font-size:1.8rem;
     }
 
-    .small{
+    .small {
         font-size: 1.6rem;
     }
 
-    .medium{
+    .medium {
         font-size: 2.3rem;
     }
 
-    .github-btn{
+    .github-btn {
         display: inline-flex;
         border-color: #1e6887;
         color: #1e6887;
@@ -25,7 +23,7 @@
         letter-spacing: 0.1rem;
         margin: 1.6rem 0;
 
-        i{
+        i {
             font-size:4rem;
         }
 
@@ -34,36 +32,36 @@
         }
     }
 
-    .extensions{
+    .extensions {
         margin-top: 2rem;
         margin-bottom: 2rem;
         display: flex;
         flex-wrap: wrap;
 
-        ul{
+        ul {
             list-style:none;
             padding: 0;
             margin: 0;
 
-            li{
+            li {
                 padding: 1.4rem;
 
-                a{
+                a {
                     font-size:1.6rem;
                 }
 
-                span{
+                span {
                     display: block;
                 }
             }
         }
     }
 
-    ol.issue-process li{
+    ol.issue-process li {
         margin-top:3rem;
     }
 
-    .btn.btn-send{
+    .btn.btn-send {
         padding:1rem 6rem;
         margin-bottom: 3rem;
     }

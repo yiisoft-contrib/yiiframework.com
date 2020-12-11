@@ -1,4 +1,3 @@
-
 .search-result {
     em {
         background: #ffff00;
@@ -10,10 +9,10 @@
       @media (min-width: 768px) {
         font-size: 28px;
       }
-
     }
 
-    h3, p {
+    h3,
+    p {
         width: 100%;
         max-width: 100%;
     }
@@ -34,12 +33,10 @@
   @include rem(width, 255px);
   @include rem(min-height, 150px);
   z-index: 1000;
-
   border: solid 1px #cccccc;
   border-top: none;
   background: #fff;
   box-shadow: 0 1px 5px 0 rgba(0, 0, 0, 0.05);
-
   display: none;
   width: 100% !important;
   max-width: 90%;
@@ -61,7 +58,6 @@
     font-weight: bold;
     border-top: solid 1px #CCCCCC;
     border-bottom: solid 1px #CCCCCC;
-
     .search-limit {
       font-weight: normal;
       float: right;
@@ -71,25 +67,22 @@
   ul {
     padding: 0;
     margin: 0;
-
     list-style: none;
-
     @include rem(max-height, 300px);
     overflow-y: auto;
-
     li {
       display: block;
       padding: 0;
       margin: 0;
       width: 100%;
 
-      a, p {
+      a,
+      p {
         display: inline-block;
         margin: 0;
         @include rem(padding, 5px 5px 5px 15px);
         width: 100%;
         word-break: break-word;
-
         span.result-annotation {
           float: right;
         }

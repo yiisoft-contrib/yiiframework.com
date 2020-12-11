@@ -20,8 +20,7 @@
 }
 
 .team-content {
-
-    h4{
+    h4 {
         font-weight: bold;
         text-align:center;
     }
@@ -30,16 +29,16 @@
         text-align:center;
     }
 
-    p.duty{
+    p.duty {
         font-size: 1.4rem;
         font-weight: bold;
     }
 
-    p.period{
+    p.period {
         font-size: 1.4rem;
     }
 
-    p.location{
+    p.location {
         color: #737373;
         font-size: 1.4rem;
     }
@@ -76,6 +75,7 @@
           background-color: transparent;
         }
       }
+
       .fa {
         font-size: 37px;
         color: #999;
@@ -84,8 +84,8 @@
           color: #1e6887;
         }
       }
-
     }
+
     li.twitter {
       .fa {
         font-size: 18px;

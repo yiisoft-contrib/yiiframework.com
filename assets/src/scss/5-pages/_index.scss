@@ -10,26 +10,25 @@
   color: $eshill-blue;
   background-color: transparent;
   border-color: $eshill-light-blue;
-
   &:focus,
   &.focus {
     color: $eshill-light-blue;
     background-color: #E6F8EA;
     border-color: $eshill-light-blue;
   }
+
   &:hover {
     color: darken($eshill-light-blue, 12%);
     background-color: #E6F8EA;
     border-color: darken($eshill-light-blue, 12%);
   }
+
   &:active,
   &.active,
   .open > &.dropdown-toggle {
     color: $eshill-section-bgcolor;
     background-color: $eshill-light-blue;
     border-color: darken($eshill-light-blue, 12%);
-
-    //&:hover,
     &:focus,
     &.focus {
       color: $eshill-section-bgcolor;
@@ -39,14 +38,12 @@
   }
   @include rem(font-size, 22px);
   transition:color 0.4s ease-out, background 0.4s ease-in;
-  //#D9F1E2 border hover
-  //#E6F8EA background hover
-  //$eshill-light-blue background active
   @media (max-width: 380px) {
     @include rem(font-size, 16px);
   }
   @include rem(margin-bottom, 12px);
-} // btn end
+}
+
 .btn-frontf {
   @include button-variant($eshill-green, transparent, lighten($eshill-green, 20%));
 }
