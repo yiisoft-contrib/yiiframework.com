@@ -1,23 +1,11 @@
-/*
-Note: It is best to use a less version of this file ( see http://css2less.cc
-For the media queries use @screen-sm-min instead of 768px.
-For .omb_spanOr use @body-bg instead of white.
-*/
-
-
 .login-container {
   background-color: $eshill-light-blue;
   width: 100%;
-
   .omb_login {
-
     @include rem(padding, 80px 0px);
-
     .omb_authTitle {
-
       @include rem(margin-bottom, 20px);
-
-      h3{
+      h3 {
         color:#FFF;
         @include rem(font-size, 45px);
         font-weight: bold;
@@ -25,25 +13,24 @@ For .omb_spanOr use @body-bg instead of white.
         margin: 0;
       }
 
-      span{
+      span {
         color: #fff;
         @include rem(font-size, 20px);
         @include rem(padding-right, 6px);
       }
 
-      a{
+      a {
         color: #f3ffbd;
         font-size: 2.5rem;
       }
     }
 
-    .omb_loginForm{
-
+    .omb_loginForm {
       .help-block {
         color: red;
       }
 
-      .login-control{
+      .login-control {
         background: none;
         border: none;
         border-bottom: 2px solid #7abbd7;
@@ -53,13 +40,14 @@ For .omb_spanOr use @body-bg instead of white.
         color: #ffffff;
         width: 100%;
         -webkit-text-fill-color: #7abbd7 !important;
-
         &:-moz-placeholder {
           color: #7abbd7;
         }
+
         &:-ms-input-placeholder {
           color: #7abbd7;
         }
+
         &::-webkit-input-placeholder {
           color: #7abbd7;
         }
@@ -77,23 +65,21 @@ For .omb_spanOr use @body-bg instead of white.
       }
     }
 
-    .forgotPwd{
+    .forgotPwd {
       @include rem(margin-top, 10px);
-
       a {
         color: #fff;
         font-size: 1.7rem;
       }
     }
 
-    .btn{
+    .btn {
       font-size: 1.8rem;
       font-family: "pt_sansregular", sans-serif;
       color: $eshill-blue;
       background-color: #F5FEC4;
       border-color: #ebfd88;
-
-      &:hover{
+      &:hover {
         color: #1e6887;
         background-color: #BAD9C1;
         border-color: #93c39e;
@@ -106,16 +92,16 @@ For .omb_spanOr use @body-bg instead of white.
       }
     }
 
-    .social-login{
+    .social-login {
       text-align: center;
       border-left: 2px solid #1e6887;
       @include rem(min-height, 400px);
       color:#fff;
-      @media (max-width: 991px)  {
+      @media (max-width: 991px) {
         @include rem(margin-top, 15px);
       }
 
-      .github-icon{
+      .github-icon {
         display: flex;
         align-items: center;
         justify-content: center;
@@ -126,15 +112,14 @@ For .omb_spanOr use @body-bg instead of white.
         width: 90px;
         height: 90px;
         font-size: 4rem;
-
-        i{
+        i {
           background-color: #1e6887;
           color: #ffffff;
           border-radius: 25px;
         }
       }
 
-      h4{
+      h4 {
         @include rem(margin, 30px 0px);
       }
     }
