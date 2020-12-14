@@ -1,9 +1,7 @@
-
 .site-header {
     color:#4d4d4d;
     margin-top: 5rem;
     margin-bottom: 1rem;
-
     h1 {
         font-size: 6rem;
         margin-top: 10rem;
@@ -17,7 +15,7 @@
         margin-top: 5rem;
     }
 
-    h2{
+    h2 {
         margin-top:0;
     }
 
@@ -29,7 +27,8 @@
 
 @media (max-width: 992px) {
     .site-header {
-        h1, h1.security {
+        h1,
+        h1.security {
             margin-top: 0;
         }
     }

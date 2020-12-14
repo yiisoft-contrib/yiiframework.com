@@ -1,23 +1,24 @@
 .section-header-wrap {
   background-color: $eshill-light-blue;
 }
+
 .section-header {
+  color: white;
+  background-color: $eshill-light-blue;
+  @include rem(padding-top, 15px);
   .section-headline {
     font-family: $bold-headings-font-family;
     font-size: fontsize(h1);
-
     a {
       color: white;
       text-decoration: none;
     }
   }
-  color: white;
-  background-color: $eshill-light-blue;
-  @include rem(padding-top, 15px);
 
   .headline-row {
     @include rem(margin-bottom, 15px);
   }
+
   .content-selector-row {
     @include rem(margin-top, -15px);
   }
@@ -29,26 +30,28 @@
     .btn {
       border: none;
       color: $yii-blue;
-      background-color: $version-buttons;//#BAD9C1
+      background-color: $version-buttons;
       border-color: darken($version-buttons, 12%);
-
+      font-family: $font-family-base;
       &:focus,
       &.focus {
         color: $yii-blue;
         background-color: #F5FEC4;
             border-color: darken(#F5FEC4, 12%);
       }
+
       &:hover {
         color: $yii-blue;
         background-color: $eshill-yellow-diffuse;
-            border-color: darken($eshill-yellow-diffuse, 12%);
+        border-color: darken($eshill-yellow-diffuse, 12%);
       }
+
       &:active,
       &.active,
       .open > &.dropdown-toggle {
         color: $yii-blue;
         background-color: #F5FEC4;
-            border-color: darken(#F5FEC4, 12%);
+        border-color: darken(#F5FEC4, 12%);
 
         &:hover,
         &:focus,
@@ -58,11 +61,12 @@
           border-color: darken(#F5FEC4, 12%);
         }
       }
-      font-family: $font-family-base;
+
       @media (max-width: 380px) {
         @include rem(font-size, 12px);
       }
     }
+
     .dropdown-menu {
       margin-top: -1px;
       background-color: $eshill-yellow;
@@ -79,23 +83,28 @@
         }
       }
     }
-    &> .btn-group {
+
+    & > .btn-group {
       float: right;
     }
+
     .btn-group.btn-group-1-element {
       max-width: 50%;
     }
+
     .btn-group.btn-group-2-element {
       max-width: 75%;
-      &> .btn-group:first-child > .dropdown-menu {
+      & > .btn-group:first-child > .dropdown-menu {
         width: 200%;
       }
     }
+
     .btn-group.btn-group-3-element {
-      &> .btn-group:first-child > .dropdown-menu {
+      & > .btn-group:first-child > .dropdown-menu {
         width: 300%;
       }
-      &> .btn-group:not(:first-child):not(:last-child) > .dropdown-menu {
+
+      & > .btn-group:not(:first-child):not(:last-child) > .dropdown-menu {
         width: 200%;
       }
     }

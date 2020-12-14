@@ -2,21 +2,21 @@
   width: 200px;
   height: 200px;
   background: #ccc;
-
   text-align: center;
   vertical-align: middle;
   display: block;
 }
+
 #upload-progress {
   background: #ccc;
   width: 200px;
   display: none;
-
   .bar {
     background: $eshill-blue;
     height: 15px;
   }
 }
+
 .profile-image-box {
   float: right;
   max-width: 400px;
