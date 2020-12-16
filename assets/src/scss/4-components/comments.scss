@@ -18,6 +18,7 @@
          font-family: $font-family-base;
        }
      }
+
      .component-comments {
        @include rem(margin-top, 32px);
        .comment {
@@ -40,14 +41,17 @@
              font-weight: 600;
              text-decoration: none;
            }
+
            .details {
              @include rem(padding-top, 7px);
            }
+
            .voting {
              float: right;
              text-align: right;
            }
          }
+
          .comment-body {
            @include rem(padding-left, 22px);
            @include rem(padding-top, 10px);
@@ -56,10 +60,12 @@
            a {
              word-break: break-word;
            }
+
            img {
              max-width: 100%;
            }
          }
+
          .comment-footer {
            @include rem(padding-left, 22px);
            @include rem(padding-right, 22px);
