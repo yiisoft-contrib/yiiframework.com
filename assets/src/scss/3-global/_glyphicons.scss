@@ -1,14 +1,7 @@
-// glyphicon override using fontawesome
-//
-// this is to style existing glyphicons in situations where
-// the markdup can not be easily adjusted to use fontawesome classes.
-//
-// used in:
-// - admin gridview
-// - apidoc edit and view source links
-
-.sorter a.asc:after, .sorter a.desc:after,
-.grid-view a.asc:after, .grid-view a.desc:after,
+.sorter a.asc:after,
+.sorter a.desc:after,
+.grid-view a.asc:after,
+.grid-view a.desc:after,
 .glyphicon:after {
   position: relative;
   top: 1px;
@@ -18,7 +11,6 @@
   font-weight: normal;
   line-height: 1;
   padding-left: 5px;
-
   font-feature-settings: normal;
   font-kerning: auto;
   font-language-override: normal;
@@ -30,14 +22,26 @@
   text-rendering: auto;
 }
 
-/* add sorting icons to gridview sort links */
 .sorter a.asc:after,
-.grid-view a.asc:after    { content: "\f160"; } // http://fontawesome.io/icon/sort-amount-asc/
-.sorter a.desc:after,
-.grid-view a.desc:after   { content: "\f161"; } // http://fontawesome.io/icon/sort-amount-desc/
+.grid-view a.asc:after {
+  content: "\f160";
+}
 
-/* define fontawesome counterpart for some glyphicons used */
-.glyphicon-eye-open:after { content: "\f06e"; } // http://fontawesome.io/icon/eye/
-.glyphicon-pencil:after   { content: "\f040"; } // http://fontawesome.io/icon/pencil/
-.glyphicon-trash:after    { content: "\f1f8"; } // http://fontawesome.io/icon/trash/
+.sorter a.desc:after,
+.grid-view a.desc:after {
+  content: "\f161";
+}
+
+.glyphicon-eye-open:after {
+  content: "\f06e";
+}
+
+.glyphicon-pencil:after   {
+  content: "\f040";
+}
+
+.glyphicon-trash:after    {
+  content: "\f1f8";
+}
+
 

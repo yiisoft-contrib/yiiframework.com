@@ -8,12 +8,14 @@ footer {
     &:hover {
       color: $footer-color;
     }
+
     &:focus {
       color: $footer-color;
       text-decoration: none;
     }
   }
 }
+
 .footer-inner {
   .center-block {
     white-space: nowrap;
@@ -22,6 +24,7 @@ footer {
     margin-right: auto;
   }
 }
+
 .footerList {
   list-style: outside none none;
   @include rem(margin-top, 60px);
@@ -36,6 +39,7 @@ footer {
       border: none;
       text-align: center;
     }
+
     i {
       @include rem(font-size, 14px);
       @include rem(margin-left, 3px);
@@ -54,6 +58,7 @@ footer {
     }
   }
 }
+
 .footerList_item:first-child {
   color: $footer-color;
   @include rem(font-size, 18px);

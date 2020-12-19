@@ -7,6 +7,7 @@
   @media (max-width: 380px) {
     @include rem(margin-bottom, $font-size * 1.2);
   }
+
   span {
     @include rem(padding-right, $font-size*0.5);
     @include rem(padding-left, $font-size*0.5);
@@ -16,12 +17,14 @@
       @include rem(font-size, $font-size * 0.8);
       @include rem(top, -($font-size*0.55));
     }
+
     @media (max-width: 380px) {
       @include rem(font-size, $font-size * 0.6);
       @include rem(top, -($font-size*0.60));
       @include rem(padding-right, $font-size*0.1);
       @include rem(padding-left, $font-size*0.1);
     }
+
     @include rem(font-size, $font-size);
     @include rem(top, -($font-size*0.65));
     background-color: $background;
@@ -36,12 +39,15 @@
 .dashed-heading-jumbo {
   @include dashed-heading-variant($eshill-yellow, $eshill-light-blue, fontsize(h1));
 }
+
 .dashed-heading-front {
   @include dashed-heading-variant($eshill-header-color, $body-bg, fontsize(h1));
 }
+
 .dashed-heading-front-section {
   @include dashed-heading-variant($eshill-header-color, $body-bg, fontsize(h3));
 }
+
 .dashed-heading-front-books {
   @include dashed-heading-variant($eshill-header-color, #EBF1F2, fontsize(h1));
 }
