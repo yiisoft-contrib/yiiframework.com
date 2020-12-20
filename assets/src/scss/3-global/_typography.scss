@@ -15,35 +15,19 @@ a {
 .btn {
   text-decoration: none;
 }
-// Copied here from bootstrap 'type' for reference
-// $font-size-base:          14px !default;
-// $font-size-large:         ceil(($font-size-base * 1.25)) !default; // ~18px
-// $font-size-small:         ceil(($font-size-base * 0.85)) !default; // ~12px
-//
-// $font-size-h1:            floor(($font-size-base * 2.6)) !default; // ~36px
-// $font-size-h2:            floor(($font-size-base * 2.15)) !default; // ~30px
-// $font-size-h3:            ceil(($font-size-base * 1.7)) !default; // ~24px
-// $font-size-h4:            ceil(($font-size-base * 1.25)) !default; // ~18px
-// $font-size-h5:            $font-size-base !default;
-// $font-size-h6:            ceil(($font-size-base * 0.85)) !default; // ~12px
-//
-// //** Unit-less `line-height` for use in components like buttons.
-// $line-height-base:        1.428571429 !default; // 20/14
-// //** Computed "line-height" (`font-size` * `line-height`) for use with `margin`, `padding`, etc.
-// $line-height-computed:    floor(($font-size-base * $line-height-base)) !default; // ~20px
 
 $font-sizes: (
-  base: $font-size-base, // 1.0
-  large: $font-size-large, // 1.25
+  base: $font-size-base,
+  large: $font-size-large,
   larger: $font-size-base * 1.5,
-  small: $font-size-small, // 0.85
+  small: $font-size-small,
   smaller: $font-size-base * 0.7,
-  h1: $font-size-h1, // 2.6
-  h2: $font-size-h2, // 2.15
-  h3: $font-size-h3, // 1.7
-  h4: $font-size-h4, // 1.25
-  h5: $font-size-h5, // 1.0
-  h6: $font-size-h6, // 0.85
+  h1: $font-size-h1,
+  h2: $font-size-h2,
+  h3: $font-size-h3,
+  h4: $font-size-h4,
+  h5: $font-size-h5,
+  h6: $font-size-h6,
   2up: $font-size-base * 2
 );
 
@@ -60,9 +44,6 @@ $font-sizes: (
   @return #{$remSize}rem;
 }
 
-// typeset <em> in bold instead of italic in japanese language
-// this is because italic has no good distincion from non-italic
-// see https://github.com/yiisoft/yii2/issues/6195
 html[lang=jp] em {
   font-weight: bold;
   font-style: normal;

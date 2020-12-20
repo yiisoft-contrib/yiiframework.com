@@ -6,9 +6,11 @@
     @include rem(padding, 20px 10px);
     border-bottom: 1px solid $eshill-section-bgcolor;
   }
+
   > .in > a {
     background-color: $eshill-section-bgcolor-alternate;
   }
+
   > a.has-children {
     color: $separator-color;
     text-decoration: none;
@@ -20,9 +22,11 @@
       background-color: $eshill-section-bgcolor;
     }
   }
+
   > a.active {
     background-color: $eshill-section-bgcolor;
   }
+
   > .in a{
     color: $eshill-light-blue;
     &:hover {
@@ -31,6 +35,7 @@
       background-color: white;
     }
   }
+
   > .active-parent {
     background-color: $eshill-section-bgcolor;
     a.active {
@@ -43,6 +48,7 @@
         background-color: white;
       }
     }
+
     > a {
       color: $eshill-light-blue;
       &:hover {

@@ -1,4 +1,3 @@
-// lift the logo up a bit
 .navbar-header {
 		position: relative;
 		@include rem(top, -5px);
@@ -12,7 +11,6 @@
 }
 
 @media screen and (min-width: $grid-float-breakpoint) {
-  // Dropdown menu items
   .navbar-nav {
     > li > a {
       color: $navbar-default-link-color;
@@ -28,12 +26,14 @@
         height: $navbar-height;
       }
     }
+
     > .active > a {
       color: $navbar-default-link-active-color;
       background-color: $navbar-default-link-active-bg;
       border-bottom: 3px solid $eshill-yellow;
       height: $navbar-height;
     }
+
     .dropdown-menu {
       position: absolute;
       top: $navbar-height;
@@ -48,12 +48,14 @@
           background-color: $version-buttons;
         }
       }
+
       > li.separator {
         @include rem(font-size, 13px);
         background-color: $eshill-yellow;
         text-transform: uppercase;
         color: $separator-color;
       }
+
       > .active > a {
         background-color: $version-buttons;
         color: $link-color;
@@ -64,7 +66,7 @@
     }
   }
 }
-// restyle navbar dropdown menu when collapsed
+
 @media screen and (max-width: $grid-float-breakpoint) {
   .navbar-nav {
     > li > a {
@@ -82,12 +84,13 @@
       }
     }
   }
+
   .navbar-collapse.in {
     overflow-y: initial;
   }
+
   .navbar-nav {
     margin: 1.5px 0;
-
     > li.open > .dropdown-menu {
       position: absolute;
       left: auto;
@@ -97,29 +100,31 @@
       box-shadow: 2px 3px 1px 0 #206888;
     }
   }
+
   .nav > li {
     display: inline-block;
-
     > a {
       padding: 10px 3px;
     }
   }
+
   #main-nav + .navbar-right {
     float: right;
     margin-top: 6px;
     margin-right: 10px;
   }
+
   .navbar-right .navbar-form {
     margin: 0 -15px;
     border: none;
     box-shadow: none;
   }
+
   #login-nav .navbar-form {
     margin-top: -10px;
   }
 }
 
-// style navbar search form-control
 form#search-form.navbar-form div.form-group.nospace div.input-group input#search.form-control {
    width: 160px !important;
    border-radius: $btn-border-radius-base;
@@ -135,5 +140,3 @@ form#search-form.navbar-form div.form-group.nospace div.input-group input#search
     font-size: 14px;
   }
 }
-
-
