@@ -1,4 +1,3 @@
-// Global styles
 html {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -20,16 +19,19 @@ html {
 .visible-huge {
   display: none !important;
 }
+
 @media (min-width: 1650px) {
   .visible-huge {
     display: block !important;
   }
 }
+
 @media (min-width: 1650px) {
   .hidden-huge {
     display: none !important;
   }
 }
+
 .hidden-lg {
   @extend .hidden-huge;
 }
