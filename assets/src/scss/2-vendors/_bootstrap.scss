@@ -1,19 +1,7 @@
-/*!
- * Bootstrap v3.3.6 (http://getbootstrap.com)
- * Copyright 2011-2015 Twitter, Inc.
- * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
- */
-
-// Core variables and mixins
 @import "bootstrap/variables";
 @import "bootstrap/mixins";
-
-// Reset and dependencies
 @import "bootstrap/normalize";
 @import "bootstrap/print";
-//@import "bootstrap/glyphicons"; // we use fontawesome instead
-
-// Core CSS
 @import "bootstrap/scaffolding";
 @import "bootstrap/type";
 @import "bootstrap/code";
@@ -21,12 +9,8 @@
 @import "bootstrap/tables";
 @import "bootstrap/forms";
 @import "bootstrap/buttons";
-
-// Components
 @import "bootstrap/component-animations";
-//@import "bootstrap/dropdowns";
 @import "custom-bootstrap/yii-dropdowns";
-//@import "bootstrap/button-groups";
 @import "custom-bootstrap/yii-button-groups";
 @import "bootstrap/input-groups";
 @import "bootstrap/navs";
@@ -39,22 +23,14 @@
 @import "bootstrap/jumbotron";
 @import "bootstrap/thumbnails";
 @import "bootstrap/alerts";
-//@import "bootstrap/progress-bars";
 @import "bootstrap/media";
-//@import "bootstrap/list-group";
 @import "custom-bootstrap/yii-list-group";
-//@import "bootstrap/panels";
 @import "custom-bootstrap/yii-panels";
-//@import "bootstrap/responsive-embed";
 @import "bootstrap/wells";
 @import "bootstrap/close";
-
-// Components w/ JavaScript
 @import "bootstrap/modals";
 @import "bootstrap/tooltip";
 @import "bootstrap/popovers";
 @import "bootstrap/carousel";
-
-// Utility classes
 @import "bootstrap/utilities";
 @import "bootstrap/responsive-utilities";
