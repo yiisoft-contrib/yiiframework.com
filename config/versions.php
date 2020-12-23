@@ -82,6 +82,7 @@ HTML
 	],
 	'minor-versions' => [
 		'2.0' => [
+            '2.0.40' => 'December 23, 2020',
             '2.0.39' => 'November 10, 2020',
             '2.0.38' => 'September 14, 2020',
             '2.0.37' => 'August 7, 2020',
