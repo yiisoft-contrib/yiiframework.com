@@ -7,10 +7,8 @@
     }
   }
 
-
   &__arrows {
     position: absolute;
-
     #{$that}--horizontal & {
       top: 50%;
       width: 92%;
@@ -24,7 +22,6 @@
     }
   }
 
-
   &__arrow {
     position: absolute;
     z-index: 2;
@@ -36,30 +33,40 @@
     border: 2px solid rgba(255, 255, 255, 0.5);
     border-radius: 4px;
     transition: border 300ms ease-in-out;
+    &:focus {
+      outline: none;
+    }
 
-    &:focus { outline: none; }
-    &:hover { border-color: white; }
+    &:hover {
+      border-color: white;
+    }
 
     #{$that}--horizontal & {
       transform: translateY(-50%);
+      &.prev {
+        left: 0;
+      }
 
-      &.prev { left: 0; }
-      &.next { right: 0; }
+      &.next {
+        right: 0;
+      }
     }
 
     #{$that}--vertical & {
       transform: translateX(-50%);
+      &.prev {
+        top: 0;
+      }
 
-      &.prev { top: 0; }
-      &.next { bottom: 0; }
+      &.next {
+        bottom: 0;
+      }
     }
   }
-
 
   &__bullets {
     position: absolute;
     list-style: none;
-
     #{$that}--horizontal & {
       bottom: 5%; left: 16%;
       z-index: 100;
@@ -77,7 +84,7 @@
 
     & > * {
       display: inline-block;
-      background-color: transparent;//rgba(255, 255, 255, 0.5);
+      background-color: transparent;
       width: 22px;
       height: 22px;
       padding: 0;
@@ -85,7 +92,6 @@
       border-radius: 50%;
       border: 1px solid $eshill-yellow;
       transition: all 300ms ease-in-out;
-
       #{$that}--horizontal & {
         margin: 0 5px;
       }
@@ -98,7 +104,9 @@
         background-color: $eshill-yellow;
       }
 
-      &:focus { outline: none; }
+      &:focus {
+        outline: none;
+      }
 
       &:hover,
       &:focus {
@@ -107,23 +115,13 @@
     }
   }
 
-
   &--slider {
-
     #{$that}__arrow {
       opacity: 1;
       transition: opacity 150ms ease;
-
       &.disabled {
         opacity: 0.33;
       }
     }
-
   }
-
-
-  &--carousel {}
-
-
-  &--slideshow {}
 }
