@@ -406,7 +406,7 @@ return [
         'period' => '2020',
         'location' => 'Krasnodar, Russia',
         'duty' => 'Yii 3.0 development',
-        'photo' => '@web/image/team/darkdef.png',
+        'photo' => '@web/image/team/darkdef.jpg',
         'github' => 'darkdef',
         'twitter' => 'DarkDef_PR',
         'status' => TeamStatus::TEAM_STATUS_ACTIVE,
