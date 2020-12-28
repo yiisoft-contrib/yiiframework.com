@@ -399,4 +399,16 @@ return [
         'twitter' => 'EvgeniyZyubin',
         'status' => TeamStatus::TEAM_STATUS_ACTIVE,
     ],
+    [
+        'name' => 'Valerii Gorbachev',
+        'id' => '348882',
+        'forumName' => 'darkdef',
+        'period' => '2020',
+        'location' => 'Krasnodar, Russia',
+        'duty' => 'Yii 3.0 development',
+        'photo' => '@web/image/team/darkdef.png',
+        'github' => 'darkdef',
+        'twitter' => 'DarkDef_PR',
+        'status' => TeamStatus::TEAM_STATUS_ACTIVE,
+    ],      
 ];
