@@ -1,6 +1,3 @@
-// Removes outline on hover
-// but should not prevent keyboard users from getting feedback
-
 textarea:hover,
 input[type=text]:hover,
 textarea:active,
@@ -15,12 +12,10 @@ button:hover
     -webkit-appearance:none;
 }
 
-// yes, but there is outline on links by means of underline upon focus
 *:focus {
     outline: 0 !important;
 }
 
-/* Always show the scrollbar to prevent "jumping" */
 html {
   overflow: -moz-scrollbars-vertical;
   overflow-y: scroll;
