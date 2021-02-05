@@ -3,6 +3,7 @@ $api-box-padding-y: ceil($font-size-base / 2);
 
 .api-content {
   @media (max-width: 767px) {
+
     .pull-right.content {
       float: none !important;
     }
@@ -15,6 +16,7 @@ $api-box-padding-y: ceil($font-size-base / 2);
     ul {
         @include rem(padding-left, 30px);
         list-style-type: none;
+
         li {
             margin-bottom: 1rem;
         }
@@ -44,8 +46,6 @@ $api-box-padding-y: ceil($font-size-base / 2);
         text-decoration: none;
     }
 
-
-    // old Yii 1.1 and 1.0 API docs
     .api1 {
         pre {
             @extend .content;
@@ -102,6 +102,7 @@ $api-box-padding-y: ceil($font-size-base / 2);
             @include rem(padding, 5px);
             background: #f9f9f9;
             white-space: normal;
+
             a.show {
                 display: inline !important;
             }
@@ -158,6 +159,7 @@ $api-box-padding-y: ceil($font-size-base / 2);
         border-right: solid 1px #ddd;
         padding: $api-box-padding-y $api-box-padding-x;
         margin: 0;
+
         li {
           overflow-x: auto;
         }
@@ -197,11 +199,16 @@ $api-box-padding-y: ceil($font-size-base / 2);
         color: #693;
     }
 
-    table.summary-table .col-method   { width: 20%; }
-    table.summary-table .col-property { width: 20%; }
-    table.summary-table .col-const    { width: 20%; }
-    table.summary-table .col-event    { width: 20%; }
-    table.summary-table .col-defined  { width: 15%; }
+    table.summary-table .col-method,
+    table.summary-table .col-property,
+    table.summary-table .col-const,
+    table.summary-table .col-event {
+      width: 20%;
+    }
+
+    table.summary-table .col-defined {
+      width: 15%;
+    }
 
     .top-nav {
         @include rem(padding, 3px);
