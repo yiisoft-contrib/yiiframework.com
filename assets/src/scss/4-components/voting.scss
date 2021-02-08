@@ -1,5 +1,6 @@
 .voting {
   @include rem(padding-top, 7px);
+
   .votes {
     @include rem(font-size, fontsize(smaller));
     @include rem(margin-right, 7px);
@@ -61,6 +62,7 @@ a:active {
   @extend .box;
   font-size: 1.4rem;
   color: #717171;
+  
   a {
     color: $eshill-blue;
     text-decoration: none;
@@ -70,7 +72,7 @@ a:active {
     text-align: center;
     margin-bottom: 1.5rem;
   }
-  
+
   .star-wrapper {
     text-align: center;
     margin-bottom: 1.5rem;

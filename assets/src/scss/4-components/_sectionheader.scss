@@ -6,9 +6,11 @@
   color: white;
   background-color: $eshill-light-blue;
   @include rem(padding-top, 15px);
+
   .section-headline {
     font-family: $bold-headings-font-family;
     font-size: fontsize(h1);
+
     a {
       color: white;
       text-decoration: none;
@@ -27,12 +29,14 @@
     border: none;
     margin-bottom: 0;
     padding-bottom: 0;
+
     .btn {
       border: none;
       color: $yii-blue;
       background-color: $version-buttons;
       border-color: darken($version-buttons, 12%);
       font-family: $font-family-base;
+
       &:focus,
       &.focus {
         color: $yii-blue;
@@ -74,6 +78,7 @@
       min-width: 100%;
       @include border-top-radius(0);
       @include border-bottom-radius($yii-btn-border-radius-base);
+
       > li > a {
         color: $yii-blue;
         &:hover,
