@@ -1,7 +1,7 @@
-// scrollnav styles nicked from Bootstrap docs
 #scrollnav {
   -webkit-transition: top 0.5s, -webkit-transform 0.5s;
   transition: top 0.5s, transform 0.5s;
+
   .nav>li>a {
     display: block;
     @include rem(padding, 4px 20px);

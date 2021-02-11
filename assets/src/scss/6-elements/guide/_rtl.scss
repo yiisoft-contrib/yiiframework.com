@@ -1,7 +1,7 @@
-// adjustments for rtl languages
 .lang-ar,
 .lang-he {
   direction: rtl;
+
   pre, code {
     direction: ltr;
   }
@@ -10,7 +10,6 @@
     text-align: left;
   }
 
-  // container for english language inside of rtl content
   .version-selector,
   .lang-en {
     text-align: left;
@@ -21,17 +20,17 @@
     max-width: 100%;
   }
 
-  // pull-right should pull left on rtl pages
   &.guide-content {
     .pull-right {
       float: left !important;
     }
 
-    // but not on the footer navigation
     .prev-next {
       @include rem(padding-top, 30px);
+
       .pull-left {
         float: left !important;
+
         .chevron-left {
           float: left;
           margin-top: 0;
@@ -40,6 +39,7 @@
 
       .pull-right {
         float: right !important;
+
         .chevron-right {
           float: right;
           margin-top: 0;
@@ -53,7 +53,6 @@
       }
     }
 
-    // columns in index page must float from right to left
     .col-md-1,
     .col-md-2,
     .col-md-3,
@@ -85,6 +84,7 @@
       padding-left: 0;
       @include rem(padding-right, 30px);
       list-style-type: none;
+
       li:before {
         color: $eshill-green;
         content: "⁃";
@@ -96,9 +96,6 @@
     }
   }
 
-  // convert <div> to inline elements in headlines
-  // these are necesary for correctly displaying rtl language on github but mess up our CSS on the website.
-  // https://github.com/yiisoft/yii2/pull/16952#issuecomment-446622984
   h1 div,
   h2 div,
   h3 div,
