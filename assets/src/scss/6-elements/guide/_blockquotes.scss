@@ -12,6 +12,7 @@
   background-position: 20px;
   background-repeat: no-repeat;
 	background-size: 40px 40px;
+
   @media (max-width: 767px)  {
     @include rem(padding-left, 20px);
     @include rem(padding-top, 75px);

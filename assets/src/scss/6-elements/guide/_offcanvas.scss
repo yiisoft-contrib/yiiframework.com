@@ -1,7 +1,3 @@
-/*
-* Off Canvas
-* --------------------------------------------------
-*/
 @media screen and (max-width: 767px) {
   .row-offcanvas {
     left: 0;
@@ -10,19 +6,19 @@
     -o-transition: all .25s ease-out;
     transition: all .25s ease-out;
   }
-  
+
   .sidenav-offcanvas {
-    left: -50vw; /* 6 columns */
+    left: -50vw;
   }
 
   .row-offcanvas.active {
-    left: 50vw; /* 6 columns */
+    left: 50vw;
   }
 
   .sidenav-offcanvas {
     position: absolute;
     top: 0;
-    width: 50vw; /* 6 columns */
+    width: 50vw;
   }
 }
 
@@ -31,6 +27,7 @@
   overflow: hidden;
   right: -12px;
   opacity: 0.4;
+
   &:hover {
     opacity: 0.9;
     right: 1px;
