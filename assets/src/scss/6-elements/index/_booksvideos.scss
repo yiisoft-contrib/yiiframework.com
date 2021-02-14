@@ -1,7 +1,7 @@
-/** Front page books and videos widget */
 .books-videos {
     background-color: #ebf1f2;
     width: 100%;
+
     .see-all {
         margin: 2rem .6rem 3rem .6rem;
     }
@@ -13,6 +13,7 @@
 
 .books-item {
     @include rem(padding, 22px);
+
     .books-header {
         @include rem(font-size, fontsize(large));
     }
@@ -22,12 +23,14 @@
             font-weight: bold;
             font-size: 1.8rem;
         }
+
         @include rem(margin-bottom, 16px);
     }
 
     .author-publisher {
         @include rem(font-size, fontsize(smaller));
         @include rem(margin-bottom, 16px);
+
         .what {
             color: $darkish-text;
             font-weight: 600;
@@ -41,6 +44,7 @@
 
     .img-responsive {
         max-width: 75%;
+
         @media (max-width: 767px) {
           max-width: 210px;
         }

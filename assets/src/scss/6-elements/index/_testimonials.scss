@@ -1,9 +1,12 @@
 .testimonials {
+
   .testimonial {
     padding: 1rem;
     @include rem(min-height, 611px);
+
     .testimonial-content{
       padding:1rem;
+
       .title {
         font-size: 2rem;
         font-weight: bold;
@@ -25,6 +28,5 @@
         box-shadow: 0 0 0.5rem #DDD;
       }
     }
-
   }
 }

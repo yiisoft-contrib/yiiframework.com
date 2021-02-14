@@ -11,6 +11,7 @@
 
 .tour-content {
   @include rem(font-size, fontsize(large));
+
   @media (max-width: 380px) {
     @include rem(font-size, fontsize(base));
   }
