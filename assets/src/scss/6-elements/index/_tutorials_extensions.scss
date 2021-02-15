@@ -1,10 +1,12 @@
 .tutorials {
+
   .latest-list {
     @include rem(min-height, 600px);
   }
 }
 
 .extensions {
+
   .latest-list {
     @include rem(min-height, 600px);
   }

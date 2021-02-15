@@ -8,15 +8,18 @@
   padding-bottom: 0;
   margin-bottom: 0;
   z-index: -1;
+
   .container {
     padding-left: 1em;
     padding-top: 1em;
     padding-right: 1em;
     padding-bottom: 0;
     color: $eshill-section-bgcolor;
+
     h1 {
       font-family: $bold-headings-font-family;
       @include rem(font-size, fontsize(h1));
+
       @media (max-width: 1140px) {
         @include rem(font-size, fontsize(h2));
       }
@@ -29,6 +32,7 @@
     .propaganda {
       color: darken($eshill-section-bgcolor, 8%);
       @include rem(font-size, fontsize(h3));
+
       @media (max-width: 1140px) {
         @include rem(font-size, fontsize(h4));
       }
@@ -44,6 +48,7 @@
       color: $eshill-light-blue;
       background-color: #F5FEC4;
       border-color: darken(#F5FEC4, 12%);
+
       &:focus,
       &.focus {
         color: $eshill-section-bgcolor;
