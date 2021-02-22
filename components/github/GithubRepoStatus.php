@@ -57,6 +57,7 @@ $alias: repository(owner: "$owner", name: "$name") {
             target {
               ... on Commit {
                 pushedDate
+                committedDate
               }
             }
           }
@@ -97,7 +98,10 @@ GRAPHQL;
             ArrayHelper::map(
                 $repository['refs']['edges'],
                 'node.target.name',
-                'node.target.target.pushedDate'
+                function ($edge) {
+                    $value = ArrayHelper::getValue($edge, 'node.target.target.pushedDate');
+                    return $value ?? ArrayHelper::getValue($edge, 'node.target.target.committedDate');
+                }
             )
         );
 
