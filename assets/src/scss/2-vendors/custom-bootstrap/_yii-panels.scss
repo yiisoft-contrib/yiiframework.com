@@ -15,6 +15,7 @@
   padding: $panel-heading-padding;
   border-bottom: 1px solid transparent;
   @include border-top-radius(($panel-border-radius - 1));
+
   > .dropdown .dropdown-toggle {
     color: inherit;
   }
@@ -25,6 +26,7 @@
   margin-bottom: 0;
   font-size: ceil(($font-size-base * 1.125));
   color: inherit;
+
   > a,
   > small,
   > .small,
@@ -45,6 +47,7 @@
   > .list-group,
   > .panel-collapse > .list-group {
     margin-bottom: 0;
+
     .list-group-item {
       border-width: 1px 0;
       border-radius: 0;
@@ -77,6 +80,7 @@
     border-top-width: 0;
   }
 }
+
 .list-group + .panel-footer {
   border-top-width: 0;
 }
@@ -86,6 +90,7 @@
   > .table-responsive > .table,
   > .panel-collapse > .table {
     margin-bottom: 0;
+
     caption {
       padding-left: $panel-body-padding;
       padding-right: $panel-body-padding;
@@ -95,8 +100,10 @@
   > .table:first-child,
   > .table-responsive:first-child > .table:first-child {
     @include border-top-radius(($panel-border-radius - 1));
+
     > thead:first-child,
     > tbody:first-child {
+
       > tr:first-child {
         border-top-left-radius: ($panel-border-radius - 1);
         border-top-right-radius: ($panel-border-radius - 1);
@@ -116,8 +123,10 @@
   > .table:last-child,
   > .table-responsive:last-child > .table:last-child {
     @include border-bottom-radius(($panel-border-radius - 1));
+
     > tbody:last-child,
     > tfoot:last-child {
+
       > tr:last-child {
         border-bottom-left-radius: ($panel-border-radius - 1);
         border-bottom-right-radius: ($panel-border-radius - 1);
@@ -149,9 +158,11 @@
   > .table-bordered,
   > .table-responsive > .table-bordered {
     border: 0;
+
     > thead,
     > tbody,
     > tfoot {
+
       > tr {
         > th:first-child,
         > td:first-child {
@@ -194,9 +205,11 @@
 
 .panel-group {
   margin-bottom: $line-height-computed;
+
   .panel {
     margin-bottom: 0;
     border-radius: $panel-border-radius;
+
     + .panel {
       margin-top: 5px;
     }
@@ -204,6 +217,7 @@
 
   .panel-heading {
     border-bottom: 0;
+
     + .panel-collapse > .panel-body,
     + .panel-collapse > .list-group {
       border-top: 1px solid $panel-inner-border;
@@ -212,6 +226,7 @@
 
   .panel-footer {
     border-top: 0;
+    
     + .panel-collapse .panel-body {
       border-bottom: 1px solid $panel-inner-border;
     }
