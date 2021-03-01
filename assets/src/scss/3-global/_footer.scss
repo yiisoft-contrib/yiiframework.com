@@ -2,9 +2,11 @@ footer {
   background-color: $footer-background-color;
   color: darken($footer-color, 10%);
   @include rem(min-height, 428px);
+
   a {
     text-decoration: none;
     color: darken($footer-color, 10%);
+
     &:hover {
       color: $footer-color;
     }
@@ -33,8 +35,10 @@ footer {
 .footerList_item {
   @include rem(font-size, 14px);
   @include rem(margin-bottom, 12px);
+
   .social {
     white-space: nowrap;
+
     a {
       border: none;
       text-align: center;
@@ -51,6 +55,7 @@ footer {
       @include rem(width, 24px);
       @include rem(height, 24px);
       transition:color 0.2s ease-out, background 0.2s ease-in;
+
       &:hover {
         background-color: #fff;
         color: $footer-background-color;
