@@ -1,6 +1,7 @@
 .navbar-header {
 		position: relative;
 		@include rem(top, -5px);
+
     a {
       border: none;
     }
@@ -18,6 +19,7 @@
       transition: none;
       margin-bottom: 0;
       padding-bottom: 0;
+
       &:hover {
         padding-bottom: 0;
         color: $navbar-default-link-hover-color;
@@ -39,10 +41,12 @@
       top: $navbar-height;
       background-color: $eshill-yellow;
       padding-left: 0;
+
       > li > a {
         @include rem(text-indent, 20px);
         color: $link-color;
         background-color: $eshill-yellow;
+
         &:hover {
           text-decoration: underline;
           background-color: $version-buttons;
@@ -59,6 +63,7 @@
       > .active > a {
         background-color: $version-buttons;
         color: $link-color;
+
         &:hover {
           color: $link-color;
         }
@@ -72,10 +77,12 @@
     > li > a {
       text-decoration: none;
     }
+
     .dropdown-menu {
       > li > a {
         text-decoration: none;
       }
+
       > li.separator {
         text-transform: uppercase;
         color: $eshill-section-bgcolor;
@@ -91,6 +98,7 @@
 
   .navbar-nav {
     margin: 1.5px 0;
+
     > li.open > .dropdown-menu {
       position: absolute;
       left: auto;
@@ -103,6 +111,7 @@
 
   .nav > li {
     display: inline-block;
+
     > a {
       padding: 10px 3px;
     }

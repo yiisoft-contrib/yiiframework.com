@@ -105,6 +105,7 @@ ol.hl-main pre {
   overflow: auto;
   word-wrap: normal;
   white-space: pre;
+
   @media (max-width: 767px)  {
     @include rem(padding-left, 10px);
   }
@@ -113,6 +114,7 @@ ol.hl-main pre {
     font-style: normal;
   }
 }
+
 code {
   background-color: #F2F9FA;
   color: inherit;
