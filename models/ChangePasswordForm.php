@@ -74,6 +74,7 @@ class ChangePasswordForm extends Model
             $this->user->setPassword($this->password);
             $this->user->save(false);
             $this->user->generateAuthKey();
+            $this->user->removePasswordResetToken();
 
             /** @var ForumAdapterInterface $forumAdapter */
             $forumAdapter = Yii::$app->forumAdapter;
