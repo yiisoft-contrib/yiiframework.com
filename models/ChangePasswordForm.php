@@ -73,6 +73,7 @@ class ChangePasswordForm extends Model
         if ($this->validate()) {
             $this->user->setPassword($this->password);
             $this->user->save(false);
+            $this->user->generateAuthKey();
 
             /** @var ForumAdapterInterface $forumAdapter */
             $forumAdapter = Yii::$app->forumAdapter;
