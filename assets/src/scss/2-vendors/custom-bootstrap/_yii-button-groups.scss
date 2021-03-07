@@ -5,9 +5,11 @@ $yii-btn-border-radius-base: 6px;
   position: relative;
   display: inline-block;
   vertical-align: middle;
+
   > .btn {
     position: relative;
     float: left;
+
     &:hover,
     &:focus,
     &:active,
@@ -41,6 +43,7 @@ $yii-btn-border-radius-base: 6px;
 .btn-toolbar {
   margin-left: -5px;
   @include clearfix;
+
   .btn,
   .btn-group,
   .input-group {
@@ -60,6 +63,7 @@ $yii-btn-border-radius-base: 6px;
 
 .btn-group > .btn:first-child {
   margin-left: 0;
+
   &:not(:last-child):not(.dropdown-toggle) {
     @include border-right-radius(0);
   }
@@ -128,6 +132,7 @@ $yii-btn-border-radius-base: 6px;
 
 .btn-group.open .dropdown-toggle {
   @include box-shadow(inset 0 3px 5px rgba(0,0,0,.125));
+
   &.btn-link {
     @include box-shadow(none);
   }
@@ -158,6 +163,7 @@ $yii-btn-border-radius-base: 6px;
 
   > .btn-group {
     @include clearfix;
+
     > .btn {
       float: none;
     }
@@ -208,6 +214,7 @@ $yii-btn-border-radius-base: 6px;
   width: 100%;
   table-layout: fixed;
   border-collapse: separate;
+
   > .btn,
   > .btn-group {
     float: none;
