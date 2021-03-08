@@ -107,6 +107,7 @@
       > tr:first-child {
         border-top-left-radius: ($panel-border-radius - 1);
         border-top-right-radius: ($panel-border-radius - 1);
+
         td:first-child,
         th:first-child {
           border-top-left-radius: ($panel-border-radius - 1);
@@ -130,6 +131,7 @@
       > tr:last-child {
         border-bottom-left-radius: ($panel-border-radius - 1);
         border-bottom-right-radius: ($panel-border-radius - 1);
+
         td:first-child,
         th:first-child {
           border-bottom-left-radius: ($panel-border-radius - 1);
@@ -162,7 +164,6 @@
     > thead,
     > tbody,
     > tfoot {
-
       > tr {
         > th:first-child,
         > td:first-child {
@@ -226,7 +227,7 @@
 
   .panel-footer {
     border-top: 0;
-    
+
     + .panel-collapse .panel-body {
       border-bottom: 1px solid $panel-inner-border;
     }
