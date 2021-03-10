@@ -81,6 +81,7 @@
 
       > li > a {
         color: $yii-blue;
+
         &:hover,
         &:active {
           text-decoration: underline;
@@ -99,6 +100,7 @@
 
     .btn-group.btn-group-2-element {
       max-width: 75%;
+
       & > .btn-group:first-child > .dropdown-menu {
         width: 200%;
       }
