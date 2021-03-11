@@ -53,7 +53,8 @@
 }
 
 a:active {
-  .thumbs-up, .thumbs-down {
+  .thumbs-up,
+  .thumbs-down {
     margin-bottom: -2px;
   }
 }
@@ -62,7 +63,7 @@ a:active {
   @extend .box;
   font-size: 1.4rem;
   color: #717171;
-  
+
   a {
     color: $eshill-blue;
     text-decoration: none;
