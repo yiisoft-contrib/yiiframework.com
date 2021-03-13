@@ -1,6 +1,7 @@
 .container.download {
 	color:#4d4d4d;
 	margin-bottom: 6rem;
+
 	p {
 		font-size:1.8rem;
 	}
@@ -38,6 +39,7 @@
 		letter-spacing: 0rem;
 		margin: 1.6rem 0;
     white-space: inherit;
+
         img {
             height: 5rem;
         }
@@ -68,10 +70,12 @@
 
 	ul.offline-doc-v2 {
 		text-align: center;
-        padding-left: 0;
+    padding-left: 0;
+
         li {
             display:inline-block;
             margin:3rem;
+
             img {
                 box-shadow: 0 0 0.5rem #DDD;
                 margin-bottom: 2rem;
@@ -86,6 +90,7 @@
     ul.offline-doc-v1 {
         text-align: center;
         padding-left: 0;
+
         li {
             display:inline-block;
             margin:3rem;

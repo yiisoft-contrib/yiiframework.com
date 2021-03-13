@@ -3,7 +3,6 @@ $api-box-padding-y: ceil($font-size-base / 2);
 
 .api-content {
   @media (max-width: 767px) {
-
     .pull-right.content {
       float: none !important;
     }
@@ -57,7 +56,6 @@ $api-box-padding-y: ceil($font-size-base / 2);
           @extend .content;
           @extend pre;
           @extend code;
-
             display: none;
         }
 
@@ -65,7 +63,6 @@ $api-box-padding-y: ceil($font-size-base / 2);
             @extend .table;
             @extend .table-bordered;
             @extend .table-striped;
-
             width: 100%;
             @include rem(margin, 18px 0);
         }
@@ -179,6 +176,7 @@ $api-box-padding-y: ceil($font-size-base / 2);
         overflow-x: auto;
         -webkit-overflow-scrolling: touch;
         border: none !important;
+
         tbody > tr > td,
         tbody > tr > th {
             padding-left: $api-box-padding-x;
@@ -195,7 +193,8 @@ $api-box-padding-y: ceil($font-size-base / 2);
         color: #936;
     }
 
-    .signature-type, .signature-type a {
+    .signature-type,
+    .signature-type a {
         color: #693;
     }
 
@@ -223,6 +222,7 @@ $api-box-padding-y: ceil($font-size-base / 2);
 
 #api-navigation {
   @extend %sidenav;
+
   > a.has-children {
     text-transform: none;
   }

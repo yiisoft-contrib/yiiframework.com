@@ -1,6 +1,7 @@
 .avatar img {
     border: 2px solid $eshill-section-bgcolor;
     margin-bottom: 1em;
+
     @media (max-width: 767px)  {
       max-width: 210px;
       margin-left: auto;
@@ -63,6 +64,7 @@
       margin: 3px;
       text-decoration: none;
       transition: all .2s ease;
+
       &:hover {
         background-color: #1e6887;
       }
@@ -71,6 +73,7 @@
     li.github {
       a {
         background-color: transparent;
+
         &:hover {
           background-color: transparent;
         }
@@ -80,6 +83,7 @@
         font-size: 37px;
         color: #999;
         transition: all .2s ease;
+
         &:hover {
           color: #1e6887;
         }
