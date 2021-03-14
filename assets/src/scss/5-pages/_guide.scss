@@ -11,6 +11,7 @@
     @include rem(margin-top, 40px);
     @include rem(margin-bottom, 40px);
     border-top: 2px dashed rgba($separator-color, 0.7);
+
     @media (max-width: 767px) {
       flex-direction: column;
       align-items: center;
@@ -32,6 +33,7 @@
     > ul.list-unstyled {
       border-top: 1px dashed $gray;
       @include rem(padding-top, 12px);
+
       li {
         @include rem(margin-bottom, 12px);
       }
@@ -41,6 +43,7 @@
   ul {
     @include rem(padding-left, 30px);
     list-style-type: none;
+
     li {
       margin-bottom: 1rem;
     }
@@ -67,6 +70,7 @@
   @include rem(line-height, 24px);
   margin-bottom: 0.8em;
   color: $eshill-blue;
+
   p {
     margin: 0;
   }
@@ -74,6 +78,7 @@
   .edit-icon {
     margin-right: 1.5em;
     float: left;
+
     @media (min-width: 768px) {
       margin-left: 1.5em;
     }
@@ -115,6 +120,7 @@ div.toc {
   @include rem(margin, 15px 0);
   width: auto;
   max-width: 36em;
+
   ol {
     margin: 0;
     width: auto;
@@ -127,6 +133,7 @@ div.image {
   @include rem(margin, 15px 0);
   width: auto;
   text-align: center;
+
   p {
     background: #eee;
     text-align: center;

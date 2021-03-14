@@ -6,6 +6,7 @@
     .title {
       margin-right: 1rem;
       font-size: 20px;
+
       @media (min-width: 768px) {
         font-size: 28px;
       }
@@ -22,6 +23,7 @@
       font-size: $font-size-base;
       font-weight: normal;
       padding: .1em .4em .2em;
+
       @media (min-width: 768px) {
         padding: .2em .6em .3em;
       }
@@ -40,6 +42,7 @@
   display: none;
   width: 100% !important;
   max-width: 90%;
+
   @media (min-width: 768px) {
     max-width: 350px;
   }
@@ -58,6 +61,7 @@
     font-weight: bold;
     border-top: solid 1px #CCCCCC;
     border-bottom: solid 1px #CCCCCC;
+
     .search-limit {
       font-weight: normal;
       float: right;
@@ -70,6 +74,7 @@
     list-style: none;
     @include rem(max-height, 300px);
     overflow-y: auto;
+
     li {
       display: block;
       padding: 0;
@@ -83,12 +88,14 @@
         @include rem(padding, 5px 5px 5px 15px);
         width: 100%;
         word-break: break-word;
+
         span.result-annotation {
           float: right;
         }
       }
 
-      a:hover, a.selected {
+      a:hover,
+      a.selected {
         background: $yii-blue;
         color: #fff;
       }

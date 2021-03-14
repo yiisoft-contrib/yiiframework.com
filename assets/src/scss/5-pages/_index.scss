@@ -10,6 +10,7 @@
   color: $eshill-blue;
   background-color: transparent;
   border-color: $eshill-light-blue;
+
   &:focus,
   &.focus {
     color: $eshill-light-blue;
@@ -29,6 +30,7 @@
     color: $eshill-section-bgcolor;
     background-color: $eshill-light-blue;
     border-color: darken($eshill-light-blue, 12%);
+
     &:focus,
     &.focus {
       color: $eshill-section-bgcolor;
@@ -38,9 +40,11 @@
   }
   @include rem(font-size, 22px);
   transition:color 0.4s ease-out, background 0.4s ease-in;
+
   @media (max-width: 380px) {
     @include rem(font-size, 16px);
   }
+
   @include rem(margin-bottom, 12px);
 }
 
@@ -51,6 +55,7 @@
 ul.latest-list {
   list-style-type: square;
   @include rem(line-height, 36px);
+
   li {
     a {
       @include rem(font-size, 18px);
