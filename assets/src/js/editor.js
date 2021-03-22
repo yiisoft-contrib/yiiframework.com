@@ -1,5 +1,5 @@
 function initEditor(els) {
-    jQuery(els).each(function(index, el) {
+    jQuery(els).each(function (index, el) {
         var isInPreviewMode = false;
 
         var editor = CodeMirror.fromTextArea(el, {
@@ -156,7 +156,7 @@ function initEditor(els) {
     });
 }
 
-jQuery(function($) {
+jQuery(function ($) {
     // allow omitting <?php in codeblocks
     CodeMirror.findModeByName('php').mime = 'text/x-php';
     initEditor('.markdown-editor');
