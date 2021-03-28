@@ -1,4 +1,3 @@
-
 searchResultCache = {
     api: {
         title: 'API Documentation',
@@ -17,7 +16,7 @@ var searchResultBox = $('#search-resultbox');
 var openSearchWidth = 350;
 var closedSearchWidth = 200;
 
-renderResultList = function(resultName, limit) {
+renderResultList = function (resultName, limit) {
 
     var html = '';
     var limitHtml = '';
@@ -41,7 +40,7 @@ renderResultList = function(resultName, limit) {
     return html;
 };
 
-updateSearchResults = function() {
+updateSearchResults = function () {
     var $results = $('#search-resultbox');
     $results.show();
 
@@ -81,7 +80,7 @@ var searchApiDocMembers;
 // indicates whether a request for data is pending
 var searchApiDocMembersStatus = false;
 
-searchApidoc = function(query) {
+searchApidoc = function (query) {
 
     // fetch methods if not loaded yet
     if (!searchApiDocMembers) {
@@ -94,7 +93,7 @@ searchApidoc = function(query) {
         $.ajax({
             url: yiiBaseUrl + '/doc/api/class-members',
             dataType: "json",
-            success: function(data) {
+            success: function (data) {
                 searchApiDocMembers = data.members;
                 searchApiDocMembersStatus = false;
 
@@ -115,7 +114,7 @@ searchApidoc = function(query) {
         $.ajax({
             url: yiiBaseUrl + '/doc/api',
             dataType: "json",
-            success: function(data) {
+            success: function (data) {
                 searchApiDocTypes = data.classes;
                 searchApiDocTypeStatus = false;
 
@@ -130,14 +129,14 @@ searchApidoc = function(query) {
 
 // suggestions
 
-renderSuggest = function(t, query) {
+renderSuggest = function (t, query) {
     return $('<a />').attr('href', t.url).text(t.title).prop('outerHTML');
 };
 
 searchSuggestResults = {};
 searchSuggestResultsStatus = {};
 
-searchSuggest = function(query) {
+searchSuggest = function (query) {
     // request is pending
     if (typeof searchSuggestResultsStatus[query] == 'undefined') {
         searchSuggestResultsStatus[query] = false;
@@ -154,10 +153,10 @@ searchSuggest = function(query) {
         $.ajax({
             url: yiiBaseUrl + '/search/suggest' + apiUrl,
             dataType: "json",
-            success: function(data) {
+            success: function (data) {
                 //console.log(data);
                 searchSuggestResults[query] = [];
-                for(var i = 0; i < data.suggestions.length; ++i) {
+                for (var i = 0; i < data.suggestions.length; ++i) {
                     searchSuggestResults[query].push(renderSuggest(data.suggestions[i], query));
                 }
                 searchSuggestResultsStatus[query] = true;
@@ -175,7 +174,7 @@ searchSuggest = function(query) {
 };
 
 
-renderGuide = function(t, query) {
+renderGuide = function (t, query) {
     return $('<a />').attr('href', t.url).text(t.title).append(
         $('<span class="result-annotation">').text(t.language + ', ' + t.version)
     ).prop('outerHTML');
@@ -256,7 +255,7 @@ renderExtension = function(t, query) {
     return $('<a>').attr('href', t.url).html(highlight(t.title, query)).prop('outerHTML');
 };*/
 
-highlight = function(s, h) {
+highlight = function (s, h) {
     if (typeof h === "undefined" || h == '') {
         return s;
     }
@@ -264,7 +263,7 @@ highlight = function(s, h) {
     var pos = 0;
     var result = '';
 
-    while((pos = s.toLowerCase().indexOf(h.toLowerCase())) > -1) {
+    while ((pos = s.toLowerCase().indexOf(h.toLowerCase())) > -1) {
         result += s.substring(0, pos);
         result += '<strong>' + s.substring(pos, pos + h.length) + '</strong>';
         s = s.substring(pos + h.length);
@@ -273,11 +272,11 @@ highlight = function(s, h) {
     return result + s;
 };
 
-renderType = function(t, query) {
+renderType = function (t, query) {
     return $('<a>').attr('href', t.url).html(highlight(t.name, query) + ' ').prop('outerHTML');
 };
 
-renderMember = function(m, query, ownerFilter) {
+renderMember = function (m, query, ownerFilter) {
     var name = m.name;
     if (m.type == 'method') {
         name += '()';
@@ -285,7 +284,7 @@ renderMember = function(m, query, ownerFilter) {
 
     var impl = m.implemented;
     if (ownerFilter != '') {
-        impl = impl.filter(function(owner) {
+        impl = impl.filter(function (owner) {
             if (owner.name == ownerFilter) {
                 return true;
             } else if (owner.name.toLowerCase().indexOf(ownerFilter.toLowerCase()) > -1) {
@@ -303,7 +302,7 @@ renderMember = function(m, query, ownerFilter) {
     return html.join("</li>\n<li>");
 };
 
-searchApiDocPopulate = function(query) {
+searchApiDocPopulate = function (query) {
 
     var memberSearch = false;
     var memberSearchType = '';
@@ -339,7 +338,7 @@ searchApiDocPopulate = function(query) {
 };
 
 // search in method, property, const, and event names
-searchApiDocPopulateMembers = function(query, owner) {
+searchApiDocPopulateMembers = function (query, owner) {
 
     var bestMatch = [];
     var secondMatch = [];
@@ -361,7 +360,7 @@ searchApiDocPopulateMembers = function(query, owner) {
             // filter by owner
             if (owner != '') {
                 var matchOwner = false;
-                for(var o = 0; o < m.implemented.length; ++o) {
+                for (var o = 0; o < m.implemented.length; ++o) {
                     var matchOwnerPos = m.implemented[o].name.toLowerCase().indexOf(owner.toLowerCase());
                     if (matchOwnerPos > -1) {
                         matchOwner = true;
@@ -395,7 +394,7 @@ searchApiDocPopulateMembers = function(query, owner) {
 };
 
 // search in class names
-searchApiDocPopulateTypes = function(query) {
+searchApiDocPopulateTypes = function (query) {
 
     var bestMatch = [];
     var secondMatch = [];
@@ -459,7 +458,7 @@ searchApiDocPopulateTypes = function(query) {
     searchResultCache.api.fetched = true;
 };
 
-adjustSearchBoxSize = function() {
+adjustSearchBoxSize = function () {
 
     // TODO may need to dynamically adjust search with dependend on screen size
     //openSearchWidth = ($('.container').width() - $('#main-nav').width() - $('#main-nav-head').width() - 120) * 0.7;
@@ -480,10 +479,10 @@ jQuery(document).ready(function () {
 
     adjustSearchBoxSize();
     // animate search box to open on focus
-    searchBox.focus(function() {
+    searchBox.focus(function () {
         $(this).animate({width: openSearchWidth + "px"}, 250);
     });
-    searchBox.blur(function() {
+    searchBox.blur(function () {
         var $this = $(this);
         if ($this.val() == "") {
             $this.animate({width: closedSearchWidth + "px"}, 250);
@@ -491,7 +490,7 @@ jQuery(document).ready(function () {
     });
 
     // search when typing in search field
-    searchBox.on("keyup", function(event) {
+    searchBox.on("keyup", function (event) {
         var query = $(this).val().trim();
 
         //console.log(event.which);
@@ -525,7 +524,7 @@ jQuery(document).ready(function () {
                     // page down
                     var i = 0;
                     var n = selected;
-                    while(i++ < 10 && n.length > 0) {
+                    while (i++ < 10 && n.length > 0) {
                         next = n;
                         n = n.parent().next().find('a').first();
                     }
@@ -533,7 +532,7 @@ jQuery(document).ready(function () {
                     // page up
                     var i = 0;
                     var n = selected;
-                    while(i++ < 10 && n.length > 0) {
+                    while (i++ < 10 && n.length > 0) {
                         next = n;
                         n = n.parent().prev().find('a').first();
                     }
@@ -545,13 +544,13 @@ jQuery(document).ready(function () {
                     // jump over separators until we find <ul>
                     if (event.which === 40 || event.which === 34) {
                         // down
-                        while(nextParent.length && nextParent.next('ul').length === 0) {
+                        while (nextParent.length && nextParent.next('ul').length === 0) {
                             nextParent = nextParent.next();
                         }
                         next = nextParent.next('ul').find('a').first();
                     } else {
                         // up
-                        while(nextParent.length && nextParent.prev('ul').length === 0) {
+                        while (nextParent.length && nextParent.prev('ul').length === 0) {
                             nextParent = nextParent.prev();
                         }
                         next = nextParent.prev('ul').find('a').last();
@@ -586,12 +585,22 @@ jQuery(document).ready(function () {
     });
 
     // hide the search results on ESC
-    $(document).on("keyup", function(event) { if (event.which == 27) { $('#search-resultbox').hide(); } });
+    $(document).on("keyup", function (event) {
+        if (event.which == 27) {
+            $('#search-resultbox').hide();
+        }
+    });
     // hide search results on click to document
-    $(document).bind('click', function (e) { $('#search-resultbox').hide(); });
+    $(document).bind('click', function (e) {
+        $('#search-resultbox').hide();
+    });
     // except the following:
-    searchBox.bind('click', function(e) { e.stopPropagation(); });
-    $('#search-resultbox').bind('click', function(e) { e.stopPropagation(); });
+    searchBox.bind('click', function (e) {
+        e.stopPropagation();
+    });
+    $('#search-resultbox').bind('click', function (e) {
+        e.stopPropagation();
+    });
 
 
 });
