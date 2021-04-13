@@ -28,7 +28,7 @@
     }
 
     @include rem(font-size, $font-size);
-    @include rem(top, -($font-size*0.65));
+    @include rem(top, -($font-size*0.60));
     background-color: $background;
     position: relative;
   }
