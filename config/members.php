@@ -324,7 +324,7 @@ return [
         'name' => 'Viktor Babanov',
         'id' => '306961',
         'forumName' => 'miolae',
-        'period' => '2019',
+        'period' => 'Nov 2019',
         'location' => 'Moscow, Russia',
         'duty' => 'Yii 3.0 development',
         'photo' => '@web/image/team/viktorprogger.jpg',
