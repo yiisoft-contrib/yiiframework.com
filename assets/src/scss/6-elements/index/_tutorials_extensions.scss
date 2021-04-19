@@ -1,11 +1,15 @@
 .tutorials {
   .latest-list {
-    @include rem(min-height, 600px);
+    @media (min-width: 992px)  {
+      @include rem(min-height, 600px);
+    }
   }
 }
 
 .extensions {
   .latest-list {
-    @include rem(min-height, 600px);
+    @media (min-width: 992px)  {
+      @include rem(min-height, 600px);
+    }
   }
 }
