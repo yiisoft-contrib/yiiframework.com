@@ -31,7 +31,8 @@ $expand = $max < 0.45 ? 2 : 1;
         <?php foreach($badges as $badge): ?>
             <?php if(!isset($counts[$badge->id])) $counts[$badge->id]=0; ?>
             <?php $percent = $counts[$badge->id]/$total*100.0; ?>
-            <div class="userbadge userbadge-<?= $badge->urlname ?>">
+            <div class="userbadge">
+                <div class="userbadge-icon userbadge-<?= $badge->urlname ?>"></div>
                 <div class="userbadge-progress-bar" style="width: <?= round($percent*$expand) ?>%"></div>
                 <div class="userbadge-info">
                     <h3>
