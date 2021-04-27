@@ -4,7 +4,8 @@
 ?>
 <div class="wrapper">
     <div class="flex-center">
-        <a class="main-logo" href="/"><img src="<?=Yii::getAlias('@web/image/yii_logo_dark.png')?>"/></a>
+
+        <a class="main-logo" href="/"><img src="<?=Yii::getAlias('@web/image/logo.svg')?>"/></a>
         <p>How about progress on Yii3 development?</p>
         <h2>Released <b><?php echo $progress; ?></b></h2>
 
@@ -80,8 +81,6 @@ $css = <<<CSS
         }
 
         .main-logo {
-            padding-bottom: 1rem;
-            border-bottom: 1px dashed #b6b6b6;
             width: 100%;
         }
 
@@ -109,7 +108,7 @@ $css = <<<CSS
 
         p {
             font-size: 2rem;
-            margin: 2rem 0;
+            margin: 4rem 0;
         }
 
         .progress-bar-wrapper {
@@ -149,8 +148,8 @@ $css = <<<CSS
         .mini-footer {
             list-style: none;
             margin: 0;
-            padding: 1rem 0 0 0 ;
-            border-top: 1px dashed #b6b6b6;
+            padding: 4rem 0 0 0;
+            font-size: 1.2rem;
         }
         .mini-footer li {
             display: inline-block;
