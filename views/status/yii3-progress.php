@@ -5,7 +5,7 @@
 <div class="wrapper">
     <div class="flex-center">
         <a class="main-logo" href="/"><img src="<?=Yii::getAlias('@web/image/yii_logo_dark.png')?>"/></a>
-        <p>How about progress on development Yii3?</p>
+        <p>How about progress on Yii3 development?</p>
         <h2>Released <b><?php echo $progress; ?></b></h2>
 
         <div class="progress-bar-wrapper" title="<?=$progressPercent?>%">
