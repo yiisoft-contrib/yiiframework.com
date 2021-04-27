@@ -16,7 +16,7 @@
         <ul class="mini-footer">
             <li>
                 <span>
-                    <a href="https://forum.yiiframework.com/t/a-detailed-example-of-how-to-contribute-to-yii-3-0/127909" target="_blank">Participate in the development</a>
+                    <a href="https://forum.yiiframework.com/t/a-detailed-example-of-how-to-contribute-to-yii-3-0/127909" target="_blank">Participate in development</a>
                 </span>
             </li>
             <li>
