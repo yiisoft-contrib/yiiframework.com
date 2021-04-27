@@ -36,7 +36,7 @@
             </li>
             <li>
                 <span>
-                    Discuss on <a href="https://t.me/yii3en" target="_blank">English</a> or <a href="https://t.me/yii3ru" target="_blank">Russian</a>
+                    Discuss in <a href="https://t.me/yii3en" target="_blank">English</a> or in <a href="https://t.me/yii3ru" target="_blank">Russian</a>
                 </span>
             </li>
         </ul>
