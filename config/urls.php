@@ -29,6 +29,7 @@ return [
     // status
     'status/<version:\\d\\.\\d>' => 'status/index',
     'status' => 'status/index',
+    'yii3-progress' => 'status/yii3-progress',
 
 
     // RSS
