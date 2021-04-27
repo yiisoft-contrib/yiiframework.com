@@ -66,7 +66,7 @@ class StatusController extends BaseController
     public function actionYii3Progress()
     {
         $this->layout = 'fullpage';
-        $this->sectionTitle = 'How about progress on development Yii3?';
+        $this->sectionTitle = 'How about progress on Yii3 development?';
 
         $version = '3.0';
 
