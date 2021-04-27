@@ -35,7 +35,7 @@ $this->registerLinkTag([
         <meta name="msapplication-config" content="<?= Yii::getAlias('@web/favico/browserconfig.xml') ?>">
         <meta name="theme-color" content="#1e6887">
 
-        <link href="<?= Url::to(['rss/all'], true) ?>" type="application/rss+xml" rel="alternate" title="Lives News for Yii Framework">
+        <link href="<?= Url::to(['rss/all'], true) ?>" type="application/rss+xml" rel="alternate" title="Live News for Yii Framework">
 
         <!--[if lt IE 9]>
         <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
