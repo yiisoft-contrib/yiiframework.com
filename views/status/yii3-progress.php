@@ -27,7 +27,7 @@
             </li>
             <li>
                 <span>
-                    <a href="https://www.yiiframework.com/status/3.0" target="_blank">Detail release statuses</a>
+                    <a href="https://www.yiiframework.com/status/3.0" target="_blank">Detailed release statuses</a>
                 </span>
             </li>
             <li>
