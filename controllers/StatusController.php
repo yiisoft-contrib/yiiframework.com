@@ -63,6 +63,33 @@ class StatusController extends BaseController
         ]);
     }
 
+    public function actionYii3Progress()
+    {
+        $this->layout = 'fullpage';
+        $this->sectionTitle = 'How about progress on development Yii3?';
+
+        $version = '3.0';
+
+        $packages = [
+            '3.0' => [],
+        ];
+
+        $client = new \Github\Client();
+        $packages[$version] = $this->getPackages($client, $version, $packages);
+
+        $githubRepoStatus = new GithubRepoStatus(Yii::$app->getCache(), $client, $packages[$version], $version);
+
+        $data = $githubRepoStatus->getData();
+
+        $allPackages = count($data);
+        $releasedPackages = count(array_filter($data, function($elem) { return !empty($elem['latest']);}));
+
+        return $this->render('yii3-progress', [
+            'progress' => "{$releasedPackages}/{$allPackages}",
+            'progressPercent' => $allPackages>0 ? round(100 * $releasedPackages / $allPackages) : 0,
+        ]);
+    }
+
     private function getPackages($client, $version, $packages)
     {
         return Yii::$app->cache->getOrSet('packages' . $version, function () use ($client, $version, $packages) {
