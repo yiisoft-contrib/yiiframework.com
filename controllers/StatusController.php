@@ -74,19 +74,32 @@ class StatusController extends BaseController
             '3.0' => [],
         ];
 
-        $client = new \Github\Client();
-        $packages[$version] = $this->getPackages($client, $version, $packages);
+        $packagesProgress = Yii::$app->cache->getOrSet('packages_progress' . $version, function () use ($version, $packages) {
+            $client = new \Github\Client();
+            $tokenFile = Yii::getAlias('@app/data') . '/github.token';
+            if (file_exists($tokenFile)) {
+                $token = trim(file_get_contents($tokenFile));
+                $client->authenticate($token, null, \Github\Client::AUTH_HTTP_TOKEN);
+            }
 
-        $githubRepoStatus = new GithubRepoStatus(Yii::$app->getCache(), $client, $packages[$version], $version);
+            $packages[$version] = $this->getPackages($client, $version, $packages);
 
-        $data = $githubRepoStatus->getData();
+            $githubRepoStatus = new GithubRepoStatus(Yii::$app->getCache(), $client, $packages[$version], $version);
 
-        $allPackages = count($data);
-        $releasedPackages = count(array_filter($data, function($elem) { return !empty($elem['latest']);}));
+            $data = $githubRepoStatus->getData();
+
+            return [
+                'all' => count($data),
+                'released' => count(array_filter($data, function ($elem) {
+                    return !empty($elem['latest']);
+                })),
+            ];
+        }, 3600);
+
 
         return $this->render('yii3-progress', [
-            'progress' => "{$releasedPackages}/{$allPackages}",
-            'progressPercent' => $allPackages>0 ? round(100 * $releasedPackages / $allPackages) : 0,
+            'progress' => "{$packagesProgress['released']}/{$packagesProgress['all']}",
+            'progressPercent' => $packagesProgress['all'] > 0 ? round(100 * $packagesProgress['released'] / $packagesProgress['all']) : 0,
         ]);
     }
 
