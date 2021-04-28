@@ -76,6 +76,12 @@ class StatusController extends BaseController
 
         $packagesProgress = Yii::$app->cache->getOrSet('packages_progress' . $version, function () use ($version, $packages) {
             $client = new \Github\Client();
+            $tokenFile = Yii::getAlias('@app/data') . '/github.token';
+            if (file_exists($tokenFile)) {
+                $token = trim(file_get_contents($tokenFile));
+                $client->authenticate($token, null, \Github\Client::AUTH_HTTP_TOKEN);
+            }
+
             $packages[$version] = $this->getPackages($client, $version, $packages);
 
             $githubRepoStatus = new GithubRepoStatus(Yii::$app->getCache(), $client, $packages[$version], $version);
