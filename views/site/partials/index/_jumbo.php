@@ -27,7 +27,9 @@ $this->registerJs("
         <div class="row">
             <div class="col-md-12">
                 <div class="dashed-heading-jumbo">
-                    <a href="<?= Url::to(['doc/guide/2.0/en/start-installation']) ?>" class="btn">Get Started</a>
+                    <span>
+                        <a href="<?= Url::to(['doc/guide/2.0/en/start-installation']) ?>" class="btn">Get Started</a>
+                    </span>
                 </div>
             </div>
         </div>

@@ -2,11 +2,13 @@
   height: 1px;
   border-top: 2px dashed rgba($color, 0.75);
   text-align: center;
+  line-height: normal;
   @include rem(margin-top, $font-size * 0.8);
   @include rem(margin-bottom, $font-size * 0.8);
 
   @media (max-width: 380px) {
     @include rem(margin-bottom, $font-size * 1.2);
+    line-height: 1.1;
   }
 
   span {
@@ -17,18 +19,18 @@
 
     @media (max-width: 1140px) {
       @include rem(font-size, $font-size * 0.8);
-      @include rem(top, -($font-size*0.55));
+      @include rem(top, -($font-size*0.65));
     }
 
     @media (max-width: 380px) {
       @include rem(font-size, $font-size * 0.6);
-      @include rem(top, -($font-size*0.60));
-      @include rem(padding-right, $font-size*0.1);
-      @include rem(padding-left, $font-size*0.1);
+      @include rem(top, -($font-size*0.50));
+      @include rem(padding-right, $font-size*0.2);
+      @include rem(padding-left, $font-size*0.2);
     }
 
     @include rem(font-size, $font-size);
-    @include rem(top, -($font-size*0.85));
+    @include rem(top, -($font-size*0.80));
     background-color: $background;
     position: relative;
   }
@@ -36,44 +38,35 @@
 
 .dashed-heading {
   @include dashed-heading-variant($eshill-header-color, $body-bg, fontsize(base));
+  @media (max-width: 380px) {
+    line-height: 1.4;
+  }
 }
 
 .dashed-heading-jumbo {
-  text-align: center;
-  @include rem(margin-top, 16px);
-  @include rem(margin-bottom, 16px);
-  position: relative;
-  &:before,
-  &:after {
-    content: '';
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    left: 0;
-    width: calc(50% - 94px);
-    border-top: 2px dashed rgba(243,255,189,.75);
-    z-index: 1;
-  }
-
-  &:after {
-    left: auto;
-    right: 0;
-  }
-
-  .btn {
-    position: relative;
-    z-index: 2;
+  @include dashed-heading-variant($eshill-yellow, $eshill-light-blue, fontsize(h1));
+  @media (max-width: 380px) {
+    line-height: 1.4;
   }
 }
 
 .dashed-heading-front {
   @include dashed-heading-variant($eshill-header-color, $body-bg, fontsize(h1));
+  @media (max-width: 380px) {
+    line-height: 1.4;
+  }
 }
 
 .dashed-heading-front-section {
   @include dashed-heading-variant($eshill-header-color, $body-bg, fontsize(h3));
+  @media (max-width: 380px) {
+    line-height: 1.4;
+  }
 }
 
 .dashed-heading-front-books {
   @include dashed-heading-variant($eshill-header-color, #EBF1F2, fontsize(h1));
+  @media (max-width: 380px) {
+    line-height: 1.4;
+  }
 }
