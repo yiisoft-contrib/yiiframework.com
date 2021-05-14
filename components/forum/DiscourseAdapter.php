@@ -94,7 +94,7 @@ class DiscourseAdapter extends Component implements ForumAdapterInterface
             return $user->forum_id;
         }
 
-        $message = $this->getClient()->get([$url = sprintf('/users/%s.json', $this->normalizeUsername($user->username)), 'api_key' => $this->apiToken, 'api_username' => $this->apiAdminUser])
+        $message = $this->getClient()->get([$url = sprintf('/users/%s.json', $this->normalizeUsername($user->username)), 'api_key' => $this->apiToken, 'api_username' => $this->apiAdminUser]);
         $message->setFormat(Client::FORMAT_JSON);
         $response = $message->send();
         if ($response->isOk) {
