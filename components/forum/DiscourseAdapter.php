@@ -102,6 +102,7 @@ class DiscourseAdapter extends Component implements ForumAdapterInterface
                 'Api-Username' => $this->apiAdminUser
             ])
             ->send();
+        $response->setFormat(Client::FORMAT_JSON);
         if ($response->isOk) {
             $userData = $response->data;
             if (isset($userData['user']['id'])) {
