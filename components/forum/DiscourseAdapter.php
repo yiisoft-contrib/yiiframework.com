@@ -94,7 +94,7 @@ class DiscourseAdapter extends Component implements ForumAdapterInterface
             return $user->forum_id;
         }
 
-        $message = $this->getClient()
+        $response = $this->getClient()
             ->get([$url = sprintf(
                 '/users/%s.json',
                 $this->normalizeUsername($user->username)),
@@ -102,7 +102,6 @@ class DiscourseAdapter extends Component implements ForumAdapterInterface
                 'api_username' => $this->apiAdminUser
             ])
             ->send();
-        $response = $message->send();
         $response->setFormat(Client::FORMAT_JSON);
         if ($response->isOk) {
             $userData = $response->data;
