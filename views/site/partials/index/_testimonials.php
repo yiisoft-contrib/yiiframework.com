@@ -35,6 +35,7 @@ $this->registerJs("
                     <?php endforeach ?>
                 </ul>
             </div>
+            <div class="glide__bullets hidden-xs"></div>
         </div>
     </div>
 </div>
