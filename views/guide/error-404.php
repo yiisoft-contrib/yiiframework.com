@@ -17,7 +17,7 @@ $this->beginContent('@app/views/guide/partials/_guide-layout.php', [
 $this->title = 'Not Found (#404)';
 $also = '';
 ?>
-    <?= $this->render('//site/partials/common/_heading.php', ['title' => $this->title]) ?>
+    <?= $this->render('//guide/partials/common/_heading.php', ['title' => $this->title]) ?>
     <div class="content">
 
         <div class="alert alert-warning">
