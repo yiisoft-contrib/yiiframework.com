@@ -104,4 +104,5 @@
     @include rem(width, 42px);
     @include rem(height, 42px);
     @include rem(margin, 1px);
+    text-indent: -1000000000px;
 }
