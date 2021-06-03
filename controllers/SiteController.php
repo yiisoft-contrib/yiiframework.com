@@ -124,18 +124,18 @@ class SiteController extends BaseController
     public function actionRedirectForum($url = null)
     {
         // url must end with /
-        $forumUrl = 'https://forum.yiiframework.com/';
-
-        if ($url === 'index.php' && count($_GET) > 1) {
+        $forumUrl = Yii::$app->params['forumUrl'];
+        $get = Yii::$app->request->get();
+        if ($url === 'index.php' && count($get) > 1) {
             // https://www.yiiframework.com/forum/index.php?showuser=5951
-            if (isset($_GET['showuser'])) {
-                $user = User::find()->active()->where(['forum_id' => (int) $_GET['showuser']])->one();
+            if (isset($get['showuser']) && !empty($get['showuser'])) {
+                $user = User::find()->active()->where(['forum_id' => (int) $get['showuser']])->one();
                 if ($user !== null) {
                     $url = "user/{$user->forum_id}-{$user->username}";
                 }
             } else {
                 // find URLs like /forum/index.php?/user/5951-cebe/
-                foreach($_GET as $key => $value) {
+                foreach($get as $key => $value) {
                     if ($key !== 'url' && empty($value)) {
                         $url = ltrim($key, '/');
                     }
