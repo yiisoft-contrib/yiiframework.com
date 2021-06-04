@@ -41,7 +41,7 @@ $this->endBlock();
         </div>
     </div>
     <div class="row row-offcanvas">
-        <div class="col-sm-2 col-md-2 col-lg-2">
+        <div class="col-sm-3 col-md-3 col-lg-3">
         <?php /*= \app\widgets\SearchForm::widget([
             'type' => 'api',
             'version' => isset($version) ? $version : '2.0',
@@ -84,7 +84,7 @@ $this->endBlock();
             'view' => $this,
         ]) ?>
         </div>
-        <div class="col-sm-10 col-md-10 col-lg-10" role="main">
+        <div class="col-sm-9 col-md-9 col-lg-9" role="main">
             <div class="content api1">
                 <div class="pull-right">
                     <?= \app\widgets\Star::widget(['model' => $doc]) ?>
