@@ -149,3 +149,13 @@ form#search-form.navbar-form div.form-group.nospace div.input-group input#search
     font-size: 14px;
   }
 }
+
+.navbar-nav {
+  .dropdown {
+    &.open {
+      .caret {
+        transform: rotate(-180deg);
+      }
+    }
+  }
+}
