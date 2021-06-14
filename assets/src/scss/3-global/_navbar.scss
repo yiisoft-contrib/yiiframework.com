@@ -121,12 +121,20 @@
     float: right;
     margin-top: 6px;
     margin-right: 10px;
+    @media (max-width: 375px) {
+      margin-right: 0;
+    }
   }
 
   .navbar-right .navbar-form {
     margin: 0 -15px;
     border: none;
     box-shadow: none;
+    .btn-link {
+      @media (max-width: 375px) {
+        font-size: 14px;
+      }
+    }
   }
 
   #login-nav .navbar-form {
