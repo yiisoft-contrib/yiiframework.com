@@ -135,9 +135,13 @@ $forumUrl = $model->getForumUrl();
                 </p>
             </div>
             */ ?>
-        <div class="col-xs-12 heading-separator">
-            <h2><span>Your Content</span></h2>
+        
+        <div class="row">
+            <div class="col-xs-12 heading-separator">
+                <h2><span>Your Content</span></h2>
+            </div>
         </div>
+
         <div class="row">
             <div class="col-xs-12 col-md-6">
                 <h2>Your Extensions (<?= Html::encode($model->extension_count) ?>) </h2>
