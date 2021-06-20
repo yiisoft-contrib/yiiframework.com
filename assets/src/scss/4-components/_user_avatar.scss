@@ -21,4 +21,7 @@
 .profile-image-box {
   float: right;
   max-width: 400px;
+  @media (max-width: 991px) {
+    float: none;
+  }
 }
