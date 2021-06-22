@@ -1,69 +1,69 @@
 .books-videos {
-    background-color: #ebf1f2;
-    width: 100%;
+  background-color: #ebf1f2;
+  width: 100%;
 
-    .see-all {
-        margin: 2rem .6rem 3rem .6rem;
-    }
+  .see-all {
+    margin: 2rem .6rem 3rem .6rem;
+  }
 
-    .dashed-heading-front-books {
-        margin-top: 6rem;
-    }
+  .dashed-heading-front-books {
+    margin-top: 6rem;
+  }
 }
 
 .books-item {
-    @include rem(padding, 22px);
+  @include rem(padding, 22px);
 
-    .books-header {
-        @include rem(font-size, fontsize(large));
+  .books-header {
+    @include rem(font-size, fontsize(large));
+  }
+
+  .books-link {
+    a {
+      font-weight: bold;
+      font-size: 1.8rem;
     }
 
-    .books-link {
-        a {
-            font-weight: bold;
-            font-size: 1.8rem;
-        }
+    @include rem(margin-bottom, 16px);
+  }
 
-        @include rem(margin-bottom, 16px);
+  .author-publisher {
+    @include rem(font-size, fontsize(smaller));
+    @include rem(margin-bottom, 16px);
+
+    .what {
+      color: $darkish-text;
+      font-weight: 600;
     }
+  }
 
-    .author-publisher {
-        @include rem(font-size, fontsize(smaller));
-        @include rem(margin-bottom, 16px);
+  .thumbnail {
+    padding: inherit;
+    border-radius: inherit;
+  }
 
-        .what {
-            color: $darkish-text;
-            font-weight: 600;
-        }
+  .img-responsive {
+    max-width: 75%;
+
+    @media (max-width: 767px) {
+      max-width: 210px;
     }
+  }
 
-    .thumbnail {
-        padding: inherit;
-        border-radius: inherit;
-    }
+  .skill {
+    vertical-align: top;
+    cursor: help;
+  }
 
-    .img-responsive {
-        max-width: 75%;
+  .skill.beginner {
+    color: $yii-green;
+  }
 
-        @media (max-width: 767px) {
-          max-width: 210px;
-        }
-    }
+  .skill.pro {
+    color: $yii-yellow;
+  }
 
-    .skill {
-        vertical-align: top;
-        cursor: help;
-    }
-
-    .skill.beginner {
-        color: $yii-green;
-    }
-
-    .skill.pro {
-        color: $yii-yellow;
-    }
-
-    .skill.all {
-        color: $yii-blue;
-    }
+  .skill.all {
+    color: $yii-blue;
+  }
 }

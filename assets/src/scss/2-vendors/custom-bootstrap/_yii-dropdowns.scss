@@ -4,10 +4,10 @@
   height: 0;
   margin-left: 2px;
   vertical-align: middle;
-  border-top:   $caret-width-base dashed;
-  border-top:   $caret-width-base solid \9;
+  border-top: $caret-width-base dashed;
+  border-top: $caret-width-base solid;
   border-right: $caret-width-base solid transparent;
-  border-left:  $caret-width-base solid transparent;
+  border-left: $caret-width-base solid transparent;
 }
 
 .dropup,
@@ -36,7 +36,7 @@
   border: 1px solid $dropdown-fallback-border;
   border: 1px solid $dropdown-border;
   border-radius: $border-radius-base;
-  @include box-shadow(0 6px 12px rgba(0,0,0,.175));
+  @include box-shadow(0 6px 12px rgba(0, 0, 0, .175));
   background-clip: padding-box;
 
   &.pull-right {
@@ -144,7 +144,8 @@
   .caret {
     border-top: 0;
     border-bottom: $caret-width-base dashed;
-    border-bottom: $caret-width-base solid \9;
+    border-bottom: $caret-width-base solid \9
+  ;
     content: "";
   }
 
@@ -158,11 +159,13 @@
 @media (min-width: $grid-float-breakpoint) {
   .navbar-right {
     .dropdown-menu {
-      right: 0; left: auto;
+      right: 0;
+      left: auto;
     }
 
     .dropdown-menu-left {
-      left: 0; right: auto;
+      left: 0;
+      right: auto;
     }
   }
 }

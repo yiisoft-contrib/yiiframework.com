@@ -38,8 +38,9 @@
       border-color: darken($eshill-light-blue, 12%);
     }
   }
+
   @include rem(font-size, 22px);
-  transition:color 0.4s ease-out, background 0.4s ease-in;
+  transition: color 0.4s ease-out, background 0.4s ease-in;
 
   @media (max-width: 380px) {
     @include rem(font-size, 16px);

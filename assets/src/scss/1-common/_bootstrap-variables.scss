@@ -1,23 +1,23 @@
-$gray-base:              #000;
-$gray-darker:            lighten($gray-base, 13.5%);
-$gray-dark:              lighten($gray-base, 20%);
-$gray:                   lighten($gray-base, 33.5%);
-$gray-light:             lighten($gray-base, 46.7%);
-$gray-lighter:           lighten($gray-base, 93.5%);
+$gray-base: #000;
+$gray-darker: lighten($gray-base, 13.5%);
+$gray-dark: lighten($gray-base, 20%);
+$gray: lighten($gray-base, 33.5%);
+$gray-light: lighten($gray-base, 46.7%);
+$gray-lighter: lighten($gray-base, 93.5%);
 
-$brand-primary:         $eshill-blue;
-$brand-success:         $yii-green;
-$brand-warning:         $yii-yellow;
+$brand-primary: $eshill-blue;
+$brand-success: $yii-green;
+$brand-warning: $yii-yellow;
 
 
-$state-success-text:             $yii-green;
-$state-info-text:                $yii-blue;
-$state-warning-text:             $yii-yellow;
+$state-success-text: $yii-green;
+$state-info-text: $yii-blue;
+$state-warning-text: $yii-yellow;
 
 
 $font-family-sans-serif: 'pt_sansregular', sans-serif;
 $font-family-base: $font-family-sans-serif;
-$font-family-monospace:   'Fira Mono', monospace;
+$font-family-monospace: 'Fira Mono', monospace;
 
 $bold-headings-font-family: 'pt_sansbold', sans-serif;
 $headings-small-color: #737373;
@@ -26,20 +26,20 @@ $icon-font-path: "/fonts/";
 $font-size-base: 16px;
 
 
-$body-bg:               #fff;
+$body-bg: #fff;
 
-$text-color:            $gray-dark;
+$text-color: $gray-dark;
 
 
-$link-color:            $brand-primary;
+$link-color: $brand-primary;
 
-$link-hover-color:      darken($link-color, 15%);
+$link-hover-color: darken($link-color, 15%);
 $link-hover-decoration: underline;
 
 
 $navbar-height: 80px;
-$navbar-inverse-link-active-bg:             transparent;
-$navbar-inverse-border:                     transparent;
+$navbar-inverse-link-active-bg: transparent;
+$navbar-inverse-border: transparent;
 $navbar-border-radius: 0;
 $navbar-margin-bottom: 0;
 
@@ -54,14 +54,14 @@ $grid-float-breakpoint: 1100px;
 $link-visited-color: $yii-blue;
 $font-size-codeblocks: $font-size-base;
 
-$navbar-inverse-color:                      lighten($gray-light, 20%);
-$navbar-inverse-bg:                         $eshill-blue;
+$navbar-inverse-color: lighten($gray-light, 20%);
+$navbar-inverse-bg: $eshill-blue;
 
-$navbar-inverse-link-color:                 #fff;
+$navbar-inverse-link-color: #fff;
 
-$navbar-inverse-toggle-hover-bg:            $navbar-inverse-bg;
+$navbar-inverse-toggle-hover-bg: $navbar-inverse-bg;
 
-$navbar-inverse-toggle-border-color:        darken($navbar-inverse-bg, 5%);
+$navbar-inverse-toggle-border-color: darken($navbar-inverse-bg, 5%);
 
 
 $line-height-base: 1.4;

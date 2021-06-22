@@ -1,6 +1,6 @@
 .tutorials {
   .latest-list {
-    @media (min-width: 992px)  {
+    @media (min-width: 992px) {
       @include rem(min-height, 600px);
     }
   }
@@ -8,7 +8,7 @@
 
 .extensions {
   .latest-list {
-    @media (min-width: 992px)  {
+    @media (min-width: 992px) {
       @include rem(min-height, 600px);
     }
   }
