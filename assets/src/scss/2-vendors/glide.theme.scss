@@ -74,7 +74,8 @@
     list-style: none;
 
     #{$that}--horizontal & {
-      bottom: 5%; left: 16%;
+      bottom: 5%;
+      left: 16%;
       z-index: 100;
       width: 100%;
       height: 12px;
@@ -82,7 +83,8 @@
     }
 
     #{$that}--vertical & {
-      top: 50%; right: 8%;
+      top: 50%;
+      right: 8%;
       width: 12px;
       height: auto;
       transform: translateY(-50%);

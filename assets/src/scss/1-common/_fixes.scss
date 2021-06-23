@@ -7,12 +7,12 @@ input[type=text]:focus,
 button:focus,
 button:active,
 button:hover {
-    outline:0px !important;
-    -webkit-appearance:none;
+  outline: 0px !important;
+  -webkit-appearance: none;
 }
 
 *:focus {
-    outline: 0 !important;
+  outline: 0 !important;
 }
 
 html {

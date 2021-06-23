@@ -106,7 +106,7 @@ ol.hl-main pre {
   word-wrap: normal;
   white-space: pre;
 
-  @media (max-width: 767px)  {
+  @media (max-width: 767px) {
     @include rem(padding-left, 10px);
   }
 

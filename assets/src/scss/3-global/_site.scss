@@ -5,15 +5,15 @@ html {
 }
 
 ::selection {
-    text-shadow: none !important;
-    background: $selection-color;
-    color: $gray-darker;
+  text-shadow: none !important;
+  background: $selection-color;
+  color: $gray-darker;
 }
 
 ::-moz-selection {
-    text-shadow: none !important;
-    background: $selection-color;
-    color: $gray-darker;
+  text-shadow: none !important;
+  background: $selection-color;
+  color: $gray-darker;
 }
 
 .visible-huge {
