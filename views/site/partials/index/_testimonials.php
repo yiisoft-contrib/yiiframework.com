@@ -5,6 +5,8 @@ $this->registerJs("
         autoheight: true,
         autoplay: 10000,
     });
+    var slideButton = $('.glide__bullet');
+    slideButton.attr('title', 'pagination');
 ");
 ?>
 
