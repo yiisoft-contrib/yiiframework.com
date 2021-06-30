@@ -7,6 +7,8 @@ $this->registerJs("
         autoheight: false,
         autoplay: 10000,
     });
+    var slideButton = $('.glide__bullet');
+    slideButton.attr('title', 'pagination');
 ");
 ?>
 <div class="sitejumbo">
