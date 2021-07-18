@@ -2,7 +2,7 @@
     "name": "yiisoft/yiiframework-com",
     "description": "yiiframework.com source code",
     "keywords": ["yii2", "framework"],
-    "homepage": "http://www.yiiframework.com/",
+    "homepage": "https://www.yiiframework.com/",
     "type": "project",
     "license": "BSD-3-Clause",
     "minimum-stability": "stable",
