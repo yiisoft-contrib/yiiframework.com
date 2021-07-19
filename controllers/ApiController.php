@@ -391,8 +391,8 @@ class ApiController extends BaseController
     /**
      * This action redirects old urls to the new location.
      *
-     * - http://www.yiiframework.com/doc-2.0/*.html URLs are redirected to 2.0 apidoc
-     * - http://www.yiiframework.com/doc/api/ClassName are redirected to 1.1 apidoc
+     * - https://www.yiiframework.com/doc-2.0/*.html URLs are redirected to 2.0 apidoc
+     * - https://www.yiiframework.com/doc/api/ClassName are redirected to 1.1 apidoc
      */
     public function actionRedirect($section, $version = null)
     {

@@ -275,7 +275,7 @@ class GuideController extends BaseController
     }
 
     /**
-     * This action redirects old urls http://www.yiiframework.com/doc-2.0/guide-*.html to the new location.
+     * This action redirects old urls https://www.yiiframework.com/doc-2.0/guide-*.html to the new location.
      */
     public function actionRedirect($section = 'index')
     {

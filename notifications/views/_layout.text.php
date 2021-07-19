@@ -22,4 +22,4 @@ You may also manage your subscriptions at your account profile page
 
 
 PLEASE DO NOT REPLY TO THIS EMAIL AS IT IS SENT FROM OUR AUTOMATED SYSTEM.
-Yii Framework (http://www.yiiframework.com)
+Yii Framework (https://www.yiiframework.com)
