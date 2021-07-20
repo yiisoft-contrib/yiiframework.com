@@ -914,7 +914,7 @@ SQL
 	protected function convertMarkdown($markdown)
 	{
 		// TODO code blocks conversion does not work inside quotes:
-		// http://www.yiiframework.com/wiki/16
+		// https://www.yiiframework.com/wiki/16
 
 		// convert code blocks
 		$markdown = preg_replace_callback('/~~~\s*\[php\]\s*(.+?)\n~~~/is', function($matches) {
