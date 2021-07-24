@@ -45,7 +45,8 @@ blockquote.info {
   border-left: 4px solid #247BA0;
 }
 
-blockquote.warn {
+blockquote.warn,
+blockquote.warning {
   @extend %blockquote;
   background-color: #FFF0F4;
   background-image: url(../../../image/guide/ico_attention.svg);
