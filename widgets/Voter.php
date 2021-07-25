@@ -57,7 +57,7 @@ class Voter extends Widget
 
         $html .= '  <span class="votes-up' . ($hasVoted === 1 ? ' voted' : '') . '">';
         $html .= '    <span class="votes">' . $up . '</span> ';
-        $html .= Html::a('<i aria-label="Vote Up" title="Vote Up" class="thumbs-up"></i>', '', [
+        $html .= Html::a('<i title="Vote Up" class="thumbs-up"></i>', '', [
             'data-vote-url' => Url::to(['/ajax/vote', 'type' => $modelType, 'id' => $modelId, 'vote' => 1])
         ]);
         $html .= '    </span>';
@@ -65,7 +65,7 @@ class Voter extends Widget
 
         $html .= '  <span class="votes-down' . ($hasVoted === 0 ? ' voted' : '') . '">';
         $html .= '    <span class="votes">' . ($total - $up) . '</span> ';
-        $html .= Html::a('<i aria-label="Vote Down" title="Vote Down" class="thumbs-down"></i>', '', [
+        $html .= Html::a('<i title="Vote Down" class="thumbs-down"></i>', '', [
             'data-vote-url' => Url::to(['/ajax/vote', 'type' => $modelType, 'id' => $modelId, 'vote' => 0])
         ]);
         $html .= '    </span>';
