@@ -30,4 +30,6 @@ $(document).ready(function () {
 
     $(".version-selector .dropdown-menu:empty").hide();
 
+    var commentBtn = $('.field-comment-text .btn');
+    commentBtn.attr('title', 'button');
 });
