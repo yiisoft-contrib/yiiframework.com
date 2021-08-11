@@ -70,7 +70,8 @@ use yii\widgets\ActiveForm;
     </div>
     <div class="row">
         <div class="col-md-9">
-            <?= $form->field($model, 'description', ['options' => ['class' => 'nopackagist']])->textarea(['class' => 'markdown-editor']) ?>
+            <?= $form->field($model, 'description', ['options' => ['class' => 'nopackagist']])->textarea(['class' => 'markdown-editor', 'title' =>
+                'Description']) ?>
         </div>
     </div>
     <div class="row">
