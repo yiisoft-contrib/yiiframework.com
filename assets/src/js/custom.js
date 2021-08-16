@@ -32,4 +32,7 @@ $(document).ready(function () {
 
     var commentBtn = $('.field-comment-text .btn');
     commentBtn.attr('title', 'button');
+
+    var extensionBtn = $('#extension-form .btn');
+    extensionBtn.attr('title', 'button');
 });
