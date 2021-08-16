@@ -15,4 +15,12 @@
   img {
     max-width: 100%;
   }
+
+  a {
+    color: #eee;
+
+    &:hover {
+      color: #fff;
+    }
+  }
 }

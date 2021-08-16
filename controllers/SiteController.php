@@ -299,7 +299,7 @@ class SiteController extends BaseController
 
     public function actionLogo()
     {
-        $this->sectionTitle = 'Official Logos';
+        $this->sectionTitle = 'Official Logos and Design';
         return $this->render('logo');
     }
 
