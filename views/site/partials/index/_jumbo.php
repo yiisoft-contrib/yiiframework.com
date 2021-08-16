@@ -14,7 +14,7 @@ $this->registerJs("
 <div class="sitejumbo">
     <div class="container">
         <div class="row">
-            <div class="col-md-12">
+            <div class="col-md-10">
                 <h1>Yes, it is!</h1>
                 <p class="propaganda">
                     Yii is a fast, secure, and efficient PHP framework.<br>
@@ -22,6 +22,9 @@ $this->registerJs("
                     Works right out of the box. <br>
                     Has reasonable defaults.
                 </p>
+            </div>
+            <div class="col-md-2 text-right">
+                <a href="<?= Url::to(['status/yii3-progress']) ?>" class="btn btn-link">Looking for Yii 3 progress?</a>
             </div>
         </div>
     </div>
