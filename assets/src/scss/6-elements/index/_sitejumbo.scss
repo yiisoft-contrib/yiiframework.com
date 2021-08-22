@@ -48,6 +48,9 @@
       color: $eshill-light-blue;
       background-color: #F5FEC4;
       border-color: darken(#F5FEC4, 12%);
+      @media (max-width: 767px) {
+        @include rem(font-size, 23px);
+      }
 
       &:focus,
       &.focus {
@@ -76,6 +79,13 @@
           border-color: darken(#83BFB3, 12%);
         }
       }
+    }
+  }
+
+  .col-link {
+    text-align: right;
+    @media (max-width: 767px) {
+      text-align: center;
     }
   }
 }
