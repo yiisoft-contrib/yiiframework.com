@@ -70,6 +70,12 @@ $css = <<<CSS
             box-sizing: border-box;
         }
 
+        @media (max-width: 767px) {
+            .wrapper {
+                height: auto;
+            }
+        }
+
         .flex-center {
             display: flex;
             align-items: center;
