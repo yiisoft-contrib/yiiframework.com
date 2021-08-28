@@ -5,7 +5,7 @@
 <div class="wrapper">
     <div class="flex-center">
 
-        <a class="main-logo" href="/"><img src="<?=Yii::getAlias('@web/image/design/logo/yii3_full_for_dark.svg')?>"/></a>
+        <a class="main-logo" href="/"><img alt="Yii3 full logo for dark backgrounds" src="<?=Yii::getAlias('@web/image/design/logo/yii3_full_for_dark.svg')?>"/></a>
         <p>How about progress on Yii3 development?</p>
         <h2>Released <b><?php echo $progress; ?></b> packages</h2>
 
