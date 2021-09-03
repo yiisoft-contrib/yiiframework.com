@@ -146,7 +146,7 @@ $css = <<<CSS
             height: 20px;
             font-size: 16px;
             font-weight: bold;
-            color: #1e6887;
+            color: #1A5D7A;
             margin-top: -10px;
             margin-left: -25px;
         }
