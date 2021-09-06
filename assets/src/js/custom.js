@@ -30,7 +30,7 @@ $(document).ready(function () {
 
     $(".version-selector .dropdown-menu:empty").hide();
 
-    var commentBtn = $('.field-comment-text .btn');
+    var commentBtn = $('#user-notes .btn');
     commentBtn.attr('title', 'button');
 
     var extensionBtn = $('#extension-form .btn');
