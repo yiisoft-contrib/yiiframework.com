@@ -29,10 +29,4 @@ $(document).ready(function () {
     });
 
     $(".version-selector .dropdown-menu:empty").hide();
-
-    var commentBtn = $('#user-notes .btn');
-    commentBtn.attr('title', 'button');
-
-    var extensionBtn = $('#extension-form .btn');
-    extensionBtn.attr('title', 'button');
 });
