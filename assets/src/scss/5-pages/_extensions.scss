@@ -199,3 +199,10 @@ ul.extension-side-comments {
 .panel-body p:last-child {
   margin-bottom: 0;
 }
+
+#extension-packagist,
+#extension-form {
+  .btn-danger {
+    background-color: #D43A35;
+  }
+}
