@@ -77,15 +77,39 @@ td p {
     margin: 0;
 }
 
-table.detail-table .param-name-col { width: 15%; min-width: 100px; }
-table.detail-table .param-type-col { width: 15%; min-width: 150px; }
-table.detail-table .param-desc-col { width: 70%; }
+table.detail-table .param-name-col {
+    width: 15%;
+    min-width: 100px;
+}
 
-table.summary-table .col-method   { width: 20%; }
-table.summary-table .col-property { width: 20%; }
-table.summary-table .col-const    { width: 20%; }
-table.summary-table .col-event    { width: 20%; }
-table.summary-table .col-defined  { width: 15%; }
+table.detail-table .param-type-col {
+    width: 15%;
+    min-width: 150px;
+}
+
+table.detail-table .param-desc-col {
+    width: 70%;
+}
+
+table.summary-table .col-method {
+    width: 20%;
+}
+
+table.summary-table .col-property {
+    width: 20%;
+}
+
+table.summary-table .col-const {
+    width: 20%;
+}
+
+table.summary-table .col-event {
+    width: 20%;
+}
+
+table.summary-table .col-defined {
+    width: 15%;
+}
 
 .detail-header {
     margin-top: 30px;
@@ -250,4 +274,3 @@ pre {
     border: none;
     border-left: 5px solid #e0e5ea;
 }
- 
