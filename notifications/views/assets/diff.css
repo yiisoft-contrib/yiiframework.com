@@ -26,11 +26,13 @@ diff, .memo {
     background: rgba(255, 22, 84, 0.6);
     text-decoration: line-through #f00;
 }
+
 .changed {
     font-weight: normal;
     background: rgba(255, 22, 84, 0.6);
     color: #000;
 }
+
 .unchanged {
     font-weight: normal;
     background: rgba(133, 215, 201, 0.71);
