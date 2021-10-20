@@ -210,7 +210,7 @@ h1:hover .hashlink, h2:hover .hashlink, h3:hover .hashlink, h4:hover .hashlink, 
     z-index: 1000;
 
     border-radius: 0;
-    /* reset all due to android browser issues http://caniuse.com/#search=border-radius */
+    /* reset all due to android browser issues https://caniuse.com/?search=border-radius */
     border-top-left-radius: 0;
     border-top-right-radius: 0;
     border-bottom-left-radius: 0;
