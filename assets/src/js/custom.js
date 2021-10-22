@@ -16,7 +16,7 @@ $(document).ready(function () {
             scrollDistance: 140, // Distance from top/bottom before showing element (px)
             scrollFrom: 'top', // 'top' or 'bottom'
             scrollSpeed: 300, // Speed back to top (ms)
-            easingType: 'linear', // Scroll to top easing (see http://easings.net/)
+            easingType: 'linear', // Scroll to top easing (see https://easings.net/)
             animation: 'fade', // Fade, slide, none
             animationInSpeed: 200, // Animation in speed (ms)
             animationOutSpeed: 200, // Animation out speed (ms)
