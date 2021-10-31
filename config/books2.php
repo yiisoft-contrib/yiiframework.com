@@ -33,7 +33,7 @@ return [
         'description' => 'Based around implementing a real world CRM following many best practices.
             It is assumed that reader is experienced enough in OOP so don\'t expect OO-basics
             explained.',
-        'url' => 'http://www.amazon.com/dp/1783981881?tag=gii20f-20',
+        'url' => 'https://www.amazon.com/dp/1783981881?tag=gii20f-20',
         'level' => 'pro',
         'level-text' => 'Pro',
         'level-description' => 'Recommended for intermediate-to-advanced developers.',
@@ -43,7 +43,7 @@ return [
         'author' => 'Matteo Pescarin',
         'image' => '@web/image/books/yii2-testing.jpg',
         'description' => 'Embrace 360-degree testing on your Yii 2 projects using Codeception.',
-        'url' => 'http://www.amazon.com/dp/1784392278?tag=gii20f-20',
+        'url' => 'https://www.amazon.com/dp/1784392278?tag=gii20f-20',
         'level' => 'pro',
         'level-text' => 'Pro',
         'level-description' => 'Recommended for intermediate-to-advanced developers.',
