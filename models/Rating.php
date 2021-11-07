@@ -149,7 +149,7 @@ class Rating extends ActiveRecord
 
     /**
      * Calculate the Wilson lower bound score based on
-     * http://en.wikipedia.org/wiki/Binomial_proportion_confidence_interval#Wilson_score_interval
+     * https://en.wikipedia.org/wiki/Binomial_proportion_confidence_interval#Wilson_score_interval
      * @param int $s number of successful trials
      * @param int $n number of all trials
      * @param string $alpha value, accepts only '0.01', '0.05' or '0.1'
