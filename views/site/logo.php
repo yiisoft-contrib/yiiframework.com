@@ -198,7 +198,7 @@
 
         <h2>License</h2>
         <p>
-            The logos are licensed under a <a href="http://creativecommons.org/licenses/by-nd/3.0/">Creative Commons
+            The logos are licensed under a <a href="https://creativecommons.org/licenses/by-nd/3.0/">Creative Commons
                 Attribution-No
                 Derivative Works 3.0 Unported License</a>.
         </p>
