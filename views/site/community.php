@@ -31,7 +31,7 @@
            <h3>Communities</h3>
 
            <ul>
-               <li><a href="http://yiiframework.ru/">yiiframework.ru</a></li>
+               <li><a href="https://yiiframework.ru/">yiiframework.ru</a></li>
                <li><a href="https://yiiframework.com.ua/">yiiframework.com.ua</a></li>
                <li><a href="https://habrahabr.ru/hub/yii/">Habrahabr</a></li>
                <li><a href="https://yiiconf.ru/">YiiConf Russia website</a></li>
@@ -61,7 +61,7 @@
            </ul>
 
            <h2>Indonesian</h2>
-           
+
            <ul>
                <li><a href="https://www.facebook.com/groups/yii.indonesia/">Facebook</a></li>
                <li><a href="https://t.me/YiiFrameworkIndonesia">Telegram</a></li>

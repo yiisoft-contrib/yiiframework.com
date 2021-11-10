@@ -29,12 +29,12 @@ $this->params['breadcrumbs'][] = $this->title;
                 <h3>News</h3>
 
                 <div class="image">
-                    <a href="http://yiifeed.com/" aria-label="YiiFeed">
+                    <a href="https://yiifeed.com/" aria-label="YiiFeed">
                     <img src="<?= Yii::getAlias('@web/image/resources/yiifeed.png') ?>" alt="YiiFeed">
                     </a>
                 </div>
 
-                <h4><a href="http://yiifeed.com/">YiiFeed</a></h4>
+                <h4><a href="https://yiifeed.com/">YiiFeed</a></h4>
 
                 <p>is a community-driven news source for both official Yii announcements and
                     unofficial articles, blogposts and tutorials. Anyone can suggest news. RSS provided.</p>
@@ -43,12 +43,12 @@ $this->params['breadcrumbs'][] = $this->title;
                 <h3>Showcase</h3>
 
                 <div class="image">
-                    <a href="http://yiipowered.com/en" aria-label="YiiPowered">
+                    <a href="https://yiipowered.com/en" aria-label="YiiPowered">
                     <img src="<?= Yii::getAlias('@web/image/resources/yiipowered.png') ?>" alt="YiiPowered">
                     </a>
                 </div>
 
-                <h4><a href="http://yiipowered.com/en">YiiPowered</a></h4>
+                <h4><a href="https://yiipowered.com/en">YiiPowered</a></h4>
 
                 <p>Community-powered showcase of projects and websites built with Yii including OpenSource projects.</p>
 

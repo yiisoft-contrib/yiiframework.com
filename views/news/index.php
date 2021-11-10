@@ -69,7 +69,7 @@ if (UserPermissions::canManageNews()) {
 					</div>
 					<div class="panel-body">
 						This site contains official framework annoncements only.
-						Find more Yii related news on <a href="http://yiifeed.com/">yiifeed.com</a>.
+						Find more Yii related news on <a href="https://yiifeed.com/">yiifeed.com</a>.
 					</div>
 				</div>
 

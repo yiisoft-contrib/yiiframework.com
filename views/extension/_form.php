@@ -47,7 +47,7 @@ use yii\widgets\ActiveForm;
             <?= $form->field($model, 'packagist_url', ['options' => ['class' => 'packagist']])
                      ->textInput(['disabled' => !$model->isNewRecord])
                      ->error(['encode' => false])
-                     ->hint('Enter the URL of the package registered on Packagist or the composer package name.<br>For example <code>http://packagist.org/p/yiisoft/yii2-redis</code> or <code>yiisoft/yii2-redis</code>.') ?>
+                     ->hint('Enter the URL of the package registered on Packagist or the composer package name.<br>For example <code>https://packagist.org/packages/yiisoft/yii2-redis</code> or <code>yiisoft/yii2-redis</code>.') ?>
 
             <?= $form->field($model, 'category_id')->dropDownList(ExtensionCategory::getSelectData(), ['prompt' => 'Please select...']) ?>
             <?= $form->field($model, 'yii_version', ['options' => ['class' => 'nopackagist']])

@@ -91,7 +91,7 @@ $this->title = 'License';
 
                 <p>The text contained in the official and user-contributed Yii documentation is
                     licensed to the public under the
-                    <a href="http://www.gnu.org/copyleft/fdl.html" rel="nofollow">GNU Free Documentation License
+                    <a href="https://www.gnu.org/copyleft/fdl.html" rel="nofollow">GNU Free Documentation License
                         (GFDL)</a>.
                 </p>
 
