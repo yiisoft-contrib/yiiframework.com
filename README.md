@@ -45,7 +45,7 @@ Also you need a package manager so install [Composer](https://getcomposer.org/do
 
 ### Node.js
 
-Latest [Node.js](http://nodejs.org/) is needed.
+Latest [Node.js](https://nodejs.org/) is needed.
 
 ### MariaDB or MySQL 
 
@@ -292,6 +292,6 @@ If you generate a personal Github token (from your Github profile settings secti
 
 ## Links
 
-* [Gulp](http://gulpjs.com/)
-* [Browsersync](http://www.browsersync.io/)
-* [Sass](http://sass-lang.com/)
+* [Gulp](https://gulpjs.com/)
+* [Browsersync](https://www.browsersync.io/)
+* [Sass](https://sass-lang.com/)
