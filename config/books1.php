@@ -11,7 +11,7 @@ return [
             Then gradually shows how to use Yii. It covers everything from the very basics such as installing Yii to advanced topics
             such as implementing your own framework extension. Explanations are very clear. Additionally to the guide-style
                 chapters there are two complete example chapters: a CMS and an E-commerce website.',
-        'url' => 'http://yii.larryullman.com/',
+        'url' => 'https://larry.pub/',
         'level' => 'beginner',
         'level-text' => 'Beginners',
         'level-description' => 'Recommended for beginners.',

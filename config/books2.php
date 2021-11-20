@@ -10,7 +10,7 @@ return [
         'description' => 'Covers everything from very basics to advanced topics. Explanations are very clear. Additionally to the guide-style
                 chapters there are two complete examples.
             The second edition (for Yii 2.0) is <strong>not finished yet</strong>, but buyers can download updates as they are available.',
-        'url' => 'http://yii.larryullman.com/',
+        'url' => 'https://larry.pub/',
         'level' => 'beginner',
         'level-text' => 'Beginners',
         'level-description' => 'Recommended for beginners.',
