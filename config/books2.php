@@ -54,7 +54,7 @@ return [
         'image' => '@web/image/books/yii2-app-development-cookbook-3.jpg',
         'description' => 'The book is a set of individual independent recipes. Each recipe shows how to
             do something useful with Yii explaining why it\'s done, how it\'s done, why it works and how exactly it works.',
-        'url' => 'https://www.packtpub.com/web-development/yii2-application-development-cookbook-third-edition',
+        'url' => 'https://www.packtpub.com/product/yii2-application-development-cookbook-third-edition/9781785281761',
         'level' => 'all',
         'level-text' => 'All levels',
         'level-description' => 'Recommended for all levels',
