@@ -13,7 +13,7 @@
     "url": "https://github.com/qiangxue/yiiframework.com.git"
   },
   "author": "Qiang Xue",
-  "homepage": "http://www.yiiframework.com",
+  "homepage": "https://www.yiiframework.com",
   "devDependencies": {
     "browser-sync": "^2.27.7",
     "es6-promise": "^4.2.8",
