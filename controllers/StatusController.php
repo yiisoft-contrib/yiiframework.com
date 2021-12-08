@@ -115,7 +115,10 @@ class StatusController extends BaseController
                         ->get("/orgs/yiisoft/repos?page=$i&per_page=100", ['Accept' => 'application/vnd.github.mercy-preview+json']);
                     $packages = json_decode($response->getBody()->getContents());
                     foreach ($packages as $package) {
-                        if (in_array('yii' . (int)$version, $package->topics, true)) {
+                        if (
+                            in_array('yii' . (int)$version, $package->topics, true)
+                            && !$package->archived
+                        ) {
                             $packagesList[] = explode('/', $package->full_name);
                         }
                     }
