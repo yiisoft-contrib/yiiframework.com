@@ -83,6 +83,8 @@ $this->registerLinkTag([
         <meta name="twitter:image:height" content="120" />
 
         <?php $this->head() ?>
+
+        <?php $this->render('partials/_analytics') ?>
     </head>
     <body data-spy="scroll" data-target="#scrollnav" data-offset="1">
         <?php $this->beginBody() ?>
