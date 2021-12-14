@@ -2,9 +2,7 @@
 
 namespace app\apidoc;
 
-
 use Yii;
-use yii\helpers\Console;
 use yii\helpers\StringHelper;
 use yii\helpers\VarDumper;
 
@@ -52,8 +50,10 @@ class ExtensionApiRenderer extends ApiRenderer
             $type = $this->apiContext->getType($type);
         }
 
-        preg_match('/.+\/(.+\/.+)\/(\d\.\d(?:\.\d)?)\/(.+)/', $type->sourceFile, $matches);
-        $url = "https://github.com/$matches[1]/blob/master/$matches[3]";
+        preg_match('/\/(\d+\.\d+(?:\.\d+)?)\/(.+)/', $type->sourceFile, $matches);
+
+        $baseUrl = rtrim($this->extension->github_url, '/');
+        $url = "$baseUrl/blob/master/$matches[2]";
 
         return !$line ? $url : "$url#L$line";
     }
