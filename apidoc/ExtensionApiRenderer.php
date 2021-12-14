@@ -52,9 +52,10 @@ class ExtensionApiRenderer extends ApiRenderer
             $type = $this->apiContext->getType($type);
         }
 
-        // TODO implement
+        preg_match('/.+\/(.+\/.+)\/(\d\.\d(?:\.\d)?)\/(.+)/', $type->sourceFile, $matches);
+        $url = "https://github.com/$matches[1]/blob/master/$matches[3]";
 
-        return null;
+        return !$line ? $url : "$url#L$line";
     }
 
 	public function generateApiUrl($typeName)
