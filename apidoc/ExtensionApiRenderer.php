@@ -16,8 +16,10 @@ class ExtensionApiRenderer extends ApiRenderer
 {
     public $layout = '@app/apidoc/layouts/api.php';
     public $indexView = '@app/apidoc/views/extension-index.php';
-
+    public $allClassesUrl = './';
+    public $typeAvailableSinceVersionLabel = "Available since extension's version";
     public $version;
+
     public $extension;
 
     /**
