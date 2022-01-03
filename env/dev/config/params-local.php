@@ -11,7 +11,7 @@ return [
         'charset' => 'utf8',
 
         // adjust DB credentials to your needs
-        'dsn' => 'mysql:host=localhost;dbname=yiiframeworkcom',
+        'dsn' => 'mysql:host=mariadb;dbname=yiiframeworkcom',
         'username' => 'yiiframeworkcom',
         'password' => 'yiiframeworkcom',
     ],

@@ -1,0 +1,14 @@
+version: '3'
+services:
+    web:
+        build: .
+        volumes:
+            - .:/code
+        command: >
+            bash -c "gulp & ./yii serve 0.0.0.0"
+    mariadb:
+        image: mariadb:10.1.48
+    redis:
+        image: redis:3.2.6
+    elasticsearch:
+        image: elasticsearch:5.6.16
