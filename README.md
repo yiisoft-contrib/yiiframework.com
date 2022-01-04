@@ -225,7 +225,7 @@ Additionally, `queue/listen` should run as a daemon or `queue/run` as a cronjob.
 This section covers notes for deployment on a server, you may not need this for your dev env. OS is assumed to be debian Stretch.
 
 ```sh
-apt-get install texlive-full git nodejs make
+apt-get install texlive-full python3-pygments git nodejs make
 ```
 
 ## Maintenance

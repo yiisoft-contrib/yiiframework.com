@@ -18,46 +18,33 @@ RUN php -r "unlink('composer-setup.php');"
 RUN mv composer.phar /usr/local/bin/composer
 
 # Node.js
-# https://github.com/nodesource/distributions/blob/master/README.md#debmanual
+# https://github.com/nvm-sh/nvm
 
-RUN apt-get update
-RUN apt-get install -y gnupg lsb-release
-
-ENV KEYRING=/usr/share/keyrings/nodesource.gpg
-RUN curl -fsSL https://deb.nodesource.com/gpgkey/nodesource.gpg.key | gpg --dearmor | tee "$KEYRING" >/dev/null
-RUN gpg --no-default-keyring --keyring "$KEYRING" --list-keys
-
-ENV VERSION=node_13.x
-ENV DISTRO="$(lsb_release -s -c)"
-RUN echo "deb [signed-by=$KEYRING] https://deb.nodesource.com/$VERSION $DISTRO main" | tee /etc/apt/sources.list.d/nodesource.list
-RUN echo "deb-src [signed-by=$KEYRING] https://deb.nodesource.com/$VERSION $DISTRO main" | tee -a /etc/apt/sources.list.d/nodesource.list
-
-RUN rm /etc/apt/sources.list.d/nodesource.*
-RUN apt-get update
-RUN apt-get install -y nodejs npm
+RUN curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | bash
+SHELL ["/bin/bash", "--login", "-c"]
+RUN command -v nvm
+RUN nvm install 13.14.0
 
 # Node.js global packages and dependencies
 
+RUN apt-get update
 RUN apt-get install -y libnotify-bin
 RUN npm install -g gulp-cli --loglevel verbose
 
+# PHP packages
+
+ENV COMPOSER_VENDOR_DIR=/code/vendor
+COPY composer.* /code/
+WORKDIR /code
+RUN composer install
+
 # Node.js packages
 
-COPY package.json /node/package.json
-WORKDIR /node
+COPY package.json /code
+WORKDIR /code
 RUN npm install --loglevel verbose
-ENV NODE_PATH=/node/node_modules
-ENV PATH=$NODE_PATH/.bin:$PATH
 
 # Code
 
-ADD . /code
-WORKDIR /code
-
-# PHP packages
-
-RUN composer install
-
-# Yii 2 initialization
-
-RUN ./init --env=Development
+ADD . /code/src
+WORKDIR /code/src

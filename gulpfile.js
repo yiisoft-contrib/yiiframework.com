@@ -19,7 +19,11 @@ const PRODUCTION = !!(yargs.argv.production);
 var config = loadConfig();
 
 function loadConfig() {
-  ymlFile = fs.readFileSync('config.yml', 'utf8');
+  let ymlFile = fs.readFileSync('config.yml', 'utf8');
+  if (!PRODUCTION) {
+    ymlFile = ymlFile.replace(/"vendor/g, '"../vendor');
+  }
+
   return yaml.load(ymlFile);
 }
 
