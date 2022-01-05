@@ -16,6 +16,14 @@ return [
         'password' => 'yiiframeworkcom',
     ],
 
+    'components.elasticsearch' => [
+        'class' => yii\elasticsearch\Connection::class,
+        'nodes' => [
+            ['http_address' => 'elasticsearch:9200'],
+            // configure more hosts if you have a cluster
+        ],
+    ],
+
     'authclients' => [
         'github' => [
             'class' => 'yii\authclient\clients\GitHub',
