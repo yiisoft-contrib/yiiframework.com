@@ -10,3 +10,6 @@ services:
             MYSQL_DATABASE:
             MYSQL_USER:
             MYSQL_PASSWORD:
+    elasticsearch:
+        ports:
+            - "9200:9200"
