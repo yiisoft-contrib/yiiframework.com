@@ -2,13 +2,22 @@
 
 FROM php:7.4-fpm
 
+# System packages and dependencies
+
+RUN apt-get update
+RUN apt-get install -y texlive-full
+RUN apt-get install -y python3-pygments
+RUN apt-get install -y libnotify-bin
+
 # PHP extensions
 # https://github.com/mlocati/docker-php-extension-installer
 
 COPY --from=mlocati/php-extension-installer /usr/bin/install-php-extensions /usr/local/bin/
 RUN install-php-extensions gd intl pdo_mysql opcache zip
 
-COPY --from=composer:2 /usr/bin/composer /usr/bin/composer
+# Composer
+
+COPY --from=composer:2.2.3 /usr/bin/composer /usr/local/bin/composer
 
 # Node.js
 # https://github.com/nvm-sh/nvm
@@ -18,10 +27,8 @@ SHELL ["/bin/bash", "--login", "-c"]
 RUN command -v nvm
 RUN nvm install 13.14.0
 
-# Node.js global packages and dependencies
+# Node.js global packages
 
-RUN apt-get update
-RUN apt-get install -y libnotify-bin
 RUN npm install -g gulp-cli --loglevel verbose
 
 # PHP packages
