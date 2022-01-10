@@ -8,6 +8,8 @@ RUN apt-get update
 RUN apt-get install -y texlive-full
 RUN apt-get install -y python3-pygments
 RUN apt-get install -y libnotify-bin
+RUN apt-get install -y git
+RUN apt-get install -y nginx
 
 # PHP extensions
 # https://github.com/mlocati/docker-php-extension-installer
@@ -29,20 +31,32 @@ RUN nvm install 13.14.0
 
 # Node.js global packages
 
-RUN npm install -g gulp-cli --loglevel verbose
+RUN npm install -g gulp-cli --loglevel=verbose
+
+# PHP configuration
+
+RUN mv "$PHP_INI_DIR/php.ini-production" "$PHP_INI_DIR/php.ini"
+RUN sed -i 's,^memory_limit =.*$,memory_limit = -1,' "$PHP_INI_DIR/php.ini"
+
+ENV VENDOR_DIR=/code/vendor
+
+# Nginx configuration
+
+COPY nginx-site.conf /etc/nginx/sites-enabled/default
 
 # PHP packages
 
-ENV COMPOSER_VENDOR_DIR=/code/vendor
 COPY composer.* /code/
 WORKDIR /code
+RUN composer config vendor-dir $VENDOR_DIR
 RUN composer install
+RUN composer config vendor-dir vendor
 
 # Node.js packages
 
 COPY package.json /code
 WORKDIR /code
-RUN npm install --loglevel verbose
+RUN npm install --loglevel=verbose
 
 # Code
 

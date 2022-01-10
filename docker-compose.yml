@@ -5,7 +5,9 @@ services:
         volumes:
             - .:/code/src
         command: >
-            bash -c "gulp & ./yii serve 0.0.0.0"
+            bash -c "gulp &
+            service nginx start &&
+            php-fpm"
     mariadb:
         image: mariadb:10.1.48
     redis:
