@@ -32,7 +32,7 @@ PATHS:
   javascript:
     - "vendor/bower-asset/jquery/dist/jquery.js"
     - "vendor/bower-asset/bootstrap-sass/assets/javascripts/bootstrap.js"
-    - "vendor/bower-asset/scrollup/dist/jquery.scrollUp.js"
+    - "vendor/bower-asset/scrollup/js/jquery.scrollUp.js"
     - "vendor/yiisoft/yii2/assets/yii.js"
     - "vendor/yiisoft/yii2/assets/yii.validation.js"
     - "vendor/yiisoft/yii2/assets/yii.activeForm.js"
