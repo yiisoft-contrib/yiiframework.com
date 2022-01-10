@@ -1,7 +1,7 @@
 <?php
 defined('YII_DEBUG') or define('YII_DEBUG', true);
 defined('YII_ENV') or define('YII_ENV', 'dev');
-defined('COMPOSER_VENDOR_DIR') or define ('COMPOSER_VENDOR_DIR', __DIR__ . '/../vendor');
+defined('VENDOR_DIR') or define ('VENDOR_DIR', __DIR__ . '/../vendor');
 
 $vendorDir = rtrim(getenv('COMPOSER_VENDOR_DIR'), '/');
 
