@@ -50,10 +50,7 @@ class ApiController extends \yii\apidoc\commands\ApiController
         $sourcePath = Yii::getAlias('@app/data');
 
         if ($version[0] === '2') {
-            $source = [
-                "$sourcePath/yii-$version/framework",
-//                "$sourcePath/yii-$version/extensions",
-            ];
+            $source = ["$sourcePath/yii-$version/framework"];
             $target = "$targetPath/api-$version";
             $this->guide = Yii::$app->params['guide.baseUrl'] . "/{$this->version}/en";
 
@@ -68,14 +65,15 @@ class ApiController extends \yii\apidoc\commands\ApiController
 
             $this->stdout("Finished API $version.\n\n", Console::FG_GREEN);
         } elseif ($version[0] === '1') {
-            $source = [
-                "$sourcePath/yii-$version/framework",
-            ];
             $target = "$targetPath/api-$version";
             $cmd = Yii::getAlias("@app/data/yii-$version/build/build");
 
-            if ($version === '1.1' && !is_file($composerYii1 = Yii::getAlias('@app/data/yii-1.1/vendor/autoload.php'))) {
-                $this->stdout("WARNING: Composer dependencies of Yii 1.1 are not installed, api generation may fail.\n", Console::BOLD, Console::FG_YELLOW);
+            if ($version === '1.1' && !is_file(Yii::getAlias('@app/data/yii-1.1/vendor/autoload.php'))) {
+                $this->stdout(
+                    "WARNING: Composer dependencies of Yii 1.1 are not installed, api generation may fail.\n",
+                    Console::BOLD,
+                    Console::FG_YELLOW
+                );
             }
 
             $this->stdout("Start generating API $version...\n");
@@ -89,7 +87,9 @@ class ApiController extends \yii\apidoc\commands\ApiController
                     file_get_contents($file))
                 );
             }
-            file_put_contents("$target/api/index.html", str_replace(
+
+            $indexFilePath = "$target/api/index.html";
+            file_put_contents($indexFilePath, str_replace(
                 '<h1>Class Reference</h1>',
                 <<<HTML
 <h1>Yii Framework $version API Documentation</h1>
@@ -109,7 +109,7 @@ class ApiController extends \yii\apidoc\commands\ApiController
 	You can search for class names and also method and property names, e.g. <code>ActiveRecord.save()</code> or just <code>.save()</code> or <code>::save()</code>.
 </p>
 HTML
-                , file_get_contents("$target/api/index.html")));
+                , file_get_contents($indexFilePath)));
 
             $this->stdout("Finished API $version.\n\n", Console::FG_GREEN);
         }
