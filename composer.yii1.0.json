@@ -5,9 +5,9 @@
     "homepage": "https://www.yiiframework.com/",
     "type": "project",
     "license": "BSD-3-Clause",
-    "minimum-stability": "dev",
+    "minimum-stability": "stable",
     "require": {
-        "php": "^7.4",
+        "php": "~7.0",
         "2amigos/yii2-selectize-widget": "~1.0.1",
         "2amigos/yii2-taggable-behavior": "~1.0.1",
         "abraham/twitteroauth": "~0.7.4",
@@ -37,7 +37,7 @@
         "scrivo/highlight.php": "~9.18",
         "yetanotherape/diff-match-patch": "~1.0.0",
         "yiisoft/yii2": "~2.0.44",
-        "yiisoft/yii2-apidoc": "dev-master#2b47df55e4708f418334f8fb477c54ca556d2fa2",
+        "yiisoft/yii2-apidoc": "~2.1.6",
         "yiisoft/yii2-authclient": "~2.2.0",
         "yiisoft/yii2-bootstrap": "~2.0.6",
         "yiisoft/yii2-elasticsearch": "~2.1.0",
@@ -61,8 +61,11 @@
         "fxp-asset": {
             "enabled": false
         },
-        "platform": {"php": "7.4"},
-        "sort-packages": true
+        "platform": {"php": "7.0"},
+        "sort-packages": true,
+        "allow-plugins": {
+            "yiisoft/yii2-composer": true
+        }
     },
     "repositories": [
         {

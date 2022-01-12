@@ -45,10 +45,12 @@ guide-%: yii-%
 download-%: TARGET_DIR=data/docs-offline
 download-%: SOURCE_DIR=data/yii-$(subst download-,,$@)
 download-%: DOC_DIR=yii-docs-$(subst download-,,$@)
-download-%: LANGUAGES=en $(shell find ${SOURCE_DIR}/docs/ | grep -ioP 'guide-[a-z-]+$$' | cut -c 7-)
+download-%: VENDOR_DIR=vendor
+download-%: APIDOC_BIN=${VENDOR_DIR}/bin/apidoc
+download-%: LANGUAGES=$(shell find ${SOURCE_DIR}/docs/ | grep -ioP 'guide-[a-z-]+$$' | cut -c 7-)
 download-%: yii-%
 	cd ${SOURCE_DIR}/docs && ln -sf guide guide-en
-	vendor/bin/apidoc api ${SOURCE_DIR}/framework,${SOURCE_DIR}/extensions ${TARGET_DIR}/${DOC_DIR} --interactive=0
+	${APIDOC_BIN} api ${SOURCE_DIR}/framework,${SOURCE_DIR}/extensions ${TARGET_DIR}/${DOC_DIR} --interactive=0
 	for l in ${LANGUAGES} ; do \
 		echo ""  ; \
 		echo "building guide and api package for language $$l..."  ; \
@@ -56,8 +58,8 @@ download-%: yii-%
 		test -f ${TARGET_DIR}/${DOC_DIR}-$$l.tar.gz && rm ${TARGET_DIR}/${DOC_DIR}-$$l.tar.gz  ; \
 		test -f ${TARGET_DIR}/${DOC_DIR}-$$l.tar.bz2 && rm ${TARGET_DIR}/${DOC_DIR}-$$l.tar.bz2  ; \
 		cp -ar ${TARGET_DIR}/${DOC_DIR} ${TARGET_DIR}/${DOC_DIR}-$$l  ; \
-		vendor/bin/apidoc guide ${SOURCE_DIR}/docs/guide-$$l ${TARGET_DIR}/${DOC_DIR}-$$l --interactive=0  ; \
-		vendor/bin/apidoc api ${SOURCE_DIR}/framework,${SOURCE_DIR}/extensions ${TARGET_DIR}/${DOC_DIR}-$$l --interactive=0 ; \
+		${APIDOC_BIN} guide ${SOURCE_DIR}/docs/guide-$$l ${TARGET_DIR}/${DOC_DIR}-$$l --interactive=0  ; \
+		${APIDOC_BIN} api ${SOURCE_DIR}/framework,${SOURCE_DIR}/extensions ${TARGET_DIR}/${DOC_DIR}-$$l --interactive=0 ; \
 		rm -r ${TARGET_DIR}/${DOC_DIR}-$$l/cache  ; \
 		cd ${TARGET_DIR} && tar czf ${DOC_DIR}-$$l.tar.gz ${DOC_DIR}-$$l ; cd - ; \
 		cd ${TARGET_DIR} && tar cjf ${DOC_DIR}-$$l.tar.bz2 ${DOC_DIR}-$$l ; cd - ; \
@@ -66,9 +68,10 @@ download-%: yii-%
 
 
 # targets for cloning yii repos for building docs
-yii-1.0:
+yii-1.0: composer
 	test -d data/yii-1.0 || git clone https://github.com/yiisoft/yii.git data/yii-1.0
 	cd data/yii-1.0 && git checkout 1.0.12 && git checkout master build/
+	COMPOSER=composer.yii1.0.json php data/composer.phar install
 
 yii-1.1: composer
 	test -d data/yii-1.1 || git clone https://github.com/yiisoft/yii.git data/yii-1.1

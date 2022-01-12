@@ -41,13 +41,8 @@ class ApiController extends \yii\apidoc\commands\ApiController
         }
         $this->version = $version;
 
-        if ($version === '1.0' && PHP_VERSION_ID >= 70000) {
-            $this->stderr('Can not generate 1.0 API using PHP 7. Skipping.');
-            return ExitCode::OK;
-        }
-
-        $targetPath = Yii::getAlias('@app/data');
         $sourcePath = Yii::getAlias('@app/data');
+        $targetPath = $sourcePath;
 
         if ($version[0] === '2') {
             $source = ["$sourcePath/yii-$version/framework"];
@@ -65,8 +60,10 @@ class ApiController extends \yii\apidoc\commands\ApiController
 
             $this->stdout("Finished API $version.\n\n", Console::FG_GREEN);
         } elseif ($version[0] === '1') {
-            $target = "$targetPath/api-$version";
-            $cmd = Yii::getAlias("@app/data/yii-$version/build/build");
+            if ($version === '1.0' && PHP_VERSION_ID >= 70100) {
+                $this->stderr('Can not generate 1.0 API using PHP version above 7.0. Skipping.');
+                return ExitCode::OK;
+            }
 
             if ($version === '1.1' && !is_file(Yii::getAlias('@app/data/yii-1.1/vendor/autoload.php'))) {
                 $this->stdout(
@@ -77,6 +74,10 @@ class ApiController extends \yii\apidoc\commands\ApiController
             }
 
             $this->stdout("Start generating API $version...\n");
+
+            $target = "$targetPath/api-$version";
+            $cmd = Yii::getAlias("@app/data/yii-$version/build/build");
+
             FileHelper::createDirectory($target);
             passthru("php $cmd api $target online");
 
