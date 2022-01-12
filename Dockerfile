@@ -31,7 +31,7 @@ RUN nvm install 13.14.0
 
 # Node.js global packages
 
-RUN npm install -g gulp-cli --loglevel=verbose
+RUN npm install -g gulp-cli pageres-cli --loglevel=verbose
 
 # PHP configuration
 

@@ -10,7 +10,7 @@ If you want to contribute please get in touch with us using the [issue tracker](
 
 [![Build Status](https://api.travis-ci.com/yiisoft-contrib/yiiframework.com.svg)](https://travis-ci.com/yiisoft-contrib/yiiframework.com)
 
-## Using Docker and Docker Compose for local development
+## Prerequisites
 
 Install [Docker](https://docs.docker.com/get-docker/) and [Docker Compose](https://docs.docker.com/compose/install/).
 
@@ -27,80 +27,13 @@ docker-compose up
 
 The site will be available at http://0.0.0.0:8080.
 
-## PREREQUISITES
+### Generating screenshots
 
-### PHP
+You can use the script `run_pageres.sh` at the root of the source directory to generate screenshots.
 
-PHP 7.4 is required.
-
-There's a need to enable some extensions:
-
-- curl
-- fileinfo
-- gd2
-- intl
-- mbstring
-- pdo_mysql
-- php_opcache
-
-Under Windows make sure the following lines are in `php.ini` and aren't commented out:
-
-```ini
-extension=curl
-extension=fileinfo
-extension=gd2
-extension=intl
-extension=mbstring
-extension=pdo_mysql
-extension=openssl
-```
-
-Under Linux or MacOS you need to intall these via your OS package manager.
-
-Also you need a package manager so install [Composer](https://getcomposer.org/download/).
-
-### Node.js
-
-Latest [Node.js](https://nodejs.org/) is needed.
-
-### MariaDB or MySQL 
-
-Latest version of [MariaDB](https://mariadb.org/) or [MySQL](https://www.mysql.com/) is needed.
-
-### Debian or Ubuntu extras
-
-If you are on Debian or Ubuntu you might also want to install the [libnotify-bin](https://packages.debian.org/jessie/libnotify-bin) package,
-which is used by Gulp to inform you about its status.
-
-If you intend to use the [Pageres client](https://github.com/sindresorhus/pageres-cli) to generate screen shots for testing purposes, you need to install the `pageres.cli` tool globally:
+## Initial setup
 
 ```sh
-npm install --global pageres-cli
-```
-
-And then you can use the script `run_pageres.sh` at the root of the source directory to generate screen shots.
-
-## INSTALLATION
-
-```sh
-# clone the project
-git clone https://github.com/yiisoft-contrib/yiiframework.com.git
-
-cd yiiframework.com
-
-# install the dependent composer packages
-composer install
-
-# under Windows the folowing is necessary:
-# npm install --production -g windows-build-tools
-# npm config set msvs_version 2015 --global
-
-# install gulp globally if you haven't done so before
-npm install -g gulp-cli
-
-# install dependent NPM modules
-npm install
-
 # initialize the application, choose "development"
 ./init
 ```
@@ -178,35 +111,7 @@ make docs VENDOR_DIR=$VENDOR_DIR
 ./yii search/rebuild
 ```
 
-### Using built-in PHP webserver
-
-Using built-in PHP webserver is fine for development:
-
-```
-./yii serve
-```
-
-### Real Web Server Setup
-
-Define a host name `yiiframework.local` that points to `localhost`.
-
-Define a virtual host `yiiframework.local` which uses `yiiframework.com/web` as its document root.
-
-If you are using Apache, add the following configuration for the `yiiframework.com/web` folder to hide the
-entry script:
-
-```
-RewriteEngine on
-
-# if a directory or a file exists, use it directly
-RewriteCond %{REQUEST_FILENAME} !-f
-RewriteCond %{REQUEST_FILENAME} !-d
-
-# otherwise forward it to index.php
-RewriteRule . index.php
-```
-
-### Data Import
+### Data import
 
 For importing data from the old website, the following steps are necessary:
 
@@ -225,7 +130,6 @@ To assign users extra permissions use `./yii rbac/assign`.
 
 ### Cron jobs
 
-
 The following commands need to be set up to run on a regular basis:
 
 | command                   | interval | Purpose
@@ -238,8 +142,7 @@ The following commands need to be set up to run on a regular basis:
 
 Additionally, `queue/listen` should run as a daemon or `queue/run` as a cronjob.
 
-
-### DEPLOYMENT
+### Deployment
 
 This section covers notes for deployment on a server, you may not need this for your dev env. OS is assumed to be debian Stretch.
 
@@ -261,7 +164,7 @@ It would be a good idea to set up a Cron job to run that once in a while - perha
 
 If you generate a personal Github token (from your Github profile settings section) you can tell the contributors/generate function to make use of it by creating a file in the `data` directory (@app/data) called `github.token` with the token pasted into it (one line, no line-break). That should solve most issues related to the API rate limit imposed by Github.
 
-## DIRECTORY STRUCTURE
+## Directory structure
 
       commands/           contains console commands (controllers)
       config/             contains application configurations
@@ -283,7 +186,7 @@ If you generate a personal Github token (from your Github profile settings secti
       web/                contains the entry script and Web resources
 
 
-## DEVELOPMENT
+## Development
 
 ### Build
 
@@ -301,13 +204,11 @@ If you generate a personal Github token (from your Github profile settings secti
 * All Sass source files, except `all.scss` should have a leading underscore in the name. Sass will ignore files starting with an underscore so that only one CSS file will be produced (all.css).
 * For information about where each file should be put, please consult the master include file `all.scss`.
 
-
 ### JS Files
 
 * All JS files should be put under `assets/src/js` and listed in `config.yml`.
 * Usually each controller corresponds to a single JS file whose name is the same as the controller ID.
   For example, the `GuideController` has a JS file named `guide.js`.
-
 
 ## Links
 
