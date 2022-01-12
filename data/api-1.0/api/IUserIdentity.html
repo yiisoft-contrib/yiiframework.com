@@ -1,0 +1,239 @@
+<h1>IUserIdentity</h1>
+<div id="nav">
+<a href="/doc/api/1.0/">All Packages</a>
+| <a href="#methods">Methods</a>
+</div>
+
+<table class="summaryTable docClass">
+<colgroup>
+	<col class="col-name" />
+	<col class="col-value" />
+</colgroup>
+<tr>
+  <th>Package</th>
+  <td><a href="/doc/api/1.0/#system.base">system.base</a></td>
+</tr>
+<tr>
+  <th>Inheritance</th>
+  <td>interface IUserIdentity</td>
+</tr>
+<tr>
+  <th>Subclasses</th>
+  <td><a href="/doc/api/1.0/CBaseUserIdentity">CBaseUserIdentity</a>, <a href="/doc/api/1.0/CUserIdentity">CUserIdentity</a></td>
+</tr>
+<tr>
+  <th>Since</th>
+  <td>1.0</td>
+</tr>
+<tr>
+  <th>Version</th>
+  <td>$Id$</td>
+</tr>
+<tr>
+  <th>Source Code</th>
+  <td><a class="sourceLink" href="https://github.com/yiisoft/yii/blob/1.0.12/framework/base/interfaces.php">framework/base/interfaces.php</a></td>
+</tr>
+</table>
+
+<div id="classDescription">
+IUserIdentity interface is implemented by a user identity class.
+<br/><br/>
+An identity represents a way to authenticate a user and retrieve
+information needed to uniquely identity the user. It is normally
+used with the <a href="/doc/api/1.0/CWebApplication#user">user application component</a>.</div>
+<a name="properties"></a>
+
+<a name="methods"></a>
+
+<div class="summary docMethod">
+<h2>Public Methods</h2>
+
+<p><a href="#" class="toggle">Hide inherited methods</a></p>
+
+<table class="summaryTable">
+<colgroup>
+	<col class="col-method" />
+	<col class="col-description" />
+	<col class="col-defined" />
+</colgroup>
+<tr>
+  <th>Method</th><th>Description</th><th>Defined By</th>
+</tr>
+<tr id="authenticate">
+  <td><a href="/doc/api/1.0/IUserIdentity#authenticate-detail">authenticate()</a></td>
+  <td>Authenticates the user.</td>
+  <td>IUserIdentity</td>
+</tr>
+<tr id="getId">
+  <td><a href="/doc/api/1.0/IUserIdentity#getId-detail">getId()</a></td>
+  <td>Returns a value that uniquely represents the identity.</td>
+  <td>IUserIdentity</td>
+</tr>
+<tr id="getIsAuthenticated">
+  <td><a href="/doc/api/1.0/IUserIdentity#getIsAuthenticated-detail">getIsAuthenticated()</a></td>
+  <td>Returns a value indicating whether the identity is authenticated.</td>
+  <td>IUserIdentity</td>
+</tr>
+<tr id="getName">
+  <td><a href="/doc/api/1.0/IUserIdentity#getName-detail">getName()</a></td>
+  <td>Returns the display name for the identity (e.g. username).</td>
+  <td>IUserIdentity</td>
+</tr>
+<tr id="getPersistentStates">
+  <td><a href="/doc/api/1.0/IUserIdentity#getPersistentStates-detail">getPersistentStates()</a></td>
+  <td>Returns the additional identity information that needs to be persistent during the user session.</td>
+  <td>IUserIdentity</td>
+</tr>
+</table>
+</div>
+<a name="events"></a>
+
+<h2>Method Details</h2>
+
+<div class="detailHeader" id="authenticate-detail">
+authenticate()
+<span class="detailHeaderTag">
+method
+</span>
+</div>
+
+<table class="summaryTable">
+<tr><td colspan="3">
+<div class="signature2">
+abstract public boolean <b>authenticate</b>()</div>
+</td></tr>
+<tr>
+  <td class="paramNameCol">{return}</td>
+  <td class="paramTypeCol">boolean</td>
+  <td class="paramDescCol">whether authentication succeeds.</td>
+</tr>
+</table>
+
+<div class="sourceCode">
+<b>Source Code:</b> <a class="sourceLink" href="https://github.com/yiisoft/yii/blob/1.0.12/framework/base/interfaces.php#L269">framework/base/interfaces.php#269</a> (<b><a href="#" class="show">show</a></b>)
+<div class="code"><code><span style="color: #000000">
+<span style="color: #0000BB"></span><span style="color: #007700">public&nbsp;function&nbsp;</span><span style="color: #0000BB">authenticate</span><span style="color: #007700">();</span>
+</span>
+</code></div>
+</div>
+<p>Authenticates the user.
+The information needed to authenticate the user
+are usually provided in the constructor.</p>
+
+
+<div class="detailHeader" id="getId-detail">
+getId()
+<span class="detailHeaderTag">
+method
+</span>
+</div>
+
+<table class="summaryTable">
+<tr><td colspan="3">
+<div class="signature2">
+abstract public mixed <b>getId</b>()</div>
+</td></tr>
+<tr>
+  <td class="paramNameCol">{return}</td>
+  <td class="paramTypeCol">mixed</td>
+  <td class="paramDescCol">a value that uniquely represents the identity (e.g. primary key value).</td>
+</tr>
+</table>
+
+<div class="sourceCode">
+<b>Source Code:</b> <a class="sourceLink" href="https://github.com/yiisoft/yii/blob/1.0.12/framework/base/interfaces.php#L279">framework/base/interfaces.php#279</a> (<b><a href="#" class="show">show</a></b>)
+<div class="code"><code><span style="color: #000000">
+<span style="color: #0000BB"></span><span style="color: #007700">public&nbsp;function&nbsp;</span><span style="color: #0000BB">getId</span><span style="color: #007700">();</span>
+</span>
+</code></div>
+</div>
+<p>Returns a value that uniquely represents the identity.</p>
+
+
+<div class="detailHeader" id="getIsAuthenticated-detail">
+getIsAuthenticated()
+<span class="detailHeaderTag">
+method
+</span>
+</div>
+
+<table class="summaryTable">
+<tr><td colspan="3">
+<div class="signature2">
+abstract public boolean <b>getIsAuthenticated</b>()</div>
+</td></tr>
+<tr>
+  <td class="paramNameCol">{return}</td>
+  <td class="paramTypeCol">boolean</td>
+  <td class="paramDescCol">whether the identity is valid.</td>
+</tr>
+</table>
+
+<div class="sourceCode">
+<b>Source Code:</b> <a class="sourceLink" href="https://github.com/yiisoft/yii/blob/1.0.12/framework/base/interfaces.php#L274">framework/base/interfaces.php#274</a> (<b><a href="#" class="show">show</a></b>)
+<div class="code"><code><span style="color: #000000">
+<span style="color: #0000BB"></span><span style="color: #007700">public&nbsp;function&nbsp;</span><span style="color: #0000BB">getIsAuthenticated</span><span style="color: #007700">();</span>
+</span>
+</code></div>
+</div>
+<p>Returns a value indicating whether the identity is authenticated.</p>
+
+
+<div class="detailHeader" id="getName-detail">
+getName()
+<span class="detailHeaderTag">
+method
+</span>
+</div>
+
+<table class="summaryTable">
+<tr><td colspan="3">
+<div class="signature2">
+abstract public string <b>getName</b>()</div>
+</td></tr>
+<tr>
+  <td class="paramNameCol">{return}</td>
+  <td class="paramTypeCol">string</td>
+  <td class="paramDescCol">the display name for the identity.</td>
+</tr>
+</table>
+
+<div class="sourceCode">
+<b>Source Code:</b> <a class="sourceLink" href="https://github.com/yiisoft/yii/blob/1.0.12/framework/base/interfaces.php#L284">framework/base/interfaces.php#284</a> (<b><a href="#" class="show">show</a></b>)
+<div class="code"><code><span style="color: #000000">
+<span style="color: #0000BB"></span><span style="color: #007700">public&nbsp;function&nbsp;</span><span style="color: #0000BB">getName</span><span style="color: #007700">();</span>
+</span>
+</code></div>
+</div>
+<p>Returns the display name for the identity (e.g. username).</p>
+
+
+<div class="detailHeader" id="getPersistentStates-detail">
+getPersistentStates()
+<span class="detailHeaderTag">
+method
+</span>
+</div>
+
+<table class="summaryTable">
+<tr><td colspan="3">
+<div class="signature2">
+abstract public array <b>getPersistentStates</b>()</div>
+</td></tr>
+<tr>
+  <td class="paramNameCol">{return}</td>
+  <td class="paramTypeCol">array</td>
+  <td class="paramDescCol">additional identity information that needs to be persistent during the user session (excluding <a href="/doc/api/1.0/IUserIdentity#id">id</a>).</td>
+</tr>
+</table>
+
+<div class="sourceCode">
+<b>Source Code:</b> <a class="sourceLink" href="https://github.com/yiisoft/yii/blob/1.0.12/framework/base/interfaces.php#L289">framework/base/interfaces.php#289</a> (<b><a href="#" class="show">show</a></b>)
+<div class="code"><code><span style="color: #000000">
+<span style="color: #0000BB"></span><span style="color: #007700">public&nbsp;function&nbsp;</span><span style="color: #0000BB">getPersistentStates</span><span style="color: #007700">();</span>
+</span>
+</code></div>
+</div>
+<p>Returns the additional identity information that needs to be persistent during the user session.</p>
+
+

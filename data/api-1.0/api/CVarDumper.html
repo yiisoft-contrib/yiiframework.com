@@ -1,0 +1,164 @@
+<h1>CVarDumper</h1>
+<div id="nav">
+<a href="/doc/api/1.0/">All Packages</a>
+| <a href="#methods">Methods</a>
+</div>
+
+<table class="summaryTable docClass">
+<colgroup>
+	<col class="col-name" />
+	<col class="col-value" />
+</colgroup>
+<tr>
+  <th>Package</th>
+  <td><a href="/doc/api/1.0/#system.utils">system.utils</a></td>
+</tr>
+<tr>
+  <th>Inheritance</th>
+  <td>class CVarDumper</td>
+</tr>
+<tr>
+  <th>Since</th>
+  <td>1.0</td>
+</tr>
+<tr>
+  <th>Version</th>
+  <td>$Id$</td>
+</tr>
+<tr>
+  <th>Source Code</th>
+  <td><a class="sourceLink" href="https://github.com/yiisoft/yii/blob/1.0.12/framework/utils/CVarDumper.php">framework/utils/CVarDumper.php</a></td>
+</tr>
+</table>
+
+<div id="classDescription">
+CVarDumper is intended to replace the buggy PHP function var_dump and print_r.
+It can correctly identify the recursively referenced objects in a complex
+object structure. It also has a recursive depth control to avoid indefinite
+recursive display of some peculiar variables.
+<br/><br/>
+CVarDumper can be used as follows,
+<pre>
+CVarDumper::dump($var);
+</pre></div>
+<a name="properties"></a>
+
+<a name="methods"></a>
+
+<div class="summary docMethod">
+<h2>Public Methods</h2>
+
+<p><a href="#" class="toggle">Hide inherited methods</a></p>
+
+<table class="summaryTable">
+<colgroup>
+	<col class="col-method" />
+	<col class="col-description" />
+	<col class="col-defined" />
+</colgroup>
+<tr>
+  <th>Method</th><th>Description</th><th>Defined By</th>
+</tr>
+<tr id="dump">
+  <td><a href="/doc/api/1.0/CVarDumper#dump-detail">dump()</a></td>
+  <td>Displays a variable.</td>
+  <td>CVarDumper</td>
+</tr>
+<tr id="dumpAsString">
+  <td><a href="/doc/api/1.0/CVarDumper#dumpAsString-detail">dumpAsString()</a></td>
+  <td>Dumps a variable in terms of a string.</td>
+  <td>CVarDumper</td>
+</tr>
+</table>
+</div>
+<a name="events"></a>
+
+<h2>Method Details</h2>
+
+<div class="detailHeader" id="dump-detail">
+dump()
+<span class="detailHeaderTag">
+method
+</span>
+</div>
+
+<table class="summaryTable">
+<tr><td colspan="3">
+<div class="signature2">
+public static void <b>dump</b>(mixed $var, integer $depth=10, boolean $highlight=false)</div>
+</td></tr>
+<tr>
+  <td class="paramNameCol">$var</td>
+  <td class="paramTypeCol">mixed</td>
+  <td class="paramDescCol">variable to be dumped</td>
+</tr>
+<tr>
+  <td class="paramNameCol">$depth</td>
+  <td class="paramTypeCol">integer</td>
+  <td class="paramDescCol">maximum depth that the dumper should go into the variable. Defaults to 10.</td>
+</tr>
+<tr>
+  <td class="paramNameCol">$highlight</td>
+  <td class="paramTypeCol">boolean</td>
+  <td class="paramDescCol">whether the result should be syntax-highlighted</td>
+</tr>
+</table>
+
+<div class="sourceCode">
+<b>Source Code:</b> <a class="sourceLink" href="https://github.com/yiisoft/yii/blob/1.0.12/framework/utils/CVarDumper.php#L41">framework/utils/CVarDumper.php#41</a> (<b><a href="#" class="show">show</a></b>)
+<div class="code"><code><span style="color: #000000">
+<span style="color: #0000BB"></span><span style="color: #007700">public&nbsp;static&nbsp;function&nbsp;</span><span style="color: #0000BB">dump</span><span style="color: #007700">(</span><span style="color: #0000BB">$var</span><span style="color: #007700">,</span><span style="color: #0000BB">$depth</span><span style="color: #007700">=</span><span style="color: #0000BB">10</span><span style="color: #007700">,</span><span style="color: #0000BB">$highlight</span><span style="color: #007700">=</span><span style="color: #0000BB">false</span><span style="color: #007700">)<br />{<br />&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #0000BB">self</span><span style="color: #007700">::</span><span style="color: #0000BB">dumpAsString</span><span style="color: #007700">(</span><span style="color: #0000BB">$var</span><span style="color: #007700">,</span><span style="color: #0000BB">$depth</span><span style="color: #007700">,</span><span style="color: #0000BB">$highlight</span><span style="color: #007700">);<br />}</span>
+</span>
+</code></div>
+</div>
+<p>Displays a variable.
+This method achieves the similar functionality as var_dump and print_r
+but is more robust when handling complex objects such as Yii controllers.</p>
+
+
+<div class="detailHeader" id="dumpAsString-detail">
+dumpAsString()
+<span class="detailHeaderTag">
+method
+</span>
+</div>
+
+<table class="summaryTable">
+<tr><td colspan="3">
+<div class="signature2">
+public static string <b>dumpAsString</b>(mixed $var, integer $depth=10, boolean $highlight=false)</div>
+</td></tr>
+<tr>
+  <td class="paramNameCol">$var</td>
+  <td class="paramTypeCol">mixed</td>
+  <td class="paramDescCol">variable to be dumped</td>
+</tr>
+<tr>
+  <td class="paramNameCol">$depth</td>
+  <td class="paramTypeCol">integer</td>
+  <td class="paramDescCol">maximum depth that the dumper should go into the variable. Defaults to 10.</td>
+</tr>
+<tr>
+  <td class="paramNameCol">$highlight</td>
+  <td class="paramTypeCol">boolean</td>
+  <td class="paramDescCol">whether the result should be syntax-highlighted</td>
+</tr>
+<tr>
+  <td class="paramNameCol">{return}</td>
+  <td class="paramTypeCol">string</td>
+  <td class="paramDescCol">the string representation of the variable</td>
+</tr>
+</table>
+
+<div class="sourceCode">
+<b>Source Code:</b> <a class="sourceLink" href="https://github.com/yiisoft/yii/blob/1.0.12/framework/utils/CVarDumper.php#L55">framework/utils/CVarDumper.php#55</a> (<b><a href="#" class="show">show</a></b>)
+<div class="code"><code><span style="color: #000000">
+<span style="color: #0000BB"></span><span style="color: #007700">public&nbsp;static&nbsp;function&nbsp;</span><span style="color: #0000BB">dumpAsString</span><span style="color: #007700">(</span><span style="color: #0000BB">$var</span><span style="color: #007700">,</span><span style="color: #0000BB">$depth</span><span style="color: #007700">=</span><span style="color: #0000BB">10</span><span style="color: #007700">,</span><span style="color: #0000BB">$highlight</span><span style="color: #007700">=</span><span style="color: #0000BB">false</span><span style="color: #007700">)<br />{<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">self</span><span style="color: #007700">::</span><span style="color: #0000BB">$_output</span><span style="color: #007700">=</span><span style="color: #DD0000">''</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">self</span><span style="color: #007700">::</span><span style="color: #0000BB">$_objects</span><span style="color: #007700">=array();<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">self</span><span style="color: #007700">::</span><span style="color: #0000BB">$_depth</span><span style="color: #007700">=</span><span style="color: #0000BB">$depth</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">self</span><span style="color: #007700">::</span><span style="color: #0000BB">dumpInternal</span><span style="color: #007700">(</span><span style="color: #0000BB">$var</span><span style="color: #007700">,</span><span style="color: #0000BB">0</span><span style="color: #007700">);<br />&nbsp;&nbsp;&nbsp;&nbsp;if(</span><span style="color: #0000BB">$highlight</span><span style="color: #007700">)<br />&nbsp;&nbsp;&nbsp;&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$result</span><span style="color: #007700">=</span><span style="color: #0000BB">highlight_string</span><span style="color: #007700">(</span><span style="color: #DD0000">"&lt;?php\n"</span><span style="color: #007700">.</span><span style="color: #0000BB">self</span><span style="color: #007700">::</span><span style="color: #0000BB">$_output</span><span style="color: #007700">,</span><span style="color: #0000BB">true</span><span style="color: #007700">);<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">self</span><span style="color: #007700">::</span><span style="color: #0000BB">$_output</span><span style="color: #007700">=</span><span style="color: #0000BB">preg_replace</span><span style="color: #007700">(</span><span style="color: #DD0000">'/&amp;lt;\\?php&lt;br&nbsp;\\/&gt;/'</span><span style="color: #007700">,</span><span style="color: #DD0000">''</span><span style="color: #007700">,</span><span style="color: #0000BB">$result</span><span style="color: #007700">,</span><span style="color: #0000BB">1</span><span style="color: #007700">);<br />&nbsp;&nbsp;&nbsp;&nbsp;}<br />&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;</span><span style="color: #0000BB">self</span><span style="color: #007700">::</span><span style="color: #0000BB">$_output</span><span style="color: #007700">;<br />}</span>
+</span>
+</code></div>
+</div>
+<p>Dumps a variable in terms of a string.
+This method achieves the similar functionality as var_dump and print_r
+but is more robust when handling complex objects such as Yii controllers.</p>
+
+

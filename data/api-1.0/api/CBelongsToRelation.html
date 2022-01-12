@@ -1,0 +1,293 @@
+<h1>CBelongsToRelation</h1>
+<div id="nav">
+<a href="/doc/api/1.0/">All Packages</a>
+| <a href="#properties">Properties</a>
+| <a href="#methods">Methods</a>
+</div>
+
+<table class="summaryTable docClass">
+<colgroup>
+	<col class="col-name" />
+	<col class="col-value" />
+</colgroup>
+<tr>
+  <th>Package</th>
+  <td><a href="/doc/api/1.0/#system.db.ar">system.db.ar</a></td>
+</tr>
+<tr>
+  <th>Inheritance</th>
+  <td>class CBelongsToRelation &raquo;
+<a href="/doc/api/1.0/CActiveRelation">CActiveRelation</a> &raquo;
+<a href="/doc/api/1.0/CBaseActiveRelation">CBaseActiveRelation</a> &raquo;
+<a href="/doc/api/1.0/CComponent">CComponent</a></td>
+</tr>
+<tr>
+  <th>Since</th>
+  <td>1.0</td>
+</tr>
+<tr>
+  <th>Version</th>
+  <td>$Id$</td>
+</tr>
+<tr>
+  <th>Source Code</th>
+  <td><a class="sourceLink" href="https://github.com/yiisoft/yii/blob/1.0.12/framework/db/ar/CActiveRecord.php">framework/db/ar/CActiveRecord.php</a></td>
+</tr>
+</table>
+
+<div id="classDescription">
+CBelongsToRelation represents the parameters specifying a BELONGS_TO relation.</div>
+<a name="properties"></a>
+
+<div class="summary docProperty">
+<h2>Public Properties</h2>
+
+<p><a href="#" class="toggle">Hide inherited properties</a></p>
+
+<table class="summaryTable">
+<colgroup>
+	<col class="col-property" />
+	<col class="col-type" />
+	<col class="col-description" />
+	<col class="col-defined" />
+</colgroup>
+<tr>
+  <th>Property</th><th>Type</th><th>Description</th><th>Defined By</th>
+</tr>
+<tr class="inherited" id="alias">
+  <td><a href="/doc/api/1.0/CActiveRelation#alias-detail">alias</a></td>
+  <td>string</td>
+  <td>the alias for the table that this relation refers to.</td>
+  <td><a href="/doc/api/1.0/CActiveRelation">CActiveRelation</a></td>
+</tr>
+<tr class="inherited" id="aliasToken">
+  <td><a href="/doc/api/1.0/CActiveRelation#aliasToken-detail">aliasToken</a></td>
+  <td>string</td>
+  <td>the column prefix placeholder.</td>
+  <td><a href="/doc/api/1.0/CActiveRelation">CActiveRelation</a></td>
+</tr>
+<tr class="inherited" id="className">
+  <td><a href="/doc/api/1.0/CBaseActiveRelation#className-detail">className</a></td>
+  <td>string</td>
+  <td>name of the related active record class</td>
+  <td><a href="/doc/api/1.0/CBaseActiveRelation">CBaseActiveRelation</a></td>
+</tr>
+<tr class="inherited" id="condition">
+  <td><a href="/doc/api/1.0/CBaseActiveRelation#condition-detail">condition</a></td>
+  <td>string</td>
+  <td>WHERE clause.</td>
+  <td><a href="/doc/api/1.0/CBaseActiveRelation">CBaseActiveRelation</a></td>
+</tr>
+<tr class="inherited" id="foreignKey">
+  <td><a href="/doc/api/1.0/CBaseActiveRelation#foreignKey-detail">foreignKey</a></td>
+  <td>string</td>
+  <td>the foreign key in this relation</td>
+  <td><a href="/doc/api/1.0/CBaseActiveRelation">CBaseActiveRelation</a></td>
+</tr>
+<tr class="inherited" id="group">
+  <td><a href="/doc/api/1.0/CBaseActiveRelation#group-detail">group</a></td>
+  <td>string</td>
+  <td>GROUP BY clause.</td>
+  <td><a href="/doc/api/1.0/CBaseActiveRelation">CBaseActiveRelation</a></td>
+</tr>
+<tr class="inherited" id="having">
+  <td><a href="/doc/api/1.0/CBaseActiveRelation#having-detail">having</a></td>
+  <td>string</td>
+  <td>HAVING clause.</td>
+  <td><a href="/doc/api/1.0/CBaseActiveRelation">CBaseActiveRelation</a></td>
+</tr>
+<tr class="inherited" id="joinType">
+  <td><a href="/doc/api/1.0/CActiveRelation#joinType-detail">joinType</a></td>
+  <td>string</td>
+  <td>join type.</td>
+  <td><a href="/doc/api/1.0/CActiveRelation">CActiveRelation</a></td>
+</tr>
+<tr class="inherited" id="name">
+  <td><a href="/doc/api/1.0/CBaseActiveRelation#name-detail">name</a></td>
+  <td>string</td>
+  <td>name of the related object</td>
+  <td><a href="/doc/api/1.0/CBaseActiveRelation">CBaseActiveRelation</a></td>
+</tr>
+<tr class="inherited" id="on">
+  <td><a href="/doc/api/1.0/CActiveRelation#on-detail">on</a></td>
+  <td>string</td>
+  <td>ON clause.</td>
+  <td><a href="/doc/api/1.0/CActiveRelation">CActiveRelation</a></td>
+</tr>
+<tr class="inherited" id="order">
+  <td><a href="/doc/api/1.0/CBaseActiveRelation#order-detail">order</a></td>
+  <td>string</td>
+  <td>ORDER BY clause.</td>
+  <td><a href="/doc/api/1.0/CBaseActiveRelation">CBaseActiveRelation</a></td>
+</tr>
+<tr class="inherited" id="params">
+  <td><a href="/doc/api/1.0/CBaseActiveRelation#params-detail">params</a></td>
+  <td>array</td>
+  <td>the parameters that are to be bound to the condition.</td>
+  <td><a href="/doc/api/1.0/CBaseActiveRelation">CBaseActiveRelation</a></td>
+</tr>
+<tr class="inherited" id="select">
+  <td><a href="/doc/api/1.0/CBaseActiveRelation#select-detail">select</a></td>
+  <td>mixed</td>
+  <td>list of column names (an array, or a string of names separated by commas) to be selected.</td>
+  <td><a href="/doc/api/1.0/CBaseActiveRelation">CBaseActiveRelation</a></td>
+</tr>
+<tr class="inherited" id="together">
+  <td><a href="/doc/api/1.0/CActiveRelation#together-detail">together</a></td>
+  <td>boolean</td>
+  <td>whether this table should be joined with the primary table.</td>
+  <td><a href="/doc/api/1.0/CActiveRelation">CActiveRelation</a></td>
+</tr>
+<tr class="inherited" id="with">
+  <td><a href="/doc/api/1.0/CActiveRelation#with-detail">with</a></td>
+  <td>string|array</td>
+  <td>specifies which related objects should be eagerly loaded when this related object is lazily loaded.</td>
+  <td><a href="/doc/api/1.0/CActiveRelation">CActiveRelation</a></td>
+</tr>
+</table>
+</div>
+<a name="methods"></a>
+
+<div class="summary docMethod">
+<h2>Public Methods</h2>
+
+<p><a href="#" class="toggle">Hide inherited methods</a></p>
+
+<table class="summaryTable">
+<colgroup>
+	<col class="col-method" />
+	<col class="col-description" />
+	<col class="col-defined" />
+</colgroup>
+<tr>
+  <th>Method</th><th>Description</th><th>Defined By</th>
+</tr>
+<tr class="inherited" id="__call">
+  <td><a href="/doc/api/1.0/CComponent#__call-detail">__call()</a></td>
+  <td>Calls the named method which is not a class method.</td>
+  <td><a href="/doc/api/1.0/CComponent">CComponent</a></td>
+</tr>
+<tr class="inherited" id="__construct">
+  <td><a href="/doc/api/1.0/CBaseActiveRelation#__construct-detail">__construct()</a></td>
+  <td>Constructor.</td>
+  <td><a href="/doc/api/1.0/CBaseActiveRelation">CBaseActiveRelation</a></td>
+</tr>
+<tr class="inherited" id="__get">
+  <td><a href="/doc/api/1.0/CComponent#__get-detail">__get()</a></td>
+  <td>Returns a property value, an event handler list or a behavior based on its name.</td>
+  <td><a href="/doc/api/1.0/CComponent">CComponent</a></td>
+</tr>
+<tr class="inherited" id="__isset">
+  <td><a href="/doc/api/1.0/CComponent#__isset-detail">__isset()</a></td>
+  <td>Checks if a property value is null.</td>
+  <td><a href="/doc/api/1.0/CComponent">CComponent</a></td>
+</tr>
+<tr class="inherited" id="__set">
+  <td><a href="/doc/api/1.0/CComponent#__set-detail">__set()</a></td>
+  <td>Sets value of a component property.</td>
+  <td><a href="/doc/api/1.0/CComponent">CComponent</a></td>
+</tr>
+<tr class="inherited" id="__unset">
+  <td><a href="/doc/api/1.0/CComponent#__unset-detail">__unset()</a></td>
+  <td>Sets a component property to be null.</td>
+  <td><a href="/doc/api/1.0/CComponent">CComponent</a></td>
+</tr>
+<tr class="inherited" id="asa">
+  <td><a href="/doc/api/1.0/CComponent#asa-detail">asa()</a></td>
+  <td>Returns the named behavior object.</td>
+  <td><a href="/doc/api/1.0/CComponent">CComponent</a></td>
+</tr>
+<tr class="inherited" id="attachBehavior">
+  <td><a href="/doc/api/1.0/CComponent#attachBehavior-detail">attachBehavior()</a></td>
+  <td>Attaches a behavior to this component.</td>
+  <td><a href="/doc/api/1.0/CComponent">CComponent</a></td>
+</tr>
+<tr class="inherited" id="attachBehaviors">
+  <td><a href="/doc/api/1.0/CComponent#attachBehaviors-detail">attachBehaviors()</a></td>
+  <td>Attaches a list of behaviors to the component.</td>
+  <td><a href="/doc/api/1.0/CComponent">CComponent</a></td>
+</tr>
+<tr class="inherited" id="attachEventHandler">
+  <td><a href="/doc/api/1.0/CComponent#attachEventHandler-detail">attachEventHandler()</a></td>
+  <td>Attaches an event handler to an event.</td>
+  <td><a href="/doc/api/1.0/CComponent">CComponent</a></td>
+</tr>
+<tr class="inherited" id="canGetProperty">
+  <td><a href="/doc/api/1.0/CComponent#canGetProperty-detail">canGetProperty()</a></td>
+  <td>Determines whether a property can be read.</td>
+  <td><a href="/doc/api/1.0/CComponent">CComponent</a></td>
+</tr>
+<tr class="inherited" id="canSetProperty">
+  <td><a href="/doc/api/1.0/CComponent#canSetProperty-detail">canSetProperty()</a></td>
+  <td>Determines whether a property can be set.</td>
+  <td><a href="/doc/api/1.0/CComponent">CComponent</a></td>
+</tr>
+<tr class="inherited" id="detachBehavior">
+  <td><a href="/doc/api/1.0/CComponent#detachBehavior-detail">detachBehavior()</a></td>
+  <td>Detaches a behavior from the component.</td>
+  <td><a href="/doc/api/1.0/CComponent">CComponent</a></td>
+</tr>
+<tr class="inherited" id="detachBehaviors">
+  <td><a href="/doc/api/1.0/CComponent#detachBehaviors-detail">detachBehaviors()</a></td>
+  <td>Detaches all behaviors from the component.</td>
+  <td><a href="/doc/api/1.0/CComponent">CComponent</a></td>
+</tr>
+<tr class="inherited" id="detachEventHandler">
+  <td><a href="/doc/api/1.0/CComponent#detachEventHandler-detail">detachEventHandler()</a></td>
+  <td>Detaches an existing event handler.</td>
+  <td><a href="/doc/api/1.0/CComponent">CComponent</a></td>
+</tr>
+<tr class="inherited" id="disableBehavior">
+  <td><a href="/doc/api/1.0/CComponent#disableBehavior-detail">disableBehavior()</a></td>
+  <td>Disables an attached behavior.</td>
+  <td><a href="/doc/api/1.0/CComponent">CComponent</a></td>
+</tr>
+<tr class="inherited" id="disableBehaviors">
+  <td><a href="/doc/api/1.0/CComponent#disableBehaviors-detail">disableBehaviors()</a></td>
+  <td>Disables all behaviors attached to this component.</td>
+  <td><a href="/doc/api/1.0/CComponent">CComponent</a></td>
+</tr>
+<tr class="inherited" id="enableBehavior">
+  <td><a href="/doc/api/1.0/CComponent#enableBehavior-detail">enableBehavior()</a></td>
+  <td>Enables an attached behavior.</td>
+  <td><a href="/doc/api/1.0/CComponent">CComponent</a></td>
+</tr>
+<tr class="inherited" id="enableBehaviors">
+  <td><a href="/doc/api/1.0/CComponent#enableBehaviors-detail">enableBehaviors()</a></td>
+  <td>Enables all behaviors attached to this component.</td>
+  <td><a href="/doc/api/1.0/CComponent">CComponent</a></td>
+</tr>
+<tr class="inherited" id="getEventHandlers">
+  <td><a href="/doc/api/1.0/CComponent#getEventHandlers-detail">getEventHandlers()</a></td>
+  <td>Returns the list of attached event handlers for an event.</td>
+  <td><a href="/doc/api/1.0/CComponent">CComponent</a></td>
+</tr>
+<tr class="inherited" id="hasEvent">
+  <td><a href="/doc/api/1.0/CComponent#hasEvent-detail">hasEvent()</a></td>
+  <td>Determines whether an event is defined.</td>
+  <td><a href="/doc/api/1.0/CComponent">CComponent</a></td>
+</tr>
+<tr class="inherited" id="hasEventHandler">
+  <td><a href="/doc/api/1.0/CComponent#hasEventHandler-detail">hasEventHandler()</a></td>
+  <td>Checks whether the named event has attached handlers.</td>
+  <td><a href="/doc/api/1.0/CComponent">CComponent</a></td>
+</tr>
+<tr class="inherited" id="hasProperty">
+  <td><a href="/doc/api/1.0/CComponent#hasProperty-detail">hasProperty()</a></td>
+  <td>Determines whether a property is defined.</td>
+  <td><a href="/doc/api/1.0/CComponent">CComponent</a></td>
+</tr>
+<tr class="inherited" id="mergeWith">
+  <td><a href="/doc/api/1.0/CActiveRelation#mergeWith-detail">mergeWith()</a></td>
+  <td>Merges this relation with a criteria specified dynamically.</td>
+  <td><a href="/doc/api/1.0/CActiveRelation">CActiveRelation</a></td>
+</tr>
+<tr class="inherited" id="raiseEvent">
+  <td><a href="/doc/api/1.0/CComponent#raiseEvent-detail">raiseEvent()</a></td>
+  <td>Raises an event.</td>
+  <td><a href="/doc/api/1.0/CComponent">CComponent</a></td>
+</tr>
+</table>
+</div>
+<a name="events"></a>
+

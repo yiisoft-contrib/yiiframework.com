@@ -1,0 +1,537 @@
+<h1>CActiveRecordBehavior</h1>
+<div id="nav">
+<a href="/doc/api/1.0/">All Packages</a>
+| <a href="#properties">Properties</a>
+| <a href="#methods">Methods</a>
+</div>
+
+<table class="summaryTable docClass">
+<colgroup>
+	<col class="col-name" />
+	<col class="col-value" />
+</colgroup>
+<tr>
+  <th>Package</th>
+  <td><a href="/doc/api/1.0/#system.db.ar">system.db.ar</a></td>
+</tr>
+<tr>
+  <th>Inheritance</th>
+  <td>class CActiveRecordBehavior &raquo;
+<a href="/doc/api/1.0/CModelBehavior">CModelBehavior</a> &raquo;
+<a href="/doc/api/1.0/CBehavior">CBehavior</a> &raquo;
+<a href="/doc/api/1.0/CComponent">CComponent</a></td>
+</tr>
+<tr>
+  <th>Implements</th>
+  <td><a href="/doc/api/1.0/IBehavior">IBehavior</a></td>
+</tr>
+<tr>
+  <th>Since</th>
+  <td>1.0.2</td>
+</tr>
+<tr>
+  <th>Version</th>
+  <td>$Id$</td>
+</tr>
+<tr>
+  <th>Source Code</th>
+  <td><a class="sourceLink" href="https://github.com/yiisoft/yii/blob/1.0.12/framework/db/ar/CActiveRecordBehavior.php">framework/db/ar/CActiveRecordBehavior.php</a></td>
+</tr>
+</table>
+
+<div id="classDescription">
+CActiveRecordBehavior is the base class for behaviors that can be attached to <a href="/doc/api/1.0/CActiveRecord">CActiveRecord</a>.
+Compared with <a href="/doc/api/1.0/CModelBehavior">CModelBehavior</a>, CActiveRecordBehavior attaches to more events
+that are only defined by <a href="/doc/api/1.0/CActiveRecord">CActiveRecord</a>.</div>
+<a name="properties"></a>
+
+<div class="summary docProperty">
+<h2>Public Properties</h2>
+
+<p><a href="#" class="toggle">Hide inherited properties</a></p>
+
+<table class="summaryTable">
+<colgroup>
+	<col class="col-property" />
+	<col class="col-type" />
+	<col class="col-description" />
+	<col class="col-defined" />
+</colgroup>
+<tr>
+  <th>Property</th><th>Type</th><th>Description</th><th>Defined By</th>
+</tr>
+<tr class="inherited" id="enabled">
+  <td><a href="/doc/api/1.0/CBehavior#enabled-detail">enabled</a></td>
+  <td>boolean</td>
+  <td>whether this behavior is enabled</td>
+  <td><a href="/doc/api/1.0/CBehavior">CBehavior</a></td>
+</tr>
+<tr class="inherited" id="owner">
+  <td><a href="/doc/api/1.0/CBehavior#owner-detail">owner</a></td>
+  <td><a href="/doc/api/1.0/CComponent">CComponent</a></td>
+  <td>the owner component that this behavior is attached to.</td>
+  <td><a href="/doc/api/1.0/CBehavior">CBehavior</a></td>
+</tr>
+</table>
+</div>
+<a name="methods"></a>
+
+<div class="summary docMethod">
+<h2>Public Methods</h2>
+
+<p><a href="#" class="toggle">Hide inherited methods</a></p>
+
+<table class="summaryTable">
+<colgroup>
+	<col class="col-method" />
+	<col class="col-description" />
+	<col class="col-defined" />
+</colgroup>
+<tr>
+  <th>Method</th><th>Description</th><th>Defined By</th>
+</tr>
+<tr class="inherited" id="__call">
+  <td><a href="/doc/api/1.0/CComponent#__call-detail">__call()</a></td>
+  <td>Calls the named method which is not a class method.</td>
+  <td><a href="/doc/api/1.0/CComponent">CComponent</a></td>
+</tr>
+<tr class="inherited" id="__get">
+  <td><a href="/doc/api/1.0/CComponent#__get-detail">__get()</a></td>
+  <td>Returns a property value, an event handler list or a behavior based on its name.</td>
+  <td><a href="/doc/api/1.0/CComponent">CComponent</a></td>
+</tr>
+<tr class="inherited" id="__isset">
+  <td><a href="/doc/api/1.0/CComponent#__isset-detail">__isset()</a></td>
+  <td>Checks if a property value is null.</td>
+  <td><a href="/doc/api/1.0/CComponent">CComponent</a></td>
+</tr>
+<tr class="inherited" id="__set">
+  <td><a href="/doc/api/1.0/CComponent#__set-detail">__set()</a></td>
+  <td>Sets value of a component property.</td>
+  <td><a href="/doc/api/1.0/CComponent">CComponent</a></td>
+</tr>
+<tr class="inherited" id="__unset">
+  <td><a href="/doc/api/1.0/CComponent#__unset-detail">__unset()</a></td>
+  <td>Sets a component property to be null.</td>
+  <td><a href="/doc/api/1.0/CComponent">CComponent</a></td>
+</tr>
+<tr id="afterConstruct">
+  <td><a href="/doc/api/1.0/CActiveRecordBehavior#afterConstruct-detail">afterConstruct()</a></td>
+  <td>Responds to <a href="/doc/api/1.0/CActiveRecord#onAfterConstruct">CActiveRecord::onAfterConstruct</a> event.</td>
+  <td>CActiveRecordBehavior</td>
+</tr>
+<tr id="afterDelete">
+  <td><a href="/doc/api/1.0/CActiveRecordBehavior#afterDelete-detail">afterDelete()</a></td>
+  <td>Responds to <a href="/doc/api/1.0/CActiveRecord#onAfterDelete">CActiveRecord::onAfterDelete</a> event.</td>
+  <td>CActiveRecordBehavior</td>
+</tr>
+<tr id="afterFind">
+  <td><a href="/doc/api/1.0/CActiveRecordBehavior#afterFind-detail">afterFind()</a></td>
+  <td>Responds to <a href="/doc/api/1.0/CActiveRecord#onAfterFind">CActiveRecord::onAfterFind</a> event.</td>
+  <td>CActiveRecordBehavior</td>
+</tr>
+<tr id="afterSave">
+  <td><a href="/doc/api/1.0/CActiveRecordBehavior#afterSave-detail">afterSave()</a></td>
+  <td>Responds to <a href="/doc/api/1.0/CActiveRecord#onAfterSave">CActiveRecord::onAfterSave</a> event.</td>
+  <td>CActiveRecordBehavior</td>
+</tr>
+<tr class="inherited" id="afterValidate">
+  <td><a href="/doc/api/1.0/CModelBehavior#afterValidate-detail">afterValidate()</a></td>
+  <td>Responds to <a href="/doc/api/1.0/CModel#onAfterValidate">CModel::onAfterValidate</a> event.</td>
+  <td><a href="/doc/api/1.0/CModelBehavior">CModelBehavior</a></td>
+</tr>
+<tr class="inherited" id="asa">
+  <td><a href="/doc/api/1.0/CComponent#asa-detail">asa()</a></td>
+  <td>Returns the named behavior object.</td>
+  <td><a href="/doc/api/1.0/CComponent">CComponent</a></td>
+</tr>
+<tr class="inherited" id="attach">
+  <td><a href="/doc/api/1.0/CBehavior#attach-detail">attach()</a></td>
+  <td>Attaches the behavior object to the component.</td>
+  <td><a href="/doc/api/1.0/CBehavior">CBehavior</a></td>
+</tr>
+<tr class="inherited" id="attachBehavior">
+  <td><a href="/doc/api/1.0/CComponent#attachBehavior-detail">attachBehavior()</a></td>
+  <td>Attaches a behavior to this component.</td>
+  <td><a href="/doc/api/1.0/CComponent">CComponent</a></td>
+</tr>
+<tr class="inherited" id="attachBehaviors">
+  <td><a href="/doc/api/1.0/CComponent#attachBehaviors-detail">attachBehaviors()</a></td>
+  <td>Attaches a list of behaviors to the component.</td>
+  <td><a href="/doc/api/1.0/CComponent">CComponent</a></td>
+</tr>
+<tr class="inherited" id="attachEventHandler">
+  <td><a href="/doc/api/1.0/CComponent#attachEventHandler-detail">attachEventHandler()</a></td>
+  <td>Attaches an event handler to an event.</td>
+  <td><a href="/doc/api/1.0/CComponent">CComponent</a></td>
+</tr>
+<tr id="beforeDelete">
+  <td><a href="/doc/api/1.0/CActiveRecordBehavior#beforeDelete-detail">beforeDelete()</a></td>
+  <td>Responds to <a href="/doc/api/1.0/CActiveRecord#onBeforeDelete">CActiveRecord::onBeforeDelete</a> event.</td>
+  <td>CActiveRecordBehavior</td>
+</tr>
+<tr id="beforeFind">
+  <td><a href="/doc/api/1.0/CActiveRecordBehavior#beforeFind-detail">beforeFind()</a></td>
+  <td>Responds to <a href="/doc/api/1.0/CActiveRecord#onBeforeFind">CActiveRecord::onBeforeFind</a> event.</td>
+  <td>CActiveRecordBehavior</td>
+</tr>
+<tr id="beforeSave">
+  <td><a href="/doc/api/1.0/CActiveRecordBehavior#beforeSave-detail">beforeSave()</a></td>
+  <td>Responds to <a href="/doc/api/1.0/CActiveRecord#onBeforeSave">CActiveRecord::onBeforeSave</a> event.</td>
+  <td>CActiveRecordBehavior</td>
+</tr>
+<tr class="inherited" id="beforeValidate">
+  <td><a href="/doc/api/1.0/CModelBehavior#beforeValidate-detail">beforeValidate()</a></td>
+  <td>Responds to <a href="/doc/api/1.0/CModel#onBeforeValidate">CModel::onBeforeValidate</a> event.</td>
+  <td><a href="/doc/api/1.0/CModelBehavior">CModelBehavior</a></td>
+</tr>
+<tr class="inherited" id="canGetProperty">
+  <td><a href="/doc/api/1.0/CComponent#canGetProperty-detail">canGetProperty()</a></td>
+  <td>Determines whether a property can be read.</td>
+  <td><a href="/doc/api/1.0/CComponent">CComponent</a></td>
+</tr>
+<tr class="inherited" id="canSetProperty">
+  <td><a href="/doc/api/1.0/CComponent#canSetProperty-detail">canSetProperty()</a></td>
+  <td>Determines whether a property can be set.</td>
+  <td><a href="/doc/api/1.0/CComponent">CComponent</a></td>
+</tr>
+<tr class="inherited" id="detach">
+  <td><a href="/doc/api/1.0/CBehavior#detach-detail">detach()</a></td>
+  <td>Detaches the behavior object from the component.</td>
+  <td><a href="/doc/api/1.0/CBehavior">CBehavior</a></td>
+</tr>
+<tr class="inherited" id="detachBehavior">
+  <td><a href="/doc/api/1.0/CComponent#detachBehavior-detail">detachBehavior()</a></td>
+  <td>Detaches a behavior from the component.</td>
+  <td><a href="/doc/api/1.0/CComponent">CComponent</a></td>
+</tr>
+<tr class="inherited" id="detachBehaviors">
+  <td><a href="/doc/api/1.0/CComponent#detachBehaviors-detail">detachBehaviors()</a></td>
+  <td>Detaches all behaviors from the component.</td>
+  <td><a href="/doc/api/1.0/CComponent">CComponent</a></td>
+</tr>
+<tr class="inherited" id="detachEventHandler">
+  <td><a href="/doc/api/1.0/CComponent#detachEventHandler-detail">detachEventHandler()</a></td>
+  <td>Detaches an existing event handler.</td>
+  <td><a href="/doc/api/1.0/CComponent">CComponent</a></td>
+</tr>
+<tr class="inherited" id="disableBehavior">
+  <td><a href="/doc/api/1.0/CComponent#disableBehavior-detail">disableBehavior()</a></td>
+  <td>Disables an attached behavior.</td>
+  <td><a href="/doc/api/1.0/CComponent">CComponent</a></td>
+</tr>
+<tr class="inherited" id="disableBehaviors">
+  <td><a href="/doc/api/1.0/CComponent#disableBehaviors-detail">disableBehaviors()</a></td>
+  <td>Disables all behaviors attached to this component.</td>
+  <td><a href="/doc/api/1.0/CComponent">CComponent</a></td>
+</tr>
+<tr class="inherited" id="enableBehavior">
+  <td><a href="/doc/api/1.0/CComponent#enableBehavior-detail">enableBehavior()</a></td>
+  <td>Enables an attached behavior.</td>
+  <td><a href="/doc/api/1.0/CComponent">CComponent</a></td>
+</tr>
+<tr class="inherited" id="enableBehaviors">
+  <td><a href="/doc/api/1.0/CComponent#enableBehaviors-detail">enableBehaviors()</a></td>
+  <td>Enables all behaviors attached to this component.</td>
+  <td><a href="/doc/api/1.0/CComponent">CComponent</a></td>
+</tr>
+<tr id="events">
+  <td><a href="/doc/api/1.0/CActiveRecordBehavior#events-detail">events()</a></td>
+  <td>Declares events and the corresponding event handler methods.</td>
+  <td>CActiveRecordBehavior</td>
+</tr>
+<tr class="inherited" id="getEnabled">
+  <td><a href="/doc/api/1.0/CBehavior#getEnabled-detail">getEnabled()</a></td>
+  <td>Returns whether this behavior is enabled</td>
+  <td><a href="/doc/api/1.0/CBehavior">CBehavior</a></td>
+</tr>
+<tr class="inherited" id="getEventHandlers">
+  <td><a href="/doc/api/1.0/CComponent#getEventHandlers-detail">getEventHandlers()</a></td>
+  <td>Returns the list of attached event handlers for an event.</td>
+  <td><a href="/doc/api/1.0/CComponent">CComponent</a></td>
+</tr>
+<tr class="inherited" id="getOwner">
+  <td><a href="/doc/api/1.0/CBehavior#getOwner-detail">getOwner()</a></td>
+  <td>Returns the owner component that this behavior is attached to.</td>
+  <td><a href="/doc/api/1.0/CBehavior">CBehavior</a></td>
+</tr>
+<tr class="inherited" id="hasEvent">
+  <td><a href="/doc/api/1.0/CComponent#hasEvent-detail">hasEvent()</a></td>
+  <td>Determines whether an event is defined.</td>
+  <td><a href="/doc/api/1.0/CComponent">CComponent</a></td>
+</tr>
+<tr class="inherited" id="hasEventHandler">
+  <td><a href="/doc/api/1.0/CComponent#hasEventHandler-detail">hasEventHandler()</a></td>
+  <td>Checks whether the named event has attached handlers.</td>
+  <td><a href="/doc/api/1.0/CComponent">CComponent</a></td>
+</tr>
+<tr class="inherited" id="hasProperty">
+  <td><a href="/doc/api/1.0/CComponent#hasProperty-detail">hasProperty()</a></td>
+  <td>Determines whether a property is defined.</td>
+  <td><a href="/doc/api/1.0/CComponent">CComponent</a></td>
+</tr>
+<tr class="inherited" id="raiseEvent">
+  <td><a href="/doc/api/1.0/CComponent#raiseEvent-detail">raiseEvent()</a></td>
+  <td>Raises an event.</td>
+  <td><a href="/doc/api/1.0/CComponent">CComponent</a></td>
+</tr>
+<tr class="inherited" id="setEnabled">
+  <td><a href="/doc/api/1.0/CBehavior#setEnabled-detail">setEnabled()</a></td>
+  <td>Sets whether this behavior is enabled</td>
+  <td><a href="/doc/api/1.0/CBehavior">CBehavior</a></td>
+</tr>
+</table>
+</div>
+<a name="events"></a>
+
+<h2>Method Details</h2>
+
+<div class="detailHeader" id="afterConstruct-detail">
+afterConstruct()
+<span class="detailHeaderTag">
+method
+</span>
+</div>
+
+<table class="summaryTable">
+<tr><td colspan="3">
+<div class="signature2">
+public void <b>afterConstruct</b>(<a href="/doc/api/1.0/CEvent">CEvent</a> $event)</div>
+</td></tr>
+<tr>
+  <td class="paramNameCol">$event</td>
+  <td class="paramTypeCol"><a href="/doc/api/1.0/CEvent">CEvent</a></td>
+  <td class="paramDescCol">event parameter</td>
+</tr>
+</table>
+
+<div class="sourceCode">
+<b>Source Code:</b> <a class="sourceLink" href="https://github.com/yiisoft/yii/blob/1.0.12/framework/db/ar/CActiveRecordBehavior.php#L85">framework/db/ar/CActiveRecordBehavior.php#85</a> (<b><a href="#" class="show">show</a></b>)
+<div class="code"><code><span style="color: #000000">
+<span style="color: #0000BB"></span><span style="color: #007700">public&nbsp;function&nbsp;</span><span style="color: #0000BB">afterConstruct</span><span style="color: #007700">(</span><span style="color: #0000BB">$event</span><span style="color: #007700">)<br />{<br />}</span>
+</span>
+</code></div>
+</div>
+<p>Responds to <a href="/doc/api/1.0/CActiveRecord#onAfterConstruct">CActiveRecord::onAfterConstruct</a> event.
+Overrides this method if you want to handle the corresponding event of the <a href="/doc/api/1.0/CBehavior#owner">owner</a>.</p>
+
+
+<div class="detailHeader" id="afterDelete-detail">
+afterDelete()
+<span class="detailHeaderTag">
+method
+</span>
+</div>
+
+<table class="summaryTable">
+<tr><td colspan="3">
+<div class="signature2">
+public void <b>afterDelete</b>(<a href="/doc/api/1.0/CEvent">CEvent</a> $event)</div>
+</td></tr>
+<tr>
+  <td class="paramNameCol">$event</td>
+  <td class="paramTypeCol"><a href="/doc/api/1.0/CEvent">CEvent</a></td>
+  <td class="paramDescCol">event parameter</td>
+</tr>
+</table>
+
+<div class="sourceCode">
+<b>Source Code:</b> <a class="sourceLink" href="https://github.com/yiisoft/yii/blob/1.0.12/framework/db/ar/CActiveRecordBehavior.php#L76">framework/db/ar/CActiveRecordBehavior.php#76</a> (<b><a href="#" class="show">show</a></b>)
+<div class="code"><code><span style="color: #000000">
+<span style="color: #0000BB"></span><span style="color: #007700">public&nbsp;function&nbsp;</span><span style="color: #0000BB">afterDelete</span><span style="color: #007700">(</span><span style="color: #0000BB">$event</span><span style="color: #007700">)<br />{<br />}</span>
+</span>
+</code></div>
+</div>
+<p>Responds to <a href="/doc/api/1.0/CActiveRecord#onAfterDelete">CActiveRecord::onAfterDelete</a> event.
+Overrides this method if you want to handle the corresponding event of the <a href="/doc/api/1.0/CBehavior#owner">owner</a>.</p>
+
+
+<div class="detailHeader" id="afterFind-detail">
+afterFind()
+<span class="detailHeaderTag">
+method
+</span>
+</div>
+
+<table class="summaryTable">
+<tr><td colspan="3">
+<div class="signature2">
+public void <b>afterFind</b>(<a href="/doc/api/1.0/CEvent">CEvent</a> $event)</div>
+</td></tr>
+<tr>
+  <td class="paramNameCol">$event</td>
+  <td class="paramTypeCol"><a href="/doc/api/1.0/CEvent">CEvent</a></td>
+  <td class="paramDescCol">event parameter</td>
+</tr>
+</table>
+
+<div class="sourceCode">
+<b>Source Code:</b> <a class="sourceLink" href="https://github.com/yiisoft/yii/blob/1.0.12/framework/db/ar/CActiveRecordBehavior.php#L104">framework/db/ar/CActiveRecordBehavior.php#104</a> (<b><a href="#" class="show">show</a></b>)
+<div class="code"><code><span style="color: #000000">
+<span style="color: #0000BB"></span><span style="color: #007700">public&nbsp;function&nbsp;</span><span style="color: #0000BB">afterFind</span><span style="color: #007700">(</span><span style="color: #0000BB">$event</span><span style="color: #007700">)<br />{<br />}</span>
+</span>
+</code></div>
+</div>
+<p>Responds to <a href="/doc/api/1.0/CActiveRecord#onAfterFind">CActiveRecord::onAfterFind</a> event.
+Overrides this method if you want to handle the corresponding event of the <a href="/doc/api/1.0/CBehavior#owner">owner</a>.</p>
+
+
+<div class="detailHeader" id="afterSave-detail">
+afterSave()
+<span class="detailHeaderTag">
+method
+</span>
+</div>
+
+<table class="summaryTable">
+<tr><td colspan="3">
+<div class="signature2">
+public void <b>afterSave</b>(<a href="/doc/api/1.0/CModelEvent">CModelEvent</a> $event)</div>
+</td></tr>
+<tr>
+  <td class="paramNameCol">$event</td>
+  <td class="paramTypeCol"><a href="/doc/api/1.0/CModelEvent">CModelEvent</a></td>
+  <td class="paramDescCol">event parameter</td>
+</tr>
+</table>
+
+<div class="sourceCode">
+<b>Source Code:</b> <a class="sourceLink" href="https://github.com/yiisoft/yii/blob/1.0.12/framework/db/ar/CActiveRecordBehavior.php#L57">framework/db/ar/CActiveRecordBehavior.php#57</a> (<b><a href="#" class="show">show</a></b>)
+<div class="code"><code><span style="color: #000000">
+<span style="color: #0000BB"></span><span style="color: #007700">public&nbsp;function&nbsp;</span><span style="color: #0000BB">afterSave</span><span style="color: #007700">(</span><span style="color: #0000BB">$event</span><span style="color: #007700">)<br />{<br />}</span>
+</span>
+</code></div>
+</div>
+<p>Responds to <a href="/doc/api/1.0/CActiveRecord#onAfterSave">CActiveRecord::onAfterSave</a> event.
+Overrides this method if you want to handle the corresponding event of the <a href="/doc/api/1.0/CBehavior#owner">owner</a>.</p>
+
+
+<div class="detailHeader" id="beforeDelete-detail">
+beforeDelete()
+<span class="detailHeaderTag">
+method
+</span>
+</div>
+
+<table class="summaryTable">
+<tr><td colspan="3">
+<div class="signature2">
+public void <b>beforeDelete</b>(<a href="/doc/api/1.0/CEvent">CEvent</a> $event)</div>
+</td></tr>
+<tr>
+  <td class="paramNameCol">$event</td>
+  <td class="paramTypeCol"><a href="/doc/api/1.0/CEvent">CEvent</a></td>
+  <td class="paramDescCol">event parameter</td>
+</tr>
+</table>
+
+<div class="sourceCode">
+<b>Source Code:</b> <a class="sourceLink" href="https://github.com/yiisoft/yii/blob/1.0.12/framework/db/ar/CActiveRecordBehavior.php#L67">framework/db/ar/CActiveRecordBehavior.php#67</a> (<b><a href="#" class="show">show</a></b>)
+<div class="code"><code><span style="color: #000000">
+<span style="color: #0000BB"></span><span style="color: #007700">public&nbsp;function&nbsp;</span><span style="color: #0000BB">beforeDelete</span><span style="color: #007700">(</span><span style="color: #0000BB">$event</span><span style="color: #007700">)<br />{<br />}</span>
+</span>
+</code></div>
+</div>
+<p>Responds to <a href="/doc/api/1.0/CActiveRecord#onBeforeDelete">CActiveRecord::onBeforeDelete</a> event.
+Overrides this method if you want to handle the corresponding event of the <a href="/doc/api/1.0/CBehavior#owner">owner</a>.
+You may set <a href="/doc/api/1.0/CModelEvent#isValid">CModelEvent::isValid</a> to be false to quit the deletion process.</p>
+
+
+<div class="detailHeader" id="beforeFind-detail">
+beforeFind()
+<span class="detailHeaderTag">
+method
+(available since v1.0.9)
+</span>
+</div>
+
+<table class="summaryTable">
+<tr><td colspan="3">
+<div class="signature2">
+public void <b>beforeFind</b>(<a href="/doc/api/1.0/CEvent">CEvent</a> $event)</div>
+</td></tr>
+<tr>
+  <td class="paramNameCol">$event</td>
+  <td class="paramTypeCol"><a href="/doc/api/1.0/CEvent">CEvent</a></td>
+  <td class="paramDescCol">event parameter</td>
+</tr>
+</table>
+
+<div class="sourceCode">
+<b>Source Code:</b> <a class="sourceLink" href="https://github.com/yiisoft/yii/blob/1.0.12/framework/db/ar/CActiveRecordBehavior.php#L95">framework/db/ar/CActiveRecordBehavior.php#95</a> (<b><a href="#" class="show">show</a></b>)
+<div class="code"><code><span style="color: #000000">
+<span style="color: #0000BB"></span><span style="color: #007700">public&nbsp;function&nbsp;</span><span style="color: #0000BB">beforeFind</span><span style="color: #007700">(</span><span style="color: #0000BB">$event</span><span style="color: #007700">)<br />{<br />}</span>
+</span>
+</code></div>
+</div>
+<p>Responds to <a href="/doc/api/1.0/CActiveRecord#onBeforeFind">CActiveRecord::onBeforeFind</a> event.
+Overrides this method if you want to handle the corresponding event of the <a href="/doc/api/1.0/CBehavior#owner">owner</a>.</p>
+
+
+<div class="detailHeader" id="beforeSave-detail">
+beforeSave()
+<span class="detailHeaderTag">
+method
+</span>
+</div>
+
+<table class="summaryTable">
+<tr><td colspan="3">
+<div class="signature2">
+public void <b>beforeSave</b>(<a href="/doc/api/1.0/CModelEvent">CModelEvent</a> $event)</div>
+</td></tr>
+<tr>
+  <td class="paramNameCol">$event</td>
+  <td class="paramTypeCol"><a href="/doc/api/1.0/CModelEvent">CModelEvent</a></td>
+  <td class="paramDescCol">event parameter</td>
+</tr>
+</table>
+
+<div class="sourceCode">
+<b>Source Code:</b> <a class="sourceLink" href="https://github.com/yiisoft/yii/blob/1.0.12/framework/db/ar/CActiveRecordBehavior.php#L48">framework/db/ar/CActiveRecordBehavior.php#48</a> (<b><a href="#" class="show">show</a></b>)
+<div class="code"><code><span style="color: #000000">
+<span style="color: #0000BB"></span><span style="color: #007700">public&nbsp;function&nbsp;</span><span style="color: #0000BB">beforeSave</span><span style="color: #007700">(</span><span style="color: #0000BB">$event</span><span style="color: #007700">)<br />{<br />}</span>
+</span>
+</code></div>
+</div>
+<p>Responds to <a href="/doc/api/1.0/CActiveRecord#onBeforeSave">CActiveRecord::onBeforeSave</a> event.
+Overrides this method if you want to handle the corresponding event of the <a href="/doc/api/1.0/CBehavior#owner">owner</a>.
+You may set <a href="/doc/api/1.0/CModelEvent#isValid">CModelEvent::isValid</a> to be false to quit the saving process.</p>
+
+
+<div class="detailHeader" id="events-detail">
+events()
+<span class="detailHeaderTag">
+method
+</span>
+</div>
+
+<table class="summaryTable">
+<tr><td colspan="3">
+<div class="signature2">
+public array <b>events</b>()</div>
+</td></tr>
+<tr>
+  <td class="paramNameCol">{return}</td>
+  <td class="paramTypeCol">array</td>
+  <td class="paramDescCol">events (array keys) and the corresponding event handler methods (array values).</td>
+</tr>
+</table>
+
+<div class="sourceCode">
+<b>Source Code:</b> <a class="sourceLink" href="https://github.com/yiisoft/yii/blob/1.0.12/framework/db/ar/CActiveRecordBehavior.php#L29">framework/db/ar/CActiveRecordBehavior.php#29</a> (<b><a href="#" class="show">show</a></b>)
+<div class="code"><code><span style="color: #000000">
+<span style="color: #0000BB"></span><span style="color: #007700">public&nbsp;function&nbsp;</span><span style="color: #0000BB">events</span><span style="color: #007700">()<br />{<br />&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;</span><span style="color: #0000BB">array_merge</span><span style="color: #007700">(</span><span style="color: #0000BB">parent</span><span style="color: #007700">::</span><span style="color: #0000BB">events</span><span style="color: #007700">(),&nbsp;array(<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #DD0000">'onBeforeSave'</span><span style="color: #007700">=&gt;</span><span style="color: #DD0000">'beforeSave'</span><span style="color: #007700">,<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #DD0000">'onAfterSave'</span><span style="color: #007700">=&gt;</span><span style="color: #DD0000">'afterSave'</span><span style="color: #007700">,<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #DD0000">'onBeforeDelete'</span><span style="color: #007700">=&gt;</span><span style="color: #DD0000">'beforeDelete'</span><span style="color: #007700">,<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #DD0000">'onAfterDelete'</span><span style="color: #007700">=&gt;</span><span style="color: #DD0000">'afterDelete'</span><span style="color: #007700">,<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #DD0000">'onAfterConstruct'</span><span style="color: #007700">=&gt;</span><span style="color: #DD0000">'afterConstruct'</span><span style="color: #007700">,<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #DD0000">'onBeforeFind'</span><span style="color: #007700">=&gt;</span><span style="color: #DD0000">'beforeFind'</span><span style="color: #007700">,<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #DD0000">'onAfterFind'</span><span style="color: #007700">=&gt;</span><span style="color: #DD0000">'afterFind'</span><span style="color: #007700">,<br />&nbsp;&nbsp;&nbsp;&nbsp;));<br />}</span>
+</span>
+</code></div>
+</div>
+<p>Declares events and the corresponding event handler methods.
+If you override this method, make sure you merge the parent result to the return value.</p>
+
+<div class="SeeAlso">
+<h4>See Also</h4>
+<ul>
+	<li><a href="/doc/api/1.0/CBehavior#events">CBehavior::events</a></li>
+</ul>
+</div>
+

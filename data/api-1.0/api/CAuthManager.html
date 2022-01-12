@@ -1,0 +1,806 @@
+<h1>CAuthManager</h1>
+<div id="nav">
+<a href="/doc/api/1.0/">All Packages</a>
+| <a href="#properties">Properties</a>
+| <a href="#methods">Methods</a>
+</div>
+
+<table class="summaryTable docClass">
+<colgroup>
+	<col class="col-name" />
+	<col class="col-value" />
+</colgroup>
+<tr>
+  <th>Package</th>
+  <td><a href="/doc/api/1.0/#system.web.auth">system.web.auth</a></td>
+</tr>
+<tr>
+  <th>Inheritance</th>
+  <td>abstract class CAuthManager &raquo;
+<a href="/doc/api/1.0/CApplicationComponent">CApplicationComponent</a> &raquo;
+<a href="/doc/api/1.0/CComponent">CComponent</a></td>
+</tr>
+<tr>
+  <th>Implements</th>
+  <td><a href="/doc/api/1.0/IApplicationComponent">IApplicationComponent</a>, <a href="/doc/api/1.0/IAuthManager">IAuthManager</a></td>
+</tr>
+<tr>
+  <th>Subclasses</th>
+  <td><a href="/doc/api/1.0/CDbAuthManager">CDbAuthManager</a>, <a href="/doc/api/1.0/CPhpAuthManager">CPhpAuthManager</a></td>
+</tr>
+<tr>
+  <th>Since</th>
+  <td>1.0</td>
+</tr>
+<tr>
+  <th>Version</th>
+  <td>$Id$</td>
+</tr>
+<tr>
+  <th>Source Code</th>
+  <td><a class="sourceLink" href="https://github.com/yiisoft/yii/blob/1.0.12/framework/web/auth/CAuthManager.php">framework/web/auth/CAuthManager.php</a></td>
+</tr>
+</table>
+
+<div id="classDescription">
+CAuthManager is the base class for authorization manager classes.
+<br/><br/>
+CAuthManager extends <a href="/doc/api/1.0/CApplicationComponent">CApplicationComponent</a> and implements some methods
+that are common among authorization manager classes.
+<br/><br/>
+CAuthManager together with its concrete child classes implement the Role-Based
+Access Control (RBAC).
+<br/><br/>
+The main idea is that permissions are organized as a hierarchy of
+<a href="/doc/api/1.0/CAuthItem">authorization items</a>. Items on higer level inherit the permissions
+represented by items on lower level. And roles are simply top-level authorization items
+that may be assigned to individual users. A user is said to have a permission
+to do something if the corresponding authorization item is inherited by one of his roles.
+<br/><br/>
+Using authorization manager consists of two aspects. First, the authorization hierarchy
+and assignments have to be established. CAuthManager and its child classes
+provides APIs to accomplish this task. Developers may need to develop some GUI
+so that it is more intuitive to end-users. Second, developers call <a href="/doc/api/1.0/IAuthManager#checkAccess">IAuthManager::checkAccess</a>
+at appropriate places in the application code to check if the current user
+has the needed permission for an operation.</div>
+<a name="properties"></a>
+
+<div class="summary docProperty">
+<h2>Public Properties</h2>
+
+<p><a href="#" class="toggle">Hide inherited properties</a></p>
+
+<table class="summaryTable">
+<colgroup>
+	<col class="col-property" />
+	<col class="col-type" />
+	<col class="col-description" />
+	<col class="col-defined" />
+</colgroup>
+<tr>
+  <th>Property</th><th>Type</th><th>Description</th><th>Defined By</th>
+</tr>
+<tr class="inherited" id="authItems">
+  <td><a href="/doc/api/1.0/IAuthManager#authItems-detail">authItems</a></td>
+  <td>array</td>
+  <td>Returns the authorization items of the specific type and user.</td>
+  <td><a href="/doc/api/1.0/IAuthManager">IAuthManager</a></td>
+</tr>
+<tr class="inherited" id="behaviors">
+  <td><a href="/doc/api/1.0/CApplicationComponent#behaviors-detail">behaviors</a></td>
+  <td>array</td>
+  <td>the behaviors that should be attached to this component.</td>
+  <td><a href="/doc/api/1.0/CApplicationComponent">CApplicationComponent</a></td>
+</tr>
+<tr id="defaultRoles">
+  <td><a href="/doc/api/1.0/CAuthManager#defaultRoles-detail">defaultRoles</a></td>
+  <td>array</td>
+  <td>list of role names that are assigned to all users implicitly.</td>
+  <td>CAuthManager</td>
+</tr>
+<tr class="inherited" id="isInitialized">
+  <td><a href="/doc/api/1.0/CApplicationComponent#isInitialized-detail">isInitialized</a></td>
+  <td>boolean</td>
+  <td>whether this application component has been initialized (i.e., <a href="/doc/api/1.0/CAuthManager#init">init()</a> is invoked.</td>
+  <td><a href="/doc/api/1.0/CApplicationComponent">CApplicationComponent</a></td>
+</tr>
+<tr id="operations">
+  <td><a href="/doc/api/1.0/CAuthManager#operations-detail">operations</a></td>
+  <td>array</td>
+  <td>Returns operations.</td>
+  <td>CAuthManager</td>
+</tr>
+<tr id="roles">
+  <td><a href="/doc/api/1.0/CAuthManager#roles-detail">roles</a></td>
+  <td>array</td>
+  <td>Returns roles.</td>
+  <td>CAuthManager</td>
+</tr>
+<tr id="tasks">
+  <td><a href="/doc/api/1.0/CAuthManager#tasks-detail">tasks</a></td>
+  <td>array</td>
+  <td>Returns tasks.</td>
+  <td>CAuthManager</td>
+</tr>
+</table>
+</div>
+<a name="methods"></a>
+
+<div class="summary docMethod">
+<h2>Public Methods</h2>
+
+<p><a href="#" class="toggle">Hide inherited methods</a></p>
+
+<table class="summaryTable">
+<colgroup>
+	<col class="col-method" />
+	<col class="col-description" />
+	<col class="col-defined" />
+</colgroup>
+<tr>
+  <th>Method</th><th>Description</th><th>Defined By</th>
+</tr>
+<tr class="inherited" id="__call">
+  <td><a href="/doc/api/1.0/CComponent#__call-detail">__call()</a></td>
+  <td>Calls the named method which is not a class method.</td>
+  <td><a href="/doc/api/1.0/CComponent">CComponent</a></td>
+</tr>
+<tr class="inherited" id="__get">
+  <td><a href="/doc/api/1.0/CComponent#__get-detail">__get()</a></td>
+  <td>Returns a property value, an event handler list or a behavior based on its name.</td>
+  <td><a href="/doc/api/1.0/CComponent">CComponent</a></td>
+</tr>
+<tr class="inherited" id="__isset">
+  <td><a href="/doc/api/1.0/CComponent#__isset-detail">__isset()</a></td>
+  <td>Checks if a property value is null.</td>
+  <td><a href="/doc/api/1.0/CComponent">CComponent</a></td>
+</tr>
+<tr class="inherited" id="__set">
+  <td><a href="/doc/api/1.0/CComponent#__set-detail">__set()</a></td>
+  <td>Sets value of a component property.</td>
+  <td><a href="/doc/api/1.0/CComponent">CComponent</a></td>
+</tr>
+<tr class="inherited" id="__unset">
+  <td><a href="/doc/api/1.0/CComponent#__unset-detail">__unset()</a></td>
+  <td>Sets a component property to be null.</td>
+  <td><a href="/doc/api/1.0/CComponent">CComponent</a></td>
+</tr>
+<tr class="inherited" id="addItemChild">
+  <td><a href="/doc/api/1.0/IAuthManager#addItemChild-detail">addItemChild()</a></td>
+  <td>Adds an item as a child of another item.</td>
+  <td><a href="/doc/api/1.0/IAuthManager">IAuthManager</a></td>
+</tr>
+<tr class="inherited" id="asa">
+  <td><a href="/doc/api/1.0/CComponent#asa-detail">asa()</a></td>
+  <td>Returns the named behavior object.</td>
+  <td><a href="/doc/api/1.0/CComponent">CComponent</a></td>
+</tr>
+<tr class="inherited" id="assign">
+  <td><a href="/doc/api/1.0/IAuthManager#assign-detail">assign()</a></td>
+  <td>Assigns an authorization item to a user.</td>
+  <td><a href="/doc/api/1.0/IAuthManager">IAuthManager</a></td>
+</tr>
+<tr class="inherited" id="attachBehavior">
+  <td><a href="/doc/api/1.0/CComponent#attachBehavior-detail">attachBehavior()</a></td>
+  <td>Attaches a behavior to this component.</td>
+  <td><a href="/doc/api/1.0/CComponent">CComponent</a></td>
+</tr>
+<tr class="inherited" id="attachBehaviors">
+  <td><a href="/doc/api/1.0/CComponent#attachBehaviors-detail">attachBehaviors()</a></td>
+  <td>Attaches a list of behaviors to the component.</td>
+  <td><a href="/doc/api/1.0/CComponent">CComponent</a></td>
+</tr>
+<tr class="inherited" id="attachEventHandler">
+  <td><a href="/doc/api/1.0/CComponent#attachEventHandler-detail">attachEventHandler()</a></td>
+  <td>Attaches an event handler to an event.</td>
+  <td><a href="/doc/api/1.0/CComponent">CComponent</a></td>
+</tr>
+<tr class="inherited" id="canGetProperty">
+  <td><a href="/doc/api/1.0/CComponent#canGetProperty-detail">canGetProperty()</a></td>
+  <td>Determines whether a property can be read.</td>
+  <td><a href="/doc/api/1.0/CComponent">CComponent</a></td>
+</tr>
+<tr class="inherited" id="canSetProperty">
+  <td><a href="/doc/api/1.0/CComponent#canSetProperty-detail">canSetProperty()</a></td>
+  <td>Determines whether a property can be set.</td>
+  <td><a href="/doc/api/1.0/CComponent">CComponent</a></td>
+</tr>
+<tr class="inherited" id="checkAccess">
+  <td><a href="/doc/api/1.0/IAuthManager#checkAccess-detail">checkAccess()</a></td>
+  <td>Performs access check for the specified user.</td>
+  <td><a href="/doc/api/1.0/IAuthManager">IAuthManager</a></td>
+</tr>
+<tr class="inherited" id="clearAll">
+  <td><a href="/doc/api/1.0/IAuthManager#clearAll-detail">clearAll()</a></td>
+  <td>Removes all authorization data.</td>
+  <td><a href="/doc/api/1.0/IAuthManager">IAuthManager</a></td>
+</tr>
+<tr class="inherited" id="clearAuthAssignments">
+  <td><a href="/doc/api/1.0/IAuthManager#clearAuthAssignments-detail">clearAuthAssignments()</a></td>
+  <td>Removes all authorization assignments.</td>
+  <td><a href="/doc/api/1.0/IAuthManager">IAuthManager</a></td>
+</tr>
+<tr class="inherited" id="createAuthItem">
+  <td><a href="/doc/api/1.0/IAuthManager#createAuthItem-detail">createAuthItem()</a></td>
+  <td>Creates an authorization item.</td>
+  <td><a href="/doc/api/1.0/IAuthManager">IAuthManager</a></td>
+</tr>
+<tr id="createOperation">
+  <td><a href="/doc/api/1.0/CAuthManager#createOperation-detail">createOperation()</a></td>
+  <td>Creates an operation.</td>
+  <td>CAuthManager</td>
+</tr>
+<tr id="createRole">
+  <td><a href="/doc/api/1.0/CAuthManager#createRole-detail">createRole()</a></td>
+  <td>Creates a role.</td>
+  <td>CAuthManager</td>
+</tr>
+<tr id="createTask">
+  <td><a href="/doc/api/1.0/CAuthManager#createTask-detail">createTask()</a></td>
+  <td>Creates a task.</td>
+  <td>CAuthManager</td>
+</tr>
+<tr class="inherited" id="detachBehavior">
+  <td><a href="/doc/api/1.0/CComponent#detachBehavior-detail">detachBehavior()</a></td>
+  <td>Detaches a behavior from the component.</td>
+  <td><a href="/doc/api/1.0/CComponent">CComponent</a></td>
+</tr>
+<tr class="inherited" id="detachBehaviors">
+  <td><a href="/doc/api/1.0/CComponent#detachBehaviors-detail">detachBehaviors()</a></td>
+  <td>Detaches all behaviors from the component.</td>
+  <td><a href="/doc/api/1.0/CComponent">CComponent</a></td>
+</tr>
+<tr class="inherited" id="detachEventHandler">
+  <td><a href="/doc/api/1.0/CComponent#detachEventHandler-detail">detachEventHandler()</a></td>
+  <td>Detaches an existing event handler.</td>
+  <td><a href="/doc/api/1.0/CComponent">CComponent</a></td>
+</tr>
+<tr class="inherited" id="disableBehavior">
+  <td><a href="/doc/api/1.0/CComponent#disableBehavior-detail">disableBehavior()</a></td>
+  <td>Disables an attached behavior.</td>
+  <td><a href="/doc/api/1.0/CComponent">CComponent</a></td>
+</tr>
+<tr class="inherited" id="disableBehaviors">
+  <td><a href="/doc/api/1.0/CComponent#disableBehaviors-detail">disableBehaviors()</a></td>
+  <td>Disables all behaviors attached to this component.</td>
+  <td><a href="/doc/api/1.0/CComponent">CComponent</a></td>
+</tr>
+<tr class="inherited" id="enableBehavior">
+  <td><a href="/doc/api/1.0/CComponent#enableBehavior-detail">enableBehavior()</a></td>
+  <td>Enables an attached behavior.</td>
+  <td><a href="/doc/api/1.0/CComponent">CComponent</a></td>
+</tr>
+<tr class="inherited" id="enableBehaviors">
+  <td><a href="/doc/api/1.0/CComponent#enableBehaviors-detail">enableBehaviors()</a></td>
+  <td>Enables all behaviors attached to this component.</td>
+  <td><a href="/doc/api/1.0/CComponent">CComponent</a></td>
+</tr>
+<tr id="executeBizRule">
+  <td><a href="/doc/api/1.0/CAuthManager#executeBizRule-detail">executeBizRule()</a></td>
+  <td>Executes the specified business rule.</td>
+  <td>CAuthManager</td>
+</tr>
+<tr class="inherited" id="getAuthAssignment">
+  <td><a href="/doc/api/1.0/IAuthManager#getAuthAssignment-detail">getAuthAssignment()</a></td>
+  <td>Returns the item assignment information.</td>
+  <td><a href="/doc/api/1.0/IAuthManager">IAuthManager</a></td>
+</tr>
+<tr class="inherited" id="getAuthAssignments">
+  <td><a href="/doc/api/1.0/IAuthManager#getAuthAssignments-detail">getAuthAssignments()</a></td>
+  <td>Returns the item assignments for the specified user.</td>
+  <td><a href="/doc/api/1.0/IAuthManager">IAuthManager</a></td>
+</tr>
+<tr class="inherited" id="getAuthItem">
+  <td><a href="/doc/api/1.0/IAuthManager#getAuthItem-detail">getAuthItem()</a></td>
+  <td>Returns the authorization item with the specified name.</td>
+  <td><a href="/doc/api/1.0/IAuthManager">IAuthManager</a></td>
+</tr>
+<tr class="inherited" id="getAuthItems">
+  <td><a href="/doc/api/1.0/IAuthManager#getAuthItems-detail">getAuthItems()</a></td>
+  <td>Returns the authorization items of the specific type and user.</td>
+  <td><a href="/doc/api/1.0/IAuthManager">IAuthManager</a></td>
+</tr>
+<tr class="inherited" id="getEventHandlers">
+  <td><a href="/doc/api/1.0/CComponent#getEventHandlers-detail">getEventHandlers()</a></td>
+  <td>Returns the list of attached event handlers for an event.</td>
+  <td><a href="/doc/api/1.0/CComponent">CComponent</a></td>
+</tr>
+<tr class="inherited" id="getIsInitialized">
+  <td><a href="/doc/api/1.0/CApplicationComponent#getIsInitialized-detail">getIsInitialized()</a></td>
+  <td>Checks whether this application component has been initialized (i.e., <a href="/doc/api/1.0/CAuthManager#init">init()</a> is invoked.)</td>
+  <td><a href="/doc/api/1.0/CApplicationComponent">CApplicationComponent</a></td>
+</tr>
+<tr class="inherited" id="getItemChildren">
+  <td><a href="/doc/api/1.0/IAuthManager#getItemChildren-detail">getItemChildren()</a></td>
+  <td>Returns the children of the specified item.</td>
+  <td><a href="/doc/api/1.0/IAuthManager">IAuthManager</a></td>
+</tr>
+<tr id="getOperations">
+  <td><a href="/doc/api/1.0/CAuthManager#getOperations-detail">getOperations()</a></td>
+  <td>Returns operations.</td>
+  <td>CAuthManager</td>
+</tr>
+<tr id="getRoles">
+  <td><a href="/doc/api/1.0/CAuthManager#getRoles-detail">getRoles()</a></td>
+  <td>Returns roles.</td>
+  <td>CAuthManager</td>
+</tr>
+<tr id="getTasks">
+  <td><a href="/doc/api/1.0/CAuthManager#getTasks-detail">getTasks()</a></td>
+  <td>Returns tasks.</td>
+  <td>CAuthManager</td>
+</tr>
+<tr class="inherited" id="hasEvent">
+  <td><a href="/doc/api/1.0/CComponent#hasEvent-detail">hasEvent()</a></td>
+  <td>Determines whether an event is defined.</td>
+  <td><a href="/doc/api/1.0/CComponent">CComponent</a></td>
+</tr>
+<tr class="inherited" id="hasEventHandler">
+  <td><a href="/doc/api/1.0/CComponent#hasEventHandler-detail">hasEventHandler()</a></td>
+  <td>Checks whether the named event has attached handlers.</td>
+  <td><a href="/doc/api/1.0/CComponent">CComponent</a></td>
+</tr>
+<tr class="inherited" id="hasItemChild">
+  <td><a href="/doc/api/1.0/IAuthManager#hasItemChild-detail">hasItemChild()</a></td>
+  <td>Returns a value indicating whether a child exists within a parent.</td>
+  <td><a href="/doc/api/1.0/IAuthManager">IAuthManager</a></td>
+</tr>
+<tr class="inherited" id="hasProperty">
+  <td><a href="/doc/api/1.0/CComponent#hasProperty-detail">hasProperty()</a></td>
+  <td>Determines whether a property is defined.</td>
+  <td><a href="/doc/api/1.0/CComponent">CComponent</a></td>
+</tr>
+<tr class="inherited" id="init">
+  <td><a href="/doc/api/1.0/CApplicationComponent#init-detail">init()</a></td>
+  <td>Initializes the application component.</td>
+  <td><a href="/doc/api/1.0/CApplicationComponent">CApplicationComponent</a></td>
+</tr>
+<tr class="inherited" id="isAssigned">
+  <td><a href="/doc/api/1.0/IAuthManager#isAssigned-detail">isAssigned()</a></td>
+  <td>Returns a value indicating whether the item has been assigned to the user.</td>
+  <td><a href="/doc/api/1.0/IAuthManager">IAuthManager</a></td>
+</tr>
+<tr class="inherited" id="raiseEvent">
+  <td><a href="/doc/api/1.0/CComponent#raiseEvent-detail">raiseEvent()</a></td>
+  <td>Raises an event.</td>
+  <td><a href="/doc/api/1.0/CComponent">CComponent</a></td>
+</tr>
+<tr class="inherited" id="removeAuthItem">
+  <td><a href="/doc/api/1.0/IAuthManager#removeAuthItem-detail">removeAuthItem()</a></td>
+  <td>Removes the specified authorization item.</td>
+  <td><a href="/doc/api/1.0/IAuthManager">IAuthManager</a></td>
+</tr>
+<tr class="inherited" id="removeItemChild">
+  <td><a href="/doc/api/1.0/IAuthManager#removeItemChild-detail">removeItemChild()</a></td>
+  <td>Removes a child from its parent.</td>
+  <td><a href="/doc/api/1.0/IAuthManager">IAuthManager</a></td>
+</tr>
+<tr class="inherited" id="revoke">
+  <td><a href="/doc/api/1.0/IAuthManager#revoke-detail">revoke()</a></td>
+  <td>Revokes an authorization assignment from a user.</td>
+  <td><a href="/doc/api/1.0/IAuthManager">IAuthManager</a></td>
+</tr>
+<tr class="inherited" id="save">
+  <td><a href="/doc/api/1.0/IAuthManager#save-detail">save()</a></td>
+  <td>Saves authorization data into persistent storage.</td>
+  <td><a href="/doc/api/1.0/IAuthManager">IAuthManager</a></td>
+</tr>
+<tr class="inherited" id="saveAuthAssignment">
+  <td><a href="/doc/api/1.0/IAuthManager#saveAuthAssignment-detail">saveAuthAssignment()</a></td>
+  <td>Saves the changes to an authorization assignment.</td>
+  <td><a href="/doc/api/1.0/IAuthManager">IAuthManager</a></td>
+</tr>
+<tr class="inherited" id="saveAuthItem">
+  <td><a href="/doc/api/1.0/IAuthManager#saveAuthItem-detail">saveAuthItem()</a></td>
+  <td>Saves an authorization item to persistent storage.</td>
+  <td><a href="/doc/api/1.0/IAuthManager">IAuthManager</a></td>
+</tr>
+</table>
+</div>
+<div class="summary docMethod">
+<h2>Protected Methods</h2>
+
+<p><a href="#" class="toggle">Hide inherited methods</a></p>
+
+<table class="summaryTable">
+<colgroup>
+	<col class="col-method" />
+	<col class="col-description" />
+	<col class="col-defined" />
+</colgroup>
+<tr>
+  <th>Method</th><th>Description</th><th>Defined By</th>
+</tr>
+<tr id="checkItemChildType">
+  <td><a href="/doc/api/1.0/CAuthManager#checkItemChildType-detail">checkItemChildType()</a></td>
+  <td>Checks the item types to make sure a child can be added to a parent.</td>
+  <td>CAuthManager</td>
+</tr>
+</table>
+</div>
+<a name="events"></a>
+
+<h2>Property Details</h2>
+<div class="detailHeader" id="defaultRoles-detail">
+defaultRoles<span class="detailHeaderTag">
+property
+ (available since v1.0.3)
+</span>
+</div>
+
+<div class="signature">
+public array <b>$defaultRoles</b>;</div>
+
+<p>list of role names that are assigned to all users implicitly.
+These roles do not need to be explicitly assigned to any user.
+When calling <a href="/doc/api/1.0/CAuthManager#checkAccess">checkAccess</a>, these roles will be checked first.
+For performance reason, you should minimize the number of such roles.
+A typical usage of such roles is to define an 'authenticated' role and associate
+it with a biz rule which checks if the current user is authenticated.
+And then declare 'authenticated' in this property so that it can be applied to
+every authenticated user.</p>
+
+
+<div class="detailHeader" id="operations-detail">
+operations<span class="detailHeaderTag">
+property
+ <em>read-only</em> </span>
+</div>
+
+<div class="signature">
+public array <a href="/doc/api/1.0/CAuthManager#getOperations"><b>getOperations</b></a>(mixed $userId=NULL)</div>
+
+<p>Returns operations.
+This is a shortcut method to <a href="/doc/api/1.0/IAuthManager#getAuthItems">IAuthManager::getAuthItems</a>.</p>
+
+
+<div class="detailHeader" id="roles-detail">
+roles<span class="detailHeaderTag">
+property
+ <em>read-only</em> </span>
+</div>
+
+<div class="signature">
+public array <a href="/doc/api/1.0/CAuthManager#getRoles"><b>getRoles</b></a>(mixed $userId=NULL)</div>
+
+<p>Returns roles.
+This is a shortcut method to <a href="/doc/api/1.0/IAuthManager#getAuthItems">IAuthManager::getAuthItems</a>.</p>
+
+
+<div class="detailHeader" id="tasks-detail">
+tasks<span class="detailHeaderTag">
+property
+ <em>read-only</em> </span>
+</div>
+
+<div class="signature">
+public array <a href="/doc/api/1.0/CAuthManager#getTasks"><b>getTasks</b></a>(mixed $userId=NULL)</div>
+
+<p>Returns tasks.
+This is a shortcut method to <a href="/doc/api/1.0/IAuthManager#getAuthItems">IAuthManager::getAuthItems</a>.</p>
+
+
+<h2>Method Details</h2>
+
+<div class="detailHeader" id="checkItemChildType-detail">
+checkItemChildType()
+<span class="detailHeaderTag">
+method
+</span>
+</div>
+
+<table class="summaryTable">
+<tr><td colspan="3">
+<div class="signature2">
+protected void <b>checkItemChildType</b>(integer $parentType, integer $childType)</div>
+</td></tr>
+<tr>
+  <td class="paramNameCol">$parentType</td>
+  <td class="paramTypeCol">integer</td>
+  <td class="paramDescCol">parent item type</td>
+</tr>
+<tr>
+  <td class="paramNameCol">$childType</td>
+  <td class="paramTypeCol">integer</td>
+  <td class="paramDescCol">child item type</td>
+</tr>
+</table>
+
+<div class="sourceCode">
+<b>Source Code:</b> <a class="sourceLink" href="https://github.com/yiisoft/yii/blob/1.0.12/framework/web/auth/CAuthManager.php#L150">framework/web/auth/CAuthManager.php#150</a> (<b><a href="#" class="show">show</a></b>)
+<div class="code"><code><span style="color: #000000">
+<span style="color: #0000BB"></span><span style="color: #007700">protected&nbsp;function&nbsp;</span><span style="color: #0000BB">checkItemChildType</span><span style="color: #007700">(</span><span style="color: #0000BB">$parentType</span><span style="color: #007700">,</span><span style="color: #0000BB">$childType</span><span style="color: #007700">)<br />{<br />&nbsp;&nbsp;&nbsp;&nbsp;static&nbsp;</span><span style="color: #0000BB">$types</span><span style="color: #007700">=array(</span><span style="color: #DD0000">'operation'</span><span style="color: #007700">,</span><span style="color: #DD0000">'task'</span><span style="color: #007700">,</span><span style="color: #DD0000">'role'</span><span style="color: #007700">);<br />&nbsp;&nbsp;&nbsp;&nbsp;if(</span><span style="color: #0000BB">$parentType&nbsp;</span><span style="color: #007700">&lt;&nbsp;</span><span style="color: #0000BB">$childType</span><span style="color: #007700">)<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;throw&nbsp;new&nbsp;</span><span style="color: #0000BB">CException</span><span style="color: #007700">(</span><span style="color: #0000BB">Yii</span><span style="color: #007700">::</span><span style="color: #0000BB">t</span><span style="color: #007700">(</span><span style="color: #DD0000">'yii'</span><span style="color: #007700">,</span><span style="color: #DD0000">'Cannot&nbsp;add&nbsp;an&nbsp;item&nbsp;of&nbsp;type&nbsp;"{child}"&nbsp;to&nbsp;an&nbsp;item&nbsp;of&nbsp;type&nbsp;"{parent}".'</span><span style="color: #007700">,<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;array(</span><span style="color: #DD0000">'{child}'</span><span style="color: #007700">=&gt;</span><span style="color: #0000BB">$types</span><span style="color: #007700">[</span><span style="color: #0000BB">$childType</span><span style="color: #007700">],&nbsp;</span><span style="color: #DD0000">'{parent}'</span><span style="color: #007700">=&gt;</span><span style="color: #0000BB">$types</span><span style="color: #007700">[</span><span style="color: #0000BB">$parentType</span><span style="color: #007700">])));<br />}</span>
+</span>
+</code></div>
+</div>
+<p>Checks the item types to make sure a child can be added to a parent.</p>
+
+
+<div class="detailHeader" id="createOperation-detail">
+createOperation()
+<span class="detailHeaderTag">
+method
+</span>
+</div>
+
+<table class="summaryTable">
+<tr><td colspan="3">
+<div class="signature2">
+public void <b>createOperation</b>(string $name, string $description='', string $bizRule=NULL, mixed $data=NULL)</div>
+</td></tr>
+<tr>
+  <td class="paramNameCol">$name</td>
+  <td class="paramTypeCol">string</td>
+  <td class="paramDescCol">the item name</td>
+</tr>
+<tr>
+  <td class="paramNameCol">$description</td>
+  <td class="paramTypeCol">string</td>
+  <td class="paramDescCol">the item description.</td>
+</tr>
+<tr>
+  <td class="paramNameCol">$bizRule</td>
+  <td class="paramTypeCol">string</td>
+  <td class="paramDescCol">the business rule associated with this item</td>
+</tr>
+<tr>
+  <td class="paramNameCol">$data</td>
+  <td class="paramTypeCol">mixed</td>
+  <td class="paramDescCol">additional data to be passed when evaluating the business rule</td>
+</tr>
+</table>
+
+<div class="sourceCode">
+<b>Source Code:</b> <a class="sourceLink" href="https://github.com/yiisoft/yii/blob/1.0.12/framework/web/auth/CAuthManager.php#L90">framework/web/auth/CAuthManager.php#90</a> (<b><a href="#" class="show">show</a></b>)
+<div class="code"><code><span style="color: #000000">
+<span style="color: #0000BB"></span><span style="color: #007700">public&nbsp;function&nbsp;</span><span style="color: #0000BB">createOperation</span><span style="color: #007700">(</span><span style="color: #0000BB">$name</span><span style="color: #007700">,</span><span style="color: #0000BB">$description</span><span style="color: #007700">=</span><span style="color: #DD0000">''</span><span style="color: #007700">,</span><span style="color: #0000BB">$bizRule</span><span style="color: #007700">=</span><span style="color: #0000BB">null</span><span style="color: #007700">,</span><span style="color: #0000BB">$data</span><span style="color: #007700">=</span><span style="color: #0000BB">null</span><span style="color: #007700">)<br />{<br />&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">createAuthItem</span><span style="color: #007700">(</span><span style="color: #0000BB">$name</span><span style="color: #007700">,</span><span style="color: #0000BB">CAuthItem</span><span style="color: #007700">::</span><span style="color: #0000BB">TYPE_OPERATION</span><span style="color: #007700">,</span><span style="color: #0000BB">$description</span><span style="color: #007700">,</span><span style="color: #0000BB">$bizRule</span><span style="color: #007700">,</span><span style="color: #0000BB">$data</span><span style="color: #007700">);<br />}</span>
+</span>
+</code></div>
+</div>
+<p>Creates an operation.
+This is a shortcut method to <a href="/doc/api/1.0/IAuthManager#createAuthItem">IAuthManager::createAuthItem</a>.</p>
+
+
+<div class="detailHeader" id="createRole-detail">
+createRole()
+<span class="detailHeaderTag">
+method
+</span>
+</div>
+
+<table class="summaryTable">
+<tr><td colspan="3">
+<div class="signature2">
+public void <b>createRole</b>(string $name, string $description='', string $bizRule=NULL, mixed $data=NULL)</div>
+</td></tr>
+<tr>
+  <td class="paramNameCol">$name</td>
+  <td class="paramTypeCol">string</td>
+  <td class="paramDescCol">the item name</td>
+</tr>
+<tr>
+  <td class="paramNameCol">$description</td>
+  <td class="paramTypeCol">string</td>
+  <td class="paramDescCol">the item description.</td>
+</tr>
+<tr>
+  <td class="paramNameCol">$bizRule</td>
+  <td class="paramTypeCol">string</td>
+  <td class="paramDescCol">the business rule associated with this item</td>
+</tr>
+<tr>
+  <td class="paramNameCol">$data</td>
+  <td class="paramTypeCol">mixed</td>
+  <td class="paramDescCol">additional data to be passed when evaluating the business rule</td>
+</tr>
+</table>
+
+<div class="sourceCode">
+<b>Source Code:</b> <a class="sourceLink" href="https://github.com/yiisoft/yii/blob/1.0.12/framework/web/auth/CAuthManager.php#L62">framework/web/auth/CAuthManager.php#62</a> (<b><a href="#" class="show">show</a></b>)
+<div class="code"><code><span style="color: #000000">
+<span style="color: #0000BB"></span><span style="color: #007700">public&nbsp;function&nbsp;</span><span style="color: #0000BB">createRole</span><span style="color: #007700">(</span><span style="color: #0000BB">$name</span><span style="color: #007700">,</span><span style="color: #0000BB">$description</span><span style="color: #007700">=</span><span style="color: #DD0000">''</span><span style="color: #007700">,</span><span style="color: #0000BB">$bizRule</span><span style="color: #007700">=</span><span style="color: #0000BB">null</span><span style="color: #007700">,</span><span style="color: #0000BB">$data</span><span style="color: #007700">=</span><span style="color: #0000BB">null</span><span style="color: #007700">)<br />{<br />&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">createAuthItem</span><span style="color: #007700">(</span><span style="color: #0000BB">$name</span><span style="color: #007700">,</span><span style="color: #0000BB">CAuthItem</span><span style="color: #007700">::</span><span style="color: #0000BB">TYPE_ROLE</span><span style="color: #007700">,</span><span style="color: #0000BB">$description</span><span style="color: #007700">,</span><span style="color: #0000BB">$bizRule</span><span style="color: #007700">,</span><span style="color: #0000BB">$data</span><span style="color: #007700">);<br />}</span>
+</span>
+</code></div>
+</div>
+<p>Creates a role.
+This is a shortcut method to <a href="/doc/api/1.0/IAuthManager#createAuthItem">IAuthManager::createAuthItem</a>.</p>
+
+
+<div class="detailHeader" id="createTask-detail">
+createTask()
+<span class="detailHeaderTag">
+method
+</span>
+</div>
+
+<table class="summaryTable">
+<tr><td colspan="3">
+<div class="signature2">
+public void <b>createTask</b>(string $name, string $description='', string $bizRule=NULL, mixed $data=NULL)</div>
+</td></tr>
+<tr>
+  <td class="paramNameCol">$name</td>
+  <td class="paramTypeCol">string</td>
+  <td class="paramDescCol">the item name</td>
+</tr>
+<tr>
+  <td class="paramNameCol">$description</td>
+  <td class="paramTypeCol">string</td>
+  <td class="paramDescCol">the item description.</td>
+</tr>
+<tr>
+  <td class="paramNameCol">$bizRule</td>
+  <td class="paramTypeCol">string</td>
+  <td class="paramDescCol">the business rule associated with this item</td>
+</tr>
+<tr>
+  <td class="paramNameCol">$data</td>
+  <td class="paramTypeCol">mixed</td>
+  <td class="paramDescCol">additional data to be passed when evaluating the business rule</td>
+</tr>
+</table>
+
+<div class="sourceCode">
+<b>Source Code:</b> <a class="sourceLink" href="https://github.com/yiisoft/yii/blob/1.0.12/framework/web/auth/CAuthManager.php#L76">framework/web/auth/CAuthManager.php#76</a> (<b><a href="#" class="show">show</a></b>)
+<div class="code"><code><span style="color: #000000">
+<span style="color: #0000BB"></span><span style="color: #007700">public&nbsp;function&nbsp;</span><span style="color: #0000BB">createTask</span><span style="color: #007700">(</span><span style="color: #0000BB">$name</span><span style="color: #007700">,</span><span style="color: #0000BB">$description</span><span style="color: #007700">=</span><span style="color: #DD0000">''</span><span style="color: #007700">,</span><span style="color: #0000BB">$bizRule</span><span style="color: #007700">=</span><span style="color: #0000BB">null</span><span style="color: #007700">,</span><span style="color: #0000BB">$data</span><span style="color: #007700">=</span><span style="color: #0000BB">null</span><span style="color: #007700">)<br />{<br />&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">createAuthItem</span><span style="color: #007700">(</span><span style="color: #0000BB">$name</span><span style="color: #007700">,</span><span style="color: #0000BB">CAuthItem</span><span style="color: #007700">::</span><span style="color: #0000BB">TYPE_TASK</span><span style="color: #007700">,</span><span style="color: #0000BB">$description</span><span style="color: #007700">,</span><span style="color: #0000BB">$bizRule</span><span style="color: #007700">,</span><span style="color: #0000BB">$data</span><span style="color: #007700">);<br />}</span>
+</span>
+</code></div>
+</div>
+<p>Creates a task.
+This is a shortcut method to <a href="/doc/api/1.0/IAuthManager#createAuthItem">IAuthManager::createAuthItem</a>.</p>
+
+
+<div class="detailHeader" id="executeBizRule-detail">
+executeBizRule()
+<span class="detailHeaderTag">
+method
+</span>
+</div>
+
+<table class="summaryTable">
+<tr><td colspan="3">
+<div class="signature2">
+public boolean <b>executeBizRule</b>(string $bizRule, array $params, mixed $data)</div>
+</td></tr>
+<tr>
+  <td class="paramNameCol">$bizRule</td>
+  <td class="paramTypeCol">string</td>
+  <td class="paramDescCol">the business rule to be executed.</td>
+</tr>
+<tr>
+  <td class="paramNameCol">$params</td>
+  <td class="paramTypeCol">array</td>
+  <td class="paramDescCol">parameters passed to <a href="/doc/api/1.0/IAuthManager#checkAccess">IAuthManager::checkAccess</a>.</td>
+</tr>
+<tr>
+  <td class="paramNameCol">$data</td>
+  <td class="paramTypeCol">mixed</td>
+  <td class="paramDescCol">additional data associated with the authorization item or assignment.</td>
+</tr>
+<tr>
+  <td class="paramNameCol">{return}</td>
+  <td class="paramTypeCol">boolean</td>
+  <td class="paramDescCol">whether the business rule returns true.
+If the business rule is empty, it will still return true.</td>
+</tr>
+</table>
+
+<div class="sourceCode">
+<b>Source Code:</b> <a class="sourceLink" href="https://github.com/yiisoft/yii/blob/1.0.12/framework/web/auth/CAuthManager.php#L139">framework/web/auth/CAuthManager.php#139</a> (<b><a href="#" class="show">show</a></b>)
+<div class="code"><code><span style="color: #000000">
+<span style="color: #0000BB"></span><span style="color: #007700">public&nbsp;function&nbsp;</span><span style="color: #0000BB">executeBizRule</span><span style="color: #007700">(</span><span style="color: #0000BB">$bizRule</span><span style="color: #007700">,</span><span style="color: #0000BB">$params</span><span style="color: #007700">,</span><span style="color: #0000BB">$data</span><span style="color: #007700">)<br />{<br />&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;empty(</span><span style="color: #0000BB">$bizRule</span><span style="color: #007700">)&nbsp;||&nbsp;@eval(</span><span style="color: #0000BB">$bizRule</span><span style="color: #007700">)!=</span><span style="color: #0000BB">0</span><span style="color: #007700">;<br />}</span>
+</span>
+</code></div>
+</div>
+<p>Executes the specified business rule.</p>
+
+
+<div class="detailHeader" id="getOperations-detail">
+getOperations()
+<span class="detailHeaderTag">
+method
+</span>
+</div>
+
+<table class="summaryTable">
+<tr><td colspan="3">
+<div class="signature2">
+public array <b>getOperations</b>(mixed $userId=NULL)</div>
+</td></tr>
+<tr>
+  <td class="paramNameCol">$userId</td>
+  <td class="paramTypeCol">mixed</td>
+  <td class="paramDescCol">the user ID. If not null, only the operations directly assigned to the user
+will be returned. Otherwise, all operations will be returned.</td>
+</tr>
+<tr>
+  <td class="paramNameCol">{return}</td>
+  <td class="paramTypeCol">array</td>
+  <td class="paramDescCol">operations (name=>CAuthItem)</td>
+</tr>
+</table>
+
+<div class="sourceCode">
+<b>Source Code:</b> <a class="sourceLink" href="https://github.com/yiisoft/yii/blob/1.0.12/framework/web/auth/CAuthManager.php#L126">framework/web/auth/CAuthManager.php#126</a> (<b><a href="#" class="show">show</a></b>)
+<div class="code"><code><span style="color: #000000">
+<span style="color: #0000BB"></span><span style="color: #007700">public&nbsp;function&nbsp;</span><span style="color: #0000BB">getOperations</span><span style="color: #007700">(</span><span style="color: #0000BB">$userId</span><span style="color: #007700">=</span><span style="color: #0000BB">null</span><span style="color: #007700">)<br />{<br />&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">getAuthItems</span><span style="color: #007700">(</span><span style="color: #0000BB">CAuthItem</span><span style="color: #007700">::</span><span style="color: #0000BB">TYPE_OPERATION</span><span style="color: #007700">,</span><span style="color: #0000BB">$userId</span><span style="color: #007700">);<br />}</span>
+</span>
+</code></div>
+</div>
+<p>Returns operations.
+This is a shortcut method to <a href="/doc/api/1.0/IAuthManager#getAuthItems">IAuthManager::getAuthItems</a>.</p>
+
+
+<div class="detailHeader" id="getRoles-detail">
+getRoles()
+<span class="detailHeaderTag">
+method
+</span>
+</div>
+
+<table class="summaryTable">
+<tr><td colspan="3">
+<div class="signature2">
+public array <b>getRoles</b>(mixed $userId=NULL)</div>
+</td></tr>
+<tr>
+  <td class="paramNameCol">$userId</td>
+  <td class="paramTypeCol">mixed</td>
+  <td class="paramDescCol">the user ID. If not null, only the roles directly assigned to the user
+will be returned. Otherwise, all roles will be returned.</td>
+</tr>
+<tr>
+  <td class="paramNameCol">{return}</td>
+  <td class="paramTypeCol">array</td>
+  <td class="paramDescCol">roles (name=>CAuthItem)</td>
+</tr>
+</table>
+
+<div class="sourceCode">
+<b>Source Code:</b> <a class="sourceLink" href="https://github.com/yiisoft/yii/blob/1.0.12/framework/web/auth/CAuthManager.php#L102">framework/web/auth/CAuthManager.php#102</a> (<b><a href="#" class="show">show</a></b>)
+<div class="code"><code><span style="color: #000000">
+<span style="color: #0000BB"></span><span style="color: #007700">public&nbsp;function&nbsp;</span><span style="color: #0000BB">getRoles</span><span style="color: #007700">(</span><span style="color: #0000BB">$userId</span><span style="color: #007700">=</span><span style="color: #0000BB">null</span><span style="color: #007700">)<br />{<br />&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">getAuthItems</span><span style="color: #007700">(</span><span style="color: #0000BB">CAuthItem</span><span style="color: #007700">::</span><span style="color: #0000BB">TYPE_ROLE</span><span style="color: #007700">,</span><span style="color: #0000BB">$userId</span><span style="color: #007700">);<br />}</span>
+</span>
+</code></div>
+</div>
+<p>Returns roles.
+This is a shortcut method to <a href="/doc/api/1.0/IAuthManager#getAuthItems">IAuthManager::getAuthItems</a>.</p>
+
+
+<div class="detailHeader" id="getTasks-detail">
+getTasks()
+<span class="detailHeaderTag">
+method
+</span>
+</div>
+
+<table class="summaryTable">
+<tr><td colspan="3">
+<div class="signature2">
+public array <b>getTasks</b>(mixed $userId=NULL)</div>
+</td></tr>
+<tr>
+  <td class="paramNameCol">$userId</td>
+  <td class="paramTypeCol">mixed</td>
+  <td class="paramDescCol">the user ID. If not null, only the tasks directly assigned to the user
+will be returned. Otherwise, all tasks will be returned.</td>
+</tr>
+<tr>
+  <td class="paramNameCol">{return}</td>
+  <td class="paramTypeCol">array</td>
+  <td class="paramDescCol">tasks (name=>CAuthItem)</td>
+</tr>
+</table>
+
+<div class="sourceCode">
+<b>Source Code:</b> <a class="sourceLink" href="https://github.com/yiisoft/yii/blob/1.0.12/framework/web/auth/CAuthManager.php#L114">framework/web/auth/CAuthManager.php#114</a> (<b><a href="#" class="show">show</a></b>)
+<div class="code"><code><span style="color: #000000">
+<span style="color: #0000BB"></span><span style="color: #007700">public&nbsp;function&nbsp;</span><span style="color: #0000BB">getTasks</span><span style="color: #007700">(</span><span style="color: #0000BB">$userId</span><span style="color: #007700">=</span><span style="color: #0000BB">null</span><span style="color: #007700">)<br />{<br />&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">getAuthItems</span><span style="color: #007700">(</span><span style="color: #0000BB">CAuthItem</span><span style="color: #007700">::</span><span style="color: #0000BB">TYPE_TASK</span><span style="color: #007700">,</span><span style="color: #0000BB">$userId</span><span style="color: #007700">);<br />}</span>
+</span>
+</code></div>
+</div>
+<p>Returns tasks.
+This is a shortcut method to <a href="/doc/api/1.0/IAuthManager#getAuthItems">IAuthManager::getAuthItems</a>.</p>
+
+

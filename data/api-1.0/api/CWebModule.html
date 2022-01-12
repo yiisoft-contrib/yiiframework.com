@@ -1,0 +1,973 @@
+<h1>CWebModule</h1>
+<div id="nav">
+<a href="/doc/api/1.0/">All Packages</a>
+| <a href="#properties">Properties</a>
+| <a href="#methods">Methods</a>
+</div>
+
+<table class="summaryTable docClass">
+<colgroup>
+	<col class="col-name" />
+	<col class="col-value" />
+</colgroup>
+<tr>
+  <th>Package</th>
+  <td><a href="/doc/api/1.0/#system.web">system.web</a></td>
+</tr>
+<tr>
+  <th>Inheritance</th>
+  <td>class CWebModule &raquo;
+<a href="/doc/api/1.0/CModule">CModule</a> &raquo;
+<a href="/doc/api/1.0/CComponent">CComponent</a></td>
+</tr>
+<tr>
+  <th>Since</th>
+  <td>1.0.3</td>
+</tr>
+<tr>
+  <th>Version</th>
+  <td>$Id$</td>
+</tr>
+<tr>
+  <th>Source Code</th>
+  <td><a class="sourceLink" href="https://github.com/yiisoft/yii/blob/1.0.12/framework/web/CWebModule.php">framework/web/CWebModule.php</a></td>
+</tr>
+</table>
+
+<div id="classDescription">
+CWebModule represents an application module.
+<br/><br/>
+An application module may be considered as a self-contained sub-application
+that has its own controllers, models and views and can be reused in a different
+project as a whole. Controllers inside a module must be accessed with routes
+that are prefixed with the module ID.</div>
+<a name="properties"></a>
+
+<div class="summary docProperty">
+<h2>Public Properties</h2>
+
+<p><a href="#" class="toggle">Hide inherited properties</a></p>
+
+<table class="summaryTable">
+<colgroup>
+	<col class="col-property" />
+	<col class="col-type" />
+	<col class="col-description" />
+	<col class="col-defined" />
+</colgroup>
+<tr>
+  <th>Property</th><th>Type</th><th>Description</th><th>Defined By</th>
+</tr>
+<tr class="inherited" id="basePath">
+  <td><a href="/doc/api/1.0/CModule#basePath-detail">basePath</a></td>
+  <td>string</td>
+  <td>the root directory of the module.</td>
+  <td><a href="/doc/api/1.0/CModule">CModule</a></td>
+</tr>
+<tr class="inherited" id="behaviors">
+  <td><a href="/doc/api/1.0/CModule#behaviors-detail">behaviors</a></td>
+  <td>array</td>
+  <td>the behaviors that should be attached to the module.</td>
+  <td><a href="/doc/api/1.0/CModule">CModule</a></td>
+</tr>
+<tr class="inherited" id="components">
+  <td><a href="/doc/api/1.0/CModule#components-detail">components</a></td>
+  <td>array</td>
+  <td>the currently loaded components (indexed by their IDs)</td>
+  <td><a href="/doc/api/1.0/CModule">CModule</a></td>
+</tr>
+<tr id="controllerMap">
+  <td><a href="/doc/api/1.0/CWebModule#controllerMap-detail">controllerMap</a></td>
+  <td>array</td>
+  <td>mapping from controller ID to controller configurations.</td>
+  <td>CWebModule</td>
+</tr>
+<tr id="controllerPath">
+  <td><a href="/doc/api/1.0/CWebModule#controllerPath-detail">controllerPath</a></td>
+  <td>string</td>
+  <td>the directory that contains the controller classes.</td>
+  <td>CWebModule</td>
+</tr>
+<tr id="defaultController">
+  <td><a href="/doc/api/1.0/CWebModule#defaultController-detail">defaultController</a></td>
+  <td>string</td>
+  <td>the ID of the default controller for this module.</td>
+  <td>CWebModule</td>
+</tr>
+<tr id="description">
+  <td><a href="/doc/api/1.0/CWebModule#description-detail">description</a></td>
+  <td>string</td>
+  <td>Returns the description of this module.</td>
+  <td>CWebModule</td>
+</tr>
+<tr class="inherited" id="id">
+  <td><a href="/doc/api/1.0/CModule#id-detail">id</a></td>
+  <td>string</td>
+  <td>the module ID.</td>
+  <td><a href="/doc/api/1.0/CModule">CModule</a></td>
+</tr>
+<tr id="layout">
+  <td><a href="/doc/api/1.0/CWebModule#layout-detail">layout</a></td>
+  <td>mixed</td>
+  <td>the layout that is shared by the controllers inside this module.</td>
+  <td>CWebModule</td>
+</tr>
+<tr id="layoutPath">
+  <td><a href="/doc/api/1.0/CWebModule#layoutPath-detail">layoutPath</a></td>
+  <td>string</td>
+  <td>the root directory of layout files.</td>
+  <td>CWebModule</td>
+</tr>
+<tr class="inherited" id="modulePath">
+  <td><a href="/doc/api/1.0/CModule#modulePath-detail">modulePath</a></td>
+  <td>string</td>
+  <td>the directory that contains the application modules.</td>
+  <td><a href="/doc/api/1.0/CModule">CModule</a></td>
+</tr>
+<tr class="inherited" id="modules">
+  <td><a href="/doc/api/1.0/CModule#modules-detail">modules</a></td>
+  <td>array</td>
+  <td>the configuration of the currently installed modules (module ID => configuration)</td>
+  <td><a href="/doc/api/1.0/CModule">CModule</a></td>
+</tr>
+<tr id="name">
+  <td><a href="/doc/api/1.0/CWebModule#name-detail">name</a></td>
+  <td>string</td>
+  <td>Returns the name of this module.</td>
+  <td>CWebModule</td>
+</tr>
+<tr class="inherited" id="params">
+  <td><a href="/doc/api/1.0/CModule#params-detail">params</a></td>
+  <td><a href="/doc/api/1.0/CAttributeCollection">CAttributeCollection</a></td>
+  <td>the list of user-defined parameters</td>
+  <td><a href="/doc/api/1.0/CModule">CModule</a></td>
+</tr>
+<tr class="inherited" id="parentModule">
+  <td><a href="/doc/api/1.0/CModule#parentModule-detail">parentModule</a></td>
+  <td><a href="/doc/api/1.0/CModule">CModule</a></td>
+  <td>the parent module.</td>
+  <td><a href="/doc/api/1.0/CModule">CModule</a></td>
+</tr>
+<tr class="inherited" id="preload">
+  <td><a href="/doc/api/1.0/CModule#preload-detail">preload</a></td>
+  <td>array</td>
+  <td>the IDs of the application components that should be preloaded.</td>
+  <td><a href="/doc/api/1.0/CModule">CModule</a></td>
+</tr>
+<tr id="version">
+  <td><a href="/doc/api/1.0/CWebModule#version-detail">version</a></td>
+  <td>string</td>
+  <td>Returns the version of this module.</td>
+  <td>CWebModule</td>
+</tr>
+<tr id="viewPath">
+  <td><a href="/doc/api/1.0/CWebModule#viewPath-detail">viewPath</a></td>
+  <td>string</td>
+  <td>the root directory of view files.</td>
+  <td>CWebModule</td>
+</tr>
+</table>
+</div>
+<a name="methods"></a>
+
+<div class="summary docMethod">
+<h2>Public Methods</h2>
+
+<p><a href="#" class="toggle">Hide inherited methods</a></p>
+
+<table class="summaryTable">
+<colgroup>
+	<col class="col-method" />
+	<col class="col-description" />
+	<col class="col-defined" />
+</colgroup>
+<tr>
+  <th>Method</th><th>Description</th><th>Defined By</th>
+</tr>
+<tr class="inherited" id="__call">
+  <td><a href="/doc/api/1.0/CComponent#__call-detail">__call()</a></td>
+  <td>Calls the named method which is not a class method.</td>
+  <td><a href="/doc/api/1.0/CComponent">CComponent</a></td>
+</tr>
+<tr class="inherited" id="__construct">
+  <td><a href="/doc/api/1.0/CModule#__construct-detail">__construct()</a></td>
+  <td>Constructor.</td>
+  <td><a href="/doc/api/1.0/CModule">CModule</a></td>
+</tr>
+<tr class="inherited" id="__get">
+  <td><a href="/doc/api/1.0/CModule#__get-detail">__get()</a></td>
+  <td>Getter magic method.</td>
+  <td><a href="/doc/api/1.0/CModule">CModule</a></td>
+</tr>
+<tr class="inherited" id="__isset">
+  <td><a href="/doc/api/1.0/CModule#__isset-detail">__isset()</a></td>
+  <td>Checks if a property value is null.</td>
+  <td><a href="/doc/api/1.0/CModule">CModule</a></td>
+</tr>
+<tr class="inherited" id="__set">
+  <td><a href="/doc/api/1.0/CComponent#__set-detail">__set()</a></td>
+  <td>Sets value of a component property.</td>
+  <td><a href="/doc/api/1.0/CComponent">CComponent</a></td>
+</tr>
+<tr class="inherited" id="__unset">
+  <td><a href="/doc/api/1.0/CComponent#__unset-detail">__unset()</a></td>
+  <td>Sets a component property to be null.</td>
+  <td><a href="/doc/api/1.0/CComponent">CComponent</a></td>
+</tr>
+<tr id="afterControllerAction">
+  <td><a href="/doc/api/1.0/CWebModule#afterControllerAction-detail">afterControllerAction()</a></td>
+  <td>The post-filter for controller actions.</td>
+  <td>CWebModule</td>
+</tr>
+<tr class="inherited" id="asa">
+  <td><a href="/doc/api/1.0/CComponent#asa-detail">asa()</a></td>
+  <td>Returns the named behavior object.</td>
+  <td><a href="/doc/api/1.0/CComponent">CComponent</a></td>
+</tr>
+<tr class="inherited" id="attachBehavior">
+  <td><a href="/doc/api/1.0/CComponent#attachBehavior-detail">attachBehavior()</a></td>
+  <td>Attaches a behavior to this component.</td>
+  <td><a href="/doc/api/1.0/CComponent">CComponent</a></td>
+</tr>
+<tr class="inherited" id="attachBehaviors">
+  <td><a href="/doc/api/1.0/CComponent#attachBehaviors-detail">attachBehaviors()</a></td>
+  <td>Attaches a list of behaviors to the component.</td>
+  <td><a href="/doc/api/1.0/CComponent">CComponent</a></td>
+</tr>
+<tr class="inherited" id="attachEventHandler">
+  <td><a href="/doc/api/1.0/CComponent#attachEventHandler-detail">attachEventHandler()</a></td>
+  <td>Attaches an event handler to an event.</td>
+  <td><a href="/doc/api/1.0/CComponent">CComponent</a></td>
+</tr>
+<tr id="beforeControllerAction">
+  <td><a href="/doc/api/1.0/CWebModule#beforeControllerAction-detail">beforeControllerAction()</a></td>
+  <td>The pre-filter for controller actions.</td>
+  <td>CWebModule</td>
+</tr>
+<tr class="inherited" id="canGetProperty">
+  <td><a href="/doc/api/1.0/CComponent#canGetProperty-detail">canGetProperty()</a></td>
+  <td>Determines whether a property can be read.</td>
+  <td><a href="/doc/api/1.0/CComponent">CComponent</a></td>
+</tr>
+<tr class="inherited" id="canSetProperty">
+  <td><a href="/doc/api/1.0/CComponent#canSetProperty-detail">canSetProperty()</a></td>
+  <td>Determines whether a property can be set.</td>
+  <td><a href="/doc/api/1.0/CComponent">CComponent</a></td>
+</tr>
+<tr class="inherited" id="configure">
+  <td><a href="/doc/api/1.0/CModule#configure-detail">configure()</a></td>
+  <td>Configures the module with the specified configuration.</td>
+  <td><a href="/doc/api/1.0/CModule">CModule</a></td>
+</tr>
+<tr class="inherited" id="detachBehavior">
+  <td><a href="/doc/api/1.0/CComponent#detachBehavior-detail">detachBehavior()</a></td>
+  <td>Detaches a behavior from the component.</td>
+  <td><a href="/doc/api/1.0/CComponent">CComponent</a></td>
+</tr>
+<tr class="inherited" id="detachBehaviors">
+  <td><a href="/doc/api/1.0/CComponent#detachBehaviors-detail">detachBehaviors()</a></td>
+  <td>Detaches all behaviors from the component.</td>
+  <td><a href="/doc/api/1.0/CComponent">CComponent</a></td>
+</tr>
+<tr class="inherited" id="detachEventHandler">
+  <td><a href="/doc/api/1.0/CComponent#detachEventHandler-detail">detachEventHandler()</a></td>
+  <td>Detaches an existing event handler.</td>
+  <td><a href="/doc/api/1.0/CComponent">CComponent</a></td>
+</tr>
+<tr class="inherited" id="disableBehavior">
+  <td><a href="/doc/api/1.0/CComponent#disableBehavior-detail">disableBehavior()</a></td>
+  <td>Disables an attached behavior.</td>
+  <td><a href="/doc/api/1.0/CComponent">CComponent</a></td>
+</tr>
+<tr class="inherited" id="disableBehaviors">
+  <td><a href="/doc/api/1.0/CComponent#disableBehaviors-detail">disableBehaviors()</a></td>
+  <td>Disables all behaviors attached to this component.</td>
+  <td><a href="/doc/api/1.0/CComponent">CComponent</a></td>
+</tr>
+<tr class="inherited" id="enableBehavior">
+  <td><a href="/doc/api/1.0/CComponent#enableBehavior-detail">enableBehavior()</a></td>
+  <td>Enables an attached behavior.</td>
+  <td><a href="/doc/api/1.0/CComponent">CComponent</a></td>
+</tr>
+<tr class="inherited" id="enableBehaviors">
+  <td><a href="/doc/api/1.0/CComponent#enableBehaviors-detail">enableBehaviors()</a></td>
+  <td>Enables all behaviors attached to this component.</td>
+  <td><a href="/doc/api/1.0/CComponent">CComponent</a></td>
+</tr>
+<tr class="inherited" id="getBasePath">
+  <td><a href="/doc/api/1.0/CModule#getBasePath-detail">getBasePath()</a></td>
+  <td>Returns the root directory of the module. Defaults to the directory containing the module class.</td>
+  <td><a href="/doc/api/1.0/CModule">CModule</a></td>
+</tr>
+<tr class="inherited" id="getComponent">
+  <td><a href="/doc/api/1.0/CModule#getComponent-detail">getComponent()</a></td>
+  <td>Retrieves the named application component.</td>
+  <td><a href="/doc/api/1.0/CModule">CModule</a></td>
+</tr>
+<tr class="inherited" id="getComponents">
+  <td><a href="/doc/api/1.0/CModule#getComponents-detail">getComponents()</a></td>
+  <td>Returns the currently loaded components (indexed by their IDs)</td>
+  <td><a href="/doc/api/1.0/CModule">CModule</a></td>
+</tr>
+<tr id="getControllerPath">
+  <td><a href="/doc/api/1.0/CWebModule#getControllerPath-detail">getControllerPath()</a></td>
+  <td>Returns the directory that contains the controller classes. Defaults to 'protected/controllers'.</td>
+  <td>CWebModule</td>
+</tr>
+<tr id="getDescription">
+  <td><a href="/doc/api/1.0/CWebModule#getDescription-detail">getDescription()</a></td>
+  <td>Returns the description of this module.</td>
+  <td>CWebModule</td>
+</tr>
+<tr class="inherited" id="getEventHandlers">
+  <td><a href="/doc/api/1.0/CComponent#getEventHandlers-detail">getEventHandlers()</a></td>
+  <td>Returns the list of attached event handlers for an event.</td>
+  <td><a href="/doc/api/1.0/CComponent">CComponent</a></td>
+</tr>
+<tr class="inherited" id="getId">
+  <td><a href="/doc/api/1.0/CModule#getId-detail">getId()</a></td>
+  <td>Returns the module ID.</td>
+  <td><a href="/doc/api/1.0/CModule">CModule</a></td>
+</tr>
+<tr id="getLayoutPath">
+  <td><a href="/doc/api/1.0/CWebModule#getLayoutPath-detail">getLayoutPath()</a></td>
+  <td>Returns the root directory of layout files. Defaults to 'protected/views/layouts'.</td>
+  <td>CWebModule</td>
+</tr>
+<tr class="inherited" id="getModule">
+  <td><a href="/doc/api/1.0/CModule#getModule-detail">getModule()</a></td>
+  <td>Retrieves the named application module.</td>
+  <td><a href="/doc/api/1.0/CModule">CModule</a></td>
+</tr>
+<tr class="inherited" id="getModulePath">
+  <td><a href="/doc/api/1.0/CModule#getModulePath-detail">getModulePath()</a></td>
+  <td>Returns the directory that contains the application modules. Defaults to the 'modules' subdirectory of <a href="/doc/api/1.0/CWebModule#basePath">basePath</a>.</td>
+  <td><a href="/doc/api/1.0/CModule">CModule</a></td>
+</tr>
+<tr class="inherited" id="getModules">
+  <td><a href="/doc/api/1.0/CModule#getModules-detail">getModules()</a></td>
+  <td>Returns the configuration of the currently installed modules (module ID => configuration)</td>
+  <td><a href="/doc/api/1.0/CModule">CModule</a></td>
+</tr>
+<tr id="getName">
+  <td><a href="/doc/api/1.0/CWebModule#getName-detail">getName()</a></td>
+  <td>Returns the name of this module.</td>
+  <td>CWebModule</td>
+</tr>
+<tr class="inherited" id="getParams">
+  <td><a href="/doc/api/1.0/CModule#getParams-detail">getParams()</a></td>
+  <td>Returns the list of user-defined parameters</td>
+  <td><a href="/doc/api/1.0/CModule">CModule</a></td>
+</tr>
+<tr class="inherited" id="getParentModule">
+  <td><a href="/doc/api/1.0/CModule#getParentModule-detail">getParentModule()</a></td>
+  <td>Returns the parent module. Null if this module does not have a parent.</td>
+  <td><a href="/doc/api/1.0/CModule">CModule</a></td>
+</tr>
+<tr id="getVersion">
+  <td><a href="/doc/api/1.0/CWebModule#getVersion-detail">getVersion()</a></td>
+  <td>Returns the version of this module.</td>
+  <td>CWebModule</td>
+</tr>
+<tr id="getViewPath">
+  <td><a href="/doc/api/1.0/CWebModule#getViewPath-detail">getViewPath()</a></td>
+  <td>Returns the root directory of view files. Defaults to 'protected/views'.</td>
+  <td>CWebModule</td>
+</tr>
+<tr class="inherited" id="hasComponent">
+  <td><a href="/doc/api/1.0/CModule#hasComponent-detail">hasComponent()</a></td>
+  <td>Determines whether the named application component exists (including both loaded and disabled.)</td>
+  <td><a href="/doc/api/1.0/CModule">CModule</a></td>
+</tr>
+<tr class="inherited" id="hasEvent">
+  <td><a href="/doc/api/1.0/CComponent#hasEvent-detail">hasEvent()</a></td>
+  <td>Determines whether an event is defined.</td>
+  <td><a href="/doc/api/1.0/CComponent">CComponent</a></td>
+</tr>
+<tr class="inherited" id="hasEventHandler">
+  <td><a href="/doc/api/1.0/CComponent#hasEventHandler-detail">hasEventHandler()</a></td>
+  <td>Checks whether the named event has attached handlers.</td>
+  <td><a href="/doc/api/1.0/CComponent">CComponent</a></td>
+</tr>
+<tr class="inherited" id="hasProperty">
+  <td><a href="/doc/api/1.0/CComponent#hasProperty-detail">hasProperty()</a></td>
+  <td>Determines whether a property is defined.</td>
+  <td><a href="/doc/api/1.0/CComponent">CComponent</a></td>
+</tr>
+<tr class="inherited" id="raiseEvent">
+  <td><a href="/doc/api/1.0/CComponent#raiseEvent-detail">raiseEvent()</a></td>
+  <td>Raises an event.</td>
+  <td><a href="/doc/api/1.0/CComponent">CComponent</a></td>
+</tr>
+<tr class="inherited" id="setAliases">
+  <td><a href="/doc/api/1.0/CModule#setAliases-detail">setAliases()</a></td>
+  <td>Defines the root aliases.</td>
+  <td><a href="/doc/api/1.0/CModule">CModule</a></td>
+</tr>
+<tr class="inherited" id="setBasePath">
+  <td><a href="/doc/api/1.0/CModule#setBasePath-detail">setBasePath()</a></td>
+  <td>Sets the root directory of the module.</td>
+  <td><a href="/doc/api/1.0/CModule">CModule</a></td>
+</tr>
+<tr class="inherited" id="setComponent">
+  <td><a href="/doc/api/1.0/CModule#setComponent-detail">setComponent()</a></td>
+  <td>Puts a component under the management of the module.</td>
+  <td><a href="/doc/api/1.0/CModule">CModule</a></td>
+</tr>
+<tr class="inherited" id="setComponents">
+  <td><a href="/doc/api/1.0/CModule#setComponents-detail">setComponents()</a></td>
+  <td>Sets the application components.</td>
+  <td><a href="/doc/api/1.0/CModule">CModule</a></td>
+</tr>
+<tr id="setControllerPath">
+  <td><a href="/doc/api/1.0/CWebModule#setControllerPath-detail">setControllerPath()</a></td>
+  <td>Sets the directory that contains the controller classes.</td>
+  <td>CWebModule</td>
+</tr>
+<tr class="inherited" id="setId">
+  <td><a href="/doc/api/1.0/CModule#setId-detail">setId()</a></td>
+  <td>Sets the module ID</td>
+  <td><a href="/doc/api/1.0/CModule">CModule</a></td>
+</tr>
+<tr class="inherited" id="setImport">
+  <td><a href="/doc/api/1.0/CModule#setImport-detail">setImport()</a></td>
+  <td>Sets the aliases that are used in the module.</td>
+  <td><a href="/doc/api/1.0/CModule">CModule</a></td>
+</tr>
+<tr id="setLayoutPath">
+  <td><a href="/doc/api/1.0/CWebModule#setLayoutPath-detail">setLayoutPath()</a></td>
+  <td>Sets the root directory of layout files.</td>
+  <td>CWebModule</td>
+</tr>
+<tr class="inherited" id="setModulePath">
+  <td><a href="/doc/api/1.0/CModule#setModulePath-detail">setModulePath()</a></td>
+  <td>Sets the directory that contains the application modules.</td>
+  <td><a href="/doc/api/1.0/CModule">CModule</a></td>
+</tr>
+<tr class="inherited" id="setModules">
+  <td><a href="/doc/api/1.0/CModule#setModules-detail">setModules()</a></td>
+  <td>Configures the sub-modules of this module.</td>
+  <td><a href="/doc/api/1.0/CModule">CModule</a></td>
+</tr>
+<tr class="inherited" id="setParams">
+  <td><a href="/doc/api/1.0/CModule#setParams-detail">setParams()</a></td>
+  <td>Sets user-defined parameters. This should be in name-value pairs.</td>
+  <td><a href="/doc/api/1.0/CModule">CModule</a></td>
+</tr>
+<tr id="setViewPath">
+  <td><a href="/doc/api/1.0/CWebModule#setViewPath-detail">setViewPath()</a></td>
+  <td>Sets the root directory of view files.</td>
+  <td>CWebModule</td>
+</tr>
+</table>
+</div>
+<div class="summary docMethod">
+<h2>Protected Methods</h2>
+
+<p><a href="#" class="toggle">Hide inherited methods</a></p>
+
+<table class="summaryTable">
+<colgroup>
+	<col class="col-method" />
+	<col class="col-description" />
+	<col class="col-defined" />
+</colgroup>
+<tr>
+  <th>Method</th><th>Description</th><th>Defined By</th>
+</tr>
+<tr class="inherited" id="init">
+  <td><a href="/doc/api/1.0/CModule#init-detail">init()</a></td>
+  <td>Initializes the module.</td>
+  <td><a href="/doc/api/1.0/CModule">CModule</a></td>
+</tr>
+<tr class="inherited" id="preinit">
+  <td><a href="/doc/api/1.0/CModule#preinit-detail">preinit()</a></td>
+  <td>Preinitializes the module.</td>
+  <td><a href="/doc/api/1.0/CModule">CModule</a></td>
+</tr>
+<tr class="inherited" id="preloadComponents">
+  <td><a href="/doc/api/1.0/CModule#preloadComponents-detail">preloadComponents()</a></td>
+  <td>Loads static application components.</td>
+  <td><a href="/doc/api/1.0/CModule">CModule</a></td>
+</tr>
+</table>
+</div>
+<a name="events"></a>
+
+<h2>Property Details</h2>
+<div class="detailHeader" id="controllerMap-detail">
+controllerMap<span class="detailHeaderTag">
+property
+</span>
+</div>
+
+<div class="signature">
+public array <b>$controllerMap</b>;</div>
+
+<p>mapping from controller ID to controller configurations.
+Pleaser refer to <a href="/doc/api/1.0/CWebApplication#controllerMap">CWebApplication::controllerMap</a> for more details.</p>
+
+
+<div class="detailHeader" id="controllerPath-detail">
+controllerPath<span class="detailHeaderTag">
+property
+</span>
+</div>
+
+<div class="signature">
+public string <a href="/doc/api/1.0/CWebModule#getControllerPath"><b>getControllerPath</b></a>()<br/>public void <a href="/doc/api/1.0/CWebModule#setControllerPath"><b>setControllerPath</b></a>(string $value)</div>
+
+<p>the directory that contains the controller classes. Defaults to 'protected/controllers'.</p>
+
+
+<div class="detailHeader" id="defaultController-detail">
+defaultController<span class="detailHeaderTag">
+property
+</span>
+</div>
+
+<div class="signature">
+public string <b>$defaultController</b>;</div>
+
+<p>the ID of the default controller for this module. Defaults to 'default'.</p>
+
+
+<div class="detailHeader" id="description-detail">
+description<span class="detailHeaderTag">
+property
+ <em>read-only</em> </span>
+</div>
+
+<div class="signature">
+public string <a href="/doc/api/1.0/CWebModule#getDescription"><b>getDescription</b></a>()</div>
+
+<p>Returns the description of this module.
+The default implementation returns an empty string.
+You may override this method to customize the description of this module.</p>
+
+
+<div class="detailHeader" id="layout-detail">
+layout<span class="detailHeaderTag">
+property
+</span>
+</div>
+
+<div class="signature">
+public mixed <b>$layout</b>;</div>
+
+<p>the layout that is shared by the controllers inside this module.
+If a controller has explicitly declared its own <a href="/doc/api/1.0/CController#layout">layout</a>,
+this property will be ignored.
+If this is null (default), the application's layout or the parent module's layout (if available)
+will be used. If this is false, then no layout will be used.</p>
+
+
+<div class="detailHeader" id="layoutPath-detail">
+layoutPath<span class="detailHeaderTag">
+property
+</span>
+</div>
+
+<div class="signature">
+public string <a href="/doc/api/1.0/CWebModule#getLayoutPath"><b>getLayoutPath</b></a>()<br/>public void <a href="/doc/api/1.0/CWebModule#setLayoutPath"><b>setLayoutPath</b></a>(string $path)</div>
+
+<p>the root directory of layout files. Defaults to 'protected/views/layouts'.</p>
+
+
+<div class="detailHeader" id="name-detail">
+name<span class="detailHeaderTag">
+property
+ <em>read-only</em> </span>
+</div>
+
+<div class="signature">
+public string <a href="/doc/api/1.0/CWebModule#getName"><b>getName</b></a>()</div>
+
+<p>Returns the name of this module.
+The default implementation simply returns <a href="/doc/api/1.0/CWebModule#id">id</a>.
+You may override this method to customize the name of this module.</p>
+
+
+<div class="detailHeader" id="version-detail">
+version<span class="detailHeaderTag">
+property
+ <em>read-only</em> </span>
+</div>
+
+<div class="signature">
+public string <a href="/doc/api/1.0/CWebModule#getVersion"><b>getVersion</b></a>()</div>
+
+<p>Returns the version of this module.
+The default implementation returns '1.0'.
+You may override this method to customize the version of this module.</p>
+
+
+<div class="detailHeader" id="viewPath-detail">
+viewPath<span class="detailHeaderTag">
+property
+</span>
+</div>
+
+<div class="signature">
+public string <a href="/doc/api/1.0/CWebModule#getViewPath"><b>getViewPath</b></a>()<br/>public void <a href="/doc/api/1.0/CWebModule#setViewPath"><b>setViewPath</b></a>(string $path)</div>
+
+<p>the root directory of view files. Defaults to 'protected/views'.</p>
+
+
+<h2>Method Details</h2>
+
+<div class="detailHeader" id="afterControllerAction-detail">
+afterControllerAction()
+<span class="detailHeaderTag">
+method
+(available since v1.0.4)
+</span>
+</div>
+
+<table class="summaryTable">
+<tr><td colspan="3">
+<div class="signature2">
+public void <b>afterControllerAction</b>(<a href="/doc/api/1.0/CController">CController</a> $controller, <a href="/doc/api/1.0/CAction">CAction</a> $action)</div>
+</td></tr>
+<tr>
+  <td class="paramNameCol">$controller</td>
+  <td class="paramTypeCol"><a href="/doc/api/1.0/CController">CController</a></td>
+  <td class="paramDescCol">the controller</td>
+</tr>
+<tr>
+  <td class="paramNameCol">$action</td>
+  <td class="paramTypeCol"><a href="/doc/api/1.0/CAction">CAction</a></td>
+  <td class="paramDescCol">the action</td>
+</tr>
+</table>
+
+<div class="sourceCode">
+<b>Source Code:</b> <a class="sourceLink" href="https://github.com/yiisoft/yii/blob/1.0.12/framework/web/CWebModule.php#L181">framework/web/CWebModule.php#181</a> (<b><a href="#" class="show">show</a></b>)
+<div class="code"><code><span style="color: #000000">
+<span style="color: #0000BB"></span><span style="color: #007700">public&nbsp;function&nbsp;</span><span style="color: #0000BB">afterControllerAction</span><span style="color: #007700">(</span><span style="color: #0000BB">$controller</span><span style="color: #007700">,</span><span style="color: #0000BB">$action</span><span style="color: #007700">)<br />{<br />&nbsp;&nbsp;&nbsp;&nbsp;if((</span><span style="color: #0000BB">$parent</span><span style="color: #007700">=</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">getParentModule</span><span style="color: #007700">())===</span><span style="color: #0000BB">null</span><span style="color: #007700">)<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$parent</span><span style="color: #007700">=</span><span style="color: #0000BB">Yii</span><span style="color: #007700">::</span><span style="color: #0000BB">app</span><span style="color: #007700">();<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$parent</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">afterControllerAction</span><span style="color: #007700">(</span><span style="color: #0000BB">$controller</span><span style="color: #007700">,</span><span style="color: #0000BB">$action</span><span style="color: #007700">);<br />}</span>
+</span>
+</code></div>
+</div>
+<p>The post-filter for controller actions.
+This method is invoked after the currently requested controller action and all its filters
+are executed. If you override this method, make sure you call the parent implementation at the end.</p>
+
+
+<div class="detailHeader" id="beforeControllerAction-detail">
+beforeControllerAction()
+<span class="detailHeaderTag">
+method
+(available since v1.0.4)
+</span>
+</div>
+
+<table class="summaryTable">
+<tr><td colspan="3">
+<div class="signature2">
+public boolean <b>beforeControllerAction</b>(<a href="/doc/api/1.0/CController">CController</a> $controller, <a href="/doc/api/1.0/CAction">CAction</a> $action)</div>
+</td></tr>
+<tr>
+  <td class="paramNameCol">$controller</td>
+  <td class="paramTypeCol"><a href="/doc/api/1.0/CController">CController</a></td>
+  <td class="paramDescCol">the controller</td>
+</tr>
+<tr>
+  <td class="paramNameCol">$action</td>
+  <td class="paramTypeCol"><a href="/doc/api/1.0/CAction">CAction</a></td>
+  <td class="paramDescCol">the action</td>
+</tr>
+<tr>
+  <td class="paramNameCol">{return}</td>
+  <td class="paramTypeCol">boolean</td>
+  <td class="paramDescCol">whether the action should be executed.</td>
+</tr>
+</table>
+
+<div class="sourceCode">
+<b>Source Code:</b> <a class="sourceLink" href="https://github.com/yiisoft/yii/blob/1.0.12/framework/web/CWebModule.php#L166">framework/web/CWebModule.php#166</a> (<b><a href="#" class="show">show</a></b>)
+<div class="code"><code><span style="color: #000000">
+<span style="color: #0000BB"></span><span style="color: #007700">public&nbsp;function&nbsp;</span><span style="color: #0000BB">beforeControllerAction</span><span style="color: #007700">(</span><span style="color: #0000BB">$controller</span><span style="color: #007700">,</span><span style="color: #0000BB">$action</span><span style="color: #007700">)<br />{<br />&nbsp;&nbsp;&nbsp;&nbsp;if((</span><span style="color: #0000BB">$parent</span><span style="color: #007700">=</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">getParentModule</span><span style="color: #007700">())===</span><span style="color: #0000BB">null</span><span style="color: #007700">)<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$parent</span><span style="color: #007700">=</span><span style="color: #0000BB">Yii</span><span style="color: #007700">::</span><span style="color: #0000BB">app</span><span style="color: #007700">();<br />&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;</span><span style="color: #0000BB">$parent</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">beforeControllerAction</span><span style="color: #007700">(</span><span style="color: #0000BB">$controller</span><span style="color: #007700">,</span><span style="color: #0000BB">$action</span><span style="color: #007700">);<br />}</span>
+</span>
+</code></div>
+</div>
+<p>The pre-filter for controller actions.
+This method is invoked before the currently requested controller action and all its filters
+are executed. You may override this method in the following way:
+<pre>
+if(parent::beforeControllerAction($controller,$action))
+{
+    // your code
+    return true;
+}
+else
+    return false;
+</pre></p>
+
+
+<div class="detailHeader" id="getControllerPath-detail">
+getControllerPath()
+<span class="detailHeaderTag">
+method
+</span>
+</div>
+
+<table class="summaryTable">
+<tr><td colspan="3">
+<div class="signature2">
+public string <b>getControllerPath</b>()</div>
+</td></tr>
+<tr>
+  <td class="paramNameCol">{return}</td>
+  <td class="paramTypeCol">string</td>
+  <td class="paramDescCol">the directory that contains the controller classes. Defaults to 'protected/controllers'.</td>
+</tr>
+</table>
+
+<div class="sourceCode">
+<b>Source Code:</b> <a class="sourceLink" href="https://github.com/yiisoft/yii/blob/1.0.12/framework/web/CWebModule.php#L85">framework/web/CWebModule.php#85</a> (<b><a href="#" class="show">show</a></b>)
+<div class="code"><code><span style="color: #000000">
+<span style="color: #0000BB"></span><span style="color: #007700">public&nbsp;function&nbsp;</span><span style="color: #0000BB">getControllerPath</span><span style="color: #007700">()<br />{<br />&nbsp;&nbsp;&nbsp;&nbsp;if(</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">_controllerPath</span><span style="color: #007700">!==</span><span style="color: #0000BB">null</span><span style="color: #007700">)<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">_controllerPath</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;else<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">_controllerPath</span><span style="color: #007700">=</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">getBasePath</span><span style="color: #007700">().</span><span style="color: #0000BB">DIRECTORY_SEPARATOR</span><span style="color: #007700">.</span><span style="color: #DD0000">'controllers'</span><span style="color: #007700">;<br />}</span>
+</span>
+</code></div>
+</div>
+<p></p>
+
+
+<div class="detailHeader" id="getDescription-detail">
+getDescription()
+<span class="detailHeaderTag">
+method
+</span>
+</div>
+
+<table class="summaryTable">
+<tr><td colspan="3">
+<div class="signature2">
+public string <b>getDescription</b>()</div>
+</td></tr>
+<tr>
+  <td class="paramNameCol">{return}</td>
+  <td class="paramTypeCol">string</td>
+  <td class="paramDescCol">the description of this module.</td>
+</tr>
+</table>
+
+<div class="sourceCode">
+<b>Source Code:</b> <a class="sourceLink" href="https://github.com/yiisoft/yii/blob/1.0.12/framework/web/CWebModule.php#L66">framework/web/CWebModule.php#66</a> (<b><a href="#" class="show">show</a></b>)
+<div class="code"><code><span style="color: #000000">
+<span style="color: #0000BB"></span><span style="color: #007700">public&nbsp;function&nbsp;</span><span style="color: #0000BB">getDescription</span><span style="color: #007700">()<br />{<br />&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;</span><span style="color: #DD0000">''</span><span style="color: #007700">;<br />}</span>
+</span>
+</code></div>
+</div>
+<p>Returns the description of this module.
+The default implementation returns an empty string.
+You may override this method to customize the description of this module.</p>
+
+
+<div class="detailHeader" id="getLayoutPath-detail">
+getLayoutPath()
+<span class="detailHeaderTag">
+method
+</span>
+</div>
+
+<table class="summaryTable">
+<tr><td colspan="3">
+<div class="signature2">
+public string <b>getLayoutPath</b>()</div>
+</td></tr>
+<tr>
+  <td class="paramNameCol">{return}</td>
+  <td class="paramTypeCol">string</td>
+  <td class="paramDescCol">the root directory of layout files. Defaults to 'protected/views/layouts'.</td>
+</tr>
+</table>
+
+<div class="sourceCode">
+<b>Source Code:</b> <a class="sourceLink" href="https://github.com/yiisoft/yii/blob/1.0.12/framework/web/CWebModule.php#L129">framework/web/CWebModule.php#129</a> (<b><a href="#" class="show">show</a></b>)
+<div class="code"><code><span style="color: #000000">
+<span style="color: #0000BB"></span><span style="color: #007700">public&nbsp;function&nbsp;</span><span style="color: #0000BB">getLayoutPath</span><span style="color: #007700">()<br />{<br />&nbsp;&nbsp;&nbsp;&nbsp;if(</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">_layoutPath</span><span style="color: #007700">!==</span><span style="color: #0000BB">null</span><span style="color: #007700">)<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">_layoutPath</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;else<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">_layoutPath</span><span style="color: #007700">=</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">getViewPath</span><span style="color: #007700">().</span><span style="color: #0000BB">DIRECTORY_SEPARATOR</span><span style="color: #007700">.</span><span style="color: #DD0000">'layouts'</span><span style="color: #007700">;<br />}</span>
+</span>
+</code></div>
+</div>
+<p></p>
+
+
+<div class="detailHeader" id="getName-detail">
+getName()
+<span class="detailHeaderTag">
+method
+</span>
+</div>
+
+<table class="summaryTable">
+<tr><td colspan="3">
+<div class="signature2">
+public string <b>getName</b>()</div>
+</td></tr>
+<tr>
+  <td class="paramNameCol">{return}</td>
+  <td class="paramTypeCol">string</td>
+  <td class="paramDescCol">the name of this module.</td>
+</tr>
+</table>
+
+<div class="sourceCode">
+<b>Source Code:</b> <a class="sourceLink" href="https://github.com/yiisoft/yii/blob/1.0.12/framework/web/CWebModule.php#L55">framework/web/CWebModule.php#55</a> (<b><a href="#" class="show">show</a></b>)
+<div class="code"><code><span style="color: #000000">
+<span style="color: #0000BB"></span><span style="color: #007700">public&nbsp;function&nbsp;</span><span style="color: #0000BB">getName</span><span style="color: #007700">()<br />{<br />&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;</span><span style="color: #0000BB">basename</span><span style="color: #007700">(</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">getId</span><span style="color: #007700">());<br />}</span>
+</span>
+</code></div>
+</div>
+<p>Returns the name of this module.
+The default implementation simply returns <a href="/doc/api/1.0/CWebModule#id">id</a>.
+You may override this method to customize the name of this module.</p>
+
+
+<div class="detailHeader" id="getVersion-detail">
+getVersion()
+<span class="detailHeaderTag">
+method
+</span>
+</div>
+
+<table class="summaryTable">
+<tr><td colspan="3">
+<div class="signature2">
+public string <b>getVersion</b>()</div>
+</td></tr>
+<tr>
+  <td class="paramNameCol">{return}</td>
+  <td class="paramTypeCol">string</td>
+  <td class="paramDescCol">the version of this module.</td>
+</tr>
+</table>
+
+<div class="sourceCode">
+<b>Source Code:</b> <a class="sourceLink" href="https://github.com/yiisoft/yii/blob/1.0.12/framework/web/CWebModule.php#L77">framework/web/CWebModule.php#77</a> (<b><a href="#" class="show">show</a></b>)
+<div class="code"><code><span style="color: #000000">
+<span style="color: #0000BB"></span><span style="color: #007700">public&nbsp;function&nbsp;</span><span style="color: #0000BB">getVersion</span><span style="color: #007700">()<br />{<br />&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;</span><span style="color: #DD0000">'1.0'</span><span style="color: #007700">;<br />}</span>
+</span>
+</code></div>
+</div>
+<p>Returns the version of this module.
+The default implementation returns '1.0'.
+You may override this method to customize the version of this module.</p>
+
+
+<div class="detailHeader" id="getViewPath-detail">
+getViewPath()
+<span class="detailHeaderTag">
+method
+</span>
+</div>
+
+<table class="summaryTable">
+<tr><td colspan="3">
+<div class="signature2">
+public string <b>getViewPath</b>()</div>
+</td></tr>
+<tr>
+  <td class="paramNameCol">{return}</td>
+  <td class="paramTypeCol">string</td>
+  <td class="paramDescCol">the root directory of view files. Defaults to 'protected/views'.</td>
+</tr>
+</table>
+
+<div class="sourceCode">
+<b>Source Code:</b> <a class="sourceLink" href="https://github.com/yiisoft/yii/blob/1.0.12/framework/web/CWebModule.php#L107">framework/web/CWebModule.php#107</a> (<b><a href="#" class="show">show</a></b>)
+<div class="code"><code><span style="color: #000000">
+<span style="color: #0000BB"></span><span style="color: #007700">public&nbsp;function&nbsp;</span><span style="color: #0000BB">getViewPath</span><span style="color: #007700">()<br />{<br />&nbsp;&nbsp;&nbsp;&nbsp;if(</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">_viewPath</span><span style="color: #007700">!==</span><span style="color: #0000BB">null</span><span style="color: #007700">)<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">_viewPath</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;else<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">_viewPath</span><span style="color: #007700">=</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">getBasePath</span><span style="color: #007700">().</span><span style="color: #0000BB">DIRECTORY_SEPARATOR</span><span style="color: #007700">.</span><span style="color: #DD0000">'views'</span><span style="color: #007700">;<br />}</span>
+</span>
+</code></div>
+</div>
+<p></p>
+
+
+<div class="detailHeader" id="setControllerPath-detail">
+setControllerPath()
+<span class="detailHeaderTag">
+method
+</span>
+</div>
+
+<table class="summaryTable">
+<tr><td colspan="3">
+<div class="signature2">
+public void <b>setControllerPath</b>(string $value)</div>
+</td></tr>
+<tr>
+  <td class="paramNameCol">$value</td>
+  <td class="paramTypeCol">string</td>
+  <td class="paramDescCol">the directory that contains the controller classes.</td>
+</tr>
+</table>
+
+<div class="sourceCode">
+<b>Source Code:</b> <a class="sourceLink" href="https://github.com/yiisoft/yii/blob/1.0.12/framework/web/CWebModule.php#L97">framework/web/CWebModule.php#97</a> (<b><a href="#" class="show">show</a></b>)
+<div class="code"><code><span style="color: #000000">
+<span style="color: #0000BB"></span><span style="color: #007700">public&nbsp;function&nbsp;</span><span style="color: #0000BB">setControllerPath</span><span style="color: #007700">(</span><span style="color: #0000BB">$value</span><span style="color: #007700">)<br />{<br />&nbsp;&nbsp;&nbsp;&nbsp;if((</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">_controllerPath</span><span style="color: #007700">=</span><span style="color: #0000BB">realpath</span><span style="color: #007700">(</span><span style="color: #0000BB">$value</span><span style="color: #007700">))===</span><span style="color: #0000BB">false&nbsp;</span><span style="color: #007700">||&nbsp;!</span><span style="color: #0000BB">is_dir</span><span style="color: #007700">(</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">_controllerPath</span><span style="color: #007700">))<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;throw&nbsp;new&nbsp;</span><span style="color: #0000BB">CException</span><span style="color: #007700">(</span><span style="color: #0000BB">Yii</span><span style="color: #007700">::</span><span style="color: #0000BB">t</span><span style="color: #007700">(</span><span style="color: #DD0000">'yii'</span><span style="color: #007700">,</span><span style="color: #DD0000">'The&nbsp;controller&nbsp;path&nbsp;"{path}"&nbsp;is&nbsp;not&nbsp;a&nbsp;valid&nbsp;directory.'</span><span style="color: #007700">,<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;array(</span><span style="color: #DD0000">'{path}'</span><span style="color: #007700">=&gt;</span><span style="color: #0000BB">$value</span><span style="color: #007700">)));<br />}</span>
+</span>
+</code></div>
+</div>
+<p></p>
+
+
+<div class="detailHeader" id="setLayoutPath-detail">
+setLayoutPath()
+<span class="detailHeaderTag">
+method
+</span>
+</div>
+
+<table class="summaryTable">
+<tr><td colspan="3">
+<div class="signature2">
+public void <b>setLayoutPath</b>(string $path)</div>
+</td></tr>
+<tr>
+  <td class="paramNameCol">$path</td>
+  <td class="paramTypeCol">string</td>
+  <td class="paramDescCol">the root directory of layout files.</td>
+</tr>
+</table>
+
+<div class="sourceCode">
+<b>Source Code:</b> <a class="sourceLink" href="https://github.com/yiisoft/yii/blob/1.0.12/framework/web/CWebModule.php#L141">framework/web/CWebModule.php#141</a> (<b><a href="#" class="show">show</a></b>)
+<div class="code"><code><span style="color: #000000">
+<span style="color: #0000BB"></span><span style="color: #007700">public&nbsp;function&nbsp;</span><span style="color: #0000BB">setLayoutPath</span><span style="color: #007700">(</span><span style="color: #0000BB">$path</span><span style="color: #007700">)<br />{<br />&nbsp;&nbsp;&nbsp;&nbsp;if((</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">_layoutPath</span><span style="color: #007700">=</span><span style="color: #0000BB">realpath</span><span style="color: #007700">(</span><span style="color: #0000BB">$path</span><span style="color: #007700">))===</span><span style="color: #0000BB">false&nbsp;</span><span style="color: #007700">||&nbsp;!</span><span style="color: #0000BB">is_dir</span><span style="color: #007700">(</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">_layoutPath</span><span style="color: #007700">))<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;throw&nbsp;new&nbsp;</span><span style="color: #0000BB">CException</span><span style="color: #007700">(</span><span style="color: #0000BB">Yii</span><span style="color: #007700">::</span><span style="color: #0000BB">t</span><span style="color: #007700">(</span><span style="color: #DD0000">'yii'</span><span style="color: #007700">,</span><span style="color: #DD0000">'The&nbsp;layout&nbsp;path&nbsp;"{path}"&nbsp;is&nbsp;not&nbsp;a&nbsp;valid&nbsp;directory.'</span><span style="color: #007700">,<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;array(</span><span style="color: #DD0000">'{path}'</span><span style="color: #007700">=&gt;</span><span style="color: #0000BB">$path</span><span style="color: #007700">)));<br />}</span>
+</span>
+</code></div>
+</div>
+<p></p>
+
+
+<div class="detailHeader" id="setViewPath-detail">
+setViewPath()
+<span class="detailHeaderTag">
+method
+</span>
+</div>
+
+<table class="summaryTable">
+<tr><td colspan="3">
+<div class="signature2">
+public void <b>setViewPath</b>(string $path)</div>
+</td></tr>
+<tr>
+  <td class="paramNameCol">$path</td>
+  <td class="paramTypeCol">string</td>
+  <td class="paramDescCol">the root directory of view files.</td>
+</tr>
+</table>
+
+<div class="sourceCode">
+<b>Source Code:</b> <a class="sourceLink" href="https://github.com/yiisoft/yii/blob/1.0.12/framework/web/CWebModule.php#L119">framework/web/CWebModule.php#119</a> (<b><a href="#" class="show">show</a></b>)
+<div class="code"><code><span style="color: #000000">
+<span style="color: #0000BB"></span><span style="color: #007700">public&nbsp;function&nbsp;</span><span style="color: #0000BB">setViewPath</span><span style="color: #007700">(</span><span style="color: #0000BB">$path</span><span style="color: #007700">)<br />{<br />&nbsp;&nbsp;&nbsp;&nbsp;if((</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">_viewPath</span><span style="color: #007700">=</span><span style="color: #0000BB">realpath</span><span style="color: #007700">(</span><span style="color: #0000BB">$path</span><span style="color: #007700">))===</span><span style="color: #0000BB">false&nbsp;</span><span style="color: #007700">||&nbsp;!</span><span style="color: #0000BB">is_dir</span><span style="color: #007700">(</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">_viewPath</span><span style="color: #007700">))<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;throw&nbsp;new&nbsp;</span><span style="color: #0000BB">CException</span><span style="color: #007700">(</span><span style="color: #0000BB">Yii</span><span style="color: #007700">::</span><span style="color: #0000BB">t</span><span style="color: #007700">(</span><span style="color: #DD0000">'yii'</span><span style="color: #007700">,</span><span style="color: #DD0000">'The&nbsp;view&nbsp;path&nbsp;"{path}"&nbsp;is&nbsp;not&nbsp;a&nbsp;valid&nbsp;directory.'</span><span style="color: #007700">,<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;array(</span><span style="color: #DD0000">'{path}'</span><span style="color: #007700">=&gt;</span><span style="color: #0000BB">$path</span><span style="color: #007700">)));<br />}</span>
+</span>
+</code></div>
+</div>
+<p></p>
+
+
