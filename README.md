@@ -10,12 +10,28 @@ If you want to contribute please get in touch with us using the [issue tracker](
 
 [![Build Status](https://api.travis-ci.com/yiisoft-contrib/yiiframework.com.svg)](https://travis-ci.com/yiisoft-contrib/yiiframework.com)
 
+## Using Docker and Docker Compose for local development
+
+Install [Docker](https://docs.docker.com/get-docker/) and [Docker Compose](https://docs.docker.com/compose/install/).
+
+```
+cp docker-compose.override.example.yml docker-compose.override.yml
+```
+
+Fill with actual values.
+
+```
+docker-compose build
+docker-compose up
+```
+
+The site will be available at http://0.0.0.0:8080.
 
 ## PREREQUISITES
 
 ### PHP
 
-PHP 7 is required. Preferrably PHP 7.4.
+PHP 7.4 is required.
 
 There's a need to enable some extensions:
 
@@ -154,6 +170,9 @@ gulp build
 #
 # You may also build only parts of the docs, run  make help  for the available commands.
 make docs
+
+# If you are using Docker image, you need to additionally pass VENDOR_DIR:
+make docs VENDOR_DIR=$VENDOR_DIR
 
 # populate the search index by running
 ./yii search/rebuild
