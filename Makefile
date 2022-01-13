@@ -47,11 +47,11 @@ download-%: SOURCE_DIR=data/yii-$(subst download-,,$@)
 download-%: DOC_DIR=yii-docs-$(subst download-,,$@)
 download-%: VENDOR_DIR=vendor
 download-%: APIDOC_BIN=${VENDOR_DIR}/bin/apidoc
-download-%: LANGUAGES=$(shell find ${SOURCE_DIR}/docs/ | grep -ioP 'guide-[a-z-]+$$' | cut -c 7-)
+download-%: LANGUAGES=en $(shell find ${SOURCE_DIR}/docs/ | grep -ioP 'guide-[a-z-]+$$' | cut -c 7-)
 download-%: yii-%
 	cd ${SOURCE_DIR}/docs && ln -sf guide guide-en
 	${APIDOC_BIN} api ${SOURCE_DIR}/framework,${SOURCE_DIR}/extensions ${TARGET_DIR}/${DOC_DIR} --interactive=0
-	for l in ${LANGUAGES} ; do \
+	for l in $(shell echo "${LANGUAGES}" | xargs -n1 | sort -u | xargs) ; do \
 		echo ""  ; \
 		echo "building guide and api package for language $$l..."  ; \
 		test -d ${TARGET_DIR}/${DOC_DIR}-$$l && rm -rf ${TARGET_DIR}/${DOC_DIR}-$$l  ; \
