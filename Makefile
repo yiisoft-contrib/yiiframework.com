@@ -25,7 +25,7 @@ deploy:
 
 docs: api guide download
 
-api: api-1.0 api-1.1 api-2.0
+api: api-1.1 api-2.0
 	./yii search/rebuild api
 
 guide: guide-1.0 guide-1.1 guide-2.0
@@ -71,7 +71,7 @@ download-%: yii-%
 yii-1.0: composer
 	test -d data/yii-1.0 || git clone https://github.com/yiisoft/yii.git data/yii-1.0
 	cd data/yii-1.0 && git checkout 1.0.12 && git checkout master build/
-	COMPOSER=composer.yii1.0.json php data/composer.phar install
+	COMPOSER=composer.yii-1.0.json php data/composer.phar install
 
 yii-1.1: composer
 	test -d data/yii-1.1 || git clone https://github.com/yiisoft/yii.git data/yii-1.1

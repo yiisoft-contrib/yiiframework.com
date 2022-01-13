@@ -107,6 +107,10 @@ make docs
 # If you are using Docker image, you need to additionally pass VENDOR_DIR:
 make docs VENDOR_DIR=$VENDOR_DIR
 
+# Yii 1.0 API docs generation. They are already included in VCS. Run this only if layout has changed.
+docker build -f Dockerfile.yii-1.0 -t yiiframeworkcom-yii-1.0 .
+docker run -it -v $PWD/data/api-1.0:/code/data/api-1.0 yiiframeworkcom-yii-1.0
+
 # populate the search index by running
 ./yii search/rebuild
 ```

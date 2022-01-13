@@ -2,7 +2,7 @@
 
 FROM php:7.4-fpm
 
-# System packages and dependencies
+# System packages
 
 RUN apt-get update
 RUN apt-get install -y texlive-full
