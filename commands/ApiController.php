@@ -7,6 +7,7 @@ use app\models\Extension;
 use Yii;
 use yii\apidoc\models\ClassDoc;
 use yii\apidoc\models\ConstDoc;
+use yii\apidoc\models\Context;
 use yii\apidoc\models\EventDoc;
 use yii\apidoc\models\InterfaceDoc;
 use yii\apidoc\models\MethodDoc;
@@ -111,6 +112,15 @@ class ApiController extends \yii\apidoc\commands\ApiController
 </p>
 HTML
                 , file_get_contents($indexFilePath)));
+
+            $context = new Context();
+            $files = $this->searchFiles([Yii::getAlias("@app/data/yii-$version/")]);
+            foreach ($files as $file) {
+                $context->addFile($file);
+            }
+
+            $types = array_merge($context->classes, $context->interfaces, $context->traits);
+            $this->writeJsonFiles1x($target, $types);
 
             $this->stdout("Finished API $version.\n\n", Console::FG_GREEN);
         }
