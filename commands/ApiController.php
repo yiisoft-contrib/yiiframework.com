@@ -114,9 +114,14 @@ HTML
                 , file_get_contents($indexFilePath)));
 
             $context = new Context();
-            $files = $this->searchFiles([Yii::getAlias("@app/data/yii-$version/")]);
+
+            $files = $this->searchFiles([Yii::getAlias("@app/data/yii-$version/framework")]);
             foreach ($files as $file) {
                 $context->addFile($file);
+            }
+
+            if (method_exists($context, 'processFiles')) {
+                $context->processFiles();
             }
 
             $types = array_merge($context->classes, $context->interfaces, $context->traits);
