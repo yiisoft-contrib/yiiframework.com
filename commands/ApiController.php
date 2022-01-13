@@ -113,20 +113,7 @@ class ApiController extends \yii\apidoc\commands\ApiController
 HTML
                 , file_get_contents($indexFilePath)));
 
-            $context = new Context();
-
-            $files = $this->searchFiles([Yii::getAlias("@app/data/yii-$version/framework")]);
-            foreach ($files as $file) {
-                $context->addFile($file);
-            }
-
-            if (method_exists($context, 'processFiles')) {
-                $context->processFiles();
-            }
-
-            $types = array_merge($context->classes, $context->interfaces, $context->traits);
-            $this->writeJsonFiles1x($target, $types);
-
+            $this->writeJsonFiles1x($target, $version);
             $this->stdout("Finished API $version.\n\n", Console::FG_GREEN);
         }
 
@@ -255,8 +242,22 @@ HTML
         file_put_contents("$target/json/typeMembers.json", Json::encode(array_values($members)));
     }
 
-    public function writeJsonFiles1x($target, $types)
+    public function writeJsonFiles1x($target, $version)
     {
+        // Cache is not used intentionally, because saved time is insignificant.
+        $context = new Context();
+
+        $files = $this->searchFiles([Yii::getAlias("@app/data/yii-$version/framework")]);
+        foreach ($files as $file) {
+            $context->addFile($file);
+        }
+
+        if (method_exists($context, 'processFiles')) {
+            $context->processFiles();
+        }
+
+        $types = array_merge($context->classes, $context->interfaces, $context->traits);
+
         FileHelper::createDirectory("$target/json");
 
         // write types file:
