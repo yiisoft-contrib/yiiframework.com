@@ -11,6 +11,7 @@
         "ext-curl": "*",
         "ext-fileinfo": "*",
         "ext-gd": "*",
+        "ext-json": "*",
         "ext-intl": "*",
         "ext-mbstring": "*",
         "ext-pdo_mysql": "*",
