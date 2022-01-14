@@ -70,9 +70,6 @@ Continue with the following commands:
 # build contributors page (this may take some time as it downloads a lot of user avatars from github)
 ./yii contributors/generate
 
-# build js/css files
-gulp build
-
 # If you're on Windows you have to manually symlink or copy
 # %appdata%/npm/node_modules/browser-sync to your app's node_modules
 
