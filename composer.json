@@ -8,6 +8,14 @@
     "minimum-stability": "dev",
     "require": {
         "php": "^7.4",
+        "ext-curl": "*",
+        "ext-fileinfo": "*",
+        "ext-gd": "*",
+        "ext-intl": "*",
+        "ext-mbstring": "*",
+        "ext-pdo_mysql": "*",
+        "ext-zend-opcache": "*",
+        "ext-zip": "*",
         "2amigos/yii2-selectize-widget": "~1.0.1",
         "2amigos/yii2-taggable-behavior": "~1.0.1",
         "abraham/twitteroauth": "~0.7.4",
@@ -62,7 +70,10 @@
             "enabled": false
         },
         "platform": {"php": "7.4"},
-        "sort-packages": true
+        "sort-packages": true,
+        "allow-plugins": {
+            "yiisoft/yii2-composer": true
+        }
     },
     "repositories": [
         {
