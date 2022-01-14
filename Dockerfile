@@ -10,6 +10,7 @@ RUN apt-get install -y python3-pygments
 RUN apt-get install -y libnotify-bin
 RUN apt-get install -y git
 RUN apt-get install -y nginx
+RUN apt-get install -y rsync
 
 # PHP extensions
 # https://github.com/mlocati/docker-php-extension-installer

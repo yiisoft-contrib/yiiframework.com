@@ -5,7 +5,8 @@ services:
         volumes:
             - .:/code/src
         command: >
-            bash -c "gulp &
+            bash -c "rsync -arv /code/vendor /code/node_modules /code/src &
+            gulp &
             service nginx start &&
             php-fpm"
     mariadb:
