@@ -48,6 +48,7 @@ Adjust `config/params-local.php`. Make sure to configure the following propertie
         'scope' => 'user:email',
     ],
 ],
+'siteAbsoluteUrl' => 'http://yiiframework.local',
 
 // https://apps.twitter.com/app/new
 // After creating an app you need to fill accessToken and accessTokenSecret:
