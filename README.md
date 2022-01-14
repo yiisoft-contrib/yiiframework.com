@@ -33,21 +33,10 @@ You can use the script `run_pageres.sh` at the root of the source directory to g
 
 ## Initial setup
 
-```sh
-# initialize the application, choose "development"
-./init
-```
-
-Configure database connection in `config/params-local.php`. You may copy-paste and adjust `components.db` from
-`config/params.php`. Make sure to configure the following properties:
+Adjust `config/params-local.php`. Make sure to configure the following properties:
 
 ```php
-'api.baseUrl' => '/doc/api',
-'guide.baseUrl' => '/doc/guide',
 'components.db' => [
-    // copy from params.php and adjust to your environment
-],
-'components.elasticsearch' => [
     // copy from params.php and adjust to your environment
 ],
 // only if you want to test github auth:
@@ -59,19 +48,14 @@ Configure database connection in `config/params-local.php`. You may copy-paste a
         'scope' => 'user:email',
     ],
 ],
-'siteAbsoluteUrl' => 'http://yiiframework.local',
 
-/**
- * @see https://apps.twitter.com/app/new
- *
- * After creating an app you need to fill accessToken and accessTokenSecret:
- *
- * Open App -> Keys and Access Tokens -> You Access Token -> Create my access token
- */
+// https://apps.twitter.com/app/new
+// After creating an app you need to fill accessToken and accessTokenSecret:
+// Open App -> Keys and Access Tokens -> You Access Token -> Create my access token
 'twitter.consumerKey' => '',
 'twitter.consumerSecret' => '',
 'twitter.accessToken' => '',
-'twitter.accessTokenSecret' => ''
+'twitter.accessTokenSecret' => '',
 ```
 
 Continue with the following commands:
