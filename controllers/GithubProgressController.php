@@ -7,7 +7,7 @@ use Yii;
 use yii\data\ArrayDataProvider;
 use yii\web\NotFoundHttpException;
 
-class StatusController extends BaseController
+class GithubProgressController extends BaseController
 {
     public $sectionTitle = 'Release Statuses';
 

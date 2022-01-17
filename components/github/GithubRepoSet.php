@@ -6,7 +6,7 @@ use Github\Api\GraphQL;
 use Github\Client as GithubClient;
 use yii\helpers\ArrayHelper;
 
-class GithubRepoStatus
+class GithubRepoSet
 {
     private GithubClient $client;
     private array $repositories;
