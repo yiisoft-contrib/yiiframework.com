@@ -3,7 +3,9 @@
 namespace app\controllers;
 
 use app\components\github\GithubRepoStatus;
+use Github\Client as GithubClient;
 use Yii;
+use yii\base\InvalidConfigException;
 use yii\data\ArrayDataProvider;
 use yii\web\NotFoundHttpException;
 
@@ -18,39 +20,30 @@ class StatusController extends BaseController
      */
     public function actionIndex($version = '2.0')
     {
-        $packages = [
-            '1.1' => [],
-            '2.0' => [],
-            '3.0' => [],
-        ];
-
+        $packages = ['1.1' => [], '2.0' => [], '3.0' => []];
         $versions = array_keys($packages);
 
         if (!in_array($version, $versions, true)) {
             throw new NotFoundHttpException('The requested version does not exist.');
         }
 
-        $client = new \Github\Client();
         $tokenFile = Yii::getAlias('@app/data') . '/github.token';
-        if (file_exists($tokenFile)) {
-            $token = trim(file_get_contents($tokenFile));
-            $client->authenticate($token, null, \Github\Client::AUTH_HTTP_TOKEN);
+        if (!file_exists($tokenFile)) {
+            throw new InvalidConfigException("Github token is missing. It must be located in $tokenFile.");
         }
+
+        $token = trim(file_get_contents($tokenFile));
+        $client = new GithubClient();
+        $client->authenticate($token, null, GithubClient::AUTH_HTTP_TOKEN);
 
         $packages[$version] = $this->getPackages($client, $version, $packages);
 
         $githubRepoStatus = new GithubRepoStatus(Yii::$app->getCache(), $client, $packages[$version], $version);
-
         $data = $githubRepoStatus->getData();
-
         $dataProvider = new ArrayDataProvider([
             'allModels' => $data,
             'sort' => [
-                'attributes' => [
-                    'repository',
-                    'no_release_for',
-                    'latest',
-                ],
+                'attributes' => ['repository', 'no_release_for', 'latest'],
                 'defaultOrder' => ['repository' => SORT_ASC],
             ],
             'pagination' => false,
@@ -69,23 +62,21 @@ class StatusController extends BaseController
         $this->sectionTitle = 'How about progress on Yii3 development?';
 
         $version = '3.0';
-
-        $packages = [
-            '3.0' => [],
-        ];
-
-        $packagesProgress = Yii::$app->cache->getOrSet('packages_progress' . $version, function () use ($version, $packages) {
-            $client = new \Github\Client();
+        $packages = [$version => []];
+        $cacheKey = 'packages_progress' . $version;
+        $packagesProgress = Yii::$app->cache->getOrSet($cacheKey, function () use ($version, $packages) {
             $tokenFile = Yii::getAlias('@app/data') . '/github.token';
-            if (file_exists($tokenFile)) {
-                $token = trim(file_get_contents($tokenFile));
-                $client->authenticate($token, null, \Github\Client::AUTH_HTTP_TOKEN);
+            if (!file_exists($tokenFile)) {
+                throw new InvalidConfigException("Github token is missing. It must be located in $tokenFile.");
             }
+
+            $token = trim(file_get_contents($tokenFile));
+            $client = new GithubClient();
+            $client->authenticate($token, null, GithubClient::AUTH_HTTP_TOKEN);
 
             $packages[$version] = $this->getPackages($client, $version, $packages);
 
             $githubRepoStatus = new GithubRepoStatus(Yii::$app->getCache(), $client, $packages[$version], $version);
-
             $data = $githubRepoStatus->getData();
 
             return [
@@ -94,43 +85,40 @@ class StatusController extends BaseController
                     return !empty($elem['latest']);
                 })),
             ];
-        }, 3600);
-
+        }, 60 * 60);
 
         return $this->render('yii3-progress', [
             'progress' => "{$packagesProgress['released']}/{$packagesProgress['all']}",
-            'progressPercent' => $packagesProgress['all'] > 0 ? round(100 * $packagesProgress['released'] / $packagesProgress['all']) : 0,
+            'progressPercent' => $packagesProgress['all'] > 0
+                ? round(100 * $packagesProgress['released'] / $packagesProgress['all'])
+                : 0,
         ]);
     }
 
-    private function getPackages($client, $version, $packages)
+    private function getPackages(GithubClient $client, string $version, array $packages): array
     {
         return Yii::$app->cache->getOrSet('packages' . $version, function () use ($client, $version, $packages) {
+            $httpClient = $client->getHttpClient();
             $packagesList = [];
             $i = 1;
-            try {
-                $httpClient = $client->getHttpClient();
-                while (!empty($packages)) {
-                    $response = $httpClient
-                        ->get("/orgs/yiisoft/repos?page=$i&per_page=100", ['Accept' => 'application/vnd.github.mercy-preview+json']);
-                    $packages = json_decode($response->getBody()->getContents());
-                    foreach ($packages as $package) {
-                        if (
-                            in_array('yii' . (int)$version, $package->topics, true)
-                            && !$package->archived
-                        ) {
-                            $packagesList[] = explode('/', $package->full_name);
-                        }
+
+            while (!empty($packages)) {
+                $response = $httpClient->get(
+                    "/orgs/yiisoft/repos?page=$i&per_page=100",
+                    ['Accept' => 'application/vnd.github.mercy-preview+json'],
+                );
+                $packages = json_decode($response->getBody()->getContents());
+
+                foreach ($packages as $package) {
+                    if (in_array('yii' . (int) $version, $package->topics, true) && !$package->archived) {
+                        $packagesList[] = explode('/', $package->full_name);
                     }
-                    if ($response->getStatusCode() !== 200) {
-                        break;
-                    }
-                    $i++;
                 }
-                sort($packagesList);
-            } catch (\Exception $e) {
-                return $packages[$version];
+
+                $i++;
             }
+
+            sort($packagesList);
 
             return $packagesList;
         }, 60 * 60 * 24);

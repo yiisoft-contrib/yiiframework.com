@@ -31,7 +31,6 @@ return [
     'status' => 'status/index',
     'yii3-progress' => 'status/yii3-progress',
 
-
     // RSS
     'rss.xml' => 'rss/all',
 
@@ -69,7 +68,6 @@ return [
     // search
     'search' => 'search/global',
     'search/suggest' => 'search/suggest',
-//    'search/as-you-type' => 'search/as-you-type',
     'search/opensearch-suggest' => 'search/opensearch-suggest',
     'opensearch.xml' => 'search/opensearch-description',
 
