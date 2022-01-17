@@ -5,7 +5,7 @@
     "homepage": "https://www.yiiframework.com/",
     "type": "project",
     "license": "BSD-3-Clause",
-    "minimum-stability": "dev",
+    "minimum-stability": "stable",
     "require": {
         "php": "^7.4",
         "ext-curl": "*",
@@ -46,7 +46,7 @@
         "scrivo/highlight.php": "~9.18",
         "yetanotherape/diff-match-patch": "~1.0.0",
         "yiisoft/yii2": "~2.0.44",
-        "yiisoft/yii2-apidoc": "dev-master#2a49f1ff6d7ea7c228f7c7201e79db06c929e1db",
+        "yiisoft/yii2-apidoc": "~3.0.0",
         "yiisoft/yii2-authclient": "~2.2.0",
         "yiisoft/yii2-bootstrap": "~2.0.6",
         "yiisoft/yii2-elasticsearch": "~2.1.0",
