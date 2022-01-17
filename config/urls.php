@@ -26,10 +26,10 @@ return [
     // go
     'go/slack' => 'go/slack',
 
-    // status
-    'status/<version:\\d\\.\\d>' => 'status/index',
-    'status' => 'status/index',
-    'yii3-progress' => 'status/yii3-progress',
+    // Github progress
+    'status/<version:\\d\\.\\d>' => 'github-progress/index',
+    'status' => 'github-progress/index',
+    'yii3-progress' => 'github-progress/yii3-progress',
 
     // RSS
     'rss.xml' => 'rss/all',

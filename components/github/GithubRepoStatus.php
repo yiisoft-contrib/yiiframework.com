@@ -3,25 +3,18 @@
 namespace app\components\github;
 
 use Github\Api\GraphQL;
-use Github\Client;
-use yii\caching\CacheInterface;
+use Github\Client as GithubClient;
 use yii\helpers\ArrayHelper;
 
 class GithubRepoStatus
 {
-    const RELEASES_CACHE_DURATION = 3600; // 1 hour
+    private GithubClient $client;
+    private array $repositories;
 
-    private $cache;
-    private $client;
-    private $repositories;
-    private $version;
-
-    public function __construct(CacheInterface $cache, Client $client, $repositories, $version)
+    public function __construct(array $repositories, GithubClient $client)
     {
-        $this->client = $client;
-        $this->cache = $cache;
         $this->repositories = $repositories;
-        $this->version = $version;
+        $this->client = $client;
     }
 
     private function getGraphQLQuery()
@@ -116,80 +109,73 @@ GRAPHQL;
 
     public function getData()
     {
-        return $this->cache->getOrSet(
-            'graphql/repositories-statuses/' . $this->version,
-            function () {
-                $query = $this->getGraphQLQuery();
-                $results = (new GraphQL($this->client))->execute($query);
+        $query = $this->getGraphQLQuery();
+        $results = (new GraphQL($this->client))->execute($query);
 
-                $data = [];
-                if (isset($results['data'])) {
-                    foreach ($results['data'] as $repository) {
-                        $datum = [
-                            'repository' => $repository['nameWithOwner'],
-                            'issues' => $repository['issues']['totalCount'],
-                            'pullRequests' => $repository['pullRequests']['totalCount'],
-                            'latest' => '',
-                            'no_release_for' => null,
-                            'diff' => '',
-                            'status' => "https://travis-ci.com/{$repository['nameWithOwner']}.svg",
-                            'githubStatus' => "https://github.com/{$repository['nameWithOwner']}/workflows/build/badge.svg",
-                            'coverage' => "https://scrutinizer-ci.com/g/{$repository['nameWithOwner']}/badges/coverage.png",
-                            'quality' => "https://scrutinizer-ci.com/g/{$repository['nameWithOwner']}/badges/quality-score.png",
-                            'mergedSinceRelease' => [],
-                        ];
+        $data = [];
+        if (isset($results['data'])) {
+            foreach ($results['data'] as $repository) {
+                $datum = [
+                    'repository' => $repository['nameWithOwner'],
+                    'issues' => $repository['issues']['totalCount'],
+                    'pullRequests' => $repository['pullRequests']['totalCount'],
+                    'latest' => '',
+                    'no_release_for' => null,
+                    'diff' => '',
+                    'status' => "https://travis-ci.com/{$repository['nameWithOwner']}.svg",
+                    'githubStatus' => "https://github.com/{$repository['nameWithOwner']}/workflows/build/badge.svg",
+                    'coverage' => "https://scrutinizer-ci.com/g/{$repository['nameWithOwner']}/badges/coverage.png",
+                    'quality' => "https://scrutinizer-ci.com/g/{$repository['nameWithOwner']}/badges/quality-score.png",
+                    'mergedSinceRelease' => [],
+                ];
 
-                        $versions = $this->getVersionsForRepository($repository);
+                $versions = $this->getVersionsForRepository($repository);
 
-                        if (count($versions)) {
-                            uksort($versions, 'version_compare');
+                if (count($versions)) {
+                    uksort($versions, 'version_compare');
 
-                            $date = end($versions);
-                            $latest = key($versions);
+                    $date = end($versions);
+                    $latest = key($versions);
 
-                            $datum['latest'] = $latest;
+                    $datum['latest'] = $latest;
 
-                            $latestDate = new \DateTime($date);
-                            $today = new \DateTime();
+                    $latestDate = new \DateTime($date);
+                    $today = new \DateTime();
 
-                            $datum['no_release_for'] = $today->diff($latestDate)->format('%a');
+                    $datum['no_release_for'] = $today->diff($latestDate)->format('%a');
 
-                            $datum['diff'] = "https://github.com/{$repository['nameWithOwner']}/compare/$latest...master";
+                    $datum['diff'] = "https://github.com/{$repository['nameWithOwner']}/compare/$latest...master";
 
-                            $mergedSinceRelease = [];
-                            foreach ($repository['mergedPRs']['nodes'] as $pr) {
-                                $mergedAt = new \DateTime($pr['mergedAt']);
-                                if ($mergedAt > $latestDate) {
-                                    $mergedSinceRelease[] = $pr;
-                                }
-                            }
-
-                            $datum['mergedSinceRelease'] = $mergedSinceRelease;
-
+                    $mergedSinceRelease = [];
+                    foreach ($repository['mergedPRs']['nodes'] as $pr) {
+                        $mergedAt = new \DateTime($pr['mergedAt']);
+                        if ($mergedAt > $latestDate) {
+                            $mergedSinceRelease[] = $pr;
                         }
-
-
-                        $data[] = $datum;
                     }
-                } elseif (isset(
-                    $results['errors'][0]['message'],
-                    $results['errors'][0]['locations'][0]['line']
-                )) {
-                    throw new GithubParseException(
-                        $results['errors'][0]['message'],
-                        $query,
-                        $results['errors'][0]['locations'][0]['line']
-                    );
-                } elseif (isset($results['errors'][0]['message'])) {
-                    throw new GithubException($results['errors'][0]['message']);
-                } else {
-                    throw new GithubException('Unable to perform query.');
+
+                    $datum['mergedSinceRelease'] = $mergedSinceRelease;
+
                 }
 
-                return $data;
-            },
-            self::RELEASES_CACHE_DURATION
-        );
-    }
 
+                $data[] = $datum;
+            }
+        } elseif (isset(
+            $results['errors'][0]['message'],
+            $results['errors'][0]['locations'][0]['line']
+        )) {
+            throw new GithubParseException(
+                $results['errors'][0]['message'],
+                $query,
+                $results['errors'][0]['locations'][0]['line']
+            );
+        } elseif (isset($results['errors'][0]['message'])) {
+            throw new GithubException($results['errors'][0]['message']);
+        } else {
+            throw new GithubException('Unable to perform query.');
+        }
+
+        return $data;
+    }
 }
