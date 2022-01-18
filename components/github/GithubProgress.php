@@ -11,11 +11,14 @@ class GithubProgress
 {
     const VERSIONS = ['1.1', '2.0', '3.0'];
 
-    private GithubClient $client;
+    private $client;
+
+    private $version;
+
     /**
      * @var array|null Repositories for all versions.
      */
-    private static ?array $allResponseRepositories = null;
+    private static $allResponseRepositories = null;
 
     public function __construct(string $version, GithubClient $client)
     {
@@ -60,7 +63,7 @@ class GithubProgress
 
             $response = $this->client->getHttpClient()->get(
                 "/orgs/yiisoft/repos?page=$i&per_page=100",
-                ['Accept' => 'application/vnd.github.mercy-preview+json'],
+                ['Accept' => 'application/vnd.github.mercy-preview+json']
             );
 
             echo "Received organization repositories, page $i.\n";
