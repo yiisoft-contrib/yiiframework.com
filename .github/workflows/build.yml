@@ -77,7 +77,7 @@ jobs:
           sed -i "s/'cookieValidationKey' => ''/'cookieValidationKey' => 'testkey'/" config/web-local.php
 
       - name: Install node dependencies
-        run: npm install -g gulp-cli && npm install -g yarn && yarn install
+        run: npm install -g gulp-cli && npm install
 
       - name: Compile assets
         run: touch assets/src/scss/2-vendors/contributors.css && gulp build
