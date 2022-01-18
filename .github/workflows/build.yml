@@ -63,7 +63,7 @@ jobs:
             php${{ matrix.php }}-composer-
 
       - name: Install dependencies with Composer
-        run: composer update --prefer-dist --no-interaction --no-progress --optimize-autoloader --ansi && ls -la vendor/bower-asset/scrollup
+        run: composer update --prefer-dist --no-interaction --no-progress --optimize-autoloader --ansi
 
       - name: Set up application
         run: |
