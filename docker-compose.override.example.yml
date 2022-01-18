@@ -1,15 +1,15 @@
 services:
-    web:
-        ports:
-            - "8080:8080"
-    mariadb:
-        ports:
-            - "3306:3306"
-        environment:
-            MYSQL_ROOT_PASSWORD:
-            MYSQL_DATABASE:
-            MYSQL_USER:
-            MYSQL_PASSWORD:
-    elasticsearch:
-        ports:
-            - "9200:9200"
+  web:
+    ports:
+      - "8080:8080"
+  mariadb:
+    ports:
+      - "3306:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD:
+      MYSQL_DATABASE:
+      MYSQL_USER:
+      MYSQL_PASSWORD:
+  elasticsearch:
+    ports:
+      - "9200:9200"

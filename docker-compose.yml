@@ -1,18 +1,18 @@
 version: '3'
 services:
-    web:
-        build: .
-        volumes:
-            - .:/code/src
-        command: >
-            bash -c "gulp &
-            rsync -arv /code/vendor /code/node_modules /code/src &
-            ./init --env=Development --overwrite=n &&
-            service nginx start &&
-            php-fpm"
-    mariadb:
-        image: mariadb:10.1.48
-    redis:
-        image: redis:3.2.6
-    elasticsearch:
-        image: elasticsearch:5.6.16
+  web:
+    build: .
+    volumes:
+      - .:/code/src
+    command: >
+      bash -c "gulp &
+      rsync -arv /code/vendor /code/node_modules /code/src &
+      ./init --env=Development --overwrite=n &&
+      service nginx start &&
+      php-fpm"
+  mariadb:
+    image: mariadb:10.1.48
+  redis:
+    image: redis:3.2.6
+  elasticsearch:
+    image: elasticsearch:5.6.16
