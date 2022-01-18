@@ -8,8 +8,8 @@ use yii\helpers\ArrayHelper;
 
 class GithubRepoSet
 {
-    private GithubClient $client;
-    private array $repositories;
+    private $client;
+    private $repositories;
 
     public function __construct(array $repositories, GithubClient $client)
     {
