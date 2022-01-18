@@ -18,14 +18,14 @@ jobs:
       matrix:
         os:
           - ubuntu-latest
-        php-version:
+        php:
           - "7.0"
-        mariadb-version:
+        mariadb:
           - "10.5"
 
     services:
       mariadb:
-        image: mariadb:${{ matrix.mariadb-version }}
+        image: mariadb:${{ matrix.mariadb }}
         env:
           MYSQL_ROOT_PASSWORD: root
           MYSQL_DATABASE: yiitest
