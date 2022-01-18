@@ -54,10 +54,6 @@ jobs:
         if: matrix.os == 'ubuntu-latest'
         run: echo "COMPOSER_CACHE_DIR=$(composer config cache-dir)" >> $GITHUB_ENV
 
-      - name: Determine composer cache directory on Windows
-        if: matrix.os == 'windows-latest'
-        run: echo "COMPOSER_CACHE_DIR=~\AppData\Local\Composer" | Out-File -FilePath $env:GITHUB_ENV -Encoding utf8 -Append
-
       - name: Cache dependencies installed with composer
         uses: actions/cache@v2
         with:
@@ -67,7 +63,7 @@ jobs:
             php${{ matrix.php }}-composer-
 
       - name: Install dependencies with Composer
-        run: composer update --prefer-dist --no-interaction --no-progress --optimize-autoloader --ansi && ls -la vendor/bower-asset
+        run: composer update --prefer-dist --no-interaction --no-progress --optimize-autoloader --ansi && ls -la vendor/bower-asset/scrollup
 
       - name: Set up application
         run: |

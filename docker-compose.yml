@@ -6,7 +6,7 @@ services:
       - .:/code/src
     command: >
       bash -c "gulp &
-      rsync -arv /code/vendor /code/node_modules /code/src &
+      rsync -arv /code/vendor /code/node_modules /code/composer.lock /code/src &
       ./init --env=Development --overwrite=n &&
       service nginx start &&
       php-fpm"
