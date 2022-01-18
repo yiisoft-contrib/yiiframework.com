@@ -17,10 +17,10 @@ return [
         },
     ],
     'components.forumAdapter' => [
-        'class' => app\components\forum\DummyAdapter::class
+        'class' => app\components\forum\DummyAdapter::class,
     ],
     'components.cache' => [
-        'class' => YII_DEBUG ? yii\caching\DummyCache::class : yii\caching\FileCache::class,
+        'class' => yii\caching\FileCache::class,
     ],
     'components.mailer' => [
         'class' => yii\swiftmailer\Mailer::class,

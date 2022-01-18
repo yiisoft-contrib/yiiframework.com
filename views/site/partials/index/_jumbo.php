@@ -24,7 +24,7 @@ $this->registerJs("
                 </p>
             </div>
             <div class="col-md-4 col-link">
-                <a href="<?= Url::to(['status/yii3-progress']) ?>" class="btn">Looking for Yii 3 progress?</a>
+                <a href="<?= Url::to(['github-progress/yii3-progress']) ?>" class="btn">Looking for Yii 3 progress?</a>
             </div>
         </div>
     </div>
