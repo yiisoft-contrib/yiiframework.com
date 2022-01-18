@@ -10,8 +10,6 @@ use yii\base\InvalidConfigException;
 class GithubProgress
 {
     const VERSIONS = ['1.1', '2.0', '3.0'];
-    const PACKAGES_CACHE_KEY_PREFIX = 'github_progress_packages';
-    const PACKAGES_CACHE_DURATION = 60 * 60 * 24;
 
     private GithubClient $client;
     /**
