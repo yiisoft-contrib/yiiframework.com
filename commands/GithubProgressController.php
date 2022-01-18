@@ -13,7 +13,7 @@ class GithubProgressController extends Controller
     const RETRY_ATTEMPTS_COUNT = 3;
     const RETRY_DELAY = 5; // seconds
 
-    public function actionIndex(): void
+    public function actionIndex()
     {
         foreach (GithubProgress::VERSIONS as $version) {
             for ($attempt = 1; $attempt <= static::RETRY_ATTEMPTS_COUNT; $attempt++) {
