@@ -19,7 +19,7 @@ jobs:
         os:
           - ubuntu-latest
         php:
-          - "7.0"
+          - "7.4"
         mariadb:
           - "10.5"
 
@@ -40,7 +40,7 @@ jobs:
       - name: Set up NodeJS
         uses: actions/setup-node@v2
         with:
-          node-version: '12'
+          node-version: '13'
 
       - name: Install PHP with extensions
         uses: shivammathur/setup-php@v2
