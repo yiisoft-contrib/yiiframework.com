@@ -85,3 +85,4 @@ jobs:
               run: |
                   php -S localhost:8080 -t public > ./runtime/yii.log 2>&1 &
                   vendor/bin/codecept run
+
