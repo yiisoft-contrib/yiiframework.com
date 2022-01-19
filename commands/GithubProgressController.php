@@ -25,9 +25,15 @@ class GithubProgressController extends Controller
 
                     break;
                 } catch (RuntimeException $e) {
+                    if (strpos($e->getMessage(), 'timeout' === false)) {
+                        throw $e;
+                    }
+
                     $retryDelay = static::RETRY_DELAY;
-                    $exception = (string) $e;
-                    $this->stderr("Failed to get data for version $version:\n$exception\n\nRetrying in $retryDelay seconds...\n");
+                    $message = "Failed to get data for version $version because of timeout.\n
+                    Retrying in $retryDelay seconds...\n";
+
+                    $this->stderr($message);
                     sleep(static::RETRY_DELAY);
                 }
             }
