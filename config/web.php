@@ -20,7 +20,7 @@ $config = [
     'language' => 'en',
     'timeZone' => 'UTC',
     'components' => [
-        'session' => YII_ENV === 'test' ? ['class' => \yii\web\DbSession::class] : [
+        'session' => YII_ENV === 'test' ? ['class' => \yii\web\CacheSession::class] : [
             'class' => yii\redis\Session::class,
             'redis' => [
                 'class' => yii\redis\Connection::class,
