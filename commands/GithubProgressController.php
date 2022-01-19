@@ -25,7 +25,8 @@ class GithubProgressController extends Controller
 
                     break;
                 } catch (RuntimeException $e) {
-                    if (strpos($e->getMessage(), 'timeout' === false)) {
+                    $keyText = 'This may be the result of a timeout, or it could be a GitHub bug.';
+                    if (strpos($e->getMessage(), $keyText === false)) {
                         throw $e;
                     }
 
