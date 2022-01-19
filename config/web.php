@@ -20,11 +20,11 @@ $config = [
     'language' => 'en',
     'timeZone' => 'UTC',
     'components' => [
-        'session' => [
+        'session' => YII_ENV === 'test' ? [\yii\web\DbSession::class] : [
             'class' => yii\redis\Session::class,
             'redis' => [
                 'class' => yii\redis\Connection::class,
-                'hostname' => YII_ENV === 'dev' ? 'redis' : 'localhost',
+                'hostname' => YII_ENV === 'prod' ? 'localhost' : 'redis',
                 'database' => 0,
             ],
             'cookieParams' => [
