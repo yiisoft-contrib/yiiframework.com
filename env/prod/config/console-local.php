@@ -5,13 +5,6 @@ return [
         'rollbar',
     ],
     'components' => [
-        'cache' => [
-            'class' => yii\redis\Cache::class,
-            'redis' => [
-                'class' => yii\redis\Connection::class,
-                'database' => 1,
-            ],
-        ],
         'errorHandler' => [
             'class' => 'baibaratsky\yii\rollbar\console\ErrorHandler',
         ],

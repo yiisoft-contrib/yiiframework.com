@@ -20,6 +20,17 @@ $config = [
     'language' => 'en',
     'timeZone' => 'UTC',
     'components' => [
+        'session' => [
+            'class' => yii\redis\Session::class,
+            'redis' => [
+                'class' => yii\redis\Connection::class,
+                'database' => 0,
+            ],
+            'cookieParams' => [
+                'httponly' => true,
+                'secure' => true,
+            ],
+        ],
         'cache' => $params['components.cache'],
         'db' => $params['components.db'],
         'elasticsearch' => $params['components.elasticsearch'],
