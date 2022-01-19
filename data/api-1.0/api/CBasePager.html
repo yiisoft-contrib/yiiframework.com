@@ -1,0 +1,910 @@
+<h1>CBasePager</h1>
+<div id="nav">
+<a href="/doc/api/1.0/">All Packages</a>
+| <a href="#properties">Properties</a>
+| <a href="#methods">Methods</a>
+</div>
+
+<table class="summaryTable docClass">
+<colgroup>
+	<col class="col-name" />
+	<col class="col-value" />
+</colgroup>
+<tr>
+  <th>Package</th>
+  <td><a href="/doc/api/1.0/#system.web.widgets.pagers">system.web.widgets.pagers</a></td>
+</tr>
+<tr>
+  <th>Inheritance</th>
+  <td>abstract class CBasePager &raquo;
+<a href="/doc/api/1.0/CWidget">CWidget</a> &raquo;
+<a href="/doc/api/1.0/CBaseController">CBaseController</a> &raquo;
+<a href="/doc/api/1.0/CComponent">CComponent</a></td>
+</tr>
+<tr>
+  <th>Subclasses</th>
+  <td><a href="/doc/api/1.0/CLinkPager">CLinkPager</a>, <a href="/doc/api/1.0/CListPager">CListPager</a></td>
+</tr>
+<tr>
+  <th>Since</th>
+  <td>1.0</td>
+</tr>
+<tr>
+  <th>Version</th>
+  <td>$Id$</td>
+</tr>
+<tr>
+  <th>Source Code</th>
+  <td><a class="sourceLink" href="https://github.com/yiisoft/yii/blob/1.0.12/framework/web/widgets/pagers/CBasePager.php">framework/web/widgets/pagers/CBasePager.php</a></td>
+</tr>
+</table>
+
+<div id="classDescription">
+CBasePager is the base class for all pagers.
+<br/><br/>
+It provides the calculation of page count and maintains the current page.</div>
+<a name="properties"></a>
+
+<div class="summary docProperty">
+<h2>Public Properties</h2>
+
+<p><a href="#" class="toggle">Hide inherited properties</a></p>
+
+<table class="summaryTable">
+<colgroup>
+	<col class="col-property" />
+	<col class="col-type" />
+	<col class="col-description" />
+	<col class="col-defined" />
+</colgroup>
+<tr>
+  <th>Property</th><th>Type</th><th>Description</th><th>Defined By</th>
+</tr>
+<tr class="inherited" id="actionPrefix">
+  <td><a href="/doc/api/1.0/CWidget#actionPrefix-detail">actionPrefix</a></td>
+  <td>string</td>
+  <td>the prefix to the IDs of the <a href="/doc/api/1.0/CBasePager#actions">actions</a>.</td>
+  <td><a href="/doc/api/1.0/CWidget">CWidget</a></td>
+</tr>
+<tr class="inherited" id="controller">
+  <td><a href="/doc/api/1.0/CWidget#controller-detail">controller</a></td>
+  <td><a href="/doc/api/1.0/CController">CController</a></td>
+  <td>the controller that this widget belongs to.</td>
+  <td><a href="/doc/api/1.0/CWidget">CWidget</a></td>
+</tr>
+<tr id="currentPage">
+  <td><a href="/doc/api/1.0/CBasePager#currentPage-detail">currentPage</a></td>
+  <td>integer</td>
+  <td>the zero-based index of the current page.</td>
+  <td>CBasePager</td>
+</tr>
+<tr class="inherited" id="id">
+  <td><a href="/doc/api/1.0/CWidget#id-detail">id</a></td>
+  <td>string</td>
+  <td>id of the widget.</td>
+  <td><a href="/doc/api/1.0/CWidget">CWidget</a></td>
+</tr>
+<tr id="itemCount">
+  <td><a href="/doc/api/1.0/CBasePager#itemCount-detail">itemCount</a></td>
+  <td>integer</td>
+  <td>total number of items.</td>
+  <td>CBasePager</td>
+</tr>
+<tr class="inherited" id="owner">
+  <td><a href="/doc/api/1.0/CWidget#owner-detail">owner</a></td>
+  <td><a href="/doc/api/1.0/CBaseController">CBaseController</a></td>
+  <td>owner/creator of this widget.</td>
+  <td><a href="/doc/api/1.0/CWidget">CWidget</a></td>
+</tr>
+<tr id="pageCount">
+  <td><a href="/doc/api/1.0/CBasePager#pageCount-detail">pageCount</a></td>
+  <td>integer</td>
+  <td>number of pages</td>
+  <td>CBasePager</td>
+</tr>
+<tr id="pageSize">
+  <td><a href="/doc/api/1.0/CBasePager#pageSize-detail">pageSize</a></td>
+  <td>integer</td>
+  <td>number of items in each page.</td>
+  <td>CBasePager</td>
+</tr>
+<tr id="pages">
+  <td><a href="/doc/api/1.0/CBasePager#pages-detail">pages</a></td>
+  <td><a href="/doc/api/1.0/CPagination">CPagination</a></td>
+  <td>Returns the pagination information used by this pager.</td>
+  <td>CBasePager</td>
+</tr>
+<tr class="inherited" id="viewPath">
+  <td><a href="/doc/api/1.0/CWidget#viewPath-detail">viewPath</a></td>
+  <td>string</td>
+  <td>Returns the directory containing the view files for this widget.</td>
+  <td><a href="/doc/api/1.0/CWidget">CWidget</a></td>
+</tr>
+</table>
+</div>
+<a name="methods"></a>
+
+<div class="summary docMethod">
+<h2>Public Methods</h2>
+
+<p><a href="#" class="toggle">Hide inherited methods</a></p>
+
+<table class="summaryTable">
+<colgroup>
+	<col class="col-method" />
+	<col class="col-description" />
+	<col class="col-defined" />
+</colgroup>
+<tr>
+  <th>Method</th><th>Description</th><th>Defined By</th>
+</tr>
+<tr class="inherited" id="__call">
+  <td><a href="/doc/api/1.0/CComponent#__call-detail">__call()</a></td>
+  <td>Calls the named method which is not a class method.</td>
+  <td><a href="/doc/api/1.0/CComponent">CComponent</a></td>
+</tr>
+<tr class="inherited" id="__construct">
+  <td><a href="/doc/api/1.0/CWidget#__construct-detail">__construct()</a></td>
+  <td>Constructor.</td>
+  <td><a href="/doc/api/1.0/CWidget">CWidget</a></td>
+</tr>
+<tr class="inherited" id="__get">
+  <td><a href="/doc/api/1.0/CComponent#__get-detail">__get()</a></td>
+  <td>Returns a property value, an event handler list or a behavior based on its name.</td>
+  <td><a href="/doc/api/1.0/CComponent">CComponent</a></td>
+</tr>
+<tr class="inherited" id="__isset">
+  <td><a href="/doc/api/1.0/CComponent#__isset-detail">__isset()</a></td>
+  <td>Checks if a property value is null.</td>
+  <td><a href="/doc/api/1.0/CComponent">CComponent</a></td>
+</tr>
+<tr class="inherited" id="__set">
+  <td><a href="/doc/api/1.0/CComponent#__set-detail">__set()</a></td>
+  <td>Sets value of a component property.</td>
+  <td><a href="/doc/api/1.0/CComponent">CComponent</a></td>
+</tr>
+<tr class="inherited" id="__unset">
+  <td><a href="/doc/api/1.0/CComponent#__unset-detail">__unset()</a></td>
+  <td>Sets a component property to be null.</td>
+  <td><a href="/doc/api/1.0/CComponent">CComponent</a></td>
+</tr>
+<tr class="inherited" id="actions">
+  <td><a href="/doc/api/1.0/CWidget#actions-detail">actions()</a></td>
+  <td>Returns a list of actions that are used by this widget.</td>
+  <td><a href="/doc/api/1.0/CWidget">CWidget</a></td>
+</tr>
+<tr class="inherited" id="asa">
+  <td><a href="/doc/api/1.0/CComponent#asa-detail">asa()</a></td>
+  <td>Returns the named behavior object.</td>
+  <td><a href="/doc/api/1.0/CComponent">CComponent</a></td>
+</tr>
+<tr class="inherited" id="attachBehavior">
+  <td><a href="/doc/api/1.0/CComponent#attachBehavior-detail">attachBehavior()</a></td>
+  <td>Attaches a behavior to this component.</td>
+  <td><a href="/doc/api/1.0/CComponent">CComponent</a></td>
+</tr>
+<tr class="inherited" id="attachBehaviors">
+  <td><a href="/doc/api/1.0/CComponent#attachBehaviors-detail">attachBehaviors()</a></td>
+  <td>Attaches a list of behaviors to the component.</td>
+  <td><a href="/doc/api/1.0/CComponent">CComponent</a></td>
+</tr>
+<tr class="inherited" id="attachEventHandler">
+  <td><a href="/doc/api/1.0/CComponent#attachEventHandler-detail">attachEventHandler()</a></td>
+  <td>Attaches an event handler to an event.</td>
+  <td><a href="/doc/api/1.0/CComponent">CComponent</a></td>
+</tr>
+<tr class="inherited" id="beginCache">
+  <td><a href="/doc/api/1.0/CBaseController#beginCache-detail">beginCache()</a></td>
+  <td>Begins fragment caching.</td>
+  <td><a href="/doc/api/1.0/CBaseController">CBaseController</a></td>
+</tr>
+<tr class="inherited" id="beginClip">
+  <td><a href="/doc/api/1.0/CBaseController#beginClip-detail">beginClip()</a></td>
+  <td>Begins recording a clip.</td>
+  <td><a href="/doc/api/1.0/CBaseController">CBaseController</a></td>
+</tr>
+<tr class="inherited" id="beginContent">
+  <td><a href="/doc/api/1.0/CBaseController#beginContent-detail">beginContent()</a></td>
+  <td>Begins the rendering of content that is to be decorated by the specified view.</td>
+  <td><a href="/doc/api/1.0/CBaseController">CBaseController</a></td>
+</tr>
+<tr class="inherited" id="beginWidget">
+  <td><a href="/doc/api/1.0/CBaseController#beginWidget-detail">beginWidget()</a></td>
+  <td>Creates a widget and executes it.</td>
+  <td><a href="/doc/api/1.0/CBaseController">CBaseController</a></td>
+</tr>
+<tr class="inherited" id="canGetProperty">
+  <td><a href="/doc/api/1.0/CComponent#canGetProperty-detail">canGetProperty()</a></td>
+  <td>Determines whether a property can be read.</td>
+  <td><a href="/doc/api/1.0/CComponent">CComponent</a></td>
+</tr>
+<tr class="inherited" id="canSetProperty">
+  <td><a href="/doc/api/1.0/CComponent#canSetProperty-detail">canSetProperty()</a></td>
+  <td>Determines whether a property can be set.</td>
+  <td><a href="/doc/api/1.0/CComponent">CComponent</a></td>
+</tr>
+<tr class="inherited" id="createWidget">
+  <td><a href="/doc/api/1.0/CBaseController#createWidget-detail">createWidget()</a></td>
+  <td>Creates a widget and initializes it.</td>
+  <td><a href="/doc/api/1.0/CBaseController">CBaseController</a></td>
+</tr>
+<tr class="inherited" id="detachBehavior">
+  <td><a href="/doc/api/1.0/CComponent#detachBehavior-detail">detachBehavior()</a></td>
+  <td>Detaches a behavior from the component.</td>
+  <td><a href="/doc/api/1.0/CComponent">CComponent</a></td>
+</tr>
+<tr class="inherited" id="detachBehaviors">
+  <td><a href="/doc/api/1.0/CComponent#detachBehaviors-detail">detachBehaviors()</a></td>
+  <td>Detaches all behaviors from the component.</td>
+  <td><a href="/doc/api/1.0/CComponent">CComponent</a></td>
+</tr>
+<tr class="inherited" id="detachEventHandler">
+  <td><a href="/doc/api/1.0/CComponent#detachEventHandler-detail">detachEventHandler()</a></td>
+  <td>Detaches an existing event handler.</td>
+  <td><a href="/doc/api/1.0/CComponent">CComponent</a></td>
+</tr>
+<tr class="inherited" id="disableBehavior">
+  <td><a href="/doc/api/1.0/CComponent#disableBehavior-detail">disableBehavior()</a></td>
+  <td>Disables an attached behavior.</td>
+  <td><a href="/doc/api/1.0/CComponent">CComponent</a></td>
+</tr>
+<tr class="inherited" id="disableBehaviors">
+  <td><a href="/doc/api/1.0/CComponent#disableBehaviors-detail">disableBehaviors()</a></td>
+  <td>Disables all behaviors attached to this component.</td>
+  <td><a href="/doc/api/1.0/CComponent">CComponent</a></td>
+</tr>
+<tr class="inherited" id="enableBehavior">
+  <td><a href="/doc/api/1.0/CComponent#enableBehavior-detail">enableBehavior()</a></td>
+  <td>Enables an attached behavior.</td>
+  <td><a href="/doc/api/1.0/CComponent">CComponent</a></td>
+</tr>
+<tr class="inherited" id="enableBehaviors">
+  <td><a href="/doc/api/1.0/CComponent#enableBehaviors-detail">enableBehaviors()</a></td>
+  <td>Enables all behaviors attached to this component.</td>
+  <td><a href="/doc/api/1.0/CComponent">CComponent</a></td>
+</tr>
+<tr class="inherited" id="endCache">
+  <td><a href="/doc/api/1.0/CBaseController#endCache-detail">endCache()</a></td>
+  <td>Ends fragment caching.</td>
+  <td><a href="/doc/api/1.0/CBaseController">CBaseController</a></td>
+</tr>
+<tr class="inherited" id="endClip">
+  <td><a href="/doc/api/1.0/CBaseController#endClip-detail">endClip()</a></td>
+  <td>Ends recording a clip.</td>
+  <td><a href="/doc/api/1.0/CBaseController">CBaseController</a></td>
+</tr>
+<tr class="inherited" id="endContent">
+  <td><a href="/doc/api/1.0/CBaseController#endContent-detail">endContent()</a></td>
+  <td>Ends the rendering of content.</td>
+  <td><a href="/doc/api/1.0/CBaseController">CBaseController</a></td>
+</tr>
+<tr class="inherited" id="endWidget">
+  <td><a href="/doc/api/1.0/CBaseController#endWidget-detail">endWidget()</a></td>
+  <td>Ends the execution of the named widget.</td>
+  <td><a href="/doc/api/1.0/CBaseController">CBaseController</a></td>
+</tr>
+<tr class="inherited" id="getController">
+  <td><a href="/doc/api/1.0/CWidget#getController-detail">getController()</a></td>
+  <td>Returns the controller that this widget belongs to.</td>
+  <td><a href="/doc/api/1.0/CWidget">CWidget</a></td>
+</tr>
+<tr id="getCurrentPage">
+  <td><a href="/doc/api/1.0/CBasePager#getCurrentPage-detail">getCurrentPage()</a></td>
+  <td>Returns the zero-based index of the current page. Defaults to 0.</td>
+  <td>CBasePager</td>
+</tr>
+<tr class="inherited" id="getEventHandlers">
+  <td><a href="/doc/api/1.0/CComponent#getEventHandlers-detail">getEventHandlers()</a></td>
+  <td>Returns the list of attached event handlers for an event.</td>
+  <td><a href="/doc/api/1.0/CComponent">CComponent</a></td>
+</tr>
+<tr class="inherited" id="getId">
+  <td><a href="/doc/api/1.0/CWidget#getId-detail">getId()</a></td>
+  <td>Returns id of the widget.</td>
+  <td><a href="/doc/api/1.0/CWidget">CWidget</a></td>
+</tr>
+<tr id="getItemCount">
+  <td><a href="/doc/api/1.0/CBasePager#getItemCount-detail">getItemCount()</a></td>
+  <td>Returns total number of items.</td>
+  <td>CBasePager</td>
+</tr>
+<tr class="inherited" id="getOwner">
+  <td><a href="/doc/api/1.0/CWidget#getOwner-detail">getOwner()</a></td>
+  <td>Returns owner/creator of this widget. It could be either a widget or a controller.</td>
+  <td><a href="/doc/api/1.0/CWidget">CWidget</a></td>
+</tr>
+<tr id="getPageCount">
+  <td><a href="/doc/api/1.0/CBasePager#getPageCount-detail">getPageCount()</a></td>
+  <td>Returns number of pages</td>
+  <td>CBasePager</td>
+</tr>
+<tr id="getPageSize">
+  <td><a href="/doc/api/1.0/CBasePager#getPageSize-detail">getPageSize()</a></td>
+  <td>Returns number of items in each page.</td>
+  <td>CBasePager</td>
+</tr>
+<tr id="getPages">
+  <td><a href="/doc/api/1.0/CBasePager#getPages-detail">getPages()</a></td>
+  <td>Returns the pagination information used by this pager.</td>
+  <td>CBasePager</td>
+</tr>
+<tr class="inherited" id="getViewFile">
+  <td><a href="/doc/api/1.0/CWidget#getViewFile-detail">getViewFile()</a></td>
+  <td>Looks for the view script file according to the view name.</td>
+  <td><a href="/doc/api/1.0/CWidget">CWidget</a></td>
+</tr>
+<tr class="inherited" id="getViewPath">
+  <td><a href="/doc/api/1.0/CWidget#getViewPath-detail">getViewPath()</a></td>
+  <td>Returns the directory containing the view files for this widget.</td>
+  <td><a href="/doc/api/1.0/CWidget">CWidget</a></td>
+</tr>
+<tr class="inherited" id="hasEvent">
+  <td><a href="/doc/api/1.0/CComponent#hasEvent-detail">hasEvent()</a></td>
+  <td>Determines whether an event is defined.</td>
+  <td><a href="/doc/api/1.0/CComponent">CComponent</a></td>
+</tr>
+<tr class="inherited" id="hasEventHandler">
+  <td><a href="/doc/api/1.0/CComponent#hasEventHandler-detail">hasEventHandler()</a></td>
+  <td>Checks whether the named event has attached handlers.</td>
+  <td><a href="/doc/api/1.0/CComponent">CComponent</a></td>
+</tr>
+<tr class="inherited" id="hasProperty">
+  <td><a href="/doc/api/1.0/CComponent#hasProperty-detail">hasProperty()</a></td>
+  <td>Determines whether a property is defined.</td>
+  <td><a href="/doc/api/1.0/CComponent">CComponent</a></td>
+</tr>
+<tr class="inherited" id="init">
+  <td><a href="/doc/api/1.0/CWidget#init-detail">init()</a></td>
+  <td>Initializes the widget.</td>
+  <td><a href="/doc/api/1.0/CWidget">CWidget</a></td>
+</tr>
+<tr class="inherited" id="raiseEvent">
+  <td><a href="/doc/api/1.0/CComponent#raiseEvent-detail">raiseEvent()</a></td>
+  <td>Raises an event.</td>
+  <td><a href="/doc/api/1.0/CComponent">CComponent</a></td>
+</tr>
+<tr class="inherited" id="render">
+  <td><a href="/doc/api/1.0/CWidget#render-detail">render()</a></td>
+  <td>Renders a view.</td>
+  <td><a href="/doc/api/1.0/CWidget">CWidget</a></td>
+</tr>
+<tr class="inherited" id="renderFile">
+  <td><a href="/doc/api/1.0/CBaseController#renderFile-detail">renderFile()</a></td>
+  <td>Renders a view file.</td>
+  <td><a href="/doc/api/1.0/CBaseController">CBaseController</a></td>
+</tr>
+<tr class="inherited" id="renderInternal">
+  <td><a href="/doc/api/1.0/CBaseController#renderInternal-detail">renderInternal()</a></td>
+  <td>Renders a view file.</td>
+  <td><a href="/doc/api/1.0/CBaseController">CBaseController</a></td>
+</tr>
+<tr class="inherited" id="run">
+  <td><a href="/doc/api/1.0/CWidget#run-detail">run()</a></td>
+  <td>Executes the widget.</td>
+  <td><a href="/doc/api/1.0/CWidget">CWidget</a></td>
+</tr>
+<tr id="setCurrentPage">
+  <td><a href="/doc/api/1.0/CBasePager#setCurrentPage-detail">setCurrentPage()</a></td>
+  <td>Sets the zero-based index of the current page.</td>
+  <td>CBasePager</td>
+</tr>
+<tr class="inherited" id="setId">
+  <td><a href="/doc/api/1.0/CWidget#setId-detail">setId()</a></td>
+  <td>Sets id of the widget.</td>
+  <td><a href="/doc/api/1.0/CWidget">CWidget</a></td>
+</tr>
+<tr id="setItemCount">
+  <td><a href="/doc/api/1.0/CBasePager#setItemCount-detail">setItemCount()</a></td>
+  <td>Sets total number of items.</td>
+  <td>CBasePager</td>
+</tr>
+<tr id="setPageSize">
+  <td><a href="/doc/api/1.0/CBasePager#setPageSize-detail">setPageSize()</a></td>
+  <td>Sets number of items in each page</td>
+  <td>CBasePager</td>
+</tr>
+<tr id="setPages">
+  <td><a href="/doc/api/1.0/CBasePager#setPages-detail">setPages()</a></td>
+  <td>Sets the pagination information used by this pager.</td>
+  <td>CBasePager</td>
+</tr>
+<tr class="inherited" id="widget">
+  <td><a href="/doc/api/1.0/CBaseController#widget-detail">widget()</a></td>
+  <td>Creates a widget and executes it.</td>
+  <td><a href="/doc/api/1.0/CBaseController">CBaseController</a></td>
+</tr>
+</table>
+</div>
+<div class="summary docMethod">
+<h2>Protected Methods</h2>
+
+<p><a href="#" class="toggle">Hide inherited methods</a></p>
+
+<table class="summaryTable">
+<colgroup>
+	<col class="col-method" />
+	<col class="col-description" />
+	<col class="col-defined" />
+</colgroup>
+<tr>
+  <th>Method</th><th>Description</th><th>Defined By</th>
+</tr>
+<tr id="createPageUrl">
+  <td><a href="/doc/api/1.0/CBasePager#createPageUrl-detail">createPageUrl()</a></td>
+  <td>Creates the URL suitable for pagination.</td>
+  <td>CBasePager</td>
+</tr>
+<tr id="createPages">
+  <td><a href="/doc/api/1.0/CBasePager#createPages-detail">createPages()</a></td>
+  <td>Creates the default pagination.</td>
+  <td>CBasePager</td>
+</tr>
+</table>
+</div>
+<a name="events"></a>
+
+<h2>Property Details</h2>
+<div class="detailHeader" id="currentPage-detail">
+currentPage<span class="detailHeaderTag">
+property
+</span>
+</div>
+
+<div class="signature">
+public integer <a href="/doc/api/1.0/CBasePager#getCurrentPage"><b>getCurrentPage</b></a>(boolean $recalculate=true)<br/>public void <a href="/doc/api/1.0/CBasePager#setCurrentPage"><b>setCurrentPage</b></a>(integer $value)</div>
+
+<p>the zero-based index of the current page. Defaults to 0.</p>
+
+<div class="SeeAlso">
+<h4>See Also</h4>
+<ul>
+	<li><a href="/doc/api/1.0/CPagination#getCurrentPage">CPagination::getCurrentPage</a></li>
+</ul>
+</div>
+
+<div class="detailHeader" id="itemCount-detail">
+itemCount<span class="detailHeaderTag">
+property
+</span>
+</div>
+
+<div class="signature">
+public integer <a href="/doc/api/1.0/CBasePager#getItemCount"><b>getItemCount</b></a>()<br/>public void <a href="/doc/api/1.0/CBasePager#setItemCount"><b>setItemCount</b></a>(integer $value)</div>
+
+<p>total number of items.</p>
+
+<div class="SeeAlso">
+<h4>See Also</h4>
+<ul>
+	<li><a href="/doc/api/1.0/CPagination#getItemCount">CPagination::getItemCount</a></li>
+</ul>
+</div>
+
+<div class="detailHeader" id="pageCount-detail">
+pageCount<span class="detailHeaderTag">
+property
+ <em>read-only</em> </span>
+</div>
+
+<div class="signature">
+public integer <a href="/doc/api/1.0/CBasePager#getPageCount"><b>getPageCount</b></a>()</div>
+
+<p>number of pages</p>
+
+<div class="SeeAlso">
+<h4>See Also</h4>
+<ul>
+	<li><a href="/doc/api/1.0/CPagination#getPageCount">CPagination::getPageCount</a></li>
+</ul>
+</div>
+
+<div class="detailHeader" id="pageSize-detail">
+pageSize<span class="detailHeaderTag">
+property
+</span>
+</div>
+
+<div class="signature">
+public integer <a href="/doc/api/1.0/CBasePager#getPageSize"><b>getPageSize</b></a>()<br/>public void <a href="/doc/api/1.0/CBasePager#setPageSize"><b>setPageSize</b></a>(integer $value)</div>
+
+<p>number of items in each page.</p>
+
+<div class="SeeAlso">
+<h4>See Also</h4>
+<ul>
+	<li><a href="/doc/api/1.0/CPagination#getPageSize">CPagination::getPageSize</a></li>
+</ul>
+</div>
+
+<div class="detailHeader" id="pages-detail">
+pages<span class="detailHeaderTag">
+property
+</span>
+</div>
+
+<div class="signature">
+public <a href="/doc/api/1.0/CPagination">CPagination</a> <a href="/doc/api/1.0/CBasePager#getPages"><b>getPages</b></a>()<br/>public void <a href="/doc/api/1.0/CBasePager#setPages"><b>setPages</b></a>(<a href="/doc/api/1.0/CPagination">CPagination</a> $pages)</div>
+
+<p>Returns the pagination information used by this pager.</p>
+
+
+<h2>Method Details</h2>
+
+<div class="detailHeader" id="createPageUrl-detail">
+createPageUrl()
+<span class="detailHeaderTag">
+method
+</span>
+</div>
+
+<table class="summaryTable">
+<tr><td colspan="3">
+<div class="signature2">
+protected string <b>createPageUrl</b>(integer $page)</div>
+</td></tr>
+<tr>
+  <td class="paramNameCol">$page</td>
+  <td class="paramTypeCol">integer</td>
+  <td class="paramDescCol">the page that the URL should point to.</td>
+</tr>
+<tr>
+  <td class="paramNameCol">{return}</td>
+  <td class="paramTypeCol">string</td>
+  <td class="paramDescCol">the created URL</td>
+</tr>
+</table>
+
+<div class="sourceCode">
+<b>Source Code:</b> <a class="sourceLink" href="https://github.com/yiisoft/yii/blob/1.0.12/framework/web/widgets/pagers/CBasePager.php#L125">framework/web/widgets/pagers/CBasePager.php#125</a> (<b><a href="#" class="show">show</a></b>)
+<div class="code"><code><span style="color: #000000">
+<span style="color: #0000BB"></span><span style="color: #007700">protected&nbsp;function&nbsp;</span><span style="color: #0000BB">createPageUrl</span><span style="color: #007700">(</span><span style="color: #0000BB">$page</span><span style="color: #007700">)<br />{<br />&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">getPages</span><span style="color: #007700">()-&gt;</span><span style="color: #0000BB">createPageUrl</span><span style="color: #007700">(</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">getController</span><span style="color: #007700">(),</span><span style="color: #0000BB">$page</span><span style="color: #007700">);<br />}</span>
+</span>
+</code></div>
+</div>
+<p>Creates the URL suitable for pagination.</p>
+
+<div class="SeeAlso">
+<h4>See Also</h4>
+<ul>
+	<li><a href="/doc/api/1.0/CPagination#createPageUrl">CPagination::createPageUrl</a></li>
+</ul>
+</div>
+
+<div class="detailHeader" id="createPages-detail">
+createPages()
+<span class="detailHeaderTag">
+method
+</span>
+</div>
+
+<table class="summaryTable">
+<tr><td colspan="3">
+<div class="signature2">
+protected <a href="/doc/api/1.0/CPagination">CPagination</a> <b>createPages</b>()</div>
+</td></tr>
+<tr>
+  <td class="paramNameCol">{return}</td>
+  <td class="paramTypeCol"><a href="/doc/api/1.0/CPagination">CPagination</a></td>
+  <td class="paramDescCol">the default pagination instance.</td>
+</tr>
+</table>
+
+<div class="sourceCode">
+<b>Source Code:</b> <a class="sourceLink" href="https://github.com/yiisoft/yii/blob/1.0.12/framework/web/widgets/pagers/CBasePager.php#L50">framework/web/widgets/pagers/CBasePager.php#50</a> (<b><a href="#" class="show">show</a></b>)
+<div class="code"><code><span style="color: #000000">
+<span style="color: #0000BB"></span><span style="color: #007700">protected&nbsp;function&nbsp;</span><span style="color: #0000BB">createPages</span><span style="color: #007700">()<br />{<br />&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;new&nbsp;</span><span style="color: #0000BB">CPagination</span><span style="color: #007700">;<br />}</span>
+</span>
+</code></div>
+</div>
+<p>Creates the default pagination.
+This is called by <a href="/doc/api/1.0/CBasePager#getPages">getPages</a> when the pagination is not set before.</p>
+
+
+<div class="detailHeader" id="getCurrentPage-detail">
+getCurrentPage()
+<span class="detailHeaderTag">
+method
+</span>
+</div>
+
+<table class="summaryTable">
+<tr><td colspan="3">
+<div class="signature2">
+public integer <b>getCurrentPage</b>(boolean $recalculate=true)</div>
+</td></tr>
+<tr>
+  <td class="paramNameCol">$recalculate</td>
+  <td class="paramTypeCol">boolean</td>
+  <td class="paramDescCol">whether to recalculate the current page based on the page size and item count.</td>
+</tr>
+<tr>
+  <td class="paramNameCol">{return}</td>
+  <td class="paramTypeCol">integer</td>
+  <td class="paramDescCol">the zero-based index of the current page. Defaults to 0.</td>
+</tr>
+</table>
+
+<div class="sourceCode">
+<b>Source Code:</b> <a class="sourceLink" href="https://github.com/yiisoft/yii/blob/1.0.12/framework/web/widgets/pagers/CBasePager.php#L105">framework/web/widgets/pagers/CBasePager.php#105</a> (<b><a href="#" class="show">show</a></b>)
+<div class="code"><code><span style="color: #000000">
+<span style="color: #0000BB"></span><span style="color: #007700">public&nbsp;function&nbsp;</span><span style="color: #0000BB">getCurrentPage</span><span style="color: #007700">(</span><span style="color: #0000BB">$recalculate</span><span style="color: #007700">=</span><span style="color: #0000BB">true</span><span style="color: #007700">)<br />{<br />&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">getPages</span><span style="color: #007700">()-&gt;</span><span style="color: #0000BB">getCurrentPage</span><span style="color: #007700">(</span><span style="color: #0000BB">$recalculate</span><span style="color: #007700">);<br />}</span>
+</span>
+</code></div>
+</div>
+<p></p>
+
+<div class="SeeAlso">
+<h4>See Also</h4>
+<ul>
+	<li><a href="/doc/api/1.0/CPagination#getCurrentPage">CPagination::getCurrentPage</a></li>
+</ul>
+</div>
+
+<div class="detailHeader" id="getItemCount-detail">
+getItemCount()
+<span class="detailHeaderTag">
+method
+</span>
+</div>
+
+<table class="summaryTable">
+<tr><td colspan="3">
+<div class="signature2">
+public integer <b>getItemCount</b>()</div>
+</td></tr>
+<tr>
+  <td class="paramNameCol">{return}</td>
+  <td class="paramTypeCol">integer</td>
+  <td class="paramDescCol">total number of items.</td>
+</tr>
+</table>
+
+<div class="sourceCode">
+<b>Source Code:</b> <a class="sourceLink" href="https://github.com/yiisoft/yii/blob/1.0.12/framework/web/widgets/pagers/CBasePager.php#L77">framework/web/widgets/pagers/CBasePager.php#77</a> (<b><a href="#" class="show">show</a></b>)
+<div class="code"><code><span style="color: #000000">
+<span style="color: #0000BB"></span><span style="color: #007700">public&nbsp;function&nbsp;</span><span style="color: #0000BB">getItemCount</span><span style="color: #007700">()<br />{<br />&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">getPages</span><span style="color: #007700">()-&gt;</span><span style="color: #0000BB">getItemCount</span><span style="color: #007700">();<br />}</span>
+</span>
+</code></div>
+</div>
+<p></p>
+
+<div class="SeeAlso">
+<h4>See Also</h4>
+<ul>
+	<li><a href="/doc/api/1.0/CPagination#getItemCount">CPagination::getItemCount</a></li>
+</ul>
+</div>
+
+<div class="detailHeader" id="getPageCount-detail">
+getPageCount()
+<span class="detailHeaderTag">
+method
+</span>
+</div>
+
+<table class="summaryTable">
+<tr><td colspan="3">
+<div class="signature2">
+public integer <b>getPageCount</b>()</div>
+</td></tr>
+<tr>
+  <td class="paramNameCol">{return}</td>
+  <td class="paramTypeCol">integer</td>
+  <td class="paramDescCol">number of pages</td>
+</tr>
+</table>
+
+<div class="sourceCode">
+<b>Source Code:</b> <a class="sourceLink" href="https://github.com/yiisoft/yii/blob/1.0.12/framework/web/widgets/pagers/CBasePager.php#L95">framework/web/widgets/pagers/CBasePager.php#95</a> (<b><a href="#" class="show">show</a></b>)
+<div class="code"><code><span style="color: #000000">
+<span style="color: #0000BB"></span><span style="color: #007700">public&nbsp;function&nbsp;</span><span style="color: #0000BB">getPageCount</span><span style="color: #007700">()<br />{<br />&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">getPages</span><span style="color: #007700">()-&gt;</span><span style="color: #0000BB">getPageCount</span><span style="color: #007700">();<br />}</span>
+</span>
+</code></div>
+</div>
+<p></p>
+
+<div class="SeeAlso">
+<h4>See Also</h4>
+<ul>
+	<li><a href="/doc/api/1.0/CPagination#getPageCount">CPagination::getPageCount</a></li>
+</ul>
+</div>
+
+<div class="detailHeader" id="getPageSize-detail">
+getPageSize()
+<span class="detailHeaderTag">
+method
+</span>
+</div>
+
+<table class="summaryTable">
+<tr><td colspan="3">
+<div class="signature2">
+public integer <b>getPageSize</b>()</div>
+</td></tr>
+<tr>
+  <td class="paramNameCol">{return}</td>
+  <td class="paramTypeCol">integer</td>
+  <td class="paramDescCol">number of items in each page.</td>
+</tr>
+</table>
+
+<div class="sourceCode">
+<b>Source Code:</b> <a class="sourceLink" href="https://github.com/yiisoft/yii/blob/1.0.12/framework/web/widgets/pagers/CBasePager.php#L59">framework/web/widgets/pagers/CBasePager.php#59</a> (<b><a href="#" class="show">show</a></b>)
+<div class="code"><code><span style="color: #000000">
+<span style="color: #0000BB"></span><span style="color: #007700">public&nbsp;function&nbsp;</span><span style="color: #0000BB">getPageSize</span><span style="color: #007700">()<br />{<br />&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">getPages</span><span style="color: #007700">()-&gt;</span><span style="color: #0000BB">getPageSize</span><span style="color: #007700">();<br />}</span>
+</span>
+</code></div>
+</div>
+<p></p>
+
+<div class="SeeAlso">
+<h4>See Also</h4>
+<ul>
+	<li><a href="/doc/api/1.0/CPagination#getPageSize">CPagination::getPageSize</a></li>
+</ul>
+</div>
+
+<div class="detailHeader" id="getPages-detail">
+getPages()
+<span class="detailHeaderTag">
+method
+</span>
+</div>
+
+<table class="summaryTable">
+<tr><td colspan="3">
+<div class="signature2">
+public <a href="/doc/api/1.0/CPagination">CPagination</a> <b>getPages</b>()</div>
+</td></tr>
+<tr>
+  <td class="paramNameCol">{return}</td>
+  <td class="paramTypeCol"><a href="/doc/api/1.0/CPagination">CPagination</a></td>
+  <td class="paramDescCol">the pagination information</td>
+</tr>
+</table>
+
+<div class="sourceCode">
+<b>Source Code:</b> <a class="sourceLink" href="https://github.com/yiisoft/yii/blob/1.0.12/framework/web/widgets/pagers/CBasePager.php#L29">framework/web/widgets/pagers/CBasePager.php#29</a> (<b><a href="#" class="show">show</a></b>)
+<div class="code"><code><span style="color: #000000">
+<span style="color: #0000BB"></span><span style="color: #007700">public&nbsp;function&nbsp;</span><span style="color: #0000BB">getPages</span><span style="color: #007700">()<br />{<br />&nbsp;&nbsp;&nbsp;&nbsp;if(</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">_pages</span><span style="color: #007700">===</span><span style="color: #0000BB">null</span><span style="color: #007700">)<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">_pages</span><span style="color: #007700">=</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">createPages</span><span style="color: #007700">();<br />&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">_pages</span><span style="color: #007700">;<br />}</span>
+</span>
+</code></div>
+</div>
+<p>Returns the pagination information used by this pager.</p>
+
+
+<div class="detailHeader" id="setCurrentPage-detail">
+setCurrentPage()
+<span class="detailHeaderTag">
+method
+</span>
+</div>
+
+<table class="summaryTable">
+<tr><td colspan="3">
+<div class="signature2">
+public void <b>setCurrentPage</b>(integer $value)</div>
+</td></tr>
+<tr>
+  <td class="paramNameCol">$value</td>
+  <td class="paramTypeCol">integer</td>
+  <td class="paramDescCol">the zero-based index of the current page.</td>
+</tr>
+</table>
+
+<div class="sourceCode">
+<b>Source Code:</b> <a class="sourceLink" href="https://github.com/yiisoft/yii/blob/1.0.12/framework/web/widgets/pagers/CBasePager.php#L114">framework/web/widgets/pagers/CBasePager.php#114</a> (<b><a href="#" class="show">show</a></b>)
+<div class="code"><code><span style="color: #000000">
+<span style="color: #0000BB"></span><span style="color: #007700">public&nbsp;function&nbsp;</span><span style="color: #0000BB">setCurrentPage</span><span style="color: #007700">(</span><span style="color: #0000BB">$value</span><span style="color: #007700">)<br />{<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">getPages</span><span style="color: #007700">()-&gt;</span><span style="color: #0000BB">setCurrentPage</span><span style="color: #007700">(</span><span style="color: #0000BB">$value</span><span style="color: #007700">);<br />}</span>
+</span>
+</code></div>
+</div>
+<p></p>
+
+<div class="SeeAlso">
+<h4>See Also</h4>
+<ul>
+	<li><a href="/doc/api/1.0/CPagination#setCurrentPage">CPagination::setCurrentPage</a></li>
+</ul>
+</div>
+
+<div class="detailHeader" id="setItemCount-detail">
+setItemCount()
+<span class="detailHeaderTag">
+method
+</span>
+</div>
+
+<table class="summaryTable">
+<tr><td colspan="3">
+<div class="signature2">
+public void <b>setItemCount</b>(integer $value)</div>
+</td></tr>
+<tr>
+  <td class="paramNameCol">$value</td>
+  <td class="paramTypeCol">integer</td>
+  <td class="paramDescCol">total number of items.</td>
+</tr>
+</table>
+
+<div class="sourceCode">
+<b>Source Code:</b> <a class="sourceLink" href="https://github.com/yiisoft/yii/blob/1.0.12/framework/web/widgets/pagers/CBasePager.php#L86">framework/web/widgets/pagers/CBasePager.php#86</a> (<b><a href="#" class="show">show</a></b>)
+<div class="code"><code><span style="color: #000000">
+<span style="color: #0000BB"></span><span style="color: #007700">public&nbsp;function&nbsp;</span><span style="color: #0000BB">setItemCount</span><span style="color: #007700">(</span><span style="color: #0000BB">$value</span><span style="color: #007700">)<br />{<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">getPages</span><span style="color: #007700">()-&gt;</span><span style="color: #0000BB">setItemCount</span><span style="color: #007700">(</span><span style="color: #0000BB">$value</span><span style="color: #007700">);<br />}</span>
+</span>
+</code></div>
+</div>
+<p></p>
+
+<div class="SeeAlso">
+<h4>See Also</h4>
+<ul>
+	<li><a href="/doc/api/1.0/CPagination#setItemCount">CPagination::setItemCount</a></li>
+</ul>
+</div>
+
+<div class="detailHeader" id="setPageSize-detail">
+setPageSize()
+<span class="detailHeaderTag">
+method
+</span>
+</div>
+
+<table class="summaryTable">
+<tr><td colspan="3">
+<div class="signature2">
+public void <b>setPageSize</b>(integer $value)</div>
+</td></tr>
+<tr>
+  <td class="paramNameCol">$value</td>
+  <td class="paramTypeCol">integer</td>
+  <td class="paramDescCol">number of items in each page</td>
+</tr>
+</table>
+
+<div class="sourceCode">
+<b>Source Code:</b> <a class="sourceLink" href="https://github.com/yiisoft/yii/blob/1.0.12/framework/web/widgets/pagers/CBasePager.php#L68">framework/web/widgets/pagers/CBasePager.php#68</a> (<b><a href="#" class="show">show</a></b>)
+<div class="code"><code><span style="color: #000000">
+<span style="color: #0000BB"></span><span style="color: #007700">public&nbsp;function&nbsp;</span><span style="color: #0000BB">setPageSize</span><span style="color: #007700">(</span><span style="color: #0000BB">$value</span><span style="color: #007700">)<br />{<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">getPages</span><span style="color: #007700">()-&gt;</span><span style="color: #0000BB">setPageSize</span><span style="color: #007700">(</span><span style="color: #0000BB">$value</span><span style="color: #007700">);<br />}</span>
+</span>
+</code></div>
+</div>
+<p></p>
+
+<div class="SeeAlso">
+<h4>See Also</h4>
+<ul>
+	<li><a href="/doc/api/1.0/CPagination#setPageSize">CPagination::setPageSize</a></li>
+</ul>
+</div>
+
+<div class="detailHeader" id="setPages-detail">
+setPages()
+<span class="detailHeaderTag">
+method
+</span>
+</div>
+
+<table class="summaryTable">
+<tr><td colspan="3">
+<div class="signature2">
+public void <b>setPages</b>(<a href="/doc/api/1.0/CPagination">CPagination</a> $pages)</div>
+</td></tr>
+<tr>
+  <td class="paramNameCol">$pages</td>
+  <td class="paramTypeCol"><a href="/doc/api/1.0/CPagination">CPagination</a></td>
+  <td class="paramDescCol">the pagination information</td>
+</tr>
+</table>
+
+<div class="sourceCode">
+<b>Source Code:</b> <a class="sourceLink" href="https://github.com/yiisoft/yii/blob/1.0.12/framework/web/widgets/pagers/CBasePager.php#L40">framework/web/widgets/pagers/CBasePager.php#40</a> (<b><a href="#" class="show">show</a></b>)
+<div class="code"><code><span style="color: #000000">
+<span style="color: #0000BB"></span><span style="color: #007700">public&nbsp;function&nbsp;</span><span style="color: #0000BB">setPages</span><span style="color: #007700">(</span><span style="color: #0000BB">$pages</span><span style="color: #007700">)<br />{<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">_pages</span><span style="color: #007700">=</span><span style="color: #0000BB">$pages</span><span style="color: #007700">;<br />}</span>
+</span>
+</code></div>
+</div>
+<p>Sets the pagination information used by this pager.</p>
+
+

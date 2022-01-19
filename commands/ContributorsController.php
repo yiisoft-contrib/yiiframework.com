@@ -10,7 +10,6 @@ use yii\console\ExitCode;
 use yii\di\Instance;
 use yii\helpers\Console;
 use yii\helpers\FileHelper;
-use yii\helpers\VarDumper;
 use yii\mutex\Mutex;
 use yii\web\ErrorHandler;
 
@@ -39,7 +38,6 @@ class ContributorsController extends Controller
 
         $members = Yii::$app->params['members'];
         $contributors = [];
-        $rawContributors = [];
         $contributorLimit = 1000;
 
         // getting contributors from github

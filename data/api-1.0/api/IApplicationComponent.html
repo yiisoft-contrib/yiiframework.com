@@ -1,0 +1,130 @@
+<h1>IApplicationComponent</h1>
+<div id="nav">
+<a href="/doc/api/1.0/">All Packages</a>
+| <a href="#methods">Methods</a>
+</div>
+
+<table class="summaryTable docClass">
+<colgroup>
+	<col class="col-name" />
+	<col class="col-value" />
+</colgroup>
+<tr>
+  <th>Package</th>
+  <td><a href="/doc/api/1.0/#system.base">system.base</a></td>
+</tr>
+<tr>
+  <th>Inheritance</th>
+  <td>interface IApplicationComponent</td>
+</tr>
+<tr>
+  <th>Subclasses</th>
+  <td><a href="/doc/api/1.0/CApcCache">CApcCache</a>, <a href="/doc/api/1.0/CApplicationComponent">CApplicationComponent</a>, <a href="/doc/api/1.0/CAssetManager">CAssetManager</a>, <a href="/doc/api/1.0/CAuthManager">CAuthManager</a>, <a href="/doc/api/1.0/CCache">CCache</a>, <a href="/doc/api/1.0/CCacheHttpSession">CCacheHttpSession</a>, <a href="/doc/api/1.0/CClientScript">CClientScript</a>, <a href="/doc/api/1.0/CDbAuthManager">CDbAuthManager</a>, <a href="/doc/api/1.0/CDbCache">CDbCache</a>, <a href="/doc/api/1.0/CDbConnection">CDbConnection</a>, <a href="/doc/api/1.0/CDbHttpSession">CDbHttpSession</a>, <a href="/doc/api/1.0/CDbMessageSource">CDbMessageSource</a>, <a href="/doc/api/1.0/CDummyCache">CDummyCache</a>, <a href="/doc/api/1.0/CEAcceleratorCache">CEAcceleratorCache</a>, <a href="/doc/api/1.0/CErrorHandler">CErrorHandler</a>, <a href="/doc/api/1.0/CFileCache">CFileCache</a>, <a href="/doc/api/1.0/CGettextMessageSource">CGettextMessageSource</a>, <a href="/doc/api/1.0/CHttpRequest">CHttpRequest</a>, <a href="/doc/api/1.0/CHttpSession">CHttpSession</a>, <a href="/doc/api/1.0/CLogRouter">CLogRouter</a>, <a href="/doc/api/1.0/CMemCache">CMemCache</a>, <a href="/doc/api/1.0/CMessageSource">CMessageSource</a>, <a href="/doc/api/1.0/CPhpAuthManager">CPhpAuthManager</a>, <a href="/doc/api/1.0/CPhpMessageSource">CPhpMessageSource</a>, <a href="/doc/api/1.0/CPradoViewRenderer">CPradoViewRenderer</a>, <a href="/doc/api/1.0/CSecurityManager">CSecurityManager</a>, <a href="/doc/api/1.0/CStatePersister">CStatePersister</a>, <a href="/doc/api/1.0/CThemeManager">CThemeManager</a>, <a href="/doc/api/1.0/CUrlManager">CUrlManager</a>, <a href="/doc/api/1.0/CViewRenderer">CViewRenderer</a>, <a href="/doc/api/1.0/CWebUser">CWebUser</a>, <a href="/doc/api/1.0/CXCache">CXCache</a>, <a href="/doc/api/1.0/CZendDataCache">CZendDataCache</a></td>
+</tr>
+<tr>
+  <th>Since</th>
+  <td>1.0</td>
+</tr>
+<tr>
+  <th>Version</th>
+  <td>$Id$</td>
+</tr>
+<tr>
+  <th>Source Code</th>
+  <td><a class="sourceLink" href="https://github.com/yiisoft/yii/blob/1.0.12/framework/base/interfaces.php">framework/base/interfaces.php</a></td>
+</tr>
+</table>
+
+<div id="classDescription">
+IApplicationComponent is the interface that all application components must implement.
+<br/><br/>
+After the application completes configuration, it will invoke the <a href="/doc/api/1.0/IApplicationComponent#init">init()</a>
+method of every loaded application component.</div>
+<a name="properties"></a>
+
+<a name="methods"></a>
+
+<div class="summary docMethod">
+<h2>Public Methods</h2>
+
+<p><a href="#" class="toggle">Hide inherited methods</a></p>
+
+<table class="summaryTable">
+<colgroup>
+	<col class="col-method" />
+	<col class="col-description" />
+	<col class="col-defined" />
+</colgroup>
+<tr>
+  <th>Method</th><th>Description</th><th>Defined By</th>
+</tr>
+<tr id="getIsInitialized">
+  <td><a href="/doc/api/1.0/IApplicationComponent#getIsInitialized-detail">getIsInitialized()</a></td>
+  <td>Checks whether the <a href="/doc/api/1.0/IApplicationComponent#init">init()</a> method has been invoked.</td>
+  <td>IApplicationComponent</td>
+</tr>
+<tr id="init">
+  <td><a href="/doc/api/1.0/IApplicationComponent#init-detail">init()</a></td>
+  <td>Initializes the application component.</td>
+  <td>IApplicationComponent</td>
+</tr>
+</table>
+</div>
+<a name="events"></a>
+
+<h2>Method Details</h2>
+
+<div class="detailHeader" id="getIsInitialized-detail">
+getIsInitialized()
+<span class="detailHeaderTag">
+method
+</span>
+</div>
+
+<table class="summaryTable">
+<tr><td colspan="3">
+<div class="signature2">
+abstract public boolean <b>getIsInitialized</b>()</div>
+</td></tr>
+<tr>
+  <td class="paramNameCol">{return}</td>
+  <td class="paramTypeCol">boolean</td>
+  <td class="paramDescCol">whether the <a href="/doc/api/1.0/IApplicationComponent#init">init()</a> method has been invoked.</td>
+</tr>
+</table>
+
+<div class="sourceCode">
+<b>Source Code:</b> <a class="sourceLink" href="https://github.com/yiisoft/yii/blob/1.0.12/framework/base/interfaces.php#L32">framework/base/interfaces.php#32</a> (<b><a href="#" class="show">show</a></b>)
+<div class="code"><code><span style="color: #000000">
+<span style="color: #0000BB"></span><span style="color: #007700">public&nbsp;function&nbsp;</span><span style="color: #0000BB">getIsInitialized</span><span style="color: #007700">();</span>
+</span>
+</code></div>
+</div>
+<p></p>
+
+
+<div class="detailHeader" id="init-detail">
+init()
+<span class="detailHeaderTag">
+method
+</span>
+</div>
+
+<table class="summaryTable">
+<tr><td colspan="3">
+<div class="signature2">
+abstract public void <b>init</b>()</div>
+</td></tr>
+</table>
+
+<div class="sourceCode">
+<b>Source Code:</b> <a class="sourceLink" href="https://github.com/yiisoft/yii/blob/1.0.12/framework/base/interfaces.php#L28">framework/base/interfaces.php#28</a> (<b><a href="#" class="show">show</a></b>)
+<div class="code"><code><span style="color: #000000">
+<span style="color: #0000BB"></span><span style="color: #007700">public&nbsp;function&nbsp;</span><span style="color: #0000BB">init</span><span style="color: #007700">();</span>
+</span>
+</code></div>
+</div>
+<p>Initializes the application component.
+This method is invoked after the application completes configuration.</p>
+
+

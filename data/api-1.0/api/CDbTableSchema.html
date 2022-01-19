@@ -1,0 +1,410 @@
+<h1>CDbTableSchema</h1>
+<div id="nav">
+<a href="/doc/api/1.0/">All Packages</a>
+| <a href="#properties">Properties</a>
+| <a href="#methods">Methods</a>
+</div>
+
+<table class="summaryTable docClass">
+<colgroup>
+	<col class="col-name" />
+	<col class="col-value" />
+</colgroup>
+<tr>
+  <th>Package</th>
+  <td><a href="/doc/api/1.0/#system.db.schema">system.db.schema</a></td>
+</tr>
+<tr>
+  <th>Inheritance</th>
+  <td>class CDbTableSchema &raquo;
+<a href="/doc/api/1.0/CComponent">CComponent</a></td>
+</tr>
+<tr>
+  <th>Subclasses</th>
+  <td><a href="/doc/api/1.0/CMssqlTableSchema">CMssqlTableSchema</a>, <a href="/doc/api/1.0/CMysqlTableSchema">CMysqlTableSchema</a>, <a href="/doc/api/1.0/COciTableSchema">COciTableSchema</a>, <a href="/doc/api/1.0/CPgsqlTableSchema">CPgsqlTableSchema</a></td>
+</tr>
+<tr>
+  <th>Since</th>
+  <td>1.0</td>
+</tr>
+<tr>
+  <th>Version</th>
+  <td>$Id$</td>
+</tr>
+<tr>
+  <th>Source Code</th>
+  <td><a class="sourceLink" href="https://github.com/yiisoft/yii/blob/1.0.12/framework/db/schema/CDbTableSchema.php">framework/db/schema/CDbTableSchema.php</a></td>
+</tr>
+</table>
+
+<div id="classDescription">
+CDbTableSchema is the base class for representing the metadata of a database table.
+<br/><br/>
+It may be extended by different DBMS driver to provide DBMS-specific table metadata.
+<br/><br/>
+CDbTableSchema provides the following information about a table:
+<ul>
+<li><a href="/doc/api/1.0/CDbTableSchema#name">name</a></li>
+<li><a href="/doc/api/1.0/CDbTableSchema#rawName">rawName</a></li>
+<li><a href="/doc/api/1.0/CDbTableSchema#columns">columns</a></li>
+<li><a href="/doc/api/1.0/CDbTableSchema#primaryKey">primaryKey</a></li>
+<li><a href="/doc/api/1.0/CDbTableSchema#foreignKeys">foreignKeys</a></li>
+<li><a href="/doc/api/1.0/CDbTableSchema#sequenceName">sequenceName</a></li>
+</ul></div>
+<a name="properties"></a>
+
+<div class="summary docProperty">
+<h2>Public Properties</h2>
+
+<p><a href="#" class="toggle">Hide inherited properties</a></p>
+
+<table class="summaryTable">
+<colgroup>
+	<col class="col-property" />
+	<col class="col-type" />
+	<col class="col-description" />
+	<col class="col-defined" />
+</colgroup>
+<tr>
+  <th>Property</th><th>Type</th><th>Description</th><th>Defined By</th>
+</tr>
+<tr id="columnNames">
+  <td><a href="/doc/api/1.0/CDbTableSchema#columnNames-detail">columnNames</a></td>
+  <td>array</td>
+  <td>list of column names</td>
+  <td>CDbTableSchema</td>
+</tr>
+<tr id="columns">
+  <td><a href="/doc/api/1.0/CDbTableSchema#columns-detail">columns</a></td>
+  <td>array</td>
+  <td>column metadata of this table.</td>
+  <td>CDbTableSchema</td>
+</tr>
+<tr id="foreignKeys">
+  <td><a href="/doc/api/1.0/CDbTableSchema#foreignKeys-detail">foreignKeys</a></td>
+  <td>array</td>
+  <td>foreign keys of this table.</td>
+  <td>CDbTableSchema</td>
+</tr>
+<tr id="name">
+  <td><a href="/doc/api/1.0/CDbTableSchema#name-detail">name</a></td>
+  <td>string</td>
+  <td>name of this table.</td>
+  <td>CDbTableSchema</td>
+</tr>
+<tr id="primaryKey">
+  <td><a href="/doc/api/1.0/CDbTableSchema#primaryKey-detail">primaryKey</a></td>
+  <td>string|array</td>
+  <td>primary key name of this table.</td>
+  <td>CDbTableSchema</td>
+</tr>
+<tr id="rawName">
+  <td><a href="/doc/api/1.0/CDbTableSchema#rawName-detail">rawName</a></td>
+  <td>string</td>
+  <td>raw name of this table.</td>
+  <td>CDbTableSchema</td>
+</tr>
+<tr id="sequenceName">
+  <td><a href="/doc/api/1.0/CDbTableSchema#sequenceName-detail">sequenceName</a></td>
+  <td>string</td>
+  <td>sequence name for the primary key.</td>
+  <td>CDbTableSchema</td>
+</tr>
+</table>
+</div>
+<a name="methods"></a>
+
+<div class="summary docMethod">
+<h2>Public Methods</h2>
+
+<p><a href="#" class="toggle">Hide inherited methods</a></p>
+
+<table class="summaryTable">
+<colgroup>
+	<col class="col-method" />
+	<col class="col-description" />
+	<col class="col-defined" />
+</colgroup>
+<tr>
+  <th>Method</th><th>Description</th><th>Defined By</th>
+</tr>
+<tr class="inherited" id="__call">
+  <td><a href="/doc/api/1.0/CComponent#__call-detail">__call()</a></td>
+  <td>Calls the named method which is not a class method.</td>
+  <td><a href="/doc/api/1.0/CComponent">CComponent</a></td>
+</tr>
+<tr class="inherited" id="__get">
+  <td><a href="/doc/api/1.0/CComponent#__get-detail">__get()</a></td>
+  <td>Returns a property value, an event handler list or a behavior based on its name.</td>
+  <td><a href="/doc/api/1.0/CComponent">CComponent</a></td>
+</tr>
+<tr class="inherited" id="__isset">
+  <td><a href="/doc/api/1.0/CComponent#__isset-detail">__isset()</a></td>
+  <td>Checks if a property value is null.</td>
+  <td><a href="/doc/api/1.0/CComponent">CComponent</a></td>
+</tr>
+<tr class="inherited" id="__set">
+  <td><a href="/doc/api/1.0/CComponent#__set-detail">__set()</a></td>
+  <td>Sets value of a component property.</td>
+  <td><a href="/doc/api/1.0/CComponent">CComponent</a></td>
+</tr>
+<tr class="inherited" id="__unset">
+  <td><a href="/doc/api/1.0/CComponent#__unset-detail">__unset()</a></td>
+  <td>Sets a component property to be null.</td>
+  <td><a href="/doc/api/1.0/CComponent">CComponent</a></td>
+</tr>
+<tr class="inherited" id="asa">
+  <td><a href="/doc/api/1.0/CComponent#asa-detail">asa()</a></td>
+  <td>Returns the named behavior object.</td>
+  <td><a href="/doc/api/1.0/CComponent">CComponent</a></td>
+</tr>
+<tr class="inherited" id="attachBehavior">
+  <td><a href="/doc/api/1.0/CComponent#attachBehavior-detail">attachBehavior()</a></td>
+  <td>Attaches a behavior to this component.</td>
+  <td><a href="/doc/api/1.0/CComponent">CComponent</a></td>
+</tr>
+<tr class="inherited" id="attachBehaviors">
+  <td><a href="/doc/api/1.0/CComponent#attachBehaviors-detail">attachBehaviors()</a></td>
+  <td>Attaches a list of behaviors to the component.</td>
+  <td><a href="/doc/api/1.0/CComponent">CComponent</a></td>
+</tr>
+<tr class="inherited" id="attachEventHandler">
+  <td><a href="/doc/api/1.0/CComponent#attachEventHandler-detail">attachEventHandler()</a></td>
+  <td>Attaches an event handler to an event.</td>
+  <td><a href="/doc/api/1.0/CComponent">CComponent</a></td>
+</tr>
+<tr class="inherited" id="canGetProperty">
+  <td><a href="/doc/api/1.0/CComponent#canGetProperty-detail">canGetProperty()</a></td>
+  <td>Determines whether a property can be read.</td>
+  <td><a href="/doc/api/1.0/CComponent">CComponent</a></td>
+</tr>
+<tr class="inherited" id="canSetProperty">
+  <td><a href="/doc/api/1.0/CComponent#canSetProperty-detail">canSetProperty()</a></td>
+  <td>Determines whether a property can be set.</td>
+  <td><a href="/doc/api/1.0/CComponent">CComponent</a></td>
+</tr>
+<tr class="inherited" id="detachBehavior">
+  <td><a href="/doc/api/1.0/CComponent#detachBehavior-detail">detachBehavior()</a></td>
+  <td>Detaches a behavior from the component.</td>
+  <td><a href="/doc/api/1.0/CComponent">CComponent</a></td>
+</tr>
+<tr class="inherited" id="detachBehaviors">
+  <td><a href="/doc/api/1.0/CComponent#detachBehaviors-detail">detachBehaviors()</a></td>
+  <td>Detaches all behaviors from the component.</td>
+  <td><a href="/doc/api/1.0/CComponent">CComponent</a></td>
+</tr>
+<tr class="inherited" id="detachEventHandler">
+  <td><a href="/doc/api/1.0/CComponent#detachEventHandler-detail">detachEventHandler()</a></td>
+  <td>Detaches an existing event handler.</td>
+  <td><a href="/doc/api/1.0/CComponent">CComponent</a></td>
+</tr>
+<tr class="inherited" id="disableBehavior">
+  <td><a href="/doc/api/1.0/CComponent#disableBehavior-detail">disableBehavior()</a></td>
+  <td>Disables an attached behavior.</td>
+  <td><a href="/doc/api/1.0/CComponent">CComponent</a></td>
+</tr>
+<tr class="inherited" id="disableBehaviors">
+  <td><a href="/doc/api/1.0/CComponent#disableBehaviors-detail">disableBehaviors()</a></td>
+  <td>Disables all behaviors attached to this component.</td>
+  <td><a href="/doc/api/1.0/CComponent">CComponent</a></td>
+</tr>
+<tr class="inherited" id="enableBehavior">
+  <td><a href="/doc/api/1.0/CComponent#enableBehavior-detail">enableBehavior()</a></td>
+  <td>Enables an attached behavior.</td>
+  <td><a href="/doc/api/1.0/CComponent">CComponent</a></td>
+</tr>
+<tr class="inherited" id="enableBehaviors">
+  <td><a href="/doc/api/1.0/CComponent#enableBehaviors-detail">enableBehaviors()</a></td>
+  <td>Enables all behaviors attached to this component.</td>
+  <td><a href="/doc/api/1.0/CComponent">CComponent</a></td>
+</tr>
+<tr id="getColumn">
+  <td><a href="/doc/api/1.0/CDbTableSchema#getColumn-detail">getColumn()</a></td>
+  <td>Gets the named column metadata.</td>
+  <td>CDbTableSchema</td>
+</tr>
+<tr id="getColumnNames">
+  <td><a href="/doc/api/1.0/CDbTableSchema#getColumnNames-detail">getColumnNames()</a></td>
+  <td>Returns list of column names</td>
+  <td>CDbTableSchema</td>
+</tr>
+<tr class="inherited" id="getEventHandlers">
+  <td><a href="/doc/api/1.0/CComponent#getEventHandlers-detail">getEventHandlers()</a></td>
+  <td>Returns the list of attached event handlers for an event.</td>
+  <td><a href="/doc/api/1.0/CComponent">CComponent</a></td>
+</tr>
+<tr class="inherited" id="hasEvent">
+  <td><a href="/doc/api/1.0/CComponent#hasEvent-detail">hasEvent()</a></td>
+  <td>Determines whether an event is defined.</td>
+  <td><a href="/doc/api/1.0/CComponent">CComponent</a></td>
+</tr>
+<tr class="inherited" id="hasEventHandler">
+  <td><a href="/doc/api/1.0/CComponent#hasEventHandler-detail">hasEventHandler()</a></td>
+  <td>Checks whether the named event has attached handlers.</td>
+  <td><a href="/doc/api/1.0/CComponent">CComponent</a></td>
+</tr>
+<tr class="inherited" id="hasProperty">
+  <td><a href="/doc/api/1.0/CComponent#hasProperty-detail">hasProperty()</a></td>
+  <td>Determines whether a property is defined.</td>
+  <td><a href="/doc/api/1.0/CComponent">CComponent</a></td>
+</tr>
+<tr class="inherited" id="raiseEvent">
+  <td><a href="/doc/api/1.0/CComponent#raiseEvent-detail">raiseEvent()</a></td>
+  <td>Raises an event.</td>
+  <td><a href="/doc/api/1.0/CComponent">CComponent</a></td>
+</tr>
+</table>
+</div>
+<a name="events"></a>
+
+<h2>Property Details</h2>
+<div class="detailHeader" id="columnNames-detail">
+columnNames<span class="detailHeaderTag">
+property
+ <em>read-only</em> </span>
+</div>
+
+<div class="signature">
+public array <a href="/doc/api/1.0/CDbTableSchema#getColumnNames"><b>getColumnNames</b></a>()</div>
+
+<p>list of column names</p>
+
+
+<div class="detailHeader" id="columns-detail">
+columns<span class="detailHeaderTag">
+property
+</span>
+</div>
+
+<div class="signature">
+public array <b>$columns</b>;</div>
+
+<p>column metadata of this table. Each array element is a CDbColumnSchema object, indexed by column names.</p>
+
+
+<div class="detailHeader" id="foreignKeys-detail">
+foreignKeys<span class="detailHeaderTag">
+property
+</span>
+</div>
+
+<div class="signature">
+public array <b>$foreignKeys</b>;</div>
+
+<p>foreign keys of this table. The array is indexed by column name. Each value is an array of foreign table name and foreign column name.</p>
+
+
+<div class="detailHeader" id="name-detail">
+name<span class="detailHeaderTag">
+property
+</span>
+</div>
+
+<div class="signature">
+public string <b>$name</b>;</div>
+
+<p>name of this table.</p>
+
+
+<div class="detailHeader" id="primaryKey-detail">
+primaryKey<span class="detailHeaderTag">
+property
+</span>
+</div>
+
+<div class="signature">
+public string|array <b>$primaryKey</b>;</div>
+
+<p>primary key name of this table. If composite key, an array of key names is returned.</p>
+
+
+<div class="detailHeader" id="rawName-detail">
+rawName<span class="detailHeaderTag">
+property
+</span>
+</div>
+
+<div class="signature">
+public string <b>$rawName</b>;</div>
+
+<p>raw name of this table. This is the quoted version of table name with optional schema name. It can be directly used in SQLs.</p>
+
+
+<div class="detailHeader" id="sequenceName-detail">
+sequenceName<span class="detailHeaderTag">
+property
+</span>
+</div>
+
+<div class="signature">
+public string <b>$sequenceName</b>;</div>
+
+<p>sequence name for the primary key. Null if no sequence.</p>
+
+
+<h2>Method Details</h2>
+
+<div class="detailHeader" id="getColumn-detail">
+getColumn()
+<span class="detailHeaderTag">
+method
+</span>
+</div>
+
+<table class="summaryTable">
+<tr><td colspan="3">
+<div class="signature2">
+public <a href="/doc/api/1.0/CDbColumnSchema">CDbColumnSchema</a> <b>getColumn</b>(string $name)</div>
+</td></tr>
+<tr>
+  <td class="paramNameCol">$name</td>
+  <td class="paramTypeCol">string</td>
+  <td class="paramDescCol">column name</td>
+</tr>
+<tr>
+  <td class="paramNameCol">{return}</td>
+  <td class="paramTypeCol"><a href="/doc/api/1.0/CDbColumnSchema">CDbColumnSchema</a></td>
+  <td class="paramDescCol">metadata of the named column. Null if the named column does not exist.</td>
+</tr>
+</table>
+
+<div class="sourceCode">
+<b>Source Code:</b> <a class="sourceLink" href="https://github.com/yiisoft/yii/blob/1.0.12/framework/db/schema/CDbTableSchema.php#L64">framework/db/schema/CDbTableSchema.php#64</a> (<b><a href="#" class="show">show</a></b>)
+<div class="code"><code><span style="color: #000000">
+<span style="color: #0000BB"></span><span style="color: #007700">public&nbsp;function&nbsp;</span><span style="color: #0000BB">getColumn</span><span style="color: #007700">(</span><span style="color: #0000BB">$name</span><span style="color: #007700">)<br />{<br />&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;isset(</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">columns</span><span style="color: #007700">[</span><span style="color: #0000BB">$name</span><span style="color: #007700">])&nbsp;?&nbsp;</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">columns</span><span style="color: #007700">[</span><span style="color: #0000BB">$name</span><span style="color: #007700">]&nbsp;:&nbsp;</span><span style="color: #0000BB">null</span><span style="color: #007700">;<br />}</span>
+</span>
+</code></div>
+</div>
+<p>Gets the named column metadata.
+This is a convenient method for retrieving a named column even if it does not exist.</p>
+
+
+<div class="detailHeader" id="getColumnNames-detail">
+getColumnNames()
+<span class="detailHeaderTag">
+method
+</span>
+</div>
+
+<table class="summaryTable">
+<tr><td colspan="3">
+<div class="signature2">
+public array <b>getColumnNames</b>()</div>
+</td></tr>
+<tr>
+  <td class="paramNameCol">{return}</td>
+  <td class="paramTypeCol">array</td>
+  <td class="paramDescCol">list of column names</td>
+</tr>
+</table>
+
+<div class="sourceCode">
+<b>Source Code:</b> <a class="sourceLink" href="https://github.com/yiisoft/yii/blob/1.0.12/framework/db/schema/CDbTableSchema.php#L72">framework/db/schema/CDbTableSchema.php#72</a> (<b><a href="#" class="show">show</a></b>)
+<div class="code"><code><span style="color: #000000">
+<span style="color: #0000BB"></span><span style="color: #007700">public&nbsp;function&nbsp;</span><span style="color: #0000BB">getColumnNames</span><span style="color: #007700">()<br />{<br />&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;</span><span style="color: #0000BB">array_keys</span><span style="color: #007700">(</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">columns</span><span style="color: #007700">);<br />}</span>
+</span>
+</code></div>
+</div>
+<p></p>
+
+

@@ -168,7 +168,6 @@ class ApiController extends BaseController
         }
 
         $this->sectionTitle = [
-//                    'Extensions' => ['extensions/index'],
             $extension->name => $extension->getUrl(),
             'API Documentation' => $extension->getUrl('doc', ['type' => 'api']),
         ];
@@ -201,27 +200,6 @@ class ApiController extends BaseController
                 ]);
 
                 break;
-//            case Response::FORMAT_JSON:
-//
-//                if ($section === 'index') {
-//                    $apiRenderer = new ApiRenderer([
-//                        'version' => $version,
-//                    ]);
-//
-//                    $classes = Json::decode(file_get_contents(Yii::getAlias("@app/data/api-$version/json/typeNames.json")));
-//                    foreach($classes as $i => $class) {
-//                        $classes[$i]['url'] = Yii::$app->request->hostInfo . $apiRenderer->generateApiUrl($class['name']);
-//                    }
-//
-//                    return [
-//                        'classes' => $classes,
-//                        'version' => $version,
-//                        'count' => count($classes),
-//                    ];
-//                }
-//                throw new NotFoundHttpException();
-//                // TODO
-//                break;
         }
         throw new UnsupportedMediaTypeHttpException;
     }
@@ -298,7 +276,7 @@ class ApiController extends BaseController
     {
         switch (Yii::$app->response->format) {
             case Response::FORMAT_HTML:
-                return $this->redirect(['index', 'version' => '2.0'], 302); // Found, latest docs url is not permanent
+                return $this->redirect(['index', 'version' => '2.0']); // Found, latest docs url is not permanent
 
             case Response::FORMAT_JSON:
 

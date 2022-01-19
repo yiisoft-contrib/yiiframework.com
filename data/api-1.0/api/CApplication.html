@@ -1,0 +1,2471 @@
+<h1>CApplication</h1>
+<div id="nav">
+<a href="/doc/api/1.0/">All Packages</a>
+| <a href="#properties">Properties</a>
+| <a href="#methods">Methods</a>
+| <a href="#events">Events</a>
+</div>
+
+<table class="summaryTable docClass">
+<colgroup>
+	<col class="col-name" />
+	<col class="col-value" />
+</colgroup>
+<tr>
+  <th>Package</th>
+  <td><a href="/doc/api/1.0/#system.base">system.base</a></td>
+</tr>
+<tr>
+  <th>Inheritance</th>
+  <td>abstract class CApplication &raquo;
+<a href="/doc/api/1.0/CModule">CModule</a> &raquo;
+<a href="/doc/api/1.0/CComponent">CComponent</a></td>
+</tr>
+<tr>
+  <th>Subclasses</th>
+  <td><a href="/doc/api/1.0/CConsoleApplication">CConsoleApplication</a>, <a href="/doc/api/1.0/CWebApplication">CWebApplication</a></td>
+</tr>
+<tr>
+  <th>Since</th>
+  <td>1.0</td>
+</tr>
+<tr>
+  <th>Version</th>
+  <td>$Id$</td>
+</tr>
+<tr>
+  <th>Source Code</th>
+  <td><a class="sourceLink" href="https://github.com/yiisoft/yii/blob/1.0.12/framework/base/CApplication.php">framework/base/CApplication.php</a></td>
+</tr>
+</table>
+
+<div id="classDescription">
+CApplication is the base class for all application classes.
+<br/><br/>
+An application serves as the global context that the user request
+is being processed. It manages a set of application components that
+provide specific functionalities to the whole application.
+<br/><br/>
+The core application components provided by CApplication are the following:
+<ul>
+<li><a href="/doc/api/1.0/CApplication#getErrorHandler">errorHandler</a>: handles PHP errors and
+  uncaught exceptions. This application component is dynamically loaded when needed.</li>
+<li><a href="/doc/api/1.0/CApplication#getSecurityManager">securityManager</a>: provides security-related
+  services, such as hashing, encryption. This application component is dynamically
+  loaded when needed.</li>
+<li><a href="/doc/api/1.0/CApplication#getStatePersister">statePersister</a>: provides global state
+  persistence method. This application component is dynamically loaded when needed.</li>
+<li><a href="/doc/api/1.0/CApplication#getCache">cache</a>: provides caching feature. This application component is
+  disabled by default.</li>
+<li><a href="/doc/api/1.0/CApplication#getMessages">messages</a>: provides the message source for translating
+  application messages. This application component is dynamically loaded when needed.</li>
+<li><a href="/doc/api/1.0/CApplication#getCoreMessages">coreMessages</a>: provides the message source for translating
+  Yii framework messages. This application component is dynamically loaded when needed.</li>
+</ul>
+<br/><br/>
+CApplication will undergo the following lifecycles when processing a user request:
+<ol>
+<li>load application configuration;</li>
+<li>set up class autoloader and error handling;</li>
+<li>load static application components;</li>
+<li><a href="/doc/api/1.0/CApplication#onBeginRequest">onBeginRequest</a>: preprocess the user request;</li>
+<li><a href="/doc/api/1.0/CApplication#processRequest">processRequest</a>: process the user request;</li>
+<li><a href="/doc/api/1.0/CApplication#onEndRequest">onEndRequest</a>: postprocess the user request;</li>
+</ol>
+<br/><br/>
+Starting from lifecycle 3, if a PHP error or an uncaught exception occurs,
+the application will switch to its error handling logic and jump to step 6 afterwards.</div>
+<a name="properties"></a>
+
+<div class="summary docProperty">
+<h2>Public Properties</h2>
+
+<p><a href="#" class="toggle">Hide inherited properties</a></p>
+
+<table class="summaryTable">
+<colgroup>
+	<col class="col-property" />
+	<col class="col-type" />
+	<col class="col-description" />
+	<col class="col-defined" />
+</colgroup>
+<tr>
+  <th>Property</th><th>Type</th><th>Description</th><th>Defined By</th>
+</tr>
+<tr id="basePath">
+  <td><a href="/doc/api/1.0/CApplication#basePath-detail">basePath</a></td>
+  <td>string</td>
+  <td>the root directory of the application.</td>
+  <td>CApplication</td>
+</tr>
+<tr class="inherited" id="behaviors">
+  <td><a href="/doc/api/1.0/CModule#behaviors-detail">behaviors</a></td>
+  <td>array</td>
+  <td>the behaviors that should be attached to the module.</td>
+  <td><a href="/doc/api/1.0/CModule">CModule</a></td>
+</tr>
+<tr id="cache">
+  <td><a href="/doc/api/1.0/CApplication#cache-detail">cache</a></td>
+  <td><a href="/doc/api/1.0/CCache">CCache</a></td>
+  <td>the cache application component.</td>
+  <td>CApplication</td>
+</tr>
+<tr id="charset">
+  <td><a href="/doc/api/1.0/CApplication#charset-detail">charset</a></td>
+  <td>string</td>
+  <td>the charset currently used for the application.</td>
+  <td>CApplication</td>
+</tr>
+<tr class="inherited" id="components">
+  <td><a href="/doc/api/1.0/CModule#components-detail">components</a></td>
+  <td>array</td>
+  <td>the currently loaded components (indexed by their IDs)</td>
+  <td><a href="/doc/api/1.0/CModule">CModule</a></td>
+</tr>
+<tr id="coreMessages">
+  <td><a href="/doc/api/1.0/CApplication#coreMessages-detail">coreMessages</a></td>
+  <td><a href="/doc/api/1.0/CPhpMessageSource">CPhpMessageSource</a></td>
+  <td>the core message translations</td>
+  <td>CApplication</td>
+</tr>
+<tr id="dateFormatter">
+  <td><a href="/doc/api/1.0/CApplication#dateFormatter-detail">dateFormatter</a></td>
+  <td><a href="/doc/api/1.0/CDateFormatter">CDateFormatter</a></td>
+  <td>the locale-dependent date formatter.</td>
+  <td>CApplication</td>
+</tr>
+<tr id="db">
+  <td><a href="/doc/api/1.0/CApplication#db-detail">db</a></td>
+  <td><a href="/doc/api/1.0/CDbConnection">CDbConnection</a></td>
+  <td>the database connection</td>
+  <td>CApplication</td>
+</tr>
+<tr id="errorHandler">
+  <td><a href="/doc/api/1.0/CApplication#errorHandler-detail">errorHandler</a></td>
+  <td><a href="/doc/api/1.0/CErrorHandler">CErrorHandler</a></td>
+  <td>the error handler application component.</td>
+  <td>CApplication</td>
+</tr>
+<tr id="extensionPath">
+  <td><a href="/doc/api/1.0/CApplication#extensionPath-detail">extensionPath</a></td>
+  <td>string</td>
+  <td>Returns the root directory that holds all third-party extensions.</td>
+  <td>CApplication</td>
+</tr>
+<tr id="id">
+  <td><a href="/doc/api/1.0/CApplication#id-detail">id</a></td>
+  <td>string</td>
+  <td>a unique identifier for the application.</td>
+  <td>CApplication</td>
+</tr>
+<tr id="language">
+  <td><a href="/doc/api/1.0/CApplication#language-detail">language</a></td>
+  <td>string</td>
+  <td>the language that the user is using and the application should be targeted to.</td>
+  <td>CApplication</td>
+</tr>
+<tr id="locale">
+  <td><a href="/doc/api/1.0/CApplication#locale-detail">locale</a></td>
+  <td><a href="/doc/api/1.0/CLocale">CLocale</a></td>
+  <td>the locale instance</td>
+  <td>CApplication</td>
+</tr>
+<tr id="messages">
+  <td><a href="/doc/api/1.0/CApplication#messages-detail">messages</a></td>
+  <td><a href="/doc/api/1.0/CMessageSource">CMessageSource</a></td>
+  <td>the application message translations</td>
+  <td>CApplication</td>
+</tr>
+<tr class="inherited" id="modulePath">
+  <td><a href="/doc/api/1.0/CModule#modulePath-detail">modulePath</a></td>
+  <td>string</td>
+  <td>the directory that contains the application modules.</td>
+  <td><a href="/doc/api/1.0/CModule">CModule</a></td>
+</tr>
+<tr class="inherited" id="modules">
+  <td><a href="/doc/api/1.0/CModule#modules-detail">modules</a></td>
+  <td>array</td>
+  <td>the configuration of the currently installed modules (module ID => configuration)</td>
+  <td><a href="/doc/api/1.0/CModule">CModule</a></td>
+</tr>
+<tr id="name">
+  <td><a href="/doc/api/1.0/CApplication#name-detail">name</a></td>
+  <td>string</td>
+  <td>the application name.</td>
+  <td>CApplication</td>
+</tr>
+<tr id="numberFormatter">
+  <td><a href="/doc/api/1.0/CApplication#numberFormatter-detail">numberFormatter</a></td>
+  <td><a href="/doc/api/1.0/CNumberFormatter">CNumberFormatter</a></td>
+  <td>the locale-dependent number formatter.</td>
+  <td>CApplication</td>
+</tr>
+<tr class="inherited" id="params">
+  <td><a href="/doc/api/1.0/CModule#params-detail">params</a></td>
+  <td><a href="/doc/api/1.0/CAttributeCollection">CAttributeCollection</a></td>
+  <td>the list of user-defined parameters</td>
+  <td><a href="/doc/api/1.0/CModule">CModule</a></td>
+</tr>
+<tr class="inherited" id="parentModule">
+  <td><a href="/doc/api/1.0/CModule#parentModule-detail">parentModule</a></td>
+  <td><a href="/doc/api/1.0/CModule">CModule</a></td>
+  <td>the parent module.</td>
+  <td><a href="/doc/api/1.0/CModule">CModule</a></td>
+</tr>
+<tr class="inherited" id="preload">
+  <td><a href="/doc/api/1.0/CModule#preload-detail">preload</a></td>
+  <td>array</td>
+  <td>the IDs of the application components that should be preloaded.</td>
+  <td><a href="/doc/api/1.0/CModule">CModule</a></td>
+</tr>
+<tr id="request">
+  <td><a href="/doc/api/1.0/CApplication#request-detail">request</a></td>
+  <td><a href="/doc/api/1.0/CHttpRequest">CHttpRequest</a></td>
+  <td>the request component</td>
+  <td>CApplication</td>
+</tr>
+<tr id="runtimePath">
+  <td><a href="/doc/api/1.0/CApplication#runtimePath-detail">runtimePath</a></td>
+  <td>string</td>
+  <td>the directory that stores runtime files.</td>
+  <td>CApplication</td>
+</tr>
+<tr id="securityManager">
+  <td><a href="/doc/api/1.0/CApplication#securityManager-detail">securityManager</a></td>
+  <td><a href="/doc/api/1.0/CSecurityManager">CSecurityManager</a></td>
+  <td>the security manager application component.</td>
+  <td>CApplication</td>
+</tr>
+<tr id="sourceLanguage">
+  <td><a href="/doc/api/1.0/CApplication#sourceLanguage-detail">sourceLanguage</a></td>
+  <td>string</td>
+  <td>the language that the application is written in.</td>
+  <td>CApplication</td>
+</tr>
+<tr id="statePersister">
+  <td><a href="/doc/api/1.0/CApplication#statePersister-detail">statePersister</a></td>
+  <td><a href="/doc/api/1.0/CStatePersister">CStatePersister</a></td>
+  <td>the state persister application component.</td>
+  <td>CApplication</td>
+</tr>
+<tr id="timeZone">
+  <td><a href="/doc/api/1.0/CApplication#timeZone-detail">timeZone</a></td>
+  <td>string</td>
+  <td>Returns the time zone used by this application.</td>
+  <td>CApplication</td>
+</tr>
+<tr id="urlManager">
+  <td><a href="/doc/api/1.0/CApplication#urlManager-detail">urlManager</a></td>
+  <td><a href="/doc/api/1.0/CUrlManager">CUrlManager</a></td>
+  <td>the URL manager component</td>
+  <td>CApplication</td>
+</tr>
+</table>
+</div>
+<a name="methods"></a>
+
+<div class="summary docMethod">
+<h2>Public Methods</h2>
+
+<p><a href="#" class="toggle">Hide inherited methods</a></p>
+
+<table class="summaryTable">
+<colgroup>
+	<col class="col-method" />
+	<col class="col-description" />
+	<col class="col-defined" />
+</colgroup>
+<tr>
+  <th>Method</th><th>Description</th><th>Defined By</th>
+</tr>
+<tr class="inherited" id="__call">
+  <td><a href="/doc/api/1.0/CComponent#__call-detail">__call()</a></td>
+  <td>Calls the named method which is not a class method.</td>
+  <td><a href="/doc/api/1.0/CComponent">CComponent</a></td>
+</tr>
+<tr id="__construct">
+  <td><a href="/doc/api/1.0/CApplication#__construct-detail">__construct()</a></td>
+  <td>Constructor.</td>
+  <td>CApplication</td>
+</tr>
+<tr class="inherited" id="__get">
+  <td><a href="/doc/api/1.0/CModule#__get-detail">__get()</a></td>
+  <td>Getter magic method.</td>
+  <td><a href="/doc/api/1.0/CModule">CModule</a></td>
+</tr>
+<tr class="inherited" id="__isset">
+  <td><a href="/doc/api/1.0/CModule#__isset-detail">__isset()</a></td>
+  <td>Checks if a property value is null.</td>
+  <td><a href="/doc/api/1.0/CModule">CModule</a></td>
+</tr>
+<tr class="inherited" id="__set">
+  <td><a href="/doc/api/1.0/CComponent#__set-detail">__set()</a></td>
+  <td>Sets value of a component property.</td>
+  <td><a href="/doc/api/1.0/CComponent">CComponent</a></td>
+</tr>
+<tr class="inherited" id="__unset">
+  <td><a href="/doc/api/1.0/CComponent#__unset-detail">__unset()</a></td>
+  <td>Sets a component property to be null.</td>
+  <td><a href="/doc/api/1.0/CComponent">CComponent</a></td>
+</tr>
+<tr class="inherited" id="asa">
+  <td><a href="/doc/api/1.0/CComponent#asa-detail">asa()</a></td>
+  <td>Returns the named behavior object.</td>
+  <td><a href="/doc/api/1.0/CComponent">CComponent</a></td>
+</tr>
+<tr class="inherited" id="attachBehavior">
+  <td><a href="/doc/api/1.0/CComponent#attachBehavior-detail">attachBehavior()</a></td>
+  <td>Attaches a behavior to this component.</td>
+  <td><a href="/doc/api/1.0/CComponent">CComponent</a></td>
+</tr>
+<tr class="inherited" id="attachBehaviors">
+  <td><a href="/doc/api/1.0/CComponent#attachBehaviors-detail">attachBehaviors()</a></td>
+  <td>Attaches a list of behaviors to the component.</td>
+  <td><a href="/doc/api/1.0/CComponent">CComponent</a></td>
+</tr>
+<tr class="inherited" id="attachEventHandler">
+  <td><a href="/doc/api/1.0/CComponent#attachEventHandler-detail">attachEventHandler()</a></td>
+  <td>Attaches an event handler to an event.</td>
+  <td><a href="/doc/api/1.0/CComponent">CComponent</a></td>
+</tr>
+<tr class="inherited" id="canGetProperty">
+  <td><a href="/doc/api/1.0/CComponent#canGetProperty-detail">canGetProperty()</a></td>
+  <td>Determines whether a property can be read.</td>
+  <td><a href="/doc/api/1.0/CComponent">CComponent</a></td>
+</tr>
+<tr class="inherited" id="canSetProperty">
+  <td><a href="/doc/api/1.0/CComponent#canSetProperty-detail">canSetProperty()</a></td>
+  <td>Determines whether a property can be set.</td>
+  <td><a href="/doc/api/1.0/CComponent">CComponent</a></td>
+</tr>
+<tr id="clearGlobalState">
+  <td><a href="/doc/api/1.0/CApplication#clearGlobalState-detail">clearGlobalState()</a></td>
+  <td>Clears a global value.</td>
+  <td>CApplication</td>
+</tr>
+<tr class="inherited" id="configure">
+  <td><a href="/doc/api/1.0/CModule#configure-detail">configure()</a></td>
+  <td>Configures the module with the specified configuration.</td>
+  <td><a href="/doc/api/1.0/CModule">CModule</a></td>
+</tr>
+<tr class="inherited" id="detachBehavior">
+  <td><a href="/doc/api/1.0/CComponent#detachBehavior-detail">detachBehavior()</a></td>
+  <td>Detaches a behavior from the component.</td>
+  <td><a href="/doc/api/1.0/CComponent">CComponent</a></td>
+</tr>
+<tr class="inherited" id="detachBehaviors">
+  <td><a href="/doc/api/1.0/CComponent#detachBehaviors-detail">detachBehaviors()</a></td>
+  <td>Detaches all behaviors from the component.</td>
+  <td><a href="/doc/api/1.0/CComponent">CComponent</a></td>
+</tr>
+<tr class="inherited" id="detachEventHandler">
+  <td><a href="/doc/api/1.0/CComponent#detachEventHandler-detail">detachEventHandler()</a></td>
+  <td>Detaches an existing event handler.</td>
+  <td><a href="/doc/api/1.0/CComponent">CComponent</a></td>
+</tr>
+<tr class="inherited" id="disableBehavior">
+  <td><a href="/doc/api/1.0/CComponent#disableBehavior-detail">disableBehavior()</a></td>
+  <td>Disables an attached behavior.</td>
+  <td><a href="/doc/api/1.0/CComponent">CComponent</a></td>
+</tr>
+<tr class="inherited" id="disableBehaviors">
+  <td><a href="/doc/api/1.0/CComponent#disableBehaviors-detail">disableBehaviors()</a></td>
+  <td>Disables all behaviors attached to this component.</td>
+  <td><a href="/doc/api/1.0/CComponent">CComponent</a></td>
+</tr>
+<tr id="displayError">
+  <td><a href="/doc/api/1.0/CApplication#displayError-detail">displayError()</a></td>
+  <td>Displays the captured PHP error.</td>
+  <td>CApplication</td>
+</tr>
+<tr id="displayException">
+  <td><a href="/doc/api/1.0/CApplication#displayException-detail">displayException()</a></td>
+  <td>Displays the uncaught PHP exception.</td>
+  <td>CApplication</td>
+</tr>
+<tr class="inherited" id="enableBehavior">
+  <td><a href="/doc/api/1.0/CComponent#enableBehavior-detail">enableBehavior()</a></td>
+  <td>Enables an attached behavior.</td>
+  <td><a href="/doc/api/1.0/CComponent">CComponent</a></td>
+</tr>
+<tr class="inherited" id="enableBehaviors">
+  <td><a href="/doc/api/1.0/CComponent#enableBehaviors-detail">enableBehaviors()</a></td>
+  <td>Enables all behaviors attached to this component.</td>
+  <td><a href="/doc/api/1.0/CComponent">CComponent</a></td>
+</tr>
+<tr id="end">
+  <td><a href="/doc/api/1.0/CApplication#end-detail">end()</a></td>
+  <td>Terminates the application.</td>
+  <td>CApplication</td>
+</tr>
+<tr id="findLocalizedFile">
+  <td><a href="/doc/api/1.0/CApplication#findLocalizedFile-detail">findLocalizedFile()</a></td>
+  <td>Returns the localized version of a specified file.</td>
+  <td>CApplication</td>
+</tr>
+<tr id="getBasePath">
+  <td><a href="/doc/api/1.0/CApplication#getBasePath-detail">getBasePath()</a></td>
+  <td>Returns the root directory of the application. Defaults to 'protected'.</td>
+  <td>CApplication</td>
+</tr>
+<tr id="getCache">
+  <td><a href="/doc/api/1.0/CApplication#getCache-detail">getCache()</a></td>
+  <td>Returns the cache application component. Null if the component is not enabled.</td>
+  <td>CApplication</td>
+</tr>
+<tr class="inherited" id="getComponent">
+  <td><a href="/doc/api/1.0/CModule#getComponent-detail">getComponent()</a></td>
+  <td>Retrieves the named application component.</td>
+  <td><a href="/doc/api/1.0/CModule">CModule</a></td>
+</tr>
+<tr class="inherited" id="getComponents">
+  <td><a href="/doc/api/1.0/CModule#getComponents-detail">getComponents()</a></td>
+  <td>Returns the currently loaded components (indexed by their IDs)</td>
+  <td><a href="/doc/api/1.0/CModule">CModule</a></td>
+</tr>
+<tr id="getCoreMessages">
+  <td><a href="/doc/api/1.0/CApplication#getCoreMessages-detail">getCoreMessages()</a></td>
+  <td>Returns the core message translations</td>
+  <td>CApplication</td>
+</tr>
+<tr id="getDateFormatter">
+  <td><a href="/doc/api/1.0/CApplication#getDateFormatter-detail">getDateFormatter()</a></td>
+  <td>Returns the locale-dependent date formatter.
+The current <a href="/doc/api/1.0/CApplication#getLocale">application locale</a> will be used.</td>
+  <td>CApplication</td>
+</tr>
+<tr id="getDb">
+  <td><a href="/doc/api/1.0/CApplication#getDb-detail">getDb()</a></td>
+  <td>Returns the database connection</td>
+  <td>CApplication</td>
+</tr>
+<tr id="getErrorHandler">
+  <td><a href="/doc/api/1.0/CApplication#getErrorHandler-detail">getErrorHandler()</a></td>
+  <td>Returns the error handler application component.</td>
+  <td>CApplication</td>
+</tr>
+<tr class="inherited" id="getEventHandlers">
+  <td><a href="/doc/api/1.0/CComponent#getEventHandlers-detail">getEventHandlers()</a></td>
+  <td>Returns the list of attached event handlers for an event.</td>
+  <td><a href="/doc/api/1.0/CComponent">CComponent</a></td>
+</tr>
+<tr id="getExtensionPath">
+  <td><a href="/doc/api/1.0/CApplication#getExtensionPath-detail">getExtensionPath()</a></td>
+  <td>Returns the root directory that holds all third-party extensions.</td>
+  <td>CApplication</td>
+</tr>
+<tr id="getGlobalState">
+  <td><a href="/doc/api/1.0/CApplication#getGlobalState-detail">getGlobalState()</a></td>
+  <td>Returns a global value.</td>
+  <td>CApplication</td>
+</tr>
+<tr id="getId">
+  <td><a href="/doc/api/1.0/CApplication#getId-detail">getId()</a></td>
+  <td>Returns a unique identifier for the application.</td>
+  <td>CApplication</td>
+</tr>
+<tr id="getLanguage">
+  <td><a href="/doc/api/1.0/CApplication#getLanguage-detail">getLanguage()</a></td>
+  <td>Returns the language that the user is using and the application should be targeted to.
+Defaults to the <a href="/doc/api/1.0/CApplication#sourceLanguage">source language</a>.</td>
+  <td>CApplication</td>
+</tr>
+<tr id="getLocale">
+  <td><a href="/doc/api/1.0/CApplication#getLocale-detail">getLocale()</a></td>
+  <td>Returns the locale instance</td>
+  <td>CApplication</td>
+</tr>
+<tr id="getMessages">
+  <td><a href="/doc/api/1.0/CApplication#getMessages-detail">getMessages()</a></td>
+  <td>Returns the application message translations</td>
+  <td>CApplication</td>
+</tr>
+<tr class="inherited" id="getModule">
+  <td><a href="/doc/api/1.0/CModule#getModule-detail">getModule()</a></td>
+  <td>Retrieves the named application module.</td>
+  <td><a href="/doc/api/1.0/CModule">CModule</a></td>
+</tr>
+<tr class="inherited" id="getModulePath">
+  <td><a href="/doc/api/1.0/CModule#getModulePath-detail">getModulePath()</a></td>
+  <td>Returns the directory that contains the application modules. Defaults to the 'modules' subdirectory of <a href="/doc/api/1.0/CApplication#basePath">basePath</a>.</td>
+  <td><a href="/doc/api/1.0/CModule">CModule</a></td>
+</tr>
+<tr class="inherited" id="getModules">
+  <td><a href="/doc/api/1.0/CModule#getModules-detail">getModules()</a></td>
+  <td>Returns the configuration of the currently installed modules (module ID => configuration)</td>
+  <td><a href="/doc/api/1.0/CModule">CModule</a></td>
+</tr>
+<tr id="getNumberFormatter">
+  <td><a href="/doc/api/1.0/CApplication#getNumberFormatter-detail">getNumberFormatter()</a></td>
+  <td>Returns the locale-dependent number formatter.
+The current <a href="/doc/api/1.0/CApplication#getLocale">application locale</a> will be used.</td>
+  <td>CApplication</td>
+</tr>
+<tr class="inherited" id="getParams">
+  <td><a href="/doc/api/1.0/CModule#getParams-detail">getParams()</a></td>
+  <td>Returns the list of user-defined parameters</td>
+  <td><a href="/doc/api/1.0/CModule">CModule</a></td>
+</tr>
+<tr class="inherited" id="getParentModule">
+  <td><a href="/doc/api/1.0/CModule#getParentModule-detail">getParentModule()</a></td>
+  <td>Returns the parent module. Null if this module does not have a parent.</td>
+  <td><a href="/doc/api/1.0/CModule">CModule</a></td>
+</tr>
+<tr id="getRequest">
+  <td><a href="/doc/api/1.0/CApplication#getRequest-detail">getRequest()</a></td>
+  <td>Returns the request component</td>
+  <td>CApplication</td>
+</tr>
+<tr id="getRuntimePath">
+  <td><a href="/doc/api/1.0/CApplication#getRuntimePath-detail">getRuntimePath()</a></td>
+  <td>Returns the directory that stores runtime files. Defaults to 'protected/runtime'.</td>
+  <td>CApplication</td>
+</tr>
+<tr id="getSecurityManager">
+  <td><a href="/doc/api/1.0/CApplication#getSecurityManager-detail">getSecurityManager()</a></td>
+  <td>Returns the security manager application component.</td>
+  <td>CApplication</td>
+</tr>
+<tr id="getStatePersister">
+  <td><a href="/doc/api/1.0/CApplication#getStatePersister-detail">getStatePersister()</a></td>
+  <td>Returns the state persister application component.</td>
+  <td>CApplication</td>
+</tr>
+<tr id="getTimeZone">
+  <td><a href="/doc/api/1.0/CApplication#getTimeZone-detail">getTimeZone()</a></td>
+  <td>Returns the time zone used by this application.</td>
+  <td>CApplication</td>
+</tr>
+<tr id="getUrlManager">
+  <td><a href="/doc/api/1.0/CApplication#getUrlManager-detail">getUrlManager()</a></td>
+  <td>Returns the URL manager component</td>
+  <td>CApplication</td>
+</tr>
+<tr id="handleError">
+  <td><a href="/doc/api/1.0/CApplication#handleError-detail">handleError()</a></td>
+  <td>Handles PHP execution errors such as warnings, notices.</td>
+  <td>CApplication</td>
+</tr>
+<tr id="handleException">
+  <td><a href="/doc/api/1.0/CApplication#handleException-detail">handleException()</a></td>
+  <td>Handles uncaught PHP exceptions.</td>
+  <td>CApplication</td>
+</tr>
+<tr class="inherited" id="hasComponent">
+  <td><a href="/doc/api/1.0/CModule#hasComponent-detail">hasComponent()</a></td>
+  <td>Determines whether the named application component exists (including both loaded and disabled.)</td>
+  <td><a href="/doc/api/1.0/CModule">CModule</a></td>
+</tr>
+<tr class="inherited" id="hasEvent">
+  <td><a href="/doc/api/1.0/CComponent#hasEvent-detail">hasEvent()</a></td>
+  <td>Determines whether an event is defined.</td>
+  <td><a href="/doc/api/1.0/CComponent">CComponent</a></td>
+</tr>
+<tr class="inherited" id="hasEventHandler">
+  <td><a href="/doc/api/1.0/CComponent#hasEventHandler-detail">hasEventHandler()</a></td>
+  <td>Checks whether the named event has attached handlers.</td>
+  <td><a href="/doc/api/1.0/CComponent">CComponent</a></td>
+</tr>
+<tr class="inherited" id="hasProperty">
+  <td><a href="/doc/api/1.0/CComponent#hasProperty-detail">hasProperty()</a></td>
+  <td>Determines whether a property is defined.</td>
+  <td><a href="/doc/api/1.0/CComponent">CComponent</a></td>
+</tr>
+<tr id="onBeginRequest">
+  <td><a href="/doc/api/1.0/CApplication#onBeginRequest-detail">onBeginRequest()</a></td>
+  <td>Raised right BEFORE the application processes the request.</td>
+  <td>CApplication</td>
+</tr>
+<tr id="onEndRequest">
+  <td><a href="/doc/api/1.0/CApplication#onEndRequest-detail">onEndRequest()</a></td>
+  <td>Raised right AFTER the application processes the request.</td>
+  <td>CApplication</td>
+</tr>
+<tr id="onError">
+  <td><a href="/doc/api/1.0/CApplication#onError-detail">onError()</a></td>
+  <td>Raised when a PHP execution error occurs.</td>
+  <td>CApplication</td>
+</tr>
+<tr id="onException">
+  <td><a href="/doc/api/1.0/CApplication#onException-detail">onException()</a></td>
+  <td>Raised when an uncaught PHP exception occurs.</td>
+  <td>CApplication</td>
+</tr>
+<tr id="processRequest">
+  <td><a href="/doc/api/1.0/CApplication#processRequest-detail">processRequest()</a></td>
+  <td>Processes the request.</td>
+  <td>CApplication</td>
+</tr>
+<tr class="inherited" id="raiseEvent">
+  <td><a href="/doc/api/1.0/CComponent#raiseEvent-detail">raiseEvent()</a></td>
+  <td>Raises an event.</td>
+  <td><a href="/doc/api/1.0/CComponent">CComponent</a></td>
+</tr>
+<tr id="run">
+  <td><a href="/doc/api/1.0/CApplication#run-detail">run()</a></td>
+  <td>Runs the application.</td>
+  <td>CApplication</td>
+</tr>
+<tr class="inherited" id="setAliases">
+  <td><a href="/doc/api/1.0/CModule#setAliases-detail">setAliases()</a></td>
+  <td>Defines the root aliases.</td>
+  <td><a href="/doc/api/1.0/CModule">CModule</a></td>
+</tr>
+<tr id="setBasePath">
+  <td><a href="/doc/api/1.0/CApplication#setBasePath-detail">setBasePath()</a></td>
+  <td>Sets the root directory of the application.</td>
+  <td>CApplication</td>
+</tr>
+<tr class="inherited" id="setComponent">
+  <td><a href="/doc/api/1.0/CModule#setComponent-detail">setComponent()</a></td>
+  <td>Puts a component under the management of the module.</td>
+  <td><a href="/doc/api/1.0/CModule">CModule</a></td>
+</tr>
+<tr class="inherited" id="setComponents">
+  <td><a href="/doc/api/1.0/CModule#setComponents-detail">setComponents()</a></td>
+  <td>Sets the application components.</td>
+  <td><a href="/doc/api/1.0/CModule">CModule</a></td>
+</tr>
+<tr id="setExtensionPath">
+  <td><a href="/doc/api/1.0/CApplication#setExtensionPath-detail">setExtensionPath()</a></td>
+  <td>Sets the directory that contains all third-party extensions.</td>
+  <td>CApplication</td>
+</tr>
+<tr id="setGlobalState">
+  <td><a href="/doc/api/1.0/CApplication#setGlobalState-detail">setGlobalState()</a></td>
+  <td>Sets a global value.</td>
+  <td>CApplication</td>
+</tr>
+<tr id="setId">
+  <td><a href="/doc/api/1.0/CApplication#setId-detail">setId()</a></td>
+  <td>Sets a unique identifier for the application.</td>
+  <td>CApplication</td>
+</tr>
+<tr class="inherited" id="setImport">
+  <td><a href="/doc/api/1.0/CModule#setImport-detail">setImport()</a></td>
+  <td>Sets the aliases that are used in the module.</td>
+  <td><a href="/doc/api/1.0/CModule">CModule</a></td>
+</tr>
+<tr id="setLanguage">
+  <td><a href="/doc/api/1.0/CApplication#setLanguage-detail">setLanguage()</a></td>
+  <td>Specifies which language the application is targeted to.</td>
+  <td>CApplication</td>
+</tr>
+<tr class="inherited" id="setModulePath">
+  <td><a href="/doc/api/1.0/CModule#setModulePath-detail">setModulePath()</a></td>
+  <td>Sets the directory that contains the application modules.</td>
+  <td><a href="/doc/api/1.0/CModule">CModule</a></td>
+</tr>
+<tr class="inherited" id="setModules">
+  <td><a href="/doc/api/1.0/CModule#setModules-detail">setModules()</a></td>
+  <td>Configures the sub-modules of this module.</td>
+  <td><a href="/doc/api/1.0/CModule">CModule</a></td>
+</tr>
+<tr class="inherited" id="setParams">
+  <td><a href="/doc/api/1.0/CModule#setParams-detail">setParams()</a></td>
+  <td>Sets user-defined parameters. This should be in name-value pairs.</td>
+  <td><a href="/doc/api/1.0/CModule">CModule</a></td>
+</tr>
+<tr id="setRuntimePath">
+  <td><a href="/doc/api/1.0/CApplication#setRuntimePath-detail">setRuntimePath()</a></td>
+  <td>Sets the directory that stores runtime files.</td>
+  <td>CApplication</td>
+</tr>
+<tr id="setTimeZone">
+  <td><a href="/doc/api/1.0/CApplication#setTimeZone-detail">setTimeZone()</a></td>
+  <td>Sets the time zone used by this application.</td>
+  <td>CApplication</td>
+</tr>
+</table>
+</div>
+<div class="summary docMethod">
+<h2>Protected Methods</h2>
+
+<p><a href="#" class="toggle">Hide inherited methods</a></p>
+
+<table class="summaryTable">
+<colgroup>
+	<col class="col-method" />
+	<col class="col-description" />
+	<col class="col-defined" />
+</colgroup>
+<tr>
+  <th>Method</th><th>Description</th><th>Defined By</th>
+</tr>
+<tr class="inherited" id="init">
+  <td><a href="/doc/api/1.0/CModule#init-detail">init()</a></td>
+  <td>Initializes the module.</td>
+  <td><a href="/doc/api/1.0/CModule">CModule</a></td>
+</tr>
+<tr id="initSystemHandlers">
+  <td><a href="/doc/api/1.0/CApplication#initSystemHandlers-detail">initSystemHandlers()</a></td>
+  <td>Initializes the class autoloader and error handlers.</td>
+  <td>CApplication</td>
+</tr>
+<tr id="loadGlobalState">
+  <td><a href="/doc/api/1.0/CApplication#loadGlobalState-detail">loadGlobalState()</a></td>
+  <td>Loads the global state data from persistent storage.</td>
+  <td>CApplication</td>
+</tr>
+<tr class="inherited" id="preinit">
+  <td><a href="/doc/api/1.0/CModule#preinit-detail">preinit()</a></td>
+  <td>Preinitializes the module.</td>
+  <td><a href="/doc/api/1.0/CModule">CModule</a></td>
+</tr>
+<tr class="inherited" id="preloadComponents">
+  <td><a href="/doc/api/1.0/CModule#preloadComponents-detail">preloadComponents()</a></td>
+  <td>Loads static application components.</td>
+  <td><a href="/doc/api/1.0/CModule">CModule</a></td>
+</tr>
+<tr id="registerCoreComponents">
+  <td><a href="/doc/api/1.0/CApplication#registerCoreComponents-detail">registerCoreComponents()</a></td>
+  <td>Registers the core application components.</td>
+  <td>CApplication</td>
+</tr>
+<tr id="saveGlobalState">
+  <td><a href="/doc/api/1.0/CApplication#saveGlobalState-detail">saveGlobalState()</a></td>
+  <td>Saves the global state data into persistent storage.</td>
+  <td>CApplication</td>
+</tr>
+</table>
+</div>
+<a name="events"></a>
+
+<div class="summary docEvent">
+<h2>Events</h2>
+
+<p><a href="#" class="toggle">Hide inherited events</a></p>
+
+<table class="summaryTable">
+<colgroup>
+	<col class="col-event" />
+	<col class="col-description" />
+	<col class="col-defined" />
+</colgroup>
+<tr>
+  <th>Event</th><th>Description</th><th>Defined By</th>
+</tr>
+<tr id="onBeginRequest">
+  <td><a href="/doc/api/1.0/CApplication#onBeginRequest-detail">onBeginRequest</a></td>
+  <td>Raised right BEFORE the application processes the request.</td>
+  <td>CApplication</td>
+</tr>
+<tr id="onEndRequest">
+  <td><a href="/doc/api/1.0/CApplication#onEndRequest-detail">onEndRequest</a></td>
+  <td>Raised right AFTER the application processes the request.</td>
+  <td>CApplication</td>
+</tr>
+<tr id="onException">
+  <td><a href="/doc/api/1.0/CApplication#onException-detail">onException</a></td>
+  <td>Raised when an uncaught PHP exception occurs.</td>
+  <td>CApplication</td>
+</tr>
+<tr id="onError">
+  <td><a href="/doc/api/1.0/CApplication#onError-detail">onError</a></td>
+  <td>Raised when a PHP execution error occurs.</td>
+  <td>CApplication</td>
+</tr>
+</table>
+</div>
+<h2>Property Details</h2>
+<div class="detailHeader" id="basePath-detail">
+basePath<span class="detailHeaderTag">
+property
+</span>
+</div>
+
+<div class="signature">
+public string <a href="/doc/api/1.0/CApplication#getBasePath"><b>getBasePath</b></a>()<br/>public void <a href="/doc/api/1.0/CApplication#setBasePath"><b>setBasePath</b></a>(string $path)</div>
+
+<p>the root directory of the application. Defaults to 'protected'.</p>
+
+
+<div class="detailHeader" id="cache-detail">
+cache<span class="detailHeaderTag">
+property
+ <em>read-only</em> </span>
+</div>
+
+<div class="signature">
+public <a href="/doc/api/1.0/CCache">CCache</a> <a href="/doc/api/1.0/CApplication#getCache"><b>getCache</b></a>()</div>
+
+<p>the cache application component. Null if the component is not enabled.</p>
+
+
+<div class="detailHeader" id="charset-detail">
+charset<span class="detailHeaderTag">
+property
+</span>
+</div>
+
+<div class="signature">
+public string <b>$charset</b>;</div>
+
+<p>the charset currently used for the application. Defaults to 'UTF-8'.</p>
+
+
+<div class="detailHeader" id="coreMessages-detail">
+coreMessages<span class="detailHeaderTag">
+property
+ <em>read-only</em> </span>
+</div>
+
+<div class="signature">
+public <a href="/doc/api/1.0/CPhpMessageSource">CPhpMessageSource</a> <a href="/doc/api/1.0/CApplication#getCoreMessages"><b>getCoreMessages</b></a>()</div>
+
+<p>the core message translations</p>
+
+
+<div class="detailHeader" id="dateFormatter-detail">
+dateFormatter<span class="detailHeaderTag">
+property
+ <em>read-only</em> </span>
+</div>
+
+<div class="signature">
+public <a href="/doc/api/1.0/CDateFormatter">CDateFormatter</a> <a href="/doc/api/1.0/CApplication#getDateFormatter"><b>getDateFormatter</b></a>()</div>
+
+<p>the locale-dependent date formatter.
+The current <a href="/doc/api/1.0/CApplication#getLocale">application locale</a> will be used.</p>
+
+
+<div class="detailHeader" id="db-detail">
+db<span class="detailHeaderTag">
+property
+ <em>read-only</em> </span>
+</div>
+
+<div class="signature">
+public <a href="/doc/api/1.0/CDbConnection">CDbConnection</a> <a href="/doc/api/1.0/CApplication#getDb"><b>getDb</b></a>()</div>
+
+<p>the database connection</p>
+
+
+<div class="detailHeader" id="errorHandler-detail">
+errorHandler<span class="detailHeaderTag">
+property
+ <em>read-only</em> </span>
+</div>
+
+<div class="signature">
+public <a href="/doc/api/1.0/CErrorHandler">CErrorHandler</a> <a href="/doc/api/1.0/CApplication#getErrorHandler"><b>getErrorHandler</b></a>()</div>
+
+<p>the error handler application component.</p>
+
+
+<div class="detailHeader" id="extensionPath-detail">
+extensionPath<span class="detailHeaderTag">
+property
+</span>
+</div>
+
+<div class="signature">
+public string <a href="/doc/api/1.0/CApplication#getExtensionPath"><b>getExtensionPath</b></a>()<br/>public void <a href="/doc/api/1.0/CApplication#setExtensionPath"><b>setExtensionPath</b></a>(string $path)</div>
+
+<p>Returns the root directory that holds all third-party extensions.</p>
+
+
+<div class="detailHeader" id="id-detail">
+id<span class="detailHeaderTag">
+property
+</span>
+</div>
+
+<div class="signature">
+public string <a href="/doc/api/1.0/CApplication#getId"><b>getId</b></a>()<br/>public void <a href="/doc/api/1.0/CApplication#setId"><b>setId</b></a>(string $id)</div>
+
+<p>a unique identifier for the application.</p>
+
+
+<div class="detailHeader" id="language-detail">
+language<span class="detailHeaderTag">
+property
+</span>
+</div>
+
+<div class="signature">
+public string <a href="/doc/api/1.0/CApplication#getLanguage"><b>getLanguage</b></a>()<br/>public void <a href="/doc/api/1.0/CApplication#setLanguage"><b>setLanguage</b></a>(string $language)</div>
+
+<p>the language that the user is using and the application should be targeted to.
+Defaults to the <a href="/doc/api/1.0/CApplication#sourceLanguage">source language</a>.</p>
+
+
+<div class="detailHeader" id="locale-detail">
+locale<span class="detailHeaderTag">
+property
+ <em>read-only</em> </span>
+</div>
+
+<div class="signature">
+public <a href="/doc/api/1.0/CLocale">CLocale</a> <a href="/doc/api/1.0/CApplication#getLocale"><b>getLocale</b></a>(string $localeID=NULL)</div>
+
+<p>the locale instance</p>
+
+
+<div class="detailHeader" id="messages-detail">
+messages<span class="detailHeaderTag">
+property
+ <em>read-only</em> </span>
+</div>
+
+<div class="signature">
+public <a href="/doc/api/1.0/CMessageSource">CMessageSource</a> <a href="/doc/api/1.0/CApplication#getMessages"><b>getMessages</b></a>()</div>
+
+<p>the application message translations</p>
+
+
+<div class="detailHeader" id="name-detail">
+name<span class="detailHeaderTag">
+property
+</span>
+</div>
+
+<div class="signature">
+public string <b>$name</b>;</div>
+
+<p>the application name. Defaults to 'My Application'.</p>
+
+
+<div class="detailHeader" id="numberFormatter-detail">
+numberFormatter<span class="detailHeaderTag">
+property
+ <em>read-only</em> </span>
+</div>
+
+<div class="signature">
+public <a href="/doc/api/1.0/CNumberFormatter">CNumberFormatter</a> <a href="/doc/api/1.0/CApplication#getNumberFormatter"><b>getNumberFormatter</b></a>()</div>
+
+<p>the locale-dependent number formatter.
+The current <a href="/doc/api/1.0/CApplication#getLocale">application locale</a> will be used.</p>
+
+
+<div class="detailHeader" id="request-detail">
+request<span class="detailHeaderTag">
+property
+ <em>read-only</em> </span>
+</div>
+
+<div class="signature">
+public <a href="/doc/api/1.0/CHttpRequest">CHttpRequest</a> <a href="/doc/api/1.0/CApplication#getRequest"><b>getRequest</b></a>()</div>
+
+<p>the request component</p>
+
+
+<div class="detailHeader" id="runtimePath-detail">
+runtimePath<span class="detailHeaderTag">
+property
+</span>
+</div>
+
+<div class="signature">
+public string <a href="/doc/api/1.0/CApplication#getRuntimePath"><b>getRuntimePath</b></a>()<br/>public void <a href="/doc/api/1.0/CApplication#setRuntimePath"><b>setRuntimePath</b></a>(string $path)</div>
+
+<p>the directory that stores runtime files. Defaults to 'protected/runtime'.</p>
+
+
+<div class="detailHeader" id="securityManager-detail">
+securityManager<span class="detailHeaderTag">
+property
+ <em>read-only</em> </span>
+</div>
+
+<div class="signature">
+public <a href="/doc/api/1.0/CSecurityManager">CSecurityManager</a> <a href="/doc/api/1.0/CApplication#getSecurityManager"><b>getSecurityManager</b></a>()</div>
+
+<p>the security manager application component.</p>
+
+
+<div class="detailHeader" id="sourceLanguage-detail">
+sourceLanguage<span class="detailHeaderTag">
+property
+</span>
+</div>
+
+<div class="signature">
+public string <b>$sourceLanguage</b>;</div>
+
+<p>the language that the application is written in. This mainly refers to
+the language that the messages and view files are in. Defaults to 'en_us' (US English).</p>
+
+
+<div class="detailHeader" id="statePersister-detail">
+statePersister<span class="detailHeaderTag">
+property
+ <em>read-only</em> </span>
+</div>
+
+<div class="signature">
+public <a href="/doc/api/1.0/CStatePersister">CStatePersister</a> <a href="/doc/api/1.0/CApplication#getStatePersister"><b>getStatePersister</b></a>()</div>
+
+<p>the state persister application component.</p>
+
+
+<div class="detailHeader" id="timeZone-detail">
+timeZone<span class="detailHeaderTag">
+property
+ (available since v1.0.9)
+</span>
+</div>
+
+<div class="signature">
+public string <a href="/doc/api/1.0/CApplication#getTimeZone"><b>getTimeZone</b></a>()<br/>public void <a href="/doc/api/1.0/CApplication#setTimeZone"><b>setTimeZone</b></a>(string $value)</div>
+
+<p>Returns the time zone used by this application.
+This is a simple wrapper of PHP function date_default_timezone_get().</p>
+
+<div class="SeeAlso">
+<h4>See Also</h4>
+<ul>
+	<li><a href="http://php.net/manual/en/function.date-default-timezone-get.php">http://php.net/manual/en/function.date-default-timezone-get.php</a></li>
+</ul>
+</div>
+
+<div class="detailHeader" id="urlManager-detail">
+urlManager<span class="detailHeaderTag">
+property
+ <em>read-only</em> </span>
+</div>
+
+<div class="signature">
+public <a href="/doc/api/1.0/CUrlManager">CUrlManager</a> <a href="/doc/api/1.0/CApplication#getUrlManager"><b>getUrlManager</b></a>()</div>
+
+<p>the URL manager component</p>
+
+
+<h2>Method Details</h2>
+
+<div class="detailHeader" id="__construct-detail">
+__construct()
+<span class="detailHeaderTag">
+method
+</span>
+</div>
+
+<table class="summaryTable">
+<tr><td colspan="3">
+<div class="signature2">
+public void <b>__construct</b>(mixed $config=NULL)</div>
+</td></tr>
+<tr>
+  <td class="paramNameCol">$config</td>
+  <td class="paramTypeCol">mixed</td>
+  <td class="paramDescCol">application configuration.
+If a string, it is treated as the path of the file that contains the configuration;
+If an array, it is the actual configuration information.
+Please make sure you specify the <a href="/doc/api/1.0/CApplication#getBasePath">basePath</a> property in the configuration,
+which should point to the directory containing all application logic, template and data.
+If not, the directory will be defaulted to 'protected'.</td>
+</tr>
+</table>
+
+<div class="sourceCode">
+<b>Source Code:</b> <a class="sourceLink" href="https://github.com/yiisoft/yii/blob/1.0.12/framework/base/CApplication.php#L94">framework/base/CApplication.php#94</a> (<b><a href="#" class="show">show</a></b>)
+<div class="code"><code><span style="color: #000000">
+<span style="color: #0000BB"></span><span style="color: #007700">public&nbsp;function&nbsp;</span><span style="color: #0000BB">__construct</span><span style="color: #007700">(</span><span style="color: #0000BB">$config</span><span style="color: #007700">=</span><span style="color: #0000BB">null</span><span style="color: #007700">)<br />{<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">Yii</span><span style="color: #007700">::</span><span style="color: #0000BB">setApplication</span><span style="color: #007700">(</span><span style="color: #0000BB">$this</span><span style="color: #007700">);<br /><br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #FF8000">//&nbsp;set&nbsp;basePath&nbsp;at&nbsp;early&nbsp;as&nbsp;possible&nbsp;to&nbsp;avoid&nbsp;trouble<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #007700">if(</span><span style="color: #0000BB">is_string</span><span style="color: #007700">(</span><span style="color: #0000BB">$config</span><span style="color: #007700">))<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$config</span><span style="color: #007700">=require(</span><span style="color: #0000BB">$config</span><span style="color: #007700">);<br />&nbsp;&nbsp;&nbsp;&nbsp;if(isset(</span><span style="color: #0000BB">$config</span><span style="color: #007700">[</span><span style="color: #DD0000">'basePath'</span><span style="color: #007700">]))<br />&nbsp;&nbsp;&nbsp;&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">setBasePath</span><span style="color: #007700">(</span><span style="color: #0000BB">$config</span><span style="color: #007700">[</span><span style="color: #DD0000">'basePath'</span><span style="color: #007700">]);<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;unset(</span><span style="color: #0000BB">$config</span><span style="color: #007700">[</span><span style="color: #DD0000">'basePath'</span><span style="color: #007700">]);<br />&nbsp;&nbsp;&nbsp;&nbsp;}<br />&nbsp;&nbsp;&nbsp;&nbsp;else<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">setBasePath</span><span style="color: #007700">(</span><span style="color: #DD0000">'protected'</span><span style="color: #007700">);<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">Yii</span><span style="color: #007700">::</span><span style="color: #0000BB">setPathOfAlias</span><span style="color: #007700">(</span><span style="color: #DD0000">'application'</span><span style="color: #007700">,</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">getBasePath</span><span style="color: #007700">());<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">Yii</span><span style="color: #007700">::</span><span style="color: #0000BB">setPathOfAlias</span><span style="color: #007700">(</span><span style="color: #DD0000">'webroot'</span><span style="color: #007700">,</span><span style="color: #0000BB">dirname</span><span style="color: #007700">(</span><span style="color: #0000BB">$_SERVER</span><span style="color: #007700">[</span><span style="color: #DD0000">'SCRIPT_FILENAME'</span><span style="color: #007700">]));<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">Yii</span><span style="color: #007700">::</span><span style="color: #0000BB">setPathOfAlias</span><span style="color: #007700">(</span><span style="color: #DD0000">'ext'</span><span style="color: #007700">,</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">getBasePath</span><span style="color: #007700">().</span><span style="color: #0000BB">DIRECTORY_SEPARATOR</span><span style="color: #007700">.</span><span style="color: #DD0000">'extensions'</span><span style="color: #007700">);<br /><br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">preinit</span><span style="color: #007700">();<br /><br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">initSystemHandlers</span><span style="color: #007700">();<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">registerCoreComponents</span><span style="color: #007700">();<br /><br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">configure</span><span style="color: #007700">(</span><span style="color: #0000BB">$config</span><span style="color: #007700">);<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">attachBehaviors</span><span style="color: #007700">(</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">behaviors</span><span style="color: #007700">);<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">preloadComponents</span><span style="color: #007700">();<br /><br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">init</span><span style="color: #007700">();<br />}</span>
+</span>
+</code></div>
+</div>
+<p>Constructor.</p>
+
+
+<div class="detailHeader" id="clearGlobalState-detail">
+clearGlobalState()
+<span class="detailHeaderTag">
+method
+</span>
+</div>
+
+<table class="summaryTable">
+<tr><td colspan="3">
+<div class="signature2">
+public void <b>clearGlobalState</b>(string $key)</div>
+</td></tr>
+<tr>
+  <td class="paramNameCol">$key</td>
+  <td class="paramTypeCol">string</td>
+  <td class="paramDescCol">the name of the value to be cleared</td>
+</tr>
+</table>
+
+<div class="sourceCode">
+<b>Source Code:</b> <a class="sourceLink" href="https://github.com/yiisoft/yii/blob/1.0.12/framework/base/CApplication.php#L486">framework/base/CApplication.php#486</a> (<b><a href="#" class="show">show</a></b>)
+<div class="code"><code><span style="color: #000000">
+<span style="color: #0000BB"></span><span style="color: #007700">public&nbsp;function&nbsp;</span><span style="color: #0000BB">clearGlobalState</span><span style="color: #007700">(</span><span style="color: #0000BB">$key</span><span style="color: #007700">)<br />{<br />&nbsp;&nbsp;&nbsp;&nbsp;if(</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">_globalState</span><span style="color: #007700">===</span><span style="color: #0000BB">null</span><span style="color: #007700">)<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">loadGlobalState</span><span style="color: #007700">();<br />&nbsp;&nbsp;&nbsp;&nbsp;if(isset(</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">_globalState</span><span style="color: #007700">[</span><span style="color: #0000BB">$key</span><span style="color: #007700">]))<br />&nbsp;&nbsp;&nbsp;&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">_stateChanged</span><span style="color: #007700">=</span><span style="color: #0000BB">true</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;unset(</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">_globalState</span><span style="color: #007700">[</span><span style="color: #0000BB">$key</span><span style="color: #007700">]);<br />&nbsp;&nbsp;&nbsp;&nbsp;}<br />}</span>
+</span>
+</code></div>
+</div>
+<p>Clears a global value.
+<br/><br/>
+The value cleared will no longer be available in this request and the following requests.</p>
+
+
+<div class="detailHeader" id="displayError-detail">
+displayError()
+<span class="detailHeaderTag">
+method
+</span>
+</div>
+
+<table class="summaryTable">
+<tr><td colspan="3">
+<div class="signature2">
+public void <b>displayError</b>(integer $code, string $message, string $file, string $line)</div>
+</td></tr>
+<tr>
+  <td class="paramNameCol">$code</td>
+  <td class="paramTypeCol">integer</td>
+  <td class="paramDescCol">error code</td>
+</tr>
+<tr>
+  <td class="paramNameCol">$message</td>
+  <td class="paramTypeCol">string</td>
+  <td class="paramDescCol">error message</td>
+</tr>
+<tr>
+  <td class="paramNameCol">$file</td>
+  <td class="paramTypeCol">string</td>
+  <td class="paramDescCol">error file</td>
+</tr>
+<tr>
+  <td class="paramNameCol">$line</td>
+  <td class="paramTypeCol">string</td>
+  <td class="paramDescCol">error line</td>
+</tr>
+</table>
+
+<div class="sourceCode">
+<b>Source Code:</b> <a class="sourceLink" href="https://github.com/yiisoft/yii/blob/1.0.12/framework/base/CApplication.php#L682">framework/base/CApplication.php#682</a> (<b><a href="#" class="show">show</a></b>)
+<div class="code"><code><span style="color: #000000">
+<span style="color: #0000BB"></span><span style="color: #007700">public&nbsp;function&nbsp;</span><span style="color: #0000BB">displayError</span><span style="color: #007700">(</span><span style="color: #0000BB">$code</span><span style="color: #007700">,</span><span style="color: #0000BB">$message</span><span style="color: #007700">,</span><span style="color: #0000BB">$file</span><span style="color: #007700">,</span><span style="color: #0000BB">$line</span><span style="color: #007700">)<br />{<br />&nbsp;&nbsp;&nbsp;&nbsp;if(</span><span style="color: #0000BB">YII_DEBUG</span><span style="color: #007700">)<br />&nbsp;&nbsp;&nbsp;&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">"&lt;h1&gt;PHP&nbsp;Error&nbsp;[</span><span style="color: #0000BB">$code</span><span style="color: #DD0000">]&lt;/h1&gt;\n"</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">"&lt;p&gt;</span><span style="color: #0000BB">$message</span><span style="color: #DD0000">&nbsp;(</span><span style="color: #0000BB">$file</span><span style="color: #DD0000">:</span><span style="color: #0000BB">$line</span><span style="color: #DD0000">)&lt;/p&gt;\n"</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">'&lt;pre&gt;'</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">debug_print_backtrace</span><span style="color: #007700">();<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">'&lt;/pre&gt;'</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;}<br />&nbsp;&nbsp;&nbsp;&nbsp;else<br />&nbsp;&nbsp;&nbsp;&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">"&lt;h1&gt;PHP&nbsp;Error&nbsp;[</span><span style="color: #0000BB">$code</span><span style="color: #DD0000">]&lt;/h1&gt;\n"</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">"&lt;p&gt;</span><span style="color: #0000BB">$message</span><span style="color: #DD0000">&lt;/p&gt;\n"</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;}<br />}</span>
+</span>
+</code></div>
+</div>
+<p>Displays the captured PHP error.
+This method displays the error in HTML when there is
+no active error handler.</p>
+
+
+<div class="detailHeader" id="displayException-detail">
+displayException()
+<span class="detailHeaderTag">
+method
+</span>
+</div>
+
+<table class="summaryTable">
+<tr><td colspan="3">
+<div class="signature2">
+public void <b>displayException</b>(Exception $exception)</div>
+</td></tr>
+<tr>
+  <td class="paramNameCol">$exception</td>
+  <td class="paramTypeCol">Exception</td>
+  <td class="paramDescCol">the uncaught exception</td>
+</tr>
+</table>
+
+<div class="sourceCode">
+<b>Source Code:</b> <a class="sourceLink" href="https://github.com/yiisoft/yii/blob/1.0.12/framework/base/CApplication.php#L705">framework/base/CApplication.php#705</a> (<b><a href="#" class="show">show</a></b>)
+<div class="code"><code><span style="color: #000000">
+<span style="color: #0000BB"></span><span style="color: #007700">public&nbsp;function&nbsp;</span><span style="color: #0000BB">displayException</span><span style="color: #007700">(</span><span style="color: #0000BB">$exception</span><span style="color: #007700">)<br />{<br />&nbsp;&nbsp;&nbsp;&nbsp;if(</span><span style="color: #0000BB">YII_DEBUG</span><span style="color: #007700">)<br />&nbsp;&nbsp;&nbsp;&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">'&lt;h1&gt;'</span><span style="color: #007700">.</span><span style="color: #0000BB">get_class</span><span style="color: #007700">(</span><span style="color: #0000BB">$exception</span><span style="color: #007700">).</span><span style="color: #DD0000">"&lt;/h1&gt;\n"</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">'&lt;p&gt;'</span><span style="color: #007700">.</span><span style="color: #0000BB">$exception</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">getMessage</span><span style="color: #007700">().</span><span style="color: #DD0000">'&nbsp;('</span><span style="color: #007700">.</span><span style="color: #0000BB">$exception</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">getFile</span><span style="color: #007700">().</span><span style="color: #DD0000">':'</span><span style="color: #007700">.</span><span style="color: #0000BB">$exception</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">getLine</span><span style="color: #007700">().</span><span style="color: #DD0000">')&lt;/p&gt;'</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">'&lt;pre&gt;'</span><span style="color: #007700">.</span><span style="color: #0000BB">$exception</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">getTraceAsString</span><span style="color: #007700">().</span><span style="color: #DD0000">'&lt;/pre&gt;'</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;}<br />&nbsp;&nbsp;&nbsp;&nbsp;else<br />&nbsp;&nbsp;&nbsp;&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">'&lt;h1&gt;'</span><span style="color: #007700">.</span><span style="color: #0000BB">get_class</span><span style="color: #007700">(</span><span style="color: #0000BB">$exception</span><span style="color: #007700">).</span><span style="color: #DD0000">"&lt;/h1&gt;\n"</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">'&lt;p&gt;'</span><span style="color: #007700">.</span><span style="color: #0000BB">$exception</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">getMessage</span><span style="color: #007700">().</span><span style="color: #DD0000">'&lt;/p&gt;'</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;}<br />}</span>
+</span>
+</code></div>
+</div>
+<p>Displays the uncaught PHP exception.
+This method displays the exception in HTML when there is
+no active error handler.</p>
+
+
+<div class="detailHeader" id="end-detail">
+end()
+<span class="detailHeaderTag">
+method
+</span>
+</div>
+
+<table class="summaryTable">
+<tr><td colspan="3">
+<div class="signature2">
+public void <b>end</b>(integer $status=0)</div>
+</td></tr>
+<tr>
+  <td class="paramNameCol">$status</td>
+  <td class="paramTypeCol">integer</td>
+  <td class="paramDescCol">exit status (value 0 means normal exit while other values mean abnormal exit).</td>
+</tr>
+</table>
+
+<div class="sourceCode">
+<b>Source Code:</b> <a class="sourceLink" href="https://github.com/yiisoft/yii/blob/1.0.12/framework/base/CApplication.php#L146">framework/base/CApplication.php#146</a> (<b><a href="#" class="show">show</a></b>)
+<div class="code"><code><span style="color: #000000">
+<span style="color: #0000BB"></span><span style="color: #007700">public&nbsp;function&nbsp;</span><span style="color: #0000BB">end</span><span style="color: #007700">(</span><span style="color: #0000BB">$status</span><span style="color: #007700">=</span><span style="color: #0000BB">0</span><span style="color: #007700">)<br />{<br />&nbsp;&nbsp;&nbsp;&nbsp;if(</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">hasEventHandler</span><span style="color: #007700">(</span><span style="color: #DD0000">'onEndRequest'</span><span style="color: #007700">))<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">onEndRequest</span><span style="color: #007700">(new&nbsp;</span><span style="color: #0000BB">CEvent</span><span style="color: #007700">(</span><span style="color: #0000BB">$this</span><span style="color: #007700">));<br />&nbsp;&nbsp;&nbsp;&nbsp;exit(</span><span style="color: #0000BB">$status</span><span style="color: #007700">);<br />}</span>
+</span>
+</code></div>
+</div>
+<p>Terminates the application.
+This method replaces PHP's exit() function by calling
+<a href="/doc/api/1.0/CApplication#onEndRequest">onEndRequest</a> before exiting.</p>
+
+
+<div class="detailHeader" id="findLocalizedFile-detail">
+findLocalizedFile()
+<span class="detailHeaderTag">
+method
+</span>
+</div>
+
+<table class="summaryTable">
+<tr><td colspan="3">
+<div class="signature2">
+public string <b>findLocalizedFile</b>(string $srcFile, string $srcLanguage=NULL, string $language=NULL)</div>
+</td></tr>
+<tr>
+  <td class="paramNameCol">$srcFile</td>
+  <td class="paramTypeCol">string</td>
+  <td class="paramDescCol">the original file</td>
+</tr>
+<tr>
+  <td class="paramNameCol">$srcLanguage</td>
+  <td class="paramTypeCol">string</td>
+  <td class="paramDescCol">the language that the original file is in. If null, the application <a href="/doc/api/1.0/CApplication#sourceLanguage">source language</a> is used.</td>
+</tr>
+<tr>
+  <td class="paramNameCol">$language</td>
+  <td class="paramTypeCol">string</td>
+  <td class="paramDescCol">the desired language that the file should be localized to. If null, the <a href="/doc/api/1.0/CApplication#getLanguage">application language</a> will be used.</td>
+</tr>
+<tr>
+  <td class="paramNameCol">{return}</td>
+  <td class="paramTypeCol">string</td>
+  <td class="paramDescCol">the matching localized file. The original file is returned if no localized version is found
+or if source language is the same as the desired language.</td>
+</tr>
+</table>
+
+<div class="sourceCode">
+<b>Source Code:</b> <a class="sourceLink" href="https://github.com/yiisoft/yii/blob/1.0.12/framework/base/CApplication.php#L329">framework/base/CApplication.php#329</a> (<b><a href="#" class="show">show</a></b>)
+<div class="code"><code><span style="color: #000000">
+<span style="color: #0000BB"></span><span style="color: #007700">public&nbsp;function&nbsp;</span><span style="color: #0000BB">findLocalizedFile</span><span style="color: #007700">(</span><span style="color: #0000BB">$srcFile</span><span style="color: #007700">,</span><span style="color: #0000BB">$srcLanguage</span><span style="color: #007700">=</span><span style="color: #0000BB">null</span><span style="color: #007700">,</span><span style="color: #0000BB">$language</span><span style="color: #007700">=</span><span style="color: #0000BB">null</span><span style="color: #007700">)<br />{<br />&nbsp;&nbsp;&nbsp;&nbsp;if(</span><span style="color: #0000BB">$srcLanguage</span><span style="color: #007700">===</span><span style="color: #0000BB">null</span><span style="color: #007700">)<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$srcLanguage</span><span style="color: #007700">=</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">sourceLanguage</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;if(</span><span style="color: #0000BB">$language</span><span style="color: #007700">===</span><span style="color: #0000BB">null</span><span style="color: #007700">)<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$language</span><span style="color: #007700">=</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">getLanguage</span><span style="color: #007700">();<br />&nbsp;&nbsp;&nbsp;&nbsp;if(</span><span style="color: #0000BB">$language</span><span style="color: #007700">===</span><span style="color: #0000BB">$srcLanguage</span><span style="color: #007700">)<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;</span><span style="color: #0000BB">$srcFile</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$desiredFile</span><span style="color: #007700">=</span><span style="color: #0000BB">dirname</span><span style="color: #007700">(</span><span style="color: #0000BB">$srcFile</span><span style="color: #007700">).</span><span style="color: #0000BB">DIRECTORY_SEPARATOR</span><span style="color: #007700">.</span><span style="color: #0000BB">$language</span><span style="color: #007700">.</span><span style="color: #0000BB">DIRECTORY_SEPARATOR</span><span style="color: #007700">.</span><span style="color: #0000BB">basename</span><span style="color: #007700">(</span><span style="color: #0000BB">$srcFile</span><span style="color: #007700">);<br />&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;</span><span style="color: #0000BB">is_file</span><span style="color: #007700">(</span><span style="color: #0000BB">$desiredFile</span><span style="color: #007700">)&nbsp;?&nbsp;</span><span style="color: #0000BB">$desiredFile&nbsp;</span><span style="color: #007700">:&nbsp;</span><span style="color: #0000BB">$srcFile</span><span style="color: #007700">;<br />}</span>
+</span>
+</code></div>
+</div>
+<p>Returns the localized version of a specified file.
+<br/><br/>
+The searching is based on the specified language code. In particular,
+a file with the same name will be looked for under the subdirectory
+named as the locale ID. For example, given the file "path/to/view.php"
+and locale ID "zh_cn", the localized file will be looked for as
+"path/to/zh_cn/view.php". If the file is not found, the original file
+will be returned.
+<br/><br/>
+For consistency, it is recommended that the locale ID is given
+in lower case and in the format of LanguageID_RegionID (e.g. "en_us").</p>
+
+
+<div class="detailHeader" id="getBasePath-detail">
+getBasePath()
+<span class="detailHeaderTag">
+method
+</span>
+</div>
+
+<table class="summaryTable">
+<tr><td colspan="3">
+<div class="signature2">
+public string <b>getBasePath</b>()</div>
+</td></tr>
+<tr>
+  <td class="paramNameCol">{return}</td>
+  <td class="paramTypeCol">string</td>
+  <td class="paramDescCol">the root directory of the application. Defaults to 'protected'.</td>
+</tr>
+</table>
+
+<div class="sourceCode">
+<b>Source Code:</b> <a class="sourceLink" href="https://github.com/yiisoft/yii/blob/1.0.12/framework/base/CApplication.php#L197">framework/base/CApplication.php#197</a> (<b><a href="#" class="show">show</a></b>)
+<div class="code"><code><span style="color: #000000">
+<span style="color: #0000BB"></span><span style="color: #007700">public&nbsp;function&nbsp;</span><span style="color: #0000BB">getBasePath</span><span style="color: #007700">()<br />{<br />&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">_basePath</span><span style="color: #007700">;<br />}</span>
+</span>
+</code></div>
+</div>
+<p></p>
+
+
+<div class="detailHeader" id="getCache-detail">
+getCache()
+<span class="detailHeaderTag">
+method
+</span>
+</div>
+
+<table class="summaryTable">
+<tr><td colspan="3">
+<div class="signature2">
+public <a href="/doc/api/1.0/CCache">CCache</a> <b>getCache</b>()</div>
+</td></tr>
+<tr>
+  <td class="paramNameCol">{return}</td>
+  <td class="paramTypeCol"><a href="/doc/api/1.0/CCache">CCache</a></td>
+  <td class="paramDescCol">the cache application component. Null if the component is not enabled.</td>
+</tr>
+</table>
+
+<div class="sourceCode">
+<b>Source Code:</b> <a class="sourceLink" href="https://github.com/yiisoft/yii/blob/1.0.12/framework/base/CApplication.php#L403">framework/base/CApplication.php#403</a> (<b><a href="#" class="show">show</a></b>)
+<div class="code"><code><span style="color: #000000">
+<span style="color: #0000BB"></span><span style="color: #007700">public&nbsp;function&nbsp;</span><span style="color: #0000BB">getCache</span><span style="color: #007700">()<br />{<br />&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">getComponent</span><span style="color: #007700">(</span><span style="color: #DD0000">'cache'</span><span style="color: #007700">);<br />}</span>
+</span>
+</code></div>
+</div>
+<p></p>
+
+
+<div class="detailHeader" id="getCoreMessages-detail">
+getCoreMessages()
+<span class="detailHeaderTag">
+method
+</span>
+</div>
+
+<table class="summaryTable">
+<tr><td colspan="3">
+<div class="signature2">
+public <a href="/doc/api/1.0/CPhpMessageSource">CPhpMessageSource</a> <b>getCoreMessages</b>()</div>
+</td></tr>
+<tr>
+  <td class="paramNameCol">{return}</td>
+  <td class="paramTypeCol"><a href="/doc/api/1.0/CPhpMessageSource">CPhpMessageSource</a></td>
+  <td class="paramDescCol">the core message translations</td>
+</tr>
+</table>
+
+<div class="sourceCode">
+<b>Source Code:</b> <a class="sourceLink" href="https://github.com/yiisoft/yii/blob/1.0.12/framework/base/CApplication.php#L411">framework/base/CApplication.php#411</a> (<b><a href="#" class="show">show</a></b>)
+<div class="code"><code><span style="color: #000000">
+<span style="color: #0000BB"></span><span style="color: #007700">public&nbsp;function&nbsp;</span><span style="color: #0000BB">getCoreMessages</span><span style="color: #007700">()<br />{<br />&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">getComponent</span><span style="color: #007700">(</span><span style="color: #DD0000">'coreMessages'</span><span style="color: #007700">);<br />}</span>
+</span>
+</code></div>
+</div>
+<p></p>
+
+
+<div class="detailHeader" id="getDateFormatter-detail">
+getDateFormatter()
+<span class="detailHeaderTag">
+method
+</span>
+</div>
+
+<table class="summaryTable">
+<tr><td colspan="3">
+<div class="signature2">
+public <a href="/doc/api/1.0/CDateFormatter">CDateFormatter</a> <b>getDateFormatter</b>()</div>
+</td></tr>
+<tr>
+  <td class="paramNameCol">{return}</td>
+  <td class="paramTypeCol"><a href="/doc/api/1.0/CDateFormatter">CDateFormatter</a></td>
+  <td class="paramDescCol">the locale-dependent date formatter.
+The current <a href="/doc/api/1.0/CApplication#getLocale">application locale</a> will be used.</td>
+</tr>
+</table>
+
+<div class="sourceCode">
+<b>Source Code:</b> <a class="sourceLink" href="https://github.com/yiisoft/yii/blob/1.0.12/framework/base/CApplication.php#L363">framework/base/CApplication.php#363</a> (<b><a href="#" class="show">show</a></b>)
+<div class="code"><code><span style="color: #000000">
+<span style="color: #0000BB"></span><span style="color: #007700">public&nbsp;function&nbsp;</span><span style="color: #0000BB">getDateFormatter</span><span style="color: #007700">()<br />{<br />&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">getLocale</span><span style="color: #007700">()-&gt;</span><span style="color: #0000BB">getDateFormatter</span><span style="color: #007700">();<br />}</span>
+</span>
+</code></div>
+</div>
+<p></p>
+
+
+<div class="detailHeader" id="getDb-detail">
+getDb()
+<span class="detailHeaderTag">
+method
+</span>
+</div>
+
+<table class="summaryTable">
+<tr><td colspan="3">
+<div class="signature2">
+public <a href="/doc/api/1.0/CDbConnection">CDbConnection</a> <b>getDb</b>()</div>
+</td></tr>
+<tr>
+  <td class="paramNameCol">{return}</td>
+  <td class="paramTypeCol"><a href="/doc/api/1.0/CDbConnection">CDbConnection</a></td>
+  <td class="paramDescCol">the database connection</td>
+</tr>
+</table>
+
+<div class="sourceCode">
+<b>Source Code:</b> <a class="sourceLink" href="https://github.com/yiisoft/yii/blob/1.0.12/framework/base/CApplication.php#L371">framework/base/CApplication.php#371</a> (<b><a href="#" class="show">show</a></b>)
+<div class="code"><code><span style="color: #000000">
+<span style="color: #0000BB"></span><span style="color: #007700">public&nbsp;function&nbsp;</span><span style="color: #0000BB">getDb</span><span style="color: #007700">()<br />{<br />&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">getComponent</span><span style="color: #007700">(</span><span style="color: #DD0000">'db'</span><span style="color: #007700">);<br />}</span>
+</span>
+</code></div>
+</div>
+<p></p>
+
+
+<div class="detailHeader" id="getErrorHandler-detail">
+getErrorHandler()
+<span class="detailHeaderTag">
+method
+</span>
+</div>
+
+<table class="summaryTable">
+<tr><td colspan="3">
+<div class="signature2">
+public <a href="/doc/api/1.0/CErrorHandler">CErrorHandler</a> <b>getErrorHandler</b>()</div>
+</td></tr>
+<tr>
+  <td class="paramNameCol">{return}</td>
+  <td class="paramTypeCol"><a href="/doc/api/1.0/CErrorHandler">CErrorHandler</a></td>
+  <td class="paramDescCol">the error handler application component.</td>
+</tr>
+</table>
+
+<div class="sourceCode">
+<b>Source Code:</b> <a class="sourceLink" href="https://github.com/yiisoft/yii/blob/1.0.12/framework/base/CApplication.php#L379">framework/base/CApplication.php#379</a> (<b><a href="#" class="show">show</a></b>)
+<div class="code"><code><span style="color: #000000">
+<span style="color: #0000BB"></span><span style="color: #007700">public&nbsp;function&nbsp;</span><span style="color: #0000BB">getErrorHandler</span><span style="color: #007700">()<br />{<br />&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">getComponent</span><span style="color: #007700">(</span><span style="color: #DD0000">'errorHandler'</span><span style="color: #007700">);<br />}</span>
+</span>
+</code></div>
+</div>
+<p></p>
+
+
+<div class="detailHeader" id="getExtensionPath-detail">
+getExtensionPath()
+<span class="detailHeaderTag">
+method
+</span>
+</div>
+
+<table class="summaryTable">
+<tr><td colspan="3">
+<div class="signature2">
+public string <b>getExtensionPath</b>()</div>
+</td></tr>
+<tr>
+  <td class="paramNameCol">{return}</td>
+  <td class="paramTypeCol">string</td>
+  <td class="paramDescCol">the directory that contains all extensions. Defaults to the 'extensions' directory under 'protected'.</td>
+</tr>
+</table>
+
+<div class="sourceCode">
+<b>Source Code:</b> <a class="sourceLink" href="https://github.com/yiisoft/yii/blob/1.0.12/framework/base/CApplication.php#L245">framework/base/CApplication.php#245</a> (<b><a href="#" class="show">show</a></b>)
+<div class="code"><code><span style="color: #000000">
+<span style="color: #0000BB"></span><span style="color: #007700">public&nbsp;function&nbsp;</span><span style="color: #0000BB">getExtensionPath</span><span style="color: #007700">()<br />{<br />&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;</span><span style="color: #0000BB">Yii</span><span style="color: #007700">::</span><span style="color: #0000BB">getPathOfAlias</span><span style="color: #007700">(</span><span style="color: #DD0000">'ext'</span><span style="color: #007700">);<br />}</span>
+</span>
+</code></div>
+</div>
+<p>Returns the root directory that holds all third-party extensions.</p>
+
+
+<div class="detailHeader" id="getGlobalState-detail">
+getGlobalState()
+<span class="detailHeaderTag">
+method
+</span>
+</div>
+
+<table class="summaryTable">
+<tr><td colspan="3">
+<div class="signature2">
+public mixed <b>getGlobalState</b>(string $key, mixed $defaultValue=NULL)</div>
+</td></tr>
+<tr>
+  <td class="paramNameCol">$key</td>
+  <td class="paramTypeCol">string</td>
+  <td class="paramDescCol">the name of the value to be returned</td>
+</tr>
+<tr>
+  <td class="paramNameCol">$defaultValue</td>
+  <td class="paramTypeCol">mixed</td>
+  <td class="paramDescCol">the default value. If the named global value is not found, this will be returned instead.</td>
+</tr>
+<tr>
+  <td class="paramNameCol">{return}</td>
+  <td class="paramTypeCol">mixed</td>
+  <td class="paramDescCol">the named global value</td>
+</tr>
+</table>
+
+<div class="sourceCode">
+<b>Source Code:</b> <a class="sourceLink" href="https://github.com/yiisoft/yii/blob/1.0.12/framework/base/CApplication.php#L449">framework/base/CApplication.php#449</a> (<b><a href="#" class="show">show</a></b>)
+<div class="code"><code><span style="color: #000000">
+<span style="color: #0000BB"></span><span style="color: #007700">public&nbsp;function&nbsp;</span><span style="color: #0000BB">getGlobalState</span><span style="color: #007700">(</span><span style="color: #0000BB">$key</span><span style="color: #007700">,</span><span style="color: #0000BB">$defaultValue</span><span style="color: #007700">=</span><span style="color: #0000BB">null</span><span style="color: #007700">)<br />{<br />&nbsp;&nbsp;&nbsp;&nbsp;if(</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">_globalState</span><span style="color: #007700">===</span><span style="color: #0000BB">null</span><span style="color: #007700">)<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">loadGlobalState</span><span style="color: #007700">();<br />&nbsp;&nbsp;&nbsp;&nbsp;if(isset(</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">_globalState</span><span style="color: #007700">[</span><span style="color: #0000BB">$key</span><span style="color: #007700">]))<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">_globalState</span><span style="color: #007700">[</span><span style="color: #0000BB">$key</span><span style="color: #007700">];<br />&nbsp;&nbsp;&nbsp;&nbsp;else<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;</span><span style="color: #0000BB">$defaultValue</span><span style="color: #007700">;<br />}</span>
+</span>
+</code></div>
+</div>
+<p>Returns a global value.
+<br/><br/>
+A global value is one that is persistent across users sessions and requests.</p>
+
+<div class="SeeAlso">
+<h4>See Also</h4>
+<ul>
+	<li><a href="/doc/api/1.0/CApplication#setGlobalState">setGlobalState</a></li>
+</ul>
+</div>
+
+<div class="detailHeader" id="getId-detail">
+getId()
+<span class="detailHeaderTag">
+method
+</span>
+</div>
+
+<table class="summaryTable">
+<tr><td colspan="3">
+<div class="signature2">
+public string <b>getId</b>()</div>
+</td></tr>
+<tr>
+  <td class="paramNameCol">{return}</td>
+  <td class="paramTypeCol">string</td>
+  <td class="paramDescCol">a unique identifier for the application.</td>
+</tr>
+</table>
+
+<div class="sourceCode">
+<b>Source Code:</b> <a class="sourceLink" href="https://github.com/yiisoft/yii/blob/1.0.12/framework/base/CApplication.php#L178">framework/base/CApplication.php#178</a> (<b><a href="#" class="show">show</a></b>)
+<div class="code"><code><span style="color: #000000">
+<span style="color: #0000BB"></span><span style="color: #007700">public&nbsp;function&nbsp;</span><span style="color: #0000BB">getId</span><span style="color: #007700">()<br />{<br />&nbsp;&nbsp;&nbsp;&nbsp;if(</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">_id</span><span style="color: #007700">!==</span><span style="color: #0000BB">null</span><span style="color: #007700">)<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">_id</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;else<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">_id</span><span style="color: #007700">=</span><span style="color: #0000BB">sprintf</span><span style="color: #007700">(</span><span style="color: #DD0000">'%x'</span><span style="color: #007700">,</span><span style="color: #0000BB">crc32</span><span style="color: #007700">(</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">getBasePath</span><span style="color: #007700">().</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">name</span><span style="color: #007700">));<br />}</span>
+</span>
+</code></div>
+</div>
+<p></p>
+
+
+<div class="detailHeader" id="getLanguage-detail">
+getLanguage()
+<span class="detailHeaderTag">
+method
+</span>
+</div>
+
+<table class="summaryTable">
+<tr><td colspan="3">
+<div class="signature2">
+public string <b>getLanguage</b>()</div>
+</td></tr>
+<tr>
+  <td class="paramNameCol">{return}</td>
+  <td class="paramTypeCol">string</td>
+  <td class="paramDescCol">the language that the user is using and the application should be targeted to.
+Defaults to the <a href="/doc/api/1.0/CApplication#sourceLanguage">source language</a>.</td>
+</tr>
+</table>
+
+<div class="sourceCode">
+<b>Source Code:</b> <a class="sourceLink" href="https://github.com/yiisoft/yii/blob/1.0.12/framework/base/CApplication.php#L265">framework/base/CApplication.php#265</a> (<b><a href="#" class="show">show</a></b>)
+<div class="code"><code><span style="color: #000000">
+<span style="color: #0000BB"></span><span style="color: #007700">public&nbsp;function&nbsp;</span><span style="color: #0000BB">getLanguage</span><span style="color: #007700">()<br />{<br />&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">_language</span><span style="color: #007700">===</span><span style="color: #0000BB">null&nbsp;</span><span style="color: #007700">?&nbsp;</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">sourceLanguage&nbsp;</span><span style="color: #007700">:&nbsp;</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">_language</span><span style="color: #007700">;<br />}</span>
+</span>
+</code></div>
+</div>
+<p></p>
+
+
+<div class="detailHeader" id="getLocale-detail">
+getLocale()
+<span class="detailHeaderTag">
+method
+</span>
+</div>
+
+<table class="summaryTable">
+<tr><td colspan="3">
+<div class="signature2">
+public <a href="/doc/api/1.0/CLocale">CLocale</a> <b>getLocale</b>(string $localeID=NULL)</div>
+</td></tr>
+<tr>
+  <td class="paramNameCol">$localeID</td>
+  <td class="paramTypeCol">string</td>
+  <td class="paramDescCol">locale ID (e.g. en_US). If null, the <a href="/doc/api/1.0/CApplication#getLanguage">application language ID</a> will be used.</td>
+</tr>
+<tr>
+  <td class="paramNameCol">{return}</td>
+  <td class="paramTypeCol"><a href="/doc/api/1.0/CLocale">CLocale</a></td>
+  <td class="paramDescCol">the locale instance</td>
+</tr>
+</table>
+
+<div class="sourceCode">
+<b>Source Code:</b> <a class="sourceLink" href="https://github.com/yiisoft/yii/blob/1.0.12/framework/base/CApplication.php#L345">framework/base/CApplication.php#345</a> (<b><a href="#" class="show">show</a></b>)
+<div class="code"><code><span style="color: #000000">
+<span style="color: #0000BB"></span><span style="color: #007700">public&nbsp;function&nbsp;</span><span style="color: #0000BB">getLocale</span><span style="color: #007700">(</span><span style="color: #0000BB">$localeID</span><span style="color: #007700">=</span><span style="color: #0000BB">null</span><span style="color: #007700">)<br />{<br />&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;</span><span style="color: #0000BB">CLocale</span><span style="color: #007700">::</span><span style="color: #0000BB">getInstance</span><span style="color: #007700">(</span><span style="color: #0000BB">$localeID</span><span style="color: #007700">===</span><span style="color: #0000BB">null</span><span style="color: #007700">?</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">getLanguage</span><span style="color: #007700">():</span><span style="color: #0000BB">$localeID</span><span style="color: #007700">);<br />}</span>
+</span>
+</code></div>
+</div>
+<p></p>
+
+
+<div class="detailHeader" id="getMessages-detail">
+getMessages()
+<span class="detailHeaderTag">
+method
+</span>
+</div>
+
+<table class="summaryTable">
+<tr><td colspan="3">
+<div class="signature2">
+public <a href="/doc/api/1.0/CMessageSource">CMessageSource</a> <b>getMessages</b>()</div>
+</td></tr>
+<tr>
+  <td class="paramNameCol">{return}</td>
+  <td class="paramTypeCol"><a href="/doc/api/1.0/CMessageSource">CMessageSource</a></td>
+  <td class="paramDescCol">the application message translations</td>
+</tr>
+</table>
+
+<div class="sourceCode">
+<b>Source Code:</b> <a class="sourceLink" href="https://github.com/yiisoft/yii/blob/1.0.12/framework/base/CApplication.php#L419">framework/base/CApplication.php#419</a> (<b><a href="#" class="show">show</a></b>)
+<div class="code"><code><span style="color: #000000">
+<span style="color: #0000BB"></span><span style="color: #007700">public&nbsp;function&nbsp;</span><span style="color: #0000BB">getMessages</span><span style="color: #007700">()<br />{<br />&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">getComponent</span><span style="color: #007700">(</span><span style="color: #DD0000">'messages'</span><span style="color: #007700">);<br />}</span>
+</span>
+</code></div>
+</div>
+<p></p>
+
+
+<div class="detailHeader" id="getNumberFormatter-detail">
+getNumberFormatter()
+<span class="detailHeaderTag">
+method
+</span>
+</div>
+
+<table class="summaryTable">
+<tr><td colspan="3">
+<div class="signature2">
+public <a href="/doc/api/1.0/CNumberFormatter">CNumberFormatter</a> <b>getNumberFormatter</b>()</div>
+</td></tr>
+<tr>
+  <td class="paramNameCol">{return}</td>
+  <td class="paramTypeCol"><a href="/doc/api/1.0/CNumberFormatter">CNumberFormatter</a></td>
+  <td class="paramDescCol">the locale-dependent number formatter.
+The current <a href="/doc/api/1.0/CApplication#getLocale">application locale</a> will be used.</td>
+</tr>
+</table>
+
+<div class="sourceCode">
+<b>Source Code:</b> <a class="sourceLink" href="https://github.com/yiisoft/yii/blob/1.0.12/framework/base/CApplication.php#L354">framework/base/CApplication.php#354</a> (<b><a href="#" class="show">show</a></b>)
+<div class="code"><code><span style="color: #000000">
+<span style="color: #0000BB"></span><span style="color: #007700">public&nbsp;function&nbsp;</span><span style="color: #0000BB">getNumberFormatter</span><span style="color: #007700">()<br />{<br />&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">getLocale</span><span style="color: #007700">()-&gt;</span><span style="color: #0000BB">getNumberFormatter</span><span style="color: #007700">();<br />}</span>
+</span>
+</code></div>
+</div>
+<p></p>
+
+
+<div class="detailHeader" id="getRequest-detail">
+getRequest()
+<span class="detailHeaderTag">
+method
+</span>
+</div>
+
+<table class="summaryTable">
+<tr><td colspan="3">
+<div class="signature2">
+public <a href="/doc/api/1.0/CHttpRequest">CHttpRequest</a> <b>getRequest</b>()</div>
+</td></tr>
+<tr>
+  <td class="paramNameCol">{return}</td>
+  <td class="paramTypeCol"><a href="/doc/api/1.0/CHttpRequest">CHttpRequest</a></td>
+  <td class="paramDescCol">the request component</td>
+</tr>
+</table>
+
+<div class="sourceCode">
+<b>Source Code:</b> <a class="sourceLink" href="https://github.com/yiisoft/yii/blob/1.0.12/framework/base/CApplication.php#L427">framework/base/CApplication.php#427</a> (<b><a href="#" class="show">show</a></b>)
+<div class="code"><code><span style="color: #000000">
+<span style="color: #0000BB"></span><span style="color: #007700">public&nbsp;function&nbsp;</span><span style="color: #0000BB">getRequest</span><span style="color: #007700">()<br />{<br />&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">getComponent</span><span style="color: #007700">(</span><span style="color: #DD0000">'request'</span><span style="color: #007700">);<br />}</span>
+</span>
+</code></div>
+</div>
+<p></p>
+
+
+<div class="detailHeader" id="getRuntimePath-detail">
+getRuntimePath()
+<span class="detailHeaderTag">
+method
+</span>
+</div>
+
+<table class="summaryTable">
+<tr><td colspan="3">
+<div class="signature2">
+public string <b>getRuntimePath</b>()</div>
+</td></tr>
+<tr>
+  <td class="paramNameCol">{return}</td>
+  <td class="paramTypeCol">string</td>
+  <td class="paramDescCol">the directory that stores runtime files. Defaults to 'protected/runtime'.</td>
+</tr>
+</table>
+
+<div class="sourceCode">
+<b>Source Code:</b> <a class="sourceLink" href="https://github.com/yiisoft/yii/blob/1.0.12/framework/base/CApplication.php#L218">framework/base/CApplication.php#218</a> (<b><a href="#" class="show">show</a></b>)
+<div class="code"><code><span style="color: #000000">
+<span style="color: #0000BB"></span><span style="color: #007700">public&nbsp;function&nbsp;</span><span style="color: #0000BB">getRuntimePath</span><span style="color: #007700">()<br />{<br />&nbsp;&nbsp;&nbsp;&nbsp;if(</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">_runtimePath</span><span style="color: #007700">!==</span><span style="color: #0000BB">null</span><span style="color: #007700">)<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">_runtimePath</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;else<br />&nbsp;&nbsp;&nbsp;&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">setRuntimePath</span><span style="color: #007700">(</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">getBasePath</span><span style="color: #007700">().</span><span style="color: #0000BB">DIRECTORY_SEPARATOR</span><span style="color: #007700">.</span><span style="color: #DD0000">'runtime'</span><span style="color: #007700">);<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">_runtimePath</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;}<br />}</span>
+</span>
+</code></div>
+</div>
+<p></p>
+
+
+<div class="detailHeader" id="getSecurityManager-detail">
+getSecurityManager()
+<span class="detailHeaderTag">
+method
+</span>
+</div>
+
+<table class="summaryTable">
+<tr><td colspan="3">
+<div class="signature2">
+public <a href="/doc/api/1.0/CSecurityManager">CSecurityManager</a> <b>getSecurityManager</b>()</div>
+</td></tr>
+<tr>
+  <td class="paramNameCol">{return}</td>
+  <td class="paramTypeCol"><a href="/doc/api/1.0/CSecurityManager">CSecurityManager</a></td>
+  <td class="paramDescCol">the security manager application component.</td>
+</tr>
+</table>
+
+<div class="sourceCode">
+<b>Source Code:</b> <a class="sourceLink" href="https://github.com/yiisoft/yii/blob/1.0.12/framework/base/CApplication.php#L387">framework/base/CApplication.php#387</a> (<b><a href="#" class="show">show</a></b>)
+<div class="code"><code><span style="color: #000000">
+<span style="color: #0000BB"></span><span style="color: #007700">public&nbsp;function&nbsp;</span><span style="color: #0000BB">getSecurityManager</span><span style="color: #007700">()<br />{<br />&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">getComponent</span><span style="color: #007700">(</span><span style="color: #DD0000">'securityManager'</span><span style="color: #007700">);<br />}</span>
+</span>
+</code></div>
+</div>
+<p></p>
+
+
+<div class="detailHeader" id="getStatePersister-detail">
+getStatePersister()
+<span class="detailHeaderTag">
+method
+</span>
+</div>
+
+<table class="summaryTable">
+<tr><td colspan="3">
+<div class="signature2">
+public <a href="/doc/api/1.0/CStatePersister">CStatePersister</a> <b>getStatePersister</b>()</div>
+</td></tr>
+<tr>
+  <td class="paramNameCol">{return}</td>
+  <td class="paramTypeCol"><a href="/doc/api/1.0/CStatePersister">CStatePersister</a></td>
+  <td class="paramDescCol">the state persister application component.</td>
+</tr>
+</table>
+
+<div class="sourceCode">
+<b>Source Code:</b> <a class="sourceLink" href="https://github.com/yiisoft/yii/blob/1.0.12/framework/base/CApplication.php#L395">framework/base/CApplication.php#395</a> (<b><a href="#" class="show">show</a></b>)
+<div class="code"><code><span style="color: #000000">
+<span style="color: #0000BB"></span><span style="color: #007700">public&nbsp;function&nbsp;</span><span style="color: #0000BB">getStatePersister</span><span style="color: #007700">()<br />{<br />&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">getComponent</span><span style="color: #007700">(</span><span style="color: #DD0000">'statePersister'</span><span style="color: #007700">);<br />}</span>
+</span>
+</code></div>
+</div>
+<p></p>
+
+
+<div class="detailHeader" id="getTimeZone-detail">
+getTimeZone()
+<span class="detailHeaderTag">
+method
+(available since v1.0.9)
+</span>
+</div>
+
+<table class="summaryTable">
+<tr><td colspan="3">
+<div class="signature2">
+public string <b>getTimeZone</b>()</div>
+</td></tr>
+<tr>
+  <td class="paramNameCol">{return}</td>
+  <td class="paramTypeCol">string</td>
+  <td class="paramDescCol">the time zone used by this application.</td>
+</tr>
+</table>
+
+<div class="sourceCode">
+<b>Source Code:</b> <a class="sourceLink" href="https://github.com/yiisoft/yii/blob/1.0.12/framework/base/CApplication.php#L293">framework/base/CApplication.php#293</a> (<b><a href="#" class="show">show</a></b>)
+<div class="code"><code><span style="color: #000000">
+<span style="color: #0000BB"></span><span style="color: #007700">public&nbsp;function&nbsp;</span><span style="color: #0000BB">getTimeZone</span><span style="color: #007700">()<br />{<br />&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;</span><span style="color: #0000BB">date_default_timezone_get</span><span style="color: #007700">();<br />}</span>
+</span>
+</code></div>
+</div>
+<p>Returns the time zone used by this application.
+This is a simple wrapper of PHP function date_default_timezone_get().</p>
+
+<div class="SeeAlso">
+<h4>See Also</h4>
+<ul>
+	<li><a href="http://php.net/manual/en/function.date-default-timezone-get.php">http://php.net/manual/en/function.date-default-timezone-get.php</a></li>
+</ul>
+</div>
+
+<div class="detailHeader" id="getUrlManager-detail">
+getUrlManager()
+<span class="detailHeaderTag">
+method
+</span>
+</div>
+
+<table class="summaryTable">
+<tr><td colspan="3">
+<div class="signature2">
+public <a href="/doc/api/1.0/CUrlManager">CUrlManager</a> <b>getUrlManager</b>()</div>
+</td></tr>
+<tr>
+  <td class="paramNameCol">{return}</td>
+  <td class="paramTypeCol"><a href="/doc/api/1.0/CUrlManager">CUrlManager</a></td>
+  <td class="paramDescCol">the URL manager component</td>
+</tr>
+</table>
+
+<div class="sourceCode">
+<b>Source Code:</b> <a class="sourceLink" href="https://github.com/yiisoft/yii/blob/1.0.12/framework/base/CApplication.php#L435">framework/base/CApplication.php#435</a> (<b><a href="#" class="show">show</a></b>)
+<div class="code"><code><span style="color: #000000">
+<span style="color: #0000BB"></span><span style="color: #007700">public&nbsp;function&nbsp;</span><span style="color: #0000BB">getUrlManager</span><span style="color: #007700">()<br />{<br />&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">getComponent</span><span style="color: #007700">(</span><span style="color: #DD0000">'urlManager'</span><span style="color: #007700">);<br />}</span>
+</span>
+</code></div>
+</div>
+<p></p>
+
+
+<div class="detailHeader" id="handleError-detail">
+handleError()
+<span class="detailHeaderTag">
+method
+</span>
+</div>
+
+<table class="summaryTable">
+<tr><td colspan="3">
+<div class="signature2">
+public void <b>handleError</b>(integer $code, string $message, string $file, integer $line)</div>
+</td></tr>
+<tr>
+  <td class="paramNameCol">$code</td>
+  <td class="paramTypeCol">integer</td>
+  <td class="paramDescCol">the level of the error raised</td>
+</tr>
+<tr>
+  <td class="paramNameCol">$message</td>
+  <td class="paramTypeCol">string</td>
+  <td class="paramDescCol">the error message</td>
+</tr>
+<tr>
+  <td class="paramNameCol">$file</td>
+  <td class="paramTypeCol">string</td>
+  <td class="paramDescCol">the filename that the error was raised in</td>
+</tr>
+<tr>
+  <td class="paramNameCol">$line</td>
+  <td class="paramTypeCol">integer</td>
+  <td class="paramDescCol">the line number the error was raised at</td>
+</tr>
+</table>
+
+<div class="sourceCode">
+<b>Source Code:</b> <a class="sourceLink" href="https://github.com/yiisoft/yii/blob/1.0.12/framework/base/CApplication.php#L592">framework/base/CApplication.php#592</a> (<b><a href="#" class="show">show</a></b>)
+<div class="code"><code><span style="color: #000000">
+<span style="color: #0000BB"></span><span style="color: #007700">public&nbsp;function&nbsp;</span><span style="color: #0000BB">handleError</span><span style="color: #007700">(</span><span style="color: #0000BB">$code</span><span style="color: #007700">,</span><span style="color: #0000BB">$message</span><span style="color: #007700">,</span><span style="color: #0000BB">$file</span><span style="color: #007700">,</span><span style="color: #0000BB">$line</span><span style="color: #007700">)<br />{<br />&nbsp;&nbsp;&nbsp;&nbsp;if(</span><span style="color: #0000BB">$code&nbsp;</span><span style="color: #007700">&amp;&nbsp;</span><span style="color: #0000BB">error_reporting</span><span style="color: #007700">())<br />&nbsp;&nbsp;&nbsp;&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #FF8000">//&nbsp;disable&nbsp;error&nbsp;capturing&nbsp;to&nbsp;avoid&nbsp;recursive&nbsp;errors<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">restore_error_handler</span><span style="color: #007700">();<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">restore_exception_handler</span><span style="color: #007700">();<br /><br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$log</span><span style="color: #007700">=</span><span style="color: #DD0000">"</span><span style="color: #0000BB">$message</span><span style="color: #DD0000">&nbsp;(</span><span style="color: #0000BB">$file</span><span style="color: #DD0000">:</span><span style="color: #0000BB">$line</span><span style="color: #DD0000">)\nStack&nbsp;trace:\n"</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$trace</span><span style="color: #007700">=</span><span style="color: #0000BB">debug_backtrace</span><span style="color: #007700">();<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #FF8000">//&nbsp;skip&nbsp;the&nbsp;first&nbsp;3&nbsp;stacks&nbsp;as&nbsp;they&nbsp;do&nbsp;not&nbsp;tell&nbsp;the&nbsp;error&nbsp;position<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #007700">if(</span><span style="color: #0000BB">count</span><span style="color: #007700">(</span><span style="color: #0000BB">$trace</span><span style="color: #007700">)&gt;</span><span style="color: #0000BB">3</span><span style="color: #007700">)<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$trace</span><span style="color: #007700">=</span><span style="color: #0000BB">array_slice</span><span style="color: #007700">(</span><span style="color: #0000BB">$trace</span><span style="color: #007700">,</span><span style="color: #0000BB">3</span><span style="color: #007700">);<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;foreach(</span><span style="color: #0000BB">$trace&nbsp;</span><span style="color: #007700">as&nbsp;</span><span style="color: #0000BB">$i</span><span style="color: #007700">=&gt;</span><span style="color: #0000BB">$t</span><span style="color: #007700">)<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if(!isset(</span><span style="color: #0000BB">$t</span><span style="color: #007700">[</span><span style="color: #DD0000">'file'</span><span style="color: #007700">]))<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$t</span><span style="color: #007700">[</span><span style="color: #DD0000">'file'</span><span style="color: #007700">]=</span><span style="color: #DD0000">'unknown'</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if(!isset(</span><span style="color: #0000BB">$t</span><span style="color: #007700">[</span><span style="color: #DD0000">'line'</span><span style="color: #007700">]))<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$t</span><span style="color: #007700">[</span><span style="color: #DD0000">'line'</span><span style="color: #007700">]=</span><span style="color: #0000BB">0</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if(!isset(</span><span style="color: #0000BB">$t</span><span style="color: #007700">[</span><span style="color: #DD0000">'function'</span><span style="color: #007700">]))<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$t</span><span style="color: #007700">[</span><span style="color: #DD0000">'function'</span><span style="color: #007700">]=</span><span style="color: #DD0000">'unknown'</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$log</span><span style="color: #007700">.=</span><span style="color: #DD0000">"#</span><span style="color: #0000BB">$i</span><span style="color: #DD0000">&nbsp;</span><span style="color: #007700">{</span><span style="color: #0000BB">$t</span><span style="color: #007700">[</span><span style="color: #DD0000">'file'</span><span style="color: #007700">]}</span><span style="color: #DD0000">(</span><span style="color: #007700">{</span><span style="color: #0000BB">$t</span><span style="color: #007700">[</span><span style="color: #DD0000">'line'</span><span style="color: #007700">]}</span><span style="color: #DD0000">):&nbsp;"</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if(isset(</span><span style="color: #0000BB">$t</span><span style="color: #007700">[</span><span style="color: #DD0000">'object'</span><span style="color: #007700">])&nbsp;&amp;&amp;&nbsp;</span><span style="color: #0000BB">is_object</span><span style="color: #007700">(</span><span style="color: #0000BB">$t</span><span style="color: #007700">[</span><span style="color: #DD0000">'object'</span><span style="color: #007700">]))<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$log</span><span style="color: #007700">.=</span><span style="color: #0000BB">get_class</span><span style="color: #007700">(</span><span style="color: #0000BB">$t</span><span style="color: #007700">[</span><span style="color: #DD0000">'object'</span><span style="color: #007700">]).</span><span style="color: #DD0000">'-&gt;'</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$log</span><span style="color: #007700">.=</span><span style="color: #DD0000">"</span><span style="color: #007700">{</span><span style="color: #0000BB">$t</span><span style="color: #007700">[</span><span style="color: #DD0000">'function'</span><span style="color: #007700">]}</span><span style="color: #DD0000">()\n"</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if(isset(</span><span style="color: #0000BB">$_SERVER</span><span style="color: #007700">[</span><span style="color: #DD0000">'REQUEST_URI'</span><span style="color: #007700">]))<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$log</span><span style="color: #007700">.=</span><span style="color: #DD0000">'REQUEST_URI='</span><span style="color: #007700">.</span><span style="color: #0000BB">$_SERVER</span><span style="color: #007700">[</span><span style="color: #DD0000">'REQUEST_URI'</span><span style="color: #007700">];<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">Yii</span><span style="color: #007700">::</span><span style="color: #0000BB">log</span><span style="color: #007700">(</span><span style="color: #0000BB">$log</span><span style="color: #007700">,</span><span style="color: #0000BB">CLogger</span><span style="color: #007700">::</span><span style="color: #0000BB">LEVEL_ERROR</span><span style="color: #007700">,</span><span style="color: #DD0000">'php'</span><span style="color: #007700">);<br /><br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;try<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$event</span><span style="color: #007700">=new&nbsp;</span><span style="color: #0000BB">CErrorEvent</span><span style="color: #007700">(</span><span style="color: #0000BB">$this</span><span style="color: #007700">,</span><span style="color: #0000BB">$code</span><span style="color: #007700">,</span><span style="color: #0000BB">$message</span><span style="color: #007700">,</span><span style="color: #0000BB">$file</span><span style="color: #007700">,</span><span style="color: #0000BB">$line</span><span style="color: #007700">);<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">onError</span><span style="color: #007700">(</span><span style="color: #0000BB">$event</span><span style="color: #007700">);<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if(!</span><span style="color: #0000BB">$event</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">handled</span><span style="color: #007700">)<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #FF8000">//&nbsp;try&nbsp;an&nbsp;error&nbsp;handler<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #007700">if((</span><span style="color: #0000BB">$handler</span><span style="color: #007700">=</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">getErrorHandler</span><span style="color: #007700">())!==</span><span style="color: #0000BB">null</span><span style="color: #007700">)<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$handler</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">handle</span><span style="color: #007700">(</span><span style="color: #0000BB">$event</span><span style="color: #007700">);<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;else<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">displayError</span><span style="color: #007700">(</span><span style="color: #0000BB">$code</span><span style="color: #007700">,</span><span style="color: #0000BB">$message</span><span style="color: #007700">,</span><span style="color: #0000BB">$file</span><span style="color: #007700">,</span><span style="color: #0000BB">$line</span><span style="color: #007700">);<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;catch(</span><span style="color: #0000BB">Exception&nbsp;$e</span><span style="color: #007700">)<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">displayException</span><span style="color: #007700">(</span><span style="color: #0000BB">$e</span><span style="color: #007700">);<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">end</span><span style="color: #007700">(</span><span style="color: #0000BB">1</span><span style="color: #007700">);<br />&nbsp;&nbsp;&nbsp;&nbsp;}<br />}</span>
+</span>
+</code></div>
+</div>
+<p>Handles PHP execution errors such as warnings, notices.
+<br/><br/>
+This method is implemented as a PHP error handler. It requires
+that constant YII_ENABLE_ERROR_HANDLER be defined true.
+<br/><br/>
+This method will first raise an <a href="/doc/api/1.0/CApplication#onError">onError</a> event.
+If the error is not handled by any event handler, it will call
+<a href="/doc/api/1.0/CApplication#getErrorHandler">errorHandler</a> to process the error.
+<br/><br/>
+The application will be terminated by this method.</p>
+
+
+<div class="detailHeader" id="handleException-detail">
+handleException()
+<span class="detailHeaderTag">
+method
+</span>
+</div>
+
+<table class="summaryTable">
+<tr><td colspan="3">
+<div class="signature2">
+public void <b>handleException</b>(Exception $exception)</div>
+</td></tr>
+<tr>
+  <td class="paramNameCol">$exception</td>
+  <td class="paramTypeCol">Exception</td>
+  <td class="paramDescCol">exception that is not caught</td>
+</tr>
+</table>
+
+<div class="sourceCode">
+<b>Source Code:</b> <a class="sourceLink" href="https://github.com/yiisoft/yii/blob/1.0.12/framework/base/CApplication.php#L540">framework/base/CApplication.php#540</a> (<b><a href="#" class="show">show</a></b>)
+<div class="code"><code><span style="color: #000000">
+<span style="color: #0000BB"></span><span style="color: #007700">public&nbsp;function&nbsp;</span><span style="color: #0000BB">handleException</span><span style="color: #007700">(</span><span style="color: #0000BB">$exception</span><span style="color: #007700">)<br />{<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #FF8000">//&nbsp;disable&nbsp;error&nbsp;capturing&nbsp;to&nbsp;avoid&nbsp;recursive&nbsp;errors<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">restore_error_handler</span><span style="color: #007700">();<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">restore_exception_handler</span><span style="color: #007700">();<br /><br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$category</span><span style="color: #007700">=</span><span style="color: #DD0000">'exception.'</span><span style="color: #007700">.</span><span style="color: #0000BB">get_class</span><span style="color: #007700">(</span><span style="color: #0000BB">$exception</span><span style="color: #007700">);<br />&nbsp;&nbsp;&nbsp;&nbsp;if(</span><span style="color: #0000BB">$exception&nbsp;</span><span style="color: #007700">instanceof&nbsp;</span><span style="color: #0000BB">CHttpException</span><span style="color: #007700">)<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$category</span><span style="color: #007700">.=</span><span style="color: #DD0000">'.'</span><span style="color: #007700">.</span><span style="color: #0000BB">$exception</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">statusCode</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #FF8000">//&nbsp;php&nbsp;&lt;5.2&nbsp;doesn't&nbsp;support&nbsp;string&nbsp;conversion&nbsp;auto-magically<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$message</span><span style="color: #007700">=</span><span style="color: #0000BB">$exception</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">__toString</span><span style="color: #007700">();<br />&nbsp;&nbsp;&nbsp;&nbsp;if(isset(</span><span style="color: #0000BB">$_SERVER</span><span style="color: #007700">[</span><span style="color: #DD0000">'REQUEST_URI'</span><span style="color: #007700">]))<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$message</span><span style="color: #007700">.=</span><span style="color: #DD0000">'&nbsp;REQUEST_URI='</span><span style="color: #007700">.</span><span style="color: #0000BB">$_SERVER</span><span style="color: #007700">[</span><span style="color: #DD0000">'REQUEST_URI'</span><span style="color: #007700">];<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">Yii</span><span style="color: #007700">::</span><span style="color: #0000BB">log</span><span style="color: #007700">(</span><span style="color: #0000BB">$message</span><span style="color: #007700">,</span><span style="color: #0000BB">CLogger</span><span style="color: #007700">::</span><span style="color: #0000BB">LEVEL_ERROR</span><span style="color: #007700">,</span><span style="color: #0000BB">$category</span><span style="color: #007700">);<br /><br />&nbsp;&nbsp;&nbsp;&nbsp;try<br />&nbsp;&nbsp;&nbsp;&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$event</span><span style="color: #007700">=new&nbsp;</span><span style="color: #0000BB">CExceptionEvent</span><span style="color: #007700">(</span><span style="color: #0000BB">$this</span><span style="color: #007700">,</span><span style="color: #0000BB">$exception</span><span style="color: #007700">);<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">onException</span><span style="color: #007700">(</span><span style="color: #0000BB">$event</span><span style="color: #007700">);<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if(!</span><span style="color: #0000BB">$event</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">handled</span><span style="color: #007700">)<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #FF8000">//&nbsp;try&nbsp;an&nbsp;error&nbsp;handler<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #007700">if((</span><span style="color: #0000BB">$handler</span><span style="color: #007700">=</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">getErrorHandler</span><span style="color: #007700">())!==</span><span style="color: #0000BB">null</span><span style="color: #007700">)<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$handler</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">handle</span><span style="color: #007700">(</span><span style="color: #0000BB">$event</span><span style="color: #007700">);<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;else<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">displayException</span><span style="color: #007700">(</span><span style="color: #0000BB">$exception</span><span style="color: #007700">);<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br />&nbsp;&nbsp;&nbsp;&nbsp;}<br />&nbsp;&nbsp;&nbsp;&nbsp;catch(</span><span style="color: #0000BB">Exception&nbsp;$e</span><span style="color: #007700">)<br />&nbsp;&nbsp;&nbsp;&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">displayException</span><span style="color: #007700">(</span><span style="color: #0000BB">$e</span><span style="color: #007700">);<br />&nbsp;&nbsp;&nbsp;&nbsp;}<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">end</span><span style="color: #007700">(</span><span style="color: #0000BB">1</span><span style="color: #007700">);<br />}</span>
+</span>
+</code></div>
+</div>
+<p>Handles uncaught PHP exceptions.
+<br/><br/>
+This method is implemented as a PHP exception handler. It requires
+that constant YII_ENABLE_EXCEPTION_HANDLER be defined true.
+<br/><br/>
+This method will first raise an <a href="/doc/api/1.0/CApplication#onException">onException</a> event.
+If the exception is not handled by any event handler, it will call
+<a href="/doc/api/1.0/CApplication#getErrorHandler">errorHandler</a> to process the exception.
+<br/><br/>
+The application will be terminated by this method.</p>
+
+
+<div class="detailHeader" id="initSystemHandlers-detail">
+initSystemHandlers()
+<span class="detailHeaderTag">
+method
+</span>
+</div>
+
+<table class="summaryTable">
+<tr><td colspan="3">
+<div class="signature2">
+protected void <b>initSystemHandlers</b>()</div>
+</td></tr>
+</table>
+
+<div class="sourceCode">
+<b>Source Code:</b> <a class="sourceLink" href="https://github.com/yiisoft/yii/blob/1.0.12/framework/base/CApplication.php#L723">framework/base/CApplication.php#723</a> (<b><a href="#" class="show">show</a></b>)
+<div class="code"><code><span style="color: #000000">
+<span style="color: #0000BB"></span><span style="color: #007700">protected&nbsp;function&nbsp;</span><span style="color: #0000BB">initSystemHandlers</span><span style="color: #007700">()<br />{<br />&nbsp;&nbsp;&nbsp;&nbsp;if(</span><span style="color: #0000BB">YII_ENABLE_EXCEPTION_HANDLER</span><span style="color: #007700">)<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">set_exception_handler</span><span style="color: #007700">(array(</span><span style="color: #0000BB">$this</span><span style="color: #007700">,</span><span style="color: #DD0000">'handleException'</span><span style="color: #007700">));<br />&nbsp;&nbsp;&nbsp;&nbsp;if(</span><span style="color: #0000BB">YII_ENABLE_ERROR_HANDLER</span><span style="color: #007700">)<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">set_error_handler</span><span style="color: #007700">(array(</span><span style="color: #0000BB">$this</span><span style="color: #007700">,</span><span style="color: #DD0000">'handleError'</span><span style="color: #007700">),</span><span style="color: #0000BB">error_reporting</span><span style="color: #007700">());<br />}</span>
+</span>
+</code></div>
+</div>
+<p>Initializes the class autoloader and error handlers.</p>
+
+
+<div class="detailHeader" id="loadGlobalState-detail">
+loadGlobalState()
+<span class="detailHeaderTag">
+method
+</span>
+</div>
+
+<table class="summaryTable">
+<tr><td colspan="3">
+<div class="signature2">
+protected void <b>loadGlobalState</b>()</div>
+</td></tr>
+</table>
+
+<div class="sourceCode">
+<b>Source Code:</b> <a class="sourceLink" href="https://github.com/yiisoft/yii/blob/1.0.12/framework/base/CApplication.php#L502">framework/base/CApplication.php#502</a> (<b><a href="#" class="show">show</a></b>)
+<div class="code"><code><span style="color: #000000">
+<span style="color: #0000BB"></span><span style="color: #007700">protected&nbsp;function&nbsp;</span><span style="color: #0000BB">loadGlobalState</span><span style="color: #007700">()<br />{<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$persister</span><span style="color: #007700">=</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">getStatePersister</span><span style="color: #007700">();<br />&nbsp;&nbsp;&nbsp;&nbsp;if((</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">_globalState</span><span style="color: #007700">=</span><span style="color: #0000BB">$persister</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">load</span><span style="color: #007700">())===</span><span style="color: #0000BB">null</span><span style="color: #007700">)<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">_globalState</span><span style="color: #007700">=array();<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">_stateChanged</span><span style="color: #007700">=</span><span style="color: #0000BB">false</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">attachEventHandler</span><span style="color: #007700">(</span><span style="color: #DD0000">'onEndRequest'</span><span style="color: #007700">,array(</span><span style="color: #0000BB">$this</span><span style="color: #007700">,</span><span style="color: #DD0000">'saveGlobalState'</span><span style="color: #007700">));<br />}</span>
+</span>
+</code></div>
+</div>
+<p>Loads the global state data from persistent storage.</p>
+
+<div class="SeeAlso">
+<h4>See Also</h4>
+<ul>
+	<li><a href="/doc/api/1.0/CApplication#getStatePersister">getStatePersister</a></li>
+</ul>
+</div>
+
+<div class="detailHeader" id="onBeginRequest-detail">
+onBeginRequest()
+<span class="detailHeaderTag">
+method
+</span>
+</div>
+
+<table class="summaryTable">
+<tr><td colspan="3">
+<div class="signature2">
+public void <b>onBeginRequest</b>(<a href="/doc/api/1.0/CEvent">CEvent</a> $event)</div>
+</td></tr>
+<tr>
+  <td class="paramNameCol">$event</td>
+  <td class="paramTypeCol"><a href="/doc/api/1.0/CEvent">CEvent</a></td>
+  <td class="paramDescCol">the event parameter</td>
+</tr>
+</table>
+
+<div class="sourceCode">
+<b>Source Code:</b> <a class="sourceLink" href="https://github.com/yiisoft/yii/blob/1.0.12/framework/base/CApplication.php#L157">framework/base/CApplication.php#157</a> (<b><a href="#" class="show">show</a></b>)
+<div class="code"><code><span style="color: #000000">
+<span style="color: #0000BB"></span><span style="color: #007700">public&nbsp;function&nbsp;</span><span style="color: #0000BB">onBeginRequest</span><span style="color: #007700">(</span><span style="color: #0000BB">$event</span><span style="color: #007700">)<br />{<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">raiseEvent</span><span style="color: #007700">(</span><span style="color: #DD0000">'onBeginRequest'</span><span style="color: #007700">,</span><span style="color: #0000BB">$event</span><span style="color: #007700">);<br />}</span>
+</span>
+</code></div>
+</div>
+<p>Raised right BEFORE the application processes the request.</p>
+
+
+<div class="detailHeader" id="onEndRequest-detail">
+onEndRequest()
+<span class="detailHeaderTag">
+method
+</span>
+</div>
+
+<table class="summaryTable">
+<tr><td colspan="3">
+<div class="signature2">
+public void <b>onEndRequest</b>(<a href="/doc/api/1.0/CEvent">CEvent</a> $event)</div>
+</td></tr>
+<tr>
+  <td class="paramNameCol">$event</td>
+  <td class="paramTypeCol"><a href="/doc/api/1.0/CEvent">CEvent</a></td>
+  <td class="paramDescCol">the event parameter</td>
+</tr>
+</table>
+
+<div class="sourceCode">
+<b>Source Code:</b> <a class="sourceLink" href="https://github.com/yiisoft/yii/blob/1.0.12/framework/base/CApplication.php#L166">framework/base/CApplication.php#166</a> (<b><a href="#" class="show">show</a></b>)
+<div class="code"><code><span style="color: #000000">
+<span style="color: #0000BB"></span><span style="color: #007700">public&nbsp;function&nbsp;</span><span style="color: #0000BB">onEndRequest</span><span style="color: #007700">(</span><span style="color: #0000BB">$event</span><span style="color: #007700">)<br />{<br />&nbsp;&nbsp;&nbsp;&nbsp;if(!</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">_ended</span><span style="color: #007700">)<br />&nbsp;&nbsp;&nbsp;&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">_ended</span><span style="color: #007700">=</span><span style="color: #0000BB">true</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">raiseEvent</span><span style="color: #007700">(</span><span style="color: #DD0000">'onEndRequest'</span><span style="color: #007700">,</span><span style="color: #0000BB">$event</span><span style="color: #007700">);<br />&nbsp;&nbsp;&nbsp;&nbsp;}<br />}</span>
+</span>
+</code></div>
+</div>
+<p>Raised right AFTER the application processes the request.</p>
+
+
+<div class="detailHeader" id="onError-detail">
+onError()
+<span class="detailHeaderTag">
+method
+</span>
+</div>
+
+<table class="summaryTable">
+<tr><td colspan="3">
+<div class="signature2">
+public void <b>onError</b>(<a href="/doc/api/1.0/CErrorEvent">CErrorEvent</a> $event)</div>
+</td></tr>
+<tr>
+  <td class="paramNameCol">$event</td>
+  <td class="paramTypeCol"><a href="/doc/api/1.0/CErrorEvent">CErrorEvent</a></td>
+  <td class="paramDescCol">event parameter</td>
+</tr>
+</table>
+
+<div class="sourceCode">
+<b>Source Code:</b> <a class="sourceLink" href="https://github.com/yiisoft/yii/blob/1.0.12/framework/base/CApplication.php#L668">framework/base/CApplication.php#668</a> (<b><a href="#" class="show">show</a></b>)
+<div class="code"><code><span style="color: #000000">
+<span style="color: #0000BB"></span><span style="color: #007700">public&nbsp;function&nbsp;</span><span style="color: #0000BB">onError</span><span style="color: #007700">(</span><span style="color: #0000BB">$event</span><span style="color: #007700">)<br />{<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">raiseEvent</span><span style="color: #007700">(</span><span style="color: #DD0000">'onError'</span><span style="color: #007700">,</span><span style="color: #0000BB">$event</span><span style="color: #007700">);<br />}</span>
+</span>
+</code></div>
+</div>
+<p>Raised when a PHP execution error occurs.
+<br/><br/>
+An event handler can set the <a href="/doc/api/1.0/CErrorEvent#handled">handled</a>
+property of the event parameter to be true to indicate no further error
+handling is needed. Otherwise, the <a href="/doc/api/1.0/CApplication#getErrorHandler">errorHandler</a>
+application component will continue processing the error.</p>
+
+
+<div class="detailHeader" id="onException-detail">
+onException()
+<span class="detailHeaderTag">
+method
+</span>
+</div>
+
+<table class="summaryTable">
+<tr><td colspan="3">
+<div class="signature2">
+public void <b>onException</b>(<a href="/doc/api/1.0/CExceptionEvent">CExceptionEvent</a> $event)</div>
+</td></tr>
+<tr>
+  <td class="paramNameCol">$event</td>
+  <td class="paramTypeCol"><a href="/doc/api/1.0/CExceptionEvent">CExceptionEvent</a></td>
+  <td class="paramDescCol">event parameter</td>
+</tr>
+</table>
+
+<div class="sourceCode">
+<b>Source Code:</b> <a class="sourceLink" href="https://github.com/yiisoft/yii/blob/1.0.12/framework/base/CApplication.php#L653">framework/base/CApplication.php#653</a> (<b><a href="#" class="show">show</a></b>)
+<div class="code"><code><span style="color: #000000">
+<span style="color: #0000BB"></span><span style="color: #007700">public&nbsp;function&nbsp;</span><span style="color: #0000BB">onException</span><span style="color: #007700">(</span><span style="color: #0000BB">$event</span><span style="color: #007700">)<br />{<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">raiseEvent</span><span style="color: #007700">(</span><span style="color: #DD0000">'onException'</span><span style="color: #007700">,</span><span style="color: #0000BB">$event</span><span style="color: #007700">);<br />}</span>
+</span>
+</code></div>
+</div>
+<p>Raised when an uncaught PHP exception occurs.
+<br/><br/>
+An event handler can set the <a href="/doc/api/1.0/CExceptionEvent#handled">handled</a>
+property of the event parameter to be true to indicate no further error
+handling is needed. Otherwise, the <a href="/doc/api/1.0/CApplication#getErrorHandler">errorHandler</a>
+application component will continue processing the error.</p>
+
+
+<div class="detailHeader" id="processRequest-detail">
+processRequest()
+<span class="detailHeaderTag">
+method
+</span>
+</div>
+
+<table class="summaryTable">
+<tr><td colspan="3">
+<div class="signature2">
+abstract public void <b>processRequest</b>()</div>
+</td></tr>
+</table>
+
+<div class="sourceCode">
+<b>Source Code:</b> <a class="sourceLink" href="https://github.com/yiisoft/yii/blob/1.0.12/framework/base/CApplication.php#L83">framework/base/CApplication.php#83</a> (<b><a href="#" class="show">show</a></b>)
+<div class="code"><code><span style="color: #000000">
+<span style="color: #0000BB"></span><span style="color: #007700">abstract&nbsp;public&nbsp;function&nbsp;</span><span style="color: #0000BB">processRequest</span><span style="color: #007700">();</span>
+</span>
+</code></div>
+</div>
+<p>Processes the request.
+This is the place where the actual request processing work is done.
+Derived classes should override this method.</p>
+
+
+<div class="detailHeader" id="registerCoreComponents-detail">
+registerCoreComponents()
+<span class="detailHeaderTag">
+method
+</span>
+</div>
+
+<table class="summaryTable">
+<tr><td colspan="3">
+<div class="signature2">
+protected void <b>registerCoreComponents</b>()</div>
+</td></tr>
+</table>
+
+<div class="sourceCode">
+<b>Source Code:</b> <a class="sourceLink" href="https://github.com/yiisoft/yii/blob/1.0.12/framework/base/CApplication.php#L735">framework/base/CApplication.php#735</a> (<b><a href="#" class="show">show</a></b>)
+<div class="code"><code><span style="color: #000000">
+<span style="color: #0000BB"></span><span style="color: #007700">protected&nbsp;function&nbsp;</span><span style="color: #0000BB">registerCoreComponents</span><span style="color: #007700">()<br />{<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$components</span><span style="color: #007700">=array(<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #DD0000">'coreMessages'</span><span style="color: #007700">=&gt;array(<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #DD0000">'class'</span><span style="color: #007700">=&gt;</span><span style="color: #DD0000">'CPhpMessageSource'</span><span style="color: #007700">,<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #DD0000">'language'</span><span style="color: #007700">=&gt;</span><span style="color: #DD0000">'en_us'</span><span style="color: #007700">,<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #DD0000">'basePath'</span><span style="color: #007700">=&gt;</span><span style="color: #0000BB">YII_PATH</span><span style="color: #007700">.</span><span style="color: #0000BB">DIRECTORY_SEPARATOR</span><span style="color: #007700">.</span><span style="color: #DD0000">'messages'</span><span style="color: #007700">,<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;),<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #DD0000">'db'</span><span style="color: #007700">=&gt;array(<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #DD0000">'class'</span><span style="color: #007700">=&gt;</span><span style="color: #DD0000">'CDbConnection'</span><span style="color: #007700">,<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;),<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #DD0000">'messages'</span><span style="color: #007700">=&gt;array(<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #DD0000">'class'</span><span style="color: #007700">=&gt;</span><span style="color: #DD0000">'CPhpMessageSource'</span><span style="color: #007700">,<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;),<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #DD0000">'errorHandler'</span><span style="color: #007700">=&gt;array(<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #DD0000">'class'</span><span style="color: #007700">=&gt;</span><span style="color: #DD0000">'CErrorHandler'</span><span style="color: #007700">,<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;),<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #DD0000">'securityManager'</span><span style="color: #007700">=&gt;array(<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #DD0000">'class'</span><span style="color: #007700">=&gt;</span><span style="color: #DD0000">'CSecurityManager'</span><span style="color: #007700">,<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;),<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #DD0000">'statePersister'</span><span style="color: #007700">=&gt;array(<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #DD0000">'class'</span><span style="color: #007700">=&gt;</span><span style="color: #DD0000">'CStatePersister'</span><span style="color: #007700">,<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;),<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #DD0000">'urlManager'</span><span style="color: #007700">=&gt;array(<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #DD0000">'class'</span><span style="color: #007700">=&gt;</span><span style="color: #DD0000">'CUrlManager'</span><span style="color: #007700">,<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;),<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #DD0000">'request'</span><span style="color: #007700">=&gt;array(<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #DD0000">'class'</span><span style="color: #007700">=&gt;</span><span style="color: #DD0000">'CHttpRequest'</span><span style="color: #007700">,<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;),<br />&nbsp;&nbsp;&nbsp;&nbsp;);<br /><br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">setComponents</span><span style="color: #007700">(</span><span style="color: #0000BB">$components</span><span style="color: #007700">);<br />}</span>
+</span>
+</code></div>
+</div>
+<p>Registers the core application components.</p>
+
+<div class="SeeAlso">
+<h4>See Also</h4>
+<ul>
+	<li><a href="/doc/api/1.0/CApplication#setComponents">setComponents</a></li>
+</ul>
+</div>
+
+<div class="detailHeader" id="run-detail">
+run()
+<span class="detailHeaderTag">
+method
+</span>
+</div>
+
+<table class="summaryTable">
+<tr><td colspan="3">
+<div class="signature2">
+public void <b>run</b>()</div>
+</td></tr>
+</table>
+
+<div class="sourceCode">
+<b>Source Code:</b> <a class="sourceLink" href="https://github.com/yiisoft/yii/blob/1.0.12/framework/base/CApplication.php#L131">framework/base/CApplication.php#131</a> (<b><a href="#" class="show">show</a></b>)
+<div class="code"><code><span style="color: #000000">
+<span style="color: #0000BB"></span><span style="color: #007700">public&nbsp;function&nbsp;</span><span style="color: #0000BB">run</span><span style="color: #007700">()<br />{<br />&nbsp;&nbsp;&nbsp;&nbsp;if(</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">hasEventHandler</span><span style="color: #007700">(</span><span style="color: #DD0000">'onBeginRequest'</span><span style="color: #007700">))<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">onBeginRequest</span><span style="color: #007700">(new&nbsp;</span><span style="color: #0000BB">CEvent</span><span style="color: #007700">(</span><span style="color: #0000BB">$this</span><span style="color: #007700">));<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">processRequest</span><span style="color: #007700">();<br />&nbsp;&nbsp;&nbsp;&nbsp;if(</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">hasEventHandler</span><span style="color: #007700">(</span><span style="color: #DD0000">'onEndRequest'</span><span style="color: #007700">))<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">onEndRequest</span><span style="color: #007700">(new&nbsp;</span><span style="color: #0000BB">CEvent</span><span style="color: #007700">(</span><span style="color: #0000BB">$this</span><span style="color: #007700">));<br />}</span>
+</span>
+</code></div>
+</div>
+<p>Runs the application.
+This method loads static application components. Derived classes usually overrides this
+method to do more application-specific tasks.
+Remember to call the parent implementation so that static application components are loaded.</p>
+
+
+<div class="detailHeader" id="saveGlobalState-detail">
+saveGlobalState()
+<span class="detailHeaderTag">
+method
+</span>
+</div>
+
+<table class="summaryTable">
+<tr><td colspan="3">
+<div class="signature2">
+protected void <b>saveGlobalState</b>()</div>
+</td></tr>
+</table>
+
+<div class="sourceCode">
+<b>Source Code:</b> <a class="sourceLink" href="https://github.com/yiisoft/yii/blob/1.0.12/framework/base/CApplication.php#L516">framework/base/CApplication.php#516</a> (<b><a href="#" class="show">show</a></b>)
+<div class="code"><code><span style="color: #000000">
+<span style="color: #0000BB"></span><span style="color: #007700">protected&nbsp;function&nbsp;</span><span style="color: #0000BB">saveGlobalState</span><span style="color: #007700">()<br />{<br />&nbsp;&nbsp;&nbsp;&nbsp;if(</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">_stateChanged</span><span style="color: #007700">)<br />&nbsp;&nbsp;&nbsp;&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$persister</span><span style="color: #007700">=</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">getStatePersister</span><span style="color: #007700">();<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">_stateChanged</span><span style="color: #007700">=</span><span style="color: #0000BB">false</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$persister</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">save</span><span style="color: #007700">(</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">_globalState</span><span style="color: #007700">);<br />&nbsp;&nbsp;&nbsp;&nbsp;}<br />}</span>
+</span>
+</code></div>
+</div>
+<p>Saves the global state data into persistent storage.</p>
+
+<div class="SeeAlso">
+<h4>See Also</h4>
+<ul>
+	<li><a href="/doc/api/1.0/CApplication#getStatePersister">getStatePersister</a></li>
+</ul>
+</div>
+
+<div class="detailHeader" id="setBasePath-detail">
+setBasePath()
+<span class="detailHeaderTag">
+method
+</span>
+</div>
+
+<table class="summaryTable">
+<tr><td colspan="3">
+<div class="signature2">
+public void <b>setBasePath</b>(string $path)</div>
+</td></tr>
+<tr>
+  <td class="paramNameCol">$path</td>
+  <td class="paramTypeCol">string</td>
+  <td class="paramDescCol">the root directory of the application.</td>
+</tr>
+</table>
+
+<div class="sourceCode">
+<b>Source Code:</b> <a class="sourceLink" href="https://github.com/yiisoft/yii/blob/1.0.12/framework/base/CApplication.php#L208">framework/base/CApplication.php#208</a> (<b><a href="#" class="show">show</a></b>)
+<div class="code"><code><span style="color: #000000">
+<span style="color: #0000BB"></span><span style="color: #007700">public&nbsp;function&nbsp;</span><span style="color: #0000BB">setBasePath</span><span style="color: #007700">(</span><span style="color: #0000BB">$path</span><span style="color: #007700">)<br />{<br />&nbsp;&nbsp;&nbsp;&nbsp;if((</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">_basePath</span><span style="color: #007700">=</span><span style="color: #0000BB">realpath</span><span style="color: #007700">(</span><span style="color: #0000BB">$path</span><span style="color: #007700">))===</span><span style="color: #0000BB">false&nbsp;</span><span style="color: #007700">||&nbsp;!</span><span style="color: #0000BB">is_dir</span><span style="color: #007700">(</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">_basePath</span><span style="color: #007700">))<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;throw&nbsp;new&nbsp;</span><span style="color: #0000BB">CException</span><span style="color: #007700">(</span><span style="color: #0000BB">Yii</span><span style="color: #007700">::</span><span style="color: #0000BB">t</span><span style="color: #007700">(</span><span style="color: #DD0000">'yii'</span><span style="color: #007700">,</span><span style="color: #DD0000">'Application&nbsp;base&nbsp;path&nbsp;"{path}"&nbsp;is&nbsp;not&nbsp;a&nbsp;valid&nbsp;directory.'</span><span style="color: #007700">,<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;array(</span><span style="color: #DD0000">'{path}'</span><span style="color: #007700">=&gt;</span><span style="color: #0000BB">$path</span><span style="color: #007700">)));<br />}</span>
+</span>
+</code></div>
+</div>
+<p>Sets the root directory of the application.
+This method can only be invoked at the begin of the constructor.</p>
+
+
+<div class="detailHeader" id="setExtensionPath-detail">
+setExtensionPath()
+<span class="detailHeaderTag">
+method
+</span>
+</div>
+
+<table class="summaryTable">
+<tr><td colspan="3">
+<div class="signature2">
+public void <b>setExtensionPath</b>(string $path)</div>
+</td></tr>
+<tr>
+  <td class="paramNameCol">$path</td>
+  <td class="paramTypeCol">string</td>
+  <td class="paramDescCol">the directory that contains all third-party extensions.</td>
+</tr>
+</table>
+
+<div class="sourceCode">
+<b>Source Code:</b> <a class="sourceLink" href="https://github.com/yiisoft/yii/blob/1.0.12/framework/base/CApplication.php#L253">framework/base/CApplication.php#253</a> (<b><a href="#" class="show">show</a></b>)
+<div class="code"><code><span style="color: #000000">
+<span style="color: #0000BB"></span><span style="color: #007700">public&nbsp;function&nbsp;</span><span style="color: #0000BB">setExtensionPath</span><span style="color: #007700">(</span><span style="color: #0000BB">$path</span><span style="color: #007700">)<br />{<br />&nbsp;&nbsp;&nbsp;&nbsp;if((</span><span style="color: #0000BB">$extensionPath</span><span style="color: #007700">=</span><span style="color: #0000BB">realpath</span><span style="color: #007700">(</span><span style="color: #0000BB">$path</span><span style="color: #007700">))===</span><span style="color: #0000BB">false&nbsp;</span><span style="color: #007700">||&nbsp;!</span><span style="color: #0000BB">is_dir</span><span style="color: #007700">(</span><span style="color: #0000BB">$extensionPath</span><span style="color: #007700">))<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;throw&nbsp;new&nbsp;</span><span style="color: #0000BB">CException</span><span style="color: #007700">(</span><span style="color: #0000BB">Yii</span><span style="color: #007700">::</span><span style="color: #0000BB">t</span><span style="color: #007700">(</span><span style="color: #DD0000">'yii'</span><span style="color: #007700">,</span><span style="color: #DD0000">'Extension&nbsp;path&nbsp;"{path}"&nbsp;does&nbsp;not&nbsp;exist.'</span><span style="color: #007700">,<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;array(</span><span style="color: #DD0000">'{path}'</span><span style="color: #007700">=&gt;</span><span style="color: #0000BB">$path</span><span style="color: #007700">)));<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">Yii</span><span style="color: #007700">::</span><span style="color: #0000BB">setPathOfAlias</span><span style="color: #007700">(</span><span style="color: #DD0000">'ext'</span><span style="color: #007700">,</span><span style="color: #0000BB">$extensionPath</span><span style="color: #007700">);<br />}</span>
+</span>
+</code></div>
+</div>
+<p></p>
+
+
+<div class="detailHeader" id="setGlobalState-detail">
+setGlobalState()
+<span class="detailHeaderTag">
+method
+</span>
+</div>
+
+<table class="summaryTable">
+<tr><td colspan="3">
+<div class="signature2">
+public void <b>setGlobalState</b>(string $key, mixed $value, mixed $defaultValue=NULL)</div>
+</td></tr>
+<tr>
+  <td class="paramNameCol">$key</td>
+  <td class="paramTypeCol">string</td>
+  <td class="paramDescCol">the name of the value to be saved</td>
+</tr>
+<tr>
+  <td class="paramNameCol">$value</td>
+  <td class="paramTypeCol">mixed</td>
+  <td class="paramDescCol">the global value to be saved. It must be serializable.</td>
+</tr>
+<tr>
+  <td class="paramNameCol">$defaultValue</td>
+  <td class="paramTypeCol">mixed</td>
+  <td class="paramDescCol">the default value. If the named global value is the same as this value, it will be cleared from the current storage.</td>
+</tr>
+</table>
+
+<div class="sourceCode">
+<b>Source Code:</b> <a class="sourceLink" href="https://github.com/yiisoft/yii/blob/1.0.12/framework/base/CApplication.php#L469">framework/base/CApplication.php#469</a> (<b><a href="#" class="show">show</a></b>)
+<div class="code"><code><span style="color: #000000">
+<span style="color: #0000BB"></span><span style="color: #007700">public&nbsp;function&nbsp;</span><span style="color: #0000BB">setGlobalState</span><span style="color: #007700">(</span><span style="color: #0000BB">$key</span><span style="color: #007700">,</span><span style="color: #0000BB">$value</span><span style="color: #007700">,</span><span style="color: #0000BB">$defaultValue</span><span style="color: #007700">=</span><span style="color: #0000BB">null</span><span style="color: #007700">)<br />{<br />&nbsp;&nbsp;&nbsp;&nbsp;if(</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">_globalState</span><span style="color: #007700">===</span><span style="color: #0000BB">null</span><span style="color: #007700">)<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">loadGlobalState</span><span style="color: #007700">();<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">_stateChanged</span><span style="color: #007700">=</span><span style="color: #0000BB">true</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;if(</span><span style="color: #0000BB">$value</span><span style="color: #007700">===</span><span style="color: #0000BB">$defaultValue</span><span style="color: #007700">)<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;unset(</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">_globalState</span><span style="color: #007700">[</span><span style="color: #0000BB">$key</span><span style="color: #007700">]);<br />&nbsp;&nbsp;&nbsp;&nbsp;else<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">_globalState</span><span style="color: #007700">[</span><span style="color: #0000BB">$key</span><span style="color: #007700">]=</span><span style="color: #0000BB">$value</span><span style="color: #007700">;<br />}</span>
+</span>
+</code></div>
+</div>
+<p>Sets a global value.
+<br/><br/>
+A global value is one that is persistent across users sessions and requests.
+Make sure that the value is serializable and unserializable.</p>
+
+<div class="SeeAlso">
+<h4>See Also</h4>
+<ul>
+	<li><a href="/doc/api/1.0/CApplication#getGlobalState">getGlobalState</a></li>
+</ul>
+</div>
+
+<div class="detailHeader" id="setId-detail">
+setId()
+<span class="detailHeaderTag">
+method
+</span>
+</div>
+
+<table class="summaryTable">
+<tr><td colspan="3">
+<div class="signature2">
+public void <b>setId</b>(string $id)</div>
+</td></tr>
+<tr>
+  <td class="paramNameCol">$id</td>
+  <td class="paramTypeCol">string</td>
+  <td class="paramDescCol">a unique identifier for the application.</td>
+</tr>
+</table>
+
+<div class="sourceCode">
+<b>Source Code:</b> <a class="sourceLink" href="https://github.com/yiisoft/yii/blob/1.0.12/framework/base/CApplication.php#L189">framework/base/CApplication.php#189</a> (<b><a href="#" class="show">show</a></b>)
+<div class="code"><code><span style="color: #000000">
+<span style="color: #0000BB"></span><span style="color: #007700">public&nbsp;function&nbsp;</span><span style="color: #0000BB">setId</span><span style="color: #007700">(</span><span style="color: #0000BB">$id</span><span style="color: #007700">)<br />{<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">_id</span><span style="color: #007700">=</span><span style="color: #0000BB">$id</span><span style="color: #007700">;<br />}</span>
+</span>
+</code></div>
+</div>
+<p></p>
+
+
+<div class="detailHeader" id="setLanguage-detail">
+setLanguage()
+<span class="detailHeaderTag">
+method
+</span>
+</div>
+
+<table class="summaryTable">
+<tr><td colspan="3">
+<div class="signature2">
+public void <b>setLanguage</b>(string $language)</div>
+</td></tr>
+<tr>
+  <td class="paramNameCol">$language</td>
+  <td class="paramTypeCol">string</td>
+  <td class="paramDescCol">the user language (e.g. 'en_US', 'zh_CN').
+If it is null, the <a href="/doc/api/1.0/CApplication#sourceLanguage">sourceLanguage</a> will be used.</td>
+</tr>
+</table>
+
+<div class="sourceCode">
+<b>Source Code:</b> <a class="sourceLink" href="https://github.com/yiisoft/yii/blob/1.0.12/framework/base/CApplication.php#L281">framework/base/CApplication.php#281</a> (<b><a href="#" class="show">show</a></b>)
+<div class="code"><code><span style="color: #000000">
+<span style="color: #0000BB"></span><span style="color: #007700">public&nbsp;function&nbsp;</span><span style="color: #0000BB">setLanguage</span><span style="color: #007700">(</span><span style="color: #0000BB">$language</span><span style="color: #007700">)<br />{<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">_language</span><span style="color: #007700">=</span><span style="color: #0000BB">$language</span><span style="color: #007700">;<br />}</span>
+</span>
+</code></div>
+</div>
+<p>Specifies which language the application is targeted to.
+<br/><br/>
+This is the language that the application displays to end users.
+If set null, it uses the <a href="/doc/api/1.0/CApplication#sourceLanguage">source language</a>.
+<br/><br/>
+Unless your application needs to support multiple languages, you should always
+set this language to null to maximize the application's performance.</p>
+
+
+<div class="detailHeader" id="setRuntimePath-detail">
+setRuntimePath()
+<span class="detailHeaderTag">
+method
+</span>
+</div>
+
+<table class="summaryTable">
+<tr><td colspan="3">
+<div class="signature2">
+public void <b>setRuntimePath</b>(string $path)</div>
+</td></tr>
+<tr>
+  <td class="paramNameCol">$path</td>
+  <td class="paramTypeCol">string</td>
+  <td class="paramDescCol">the directory that stores runtime files.</td>
+</tr>
+</table>
+
+<div class="sourceCode">
+<b>Source Code:</b> <a class="sourceLink" href="https://github.com/yiisoft/yii/blob/1.0.12/framework/base/CApplication.php#L233">framework/base/CApplication.php#233</a> (<b><a href="#" class="show">show</a></b>)
+<div class="code"><code><span style="color: #000000">
+<span style="color: #0000BB"></span><span style="color: #007700">public&nbsp;function&nbsp;</span><span style="color: #0000BB">setRuntimePath</span><span style="color: #007700">(</span><span style="color: #0000BB">$path</span><span style="color: #007700">)<br />{<br />&nbsp;&nbsp;&nbsp;&nbsp;if((</span><span style="color: #0000BB">$runtimePath</span><span style="color: #007700">=</span><span style="color: #0000BB">realpath</span><span style="color: #007700">(</span><span style="color: #0000BB">$path</span><span style="color: #007700">))===</span><span style="color: #0000BB">false&nbsp;</span><span style="color: #007700">||&nbsp;!</span><span style="color: #0000BB">is_dir</span><span style="color: #007700">(</span><span style="color: #0000BB">$runtimePath</span><span style="color: #007700">)&nbsp;||&nbsp;!</span><span style="color: #0000BB">is_writable</span><span style="color: #007700">(</span><span style="color: #0000BB">$runtimePath</span><span style="color: #007700">))<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;throw&nbsp;new&nbsp;</span><span style="color: #0000BB">CException</span><span style="color: #007700">(</span><span style="color: #0000BB">Yii</span><span style="color: #007700">::</span><span style="color: #0000BB">t</span><span style="color: #007700">(</span><span style="color: #DD0000">'yii'</span><span style="color: #007700">,</span><span style="color: #DD0000">'Application&nbsp;runtime&nbsp;path&nbsp;"{path}"&nbsp;is&nbsp;not&nbsp;valid.&nbsp;Please&nbsp;make&nbsp;sure&nbsp;it&nbsp;is&nbsp;a&nbsp;directory&nbsp;writable&nbsp;by&nbsp;the&nbsp;Web&nbsp;server&nbsp;process.'</span><span style="color: #007700">,<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;array(</span><span style="color: #DD0000">'{path}'</span><span style="color: #007700">=&gt;</span><span style="color: #0000BB">$path</span><span style="color: #007700">)));<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">_runtimePath</span><span style="color: #007700">=</span><span style="color: #0000BB">$runtimePath</span><span style="color: #007700">;<br />}</span>
+</span>
+</code></div>
+</div>
+<p></p>
+
+
+<div class="detailHeader" id="setTimeZone-detail">
+setTimeZone()
+<span class="detailHeaderTag">
+method
+(available since v1.0.9)
+</span>
+</div>
+
+<table class="summaryTable">
+<tr><td colspan="3">
+<div class="signature2">
+public void <b>setTimeZone</b>(string $value)</div>
+</td></tr>
+<tr>
+  <td class="paramNameCol">$value</td>
+  <td class="paramTypeCol">string</td>
+  <td class="paramDescCol">the time zone used by this application.</td>
+</tr>
+</table>
+
+<div class="sourceCode">
+<b>Source Code:</b> <a class="sourceLink" href="https://github.com/yiisoft/yii/blob/1.0.12/framework/base/CApplication.php#L305">framework/base/CApplication.php#305</a> (<b><a href="#" class="show">show</a></b>)
+<div class="code"><code><span style="color: #000000">
+<span style="color: #0000BB"></span><span style="color: #007700">public&nbsp;function&nbsp;</span><span style="color: #0000BB">setTimeZone</span><span style="color: #007700">(</span><span style="color: #0000BB">$value</span><span style="color: #007700">)<br />{<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">date_default_timezone_set</span><span style="color: #007700">(</span><span style="color: #0000BB">$value</span><span style="color: #007700">);<br />}</span>
+</span>
+</code></div>
+</div>
+<p>Sets the time zone used by this application.
+This is a simple wrapper of PHP function date_default_timezone_set().</p>
+
+<div class="SeeAlso">
+<h4>See Also</h4>
+<ul>
+	<li><a href="http://php.net/manual/en/function.date-default-timezone-set.php">http://php.net/manual/en/function.date-default-timezone-set.php</a></li>
+</ul>
+</div>
+

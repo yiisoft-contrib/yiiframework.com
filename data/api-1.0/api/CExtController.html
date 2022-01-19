@@ -1,0 +1,669 @@
+<h1>CExtController</h1>
+<div id="nav">
+<a href="/doc/api/1.0/">All Packages</a>
+| <a href="#properties">Properties</a>
+| <a href="#methods">Methods</a>
+</div>
+
+<table class="summaryTable docClass">
+<colgroup>
+	<col class="col-name" />
+	<col class="col-value" />
+</colgroup>
+<tr>
+  <th>Package</th>
+  <td><a href="/doc/api/1.0/#system.web">system.web</a></td>
+</tr>
+<tr>
+  <th>Inheritance</th>
+  <td>class CExtController &raquo;
+<a href="/doc/api/1.0/CController">CController</a> &raquo;
+<a href="/doc/api/1.0/CBaseController">CBaseController</a> &raquo;
+<a href="/doc/api/1.0/CComponent">CComponent</a></td>
+</tr>
+<tr>
+  <th>Since</th>
+  <td>1.0</td>
+</tr>
+<tr>
+  <th>Version</th>
+  <td>$Id$</td>
+</tr>
+<tr>
+  <th>Source Code</th>
+  <td><a class="sourceLink" href="https://github.com/yiisoft/yii/blob/1.0.12/framework/web/CExtController.php">framework/web/CExtController.php</a></td>
+</tr>
+</table>
+
+<div id="classDescription">
+CExtController is the base class for controllers distributed as extension.
+<br/><br/>
+The main purpose of CExtController is to redefine the <a href="/doc/api/1.0/CExtController#viewPath">viewPath</a> property
+so that it points to the "views" subdirectory under the directory containing
+the controller class file.</div>
+<a name="properties"></a>
+
+<div class="summary docProperty">
+<h2>Public Properties</h2>
+
+<p><a href="#" class="toggle">Hide inherited properties</a></p>
+
+<table class="summaryTable">
+<colgroup>
+	<col class="col-property" />
+	<col class="col-type" />
+	<col class="col-description" />
+	<col class="col-defined" />
+</colgroup>
+<tr>
+  <th>Property</th><th>Type</th><th>Description</th><th>Defined By</th>
+</tr>
+<tr class="inherited" id="action">
+  <td><a href="/doc/api/1.0/CController#action-detail">action</a></td>
+  <td><a href="/doc/api/1.0/CAction">CAction</a></td>
+  <td>the action currently being executed, null if no active action.</td>
+  <td><a href="/doc/api/1.0/CController">CController</a></td>
+</tr>
+<tr class="inherited" id="cachingStack">
+  <td><a href="/doc/api/1.0/CController#cachingStack-detail">cachingStack</a></td>
+  <td><a href="/doc/api/1.0/CStack">CStack</a></td>
+  <td>stack of <a href="/doc/api/1.0/COutputCache">COutputCache</a> objects</td>
+  <td><a href="/doc/api/1.0/CController">CController</a></td>
+</tr>
+<tr class="inherited" id="clips">
+  <td><a href="/doc/api/1.0/CController#clips-detail">clips</a></td>
+  <td><a href="/doc/api/1.0/CMap">CMap</a></td>
+  <td>Returns the list of clips.</td>
+  <td><a href="/doc/api/1.0/CController">CController</a></td>
+</tr>
+<tr class="inherited" id="defaultAction">
+  <td><a href="/doc/api/1.0/CController#defaultAction-detail">defaultAction</a></td>
+  <td>string</td>
+  <td>the name of the default action.</td>
+  <td><a href="/doc/api/1.0/CController">CController</a></td>
+</tr>
+<tr class="inherited" id="id">
+  <td><a href="/doc/api/1.0/CController#id-detail">id</a></td>
+  <td>string</td>
+  <td>ID of the controller</td>
+  <td><a href="/doc/api/1.0/CController">CController</a></td>
+</tr>
+<tr class="inherited" id="layout">
+  <td><a href="/doc/api/1.0/CController#layout-detail">layout</a></td>
+  <td>mixed</td>
+  <td>the name of the layout to be applied to this controller's views.</td>
+  <td><a href="/doc/api/1.0/CController">CController</a></td>
+</tr>
+<tr class="inherited" id="module">
+  <td><a href="/doc/api/1.0/CController#module-detail">module</a></td>
+  <td><a href="/doc/api/1.0/CWebModule">CWebModule</a></td>
+  <td>the module that this controller belongs to.</td>
+  <td><a href="/doc/api/1.0/CController">CController</a></td>
+</tr>
+<tr class="inherited" id="pageTitle">
+  <td><a href="/doc/api/1.0/CController#pageTitle-detail">pageTitle</a></td>
+  <td>string</td>
+  <td>the page title.</td>
+  <td><a href="/doc/api/1.0/CController">CController</a></td>
+</tr>
+<tr class="inherited" id="uniqueId">
+  <td><a href="/doc/api/1.0/CController#uniqueId-detail">uniqueId</a></td>
+  <td>string</td>
+  <td>the controller ID that is prefixed with the module ID (if any).</td>
+  <td><a href="/doc/api/1.0/CController">CController</a></td>
+</tr>
+<tr id="viewPath">
+  <td><a href="/doc/api/1.0/CExtController#viewPath-detail">viewPath</a></td>
+  <td>string</td>
+  <td>Returns the directory containing view files for this controller.</td>
+  <td>CExtController</td>
+</tr>
+</table>
+</div>
+<a name="methods"></a>
+
+<div class="summary docMethod">
+<h2>Public Methods</h2>
+
+<p><a href="#" class="toggle">Hide inherited methods</a></p>
+
+<table class="summaryTable">
+<colgroup>
+	<col class="col-method" />
+	<col class="col-description" />
+	<col class="col-defined" />
+</colgroup>
+<tr>
+  <th>Method</th><th>Description</th><th>Defined By</th>
+</tr>
+<tr class="inherited" id="__call">
+  <td><a href="/doc/api/1.0/CComponent#__call-detail">__call()</a></td>
+  <td>Calls the named method which is not a class method.</td>
+  <td><a href="/doc/api/1.0/CComponent">CComponent</a></td>
+</tr>
+<tr class="inherited" id="__construct">
+  <td><a href="/doc/api/1.0/CController#__construct-detail">__construct()</a></td>
+  <td></td>
+  <td><a href="/doc/api/1.0/CController">CController</a></td>
+</tr>
+<tr class="inherited" id="__get">
+  <td><a href="/doc/api/1.0/CComponent#__get-detail">__get()</a></td>
+  <td>Returns a property value, an event handler list or a behavior based on its name.</td>
+  <td><a href="/doc/api/1.0/CComponent">CComponent</a></td>
+</tr>
+<tr class="inherited" id="__isset">
+  <td><a href="/doc/api/1.0/CComponent#__isset-detail">__isset()</a></td>
+  <td>Checks if a property value is null.</td>
+  <td><a href="/doc/api/1.0/CComponent">CComponent</a></td>
+</tr>
+<tr class="inherited" id="__set">
+  <td><a href="/doc/api/1.0/CComponent#__set-detail">__set()</a></td>
+  <td>Sets value of a component property.</td>
+  <td><a href="/doc/api/1.0/CComponent">CComponent</a></td>
+</tr>
+<tr class="inherited" id="__unset">
+  <td><a href="/doc/api/1.0/CComponent#__unset-detail">__unset()</a></td>
+  <td>Sets a component property to be null.</td>
+  <td><a href="/doc/api/1.0/CComponent">CComponent</a></td>
+</tr>
+<tr class="inherited" id="accessRules">
+  <td><a href="/doc/api/1.0/CController#accessRules-detail">accessRules()</a></td>
+  <td>Returns the access rules for this controller.</td>
+  <td><a href="/doc/api/1.0/CController">CController</a></td>
+</tr>
+<tr class="inherited" id="actions">
+  <td><a href="/doc/api/1.0/CController#actions-detail">actions()</a></td>
+  <td>Returns a list of external action classes.</td>
+  <td><a href="/doc/api/1.0/CController">CController</a></td>
+</tr>
+<tr class="inherited" id="asa">
+  <td><a href="/doc/api/1.0/CComponent#asa-detail">asa()</a></td>
+  <td>Returns the named behavior object.</td>
+  <td><a href="/doc/api/1.0/CComponent">CComponent</a></td>
+</tr>
+<tr class="inherited" id="attachBehavior">
+  <td><a href="/doc/api/1.0/CComponent#attachBehavior-detail">attachBehavior()</a></td>
+  <td>Attaches a behavior to this component.</td>
+  <td><a href="/doc/api/1.0/CComponent">CComponent</a></td>
+</tr>
+<tr class="inherited" id="attachBehaviors">
+  <td><a href="/doc/api/1.0/CComponent#attachBehaviors-detail">attachBehaviors()</a></td>
+  <td>Attaches a list of behaviors to the component.</td>
+  <td><a href="/doc/api/1.0/CComponent">CComponent</a></td>
+</tr>
+<tr class="inherited" id="attachEventHandler">
+  <td><a href="/doc/api/1.0/CComponent#attachEventHandler-detail">attachEventHandler()</a></td>
+  <td>Attaches an event handler to an event.</td>
+  <td><a href="/doc/api/1.0/CComponent">CComponent</a></td>
+</tr>
+<tr class="inherited" id="beginCache">
+  <td><a href="/doc/api/1.0/CBaseController#beginCache-detail">beginCache()</a></td>
+  <td>Begins fragment caching.</td>
+  <td><a href="/doc/api/1.0/CBaseController">CBaseController</a></td>
+</tr>
+<tr class="inherited" id="beginClip">
+  <td><a href="/doc/api/1.0/CBaseController#beginClip-detail">beginClip()</a></td>
+  <td>Begins recording a clip.</td>
+  <td><a href="/doc/api/1.0/CBaseController">CBaseController</a></td>
+</tr>
+<tr class="inherited" id="beginContent">
+  <td><a href="/doc/api/1.0/CBaseController#beginContent-detail">beginContent()</a></td>
+  <td>Begins the rendering of content that is to be decorated by the specified view.</td>
+  <td><a href="/doc/api/1.0/CBaseController">CBaseController</a></td>
+</tr>
+<tr class="inherited" id="beginWidget">
+  <td><a href="/doc/api/1.0/CBaseController#beginWidget-detail">beginWidget()</a></td>
+  <td>Creates a widget and executes it.</td>
+  <td><a href="/doc/api/1.0/CBaseController">CBaseController</a></td>
+</tr>
+<tr class="inherited" id="behaviors">
+  <td><a href="/doc/api/1.0/CController#behaviors-detail">behaviors()</a></td>
+  <td>Returns a list of behaviors that this controller should behave as.</td>
+  <td><a href="/doc/api/1.0/CController">CController</a></td>
+</tr>
+<tr class="inherited" id="canGetProperty">
+  <td><a href="/doc/api/1.0/CComponent#canGetProperty-detail">canGetProperty()</a></td>
+  <td>Determines whether a property can be read.</td>
+  <td><a href="/doc/api/1.0/CComponent">CComponent</a></td>
+</tr>
+<tr class="inherited" id="canSetProperty">
+  <td><a href="/doc/api/1.0/CComponent#canSetProperty-detail">canSetProperty()</a></td>
+  <td>Determines whether a property can be set.</td>
+  <td><a href="/doc/api/1.0/CComponent">CComponent</a></td>
+</tr>
+<tr class="inherited" id="clearPageStates">
+  <td><a href="/doc/api/1.0/CController#clearPageStates-detail">clearPageStates()</a></td>
+  <td>Removes all page states.</td>
+  <td><a href="/doc/api/1.0/CController">CController</a></td>
+</tr>
+<tr class="inherited" id="createAbsoluteUrl">
+  <td><a href="/doc/api/1.0/CController#createAbsoluteUrl-detail">createAbsoluteUrl()</a></td>
+  <td>Creates an absolute URL for the specified action defined in this controller.</td>
+  <td><a href="/doc/api/1.0/CController">CController</a></td>
+</tr>
+<tr class="inherited" id="createAction">
+  <td><a href="/doc/api/1.0/CController#createAction-detail">createAction()</a></td>
+  <td>Creates the action instance based on the action name.</td>
+  <td><a href="/doc/api/1.0/CController">CController</a></td>
+</tr>
+<tr class="inherited" id="createUrl">
+  <td><a href="/doc/api/1.0/CController#createUrl-detail">createUrl()</a></td>
+  <td>Creates a relative URL for the specified action defined in this controller.</td>
+  <td><a href="/doc/api/1.0/CController">CController</a></td>
+</tr>
+<tr class="inherited" id="createWidget">
+  <td><a href="/doc/api/1.0/CBaseController#createWidget-detail">createWidget()</a></td>
+  <td>Creates a widget and initializes it.</td>
+  <td><a href="/doc/api/1.0/CBaseController">CBaseController</a></td>
+</tr>
+<tr class="inherited" id="detachBehavior">
+  <td><a href="/doc/api/1.0/CComponent#detachBehavior-detail">detachBehavior()</a></td>
+  <td>Detaches a behavior from the component.</td>
+  <td><a href="/doc/api/1.0/CComponent">CComponent</a></td>
+</tr>
+<tr class="inherited" id="detachBehaviors">
+  <td><a href="/doc/api/1.0/CComponent#detachBehaviors-detail">detachBehaviors()</a></td>
+  <td>Detaches all behaviors from the component.</td>
+  <td><a href="/doc/api/1.0/CComponent">CComponent</a></td>
+</tr>
+<tr class="inherited" id="detachEventHandler">
+  <td><a href="/doc/api/1.0/CComponent#detachEventHandler-detail">detachEventHandler()</a></td>
+  <td>Detaches an existing event handler.</td>
+  <td><a href="/doc/api/1.0/CComponent">CComponent</a></td>
+</tr>
+<tr class="inherited" id="disableBehavior">
+  <td><a href="/doc/api/1.0/CComponent#disableBehavior-detail">disableBehavior()</a></td>
+  <td>Disables an attached behavior.</td>
+  <td><a href="/doc/api/1.0/CComponent">CComponent</a></td>
+</tr>
+<tr class="inherited" id="disableBehaviors">
+  <td><a href="/doc/api/1.0/CComponent#disableBehaviors-detail">disableBehaviors()</a></td>
+  <td>Disables all behaviors attached to this component.</td>
+  <td><a href="/doc/api/1.0/CComponent">CComponent</a></td>
+</tr>
+<tr class="inherited" id="enableBehavior">
+  <td><a href="/doc/api/1.0/CComponent#enableBehavior-detail">enableBehavior()</a></td>
+  <td>Enables an attached behavior.</td>
+  <td><a href="/doc/api/1.0/CComponent">CComponent</a></td>
+</tr>
+<tr class="inherited" id="enableBehaviors">
+  <td><a href="/doc/api/1.0/CComponent#enableBehaviors-detail">enableBehaviors()</a></td>
+  <td>Enables all behaviors attached to this component.</td>
+  <td><a href="/doc/api/1.0/CComponent">CComponent</a></td>
+</tr>
+<tr class="inherited" id="endCache">
+  <td><a href="/doc/api/1.0/CBaseController#endCache-detail">endCache()</a></td>
+  <td>Ends fragment caching.</td>
+  <td><a href="/doc/api/1.0/CBaseController">CBaseController</a></td>
+</tr>
+<tr class="inherited" id="endClip">
+  <td><a href="/doc/api/1.0/CBaseController#endClip-detail">endClip()</a></td>
+  <td>Ends recording a clip.</td>
+  <td><a href="/doc/api/1.0/CBaseController">CBaseController</a></td>
+</tr>
+<tr class="inherited" id="endContent">
+  <td><a href="/doc/api/1.0/CBaseController#endContent-detail">endContent()</a></td>
+  <td>Ends the rendering of content.</td>
+  <td><a href="/doc/api/1.0/CBaseController">CBaseController</a></td>
+</tr>
+<tr class="inherited" id="endWidget">
+  <td><a href="/doc/api/1.0/CBaseController#endWidget-detail">endWidget()</a></td>
+  <td>Ends the execution of the named widget.</td>
+  <td><a href="/doc/api/1.0/CBaseController">CBaseController</a></td>
+</tr>
+<tr class="inherited" id="filterAccessControl">
+  <td><a href="/doc/api/1.0/CController#filterAccessControl-detail">filterAccessControl()</a></td>
+  <td>The filter method for 'accessControl' filter.</td>
+  <td><a href="/doc/api/1.0/CController">CController</a></td>
+</tr>
+<tr class="inherited" id="filterAjaxOnly">
+  <td><a href="/doc/api/1.0/CController#filterAjaxOnly-detail">filterAjaxOnly()</a></td>
+  <td>The filter method for 'ajaxOnly' filter.</td>
+  <td><a href="/doc/api/1.0/CController">CController</a></td>
+</tr>
+<tr class="inherited" id="filterPostOnly">
+  <td><a href="/doc/api/1.0/CController#filterPostOnly-detail">filterPostOnly()</a></td>
+  <td>The filter method for 'postOnly' filter.</td>
+  <td><a href="/doc/api/1.0/CController">CController</a></td>
+</tr>
+<tr class="inherited" id="filters">
+  <td><a href="/doc/api/1.0/CController#filters-detail">filters()</a></td>
+  <td>Returns the filter configurations.</td>
+  <td><a href="/doc/api/1.0/CController">CController</a></td>
+</tr>
+<tr class="inherited" id="getAction">
+  <td><a href="/doc/api/1.0/CController#getAction-detail">getAction()</a></td>
+  <td>Returns the action currently being executed, null if no active action.</td>
+  <td><a href="/doc/api/1.0/CController">CController</a></td>
+</tr>
+<tr class="inherited" id="getCachingStack">
+  <td><a href="/doc/api/1.0/CController#getCachingStack-detail">getCachingStack()</a></td>
+  <td>Returns stack of <a href="/doc/api/1.0/COutputCache">COutputCache</a> objects</td>
+  <td><a href="/doc/api/1.0/CController">CController</a></td>
+</tr>
+<tr class="inherited" id="getClips">
+  <td><a href="/doc/api/1.0/CController#getClips-detail">getClips()</a></td>
+  <td>Returns the list of clips.</td>
+  <td><a href="/doc/api/1.0/CController">CController</a></td>
+</tr>
+<tr class="inherited" id="getEventHandlers">
+  <td><a href="/doc/api/1.0/CComponent#getEventHandlers-detail">getEventHandlers()</a></td>
+  <td>Returns the list of attached event handlers for an event.</td>
+  <td><a href="/doc/api/1.0/CComponent">CComponent</a></td>
+</tr>
+<tr class="inherited" id="getId">
+  <td><a href="/doc/api/1.0/CController#getId-detail">getId()</a></td>
+  <td>Returns ID of the controller</td>
+  <td><a href="/doc/api/1.0/CController">CController</a></td>
+</tr>
+<tr class="inherited" id="getLayoutFile">
+  <td><a href="/doc/api/1.0/CController#getLayoutFile-detail">getLayoutFile()</a></td>
+  <td>Looks for the view script file for a layout.</td>
+  <td><a href="/doc/api/1.0/CController">CController</a></td>
+</tr>
+<tr class="inherited" id="getModule">
+  <td><a href="/doc/api/1.0/CController#getModule-detail">getModule()</a></td>
+  <td>Returns the module that this controller belongs to. It returns null
+if the controller does not belong to any module</td>
+  <td><a href="/doc/api/1.0/CController">CController</a></td>
+</tr>
+<tr class="inherited" id="getPageState">
+  <td><a href="/doc/api/1.0/CController#getPageState-detail">getPageState()</a></td>
+  <td>Returns a persistent page state value.</td>
+  <td><a href="/doc/api/1.0/CController">CController</a></td>
+</tr>
+<tr class="inherited" id="getPageTitle">
+  <td><a href="/doc/api/1.0/CController#getPageTitle-detail">getPageTitle()</a></td>
+  <td>Returns the page title. Defaults to the controller name and the action name.</td>
+  <td><a href="/doc/api/1.0/CController">CController</a></td>
+</tr>
+<tr class="inherited" id="getUniqueId">
+  <td><a href="/doc/api/1.0/CController#getUniqueId-detail">getUniqueId()</a></td>
+  <td>Returns the controller ID that is prefixed with the module ID (if any).</td>
+  <td><a href="/doc/api/1.0/CController">CController</a></td>
+</tr>
+<tr class="inherited" id="getViewFile">
+  <td><a href="/doc/api/1.0/CController#getViewFile-detail">getViewFile()</a></td>
+  <td>Looks for the view file according to the given view name.</td>
+  <td><a href="/doc/api/1.0/CController">CController</a></td>
+</tr>
+<tr id="getViewPath">
+  <td><a href="/doc/api/1.0/CExtController#getViewPath-detail">getViewPath()</a></td>
+  <td>Returns the directory containing view files for this controller.</td>
+  <td>CExtController</td>
+</tr>
+<tr class="inherited" id="hasEvent">
+  <td><a href="/doc/api/1.0/CComponent#hasEvent-detail">hasEvent()</a></td>
+  <td>Determines whether an event is defined.</td>
+  <td><a href="/doc/api/1.0/CComponent">CComponent</a></td>
+</tr>
+<tr class="inherited" id="hasEventHandler">
+  <td><a href="/doc/api/1.0/CComponent#hasEventHandler-detail">hasEventHandler()</a></td>
+  <td>Checks whether the named event has attached handlers.</td>
+  <td><a href="/doc/api/1.0/CComponent">CComponent</a></td>
+</tr>
+<tr class="inherited" id="hasProperty">
+  <td><a href="/doc/api/1.0/CComponent#hasProperty-detail">hasProperty()</a></td>
+  <td>Determines whether a property is defined.</td>
+  <td><a href="/doc/api/1.0/CComponent">CComponent</a></td>
+</tr>
+<tr class="inherited" id="init">
+  <td><a href="/doc/api/1.0/CController#init-detail">init()</a></td>
+  <td>Initializes the controller.</td>
+  <td><a href="/doc/api/1.0/CController">CController</a></td>
+</tr>
+<tr class="inherited" id="isCachingStackEmpty">
+  <td><a href="/doc/api/1.0/CController#isCachingStackEmpty-detail">isCachingStackEmpty()</a></td>
+  <td></td>
+  <td><a href="/doc/api/1.0/CController">CController</a></td>
+</tr>
+<tr class="inherited" id="missingAction">
+  <td><a href="/doc/api/1.0/CController#missingAction-detail">missingAction()</a></td>
+  <td>Handles the request whose action is not recognized.</td>
+  <td><a href="/doc/api/1.0/CController">CController</a></td>
+</tr>
+<tr class="inherited" id="paginate">
+  <td><a href="/doc/api/1.0/CController#paginate-detail">paginate()</a></td>
+  <td>Generates pagination information.</td>
+  <td><a href="/doc/api/1.0/CController">CController</a></td>
+</tr>
+<tr class="inherited" id="processDynamicOutput">
+  <td><a href="/doc/api/1.0/CController#processDynamicOutput-detail">processDynamicOutput()</a></td>
+  <td>Postprocesses the dynamic output.</td>
+  <td><a href="/doc/api/1.0/CController">CController</a></td>
+</tr>
+<tr class="inherited" id="processOutput">
+  <td><a href="/doc/api/1.0/CController#processOutput-detail">processOutput()</a></td>
+  <td>Postprocesses the output generated by <a href="/doc/api/1.0/CExtController#render">render()</a>.</td>
+  <td><a href="/doc/api/1.0/CController">CController</a></td>
+</tr>
+<tr class="inherited" id="raiseEvent">
+  <td><a href="/doc/api/1.0/CComponent#raiseEvent-detail">raiseEvent()</a></td>
+  <td>Raises an event.</td>
+  <td><a href="/doc/api/1.0/CComponent">CComponent</a></td>
+</tr>
+<tr class="inherited" id="recordCachingAction">
+  <td><a href="/doc/api/1.0/CController#recordCachingAction-detail">recordCachingAction()</a></td>
+  <td>Records a method call when an output cache is in effect.</td>
+  <td><a href="/doc/api/1.0/CController">CController</a></td>
+</tr>
+<tr class="inherited" id="redirect">
+  <td><a href="/doc/api/1.0/CController#redirect-detail">redirect()</a></td>
+  <td>Redirects the browser to the specified URL or route (controller/action).</td>
+  <td><a href="/doc/api/1.0/CController">CController</a></td>
+</tr>
+<tr class="inherited" id="refresh">
+  <td><a href="/doc/api/1.0/CController#refresh-detail">refresh()</a></td>
+  <td>Refreshes the current page.</td>
+  <td><a href="/doc/api/1.0/CController">CController</a></td>
+</tr>
+<tr class="inherited" id="render">
+  <td><a href="/doc/api/1.0/CController#render-detail">render()</a></td>
+  <td>Renders a view with a layout.</td>
+  <td><a href="/doc/api/1.0/CController">CController</a></td>
+</tr>
+<tr class="inherited" id="renderDynamic">
+  <td><a href="/doc/api/1.0/CController#renderDynamic-detail">renderDynamic()</a></td>
+  <td>Renders dynamic content returned by the specified callback.</td>
+  <td><a href="/doc/api/1.0/CController">CController</a></td>
+</tr>
+<tr class="inherited" id="renderDynamicInternal">
+  <td><a href="/doc/api/1.0/CController#renderDynamicInternal-detail">renderDynamicInternal()</a></td>
+  <td>This method is internally used.</td>
+  <td><a href="/doc/api/1.0/CController">CController</a></td>
+</tr>
+<tr class="inherited" id="renderFile">
+  <td><a href="/doc/api/1.0/CBaseController#renderFile-detail">renderFile()</a></td>
+  <td>Renders a view file.</td>
+  <td><a href="/doc/api/1.0/CBaseController">CBaseController</a></td>
+</tr>
+<tr class="inherited" id="renderInternal">
+  <td><a href="/doc/api/1.0/CBaseController#renderInternal-detail">renderInternal()</a></td>
+  <td>Renders a view file.</td>
+  <td><a href="/doc/api/1.0/CBaseController">CBaseController</a></td>
+</tr>
+<tr class="inherited" id="renderPartial">
+  <td><a href="/doc/api/1.0/CController#renderPartial-detail">renderPartial()</a></td>
+  <td>Renders a view.</td>
+  <td><a href="/doc/api/1.0/CController">CController</a></td>
+</tr>
+<tr class="inherited" id="renderText">
+  <td><a href="/doc/api/1.0/CController#renderText-detail">renderText()</a></td>
+  <td>Renders a static text string.</td>
+  <td><a href="/doc/api/1.0/CController">CController</a></td>
+</tr>
+<tr class="inherited" id="resolveViewFile">
+  <td><a href="/doc/api/1.0/CController#resolveViewFile-detail">resolveViewFile()</a></td>
+  <td>Finds a view file based on its name.</td>
+  <td><a href="/doc/api/1.0/CController">CController</a></td>
+</tr>
+<tr class="inherited" id="run">
+  <td><a href="/doc/api/1.0/CController#run-detail">run()</a></td>
+  <td>Runs the named action.</td>
+  <td><a href="/doc/api/1.0/CController">CController</a></td>
+</tr>
+<tr class="inherited" id="runAction">
+  <td><a href="/doc/api/1.0/CController#runAction-detail">runAction()</a></td>
+  <td>Runs the action after passing through all filters.</td>
+  <td><a href="/doc/api/1.0/CController">CController</a></td>
+</tr>
+<tr class="inherited" id="runActionWithFilters">
+  <td><a href="/doc/api/1.0/CController#runActionWithFilters-detail">runActionWithFilters()</a></td>
+  <td>Runs an action with the specified filters.</td>
+  <td><a href="/doc/api/1.0/CController">CController</a></td>
+</tr>
+<tr class="inherited" id="setAction">
+  <td><a href="/doc/api/1.0/CController#setAction-detail">setAction()</a></td>
+  <td>Sets the action currently being executed.</td>
+  <td><a href="/doc/api/1.0/CController">CController</a></td>
+</tr>
+<tr class="inherited" id="setPageState">
+  <td><a href="/doc/api/1.0/CController#setPageState-detail">setPageState()</a></td>
+  <td>Saves a persistent page state value.</td>
+  <td><a href="/doc/api/1.0/CController">CController</a></td>
+</tr>
+<tr class="inherited" id="setPageTitle">
+  <td><a href="/doc/api/1.0/CController#setPageTitle-detail">setPageTitle()</a></td>
+  <td>Sets the page title.</td>
+  <td><a href="/doc/api/1.0/CController">CController</a></td>
+</tr>
+<tr id="setViewPath">
+  <td><a href="/doc/api/1.0/CExtController#setViewPath-detail">setViewPath()</a></td>
+  <td>Sets the directory containing the view files for this controller.</td>
+  <td>CExtController</td>
+</tr>
+<tr class="inherited" id="widget">
+  <td><a href="/doc/api/1.0/CBaseController#widget-detail">widget()</a></td>
+  <td>Creates a widget and executes it.</td>
+  <td><a href="/doc/api/1.0/CBaseController">CBaseController</a></td>
+</tr>
+</table>
+</div>
+<div class="summary docMethod">
+<h2>Protected Methods</h2>
+
+<p><a href="#" class="toggle">Hide inherited methods</a></p>
+
+<table class="summaryTable">
+<colgroup>
+	<col class="col-method" />
+	<col class="col-description" />
+	<col class="col-defined" />
+</colgroup>
+<tr>
+  <th>Method</th><th>Description</th><th>Defined By</th>
+</tr>
+<tr class="inherited" id="afterAction">
+  <td><a href="/doc/api/1.0/CController#afterAction-detail">afterAction()</a></td>
+  <td>This method is invoked right after an action is executed.</td>
+  <td><a href="/doc/api/1.0/CController">CController</a></td>
+</tr>
+<tr class="inherited" id="beforeAction">
+  <td><a href="/doc/api/1.0/CController#beforeAction-detail">beforeAction()</a></td>
+  <td>This method is invoked right before an action is to be executed (after all possible filters.)</td>
+  <td><a href="/doc/api/1.0/CController">CController</a></td>
+</tr>
+<tr class="inherited" id="createActionFromMap">
+  <td><a href="/doc/api/1.0/CController#createActionFromMap-detail">createActionFromMap()</a></td>
+  <td>Creates the action instance based on the action map.</td>
+  <td><a href="/doc/api/1.0/CController">CController</a></td>
+</tr>
+<tr class="inherited" id="loadPageStates">
+  <td><a href="/doc/api/1.0/CController#loadPageStates-detail">loadPageStates()</a></td>
+  <td>Loads page states from a hidden input.</td>
+  <td><a href="/doc/api/1.0/CController">CController</a></td>
+</tr>
+<tr class="inherited" id="replaceDynamicOutput">
+  <td><a href="/doc/api/1.0/CController#replaceDynamicOutput-detail">replaceDynamicOutput()</a></td>
+  <td>Replaces the dynamic content placeholders with actual content.</td>
+  <td><a href="/doc/api/1.0/CController">CController</a></td>
+</tr>
+<tr class="inherited" id="savePageStates">
+  <td><a href="/doc/api/1.0/CController#savePageStates-detail">savePageStates()</a></td>
+  <td>Saves page states as a base64 string.</td>
+  <td><a href="/doc/api/1.0/CController">CController</a></td>
+</tr>
+</table>
+</div>
+<a name="events"></a>
+
+<h2>Property Details</h2>
+<div class="detailHeader" id="viewPath-detail">
+viewPath<span class="detailHeaderTag">
+property
+</span>
+</div>
+
+<div class="signature">
+public string <a href="/doc/api/1.0/CExtController#getViewPath"><b>getViewPath</b></a>()<br/>public void <a href="/doc/api/1.0/CExtController#setViewPath"><b>setViewPath</b></a>(string $value)</div>
+
+<p>Returns the directory containing view files for this controller.
+This method overrides the parent implementation by specifying the view path
+to be the "views" subdirectory under the directory containing the controller
+class file.</p>
+
+
+<h2>Method Details</h2>
+
+<div class="detailHeader" id="getViewPath-detail">
+getViewPath()
+<span class="detailHeaderTag">
+method
+</span>
+</div>
+
+<table class="summaryTable">
+<tr><td colspan="3">
+<div class="signature2">
+public string <b>getViewPath</b>()</div>
+</td></tr>
+<tr>
+  <td class="paramNameCol">{return}</td>
+  <td class="paramTypeCol">string</td>
+  <td class="paramDescCol">the directory containing the view files for this controller.</td>
+</tr>
+</table>
+
+<div class="sourceCode">
+<b>Source Code:</b> <a class="sourceLink" href="https://github.com/yiisoft/yii/blob/1.0.12/framework/web/CExtController.php#L35">framework/web/CExtController.php#35</a> (<b><a href="#" class="show">show</a></b>)
+<div class="code"><code><span style="color: #000000">
+<span style="color: #0000BB"></span><span style="color: #007700">public&nbsp;function&nbsp;</span><span style="color: #0000BB">getViewPath</span><span style="color: #007700">()<br />{<br />&nbsp;&nbsp;&nbsp;&nbsp;if(</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">_viewPath</span><span style="color: #007700">===</span><span style="color: #0000BB">null</span><span style="color: #007700">)<br />&nbsp;&nbsp;&nbsp;&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$class</span><span style="color: #007700">=new&nbsp;</span><span style="color: #0000BB">ReflectionClass</span><span style="color: #007700">(</span><span style="color: #0000BB">get_class</span><span style="color: #007700">(</span><span style="color: #0000BB">$this</span><span style="color: #007700">));<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">_viewPath</span><span style="color: #007700">=</span><span style="color: #0000BB">dirname</span><span style="color: #007700">(</span><span style="color: #0000BB">$class</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">getFileName</span><span style="color: #007700">()).</span><span style="color: #0000BB">DIRECTORY_SEPARATOR</span><span style="color: #007700">.</span><span style="color: #DD0000">'views'</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;}<br />&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">_viewPath</span><span style="color: #007700">;<br />}</span>
+</span>
+</code></div>
+</div>
+<p>Returns the directory containing view files for this controller.
+This method overrides the parent implementation by specifying the view path
+to be the "views" subdirectory under the directory containing the controller
+class file.</p>
+
+
+<div class="detailHeader" id="setViewPath-detail">
+setViewPath()
+<span class="detailHeaderTag">
+method
+(available since v1.0.1)
+</span>
+</div>
+
+<table class="summaryTable">
+<tr><td colspan="3">
+<div class="signature2">
+public void <b>setViewPath</b>(string $value)</div>
+</td></tr>
+<tr>
+  <td class="paramNameCol">$value</td>
+  <td class="paramTypeCol">string</td>
+  <td class="paramDescCol">the directory containing the view files for this controller.</td>
+</tr>
+</table>
+
+<div class="sourceCode">
+<b>Source Code:</b> <a class="sourceLink" href="https://github.com/yiisoft/yii/blob/1.0.12/framework/web/CExtController.php#L49">framework/web/CExtController.php#49</a> (<b><a href="#" class="show">show</a></b>)
+<div class="code"><code><span style="color: #000000">
+<span style="color: #0000BB"></span><span style="color: #007700">public&nbsp;function&nbsp;</span><span style="color: #0000BB">setViewPath</span><span style="color: #007700">(</span><span style="color: #0000BB">$value</span><span style="color: #007700">)<br />{<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">_viewPath</span><span style="color: #007700">=</span><span style="color: #0000BB">$value</span><span style="color: #007700">;<br />}</span>
+</span>
+</code></div>
+</div>
+<p></p>
+
+

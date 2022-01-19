@@ -8,24 +8,6 @@ return [
         'request' => [
             'cookieValidationKey' => '',
         ],
-        'session' => [
-            'class' => yii\redis\Session::class,
-            'redis' => [
-                'class' => yii\redis\Connection::class,
-                'database' => 0,
-            ],
-            'cookieParams' => [
-                'httponly' => true,
-                'secure' => true,
-            ],
-        ],
-        'cache' => [
-            'class' => yii\redis\Cache::class,
-            'redis' => [
-                'class' => yii\redis\Connection::class,
-                'database' => 1,
-            ],
-        ],
         'errorHandler' => [
             'class' => 'baibaratsky\yii\rollbar\web\ErrorHandler',
             'payloadDataCallback' => function (\baibaratsky\yii\rollbar\web\ErrorHandler $errorHandler) {

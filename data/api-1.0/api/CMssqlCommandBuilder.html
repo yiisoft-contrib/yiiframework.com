@@ -1,0 +1,887 @@
+<h1>CMssqlCommandBuilder</h1>
+<div id="nav">
+<a href="/doc/api/1.0/">All Packages</a>
+| <a href="#properties">Properties</a>
+| <a href="#methods">Methods</a>
+</div>
+
+<table class="summaryTable docClass">
+<colgroup>
+	<col class="col-name" />
+	<col class="col-value" />
+</colgroup>
+<tr>
+  <th>Package</th>
+  <td><a href="/doc/api/1.0/#system.db.schema.mssql">system.db.schema.mssql</a></td>
+</tr>
+<tr>
+  <th>Inheritance</th>
+  <td>class CMssqlCommandBuilder &raquo;
+<a href="/doc/api/1.0/CDbCommandBuilder">CDbCommandBuilder</a> &raquo;
+<a href="/doc/api/1.0/CComponent">CComponent</a></td>
+</tr>
+<tr>
+  <th>Since</th>
+  <td>1.0.4</td>
+</tr>
+<tr>
+  <th>Version</th>
+  <td>$Id$</td>
+</tr>
+<tr>
+  <th>Source Code</th>
+  <td><a class="sourceLink" href="https://github.com/yiisoft/yii/blob/1.0.12/framework/db/schema/mssql/CMssqlCommandBuilder.php">framework/db/schema/mssql/CMssqlCommandBuilder.php</a></td>
+</tr>
+</table>
+
+<div id="classDescription">
+CMssqlCommandBuilder provides basic methods to create query commands for tables for Mssql Servers.</div>
+<a name="properties"></a>
+
+<div class="summary docProperty">
+<h2>Public Properties</h2>
+
+<p><a href="#" class="toggle">Hide inherited properties</a></p>
+
+<table class="summaryTable">
+<colgroup>
+	<col class="col-property" />
+	<col class="col-type" />
+	<col class="col-description" />
+	<col class="col-defined" />
+</colgroup>
+<tr>
+  <th>Property</th><th>Type</th><th>Description</th><th>Defined By</th>
+</tr>
+<tr class="inherited" id="dbConnection">
+  <td><a href="/doc/api/1.0/CDbCommandBuilder#dbConnection-detail">dbConnection</a></td>
+  <td><a href="/doc/api/1.0/CDbConnection">CDbConnection</a></td>
+  <td>database connection.</td>
+  <td><a href="/doc/api/1.0/CDbCommandBuilder">CDbCommandBuilder</a></td>
+</tr>
+<tr class="inherited" id="schema">
+  <td><a href="/doc/api/1.0/CDbCommandBuilder#schema-detail">schema</a></td>
+  <td><a href="/doc/api/1.0/CDbSchema">CDbSchema</a></td>
+  <td>the schema for this command builder.</td>
+  <td><a href="/doc/api/1.0/CDbCommandBuilder">CDbCommandBuilder</a></td>
+</tr>
+</table>
+</div>
+<a name="methods"></a>
+
+<div class="summary docMethod">
+<h2>Public Methods</h2>
+
+<p><a href="#" class="toggle">Hide inherited methods</a></p>
+
+<table class="summaryTable">
+<colgroup>
+	<col class="col-method" />
+	<col class="col-description" />
+	<col class="col-defined" />
+</colgroup>
+<tr>
+  <th>Method</th><th>Description</th><th>Defined By</th>
+</tr>
+<tr class="inherited" id="__call">
+  <td><a href="/doc/api/1.0/CComponent#__call-detail">__call()</a></td>
+  <td>Calls the named method which is not a class method.</td>
+  <td><a href="/doc/api/1.0/CComponent">CComponent</a></td>
+</tr>
+<tr class="inherited" id="__construct">
+  <td><a href="/doc/api/1.0/CDbCommandBuilder#__construct-detail">__construct()</a></td>
+  <td></td>
+  <td><a href="/doc/api/1.0/CDbCommandBuilder">CDbCommandBuilder</a></td>
+</tr>
+<tr class="inherited" id="__get">
+  <td><a href="/doc/api/1.0/CComponent#__get-detail">__get()</a></td>
+  <td>Returns a property value, an event handler list or a behavior based on its name.</td>
+  <td><a href="/doc/api/1.0/CComponent">CComponent</a></td>
+</tr>
+<tr class="inherited" id="__isset">
+  <td><a href="/doc/api/1.0/CComponent#__isset-detail">__isset()</a></td>
+  <td>Checks if a property value is null.</td>
+  <td><a href="/doc/api/1.0/CComponent">CComponent</a></td>
+</tr>
+<tr class="inherited" id="__set">
+  <td><a href="/doc/api/1.0/CComponent#__set-detail">__set()</a></td>
+  <td>Sets value of a component property.</td>
+  <td><a href="/doc/api/1.0/CComponent">CComponent</a></td>
+</tr>
+<tr class="inherited" id="__unset">
+  <td><a href="/doc/api/1.0/CComponent#__unset-detail">__unset()</a></td>
+  <td>Sets a component property to be null.</td>
+  <td><a href="/doc/api/1.0/CComponent">CComponent</a></td>
+</tr>
+<tr class="inherited" id="applyCondition">
+  <td><a href="/doc/api/1.0/CDbCommandBuilder#applyCondition-detail">applyCondition()</a></td>
+  <td>Alters the SQL to apply WHERE clause.</td>
+  <td><a href="/doc/api/1.0/CDbCommandBuilder">CDbCommandBuilder</a></td>
+</tr>
+<tr class="inherited" id="applyGroup">
+  <td><a href="/doc/api/1.0/CDbCommandBuilder#applyGroup-detail">applyGroup()</a></td>
+  <td>Alters the SQL to apply GROUP BY.</td>
+  <td><a href="/doc/api/1.0/CDbCommandBuilder">CDbCommandBuilder</a></td>
+</tr>
+<tr class="inherited" id="applyHaving">
+  <td><a href="/doc/api/1.0/CDbCommandBuilder#applyHaving-detail">applyHaving()</a></td>
+  <td>Alters the SQL to apply HAVING.</td>
+  <td><a href="/doc/api/1.0/CDbCommandBuilder">CDbCommandBuilder</a></td>
+</tr>
+<tr class="inherited" id="applyJoin">
+  <td><a href="/doc/api/1.0/CDbCommandBuilder#applyJoin-detail">applyJoin()</a></td>
+  <td>Alters the SQL to apply JOIN clause.</td>
+  <td><a href="/doc/api/1.0/CDbCommandBuilder">CDbCommandBuilder</a></td>
+</tr>
+<tr id="applyLimit">
+  <td><a href="/doc/api/1.0/CMssqlCommandBuilder#applyLimit-detail">applyLimit()</a></td>
+  <td>This is a port from Prado Framework.</td>
+  <td>CMssqlCommandBuilder</td>
+</tr>
+<tr class="inherited" id="applyOrder">
+  <td><a href="/doc/api/1.0/CDbCommandBuilder#applyOrder-detail">applyOrder()</a></td>
+  <td>Alters the SQL to apply ORDER BY.</td>
+  <td><a href="/doc/api/1.0/CDbCommandBuilder">CDbCommandBuilder</a></td>
+</tr>
+<tr class="inherited" id="asa">
+  <td><a href="/doc/api/1.0/CComponent#asa-detail">asa()</a></td>
+  <td>Returns the named behavior object.</td>
+  <td><a href="/doc/api/1.0/CComponent">CComponent</a></td>
+</tr>
+<tr class="inherited" id="attachBehavior">
+  <td><a href="/doc/api/1.0/CComponent#attachBehavior-detail">attachBehavior()</a></td>
+  <td>Attaches a behavior to this component.</td>
+  <td><a href="/doc/api/1.0/CComponent">CComponent</a></td>
+</tr>
+<tr class="inherited" id="attachBehaviors">
+  <td><a href="/doc/api/1.0/CComponent#attachBehaviors-detail">attachBehaviors()</a></td>
+  <td>Attaches a list of behaviors to the component.</td>
+  <td><a href="/doc/api/1.0/CComponent">CComponent</a></td>
+</tr>
+<tr class="inherited" id="attachEventHandler">
+  <td><a href="/doc/api/1.0/CComponent#attachEventHandler-detail">attachEventHandler()</a></td>
+  <td>Attaches an event handler to an event.</td>
+  <td><a href="/doc/api/1.0/CComponent">CComponent</a></td>
+</tr>
+<tr class="inherited" id="bindValues">
+  <td><a href="/doc/api/1.0/CDbCommandBuilder#bindValues-detail">bindValues()</a></td>
+  <td>Binds parameter values for an SQL command.</td>
+  <td><a href="/doc/api/1.0/CDbCommandBuilder">CDbCommandBuilder</a></td>
+</tr>
+<tr class="inherited" id="canGetProperty">
+  <td><a href="/doc/api/1.0/CComponent#canGetProperty-detail">canGetProperty()</a></td>
+  <td>Determines whether a property can be read.</td>
+  <td><a href="/doc/api/1.0/CComponent">CComponent</a></td>
+</tr>
+<tr class="inherited" id="canSetProperty">
+  <td><a href="/doc/api/1.0/CComponent#canSetProperty-detail">canSetProperty()</a></td>
+  <td>Determines whether a property can be set.</td>
+  <td><a href="/doc/api/1.0/CComponent">CComponent</a></td>
+</tr>
+<tr class="inherited" id="createColumnCriteria">
+  <td><a href="/doc/api/1.0/CDbCommandBuilder#createColumnCriteria-detail">createColumnCriteria()</a></td>
+  <td>Creates a query criteria with the specified column values.</td>
+  <td><a href="/doc/api/1.0/CDbCommandBuilder">CDbCommandBuilder</a></td>
+</tr>
+<tr id="createCountCommand">
+  <td><a href="/doc/api/1.0/CMssqlCommandBuilder#createCountCommand-detail">createCountCommand()</a></td>
+  <td>Creates a COUNT(*) command for a single table.</td>
+  <td>CMssqlCommandBuilder</td>
+</tr>
+<tr class="inherited" id="createCriteria">
+  <td><a href="/doc/api/1.0/CDbCommandBuilder#createCriteria-detail">createCriteria()</a></td>
+  <td>Creates a query criteria.</td>
+  <td><a href="/doc/api/1.0/CDbCommandBuilder">CDbCommandBuilder</a></td>
+</tr>
+<tr id="createDeleteCommand">
+  <td><a href="/doc/api/1.0/CMssqlCommandBuilder#createDeleteCommand-detail">createDeleteCommand()</a></td>
+  <td>Creates a DELETE command.</td>
+  <td>CMssqlCommandBuilder</td>
+</tr>
+<tr id="createFindCommand">
+  <td><a href="/doc/api/1.0/CMssqlCommandBuilder#createFindCommand-detail">createFindCommand()</a></td>
+  <td>Creates a SELECT command for a single table.</td>
+  <td>CMssqlCommandBuilder</td>
+</tr>
+<tr class="inherited" id="createInCondition">
+  <td><a href="/doc/api/1.0/CDbCommandBuilder#createInCondition-detail">createInCondition()</a></td>
+  <td>Generates the expression for selecting rows of specified primary key values.</td>
+  <td><a href="/doc/api/1.0/CDbCommandBuilder">CDbCommandBuilder</a></td>
+</tr>
+<tr class="inherited" id="createInsertCommand">
+  <td><a href="/doc/api/1.0/CDbCommandBuilder#createInsertCommand-detail">createInsertCommand()</a></td>
+  <td>Creates an INSERT command.</td>
+  <td><a href="/doc/api/1.0/CDbCommandBuilder">CDbCommandBuilder</a></td>
+</tr>
+<tr class="inherited" id="createPkCondition">
+  <td><a href="/doc/api/1.0/CDbCommandBuilder#createPkCondition-detail">createPkCondition()</a></td>
+  <td>Generates the expression for selecting rows of specified primary key values.</td>
+  <td><a href="/doc/api/1.0/CDbCommandBuilder">CDbCommandBuilder</a></td>
+</tr>
+<tr class="inherited" id="createPkCriteria">
+  <td><a href="/doc/api/1.0/CDbCommandBuilder#createPkCriteria-detail">createPkCriteria()</a></td>
+  <td>Creates a query criteria with the specified primary key.</td>
+  <td><a href="/doc/api/1.0/CDbCommandBuilder">CDbCommandBuilder</a></td>
+</tr>
+<tr class="inherited" id="createSearchCondition">
+  <td><a href="/doc/api/1.0/CDbCommandBuilder#createSearchCondition-detail">createSearchCondition()</a></td>
+  <td>Generates the expression for searching the specified keywords within a list of columns.</td>
+  <td><a href="/doc/api/1.0/CDbCommandBuilder">CDbCommandBuilder</a></td>
+</tr>
+<tr class="inherited" id="createSqlCommand">
+  <td><a href="/doc/api/1.0/CDbCommandBuilder#createSqlCommand-detail">createSqlCommand()</a></td>
+  <td>Creates a command based on a given SQL statement.</td>
+  <td><a href="/doc/api/1.0/CDbCommandBuilder">CDbCommandBuilder</a></td>
+</tr>
+<tr id="createUpdateCommand">
+  <td><a href="/doc/api/1.0/CMssqlCommandBuilder#createUpdateCommand-detail">createUpdateCommand()</a></td>
+  <td>Creates an UPDATE command.</td>
+  <td>CMssqlCommandBuilder</td>
+</tr>
+<tr id="createUpdateCounterCommand">
+  <td><a href="/doc/api/1.0/CMssqlCommandBuilder#createUpdateCounterCommand-detail">createUpdateCounterCommand()</a></td>
+  <td>Creates an UPDATE command that increments/decrements certain columns.</td>
+  <td>CMssqlCommandBuilder</td>
+</tr>
+<tr class="inherited" id="detachBehavior">
+  <td><a href="/doc/api/1.0/CComponent#detachBehavior-detail">detachBehavior()</a></td>
+  <td>Detaches a behavior from the component.</td>
+  <td><a href="/doc/api/1.0/CComponent">CComponent</a></td>
+</tr>
+<tr class="inherited" id="detachBehaviors">
+  <td><a href="/doc/api/1.0/CComponent#detachBehaviors-detail">detachBehaviors()</a></td>
+  <td>Detaches all behaviors from the component.</td>
+  <td><a href="/doc/api/1.0/CComponent">CComponent</a></td>
+</tr>
+<tr class="inherited" id="detachEventHandler">
+  <td><a href="/doc/api/1.0/CComponent#detachEventHandler-detail">detachEventHandler()</a></td>
+  <td>Detaches an existing event handler.</td>
+  <td><a href="/doc/api/1.0/CComponent">CComponent</a></td>
+</tr>
+<tr class="inherited" id="disableBehavior">
+  <td><a href="/doc/api/1.0/CComponent#disableBehavior-detail">disableBehavior()</a></td>
+  <td>Disables an attached behavior.</td>
+  <td><a href="/doc/api/1.0/CComponent">CComponent</a></td>
+</tr>
+<tr class="inherited" id="disableBehaviors">
+  <td><a href="/doc/api/1.0/CComponent#disableBehaviors-detail">disableBehaviors()</a></td>
+  <td>Disables all behaviors attached to this component.</td>
+  <td><a href="/doc/api/1.0/CComponent">CComponent</a></td>
+</tr>
+<tr class="inherited" id="enableBehavior">
+  <td><a href="/doc/api/1.0/CComponent#enableBehavior-detail">enableBehavior()</a></td>
+  <td>Enables an attached behavior.</td>
+  <td><a href="/doc/api/1.0/CComponent">CComponent</a></td>
+</tr>
+<tr class="inherited" id="enableBehaviors">
+  <td><a href="/doc/api/1.0/CComponent#enableBehaviors-detail">enableBehaviors()</a></td>
+  <td>Enables all behaviors attached to this component.</td>
+  <td><a href="/doc/api/1.0/CComponent">CComponent</a></td>
+</tr>
+<tr class="inherited" id="getDbConnection">
+  <td><a href="/doc/api/1.0/CDbCommandBuilder#getDbConnection-detail">getDbConnection()</a></td>
+  <td>Returns database connection.</td>
+  <td><a href="/doc/api/1.0/CDbCommandBuilder">CDbCommandBuilder</a></td>
+</tr>
+<tr class="inherited" id="getEventHandlers">
+  <td><a href="/doc/api/1.0/CComponent#getEventHandlers-detail">getEventHandlers()</a></td>
+  <td>Returns the list of attached event handlers for an event.</td>
+  <td><a href="/doc/api/1.0/CComponent">CComponent</a></td>
+</tr>
+<tr id="getLastInsertID">
+  <td><a href="/doc/api/1.0/CMssqlCommandBuilder#getLastInsertID-detail">getLastInsertID()</a></td>
+  <td>Returns the last insertion ID for the specified table.</td>
+  <td>CMssqlCommandBuilder</td>
+</tr>
+<tr class="inherited" id="getSchema">
+  <td><a href="/doc/api/1.0/CDbCommandBuilder#getSchema-detail">getSchema()</a></td>
+  <td>Returns the schema for this command builder.</td>
+  <td><a href="/doc/api/1.0/CDbCommandBuilder">CDbCommandBuilder</a></td>
+</tr>
+<tr class="inherited" id="hasEvent">
+  <td><a href="/doc/api/1.0/CComponent#hasEvent-detail">hasEvent()</a></td>
+  <td>Determines whether an event is defined.</td>
+  <td><a href="/doc/api/1.0/CComponent">CComponent</a></td>
+</tr>
+<tr class="inherited" id="hasEventHandler">
+  <td><a href="/doc/api/1.0/CComponent#hasEventHandler-detail">hasEventHandler()</a></td>
+  <td>Checks whether the named event has attached handlers.</td>
+  <td><a href="/doc/api/1.0/CComponent">CComponent</a></td>
+</tr>
+<tr class="inherited" id="hasProperty">
+  <td><a href="/doc/api/1.0/CComponent#hasProperty-detail">hasProperty()</a></td>
+  <td>Determines whether a property is defined.</td>
+  <td><a href="/doc/api/1.0/CComponent">CComponent</a></td>
+</tr>
+<tr class="inherited" id="raiseEvent">
+  <td><a href="/doc/api/1.0/CComponent#raiseEvent-detail">raiseEvent()</a></td>
+  <td>Raises an event.</td>
+  <td><a href="/doc/api/1.0/CComponent">CComponent</a></td>
+</tr>
+</table>
+</div>
+<div class="summary docMethod">
+<h2>Protected Methods</h2>
+
+<p><a href="#" class="toggle">Hide inherited methods</a></p>
+
+<table class="summaryTable">
+<colgroup>
+	<col class="col-method" />
+	<col class="col-description" />
+	<col class="col-defined" />
+</colgroup>
+<tr>
+  <th>Method</th><th>Description</th><th>Defined By</th>
+</tr>
+<tr id="checkCriteria">
+  <td><a href="/doc/api/1.0/CMssqlCommandBuilder#checkCriteria-detail">checkCriteria()</a></td>
+  <td>Checks if the criteria has an order by clause when using offset/limit.</td>
+  <td>CMssqlCommandBuilder</td>
+</tr>
+<tr class="inherited" id="createCompositeInCondition">
+  <td><a href="/doc/api/1.0/CDbCommandBuilder#createCompositeInCondition-detail">createCompositeInCondition()</a></td>
+  <td>Generates the expression for selecting rows with specified composite key values.</td>
+  <td><a href="/doc/api/1.0/CDbCommandBuilder">CDbCommandBuilder</a></td>
+</tr>
+<tr class="inherited" id="ensureTable">
+  <td><a href="/doc/api/1.0/CDbCommandBuilder#ensureTable-detail">ensureTable()</a></td>
+  <td>Checks if the parameter is a valid table schema.</td>
+  <td><a href="/doc/api/1.0/CDbCommandBuilder">CDbCommandBuilder</a></td>
+</tr>
+<tr id="findOrdering">
+  <td><a href="/doc/api/1.0/CMssqlCommandBuilder#findOrdering-detail">findOrdering()</a></td>
+  <td>Base on simplified syntax http://msdn2.microsoft.com/en-us/library/aa259187(SQL.80).aspx</td>
+  <td>CMssqlCommandBuilder</td>
+</tr>
+<tr id="joinOrdering">
+  <td><a href="/doc/api/1.0/CMssqlCommandBuilder#joinOrdering-detail">joinOrdering()</a></td>
+  <td></td>
+  <td>CMssqlCommandBuilder</td>
+</tr>
+<tr id="reverseDirection">
+  <td><a href="/doc/api/1.0/CMssqlCommandBuilder#reverseDirection-detail">reverseDirection()</a></td>
+  <td></td>
+  <td>CMssqlCommandBuilder</td>
+</tr>
+<tr id="rewriteLimitOffsetSql">
+  <td><a href="/doc/api/1.0/CMssqlCommandBuilder#rewriteLimitOffsetSql-detail">rewriteLimitOffsetSql()</a></td>
+  <td>Rewrite sql to apply $limit > and $offset > 0 for MSSQL database.</td>
+  <td>CMssqlCommandBuilder</td>
+</tr>
+</table>
+</div>
+<a name="events"></a>
+
+<h2>Method Details</h2>
+
+<div class="detailHeader" id="applyLimit-detail">
+applyLimit()
+<span class="detailHeaderTag">
+method
+</span>
+</div>
+
+<table class="summaryTable">
+<tr><td colspan="3">
+<div class="signature2">
+public string <b>applyLimit</b>(string $sql, integer $limit, integer $offset)</div>
+</td></tr>
+<tr>
+  <td class="paramNameCol">$sql</td>
+  <td class="paramTypeCol">string</td>
+  <td class="paramDescCol">SQL query string.</td>
+</tr>
+<tr>
+  <td class="paramNameCol">$limit</td>
+  <td class="paramTypeCol">integer</td>
+  <td class="paramDescCol">maximum number of rows, -1 to ignore limit.</td>
+</tr>
+<tr>
+  <td class="paramNameCol">$offset</td>
+  <td class="paramTypeCol">integer</td>
+  <td class="paramDescCol">row offset, -1 to ignore offset.</td>
+</tr>
+<tr>
+  <td class="paramNameCol">{return}</td>
+  <td class="paramTypeCol">string</td>
+  <td class="paramDescCol">SQL with limit and offset.</td>
+</tr>
+</table>
+
+<div class="sourceCode">
+<b>Source Code:</b> <a class="sourceLink" href="https://github.com/yiisoft/yii/blob/1.0.12/framework/db/schema/mssql/CMssqlCommandBuilder.php#L188">framework/db/schema/mssql/CMssqlCommandBuilder.php#188</a> (<b><a href="#" class="show">show</a></b>)
+<div class="code"><code><span style="color: #000000">
+<span style="color: #0000BB"></span><span style="color: #007700">public&nbsp;function&nbsp;</span><span style="color: #0000BB">applyLimit</span><span style="color: #007700">(</span><span style="color: #0000BB">$sql</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$limit</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$offset</span><span style="color: #007700">)<br />{<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$limit&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">$limit</span><span style="color: #007700">!==</span><span style="color: #0000BB">null&nbsp;</span><span style="color: #007700">?&nbsp;</span><span style="color: #0000BB">intval</span><span style="color: #007700">(</span><span style="color: #0000BB">$limit</span><span style="color: #007700">)&nbsp;:&nbsp;-</span><span style="color: #0000BB">1</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$offset&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">$offset</span><span style="color: #007700">!==</span><span style="color: #0000BB">null&nbsp;</span><span style="color: #007700">?&nbsp;</span><span style="color: #0000BB">intval</span><span style="color: #007700">(</span><span style="color: #0000BB">$offset</span><span style="color: #007700">)&nbsp;:&nbsp;-</span><span style="color: #0000BB">1</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(</span><span style="color: #0000BB">$limit&nbsp;</span><span style="color: #007700">&gt;&nbsp;</span><span style="color: #0000BB">0&nbsp;</span><span style="color: #007700">&amp;&amp;&nbsp;</span><span style="color: #0000BB">$offset&nbsp;</span><span style="color: #007700">&lt;=&nbsp;</span><span style="color: #0000BB">0</span><span style="color: #007700">)&nbsp;</span><span style="color: #FF8000">//just&nbsp;limit<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$sql&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">preg_replace</span><span style="color: #007700">(</span><span style="color: #DD0000">'/^([\s(])*SELECT(&nbsp;DISTINCT)?(?!\s*TOP\s*\()/i'</span><span style="color: #007700">,</span><span style="color: #DD0000">"\\1SELECT\\2&nbsp;TOP&nbsp;</span><span style="color: #0000BB">$limit</span><span style="color: #DD0000">"</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$sql</span><span style="color: #007700">);<br />&nbsp;&nbsp;&nbsp;&nbsp;else&nbsp;if(</span><span style="color: #0000BB">$limit&nbsp;</span><span style="color: #007700">&gt;&nbsp;</span><span style="color: #0000BB">0&nbsp;</span><span style="color: #007700">&amp;&amp;&nbsp;</span><span style="color: #0000BB">$offset&nbsp;</span><span style="color: #007700">&gt;&nbsp;</span><span style="color: #0000BB">0</span><span style="color: #007700">)<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$sql&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">rewriteLimitOffsetSql</span><span style="color: #007700">(</span><span style="color: #0000BB">$sql</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$limit</span><span style="color: #007700">,</span><span style="color: #0000BB">$offset</span><span style="color: #007700">);<br />&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;</span><span style="color: #0000BB">$sql</span><span style="color: #007700">;<br />}</span>
+</span>
+</code></div>
+</div>
+<p>This is a port from Prado Framework.
+<br/><br/>
+Overrides parent implementation. Alters the sql to apply $limit and $offset.
+The idea for limit with offset is done by modifying the sql on the fly
+with numerous assumptions on the structure of the sql string.
+The modification is done with reference to the notes from
+http://troels.arvin.dk/db/rdbms/#select-limit-offset
+<br/><br/>
+<code>
+SELECT * FROM (
+ SELECT TOP n * FROM (
+   SELECT TOP z columns      -- (z=n+skip)
+   FROM tablename
+   ORDER BY key ASC
+ ) AS FOO ORDER BY key DESC -- ('FOO' may be anything)
+) AS BAR ORDER BY key ASC    -- ('BAR' may be anything)
+</code>
+<br/><br/>
+<b>Regular expressions are used to alter the SQL query. The resulting SQL query
+may be malformed for complex queries.</b> The following restrictions apply
+<br/><br/>
+<ul>
+  <li>
+In particular, <b>commas</b> should <b>NOT</b>
+be used as part of the ordering expression or identifier. Commas must only be
+used for separating the ordering clauses.
+ </li>
+ <li>
+In the ORDER BY clause, the column name should NOT be be qualified
+with a table name or view name. Alias the column names or use column index.
+</li>
+<li>
+No clauses should follow the ORDER BY clause, e.g. no COMPUTE or FOR clauses.
+</li></p>
+
+
+<div class="detailHeader" id="checkCriteria-detail">
+checkCriteria()
+<span class="detailHeaderTag">
+method
+</span>
+</div>
+
+<table class="summaryTable">
+<tr><td colspan="3">
+<div class="signature2">
+protected CDbCrireria <b>checkCriteria</b>(<a href="/doc/api/1.0/CMssqlTableSchema">CMssqlTableSchema</a> $table, <a href="/doc/api/1.0/CDbCriteria">CDbCriteria</a> $criteria)</div>
+</td></tr>
+<tr>
+  <td class="paramNameCol">$table</td>
+  <td class="paramTypeCol"><a href="/doc/api/1.0/CMssqlTableSchema">CMssqlTableSchema</a></td>
+  <td class="paramDescCol">table schema</td>
+</tr>
+<tr>
+  <td class="paramNameCol">$criteria</td>
+  <td class="paramTypeCol"><a href="/doc/api/1.0/CDbCriteria">CDbCriteria</a></td>
+  <td class="paramDescCol">criteria</td>
+</tr>
+<tr>
+  <td class="paramNameCol">{return}</td>
+  <td class="paramTypeCol">CDbCrireria</td>
+  <td class="paramDescCol">the modified criteria</td>
+</tr>
+</table>
+
+<div class="sourceCode">
+<b>Source Code:</b> <a class="sourceLink" href="https://github.com/yiisoft/yii/blob/1.0.12/framework/db/schema/mssql/CMssqlCommandBuilder.php#L296">framework/db/schema/mssql/CMssqlCommandBuilder.php#296</a> (<b><a href="#" class="show">show</a></b>)
+<div class="code"><code><span style="color: #000000">
+<span style="color: #0000BB"></span><span style="color: #007700">protected&nbsp;function&nbsp;</span><span style="color: #0000BB">checkCriteria</span><span style="color: #007700">(</span><span style="color: #0000BB">$table</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$criteria</span><span style="color: #007700">)<br />{<br />&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(</span><span style="color: #0000BB">$criteria</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">offset&nbsp;</span><span style="color: #007700">&gt;&nbsp;</span><span style="color: #0000BB">0&nbsp;</span><span style="color: #007700">&amp;&amp;&nbsp;</span><span style="color: #0000BB">$criteria</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">order</span><span style="color: #007700">===</span><span style="color: #DD0000">''</span><span style="color: #007700">)<br />&nbsp;&nbsp;&nbsp;&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$criteria</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">order</span><span style="color: #007700">=</span><span style="color: #0000BB">is_array</span><span style="color: #007700">(</span><span style="color: #0000BB">$table</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">primaryKey</span><span style="color: #007700">)?</span><span style="color: #0000BB">implode</span><span style="color: #007700">(</span><span style="color: #DD0000">','</span><span style="color: #007700">,</span><span style="color: #0000BB">$table</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">primaryKey</span><span style="color: #007700">):</span><span style="color: #0000BB">$table</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">primaryKey</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;}<br />&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;</span><span style="color: #0000BB">$criteria</span><span style="color: #007700">;<br />}</span>
+</span>
+</code></div>
+</div>
+<p>Checks if the criteria has an order by clause when using offset/limit.
+Override parent implementation to check if an orderby clause if specified when querying with an offset
+If not, order it by pk.</p>
+
+
+<div class="detailHeader" id="createCountCommand-detail">
+createCountCommand()
+<span class="detailHeaderTag">
+method
+</span>
+</div>
+
+<table class="summaryTable">
+<tr><td colspan="3">
+<div class="signature2">
+public <a href="/doc/api/1.0/CDbCommand">CDbCommand</a> <b>createCountCommand</b>(<a href="/doc/api/1.0/CDbTableSchema">CDbTableSchema</a> $table, <a href="/doc/api/1.0/CDbCriteria">CDbCriteria</a> $criteria)</div>
+</td></tr>
+<tr>
+  <td class="paramNameCol">$table</td>
+  <td class="paramTypeCol"><a href="/doc/api/1.0/CDbTableSchema">CDbTableSchema</a></td>
+  <td class="paramDescCol">the table metadata</td>
+</tr>
+<tr>
+  <td class="paramNameCol">$criteria</td>
+  <td class="paramTypeCol"><a href="/doc/api/1.0/CDbCriteria">CDbCriteria</a></td>
+  <td class="paramDescCol">the query criteria</td>
+</tr>
+<tr>
+  <td class="paramNameCol">{return}</td>
+  <td class="paramTypeCol"><a href="/doc/api/1.0/CDbCommand">CDbCommand</a></td>
+  <td class="paramDescCol">query command.</td>
+</tr>
+</table>
+
+<div class="sourceCode">
+<b>Source Code:</b> <a class="sourceLink" href="https://github.com/yiisoft/yii/blob/1.0.12/framework/db/schema/mssql/CMssqlCommandBuilder.php#L46">framework/db/schema/mssql/CMssqlCommandBuilder.php#46</a> (<b><a href="#" class="show">show</a></b>)
+<div class="code"><code><span style="color: #000000">
+<span style="color: #0000BB"></span><span style="color: #007700">public&nbsp;function&nbsp;</span><span style="color: #0000BB">createCountCommand</span><span style="color: #007700">(</span><span style="color: #0000BB">$table</span><span style="color: #007700">,</span><span style="color: #0000BB">$criteria</span><span style="color: #007700">)<br />{<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$criteria</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">order</span><span style="color: #007700">=</span><span style="color: #DD0000">''</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;</span><span style="color: #0000BB">parent</span><span style="color: #007700">::</span><span style="color: #0000BB">createCountCommand</span><span style="color: #007700">(</span><span style="color: #0000BB">$table</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$criteria</span><span style="color: #007700">);<br />}</span>
+</span>
+</code></div>
+</div>
+<p>Creates a COUNT(*) command for a single table.
+Override parent implementation to remove the order clause of criteria if it exists</p>
+
+
+<div class="detailHeader" id="createDeleteCommand-detail">
+createDeleteCommand()
+<span class="detailHeaderTag">
+method
+</span>
+</div>
+
+<table class="summaryTable">
+<tr><td colspan="3">
+<div class="signature2">
+public <a href="/doc/api/1.0/CDbCommand">CDbCommand</a> <b>createDeleteCommand</b>(<a href="/doc/api/1.0/CDbTableSchema">CDbTableSchema</a> $table, <a href="/doc/api/1.0/CDbCriteria">CDbCriteria</a> $criteria)</div>
+</td></tr>
+<tr>
+  <td class="paramNameCol">$table</td>
+  <td class="paramTypeCol"><a href="/doc/api/1.0/CDbTableSchema">CDbTableSchema</a></td>
+  <td class="paramDescCol">the table metadata</td>
+</tr>
+<tr>
+  <td class="paramNameCol">$criteria</td>
+  <td class="paramTypeCol"><a href="/doc/api/1.0/CDbCriteria">CDbCriteria</a></td>
+  <td class="paramDescCol">the query criteria</td>
+</tr>
+<tr>
+  <td class="paramNameCol">{return}</td>
+  <td class="paramTypeCol"><a href="/doc/api/1.0/CDbCommand">CDbCommand</a></td>
+  <td class="paramDescCol">delete command.</td>
+</tr>
+</table>
+
+<div class="sourceCode">
+<b>Source Code:</b> <a class="sourceLink" href="https://github.com/yiisoft/yii/blob/1.0.12/framework/db/schema/mssql/CMssqlCommandBuilder.php#L124">framework/db/schema/mssql/CMssqlCommandBuilder.php#124</a> (<b><a href="#" class="show">show</a></b>)
+<div class="code"><code><span style="color: #000000">
+<span style="color: #0000BB"></span><span style="color: #007700">public&nbsp;function&nbsp;</span><span style="color: #0000BB">createDeleteCommand</span><span style="color: #007700">(</span><span style="color: #0000BB">$table</span><span style="color: #007700">,</span><span style="color: #0000BB">$criteria</span><span style="color: #007700">)<br />{<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$criteria</span><span style="color: #007700">=</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">checkCriteria</span><span style="color: #007700">(</span><span style="color: #0000BB">$table</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$criteria</span><span style="color: #007700">);<br />&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;</span><span style="color: #0000BB">parent</span><span style="color: #007700">::</span><span style="color: #0000BB">createDeleteCommand</span><span style="color: #007700">(</span><span style="color: #0000BB">$table</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$criteria</span><span style="color: #007700">);<br />}</span>
+</span>
+</code></div>
+</div>
+<p>Creates a DELETE command.
+Override parent implementation to check if an orderby clause if specified when querying with an offset</p>
+
+
+<div class="detailHeader" id="createFindCommand-detail">
+createFindCommand()
+<span class="detailHeaderTag">
+method
+</span>
+</div>
+
+<table class="summaryTable">
+<tr><td colspan="3">
+<div class="signature2">
+public <a href="/doc/api/1.0/CDbCommand">CDbCommand</a> <b>createFindCommand</b>(<a href="/doc/api/1.0/CDbTableSchema">CDbTableSchema</a> $table, <a href="/doc/api/1.0/CDbCriteria">CDbCriteria</a> $criteria)</div>
+</td></tr>
+<tr>
+  <td class="paramNameCol">$table</td>
+  <td class="paramTypeCol"><a href="/doc/api/1.0/CDbTableSchema">CDbTableSchema</a></td>
+  <td class="paramDescCol">the table metadata</td>
+</tr>
+<tr>
+  <td class="paramNameCol">$criteria</td>
+  <td class="paramTypeCol"><a href="/doc/api/1.0/CDbCriteria">CDbCriteria</a></td>
+  <td class="paramDescCol">the query criteria</td>
+</tr>
+<tr>
+  <td class="paramNameCol">{return}</td>
+  <td class="paramTypeCol"><a href="/doc/api/1.0/CDbCommand">CDbCommand</a></td>
+  <td class="paramDescCol">query command.</td>
+</tr>
+</table>
+
+<div class="sourceCode">
+<b>Source Code:</b> <a class="sourceLink" href="https://github.com/yiisoft/yii/blob/1.0.12/framework/db/schema/mssql/CMssqlCommandBuilder.php#L59">framework/db/schema/mssql/CMssqlCommandBuilder.php#59</a> (<b><a href="#" class="show">show</a></b>)
+<div class="code"><code><span style="color: #000000">
+<span style="color: #0000BB"></span><span style="color: #007700">public&nbsp;function&nbsp;</span><span style="color: #0000BB">createFindCommand</span><span style="color: #007700">(</span><span style="color: #0000BB">$table</span><span style="color: #007700">,</span><span style="color: #0000BB">$criteria</span><span style="color: #007700">)<br />{<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$criteria</span><span style="color: #007700">=</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">checkCriteria</span><span style="color: #007700">(</span><span style="color: #0000BB">$table</span><span style="color: #007700">,</span><span style="color: #0000BB">$criteria</span><span style="color: #007700">);<br />&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;</span><span style="color: #0000BB">parent</span><span style="color: #007700">::</span><span style="color: #0000BB">createFindCommand</span><span style="color: #007700">(</span><span style="color: #0000BB">$table</span><span style="color: #007700">,</span><span style="color: #0000BB">$criteria</span><span style="color: #007700">);<br /><br />}</span>
+</span>
+</code></div>
+</div>
+<p>Creates a SELECT command for a single table.
+Override parent implementation to check if an orderby clause if specified when querying with an offset</p>
+
+
+<div class="detailHeader" id="createUpdateCommand-detail">
+createUpdateCommand()
+<span class="detailHeaderTag">
+method
+</span>
+</div>
+
+<table class="summaryTable">
+<tr><td colspan="3">
+<div class="signature2">
+public <a href="/doc/api/1.0/CDbCommand">CDbCommand</a> <b>createUpdateCommand</b>(<a href="/doc/api/1.0/CDbTableSchema">CDbTableSchema</a> $table, array $data, <a href="/doc/api/1.0/CDbCriteria">CDbCriteria</a> $criteria)</div>
+</td></tr>
+<tr>
+  <td class="paramNameCol">$table</td>
+  <td class="paramTypeCol"><a href="/doc/api/1.0/CDbTableSchema">CDbTableSchema</a></td>
+  <td class="paramDescCol">the table metadata</td>
+</tr>
+<tr>
+  <td class="paramNameCol">$data</td>
+  <td class="paramTypeCol">array</td>
+  <td class="paramDescCol">list of columns to be updated (name=>value)</td>
+</tr>
+<tr>
+  <td class="paramNameCol">$criteria</td>
+  <td class="paramTypeCol"><a href="/doc/api/1.0/CDbCriteria">CDbCriteria</a></td>
+  <td class="paramDescCol">the query criteria</td>
+</tr>
+<tr>
+  <td class="paramNameCol">{return}</td>
+  <td class="paramTypeCol"><a href="/doc/api/1.0/CDbCommand">CDbCommand</a></td>
+  <td class="paramDescCol">update command.</td>
+</tr>
+</table>
+
+<div class="sourceCode">
+<b>Source Code:</b> <a class="sourceLink" href="https://github.com/yiisoft/yii/blob/1.0.12/framework/db/schema/mssql/CMssqlCommandBuilder.php#L74">framework/db/schema/mssql/CMssqlCommandBuilder.php#74</a> (<b><a href="#" class="show">show</a></b>)
+<div class="code"><code><span style="color: #000000">
+<span style="color: #0000BB"></span><span style="color: #007700">public&nbsp;function&nbsp;</span><span style="color: #0000BB">createUpdateCommand</span><span style="color: #007700">(</span><span style="color: #0000BB">$table</span><span style="color: #007700">,</span><span style="color: #0000BB">$data</span><span style="color: #007700">,</span><span style="color: #0000BB">$criteria</span><span style="color: #007700">)<br />{<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$criteria</span><span style="color: #007700">=</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">checkCriteria</span><span style="color: #007700">(</span><span style="color: #0000BB">$table</span><span style="color: #007700">,</span><span style="color: #0000BB">$criteria</span><span style="color: #007700">);<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$fields</span><span style="color: #007700">=array();<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$values</span><span style="color: #007700">=array();<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$bindByPosition</span><span style="color: #007700">=isset(</span><span style="color: #0000BB">$criteria</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">params</span><span style="color: #007700">[</span><span style="color: #0000BB">0</span><span style="color: #007700">]);<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$i</span><span style="color: #007700">=</span><span style="color: #0000BB">0</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;foreach(</span><span style="color: #0000BB">$data&nbsp;</span><span style="color: #007700">as&nbsp;</span><span style="color: #0000BB">$name</span><span style="color: #007700">=&gt;</span><span style="color: #0000BB">$value</span><span style="color: #007700">)<br />&nbsp;&nbsp;&nbsp;&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if((</span><span style="color: #0000BB">$column</span><span style="color: #007700">=</span><span style="color: #0000BB">$table</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">getColumn</span><span style="color: #007700">(</span><span style="color: #0000BB">$name</span><span style="color: #007700">))!==</span><span style="color: #0000BB">null</span><span style="color: #007700">)<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(</span><span style="color: #0000BB">$table</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">sequenceName&nbsp;</span><span style="color: #007700">!==&nbsp;</span><span style="color: #0000BB">null&nbsp;</span><span style="color: #007700">&amp;&amp;&nbsp;</span><span style="color: #0000BB">$column</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">isPrimaryKey&nbsp;</span><span style="color: #007700">===&nbsp;</span><span style="color: #0000BB">true</span><span style="color: #007700">)&nbsp;continue;<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(</span><span style="color: #0000BB">$column</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">dbType&nbsp;</span><span style="color: #007700">===&nbsp;</span><span style="color: #DD0000">'timestamp'</span><span style="color: #007700">)&nbsp;continue;<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if(</span><span style="color: #0000BB">$value&nbsp;</span><span style="color: #007700">instanceof&nbsp;</span><span style="color: #0000BB">CDbExpression</span><span style="color: #007700">)<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$fields</span><span style="color: #007700">[]=</span><span style="color: #0000BB">$column</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">rawName</span><span style="color: #007700">.</span><span style="color: #DD0000">'='</span><span style="color: #007700">.</span><span style="color: #0000BB">$value</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">expression</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;else&nbsp;if(</span><span style="color: #0000BB">$bindByPosition</span><span style="color: #007700">)<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$fields</span><span style="color: #007700">[]=</span><span style="color: #0000BB">$column</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">rawName</span><span style="color: #007700">.</span><span style="color: #DD0000">'=?'</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$values</span><span style="color: #007700">[]=</span><span style="color: #0000BB">$column</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">typecast</span><span style="color: #007700">(</span><span style="color: #0000BB">$value</span><span style="color: #007700">);<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;else<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$fields</span><span style="color: #007700">[]=</span><span style="color: #0000BB">$column</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">rawName</span><span style="color: #007700">.</span><span style="color: #DD0000">'='</span><span style="color: #007700">.</span><span style="color: #0000BB">self</span><span style="color: #007700">::</span><span style="color: #0000BB">PARAM_PREFIX</span><span style="color: #007700">.</span><span style="color: #0000BB">$i</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$values</span><span style="color: #007700">[</span><span style="color: #0000BB">self</span><span style="color: #007700">::</span><span style="color: #0000BB">PARAM_PREFIX</span><span style="color: #007700">.</span><span style="color: #0000BB">$i</span><span style="color: #007700">]=</span><span style="color: #0000BB">$column</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">typecast</span><span style="color: #007700">(</span><span style="color: #0000BB">$value</span><span style="color: #007700">);<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$i</span><span style="color: #007700">++;<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br />&nbsp;&nbsp;&nbsp;&nbsp;}<br />&nbsp;&nbsp;&nbsp;&nbsp;if(</span><span style="color: #0000BB">$fields</span><span style="color: #007700">===array())<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;throw&nbsp;new&nbsp;</span><span style="color: #0000BB">CDbException</span><span style="color: #007700">(</span><span style="color: #0000BB">Yii</span><span style="color: #007700">::</span><span style="color: #0000BB">t</span><span style="color: #007700">(</span><span style="color: #DD0000">'yii'</span><span style="color: #007700">,</span><span style="color: #DD0000">'No&nbsp;columns&nbsp;are&nbsp;being&nbsp;updated&nbsp;for&nbsp;table&nbsp;"{table}".'</span><span style="color: #007700">,<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;array(</span><span style="color: #DD0000">'{table}'</span><span style="color: #007700">=&gt;</span><span style="color: #0000BB">$table</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">name</span><span style="color: #007700">)));<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$sql</span><span style="color: #007700">=</span><span style="color: #DD0000">"UPDATE&nbsp;</span><span style="color: #007700">{</span><span style="color: #0000BB">$table</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">rawName</span><span style="color: #007700">}</span><span style="color: #DD0000">&nbsp;SET&nbsp;"</span><span style="color: #007700">.</span><span style="color: #0000BB">implode</span><span style="color: #007700">(</span><span style="color: #DD0000">',&nbsp;'</span><span style="color: #007700">,</span><span style="color: #0000BB">$fields</span><span style="color: #007700">);<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$sql</span><span style="color: #007700">=</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">applyJoin</span><span style="color: #007700">(</span><span style="color: #0000BB">$sql</span><span style="color: #007700">,</span><span style="color: #0000BB">$criteria</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">join</span><span style="color: #007700">);<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$sql</span><span style="color: #007700">=</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">applyCondition</span><span style="color: #007700">(</span><span style="color: #0000BB">$sql</span><span style="color: #007700">,</span><span style="color: #0000BB">$criteria</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">condition</span><span style="color: #007700">);<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$sql</span><span style="color: #007700">=</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">applyOrder</span><span style="color: #007700">(</span><span style="color: #0000BB">$sql</span><span style="color: #007700">,</span><span style="color: #0000BB">$criteria</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">order</span><span style="color: #007700">);<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$sql</span><span style="color: #007700">=</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">applyLimit</span><span style="color: #007700">(</span><span style="color: #0000BB">$sql</span><span style="color: #007700">,</span><span style="color: #0000BB">$criteria</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">limit</span><span style="color: #007700">,</span><span style="color: #0000BB">$criteria</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">offset</span><span style="color: #007700">);<br /><br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$command</span><span style="color: #007700">=</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">getDbConnection</span><span style="color: #007700">()-&gt;</span><span style="color: #0000BB">createCommand</span><span style="color: #007700">(</span><span style="color: #0000BB">$sql</span><span style="color: #007700">);<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">bindValues</span><span style="color: #007700">(</span><span style="color: #0000BB">$command</span><span style="color: #007700">,</span><span style="color: #0000BB">array_merge</span><span style="color: #007700">(</span><span style="color: #0000BB">$values</span><span style="color: #007700">,</span><span style="color: #0000BB">$criteria</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">params</span><span style="color: #007700">));<br /><br />&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;</span><span style="color: #0000BB">$command</span><span style="color: #007700">;<br />}</span>
+</span>
+</code></div>
+</div>
+<p>Creates an UPDATE command.
+Override parent implementation because mssql don't want to update an identity column</p>
+
+
+<div class="detailHeader" id="createUpdateCounterCommand-detail">
+createUpdateCounterCommand()
+<span class="detailHeaderTag">
+method
+</span>
+</div>
+
+<table class="summaryTable">
+<tr><td colspan="3">
+<div class="signature2">
+public <a href="/doc/api/1.0/CDbCommand">CDbCommand</a> <b>createUpdateCounterCommand</b>(<a href="/doc/api/1.0/CDbTableSchema">CDbTableSchema</a> $table, <a href="/doc/api/1.0/CDbCriteria">CDbCriteria</a> $counters, array $criteria)</div>
+</td></tr>
+<tr>
+  <td class="paramNameCol">$table</td>
+  <td class="paramTypeCol"><a href="/doc/api/1.0/CDbTableSchema">CDbTableSchema</a></td>
+  <td class="paramDescCol">the table metadata</td>
+</tr>
+<tr>
+  <td class="paramNameCol">$counters</td>
+  <td class="paramTypeCol"><a href="/doc/api/1.0/CDbCriteria">CDbCriteria</a></td>
+  <td class="paramDescCol">the query criteria</td>
+</tr>
+<tr>
+  <td class="paramNameCol">$criteria</td>
+  <td class="paramTypeCol">array</td>
+  <td class="paramDescCol">counters to be updated (counter increments/decrements indexed by column names.)</td>
+</tr>
+<tr>
+  <td class="paramNameCol">{return}</td>
+  <td class="paramTypeCol"><a href="/doc/api/1.0/CDbCommand">CDbCommand</a></td>
+  <td class="paramDescCol">the created command</td>
+</tr>
+</table>
+
+<div class="sourceCode">
+<b>Source Code:</b> <a class="sourceLink" href="https://github.com/yiisoft/yii/blob/1.0.12/framework/db/schema/mssql/CMssqlCommandBuilder.php#L139">framework/db/schema/mssql/CMssqlCommandBuilder.php#139</a> (<b><a href="#" class="show">show</a></b>)
+<div class="code"><code><span style="color: #000000">
+<span style="color: #0000BB"></span><span style="color: #007700">public&nbsp;function&nbsp;</span><span style="color: #0000BB">createUpdateCounterCommand</span><span style="color: #007700">(</span><span style="color: #0000BB">$table</span><span style="color: #007700">,</span><span style="color: #0000BB">$counters</span><span style="color: #007700">,</span><span style="color: #0000BB">$criteria</span><span style="color: #007700">)<br />{<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$criteria</span><span style="color: #007700">=</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">checkCriteria</span><span style="color: #007700">(</span><span style="color: #0000BB">$table</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$criteria</span><span style="color: #007700">);<br />&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;</span><span style="color: #0000BB">parent</span><span style="color: #007700">::</span><span style="color: #0000BB">createUpdateCounterCommand</span><span style="color: #007700">(</span><span style="color: #0000BB">$table</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$counters</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$criteria</span><span style="color: #007700">);<br />}</span>
+</span>
+</code></div>
+</div>
+<p>Creates an UPDATE command that increments/decrements certain columns.
+Override parent implementation to check if an orderby clause if specified when querying with an offset</p>
+
+
+<div class="detailHeader" id="findOrdering-detail">
+findOrdering()
+<span class="detailHeaderTag">
+method
+</span>
+</div>
+
+<table class="summaryTable">
+<tr><td colspan="3">
+<div class="signature2">
+protected array <b>findOrdering</b>(string $sql)</div>
+</td></tr>
+<tr>
+  <td class="paramNameCol">$sql</td>
+  <td class="paramTypeCol">string</td>
+  <td class="paramDescCol"></td>
+</tr>
+<tr>
+  <td class="paramNameCol">{return}</td>
+  <td class="paramTypeCol">array</td>
+  <td class="paramDescCol">ordering expression as key and ordering direction as value</td>
+</tr>
+</table>
+
+<div class="sourceCode">
+<b>Source Code:</b> <a class="sourceLink" href="https://github.com/yiisoft/yii/blob/1.0.12/framework/db/schema/mssql/CMssqlCommandBuilder.php#L229">framework/db/schema/mssql/CMssqlCommandBuilder.php#229</a> (<b><a href="#" class="show">show</a></b>)
+<div class="code"><code><span style="color: #000000">
+<span style="color: #0000BB"></span><span style="color: #007700">protected&nbsp;function&nbsp;</span><span style="color: #0000BB">findOrdering</span><span style="color: #007700">(</span><span style="color: #0000BB">$sql</span><span style="color: #007700">)<br />{<br />&nbsp;&nbsp;&nbsp;&nbsp;if(!</span><span style="color: #0000BB">preg_match</span><span style="color: #007700">(</span><span style="color: #DD0000">'/ORDER&nbsp;BY/i'</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$sql</span><span style="color: #007700">))<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;array();<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$matches</span><span style="color: #007700">=array();<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$ordering</span><span style="color: #007700">=array();<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">preg_match_all</span><span style="color: #007700">(</span><span style="color: #DD0000">'/(ORDER&nbsp;BY)[\s"\[](.*)(ASC|DESC)?(?:[\s"\[]|$|COMPUTE|FOR)/i'</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$sql</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$matches</span><span style="color: #007700">);<br />&nbsp;&nbsp;&nbsp;&nbsp;if(</span><span style="color: #0000BB">count</span><span style="color: #007700">(</span><span style="color: #0000BB">$matches</span><span style="color: #007700">)&gt;</span><span style="color: #0000BB">1&nbsp;</span><span style="color: #007700">&amp;&amp;&nbsp;</span><span style="color: #0000BB">count</span><span style="color: #007700">(</span><span style="color: #0000BB">$matches</span><span style="color: #007700">[</span><span style="color: #0000BB">2</span><span style="color: #007700">])&nbsp;&gt;&nbsp;</span><span style="color: #0000BB">0</span><span style="color: #007700">)<br />&nbsp;&nbsp;&nbsp;&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$parts&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">explode</span><span style="color: #007700">(</span><span style="color: #DD0000">','</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$matches</span><span style="color: #007700">[</span><span style="color: #0000BB">2</span><span style="color: #007700">][</span><span style="color: #0000BB">0</span><span style="color: #007700">]);<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;foreach(</span><span style="color: #0000BB">$parts&nbsp;</span><span style="color: #007700">as&nbsp;</span><span style="color: #0000BB">$part</span><span style="color: #007700">)<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$subs</span><span style="color: #007700">=array();<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if(</span><span style="color: #0000BB">preg_match_all</span><span style="color: #007700">(</span><span style="color: #DD0000">'/(.*)[\s"\]](ASC|DESC)$/i'</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">trim</span><span style="color: #007700">(</span><span style="color: #0000BB">$part</span><span style="color: #007700">),&nbsp;</span><span style="color: #0000BB">$subs</span><span style="color: #007700">))<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if(</span><span style="color: #0000BB">count</span><span style="color: #007700">(</span><span style="color: #0000BB">$subs</span><span style="color: #007700">)&nbsp;&gt;&nbsp;</span><span style="color: #0000BB">1&nbsp;</span><span style="color: #007700">&amp;&amp;&nbsp;</span><span style="color: #0000BB">count</span><span style="color: #007700">(</span><span style="color: #0000BB">$subs</span><span style="color: #007700">[</span><span style="color: #0000BB">2</span><span style="color: #007700">])&nbsp;&gt;&nbsp;</span><span style="color: #0000BB">0</span><span style="color: #007700">)<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$ordering</span><span style="color: #007700">[</span><span style="color: #0000BB">$subs</span><span style="color: #007700">[</span><span style="color: #0000BB">1</span><span style="color: #007700">][</span><span style="color: #0000BB">0</span><span style="color: #007700">]]&nbsp;=&nbsp;</span><span style="color: #0000BB">$subs</span><span style="color: #007700">[</span><span style="color: #0000BB">2</span><span style="color: #007700">][</span><span style="color: #0000BB">0</span><span style="color: #007700">];<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #FF8000">//else&nbsp;what?<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #007700">}<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;else<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$ordering</span><span style="color: #007700">[</span><span style="color: #0000BB">trim</span><span style="color: #007700">(</span><span style="color: #0000BB">$part</span><span style="color: #007700">)]&nbsp;=&nbsp;</span><span style="color: #DD0000">'ASC'</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br />&nbsp;&nbsp;&nbsp;&nbsp;}<br />&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;</span><span style="color: #0000BB">$ordering</span><span style="color: #007700">;<br />}</span>
+</span>
+</code></div>
+</div>
+<p>Base on simplified syntax http://msdn2.microsoft.com/en-us/library/aa259187(SQL.80).aspx</p>
+
+
+<div class="detailHeader" id="getLastInsertID-detail">
+getLastInsertID()
+<span class="detailHeaderTag">
+method
+</span>
+</div>
+
+<table class="summaryTable">
+<tr><td colspan="3">
+<div class="signature2">
+public mixed <b>getLastInsertID</b>(<a href="/doc/api/1.0/CDbTableSchema">CDbTableSchema</a> $table)</div>
+</td></tr>
+<tr>
+  <td class="paramNameCol">$table</td>
+  <td class="paramTypeCol"><a href="/doc/api/1.0/CDbTableSchema">CDbTableSchema</a></td>
+  <td class="paramDescCol">the table metadata</td>
+</tr>
+<tr>
+  <td class="paramNameCol">{return}</td>
+  <td class="paramTypeCol">mixed</td>
+  <td class="paramDescCol">last insertion id. Null is returned if no sequence name.</td>
+</tr>
+</table>
+
+<div class="sourceCode">
+<b>Source Code:</b> <a class="sourceLink" href="https://github.com/yiisoft/yii/blob/1.0.12/framework/db/schema/mssql/CMssqlCommandBuilder.php#L31">framework/db/schema/mssql/CMssqlCommandBuilder.php#31</a> (<b><a href="#" class="show">show</a></b>)
+<div class="code"><code><span style="color: #000000">
+<span style="color: #0000BB"></span><span style="color: #007700">public&nbsp;function&nbsp;</span><span style="color: #0000BB">getLastInsertID</span><span style="color: #007700">(</span><span style="color: #0000BB">$table</span><span style="color: #007700">)<br />{<br />&nbsp;&nbsp;&nbsp;&nbsp;if(</span><span style="color: #0000BB">$table</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">sequenceName</span><span style="color: #007700">!==</span><span style="color: #0000BB">null</span><span style="color: #007700">)<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">getDbConnection</span><span style="color: #007700">()-&gt;</span><span style="color: #0000BB">createCommand</span><span style="color: #007700">(</span><span style="color: #DD0000">'SELECT&nbsp;SCOPE_IDENTITY()'</span><span style="color: #007700">)-&gt;</span><span style="color: #0000BB">queryScalar</span><span style="color: #007700">();<br />&nbsp;&nbsp;&nbsp;&nbsp;else<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;</span><span style="color: #0000BB">null</span><span style="color: #007700">;<br />}</span>
+</span>
+</code></div>
+</div>
+<p>Returns the last insertion ID for the specified table.
+Override parent implemantation since PDO mssql driver does not provide this method</p>
+
+
+<div class="detailHeader" id="joinOrdering-detail">
+joinOrdering()
+<span class="detailHeaderTag">
+method
+</span>
+</div>
+
+<table class="summaryTable">
+<tr><td colspan="3">
+<div class="signature2">
+protected string <b>joinOrdering</b>(array $orders)</div>
+</td></tr>
+<tr>
+  <td class="paramNameCol">$orders</td>
+  <td class="paramTypeCol">array</td>
+  <td class="paramDescCol">ordering obtained from findOrdering()</td>
+</tr>
+<tr>
+  <td class="paramNameCol">{return}</td>
+  <td class="paramTypeCol">string</td>
+  <td class="paramDescCol">concat the orderings</td>
+</tr>
+</table>
+
+<div class="sourceCode">
+<b>Source Code:</b> <a class="sourceLink" href="https://github.com/yiisoft/yii/blob/1.0.12/framework/db/schema/mssql/CMssqlCommandBuilder.php#L263">framework/db/schema/mssql/CMssqlCommandBuilder.php#263</a> (<b><a href="#" class="show">show</a></b>)
+<div class="code"><code><span style="color: #000000">
+<span style="color: #0000BB"></span><span style="color: #007700">protected&nbsp;function&nbsp;</span><span style="color: #0000BB">joinOrdering</span><span style="color: #007700">(</span><span style="color: #0000BB">$orders</span><span style="color: #007700">)<br />{<br />&nbsp;&nbsp;&nbsp;&nbsp;if(</span><span style="color: #0000BB">count</span><span style="color: #007700">(</span><span style="color: #0000BB">$orders</span><span style="color: #007700">)&gt;</span><span style="color: #0000BB">0</span><span style="color: #007700">)<br />&nbsp;&nbsp;&nbsp;&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$str</span><span style="color: #007700">=array();<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;foreach(</span><span style="color: #0000BB">$orders&nbsp;</span><span style="color: #007700">as&nbsp;</span><span style="color: #0000BB">$column&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #0000BB">$direction</span><span style="color: #007700">)<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$str</span><span style="color: #007700">[]&nbsp;=&nbsp;</span><span style="color: #0000BB">$column</span><span style="color: #007700">.</span><span style="color: #DD0000">'&nbsp;'</span><span style="color: #007700">.</span><span style="color: #0000BB">$direction</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;</span><span style="color: #DD0000">'ORDER&nbsp;BY&nbsp;'</span><span style="color: #007700">.</span><span style="color: #0000BB">implode</span><span style="color: #007700">(</span><span style="color: #DD0000">',&nbsp;'</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$str</span><span style="color: #007700">);<br />&nbsp;&nbsp;&nbsp;&nbsp;}<br />}</span>
+</span>
+</code></div>
+</div>
+<p></p>
+
+
+<div class="detailHeader" id="reverseDirection-detail">
+reverseDirection()
+<span class="detailHeaderTag">
+method
+</span>
+</div>
+
+<table class="summaryTable">
+<tr><td colspan="3">
+<div class="signature2">
+protected array <b>reverseDirection</b>(array $orders)</div>
+</td></tr>
+<tr>
+  <td class="paramNameCol">$orders</td>
+  <td class="paramTypeCol">array</td>
+  <td class="paramDescCol">original ordering</td>
+</tr>
+<tr>
+  <td class="paramNameCol">{return}</td>
+  <td class="paramTypeCol">array</td>
+  <td class="paramDescCol">ordering with reversed direction.</td>
+</tr>
+</table>
+
+<div class="sourceCode">
+<b>Source Code:</b> <a class="sourceLink" href="https://github.com/yiisoft/yii/blob/1.0.12/framework/db/schema/mssql/CMssqlCommandBuilder.php#L280">framework/db/schema/mssql/CMssqlCommandBuilder.php#280</a> (<b><a href="#" class="show">show</a></b>)
+<div class="code"><code><span style="color: #000000">
+<span style="color: #0000BB"></span><span style="color: #007700">protected&nbsp;function&nbsp;</span><span style="color: #0000BB">reverseDirection</span><span style="color: #007700">(</span><span style="color: #0000BB">$orders</span><span style="color: #007700">)<br />{<br />&nbsp;&nbsp;&nbsp;&nbsp;foreach(</span><span style="color: #0000BB">$orders&nbsp;</span><span style="color: #007700">as&nbsp;</span><span style="color: #0000BB">$column&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #0000BB">$direction</span><span style="color: #007700">)<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$orders</span><span style="color: #007700">[</span><span style="color: #0000BB">$column</span><span style="color: #007700">]&nbsp;=&nbsp;</span><span style="color: #0000BB">strtolower</span><span style="color: #007700">(</span><span style="color: #0000BB">trim</span><span style="color: #007700">(</span><span style="color: #0000BB">$direction</span><span style="color: #007700">))===</span><span style="color: #DD0000">'desc'&nbsp;</span><span style="color: #007700">?&nbsp;</span><span style="color: #DD0000">'ASC'&nbsp;</span><span style="color: #007700">:&nbsp;</span><span style="color: #DD0000">'DESC'</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;</span><span style="color: #0000BB">$orders</span><span style="color: #007700">;<br />}</span>
+</span>
+</code></div>
+</div>
+<p></p>
+
+
+<div class="detailHeader" id="rewriteLimitOffsetSql-detail">
+rewriteLimitOffsetSql()
+<span class="detailHeaderTag">
+method
+</span>
+</div>
+
+<table class="summaryTable">
+<tr><td colspan="3">
+<div class="signature2">
+protected sql <b>rewriteLimitOffsetSql</b>(string $sql, integer $limit, integer $offset)</div>
+</td></tr>
+<tr>
+  <td class="paramNameCol">$sql</td>
+  <td class="paramTypeCol">string</td>
+  <td class="paramDescCol">sql query</td>
+</tr>
+<tr>
+  <td class="paramNameCol">$limit</td>
+  <td class="paramTypeCol">integer</td>
+  <td class="paramDescCol">> 0</td>
+</tr>
+<tr>
+  <td class="paramNameCol">$offset</td>
+  <td class="paramTypeCol">integer</td>
+  <td class="paramDescCol">> 0</td>
+</tr>
+<tr>
+  <td class="paramNameCol">{return}</td>
+  <td class="paramTypeCol">sql</td>
+  <td class="paramDescCol">modified sql query applied with limit and offset.</td>
+</tr>
+</table>
+
+<div class="sourceCode">
+<b>Source Code:</b> <a class="sourceLink" href="https://github.com/yiisoft/yii/blob/1.0.12/framework/db/schema/mssql/CMssqlCommandBuilder.php#L209">framework/db/schema/mssql/CMssqlCommandBuilder.php#209</a> (<b><a href="#" class="show">show</a></b>)
+<div class="code"><code><span style="color: #000000">
+<span style="color: #0000BB"></span><span style="color: #007700">protected&nbsp;function&nbsp;</span><span style="color: #0000BB">rewriteLimitOffsetSql</span><span style="color: #007700">(</span><span style="color: #0000BB">$sql</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$limit</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$offset</span><span style="color: #007700">)<br />{<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$fetch&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">$limit</span><span style="color: #007700">+</span><span style="color: #0000BB">$offset</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$sql&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">preg_replace</span><span style="color: #007700">(</span><span style="color: #DD0000">'/^([\s(])*SELECT(&nbsp;DISTINCT)?(?!\s*TOP\s*\()/i'</span><span style="color: #007700">,</span><span style="color: #DD0000">"\\1SELECT\\2&nbsp;TOP&nbsp;</span><span style="color: #0000BB">$fetch</span><span style="color: #DD0000">"</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$sql</span><span style="color: #007700">);<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$ordering&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">findOrdering</span><span style="color: #007700">(</span><span style="color: #0000BB">$sql</span><span style="color: #007700">);<br /><br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$orginalOrdering&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">joinOrdering</span><span style="color: #007700">(</span><span style="color: #0000BB">$ordering</span><span style="color: #007700">);<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$reverseOrdering&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">joinOrdering</span><span style="color: #007700">(</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">reverseDirection</span><span style="color: #007700">(</span><span style="color: #0000BB">$ordering</span><span style="color: #007700">));<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$sql&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #DD0000">"SELECT&nbsp;*&nbsp;FROM&nbsp;(SELECT&nbsp;TOP&nbsp;</span><span style="color: #007700">{</span><span style="color: #0000BB">$limit</span><span style="color: #007700">}</span><span style="color: #DD0000">&nbsp;*&nbsp;FROM&nbsp;(</span><span style="color: #0000BB">$sql</span><span style="color: #DD0000">)&nbsp;as&nbsp;[__inner&nbsp;top&nbsp;table__]&nbsp;</span><span style="color: #007700">{</span><span style="color: #0000BB">$reverseOrdering</span><span style="color: #007700">}</span><span style="color: #DD0000">)&nbsp;as&nbsp;[__outer&nbsp;top&nbsp;table__]&nbsp;</span><span style="color: #007700">{</span><span style="color: #0000BB">$orginalOrdering</span><span style="color: #007700">}</span><span style="color: #DD0000">"</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;</span><span style="color: #0000BB">$sql</span><span style="color: #007700">;<br />}</span>
+</span>
+</code></div>
+</div>
+<p>Rewrite sql to apply $limit > and $offset > 0 for MSSQL database.
+See http://troels.arvin.dk/db/rdbms/#select-limit-offset</p>
+
+

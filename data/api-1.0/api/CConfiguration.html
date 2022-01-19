@@ -1,0 +1,554 @@
+<h1>CConfiguration</h1>
+<div id="nav">
+<a href="/doc/api/1.0/">All Packages</a>
+| <a href="#properties">Properties</a>
+| <a href="#methods">Methods</a>
+</div>
+
+<table class="summaryTable docClass">
+<colgroup>
+	<col class="col-name" />
+	<col class="col-value" />
+</colgroup>
+<tr>
+  <th>Package</th>
+  <td><a href="/doc/api/1.0/#system.collections">system.collections</a></td>
+</tr>
+<tr>
+  <th>Inheritance</th>
+  <td>class CConfiguration &raquo;
+<a href="/doc/api/1.0/CMap">CMap</a> &raquo;
+<a href="/doc/api/1.0/CComponent">CComponent</a></td>
+</tr>
+<tr>
+  <th>Implements</th>
+  <td>Countable, ArrayAccess, Traversable, IteratorAggregate</td>
+</tr>
+<tr>
+  <th>Since</th>
+  <td>1.0</td>
+</tr>
+<tr>
+  <th>Version</th>
+  <td>$Id$</td>
+</tr>
+<tr>
+  <th>Source Code</th>
+  <td><a class="sourceLink" href="https://github.com/yiisoft/yii/blob/1.0.12/framework/collections/CConfiguration.php">framework/collections/CConfiguration.php</a></td>
+</tr>
+</table>
+
+<div id="classDescription">
+CConfiguration represents an array-based configuration.
+<br/><br/>
+It can be used to initialize an object's properties.
+<br/><br/>
+The configuration data may be obtained from a PHP script. For example,
+<pre>
+&amp;lt;?php
+return array
+(
+    'name'=&gt;'My Application',
+    'defaultController'=&gt;'index',
+);
+?&amp;gt;
+</pre>
+Use the following code to load the above configuration data:
+<pre>
+$config=new CConfiguration('path/to/config.php');
+</pre>
+<br/><br/>
+To apply the configuration to an object, call <a href="/doc/api/1.0/CConfiguration#applyTo">applyTo()</a>.
+Each (key,value) pair in the configuration data is applied
+to the object like: $object->$key=$value.
+<br/><br/>
+Since CConfiguration extends from <a href="/doc/api/1.0/CMap">CMap</a>, it can be
+used like an associative array. See <a href="/doc/api/1.0/CMap">CMap</a> for more details.</div>
+<a name="properties"></a>
+
+<div class="summary docProperty">
+<h2>Public Properties</h2>
+
+<p><a href="#" class="toggle">Hide inherited properties</a></p>
+
+<table class="summaryTable">
+<colgroup>
+	<col class="col-property" />
+	<col class="col-type" />
+	<col class="col-description" />
+	<col class="col-defined" />
+</colgroup>
+<tr>
+  <th>Property</th><th>Type</th><th>Description</th><th>Defined By</th>
+</tr>
+<tr class="inherited" id="count">
+  <td><a href="/doc/api/1.0/CMap#count-detail">count</a></td>
+  <td>integer</td>
+  <td>the number of items in the map</td>
+  <td><a href="/doc/api/1.0/CMap">CMap</a></td>
+</tr>
+<tr class="inherited" id="iterator">
+  <td><a href="/doc/api/1.0/CMap#iterator-detail">iterator</a></td>
+  <td><a href="/doc/api/1.0/CMapIterator">CMapIterator</a></td>
+  <td>Returns an iterator for traversing the items in the list.</td>
+  <td><a href="/doc/api/1.0/CMap">CMap</a></td>
+</tr>
+<tr class="inherited" id="keys">
+  <td><a href="/doc/api/1.0/CMap#keys-detail">keys</a></td>
+  <td>array</td>
+  <td>the key list</td>
+  <td><a href="/doc/api/1.0/CMap">CMap</a></td>
+</tr>
+<tr class="inherited" id="readOnly">
+  <td><a href="/doc/api/1.0/CMap#readOnly-detail">readOnly</a></td>
+  <td>boolean</td>
+  <td>whether this map is read-only or not.</td>
+  <td><a href="/doc/api/1.0/CMap">CMap</a></td>
+</tr>
+</table>
+</div>
+<a name="methods"></a>
+
+<div class="summary docMethod">
+<h2>Public Methods</h2>
+
+<p><a href="#" class="toggle">Hide inherited methods</a></p>
+
+<table class="summaryTable">
+<colgroup>
+	<col class="col-method" />
+	<col class="col-description" />
+	<col class="col-defined" />
+</colgroup>
+<tr>
+  <th>Method</th><th>Description</th><th>Defined By</th>
+</tr>
+<tr class="inherited" id="__call">
+  <td><a href="/doc/api/1.0/CComponent#__call-detail">__call()</a></td>
+  <td>Calls the named method which is not a class method.</td>
+  <td><a href="/doc/api/1.0/CComponent">CComponent</a></td>
+</tr>
+<tr id="__construct">
+  <td><a href="/doc/api/1.0/CConfiguration#__construct-detail">__construct()</a></td>
+  <td>Constructor.</td>
+  <td>CConfiguration</td>
+</tr>
+<tr class="inherited" id="__get">
+  <td><a href="/doc/api/1.0/CComponent#__get-detail">__get()</a></td>
+  <td>Returns a property value, an event handler list or a behavior based on its name.</td>
+  <td><a href="/doc/api/1.0/CComponent">CComponent</a></td>
+</tr>
+<tr class="inherited" id="__isset">
+  <td><a href="/doc/api/1.0/CComponent#__isset-detail">__isset()</a></td>
+  <td>Checks if a property value is null.</td>
+  <td><a href="/doc/api/1.0/CComponent">CComponent</a></td>
+</tr>
+<tr class="inherited" id="__set">
+  <td><a href="/doc/api/1.0/CComponent#__set-detail">__set()</a></td>
+  <td>Sets value of a component property.</td>
+  <td><a href="/doc/api/1.0/CComponent">CComponent</a></td>
+</tr>
+<tr class="inherited" id="__unset">
+  <td><a href="/doc/api/1.0/CComponent#__unset-detail">__unset()</a></td>
+  <td>Sets a component property to be null.</td>
+  <td><a href="/doc/api/1.0/CComponent">CComponent</a></td>
+</tr>
+<tr class="inherited" id="add">
+  <td><a href="/doc/api/1.0/CMap#add-detail">add()</a></td>
+  <td>Adds an item into the map.</td>
+  <td><a href="/doc/api/1.0/CMap">CMap</a></td>
+</tr>
+<tr id="applyTo">
+  <td><a href="/doc/api/1.0/CConfiguration#applyTo-detail">applyTo()</a></td>
+  <td>Applies the configuration to an object.</td>
+  <td>CConfiguration</td>
+</tr>
+<tr class="inherited" id="asa">
+  <td><a href="/doc/api/1.0/CComponent#asa-detail">asa()</a></td>
+  <td>Returns the named behavior object.</td>
+  <td><a href="/doc/api/1.0/CComponent">CComponent</a></td>
+</tr>
+<tr class="inherited" id="attachBehavior">
+  <td><a href="/doc/api/1.0/CComponent#attachBehavior-detail">attachBehavior()</a></td>
+  <td>Attaches a behavior to this component.</td>
+  <td><a href="/doc/api/1.0/CComponent">CComponent</a></td>
+</tr>
+<tr class="inherited" id="attachBehaviors">
+  <td><a href="/doc/api/1.0/CComponent#attachBehaviors-detail">attachBehaviors()</a></td>
+  <td>Attaches a list of behaviors to the component.</td>
+  <td><a href="/doc/api/1.0/CComponent">CComponent</a></td>
+</tr>
+<tr class="inherited" id="attachEventHandler">
+  <td><a href="/doc/api/1.0/CComponent#attachEventHandler-detail">attachEventHandler()</a></td>
+  <td>Attaches an event handler to an event.</td>
+  <td><a href="/doc/api/1.0/CComponent">CComponent</a></td>
+</tr>
+<tr class="inherited" id="canGetProperty">
+  <td><a href="/doc/api/1.0/CComponent#canGetProperty-detail">canGetProperty()</a></td>
+  <td>Determines whether a property can be read.</td>
+  <td><a href="/doc/api/1.0/CComponent">CComponent</a></td>
+</tr>
+<tr class="inherited" id="canSetProperty">
+  <td><a href="/doc/api/1.0/CComponent#canSetProperty-detail">canSetProperty()</a></td>
+  <td>Determines whether a property can be set.</td>
+  <td><a href="/doc/api/1.0/CComponent">CComponent</a></td>
+</tr>
+<tr class="inherited" id="clear">
+  <td><a href="/doc/api/1.0/CMap#clear-detail">clear()</a></td>
+  <td>Removes all items in the map.</td>
+  <td><a href="/doc/api/1.0/CMap">CMap</a></td>
+</tr>
+<tr class="inherited" id="contains">
+  <td><a href="/doc/api/1.0/CMap#contains-detail">contains()</a></td>
+  <td></td>
+  <td><a href="/doc/api/1.0/CMap">CMap</a></td>
+</tr>
+<tr class="inherited" id="copyFrom">
+  <td><a href="/doc/api/1.0/CMap#copyFrom-detail">copyFrom()</a></td>
+  <td>Copies iterable data into the map.</td>
+  <td><a href="/doc/api/1.0/CMap">CMap</a></td>
+</tr>
+<tr class="inherited" id="count()">
+  <td><a href="/doc/api/CMap#count()-detail">count()</a></td>
+  <td>Returns the number of items in the map.</td>
+  <td><a href="/doc/api/1.0/CMap">CMap</a></td>
+</tr>
+<tr id="createObject">
+  <td><a href="/doc/api/1.0/CConfiguration#createObject-detail">createObject()</a></td>
+  <td>Creates an object and initializes it based on the given configuration.</td>
+  <td>CConfiguration</td>
+</tr>
+<tr class="inherited" id="detachBehavior">
+  <td><a href="/doc/api/1.0/CComponent#detachBehavior-detail">detachBehavior()</a></td>
+  <td>Detaches a behavior from the component.</td>
+  <td><a href="/doc/api/1.0/CComponent">CComponent</a></td>
+</tr>
+<tr class="inherited" id="detachBehaviors">
+  <td><a href="/doc/api/1.0/CComponent#detachBehaviors-detail">detachBehaviors()</a></td>
+  <td>Detaches all behaviors from the component.</td>
+  <td><a href="/doc/api/1.0/CComponent">CComponent</a></td>
+</tr>
+<tr class="inherited" id="detachEventHandler">
+  <td><a href="/doc/api/1.0/CComponent#detachEventHandler-detail">detachEventHandler()</a></td>
+  <td>Detaches an existing event handler.</td>
+  <td><a href="/doc/api/1.0/CComponent">CComponent</a></td>
+</tr>
+<tr class="inherited" id="disableBehavior">
+  <td><a href="/doc/api/1.0/CComponent#disableBehavior-detail">disableBehavior()</a></td>
+  <td>Disables an attached behavior.</td>
+  <td><a href="/doc/api/1.0/CComponent">CComponent</a></td>
+</tr>
+<tr class="inherited" id="disableBehaviors">
+  <td><a href="/doc/api/1.0/CComponent#disableBehaviors-detail">disableBehaviors()</a></td>
+  <td>Disables all behaviors attached to this component.</td>
+  <td><a href="/doc/api/1.0/CComponent">CComponent</a></td>
+</tr>
+<tr class="inherited" id="enableBehavior">
+  <td><a href="/doc/api/1.0/CComponent#enableBehavior-detail">enableBehavior()</a></td>
+  <td>Enables an attached behavior.</td>
+  <td><a href="/doc/api/1.0/CComponent">CComponent</a></td>
+</tr>
+<tr class="inherited" id="enableBehaviors">
+  <td><a href="/doc/api/1.0/CComponent#enableBehaviors-detail">enableBehaviors()</a></td>
+  <td>Enables all behaviors attached to this component.</td>
+  <td><a href="/doc/api/1.0/CComponent">CComponent</a></td>
+</tr>
+<tr class="inherited" id="getCount">
+  <td><a href="/doc/api/1.0/CMap#getCount-detail">getCount()</a></td>
+  <td>Returns the number of items in the map</td>
+  <td><a href="/doc/api/1.0/CMap">CMap</a></td>
+</tr>
+<tr class="inherited" id="getEventHandlers">
+  <td><a href="/doc/api/1.0/CComponent#getEventHandlers-detail">getEventHandlers()</a></td>
+  <td>Returns the list of attached event handlers for an event.</td>
+  <td><a href="/doc/api/1.0/CComponent">CComponent</a></td>
+</tr>
+<tr class="inherited" id="getIterator">
+  <td><a href="/doc/api/1.0/CMap#getIterator-detail">getIterator()</a></td>
+  <td>Returns an iterator for traversing the items in the list.</td>
+  <td><a href="/doc/api/1.0/CMap">CMap</a></td>
+</tr>
+<tr class="inherited" id="getKeys">
+  <td><a href="/doc/api/1.0/CMap#getKeys-detail">getKeys()</a></td>
+  <td>Returns the key list</td>
+  <td><a href="/doc/api/1.0/CMap">CMap</a></td>
+</tr>
+<tr class="inherited" id="getReadOnly">
+  <td><a href="/doc/api/1.0/CMap#getReadOnly-detail">getReadOnly()</a></td>
+  <td>Returns whether this map is read-only or not. Defaults to false.</td>
+  <td><a href="/doc/api/1.0/CMap">CMap</a></td>
+</tr>
+<tr class="inherited" id="hasEvent">
+  <td><a href="/doc/api/1.0/CComponent#hasEvent-detail">hasEvent()</a></td>
+  <td>Determines whether an event is defined.</td>
+  <td><a href="/doc/api/1.0/CComponent">CComponent</a></td>
+</tr>
+<tr class="inherited" id="hasEventHandler">
+  <td><a href="/doc/api/1.0/CComponent#hasEventHandler-detail">hasEventHandler()</a></td>
+  <td>Checks whether the named event has attached handlers.</td>
+  <td><a href="/doc/api/1.0/CComponent">CComponent</a></td>
+</tr>
+<tr class="inherited" id="hasProperty">
+  <td><a href="/doc/api/1.0/CComponent#hasProperty-detail">hasProperty()</a></td>
+  <td>Determines whether a property is defined.</td>
+  <td><a href="/doc/api/1.0/CComponent">CComponent</a></td>
+</tr>
+<tr class="inherited" id="itemAt">
+  <td><a href="/doc/api/1.0/CMap#itemAt-detail">itemAt()</a></td>
+  <td>Returns the item with the specified key.</td>
+  <td><a href="/doc/api/1.0/CMap">CMap</a></td>
+</tr>
+<tr id="loadFromFile">
+  <td><a href="/doc/api/1.0/CConfiguration#loadFromFile-detail">loadFromFile()</a></td>
+  <td>Loads configuration data from a file and merges it with the existing configuration.</td>
+  <td>CConfiguration</td>
+</tr>
+<tr class="inherited" id="mergeArray">
+  <td><a href="/doc/api/1.0/CMap#mergeArray-detail">mergeArray()</a></td>
+  <td>Merges two arrays into one recursively.</td>
+  <td><a href="/doc/api/1.0/CMap">CMap</a></td>
+</tr>
+<tr class="inherited" id="mergeWith">
+  <td><a href="/doc/api/1.0/CMap#mergeWith-detail">mergeWith()</a></td>
+  <td>Merges iterable data into the map.</td>
+  <td><a href="/doc/api/1.0/CMap">CMap</a></td>
+</tr>
+<tr class="inherited" id="offsetExists">
+  <td><a href="/doc/api/1.0/CMap#offsetExists-detail">offsetExists()</a></td>
+  <td>Returns whether there is an element at the specified offset.</td>
+  <td><a href="/doc/api/1.0/CMap">CMap</a></td>
+</tr>
+<tr class="inherited" id="offsetGet">
+  <td><a href="/doc/api/1.0/CMap#offsetGet-detail">offsetGet()</a></td>
+  <td>Returns the element at the specified offset.</td>
+  <td><a href="/doc/api/1.0/CMap">CMap</a></td>
+</tr>
+<tr class="inherited" id="offsetSet">
+  <td><a href="/doc/api/1.0/CMap#offsetSet-detail">offsetSet()</a></td>
+  <td>Sets the element at the specified offset.</td>
+  <td><a href="/doc/api/1.0/CMap">CMap</a></td>
+</tr>
+<tr class="inherited" id="offsetUnset">
+  <td><a href="/doc/api/1.0/CMap#offsetUnset-detail">offsetUnset()</a></td>
+  <td>Unsets the element at the specified offset.</td>
+  <td><a href="/doc/api/1.0/CMap">CMap</a></td>
+</tr>
+<tr class="inherited" id="raiseEvent">
+  <td><a href="/doc/api/1.0/CComponent#raiseEvent-detail">raiseEvent()</a></td>
+  <td>Raises an event.</td>
+  <td><a href="/doc/api/1.0/CComponent">CComponent</a></td>
+</tr>
+<tr class="inherited" id="remove">
+  <td><a href="/doc/api/1.0/CMap#remove-detail">remove()</a></td>
+  <td>Removes an item from the map by its key.</td>
+  <td><a href="/doc/api/1.0/CMap">CMap</a></td>
+</tr>
+<tr id="saveAsString">
+  <td><a href="/doc/api/1.0/CConfiguration#saveAsString-detail">saveAsString()</a></td>
+  <td>Saves the configuration into a string.</td>
+  <td>CConfiguration</td>
+</tr>
+<tr class="inherited" id="toArray">
+  <td><a href="/doc/api/1.0/CMap#toArray-detail">toArray()</a></td>
+  <td></td>
+  <td><a href="/doc/api/1.0/CMap">CMap</a></td>
+</tr>
+</table>
+</div>
+<div class="summary docMethod">
+<h2>Protected Methods</h2>
+
+<p><a href="#" class="toggle">Hide inherited methods</a></p>
+
+<table class="summaryTable">
+<colgroup>
+	<col class="col-method" />
+	<col class="col-description" />
+	<col class="col-defined" />
+</colgroup>
+<tr>
+  <th>Method</th><th>Description</th><th>Defined By</th>
+</tr>
+<tr class="inherited" id="setReadOnly">
+  <td><a href="/doc/api/1.0/CMap#setReadOnly-detail">setReadOnly()</a></td>
+  <td>Sets whether this list is read-only or not</td>
+  <td><a href="/doc/api/1.0/CMap">CMap</a></td>
+</tr>
+</table>
+</div>
+<a name="events"></a>
+
+<h2>Method Details</h2>
+
+<div class="detailHeader" id="__construct-detail">
+__construct()
+<span class="detailHeaderTag">
+method
+</span>
+</div>
+
+<table class="summaryTable">
+<tr><td colspan="3">
+<div class="signature2">
+public void <b>__construct</b>(mixed $data=NULL)</div>
+</td></tr>
+<tr>
+  <td class="paramNameCol">$data</td>
+  <td class="paramTypeCol">mixed</td>
+  <td class="paramDescCol">if string, it represents a config file (a PHP script returning the configuration as an array);
+If array, it is config data.</td>
+</tr>
+</table>
+
+<div class="sourceCode">
+<b>Source Code:</b> <a class="sourceLink" href="https://github.com/yiisoft/yii/blob/1.0.12/framework/collections/CConfiguration.php#L51">framework/collections/CConfiguration.php#51</a> (<b><a href="#" class="show">show</a></b>)
+<div class="code"><code><span style="color: #000000">
+<span style="color: #0000BB"></span><span style="color: #007700">public&nbsp;function&nbsp;</span><span style="color: #0000BB">__construct</span><span style="color: #007700">(</span><span style="color: #0000BB">$data</span><span style="color: #007700">=</span><span style="color: #0000BB">null</span><span style="color: #007700">)<br />{<br />&nbsp;&nbsp;&nbsp;&nbsp;if(</span><span style="color: #0000BB">is_string</span><span style="color: #007700">(</span><span style="color: #0000BB">$data</span><span style="color: #007700">))<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">parent</span><span style="color: #007700">::</span><span style="color: #0000BB">__construct</span><span style="color: #007700">(require(</span><span style="color: #0000BB">$data</span><span style="color: #007700">));<br />&nbsp;&nbsp;&nbsp;&nbsp;else<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">parent</span><span style="color: #007700">::</span><span style="color: #0000BB">__construct</span><span style="color: #007700">(</span><span style="color: #0000BB">$data</span><span style="color: #007700">);<br />}</span>
+</span>
+</code></div>
+</div>
+<p>Constructor.</p>
+
+
+<div class="detailHeader" id="applyTo-detail">
+applyTo()
+<span class="detailHeaderTag">
+method
+</span>
+</div>
+
+<table class="summaryTable">
+<tr><td colspan="3">
+<div class="signature2">
+public void <b>applyTo</b>(object $object)</div>
+</td></tr>
+<tr>
+  <td class="paramNameCol">$object</td>
+  <td class="paramTypeCol">object</td>
+  <td class="paramDescCol">object to be applied with this configuration</td>
+</tr>
+</table>
+
+<div class="sourceCode">
+<b>Source Code:</b> <a class="sourceLink" href="https://github.com/yiisoft/yii/blob/1.0.12/framework/collections/CConfiguration.php#L99">framework/collections/CConfiguration.php#99</a> (<b><a href="#" class="show">show</a></b>)
+<div class="code"><code><span style="color: #000000">
+<span style="color: #0000BB"></span><span style="color: #007700">public&nbsp;function&nbsp;</span><span style="color: #0000BB">applyTo</span><span style="color: #007700">(</span><span style="color: #0000BB">$object</span><span style="color: #007700">)<br />{<br />&nbsp;&nbsp;&nbsp;&nbsp;foreach(</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">toArray</span><span style="color: #007700">()&nbsp;as&nbsp;</span><span style="color: #0000BB">$key</span><span style="color: #007700">=&gt;</span><span style="color: #0000BB">$value</span><span style="color: #007700">)<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$object</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">$key</span><span style="color: #007700">=</span><span style="color: #0000BB">$value</span><span style="color: #007700">;<br />}</span>
+</span>
+</code></div>
+</div>
+<p>Applies the configuration to an object.
+Each (key,value) pair in the configuration data is applied
+to the object like: $object->$key=$value.</p>
+
+
+<div class="detailHeader" id="createObject-detail">
+createObject()
+<span class="detailHeaderTag">
+method
+</span>
+</div>
+
+<table class="summaryTable">
+<tr><td colspan="3">
+<div class="signature2">
+public static mixed <b>createObject</b>(mixed $config)</div>
+</td></tr>
+<tr>
+  <td class="paramNameCol">$config</td>
+  <td class="paramTypeCol">mixed</td>
+  <td class="paramDescCol">the configuration. It can be either a string or an array.</td>
+</tr>
+<tr>
+  <td class="paramNameCol">{return}</td>
+  <td class="paramTypeCol">mixed</td>
+  <td class="paramDescCol">the created object</td>
+</tr>
+</table>
+
+<div class="sourceCode">
+<b>Source Code:</b> <a class="sourceLink" href="https://github.com/yiisoft/yii/blob/1.0.12/framework/collections/CConfiguration.php#L115">framework/collections/CConfiguration.php#115</a> (<b><a href="#" class="show">show</a></b>)
+<div class="code"><code><span style="color: #000000">
+<span style="color: #0000BB"></span><span style="color: #007700">public&nbsp;static&nbsp;function&nbsp;</span><span style="color: #0000BB">createObject</span><span style="color: #007700">(</span><span style="color: #0000BB">$config</span><span style="color: #007700">)<br />{<br />&nbsp;&nbsp;&nbsp;&nbsp;if(</span><span style="color: #0000BB">$config&nbsp;</span><span style="color: #007700">instanceof&nbsp;</span><span style="color: #0000BB">self</span><span style="color: #007700">)<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$config</span><span style="color: #007700">=</span><span style="color: #0000BB">$config</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">toArray</span><span style="color: #007700">();<br />&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;</span><span style="color: #0000BB">Yii</span><span style="color: #007700">::</span><span style="color: #0000BB">createComponent</span><span style="color: #007700">(</span><span style="color: #0000BB">$config</span><span style="color: #007700">);<br />}</span>
+</span>
+</code></div>
+</div>
+<p>Creates an object and initializes it based on the given configuration.
+<br/><br/>
+NOTE: this method has been deprecated since version 1.0.1.
+Please use <a href="/doc/api/1.0/YiiBase#createComponent">Yii::createComponent</a>, instead.</p>
+
+
+<div class="detailHeader" id="loadFromFile-detail">
+loadFromFile()
+<span class="detailHeaderTag">
+method
+</span>
+</div>
+
+<table class="summaryTable">
+<tr><td colspan="3">
+<div class="signature2">
+public void <b>loadFromFile</b>(string $configFile)</div>
+</td></tr>
+<tr>
+  <td class="paramNameCol">$configFile</td>
+  <td class="paramTypeCol">string</td>
+  <td class="paramDescCol">configuration file path (if using relative path, be aware of what is the current path)</td>
+</tr>
+</table>
+
+<div class="sourceCode">
+<b>Source Code:</b> <a class="sourceLink" href="https://github.com/yiisoft/yii/blob/1.0.12/framework/collections/CConfiguration.php#L74">framework/collections/CConfiguration.php#74</a> (<b><a href="#" class="show">show</a></b>)
+<div class="code"><code><span style="color: #000000">
+<span style="color: #0000BB"></span><span style="color: #007700">public&nbsp;function&nbsp;</span><span style="color: #0000BB">loadFromFile</span><span style="color: #007700">(</span><span style="color: #0000BB">$configFile</span><span style="color: #007700">)<br />{<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$data</span><span style="color: #007700">=require(</span><span style="color: #0000BB">$configFile</span><span style="color: #007700">);<br />&nbsp;&nbsp;&nbsp;&nbsp;if(</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">getCount</span><span style="color: #007700">()&gt;</span><span style="color: #0000BB">0</span><span style="color: #007700">)<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">mergeWith</span><span style="color: #007700">(</span><span style="color: #0000BB">$data</span><span style="color: #007700">);<br />&nbsp;&nbsp;&nbsp;&nbsp;else<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">copyFrom</span><span style="color: #007700">(</span><span style="color: #0000BB">$data</span><span style="color: #007700">);<br />}</span>
+</span>
+</code></div>
+</div>
+<p>Loads configuration data from a file and merges it with the existing configuration.
+<br/><br/>
+A config file must be a PHP script returning a configuration array (like the following)
+<pre>
+return array
+(
+    'name'=&gt;'My Application',
+    'defaultController'=&gt;'index',
+);
+</pre></p>
+
+<div class="SeeAlso">
+<h4>See Also</h4>
+<ul>
+	<li><a href="/doc/api/1.0/CConfiguration#mergeWith">mergeWith</a></li>
+</ul>
+</div>
+
+<div class="detailHeader" id="saveAsString-detail">
+saveAsString()
+<span class="detailHeaderTag">
+method
+</span>
+</div>
+
+<table class="summaryTable">
+<tr><td colspan="3">
+<div class="signature2">
+public string <b>saveAsString</b>()</div>
+</td></tr>
+<tr>
+  <td class="paramNameCol">{return}</td>
+  <td class="paramTypeCol">string</td>
+  <td class="paramDescCol">the string representation of the configuration</td>
+</tr>
+</table>
+
+<div class="sourceCode">
+<b>Source Code:</b> <a class="sourceLink" href="https://github.com/yiisoft/yii/blob/1.0.12/framework/collections/CConfiguration.php#L88">framework/collections/CConfiguration.php#88</a> (<b><a href="#" class="show">show</a></b>)
+<div class="code"><code><span style="color: #000000">
+<span style="color: #0000BB"></span><span style="color: #007700">public&nbsp;function&nbsp;</span><span style="color: #0000BB">saveAsString</span><span style="color: #007700">()<br />{<br />&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;</span><span style="color: #0000BB">str_replace</span><span style="color: #007700">(</span><span style="color: #DD0000">"\r"</span><span style="color: #007700">,</span><span style="color: #DD0000">''</span><span style="color: #007700">,</span><span style="color: #0000BB">var_export</span><span style="color: #007700">(</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">toArray</span><span style="color: #007700">(),</span><span style="color: #0000BB">true</span><span style="color: #007700">));<br />}</span>
+</span>
+</code></div>
+</div>
+<p>Saves the configuration into a string.
+The string is a valid PHP expression representing the configuration data as an array.</p>
+
+

@@ -1,0 +1,1091 @@
+<h1>CConsoleApplication</h1>
+<div id="nav">
+<a href="/doc/api/1.0/">All Packages</a>
+| <a href="#properties">Properties</a>
+| <a href="#methods">Methods</a>
+| <a href="#events">Events</a>
+</div>
+
+<table class="summaryTable docClass">
+<colgroup>
+	<col class="col-name" />
+	<col class="col-value" />
+</colgroup>
+<tr>
+  <th>Package</th>
+  <td><a href="/doc/api/1.0/#system.console">system.console</a></td>
+</tr>
+<tr>
+  <th>Inheritance</th>
+  <td>class CConsoleApplication &raquo;
+<a href="/doc/api/1.0/CApplication">CApplication</a> &raquo;
+<a href="/doc/api/1.0/CModule">CModule</a> &raquo;
+<a href="/doc/api/1.0/CComponent">CComponent</a></td>
+</tr>
+<tr>
+  <th>Since</th>
+  <td>1.0</td>
+</tr>
+<tr>
+  <th>Version</th>
+  <td>$Id$</td>
+</tr>
+<tr>
+  <th>Source Code</th>
+  <td><a class="sourceLink" href="https://github.com/yiisoft/yii/blob/1.0.12/framework/console/CConsoleApplication.php">framework/console/CConsoleApplication.php</a></td>
+</tr>
+</table>
+
+<div id="classDescription">
+CConsoleApplication represents a console application.
+<br/><br/>
+CConsoleApplication extends <a href="/doc/api/1.0/CApplication">CApplication</a> by providing functionalities
+specific to console requests. In particular, it deals with console requests
+through a command-based approach:
+<ul>
+<li>A console application consists of one or several possible user commands;</li>
+<li>Each user command is implemented as a class extending <a href="/doc/api/1.0/CConsoleCommand">CConsoleCommand</a>;</li>
+<li>User specifies which command to run on the command line;</li>
+<li>The command processes the user request with the specified parameters.</li>
+</ul>
+<br/><br/>
+The command classes reside in the directory <a href="/doc/api/1.0/CConsoleApplication#getCommandPath">commandPath</a>.
+The name of the class follows the pattern: &lt;command-name&gt;Command, and its
+file name is the same the class name. For example, the 'ShellCommand' class defines
+a 'shell' command and the class file name is 'ShellCommand.php'.
+<br/><br/>
+To run the console application, enter the following on the command line:
+<pre>
+php path/to/entry_script.php &lt;command name&gt; [param 1] [param 2] ...
+</pre>
+<br/><br/>
+You may use the following to see help instructions about a command:
+<pre>
+php path/to/entry_script.php help &lt;command name&gt;
+</pre></div>
+<a name="properties"></a>
+
+<div class="summary docProperty">
+<h2>Public Properties</h2>
+
+<p><a href="#" class="toggle">Hide inherited properties</a></p>
+
+<table class="summaryTable">
+<colgroup>
+	<col class="col-property" />
+	<col class="col-type" />
+	<col class="col-description" />
+	<col class="col-defined" />
+</colgroup>
+<tr>
+  <th>Property</th><th>Type</th><th>Description</th><th>Defined By</th>
+</tr>
+<tr class="inherited" id="basePath">
+  <td><a href="/doc/api/1.0/CApplication#basePath-detail">basePath</a></td>
+  <td>string</td>
+  <td>the root directory of the application.</td>
+  <td><a href="/doc/api/1.0/CApplication">CApplication</a></td>
+</tr>
+<tr class="inherited" id="behaviors">
+  <td><a href="/doc/api/1.0/CModule#behaviors-detail">behaviors</a></td>
+  <td>array</td>
+  <td>the behaviors that should be attached to the module.</td>
+  <td><a href="/doc/api/1.0/CModule">CModule</a></td>
+</tr>
+<tr class="inherited" id="cache">
+  <td><a href="/doc/api/1.0/CApplication#cache-detail">cache</a></td>
+  <td><a href="/doc/api/1.0/CCache">CCache</a></td>
+  <td>the cache application component.</td>
+  <td><a href="/doc/api/1.0/CApplication">CApplication</a></td>
+</tr>
+<tr class="inherited" id="charset">
+  <td><a href="/doc/api/1.0/CApplication#charset-detail">charset</a></td>
+  <td>string</td>
+  <td>the charset currently used for the application.</td>
+  <td><a href="/doc/api/1.0/CApplication">CApplication</a></td>
+</tr>
+<tr id="commandMap">
+  <td><a href="/doc/api/1.0/CConsoleApplication#commandMap-detail">commandMap</a></td>
+  <td>array</td>
+  <td>mapping from command name to command configurations.</td>
+  <td>CConsoleApplication</td>
+</tr>
+<tr id="commandPath">
+  <td><a href="/doc/api/1.0/CConsoleApplication#commandPath-detail">commandPath</a></td>
+  <td>string</td>
+  <td>the directory that contains the command classes.</td>
+  <td>CConsoleApplication</td>
+</tr>
+<tr id="commandRunner">
+  <td><a href="/doc/api/1.0/CConsoleApplication#commandRunner-detail">commandRunner</a></td>
+  <td><a href="/doc/api/1.0/CConsoleCommandRunner">CConsoleCommandRunner</a></td>
+  <td>Returns the command runner.</td>
+  <td>CConsoleApplication</td>
+</tr>
+<tr class="inherited" id="components">
+  <td><a href="/doc/api/1.0/CModule#components-detail">components</a></td>
+  <td>array</td>
+  <td>the currently loaded components (indexed by their IDs)</td>
+  <td><a href="/doc/api/1.0/CModule">CModule</a></td>
+</tr>
+<tr class="inherited" id="coreMessages">
+  <td><a href="/doc/api/1.0/CApplication#coreMessages-detail">coreMessages</a></td>
+  <td><a href="/doc/api/1.0/CPhpMessageSource">CPhpMessageSource</a></td>
+  <td>the core message translations</td>
+  <td><a href="/doc/api/1.0/CApplication">CApplication</a></td>
+</tr>
+<tr class="inherited" id="dateFormatter">
+  <td><a href="/doc/api/1.0/CApplication#dateFormatter-detail">dateFormatter</a></td>
+  <td><a href="/doc/api/1.0/CDateFormatter">CDateFormatter</a></td>
+  <td>the locale-dependent date formatter.</td>
+  <td><a href="/doc/api/1.0/CApplication">CApplication</a></td>
+</tr>
+<tr class="inherited" id="db">
+  <td><a href="/doc/api/1.0/CApplication#db-detail">db</a></td>
+  <td><a href="/doc/api/1.0/CDbConnection">CDbConnection</a></td>
+  <td>the database connection</td>
+  <td><a href="/doc/api/1.0/CApplication">CApplication</a></td>
+</tr>
+<tr class="inherited" id="errorHandler">
+  <td><a href="/doc/api/1.0/CApplication#errorHandler-detail">errorHandler</a></td>
+  <td><a href="/doc/api/1.0/CErrorHandler">CErrorHandler</a></td>
+  <td>the error handler application component.</td>
+  <td><a href="/doc/api/1.0/CApplication">CApplication</a></td>
+</tr>
+<tr class="inherited" id="extensionPath">
+  <td><a href="/doc/api/1.0/CApplication#extensionPath-detail">extensionPath</a></td>
+  <td>string</td>
+  <td>Returns the root directory that holds all third-party extensions.</td>
+  <td><a href="/doc/api/1.0/CApplication">CApplication</a></td>
+</tr>
+<tr class="inherited" id="id">
+  <td><a href="/doc/api/1.0/CApplication#id-detail">id</a></td>
+  <td>string</td>
+  <td>a unique identifier for the application.</td>
+  <td><a href="/doc/api/1.0/CApplication">CApplication</a></td>
+</tr>
+<tr class="inherited" id="language">
+  <td><a href="/doc/api/1.0/CApplication#language-detail">language</a></td>
+  <td>string</td>
+  <td>the language that the user is using and the application should be targeted to.</td>
+  <td><a href="/doc/api/1.0/CApplication">CApplication</a></td>
+</tr>
+<tr class="inherited" id="locale">
+  <td><a href="/doc/api/1.0/CApplication#locale-detail">locale</a></td>
+  <td><a href="/doc/api/1.0/CLocale">CLocale</a></td>
+  <td>the locale instance</td>
+  <td><a href="/doc/api/1.0/CApplication">CApplication</a></td>
+</tr>
+<tr class="inherited" id="messages">
+  <td><a href="/doc/api/1.0/CApplication#messages-detail">messages</a></td>
+  <td><a href="/doc/api/1.0/CMessageSource">CMessageSource</a></td>
+  <td>the application message translations</td>
+  <td><a href="/doc/api/1.0/CApplication">CApplication</a></td>
+</tr>
+<tr class="inherited" id="modulePath">
+  <td><a href="/doc/api/1.0/CModule#modulePath-detail">modulePath</a></td>
+  <td>string</td>
+  <td>the directory that contains the application modules.</td>
+  <td><a href="/doc/api/1.0/CModule">CModule</a></td>
+</tr>
+<tr class="inherited" id="modules">
+  <td><a href="/doc/api/1.0/CModule#modules-detail">modules</a></td>
+  <td>array</td>
+  <td>the configuration of the currently installed modules (module ID => configuration)</td>
+  <td><a href="/doc/api/1.0/CModule">CModule</a></td>
+</tr>
+<tr class="inherited" id="name">
+  <td><a href="/doc/api/1.0/CApplication#name-detail">name</a></td>
+  <td>string</td>
+  <td>the application name.</td>
+  <td><a href="/doc/api/1.0/CApplication">CApplication</a></td>
+</tr>
+<tr class="inherited" id="numberFormatter">
+  <td><a href="/doc/api/1.0/CApplication#numberFormatter-detail">numberFormatter</a></td>
+  <td><a href="/doc/api/1.0/CNumberFormatter">CNumberFormatter</a></td>
+  <td>the locale-dependent number formatter.</td>
+  <td><a href="/doc/api/1.0/CApplication">CApplication</a></td>
+</tr>
+<tr class="inherited" id="params">
+  <td><a href="/doc/api/1.0/CModule#params-detail">params</a></td>
+  <td><a href="/doc/api/1.0/CAttributeCollection">CAttributeCollection</a></td>
+  <td>the list of user-defined parameters</td>
+  <td><a href="/doc/api/1.0/CModule">CModule</a></td>
+</tr>
+<tr class="inherited" id="parentModule">
+  <td><a href="/doc/api/1.0/CModule#parentModule-detail">parentModule</a></td>
+  <td><a href="/doc/api/1.0/CModule">CModule</a></td>
+  <td>the parent module.</td>
+  <td><a href="/doc/api/1.0/CModule">CModule</a></td>
+</tr>
+<tr class="inherited" id="preload">
+  <td><a href="/doc/api/1.0/CModule#preload-detail">preload</a></td>
+  <td>array</td>
+  <td>the IDs of the application components that should be preloaded.</td>
+  <td><a href="/doc/api/1.0/CModule">CModule</a></td>
+</tr>
+<tr class="inherited" id="request">
+  <td><a href="/doc/api/1.0/CApplication#request-detail">request</a></td>
+  <td><a href="/doc/api/1.0/CHttpRequest">CHttpRequest</a></td>
+  <td>the request component</td>
+  <td><a href="/doc/api/1.0/CApplication">CApplication</a></td>
+</tr>
+<tr class="inherited" id="runtimePath">
+  <td><a href="/doc/api/1.0/CApplication#runtimePath-detail">runtimePath</a></td>
+  <td>string</td>
+  <td>the directory that stores runtime files.</td>
+  <td><a href="/doc/api/1.0/CApplication">CApplication</a></td>
+</tr>
+<tr class="inherited" id="securityManager">
+  <td><a href="/doc/api/1.0/CApplication#securityManager-detail">securityManager</a></td>
+  <td><a href="/doc/api/1.0/CSecurityManager">CSecurityManager</a></td>
+  <td>the security manager application component.</td>
+  <td><a href="/doc/api/1.0/CApplication">CApplication</a></td>
+</tr>
+<tr class="inherited" id="sourceLanguage">
+  <td><a href="/doc/api/1.0/CApplication#sourceLanguage-detail">sourceLanguage</a></td>
+  <td>string</td>
+  <td>the language that the application is written in.</td>
+  <td><a href="/doc/api/1.0/CApplication">CApplication</a></td>
+</tr>
+<tr class="inherited" id="statePersister">
+  <td><a href="/doc/api/1.0/CApplication#statePersister-detail">statePersister</a></td>
+  <td><a href="/doc/api/1.0/CStatePersister">CStatePersister</a></td>
+  <td>the state persister application component.</td>
+  <td><a href="/doc/api/1.0/CApplication">CApplication</a></td>
+</tr>
+<tr class="inherited" id="timeZone">
+  <td><a href="/doc/api/1.0/CApplication#timeZone-detail">timeZone</a></td>
+  <td>string</td>
+  <td>Returns the time zone used by this application.</td>
+  <td><a href="/doc/api/1.0/CApplication">CApplication</a></td>
+</tr>
+<tr class="inherited" id="urlManager">
+  <td><a href="/doc/api/1.0/CApplication#urlManager-detail">urlManager</a></td>
+  <td><a href="/doc/api/1.0/CUrlManager">CUrlManager</a></td>
+  <td>the URL manager component</td>
+  <td><a href="/doc/api/1.0/CApplication">CApplication</a></td>
+</tr>
+</table>
+</div>
+<a name="methods"></a>
+
+<div class="summary docMethod">
+<h2>Public Methods</h2>
+
+<p><a href="#" class="toggle">Hide inherited methods</a></p>
+
+<table class="summaryTable">
+<colgroup>
+	<col class="col-method" />
+	<col class="col-description" />
+	<col class="col-defined" />
+</colgroup>
+<tr>
+  <th>Method</th><th>Description</th><th>Defined By</th>
+</tr>
+<tr class="inherited" id="__call">
+  <td><a href="/doc/api/1.0/CComponent#__call-detail">__call()</a></td>
+  <td>Calls the named method which is not a class method.</td>
+  <td><a href="/doc/api/1.0/CComponent">CComponent</a></td>
+</tr>
+<tr class="inherited" id="__construct">
+  <td><a href="/doc/api/1.0/CApplication#__construct-detail">__construct()</a></td>
+  <td>Constructor.</td>
+  <td><a href="/doc/api/1.0/CApplication">CApplication</a></td>
+</tr>
+<tr class="inherited" id="__get">
+  <td><a href="/doc/api/1.0/CModule#__get-detail">__get()</a></td>
+  <td>Getter magic method.</td>
+  <td><a href="/doc/api/1.0/CModule">CModule</a></td>
+</tr>
+<tr class="inherited" id="__isset">
+  <td><a href="/doc/api/1.0/CModule#__isset-detail">__isset()</a></td>
+  <td>Checks if a property value is null.</td>
+  <td><a href="/doc/api/1.0/CModule">CModule</a></td>
+</tr>
+<tr class="inherited" id="__set">
+  <td><a href="/doc/api/1.0/CComponent#__set-detail">__set()</a></td>
+  <td>Sets value of a component property.</td>
+  <td><a href="/doc/api/1.0/CComponent">CComponent</a></td>
+</tr>
+<tr class="inherited" id="__unset">
+  <td><a href="/doc/api/1.0/CComponent#__unset-detail">__unset()</a></td>
+  <td>Sets a component property to be null.</td>
+  <td><a href="/doc/api/1.0/CComponent">CComponent</a></td>
+</tr>
+<tr class="inherited" id="asa">
+  <td><a href="/doc/api/1.0/CComponent#asa-detail">asa()</a></td>
+  <td>Returns the named behavior object.</td>
+  <td><a href="/doc/api/1.0/CComponent">CComponent</a></td>
+</tr>
+<tr class="inherited" id="attachBehavior">
+  <td><a href="/doc/api/1.0/CComponent#attachBehavior-detail">attachBehavior()</a></td>
+  <td>Attaches a behavior to this component.</td>
+  <td><a href="/doc/api/1.0/CComponent">CComponent</a></td>
+</tr>
+<tr class="inherited" id="attachBehaviors">
+  <td><a href="/doc/api/1.0/CComponent#attachBehaviors-detail">attachBehaviors()</a></td>
+  <td>Attaches a list of behaviors to the component.</td>
+  <td><a href="/doc/api/1.0/CComponent">CComponent</a></td>
+</tr>
+<tr class="inherited" id="attachEventHandler">
+  <td><a href="/doc/api/1.0/CComponent#attachEventHandler-detail">attachEventHandler()</a></td>
+  <td>Attaches an event handler to an event.</td>
+  <td><a href="/doc/api/1.0/CComponent">CComponent</a></td>
+</tr>
+<tr class="inherited" id="canGetProperty">
+  <td><a href="/doc/api/1.0/CComponent#canGetProperty-detail">canGetProperty()</a></td>
+  <td>Determines whether a property can be read.</td>
+  <td><a href="/doc/api/1.0/CComponent">CComponent</a></td>
+</tr>
+<tr class="inherited" id="canSetProperty">
+  <td><a href="/doc/api/1.0/CComponent#canSetProperty-detail">canSetProperty()</a></td>
+  <td>Determines whether a property can be set.</td>
+  <td><a href="/doc/api/1.0/CComponent">CComponent</a></td>
+</tr>
+<tr class="inherited" id="clearGlobalState">
+  <td><a href="/doc/api/1.0/CApplication#clearGlobalState-detail">clearGlobalState()</a></td>
+  <td>Clears a global value.</td>
+  <td><a href="/doc/api/1.0/CApplication">CApplication</a></td>
+</tr>
+<tr class="inherited" id="configure">
+  <td><a href="/doc/api/1.0/CModule#configure-detail">configure()</a></td>
+  <td>Configures the module with the specified configuration.</td>
+  <td><a href="/doc/api/1.0/CModule">CModule</a></td>
+</tr>
+<tr class="inherited" id="detachBehavior">
+  <td><a href="/doc/api/1.0/CComponent#detachBehavior-detail">detachBehavior()</a></td>
+  <td>Detaches a behavior from the component.</td>
+  <td><a href="/doc/api/1.0/CComponent">CComponent</a></td>
+</tr>
+<tr class="inherited" id="detachBehaviors">
+  <td><a href="/doc/api/1.0/CComponent#detachBehaviors-detail">detachBehaviors()</a></td>
+  <td>Detaches all behaviors from the component.</td>
+  <td><a href="/doc/api/1.0/CComponent">CComponent</a></td>
+</tr>
+<tr class="inherited" id="detachEventHandler">
+  <td><a href="/doc/api/1.0/CComponent#detachEventHandler-detail">detachEventHandler()</a></td>
+  <td>Detaches an existing event handler.</td>
+  <td><a href="/doc/api/1.0/CComponent">CComponent</a></td>
+</tr>
+<tr class="inherited" id="disableBehavior">
+  <td><a href="/doc/api/1.0/CComponent#disableBehavior-detail">disableBehavior()</a></td>
+  <td>Disables an attached behavior.</td>
+  <td><a href="/doc/api/1.0/CComponent">CComponent</a></td>
+</tr>
+<tr class="inherited" id="disableBehaviors">
+  <td><a href="/doc/api/1.0/CComponent#disableBehaviors-detail">disableBehaviors()</a></td>
+  <td>Disables all behaviors attached to this component.</td>
+  <td><a href="/doc/api/1.0/CComponent">CComponent</a></td>
+</tr>
+<tr id="displayError">
+  <td><a href="/doc/api/1.0/CConsoleApplication#displayError-detail">displayError()</a></td>
+  <td>Displays the captured PHP error.</td>
+  <td>CConsoleApplication</td>
+</tr>
+<tr id="displayException">
+  <td><a href="/doc/api/1.0/CConsoleApplication#displayException-detail">displayException()</a></td>
+  <td>Displays the uncaught PHP exception.</td>
+  <td>CConsoleApplication</td>
+</tr>
+<tr class="inherited" id="enableBehavior">
+  <td><a href="/doc/api/1.0/CComponent#enableBehavior-detail">enableBehavior()</a></td>
+  <td>Enables an attached behavior.</td>
+  <td><a href="/doc/api/1.0/CComponent">CComponent</a></td>
+</tr>
+<tr class="inherited" id="enableBehaviors">
+  <td><a href="/doc/api/1.0/CComponent#enableBehaviors-detail">enableBehaviors()</a></td>
+  <td>Enables all behaviors attached to this component.</td>
+  <td><a href="/doc/api/1.0/CComponent">CComponent</a></td>
+</tr>
+<tr class="inherited" id="end">
+  <td><a href="/doc/api/1.0/CApplication#end-detail">end()</a></td>
+  <td>Terminates the application.</td>
+  <td><a href="/doc/api/1.0/CApplication">CApplication</a></td>
+</tr>
+<tr class="inherited" id="findLocalizedFile">
+  <td><a href="/doc/api/1.0/CApplication#findLocalizedFile-detail">findLocalizedFile()</a></td>
+  <td>Returns the localized version of a specified file.</td>
+  <td><a href="/doc/api/1.0/CApplication">CApplication</a></td>
+</tr>
+<tr class="inherited" id="getBasePath">
+  <td><a href="/doc/api/1.0/CApplication#getBasePath-detail">getBasePath()</a></td>
+  <td>Returns the root directory of the application. Defaults to 'protected'.</td>
+  <td><a href="/doc/api/1.0/CApplication">CApplication</a></td>
+</tr>
+<tr class="inherited" id="getCache">
+  <td><a href="/doc/api/1.0/CApplication#getCache-detail">getCache()</a></td>
+  <td>Returns the cache application component. Null if the component is not enabled.</td>
+  <td><a href="/doc/api/1.0/CApplication">CApplication</a></td>
+</tr>
+<tr id="getCommandPath">
+  <td><a href="/doc/api/1.0/CConsoleApplication#getCommandPath-detail">getCommandPath()</a></td>
+  <td>Returns the directory that contains the command classes. Defaults to 'protected/commands'.</td>
+  <td>CConsoleApplication</td>
+</tr>
+<tr id="getCommandRunner">
+  <td><a href="/doc/api/1.0/CConsoleApplication#getCommandRunner-detail">getCommandRunner()</a></td>
+  <td>Returns the command runner.</td>
+  <td>CConsoleApplication</td>
+</tr>
+<tr class="inherited" id="getComponent">
+  <td><a href="/doc/api/1.0/CModule#getComponent-detail">getComponent()</a></td>
+  <td>Retrieves the named application component.</td>
+  <td><a href="/doc/api/1.0/CModule">CModule</a></td>
+</tr>
+<tr class="inherited" id="getComponents">
+  <td><a href="/doc/api/1.0/CModule#getComponents-detail">getComponents()</a></td>
+  <td>Returns the currently loaded components (indexed by their IDs)</td>
+  <td><a href="/doc/api/1.0/CModule">CModule</a></td>
+</tr>
+<tr class="inherited" id="getCoreMessages">
+  <td><a href="/doc/api/1.0/CApplication#getCoreMessages-detail">getCoreMessages()</a></td>
+  <td>Returns the core message translations</td>
+  <td><a href="/doc/api/1.0/CApplication">CApplication</a></td>
+</tr>
+<tr class="inherited" id="getDateFormatter">
+  <td><a href="/doc/api/1.0/CApplication#getDateFormatter-detail">getDateFormatter()</a></td>
+  <td>Returns the locale-dependent date formatter.
+The current <a href="/doc/api/1.0/CConsoleApplication#getLocale">application locale</a> will be used.</td>
+  <td><a href="/doc/api/1.0/CApplication">CApplication</a></td>
+</tr>
+<tr class="inherited" id="getDb">
+  <td><a href="/doc/api/1.0/CApplication#getDb-detail">getDb()</a></td>
+  <td>Returns the database connection</td>
+  <td><a href="/doc/api/1.0/CApplication">CApplication</a></td>
+</tr>
+<tr class="inherited" id="getErrorHandler">
+  <td><a href="/doc/api/1.0/CApplication#getErrorHandler-detail">getErrorHandler()</a></td>
+  <td>Returns the error handler application component.</td>
+  <td><a href="/doc/api/1.0/CApplication">CApplication</a></td>
+</tr>
+<tr class="inherited" id="getEventHandlers">
+  <td><a href="/doc/api/1.0/CComponent#getEventHandlers-detail">getEventHandlers()</a></td>
+  <td>Returns the list of attached event handlers for an event.</td>
+  <td><a href="/doc/api/1.0/CComponent">CComponent</a></td>
+</tr>
+<tr class="inherited" id="getExtensionPath">
+  <td><a href="/doc/api/1.0/CApplication#getExtensionPath-detail">getExtensionPath()</a></td>
+  <td>Returns the root directory that holds all third-party extensions.</td>
+  <td><a href="/doc/api/1.0/CApplication">CApplication</a></td>
+</tr>
+<tr class="inherited" id="getGlobalState">
+  <td><a href="/doc/api/1.0/CApplication#getGlobalState-detail">getGlobalState()</a></td>
+  <td>Returns a global value.</td>
+  <td><a href="/doc/api/1.0/CApplication">CApplication</a></td>
+</tr>
+<tr class="inherited" id="getId">
+  <td><a href="/doc/api/1.0/CApplication#getId-detail">getId()</a></td>
+  <td>Returns a unique identifier for the application.</td>
+  <td><a href="/doc/api/1.0/CApplication">CApplication</a></td>
+</tr>
+<tr class="inherited" id="getLanguage">
+  <td><a href="/doc/api/1.0/CApplication#getLanguage-detail">getLanguage()</a></td>
+  <td>Returns the language that the user is using and the application should be targeted to.
+Defaults to the <a href="/doc/api/1.0/CConsoleApplication#sourceLanguage">source language</a>.</td>
+  <td><a href="/doc/api/1.0/CApplication">CApplication</a></td>
+</tr>
+<tr class="inherited" id="getLocale">
+  <td><a href="/doc/api/1.0/CApplication#getLocale-detail">getLocale()</a></td>
+  <td>Returns the locale instance</td>
+  <td><a href="/doc/api/1.0/CApplication">CApplication</a></td>
+</tr>
+<tr class="inherited" id="getMessages">
+  <td><a href="/doc/api/1.0/CApplication#getMessages-detail">getMessages()</a></td>
+  <td>Returns the application message translations</td>
+  <td><a href="/doc/api/1.0/CApplication">CApplication</a></td>
+</tr>
+<tr class="inherited" id="getModule">
+  <td><a href="/doc/api/1.0/CModule#getModule-detail">getModule()</a></td>
+  <td>Retrieves the named application module.</td>
+  <td><a href="/doc/api/1.0/CModule">CModule</a></td>
+</tr>
+<tr class="inherited" id="getModulePath">
+  <td><a href="/doc/api/1.0/CModule#getModulePath-detail">getModulePath()</a></td>
+  <td>Returns the directory that contains the application modules. Defaults to the 'modules' subdirectory of <a href="/doc/api/1.0/CConsoleApplication#basePath">basePath</a>.</td>
+  <td><a href="/doc/api/1.0/CModule">CModule</a></td>
+</tr>
+<tr class="inherited" id="getModules">
+  <td><a href="/doc/api/1.0/CModule#getModules-detail">getModules()</a></td>
+  <td>Returns the configuration of the currently installed modules (module ID => configuration)</td>
+  <td><a href="/doc/api/1.0/CModule">CModule</a></td>
+</tr>
+<tr class="inherited" id="getNumberFormatter">
+  <td><a href="/doc/api/1.0/CApplication#getNumberFormatter-detail">getNumberFormatter()</a></td>
+  <td>Returns the locale-dependent number formatter.
+The current <a href="/doc/api/1.0/CConsoleApplication#getLocale">application locale</a> will be used.</td>
+  <td><a href="/doc/api/1.0/CApplication">CApplication</a></td>
+</tr>
+<tr class="inherited" id="getParams">
+  <td><a href="/doc/api/1.0/CModule#getParams-detail">getParams()</a></td>
+  <td>Returns the list of user-defined parameters</td>
+  <td><a href="/doc/api/1.0/CModule">CModule</a></td>
+</tr>
+<tr class="inherited" id="getParentModule">
+  <td><a href="/doc/api/1.0/CModule#getParentModule-detail">getParentModule()</a></td>
+  <td>Returns the parent module. Null if this module does not have a parent.</td>
+  <td><a href="/doc/api/1.0/CModule">CModule</a></td>
+</tr>
+<tr class="inherited" id="getRequest">
+  <td><a href="/doc/api/1.0/CApplication#getRequest-detail">getRequest()</a></td>
+  <td>Returns the request component</td>
+  <td><a href="/doc/api/1.0/CApplication">CApplication</a></td>
+</tr>
+<tr class="inherited" id="getRuntimePath">
+  <td><a href="/doc/api/1.0/CApplication#getRuntimePath-detail">getRuntimePath()</a></td>
+  <td>Returns the directory that stores runtime files. Defaults to 'protected/runtime'.</td>
+  <td><a href="/doc/api/1.0/CApplication">CApplication</a></td>
+</tr>
+<tr class="inherited" id="getSecurityManager">
+  <td><a href="/doc/api/1.0/CApplication#getSecurityManager-detail">getSecurityManager()</a></td>
+  <td>Returns the security manager application component.</td>
+  <td><a href="/doc/api/1.0/CApplication">CApplication</a></td>
+</tr>
+<tr class="inherited" id="getStatePersister">
+  <td><a href="/doc/api/1.0/CApplication#getStatePersister-detail">getStatePersister()</a></td>
+  <td>Returns the state persister application component.</td>
+  <td><a href="/doc/api/1.0/CApplication">CApplication</a></td>
+</tr>
+<tr class="inherited" id="getTimeZone">
+  <td><a href="/doc/api/1.0/CApplication#getTimeZone-detail">getTimeZone()</a></td>
+  <td>Returns the time zone used by this application.</td>
+  <td><a href="/doc/api/1.0/CApplication">CApplication</a></td>
+</tr>
+<tr class="inherited" id="getUrlManager">
+  <td><a href="/doc/api/1.0/CApplication#getUrlManager-detail">getUrlManager()</a></td>
+  <td>Returns the URL manager component</td>
+  <td><a href="/doc/api/1.0/CApplication">CApplication</a></td>
+</tr>
+<tr class="inherited" id="handleError">
+  <td><a href="/doc/api/1.0/CApplication#handleError-detail">handleError()</a></td>
+  <td>Handles PHP execution errors such as warnings, notices.</td>
+  <td><a href="/doc/api/1.0/CApplication">CApplication</a></td>
+</tr>
+<tr class="inherited" id="handleException">
+  <td><a href="/doc/api/1.0/CApplication#handleException-detail">handleException()</a></td>
+  <td>Handles uncaught PHP exceptions.</td>
+  <td><a href="/doc/api/1.0/CApplication">CApplication</a></td>
+</tr>
+<tr class="inherited" id="hasComponent">
+  <td><a href="/doc/api/1.0/CModule#hasComponent-detail">hasComponent()</a></td>
+  <td>Determines whether the named application component exists (including both loaded and disabled.)</td>
+  <td><a href="/doc/api/1.0/CModule">CModule</a></td>
+</tr>
+<tr class="inherited" id="hasEvent">
+  <td><a href="/doc/api/1.0/CComponent#hasEvent-detail">hasEvent()</a></td>
+  <td>Determines whether an event is defined.</td>
+  <td><a href="/doc/api/1.0/CComponent">CComponent</a></td>
+</tr>
+<tr class="inherited" id="hasEventHandler">
+  <td><a href="/doc/api/1.0/CComponent#hasEventHandler-detail">hasEventHandler()</a></td>
+  <td>Checks whether the named event has attached handlers.</td>
+  <td><a href="/doc/api/1.0/CComponent">CComponent</a></td>
+</tr>
+<tr class="inherited" id="hasProperty">
+  <td><a href="/doc/api/1.0/CComponent#hasProperty-detail">hasProperty()</a></td>
+  <td>Determines whether a property is defined.</td>
+  <td><a href="/doc/api/1.0/CComponent">CComponent</a></td>
+</tr>
+<tr class="inherited" id="onBeginRequest">
+  <td><a href="/doc/api/1.0/CApplication#onBeginRequest-detail">onBeginRequest()</a></td>
+  <td>Raised right BEFORE the application processes the request.</td>
+  <td><a href="/doc/api/1.0/CApplication">CApplication</a></td>
+</tr>
+<tr class="inherited" id="onEndRequest">
+  <td><a href="/doc/api/1.0/CApplication#onEndRequest-detail">onEndRequest()</a></td>
+  <td>Raised right AFTER the application processes the request.</td>
+  <td><a href="/doc/api/1.0/CApplication">CApplication</a></td>
+</tr>
+<tr class="inherited" id="onError">
+  <td><a href="/doc/api/1.0/CApplication#onError-detail">onError()</a></td>
+  <td>Raised when a PHP execution error occurs.</td>
+  <td><a href="/doc/api/1.0/CApplication">CApplication</a></td>
+</tr>
+<tr class="inherited" id="onException">
+  <td><a href="/doc/api/1.0/CApplication#onException-detail">onException()</a></td>
+  <td>Raised when an uncaught PHP exception occurs.</td>
+  <td><a href="/doc/api/1.0/CApplication">CApplication</a></td>
+</tr>
+<tr id="processRequest">
+  <td><a href="/doc/api/1.0/CConsoleApplication#processRequest-detail">processRequest()</a></td>
+  <td>Processes the user request.</td>
+  <td>CConsoleApplication</td>
+</tr>
+<tr class="inherited" id="raiseEvent">
+  <td><a href="/doc/api/1.0/CComponent#raiseEvent-detail">raiseEvent()</a></td>
+  <td>Raises an event.</td>
+  <td><a href="/doc/api/1.0/CComponent">CComponent</a></td>
+</tr>
+<tr class="inherited" id="run">
+  <td><a href="/doc/api/1.0/CApplication#run-detail">run()</a></td>
+  <td>Runs the application.</td>
+  <td><a href="/doc/api/1.0/CApplication">CApplication</a></td>
+</tr>
+<tr class="inherited" id="setAliases">
+  <td><a href="/doc/api/1.0/CModule#setAliases-detail">setAliases()</a></td>
+  <td>Defines the root aliases.</td>
+  <td><a href="/doc/api/1.0/CModule">CModule</a></td>
+</tr>
+<tr class="inherited" id="setBasePath">
+  <td><a href="/doc/api/1.0/CApplication#setBasePath-detail">setBasePath()</a></td>
+  <td>Sets the root directory of the application.</td>
+  <td><a href="/doc/api/1.0/CApplication">CApplication</a></td>
+</tr>
+<tr id="setCommandPath">
+  <td><a href="/doc/api/1.0/CConsoleApplication#setCommandPath-detail">setCommandPath()</a></td>
+  <td>Sets the directory that contains the command classes.</td>
+  <td>CConsoleApplication</td>
+</tr>
+<tr class="inherited" id="setComponent">
+  <td><a href="/doc/api/1.0/CModule#setComponent-detail">setComponent()</a></td>
+  <td>Puts a component under the management of the module.</td>
+  <td><a href="/doc/api/1.0/CModule">CModule</a></td>
+</tr>
+<tr class="inherited" id="setComponents">
+  <td><a href="/doc/api/1.0/CModule#setComponents-detail">setComponents()</a></td>
+  <td>Sets the application components.</td>
+  <td><a href="/doc/api/1.0/CModule">CModule</a></td>
+</tr>
+<tr class="inherited" id="setExtensionPath">
+  <td><a href="/doc/api/1.0/CApplication#setExtensionPath-detail">setExtensionPath()</a></td>
+  <td>Sets the directory that contains all third-party extensions.</td>
+  <td><a href="/doc/api/1.0/CApplication">CApplication</a></td>
+</tr>
+<tr class="inherited" id="setGlobalState">
+  <td><a href="/doc/api/1.0/CApplication#setGlobalState-detail">setGlobalState()</a></td>
+  <td>Sets a global value.</td>
+  <td><a href="/doc/api/1.0/CApplication">CApplication</a></td>
+</tr>
+<tr class="inherited" id="setId">
+  <td><a href="/doc/api/1.0/CApplication#setId-detail">setId()</a></td>
+  <td>Sets a unique identifier for the application.</td>
+  <td><a href="/doc/api/1.0/CApplication">CApplication</a></td>
+</tr>
+<tr class="inherited" id="setImport">
+  <td><a href="/doc/api/1.0/CModule#setImport-detail">setImport()</a></td>
+  <td>Sets the aliases that are used in the module.</td>
+  <td><a href="/doc/api/1.0/CModule">CModule</a></td>
+</tr>
+<tr class="inherited" id="setLanguage">
+  <td><a href="/doc/api/1.0/CApplication#setLanguage-detail">setLanguage()</a></td>
+  <td>Specifies which language the application is targeted to.</td>
+  <td><a href="/doc/api/1.0/CApplication">CApplication</a></td>
+</tr>
+<tr class="inherited" id="setModulePath">
+  <td><a href="/doc/api/1.0/CModule#setModulePath-detail">setModulePath()</a></td>
+  <td>Sets the directory that contains the application modules.</td>
+  <td><a href="/doc/api/1.0/CModule">CModule</a></td>
+</tr>
+<tr class="inherited" id="setModules">
+  <td><a href="/doc/api/1.0/CModule#setModules-detail">setModules()</a></td>
+  <td>Configures the sub-modules of this module.</td>
+  <td><a href="/doc/api/1.0/CModule">CModule</a></td>
+</tr>
+<tr class="inherited" id="setParams">
+  <td><a href="/doc/api/1.0/CModule#setParams-detail">setParams()</a></td>
+  <td>Sets user-defined parameters. This should be in name-value pairs.</td>
+  <td><a href="/doc/api/1.0/CModule">CModule</a></td>
+</tr>
+<tr class="inherited" id="setRuntimePath">
+  <td><a href="/doc/api/1.0/CApplication#setRuntimePath-detail">setRuntimePath()</a></td>
+  <td>Sets the directory that stores runtime files.</td>
+  <td><a href="/doc/api/1.0/CApplication">CApplication</a></td>
+</tr>
+<tr class="inherited" id="setTimeZone">
+  <td><a href="/doc/api/1.0/CApplication#setTimeZone-detail">setTimeZone()</a></td>
+  <td>Sets the time zone used by this application.</td>
+  <td><a href="/doc/api/1.0/CApplication">CApplication</a></td>
+</tr>
+</table>
+</div>
+<div class="summary docMethod">
+<h2>Protected Methods</h2>
+
+<p><a href="#" class="toggle">Hide inherited methods</a></p>
+
+<table class="summaryTable">
+<colgroup>
+	<col class="col-method" />
+	<col class="col-description" />
+	<col class="col-defined" />
+</colgroup>
+<tr>
+  <th>Method</th><th>Description</th><th>Defined By</th>
+</tr>
+<tr id="createCommandRunner">
+  <td><a href="/doc/api/1.0/CConsoleApplication#createCommandRunner-detail">createCommandRunner()</a></td>
+  <td>Creates the command runner instance.</td>
+  <td>CConsoleApplication</td>
+</tr>
+<tr id="init">
+  <td><a href="/doc/api/1.0/CConsoleApplication#init-detail">init()</a></td>
+  <td>Initializes the application by creating the command runner.</td>
+  <td>CConsoleApplication</td>
+</tr>
+<tr class="inherited" id="initSystemHandlers">
+  <td><a href="/doc/api/1.0/CApplication#initSystemHandlers-detail">initSystemHandlers()</a></td>
+  <td>Initializes the class autoloader and error handlers.</td>
+  <td><a href="/doc/api/1.0/CApplication">CApplication</a></td>
+</tr>
+<tr class="inherited" id="loadGlobalState">
+  <td><a href="/doc/api/1.0/CApplication#loadGlobalState-detail">loadGlobalState()</a></td>
+  <td>Loads the global state data from persistent storage.</td>
+  <td><a href="/doc/api/1.0/CApplication">CApplication</a></td>
+</tr>
+<tr class="inherited" id="preinit">
+  <td><a href="/doc/api/1.0/CModule#preinit-detail">preinit()</a></td>
+  <td>Preinitializes the module.</td>
+  <td><a href="/doc/api/1.0/CModule">CModule</a></td>
+</tr>
+<tr class="inherited" id="preloadComponents">
+  <td><a href="/doc/api/1.0/CModule#preloadComponents-detail">preloadComponents()</a></td>
+  <td>Loads static application components.</td>
+  <td><a href="/doc/api/1.0/CModule">CModule</a></td>
+</tr>
+<tr class="inherited" id="registerCoreComponents">
+  <td><a href="/doc/api/1.0/CApplication#registerCoreComponents-detail">registerCoreComponents()</a></td>
+  <td>Registers the core application components.</td>
+  <td><a href="/doc/api/1.0/CApplication">CApplication</a></td>
+</tr>
+<tr class="inherited" id="saveGlobalState">
+  <td><a href="/doc/api/1.0/CApplication#saveGlobalState-detail">saveGlobalState()</a></td>
+  <td>Saves the global state data into persistent storage.</td>
+  <td><a href="/doc/api/1.0/CApplication">CApplication</a></td>
+</tr>
+</table>
+</div>
+<a name="events"></a>
+
+<div class="summary docEvent">
+<h2>Events</h2>
+
+<p><a href="#" class="toggle">Hide inherited events</a></p>
+
+<table class="summaryTable">
+<colgroup>
+	<col class="col-event" />
+	<col class="col-description" />
+	<col class="col-defined" />
+</colgroup>
+<tr>
+  <th>Event</th><th>Description</th><th>Defined By</th>
+</tr>
+<tr class="inherited" id="onBeginRequest">
+  <td><a href="/doc/api/1.0/CApplication#onBeginRequest-detail">onBeginRequest</a></td>
+  <td>Raised right BEFORE the application processes the request.</td>
+  <td><a href="/doc/api/1.0/CApplication">CApplication</a></td>
+</tr>
+<tr class="inherited" id="onEndRequest">
+  <td><a href="/doc/api/1.0/CApplication#onEndRequest-detail">onEndRequest</a></td>
+  <td>Raised right AFTER the application processes the request.</td>
+  <td><a href="/doc/api/1.0/CApplication">CApplication</a></td>
+</tr>
+<tr class="inherited" id="onException">
+  <td><a href="/doc/api/1.0/CApplication#onException-detail">onException</a></td>
+  <td>Raised when an uncaught PHP exception occurs.</td>
+  <td><a href="/doc/api/1.0/CApplication">CApplication</a></td>
+</tr>
+<tr class="inherited" id="onError">
+  <td><a href="/doc/api/1.0/CApplication#onError-detail">onError</a></td>
+  <td>Raised when a PHP execution error occurs.</td>
+  <td><a href="/doc/api/1.0/CApplication">CApplication</a></td>
+</tr>
+</table>
+</div>
+<h2>Property Details</h2>
+<div class="detailHeader" id="commandMap-detail">
+commandMap<span class="detailHeaderTag">
+property
+</span>
+</div>
+
+<div class="signature">
+public array <b>$commandMap</b>;</div>
+
+<p>mapping from command name to command configurations.
+Each command configuration can be either a string or an array.
+If the former, the string should be the file path of the command class.
+If the latter, the array must contain a 'class' element which specifies
+the command's class name or <a href="/doc/api/1.0/YiiBase#getPathOfAlias">class path alias</a>.
+The rest name-value pairs in the array are used to initialize
+the corresponding command properties. For example,
+<pre>
+array(
+  'email'=&gt;array(
+     'class'=&gt;'path.to.Mailer',
+     'interval'=&gt;3600,
+  ),
+  'log'=&gt;'path/to/LoggerCommand.php',
+)
+</pre></p>
+
+
+<div class="detailHeader" id="commandPath-detail">
+commandPath<span class="detailHeaderTag">
+property
+</span>
+</div>
+
+<div class="signature">
+public string <a href="/doc/api/1.0/CConsoleApplication#getCommandPath"><b>getCommandPath</b></a>()<br/>public void <a href="/doc/api/1.0/CConsoleApplication#setCommandPath"><b>setCommandPath</b></a>(string $value)</div>
+
+<p>the directory that contains the command classes. Defaults to 'protected/commands'.</p>
+
+
+<div class="detailHeader" id="commandRunner-detail">
+commandRunner<span class="detailHeaderTag">
+property
+ <em>read-only</em> </span>
+</div>
+
+<div class="signature">
+public <a href="/doc/api/1.0/CConsoleCommandRunner">CConsoleCommandRunner</a> <a href="/doc/api/1.0/CConsoleApplication#getCommandRunner"><b>getCommandRunner</b></a>()</div>
+
+<p>Returns the command runner.</p>
+
+
+<h2>Method Details</h2>
+
+<div class="detailHeader" id="createCommandRunner-detail">
+createCommandRunner()
+<span class="detailHeaderTag">
+method
+</span>
+</div>
+
+<table class="summaryTable">
+<tr><td colspan="3">
+<div class="signature2">
+protected <a href="/doc/api/1.0/CConsoleCommandRunner">CConsoleCommandRunner</a> <b>createCommandRunner</b>()</div>
+</td></tr>
+<tr>
+  <td class="paramNameCol">{return}</td>
+  <td class="paramTypeCol"><a href="/doc/api/1.0/CConsoleCommandRunner">CConsoleCommandRunner</a></td>
+  <td class="paramDescCol">the command runner</td>
+</tr>
+</table>
+
+<div class="sourceCode">
+<b>Source Code:</b> <a class="sourceLink" href="https://github.com/yiisoft/yii/blob/1.0.12/framework/console/CConsoleApplication.php#L95">framework/console/CConsoleApplication.php#95</a> (<b><a href="#" class="show">show</a></b>)
+<div class="code"><code><span style="color: #000000">
+<span style="color: #0000BB"></span><span style="color: #007700">protected&nbsp;function&nbsp;</span><span style="color: #0000BB">createCommandRunner</span><span style="color: #007700">()<br />{<br />&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;new&nbsp;</span><span style="color: #0000BB">CConsoleCommandRunner</span><span style="color: #007700">;<br />}</span>
+</span>
+</code></div>
+</div>
+<p>Creates the command runner instance.</p>
+
+
+<div class="detailHeader" id="displayError-detail">
+displayError()
+<span class="detailHeaderTag">
+method
+</span>
+</div>
+
+<table class="summaryTable">
+<tr><td colspan="3">
+<div class="signature2">
+public void <b>displayError</b>(integer $code, string $message, string $file, string $line)</div>
+</td></tr>
+<tr>
+  <td class="paramNameCol">$code</td>
+  <td class="paramTypeCol">integer</td>
+  <td class="paramDescCol">error code</td>
+</tr>
+<tr>
+  <td class="paramNameCol">$message</td>
+  <td class="paramTypeCol">string</td>
+  <td class="paramDescCol">error message</td>
+</tr>
+<tr>
+  <td class="paramNameCol">$file</td>
+  <td class="paramTypeCol">string</td>
+  <td class="paramDescCol">error file</td>
+</tr>
+<tr>
+  <td class="paramNameCol">$line</td>
+  <td class="paramTypeCol">string</td>
+  <td class="paramDescCol">error line</td>
+</tr>
+</table>
+
+<div class="sourceCode">
+<b>Source Code:</b> <a class="sourceLink" href="https://github.com/yiisoft/yii/blob/1.0.12/framework/console/CConsoleApplication.php#L109">framework/console/CConsoleApplication.php#109</a> (<b><a href="#" class="show">show</a></b>)
+<div class="code"><code><span style="color: #000000">
+<span style="color: #0000BB"></span><span style="color: #007700">public&nbsp;function&nbsp;</span><span style="color: #0000BB">displayError</span><span style="color: #007700">(</span><span style="color: #0000BB">$code</span><span style="color: #007700">,</span><span style="color: #0000BB">$message</span><span style="color: #007700">,</span><span style="color: #0000BB">$file</span><span style="color: #007700">,</span><span style="color: #0000BB">$line</span><span style="color: #007700">)<br />{<br />&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">"PHP&nbsp;Error[</span><span style="color: #0000BB">$code</span><span style="color: #DD0000">]:&nbsp;</span><span style="color: #0000BB">$message</span><span style="color: #DD0000">\n"</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">"in&nbsp;file&nbsp;</span><span style="color: #0000BB">$file</span><span style="color: #DD0000">&nbsp;at&nbsp;line&nbsp;</span><span style="color: #0000BB">$line</span><span style="color: #DD0000">\n"</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">debug_print_backtrace</span><span style="color: #007700">();<br />}</span>
+</span>
+</code></div>
+</div>
+<p>Displays the captured PHP error.
+This method displays the error in console mode when there is
+no active error handler.</p>
+
+
+<div class="detailHeader" id="displayException-detail">
+displayException()
+<span class="detailHeaderTag">
+method
+</span>
+</div>
+
+<table class="summaryTable">
+<tr><td colspan="3">
+<div class="signature2">
+public void <b>displayException</b>(Exception $exception)</div>
+</td></tr>
+<tr>
+  <td class="paramNameCol">$exception</td>
+  <td class="paramTypeCol">Exception</td>
+  <td class="paramDescCol">the uncaught exception</td>
+</tr>
+</table>
+
+<div class="sourceCode">
+<b>Source Code:</b> <a class="sourceLink" href="https://github.com/yiisoft/yii/blob/1.0.12/framework/console/CConsoleApplication.php#L122">framework/console/CConsoleApplication.php#122</a> (<b><a href="#" class="show">show</a></b>)
+<div class="code"><code><span style="color: #000000">
+<span style="color: #0000BB"></span><span style="color: #007700">public&nbsp;function&nbsp;</span><span style="color: #0000BB">displayException</span><span style="color: #007700">(</span><span style="color: #0000BB">$exception</span><span style="color: #007700">)<br />{<br />&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #0000BB">$exception</span><span style="color: #007700">;<br />}</span>
+</span>
+</code></div>
+</div>
+<p>Displays the uncaught PHP exception.
+This method displays the exception in console mode when there is
+no active error handler.</p>
+
+
+<div class="detailHeader" id="getCommandPath-detail">
+getCommandPath()
+<span class="detailHeaderTag">
+method
+</span>
+</div>
+
+<table class="summaryTable">
+<tr><td colspan="3">
+<div class="signature2">
+public string <b>getCommandPath</b>()</div>
+</td></tr>
+<tr>
+  <td class="paramNameCol">{return}</td>
+  <td class="paramTypeCol">string</td>
+  <td class="paramDescCol">the directory that contains the command classes. Defaults to 'protected/commands'.</td>
+</tr>
+</table>
+
+<div class="sourceCode">
+<b>Source Code:</b> <a class="sourceLink" href="https://github.com/yiisoft/yii/blob/1.0.12/framework/console/CConsoleApplication.php#L130">framework/console/CConsoleApplication.php#130</a> (<b><a href="#" class="show">show</a></b>)
+<div class="code"><code><span style="color: #000000">
+<span style="color: #0000BB"></span><span style="color: #007700">public&nbsp;function&nbsp;</span><span style="color: #0000BB">getCommandPath</span><span style="color: #007700">()<br />{<br />&nbsp;&nbsp;&nbsp;&nbsp;if(</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">_commandPath</span><span style="color: #007700">===</span><span style="color: #0000BB">null</span><span style="color: #007700">)<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">setCommandPath</span><span style="color: #007700">(</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">getBasePath</span><span style="color: #007700">().</span><span style="color: #0000BB">DIRECTORY_SEPARATOR</span><span style="color: #007700">.</span><span style="color: #DD0000">'commands'</span><span style="color: #007700">);<br />&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">_commandPath</span><span style="color: #007700">;<br />}</span>
+</span>
+</code></div>
+</div>
+<p></p>
+
+
+<div class="detailHeader" id="getCommandRunner-detail">
+getCommandRunner()
+<span class="detailHeaderTag">
+method
+</span>
+</div>
+
+<table class="summaryTable">
+<tr><td colspan="3">
+<div class="signature2">
+public <a href="/doc/api/1.0/CConsoleCommandRunner">CConsoleCommandRunner</a> <b>getCommandRunner</b>()</div>
+</td></tr>
+<tr>
+  <td class="paramNameCol">{return}</td>
+  <td class="paramTypeCol"><a href="/doc/api/1.0/CConsoleCommandRunner">CConsoleCommandRunner</a></td>
+  <td class="paramDescCol">the command runner.</td>
+</tr>
+</table>
+
+<div class="sourceCode">
+<b>Source Code:</b> <a class="sourceLink" href="https://github.com/yiisoft/yii/blob/1.0.12/framework/console/CConsoleApplication.php#L152">framework/console/CConsoleApplication.php#152</a> (<b><a href="#" class="show">show</a></b>)
+<div class="code"><code><span style="color: #000000">
+<span style="color: #0000BB"></span><span style="color: #007700">public&nbsp;function&nbsp;</span><span style="color: #0000BB">getCommandRunner</span><span style="color: #007700">()<br />{<br />&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">_runner</span><span style="color: #007700">;<br />}</span>
+</span>
+</code></div>
+</div>
+<p>Returns the command runner.</p>
+
+
+<div class="detailHeader" id="init-detail">
+init()
+<span class="detailHeaderTag">
+method
+</span>
+</div>
+
+<table class="summaryTable">
+<tr><td colspan="3">
+<div class="signature2">
+protected void <b>init</b>()</div>
+</td></tr>
+</table>
+
+<div class="sourceCode">
+<b>Source Code:</b> <a class="sourceLink" href="https://github.com/yiisoft/yii/blob/1.0.12/framework/console/CConsoleApplication.php#L72">framework/console/CConsoleApplication.php#72</a> (<b><a href="#" class="show">show</a></b>)
+<div class="code"><code><span style="color: #000000">
+<span style="color: #0000BB"></span><span style="color: #007700">protected&nbsp;function&nbsp;</span><span style="color: #0000BB">init</span><span style="color: #007700">()<br />{<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">parent</span><span style="color: #007700">::</span><span style="color: #0000BB">init</span><span style="color: #007700">();<br />&nbsp;&nbsp;&nbsp;&nbsp;if(!isset(</span><span style="color: #0000BB">$_SERVER</span><span style="color: #007700">[</span><span style="color: #DD0000">'argv'</span><span style="color: #007700">]))&nbsp;</span><span style="color: #FF8000">//&nbsp;||&nbsp;strncasecmp(php_sapi_name(),'cli',3))<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #007700">die(</span><span style="color: #DD0000">'This&nbsp;script&nbsp;must&nbsp;be&nbsp;run&nbsp;from&nbsp;the&nbsp;command&nbsp;line.'</span><span style="color: #007700">);<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">_runner</span><span style="color: #007700">=</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">createCommandRunner</span><span style="color: #007700">();<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">_runner</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">commands</span><span style="color: #007700">=</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">commandMap</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">_runner</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">addCommands</span><span style="color: #007700">(</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">getCommandPath</span><span style="color: #007700">());<br />}</span>
+</span>
+</code></div>
+</div>
+<p>Initializes the application by creating the command runner.</p>
+
+
+<div class="detailHeader" id="processRequest-detail">
+processRequest()
+<span class="detailHeaderTag">
+method
+</span>
+</div>
+
+<table class="summaryTable">
+<tr><td colspan="3">
+<div class="signature2">
+public void <b>processRequest</b>()</div>
+</td></tr>
+</table>
+
+<div class="sourceCode">
+<b>Source Code:</b> <a class="sourceLink" href="https://github.com/yiisoft/yii/blob/1.0.12/framework/console/CConsoleApplication.php#L86">framework/console/CConsoleApplication.php#86</a> (<b><a href="#" class="show">show</a></b>)
+<div class="code"><code><span style="color: #000000">
+<span style="color: #0000BB"></span><span style="color: #007700">public&nbsp;function&nbsp;</span><span style="color: #0000BB">processRequest</span><span style="color: #007700">()<br />{<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">_runner</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">run</span><span style="color: #007700">(</span><span style="color: #0000BB">$_SERVER</span><span style="color: #007700">[</span><span style="color: #DD0000">'argv'</span><span style="color: #007700">]);<br />}</span>
+</span>
+</code></div>
+</div>
+<p>Processes the user request.
+This method creates a console command runner to handle the particular user command.</p>
+
+
+<div class="detailHeader" id="setCommandPath-detail">
+setCommandPath()
+<span class="detailHeaderTag">
+method
+</span>
+</div>
+
+<table class="summaryTable">
+<tr><td colspan="3">
+<div class="signature2">
+public void <b>setCommandPath</b>(string $value)</div>
+</td></tr>
+<tr>
+  <td class="paramNameCol">$value</td>
+  <td class="paramTypeCol">string</td>
+  <td class="paramDescCol">the directory that contains the command classes.</td>
+</tr>
+</table>
+
+<div class="sourceCode">
+<b>Source Code:</b> <a class="sourceLink" href="https://github.com/yiisoft/yii/blob/1.0.12/framework/console/CConsoleApplication.php#L141">framework/console/CConsoleApplication.php#141</a> (<b><a href="#" class="show">show</a></b>)
+<div class="code"><code><span style="color: #000000">
+<span style="color: #0000BB"></span><span style="color: #007700">public&nbsp;function&nbsp;</span><span style="color: #0000BB">setCommandPath</span><span style="color: #007700">(</span><span style="color: #0000BB">$value</span><span style="color: #007700">)<br />{<br />&nbsp;&nbsp;&nbsp;&nbsp;if((</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">_commandPath</span><span style="color: #007700">=</span><span style="color: #0000BB">realpath</span><span style="color: #007700">(</span><span style="color: #0000BB">$value</span><span style="color: #007700">))===</span><span style="color: #0000BB">false&nbsp;</span><span style="color: #007700">||&nbsp;!</span><span style="color: #0000BB">is_dir</span><span style="color: #007700">(</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">_commandPath</span><span style="color: #007700">))<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;throw&nbsp;new&nbsp;</span><span style="color: #0000BB">CException</span><span style="color: #007700">(</span><span style="color: #0000BB">Yii</span><span style="color: #007700">::</span><span style="color: #0000BB">t</span><span style="color: #007700">(</span><span style="color: #DD0000">'yii'</span><span style="color: #007700">,</span><span style="color: #DD0000">'The&nbsp;command&nbsp;path&nbsp;"{path}"&nbsp;is&nbsp;not&nbsp;a&nbsp;valid&nbsp;directory.'</span><span style="color: #007700">,<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;array(</span><span style="color: #DD0000">'{path}'</span><span style="color: #007700">=&gt;</span><span style="color: #0000BB">$value</span><span style="color: #007700">)));<br />}</span>
+</span>
+</code></div>
+</div>
+<p></p>
+
+

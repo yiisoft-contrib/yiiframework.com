@@ -19,7 +19,12 @@ const PRODUCTION = !!(yargs.argv.production);
 var config = loadConfig();
 
 function loadConfig() {
-  ymlFile = fs.readFileSync('config.yml', 'utf8');
+  let ymlFile = fs.readFileSync('config.yml', 'utf8');
+  const vendorDir = process.env.VENDOR_DIR;
+  if (vendorDir) {
+    ymlFile = ymlFile.replace(/"vendor/g, `"${vendorDir}`);
+  }
+
   return yaml.load(ymlFile);
 }
 
@@ -35,7 +40,7 @@ var autoprefixerOptions = {
 
 // Styles
 function styles() {
-  return gulp.src(config.PATHS.src +'/scss/all.scss')
+  return gulp.src(config.PATHS.src + '/scss/all.scss')
     .pipe($.sourcemaps.init())
     .pipe($.sass(sassOptions).on('error', $.sass.logError))
     .pipe($.autoprefixer(autoprefixerOptions))
@@ -49,7 +54,7 @@ function styles() {
 };
 // forum header CSS file for discourse integration
 function forumheader() {
-  return gulp.src(config.PATHS.src +'/scss/header.scss')
+  return gulp.src(config.PATHS.src + '/scss/header.scss')
     .pipe($.sourcemaps.init())
     .pipe($.sass(sassOptions).on('error', $.sass.logError))
     .pipe($.autoprefixer(autoprefixerOptions))
@@ -111,7 +116,6 @@ gulp.task('build', gulp.series(
 
 // Watch
 function watch() {
-
   // Initialize Browsersync
   browsersync.init({
     proxy: config.PROXY

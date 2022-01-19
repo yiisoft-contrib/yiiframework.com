@@ -1,0 +1,517 @@
+<h1>CWebServiceAction</h1>
+<div id="nav">
+<a href="/doc/api/1.0/">All Packages</a>
+| <a href="#properties">Properties</a>
+| <a href="#methods">Methods</a>
+</div>
+
+<table class="summaryTable docClass">
+<colgroup>
+	<col class="col-name" />
+	<col class="col-value" />
+</colgroup>
+<tr>
+  <th>Package</th>
+  <td><a href="/doc/api/1.0/#system.web.services">system.web.services</a></td>
+</tr>
+<tr>
+  <th>Inheritance</th>
+  <td>class CWebServiceAction &raquo;
+<a href="/doc/api/1.0/CAction">CAction</a> &raquo;
+<a href="/doc/api/1.0/CComponent">CComponent</a></td>
+</tr>
+<tr>
+  <th>Implements</th>
+  <td><a href="/doc/api/1.0/IAction">IAction</a></td>
+</tr>
+<tr>
+  <th>Since</th>
+  <td>1.0</td>
+</tr>
+<tr>
+  <th>Version</th>
+  <td>$Id$</td>
+</tr>
+<tr>
+  <th>Source Code</th>
+  <td><a class="sourceLink" href="https://github.com/yiisoft/yii/blob/1.0.12/framework/web/services/CWebServiceAction.php">framework/web/services/CWebServiceAction.php</a></td>
+</tr>
+</table>
+
+<div id="classDescription">
+CWebServiceAction implements an action that provides Web services.
+<br/><br/>
+CWebServiceAction serves for two purposes. On the one hand, it displays
+the WSDL content specifying the Web service APIs. On the other hand, it
+invokes the requested Web service API. A GET parameter named <code>ws</code>
+is used to differentiate these two aspects: the existence of the GET parameter
+indicates performing the latter action.
+<br/><br/>
+By default, CWebServiceAction will use the current controller as
+the Web service provider. See <a href="/doc/api/1.0/CWsdlGenerator">CWsdlGenerator</a> on how to declare
+methods that can be remotely invoked.
+<br/><br/>
+Note, PHP SOAP extension is required for this action.</div>
+<a name="properties"></a>
+
+<div class="summary docProperty">
+<h2>Public Properties</h2>
+
+<p><a href="#" class="toggle">Hide inherited properties</a></p>
+
+<table class="summaryTable">
+<colgroup>
+	<col class="col-property" />
+	<col class="col-type" />
+	<col class="col-description" />
+	<col class="col-defined" />
+</colgroup>
+<tr>
+  <th>Property</th><th>Type</th><th>Description</th><th>Defined By</th>
+</tr>
+<tr id="classMap">
+  <td><a href="/doc/api/1.0/CWebServiceAction#classMap-detail">classMap</a></td>
+  <td>array</td>
+  <td>a list of PHP classes that are declared as complex types in WSDL.</td>
+  <td>CWebServiceAction</td>
+</tr>
+<tr class="inherited" id="controller">
+  <td><a href="/doc/api/1.0/CAction#controller-detail">controller</a></td>
+  <td><a href="/doc/api/1.0/CController">CController</a></td>
+  <td>the controller who owns this action.</td>
+  <td><a href="/doc/api/1.0/CAction">CAction</a></td>
+</tr>
+<tr class="inherited" id="id">
+  <td><a href="/doc/api/1.0/CAction#id-detail">id</a></td>
+  <td>string</td>
+  <td>id of this action</td>
+  <td><a href="/doc/api/1.0/CAction">CAction</a></td>
+</tr>
+<tr id="provider">
+  <td><a href="/doc/api/1.0/CWebServiceAction#provider-detail">provider</a></td>
+  <td>mixed</td>
+  <td>the Web service provider object or class name.</td>
+  <td>CWebServiceAction</td>
+</tr>
+<tr id="service">
+  <td><a href="/doc/api/1.0/CWebServiceAction#service-detail">service</a></td>
+  <td><a href="/doc/api/1.0/CWebService">CWebService</a></td>
+  <td>Returns the Web service instance currently being used.</td>
+  <td>CWebServiceAction</td>
+</tr>
+<tr id="serviceOptions">
+  <td><a href="/doc/api/1.0/CWebServiceAction#serviceOptions-detail">serviceOptions</a></td>
+  <td>array</td>
+  <td>the initial property values for the <a href="/doc/api/1.0/CWebService">CWebService</a> object.</td>
+  <td>CWebServiceAction</td>
+</tr>
+<tr id="serviceUrl">
+  <td><a href="/doc/api/1.0/CWebServiceAction#serviceUrl-detail">serviceUrl</a></td>
+  <td>string</td>
+  <td>the URL for the Web service.</td>
+  <td>CWebServiceAction</td>
+</tr>
+<tr id="serviceVar">
+  <td><a href="/doc/api/1.0/CWebServiceAction#serviceVar-detail">serviceVar</a></td>
+  <td>string</td>
+  <td>the name of the GET parameter that differentiates a WSDL request
+from a Web service request.</td>
+  <td>CWebServiceAction</td>
+</tr>
+<tr id="wsdlUrl">
+  <td><a href="/doc/api/1.0/CWebServiceAction#wsdlUrl-detail">wsdlUrl</a></td>
+  <td>string</td>
+  <td>the URL for WSDL.</td>
+  <td>CWebServiceAction</td>
+</tr>
+</table>
+</div>
+<a name="methods"></a>
+
+<div class="summary docMethod">
+<h2>Public Methods</h2>
+
+<p><a href="#" class="toggle">Hide inherited methods</a></p>
+
+<table class="summaryTable">
+<colgroup>
+	<col class="col-method" />
+	<col class="col-description" />
+	<col class="col-defined" />
+</colgroup>
+<tr>
+  <th>Method</th><th>Description</th><th>Defined By</th>
+</tr>
+<tr class="inherited" id="__call">
+  <td><a href="/doc/api/1.0/CComponent#__call-detail">__call()</a></td>
+  <td>Calls the named method which is not a class method.</td>
+  <td><a href="/doc/api/1.0/CComponent">CComponent</a></td>
+</tr>
+<tr class="inherited" id="__construct">
+  <td><a href="/doc/api/1.0/CAction#__construct-detail">__construct()</a></td>
+  <td>Constructor.</td>
+  <td><a href="/doc/api/1.0/CAction">CAction</a></td>
+</tr>
+<tr class="inherited" id="__get">
+  <td><a href="/doc/api/1.0/CComponent#__get-detail">__get()</a></td>
+  <td>Returns a property value, an event handler list or a behavior based on its name.</td>
+  <td><a href="/doc/api/1.0/CComponent">CComponent</a></td>
+</tr>
+<tr class="inherited" id="__isset">
+  <td><a href="/doc/api/1.0/CComponent#__isset-detail">__isset()</a></td>
+  <td>Checks if a property value is null.</td>
+  <td><a href="/doc/api/1.0/CComponent">CComponent</a></td>
+</tr>
+<tr class="inherited" id="__set">
+  <td><a href="/doc/api/1.0/CComponent#__set-detail">__set()</a></td>
+  <td>Sets value of a component property.</td>
+  <td><a href="/doc/api/1.0/CComponent">CComponent</a></td>
+</tr>
+<tr class="inherited" id="__unset">
+  <td><a href="/doc/api/1.0/CComponent#__unset-detail">__unset()</a></td>
+  <td>Sets a component property to be null.</td>
+  <td><a href="/doc/api/1.0/CComponent">CComponent</a></td>
+</tr>
+<tr class="inherited" id="asa">
+  <td><a href="/doc/api/1.0/CComponent#asa-detail">asa()</a></td>
+  <td>Returns the named behavior object.</td>
+  <td><a href="/doc/api/1.0/CComponent">CComponent</a></td>
+</tr>
+<tr class="inherited" id="attachBehavior">
+  <td><a href="/doc/api/1.0/CComponent#attachBehavior-detail">attachBehavior()</a></td>
+  <td>Attaches a behavior to this component.</td>
+  <td><a href="/doc/api/1.0/CComponent">CComponent</a></td>
+</tr>
+<tr class="inherited" id="attachBehaviors">
+  <td><a href="/doc/api/1.0/CComponent#attachBehaviors-detail">attachBehaviors()</a></td>
+  <td>Attaches a list of behaviors to the component.</td>
+  <td><a href="/doc/api/1.0/CComponent">CComponent</a></td>
+</tr>
+<tr class="inherited" id="attachEventHandler">
+  <td><a href="/doc/api/1.0/CComponent#attachEventHandler-detail">attachEventHandler()</a></td>
+  <td>Attaches an event handler to an event.</td>
+  <td><a href="/doc/api/1.0/CComponent">CComponent</a></td>
+</tr>
+<tr class="inherited" id="canGetProperty">
+  <td><a href="/doc/api/1.0/CComponent#canGetProperty-detail">canGetProperty()</a></td>
+  <td>Determines whether a property can be read.</td>
+  <td><a href="/doc/api/1.0/CComponent">CComponent</a></td>
+</tr>
+<tr class="inherited" id="canSetProperty">
+  <td><a href="/doc/api/1.0/CComponent#canSetProperty-detail">canSetProperty()</a></td>
+  <td>Determines whether a property can be set.</td>
+  <td><a href="/doc/api/1.0/CComponent">CComponent</a></td>
+</tr>
+<tr class="inherited" id="detachBehavior">
+  <td><a href="/doc/api/1.0/CComponent#detachBehavior-detail">detachBehavior()</a></td>
+  <td>Detaches a behavior from the component.</td>
+  <td><a href="/doc/api/1.0/CComponent">CComponent</a></td>
+</tr>
+<tr class="inherited" id="detachBehaviors">
+  <td><a href="/doc/api/1.0/CComponent#detachBehaviors-detail">detachBehaviors()</a></td>
+  <td>Detaches all behaviors from the component.</td>
+  <td><a href="/doc/api/1.0/CComponent">CComponent</a></td>
+</tr>
+<tr class="inherited" id="detachEventHandler">
+  <td><a href="/doc/api/1.0/CComponent#detachEventHandler-detail">detachEventHandler()</a></td>
+  <td>Detaches an existing event handler.</td>
+  <td><a href="/doc/api/1.0/CComponent">CComponent</a></td>
+</tr>
+<tr class="inherited" id="disableBehavior">
+  <td><a href="/doc/api/1.0/CComponent#disableBehavior-detail">disableBehavior()</a></td>
+  <td>Disables an attached behavior.</td>
+  <td><a href="/doc/api/1.0/CComponent">CComponent</a></td>
+</tr>
+<tr class="inherited" id="disableBehaviors">
+  <td><a href="/doc/api/1.0/CComponent#disableBehaviors-detail">disableBehaviors()</a></td>
+  <td>Disables all behaviors attached to this component.</td>
+  <td><a href="/doc/api/1.0/CComponent">CComponent</a></td>
+</tr>
+<tr class="inherited" id="enableBehavior">
+  <td><a href="/doc/api/1.0/CComponent#enableBehavior-detail">enableBehavior()</a></td>
+  <td>Enables an attached behavior.</td>
+  <td><a href="/doc/api/1.0/CComponent">CComponent</a></td>
+</tr>
+<tr class="inherited" id="enableBehaviors">
+  <td><a href="/doc/api/1.0/CComponent#enableBehaviors-detail">enableBehaviors()</a></td>
+  <td>Enables all behaviors attached to this component.</td>
+  <td><a href="/doc/api/1.0/CComponent">CComponent</a></td>
+</tr>
+<tr class="inherited" id="getController">
+  <td><a href="/doc/api/1.0/CAction#getController-detail">getController()</a></td>
+  <td>Returns the controller who owns this action.</td>
+  <td><a href="/doc/api/1.0/CAction">CAction</a></td>
+</tr>
+<tr class="inherited" id="getEventHandlers">
+  <td><a href="/doc/api/1.0/CComponent#getEventHandlers-detail">getEventHandlers()</a></td>
+  <td>Returns the list of attached event handlers for an event.</td>
+  <td><a href="/doc/api/1.0/CComponent">CComponent</a></td>
+</tr>
+<tr class="inherited" id="getId">
+  <td><a href="/doc/api/1.0/CAction#getId-detail">getId()</a></td>
+  <td>Returns id of this action</td>
+  <td><a href="/doc/api/1.0/CAction">CAction</a></td>
+</tr>
+<tr id="getService">
+  <td><a href="/doc/api/1.0/CWebServiceAction#getService-detail">getService()</a></td>
+  <td>Returns the Web service instance currently being used.</td>
+  <td>CWebServiceAction</td>
+</tr>
+<tr class="inherited" id="hasEvent">
+  <td><a href="/doc/api/1.0/CComponent#hasEvent-detail">hasEvent()</a></td>
+  <td>Determines whether an event is defined.</td>
+  <td><a href="/doc/api/1.0/CComponent">CComponent</a></td>
+</tr>
+<tr class="inherited" id="hasEventHandler">
+  <td><a href="/doc/api/1.0/CComponent#hasEventHandler-detail">hasEventHandler()</a></td>
+  <td>Checks whether the named event has attached handlers.</td>
+  <td><a href="/doc/api/1.0/CComponent">CComponent</a></td>
+</tr>
+<tr class="inherited" id="hasProperty">
+  <td><a href="/doc/api/1.0/CComponent#hasProperty-detail">hasProperty()</a></td>
+  <td>Determines whether a property is defined.</td>
+  <td><a href="/doc/api/1.0/CComponent">CComponent</a></td>
+</tr>
+<tr class="inherited" id="raiseEvent">
+  <td><a href="/doc/api/1.0/CComponent#raiseEvent-detail">raiseEvent()</a></td>
+  <td>Raises an event.</td>
+  <td><a href="/doc/api/1.0/CComponent">CComponent</a></td>
+</tr>
+<tr id="run">
+  <td><a href="/doc/api/1.0/CWebServiceAction#run-detail">run()</a></td>
+  <td>Runs the action.</td>
+  <td>CWebServiceAction</td>
+</tr>
+</table>
+</div>
+<div class="summary docMethod">
+<h2>Protected Methods</h2>
+
+<p><a href="#" class="toggle">Hide inherited methods</a></p>
+
+<table class="summaryTable">
+<colgroup>
+	<col class="col-method" />
+	<col class="col-description" />
+	<col class="col-defined" />
+</colgroup>
+<tr>
+  <th>Method</th><th>Description</th><th>Defined By</th>
+</tr>
+<tr id="createWebService">
+  <td><a href="/doc/api/1.0/CWebServiceAction#createWebService-detail">createWebService()</a></td>
+  <td>Creates a <a href="/doc/api/1.0/CWebService">CWebService</a> instance.</td>
+  <td>CWebServiceAction</td>
+</tr>
+</table>
+</div>
+<a name="events"></a>
+
+<h2>Property Details</h2>
+<div class="detailHeader" id="classMap-detail">
+classMap<span class="detailHeaderTag">
+property
+</span>
+</div>
+
+<div class="signature">
+public array <b>$classMap</b>;</div>
+
+<p>a list of PHP classes that are declared as complex types in WSDL.
+This should be an array with WSDL types as keys and names of PHP classes as values.
+A PHP class can also be specified as a path alias.</p>
+
+<div class="SeeAlso">
+<h4>See Also</h4>
+<ul>
+	<li><a href="http://www.php.net/manual/en/soapclient.soapclient.php">http://www.php.net/manual/en/soapclient.soapclient.php</a></li>
+</ul>
+</div>
+
+<div class="detailHeader" id="provider-detail">
+provider<span class="detailHeaderTag">
+property
+</span>
+</div>
+
+<div class="signature">
+public mixed <b>$provider</b>;</div>
+
+<p>the Web service provider object or class name.
+If specified as a class name, it can be a path alias.
+Defaults to null, meaning the current controller is used as the service provider.
+If the provider implements the interface <a href="/doc/api/1.0/IWebServiceProvider">IWebServiceProvider</a>,
+it will be able to intercept the remote method invocation and perform
+additional tasks (e.g. authentication, logging).</p>
+
+
+<div class="detailHeader" id="service-detail">
+service<span class="detailHeaderTag">
+property
+ <em>read-only</em> </span>
+</div>
+
+<div class="signature">
+public <a href="/doc/api/1.0/CWebService">CWebService</a> <a href="/doc/api/1.0/CWebServiceAction#getService"><b>getService</b></a>()</div>
+
+<p>Returns the Web service instance currently being used.</p>
+
+
+<div class="detailHeader" id="serviceOptions-detail">
+serviceOptions<span class="detailHeaderTag">
+property
+</span>
+</div>
+
+<div class="signature">
+public array <b>$serviceOptions</b>;</div>
+
+<p>the initial property values for the <a href="/doc/api/1.0/CWebService">CWebService</a> object.
+The array keys are property names of <a href="/doc/api/1.0/CWebService">CWebService</a> and the array values
+are the corresponding property initial values.</p>
+
+
+<div class="detailHeader" id="serviceUrl-detail">
+serviceUrl<span class="detailHeaderTag">
+property
+</span>
+</div>
+
+<div class="signature">
+public string <b>$serviceUrl</b>;</div>
+
+<p>the URL for the Web service. Defaults to null, meaning
+the URL for this action is used to provide Web services.
+In this case, a GET parameter named <a href="/doc/api/1.0/CWebServiceAction#serviceVar">serviceVar</a> will be used to
+deteremine whether the current request is for WSDL or Web service.</p>
+
+
+<div class="detailHeader" id="serviceVar-detail">
+serviceVar<span class="detailHeaderTag">
+property
+</span>
+</div>
+
+<div class="signature">
+public string <b>$serviceVar</b>;</div>
+
+<p>the name of the GET parameter that differentiates a WSDL request
+from a Web service request. If this GET parameter exists, the request is considered
+as a Web service request; otherwise, it is a WSDL request.  Defaults to 'ws'.</p>
+
+
+<div class="detailHeader" id="wsdlUrl-detail">
+wsdlUrl<span class="detailHeaderTag">
+property
+</span>
+</div>
+
+<div class="signature">
+public string <b>$wsdlUrl</b>;</div>
+
+<p>the URL for WSDL. Defaults to null, meaning
+the URL for this action is used to serve WSDL document.</p>
+
+
+<h2>Method Details</h2>
+
+<div class="detailHeader" id="createWebService-detail">
+createWebService()
+<span class="detailHeaderTag">
+method
+</span>
+</div>
+
+<table class="summaryTable">
+<tr><td colspan="3">
+<div class="signature2">
+protected <a href="/doc/api/1.0/CWebService">CWebService</a> <b>createWebService</b>(mixed $provider, string $wsdlUrl, string $serviceUrl)</div>
+</td></tr>
+<tr>
+  <td class="paramNameCol">$provider</td>
+  <td class="paramTypeCol">mixed</td>
+  <td class="paramDescCol">the web service provider class name or object</td>
+</tr>
+<tr>
+  <td class="paramNameCol">$wsdlUrl</td>
+  <td class="paramTypeCol">string</td>
+  <td class="paramDescCol">the URL for WSDL.</td>
+</tr>
+<tr>
+  <td class="paramNameCol">$serviceUrl</td>
+  <td class="paramTypeCol">string</td>
+  <td class="paramDescCol">the URL for the Web service.</td>
+</tr>
+<tr>
+  <td class="paramNameCol">{return}</td>
+  <td class="paramTypeCol"><a href="/doc/api/1.0/CWebService">CWebService</a></td>
+  <td class="paramDescCol">the Web service instance</td>
+</tr>
+</table>
+
+<div class="sourceCode">
+<b>Source Code:</b> <a class="sourceLink" href="https://github.com/yiisoft/yii/blob/1.0.12/framework/web/services/CWebServiceAction.php#L126">framework/web/services/CWebServiceAction.php#126</a> (<b><a href="#" class="show">show</a></b>)
+<div class="code"><code><span style="color: #000000">
+<span style="color: #0000BB"></span><span style="color: #007700">protected&nbsp;function&nbsp;</span><span style="color: #0000BB">createWebService</span><span style="color: #007700">(</span><span style="color: #0000BB">$provider</span><span style="color: #007700">,</span><span style="color: #0000BB">$wsdlUrl</span><span style="color: #007700">,</span><span style="color: #0000BB">$serviceUrl</span><span style="color: #007700">)<br />{<br />&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;new&nbsp;</span><span style="color: #0000BB">CWebService</span><span style="color: #007700">(</span><span style="color: #0000BB">$provider</span><span style="color: #007700">,</span><span style="color: #0000BB">$wsdlUrl</span><span style="color: #007700">,</span><span style="color: #0000BB">$serviceUrl</span><span style="color: #007700">);<br />}</span>
+</span>
+</code></div>
+</div>
+<p>Creates a <a href="/doc/api/1.0/CWebService">CWebService</a> instance.
+You may override this method to customize the created instance.</p>
+
+
+<div class="detailHeader" id="getService-detail">
+getService()
+<span class="detailHeaderTag">
+method
+</span>
+</div>
+
+<table class="summaryTable">
+<tr><td colspan="3">
+<div class="signature2">
+public <a href="/doc/api/1.0/CWebService">CWebService</a> <b>getService</b>()</div>
+</td></tr>
+<tr>
+  <td class="paramNameCol">{return}</td>
+  <td class="paramTypeCol"><a href="/doc/api/1.0/CWebService">CWebService</a></td>
+  <td class="paramDescCol">the Web service instance</td>
+</tr>
+</table>
+
+<div class="sourceCode">
+<b>Source Code:</b> <a class="sourceLink" href="https://github.com/yiisoft/yii/blob/1.0.12/framework/web/services/CWebServiceAction.php#L113">framework/web/services/CWebServiceAction.php#113</a> (<b><a href="#" class="show">show</a></b>)
+<div class="code"><code><span style="color: #000000">
+<span style="color: #0000BB"></span><span style="color: #007700">public&nbsp;function&nbsp;</span><span style="color: #0000BB">getService</span><span style="color: #007700">()<br />{<br />&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">_service</span><span style="color: #007700">;<br />}</span>
+</span>
+</code></div>
+</div>
+<p>Returns the Web service instance currently being used.</p>
+
+
+<div class="detailHeader" id="run-detail">
+run()
+<span class="detailHeaderTag">
+method
+</span>
+</div>
+
+<table class="summaryTable">
+<tr><td colspan="3">
+<div class="signature2">
+public void <b>run</b>()</div>
+</td></tr>
+</table>
+
+<div class="sourceCode">
+<b>Source Code:</b> <a class="sourceLink" href="https://github.com/yiisoft/yii/blob/1.0.12/framework/web/services/CWebServiceAction.php#L82">framework/web/services/CWebServiceAction.php#82</a> (<b><a href="#" class="show">show</a></b>)
+<div class="code"><code><span style="color: #000000">
+<span style="color: #0000BB"></span><span style="color: #007700">public&nbsp;function&nbsp;</span><span style="color: #0000BB">run</span><span style="color: #007700">()<br />{<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$hostInfo</span><span style="color: #007700">=</span><span style="color: #0000BB">Yii</span><span style="color: #007700">::</span><span style="color: #0000BB">app</span><span style="color: #007700">()-&gt;</span><span style="color: #0000BB">getRequest</span><span style="color: #007700">()-&gt;</span><span style="color: #0000BB">getHostInfo</span><span style="color: #007700">();<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$controller</span><span style="color: #007700">=</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">getController</span><span style="color: #007700">();<br />&nbsp;&nbsp;&nbsp;&nbsp;if((</span><span style="color: #0000BB">$serviceUrl</span><span style="color: #007700">=</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">serviceUrl</span><span style="color: #007700">)===</span><span style="color: #0000BB">null</span><span style="color: #007700">)<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$serviceUrl</span><span style="color: #007700">=</span><span style="color: #0000BB">$hostInfo</span><span style="color: #007700">.</span><span style="color: #0000BB">$controller</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">createUrl</span><span style="color: #007700">(</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">getId</span><span style="color: #007700">(),array(</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">serviceVar</span><span style="color: #007700">=&gt;</span><span style="color: #0000BB">1</span><span style="color: #007700">));<br />&nbsp;&nbsp;&nbsp;&nbsp;if((</span><span style="color: #0000BB">$wsdlUrl</span><span style="color: #007700">=</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">wsdlUrl</span><span style="color: #007700">)===</span><span style="color: #0000BB">null</span><span style="color: #007700">)<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$wsdlUrl</span><span style="color: #007700">=</span><span style="color: #0000BB">$hostInfo</span><span style="color: #007700">.</span><span style="color: #0000BB">$controller</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">createUrl</span><span style="color: #007700">(</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">getId</span><span style="color: #007700">());<br />&nbsp;&nbsp;&nbsp;&nbsp;if((</span><span style="color: #0000BB">$provider</span><span style="color: #007700">=</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">provider</span><span style="color: #007700">)===</span><span style="color: #0000BB">null</span><span style="color: #007700">)<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$provider</span><span style="color: #007700">=</span><span style="color: #0000BB">$controller</span><span style="color: #007700">;<br /><br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">_service</span><span style="color: #007700">=</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">createWebService</span><span style="color: #007700">(</span><span style="color: #0000BB">$provider</span><span style="color: #007700">,</span><span style="color: #0000BB">$wsdlUrl</span><span style="color: #007700">,</span><span style="color: #0000BB">$serviceUrl</span><span style="color: #007700">);<br /><br />&nbsp;&nbsp;&nbsp;&nbsp;if(</span><span style="color: #0000BB">is_array</span><span style="color: #007700">(</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">classMap</span><span style="color: #007700">))<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">_service</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">classMap</span><span style="color: #007700">=</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">classMap</span><span style="color: #007700">;<br /><br />&nbsp;&nbsp;&nbsp;&nbsp;foreach(</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">serviceOptions&nbsp;</span><span style="color: #007700">as&nbsp;</span><span style="color: #0000BB">$name</span><span style="color: #007700">=&gt;</span><span style="color: #0000BB">$value</span><span style="color: #007700">)<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">_service</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">$name</span><span style="color: #007700">=</span><span style="color: #0000BB">$value</span><span style="color: #007700">;<br /><br />&nbsp;&nbsp;&nbsp;&nbsp;if(isset(</span><span style="color: #0000BB">$_GET</span><span style="color: #007700">[</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">serviceVar</span><span style="color: #007700">]))<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">_service</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">run</span><span style="color: #007700">();<br />&nbsp;&nbsp;&nbsp;&nbsp;else<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">_service</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">renderWsdl</span><span style="color: #007700">();<br /><br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">Yii</span><span style="color: #007700">::</span><span style="color: #0000BB">app</span><span style="color: #007700">()-&gt;</span><span style="color: #0000BB">end</span><span style="color: #007700">();<br />}</span>
+</span>
+</code></div>
+</div>
+<p>Runs the action.
+If the GET parameter <a href="/doc/api/1.0/CWebServiceAction#serviceVar">serviceVar</a> exists, the action handle the remote method invocation.
+If not, the action will serve WSDL content;</p>
+
+

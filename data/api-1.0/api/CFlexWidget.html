@@ -1,0 +1,651 @@
+<h1>CFlexWidget</h1>
+<div id="nav">
+<a href="/doc/api/1.0/">All Packages</a>
+| <a href="#properties">Properties</a>
+| <a href="#methods">Methods</a>
+</div>
+
+<table class="summaryTable docClass">
+<colgroup>
+	<col class="col-name" />
+	<col class="col-value" />
+</colgroup>
+<tr>
+  <th>Package</th>
+  <td><a href="/doc/api/1.0/#system.web.widgets">system.web.widgets</a></td>
+</tr>
+<tr>
+  <th>Inheritance</th>
+  <td>class CFlexWidget &raquo;
+<a href="/doc/api/1.0/CWidget">CWidget</a> &raquo;
+<a href="/doc/api/1.0/CBaseController">CBaseController</a> &raquo;
+<a href="/doc/api/1.0/CComponent">CComponent</a></td>
+</tr>
+<tr>
+  <th>Since</th>
+  <td>1.0</td>
+</tr>
+<tr>
+  <th>Version</th>
+  <td>$Id$</td>
+</tr>
+<tr>
+  <th>Source Code</th>
+  <td><a class="sourceLink" href="https://github.com/yiisoft/yii/blob/1.0.12/framework/web/widgets/CFlexWidget.php">framework/web/widgets/CFlexWidget.php</a></td>
+</tr>
+</table>
+
+<div id="classDescription">
+CFlexWidget embeds a Flex 3.x application into a page.
+<br/><br/>
+To use CFlexWidget, set <a href="/doc/api/1.0/CFlexWidget#name">name</a> to be the Flex application name
+(without the .swf suffix), and set <a href="/doc/api/1.0/CFlexWidget#baseUrl">baseUrl</a> to be URL (without the ending slash)
+of the directory containing the SWF file of the Flex application.</div>
+<a name="properties"></a>
+
+<div class="summary docProperty">
+<h2>Public Properties</h2>
+
+<p><a href="#" class="toggle">Hide inherited properties</a></p>
+
+<table class="summaryTable">
+<colgroup>
+	<col class="col-property" />
+	<col class="col-type" />
+	<col class="col-description" />
+	<col class="col-defined" />
+</colgroup>
+<tr>
+  <th>Property</th><th>Type</th><th>Description</th><th>Defined By</th>
+</tr>
+<tr class="inherited" id="actionPrefix">
+  <td><a href="/doc/api/1.0/CWidget#actionPrefix-detail">actionPrefix</a></td>
+  <td>string</td>
+  <td>the prefix to the IDs of the <a href="/doc/api/1.0/CFlexWidget#actions">actions</a>.</td>
+  <td><a href="/doc/api/1.0/CWidget">CWidget</a></td>
+</tr>
+<tr id="align">
+  <td><a href="/doc/api/1.0/CFlexWidget#align-detail">align</a></td>
+  <td>string</td>
+  <td>align of the application region.</td>
+  <td>CFlexWidget</td>
+</tr>
+<tr id="allowScriptAccess">
+  <td><a href="/doc/api/1.0/CFlexWidget#allowScriptAccess-detail">allowScriptAccess</a></td>
+  <td>string</td>
+  <td>the access method of the script.</td>
+  <td>CFlexWidget</td>
+</tr>
+<tr id="altHtmlContent">
+  <td><a href="/doc/api/1.0/CFlexWidget#altHtmlContent-detail">altHtmlContent</a></td>
+  <td>string</td>
+  <td>the HTML content to be displayed if Flash player is not installed.</td>
+  <td>CFlexWidget</td>
+</tr>
+<tr id="baseUrl">
+  <td><a href="/doc/api/1.0/CFlexWidget#baseUrl-detail">baseUrl</a></td>
+  <td>string</td>
+  <td>the base URL of the Flex application.</td>
+  <td>CFlexWidget</td>
+</tr>
+<tr id="bgColor">
+  <td><a href="/doc/api/1.0/CFlexWidget#bgColor-detail">bgColor</a></td>
+  <td>string</td>
+  <td>background color of the application region.</td>
+  <td>CFlexWidget</td>
+</tr>
+<tr class="inherited" id="controller">
+  <td><a href="/doc/api/1.0/CWidget#controller-detail">controller</a></td>
+  <td><a href="/doc/api/1.0/CController">CController</a></td>
+  <td>the controller that this widget belongs to.</td>
+  <td><a href="/doc/api/1.0/CWidget">CWidget</a></td>
+</tr>
+<tr id="enableHistory">
+  <td><a href="/doc/api/1.0/CFlexWidget#enableHistory-detail">enableHistory</a></td>
+  <td>boolean</td>
+  <td>whether history should be enabled.</td>
+  <td>CFlexWidget</td>
+</tr>
+<tr id="flashVars">
+  <td><a href="/doc/api/1.0/CFlexWidget#flashVars-detail">flashVars</a></td>
+  <td>array</td>
+  <td>parameters to be passed to the Flex application.</td>
+  <td>CFlexWidget</td>
+</tr>
+<tr id="flashVarsAsString">
+  <td><a href="/doc/api/1.0/CFlexWidget#flashVarsAsString-detail">flashVarsAsString</a></td>
+  <td>string</td>
+  <td>Generates the properly quoted flash parameter string.</td>
+  <td>CFlexWidget</td>
+</tr>
+<tr id="height">
+  <td><a href="/doc/api/1.0/CFlexWidget#height-detail">height</a></td>
+  <td>string</td>
+  <td>height of the application region.</td>
+  <td>CFlexWidget</td>
+</tr>
+<tr class="inherited" id="id">
+  <td><a href="/doc/api/1.0/CWidget#id-detail">id</a></td>
+  <td>string</td>
+  <td>id of the widget.</td>
+  <td><a href="/doc/api/1.0/CWidget">CWidget</a></td>
+</tr>
+<tr id="name">
+  <td><a href="/doc/api/1.0/CFlexWidget#name-detail">name</a></td>
+  <td>string</td>
+  <td>name of the Flex application.</td>
+  <td>CFlexWidget</td>
+</tr>
+<tr class="inherited" id="owner">
+  <td><a href="/doc/api/1.0/CWidget#owner-detail">owner</a></td>
+  <td><a href="/doc/api/1.0/CBaseController">CBaseController</a></td>
+  <td>owner/creator of this widget.</td>
+  <td><a href="/doc/api/1.0/CWidget">CWidget</a></td>
+</tr>
+<tr id="quality">
+  <td><a href="/doc/api/1.0/CFlexWidget#quality-detail">quality</a></td>
+  <td>string</td>
+  <td>quality of the animation.</td>
+  <td>CFlexWidget</td>
+</tr>
+<tr class="inherited" id="viewPath">
+  <td><a href="/doc/api/1.0/CWidget#viewPath-detail">viewPath</a></td>
+  <td>string</td>
+  <td>Returns the directory containing the view files for this widget.</td>
+  <td><a href="/doc/api/1.0/CWidget">CWidget</a></td>
+</tr>
+<tr id="width">
+  <td><a href="/doc/api/1.0/CFlexWidget#width-detail">width</a></td>
+  <td>string</td>
+  <td>width of the application region.</td>
+  <td>CFlexWidget</td>
+</tr>
+</table>
+</div>
+<a name="methods"></a>
+
+<div class="summary docMethod">
+<h2>Public Methods</h2>
+
+<p><a href="#" class="toggle">Hide inherited methods</a></p>
+
+<table class="summaryTable">
+<colgroup>
+	<col class="col-method" />
+	<col class="col-description" />
+	<col class="col-defined" />
+</colgroup>
+<tr>
+  <th>Method</th><th>Description</th><th>Defined By</th>
+</tr>
+<tr class="inherited" id="__call">
+  <td><a href="/doc/api/1.0/CComponent#__call-detail">__call()</a></td>
+  <td>Calls the named method which is not a class method.</td>
+  <td><a href="/doc/api/1.0/CComponent">CComponent</a></td>
+</tr>
+<tr class="inherited" id="__construct">
+  <td><a href="/doc/api/1.0/CWidget#__construct-detail">__construct()</a></td>
+  <td>Constructor.</td>
+  <td><a href="/doc/api/1.0/CWidget">CWidget</a></td>
+</tr>
+<tr class="inherited" id="__get">
+  <td><a href="/doc/api/1.0/CComponent#__get-detail">__get()</a></td>
+  <td>Returns a property value, an event handler list or a behavior based on its name.</td>
+  <td><a href="/doc/api/1.0/CComponent">CComponent</a></td>
+</tr>
+<tr class="inherited" id="__isset">
+  <td><a href="/doc/api/1.0/CComponent#__isset-detail">__isset()</a></td>
+  <td>Checks if a property value is null.</td>
+  <td><a href="/doc/api/1.0/CComponent">CComponent</a></td>
+</tr>
+<tr class="inherited" id="__set">
+  <td><a href="/doc/api/1.0/CComponent#__set-detail">__set()</a></td>
+  <td>Sets value of a component property.</td>
+  <td><a href="/doc/api/1.0/CComponent">CComponent</a></td>
+</tr>
+<tr class="inherited" id="__unset">
+  <td><a href="/doc/api/1.0/CComponent#__unset-detail">__unset()</a></td>
+  <td>Sets a component property to be null.</td>
+  <td><a href="/doc/api/1.0/CComponent">CComponent</a></td>
+</tr>
+<tr class="inherited" id="actions">
+  <td><a href="/doc/api/1.0/CWidget#actions-detail">actions()</a></td>
+  <td>Returns a list of actions that are used by this widget.</td>
+  <td><a href="/doc/api/1.0/CWidget">CWidget</a></td>
+</tr>
+<tr class="inherited" id="asa">
+  <td><a href="/doc/api/1.0/CComponent#asa-detail">asa()</a></td>
+  <td>Returns the named behavior object.</td>
+  <td><a href="/doc/api/1.0/CComponent">CComponent</a></td>
+</tr>
+<tr class="inherited" id="attachBehavior">
+  <td><a href="/doc/api/1.0/CComponent#attachBehavior-detail">attachBehavior()</a></td>
+  <td>Attaches a behavior to this component.</td>
+  <td><a href="/doc/api/1.0/CComponent">CComponent</a></td>
+</tr>
+<tr class="inherited" id="attachBehaviors">
+  <td><a href="/doc/api/1.0/CComponent#attachBehaviors-detail">attachBehaviors()</a></td>
+  <td>Attaches a list of behaviors to the component.</td>
+  <td><a href="/doc/api/1.0/CComponent">CComponent</a></td>
+</tr>
+<tr class="inherited" id="attachEventHandler">
+  <td><a href="/doc/api/1.0/CComponent#attachEventHandler-detail">attachEventHandler()</a></td>
+  <td>Attaches an event handler to an event.</td>
+  <td><a href="/doc/api/1.0/CComponent">CComponent</a></td>
+</tr>
+<tr class="inherited" id="beginCache">
+  <td><a href="/doc/api/1.0/CBaseController#beginCache-detail">beginCache()</a></td>
+  <td>Begins fragment caching.</td>
+  <td><a href="/doc/api/1.0/CBaseController">CBaseController</a></td>
+</tr>
+<tr class="inherited" id="beginClip">
+  <td><a href="/doc/api/1.0/CBaseController#beginClip-detail">beginClip()</a></td>
+  <td>Begins recording a clip.</td>
+  <td><a href="/doc/api/1.0/CBaseController">CBaseController</a></td>
+</tr>
+<tr class="inherited" id="beginContent">
+  <td><a href="/doc/api/1.0/CBaseController#beginContent-detail">beginContent()</a></td>
+  <td>Begins the rendering of content that is to be decorated by the specified view.</td>
+  <td><a href="/doc/api/1.0/CBaseController">CBaseController</a></td>
+</tr>
+<tr class="inherited" id="beginWidget">
+  <td><a href="/doc/api/1.0/CBaseController#beginWidget-detail">beginWidget()</a></td>
+  <td>Creates a widget and executes it.</td>
+  <td><a href="/doc/api/1.0/CBaseController">CBaseController</a></td>
+</tr>
+<tr class="inherited" id="canGetProperty">
+  <td><a href="/doc/api/1.0/CComponent#canGetProperty-detail">canGetProperty()</a></td>
+  <td>Determines whether a property can be read.</td>
+  <td><a href="/doc/api/1.0/CComponent">CComponent</a></td>
+</tr>
+<tr class="inherited" id="canSetProperty">
+  <td><a href="/doc/api/1.0/CComponent#canSetProperty-detail">canSetProperty()</a></td>
+  <td>Determines whether a property can be set.</td>
+  <td><a href="/doc/api/1.0/CComponent">CComponent</a></td>
+</tr>
+<tr class="inherited" id="createWidget">
+  <td><a href="/doc/api/1.0/CBaseController#createWidget-detail">createWidget()</a></td>
+  <td>Creates a widget and initializes it.</td>
+  <td><a href="/doc/api/1.0/CBaseController">CBaseController</a></td>
+</tr>
+<tr class="inherited" id="detachBehavior">
+  <td><a href="/doc/api/1.0/CComponent#detachBehavior-detail">detachBehavior()</a></td>
+  <td>Detaches a behavior from the component.</td>
+  <td><a href="/doc/api/1.0/CComponent">CComponent</a></td>
+</tr>
+<tr class="inherited" id="detachBehaviors">
+  <td><a href="/doc/api/1.0/CComponent#detachBehaviors-detail">detachBehaviors()</a></td>
+  <td>Detaches all behaviors from the component.</td>
+  <td><a href="/doc/api/1.0/CComponent">CComponent</a></td>
+</tr>
+<tr class="inherited" id="detachEventHandler">
+  <td><a href="/doc/api/1.0/CComponent#detachEventHandler-detail">detachEventHandler()</a></td>
+  <td>Detaches an existing event handler.</td>
+  <td><a href="/doc/api/1.0/CComponent">CComponent</a></td>
+</tr>
+<tr class="inherited" id="disableBehavior">
+  <td><a href="/doc/api/1.0/CComponent#disableBehavior-detail">disableBehavior()</a></td>
+  <td>Disables an attached behavior.</td>
+  <td><a href="/doc/api/1.0/CComponent">CComponent</a></td>
+</tr>
+<tr class="inherited" id="disableBehaviors">
+  <td><a href="/doc/api/1.0/CComponent#disableBehaviors-detail">disableBehaviors()</a></td>
+  <td>Disables all behaviors attached to this component.</td>
+  <td><a href="/doc/api/1.0/CComponent">CComponent</a></td>
+</tr>
+<tr class="inherited" id="enableBehavior">
+  <td><a href="/doc/api/1.0/CComponent#enableBehavior-detail">enableBehavior()</a></td>
+  <td>Enables an attached behavior.</td>
+  <td><a href="/doc/api/1.0/CComponent">CComponent</a></td>
+</tr>
+<tr class="inherited" id="enableBehaviors">
+  <td><a href="/doc/api/1.0/CComponent#enableBehaviors-detail">enableBehaviors()</a></td>
+  <td>Enables all behaviors attached to this component.</td>
+  <td><a href="/doc/api/1.0/CComponent">CComponent</a></td>
+</tr>
+<tr class="inherited" id="endCache">
+  <td><a href="/doc/api/1.0/CBaseController#endCache-detail">endCache()</a></td>
+  <td>Ends fragment caching.</td>
+  <td><a href="/doc/api/1.0/CBaseController">CBaseController</a></td>
+</tr>
+<tr class="inherited" id="endClip">
+  <td><a href="/doc/api/1.0/CBaseController#endClip-detail">endClip()</a></td>
+  <td>Ends recording a clip.</td>
+  <td><a href="/doc/api/1.0/CBaseController">CBaseController</a></td>
+</tr>
+<tr class="inherited" id="endContent">
+  <td><a href="/doc/api/1.0/CBaseController#endContent-detail">endContent()</a></td>
+  <td>Ends the rendering of content.</td>
+  <td><a href="/doc/api/1.0/CBaseController">CBaseController</a></td>
+</tr>
+<tr class="inherited" id="endWidget">
+  <td><a href="/doc/api/1.0/CBaseController#endWidget-detail">endWidget()</a></td>
+  <td>Ends the execution of the named widget.</td>
+  <td><a href="/doc/api/1.0/CBaseController">CBaseController</a></td>
+</tr>
+<tr class="inherited" id="getController">
+  <td><a href="/doc/api/1.0/CWidget#getController-detail">getController()</a></td>
+  <td>Returns the controller that this widget belongs to.</td>
+  <td><a href="/doc/api/1.0/CWidget">CWidget</a></td>
+</tr>
+<tr class="inherited" id="getEventHandlers">
+  <td><a href="/doc/api/1.0/CComponent#getEventHandlers-detail">getEventHandlers()</a></td>
+  <td>Returns the list of attached event handlers for an event.</td>
+  <td><a href="/doc/api/1.0/CComponent">CComponent</a></td>
+</tr>
+<tr id="getFlashVarsAsString">
+  <td><a href="/doc/api/1.0/CFlexWidget#getFlashVarsAsString-detail">getFlashVarsAsString()</a></td>
+  <td>Generates the properly quoted flash parameter string.</td>
+  <td>CFlexWidget</td>
+</tr>
+<tr class="inherited" id="getId">
+  <td><a href="/doc/api/1.0/CWidget#getId-detail">getId()</a></td>
+  <td>Returns id of the widget.</td>
+  <td><a href="/doc/api/1.0/CWidget">CWidget</a></td>
+</tr>
+<tr class="inherited" id="getOwner">
+  <td><a href="/doc/api/1.0/CWidget#getOwner-detail">getOwner()</a></td>
+  <td>Returns owner/creator of this widget. It could be either a widget or a controller.</td>
+  <td><a href="/doc/api/1.0/CWidget">CWidget</a></td>
+</tr>
+<tr class="inherited" id="getViewFile">
+  <td><a href="/doc/api/1.0/CWidget#getViewFile-detail">getViewFile()</a></td>
+  <td>Looks for the view script file according to the view name.</td>
+  <td><a href="/doc/api/1.0/CWidget">CWidget</a></td>
+</tr>
+<tr class="inherited" id="getViewPath">
+  <td><a href="/doc/api/1.0/CWidget#getViewPath-detail">getViewPath()</a></td>
+  <td>Returns the directory containing the view files for this widget.</td>
+  <td><a href="/doc/api/1.0/CWidget">CWidget</a></td>
+</tr>
+<tr class="inherited" id="hasEvent">
+  <td><a href="/doc/api/1.0/CComponent#hasEvent-detail">hasEvent()</a></td>
+  <td>Determines whether an event is defined.</td>
+  <td><a href="/doc/api/1.0/CComponent">CComponent</a></td>
+</tr>
+<tr class="inherited" id="hasEventHandler">
+  <td><a href="/doc/api/1.0/CComponent#hasEventHandler-detail">hasEventHandler()</a></td>
+  <td>Checks whether the named event has attached handlers.</td>
+  <td><a href="/doc/api/1.0/CComponent">CComponent</a></td>
+</tr>
+<tr class="inherited" id="hasProperty">
+  <td><a href="/doc/api/1.0/CComponent#hasProperty-detail">hasProperty()</a></td>
+  <td>Determines whether a property is defined.</td>
+  <td><a href="/doc/api/1.0/CComponent">CComponent</a></td>
+</tr>
+<tr class="inherited" id="init">
+  <td><a href="/doc/api/1.0/CWidget#init-detail">init()</a></td>
+  <td>Initializes the widget.</td>
+  <td><a href="/doc/api/1.0/CWidget">CWidget</a></td>
+</tr>
+<tr class="inherited" id="raiseEvent">
+  <td><a href="/doc/api/1.0/CComponent#raiseEvent-detail">raiseEvent()</a></td>
+  <td>Raises an event.</td>
+  <td><a href="/doc/api/1.0/CComponent">CComponent</a></td>
+</tr>
+<tr id="registerClientScript">
+  <td><a href="/doc/api/1.0/CFlexWidget#registerClientScript-detail">registerClientScript()</a></td>
+  <td>Registers the needed CSS and JavaScript.</td>
+  <td>CFlexWidget</td>
+</tr>
+<tr class="inherited" id="render">
+  <td><a href="/doc/api/1.0/CWidget#render-detail">render()</a></td>
+  <td>Renders a view.</td>
+  <td><a href="/doc/api/1.0/CWidget">CWidget</a></td>
+</tr>
+<tr class="inherited" id="renderFile">
+  <td><a href="/doc/api/1.0/CBaseController#renderFile-detail">renderFile()</a></td>
+  <td>Renders a view file.</td>
+  <td><a href="/doc/api/1.0/CBaseController">CBaseController</a></td>
+</tr>
+<tr class="inherited" id="renderInternal">
+  <td><a href="/doc/api/1.0/CBaseController#renderInternal-detail">renderInternal()</a></td>
+  <td>Renders a view file.</td>
+  <td><a href="/doc/api/1.0/CBaseController">CBaseController</a></td>
+</tr>
+<tr id="run">
+  <td><a href="/doc/api/1.0/CFlexWidget#run-detail">run()</a></td>
+  <td>Renders the widget.</td>
+  <td>CFlexWidget</td>
+</tr>
+<tr class="inherited" id="setId">
+  <td><a href="/doc/api/1.0/CWidget#setId-detail">setId()</a></td>
+  <td>Sets id of the widget.</td>
+  <td><a href="/doc/api/1.0/CWidget">CWidget</a></td>
+</tr>
+<tr class="inherited" id="widget">
+  <td><a href="/doc/api/1.0/CBaseController#widget-detail">widget()</a></td>
+  <td>Creates a widget and executes it.</td>
+  <td><a href="/doc/api/1.0/CBaseController">CBaseController</a></td>
+</tr>
+</table>
+</div>
+<a name="events"></a>
+
+<h2>Property Details</h2>
+<div class="detailHeader" id="align-detail">
+align<span class="detailHeaderTag">
+property
+</span>
+</div>
+
+<div class="signature">
+public string <b>$align</b>;</div>
+
+<p>align of the application region. Defaults to 'middle'.</p>
+
+
+<div class="detailHeader" id="allowScriptAccess-detail">
+allowScriptAccess<span class="detailHeaderTag">
+property
+</span>
+</div>
+
+<div class="signature">
+public string <b>$allowScriptAccess</b>;</div>
+
+<p>the access method of the script. Defaults to 'sameDomain'.</p>
+
+
+<div class="detailHeader" id="altHtmlContent-detail">
+altHtmlContent<span class="detailHeaderTag">
+property
+</span>
+</div>
+
+<div class="signature">
+public string <b>$altHtmlContent</b>;</div>
+
+<p>the HTML content to be displayed if Flash player is not installed.</p>
+
+
+<div class="detailHeader" id="baseUrl-detail">
+baseUrl<span class="detailHeaderTag">
+property
+</span>
+</div>
+
+<div class="signature">
+public string <b>$baseUrl</b>;</div>
+
+<p>the base URL of the Flex application.
+This refers to the URL of the directory containing the SWF file.</p>
+
+
+<div class="detailHeader" id="bgColor-detail">
+bgColor<span class="detailHeaderTag">
+property
+</span>
+</div>
+
+<div class="signature">
+public string <b>$bgColor</b>;</div>
+
+<p>background color of the application region. Defaults to '#FFFFFF', meaning white.</p>
+
+
+<div class="detailHeader" id="enableHistory-detail">
+enableHistory<span class="detailHeaderTag">
+property
+</span>
+</div>
+
+<div class="signature">
+public boolean <b>$enableHistory</b>;</div>
+
+<p>whether history should be enabled. Defaults to true.</p>
+
+
+<div class="detailHeader" id="flashVars-detail">
+flashVars<span class="detailHeaderTag">
+property
+</span>
+</div>
+
+<div class="signature">
+public array <b>$flashVars</b>;</div>
+
+<p>parameters to be passed to the Flex application.</p>
+
+
+<div class="detailHeader" id="flashVarsAsString-detail">
+flashVarsAsString<span class="detailHeaderTag">
+property
+ <em>read-only</em> </span>
+</div>
+
+<div class="signature">
+public string <a href="/doc/api/1.0/CFlexWidget#getFlashVarsAsString"><b>getFlashVarsAsString</b></a>()</div>
+
+<p>Generates the properly quoted flash parameter string.</p>
+
+
+<div class="detailHeader" id="height-detail">
+height<span class="detailHeaderTag">
+property
+</span>
+</div>
+
+<div class="signature">
+public string <b>$height</b>;</div>
+
+<p>height of the application region. Defaults to 300.</p>
+
+
+<div class="detailHeader" id="name-detail">
+name<span class="detailHeaderTag">
+property
+</span>
+</div>
+
+<div class="signature">
+public string <b>$name</b>;</div>
+
+<p>name of the Flex application.
+This should be the SWF file name without the ".swf" suffix.</p>
+
+
+<div class="detailHeader" id="quality-detail">
+quality<span class="detailHeaderTag">
+property
+</span>
+</div>
+
+<div class="signature">
+public string <b>$quality</b>;</div>
+
+<p>quality of the animation. Defaults to 'high'.</p>
+
+
+<div class="detailHeader" id="width-detail">
+width<span class="detailHeaderTag">
+property
+</span>
+</div>
+
+<div class="signature">
+public string <b>$width</b>;</div>
+
+<p>width of the application region. Defaults to 450.</p>
+
+
+<h2>Method Details</h2>
+
+<div class="detailHeader" id="getFlashVarsAsString-detail">
+getFlashVarsAsString()
+<span class="detailHeaderTag">
+method
+</span>
+</div>
+
+<table class="summaryTable">
+<tr><td colspan="3">
+<div class="signature2">
+public string <b>getFlashVarsAsString</b>()</div>
+</td></tr>
+<tr>
+  <td class="paramNameCol">{return}</td>
+  <td class="paramTypeCol">string</td>
+  <td class="paramDescCol">the flash parameter string.</td>
+</tr>
+</table>
+
+<div class="sourceCode">
+<b>Source Code:</b> <a class="sourceLink" href="https://github.com/yiisoft/yii/blob/1.0.12/framework/web/widgets/CFlexWidget.php#L109">framework/web/widgets/CFlexWidget.php#109</a> (<b><a href="#" class="show">show</a></b>)
+<div class="code"><code><span style="color: #000000">
+<span style="color: #0000BB"></span><span style="color: #007700">public&nbsp;function&nbsp;</span><span style="color: #0000BB">getFlashVarsAsString</span><span style="color: #007700">()<br />{<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$params</span><span style="color: #007700">=array();<br />&nbsp;&nbsp;&nbsp;&nbsp;foreach(</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">flashVars&nbsp;</span><span style="color: #007700">as&nbsp;</span><span style="color: #0000BB">$k</span><span style="color: #007700">=&gt;</span><span style="color: #0000BB">$v</span><span style="color: #007700">)<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$params</span><span style="color: #007700">[]=</span><span style="color: #0000BB">urlencode</span><span style="color: #007700">(</span><span style="color: #0000BB">$k</span><span style="color: #007700">).</span><span style="color: #DD0000">'='</span><span style="color: #007700">.</span><span style="color: #0000BB">urlencode</span><span style="color: #007700">(</span><span style="color: #0000BB">$v</span><span style="color: #007700">);<br />&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;</span><span style="color: #0000BB">CJavaScript</span><span style="color: #007700">::</span><span style="color: #0000BB">quote</span><span style="color: #007700">(</span><span style="color: #0000BB">implode</span><span style="color: #007700">(</span><span style="color: #DD0000">'&amp;'</span><span style="color: #007700">,</span><span style="color: #0000BB">$params</span><span style="color: #007700">));<br />}</span>
+</span>
+</code></div>
+</div>
+<p>Generates the properly quoted flash parameter string.</p>
+
+
+<div class="detailHeader" id="registerClientScript-detail">
+registerClientScript()
+<span class="detailHeaderTag">
+method
+(available since v1.0.1)
+</span>
+</div>
+
+<table class="summaryTable">
+<tr><td colspan="3">
+<div class="signature2">
+public void <b>registerClientScript</b>()</div>
+</td></tr>
+</table>
+
+<div class="sourceCode">
+<b>Source Code:</b> <a class="sourceLink" href="https://github.com/yiisoft/yii/blob/1.0.12/framework/web/widgets/CFlexWidget.php#L93">framework/web/widgets/CFlexWidget.php#93</a> (<b><a href="#" class="show">show</a></b>)
+<div class="code"><code><span style="color: #000000">
+<span style="color: #0000BB"></span><span style="color: #007700">public&nbsp;function&nbsp;</span><span style="color: #0000BB">registerClientScript</span><span style="color: #007700">()<br />{<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$cs</span><span style="color: #007700">=</span><span style="color: #0000BB">Yii</span><span style="color: #007700">::</span><span style="color: #0000BB">app</span><span style="color: #007700">()-&gt;</span><span style="color: #0000BB">getClientScript</span><span style="color: #007700">();<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$cs</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">registerScriptFile</span><span style="color: #007700">(</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">baseUrl</span><span style="color: #007700">.</span><span style="color: #DD0000">'/AC_OETags.js'</span><span style="color: #007700">);<br /><br />&nbsp;&nbsp;&nbsp;&nbsp;if(</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">enableHistory</span><span style="color: #007700">)<br />&nbsp;&nbsp;&nbsp;&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$cs</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">registerCssFile</span><span style="color: #007700">(</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">baseUrl</span><span style="color: #007700">.</span><span style="color: #DD0000">'/history/history.css'</span><span style="color: #007700">);<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$cs</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">registerScriptFile</span><span style="color: #007700">(</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">baseUrl</span><span style="color: #007700">.</span><span style="color: #DD0000">'/history/history.js'</span><span style="color: #007700">);<br />&nbsp;&nbsp;&nbsp;&nbsp;}<br />}</span>
+</span>
+</code></div>
+</div>
+<p>Registers the needed CSS and JavaScript.</p>
+
+
+<div class="detailHeader" id="run-detail">
+run()
+<span class="detailHeaderTag">
+method
+</span>
+</div>
+
+<table class="summaryTable">
+<tr><td colspan="3">
+<div class="signature2">
+public void <b>run</b>()</div>
+</td></tr>
+</table>
+
+<div class="sourceCode">
+<b>Source Code:</b> <a class="sourceLink" href="https://github.com/yiisoft/yii/blob/1.0.12/framework/web/widgets/CFlexWidget.php#L75">framework/web/widgets/CFlexWidget.php#75</a> (<b><a href="#" class="show">show</a></b>)
+<div class="code"><code><span style="color: #000000">
+<span style="color: #0000BB"></span><span style="color: #007700">public&nbsp;function&nbsp;</span><span style="color: #0000BB">run</span><span style="color: #007700">()<br />{<br />&nbsp;&nbsp;&nbsp;&nbsp;if(empty(</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">name</span><span style="color: #007700">))<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;throw&nbsp;new&nbsp;</span><span style="color: #0000BB">CException</span><span style="color: #007700">(</span><span style="color: #0000BB">Yii</span><span style="color: #007700">::</span><span style="color: #0000BB">t</span><span style="color: #007700">(</span><span style="color: #DD0000">'yii'</span><span style="color: #007700">,</span><span style="color: #DD0000">'CFlexWidget.name&nbsp;cannot&nbsp;be&nbsp;empty.'</span><span style="color: #007700">));<br />&nbsp;&nbsp;&nbsp;&nbsp;if(empty(</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">baseUrl</span><span style="color: #007700">))<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;throw&nbsp;new&nbsp;</span><span style="color: #0000BB">CException</span><span style="color: #007700">(</span><span style="color: #0000BB">Yii</span><span style="color: #007700">::</span><span style="color: #0000BB">t</span><span style="color: #007700">(</span><span style="color: #DD0000">'yii'</span><span style="color: #007700">,</span><span style="color: #DD0000">'CFlexWidget.baseUrl&nbsp;cannot&nbsp;be&nbsp;empty.'</span><span style="color: #007700">));<br />&nbsp;&nbsp;&nbsp;&nbsp;if(</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">altHtmlContent</span><span style="color: #007700">===</span><span style="color: #0000BB">null</span><span style="color: #007700">)<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">altHtmlContent</span><span style="color: #007700">=</span><span style="color: #0000BB">Yii</span><span style="color: #007700">::</span><span style="color: #0000BB">t</span><span style="color: #007700">(</span><span style="color: #DD0000">'yii'</span><span style="color: #007700">,</span><span style="color: #DD0000">'This&nbsp;content&nbsp;requires&nbsp;the&nbsp;&lt;a&nbsp;href="http://www.adobe.com/go/getflash/"&gt;Adobe&nbsp;Flash&nbsp;Player&lt;/a&gt;.'</span><span style="color: #007700">);<br /><br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">registerClientScript</span><span style="color: #007700">();<br /><br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">render</span><span style="color: #007700">(</span><span style="color: #DD0000">'flexWidget'</span><span style="color: #007700">);<br />}</span>
+</span>
+</code></div>
+</div>
+<p>Renders the widget.</p>
+
+

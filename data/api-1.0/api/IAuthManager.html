@@ -1,0 +1,914 @@
+<h1>IAuthManager</h1>
+<div id="nav">
+<a href="/doc/api/1.0/">All Packages</a>
+| <a href="#methods">Methods</a>
+</div>
+
+<table class="summaryTable docClass">
+<colgroup>
+	<col class="col-name" />
+	<col class="col-value" />
+</colgroup>
+<tr>
+  <th>Package</th>
+  <td><a href="/doc/api/1.0/#system.base">system.base</a></td>
+</tr>
+<tr>
+  <th>Inheritance</th>
+  <td>interface IAuthManager</td>
+</tr>
+<tr>
+  <th>Subclasses</th>
+  <td><a href="/doc/api/1.0/CAuthManager">CAuthManager</a>, <a href="/doc/api/1.0/CDbAuthManager">CDbAuthManager</a>, <a href="/doc/api/1.0/CPhpAuthManager">CPhpAuthManager</a></td>
+</tr>
+<tr>
+  <th>Since</th>
+  <td>1.0</td>
+</tr>
+<tr>
+  <th>Version</th>
+  <td>$Id$</td>
+</tr>
+<tr>
+  <th>Source Code</th>
+  <td><a class="sourceLink" href="https://github.com/yiisoft/yii/blob/1.0.12/framework/base/interfaces.php">framework/base/interfaces.php</a></td>
+</tr>
+</table>
+
+<div id="classDescription">
+IAuthManager interface is implemented by an auth manager application component.
+<br/><br/>
+An auth manager is mainly responsible for providing role-based access control (RBAC) service.</div>
+<a name="properties"></a>
+
+<a name="methods"></a>
+
+<div class="summary docMethod">
+<h2>Public Methods</h2>
+
+<p><a href="#" class="toggle">Hide inherited methods</a></p>
+
+<table class="summaryTable">
+<colgroup>
+	<col class="col-method" />
+	<col class="col-description" />
+	<col class="col-defined" />
+</colgroup>
+<tr>
+  <th>Method</th><th>Description</th><th>Defined By</th>
+</tr>
+<tr id="addItemChild">
+  <td><a href="/doc/api/1.0/IAuthManager#addItemChild-detail">addItemChild()</a></td>
+  <td>Adds an item as a child of another item.</td>
+  <td>IAuthManager</td>
+</tr>
+<tr id="assign">
+  <td><a href="/doc/api/1.0/IAuthManager#assign-detail">assign()</a></td>
+  <td>Assigns an authorization item to a user.</td>
+  <td>IAuthManager</td>
+</tr>
+<tr id="checkAccess">
+  <td><a href="/doc/api/1.0/IAuthManager#checkAccess-detail">checkAccess()</a></td>
+  <td>Performs access check for the specified user.</td>
+  <td>IAuthManager</td>
+</tr>
+<tr id="clearAll">
+  <td><a href="/doc/api/1.0/IAuthManager#clearAll-detail">clearAll()</a></td>
+  <td>Removes all authorization data.</td>
+  <td>IAuthManager</td>
+</tr>
+<tr id="clearAuthAssignments">
+  <td><a href="/doc/api/1.0/IAuthManager#clearAuthAssignments-detail">clearAuthAssignments()</a></td>
+  <td>Removes all authorization assignments.</td>
+  <td>IAuthManager</td>
+</tr>
+<tr id="createAuthItem">
+  <td><a href="/doc/api/1.0/IAuthManager#createAuthItem-detail">createAuthItem()</a></td>
+  <td>Creates an authorization item.</td>
+  <td>IAuthManager</td>
+</tr>
+<tr id="executeBizRule">
+  <td><a href="/doc/api/1.0/IAuthManager#executeBizRule-detail">executeBizRule()</a></td>
+  <td>Executes a business rule.</td>
+  <td>IAuthManager</td>
+</tr>
+<tr id="getAuthAssignment">
+  <td><a href="/doc/api/1.0/IAuthManager#getAuthAssignment-detail">getAuthAssignment()</a></td>
+  <td>Returns the item assignment information.</td>
+  <td>IAuthManager</td>
+</tr>
+<tr id="getAuthAssignments">
+  <td><a href="/doc/api/1.0/IAuthManager#getAuthAssignments-detail">getAuthAssignments()</a></td>
+  <td>Returns the item assignments for the specified user.</td>
+  <td>IAuthManager</td>
+</tr>
+<tr id="getAuthItem">
+  <td><a href="/doc/api/1.0/IAuthManager#getAuthItem-detail">getAuthItem()</a></td>
+  <td>Returns the authorization item with the specified name.</td>
+  <td>IAuthManager</td>
+</tr>
+<tr id="getAuthItems">
+  <td><a href="/doc/api/1.0/IAuthManager#getAuthItems-detail">getAuthItems()</a></td>
+  <td>Returns the authorization items of the specific type and user.</td>
+  <td>IAuthManager</td>
+</tr>
+<tr id="getItemChildren">
+  <td><a href="/doc/api/1.0/IAuthManager#getItemChildren-detail">getItemChildren()</a></td>
+  <td>Returns the children of the specified item.</td>
+  <td>IAuthManager</td>
+</tr>
+<tr id="hasItemChild">
+  <td><a href="/doc/api/1.0/IAuthManager#hasItemChild-detail">hasItemChild()</a></td>
+  <td>Returns a value indicating whether a child exists within a parent.</td>
+  <td>IAuthManager</td>
+</tr>
+<tr id="isAssigned">
+  <td><a href="/doc/api/1.0/IAuthManager#isAssigned-detail">isAssigned()</a></td>
+  <td>Returns a value indicating whether the item has been assigned to the user.</td>
+  <td>IAuthManager</td>
+</tr>
+<tr id="removeAuthItem">
+  <td><a href="/doc/api/1.0/IAuthManager#removeAuthItem-detail">removeAuthItem()</a></td>
+  <td>Removes the specified authorization item.</td>
+  <td>IAuthManager</td>
+</tr>
+<tr id="removeItemChild">
+  <td><a href="/doc/api/1.0/IAuthManager#removeItemChild-detail">removeItemChild()</a></td>
+  <td>Removes a child from its parent.</td>
+  <td>IAuthManager</td>
+</tr>
+<tr id="revoke">
+  <td><a href="/doc/api/1.0/IAuthManager#revoke-detail">revoke()</a></td>
+  <td>Revokes an authorization assignment from a user.</td>
+  <td>IAuthManager</td>
+</tr>
+<tr id="save">
+  <td><a href="/doc/api/1.0/IAuthManager#save-detail">save()</a></td>
+  <td>Saves authorization data into persistent storage.</td>
+  <td>IAuthManager</td>
+</tr>
+<tr id="saveAuthAssignment">
+  <td><a href="/doc/api/1.0/IAuthManager#saveAuthAssignment-detail">saveAuthAssignment()</a></td>
+  <td>Saves the changes to an authorization assignment.</td>
+  <td>IAuthManager</td>
+</tr>
+<tr id="saveAuthItem">
+  <td><a href="/doc/api/1.0/IAuthManager#saveAuthItem-detail">saveAuthItem()</a></td>
+  <td>Saves an authorization item to persistent storage.</td>
+  <td>IAuthManager</td>
+</tr>
+</table>
+</div>
+<a name="events"></a>
+
+<h2>Method Details</h2>
+
+<div class="detailHeader" id="addItemChild-detail">
+addItemChild()
+<span class="detailHeaderTag">
+method
+</span>
+</div>
+
+<table class="summaryTable">
+<tr><td colspan="3">
+<div class="signature2">
+abstract public void <b>addItemChild</b>(string $itemName, string $childName)</div>
+</td></tr>
+<tr>
+  <td class="paramNameCol">$itemName</td>
+  <td class="paramTypeCol">string</td>
+  <td class="paramDescCol">the parent item name</td>
+</tr>
+<tr>
+  <td class="paramNameCol">$childName</td>
+  <td class="paramTypeCol">string</td>
+  <td class="paramDescCol">the child item name</td>
+</tr>
+</table>
+
+<div class="sourceCode">
+<b>Source Code:</b> <a class="sourceLink" href="https://github.com/yiisoft/yii/blob/1.0.12/framework/base/interfaces.php#L405">framework/base/interfaces.php#405</a> (<b><a href="#" class="show">show</a></b>)
+<div class="code"><code><span style="color: #000000">
+<span style="color: #0000BB"></span><span style="color: #007700">public&nbsp;function&nbsp;</span><span style="color: #0000BB">addItemChild</span><span style="color: #007700">(</span><span style="color: #0000BB">$itemName</span><span style="color: #007700">,</span><span style="color: #0000BB">$childName</span><span style="color: #007700">);</span>
+</span>
+</code></div>
+</div>
+<p>Adds an item as a child of another item.</p>
+
+
+<div class="detailHeader" id="assign-detail">
+assign()
+<span class="detailHeaderTag">
+method
+</span>
+</div>
+
+<table class="summaryTable">
+<tr><td colspan="3">
+<div class="signature2">
+abstract public <a href="/doc/api/1.0/CAuthAssignment">CAuthAssignment</a> <b>assign</b>(string $itemName, mixed $userId, string $bizRule=NULL, mixed $data=NULL)</div>
+</td></tr>
+<tr>
+  <td class="paramNameCol">$itemName</td>
+  <td class="paramTypeCol">string</td>
+  <td class="paramDescCol">the item name</td>
+</tr>
+<tr>
+  <td class="paramNameCol">$userId</td>
+  <td class="paramTypeCol">mixed</td>
+  <td class="paramDescCol">the user ID (see <a href="/doc/api/1.0/IWebUser#getId">IWebUser::getId</a>)</td>
+</tr>
+<tr>
+  <td class="paramNameCol">$bizRule</td>
+  <td class="paramTypeCol">string</td>
+  <td class="paramDescCol">the business rule to be executed when <a href="/doc/api/1.0/IAuthManager#checkAccess">checkAccess</a> is called
+for this particular authorization item.</td>
+</tr>
+<tr>
+  <td class="paramNameCol">$data</td>
+  <td class="paramTypeCol">mixed</td>
+  <td class="paramDescCol">additional data associated with this assignment</td>
+</tr>
+<tr>
+  <td class="paramNameCol">{return}</td>
+  <td class="paramTypeCol"><a href="/doc/api/1.0/CAuthAssignment">CAuthAssignment</a></td>
+  <td class="paramDescCol">the authorization assignment information.</td>
+</tr>
+</table>
+
+<div class="sourceCode">
+<b>Source Code:</b> <a class="sourceLink" href="https://github.com/yiisoft/yii/blob/1.0.12/framework/base/interfaces.php#L439">framework/base/interfaces.php#439</a> (<b><a href="#" class="show">show</a></b>)
+<div class="code"><code><span style="color: #000000">
+<span style="color: #0000BB"></span><span style="color: #007700">public&nbsp;function&nbsp;</span><span style="color: #0000BB">assign</span><span style="color: #007700">(</span><span style="color: #0000BB">$itemName</span><span style="color: #007700">,</span><span style="color: #0000BB">$userId</span><span style="color: #007700">,</span><span style="color: #0000BB">$bizRule</span><span style="color: #007700">=</span><span style="color: #0000BB">null</span><span style="color: #007700">,</span><span style="color: #0000BB">$data</span><span style="color: #007700">=</span><span style="color: #0000BB">null</span><span style="color: #007700">);</span>
+</span>
+</code></div>
+</div>
+<p>Assigns an authorization item to a user.</p>
+
+
+<div class="detailHeader" id="checkAccess-detail">
+checkAccess()
+<span class="detailHeaderTag">
+method
+</span>
+</div>
+
+<table class="summaryTable">
+<tr><td colspan="3">
+<div class="signature2">
+abstract public boolean <b>checkAccess</b>(string $itemName, mixed $userId, array $params=array (
+))</div>
+</td></tr>
+<tr>
+  <td class="paramNameCol">$itemName</td>
+  <td class="paramTypeCol">string</td>
+  <td class="paramDescCol">the name of the operation that need access check</td>
+</tr>
+<tr>
+  <td class="paramNameCol">$userId</td>
+  <td class="paramTypeCol">mixed</td>
+  <td class="paramDescCol">the user ID. This should can be either an integer and a string representing
+the unique identifier of a user. See <a href="/doc/api/1.0/IWebUser#getId">IWebUser::getId</a>.</td>
+</tr>
+<tr>
+  <td class="paramNameCol">$params</td>
+  <td class="paramTypeCol">array</td>
+  <td class="paramDescCol">name-value pairs that would be passed to biz rules associated
+with the tasks and roles assigned to the user.</td>
+</tr>
+<tr>
+  <td class="paramNameCol">{return}</td>
+  <td class="paramTypeCol">boolean</td>
+  <td class="paramDescCol">whether the operations can be performed by the user.</td>
+</tr>
+</table>
+
+<div class="sourceCode">
+<b>Source Code:</b> <a class="sourceLink" href="https://github.com/yiisoft/yii/blob/1.0.12/framework/base/interfaces.php#L353">framework/base/interfaces.php#353</a> (<b><a href="#" class="show">show</a></b>)
+<div class="code"><code><span style="color: #000000">
+<span style="color: #0000BB"></span><span style="color: #007700">public&nbsp;function&nbsp;</span><span style="color: #0000BB">checkAccess</span><span style="color: #007700">(</span><span style="color: #0000BB">$itemName</span><span style="color: #007700">,</span><span style="color: #0000BB">$userId</span><span style="color: #007700">,</span><span style="color: #0000BB">$params</span><span style="color: #007700">=array());</span>
+</span>
+</code></div>
+</div>
+<p>Performs access check for the specified user.</p>
+
+
+<div class="detailHeader" id="clearAll-detail">
+clearAll()
+<span class="detailHeaderTag">
+method
+</span>
+</div>
+
+<table class="summaryTable">
+<tr><td colspan="3">
+<div class="signature2">
+abstract public void <b>clearAll</b>()</div>
+</td></tr>
+</table>
+
+<div class="sourceCode">
+<b>Source Code:</b> <a class="sourceLink" href="https://github.com/yiisoft/yii/blob/1.0.12/framework/base/interfaces.php#L478">framework/base/interfaces.php#478</a> (<b><a href="#" class="show">show</a></b>)
+<div class="code"><code><span style="color: #000000">
+<span style="color: #0000BB"></span><span style="color: #007700">public&nbsp;function&nbsp;</span><span style="color: #0000BB">clearAll</span><span style="color: #007700">();</span>
+</span>
+</code></div>
+</div>
+<p>Removes all authorization data.</p>
+
+
+<div class="detailHeader" id="clearAuthAssignments-detail">
+clearAuthAssignments()
+<span class="detailHeaderTag">
+method
+</span>
+</div>
+
+<table class="summaryTable">
+<tr><td colspan="3">
+<div class="signature2">
+abstract public void <b>clearAuthAssignments</b>()</div>
+</td></tr>
+</table>
+
+<div class="sourceCode">
+<b>Source Code:</b> <a class="sourceLink" href="https://github.com/yiisoft/yii/blob/1.0.12/framework/base/interfaces.php#L482">framework/base/interfaces.php#482</a> (<b><a href="#" class="show">show</a></b>)
+<div class="code"><code><span style="color: #000000">
+<span style="color: #0000BB"></span><span style="color: #007700">public&nbsp;function&nbsp;</span><span style="color: #0000BB">clearAuthAssignments</span><span style="color: #007700">();</span>
+</span>
+</code></div>
+</div>
+<p>Removes all authorization assignments.</p>
+
+
+<div class="detailHeader" id="createAuthItem-detail">
+createAuthItem()
+<span class="detailHeaderTag">
+method
+</span>
+</div>
+
+<table class="summaryTable">
+<tr><td colspan="3">
+<div class="signature2">
+abstract public <a href="/doc/api/1.0/CAuthItem">CAuthItem</a> <b>createAuthItem</b>(string $name, integer $type, string $description='', string $bizRule=NULL, mixed $data=NULL)</div>
+</td></tr>
+<tr>
+  <td class="paramNameCol">$name</td>
+  <td class="paramTypeCol">string</td>
+  <td class="paramDescCol">the item name. This must be a unique identifier.</td>
+</tr>
+<tr>
+  <td class="paramNameCol">$type</td>
+  <td class="paramTypeCol">integer</td>
+  <td class="paramDescCol">the item type (0: operation, 1: task, 2: role).</td>
+</tr>
+<tr>
+  <td class="paramNameCol">$description</td>
+  <td class="paramTypeCol">string</td>
+  <td class="paramDescCol">description of the item</td>
+</tr>
+<tr>
+  <td class="paramNameCol">$bizRule</td>
+  <td class="paramTypeCol">string</td>
+  <td class="paramDescCol">business rule associated with the item. This is a piece of
+PHP code that will be executed when <a href="/doc/api/1.0/IAuthManager#checkAccess">checkAccess</a> is called for the item.</td>
+</tr>
+<tr>
+  <td class="paramNameCol">$data</td>
+  <td class="paramTypeCol">mixed</td>
+  <td class="paramDescCol">additional data associated with the item.</td>
+</tr>
+<tr>
+  <td class="paramNameCol">{return}</td>
+  <td class="paramTypeCol"><a href="/doc/api/1.0/CAuthItem">CAuthItem</a></td>
+  <td class="paramDescCol">the authorization item</td>
+</tr>
+</table>
+
+<div class="sourceCode">
+<b>Source Code:</b> <a class="sourceLink" href="https://github.com/yiisoft/yii/blob/1.0.12/framework/base/interfaces.php#L370">framework/base/interfaces.php#370</a> (<b><a href="#" class="show">show</a></b>)
+<div class="code"><code><span style="color: #000000">
+<span style="color: #0000BB"></span><span style="color: #007700">public&nbsp;function&nbsp;</span><span style="color: #0000BB">createAuthItem</span><span style="color: #007700">(</span><span style="color: #0000BB">$name</span><span style="color: #007700">,</span><span style="color: #0000BB">$type</span><span style="color: #007700">,</span><span style="color: #0000BB">$description</span><span style="color: #007700">=</span><span style="color: #DD0000">''</span><span style="color: #007700">,</span><span style="color: #0000BB">$bizRule</span><span style="color: #007700">=</span><span style="color: #0000BB">null</span><span style="color: #007700">,</span><span style="color: #0000BB">$data</span><span style="color: #007700">=</span><span style="color: #0000BB">null</span><span style="color: #007700">);</span>
+</span>
+</code></div>
+</div>
+<p>Creates an authorization item.
+An authorization item represents an action permission (e.g. creating a post).
+It has three types: operation, task and role.
+Authorization items form a hierarchy. Higher level items inheirt permissions representing
+by lower level items.</p>
+
+
+<div class="detailHeader" id="executeBizRule-detail">
+executeBizRule()
+<span class="detailHeaderTag">
+method
+</span>
+</div>
+
+<table class="summaryTable">
+<tr><td colspan="3">
+<div class="signature2">
+abstract public whether <b>executeBizRule</b>(string $bizRule, array $params, mixed $data)</div>
+</td></tr>
+<tr>
+  <td class="paramNameCol">$bizRule</td>
+  <td class="paramTypeCol">string</td>
+  <td class="paramDescCol">the business rule to be executed.</td>
+</tr>
+<tr>
+  <td class="paramNameCol">$params</td>
+  <td class="paramTypeCol">array</td>
+  <td class="paramDescCol">additional parameters to be passed to the business rule when being executed.</td>
+</tr>
+<tr>
+  <td class="paramNameCol">$data</td>
+  <td class="paramTypeCol">mixed</td>
+  <td class="paramDescCol">additional data that is associated with the corresponding authorization item or assignment</td>
+</tr>
+<tr>
+  <td class="paramNameCol">{return}</td>
+  <td class="paramTypeCol">whether</td>
+  <td class="paramDescCol">the execution returns a true value.
+If the business rule is empty, it will also return true.</td>
+</tr>
+</table>
+
+<div class="sourceCode">
+<b>Source Code:</b> <a class="sourceLink" href="https://github.com/yiisoft/yii/blob/1.0.12/framework/base/interfaces.php#L500">framework/base/interfaces.php#500</a> (<b><a href="#" class="show">show</a></b>)
+<div class="code"><code><span style="color: #000000">
+<span style="color: #0000BB"></span><span style="color: #007700">public&nbsp;function&nbsp;</span><span style="color: #0000BB">executeBizRule</span><span style="color: #007700">(</span><span style="color: #0000BB">$bizRule</span><span style="color: #007700">,</span><span style="color: #0000BB">$params</span><span style="color: #007700">,</span><span style="color: #0000BB">$data</span><span style="color: #007700">);</span>
+</span>
+</code></div>
+</div>
+<p>Executes a business rule.
+A business rule is a piece of PHP code that will be executed when <a href="/doc/api/1.0/IAuthManager#checkAccess">checkAccess</a> is called.</p>
+
+
+<div class="detailHeader" id="getAuthAssignment-detail">
+getAuthAssignment()
+<span class="detailHeaderTag">
+method
+</span>
+</div>
+
+<table class="summaryTable">
+<tr><td colspan="3">
+<div class="signature2">
+abstract public <a href="/doc/api/1.0/CAuthAssignment">CAuthAssignment</a> <b>getAuthAssignment</b>(string $itemName, mixed $userId)</div>
+</td></tr>
+<tr>
+  <td class="paramNameCol">$itemName</td>
+  <td class="paramTypeCol">string</td>
+  <td class="paramDescCol">the item name</td>
+</tr>
+<tr>
+  <td class="paramNameCol">$userId</td>
+  <td class="paramTypeCol">mixed</td>
+  <td class="paramDescCol">the user ID (see <a href="/doc/api/1.0/IWebUser#getId">IWebUser::getId</a>)</td>
+</tr>
+<tr>
+  <td class="paramNameCol">{return}</td>
+  <td class="paramTypeCol"><a href="/doc/api/1.0/CAuthAssignment">CAuthAssignment</a></td>
+  <td class="paramDescCol">the item assignment information. Null is returned if
+the item is not assigned to the user.</td>
+</tr>
+</table>
+
+<div class="sourceCode">
+<b>Source Code:</b> <a class="sourceLink" href="https://github.com/yiisoft/yii/blob/1.0.12/framework/base/interfaces.php#L461">framework/base/interfaces.php#461</a> (<b><a href="#" class="show">show</a></b>)
+<div class="code"><code><span style="color: #000000">
+<span style="color: #0000BB"></span><span style="color: #007700">public&nbsp;function&nbsp;</span><span style="color: #0000BB">getAuthAssignment</span><span style="color: #007700">(</span><span style="color: #0000BB">$itemName</span><span style="color: #007700">,</span><span style="color: #0000BB">$userId</span><span style="color: #007700">);</span>
+</span>
+</code></div>
+</div>
+<p>Returns the item assignment information.</p>
+
+
+<div class="detailHeader" id="getAuthAssignments-detail">
+getAuthAssignments()
+<span class="detailHeaderTag">
+method
+</span>
+</div>
+
+<table class="summaryTable">
+<tr><td colspan="3">
+<div class="signature2">
+abstract public array <b>getAuthAssignments</b>(mixed $userId)</div>
+</td></tr>
+<tr>
+  <td class="paramNameCol">$userId</td>
+  <td class="paramTypeCol">mixed</td>
+  <td class="paramDescCol">the user ID (see <a href="/doc/api/1.0/IWebUser#getId">IWebUser::getId</a>)</td>
+</tr>
+<tr>
+  <td class="paramNameCol">{return}</td>
+  <td class="paramTypeCol">array</td>
+  <td class="paramDescCol">the item assignment information for the user. An empty array will be
+returned if there is no item assigned to the user.</td>
+</tr>
+</table>
+
+<div class="sourceCode">
+<b>Source Code:</b> <a class="sourceLink" href="https://github.com/yiisoft/yii/blob/1.0.12/framework/base/interfaces.php#L468">framework/base/interfaces.php#468</a> (<b><a href="#" class="show">show</a></b>)
+<div class="code"><code><span style="color: #000000">
+<span style="color: #0000BB"></span><span style="color: #007700">public&nbsp;function&nbsp;</span><span style="color: #0000BB">getAuthAssignments</span><span style="color: #007700">(</span><span style="color: #0000BB">$userId</span><span style="color: #007700">);</span>
+</span>
+</code></div>
+</div>
+<p>Returns the item assignments for the specified user.</p>
+
+
+<div class="detailHeader" id="getAuthItem-detail">
+getAuthItem()
+<span class="detailHeaderTag">
+method
+</span>
+</div>
+
+<table class="summaryTable">
+<tr><td colspan="3">
+<div class="signature2">
+abstract public <a href="/doc/api/1.0/CAuthItem">CAuthItem</a> <b>getAuthItem</b>(string $name)</div>
+</td></tr>
+<tr>
+  <td class="paramNameCol">$name</td>
+  <td class="paramTypeCol">string</td>
+  <td class="paramDescCol">the name of the item</td>
+</tr>
+<tr>
+  <td class="paramNameCol">{return}</td>
+  <td class="paramTypeCol"><a href="/doc/api/1.0/CAuthItem">CAuthItem</a></td>
+  <td class="paramDescCol">the authorization item. Null if the item cannot be found.</td>
+</tr>
+</table>
+
+<div class="sourceCode">
+<b>Source Code:</b> <a class="sourceLink" href="https://github.com/yiisoft/yii/blob/1.0.12/framework/base/interfaces.php#L391">framework/base/interfaces.php#391</a> (<b><a href="#" class="show">show</a></b>)
+<div class="code"><code><span style="color: #000000">
+<span style="color: #0000BB"></span><span style="color: #007700">public&nbsp;function&nbsp;</span><span style="color: #0000BB">getAuthItem</span><span style="color: #007700">(</span><span style="color: #0000BB">$name</span><span style="color: #007700">);</span>
+</span>
+</code></div>
+</div>
+<p>Returns the authorization item with the specified name.</p>
+
+
+<div class="detailHeader" id="getAuthItems-detail">
+getAuthItems()
+<span class="detailHeaderTag">
+method
+</span>
+</div>
+
+<table class="summaryTable">
+<tr><td colspan="3">
+<div class="signature2">
+abstract public array <b>getAuthItems</b>(integer $type=NULL, mixed $userId=NULL)</div>
+</td></tr>
+<tr>
+  <td class="paramNameCol">$type</td>
+  <td class="paramTypeCol">integer</td>
+  <td class="paramDescCol">the item type (0: operation, 1: task, 2: role). Defaults to null,
+meaning returning all items regardless of their type.</td>
+</tr>
+<tr>
+  <td class="paramNameCol">$userId</td>
+  <td class="paramTypeCol">mixed</td>
+  <td class="paramDescCol">the user ID. Defaults to null, meaning returning all items even if
+they are not assigned to a user.</td>
+</tr>
+<tr>
+  <td class="paramNameCol">{return}</td>
+  <td class="paramTypeCol">array</td>
+  <td class="paramDescCol">the authorization items of the specific type.</td>
+</tr>
+</table>
+
+<div class="sourceCode">
+<b>Source Code:</b> <a class="sourceLink" href="https://github.com/yiisoft/yii/blob/1.0.12/framework/base/interfaces.php#L385">framework/base/interfaces.php#385</a> (<b><a href="#" class="show">show</a></b>)
+<div class="code"><code><span style="color: #000000">
+<span style="color: #0000BB"></span><span style="color: #007700">public&nbsp;function&nbsp;</span><span style="color: #0000BB">getAuthItems</span><span style="color: #007700">(</span><span style="color: #0000BB">$type</span><span style="color: #007700">=</span><span style="color: #0000BB">null</span><span style="color: #007700">,</span><span style="color: #0000BB">$userId</span><span style="color: #007700">=</span><span style="color: #0000BB">null</span><span style="color: #007700">);</span>
+</span>
+</code></div>
+</div>
+<p>Returns the authorization items of the specific type and user.</p>
+
+
+<div class="detailHeader" id="getItemChildren-detail">
+getItemChildren()
+<span class="detailHeaderTag">
+method
+</span>
+</div>
+
+<table class="summaryTable">
+<tr><td colspan="3">
+<div class="signature2">
+abstract public array <b>getItemChildren</b>(mixed $itemName)</div>
+</td></tr>
+<tr>
+  <td class="paramNameCol">$itemName</td>
+  <td class="paramTypeCol">mixed</td>
+  <td class="paramDescCol">the parent item name. This can be either a string or an array.
+The latter represents a list of item names (available since version 1.0.5).</td>
+</tr>
+<tr>
+  <td class="paramNameCol">{return}</td>
+  <td class="paramTypeCol">array</td>
+  <td class="paramDescCol">all child items of the parent</td>
+</tr>
+</table>
+
+<div class="sourceCode">
+<b>Source Code:</b> <a class="sourceLink" href="https://github.com/yiisoft/yii/blob/1.0.12/framework/base/interfaces.php#L427">framework/base/interfaces.php#427</a> (<b><a href="#" class="show">show</a></b>)
+<div class="code"><code><span style="color: #000000">
+<span style="color: #0000BB"></span><span style="color: #007700">public&nbsp;function&nbsp;</span><span style="color: #0000BB">getItemChildren</span><span style="color: #007700">(</span><span style="color: #0000BB">$itemName</span><span style="color: #007700">);</span>
+</span>
+</code></div>
+</div>
+<p>Returns the children of the specified item.</p>
+
+
+<div class="detailHeader" id="hasItemChild-detail">
+hasItemChild()
+<span class="detailHeaderTag">
+method
+</span>
+</div>
+
+<table class="summaryTable">
+<tr><td colspan="3">
+<div class="signature2">
+abstract public boolean <b>hasItemChild</b>(string $itemName, string $childName)</div>
+</td></tr>
+<tr>
+  <td class="paramNameCol">$itemName</td>
+  <td class="paramTypeCol">string</td>
+  <td class="paramDescCol">the parent item name</td>
+</tr>
+<tr>
+  <td class="paramNameCol">$childName</td>
+  <td class="paramTypeCol">string</td>
+  <td class="paramDescCol">the child item name</td>
+</tr>
+<tr>
+  <td class="paramNameCol">{return}</td>
+  <td class="paramTypeCol">boolean</td>
+  <td class="paramDescCol">whether the child exists</td>
+</tr>
+</table>
+
+<div class="sourceCode">
+<b>Source Code:</b> <a class="sourceLink" href="https://github.com/yiisoft/yii/blob/1.0.12/framework/base/interfaces.php#L420">framework/base/interfaces.php#420</a> (<b><a href="#" class="show">show</a></b>)
+<div class="code"><code><span style="color: #000000">
+<span style="color: #0000BB"></span><span style="color: #007700">public&nbsp;function&nbsp;</span><span style="color: #0000BB">hasItemChild</span><span style="color: #007700">(</span><span style="color: #0000BB">$itemName</span><span style="color: #007700">,</span><span style="color: #0000BB">$childName</span><span style="color: #007700">);</span>
+</span>
+</code></div>
+</div>
+<p>Returns a value indicating whether a child exists within a parent.</p>
+
+
+<div class="detailHeader" id="isAssigned-detail">
+isAssigned()
+<span class="detailHeaderTag">
+method
+</span>
+</div>
+
+<table class="summaryTable">
+<tr><td colspan="3">
+<div class="signature2">
+abstract public boolean <b>isAssigned</b>(string $itemName, mixed $userId)</div>
+</td></tr>
+<tr>
+  <td class="paramNameCol">$itemName</td>
+  <td class="paramTypeCol">string</td>
+  <td class="paramDescCol">the item name</td>
+</tr>
+<tr>
+  <td class="paramNameCol">$userId</td>
+  <td class="paramTypeCol">mixed</td>
+  <td class="paramDescCol">the user ID (see <a href="/doc/api/1.0/IWebUser#getId">IWebUser::getId</a>)</td>
+</tr>
+<tr>
+  <td class="paramNameCol">{return}</td>
+  <td class="paramTypeCol">boolean</td>
+  <td class="paramDescCol">whether the item has been assigned to the user.</td>
+</tr>
+</table>
+
+<div class="sourceCode">
+<b>Source Code:</b> <a class="sourceLink" href="https://github.com/yiisoft/yii/blob/1.0.12/framework/base/interfaces.php#L453">framework/base/interfaces.php#453</a> (<b><a href="#" class="show">show</a></b>)
+<div class="code"><code><span style="color: #000000">
+<span style="color: #0000BB"></span><span style="color: #007700">public&nbsp;function&nbsp;</span><span style="color: #0000BB">isAssigned</span><span style="color: #007700">(</span><span style="color: #0000BB">$itemName</span><span style="color: #007700">,</span><span style="color: #0000BB">$userId</span><span style="color: #007700">);</span>
+</span>
+</code></div>
+</div>
+<p>Returns a value indicating whether the item has been assigned to the user.</p>
+
+
+<div class="detailHeader" id="removeAuthItem-detail">
+removeAuthItem()
+<span class="detailHeaderTag">
+method
+</span>
+</div>
+
+<table class="summaryTable">
+<tr><td colspan="3">
+<div class="signature2">
+abstract public boolean <b>removeAuthItem</b>(string $name)</div>
+</td></tr>
+<tr>
+  <td class="paramNameCol">$name</td>
+  <td class="paramTypeCol">string</td>
+  <td class="paramDescCol">the name of the item to be removed</td>
+</tr>
+<tr>
+  <td class="paramNameCol">{return}</td>
+  <td class="paramTypeCol">boolean</td>
+  <td class="paramDescCol">whether the item exists in the storage and has been removed</td>
+</tr>
+</table>
+
+<div class="sourceCode">
+<b>Source Code:</b> <a class="sourceLink" href="https://github.com/yiisoft/yii/blob/1.0.12/framework/base/interfaces.php#L376">framework/base/interfaces.php#376</a> (<b><a href="#" class="show">show</a></b>)
+<div class="code"><code><span style="color: #000000">
+<span style="color: #0000BB"></span><span style="color: #007700">public&nbsp;function&nbsp;</span><span style="color: #0000BB">removeAuthItem</span><span style="color: #007700">(</span><span style="color: #0000BB">$name</span><span style="color: #007700">);</span>
+</span>
+</code></div>
+</div>
+<p>Removes the specified authorization item.</p>
+
+
+<div class="detailHeader" id="removeItemChild-detail">
+removeItemChild()
+<span class="detailHeaderTag">
+method
+</span>
+</div>
+
+<table class="summaryTable">
+<tr><td colspan="3">
+<div class="signature2">
+abstract public boolean <b>removeItemChild</b>(string $itemName, string $childName)</div>
+</td></tr>
+<tr>
+  <td class="paramNameCol">$itemName</td>
+  <td class="paramTypeCol">string</td>
+  <td class="paramDescCol">the parent item name</td>
+</tr>
+<tr>
+  <td class="paramNameCol">$childName</td>
+  <td class="paramTypeCol">string</td>
+  <td class="paramDescCol">the child item name</td>
+</tr>
+<tr>
+  <td class="paramNameCol">{return}</td>
+  <td class="paramTypeCol">boolean</td>
+  <td class="paramDescCol">whether the removal is successful</td>
+</tr>
+</table>
+
+<div class="sourceCode">
+<b>Source Code:</b> <a class="sourceLink" href="https://github.com/yiisoft/yii/blob/1.0.12/framework/base/interfaces.php#L413">framework/base/interfaces.php#413</a> (<b><a href="#" class="show">show</a></b>)
+<div class="code"><code><span style="color: #000000">
+<span style="color: #0000BB"></span><span style="color: #007700">public&nbsp;function&nbsp;</span><span style="color: #0000BB">removeItemChild</span><span style="color: #007700">(</span><span style="color: #0000BB">$itemName</span><span style="color: #007700">,</span><span style="color: #0000BB">$childName</span><span style="color: #007700">);</span>
+</span>
+</code></div>
+</div>
+<p>Removes a child from its parent.
+Note, the child item is not deleted. Only the parent-child relationship is removed.</p>
+
+
+<div class="detailHeader" id="revoke-detail">
+revoke()
+<span class="detailHeaderTag">
+method
+</span>
+</div>
+
+<table class="summaryTable">
+<tr><td colspan="3">
+<div class="signature2">
+abstract public boolean <b>revoke</b>(string $itemName, mixed $userId)</div>
+</td></tr>
+<tr>
+  <td class="paramNameCol">$itemName</td>
+  <td class="paramTypeCol">string</td>
+  <td class="paramDescCol">the item name</td>
+</tr>
+<tr>
+  <td class="paramNameCol">$userId</td>
+  <td class="paramTypeCol">mixed</td>
+  <td class="paramDescCol">the user ID (see <a href="/doc/api/1.0/IWebUser#getId">IWebUser::getId</a>)</td>
+</tr>
+<tr>
+  <td class="paramNameCol">{return}</td>
+  <td class="paramTypeCol">boolean</td>
+  <td class="paramDescCol">whether removal is successful</td>
+</tr>
+</table>
+
+<div class="sourceCode">
+<b>Source Code:</b> <a class="sourceLink" href="https://github.com/yiisoft/yii/blob/1.0.12/framework/base/interfaces.php#L446">framework/base/interfaces.php#446</a> (<b><a href="#" class="show">show</a></b>)
+<div class="code"><code><span style="color: #000000">
+<span style="color: #0000BB"></span><span style="color: #007700">public&nbsp;function&nbsp;</span><span style="color: #0000BB">revoke</span><span style="color: #007700">(</span><span style="color: #0000BB">$itemName</span><span style="color: #007700">,</span><span style="color: #0000BB">$userId</span><span style="color: #007700">);</span>
+</span>
+</code></div>
+</div>
+<p>Revokes an authorization assignment from a user.</p>
+
+
+<div class="detailHeader" id="save-detail">
+save()
+<span class="detailHeaderTag">
+method
+</span>
+</div>
+
+<table class="summaryTable">
+<tr><td colspan="3">
+<div class="signature2">
+abstract public void <b>save</b>()</div>
+</td></tr>
+</table>
+
+<div class="sourceCode">
+<b>Source Code:</b> <a class="sourceLink" href="https://github.com/yiisoft/yii/blob/1.0.12/framework/base/interfaces.php#L489">framework/base/interfaces.php#489</a> (<b><a href="#" class="show">show</a></b>)
+<div class="code"><code><span style="color: #000000">
+<span style="color: #0000BB"></span><span style="color: #007700">public&nbsp;function&nbsp;</span><span style="color: #0000BB">save</span><span style="color: #007700">();</span>
+</span>
+</code></div>
+</div>
+<p>Saves authorization data into persistent storage.
+If any change is made to the authorization data, please make
+sure you call this method to save the changed data into persistent storage.</p>
+
+
+<div class="detailHeader" id="saveAuthAssignment-detail">
+saveAuthAssignment()
+<span class="detailHeaderTag">
+method
+</span>
+</div>
+
+<table class="summaryTable">
+<tr><td colspan="3">
+<div class="signature2">
+abstract public void <b>saveAuthAssignment</b>(<a href="/doc/api/1.0/CAuthAssignment">CAuthAssignment</a> $assignment)</div>
+</td></tr>
+<tr>
+  <td class="paramNameCol">$assignment</td>
+  <td class="paramTypeCol"><a href="/doc/api/1.0/CAuthAssignment">CAuthAssignment</a></td>
+  <td class="paramDescCol">the assignment that has been changed.</td>
+</tr>
+</table>
+
+<div class="sourceCode">
+<b>Source Code:</b> <a class="sourceLink" href="https://github.com/yiisoft/yii/blob/1.0.12/framework/base/interfaces.php#L473">framework/base/interfaces.php#473</a> (<b><a href="#" class="show">show</a></b>)
+<div class="code"><code><span style="color: #000000">
+<span style="color: #0000BB"></span><span style="color: #007700">public&nbsp;function&nbsp;</span><span style="color: #0000BB">saveAuthAssignment</span><span style="color: #007700">(</span><span style="color: #0000BB">$assignment</span><span style="color: #007700">);</span>
+</span>
+</code></div>
+</div>
+<p>Saves the changes to an authorization assignment.</p>
+
+
+<div class="detailHeader" id="saveAuthItem-detail">
+saveAuthItem()
+<span class="detailHeaderTag">
+method
+</span>
+</div>
+
+<table class="summaryTable">
+<tr><td colspan="3">
+<div class="signature2">
+abstract public void <b>saveAuthItem</b>(<a href="/doc/api/1.0/CAuthItem">CAuthItem</a> $item, string $oldName=NULL)</div>
+</td></tr>
+<tr>
+  <td class="paramNameCol">$item</td>
+  <td class="paramTypeCol"><a href="/doc/api/1.0/CAuthItem">CAuthItem</a></td>
+  <td class="paramDescCol">the item to be saved.</td>
+</tr>
+<tr>
+  <td class="paramNameCol">$oldName</td>
+  <td class="paramTypeCol">string</td>
+  <td class="paramDescCol">the old item name. If null, it means the item name is not changed.</td>
+</tr>
+</table>
+
+<div class="sourceCode">
+<b>Source Code:</b> <a class="sourceLink" href="https://github.com/yiisoft/yii/blob/1.0.12/framework/base/interfaces.php#L397">framework/base/interfaces.php#397</a> (<b><a href="#" class="show">show</a></b>)
+<div class="code"><code><span style="color: #000000">
+<span style="color: #0000BB"></span><span style="color: #007700">public&nbsp;function&nbsp;</span><span style="color: #0000BB">saveAuthItem</span><span style="color: #007700">(</span><span style="color: #0000BB">$item</span><span style="color: #007700">,</span><span style="color: #0000BB">$oldName</span><span style="color: #007700">=</span><span style="color: #0000BB">null</span><span style="color: #007700">);</span>
+</span>
+</code></div>
+</div>
+<p>Saves an authorization item to persistent storage.</p>
+
+

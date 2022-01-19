@@ -1,0 +1,770 @@
+<h1>CCacheHttpSession</h1>
+<div id="nav">
+<a href="/doc/api/1.0/">All Packages</a>
+| <a href="#properties">Properties</a>
+| <a href="#methods">Methods</a>
+</div>
+
+<table class="summaryTable docClass">
+<colgroup>
+	<col class="col-name" />
+	<col class="col-value" />
+</colgroup>
+<tr>
+  <th>Package</th>
+  <td><a href="/doc/api/1.0/#system.web">system.web</a></td>
+</tr>
+<tr>
+  <th>Inheritance</th>
+  <td>class CCacheHttpSession &raquo;
+<a href="/doc/api/1.0/CHttpSession">CHttpSession</a> &raquo;
+<a href="/doc/api/1.0/CApplicationComponent">CApplicationComponent</a> &raquo;
+<a href="/doc/api/1.0/CComponent">CComponent</a></td>
+</tr>
+<tr>
+  <th>Implements</th>
+  <td>Countable, ArrayAccess, Traversable, IteratorAggregate, <a href="/doc/api/1.0/IApplicationComponent">IApplicationComponent</a></td>
+</tr>
+<tr>
+  <th>Since</th>
+  <td>1.0</td>
+</tr>
+<tr>
+  <th>Version</th>
+  <td>$Id$</td>
+</tr>
+<tr>
+  <th>Source Code</th>
+  <td><a class="sourceLink" href="https://github.com/yiisoft/yii/blob/1.0.12/framework/web/CCacheHttpSession.php">framework/web/CCacheHttpSession.php</a></td>
+</tr>
+</table>
+
+<div id="classDescription">
+CCacheHttpSession implements a session component using cache as storage medium.
+<br/><br/>
+The cache being used can be any cache application component implementing <a href="/doc/api/1.0/ICache">ICache</a> interface.
+The ID of the cache application component is specified via <a href="/doc/api/1.0/CCacheHttpSession#cacheID">cacheID</a>, which defaults to 'cache'.
+<br/><br/>
+Beware, by definition cache storage are volatile, which means the data stored on them
+may be swapped out and get lost. Therefore, you must make sure the cache used by this component
+is NOT volatile. If you want to use <a href="/doc/api/1.0/CDbCache">CDbCache</a> as storage medium, use <a href="/doc/api/1.0/CDbHttpSession">CDbHttpSession</a>
+is a better choice.</div>
+<a name="properties"></a>
+
+<div class="summary docProperty">
+<h2>Public Properties</h2>
+
+<p><a href="#" class="toggle">Hide inherited properties</a></p>
+
+<table class="summaryTable">
+<colgroup>
+	<col class="col-property" />
+	<col class="col-type" />
+	<col class="col-description" />
+	<col class="col-defined" />
+</colgroup>
+<tr>
+  <th>Property</th><th>Type</th><th>Description</th><th>Defined By</th>
+</tr>
+<tr class="inherited" id="autoStart">
+  <td><a href="/doc/api/1.0/CHttpSession#autoStart-detail">autoStart</a></td>
+  <td>boolean</td>
+  <td>whether the session should be automatically started when the session application component is initialized, defaults to true.</td>
+  <td><a href="/doc/api/1.0/CHttpSession">CHttpSession</a></td>
+</tr>
+<tr class="inherited" id="behaviors">
+  <td><a href="/doc/api/1.0/CApplicationComponent#behaviors-detail">behaviors</a></td>
+  <td>array</td>
+  <td>the behaviors that should be attached to this component.</td>
+  <td><a href="/doc/api/1.0/CApplicationComponent">CApplicationComponent</a></td>
+</tr>
+<tr id="cacheID">
+  <td><a href="/doc/api/1.0/CCacheHttpSession#cacheID-detail">cacheID</a></td>
+  <td>string</td>
+  <td>the ID of the cache application component.</td>
+  <td>CCacheHttpSession</td>
+</tr>
+<tr class="inherited" id="cookieMode">
+  <td><a href="/doc/api/1.0/CHttpSession#cookieMode-detail">cookieMode</a></td>
+  <td>string</td>
+  <td>how to use cookie to store session ID.</td>
+  <td><a href="/doc/api/1.0/CHttpSession">CHttpSession</a></td>
+</tr>
+<tr class="inherited" id="cookieParams">
+  <td><a href="/doc/api/1.0/CHttpSession#cookieParams-detail">cookieParams</a></td>
+  <td>array</td>
+  <td>the session cookie parameters.</td>
+  <td><a href="/doc/api/1.0/CHttpSession">CHttpSession</a></td>
+</tr>
+<tr class="inherited" id="count">
+  <td><a href="/doc/api/1.0/CHttpSession#count-detail">count</a></td>
+  <td>integer</td>
+  <td>the number of session variables</td>
+  <td><a href="/doc/api/1.0/CHttpSession">CHttpSession</a></td>
+</tr>
+<tr class="inherited" id="gCProbability">
+  <td><a href="/doc/api/1.0/CHttpSession#gCProbability-detail">gCProbability</a></td>
+  <td>integer</td>
+  <td>the probability (percentage) that the gc (garbage collection) process is started on every session initialization, defaults to 1 meaning 1% chance.</td>
+  <td><a href="/doc/api/1.0/CHttpSession">CHttpSession</a></td>
+</tr>
+<tr class="inherited" id="isInitialized">
+  <td><a href="/doc/api/1.0/CApplicationComponent#isInitialized-detail">isInitialized</a></td>
+  <td>boolean</td>
+  <td>whether this application component has been initialized (i.e., <a href="/doc/api/1.0/CCacheHttpSession#init">init()</a> is invoked.</td>
+  <td><a href="/doc/api/1.0/CApplicationComponent">CApplicationComponent</a></td>
+</tr>
+<tr class="inherited" id="isStarted">
+  <td><a href="/doc/api/1.0/CHttpSession#isStarted-detail">isStarted</a></td>
+  <td>boolean</td>
+  <td>whether the session has started</td>
+  <td><a href="/doc/api/1.0/CHttpSession">CHttpSession</a></td>
+</tr>
+<tr class="inherited" id="iterator">
+  <td><a href="/doc/api/1.0/CHttpSession#iterator-detail">iterator</a></td>
+  <td><a href="/doc/api/1.0/CHttpSessionIterator">CHttpSessionIterator</a></td>
+  <td>Returns an iterator for traversing the session variables.</td>
+  <td><a href="/doc/api/1.0/CHttpSession">CHttpSession</a></td>
+</tr>
+<tr class="inherited" id="keys">
+  <td><a href="/doc/api/1.0/CHttpSession#keys-detail">keys</a></td>
+  <td>array</td>
+  <td>the list of session variable names</td>
+  <td><a href="/doc/api/1.0/CHttpSession">CHttpSession</a></td>
+</tr>
+<tr class="inherited" id="savePath">
+  <td><a href="/doc/api/1.0/CHttpSession#savePath-detail">savePath</a></td>
+  <td>string</td>
+  <td>the current session save path, defaults to '/tmp'.</td>
+  <td><a href="/doc/api/1.0/CHttpSession">CHttpSession</a></td>
+</tr>
+<tr class="inherited" id="sessionID">
+  <td><a href="/doc/api/1.0/CHttpSession#sessionID-detail">sessionID</a></td>
+  <td>string</td>
+  <td>the current session ID</td>
+  <td><a href="/doc/api/1.0/CHttpSession">CHttpSession</a></td>
+</tr>
+<tr class="inherited" id="sessionName">
+  <td><a href="/doc/api/1.0/CHttpSession#sessionName-detail">sessionName</a></td>
+  <td>string</td>
+  <td>the current session name</td>
+  <td><a href="/doc/api/1.0/CHttpSession">CHttpSession</a></td>
+</tr>
+<tr class="inherited" id="timeout">
+  <td><a href="/doc/api/1.0/CHttpSession#timeout-detail">timeout</a></td>
+  <td>integer</td>
+  <td>the number of seconds after which data will be seen as 'garbage' and cleaned up, defaults to 1440 seconds.</td>
+  <td><a href="/doc/api/1.0/CHttpSession">CHttpSession</a></td>
+</tr>
+<tr id="useCustomStorage">
+  <td><a href="/doc/api/1.0/CCacheHttpSession#useCustomStorage-detail">useCustomStorage</a></td>
+  <td>boolean</td>
+  <td>Returns a value indicating whether to use custom session storage.</td>
+  <td>CCacheHttpSession</td>
+</tr>
+<tr class="inherited" id="useTransparentSessionID">
+  <td><a href="/doc/api/1.0/CHttpSession#useTransparentSessionID-detail">useTransparentSessionID</a></td>
+  <td>boolean</td>
+  <td>whether transparent sid support is enabled or not, defaults to false.</td>
+  <td><a href="/doc/api/1.0/CHttpSession">CHttpSession</a></td>
+</tr>
+</table>
+</div>
+<a name="methods"></a>
+
+<div class="summary docMethod">
+<h2>Public Methods</h2>
+
+<p><a href="#" class="toggle">Hide inherited methods</a></p>
+
+<table class="summaryTable">
+<colgroup>
+	<col class="col-method" />
+	<col class="col-description" />
+	<col class="col-defined" />
+</colgroup>
+<tr>
+  <th>Method</th><th>Description</th><th>Defined By</th>
+</tr>
+<tr class="inherited" id="__call">
+  <td><a href="/doc/api/1.0/CComponent#__call-detail">__call()</a></td>
+  <td>Calls the named method which is not a class method.</td>
+  <td><a href="/doc/api/1.0/CComponent">CComponent</a></td>
+</tr>
+<tr class="inherited" id="__get">
+  <td><a href="/doc/api/1.0/CComponent#__get-detail">__get()</a></td>
+  <td>Returns a property value, an event handler list or a behavior based on its name.</td>
+  <td><a href="/doc/api/1.0/CComponent">CComponent</a></td>
+</tr>
+<tr class="inherited" id="__isset">
+  <td><a href="/doc/api/1.0/CComponent#__isset-detail">__isset()</a></td>
+  <td>Checks if a property value is null.</td>
+  <td><a href="/doc/api/1.0/CComponent">CComponent</a></td>
+</tr>
+<tr class="inherited" id="__set">
+  <td><a href="/doc/api/1.0/CComponent#__set-detail">__set()</a></td>
+  <td>Sets value of a component property.</td>
+  <td><a href="/doc/api/1.0/CComponent">CComponent</a></td>
+</tr>
+<tr class="inherited" id="__unset">
+  <td><a href="/doc/api/1.0/CComponent#__unset-detail">__unset()</a></td>
+  <td>Sets a component property to be null.</td>
+  <td><a href="/doc/api/1.0/CComponent">CComponent</a></td>
+</tr>
+<tr class="inherited" id="add">
+  <td><a href="/doc/api/1.0/CHttpSession#add-detail">add()</a></td>
+  <td>Adds a session variable.</td>
+  <td><a href="/doc/api/1.0/CHttpSession">CHttpSession</a></td>
+</tr>
+<tr class="inherited" id="asa">
+  <td><a href="/doc/api/1.0/CComponent#asa-detail">asa()</a></td>
+  <td>Returns the named behavior object.</td>
+  <td><a href="/doc/api/1.0/CComponent">CComponent</a></td>
+</tr>
+<tr class="inherited" id="attachBehavior">
+  <td><a href="/doc/api/1.0/CComponent#attachBehavior-detail">attachBehavior()</a></td>
+  <td>Attaches a behavior to this component.</td>
+  <td><a href="/doc/api/1.0/CComponent">CComponent</a></td>
+</tr>
+<tr class="inherited" id="attachBehaviors">
+  <td><a href="/doc/api/1.0/CComponent#attachBehaviors-detail">attachBehaviors()</a></td>
+  <td>Attaches a list of behaviors to the component.</td>
+  <td><a href="/doc/api/1.0/CComponent">CComponent</a></td>
+</tr>
+<tr class="inherited" id="attachEventHandler">
+  <td><a href="/doc/api/1.0/CComponent#attachEventHandler-detail">attachEventHandler()</a></td>
+  <td>Attaches an event handler to an event.</td>
+  <td><a href="/doc/api/1.0/CComponent">CComponent</a></td>
+</tr>
+<tr class="inherited" id="canGetProperty">
+  <td><a href="/doc/api/1.0/CComponent#canGetProperty-detail">canGetProperty()</a></td>
+  <td>Determines whether a property can be read.</td>
+  <td><a href="/doc/api/1.0/CComponent">CComponent</a></td>
+</tr>
+<tr class="inherited" id="canSetProperty">
+  <td><a href="/doc/api/1.0/CComponent#canSetProperty-detail">canSetProperty()</a></td>
+  <td>Determines whether a property can be set.</td>
+  <td><a href="/doc/api/1.0/CComponent">CComponent</a></td>
+</tr>
+<tr class="inherited" id="clear">
+  <td><a href="/doc/api/1.0/CHttpSession#clear-detail">clear()</a></td>
+  <td>Removes all session variables</td>
+  <td><a href="/doc/api/1.0/CHttpSession">CHttpSession</a></td>
+</tr>
+<tr class="inherited" id="close">
+  <td><a href="/doc/api/1.0/CHttpSession#close-detail">close()</a></td>
+  <td>Ends the current session and store session data.</td>
+  <td><a href="/doc/api/1.0/CHttpSession">CHttpSession</a></td>
+</tr>
+<tr class="inherited" id="closeSession">
+  <td><a href="/doc/api/1.0/CHttpSession#closeSession-detail">closeSession()</a></td>
+  <td>Session close handler.</td>
+  <td><a href="/doc/api/1.0/CHttpSession">CHttpSession</a></td>
+</tr>
+<tr class="inherited" id="contains">
+  <td><a href="/doc/api/1.0/CHttpSession#contains-detail">contains()</a></td>
+  <td></td>
+  <td><a href="/doc/api/1.0/CHttpSession">CHttpSession</a></td>
+</tr>
+<tr class="inherited" id="count()">
+  <td><a href="/doc/api/CHttpSession#count()-detail">count()</a></td>
+  <td>Returns the number of items in the session.</td>
+  <td><a href="/doc/api/1.0/CHttpSession">CHttpSession</a></td>
+</tr>
+<tr class="inherited" id="destroy">
+  <td><a href="/doc/api/1.0/CHttpSession#destroy-detail">destroy()</a></td>
+  <td>Frees all session variables and destroys all data registered to a session.</td>
+  <td><a href="/doc/api/1.0/CHttpSession">CHttpSession</a></td>
+</tr>
+<tr id="destroySession">
+  <td><a href="/doc/api/1.0/CCacheHttpSession#destroySession-detail">destroySession()</a></td>
+  <td>Session destroy handler.</td>
+  <td>CCacheHttpSession</td>
+</tr>
+<tr class="inherited" id="detachBehavior">
+  <td><a href="/doc/api/1.0/CComponent#detachBehavior-detail">detachBehavior()</a></td>
+  <td>Detaches a behavior from the component.</td>
+  <td><a href="/doc/api/1.0/CComponent">CComponent</a></td>
+</tr>
+<tr class="inherited" id="detachBehaviors">
+  <td><a href="/doc/api/1.0/CComponent#detachBehaviors-detail">detachBehaviors()</a></td>
+  <td>Detaches all behaviors from the component.</td>
+  <td><a href="/doc/api/1.0/CComponent">CComponent</a></td>
+</tr>
+<tr class="inherited" id="detachEventHandler">
+  <td><a href="/doc/api/1.0/CComponent#detachEventHandler-detail">detachEventHandler()</a></td>
+  <td>Detaches an existing event handler.</td>
+  <td><a href="/doc/api/1.0/CComponent">CComponent</a></td>
+</tr>
+<tr class="inherited" id="disableBehavior">
+  <td><a href="/doc/api/1.0/CComponent#disableBehavior-detail">disableBehavior()</a></td>
+  <td>Disables an attached behavior.</td>
+  <td><a href="/doc/api/1.0/CComponent">CComponent</a></td>
+</tr>
+<tr class="inherited" id="disableBehaviors">
+  <td><a href="/doc/api/1.0/CComponent#disableBehaviors-detail">disableBehaviors()</a></td>
+  <td>Disables all behaviors attached to this component.</td>
+  <td><a href="/doc/api/1.0/CComponent">CComponent</a></td>
+</tr>
+<tr class="inherited" id="enableBehavior">
+  <td><a href="/doc/api/1.0/CComponent#enableBehavior-detail">enableBehavior()</a></td>
+  <td>Enables an attached behavior.</td>
+  <td><a href="/doc/api/1.0/CComponent">CComponent</a></td>
+</tr>
+<tr class="inherited" id="enableBehaviors">
+  <td><a href="/doc/api/1.0/CComponent#enableBehaviors-detail">enableBehaviors()</a></td>
+  <td>Enables all behaviors attached to this component.</td>
+  <td><a href="/doc/api/1.0/CComponent">CComponent</a></td>
+</tr>
+<tr class="inherited" id="gcSession">
+  <td><a href="/doc/api/1.0/CHttpSession#gcSession-detail">gcSession()</a></td>
+  <td>Session GC (garbage collection) handler.</td>
+  <td><a href="/doc/api/1.0/CHttpSession">CHttpSession</a></td>
+</tr>
+<tr class="inherited" id="getCookieMode">
+  <td><a href="/doc/api/1.0/CHttpSession#getCookieMode-detail">getCookieMode()</a></td>
+  <td>Returns how to use cookie to store session ID. Defaults to 'Allow'.</td>
+  <td><a href="/doc/api/1.0/CHttpSession">CHttpSession</a></td>
+</tr>
+<tr class="inherited" id="getCookieParams">
+  <td><a href="/doc/api/1.0/CHttpSession#getCookieParams-detail">getCookieParams()</a></td>
+  <td>Returns the session cookie parameters.</td>
+  <td><a href="/doc/api/1.0/CHttpSession">CHttpSession</a></td>
+</tr>
+<tr class="inherited" id="getCount">
+  <td><a href="/doc/api/1.0/CHttpSession#getCount-detail">getCount()</a></td>
+  <td>Returns the number of session variables</td>
+  <td><a href="/doc/api/1.0/CHttpSession">CHttpSession</a></td>
+</tr>
+<tr class="inherited" id="getEventHandlers">
+  <td><a href="/doc/api/1.0/CComponent#getEventHandlers-detail">getEventHandlers()</a></td>
+  <td>Returns the list of attached event handlers for an event.</td>
+  <td><a href="/doc/api/1.0/CComponent">CComponent</a></td>
+</tr>
+<tr class="inherited" id="getGCProbability">
+  <td><a href="/doc/api/1.0/CHttpSession#getGCProbability-detail">getGCProbability()</a></td>
+  <td>Returns the probability (percentage) that the gc (garbage collection) process is started on every session initialization, defaults to 1 meaning 1% chance.</td>
+  <td><a href="/doc/api/1.0/CHttpSession">CHttpSession</a></td>
+</tr>
+<tr class="inherited" id="getIsInitialized">
+  <td><a href="/doc/api/1.0/CApplicationComponent#getIsInitialized-detail">getIsInitialized()</a></td>
+  <td>Checks whether this application component has been initialized (i.e., <a href="/doc/api/1.0/CCacheHttpSession#init">init()</a> is invoked.)</td>
+  <td><a href="/doc/api/1.0/CApplicationComponent">CApplicationComponent</a></td>
+</tr>
+<tr class="inherited" id="getIsStarted">
+  <td><a href="/doc/api/1.0/CHttpSession#getIsStarted-detail">getIsStarted()</a></td>
+  <td>Checks whether the session has started</td>
+  <td><a href="/doc/api/1.0/CHttpSession">CHttpSession</a></td>
+</tr>
+<tr class="inherited" id="getIterator">
+  <td><a href="/doc/api/1.0/CHttpSession#getIterator-detail">getIterator()</a></td>
+  <td>Returns an iterator for traversing the session variables.</td>
+  <td><a href="/doc/api/1.0/CHttpSession">CHttpSession</a></td>
+</tr>
+<tr class="inherited" id="getKeys">
+  <td><a href="/doc/api/1.0/CHttpSession#getKeys-detail">getKeys()</a></td>
+  <td>Returns the list of session variable names</td>
+  <td><a href="/doc/api/1.0/CHttpSession">CHttpSession</a></td>
+</tr>
+<tr class="inherited" id="getSavePath">
+  <td><a href="/doc/api/1.0/CHttpSession#getSavePath-detail">getSavePath()</a></td>
+  <td>Returns the current session save path, defaults to '/tmp'.</td>
+  <td><a href="/doc/api/1.0/CHttpSession">CHttpSession</a></td>
+</tr>
+<tr class="inherited" id="getSessionID">
+  <td><a href="/doc/api/1.0/CHttpSession#getSessionID-detail">getSessionID()</a></td>
+  <td>Returns the current session ID</td>
+  <td><a href="/doc/api/1.0/CHttpSession">CHttpSession</a></td>
+</tr>
+<tr class="inherited" id="getSessionName">
+  <td><a href="/doc/api/1.0/CHttpSession#getSessionName-detail">getSessionName()</a></td>
+  <td>Returns the current session name</td>
+  <td><a href="/doc/api/1.0/CHttpSession">CHttpSession</a></td>
+</tr>
+<tr class="inherited" id="getTimeout">
+  <td><a href="/doc/api/1.0/CHttpSession#getTimeout-detail">getTimeout()</a></td>
+  <td>Returns the number of seconds after which data will be seen as 'garbage' and cleaned up, defaults to 1440 seconds.</td>
+  <td><a href="/doc/api/1.0/CHttpSession">CHttpSession</a></td>
+</tr>
+<tr id="getUseCustomStorage">
+  <td><a href="/doc/api/1.0/CCacheHttpSession#getUseCustomStorage-detail">getUseCustomStorage()</a></td>
+  <td>Returns a value indicating whether to use custom session storage.</td>
+  <td>CCacheHttpSession</td>
+</tr>
+<tr class="inherited" id="getUseTransparentSessionID">
+  <td><a href="/doc/api/1.0/CHttpSession#getUseTransparentSessionID-detail">getUseTransparentSessionID()</a></td>
+  <td>Returns whether transparent sid support is enabled or not, defaults to false.</td>
+  <td><a href="/doc/api/1.0/CHttpSession">CHttpSession</a></td>
+</tr>
+<tr class="inherited" id="hasEvent">
+  <td><a href="/doc/api/1.0/CComponent#hasEvent-detail">hasEvent()</a></td>
+  <td>Determines whether an event is defined.</td>
+  <td><a href="/doc/api/1.0/CComponent">CComponent</a></td>
+</tr>
+<tr class="inherited" id="hasEventHandler">
+  <td><a href="/doc/api/1.0/CComponent#hasEventHandler-detail">hasEventHandler()</a></td>
+  <td>Checks whether the named event has attached handlers.</td>
+  <td><a href="/doc/api/1.0/CComponent">CComponent</a></td>
+</tr>
+<tr class="inherited" id="hasProperty">
+  <td><a href="/doc/api/1.0/CComponent#hasProperty-detail">hasProperty()</a></td>
+  <td>Determines whether a property is defined.</td>
+  <td><a href="/doc/api/1.0/CComponent">CComponent</a></td>
+</tr>
+<tr id="init">
+  <td><a href="/doc/api/1.0/CCacheHttpSession#init-detail">init()</a></td>
+  <td>Initializes the application component.</td>
+  <td>CCacheHttpSession</td>
+</tr>
+<tr class="inherited" id="itemAt">
+  <td><a href="/doc/api/1.0/CHttpSession#itemAt-detail">itemAt()</a></td>
+  <td>Returns the session variable value with the session variable name.</td>
+  <td><a href="/doc/api/1.0/CHttpSession">CHttpSession</a></td>
+</tr>
+<tr class="inherited" id="offsetExists">
+  <td><a href="/doc/api/1.0/CHttpSession#offsetExists-detail">offsetExists()</a></td>
+  <td>This method is required by the interface ArrayAccess.</td>
+  <td><a href="/doc/api/1.0/CHttpSession">CHttpSession</a></td>
+</tr>
+<tr class="inherited" id="offsetGet">
+  <td><a href="/doc/api/1.0/CHttpSession#offsetGet-detail">offsetGet()</a></td>
+  <td>This method is required by the interface ArrayAccess.</td>
+  <td><a href="/doc/api/1.0/CHttpSession">CHttpSession</a></td>
+</tr>
+<tr class="inherited" id="offsetSet">
+  <td><a href="/doc/api/1.0/CHttpSession#offsetSet-detail">offsetSet()</a></td>
+  <td>This method is required by the interface ArrayAccess.</td>
+  <td><a href="/doc/api/1.0/CHttpSession">CHttpSession</a></td>
+</tr>
+<tr class="inherited" id="offsetUnset">
+  <td><a href="/doc/api/1.0/CHttpSession#offsetUnset-detail">offsetUnset()</a></td>
+  <td>This method is required by the interface ArrayAccess.</td>
+  <td><a href="/doc/api/1.0/CHttpSession">CHttpSession</a></td>
+</tr>
+<tr class="inherited" id="open">
+  <td><a href="/doc/api/1.0/CHttpSession#open-detail">open()</a></td>
+  <td>Starts the session if it has not started yet.</td>
+  <td><a href="/doc/api/1.0/CHttpSession">CHttpSession</a></td>
+</tr>
+<tr class="inherited" id="openSession">
+  <td><a href="/doc/api/1.0/CHttpSession#openSession-detail">openSession()</a></td>
+  <td>Session open handler.</td>
+  <td><a href="/doc/api/1.0/CHttpSession">CHttpSession</a></td>
+</tr>
+<tr class="inherited" id="raiseEvent">
+  <td><a href="/doc/api/1.0/CComponent#raiseEvent-detail">raiseEvent()</a></td>
+  <td>Raises an event.</td>
+  <td><a href="/doc/api/1.0/CComponent">CComponent</a></td>
+</tr>
+<tr id="readSession">
+  <td><a href="/doc/api/1.0/CCacheHttpSession#readSession-detail">readSession()</a></td>
+  <td>Session read handler.</td>
+  <td>CCacheHttpSession</td>
+</tr>
+<tr class="inherited" id="remove">
+  <td><a href="/doc/api/1.0/CHttpSession#remove-detail">remove()</a></td>
+  <td>Removes a session variable.</td>
+  <td><a href="/doc/api/1.0/CHttpSession">CHttpSession</a></td>
+</tr>
+<tr class="inherited" id="setCookieMode">
+  <td><a href="/doc/api/1.0/CHttpSession#setCookieMode-detail">setCookieMode()</a></td>
+  <td>Sets how to use cookie to store session ID. Valid values include 'none', 'allow' and 'only'.</td>
+  <td><a href="/doc/api/1.0/CHttpSession">CHttpSession</a></td>
+</tr>
+<tr class="inherited" id="setCookieParams">
+  <td><a href="/doc/api/1.0/CHttpSession#setCookieParams-detail">setCookieParams()</a></td>
+  <td>Sets the session cookie parameters.</td>
+  <td><a href="/doc/api/1.0/CHttpSession">CHttpSession</a></td>
+</tr>
+<tr class="inherited" id="setGCProbability">
+  <td><a href="/doc/api/1.0/CHttpSession#setGCProbability-detail">setGCProbability()</a></td>
+  <td>Sets the probability (percentage) that the gc (garbage collection) process is started on every session initialization.</td>
+  <td><a href="/doc/api/1.0/CHttpSession">CHttpSession</a></td>
+</tr>
+<tr class="inherited" id="setSavePath">
+  <td><a href="/doc/api/1.0/CHttpSession#setSavePath-detail">setSavePath()</a></td>
+  <td>Sets the current session save path</td>
+  <td><a href="/doc/api/1.0/CHttpSession">CHttpSession</a></td>
+</tr>
+<tr class="inherited" id="setSessionID">
+  <td><a href="/doc/api/1.0/CHttpSession#setSessionID-detail">setSessionID()</a></td>
+  <td>Sets the session ID for the current session</td>
+  <td><a href="/doc/api/1.0/CHttpSession">CHttpSession</a></td>
+</tr>
+<tr class="inherited" id="setSessionName">
+  <td><a href="/doc/api/1.0/CHttpSession#setSessionName-detail">setSessionName()</a></td>
+  <td>Sets the session name for the current session, must be an alphanumeric string, defaults to PHPSESSID</td>
+  <td><a href="/doc/api/1.0/CHttpSession">CHttpSession</a></td>
+</tr>
+<tr class="inherited" id="setTimeout">
+  <td><a href="/doc/api/1.0/CHttpSession#setTimeout-detail">setTimeout()</a></td>
+  <td>Sets the number of seconds after which data will be seen as 'garbage' and cleaned up</td>
+  <td><a href="/doc/api/1.0/CHttpSession">CHttpSession</a></td>
+</tr>
+<tr class="inherited" id="setUseTransparentSessionID">
+  <td><a href="/doc/api/1.0/CHttpSession#setUseTransparentSessionID-detail">setUseTransparentSessionID()</a></td>
+  <td>Sets whether transparent sid support is enabled or not.</td>
+  <td><a href="/doc/api/1.0/CHttpSession">CHttpSession</a></td>
+</tr>
+<tr class="inherited" id="toArray">
+  <td><a href="/doc/api/1.0/CHttpSession#toArray-detail">toArray()</a></td>
+  <td></td>
+  <td><a href="/doc/api/1.0/CHttpSession">CHttpSession</a></td>
+</tr>
+<tr id="writeSession">
+  <td><a href="/doc/api/1.0/CCacheHttpSession#writeSession-detail">writeSession()</a></td>
+  <td>Session write handler.</td>
+  <td>CCacheHttpSession</td>
+</tr>
+</table>
+</div>
+<div class="summary docMethod">
+<h2>Protected Methods</h2>
+
+<p><a href="#" class="toggle">Hide inherited methods</a></p>
+
+<table class="summaryTable">
+<colgroup>
+	<col class="col-method" />
+	<col class="col-description" />
+	<col class="col-defined" />
+</colgroup>
+<tr>
+  <th>Method</th><th>Description</th><th>Defined By</th>
+</tr>
+<tr id="calculateKey">
+  <td><a href="/doc/api/1.0/CCacheHttpSession#calculateKey-detail">calculateKey()</a></td>
+  <td>Generates a unique key used for storing session data in cache.</td>
+  <td>CCacheHttpSession</td>
+</tr>
+</table>
+</div>
+<a name="events"></a>
+
+<h2>Property Details</h2>
+<div class="detailHeader" id="cacheID-detail">
+cacheID<span class="detailHeaderTag">
+property
+</span>
+</div>
+
+<div class="signature">
+public string <b>$cacheID</b>;</div>
+
+<p>the ID of the cache application component. Defaults to 'cache' (the primary cache application component.)</p>
+
+
+<div class="detailHeader" id="useCustomStorage-detail">
+useCustomStorage<span class="detailHeaderTag">
+property
+ <em>read-only</em> </span>
+</div>
+
+<div class="signature">
+public boolean <a href="/doc/api/1.0/CCacheHttpSession#getUseCustomStorage"><b>getUseCustomStorage</b></a>()</div>
+
+<p>Returns a value indicating whether to use custom session storage.
+This method overrides the parent implementation and always returns true.</p>
+
+
+<h2>Method Details</h2>
+
+<div class="detailHeader" id="calculateKey-detail">
+calculateKey()
+<span class="detailHeaderTag">
+method
+</span>
+</div>
+
+<table class="summaryTable">
+<tr><td colspan="3">
+<div class="signature2">
+protected string <b>calculateKey</b>(string $id)</div>
+</td></tr>
+<tr>
+  <td class="paramNameCol">$id</td>
+  <td class="paramTypeCol">string</td>
+  <td class="paramDescCol">session variable name</td>
+</tr>
+<tr>
+  <td class="paramNameCol">{return}</td>
+  <td class="paramTypeCol">string</td>
+  <td class="paramDescCol">a safe cache key associated with the session variable name</td>
+</tr>
+</table>
+
+<div class="sourceCode">
+<b>Source Code:</b> <a class="sourceLink" href="https://github.com/yiisoft/yii/blob/1.0.12/framework/web/CCacheHttpSession.php#L107">framework/web/CCacheHttpSession.php#107</a> (<b><a href="#" class="show">show</a></b>)
+<div class="code"><code><span style="color: #000000">
+<span style="color: #0000BB"></span><span style="color: #007700">protected&nbsp;function&nbsp;</span><span style="color: #0000BB">calculateKey</span><span style="color: #007700">(</span><span style="color: #0000BB">$id</span><span style="color: #007700">)<br />{<br />&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;</span><span style="color: #0000BB">self</span><span style="color: #007700">::</span><span style="color: #0000BB">CACHE_KEY_PREFIX</span><span style="color: #007700">.</span><span style="color: #0000BB">$id</span><span style="color: #007700">;<br />}</span>
+</span>
+</code></div>
+</div>
+<p>Generates a unique key used for storing session data in cache.</p>
+
+
+<div class="detailHeader" id="destroySession-detail">
+destroySession()
+<span class="detailHeaderTag">
+method
+</span>
+</div>
+
+<table class="summaryTable">
+<tr><td colspan="3">
+<div class="signature2">
+public boolean <b>destroySession</b>(string $id)</div>
+</td></tr>
+<tr>
+  <td class="paramNameCol">$id</td>
+  <td class="paramTypeCol">string</td>
+  <td class="paramDescCol">session ID</td>
+</tr>
+<tr>
+  <td class="paramNameCol">{return}</td>
+  <td class="paramTypeCol">boolean</td>
+  <td class="paramDescCol">whether session is destroyed successfully</td>
+</tr>
+</table>
+
+<div class="sourceCode">
+<b>Source Code:</b> <a class="sourceLink" href="https://github.com/yiisoft/yii/blob/1.0.12/framework/web/CCacheHttpSession.php#L97">framework/web/CCacheHttpSession.php#97</a> (<b><a href="#" class="show">show</a></b>)
+<div class="code"><code><span style="color: #000000">
+<span style="color: #0000BB"></span><span style="color: #007700">public&nbsp;function&nbsp;</span><span style="color: #0000BB">destroySession</span><span style="color: #007700">(</span><span style="color: #0000BB">$id</span><span style="color: #007700">)<br />{<br />&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">_cache</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">delete</span><span style="color: #007700">(</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">calculateKey</span><span style="color: #007700">(</span><span style="color: #0000BB">$id</span><span style="color: #007700">));<br />}</span>
+</span>
+</code></div>
+</div>
+<p>Session destroy handler.
+Do not call this method directly.</p>
+
+
+<div class="detailHeader" id="getUseCustomStorage-detail">
+getUseCustomStorage()
+<span class="detailHeaderTag">
+method
+</span>
+</div>
+
+<table class="summaryTable">
+<tr><td colspan="3">
+<div class="signature2">
+public boolean <b>getUseCustomStorage</b>()</div>
+</td></tr>
+<tr>
+  <td class="paramNameCol">{return}</td>
+  <td class="paramTypeCol">boolean</td>
+  <td class="paramDescCol">whether to use custom storage.</td>
+</tr>
+</table>
+
+<div class="sourceCode">
+<b>Source Code:</b> <a class="sourceLink" href="https://github.com/yiisoft/yii/blob/1.0.12/framework/web/CCacheHttpSession.php#L62">framework/web/CCacheHttpSession.php#62</a> (<b><a href="#" class="show">show</a></b>)
+<div class="code"><code><span style="color: #000000">
+<span style="color: #0000BB"></span><span style="color: #007700">public&nbsp;function&nbsp;</span><span style="color: #0000BB">getUseCustomStorage</span><span style="color: #007700">()<br />{<br />&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;</span><span style="color: #0000BB">true</span><span style="color: #007700">;<br />}</span>
+</span>
+</code></div>
+</div>
+<p>Returns a value indicating whether to use custom session storage.
+This method overrides the parent implementation and always returns true.</p>
+
+
+<div class="detailHeader" id="init-detail">
+init()
+<span class="detailHeaderTag">
+method
+</span>
+</div>
+
+<table class="summaryTable">
+<tr><td colspan="3">
+<div class="signature2">
+public void <b>init</b>()</div>
+</td></tr>
+</table>
+
+<div class="sourceCode">
+<b>Source Code:</b> <a class="sourceLink" href="https://github.com/yiisoft/yii/blob/1.0.12/framework/web/CCacheHttpSession.php#L48">framework/web/CCacheHttpSession.php#48</a> (<b><a href="#" class="show">show</a></b>)
+<div class="code"><code><span style="color: #000000">
+<span style="color: #0000BB"></span><span style="color: #007700">public&nbsp;function&nbsp;</span><span style="color: #0000BB">init</span><span style="color: #007700">()<br />{<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">_cache</span><span style="color: #007700">=</span><span style="color: #0000BB">Yii</span><span style="color: #007700">::</span><span style="color: #0000BB">app</span><span style="color: #007700">()-&gt;</span><span style="color: #0000BB">getComponent</span><span style="color: #007700">(</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">cacheID</span><span style="color: #007700">);<br />&nbsp;&nbsp;&nbsp;&nbsp;if(!(</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">_cache&nbsp;</span><span style="color: #007700">instanceof&nbsp;</span><span style="color: #0000BB">ICache</span><span style="color: #007700">))<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;throw&nbsp;new&nbsp;</span><span style="color: #0000BB">CException</span><span style="color: #007700">(</span><span style="color: #0000BB">Yii</span><span style="color: #007700">::</span><span style="color: #0000BB">t</span><span style="color: #007700">(</span><span style="color: #DD0000">'yii'</span><span style="color: #007700">,</span><span style="color: #DD0000">'CCacheHttpSession.cacheID&nbsp;is&nbsp;invalid.&nbsp;Please&nbsp;make&nbsp;sure&nbsp;"{id}"&nbsp;refers&nbsp;to&nbsp;a&nbsp;valid&nbsp;cache&nbsp;application&nbsp;component.'</span><span style="color: #007700">,<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;array(</span><span style="color: #DD0000">'{id}'</span><span style="color: #007700">=&gt;</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">cacheID</span><span style="color: #007700">)));<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">parent</span><span style="color: #007700">::</span><span style="color: #0000BB">init</span><span style="color: #007700">();<br />}</span>
+</span>
+</code></div>
+</div>
+<p>Initializes the application component.
+This method overrides the parent implementation by checking if cache is available.</p>
+
+
+<div class="detailHeader" id="readSession-detail">
+readSession()
+<span class="detailHeaderTag">
+method
+</span>
+</div>
+
+<table class="summaryTable">
+<tr><td colspan="3">
+<div class="signature2">
+public string <b>readSession</b>(string $id)</div>
+</td></tr>
+<tr>
+  <td class="paramNameCol">$id</td>
+  <td class="paramTypeCol">string</td>
+  <td class="paramDescCol">session ID</td>
+</tr>
+<tr>
+  <td class="paramNameCol">{return}</td>
+  <td class="paramTypeCol">string</td>
+  <td class="paramDescCol">the session data</td>
+</tr>
+</table>
+
+<div class="sourceCode">
+<b>Source Code:</b> <a class="sourceLink" href="https://github.com/yiisoft/yii/blob/1.0.12/framework/web/CCacheHttpSession.php#L73">framework/web/CCacheHttpSession.php#73</a> (<b><a href="#" class="show">show</a></b>)
+<div class="code"><code><span style="color: #000000">
+<span style="color: #0000BB"></span><span style="color: #007700">public&nbsp;function&nbsp;</span><span style="color: #0000BB">readSession</span><span style="color: #007700">(</span><span style="color: #0000BB">$id</span><span style="color: #007700">)<br />{<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$data</span><span style="color: #007700">=</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">_cache</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">get</span><span style="color: #007700">(</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">calculateKey</span><span style="color: #007700">(</span><span style="color: #0000BB">$id</span><span style="color: #007700">));<br />&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;</span><span style="color: #0000BB">$data</span><span style="color: #007700">===</span><span style="color: #0000BB">false</span><span style="color: #007700">?</span><span style="color: #DD0000">''</span><span style="color: #007700">:</span><span style="color: #0000BB">$data</span><span style="color: #007700">;<br />}</span>
+</span>
+</code></div>
+</div>
+<p>Session read handler.
+Do not call this method directly.</p>
+
+
+<div class="detailHeader" id="writeSession-detail">
+writeSession()
+<span class="detailHeaderTag">
+method
+</span>
+</div>
+
+<table class="summaryTable">
+<tr><td colspan="3">
+<div class="signature2">
+public boolean <b>writeSession</b>(string $id, string $data)</div>
+</td></tr>
+<tr>
+  <td class="paramNameCol">$id</td>
+  <td class="paramTypeCol">string</td>
+  <td class="paramDescCol">session ID</td>
+</tr>
+<tr>
+  <td class="paramNameCol">$data</td>
+  <td class="paramTypeCol">string</td>
+  <td class="paramDescCol">session data</td>
+</tr>
+<tr>
+  <td class="paramNameCol">{return}</td>
+  <td class="paramTypeCol">boolean</td>
+  <td class="paramDescCol">whether session write is successful</td>
+</tr>
+</table>
+
+<div class="sourceCode">
+<b>Source Code:</b> <a class="sourceLink" href="https://github.com/yiisoft/yii/blob/1.0.12/framework/web/CCacheHttpSession.php#L86">framework/web/CCacheHttpSession.php#86</a> (<b><a href="#" class="show">show</a></b>)
+<div class="code"><code><span style="color: #000000">
+<span style="color: #0000BB"></span><span style="color: #007700">public&nbsp;function&nbsp;</span><span style="color: #0000BB">writeSession</span><span style="color: #007700">(</span><span style="color: #0000BB">$id</span><span style="color: #007700">,</span><span style="color: #0000BB">$data</span><span style="color: #007700">)<br />{<br />&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">_cache</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">set</span><span style="color: #007700">(</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">calculateKey</span><span style="color: #007700">(</span><span style="color: #0000BB">$id</span><span style="color: #007700">),</span><span style="color: #0000BB">$data</span><span style="color: #007700">,</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">getTimeout</span><span style="color: #007700">());<br />}</span>
+</span>
+</code></div>
+</div>
+<p>Session write handler.
+Do not call this method directly.</p>
+
+

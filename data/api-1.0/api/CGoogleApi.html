@@ -1,0 +1,203 @@
+<h1>CGoogleApi</h1>
+<div id="nav">
+<a href="/doc/api/1.0/">All Packages</a>
+| <a href="#methods">Methods</a>
+</div>
+
+<table class="summaryTable docClass">
+<colgroup>
+	<col class="col-name" />
+	<col class="col-value" />
+</colgroup>
+<tr>
+  <th>Package</th>
+  <td><a href="/doc/api/1.0/#system.web.helpers">system.web.helpers</a></td>
+</tr>
+<tr>
+  <th>Inheritance</th>
+  <td>class CGoogleApi</td>
+</tr>
+<tr>
+  <th>Since</th>
+  <td>1.0.3</td>
+</tr>
+<tr>
+  <th>Version</th>
+  <td>$Id$</td>
+</tr>
+<tr>
+  <th>Source Code</th>
+  <td><a class="sourceLink" href="https://github.com/yiisoft/yii/blob/1.0.12/framework/web/helpers/CGoogleApi.php">framework/web/helpers/CGoogleApi.php</a></td>
+</tr>
+</table>
+
+<div id="classDescription">
+CGoogleApi provides helper methods to easily access <a href="http://code.google.com/apis/ajax/">Google AJAX APIs</a>.</div>
+<a name="properties"></a>
+
+<a name="methods"></a>
+
+<div class="summary docMethod">
+<h2>Public Methods</h2>
+
+<p><a href="#" class="toggle">Hide inherited methods</a></p>
+
+<table class="summaryTable">
+<colgroup>
+	<col class="col-method" />
+	<col class="col-description" />
+	<col class="col-defined" />
+</colgroup>
+<tr>
+  <th>Method</th><th>Description</th><th>Defined By</th>
+</tr>
+<tr id="init">
+  <td><a href="/doc/api/1.0/CGoogleApi#init-detail">init()</a></td>
+  <td>Renders the jsapi script file.</td>
+  <td>CGoogleApi</td>
+</tr>
+<tr id="load">
+  <td><a href="/doc/api/1.0/CGoogleApi#load-detail">load()</a></td>
+  <td>Loads the specified API module.</td>
+  <td>CGoogleApi</td>
+</tr>
+<tr id="register">
+  <td><a href="/doc/api/1.0/CGoogleApi#register-detail">register()</a></td>
+  <td>Registers the specified API module.</td>
+  <td>CGoogleApi</td>
+</tr>
+</table>
+</div>
+<a name="events"></a>
+
+<h2>Method Details</h2>
+
+<div class="detailHeader" id="init-detail">
+init()
+<span class="detailHeaderTag">
+method
+</span>
+</div>
+
+<table class="summaryTable">
+<tr><td colspan="3">
+<div class="signature2">
+public static string <b>init</b>(string $apiKey=NULL)</div>
+</td></tr>
+<tr>
+  <td class="paramNameCol">$apiKey</td>
+  <td class="paramTypeCol">string</td>
+  <td class="paramDescCol">the API key. Null if you do not have a key.</td>
+</tr>
+<tr>
+  <td class="paramNameCol">{return}</td>
+  <td class="paramTypeCol">string</td>
+  <td class="paramDescCol">the script tag that loads Google jsapi.</td>
+</tr>
+</table>
+
+<div class="sourceCode">
+<b>Source Code:</b> <a class="sourceLink" href="https://github.com/yiisoft/yii/blob/1.0.12/framework/web/helpers/CGoogleApi.php#L28">framework/web/helpers/CGoogleApi.php#28</a> (<b><a href="#" class="show">show</a></b>)
+<div class="code"><code><span style="color: #000000">
+<span style="color: #0000BB"></span><span style="color: #007700">public&nbsp;static&nbsp;function&nbsp;</span><span style="color: #0000BB">init</span><span style="color: #007700">(</span><span style="color: #0000BB">$apiKey</span><span style="color: #007700">=</span><span style="color: #0000BB">null</span><span style="color: #007700">)<br />{<br />&nbsp;&nbsp;&nbsp;&nbsp;if(</span><span style="color: #0000BB">$apiKey</span><span style="color: #007700">===</span><span style="color: #0000BB">null</span><span style="color: #007700">)<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;</span><span style="color: #0000BB">CHtml</span><span style="color: #007700">::</span><span style="color: #0000BB">scriptFile</span><span style="color: #007700">(</span><span style="color: #0000BB">self</span><span style="color: #007700">::</span><span style="color: #0000BB">BOOTSTRAP_URL</span><span style="color: #007700">);<br />&nbsp;&nbsp;&nbsp;&nbsp;else<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;</span><span style="color: #0000BB">CHtml</span><span style="color: #007700">::</span><span style="color: #0000BB">scriptFile</span><span style="color: #007700">(</span><span style="color: #0000BB">self</span><span style="color: #007700">::</span><span style="color: #0000BB">BOOTSTRAP_URL</span><span style="color: #007700">.</span><span style="color: #DD0000">'?key='</span><span style="color: #007700">.</span><span style="color: #0000BB">$apiKey</span><span style="color: #007700">);<br />}</span>
+</span>
+</code></div>
+</div>
+<p>Renders the jsapi script file.</p>
+
+
+<div class="detailHeader" id="load-detail">
+load()
+<span class="detailHeaderTag">
+method
+</span>
+</div>
+
+<table class="summaryTable">
+<tr><td colspan="3">
+<div class="signature2">
+public static string <b>load</b>(string $name, string $version='1', array $options=array (
+))</div>
+</td></tr>
+<tr>
+  <td class="paramNameCol">$name</td>
+  <td class="paramTypeCol">string</td>
+  <td class="paramDescCol">the module name</td>
+</tr>
+<tr>
+  <td class="paramNameCol">$version</td>
+  <td class="paramTypeCol">string</td>
+  <td class="paramDescCol">the module version</td>
+</tr>
+<tr>
+  <td class="paramNameCol">$options</td>
+  <td class="paramTypeCol">array</td>
+  <td class="paramDescCol">additional js options that are to be passed to the load() function.</td>
+</tr>
+<tr>
+  <td class="paramNameCol">{return}</td>
+  <td class="paramTypeCol">string</td>
+  <td class="paramDescCol">the js code for loading the module. You can use <a href="/doc/api/1.0/CHtml#script">CHtml::script()</a>
+to enclose it in a script tag.</td>
+</tr>
+</table>
+
+<div class="sourceCode">
+<b>Source Code:</b> <a class="sourceLink" href="https://github.com/yiisoft/yii/blob/1.0.12/framework/web/helpers/CGoogleApi.php#L45">framework/web/helpers/CGoogleApi.php#45</a> (<b><a href="#" class="show">show</a></b>)
+<div class="code"><code><span style="color: #000000">
+<span style="color: #0000BB"></span><span style="color: #007700">public&nbsp;static&nbsp;function&nbsp;</span><span style="color: #0000BB">load</span><span style="color: #007700">(</span><span style="color: #0000BB">$name</span><span style="color: #007700">,</span><span style="color: #0000BB">$version</span><span style="color: #007700">=</span><span style="color: #DD0000">'1'</span><span style="color: #007700">,</span><span style="color: #0000BB">$options</span><span style="color: #007700">=array())<br />{<br />&nbsp;&nbsp;&nbsp;&nbsp;if(empty(</span><span style="color: #0000BB">$options</span><span style="color: #007700">))<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;</span><span style="color: #DD0000">"google.load(\"</span><span style="color: #007700">{</span><span style="color: #0000BB">$name</span><span style="color: #007700">}</span><span style="color: #DD0000">\",\"</span><span style="color: #007700">{</span><span style="color: #0000BB">$version</span><span style="color: #007700">}</span><span style="color: #DD0000">\");"</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;else<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;</span><span style="color: #DD0000">"google.load(\"</span><span style="color: #007700">{</span><span style="color: #0000BB">$name</span><span style="color: #007700">}</span><span style="color: #DD0000">\",\"</span><span style="color: #007700">{</span><span style="color: #0000BB">$version</span><span style="color: #007700">}</span><span style="color: #DD0000">\","</span><span style="color: #007700">.</span><span style="color: #0000BB">CJavaScript</span><span style="color: #007700">::</span><span style="color: #0000BB">encode</span><span style="color: #007700">(</span><span style="color: #0000BB">$options</span><span style="color: #007700">).</span><span style="color: #DD0000">");"</span><span style="color: #007700">;<br />}</span>
+</span>
+</code></div>
+</div>
+<p>Loads the specified API module.
+Note that you should call <a href="/doc/api/1.0/CGoogleApi#init">init</a> first.</p>
+
+
+<div class="detailHeader" id="register-detail">
+register()
+<span class="detailHeaderTag">
+method
+</span>
+</div>
+
+<table class="summaryTable">
+<tr><td colspan="3">
+<div class="signature2">
+public static void <b>register</b>(string $name, string $version='1', array $options=array (
+), string $apiKey=NULL)</div>
+</td></tr>
+<tr>
+  <td class="paramNameCol">$name</td>
+  <td class="paramTypeCol">string</td>
+  <td class="paramDescCol">the module name</td>
+</tr>
+<tr>
+  <td class="paramNameCol">$version</td>
+  <td class="paramTypeCol">string</td>
+  <td class="paramDescCol">the module version</td>
+</tr>
+<tr>
+  <td class="paramNameCol">$options</td>
+  <td class="paramTypeCol">array</td>
+  <td class="paramDescCol">additional js options that are to be passed to the load() function.</td>
+</tr>
+<tr>
+  <td class="paramNameCol">$apiKey</td>
+  <td class="paramTypeCol">string</td>
+  <td class="paramDescCol">the API key. Null if you do not have a key.</td>
+</tr>
+</table>
+
+<div class="sourceCode">
+<b>Source Code:</b> <a class="sourceLink" href="https://github.com/yiisoft/yii/blob/1.0.12/framework/web/helpers/CGoogleApi.php#L63">framework/web/helpers/CGoogleApi.php#63</a> (<b><a href="#" class="show">show</a></b>)
+<div class="code"><code><span style="color: #000000">
+<span style="color: #0000BB"></span><span style="color: #007700">public&nbsp;static&nbsp;function&nbsp;</span><span style="color: #0000BB">register</span><span style="color: #007700">(</span><span style="color: #0000BB">$name</span><span style="color: #007700">,</span><span style="color: #0000BB">$version</span><span style="color: #007700">=</span><span style="color: #DD0000">'1'</span><span style="color: #007700">,</span><span style="color: #0000BB">$options</span><span style="color: #007700">=array(),</span><span style="color: #0000BB">$apiKey</span><span style="color: #007700">=</span><span style="color: #0000BB">null</span><span style="color: #007700">)<br />{<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$cs</span><span style="color: #007700">=</span><span style="color: #0000BB">Yii</span><span style="color: #007700">::</span><span style="color: #0000BB">app</span><span style="color: #007700">()-&gt;</span><span style="color: #0000BB">getClientScript</span><span style="color: #007700">();<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$url</span><span style="color: #007700">=</span><span style="color: #0000BB">$apiKey</span><span style="color: #007700">===</span><span style="color: #0000BB">null</span><span style="color: #007700">?</span><span style="color: #0000BB">self</span><span style="color: #007700">::</span><span style="color: #0000BB">BOOTSTRAP_URL</span><span style="color: #007700">:</span><span style="color: #0000BB">self</span><span style="color: #007700">::</span><span style="color: #0000BB">BOOTSTRAP_URL</span><span style="color: #007700">.</span><span style="color: #DD0000">'?key='</span><span style="color: #007700">.</span><span style="color: #0000BB">$apiKey</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$cs</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">registerScriptFile</span><span style="color: #007700">(</span><span style="color: #0000BB">$url</span><span style="color: #007700">);<br /><br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$js</span><span style="color: #007700">=</span><span style="color: #0000BB">self</span><span style="color: #007700">::</span><span style="color: #0000BB">load</span><span style="color: #007700">(</span><span style="color: #0000BB">$name</span><span style="color: #007700">,</span><span style="color: #0000BB">$version</span><span style="color: #007700">,</span><span style="color: #0000BB">$options</span><span style="color: #007700">);<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$cs</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">registerScript</span><span style="color: #007700">(</span><span style="color: #0000BB">$name</span><span style="color: #007700">,</span><span style="color: #0000BB">$js</span><span style="color: #007700">,</span><span style="color: #0000BB">CClientScript</span><span style="color: #007700">::</span><span style="color: #0000BB">POS_HEAD</span><span style="color: #007700">);<br />}</span>
+</span>
+</code></div>
+</div>
+<p>Registers the specified API module.
+This is similar to <a href="/doc/api/1.0/CGoogleApi#load">load</a> except that it registers the loading code
+with <a href="/doc/api/1.0/CClientScript">CClientScript</a> instead of returning it.
+This method also registers the jsapi script needed by the loading call.</p>
+
+

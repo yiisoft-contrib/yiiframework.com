@@ -1,0 +1,469 @@
+<h1>CFileHelper</h1>
+<div id="nav">
+<a href="/doc/api/1.0/">All Packages</a>
+| <a href="#methods">Methods</a>
+</div>
+
+<table class="summaryTable docClass">
+<colgroup>
+	<col class="col-name" />
+	<col class="col-value" />
+</colgroup>
+<tr>
+  <th>Package</th>
+  <td><a href="/doc/api/1.0/#system.utils">system.utils</a></td>
+</tr>
+<tr>
+  <th>Inheritance</th>
+  <td>class CFileHelper</td>
+</tr>
+<tr>
+  <th>Since</th>
+  <td>1.0</td>
+</tr>
+<tr>
+  <th>Version</th>
+  <td>$Id$</td>
+</tr>
+<tr>
+  <th>Source Code</th>
+  <td><a class="sourceLink" href="https://github.com/yiisoft/yii/blob/1.0.12/framework/utils/CFileHelper.php">framework/utils/CFileHelper.php</a></td>
+</tr>
+</table>
+
+<div id="classDescription">
+CFileHelper provides a set of helper methods for common file system operations.</div>
+<a name="properties"></a>
+
+<a name="methods"></a>
+
+<div class="summary docMethod">
+<h2>Public Methods</h2>
+
+<p><a href="#" class="toggle">Hide inherited methods</a></p>
+
+<table class="summaryTable">
+<colgroup>
+	<col class="col-method" />
+	<col class="col-description" />
+	<col class="col-defined" />
+</colgroup>
+<tr>
+  <th>Method</th><th>Description</th><th>Defined By</th>
+</tr>
+<tr id="copyDirectory">
+  <td><a href="/doc/api/1.0/CFileHelper#copyDirectory-detail">copyDirectory()</a></td>
+  <td>Copies a directory recursively as another.</td>
+  <td>CFileHelper</td>
+</tr>
+<tr id="findFiles">
+  <td><a href="/doc/api/1.0/CFileHelper#findFiles-detail">findFiles()</a></td>
+  <td>Returns the files found under the specified directory and subdirectories.</td>
+  <td>CFileHelper</td>
+</tr>
+<tr id="getMimeType">
+  <td><a href="/doc/api/1.0/CFileHelper#getMimeType-detail">getMimeType()</a></td>
+  <td>Determines the MIME type of the specified file.</td>
+  <td>CFileHelper</td>
+</tr>
+<tr id="getMimeTypeByExtension">
+  <td><a href="/doc/api/1.0/CFileHelper#getMimeTypeByExtension-detail">getMimeTypeByExtension()</a></td>
+  <td>Determines the MIME type based on the extension name of the specified file.</td>
+  <td>CFileHelper</td>
+</tr>
+</table>
+</div>
+<div class="summary docMethod">
+<h2>Protected Methods</h2>
+
+<p><a href="#" class="toggle">Hide inherited methods</a></p>
+
+<table class="summaryTable">
+<colgroup>
+	<col class="col-method" />
+	<col class="col-description" />
+	<col class="col-defined" />
+</colgroup>
+<tr>
+  <th>Method</th><th>Description</th><th>Defined By</th>
+</tr>
+<tr id="copyDirectoryRecursive">
+  <td><a href="/doc/api/1.0/CFileHelper#copyDirectoryRecursive-detail">copyDirectoryRecursive()</a></td>
+  <td>Copies a directory.</td>
+  <td>CFileHelper</td>
+</tr>
+<tr id="findFilesRecursive">
+  <td><a href="/doc/api/1.0/CFileHelper#findFilesRecursive-detail">findFilesRecursive()</a></td>
+  <td>Returns the files found under the specified directory and subdirectories.</td>
+  <td>CFileHelper</td>
+</tr>
+<tr id="validatePath">
+  <td><a href="/doc/api/1.0/CFileHelper#validatePath-detail">validatePath()</a></td>
+  <td>Validates a file or directory.</td>
+  <td>CFileHelper</td>
+</tr>
+</table>
+</div>
+<a name="events"></a>
+
+<h2>Method Details</h2>
+
+<div class="detailHeader" id="copyDirectory-detail">
+copyDirectory()
+<span class="detailHeaderTag">
+method
+</span>
+</div>
+
+<table class="summaryTable">
+<tr><td colspan="3">
+<div class="signature2">
+public static void <b>copyDirectory</b>(string $src, string $dst, array $options=array (
+))</div>
+</td></tr>
+<tr>
+  <td class="paramNameCol">$src</td>
+  <td class="paramTypeCol">string</td>
+  <td class="paramDescCol">the source directory</td>
+</tr>
+<tr>
+  <td class="paramNameCol">$dst</td>
+  <td class="paramTypeCol">string</td>
+  <td class="paramDescCol">the destination directory</td>
+</tr>
+<tr>
+  <td class="paramNameCol">$options</td>
+  <td class="paramTypeCol">array</td>
+  <td class="paramDescCol">options for directory copy. Valid options are:
+<ul>
+<li>fileTypes: array, list of file name suffix (without dot). Only files with these suffixes will be copied.</li>
+<li>exclude: array, list of directory and file exclusions. Each exclusion can be either a name or a path.
+If a file or directory name or path matches the exclusion, it will not be copied. For example, an exclusion of
+'.svn' will exclude all files and directories whose name is '.svn'. And an exclusion of '/a/b' will exclude
+file or directory '$src/a/b'.</li>
+<li>level: integer, recursion depth, default=-1.
+Level -1 means copying all directories and files under the directory;
+Level 0 means copying only the files DIRECTLY under the directory;
+level N means copying those directories that are within N levels.
+</li>
+</ul></td>
+</tr>
+</table>
+
+<div class="sourceCode">
+<b>Source Code:</b> <a class="sourceLink" href="https://github.com/yiisoft/yii/blob/1.0.12/framework/utils/CFileHelper.php#L40">framework/utils/CFileHelper.php#40</a> (<b><a href="#" class="show">show</a></b>)
+<div class="code"><code><span style="color: #000000">
+<span style="color: #0000BB"></span><span style="color: #007700">public&nbsp;static&nbsp;function&nbsp;</span><span style="color: #0000BB">copyDirectory</span><span style="color: #007700">(</span><span style="color: #0000BB">$src</span><span style="color: #007700">,</span><span style="color: #0000BB">$dst</span><span style="color: #007700">,</span><span style="color: #0000BB">$options</span><span style="color: #007700">=array())<br />{<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$fileTypes</span><span style="color: #007700">=array();<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$exclude</span><span style="color: #007700">=array();<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$level</span><span style="color: #007700">=-</span><span style="color: #0000BB">1</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">extract</span><span style="color: #007700">(</span><span style="color: #0000BB">$options</span><span style="color: #007700">);<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">self</span><span style="color: #007700">::</span><span style="color: #0000BB">copyDirectoryRecursive</span><span style="color: #007700">(</span><span style="color: #0000BB">$src</span><span style="color: #007700">,</span><span style="color: #0000BB">$dst</span><span style="color: #007700">,</span><span style="color: #DD0000">''</span><span style="color: #007700">,</span><span style="color: #0000BB">$fileTypes</span><span style="color: #007700">,</span><span style="color: #0000BB">$exclude</span><span style="color: #007700">,</span><span style="color: #0000BB">$level</span><span style="color: #007700">);<br />}</span>
+</span>
+</code></div>
+</div>
+<p>Copies a directory recursively as another.
+If the destination directory does not exist, it will be created.</p>
+
+
+<div class="detailHeader" id="copyDirectoryRecursive-detail">
+copyDirectoryRecursive()
+<span class="detailHeaderTag">
+method
+</span>
+</div>
+
+<table class="summaryTable">
+<tr><td colspan="3">
+<div class="signature2">
+protected static void <b>copyDirectoryRecursive</b>(string $src, string $dst, string $base, array $fileTypes, array $exclude, integer $level)</div>
+</td></tr>
+<tr>
+  <td class="paramNameCol">$src</td>
+  <td class="paramTypeCol">string</td>
+  <td class="paramDescCol">the source directory</td>
+</tr>
+<tr>
+  <td class="paramNameCol">$dst</td>
+  <td class="paramTypeCol">string</td>
+  <td class="paramDescCol">the destination directory</td>
+</tr>
+<tr>
+  <td class="paramNameCol">$base</td>
+  <td class="paramTypeCol">string</td>
+  <td class="paramDescCol">the path relative to the original source directory</td>
+</tr>
+<tr>
+  <td class="paramNameCol">$fileTypes</td>
+  <td class="paramTypeCol">array</td>
+  <td class="paramDescCol">list of file name suffix (without dot). Only files with these suffixes will be copied.</td>
+</tr>
+<tr>
+  <td class="paramNameCol">$exclude</td>
+  <td class="paramTypeCol">array</td>
+  <td class="paramDescCol">list of directory and file exclusions. Each exclusion can be either a name or a path.
+If a file or directory name or path matches the exclusion, it will not be copied. For example, an exclusion of
+'.svn' will exclude all files and directories whose name is '.svn'. And an exclusion of '/a/b' will exclude
+file or directory '$src/a/b'.</td>
+</tr>
+<tr>
+  <td class="paramNameCol">$level</td>
+  <td class="paramTypeCol">integer</td>
+  <td class="paramDescCol">recursion depth. It defaults to -1.
+Level -1 means copying all directories and files under the directory;
+Level 0 means copying only the files DIRECTLY under the directory;
+level N means copying those directories that are within N levels.</td>
+</tr>
+</table>
+
+<div class="sourceCode">
+<b>Source Code:</b> <a class="sourceLink" href="https://github.com/yiisoft/yii/blob/1.0.12/framework/utils/CFileHelper.php#L94">framework/utils/CFileHelper.php#94</a> (<b><a href="#" class="show">show</a></b>)
+<div class="code"><code><span style="color: #000000">
+<span style="color: #0000BB"></span><span style="color: #007700">protected&nbsp;static&nbsp;function&nbsp;</span><span style="color: #0000BB">copyDirectoryRecursive</span><span style="color: #007700">(</span><span style="color: #0000BB">$src</span><span style="color: #007700">,</span><span style="color: #0000BB">$dst</span><span style="color: #007700">,</span><span style="color: #0000BB">$base</span><span style="color: #007700">,</span><span style="color: #0000BB">$fileTypes</span><span style="color: #007700">,</span><span style="color: #0000BB">$exclude</span><span style="color: #007700">,</span><span style="color: #0000BB">$level</span><span style="color: #007700">)<br />{<br />&nbsp;&nbsp;&nbsp;&nbsp;@</span><span style="color: #0000BB">mkdir</span><span style="color: #007700">(</span><span style="color: #0000BB">$dst</span><span style="color: #007700">);<br />&nbsp;&nbsp;&nbsp;&nbsp;@</span><span style="color: #0000BB">chmod</span><span style="color: #007700">(</span><span style="color: #0000BB">$dst</span><span style="color: #007700">,</span><span style="color: #0000BB">0777</span><span style="color: #007700">);<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$folder</span><span style="color: #007700">=</span><span style="color: #0000BB">opendir</span><span style="color: #007700">(</span><span style="color: #0000BB">$src</span><span style="color: #007700">);<br />&nbsp;&nbsp;&nbsp;&nbsp;while((</span><span style="color: #0000BB">$file</span><span style="color: #007700">=</span><span style="color: #0000BB">readdir</span><span style="color: #007700">(</span><span style="color: #0000BB">$folder</span><span style="color: #007700">))!==</span><span style="color: #0000BB">false</span><span style="color: #007700">)<br />&nbsp;&nbsp;&nbsp;&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if(</span><span style="color: #0000BB">$file</span><span style="color: #007700">===</span><span style="color: #DD0000">'.'&nbsp;</span><span style="color: #007700">||&nbsp;</span><span style="color: #0000BB">$file</span><span style="color: #007700">===</span><span style="color: #DD0000">'..'</span><span style="color: #007700">)<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;continue;<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$path</span><span style="color: #007700">=</span><span style="color: #0000BB">$src</span><span style="color: #007700">.</span><span style="color: #0000BB">DIRECTORY_SEPARATOR</span><span style="color: #007700">.</span><span style="color: #0000BB">$file</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$isFile</span><span style="color: #007700">=</span><span style="color: #0000BB">is_file</span><span style="color: #007700">(</span><span style="color: #0000BB">$path</span><span style="color: #007700">);<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if(</span><span style="color: #0000BB">self</span><span style="color: #007700">::</span><span style="color: #0000BB">validatePath</span><span style="color: #007700">(</span><span style="color: #0000BB">$base</span><span style="color: #007700">,</span><span style="color: #0000BB">$file</span><span style="color: #007700">,</span><span style="color: #0000BB">$isFile</span><span style="color: #007700">,</span><span style="color: #0000BB">$fileTypes</span><span style="color: #007700">,</span><span style="color: #0000BB">$exclude</span><span style="color: #007700">))<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if(</span><span style="color: #0000BB">$isFile</span><span style="color: #007700">)<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">copy</span><span style="color: #007700">(</span><span style="color: #0000BB">$path</span><span style="color: #007700">,</span><span style="color: #0000BB">$dst</span><span style="color: #007700">.</span><span style="color: #0000BB">DIRECTORY_SEPARATOR</span><span style="color: #007700">.</span><span style="color: #0000BB">$file</span><span style="color: #007700">);<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;else&nbsp;if(</span><span style="color: #0000BB">$level</span><span style="color: #007700">)<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">self</span><span style="color: #007700">::</span><span style="color: #0000BB">copyDirectoryRecursive</span><span style="color: #007700">(</span><span style="color: #0000BB">$path</span><span style="color: #007700">,</span><span style="color: #0000BB">$dst</span><span style="color: #007700">.</span><span style="color: #0000BB">DIRECTORY_SEPARATOR</span><span style="color: #007700">.</span><span style="color: #0000BB">$file</span><span style="color: #007700">,</span><span style="color: #0000BB">$base</span><span style="color: #007700">.</span><span style="color: #DD0000">'/'</span><span style="color: #007700">.</span><span style="color: #0000BB">$file</span><span style="color: #007700">,</span><span style="color: #0000BB">$fileTypes</span><span style="color: #007700">,</span><span style="color: #0000BB">$exclude</span><span style="color: #007700">,</span><span style="color: #0000BB">$level</span><span style="color: #007700">-</span><span style="color: #0000BB">1</span><span style="color: #007700">);<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br />&nbsp;&nbsp;&nbsp;&nbsp;}<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">closedir</span><span style="color: #007700">(</span><span style="color: #0000BB">$folder</span><span style="color: #007700">);<br />}</span>
+</span>
+</code></div>
+</div>
+<p>Copies a directory.
+This method is mainly used by <a href="/doc/api/1.0/CFileHelper#copyDirectory">copyDirectory</a>.</p>
+
+
+<div class="detailHeader" id="findFiles-detail">
+findFiles()
+<span class="detailHeaderTag">
+method
+</span>
+</div>
+
+<table class="summaryTable">
+<tr><td colspan="3">
+<div class="signature2">
+public static array <b>findFiles</b>(string $dir, array $options=array (
+))</div>
+</td></tr>
+<tr>
+  <td class="paramNameCol">$dir</td>
+  <td class="paramTypeCol">string</td>
+  <td class="paramDescCol">the directory under which the files will be looked for</td>
+</tr>
+<tr>
+  <td class="paramNameCol">$options</td>
+  <td class="paramTypeCol">array</td>
+  <td class="paramDescCol">options for file searching. Valid options are:
+<ul>
+<li>fileTypes: array, list of file name suffix (without dot). Only files with these suffixes will be returned.</li>
+<li>exclude: array, list of directory and file exclusions. Each exclusion can be either a name or a path.
+If a file or directory name or path matches the exclusion, it will not be copied. For example, an exclusion of
+'.svn' will exclude all files and directories whose name is '.svn'. And an exclusion of '/a/b' will exclude
+file or directory '$src/a/b'.</li>
+<li>level: integer, recursion depth, default=-1.
+Level -1 means searching for all directories and files under the directory;
+Level 0 means searching for only the files DIRECTLY under the directory;
+level N means searching for those directories that are within N levels.
+</li>
+</ul></td>
+</tr>
+<tr>
+  <td class="paramNameCol">{return}</td>
+  <td class="paramTypeCol">array</td>
+  <td class="paramDescCol">files found under the directory. The file list is sorted.</td>
+</tr>
+</table>
+
+<div class="sourceCode">
+<b>Source Code:</b> <a class="sourceLink" href="https://github.com/yiisoft/yii/blob/1.0.12/framework/utils/CFileHelper.php#L67">framework/utils/CFileHelper.php#67</a> (<b><a href="#" class="show">show</a></b>)
+<div class="code"><code><span style="color: #000000">
+<span style="color: #0000BB"></span><span style="color: #007700">public&nbsp;static&nbsp;function&nbsp;</span><span style="color: #0000BB">findFiles</span><span style="color: #007700">(</span><span style="color: #0000BB">$dir</span><span style="color: #007700">,</span><span style="color: #0000BB">$options</span><span style="color: #007700">=array())<br />{<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$fileTypes</span><span style="color: #007700">=array();<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$exclude</span><span style="color: #007700">=array();<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$level</span><span style="color: #007700">=-</span><span style="color: #0000BB">1</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">extract</span><span style="color: #007700">(</span><span style="color: #0000BB">$options</span><span style="color: #007700">);<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$list</span><span style="color: #007700">=</span><span style="color: #0000BB">self</span><span style="color: #007700">::</span><span style="color: #0000BB">findFilesRecursive</span><span style="color: #007700">(</span><span style="color: #0000BB">$dir</span><span style="color: #007700">,</span><span style="color: #DD0000">''</span><span style="color: #007700">,</span><span style="color: #0000BB">$fileTypes</span><span style="color: #007700">,</span><span style="color: #0000BB">$exclude</span><span style="color: #007700">,</span><span style="color: #0000BB">$level</span><span style="color: #007700">);<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">sort</span><span style="color: #007700">(</span><span style="color: #0000BB">$list</span><span style="color: #007700">);<br />&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;</span><span style="color: #0000BB">$list</span><span style="color: #007700">;<br />}</span>
+</span>
+</code></div>
+</div>
+<p>Returns the files found under the specified directory and subdirectories.</p>
+
+
+<div class="detailHeader" id="findFilesRecursive-detail">
+findFilesRecursive()
+<span class="detailHeaderTag">
+method
+</span>
+</div>
+
+<table class="summaryTable">
+<tr><td colspan="3">
+<div class="signature2">
+protected static array <b>findFilesRecursive</b>(string $dir, string $base, array $fileTypes, array $exclude, integer $level)</div>
+</td></tr>
+<tr>
+  <td class="paramNameCol">$dir</td>
+  <td class="paramTypeCol">string</td>
+  <td class="paramDescCol">the source directory</td>
+</tr>
+<tr>
+  <td class="paramNameCol">$base</td>
+  <td class="paramTypeCol">string</td>
+  <td class="paramDescCol">the path relative to the original source directory</td>
+</tr>
+<tr>
+  <td class="paramNameCol">$fileTypes</td>
+  <td class="paramTypeCol">array</td>
+  <td class="paramDescCol">list of file name suffix (without dot). Only files with these suffixes will be returned.</td>
+</tr>
+<tr>
+  <td class="paramNameCol">$exclude</td>
+  <td class="paramTypeCol">array</td>
+  <td class="paramDescCol">list of directory and file exclusions. Each exclusion can be either a name or a path.
+If a file or directory name or path matches the exclusion, it will not be copied. For example, an exclusion of
+'.svn' will exclude all files and directories whose name is '.svn'. And an exclusion of '/a/b' will exclude
+file or directory '$src/a/b'.</td>
+</tr>
+<tr>
+  <td class="paramNameCol">$level</td>
+  <td class="paramTypeCol">integer</td>
+  <td class="paramDescCol">recursion depth. It defaults to -1.
+Level -1 means searching for all directories and files under the directory;
+Level 0 means searching for only the files DIRECTLY under the directory;
+level N means searching for those directories that are within N levels.</td>
+</tr>
+<tr>
+  <td class="paramNameCol">{return}</td>
+  <td class="paramTypeCol">array</td>
+  <td class="paramDescCol">files found under the directory.</td>
+</tr>
+</table>
+
+<div class="sourceCode">
+<b>Source Code:</b> <a class="sourceLink" href="https://github.com/yiisoft/yii/blob/1.0.12/framework/utils/CFileHelper.php#L132">framework/utils/CFileHelper.php#132</a> (<b><a href="#" class="show">show</a></b>)
+<div class="code"><code><span style="color: #000000">
+<span style="color: #0000BB"></span><span style="color: #007700">protected&nbsp;static&nbsp;function&nbsp;</span><span style="color: #0000BB">findFilesRecursive</span><span style="color: #007700">(</span><span style="color: #0000BB">$dir</span><span style="color: #007700">,</span><span style="color: #0000BB">$base</span><span style="color: #007700">,</span><span style="color: #0000BB">$fileTypes</span><span style="color: #007700">,</span><span style="color: #0000BB">$exclude</span><span style="color: #007700">,</span><span style="color: #0000BB">$level</span><span style="color: #007700">)<br />{<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$list</span><span style="color: #007700">=array();<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$handle</span><span style="color: #007700">=</span><span style="color: #0000BB">opendir</span><span style="color: #007700">(</span><span style="color: #0000BB">$dir</span><span style="color: #007700">);<br />&nbsp;&nbsp;&nbsp;&nbsp;while((</span><span style="color: #0000BB">$file</span><span style="color: #007700">=</span><span style="color: #0000BB">readdir</span><span style="color: #007700">(</span><span style="color: #0000BB">$handle</span><span style="color: #007700">))!==</span><span style="color: #0000BB">false</span><span style="color: #007700">)<br />&nbsp;&nbsp;&nbsp;&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if(</span><span style="color: #0000BB">$file</span><span style="color: #007700">===</span><span style="color: #DD0000">'.'&nbsp;</span><span style="color: #007700">||&nbsp;</span><span style="color: #0000BB">$file</span><span style="color: #007700">===</span><span style="color: #DD0000">'..'</span><span style="color: #007700">)<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;continue;<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$path</span><span style="color: #007700">=</span><span style="color: #0000BB">$dir</span><span style="color: #007700">.</span><span style="color: #0000BB">DIRECTORY_SEPARATOR</span><span style="color: #007700">.</span><span style="color: #0000BB">$file</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$isFile</span><span style="color: #007700">=</span><span style="color: #0000BB">is_file</span><span style="color: #007700">(</span><span style="color: #0000BB">$path</span><span style="color: #007700">);<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if(</span><span style="color: #0000BB">self</span><span style="color: #007700">::</span><span style="color: #0000BB">validatePath</span><span style="color: #007700">(</span><span style="color: #0000BB">$base</span><span style="color: #007700">,</span><span style="color: #0000BB">$file</span><span style="color: #007700">,</span><span style="color: #0000BB">$isFile</span><span style="color: #007700">,</span><span style="color: #0000BB">$fileTypes</span><span style="color: #007700">,</span><span style="color: #0000BB">$exclude</span><span style="color: #007700">))<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if(</span><span style="color: #0000BB">$isFile</span><span style="color: #007700">)<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$list</span><span style="color: #007700">[]=</span><span style="color: #0000BB">$path</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;else&nbsp;if(</span><span style="color: #0000BB">$level</span><span style="color: #007700">)<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$list</span><span style="color: #007700">=</span><span style="color: #0000BB">array_merge</span><span style="color: #007700">(</span><span style="color: #0000BB">$list</span><span style="color: #007700">,</span><span style="color: #0000BB">self</span><span style="color: #007700">::</span><span style="color: #0000BB">findFilesRecursive</span><span style="color: #007700">(</span><span style="color: #0000BB">$path</span><span style="color: #007700">,</span><span style="color: #0000BB">$base</span><span style="color: #007700">.</span><span style="color: #DD0000">'/'</span><span style="color: #007700">.</span><span style="color: #0000BB">$file</span><span style="color: #007700">,</span><span style="color: #0000BB">$fileTypes</span><span style="color: #007700">,</span><span style="color: #0000BB">$exclude</span><span style="color: #007700">,</span><span style="color: #0000BB">$level</span><span style="color: #007700">-</span><span style="color: #0000BB">1</span><span style="color: #007700">));<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br />&nbsp;&nbsp;&nbsp;&nbsp;}<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">closedir</span><span style="color: #007700">(</span><span style="color: #0000BB">$handle</span><span style="color: #007700">);<br />&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;</span><span style="color: #0000BB">$list</span><span style="color: #007700">;<br />}</span>
+</span>
+</code></div>
+</div>
+<p>Returns the files found under the specified directory and subdirectories.
+This method is mainly used by <a href="/doc/api/1.0/CFileHelper#findFiles">findFiles</a>.</p>
+
+
+<div class="detailHeader" id="getMimeType-detail">
+getMimeType()
+<span class="detailHeaderTag">
+method
+</span>
+</div>
+
+<table class="summaryTable">
+<tr><td colspan="3">
+<div class="signature2">
+public static string <b>getMimeType</b>(string $file)</div>
+</td></tr>
+<tr>
+  <td class="paramNameCol">$file</td>
+  <td class="paramTypeCol">string</td>
+  <td class="paramDescCol">the file name.</td>
+</tr>
+<tr>
+  <td class="paramNameCol">{return}</td>
+  <td class="paramTypeCol">string</td>
+  <td class="paramDescCol">the MIME type. Null is returned if the MIME type cannot be determined.</td>
+</tr>
+</table>
+
+<div class="sourceCode">
+<b>Source Code:</b> <a class="sourceLink" href="https://github.com/yiisoft/yii/blob/1.0.12/framework/utils/CFileHelper.php#L195">framework/utils/CFileHelper.php#195</a> (<b><a href="#" class="show">show</a></b>)
+<div class="code"><code><span style="color: #000000">
+<span style="color: #0000BB"></span><span style="color: #007700">public&nbsp;static&nbsp;function&nbsp;</span><span style="color: #0000BB">getMimeType</span><span style="color: #007700">(</span><span style="color: #0000BB">$file</span><span style="color: #007700">)<br />{<br />&nbsp;&nbsp;&nbsp;&nbsp;if(</span><span style="color: #0000BB">function_exists</span><span style="color: #007700">(</span><span style="color: #DD0000">'finfo_open'</span><span style="color: #007700">))<br />&nbsp;&nbsp;&nbsp;&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if((</span><span style="color: #0000BB">$info</span><span style="color: #007700">=</span><span style="color: #0000BB">finfo_open</span><span style="color: #007700">(</span><span style="color: #0000BB">FILEINFO_MIME</span><span style="color: #007700">))&nbsp;&amp;&amp;&nbsp;(</span><span style="color: #0000BB">$result</span><span style="color: #007700">=</span><span style="color: #0000BB">finfo_file</span><span style="color: #007700">(</span><span style="color: #0000BB">$info</span><span style="color: #007700">,</span><span style="color: #0000BB">$file</span><span style="color: #007700">))!==</span><span style="color: #0000BB">false</span><span style="color: #007700">)<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;</span><span style="color: #0000BB">$result</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;}<br /><br />&nbsp;&nbsp;&nbsp;&nbsp;if(</span><span style="color: #0000BB">function_exists</span><span style="color: #007700">(</span><span style="color: #DD0000">'mime_content_type'</span><span style="color: #007700">)&nbsp;&amp;&amp;&nbsp;(</span><span style="color: #0000BB">$result</span><span style="color: #007700">=</span><span style="color: #0000BB">mime_content_type</span><span style="color: #007700">(</span><span style="color: #0000BB">$file</span><span style="color: #007700">))!==</span><span style="color: #0000BB">false</span><span style="color: #007700">)<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;</span><span style="color: #0000BB">$result</span><span style="color: #007700">;<br /><br />&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;</span><span style="color: #0000BB">self</span><span style="color: #007700">::</span><span style="color: #0000BB">getMimeTypeByExtension</span><span style="color: #007700">(</span><span style="color: #0000BB">$file</span><span style="color: #007700">);<br />}</span>
+</span>
+</code></div>
+</div>
+<p>Determines the MIME type of the specified file.
+This method will attempt the following approaches in order:
+<ol>
+<li>finfo</li>
+<li>mime_content_type</li>
+<li><a href="/doc/api/1.0/CFileHelper#getMimeTypeByExtension">getMimeTypeByExtension</a></li>
+</ol></p>
+
+
+<div class="detailHeader" id="getMimeTypeByExtension-detail">
+getMimeTypeByExtension()
+<span class="detailHeaderTag">
+method
+</span>
+</div>
+
+<table class="summaryTable">
+<tr><td colspan="3">
+<div class="signature2">
+public static string <b>getMimeTypeByExtension</b>(string $file)</div>
+</td></tr>
+<tr>
+  <td class="paramNameCol">$file</td>
+  <td class="paramTypeCol">string</td>
+  <td class="paramDescCol">the file name.</td>
+</tr>
+<tr>
+  <td class="paramNameCol">{return}</td>
+  <td class="paramTypeCol">string</td>
+  <td class="paramDescCol">the MIME type. Null is returned if the MIME type cannot be determined.</td>
+</tr>
+</table>
+
+<div class="sourceCode">
+<b>Source Code:</b> <a class="sourceLink" href="https://github.com/yiisoft/yii/blob/1.0.12/framework/utils/CFileHelper.php#L215">framework/utils/CFileHelper.php#215</a> (<b><a href="#" class="show">show</a></b>)
+<div class="code"><code><span style="color: #000000">
+<span style="color: #0000BB"></span><span style="color: #007700">public&nbsp;static&nbsp;function&nbsp;</span><span style="color: #0000BB">getMimeTypeByExtension</span><span style="color: #007700">(</span><span style="color: #0000BB">$file</span><span style="color: #007700">)<br />{<br />&nbsp;&nbsp;&nbsp;&nbsp;static&nbsp;</span><span style="color: #0000BB">$extensions</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;if(</span><span style="color: #0000BB">$extensions</span><span style="color: #007700">===</span><span style="color: #0000BB">null</span><span style="color: #007700">)<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$extensions</span><span style="color: #007700">=require(</span><span style="color: #0000BB">Yii</span><span style="color: #007700">::</span><span style="color: #0000BB">getPathOfAlias</span><span style="color: #007700">(</span><span style="color: #DD0000">'system.utils.mimeTypes'</span><span style="color: #007700">).</span><span style="color: #DD0000">'.php'</span><span style="color: #007700">);<br />&nbsp;&nbsp;&nbsp;&nbsp;if((</span><span style="color: #0000BB">$pos</span><span style="color: #007700">=</span><span style="color: #0000BB">strrpos</span><span style="color: #007700">(</span><span style="color: #0000BB">$file</span><span style="color: #007700">,</span><span style="color: #DD0000">'.'</span><span style="color: #007700">))!==</span><span style="color: #0000BB">false</span><span style="color: #007700">)<br />&nbsp;&nbsp;&nbsp;&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$ext</span><span style="color: #007700">=</span><span style="color: #0000BB">strtolower</span><span style="color: #007700">(</span><span style="color: #0000BB">substr</span><span style="color: #007700">(</span><span style="color: #0000BB">$file</span><span style="color: #007700">,</span><span style="color: #0000BB">$pos</span><span style="color: #007700">+</span><span style="color: #0000BB">1</span><span style="color: #007700">));<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if(isset(</span><span style="color: #0000BB">$extensions</span><span style="color: #007700">[</span><span style="color: #0000BB">$ext</span><span style="color: #007700">]))<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;</span><span style="color: #0000BB">$extensions</span><span style="color: #007700">[</span><span style="color: #0000BB">$ext</span><span style="color: #007700">];<br />&nbsp;&nbsp;&nbsp;&nbsp;}<br />&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;</span><span style="color: #0000BB">null</span><span style="color: #007700">;<br />}</span>
+</span>
+</code></div>
+</div>
+<p>Determines the MIME type based on the extension name of the specified file.
+This method will use a local map between extension name and MIME type.</p>
+
+
+<div class="detailHeader" id="validatePath-detail">
+validatePath()
+<span class="detailHeaderTag">
+method
+</span>
+</div>
+
+<table class="summaryTable">
+<tr><td colspan="3">
+<div class="signature2">
+protected static boolean <b>validatePath</b>(string $base, string $file, boolean $isFile, array $fileTypes, array $exclude)</div>
+</td></tr>
+<tr>
+  <td class="paramNameCol">$base</td>
+  <td class="paramTypeCol">string</td>
+  <td class="paramDescCol">the path relative to the original source directory</td>
+</tr>
+<tr>
+  <td class="paramNameCol">$file</td>
+  <td class="paramTypeCol">string</td>
+  <td class="paramDescCol">the file or directory name</td>
+</tr>
+<tr>
+  <td class="paramNameCol">$isFile</td>
+  <td class="paramTypeCol">boolean</td>
+  <td class="paramDescCol">whether this is a file</td>
+</tr>
+<tr>
+  <td class="paramNameCol">$fileTypes</td>
+  <td class="paramTypeCol">array</td>
+  <td class="paramDescCol">list of file name suffix (without dot). Only files with these suffixes will be copied.</td>
+</tr>
+<tr>
+  <td class="paramNameCol">$exclude</td>
+  <td class="paramTypeCol">array</td>
+  <td class="paramDescCol">list of directory and file exclusions. Each exclusion can be either a name or a path.
+If a file or directory name or path matches the exclusion, it will not be copied. For example, an exclusion of
+'.svn' will exclude all files and directories whose name is '.svn'. And an exclusion of '/a/b' will exclude
+file or directory '$src/a/b'.</td>
+</tr>
+<tr>
+  <td class="paramNameCol">{return}</td>
+  <td class="paramTypeCol">boolean</td>
+  <td class="paramDescCol">whether the file or directory is valid</td>
+</tr>
+</table>
+
+<div class="sourceCode">
+<b>Source Code:</b> <a class="sourceLink" href="https://github.com/yiisoft/yii/blob/1.0.12/framework/utils/CFileHelper.php#L166">framework/utils/CFileHelper.php#166</a> (<b><a href="#" class="show">show</a></b>)
+<div class="code"><code><span style="color: #000000">
+<span style="color: #0000BB"></span><span style="color: #007700">protected&nbsp;static&nbsp;function&nbsp;</span><span style="color: #0000BB">validatePath</span><span style="color: #007700">(</span><span style="color: #0000BB">$base</span><span style="color: #007700">,</span><span style="color: #0000BB">$file</span><span style="color: #007700">,</span><span style="color: #0000BB">$isFile</span><span style="color: #007700">,</span><span style="color: #0000BB">$fileTypes</span><span style="color: #007700">,</span><span style="color: #0000BB">$exclude</span><span style="color: #007700">)<br />{<br />&nbsp;&nbsp;&nbsp;&nbsp;foreach(</span><span style="color: #0000BB">$exclude&nbsp;</span><span style="color: #007700">as&nbsp;</span><span style="color: #0000BB">$e</span><span style="color: #007700">)<br />&nbsp;&nbsp;&nbsp;&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if(</span><span style="color: #0000BB">$file</span><span style="color: #007700">===</span><span style="color: #0000BB">$e&nbsp;</span><span style="color: #007700">||&nbsp;</span><span style="color: #0000BB">strpos</span><span style="color: #007700">(</span><span style="color: #0000BB">$base</span><span style="color: #007700">.</span><span style="color: #DD0000">'/'</span><span style="color: #007700">.</span><span style="color: #0000BB">$file</span><span style="color: #007700">,</span><span style="color: #0000BB">$e</span><span style="color: #007700">)===</span><span style="color: #0000BB">0</span><span style="color: #007700">)<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;</span><span style="color: #0000BB">false</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;}<br />&nbsp;&nbsp;&nbsp;&nbsp;if(!</span><span style="color: #0000BB">$isFile&nbsp;</span><span style="color: #007700">||&nbsp;empty(</span><span style="color: #0000BB">$fileTypes</span><span style="color: #007700">))<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;</span><span style="color: #0000BB">true</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;if((</span><span style="color: #0000BB">$pos</span><span style="color: #007700">=</span><span style="color: #0000BB">strrpos</span><span style="color: #007700">(</span><span style="color: #0000BB">$file</span><span style="color: #007700">,</span><span style="color: #DD0000">'.'</span><span style="color: #007700">))!==</span><span style="color: #0000BB">false</span><span style="color: #007700">)<br />&nbsp;&nbsp;&nbsp;&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$type</span><span style="color: #007700">=</span><span style="color: #0000BB">substr</span><span style="color: #007700">(</span><span style="color: #0000BB">$file</span><span style="color: #007700">,</span><span style="color: #0000BB">$pos</span><span style="color: #007700">+</span><span style="color: #0000BB">1</span><span style="color: #007700">);<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;</span><span style="color: #0000BB">in_array</span><span style="color: #007700">(</span><span style="color: #0000BB">$type</span><span style="color: #007700">,</span><span style="color: #0000BB">$fileTypes</span><span style="color: #007700">);<br />&nbsp;&nbsp;&nbsp;&nbsp;}<br />&nbsp;&nbsp;&nbsp;&nbsp;else<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;</span><span style="color: #0000BB">false</span><span style="color: #007700">;<br />}</span>
+</span>
+</code></div>
+</div>
+<p>Validates a file or directory.</p>
+
+

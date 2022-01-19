@@ -10,95 +10,33 @@ If you want to contribute please get in touch with us using the [issue tracker](
 
 [![Build Status](https://api.travis-ci.com/yiisoft-contrib/yiiframework.com.svg)](https://travis-ci.com/yiisoft-contrib/yiiframework.com)
 
+## Prerequisites
 
-## PREREQUISITES
+Install [Docker](https://docs.docker.com/get-docker/) and [Docker Compose](https://docs.docker.com/compose/install/).
 
-### PHP
-
-PHP 7 is required. Preferrably PHP 7.4.
-
-There's a need to enable some extensions:
-
-- curl
-- fileinfo
-- gd2
-- intl
-- mbstring
-- pdo_mysql
-- php_opcache
-
-Under Windows make sure the following lines are in `php.ini` and aren't commented out:
-
-```ini
-extension=curl
-extension=fileinfo
-extension=gd2
-extension=intl
-extension=mbstring
-extension=pdo_mysql
-extension=openssl
+```
+cp docker-compose.override.example.yml docker-compose.override.yml
 ```
 
-Under Linux or MacOS you need to intall these via your OS package manager.
+Fill with actual values.
 
-Also you need a package manager so install [Composer](https://getcomposer.org/download/).
-
-### Node.js
-
-Latest [Node.js](https://nodejs.org/) is needed.
-
-### MariaDB or MySQL 
-
-Latest version of [MariaDB](https://mariadb.org/) or [MySQL](https://www.mysql.com/) is needed.
-
-### Debian or Ubuntu extras
-
-If you are on Debian or Ubuntu you might also want to install the [libnotify-bin](https://packages.debian.org/jessie/libnotify-bin) package,
-which is used by Gulp to inform you about its status.
-
-If you intend to use the [Pageres client](https://github.com/sindresorhus/pageres-cli) to generate screen shots for testing purposes, you need to install the `pageres.cli` tool globally:
-
-```sh
-npm install --global pageres-cli
+```
+docker-compose build
+docker-compose up
 ```
 
-And then you can use the script `run_pageres.sh` at the root of the source directory to generate screen shots.
+The site will be available at http://0.0.0.0:8080.
 
-## INSTALLATION
+### Generating screenshots
 
-```sh
-# clone the project
-git clone https://github.com/yiisoft-contrib/yiiframework.com.git
+You can use the script `run_pageres.sh` at the root of the source directory to generate screenshots.
 
-cd yiiframework.com
+## Initial setup
 
-# install the dependent composer packages
-composer install
-
-# under Windows the folowing is necessary:
-# npm install --production -g windows-build-tools
-# npm config set msvs_version 2015 --global
-
-# install gulp globally if you haven't done so before
-npm install -g gulp-cli
-
-# install dependent NPM modules
-npm install
-
-# initialize the application, choose "development"
-./init
-```
-
-Configure database connection in `config/params-local.php`. You may copy-paste and adjust `components.db` from
-`config/params.php`. Make sure to configure the following properties:
+Adjust `config/params-local.php`. Make sure to configure the following properties:
 
 ```php
-'api.baseUrl' => '/doc/api',
-'guide.baseUrl' => '/doc/guide',
 'components.db' => [
-    // copy from params.php and adjust to your environment
-],
-'components.elasticsearch' => [
     // copy from params.php and adjust to your environment
 ],
 // only if you want to test github auth:
@@ -112,17 +50,13 @@ Configure database connection in `config/params-local.php`. You may copy-paste a
 ],
 'siteAbsoluteUrl' => 'http://yiiframework.local',
 
-/**
- * @see https://apps.twitter.com/app/new
- *
- * After creating an app you need to fill accessToken and accessTokenSecret:
- *
- * Open App -> Keys and Access Tokens -> You Access Token -> Create my access token
- */
+// https://apps.twitter.com/app/new
+// After creating an app you need to fill accessToken and accessTokenSecret:
+// Open App -> Keys and Access Tokens -> You Access Token -> Create my access token
 'twitter.consumerKey' => '',
 'twitter.consumerSecret' => '',
 'twitter.accessToken' => '',
-'twitter.accessTokenSecret' => ''
+'twitter.accessTokenSecret' => '',
 ```
 
 Continue with the following commands:
@@ -136,9 +70,6 @@ Continue with the following commands:
 
 # build contributors page (this may take some time as it downloads a lot of user avatars from github)
 ./yii contributors/generate
-
-# build js/css files
-gulp build
 
 # If you're on Windows you have to manually symlink or copy
 # %appdata%/npm/node_modules/browser-sync to your app's node_modules
@@ -155,39 +86,18 @@ gulp build
 # You may also build only parts of the docs, run  make help  for the available commands.
 make docs
 
+# If you are using Docker image, you need to additionally pass VENDOR_DIR:
+make docs VENDOR_DIR=$VENDOR_DIR
+
+# Yii 1.0 API docs generation. They are already included in VCS. Run this only if layout has changed.
+docker build -f Dockerfile.yii-1.0 -t yiiframeworkcom-yii-1.0 .
+docker run -it -v $PWD/data/api-1.0:/code/data/api-1.0 yiiframeworkcom-yii-1.0
+
 # populate the search index by running
 ./yii search/rebuild
 ```
 
-### Using built-in PHP webserver
-
-Using built-in PHP webserver is fine for development:
-
-```
-./yii serve
-```
-
-### Real Web Server Setup
-
-Define a host name `yiiframework.local` that points to `localhost`.
-
-Define a virtual host `yiiframework.local` which uses `yiiframework.com/web` as its document root.
-
-If you are using Apache, add the following configuration for the `yiiframework.com/web` folder to hide the
-entry script:
-
-```
-RewriteEngine on
-
-# if a directory or a file exists, use it directly
-RewriteCond %{REQUEST_FILENAME} !-f
-RewriteCond %{REQUEST_FILENAME} !-d
-
-# otherwise forward it to index.php
-RewriteRule . index.php
-```
-
-### Data Import
+### Data import
 
 For importing data from the old website, the following steps are necessary:
 
@@ -206,7 +116,6 @@ To assign users extra permissions use `./yii rbac/assign`.
 
 ### Cron jobs
 
-
 The following commands need to be set up to run on a regular basis:
 
 | command                   | interval | Purpose
@@ -219,13 +128,12 @@ The following commands need to be set up to run on a regular basis:
 
 Additionally, `queue/listen` should run as a daemon or `queue/run` as a cronjob.
 
-
-### DEPLOYMENT
+### Deployment
 
 This section covers notes for deployment on a server, you may not need this for your dev env. OS is assumed to be debian Stretch.
 
 ```sh
-apt-get install texlive-full git nodejs make
+apt-get install texlive-full python3-pygments git nodejs make
 ```
 
 ## Maintenance
@@ -242,7 +150,7 @@ It would be a good idea to set up a Cron job to run that once in a while - perha
 
 If you generate a personal Github token (from your Github profile settings section) you can tell the contributors/generate function to make use of it by creating a file in the `data` directory (@app/data) called `github.token` with the token pasted into it (one line, no line-break). That should solve most issues related to the API rate limit imposed by Github.
 
-## DIRECTORY STRUCTURE
+## Directory structure
 
       commands/           contains console commands (controllers)
       config/             contains application configurations
@@ -264,7 +172,7 @@ If you generate a personal Github token (from your Github profile settings secti
       web/                contains the entry script and Web resources
 
 
-## DEVELOPMENT
+## Development
 
 ### Build
 
@@ -282,13 +190,11 @@ If you generate a personal Github token (from your Github profile settings secti
 * All Sass source files, except `all.scss` should have a leading underscore in the name. Sass will ignore files starting with an underscore so that only one CSS file will be produced (all.css).
 * For information about where each file should be put, please consult the master include file `all.scss`.
 
-
 ### JS Files
 
 * All JS files should be put under `assets/src/js` and listed in `config.yml`.
 * Usually each controller corresponds to a single JS file whose name is the same as the controller ID.
   For example, the `GuideController` has a JS file named `guide.js`.
-
 
 ## Links
 

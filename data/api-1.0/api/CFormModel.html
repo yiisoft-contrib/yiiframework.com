@@ -1,0 +1,641 @@
+<h1>CFormModel</h1>
+<div id="nav">
+<a href="/doc/api/1.0/">All Packages</a>
+| <a href="#properties">Properties</a>
+| <a href="#methods">Methods</a>
+| <a href="#events">Events</a>
+</div>
+
+<table class="summaryTable docClass">
+<colgroup>
+	<col class="col-name" />
+	<col class="col-value" />
+</colgroup>
+<tr>
+  <th>Package</th>
+  <td><a href="/doc/api/1.0/#system.web">system.web</a></td>
+</tr>
+<tr>
+  <th>Inheritance</th>
+  <td>class CFormModel &raquo;
+<a href="/doc/api/1.0/CModel">CModel</a> &raquo;
+<a href="/doc/api/1.0/CComponent">CComponent</a></td>
+</tr>
+<tr>
+  <th>Implements</th>
+  <td>ArrayAccess, Traversable, IteratorAggregate</td>
+</tr>
+<tr>
+  <th>Since</th>
+  <td>1.0</td>
+</tr>
+<tr>
+  <th>Version</th>
+  <td>$Id$</td>
+</tr>
+<tr>
+  <th>Source Code</th>
+  <td><a class="sourceLink" href="https://github.com/yiisoft/yii/blob/1.0.12/framework/web/CFormModel.php">framework/web/CFormModel.php</a></td>
+</tr>
+</table>
+
+<div id="classDescription">
+CFormModel represents a data model that collects HTML form inputs.
+<br/><br/>
+Unlike <a href="/doc/api/1.0/CActiveRecord">CActiveRecord</a>, the data collected by CFormModel are stored
+in memory only, instead of database.
+<br/><br/>
+To collect user inputs, you may extend CFormModel and define the attributes
+whose values are to be collected from user inputs. You may override
+<a href="/doc/api/1.0/CFormModel#rules">rules()</a> to declare validation rules that should be applied to
+the attributes.</div>
+<a name="properties"></a>
+
+<div class="summary docProperty">
+<h2>Public Properties</h2>
+
+<p><a href="#" class="toggle">Hide inherited properties</a></p>
+
+<table class="summaryTable">
+<colgroup>
+	<col class="col-property" />
+	<col class="col-type" />
+	<col class="col-description" />
+	<col class="col-defined" />
+</colgroup>
+<tr>
+  <th>Property</th><th>Type</th><th>Description</th><th>Defined By</th>
+</tr>
+<tr class="inherited" id="attributes">
+  <td><a href="/doc/api/1.0/CModel#attributes-detail">attributes</a></td>
+  <td>array</td>
+  <td>Returns all attribute values.</td>
+  <td><a href="/doc/api/1.0/CModel">CModel</a></td>
+</tr>
+<tr class="inherited" id="errors">
+  <td><a href="/doc/api/1.0/CModel#errors-detail">errors</a></td>
+  <td>array</td>
+  <td>Returns the errors for all attribute or a single attribute.</td>
+  <td><a href="/doc/api/1.0/CModel">CModel</a></td>
+</tr>
+<tr class="inherited" id="iterator">
+  <td><a href="/doc/api/1.0/CModel#iterator-detail">iterator</a></td>
+  <td><a href="/doc/api/1.0/CMapIterator">CMapIterator</a></td>
+  <td>Returns an iterator for traversing the attributes in the model.</td>
+  <td><a href="/doc/api/1.0/CModel">CModel</a></td>
+</tr>
+<tr class="inherited" id="safeAttributeNames">
+  <td><a href="/doc/api/1.0/CModel#safeAttributeNames-detail">safeAttributeNames</a></td>
+  <td>array</td>
+  <td>Returns the attribute names that are safe to be massively assigned.</td>
+  <td><a href="/doc/api/1.0/CModel">CModel</a></td>
+</tr>
+<tr class="inherited" id="scenario">
+  <td><a href="/doc/api/1.0/CModel#scenario-detail">scenario</a></td>
+  <td>string</td>
+  <td>Returns the scenario that this model is in.</td>
+  <td><a href="/doc/api/1.0/CModel">CModel</a></td>
+</tr>
+<tr id="validators">
+  <td><a href="/doc/api/1.0/CFormModel#validators-detail">validators</a></td>
+  <td>array</td>
+  <td>list of validators created according to <a href="/doc/api/1.0/CModel#rules">rules</a>.</td>
+  <td>CFormModel</td>
+</tr>
+</table>
+</div>
+<a name="methods"></a>
+
+<div class="summary docMethod">
+<h2>Public Methods</h2>
+
+<p><a href="#" class="toggle">Hide inherited methods</a></p>
+
+<table class="summaryTable">
+<colgroup>
+	<col class="col-method" />
+	<col class="col-description" />
+	<col class="col-defined" />
+</colgroup>
+<tr>
+  <th>Method</th><th>Description</th><th>Defined By</th>
+</tr>
+<tr class="inherited" id="__call">
+  <td><a href="/doc/api/1.0/CComponent#__call-detail">__call()</a></td>
+  <td>Calls the named method which is not a class method.</td>
+  <td><a href="/doc/api/1.0/CComponent">CComponent</a></td>
+</tr>
+<tr id="__construct">
+  <td><a href="/doc/api/1.0/CFormModel#__construct-detail">__construct()</a></td>
+  <td>Constructor.</td>
+  <td>CFormModel</td>
+</tr>
+<tr class="inherited" id="__get">
+  <td><a href="/doc/api/1.0/CComponent#__get-detail">__get()</a></td>
+  <td>Returns a property value, an event handler list or a behavior based on its name.</td>
+  <td><a href="/doc/api/1.0/CComponent">CComponent</a></td>
+</tr>
+<tr class="inherited" id="__isset">
+  <td><a href="/doc/api/1.0/CComponent#__isset-detail">__isset()</a></td>
+  <td>Checks if a property value is null.</td>
+  <td><a href="/doc/api/1.0/CComponent">CComponent</a></td>
+</tr>
+<tr class="inherited" id="__set">
+  <td><a href="/doc/api/1.0/CComponent#__set-detail">__set()</a></td>
+  <td>Sets value of a component property.</td>
+  <td><a href="/doc/api/1.0/CComponent">CComponent</a></td>
+</tr>
+<tr class="inherited" id="__unset">
+  <td><a href="/doc/api/1.0/CComponent#__unset-detail">__unset()</a></td>
+  <td>Sets a component property to be null.</td>
+  <td><a href="/doc/api/1.0/CComponent">CComponent</a></td>
+</tr>
+<tr class="inherited" id="addError">
+  <td><a href="/doc/api/1.0/CModel#addError-detail">addError()</a></td>
+  <td>Adds a new error to the specified attribute.</td>
+  <td><a href="/doc/api/1.0/CModel">CModel</a></td>
+</tr>
+<tr class="inherited" id="addErrors">
+  <td><a href="/doc/api/1.0/CModel#addErrors-detail">addErrors()</a></td>
+  <td>Adds a list of errors.</td>
+  <td><a href="/doc/api/1.0/CModel">CModel</a></td>
+</tr>
+<tr class="inherited" id="asa">
+  <td><a href="/doc/api/1.0/CComponent#asa-detail">asa()</a></td>
+  <td>Returns the named behavior object.</td>
+  <td><a href="/doc/api/1.0/CComponent">CComponent</a></td>
+</tr>
+<tr class="inherited" id="attachBehavior">
+  <td><a href="/doc/api/1.0/CComponent#attachBehavior-detail">attachBehavior()</a></td>
+  <td>Attaches a behavior to this component.</td>
+  <td><a href="/doc/api/1.0/CComponent">CComponent</a></td>
+</tr>
+<tr class="inherited" id="attachBehaviors">
+  <td><a href="/doc/api/1.0/CComponent#attachBehaviors-detail">attachBehaviors()</a></td>
+  <td>Attaches a list of behaviors to the component.</td>
+  <td><a href="/doc/api/1.0/CComponent">CComponent</a></td>
+</tr>
+<tr class="inherited" id="attachEventHandler">
+  <td><a href="/doc/api/1.0/CComponent#attachEventHandler-detail">attachEventHandler()</a></td>
+  <td>Attaches an event handler to an event.</td>
+  <td><a href="/doc/api/1.0/CComponent">CComponent</a></td>
+</tr>
+<tr class="inherited" id="attributeLabels">
+  <td><a href="/doc/api/1.0/CModel#attributeLabels-detail">attributeLabels()</a></td>
+  <td>Returns the attribute labels.</td>
+  <td><a href="/doc/api/1.0/CModel">CModel</a></td>
+</tr>
+<tr id="attributeNames">
+  <td><a href="/doc/api/1.0/CFormModel#attributeNames-detail">attributeNames()</a></td>
+  <td>Returns the list of attribute names.</td>
+  <td>CFormModel</td>
+</tr>
+<tr class="inherited" id="behaviors">
+  <td><a href="/doc/api/1.0/CModel#behaviors-detail">behaviors()</a></td>
+  <td>Returns a list of behaviors that this model should behave as.</td>
+  <td><a href="/doc/api/1.0/CModel">CModel</a></td>
+</tr>
+<tr class="inherited" id="canGetProperty">
+  <td><a href="/doc/api/1.0/CComponent#canGetProperty-detail">canGetProperty()</a></td>
+  <td>Determines whether a property can be read.</td>
+  <td><a href="/doc/api/1.0/CComponent">CComponent</a></td>
+</tr>
+<tr class="inherited" id="canSetProperty">
+  <td><a href="/doc/api/1.0/CComponent#canSetProperty-detail">canSetProperty()</a></td>
+  <td>Determines whether a property can be set.</td>
+  <td><a href="/doc/api/1.0/CComponent">CComponent</a></td>
+</tr>
+<tr class="inherited" id="clearErrors">
+  <td><a href="/doc/api/1.0/CModel#clearErrors-detail">clearErrors()</a></td>
+  <td>Removes errors for all attributes or a single attribute.</td>
+  <td><a href="/doc/api/1.0/CModel">CModel</a></td>
+</tr>
+<tr class="inherited" id="createValidators">
+  <td><a href="/doc/api/1.0/CModel#createValidators-detail">createValidators()</a></td>
+  <td></td>
+  <td><a href="/doc/api/1.0/CModel">CModel</a></td>
+</tr>
+<tr class="inherited" id="detachBehavior">
+  <td><a href="/doc/api/1.0/CComponent#detachBehavior-detail">detachBehavior()</a></td>
+  <td>Detaches a behavior from the component.</td>
+  <td><a href="/doc/api/1.0/CComponent">CComponent</a></td>
+</tr>
+<tr class="inherited" id="detachBehaviors">
+  <td><a href="/doc/api/1.0/CComponent#detachBehaviors-detail">detachBehaviors()</a></td>
+  <td>Detaches all behaviors from the component.</td>
+  <td><a href="/doc/api/1.0/CComponent">CComponent</a></td>
+</tr>
+<tr class="inherited" id="detachEventHandler">
+  <td><a href="/doc/api/1.0/CComponent#detachEventHandler-detail">detachEventHandler()</a></td>
+  <td>Detaches an existing event handler.</td>
+  <td><a href="/doc/api/1.0/CComponent">CComponent</a></td>
+</tr>
+<tr class="inherited" id="disableBehavior">
+  <td><a href="/doc/api/1.0/CComponent#disableBehavior-detail">disableBehavior()</a></td>
+  <td>Disables an attached behavior.</td>
+  <td><a href="/doc/api/1.0/CComponent">CComponent</a></td>
+</tr>
+<tr class="inherited" id="disableBehaviors">
+  <td><a href="/doc/api/1.0/CComponent#disableBehaviors-detail">disableBehaviors()</a></td>
+  <td>Disables all behaviors attached to this component.</td>
+  <td><a href="/doc/api/1.0/CComponent">CComponent</a></td>
+</tr>
+<tr class="inherited" id="enableBehavior">
+  <td><a href="/doc/api/1.0/CComponent#enableBehavior-detail">enableBehavior()</a></td>
+  <td>Enables an attached behavior.</td>
+  <td><a href="/doc/api/1.0/CComponent">CComponent</a></td>
+</tr>
+<tr class="inherited" id="enableBehaviors">
+  <td><a href="/doc/api/1.0/CComponent#enableBehaviors-detail">enableBehaviors()</a></td>
+  <td>Enables all behaviors attached to this component.</td>
+  <td><a href="/doc/api/1.0/CComponent">CComponent</a></td>
+</tr>
+<tr class="inherited" id="generateAttributeLabel">
+  <td><a href="/doc/api/1.0/CModel#generateAttributeLabel-detail">generateAttributeLabel()</a></td>
+  <td>Generates a user friendly attribute label.</td>
+  <td><a href="/doc/api/1.0/CModel">CModel</a></td>
+</tr>
+<tr class="inherited" id="getAttributeLabel">
+  <td><a href="/doc/api/1.0/CModel#getAttributeLabel-detail">getAttributeLabel()</a></td>
+  <td>Returns the text label for the specified attribute.</td>
+  <td><a href="/doc/api/1.0/CModel">CModel</a></td>
+</tr>
+<tr class="inherited" id="getAttributes">
+  <td><a href="/doc/api/1.0/CModel#getAttributes-detail">getAttributes()</a></td>
+  <td>Returns all attribute values.</td>
+  <td><a href="/doc/api/1.0/CModel">CModel</a></td>
+</tr>
+<tr class="inherited" id="getError">
+  <td><a href="/doc/api/1.0/CModel#getError-detail">getError()</a></td>
+  <td>Returns the first error of the specified attribute.</td>
+  <td><a href="/doc/api/1.0/CModel">CModel</a></td>
+</tr>
+<tr class="inherited" id="getErrors">
+  <td><a href="/doc/api/1.0/CModel#getErrors-detail">getErrors()</a></td>
+  <td>Returns the errors for all attribute or a single attribute.</td>
+  <td><a href="/doc/api/1.0/CModel">CModel</a></td>
+</tr>
+<tr class="inherited" id="getEventHandlers">
+  <td><a href="/doc/api/1.0/CComponent#getEventHandlers-detail">getEventHandlers()</a></td>
+  <td>Returns the list of attached event handlers for an event.</td>
+  <td><a href="/doc/api/1.0/CComponent">CComponent</a></td>
+</tr>
+<tr class="inherited" id="getIterator">
+  <td><a href="/doc/api/1.0/CModel#getIterator-detail">getIterator()</a></td>
+  <td>Returns an iterator for traversing the attributes in the model.</td>
+  <td><a href="/doc/api/1.0/CModel">CModel</a></td>
+</tr>
+<tr class="inherited" id="getSafeAttributeNames">
+  <td><a href="/doc/api/1.0/CModel#getSafeAttributeNames-detail">getSafeAttributeNames()</a></td>
+  <td>Returns the attribute names that are safe to be massively assigned.</td>
+  <td><a href="/doc/api/1.0/CModel">CModel</a></td>
+</tr>
+<tr class="inherited" id="getScenario">
+  <td><a href="/doc/api/1.0/CModel#getScenario-detail">getScenario()</a></td>
+  <td>Returns the scenario that this model is in.</td>
+  <td><a href="/doc/api/1.0/CModel">CModel</a></td>
+</tr>
+<tr id="getValidators">
+  <td><a href="/doc/api/1.0/CFormModel#getValidators-detail">getValidators()</a></td>
+  <td>Returns list of validators created according to <a href="/doc/api/1.0/CModel#rules">rules</a>.</td>
+  <td>CFormModel</td>
+</tr>
+<tr class="inherited" id="getValidatorsForAttribute">
+  <td><a href="/doc/api/1.0/CModel#getValidatorsForAttribute-detail">getValidatorsForAttribute()</a></td>
+  <td>Returns the validators that are applied to the specified attribute under the specified scenario.</td>
+  <td><a href="/doc/api/1.0/CModel">CModel</a></td>
+</tr>
+<tr class="inherited" id="hasErrors">
+  <td><a href="/doc/api/1.0/CModel#hasErrors-detail">hasErrors()</a></td>
+  <td>Returns a value indicating whether there is any validation error.</td>
+  <td><a href="/doc/api/1.0/CModel">CModel</a></td>
+</tr>
+<tr class="inherited" id="hasEvent">
+  <td><a href="/doc/api/1.0/CComponent#hasEvent-detail">hasEvent()</a></td>
+  <td>Determines whether an event is defined.</td>
+  <td><a href="/doc/api/1.0/CComponent">CComponent</a></td>
+</tr>
+<tr class="inherited" id="hasEventHandler">
+  <td><a href="/doc/api/1.0/CComponent#hasEventHandler-detail">hasEventHandler()</a></td>
+  <td>Checks whether the named event has attached handlers.</td>
+  <td><a href="/doc/api/1.0/CComponent">CComponent</a></td>
+</tr>
+<tr class="inherited" id="hasProperty">
+  <td><a href="/doc/api/1.0/CComponent#hasProperty-detail">hasProperty()</a></td>
+  <td>Determines whether a property is defined.</td>
+  <td><a href="/doc/api/1.0/CComponent">CComponent</a></td>
+</tr>
+<tr id="init">
+  <td><a href="/doc/api/1.0/CFormModel#init-detail">init()</a></td>
+  <td>Initializes this model.</td>
+  <td>CFormModel</td>
+</tr>
+<tr class="inherited" id="isAttributeRequired">
+  <td><a href="/doc/api/1.0/CModel#isAttributeRequired-detail">isAttributeRequired()</a></td>
+  <td>Returns a value indicating whether the attribute is required.</td>
+  <td><a href="/doc/api/1.0/CModel">CModel</a></td>
+</tr>
+<tr class="inherited" id="offsetExists">
+  <td><a href="/doc/api/1.0/CModel#offsetExists-detail">offsetExists()</a></td>
+  <td>Returns whether there is an element at the specified offset.</td>
+  <td><a href="/doc/api/1.0/CModel">CModel</a></td>
+</tr>
+<tr class="inherited" id="offsetGet">
+  <td><a href="/doc/api/1.0/CModel#offsetGet-detail">offsetGet()</a></td>
+  <td>Returns the element at the specified offset.</td>
+  <td><a href="/doc/api/1.0/CModel">CModel</a></td>
+</tr>
+<tr class="inherited" id="offsetSet">
+  <td><a href="/doc/api/1.0/CModel#offsetSet-detail">offsetSet()</a></td>
+  <td>Sets the element at the specified offset.</td>
+  <td><a href="/doc/api/1.0/CModel">CModel</a></td>
+</tr>
+<tr class="inherited" id="offsetUnset">
+  <td><a href="/doc/api/1.0/CModel#offsetUnset-detail">offsetUnset()</a></td>
+  <td>Unsets the element at the specified offset.</td>
+  <td><a href="/doc/api/1.0/CModel">CModel</a></td>
+</tr>
+<tr class="inherited" id="onAfterValidate">
+  <td><a href="/doc/api/1.0/CModel#onAfterValidate-detail">onAfterValidate()</a></td>
+  <td>This event is raised after the validation is performed.</td>
+  <td><a href="/doc/api/1.0/CModel">CModel</a></td>
+</tr>
+<tr class="inherited" id="onBeforeValidate">
+  <td><a href="/doc/api/1.0/CModel#onBeforeValidate-detail">onBeforeValidate()</a></td>
+  <td>This event is raised before the validation is performed.</td>
+  <td><a href="/doc/api/1.0/CModel">CModel</a></td>
+</tr>
+<tr class="inherited" id="raiseEvent">
+  <td><a href="/doc/api/1.0/CComponent#raiseEvent-detail">raiseEvent()</a></td>
+  <td>Raises an event.</td>
+  <td><a href="/doc/api/1.0/CComponent">CComponent</a></td>
+</tr>
+<tr class="inherited" id="rules">
+  <td><a href="/doc/api/1.0/CModel#rules-detail">rules()</a></td>
+  <td>Returns the validation rules for attributes.</td>
+  <td><a href="/doc/api/1.0/CModel">CModel</a></td>
+</tr>
+<tr id="safeAttributes">
+  <td><a href="/doc/api/1.0/CFormModel#safeAttributes-detail">safeAttributes()</a></td>
+  <td>Returns the name of attributes that are safe to be massively assigned.</td>
+  <td>CFormModel</td>
+</tr>
+<tr class="inherited" id="setAttributes">
+  <td><a href="/doc/api/1.0/CModel#setAttributes-detail">setAttributes()</a></td>
+  <td>Sets the attribute values in a massive way.</td>
+  <td><a href="/doc/api/1.0/CModel">CModel</a></td>
+</tr>
+<tr class="inherited" id="setScenario">
+  <td><a href="/doc/api/1.0/CModel#setScenario-detail">setScenario()</a></td>
+  <td>Sets the scenario that this model is in.</td>
+  <td><a href="/doc/api/1.0/CModel">CModel</a></td>
+</tr>
+<tr class="inherited" id="validate">
+  <td><a href="/doc/api/1.0/CModel#validate-detail">validate()</a></td>
+  <td>Performs the validation.</td>
+  <td><a href="/doc/api/1.0/CModel">CModel</a></td>
+</tr>
+</table>
+</div>
+<div class="summary docMethod">
+<h2>Protected Methods</h2>
+
+<p><a href="#" class="toggle">Hide inherited methods</a></p>
+
+<table class="summaryTable">
+<colgroup>
+	<col class="col-method" />
+	<col class="col-description" />
+	<col class="col-defined" />
+</colgroup>
+<tr>
+  <th>Method</th><th>Description</th><th>Defined By</th>
+</tr>
+<tr class="inherited" id="afterValidate">
+  <td><a href="/doc/api/1.0/CModel#afterValidate-detail">afterValidate()</a></td>
+  <td>This method is invoked after validation ends.</td>
+  <td><a href="/doc/api/1.0/CModel">CModel</a></td>
+</tr>
+<tr class="inherited" id="beforeValidate">
+  <td><a href="/doc/api/1.0/CModel#beforeValidate-detail">beforeValidate()</a></td>
+  <td>This method is invoked before validation starts.</td>
+  <td><a href="/doc/api/1.0/CModel">CModel</a></td>
+</tr>
+</table>
+</div>
+<a name="events"></a>
+
+<div class="summary docEvent">
+<h2>Events</h2>
+
+<p><a href="#" class="toggle">Hide inherited events</a></p>
+
+<table class="summaryTable">
+<colgroup>
+	<col class="col-event" />
+	<col class="col-description" />
+	<col class="col-defined" />
+</colgroup>
+<tr>
+  <th>Event</th><th>Description</th><th>Defined By</th>
+</tr>
+<tr class="inherited" id="onBeforeValidate">
+  <td><a href="/doc/api/1.0/CModel#onBeforeValidate-detail">onBeforeValidate</a></td>
+  <td>This event is raised before the validation is performed.</td>
+  <td><a href="/doc/api/1.0/CModel">CModel</a></td>
+</tr>
+<tr class="inherited" id="onAfterValidate">
+  <td><a href="/doc/api/1.0/CModel#onAfterValidate-detail">onAfterValidate</a></td>
+  <td>This event is raised after the validation is performed.</td>
+  <td><a href="/doc/api/1.0/CModel">CModel</a></td>
+</tr>
+</table>
+</div>
+<h2>Property Details</h2>
+<div class="detailHeader" id="validators-detail">
+validators<span class="detailHeaderTag">
+property
+ <em>read-only</em> </span>
+</div>
+
+<div class="signature">
+public array <a href="/doc/api/1.0/CFormModel#getValidators"><b>getValidators</b></a>()</div>
+
+<p>list of validators created according to <a href="/doc/api/1.0/CModel#rules">rules</a>.</p>
+
+
+<h2>Method Details</h2>
+
+<div class="detailHeader" id="__construct-detail">
+__construct()
+<span class="detailHeaderTag">
+method
+</span>
+</div>
+
+<table class="summaryTable">
+<tr><td colspan="3">
+<div class="signature2">
+public void <b>__construct</b>(array $attributes=array (
+), string $scenario='')</div>
+</td></tr>
+<tr>
+  <td class="paramNameCol">$attributes</td>
+  <td class="paramTypeCol">array</td>
+  <td class="paramDescCol">initial attributes (name => value). The attributes
+are subject to filtering via <a href="/doc/api/1.0/CFormModel#setAttributes">setAttributes</a>.</td>
+</tr>
+<tr>
+  <td class="paramNameCol">$scenario</td>
+  <td class="paramTypeCol">string</td>
+  <td class="paramDescCol">scenario name. See <a href="/doc/api/1.0/CFormModel#setAttributes">setAttributes</a> for more details about this parameter.
+This parameter has been available since version 1.0.2.
+As of version 1.0.4, this parameter will be used to set the <a href="/doc/api/1.0/CModel#scenario">scenario</a>
+property of the model.</td>
+</tr>
+</table>
+
+<div class="sourceCode">
+<b>Source Code:</b> <a class="sourceLink" href="https://github.com/yiisoft/yii/blob/1.0.12/framework/web/CFormModel.php#L42">framework/web/CFormModel.php#42</a> (<b><a href="#" class="show">show</a></b>)
+<div class="code"><code><span style="color: #000000">
+<span style="color: #0000BB"></span><span style="color: #007700">public&nbsp;function&nbsp;</span><span style="color: #0000BB">__construct</span><span style="color: #007700">(</span><span style="color: #0000BB">$attributes</span><span style="color: #007700">=array(),</span><span style="color: #0000BB">$scenario</span><span style="color: #007700">=</span><span style="color: #DD0000">''</span><span style="color: #007700">)<br />{<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">setScenario</span><span style="color: #007700">(</span><span style="color: #0000BB">$scenario</span><span style="color: #007700">);<br /><br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">init</span><span style="color: #007700">();<br /><br />&nbsp;&nbsp;&nbsp;&nbsp;if(</span><span style="color: #0000BB">$attributes</span><span style="color: #007700">!==array())<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">setAttributes</span><span style="color: #007700">(</span><span style="color: #0000BB">$attributes</span><span style="color: #007700">);<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">attachBehaviors</span><span style="color: #007700">(</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">behaviors</span><span style="color: #007700">());<br />}</span>
+</span>
+</code></div>
+</div>
+<p>Constructor.</p>
+
+<div class="SeeAlso">
+<h4>See Also</h4>
+<ul>
+	<li><a href="/doc/api/1.0/CFormModel#setAttributes">setAttributes</a></li>
+</ul>
+</div>
+
+<div class="detailHeader" id="attributeNames-detail">
+attributeNames()
+<span class="detailHeaderTag">
+method
+</span>
+</div>
+
+<table class="summaryTable">
+<tr><td colspan="3">
+<div class="signature2">
+public array <b>attributeNames</b>()</div>
+</td></tr>
+<tr>
+  <td class="paramNameCol">{return}</td>
+  <td class="paramTypeCol">array</td>
+  <td class="paramDescCol">list of attribute names. Defaults to all public properties of the class.</td>
+</tr>
+</table>
+
+<div class="sourceCode">
+<b>Source Code:</b> <a class="sourceLink" href="https://github.com/yiisoft/yii/blob/1.0.12/framework/web/CFormModel.php#L85">framework/web/CFormModel.php#85</a> (<b><a href="#" class="show">show</a></b>)
+<div class="code"><code><span style="color: #000000">
+<span style="color: #0000BB"></span><span style="color: #007700">public&nbsp;function&nbsp;</span><span style="color: #0000BB">attributeNames</span><span style="color: #007700">()<br />{<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$className</span><span style="color: #007700">=</span><span style="color: #0000BB">get_class</span><span style="color: #007700">(</span><span style="color: #0000BB">$this</span><span style="color: #007700">);<br />&nbsp;&nbsp;&nbsp;&nbsp;if(!isset(</span><span style="color: #0000BB">self</span><span style="color: #007700">::</span><span style="color: #0000BB">$_names</span><span style="color: #007700">[</span><span style="color: #0000BB">$className</span><span style="color: #007700">]))<br />&nbsp;&nbsp;&nbsp;&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$class</span><span style="color: #007700">=new&nbsp;</span><span style="color: #0000BB">ReflectionClass</span><span style="color: #007700">(</span><span style="color: #0000BB">get_class</span><span style="color: #007700">(</span><span style="color: #0000BB">$this</span><span style="color: #007700">));<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$names</span><span style="color: #007700">=array();<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;foreach(</span><span style="color: #0000BB">$class</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">getProperties</span><span style="color: #007700">()&nbsp;as&nbsp;</span><span style="color: #0000BB">$property</span><span style="color: #007700">)<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$name</span><span style="color: #007700">=</span><span style="color: #0000BB">$property</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">getName</span><span style="color: #007700">();<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if(</span><span style="color: #0000BB">$property</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">isPublic</span><span style="color: #007700">()&nbsp;&amp;&amp;&nbsp;!</span><span style="color: #0000BB">$property</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">isStatic</span><span style="color: #007700">())<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$names</span><span style="color: #007700">[]=</span><span style="color: #0000BB">$name</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;</span><span style="color: #0000BB">self</span><span style="color: #007700">::</span><span style="color: #0000BB">$_names</span><span style="color: #007700">[</span><span style="color: #0000BB">$className</span><span style="color: #007700">]=</span><span style="color: #0000BB">$names</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;}<br />&nbsp;&nbsp;&nbsp;&nbsp;else<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;</span><span style="color: #0000BB">self</span><span style="color: #007700">::</span><span style="color: #0000BB">$_names</span><span style="color: #007700">[</span><span style="color: #0000BB">$className</span><span style="color: #007700">];<br />}</span>
+</span>
+</code></div>
+</div>
+<p>Returns the list of attribute names.
+By default, this method returns all public properties of the class.
+You may override this method to change the default.</p>
+
+
+<div class="detailHeader" id="getValidators-detail">
+getValidators()
+<span class="detailHeaderTag">
+method
+</span>
+</div>
+
+<table class="summaryTable">
+<tr><td colspan="3">
+<div class="signature2">
+public array <b>getValidators</b>()</div>
+</td></tr>
+<tr>
+  <td class="paramNameCol">{return}</td>
+  <td class="paramTypeCol">array</td>
+  <td class="paramDescCol">list of validators created according to <a href="/doc/api/1.0/CModel#rules">rules</a>.</td>
+</tr>
+</table>
+
+<div class="sourceCode">
+<b>Source Code:</b> <a class="sourceLink" href="https://github.com/yiisoft/yii/blob/1.0.12/framework/web/CFormModel.php#L107">framework/web/CFormModel.php#107</a> (<b><a href="#" class="show">show</a></b>)
+<div class="code"><code><span style="color: #000000">
+<span style="color: #0000BB"></span><span style="color: #007700">public&nbsp;function&nbsp;</span><span style="color: #0000BB">getValidators</span><span style="color: #007700">()<br />{<br />&nbsp;&nbsp;&nbsp;&nbsp;if(</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">_validators</span><span style="color: #007700">===</span><span style="color: #0000BB">null</span><span style="color: #007700">)<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">_validators</span><span style="color: #007700">=</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">createValidators</span><span style="color: #007700">();<br />&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">_validators</span><span style="color: #007700">;<br />}</span>
+</span>
+</code></div>
+</div>
+<p></p>
+
+
+<div class="detailHeader" id="init-detail">
+init()
+<span class="detailHeaderTag">
+method
+(available since v1.0.8)
+</span>
+</div>
+
+<table class="summaryTable">
+<tr><td colspan="3">
+<div class="signature2">
+public void <b>init</b>()</div>
+</td></tr>
+</table>
+
+<div class="sourceCode">
+<b>Source Code:</b> <a class="sourceLink" href="https://github.com/yiisoft/yii/blob/1.0.12/framework/web/CFormModel.php#L60">framework/web/CFormModel.php#60</a> (<b><a href="#" class="show">show</a></b>)
+<div class="code"><code><span style="color: #000000">
+<span style="color: #0000BB"></span><span style="color: #007700">public&nbsp;function&nbsp;</span><span style="color: #0000BB">init</span><span style="color: #007700">()<br />{<br />}</span>
+</span>
+</code></div>
+</div>
+<p>Initializes this model.
+This method is invoked in the constructor right after <a href="/doc/api/1.0/CFormModel#scenario">scenario</a> is set.
+You may override this method to provide code that is needed to initialize the model (e.g. setting
+initial property values.)</p>
+
+
+<div class="detailHeader" id="safeAttributes-detail">
+safeAttributes()
+<span class="detailHeaderTag">
+method
+(available since v1.0.2)
+</span>
+</div>
+
+<table class="summaryTable">
+<tr><td colspan="3">
+<div class="signature2">
+public array <b>safeAttributes</b>()</div>
+</td></tr>
+<tr>
+  <td class="paramNameCol">{return}</td>
+  <td class="paramTypeCol">array</td>
+  <td class="paramDescCol">list of safe attribute names.</td>
+</tr>
+</table>
+
+<div class="sourceCode">
+<b>Source Code:</b> <a class="sourceLink" href="https://github.com/yiisoft/yii/blob/1.0.12/framework/web/CFormModel.php#L74">framework/web/CFormModel.php#74</a> (<b><a href="#" class="show">show</a></b>)
+<div class="code"><code><span style="color: #000000">
+<span style="color: #0000BB"></span><span style="color: #007700">public&nbsp;function&nbsp;</span><span style="color: #0000BB">safeAttributes</span><span style="color: #007700">()<br />{<br />&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">attributeNames</span><span style="color: #007700">();<br />}</span>
+</span>
+</code></div>
+</div>
+<p>Returns the name of attributes that are safe to be massively assigned.
+The default implementation simply returns <a href="/doc/api/1.0/CFormModel#attributeNames">attributeNames</a>.
+This method may be overridden by child classes.
+See <a href="/doc/api/1.0/CModel#safeAttributes">CModel::safeAttributes</a> for more details about how to
+override this method.</p>
+
+<div class="SeeAlso">
+<h4>See Also</h4>
+<ul>
+	<li><a href="/doc/api/1.0/CModel#safeAttributes">CModel::safeAttributes</a></li>
+</ul>
+</div>
+

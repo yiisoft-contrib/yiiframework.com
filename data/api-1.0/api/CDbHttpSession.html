@@ -1,0 +1,945 @@
+<h1>CDbHttpSession</h1>
+<div id="nav">
+<a href="/doc/api/1.0/">All Packages</a>
+| <a href="#properties">Properties</a>
+| <a href="#methods">Methods</a>
+</div>
+
+<table class="summaryTable docClass">
+<colgroup>
+	<col class="col-name" />
+	<col class="col-value" />
+</colgroup>
+<tr>
+  <th>Package</th>
+  <td><a href="/doc/api/1.0/#system.web">system.web</a></td>
+</tr>
+<tr>
+  <th>Inheritance</th>
+  <td>class CDbHttpSession &raquo;
+<a href="/doc/api/1.0/CHttpSession">CHttpSession</a> &raquo;
+<a href="/doc/api/1.0/CApplicationComponent">CApplicationComponent</a> &raquo;
+<a href="/doc/api/1.0/CComponent">CComponent</a></td>
+</tr>
+<tr>
+  <th>Implements</th>
+  <td>Countable, ArrayAccess, Traversable, IteratorAggregate, <a href="/doc/api/1.0/IApplicationComponent">IApplicationComponent</a></td>
+</tr>
+<tr>
+  <th>Since</th>
+  <td>1.0</td>
+</tr>
+<tr>
+  <th>Version</th>
+  <td>$Id$</td>
+</tr>
+<tr>
+  <th>Source Code</th>
+  <td><a class="sourceLink" href="https://github.com/yiisoft/yii/blob/1.0.12/framework/web/CDbHttpSession.php">framework/web/CDbHttpSession.php</a></td>
+</tr>
+</table>
+
+<div id="classDescription">
+CDbHttpSession extends <a href="/doc/api/1.0/CHttpSession">CHttpSession</a> by using database as session data storage.
+<br/><br/>
+CDbHttpSession stores session data in a DB table named 'YiiSession'. The table name
+can be changed by setting <a href="/doc/api/1.0/CDbHttpSession#sessionTableName">sessionTableName</a>. If the table does not exist,
+it will be automatically created if <a href="/doc/api/1.0/CDbHttpSession#autoCreateSessionTable">autoCreateSessionTable</a> is set true.
+<br/><br/>
+CDbHttpSession relies on <a href="http://www.php.net/manual/en/ref.pdo.php">PDO</a> to access database.
+<br/><br/>
+By default, it will use an SQLite3 database named 'session-YiiVersion.db' under the application runtime directory.
+You can also specify <a href="/doc/api/1.0/CDbHttpSession#connectionID">connectionID</a> so that it makes use of a DB application component to access database.</div>
+<a name="properties"></a>
+
+<div class="summary docProperty">
+<h2>Public Properties</h2>
+
+<p><a href="#" class="toggle">Hide inherited properties</a></p>
+
+<table class="summaryTable">
+<colgroup>
+	<col class="col-property" />
+	<col class="col-type" />
+	<col class="col-description" />
+	<col class="col-defined" />
+</colgroup>
+<tr>
+  <th>Property</th><th>Type</th><th>Description</th><th>Defined By</th>
+</tr>
+<tr id="autoCreateSessionTable">
+  <td><a href="/doc/api/1.0/CDbHttpSession#autoCreateSessionTable-detail">autoCreateSessionTable</a></td>
+  <td>boolean</td>
+  <td>whether the session DB table should be automatically created if not exists.</td>
+  <td>CDbHttpSession</td>
+</tr>
+<tr class="inherited" id="autoStart">
+  <td><a href="/doc/api/1.0/CHttpSession#autoStart-detail">autoStart</a></td>
+  <td>boolean</td>
+  <td>whether the session should be automatically started when the session application component is initialized, defaults to true.</td>
+  <td><a href="/doc/api/1.0/CHttpSession">CHttpSession</a></td>
+</tr>
+<tr class="inherited" id="behaviors">
+  <td><a href="/doc/api/1.0/CApplicationComponent#behaviors-detail">behaviors</a></td>
+  <td>array</td>
+  <td>the behaviors that should be attached to this component.</td>
+  <td><a href="/doc/api/1.0/CApplicationComponent">CApplicationComponent</a></td>
+</tr>
+<tr id="connectionID">
+  <td><a href="/doc/api/1.0/CDbHttpSession#connectionID-detail">connectionID</a></td>
+  <td>string</td>
+  <td>the ID of a <a href="/doc/api/1.0/CDbConnection">CDbConnection</a> application component.</td>
+  <td>CDbHttpSession</td>
+</tr>
+<tr class="inherited" id="cookieMode">
+  <td><a href="/doc/api/1.0/CHttpSession#cookieMode-detail">cookieMode</a></td>
+  <td>string</td>
+  <td>how to use cookie to store session ID.</td>
+  <td><a href="/doc/api/1.0/CHttpSession">CHttpSession</a></td>
+</tr>
+<tr class="inherited" id="cookieParams">
+  <td><a href="/doc/api/1.0/CHttpSession#cookieParams-detail">cookieParams</a></td>
+  <td>array</td>
+  <td>the session cookie parameters.</td>
+  <td><a href="/doc/api/1.0/CHttpSession">CHttpSession</a></td>
+</tr>
+<tr class="inherited" id="count">
+  <td><a href="/doc/api/1.0/CHttpSession#count-detail">count</a></td>
+  <td>integer</td>
+  <td>the number of session variables</td>
+  <td><a href="/doc/api/1.0/CHttpSession">CHttpSession</a></td>
+</tr>
+<tr class="inherited" id="gCProbability">
+  <td><a href="/doc/api/1.0/CHttpSession#gCProbability-detail">gCProbability</a></td>
+  <td>integer</td>
+  <td>the probability (percentage) that the gc (garbage collection) process is started on every session initialization, defaults to 1 meaning 1% chance.</td>
+  <td><a href="/doc/api/1.0/CHttpSession">CHttpSession</a></td>
+</tr>
+<tr class="inherited" id="isInitialized">
+  <td><a href="/doc/api/1.0/CApplicationComponent#isInitialized-detail">isInitialized</a></td>
+  <td>boolean</td>
+  <td>whether this application component has been initialized (i.e., <a href="/doc/api/1.0/CDbHttpSession#init">init()</a> is invoked.</td>
+  <td><a href="/doc/api/1.0/CApplicationComponent">CApplicationComponent</a></td>
+</tr>
+<tr class="inherited" id="isStarted">
+  <td><a href="/doc/api/1.0/CHttpSession#isStarted-detail">isStarted</a></td>
+  <td>boolean</td>
+  <td>whether the session has started</td>
+  <td><a href="/doc/api/1.0/CHttpSession">CHttpSession</a></td>
+</tr>
+<tr class="inherited" id="iterator">
+  <td><a href="/doc/api/1.0/CHttpSession#iterator-detail">iterator</a></td>
+  <td><a href="/doc/api/1.0/CHttpSessionIterator">CHttpSessionIterator</a></td>
+  <td>Returns an iterator for traversing the session variables.</td>
+  <td><a href="/doc/api/1.0/CHttpSession">CHttpSession</a></td>
+</tr>
+<tr class="inherited" id="keys">
+  <td><a href="/doc/api/1.0/CHttpSession#keys-detail">keys</a></td>
+  <td>array</td>
+  <td>the list of session variable names</td>
+  <td><a href="/doc/api/1.0/CHttpSession">CHttpSession</a></td>
+</tr>
+<tr class="inherited" id="savePath">
+  <td><a href="/doc/api/1.0/CHttpSession#savePath-detail">savePath</a></td>
+  <td>string</td>
+  <td>the current session save path, defaults to '/tmp'.</td>
+  <td><a href="/doc/api/1.0/CHttpSession">CHttpSession</a></td>
+</tr>
+<tr class="inherited" id="sessionID">
+  <td><a href="/doc/api/1.0/CHttpSession#sessionID-detail">sessionID</a></td>
+  <td>string</td>
+  <td>the current session ID</td>
+  <td><a href="/doc/api/1.0/CHttpSession">CHttpSession</a></td>
+</tr>
+<tr class="inherited" id="sessionName">
+  <td><a href="/doc/api/1.0/CHttpSession#sessionName-detail">sessionName</a></td>
+  <td>string</td>
+  <td>the current session name</td>
+  <td><a href="/doc/api/1.0/CHttpSession">CHttpSession</a></td>
+</tr>
+<tr id="sessionTableName">
+  <td><a href="/doc/api/1.0/CDbHttpSession#sessionTableName-detail">sessionTableName</a></td>
+  <td>string</td>
+  <td>the name of the DB table to store session content.</td>
+  <td>CDbHttpSession</td>
+</tr>
+<tr class="inherited" id="timeout">
+  <td><a href="/doc/api/1.0/CHttpSession#timeout-detail">timeout</a></td>
+  <td>integer</td>
+  <td>the number of seconds after which data will be seen as 'garbage' and cleaned up, defaults to 1440 seconds.</td>
+  <td><a href="/doc/api/1.0/CHttpSession">CHttpSession</a></td>
+</tr>
+<tr id="useCustomStorage">
+  <td><a href="/doc/api/1.0/CDbHttpSession#useCustomStorage-detail">useCustomStorage</a></td>
+  <td>boolean</td>
+  <td>Returns a value indicating whether to use custom session storage.</td>
+  <td>CDbHttpSession</td>
+</tr>
+<tr class="inherited" id="useTransparentSessionID">
+  <td><a href="/doc/api/1.0/CHttpSession#useTransparentSessionID-detail">useTransparentSessionID</a></td>
+  <td>boolean</td>
+  <td>whether transparent sid support is enabled or not, defaults to false.</td>
+  <td><a href="/doc/api/1.0/CHttpSession">CHttpSession</a></td>
+</tr>
+</table>
+</div>
+<div class="summary docProperty">
+<h2>Protected Properties</h2>
+
+<p><a href="#" class="toggle">Hide inherited properties</a></p>
+
+<table class="summaryTable">
+<colgroup>
+	<col class="col-property" />
+	<col class="col-type" />
+	<col class="col-description" />
+	<col class="col-defined" />
+</colgroup>
+<tr>
+  <th>Property</th><th>Type</th><th>Description</th><th>Defined By</th>
+</tr>
+<tr id="dbConnection">
+  <td><a href="/doc/api/1.0/CDbHttpSession#dbConnection-detail">dbConnection</a></td>
+  <td><a href="/doc/api/1.0/CDbConnection">CDbConnection</a></td>
+  <td>the DB connection instance</td>
+  <td>CDbHttpSession</td>
+</tr>
+</table>
+</div>
+<a name="methods"></a>
+
+<div class="summary docMethod">
+<h2>Public Methods</h2>
+
+<p><a href="#" class="toggle">Hide inherited methods</a></p>
+
+<table class="summaryTable">
+<colgroup>
+	<col class="col-method" />
+	<col class="col-description" />
+	<col class="col-defined" />
+</colgroup>
+<tr>
+  <th>Method</th><th>Description</th><th>Defined By</th>
+</tr>
+<tr class="inherited" id="__call">
+  <td><a href="/doc/api/1.0/CComponent#__call-detail">__call()</a></td>
+  <td>Calls the named method which is not a class method.</td>
+  <td><a href="/doc/api/1.0/CComponent">CComponent</a></td>
+</tr>
+<tr class="inherited" id="__get">
+  <td><a href="/doc/api/1.0/CComponent#__get-detail">__get()</a></td>
+  <td>Returns a property value, an event handler list or a behavior based on its name.</td>
+  <td><a href="/doc/api/1.0/CComponent">CComponent</a></td>
+</tr>
+<tr class="inherited" id="__isset">
+  <td><a href="/doc/api/1.0/CComponent#__isset-detail">__isset()</a></td>
+  <td>Checks if a property value is null.</td>
+  <td><a href="/doc/api/1.0/CComponent">CComponent</a></td>
+</tr>
+<tr class="inherited" id="__set">
+  <td><a href="/doc/api/1.0/CComponent#__set-detail">__set()</a></td>
+  <td>Sets value of a component property.</td>
+  <td><a href="/doc/api/1.0/CComponent">CComponent</a></td>
+</tr>
+<tr class="inherited" id="__unset">
+  <td><a href="/doc/api/1.0/CComponent#__unset-detail">__unset()</a></td>
+  <td>Sets a component property to be null.</td>
+  <td><a href="/doc/api/1.0/CComponent">CComponent</a></td>
+</tr>
+<tr class="inherited" id="add">
+  <td><a href="/doc/api/1.0/CHttpSession#add-detail">add()</a></td>
+  <td>Adds a session variable.</td>
+  <td><a href="/doc/api/1.0/CHttpSession">CHttpSession</a></td>
+</tr>
+<tr class="inherited" id="asa">
+  <td><a href="/doc/api/1.0/CComponent#asa-detail">asa()</a></td>
+  <td>Returns the named behavior object.</td>
+  <td><a href="/doc/api/1.0/CComponent">CComponent</a></td>
+</tr>
+<tr class="inherited" id="attachBehavior">
+  <td><a href="/doc/api/1.0/CComponent#attachBehavior-detail">attachBehavior()</a></td>
+  <td>Attaches a behavior to this component.</td>
+  <td><a href="/doc/api/1.0/CComponent">CComponent</a></td>
+</tr>
+<tr class="inherited" id="attachBehaviors">
+  <td><a href="/doc/api/1.0/CComponent#attachBehaviors-detail">attachBehaviors()</a></td>
+  <td>Attaches a list of behaviors to the component.</td>
+  <td><a href="/doc/api/1.0/CComponent">CComponent</a></td>
+</tr>
+<tr class="inherited" id="attachEventHandler">
+  <td><a href="/doc/api/1.0/CComponent#attachEventHandler-detail">attachEventHandler()</a></td>
+  <td>Attaches an event handler to an event.</td>
+  <td><a href="/doc/api/1.0/CComponent">CComponent</a></td>
+</tr>
+<tr class="inherited" id="canGetProperty">
+  <td><a href="/doc/api/1.0/CComponent#canGetProperty-detail">canGetProperty()</a></td>
+  <td>Determines whether a property can be read.</td>
+  <td><a href="/doc/api/1.0/CComponent">CComponent</a></td>
+</tr>
+<tr class="inherited" id="canSetProperty">
+  <td><a href="/doc/api/1.0/CComponent#canSetProperty-detail">canSetProperty()</a></td>
+  <td>Determines whether a property can be set.</td>
+  <td><a href="/doc/api/1.0/CComponent">CComponent</a></td>
+</tr>
+<tr class="inherited" id="clear">
+  <td><a href="/doc/api/1.0/CHttpSession#clear-detail">clear()</a></td>
+  <td>Removes all session variables</td>
+  <td><a href="/doc/api/1.0/CHttpSession">CHttpSession</a></td>
+</tr>
+<tr class="inherited" id="close">
+  <td><a href="/doc/api/1.0/CHttpSession#close-detail">close()</a></td>
+  <td>Ends the current session and store session data.</td>
+  <td><a href="/doc/api/1.0/CHttpSession">CHttpSession</a></td>
+</tr>
+<tr class="inherited" id="closeSession">
+  <td><a href="/doc/api/1.0/CHttpSession#closeSession-detail">closeSession()</a></td>
+  <td>Session close handler.</td>
+  <td><a href="/doc/api/1.0/CHttpSession">CHttpSession</a></td>
+</tr>
+<tr class="inherited" id="contains">
+  <td><a href="/doc/api/1.0/CHttpSession#contains-detail">contains()</a></td>
+  <td></td>
+  <td><a href="/doc/api/1.0/CHttpSession">CHttpSession</a></td>
+</tr>
+<tr class="inherited" id="count()">
+  <td><a href="/doc/api/CHttpSession#count()-detail">count()</a></td>
+  <td>Returns the number of items in the session.</td>
+  <td><a href="/doc/api/1.0/CHttpSession">CHttpSession</a></td>
+</tr>
+<tr class="inherited" id="destroy">
+  <td><a href="/doc/api/1.0/CHttpSession#destroy-detail">destroy()</a></td>
+  <td>Frees all session variables and destroys all data registered to a session.</td>
+  <td><a href="/doc/api/1.0/CHttpSession">CHttpSession</a></td>
+</tr>
+<tr id="destroySession">
+  <td><a href="/doc/api/1.0/CDbHttpSession#destroySession-detail">destroySession()</a></td>
+  <td>Session destroy handler.</td>
+  <td>CDbHttpSession</td>
+</tr>
+<tr class="inherited" id="detachBehavior">
+  <td><a href="/doc/api/1.0/CComponent#detachBehavior-detail">detachBehavior()</a></td>
+  <td>Detaches a behavior from the component.</td>
+  <td><a href="/doc/api/1.0/CComponent">CComponent</a></td>
+</tr>
+<tr class="inherited" id="detachBehaviors">
+  <td><a href="/doc/api/1.0/CComponent#detachBehaviors-detail">detachBehaviors()</a></td>
+  <td>Detaches all behaviors from the component.</td>
+  <td><a href="/doc/api/1.0/CComponent">CComponent</a></td>
+</tr>
+<tr class="inherited" id="detachEventHandler">
+  <td><a href="/doc/api/1.0/CComponent#detachEventHandler-detail">detachEventHandler()</a></td>
+  <td>Detaches an existing event handler.</td>
+  <td><a href="/doc/api/1.0/CComponent">CComponent</a></td>
+</tr>
+<tr class="inherited" id="disableBehavior">
+  <td><a href="/doc/api/1.0/CComponent#disableBehavior-detail">disableBehavior()</a></td>
+  <td>Disables an attached behavior.</td>
+  <td><a href="/doc/api/1.0/CComponent">CComponent</a></td>
+</tr>
+<tr class="inherited" id="disableBehaviors">
+  <td><a href="/doc/api/1.0/CComponent#disableBehaviors-detail">disableBehaviors()</a></td>
+  <td>Disables all behaviors attached to this component.</td>
+  <td><a href="/doc/api/1.0/CComponent">CComponent</a></td>
+</tr>
+<tr class="inherited" id="enableBehavior">
+  <td><a href="/doc/api/1.0/CComponent#enableBehavior-detail">enableBehavior()</a></td>
+  <td>Enables an attached behavior.</td>
+  <td><a href="/doc/api/1.0/CComponent">CComponent</a></td>
+</tr>
+<tr class="inherited" id="enableBehaviors">
+  <td><a href="/doc/api/1.0/CComponent#enableBehaviors-detail">enableBehaviors()</a></td>
+  <td>Enables all behaviors attached to this component.</td>
+  <td><a href="/doc/api/1.0/CComponent">CComponent</a></td>
+</tr>
+<tr id="gcSession">
+  <td><a href="/doc/api/1.0/CDbHttpSession#gcSession-detail">gcSession()</a></td>
+  <td>Session GC (garbage collection) handler.</td>
+  <td>CDbHttpSession</td>
+</tr>
+<tr class="inherited" id="getCookieMode">
+  <td><a href="/doc/api/1.0/CHttpSession#getCookieMode-detail">getCookieMode()</a></td>
+  <td>Returns how to use cookie to store session ID. Defaults to 'Allow'.</td>
+  <td><a href="/doc/api/1.0/CHttpSession">CHttpSession</a></td>
+</tr>
+<tr class="inherited" id="getCookieParams">
+  <td><a href="/doc/api/1.0/CHttpSession#getCookieParams-detail">getCookieParams()</a></td>
+  <td>Returns the session cookie parameters.</td>
+  <td><a href="/doc/api/1.0/CHttpSession">CHttpSession</a></td>
+</tr>
+<tr class="inherited" id="getCount">
+  <td><a href="/doc/api/1.0/CHttpSession#getCount-detail">getCount()</a></td>
+  <td>Returns the number of session variables</td>
+  <td><a href="/doc/api/1.0/CHttpSession">CHttpSession</a></td>
+</tr>
+<tr class="inherited" id="getEventHandlers">
+  <td><a href="/doc/api/1.0/CComponent#getEventHandlers-detail">getEventHandlers()</a></td>
+  <td>Returns the list of attached event handlers for an event.</td>
+  <td><a href="/doc/api/1.0/CComponent">CComponent</a></td>
+</tr>
+<tr class="inherited" id="getGCProbability">
+  <td><a href="/doc/api/1.0/CHttpSession#getGCProbability-detail">getGCProbability()</a></td>
+  <td>Returns the probability (percentage) that the gc (garbage collection) process is started on every session initialization, defaults to 1 meaning 1% chance.</td>
+  <td><a href="/doc/api/1.0/CHttpSession">CHttpSession</a></td>
+</tr>
+<tr class="inherited" id="getIsInitialized">
+  <td><a href="/doc/api/1.0/CApplicationComponent#getIsInitialized-detail">getIsInitialized()</a></td>
+  <td>Checks whether this application component has been initialized (i.e., <a href="/doc/api/1.0/CDbHttpSession#init">init()</a> is invoked.)</td>
+  <td><a href="/doc/api/1.0/CApplicationComponent">CApplicationComponent</a></td>
+</tr>
+<tr class="inherited" id="getIsStarted">
+  <td><a href="/doc/api/1.0/CHttpSession#getIsStarted-detail">getIsStarted()</a></td>
+  <td>Checks whether the session has started</td>
+  <td><a href="/doc/api/1.0/CHttpSession">CHttpSession</a></td>
+</tr>
+<tr class="inherited" id="getIterator">
+  <td><a href="/doc/api/1.0/CHttpSession#getIterator-detail">getIterator()</a></td>
+  <td>Returns an iterator for traversing the session variables.</td>
+  <td><a href="/doc/api/1.0/CHttpSession">CHttpSession</a></td>
+</tr>
+<tr class="inherited" id="getKeys">
+  <td><a href="/doc/api/1.0/CHttpSession#getKeys-detail">getKeys()</a></td>
+  <td>Returns the list of session variable names</td>
+  <td><a href="/doc/api/1.0/CHttpSession">CHttpSession</a></td>
+</tr>
+<tr class="inherited" id="getSavePath">
+  <td><a href="/doc/api/1.0/CHttpSession#getSavePath-detail">getSavePath()</a></td>
+  <td>Returns the current session save path, defaults to '/tmp'.</td>
+  <td><a href="/doc/api/1.0/CHttpSession">CHttpSession</a></td>
+</tr>
+<tr class="inherited" id="getSessionID">
+  <td><a href="/doc/api/1.0/CHttpSession#getSessionID-detail">getSessionID()</a></td>
+  <td>Returns the current session ID</td>
+  <td><a href="/doc/api/1.0/CHttpSession">CHttpSession</a></td>
+</tr>
+<tr class="inherited" id="getSessionName">
+  <td><a href="/doc/api/1.0/CHttpSession#getSessionName-detail">getSessionName()</a></td>
+  <td>Returns the current session name</td>
+  <td><a href="/doc/api/1.0/CHttpSession">CHttpSession</a></td>
+</tr>
+<tr class="inherited" id="getTimeout">
+  <td><a href="/doc/api/1.0/CHttpSession#getTimeout-detail">getTimeout()</a></td>
+  <td>Returns the number of seconds after which data will be seen as 'garbage' and cleaned up, defaults to 1440 seconds.</td>
+  <td><a href="/doc/api/1.0/CHttpSession">CHttpSession</a></td>
+</tr>
+<tr id="getUseCustomStorage">
+  <td><a href="/doc/api/1.0/CDbHttpSession#getUseCustomStorage-detail">getUseCustomStorage()</a></td>
+  <td>Returns a value indicating whether to use custom session storage.</td>
+  <td>CDbHttpSession</td>
+</tr>
+<tr class="inherited" id="getUseTransparentSessionID">
+  <td><a href="/doc/api/1.0/CHttpSession#getUseTransparentSessionID-detail">getUseTransparentSessionID()</a></td>
+  <td>Returns whether transparent sid support is enabled or not, defaults to false.</td>
+  <td><a href="/doc/api/1.0/CHttpSession">CHttpSession</a></td>
+</tr>
+<tr class="inherited" id="hasEvent">
+  <td><a href="/doc/api/1.0/CComponent#hasEvent-detail">hasEvent()</a></td>
+  <td>Determines whether an event is defined.</td>
+  <td><a href="/doc/api/1.0/CComponent">CComponent</a></td>
+</tr>
+<tr class="inherited" id="hasEventHandler">
+  <td><a href="/doc/api/1.0/CComponent#hasEventHandler-detail">hasEventHandler()</a></td>
+  <td>Checks whether the named event has attached handlers.</td>
+  <td><a href="/doc/api/1.0/CComponent">CComponent</a></td>
+</tr>
+<tr class="inherited" id="hasProperty">
+  <td><a href="/doc/api/1.0/CComponent#hasProperty-detail">hasProperty()</a></td>
+  <td>Determines whether a property is defined.</td>
+  <td><a href="/doc/api/1.0/CComponent">CComponent</a></td>
+</tr>
+<tr class="inherited" id="init">
+  <td><a href="/doc/api/1.0/CHttpSession#init-detail">init()</a></td>
+  <td>Initializes the application component.</td>
+  <td><a href="/doc/api/1.0/CHttpSession">CHttpSession</a></td>
+</tr>
+<tr class="inherited" id="itemAt">
+  <td><a href="/doc/api/1.0/CHttpSession#itemAt-detail">itemAt()</a></td>
+  <td>Returns the session variable value with the session variable name.</td>
+  <td><a href="/doc/api/1.0/CHttpSession">CHttpSession</a></td>
+</tr>
+<tr class="inherited" id="offsetExists">
+  <td><a href="/doc/api/1.0/CHttpSession#offsetExists-detail">offsetExists()</a></td>
+  <td>This method is required by the interface ArrayAccess.</td>
+  <td><a href="/doc/api/1.0/CHttpSession">CHttpSession</a></td>
+</tr>
+<tr class="inherited" id="offsetGet">
+  <td><a href="/doc/api/1.0/CHttpSession#offsetGet-detail">offsetGet()</a></td>
+  <td>This method is required by the interface ArrayAccess.</td>
+  <td><a href="/doc/api/1.0/CHttpSession">CHttpSession</a></td>
+</tr>
+<tr class="inherited" id="offsetSet">
+  <td><a href="/doc/api/1.0/CHttpSession#offsetSet-detail">offsetSet()</a></td>
+  <td>This method is required by the interface ArrayAccess.</td>
+  <td><a href="/doc/api/1.0/CHttpSession">CHttpSession</a></td>
+</tr>
+<tr class="inherited" id="offsetUnset">
+  <td><a href="/doc/api/1.0/CHttpSession#offsetUnset-detail">offsetUnset()</a></td>
+  <td>This method is required by the interface ArrayAccess.</td>
+  <td><a href="/doc/api/1.0/CHttpSession">CHttpSession</a></td>
+</tr>
+<tr class="inherited" id="open">
+  <td><a href="/doc/api/1.0/CHttpSession#open-detail">open()</a></td>
+  <td>Starts the session if it has not started yet.</td>
+  <td><a href="/doc/api/1.0/CHttpSession">CHttpSession</a></td>
+</tr>
+<tr id="openSession">
+  <td><a href="/doc/api/1.0/CDbHttpSession#openSession-detail">openSession()</a></td>
+  <td>Session open handler.</td>
+  <td>CDbHttpSession</td>
+</tr>
+<tr class="inherited" id="raiseEvent">
+  <td><a href="/doc/api/1.0/CComponent#raiseEvent-detail">raiseEvent()</a></td>
+  <td>Raises an event.</td>
+  <td><a href="/doc/api/1.0/CComponent">CComponent</a></td>
+</tr>
+<tr id="readSession">
+  <td><a href="/doc/api/1.0/CDbHttpSession#readSession-detail">readSession()</a></td>
+  <td>Session read handler.</td>
+  <td>CDbHttpSession</td>
+</tr>
+<tr class="inherited" id="remove">
+  <td><a href="/doc/api/1.0/CHttpSession#remove-detail">remove()</a></td>
+  <td>Removes a session variable.</td>
+  <td><a href="/doc/api/1.0/CHttpSession">CHttpSession</a></td>
+</tr>
+<tr class="inherited" id="setCookieMode">
+  <td><a href="/doc/api/1.0/CHttpSession#setCookieMode-detail">setCookieMode()</a></td>
+  <td>Sets how to use cookie to store session ID. Valid values include 'none', 'allow' and 'only'.</td>
+  <td><a href="/doc/api/1.0/CHttpSession">CHttpSession</a></td>
+</tr>
+<tr class="inherited" id="setCookieParams">
+  <td><a href="/doc/api/1.0/CHttpSession#setCookieParams-detail">setCookieParams()</a></td>
+  <td>Sets the session cookie parameters.</td>
+  <td><a href="/doc/api/1.0/CHttpSession">CHttpSession</a></td>
+</tr>
+<tr class="inherited" id="setGCProbability">
+  <td><a href="/doc/api/1.0/CHttpSession#setGCProbability-detail">setGCProbability()</a></td>
+  <td>Sets the probability (percentage) that the gc (garbage collection) process is started on every session initialization.</td>
+  <td><a href="/doc/api/1.0/CHttpSession">CHttpSession</a></td>
+</tr>
+<tr class="inherited" id="setSavePath">
+  <td><a href="/doc/api/1.0/CHttpSession#setSavePath-detail">setSavePath()</a></td>
+  <td>Sets the current session save path</td>
+  <td><a href="/doc/api/1.0/CHttpSession">CHttpSession</a></td>
+</tr>
+<tr class="inherited" id="setSessionID">
+  <td><a href="/doc/api/1.0/CHttpSession#setSessionID-detail">setSessionID()</a></td>
+  <td>Sets the session ID for the current session</td>
+  <td><a href="/doc/api/1.0/CHttpSession">CHttpSession</a></td>
+</tr>
+<tr class="inherited" id="setSessionName">
+  <td><a href="/doc/api/1.0/CHttpSession#setSessionName-detail">setSessionName()</a></td>
+  <td>Sets the session name for the current session, must be an alphanumeric string, defaults to PHPSESSID</td>
+  <td><a href="/doc/api/1.0/CHttpSession">CHttpSession</a></td>
+</tr>
+<tr class="inherited" id="setTimeout">
+  <td><a href="/doc/api/1.0/CHttpSession#setTimeout-detail">setTimeout()</a></td>
+  <td>Sets the number of seconds after which data will be seen as 'garbage' and cleaned up</td>
+  <td><a href="/doc/api/1.0/CHttpSession">CHttpSession</a></td>
+</tr>
+<tr class="inherited" id="setUseTransparentSessionID">
+  <td><a href="/doc/api/1.0/CHttpSession#setUseTransparentSessionID-detail">setUseTransparentSessionID()</a></td>
+  <td>Sets whether transparent sid support is enabled or not.</td>
+  <td><a href="/doc/api/1.0/CHttpSession">CHttpSession</a></td>
+</tr>
+<tr class="inherited" id="toArray">
+  <td><a href="/doc/api/1.0/CHttpSession#toArray-detail">toArray()</a></td>
+  <td></td>
+  <td><a href="/doc/api/1.0/CHttpSession">CHttpSession</a></td>
+</tr>
+<tr id="writeSession">
+  <td><a href="/doc/api/1.0/CDbHttpSession#writeSession-detail">writeSession()</a></td>
+  <td>Session write handler.</td>
+  <td>CDbHttpSession</td>
+</tr>
+</table>
+</div>
+<div class="summary docMethod">
+<h2>Protected Methods</h2>
+
+<p><a href="#" class="toggle">Hide inherited methods</a></p>
+
+<table class="summaryTable">
+<colgroup>
+	<col class="col-method" />
+	<col class="col-description" />
+	<col class="col-defined" />
+</colgroup>
+<tr>
+  <th>Method</th><th>Description</th><th>Defined By</th>
+</tr>
+<tr id="createSessionTable">
+  <td><a href="/doc/api/1.0/CDbHttpSession#createSessionTable-detail">createSessionTable()</a></td>
+  <td>Creates the session DB table.</td>
+  <td>CDbHttpSession</td>
+</tr>
+<tr id="getDbConnection">
+  <td><a href="/doc/api/1.0/CDbHttpSession#getDbConnection-detail">getDbConnection()</a></td>
+  <td>Returns the DB connection instance</td>
+  <td>CDbHttpSession</td>
+</tr>
+</table>
+</div>
+<a name="events"></a>
+
+<h2>Property Details</h2>
+<div class="detailHeader" id="autoCreateSessionTable-detail">
+autoCreateSessionTable<span class="detailHeaderTag">
+property
+</span>
+</div>
+
+<div class="signature">
+public boolean <b>$autoCreateSessionTable</b>;</div>
+
+<p>whether the session DB table should be automatically created if not exists. Defaults to true.</p>
+
+<div class="SeeAlso">
+<h4>See Also</h4>
+<ul>
+	<li><a href="/doc/api/1.0/CDbHttpSession#sessionTableName">sessionTableName</a></li>
+</ul>
+</div>
+
+<div class="detailHeader" id="connectionID-detail">
+connectionID<span class="detailHeaderTag">
+property
+</span>
+</div>
+
+<div class="signature">
+public string <b>$connectionID</b>;</div>
+
+<p>the ID of a <a href="/doc/api/1.0/CDbConnection">CDbConnection</a> application component. If not set, a SQLite database
+will be automatically created and used. The SQLite database file is
+is <code>protected/runtime/session-YiiVersion.db</code>.</p>
+
+
+<div class="detailHeader" id="dbConnection-detail">
+dbConnection<span class="detailHeaderTag">
+property
+ <em>read-only</em> </span>
+</div>
+
+<div class="signature">
+protected <a href="/doc/api/1.0/CDbConnection">CDbConnection</a> <a href="/doc/api/1.0/CDbHttpSession#getDbConnection"><b>getDbConnection</b></a>()</div>
+
+<p>the DB connection instance</p>
+
+
+<div class="detailHeader" id="sessionTableName-detail">
+sessionTableName<span class="detailHeaderTag">
+property
+</span>
+</div>
+
+<div class="signature">
+public string <b>$sessionTableName</b>;</div>
+
+<p>the name of the DB table to store session content.
+Note, if <a href="/doc/api/1.0/CDbHttpSession#autoCreateSessionTable">autoCreateSessionTable</a> is false and you want to create the DB table manually by yourself,
+you need to make sure the DB table is of the following structure:
+<pre>
+(id CHAR(32) PRIMARY KEY, expire INTEGER, data TEXT)
+</pre></p>
+
+<div class="SeeAlso">
+<h4>See Also</h4>
+<ul>
+	<li><a href="/doc/api/1.0/CDbHttpSession#autoCreateSessionTable">autoCreateSessionTable</a></li>
+</ul>
+</div>
+
+<div class="detailHeader" id="useCustomStorage-detail">
+useCustomStorage<span class="detailHeaderTag">
+property
+ <em>read-only</em> </span>
+</div>
+
+<div class="signature">
+public boolean <a href="/doc/api/1.0/CDbHttpSession#getUseCustomStorage"><b>getUseCustomStorage</b></a>()</div>
+
+<p>Returns a value indicating whether to use custom session storage.
+This method overrides the parent implementation and always returns true.</p>
+
+
+<h2>Method Details</h2>
+
+<div class="detailHeader" id="createSessionTable-detail">
+createSessionTable()
+<span class="detailHeaderTag">
+method
+</span>
+</div>
+
+<table class="summaryTable">
+<tr><td colspan="3">
+<div class="signature2">
+protected void <b>createSessionTable</b>(<a href="/doc/api/1.0/CDbConnection">CDbConnection</a> $db, string $tableName)</div>
+</td></tr>
+<tr>
+  <td class="paramNameCol">$db</td>
+  <td class="paramTypeCol"><a href="/doc/api/1.0/CDbConnection">CDbConnection</a></td>
+  <td class="paramDescCol">the database connection</td>
+</tr>
+<tr>
+  <td class="paramNameCol">$tableName</td>
+  <td class="paramTypeCol">string</td>
+  <td class="paramDescCol">the name of the table to be created</td>
+</tr>
+</table>
+
+<div class="sourceCode">
+<b>Source Code:</b> <a class="sourceLink" href="https://github.com/yiisoft/yii/blob/1.0.12/framework/web/CDbHttpSession.php#L72">framework/web/CDbHttpSession.php#72</a> (<b><a href="#" class="show">show</a></b>)
+<div class="code"><code><span style="color: #000000">
+<span style="color: #0000BB"></span><span style="color: #007700">protected&nbsp;function&nbsp;</span><span style="color: #0000BB">createSessionTable</span><span style="color: #007700">(</span><span style="color: #0000BB">$db</span><span style="color: #007700">,</span><span style="color: #0000BB">$tableName</span><span style="color: #007700">)<br />{<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$sql</span><span style="color: #007700">=</span><span style="color: #DD0000">"<br />CREATE&nbsp;TABLE&nbsp;</span><span style="color: #0000BB">$tableName</span><span style="color: #DD0000"><br />(<br />id&nbsp;CHAR(32)&nbsp;PRIMARY&nbsp;KEY,<br />expire&nbsp;INTEGER,<br />data&nbsp;TEXT<br />)"</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$db</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">createCommand</span><span style="color: #007700">(</span><span style="color: #0000BB">$sql</span><span style="color: #007700">)-&gt;</span><span style="color: #0000BB">execute</span><span style="color: #007700">();<br />}</span>
+</span>
+</code></div>
+</div>
+<p>Creates the session DB table.</p>
+
+
+<div class="detailHeader" id="destroySession-detail">
+destroySession()
+<span class="detailHeaderTag">
+method
+</span>
+</div>
+
+<table class="summaryTable">
+<tr><td colspan="3">
+<div class="signature2">
+public boolean <b>destroySession</b>(string $id)</div>
+</td></tr>
+<tr>
+  <td class="paramNameCol">$id</td>
+  <td class="paramTypeCol">string</td>
+  <td class="paramDescCol">session ID</td>
+</tr>
+<tr>
+  <td class="paramNameCol">{return}</td>
+  <td class="paramTypeCol">boolean</td>
+  <td class="paramDescCol">whether session is destroyed successfully</td>
+</tr>
+</table>
+
+<div class="sourceCode">
+<b>Source Code:</b> <a class="sourceLink" href="https://github.com/yiisoft/yii/blob/1.0.12/framework/web/CDbHttpSession.php#L181">framework/web/CDbHttpSession.php#181</a> (<b><a href="#" class="show">show</a></b>)
+<div class="code"><code><span style="color: #000000">
+<span style="color: #0000BB"></span><span style="color: #007700">public&nbsp;function&nbsp;</span><span style="color: #0000BB">destroySession</span><span style="color: #007700">(</span><span style="color: #0000BB">$id</span><span style="color: #007700">)<br />{<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$id</span><span style="color: #007700">=</span><span style="color: #0000BB">md5</span><span style="color: #007700">(</span><span style="color: #0000BB">$id</span><span style="color: #007700">);<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$sql</span><span style="color: #007700">=</span><span style="color: #DD0000">"DELETE&nbsp;FROM&nbsp;</span><span style="color: #007700">{</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">sessionTableName</span><span style="color: #007700">}</span><span style="color: #DD0000">&nbsp;WHERE&nbsp;id='</span><span style="color: #0000BB">$id</span><span style="color: #DD0000">'"</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">getDbConnection</span><span style="color: #007700">()-&gt;</span><span style="color: #0000BB">createCommand</span><span style="color: #007700">(</span><span style="color: #0000BB">$sql</span><span style="color: #007700">)-&gt;</span><span style="color: #0000BB">execute</span><span style="color: #007700">();<br />&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;</span><span style="color: #0000BB">true</span><span style="color: #007700">;<br />}</span>
+</span>
+</code></div>
+</div>
+<p>Session destroy handler.
+Do not call this method directly.</p>
+
+
+<div class="detailHeader" id="gcSession-detail">
+gcSession()
+<span class="detailHeaderTag">
+method
+</span>
+</div>
+
+<table class="summaryTable">
+<tr><td colspan="3">
+<div class="signature2">
+public boolean <b>gcSession</b>(integer $maxLifetime)</div>
+</td></tr>
+<tr>
+  <td class="paramNameCol">$maxLifetime</td>
+  <td class="paramTypeCol">integer</td>
+  <td class="paramDescCol">the number of seconds after which data will be seen as 'garbage' and cleaned up.</td>
+</tr>
+<tr>
+  <td class="paramNameCol">{return}</td>
+  <td class="paramTypeCol">boolean</td>
+  <td class="paramDescCol">whether session is GCed successfully</td>
+</tr>
+</table>
+
+<div class="sourceCode">
+<b>Source Code:</b> <a class="sourceLink" href="https://github.com/yiisoft/yii/blob/1.0.12/framework/web/CDbHttpSession.php#L195">framework/web/CDbHttpSession.php#195</a> (<b><a href="#" class="show">show</a></b>)
+<div class="code"><code><span style="color: #000000">
+<span style="color: #0000BB"></span><span style="color: #007700">public&nbsp;function&nbsp;</span><span style="color: #0000BB">gcSession</span><span style="color: #007700">(</span><span style="color: #0000BB">$maxLifetime</span><span style="color: #007700">)<br />{<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$db</span><span style="color: #007700">=</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">getDbConnection</span><span style="color: #007700">();<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$db</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">setActive</span><span style="color: #007700">(</span><span style="color: #0000BB">true</span><span style="color: #007700">);<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$sql</span><span style="color: #007700">=</span><span style="color: #DD0000">"DELETE&nbsp;FROM&nbsp;</span><span style="color: #007700">{</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">sessionTableName</span><span style="color: #007700">}</span><span style="color: #DD0000">&nbsp;WHERE&nbsp;expire&lt;"</span><span style="color: #007700">.</span><span style="color: #0000BB">time</span><span style="color: #007700">();<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$db</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">createCommand</span><span style="color: #007700">(</span><span style="color: #0000BB">$sql</span><span style="color: #007700">)-&gt;</span><span style="color: #0000BB">execute</span><span style="color: #007700">();<br />&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;</span><span style="color: #0000BB">true</span><span style="color: #007700">;<br />}</span>
+</span>
+</code></div>
+</div>
+<p>Session GC (garbage collection) handler.
+Do not call this method directly.</p>
+
+
+<div class="detailHeader" id="getDbConnection-detail">
+getDbConnection()
+<span class="detailHeaderTag">
+method
+</span>
+</div>
+
+<table class="summaryTable">
+<tr><td colspan="3">
+<div class="signature2">
+protected <a href="/doc/api/1.0/CDbConnection">CDbConnection</a> <b>getDbConnection</b>()</div>
+</td></tr>
+<tr>
+  <td class="paramNameCol">{return}</td>
+  <td class="paramTypeCol"><a href="/doc/api/1.0/CDbConnection">CDbConnection</a></td>
+  <td class="paramDescCol">the DB connection instance</td>
+</tr>
+</table>
+
+<div class="sourceCode">
+<b>Source Code:</b> <a class="sourceLink" href="https://github.com/yiisoft/yii/blob/1.0.12/framework/web/CDbHttpSession.php#L88">framework/web/CDbHttpSession.php#88</a> (<b><a href="#" class="show">show</a></b>)
+<div class="code"><code><span style="color: #000000">
+<span style="color: #0000BB"></span><span style="color: #007700">protected&nbsp;function&nbsp;</span><span style="color: #0000BB">getDbConnection</span><span style="color: #007700">()<br />{<br />&nbsp;&nbsp;&nbsp;&nbsp;if(</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">_db</span><span style="color: #007700">!==</span><span style="color: #0000BB">null</span><span style="color: #007700">)<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">_db</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;else&nbsp;if((</span><span style="color: #0000BB">$id</span><span style="color: #007700">=</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">connectionID</span><span style="color: #007700">)!==</span><span style="color: #0000BB">null</span><span style="color: #007700">)<br />&nbsp;&nbsp;&nbsp;&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if((</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">_db</span><span style="color: #007700">=</span><span style="color: #0000BB">Yii</span><span style="color: #007700">::</span><span style="color: #0000BB">app</span><span style="color: #007700">()-&gt;</span><span style="color: #0000BB">getComponent</span><span style="color: #007700">(</span><span style="color: #0000BB">$id</span><span style="color: #007700">))&nbsp;instanceof&nbsp;</span><span style="color: #0000BB">CDbConnection</span><span style="color: #007700">)<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">_db</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;else<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;throw&nbsp;new&nbsp;</span><span style="color: #0000BB">CException</span><span style="color: #007700">(</span><span style="color: #0000BB">Yii</span><span style="color: #007700">::</span><span style="color: #0000BB">t</span><span style="color: #007700">(</span><span style="color: #DD0000">'yii'</span><span style="color: #007700">,</span><span style="color: #DD0000">'CDbHttpSession.connectionID&nbsp;"{id}"&nbsp;is&nbsp;invalid.&nbsp;Please&nbsp;make&nbsp;sure&nbsp;it&nbsp;refers&nbsp;to&nbsp;the&nbsp;ID&nbsp;of&nbsp;a&nbsp;CDbConnection&nbsp;application&nbsp;component.'</span><span style="color: #007700">,<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;array(</span><span style="color: #DD0000">'{id}'</span><span style="color: #007700">=&gt;</span><span style="color: #0000BB">$id</span><span style="color: #007700">)));<br />&nbsp;&nbsp;&nbsp;&nbsp;}<br />&nbsp;&nbsp;&nbsp;&nbsp;else<br />&nbsp;&nbsp;&nbsp;&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$dbFile</span><span style="color: #007700">=</span><span style="color: #0000BB">Yii</span><span style="color: #007700">::</span><span style="color: #0000BB">app</span><span style="color: #007700">()-&gt;</span><span style="color: #0000BB">getRuntimePath</span><span style="color: #007700">().</span><span style="color: #0000BB">DIRECTORY_SEPARATOR</span><span style="color: #007700">.</span><span style="color: #DD0000">'session-'</span><span style="color: #007700">.</span><span style="color: #0000BB">Yii</span><span style="color: #007700">::</span><span style="color: #0000BB">getVersion</span><span style="color: #007700">().</span><span style="color: #DD0000">'.db'</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">_db</span><span style="color: #007700">=new&nbsp;</span><span style="color: #0000BB">CDbConnection</span><span style="color: #007700">(</span><span style="color: #DD0000">'sqlite:'</span><span style="color: #007700">.</span><span style="color: #0000BB">$dbFile</span><span style="color: #007700">);<br />&nbsp;&nbsp;&nbsp;&nbsp;}<br />}</span>
+</span>
+</code></div>
+</div>
+<p></p>
+
+
+<div class="detailHeader" id="getUseCustomStorage-detail">
+getUseCustomStorage()
+<span class="detailHeaderTag">
+method
+</span>
+</div>
+
+<table class="summaryTable">
+<tr><td colspan="3">
+<div class="signature2">
+public boolean <b>getUseCustomStorage</b>()</div>
+</td></tr>
+<tr>
+  <td class="paramNameCol">{return}</td>
+  <td class="paramTypeCol">boolean</td>
+  <td class="paramDescCol">whether to use custom storage.</td>
+</tr>
+</table>
+
+<div class="sourceCode">
+<b>Source Code:</b> <a class="sourceLink" href="https://github.com/yiisoft/yii/blob/1.0.12/framework/web/CDbHttpSession.php#L62">framework/web/CDbHttpSession.php#62</a> (<b><a href="#" class="show">show</a></b>)
+<div class="code"><code><span style="color: #000000">
+<span style="color: #0000BB"></span><span style="color: #007700">public&nbsp;function&nbsp;</span><span style="color: #0000BB">getUseCustomStorage</span><span style="color: #007700">()<br />{<br />&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;</span><span style="color: #0000BB">true</span><span style="color: #007700">;<br />}</span>
+</span>
+</code></div>
+</div>
+<p>Returns a value indicating whether to use custom session storage.
+This method overrides the parent implementation and always returns true.</p>
+
+
+<div class="detailHeader" id="openSession-detail">
+openSession()
+<span class="detailHeaderTag">
+method
+</span>
+</div>
+
+<table class="summaryTable">
+<tr><td colspan="3">
+<div class="signature2">
+public boolean <b>openSession</b>(string $savePath, string $sessionName)</div>
+</td></tr>
+<tr>
+  <td class="paramNameCol">$savePath</td>
+  <td class="paramTypeCol">string</td>
+  <td class="paramDescCol">session save path</td>
+</tr>
+<tr>
+  <td class="paramNameCol">$sessionName</td>
+  <td class="paramTypeCol">string</td>
+  <td class="paramDescCol">session name</td>
+</tr>
+<tr>
+  <td class="paramNameCol">{return}</td>
+  <td class="paramTypeCol">boolean</td>
+  <td class="paramDescCol">whether session is opened successfully</td>
+</tr>
+</table>
+
+<div class="sourceCode">
+<b>Source Code:</b> <a class="sourceLink" href="https://github.com/yiisoft/yii/blob/1.0.12/framework/web/CDbHttpSession.php#L114">framework/web/CDbHttpSession.php#114</a> (<b><a href="#" class="show">show</a></b>)
+<div class="code"><code><span style="color: #000000">
+<span style="color: #0000BB"></span><span style="color: #007700">public&nbsp;function&nbsp;</span><span style="color: #0000BB">openSession</span><span style="color: #007700">(</span><span style="color: #0000BB">$savePath</span><span style="color: #007700">,</span><span style="color: #0000BB">$sessionName</span><span style="color: #007700">)<br />{<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$db</span><span style="color: #007700">=</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">getDbConnection</span><span style="color: #007700">();<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$db</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">setActive</span><span style="color: #007700">(</span><span style="color: #0000BB">true</span><span style="color: #007700">);<br /><br />&nbsp;&nbsp;&nbsp;&nbsp;if(</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">autoCreateSessionTable</span><span style="color: #007700">)<br />&nbsp;&nbsp;&nbsp;&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$sql</span><span style="color: #007700">=</span><span style="color: #DD0000">"DELETE&nbsp;FROM&nbsp;</span><span style="color: #007700">{</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">sessionTableName</span><span style="color: #007700">}</span><span style="color: #DD0000">&nbsp;WHERE&nbsp;expire&lt;"</span><span style="color: #007700">.</span><span style="color: #0000BB">time</span><span style="color: #007700">();<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;try<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$db</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">createCommand</span><span style="color: #007700">(</span><span style="color: #0000BB">$sql</span><span style="color: #007700">)-&gt;</span><span style="color: #0000BB">execute</span><span style="color: #007700">();<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;catch(</span><span style="color: #0000BB">Exception&nbsp;$e</span><span style="color: #007700">)<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">createSessionTable</span><span style="color: #007700">(</span><span style="color: #0000BB">$db</span><span style="color: #007700">,</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">sessionTableName</span><span style="color: #007700">);<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br />&nbsp;&nbsp;&nbsp;&nbsp;}<br />&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;</span><span style="color: #0000BB">true</span><span style="color: #007700">;<br />}</span>
+</span>
+</code></div>
+</div>
+<p>Session open handler.
+Do not call this method directly.</p>
+
+
+<div class="detailHeader" id="readSession-detail">
+readSession()
+<span class="detailHeaderTag">
+method
+</span>
+</div>
+
+<table class="summaryTable">
+<tr><td colspan="3">
+<div class="signature2">
+public string <b>readSession</b>(string $id)</div>
+</td></tr>
+<tr>
+  <td class="paramNameCol">$id</td>
+  <td class="paramTypeCol">string</td>
+  <td class="paramDescCol">session ID</td>
+</tr>
+<tr>
+  <td class="paramNameCol">{return}</td>
+  <td class="paramTypeCol">string</td>
+  <td class="paramDescCol">the session data</td>
+</tr>
+</table>
+
+<div class="sourceCode">
+<b>Source Code:</b> <a class="sourceLink" href="https://github.com/yiisoft/yii/blob/1.0.12/framework/web/CDbHttpSession.php#L140">framework/web/CDbHttpSession.php#140</a> (<b><a href="#" class="show">show</a></b>)
+<div class="code"><code><span style="color: #000000">
+<span style="color: #0000BB"></span><span style="color: #007700">public&nbsp;function&nbsp;</span><span style="color: #0000BB">readSession</span><span style="color: #007700">(</span><span style="color: #0000BB">$id</span><span style="color: #007700">)<br />{<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$now</span><span style="color: #007700">=</span><span style="color: #0000BB">time</span><span style="color: #007700">();<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$id</span><span style="color: #007700">=</span><span style="color: #0000BB">md5</span><span style="color: #007700">(</span><span style="color: #0000BB">$id</span><span style="color: #007700">);<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$sql</span><span style="color: #007700">=</span><span style="color: #DD0000">"<br />SELECT&nbsp;data&nbsp;FROM&nbsp;</span><span style="color: #007700">{</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">sessionTableName</span><span style="color: #007700">}</span><span style="color: #DD0000"><br />WHERE&nbsp;expire&gt;</span><span style="color: #0000BB">$now</span><span style="color: #DD0000">&nbsp;AND&nbsp;id='</span><span style="color: #0000BB">$id</span><span style="color: #DD0000">'<br />"</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$data</span><span style="color: #007700">=</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">getDbConnection</span><span style="color: #007700">()-&gt;</span><span style="color: #0000BB">createCommand</span><span style="color: #007700">(</span><span style="color: #0000BB">$sql</span><span style="color: #007700">)-&gt;</span><span style="color: #0000BB">queryScalar</span><span style="color: #007700">();<br />&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;</span><span style="color: #0000BB">$data</span><span style="color: #007700">===</span><span style="color: #0000BB">false</span><span style="color: #007700">?</span><span style="color: #DD0000">''</span><span style="color: #007700">:</span><span style="color: #0000BB">$data</span><span style="color: #007700">;<br />}</span>
+</span>
+</code></div>
+</div>
+<p>Session read handler.
+Do not call this method directly.</p>
+
+
+<div class="detailHeader" id="writeSession-detail">
+writeSession()
+<span class="detailHeaderTag">
+method
+</span>
+</div>
+
+<table class="summaryTable">
+<tr><td colspan="3">
+<div class="signature2">
+public boolean <b>writeSession</b>(string $id, string $data)</div>
+</td></tr>
+<tr>
+  <td class="paramNameCol">$id</td>
+  <td class="paramTypeCol">string</td>
+  <td class="paramDescCol">session ID</td>
+</tr>
+<tr>
+  <td class="paramNameCol">$data</td>
+  <td class="paramTypeCol">string</td>
+  <td class="paramDescCol">session data</td>
+</tr>
+<tr>
+  <td class="paramNameCol">{return}</td>
+  <td class="paramTypeCol">boolean</td>
+  <td class="paramDescCol">whether session write is successful</td>
+</tr>
+</table>
+
+<div class="sourceCode">
+<b>Source Code:</b> <a class="sourceLink" href="https://github.com/yiisoft/yii/blob/1.0.12/framework/web/CDbHttpSession.php#L159">framework/web/CDbHttpSession.php#159</a> (<b><a href="#" class="show">show</a></b>)
+<div class="code"><code><span style="color: #000000">
+<span style="color: #0000BB"></span><span style="color: #007700">public&nbsp;function&nbsp;</span><span style="color: #0000BB">writeSession</span><span style="color: #007700">(</span><span style="color: #0000BB">$id</span><span style="color: #007700">,</span><span style="color: #0000BB">$data</span><span style="color: #007700">)<br />{<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$expire</span><span style="color: #007700">=</span><span style="color: #0000BB">time</span><span style="color: #007700">()+</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">getTimeout</span><span style="color: #007700">();<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$id</span><span style="color: #007700">=</span><span style="color: #0000BB">md5</span><span style="color: #007700">(</span><span style="color: #0000BB">$id</span><span style="color: #007700">);<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$db</span><span style="color: #007700">=</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">getDbConnection</span><span style="color: #007700">();<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$sql</span><span style="color: #007700">=</span><span style="color: #DD0000">"SELECT&nbsp;id&nbsp;FROM&nbsp;</span><span style="color: #007700">{</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">sessionTableName</span><span style="color: #007700">}</span><span style="color: #DD0000">&nbsp;WHERE&nbsp;id='</span><span style="color: #0000BB">$id</span><span style="color: #DD0000">'"</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;if(</span><span style="color: #0000BB">$db</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">createCommand</span><span style="color: #007700">(</span><span style="color: #0000BB">$sql</span><span style="color: #007700">)-&gt;</span><span style="color: #0000BB">queryScalar</span><span style="color: #007700">()===</span><span style="color: #0000BB">false</span><span style="color: #007700">)<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$sql</span><span style="color: #007700">=</span><span style="color: #DD0000">"INSERT&nbsp;INTO&nbsp;</span><span style="color: #007700">{</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">sessionTableName</span><span style="color: #007700">}</span><span style="color: #DD0000">&nbsp;(id,&nbsp;data,&nbsp;expire)&nbsp;VALUES&nbsp;('</span><span style="color: #0000BB">$id</span><span style="color: #DD0000">',&nbsp;:data,&nbsp;</span><span style="color: #0000BB">$expire</span><span style="color: #DD0000">)"</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;else<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$sql</span><span style="color: #007700">=</span><span style="color: #DD0000">"UPDATE&nbsp;</span><span style="color: #007700">{</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">sessionTableName</span><span style="color: #007700">}</span><span style="color: #DD0000">&nbsp;SET&nbsp;expire=</span><span style="color: #0000BB">$expire</span><span style="color: #DD0000">,&nbsp;data=:data&nbsp;WHERE&nbsp;id='</span><span style="color: #0000BB">$id</span><span style="color: #DD0000">'"</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$command</span><span style="color: #007700">=</span><span style="color: #0000BB">$db</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">createCommand</span><span style="color: #007700">(</span><span style="color: #0000BB">$sql</span><span style="color: #007700">);<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$command</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">bindParam</span><span style="color: #007700">(</span><span style="color: #DD0000">':data'</span><span style="color: #007700">,</span><span style="color: #0000BB">$data</span><span style="color: #007700">);<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$command</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">execute</span><span style="color: #007700">();<br />&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;</span><span style="color: #0000BB">true</span><span style="color: #007700">;<br />}</span>
+</span>
+</code></div>
+</div>
+<p>Session write handler.
+Do not call this method directly.</p>
+
+

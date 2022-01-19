@@ -19,8 +19,13 @@ return [
     'components.forumAdapter' => [
         'class' => app\components\forum\DummyAdapter::class,
     ],
-    'components.cache' => [
-        'class' => yii\caching\FileCache::class,
+    'components.cache' => YII_ENV === 'test' ? ['class' => yii\caching\FileCache::class] : [
+        'class' => yii\redis\Cache::class,
+        'redis' => [
+            'class' => yii\redis\Connection::class,
+            'hostname' => YII_ENV === 'prod' ? 'localhost' : 'redis',
+            'database' => 1,
+        ],
     ],
     'components.mailer' => [
         'class' => yii\swiftmailer\Mailer::class,

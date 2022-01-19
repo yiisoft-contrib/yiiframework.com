@@ -1,0 +1,202 @@
+<h1>IBehavior</h1>
+<div id="nav">
+<a href="/doc/api/1.0/">All Packages</a>
+| <a href="#methods">Methods</a>
+</div>
+
+<table class="summaryTable docClass">
+<colgroup>
+	<col class="col-name" />
+	<col class="col-value" />
+</colgroup>
+<tr>
+  <th>Package</th>
+  <td><a href="/doc/api/1.0/#system.base">system.base</a></td>
+</tr>
+<tr>
+  <th>Inheritance</th>
+  <td>interface IBehavior</td>
+</tr>
+<tr>
+  <th>Subclasses</th>
+  <td><a href="/doc/api/1.0/CActiveRecordBehavior">CActiveRecordBehavior</a>, <a href="/doc/api/1.0/CBehavior">CBehavior</a>, <a href="/doc/api/1.0/CModelBehavior">CModelBehavior</a></td>
+</tr>
+<tr>
+  <th>Since</th>
+  <td>1.0.2</td>
+</tr>
+<tr>
+  <th>Version</th>
+  <td>$Id$</td>
+</tr>
+<tr>
+  <th>Source Code</th>
+  <td><a class="sourceLink" href="https://github.com/yiisoft/yii/blob/1.0.12/framework/base/interfaces.php">framework/base/interfaces.php</a></td>
+</tr>
+</table>
+
+<div id="classDescription">
+IBehavior interfaces is implemented by all behavior classes.
+<br/><br/>
+A behavior is a way to enhance a component with additional methods that
+are defined in the behavior class and not available in the component class.</div>
+<a name="properties"></a>
+
+<a name="methods"></a>
+
+<div class="summary docMethod">
+<h2>Public Methods</h2>
+
+<p><a href="#" class="toggle">Hide inherited methods</a></p>
+
+<table class="summaryTable">
+<colgroup>
+	<col class="col-method" />
+	<col class="col-description" />
+	<col class="col-defined" />
+</colgroup>
+<tr>
+  <th>Method</th><th>Description</th><th>Defined By</th>
+</tr>
+<tr id="attach">
+  <td><a href="/doc/api/1.0/IBehavior#attach-detail">attach()</a></td>
+  <td>Attaches the behavior object to the component.</td>
+  <td>IBehavior</td>
+</tr>
+<tr id="detach">
+  <td><a href="/doc/api/1.0/IBehavior#detach-detail">detach()</a></td>
+  <td>Detaches the behavior object from the component.</td>
+  <td>IBehavior</td>
+</tr>
+<tr id="getEnabled">
+  <td><a href="/doc/api/1.0/IBehavior#getEnabled-detail">getEnabled()</a></td>
+  <td>Returns whether this behavior is enabled</td>
+  <td>IBehavior</td>
+</tr>
+<tr id="setEnabled">
+  <td><a href="/doc/api/1.0/IBehavior#setEnabled-detail">setEnabled()</a></td>
+  <td>Sets whether this behavior is enabled</td>
+  <td>IBehavior</td>
+</tr>
+</table>
+</div>
+<a name="events"></a>
+
+<h2>Method Details</h2>
+
+<div class="detailHeader" id="attach-detail">
+attach()
+<span class="detailHeaderTag">
+method
+</span>
+</div>
+
+<table class="summaryTable">
+<tr><td colspan="3">
+<div class="signature2">
+abstract public void <b>attach</b>(<a href="/doc/api/1.0/CComponent">CComponent</a> $component)</div>
+</td></tr>
+<tr>
+  <td class="paramNameCol">$component</td>
+  <td class="paramTypeCol"><a href="/doc/api/1.0/CComponent">CComponent</a></td>
+  <td class="paramDescCol">the component that this behavior is to be attached to.</td>
+</tr>
+</table>
+
+<div class="sourceCode">
+<b>Source Code:</b> <a class="sourceLink" href="https://github.com/yiisoft/yii/blob/1.0.12/framework/base/interfaces.php#L521">framework/base/interfaces.php#521</a> (<b><a href="#" class="show">show</a></b>)
+<div class="code"><code><span style="color: #000000">
+<span style="color: #0000BB"></span><span style="color: #007700">public&nbsp;function&nbsp;</span><span style="color: #0000BB">attach</span><span style="color: #007700">(</span><span style="color: #0000BB">$component</span><span style="color: #007700">);</span>
+</span>
+</code></div>
+</div>
+<p>Attaches the behavior object to the component.</p>
+
+
+<div class="detailHeader" id="detach-detail">
+detach()
+<span class="detailHeaderTag">
+method
+</span>
+</div>
+
+<table class="summaryTable">
+<tr><td colspan="3">
+<div class="signature2">
+abstract public void <b>detach</b>(<a href="/doc/api/1.0/CComponent">CComponent</a> $component)</div>
+</td></tr>
+<tr>
+  <td class="paramNameCol">$component</td>
+  <td class="paramTypeCol"><a href="/doc/api/1.0/CComponent">CComponent</a></td>
+  <td class="paramDescCol">the component that this behavior is to be detached from.</td>
+</tr>
+</table>
+
+<div class="sourceCode">
+<b>Source Code:</b> <a class="sourceLink" href="https://github.com/yiisoft/yii/blob/1.0.12/framework/base/interfaces.php#L526">framework/base/interfaces.php#526</a> (<b><a href="#" class="show">show</a></b>)
+<div class="code"><code><span style="color: #000000">
+<span style="color: #0000BB"></span><span style="color: #007700">public&nbsp;function&nbsp;</span><span style="color: #0000BB">detach</span><span style="color: #007700">(</span><span style="color: #0000BB">$component</span><span style="color: #007700">);</span>
+</span>
+</code></div>
+</div>
+<p>Detaches the behavior object from the component.</p>
+
+
+<div class="detailHeader" id="getEnabled-detail">
+getEnabled()
+<span class="detailHeaderTag">
+method
+</span>
+</div>
+
+<table class="summaryTable">
+<tr><td colspan="3">
+<div class="signature2">
+abstract public boolean <b>getEnabled</b>()</div>
+</td></tr>
+<tr>
+  <td class="paramNameCol">{return}</td>
+  <td class="paramTypeCol">boolean</td>
+  <td class="paramDescCol">whether this behavior is enabled</td>
+</tr>
+</table>
+
+<div class="sourceCode">
+<b>Source Code:</b> <a class="sourceLink" href="https://github.com/yiisoft/yii/blob/1.0.12/framework/base/interfaces.php#L530">framework/base/interfaces.php#530</a> (<b><a href="#" class="show">show</a></b>)
+<div class="code"><code><span style="color: #000000">
+<span style="color: #0000BB"></span><span style="color: #007700">public&nbsp;function&nbsp;</span><span style="color: #0000BB">getEnabled</span><span style="color: #007700">();</span>
+</span>
+</code></div>
+</div>
+<p></p>
+
+
+<div class="detailHeader" id="setEnabled-detail">
+setEnabled()
+<span class="detailHeaderTag">
+method
+</span>
+</div>
+
+<table class="summaryTable">
+<tr><td colspan="3">
+<div class="signature2">
+abstract public void <b>setEnabled</b>(boolean $value)</div>
+</td></tr>
+<tr>
+  <td class="paramNameCol">$value</td>
+  <td class="paramTypeCol">boolean</td>
+  <td class="paramDescCol">whether this behavior is enabled</td>
+</tr>
+</table>
+
+<div class="sourceCode">
+<b>Source Code:</b> <a class="sourceLink" href="https://github.com/yiisoft/yii/blob/1.0.12/framework/base/interfaces.php#L534">framework/base/interfaces.php#534</a> (<b><a href="#" class="show">show</a></b>)
+<div class="code"><code><span style="color: #000000">
+<span style="color: #0000BB"></span><span style="color: #007700">public&nbsp;function&nbsp;</span><span style="color: #0000BB">setEnabled</span><span style="color: #007700">(</span><span style="color: #0000BB">$value</span><span style="color: #007700">);</span>
+</span>
+</code></div>
+</div>
+<p></p>
+
+
