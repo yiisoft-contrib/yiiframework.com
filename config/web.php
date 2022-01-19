@@ -24,6 +24,7 @@ $config = [
             'class' => yii\redis\Session::class,
             'redis' => [
                 'class' => yii\redis\Connection::class,
+                'hostname' => YII_ENV === 'dev' ? 'redis' : 'localhost',
                 'database' => 0,
             ],
             'cookieParams' => [
