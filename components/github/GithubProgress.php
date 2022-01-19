@@ -12,7 +12,6 @@ class GithubProgress
     const VERSIONS = ['1.1', '2.0', '3.0'];
 
     private $client;
-
     private $version;
 
     /**
