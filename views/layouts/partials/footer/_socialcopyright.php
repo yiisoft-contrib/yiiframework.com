@@ -26,6 +26,6 @@ use yii\helpers\Html;
     &copy; 2008 - <?= date('Y') ?> Yii
   </li>
   <li class="footerList_item">
-      Design: <a href="http://www.eshill.ru/" target="_blank" rel="noopener noreferrer">Eshill</a>
+      Design: <a href="https://www.eshill.ru/" target="_blank" rel="noopener noreferrer">Eshill</a>
   </li>
 </ul>

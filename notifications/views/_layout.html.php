@@ -34,7 +34,7 @@ use yii\helpers\Html;
     </p>
     <p>
         <b>PLEASE DO NOT REPLY TO THIS EMAIL AS IT IS SENT FROM OUR AUTOMATED SYSTEM.</b><br/>
-        <?= Html::a('Yii Framework', 'http://www.yiiframework.com'); ?>
+        <?= Html::a('Yii Framework', 'https://www.yiiframework.com'); ?>
     </p>
 </body>
 </html>

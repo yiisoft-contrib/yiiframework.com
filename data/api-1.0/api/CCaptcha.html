@@ -1,0 +1,594 @@
+<h1>CCaptcha</h1>
+<div id="nav">
+<a href="/doc/api/1.0/">All Packages</a>
+| <a href="#properties">Properties</a>
+| <a href="#methods">Methods</a>
+</div>
+
+<table class="summaryTable docClass">
+<colgroup>
+	<col class="col-name" />
+	<col class="col-value" />
+</colgroup>
+<tr>
+  <th>Package</th>
+  <td><a href="/doc/api/1.0/#system.web.widgets.captcha">system.web.widgets.captcha</a></td>
+</tr>
+<tr>
+  <th>Inheritance</th>
+  <td>class CCaptcha &raquo;
+<a href="/doc/api/1.0/CWidget">CWidget</a> &raquo;
+<a href="/doc/api/1.0/CBaseController">CBaseController</a> &raquo;
+<a href="/doc/api/1.0/CComponent">CComponent</a></td>
+</tr>
+<tr>
+  <th>Since</th>
+  <td>1.0</td>
+</tr>
+<tr>
+  <th>Version</th>
+  <td>$Id$</td>
+</tr>
+<tr>
+  <th>Source Code</th>
+  <td><a class="sourceLink" href="https://github.com/yiisoft/yii/blob/1.0.12/framework/web/widgets/captcha/CCaptcha.php">framework/web/widgets/captcha/CCaptcha.php</a></td>
+</tr>
+</table>
+
+<div id="classDescription">
+CCaptcha renders a CAPTCHA image element.
+<br/><br/>
+CCaptcha is used together with <a href="/doc/api/1.0/CCaptchaAction">CCaptchaAction</a> to provide <a href="http://en.wikipedia.org/wiki/Captcha">CAPTCHA</a>
+- a way of preventing site spam.
+<br/><br/>
+The image element rendered by CCaptcha will display a CAPTCHA image generated
+by an action of class <a href="/doc/api/1.0/CCaptchaAction">CCaptchaAction</a> belonging to the current controller.
+By default, the action ID should be 'captcha', which can be changed by setting <a href="/doc/api/1.0/CCaptcha#captchaAction">captchaAction</a>.
+<br/><br/>
+CCaptcha may also render a button next to the CAPTCHA image. Clicking on the button
+will change the CAPTCHA image to be a new one in an AJAX way.
+<br/><br/>
+Since version 1.0.8, if <a href="/doc/api/1.0/CCaptcha#clickableImage">clickableImage</a> is set true, clicking on the CAPTCHA image
+will refresh the CAPTCHA.
+<br/><br/>
+A <a href="/doc/api/1.0/CCaptchaValidator">CCaptchaValidator</a> may be used to validate that the user enters
+a verification code matching the code displayed in the CAPTCHA image.</div>
+<a name="properties"></a>
+
+<div class="summary docProperty">
+<h2>Public Properties</h2>
+
+<p><a href="#" class="toggle">Hide inherited properties</a></p>
+
+<table class="summaryTable">
+<colgroup>
+	<col class="col-property" />
+	<col class="col-type" />
+	<col class="col-description" />
+	<col class="col-defined" />
+</colgroup>
+<tr>
+  <th>Property</th><th>Type</th><th>Description</th><th>Defined By</th>
+</tr>
+<tr class="inherited" id="actionPrefix">
+  <td><a href="/doc/api/1.0/CWidget#actionPrefix-detail">actionPrefix</a></td>
+  <td>string</td>
+  <td>the prefix to the IDs of the <a href="/doc/api/1.0/CCaptcha#actions">actions</a>.</td>
+  <td><a href="/doc/api/1.0/CWidget">CWidget</a></td>
+</tr>
+<tr id="buttonLabel">
+  <td><a href="/doc/api/1.0/CCaptcha#buttonLabel-detail">buttonLabel</a></td>
+  <td>string</td>
+  <td>the label for the refresh button.</td>
+  <td>CCaptcha</td>
+</tr>
+<tr id="buttonOptions">
+  <td><a href="/doc/api/1.0/CCaptcha#buttonOptions-detail">buttonOptions</a></td>
+  <td>array</td>
+  <td>HTML attributes to be applied to the rendered refresh button element.</td>
+  <td>CCaptcha</td>
+</tr>
+<tr id="buttonType">
+  <td><a href="/doc/api/1.0/CCaptcha#buttonType-detail">buttonType</a></td>
+  <td>string</td>
+  <td>the type of the refresh button.</td>
+  <td>CCaptcha</td>
+</tr>
+<tr id="captchaAction">
+  <td><a href="/doc/api/1.0/CCaptcha#captchaAction-detail">captchaAction</a></td>
+  <td>string</td>
+  <td>the ID of the action that should provide CAPTCHA image.</td>
+  <td>CCaptcha</td>
+</tr>
+<tr id="clickableImage">
+  <td><a href="/doc/api/1.0/CCaptcha#clickableImage-detail">clickableImage</a></td>
+  <td>boolean</td>
+  <td>whether to allow clicking on the CAPTCHA image to refresh the CAPTCHA letters.</td>
+  <td>CCaptcha</td>
+</tr>
+<tr class="inherited" id="controller">
+  <td><a href="/doc/api/1.0/CWidget#controller-detail">controller</a></td>
+  <td><a href="/doc/api/1.0/CController">CController</a></td>
+  <td>the controller that this widget belongs to.</td>
+  <td><a href="/doc/api/1.0/CWidget">CWidget</a></td>
+</tr>
+<tr class="inherited" id="id">
+  <td><a href="/doc/api/1.0/CWidget#id-detail">id</a></td>
+  <td>string</td>
+  <td>id of the widget.</td>
+  <td><a href="/doc/api/1.0/CWidget">CWidget</a></td>
+</tr>
+<tr id="imageOptions">
+  <td><a href="/doc/api/1.0/CCaptcha#imageOptions-detail">imageOptions</a></td>
+  <td>array</td>
+  <td>HTML attributes to be applied to the rendered image element.</td>
+  <td>CCaptcha</td>
+</tr>
+<tr class="inherited" id="owner">
+  <td><a href="/doc/api/1.0/CWidget#owner-detail">owner</a></td>
+  <td><a href="/doc/api/1.0/CBaseController">CBaseController</a></td>
+  <td>owner/creator of this widget.</td>
+  <td><a href="/doc/api/1.0/CWidget">CWidget</a></td>
+</tr>
+<tr id="showRefreshButton">
+  <td><a href="/doc/api/1.0/CCaptcha#showRefreshButton-detail">showRefreshButton</a></td>
+  <td>boolean</td>
+  <td>whether to display a button next to the CAPTCHA image.</td>
+  <td>CCaptcha</td>
+</tr>
+<tr class="inherited" id="viewPath">
+  <td><a href="/doc/api/1.0/CWidget#viewPath-detail">viewPath</a></td>
+  <td>string</td>
+  <td>Returns the directory containing the view files for this widget.</td>
+  <td><a href="/doc/api/1.0/CWidget">CWidget</a></td>
+</tr>
+</table>
+</div>
+<a name="methods"></a>
+
+<div class="summary docMethod">
+<h2>Public Methods</h2>
+
+<p><a href="#" class="toggle">Hide inherited methods</a></p>
+
+<table class="summaryTable">
+<colgroup>
+	<col class="col-method" />
+	<col class="col-description" />
+	<col class="col-defined" />
+</colgroup>
+<tr>
+  <th>Method</th><th>Description</th><th>Defined By</th>
+</tr>
+<tr class="inherited" id="__call">
+  <td><a href="/doc/api/1.0/CComponent#__call-detail">__call()</a></td>
+  <td>Calls the named method which is not a class method.</td>
+  <td><a href="/doc/api/1.0/CComponent">CComponent</a></td>
+</tr>
+<tr class="inherited" id="__construct">
+  <td><a href="/doc/api/1.0/CWidget#__construct-detail">__construct()</a></td>
+  <td>Constructor.</td>
+  <td><a href="/doc/api/1.0/CWidget">CWidget</a></td>
+</tr>
+<tr class="inherited" id="__get">
+  <td><a href="/doc/api/1.0/CComponent#__get-detail">__get()</a></td>
+  <td>Returns a property value, an event handler list or a behavior based on its name.</td>
+  <td><a href="/doc/api/1.0/CComponent">CComponent</a></td>
+</tr>
+<tr class="inherited" id="__isset">
+  <td><a href="/doc/api/1.0/CComponent#__isset-detail">__isset()</a></td>
+  <td>Checks if a property value is null.</td>
+  <td><a href="/doc/api/1.0/CComponent">CComponent</a></td>
+</tr>
+<tr class="inherited" id="__set">
+  <td><a href="/doc/api/1.0/CComponent#__set-detail">__set()</a></td>
+  <td>Sets value of a component property.</td>
+  <td><a href="/doc/api/1.0/CComponent">CComponent</a></td>
+</tr>
+<tr class="inherited" id="__unset">
+  <td><a href="/doc/api/1.0/CComponent#__unset-detail">__unset()</a></td>
+  <td>Sets a component property to be null.</td>
+  <td><a href="/doc/api/1.0/CComponent">CComponent</a></td>
+</tr>
+<tr class="inherited" id="actions">
+  <td><a href="/doc/api/1.0/CWidget#actions-detail">actions()</a></td>
+  <td>Returns a list of actions that are used by this widget.</td>
+  <td><a href="/doc/api/1.0/CWidget">CWidget</a></td>
+</tr>
+<tr class="inherited" id="asa">
+  <td><a href="/doc/api/1.0/CComponent#asa-detail">asa()</a></td>
+  <td>Returns the named behavior object.</td>
+  <td><a href="/doc/api/1.0/CComponent">CComponent</a></td>
+</tr>
+<tr class="inherited" id="attachBehavior">
+  <td><a href="/doc/api/1.0/CComponent#attachBehavior-detail">attachBehavior()</a></td>
+  <td>Attaches a behavior to this component.</td>
+  <td><a href="/doc/api/1.0/CComponent">CComponent</a></td>
+</tr>
+<tr class="inherited" id="attachBehaviors">
+  <td><a href="/doc/api/1.0/CComponent#attachBehaviors-detail">attachBehaviors()</a></td>
+  <td>Attaches a list of behaviors to the component.</td>
+  <td><a href="/doc/api/1.0/CComponent">CComponent</a></td>
+</tr>
+<tr class="inherited" id="attachEventHandler">
+  <td><a href="/doc/api/1.0/CComponent#attachEventHandler-detail">attachEventHandler()</a></td>
+  <td>Attaches an event handler to an event.</td>
+  <td><a href="/doc/api/1.0/CComponent">CComponent</a></td>
+</tr>
+<tr class="inherited" id="beginCache">
+  <td><a href="/doc/api/1.0/CBaseController#beginCache-detail">beginCache()</a></td>
+  <td>Begins fragment caching.</td>
+  <td><a href="/doc/api/1.0/CBaseController">CBaseController</a></td>
+</tr>
+<tr class="inherited" id="beginClip">
+  <td><a href="/doc/api/1.0/CBaseController#beginClip-detail">beginClip()</a></td>
+  <td>Begins recording a clip.</td>
+  <td><a href="/doc/api/1.0/CBaseController">CBaseController</a></td>
+</tr>
+<tr class="inherited" id="beginContent">
+  <td><a href="/doc/api/1.0/CBaseController#beginContent-detail">beginContent()</a></td>
+  <td>Begins the rendering of content that is to be decorated by the specified view.</td>
+  <td><a href="/doc/api/1.0/CBaseController">CBaseController</a></td>
+</tr>
+<tr class="inherited" id="beginWidget">
+  <td><a href="/doc/api/1.0/CBaseController#beginWidget-detail">beginWidget()</a></td>
+  <td>Creates a widget and executes it.</td>
+  <td><a href="/doc/api/1.0/CBaseController">CBaseController</a></td>
+</tr>
+<tr class="inherited" id="canGetProperty">
+  <td><a href="/doc/api/1.0/CComponent#canGetProperty-detail">canGetProperty()</a></td>
+  <td>Determines whether a property can be read.</td>
+  <td><a href="/doc/api/1.0/CComponent">CComponent</a></td>
+</tr>
+<tr class="inherited" id="canSetProperty">
+  <td><a href="/doc/api/1.0/CComponent#canSetProperty-detail">canSetProperty()</a></td>
+  <td>Determines whether a property can be set.</td>
+  <td><a href="/doc/api/1.0/CComponent">CComponent</a></td>
+</tr>
+<tr class="inherited" id="createWidget">
+  <td><a href="/doc/api/1.0/CBaseController#createWidget-detail">createWidget()</a></td>
+  <td>Creates a widget and initializes it.</td>
+  <td><a href="/doc/api/1.0/CBaseController">CBaseController</a></td>
+</tr>
+<tr class="inherited" id="detachBehavior">
+  <td><a href="/doc/api/1.0/CComponent#detachBehavior-detail">detachBehavior()</a></td>
+  <td>Detaches a behavior from the component.</td>
+  <td><a href="/doc/api/1.0/CComponent">CComponent</a></td>
+</tr>
+<tr class="inherited" id="detachBehaviors">
+  <td><a href="/doc/api/1.0/CComponent#detachBehaviors-detail">detachBehaviors()</a></td>
+  <td>Detaches all behaviors from the component.</td>
+  <td><a href="/doc/api/1.0/CComponent">CComponent</a></td>
+</tr>
+<tr class="inherited" id="detachEventHandler">
+  <td><a href="/doc/api/1.0/CComponent#detachEventHandler-detail">detachEventHandler()</a></td>
+  <td>Detaches an existing event handler.</td>
+  <td><a href="/doc/api/1.0/CComponent">CComponent</a></td>
+</tr>
+<tr class="inherited" id="disableBehavior">
+  <td><a href="/doc/api/1.0/CComponent#disableBehavior-detail">disableBehavior()</a></td>
+  <td>Disables an attached behavior.</td>
+  <td><a href="/doc/api/1.0/CComponent">CComponent</a></td>
+</tr>
+<tr class="inherited" id="disableBehaviors">
+  <td><a href="/doc/api/1.0/CComponent#disableBehaviors-detail">disableBehaviors()</a></td>
+  <td>Disables all behaviors attached to this component.</td>
+  <td><a href="/doc/api/1.0/CComponent">CComponent</a></td>
+</tr>
+<tr class="inherited" id="enableBehavior">
+  <td><a href="/doc/api/1.0/CComponent#enableBehavior-detail">enableBehavior()</a></td>
+  <td>Enables an attached behavior.</td>
+  <td><a href="/doc/api/1.0/CComponent">CComponent</a></td>
+</tr>
+<tr class="inherited" id="enableBehaviors">
+  <td><a href="/doc/api/1.0/CComponent#enableBehaviors-detail">enableBehaviors()</a></td>
+  <td>Enables all behaviors attached to this component.</td>
+  <td><a href="/doc/api/1.0/CComponent">CComponent</a></td>
+</tr>
+<tr class="inherited" id="endCache">
+  <td><a href="/doc/api/1.0/CBaseController#endCache-detail">endCache()</a></td>
+  <td>Ends fragment caching.</td>
+  <td><a href="/doc/api/1.0/CBaseController">CBaseController</a></td>
+</tr>
+<tr class="inherited" id="endClip">
+  <td><a href="/doc/api/1.0/CBaseController#endClip-detail">endClip()</a></td>
+  <td>Ends recording a clip.</td>
+  <td><a href="/doc/api/1.0/CBaseController">CBaseController</a></td>
+</tr>
+<tr class="inherited" id="endContent">
+  <td><a href="/doc/api/1.0/CBaseController#endContent-detail">endContent()</a></td>
+  <td>Ends the rendering of content.</td>
+  <td><a href="/doc/api/1.0/CBaseController">CBaseController</a></td>
+</tr>
+<tr class="inherited" id="endWidget">
+  <td><a href="/doc/api/1.0/CBaseController#endWidget-detail">endWidget()</a></td>
+  <td>Ends the execution of the named widget.</td>
+  <td><a href="/doc/api/1.0/CBaseController">CBaseController</a></td>
+</tr>
+<tr class="inherited" id="getController">
+  <td><a href="/doc/api/1.0/CWidget#getController-detail">getController()</a></td>
+  <td>Returns the controller that this widget belongs to.</td>
+  <td><a href="/doc/api/1.0/CWidget">CWidget</a></td>
+</tr>
+<tr class="inherited" id="getEventHandlers">
+  <td><a href="/doc/api/1.0/CComponent#getEventHandlers-detail">getEventHandlers()</a></td>
+  <td>Returns the list of attached event handlers for an event.</td>
+  <td><a href="/doc/api/1.0/CComponent">CComponent</a></td>
+</tr>
+<tr class="inherited" id="getId">
+  <td><a href="/doc/api/1.0/CWidget#getId-detail">getId()</a></td>
+  <td>Returns id of the widget.</td>
+  <td><a href="/doc/api/1.0/CWidget">CWidget</a></td>
+</tr>
+<tr class="inherited" id="getOwner">
+  <td><a href="/doc/api/1.0/CWidget#getOwner-detail">getOwner()</a></td>
+  <td>Returns owner/creator of this widget. It could be either a widget or a controller.</td>
+  <td><a href="/doc/api/1.0/CWidget">CWidget</a></td>
+</tr>
+<tr class="inherited" id="getViewFile">
+  <td><a href="/doc/api/1.0/CWidget#getViewFile-detail">getViewFile()</a></td>
+  <td>Looks for the view script file according to the view name.</td>
+  <td><a href="/doc/api/1.0/CWidget">CWidget</a></td>
+</tr>
+<tr class="inherited" id="getViewPath">
+  <td><a href="/doc/api/1.0/CWidget#getViewPath-detail">getViewPath()</a></td>
+  <td>Returns the directory containing the view files for this widget.</td>
+  <td><a href="/doc/api/1.0/CWidget">CWidget</a></td>
+</tr>
+<tr class="inherited" id="hasEvent">
+  <td><a href="/doc/api/1.0/CComponent#hasEvent-detail">hasEvent()</a></td>
+  <td>Determines whether an event is defined.</td>
+  <td><a href="/doc/api/1.0/CComponent">CComponent</a></td>
+</tr>
+<tr class="inherited" id="hasEventHandler">
+  <td><a href="/doc/api/1.0/CComponent#hasEventHandler-detail">hasEventHandler()</a></td>
+  <td>Checks whether the named event has attached handlers.</td>
+  <td><a href="/doc/api/1.0/CComponent">CComponent</a></td>
+</tr>
+<tr class="inherited" id="hasProperty">
+  <td><a href="/doc/api/1.0/CComponent#hasProperty-detail">hasProperty()</a></td>
+  <td>Determines whether a property is defined.</td>
+  <td><a href="/doc/api/1.0/CComponent">CComponent</a></td>
+</tr>
+<tr class="inherited" id="init">
+  <td><a href="/doc/api/1.0/CWidget#init-detail">init()</a></td>
+  <td>Initializes the widget.</td>
+  <td><a href="/doc/api/1.0/CWidget">CWidget</a></td>
+</tr>
+<tr class="inherited" id="raiseEvent">
+  <td><a href="/doc/api/1.0/CComponent#raiseEvent-detail">raiseEvent()</a></td>
+  <td>Raises an event.</td>
+  <td><a href="/doc/api/1.0/CComponent">CComponent</a></td>
+</tr>
+<tr id="registerClientScript">
+  <td><a href="/doc/api/1.0/CCaptcha#registerClientScript-detail">registerClientScript()</a></td>
+  <td>Registers the needed client scripts.</td>
+  <td>CCaptcha</td>
+</tr>
+<tr class="inherited" id="render">
+  <td><a href="/doc/api/1.0/CWidget#render-detail">render()</a></td>
+  <td>Renders a view.</td>
+  <td><a href="/doc/api/1.0/CWidget">CWidget</a></td>
+</tr>
+<tr class="inherited" id="renderFile">
+  <td><a href="/doc/api/1.0/CBaseController#renderFile-detail">renderFile()</a></td>
+  <td>Renders a view file.</td>
+  <td><a href="/doc/api/1.0/CBaseController">CBaseController</a></td>
+</tr>
+<tr class="inherited" id="renderInternal">
+  <td><a href="/doc/api/1.0/CBaseController#renderInternal-detail">renderInternal()</a></td>
+  <td>Renders a view file.</td>
+  <td><a href="/doc/api/1.0/CBaseController">CBaseController</a></td>
+</tr>
+<tr id="run">
+  <td><a href="/doc/api/1.0/CCaptcha#run-detail">run()</a></td>
+  <td>Renders the widget.</td>
+  <td>CCaptcha</td>
+</tr>
+<tr class="inherited" id="setId">
+  <td><a href="/doc/api/1.0/CWidget#setId-detail">setId()</a></td>
+  <td>Sets id of the widget.</td>
+  <td><a href="/doc/api/1.0/CWidget">CWidget</a></td>
+</tr>
+<tr class="inherited" id="widget">
+  <td><a href="/doc/api/1.0/CBaseController#widget-detail">widget()</a></td>
+  <td>Creates a widget and executes it.</td>
+  <td><a href="/doc/api/1.0/CBaseController">CBaseController</a></td>
+</tr>
+</table>
+</div>
+<div class="summary docMethod">
+<h2>Protected Methods</h2>
+
+<p><a href="#" class="toggle">Hide inherited methods</a></p>
+
+<table class="summaryTable">
+<colgroup>
+	<col class="col-method" />
+	<col class="col-description" />
+	<col class="col-defined" />
+</colgroup>
+<tr>
+  <th>Method</th><th>Description</th><th>Defined By</th>
+</tr>
+<tr id="renderImage">
+  <td><a href="/doc/api/1.0/CCaptcha#renderImage-detail">renderImage()</a></td>
+  <td>Renders the CAPTCHA image.</td>
+  <td>CCaptcha</td>
+</tr>
+</table>
+</div>
+<a name="events"></a>
+
+<h2>Property Details</h2>
+<div class="detailHeader" id="buttonLabel-detail">
+buttonLabel<span class="detailHeaderTag">
+property
+</span>
+</div>
+
+<div class="signature">
+public string <b>$buttonLabel</b>;</div>
+
+<p>the label for the refresh button. Defaults to 'Get a new code'.</p>
+
+
+<div class="detailHeader" id="buttonOptions-detail">
+buttonOptions<span class="detailHeaderTag">
+property
+</span>
+</div>
+
+<div class="signature">
+public array <b>$buttonOptions</b>;</div>
+
+<p>HTML attributes to be applied to the rendered refresh button element.</p>
+
+
+<div class="detailHeader" id="buttonType-detail">
+buttonType<span class="detailHeaderTag">
+property
+</span>
+</div>
+
+<div class="signature">
+public string <b>$buttonType</b>;</div>
+
+<p>the type of the refresh button. This should be either 'link' or 'button'.
+The former refers to hyperlink button while the latter a normal push button.
+Defaults to 'link'.</p>
+
+
+<div class="detailHeader" id="captchaAction-detail">
+captchaAction<span class="detailHeaderTag">
+property
+</span>
+</div>
+
+<div class="signature">
+public string <b>$captchaAction</b>;</div>
+
+<p>the ID of the action that should provide CAPTCHA image. Defaults to 'captcha',
+meaning the 'captcha' action of the current controller. This property may also
+be in the format of 'ControllerID/ActionID'. Underneath, this property is used
+by <a href="/doc/api/1.0/CController#createUrl">CController::createUrl</a> to create the URL that would serve the CAPTCHA image.
+The action has to be of <a href="/doc/api/1.0/CCaptchaAction">CCaptchaAction</a>.</p>
+
+
+<div class="detailHeader" id="clickableImage-detail">
+clickableImage<span class="detailHeaderTag">
+property
+ (available since v1.0.8)
+</span>
+</div>
+
+<div class="signature">
+public boolean <b>$clickableImage</b>;</div>
+
+<p>whether to allow clicking on the CAPTCHA image to refresh the CAPTCHA letters.
+Defaults to false. Hint: you may want to set <a href="/doc/api/1.0/CCaptcha#showRefreshButton">showRefreshButton</a> to false if you set
+this property to be true because they serve for the same purpose.
+To enhance accessibility, you may set <a href="/doc/api/1.0/CCaptcha#imageOptions">imageOptions</a> to provide hints to end-users that
+the image is clickable.</p>
+
+
+<div class="detailHeader" id="imageOptions-detail">
+imageOptions<span class="detailHeaderTag">
+property
+</span>
+</div>
+
+<div class="signature">
+public array <b>$imageOptions</b>;</div>
+
+<p>HTML attributes to be applied to the rendered image element.</p>
+
+
+<div class="detailHeader" id="showRefreshButton-detail">
+showRefreshButton<span class="detailHeaderTag">
+property
+</span>
+</div>
+
+<div class="signature">
+public boolean <b>$showRefreshButton</b>;</div>
+
+<p>whether to display a button next to the CAPTCHA image. Clicking on the button
+will cause the CAPTCHA image to be changed to a new one. Defaults to true.</p>
+
+
+<h2>Method Details</h2>
+
+<div class="detailHeader" id="registerClientScript-detail">
+registerClientScript()
+<span class="detailHeaderTag">
+method
+(available since v1.0.2)
+</span>
+</div>
+
+<table class="summaryTable">
+<tr><td colspan="3">
+<div class="signature2">
+public void <b>registerClientScript</b>()</div>
+</td></tr>
+</table>
+
+<div class="sourceCode">
+<b>Source Code:</b> <a class="sourceLink" href="https://github.com/yiisoft/yii/blob/1.0.12/framework/web/widgets/captcha/CCaptcha.php#L106">framework/web/widgets/captcha/CCaptcha.php#106</a> (<b><a href="#" class="show">show</a></b>)
+<div class="code"><code><span style="color: #000000">
+<span style="color: #0000BB"></span><span style="color: #007700">public&nbsp;function&nbsp;</span><span style="color: #0000BB">registerClientScript</span><span style="color: #007700">()<br />{<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$cs</span><span style="color: #007700">=</span><span style="color: #0000BB">Yii</span><span style="color: #007700">::</span><span style="color: #0000BB">app</span><span style="color: #007700">()-&gt;</span><span style="color: #0000BB">clientScript</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$id</span><span style="color: #007700">=</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">imageOptions</span><span style="color: #007700">[</span><span style="color: #DD0000">'id'</span><span style="color: #007700">];<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$url</span><span style="color: #007700">=</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">getController</span><span style="color: #007700">()-&gt;</span><span style="color: #0000BB">createUrl</span><span style="color: #007700">(</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">captchaAction</span><span style="color: #007700">,array(</span><span style="color: #0000BB">CCaptchaAction</span><span style="color: #007700">::</span><span style="color: #0000BB">REFRESH_GET_VAR</span><span style="color: #007700">=&gt;</span><span style="color: #0000BB">true</span><span style="color: #007700">));<br /><br />&nbsp;&nbsp;&nbsp;&nbsp;if(</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">showRefreshButton</span><span style="color: #007700">)<br />&nbsp;&nbsp;&nbsp;&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$cs</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">registerScript</span><span style="color: #007700">(</span><span style="color: #DD0000">'Yii.CCaptcha#'</span><span style="color: #007700">.</span><span style="color: #0000BB">$id</span><span style="color: #007700">,</span><span style="color: #DD0000">'dummy'</span><span style="color: #007700">);<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$label</span><span style="color: #007700">=</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">buttonLabel</span><span style="color: #007700">===</span><span style="color: #0000BB">null</span><span style="color: #007700">?</span><span style="color: #0000BB">Yii</span><span style="color: #007700">::</span><span style="color: #0000BB">t</span><span style="color: #007700">(</span><span style="color: #DD0000">'yii'</span><span style="color: #007700">,</span><span style="color: #DD0000">'Get&nbsp;a&nbsp;new&nbsp;code'</span><span style="color: #007700">):</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">buttonLabel</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$button</span><span style="color: #007700">=</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">buttonType</span><span style="color: #007700">===</span><span style="color: #DD0000">'button'</span><span style="color: #007700">?</span><span style="color: #DD0000">'ajaxButton'</span><span style="color: #007700">:</span><span style="color: #DD0000">'ajaxLink'</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$html</span><span style="color: #007700">=</span><span style="color: #0000BB">CHtml</span><span style="color: #007700">::</span><span style="color: #0000BB">$button</span><span style="color: #007700">(</span><span style="color: #0000BB">$label</span><span style="color: #007700">,</span><span style="color: #0000BB">$url</span><span style="color: #007700">,array(</span><span style="color: #DD0000">'success'</span><span style="color: #007700">=&gt;</span><span style="color: #DD0000">'js:function(html){jQuery("#'</span><span style="color: #007700">.</span><span style="color: #0000BB">$id</span><span style="color: #007700">.</span><span style="color: #DD0000">'").attr("src",html)}'</span><span style="color: #007700">),</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">buttonOptions</span><span style="color: #007700">);<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$js</span><span style="color: #007700">=</span><span style="color: #DD0000">"jQuery('img#</span><span style="color: #0000BB">$id</span><span style="color: #DD0000">').after(\""</span><span style="color: #007700">.</span><span style="color: #0000BB">CJavaScript</span><span style="color: #007700">::</span><span style="color: #0000BB">quote</span><span style="color: #007700">(</span><span style="color: #0000BB">$html</span><span style="color: #007700">).</span><span style="color: #DD0000">'");'</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$cs</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">registerScript</span><span style="color: #007700">(</span><span style="color: #DD0000">'Yii.CCaptcha#'</span><span style="color: #007700">.</span><span style="color: #0000BB">$id</span><span style="color: #007700">,</span><span style="color: #0000BB">$js</span><span style="color: #007700">);<br />&nbsp;&nbsp;&nbsp;&nbsp;}<br /><br />&nbsp;&nbsp;&nbsp;&nbsp;if(</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">clickableImage</span><span style="color: #007700">)<br />&nbsp;&nbsp;&nbsp;&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$js</span><span style="color: #007700">=</span><span style="color: #DD0000">"jQuery('#</span><span style="color: #0000BB">$id</span><span style="color: #DD0000">').click(function(){"<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #007700">.</span><span style="color: #0000BB">CHtml</span><span style="color: #007700">::</span><span style="color: #0000BB">ajax</span><span style="color: #007700">(array(<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #DD0000">'url'</span><span style="color: #007700">=&gt;</span><span style="color: #0000BB">$url</span><span style="color: #007700">,<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #DD0000">'success'</span><span style="color: #007700">=&gt;</span><span style="color: #DD0000">"js:function(html){jQuery('#</span><span style="color: #0000BB">$id</span><span style="color: #DD0000">').attr('src',html)}"</span><span style="color: #007700">,<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;)).</span><span style="color: #DD0000">'});'</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$cs</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">registerScript</span><span style="color: #007700">(</span><span style="color: #DD0000">'Yii.CCaptcha#2'</span><span style="color: #007700">.</span><span style="color: #0000BB">$id</span><span style="color: #007700">,</span><span style="color: #0000BB">$js</span><span style="color: #007700">);<br />&nbsp;&nbsp;&nbsp;&nbsp;}<br />}</span>
+</span>
+</code></div>
+</div>
+<p>Registers the needed client scripts.</p>
+
+
+<div class="detailHeader" id="renderImage-detail">
+renderImage()
+<span class="detailHeaderTag">
+method
+</span>
+</div>
+
+<table class="summaryTable">
+<tr><td colspan="3">
+<div class="signature2">
+protected void <b>renderImage</b>()</div>
+</td></tr>
+</table>
+
+<div class="sourceCode">
+<b>Source Code:</b> <a class="sourceLink" href="https://github.com/yiisoft/yii/blob/1.0.12/framework/web/widgets/captcha/CCaptcha.php#L91">framework/web/widgets/captcha/CCaptcha.php#91</a> (<b><a href="#" class="show">show</a></b>)
+<div class="code"><code><span style="color: #000000">
+<span style="color: #0000BB"></span><span style="color: #007700">protected&nbsp;function&nbsp;</span><span style="color: #0000BB">renderImage</span><span style="color: #007700">()<br />{<br />&nbsp;&nbsp;&nbsp;&nbsp;if(isset(</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">imageOptions</span><span style="color: #007700">[</span><span style="color: #DD0000">'id'</span><span style="color: #007700">]))<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$id</span><span style="color: #007700">=</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">imageOptions</span><span style="color: #007700">[</span><span style="color: #DD0000">'id'</span><span style="color: #007700">];<br />&nbsp;&nbsp;&nbsp;&nbsp;else<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$id</span><span style="color: #007700">=</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">imageOptions</span><span style="color: #007700">[</span><span style="color: #DD0000">'id'</span><span style="color: #007700">]=</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">getId</span><span style="color: #007700">();<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$url</span><span style="color: #007700">=</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">getController</span><span style="color: #007700">()-&gt;</span><span style="color: #0000BB">createUrl</span><span style="color: #007700">(</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">captchaAction</span><span style="color: #007700">);<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$alt</span><span style="color: #007700">=isset(</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">imageOptions</span><span style="color: #007700">[</span><span style="color: #DD0000">'alt'</span><span style="color: #007700">])?</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">imageOptions</span><span style="color: #007700">[</span><span style="color: #DD0000">'alt'</span><span style="color: #007700">]:</span><span style="color: #DD0000">''</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #0000BB">CHtml</span><span style="color: #007700">::</span><span style="color: #0000BB">image</span><span style="color: #007700">(</span><span style="color: #0000BB">$url</span><span style="color: #007700">,</span><span style="color: #0000BB">$alt</span><span style="color: #007700">,</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">imageOptions</span><span style="color: #007700">);<br />}</span>
+</span>
+</code></div>
+</div>
+<p>Renders the CAPTCHA image.</p>
+
+
+<div class="detailHeader" id="run-detail">
+run()
+<span class="detailHeaderTag">
+method
+</span>
+</div>
+
+<table class="summaryTable">
+<tr><td colspan="3">
+<div class="signature2">
+public void <b>run</b>()</div>
+</td></tr>
+</table>
+
+<div class="sourceCode">
+<b>Source Code:</b> <a class="sourceLink" href="https://github.com/yiisoft/yii/blob/1.0.12/framework/web/widgets/captcha/CCaptcha.php#L82">framework/web/widgets/captcha/CCaptcha.php#82</a> (<b><a href="#" class="show">show</a></b>)
+<div class="code"><code><span style="color: #000000">
+<span style="color: #0000BB"></span><span style="color: #007700">public&nbsp;function&nbsp;</span><span style="color: #0000BB">run</span><span style="color: #007700">()<br />{<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">renderImage</span><span style="color: #007700">();<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">registerClientScript</span><span style="color: #007700">();<br />}</span>
+</span>
+</code></div>
+</div>
+<p>Renders the widget.</p>
+
+

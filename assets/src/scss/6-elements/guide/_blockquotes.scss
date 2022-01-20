@@ -1,5 +1,5 @@
-%blockquote{
-  display:block;
+%blockquote {
+  display: block;
   background: #fff;
   @include rem(font-size, 18px);
   @include rem(line-height, 26px);
@@ -11,8 +11,9 @@
   min-height: 5em;
   background-position: 20px;
   background-repeat: no-repeat;
-	background-size: 40px 40px;
-  @media (max-width: 767px)  {
+  background-size: 40px 40px;
+
+  @media (max-width: 767px) {
     @include rem(padding-left, 20px);
     @include rem(padding-top, 75px);
     background-position: center 20px;
@@ -44,7 +45,8 @@ blockquote.info {
   border-left: 4px solid #247BA0;
 }
 
-blockquote.warn {
+blockquote.warn,
+blockquote.warning {
   @extend %blockquote;
   background-color: #FFF0F4;
   background-image: url(../../../image/guide/ico_attention.svg);

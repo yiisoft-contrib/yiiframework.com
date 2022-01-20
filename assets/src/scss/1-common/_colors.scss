@@ -1,39 +1,38 @@
-// colours used throughout
 $link-color: #1e6887;
 
-$eshill-blue: rgb(30, 104, 135);//#1E6887
-$eshill-light-blue: rgb(36, 123, 160);//#247BA0
+$eshill-blue: rgb(30, 104, 135);
+$eshill-light-blue: rgb(36, 123, 160);
 
-$eshill-red: rgb(255, 22, 84);//#FF1654
-$eshill-green: rgb(68, 179, 160);//#44B3A0
-$eshill-yellow: rgb(243, 255, 189);//#F3FFBD
+$eshill-red: rgb(255, 22, 84);
+$eshill-green: rgb(68, 179, 160);
+$eshill-yellow: rgb(243, 255, 189);
 $eshill-yellow-diffuse: rgba(243, 255, 189, 0.8);
 
 $version-buttons: $eshill-yellow;
 
-$guide-listgroup-bg-active: rgb(112, 193, 179);//#70C1B3
+$guide-listgroup-bg-active: rgb(112, 193, 179);
 
-$eshill-section-bgcolor: rgb(235, 241, 242);//#EBF1F2
-$eshill-section-bgcolor-alternate: rgb(244, 250, 251);//#f4fafb
-$eshill-header-color: rgb(77, 77, 77);//#4D4D4D
+$eshill-section-bgcolor: rgb(235, 241, 242);
+$eshill-section-bgcolor-alternate: rgb(244, 250, 251);
+$eshill-header-color: rgb(77, 77, 77);
 $separator-color: $eshill-header-color;
 
-$comments-background-color: rgb(223, 228, 230);//#DFE4E6
+$comments-background-color: rgb(223, 228, 230);
 
-$yii-yellow: rgb(223, 110, 53);//#DF6E35
-$yii-blue: $eshill-blue;//old Yii blue: #3379B2
-$yii-green: #64a228; //rgb(140, 188, 76);//#619c28
+$yii-yellow: rgb(223, 110, 53);
+$yii-blue: $eshill-blue;
+$yii-green: #64a228;
 
 .yii-green {
-    color: $yii-green;
+  color: $yii-green;
 }
 
 .yii-blue {
-    color: $yii-blue;
+  color: $yii-blue;
 }
 
 .yii-yellow {
-    color: $yii-yellow;
+  color: $yii-yellow;
 }
 
 
@@ -41,5 +40,5 @@ $selection-color: $eshill-yellow;
 
 $darkish-text: rgb(51, 51, 51);
 
-$footer-color: rgb(207, 207, 207);//#cfcfcf
-$footer-background-color: rgb(34, 34, 34);//##222222
+$footer-color: rgb(207, 207, 207);
+$footer-background-color: rgb(34, 34, 34);

@@ -1,30 +1,48 @@
 .userbadge {
+  position: relative;
   border: 1px solid #d1dbdf;
-  height: 60px;
-  padding-left: 65px;
   margin-top: 2rem;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  @media (min-width: 768px) {
+    height: 62px;
+  }
+
   .userbadge-info {
-    float: left;
-    height: 60px;
-    width: 100%;
-    margin-top: -60px;
     padding: 7px;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    @media (min-width: 768px) {
+      display: block;
+    }
+
     h2,
     h3 {
       margin: 0;
       font-size: 16px;
       font-weight: bold;
+
       a {
         text-decoration: none;
       }
     }
 
     .percent {
-      margin-top: -30px;
+      display: flex;
+      justify-content: flex-end;
       margin-right: 15px;
-      vertical-align: middle;
-      float: right;
+      margin-bottom: 10px;
       color: #666;
+      flex: 0 0 auto;
+      @media (min-width: 768px) {
+        position: absolute;
+        right: 15px;
+        bottom: 10px;
+        margin-right: 0;
+        margin-bottom: 0;
+      }
     }
 
     .x {
@@ -39,56 +57,70 @@
 }
 
 .userbadge-icon {
-  width: 64px;
+  width: 60px;
   height: 60px;
-  float: left;
+  flex: 0 0 auto;
 }
 
 .userbadge-progress-bar {
+  position: absolute;
+  left: 0;
+  top: 0;
   background: #effaff;
-  height: 60px - 2px;
+  height: 100%;
+  margin-left: 62px;
+  z-index: -1;
+
+  &:before {
+    content: '';
+    width: 60px;
+    height: 100%;
+    position: absolute;
+    left: -62px;
+    top: 0;
+    background: #effaff;
+  }
 }
 
-// badge image sprites
-.userbadge, .userbadge-icon {
+.userbadge-icon {
   background-image: url(../../../image/user/badges.png);
   background-repeat: no-repeat;
 }
 
 .userbadge-supporter {
-  background-position: 0 -329px;
+  background-position: -4px -329px;
 }
 
 .userbadge-greenhorn {
-  background-position: 0 -590px;
+  background-position: -4px -590px;
 }
 
 .userbadge-extension-smith {
-  background-position: 0 -262px;
+  background-position: -4px -262px;
 }
 
 .userbadge-regular {
-  background-position: 0 -195px;
+  background-position: -4px -195px;
 }
 
 .userbadge-editor {
-  background-position: 0 -68px;
+  background-position: -4px -68px;
 }
 
 .userbadge-critic {
-  background-position: 0 -455px;
+  background-position: -4px -455px;
 }
 
 .userbadge-mogul {
-  background-position: 0 -522px;
+  background-position: -4px -522px;
 }
 
 .userbadge-civic-duty {
-  background-position: 0 -134px;
+  background-position: -4px -134px;
 }
 
 .userbadge-commentator {
-  background-position: 0 -393px;
+  background-position: -4px -393px;
 }
 
 .view-user-view-badge {

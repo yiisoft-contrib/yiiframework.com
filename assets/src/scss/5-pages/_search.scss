@@ -1,31 +1,49 @@
 .search-result {
-    em {
-        background: #ffff00;
-    }
+  em {
+    background: #ffff00;
+  }
 
-    .title {
-      margin-right: 1rem;
-      font-size: 20px;
-      @media (min-width: 768px) {
-        font-size: 28px;
-      }
-    }
+  .title {
+    margin-right: 1rem;
+    font-size: 20px;
 
-    h3,
-    p {
-        width: 100%;
-        max-width: 100%;
+    @media (min-width: 768px) {
+      font-size: 28px;
     }
+  }
 
-    .label {
-      text-decoration: none;
-      font-size: $font-size-base;
-      font-weight: normal;
-      padding: .1em .4em .2em;
-      @media (min-width: 768px) {
-        padding: .2em .6em .3em;
-      }
+  h3,
+  p {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .label {
+    text-decoration: none;
+    font-size: $font-size-base;
+    font-weight: normal;
+    padding: .1em .4em .2em;
+
+    @media (min-width: 768px) {
+      padding: .2em .6em .3em;
     }
+  }
+
+  .label-warning {
+    background-color: #C2551E;
+  }
+
+  .label-default {
+    background-color: #757575;
+  }
+
+  .label-info {
+    background-color: #20809D;
+  }
+
+  .label-success {
+    background-color: #528321;
+  }
 }
 
 #search-resultbox {
@@ -40,11 +58,12 @@
   display: none;
   width: 100% !important;
   max-width: 90%;
+
   @media (min-width: 768px) {
     max-width: 350px;
   }
 
-  @media (min-width: 1100px) and (max-width: 1400px)  {
+  @media (min-width: 1100px) and (max-width: 1400px) {
     max-width: 270px;
   }
 
@@ -58,6 +77,7 @@
     font-weight: bold;
     border-top: solid 1px #CCCCCC;
     border-bottom: solid 1px #CCCCCC;
+
     .search-limit {
       font-weight: normal;
       float: right;
@@ -70,6 +90,7 @@
     list-style: none;
     @include rem(max-height, 300px);
     overflow-y: auto;
+
     li {
       display: block;
       padding: 0;
@@ -83,12 +104,14 @@
         @include rem(padding, 5px 5px 5px 15px);
         width: 100%;
         word-break: break-word;
+
         span.result-annotation {
           float: right;
         }
       }
 
-      a:hover, a.selected {
+      a:hover,
+      a.selected {
         background: $yii-blue;
         color: #fff;
       }

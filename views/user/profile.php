@@ -81,7 +81,7 @@ $forumUrl = $model->getForumUrl();
                             }
 
                             echo 'Your account is connected with your ' . ucfirst($client->source) . ' profile: '
-                                . Html::a('http://github.com/' . Html::encode($client->source_login), 'http://github.com/' . $client->source_login) . '. ';
+                                . Html::a('https://github.com/' . Html::encode($client->source_login), 'http://github.com/' . $client->source_login) . '. ';
 
                             if ($model->passwordType === User::PASSWORD_TYPE_NONE) {
                                 echo 'To remove the connection, you should enable Password login first.';
@@ -135,9 +135,13 @@ $forumUrl = $model->getForumUrl();
                 </p>
             </div>
             */ ?>
-        <div class="col-xs-12 heading-separator">
-            <h2><span>Your Content</span></h2>
+
+        <div class="row">
+            <div class="col-xs-12 heading-separator">
+                <h2><span>Your Content</span></h2>
+            </div>
         </div>
+
         <div class="row">
             <div class="col-xs-12 col-md-6">
                 <h2>Your Extensions (<?= Html::encode($model->extension_count) ?>) </h2>

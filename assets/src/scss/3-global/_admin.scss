@@ -10,16 +10,18 @@
       padding: 5px 15px;
     }
 
-    li a:hover, li a:focus, li.active a {
+    li a:hover,
+    li a:focus,
+    li.active a {
       color: black;
       background: #eee;
     }
-
   }
 }
 
 .grid-view {
-  th, td.action-column {
+  th,
+  td.action-column {
     white-space: nowrap;
   }
 }
@@ -29,6 +31,6 @@
 }
 
 .not-set {
-    color: #a94442;
-    font-style: italic;
+  color: #a94442;
+  font-style: italic;
 }

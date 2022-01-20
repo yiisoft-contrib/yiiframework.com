@@ -2,8 +2,10 @@
   .testimonial {
     padding: 1rem;
     @include rem(min-height, 611px);
-    .testimonial-content{
-      padding:1rem;
+
+    .testimonial-content {
+      padding: 1rem;
+
       .title {
         font-size: 2rem;
         font-weight: bold;
@@ -20,11 +22,31 @@
         font-size: 1.5rem;
       }
 
-      img{
+      img {
         min-width: 100%;
         box-shadow: 0 0 0.5rem #DDD;
       }
     }
+  }
 
+  .glide__bullets {
+    left: auto;
+    right: 10px;
+    bottom: 5%;
+    text-align: right;
+
+    > * {
+      width: 12px;
+      height: 12px;
+      border-color: #1e6887;
+
+      &:hover {
+        background-color: #1e6887;
+      }
+
+      &.active {
+        background-color: #1e6887;
+      }
+    }
   }
 }

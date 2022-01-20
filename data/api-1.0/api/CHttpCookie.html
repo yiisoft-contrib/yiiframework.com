@@ -1,0 +1,362 @@
+<h1>CHttpCookie</h1>
+<div id="nav">
+<a href="/doc/api/1.0/">All Packages</a>
+| <a href="#properties">Properties</a>
+| <a href="#methods">Methods</a>
+</div>
+
+<table class="summaryTable docClass">
+<colgroup>
+	<col class="col-name" />
+	<col class="col-value" />
+</colgroup>
+<tr>
+  <th>Package</th>
+  <td><a href="/doc/api/1.0/#system.web">system.web</a></td>
+</tr>
+<tr>
+  <th>Inheritance</th>
+  <td>class CHttpCookie &raquo;
+<a href="/doc/api/1.0/CComponent">CComponent</a></td>
+</tr>
+<tr>
+  <th>Since</th>
+  <td>1.0</td>
+</tr>
+<tr>
+  <th>Version</th>
+  <td>$Id$</td>
+</tr>
+<tr>
+  <th>Source Code</th>
+  <td><a class="sourceLink" href="https://github.com/yiisoft/yii/blob/1.0.12/framework/web/CHttpCookie.php">framework/web/CHttpCookie.php</a></td>
+</tr>
+</table>
+
+<div id="classDescription">
+A CHttpCookie instance stores a single cookie, including the cookie name, value, domain, path, expire, and secure.</div>
+<a name="properties"></a>
+
+<div class="summary docProperty">
+<h2>Public Properties</h2>
+
+<p><a href="#" class="toggle">Hide inherited properties</a></p>
+
+<table class="summaryTable">
+<colgroup>
+	<col class="col-property" />
+	<col class="col-type" />
+	<col class="col-description" />
+	<col class="col-defined" />
+</colgroup>
+<tr>
+  <th>Property</th><th>Type</th><th>Description</th><th>Defined By</th>
+</tr>
+<tr id="domain">
+  <td><a href="/doc/api/1.0/CHttpCookie#domain-detail">domain</a></td>
+  <td>string</td>
+  <td>domain of the cookie</td>
+  <td>CHttpCookie</td>
+</tr>
+<tr id="expire">
+  <td><a href="/doc/api/1.0/CHttpCookie#expire-detail">expire</a></td>
+  <td>integer</td>
+  <td>the timestamp at which the cookie expires.</td>
+  <td>CHttpCookie</td>
+</tr>
+<tr id="httpOnly">
+  <td><a href="/doc/api/1.0/CHttpCookie#httpOnly-detail">httpOnly</a></td>
+  <td>boolean</td>
+  <td>whether the cookie should be accessible only through the HTTP protocol.</td>
+  <td>CHttpCookie</td>
+</tr>
+<tr id="name">
+  <td><a href="/doc/api/1.0/CHttpCookie#name-detail">name</a></td>
+  <td>string</td>
+  <td>name of the cookie</td>
+  <td>CHttpCookie</td>
+</tr>
+<tr id="path">
+  <td><a href="/doc/api/1.0/CHttpCookie#path-detail">path</a></td>
+  <td>string</td>
+  <td>the path on the server in which the cookie will be available on.</td>
+  <td>CHttpCookie</td>
+</tr>
+<tr id="secure">
+  <td><a href="/doc/api/1.0/CHttpCookie#secure-detail">secure</a></td>
+  <td>boolean</td>
+  <td>whether cookie should be sent via secure connection</td>
+  <td>CHttpCookie</td>
+</tr>
+<tr id="value">
+  <td><a href="/doc/api/1.0/CHttpCookie#value-detail">value</a></td>
+  <td>string</td>
+  <td>value of the cookie</td>
+  <td>CHttpCookie</td>
+</tr>
+</table>
+</div>
+<a name="methods"></a>
+
+<div class="summary docMethod">
+<h2>Public Methods</h2>
+
+<p><a href="#" class="toggle">Hide inherited methods</a></p>
+
+<table class="summaryTable">
+<colgroup>
+	<col class="col-method" />
+	<col class="col-description" />
+	<col class="col-defined" />
+</colgroup>
+<tr>
+  <th>Method</th><th>Description</th><th>Defined By</th>
+</tr>
+<tr class="inherited" id="__call">
+  <td><a href="/doc/api/1.0/CComponent#__call-detail">__call()</a></td>
+  <td>Calls the named method which is not a class method.</td>
+  <td><a href="/doc/api/1.0/CComponent">CComponent</a></td>
+</tr>
+<tr id="__construct">
+  <td><a href="/doc/api/1.0/CHttpCookie#__construct-detail">__construct()</a></td>
+  <td>Constructor.</td>
+  <td>CHttpCookie</td>
+</tr>
+<tr class="inherited" id="__get">
+  <td><a href="/doc/api/1.0/CComponent#__get-detail">__get()</a></td>
+  <td>Returns a property value, an event handler list or a behavior based on its name.</td>
+  <td><a href="/doc/api/1.0/CComponent">CComponent</a></td>
+</tr>
+<tr class="inherited" id="__isset">
+  <td><a href="/doc/api/1.0/CComponent#__isset-detail">__isset()</a></td>
+  <td>Checks if a property value is null.</td>
+  <td><a href="/doc/api/1.0/CComponent">CComponent</a></td>
+</tr>
+<tr class="inherited" id="__set">
+  <td><a href="/doc/api/1.0/CComponent#__set-detail">__set()</a></td>
+  <td>Sets value of a component property.</td>
+  <td><a href="/doc/api/1.0/CComponent">CComponent</a></td>
+</tr>
+<tr class="inherited" id="__unset">
+  <td><a href="/doc/api/1.0/CComponent#__unset-detail">__unset()</a></td>
+  <td>Sets a component property to be null.</td>
+  <td><a href="/doc/api/1.0/CComponent">CComponent</a></td>
+</tr>
+<tr class="inherited" id="asa">
+  <td><a href="/doc/api/1.0/CComponent#asa-detail">asa()</a></td>
+  <td>Returns the named behavior object.</td>
+  <td><a href="/doc/api/1.0/CComponent">CComponent</a></td>
+</tr>
+<tr class="inherited" id="attachBehavior">
+  <td><a href="/doc/api/1.0/CComponent#attachBehavior-detail">attachBehavior()</a></td>
+  <td>Attaches a behavior to this component.</td>
+  <td><a href="/doc/api/1.0/CComponent">CComponent</a></td>
+</tr>
+<tr class="inherited" id="attachBehaviors">
+  <td><a href="/doc/api/1.0/CComponent#attachBehaviors-detail">attachBehaviors()</a></td>
+  <td>Attaches a list of behaviors to the component.</td>
+  <td><a href="/doc/api/1.0/CComponent">CComponent</a></td>
+</tr>
+<tr class="inherited" id="attachEventHandler">
+  <td><a href="/doc/api/1.0/CComponent#attachEventHandler-detail">attachEventHandler()</a></td>
+  <td>Attaches an event handler to an event.</td>
+  <td><a href="/doc/api/1.0/CComponent">CComponent</a></td>
+</tr>
+<tr class="inherited" id="canGetProperty">
+  <td><a href="/doc/api/1.0/CComponent#canGetProperty-detail">canGetProperty()</a></td>
+  <td>Determines whether a property can be read.</td>
+  <td><a href="/doc/api/1.0/CComponent">CComponent</a></td>
+</tr>
+<tr class="inherited" id="canSetProperty">
+  <td><a href="/doc/api/1.0/CComponent#canSetProperty-detail">canSetProperty()</a></td>
+  <td>Determines whether a property can be set.</td>
+  <td><a href="/doc/api/1.0/CComponent">CComponent</a></td>
+</tr>
+<tr class="inherited" id="detachBehavior">
+  <td><a href="/doc/api/1.0/CComponent#detachBehavior-detail">detachBehavior()</a></td>
+  <td>Detaches a behavior from the component.</td>
+  <td><a href="/doc/api/1.0/CComponent">CComponent</a></td>
+</tr>
+<tr class="inherited" id="detachBehaviors">
+  <td><a href="/doc/api/1.0/CComponent#detachBehaviors-detail">detachBehaviors()</a></td>
+  <td>Detaches all behaviors from the component.</td>
+  <td><a href="/doc/api/1.0/CComponent">CComponent</a></td>
+</tr>
+<tr class="inherited" id="detachEventHandler">
+  <td><a href="/doc/api/1.0/CComponent#detachEventHandler-detail">detachEventHandler()</a></td>
+  <td>Detaches an existing event handler.</td>
+  <td><a href="/doc/api/1.0/CComponent">CComponent</a></td>
+</tr>
+<tr class="inherited" id="disableBehavior">
+  <td><a href="/doc/api/1.0/CComponent#disableBehavior-detail">disableBehavior()</a></td>
+  <td>Disables an attached behavior.</td>
+  <td><a href="/doc/api/1.0/CComponent">CComponent</a></td>
+</tr>
+<tr class="inherited" id="disableBehaviors">
+  <td><a href="/doc/api/1.0/CComponent#disableBehaviors-detail">disableBehaviors()</a></td>
+  <td>Disables all behaviors attached to this component.</td>
+  <td><a href="/doc/api/1.0/CComponent">CComponent</a></td>
+</tr>
+<tr class="inherited" id="enableBehavior">
+  <td><a href="/doc/api/1.0/CComponent#enableBehavior-detail">enableBehavior()</a></td>
+  <td>Enables an attached behavior.</td>
+  <td><a href="/doc/api/1.0/CComponent">CComponent</a></td>
+</tr>
+<tr class="inherited" id="enableBehaviors">
+  <td><a href="/doc/api/1.0/CComponent#enableBehaviors-detail">enableBehaviors()</a></td>
+  <td>Enables all behaviors attached to this component.</td>
+  <td><a href="/doc/api/1.0/CComponent">CComponent</a></td>
+</tr>
+<tr class="inherited" id="getEventHandlers">
+  <td><a href="/doc/api/1.0/CComponent#getEventHandlers-detail">getEventHandlers()</a></td>
+  <td>Returns the list of attached event handlers for an event.</td>
+  <td><a href="/doc/api/1.0/CComponent">CComponent</a></td>
+</tr>
+<tr class="inherited" id="hasEvent">
+  <td><a href="/doc/api/1.0/CComponent#hasEvent-detail">hasEvent()</a></td>
+  <td>Determines whether an event is defined.</td>
+  <td><a href="/doc/api/1.0/CComponent">CComponent</a></td>
+</tr>
+<tr class="inherited" id="hasEventHandler">
+  <td><a href="/doc/api/1.0/CComponent#hasEventHandler-detail">hasEventHandler()</a></td>
+  <td>Checks whether the named event has attached handlers.</td>
+  <td><a href="/doc/api/1.0/CComponent">CComponent</a></td>
+</tr>
+<tr class="inherited" id="hasProperty">
+  <td><a href="/doc/api/1.0/CComponent#hasProperty-detail">hasProperty()</a></td>
+  <td>Determines whether a property is defined.</td>
+  <td><a href="/doc/api/1.0/CComponent">CComponent</a></td>
+</tr>
+<tr class="inherited" id="raiseEvent">
+  <td><a href="/doc/api/1.0/CComponent#raiseEvent-detail">raiseEvent()</a></td>
+  <td>Raises an event.</td>
+  <td><a href="/doc/api/1.0/CComponent">CComponent</a></td>
+</tr>
+</table>
+</div>
+<a name="events"></a>
+
+<h2>Property Details</h2>
+<div class="detailHeader" id="domain-detail">
+domain<span class="detailHeaderTag">
+property
+</span>
+</div>
+
+<div class="signature">
+public string <b>$domain</b>;</div>
+
+<p>domain of the cookie</p>
+
+
+<div class="detailHeader" id="expire-detail">
+expire<span class="detailHeaderTag">
+property
+</span>
+</div>
+
+<div class="signature">
+public integer <b>$expire</b>;</div>
+
+<p>the timestamp at which the cookie expires. This is the server timestamp. Defaults to 0, meaning "until the browser is closed".</p>
+
+
+<div class="detailHeader" id="httpOnly-detail">
+httpOnly<span class="detailHeaderTag">
+property
+</span>
+</div>
+
+<div class="signature">
+public boolean <b>$httpOnly</b>;</div>
+
+<p>whether the cookie should be accessible only through the HTTP protocol.
+By setting this property to true, the cookie will not be accessible by scripting languages,
+such as JavaScript, which can effectly help to reduce identity theft through XSS attacks.
+Note, this property is only effective for PHP 5.2.0 or above.</p>
+
+
+<div class="detailHeader" id="name-detail">
+name<span class="detailHeaderTag">
+property
+</span>
+</div>
+
+<div class="signature">
+public string <b>$name</b>;</div>
+
+<p>name of the cookie</p>
+
+
+<div class="detailHeader" id="path-detail">
+path<span class="detailHeaderTag">
+property
+</span>
+</div>
+
+<div class="signature">
+public string <b>$path</b>;</div>
+
+<p>the path on the server in which the cookie will be available on. The default is '/'.</p>
+
+
+<div class="detailHeader" id="secure-detail">
+secure<span class="detailHeaderTag">
+property
+</span>
+</div>
+
+<div class="signature">
+public boolean <b>$secure</b>;</div>
+
+<p>whether cookie should be sent via secure connection</p>
+
+
+<div class="detailHeader" id="value-detail">
+value<span class="detailHeaderTag">
+property
+</span>
+</div>
+
+<div class="signature">
+public string <b>$value</b>;</div>
+
+<p>value of the cookie</p>
+
+
+<h2>Method Details</h2>
+
+<div class="detailHeader" id="__construct-detail">
+__construct()
+<span class="detailHeaderTag">
+method
+</span>
+</div>
+
+<table class="summaryTable">
+<tr><td colspan="3">
+<div class="signature2">
+public void <b>__construct</b>(string $name, string $value)</div>
+</td></tr>
+<tr>
+  <td class="paramNameCol">$name</td>
+  <td class="paramTypeCol">string</td>
+  <td class="paramDescCol">name of this cookie</td>
+</tr>
+<tr>
+  <td class="paramNameCol">$value</td>
+  <td class="paramTypeCol">string</td>
+  <td class="paramDescCol">value of this cookie</td>
+</tr>
+</table>
+
+<div class="sourceCode">
+<b>Source Code:</b> <a class="sourceLink" href="https://github.com/yiisoft/yii/blob/1.0.12/framework/web/CHttpCookie.php#L58">framework/web/CHttpCookie.php#58</a> (<b><a href="#" class="show">show</a></b>)
+<div class="code"><code><span style="color: #000000">
+<span style="color: #0000BB"></span><span style="color: #007700">public&nbsp;function&nbsp;</span><span style="color: #0000BB">__construct</span><span style="color: #007700">(</span><span style="color: #0000BB">$name</span><span style="color: #007700">,</span><span style="color: #0000BB">$value</span><span style="color: #007700">)<br />{<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">name</span><span style="color: #007700">=</span><span style="color: #0000BB">$name</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">value</span><span style="color: #007700">=</span><span style="color: #0000BB">$value</span><span style="color: #007700">;<br />}</span>
+</span>
+</code></div>
+</div>
+<p>Constructor.</p>
+
+

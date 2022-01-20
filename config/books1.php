@@ -11,7 +11,7 @@ return [
             Then gradually shows how to use Yii. It covers everything from the very basics such as installing Yii to advanced topics
             such as implementing your own framework extension. Explanations are very clear. Additionally to the guide-style
                 chapters there are two complete example chapters: a CMS and an E-commerce website.',
-        'url' => 'http://yii.larryullman.com/',
+        'url' => 'https://larry.pub/',
         'level' => 'beginner',
         'level-text' => 'Beginners',
         'level-description' => 'Recommended for beginners.',
@@ -22,7 +22,7 @@ return [
         'image' => '@web/image/books/yii1-cookbook.jpg',
         'description' => 'The book is a set of individual independent recipes written by Yii core developer. Each recipe shows how to
             do something useful with Yii explaining why it\'s done, how it\'s done, why it works and how exactly it works.',
-        'url' => 'http://yiicookbook.org/',
+        'url' => 'https://yiicookbook.org/',
         'level' => 'pro',
         'level-text' => 'Pro',
         'level-description' => 'Recommended for intermediate-to-advanced developers.',
@@ -46,7 +46,7 @@ return [
         'description' => 'This book is a step-by-step guide to developing reusable real-world applications using the Yii framework.
            The book will guide you through several projects from the project conception through to planning your
            project and implementation.',
-        'url' => 'http://www.amazon.com/dp/178328773X?tag=gii20f-20',
+        'url' => 'https://www.amazon.com/dp/178328773X?tag=gii20f-20',
         'level' => 'pro',
         'level-text' => 'Pro',
         'level-description' => 'Recommended for intermediate-to-advanced developers.',

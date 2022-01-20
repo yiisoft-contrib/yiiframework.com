@@ -1,0 +1,758 @@
+<h1>CAttributeCollection</h1>
+<div id="nav">
+<a href="/doc/api/1.0/">All Packages</a>
+| <a href="#properties">Properties</a>
+| <a href="#methods">Methods</a>
+</div>
+
+<table class="summaryTable docClass">
+<colgroup>
+	<col class="col-name" />
+	<col class="col-value" />
+</colgroup>
+<tr>
+  <th>Package</th>
+  <td><a href="/doc/api/1.0/#system.collections">system.collections</a></td>
+</tr>
+<tr>
+  <th>Inheritance</th>
+  <td>class CAttributeCollection &raquo;
+<a href="/doc/api/1.0/CMap">CMap</a> &raquo;
+<a href="/doc/api/1.0/CComponent">CComponent</a></td>
+</tr>
+<tr>
+  <th>Implements</th>
+  <td>Countable, ArrayAccess, Traversable, IteratorAggregate</td>
+</tr>
+<tr>
+  <th>Since</th>
+  <td>1.0</td>
+</tr>
+<tr>
+  <th>Version</th>
+  <td>$Id$</td>
+</tr>
+<tr>
+  <th>Source Code</th>
+  <td><a class="sourceLink" href="https://github.com/yiisoft/yii/blob/1.0.12/framework/collections/CAttributeCollection.php">framework/collections/CAttributeCollection.php</a></td>
+</tr>
+</table>
+
+<div id="classDescription">
+CAttributeCollection implements a collection for storing attribute names and values.
+<br/><br/>
+Besides all functionalities provided by <a href="/doc/api/1.0/CMap">CMap</a>, CAttributeCollection
+allows you to get and set attribute values like getting and setting
+properties. For example, the following usages are all valid for a
+CAttributeCollection object:
+<pre>
+$collection-&gt;text='text'; // same as:  $collection-&gt;add('text','text');
+echo $collection-&gt;text;   // same as:  echo $collection-&gt;itemAt('text');
+</pre>
+<br/><br/>
+The case sensitivity of attribute names can be toggled by setting the
+<a href="/doc/api/1.0/CAttributeCollection#caseSensitive">caseSensitive</a> property of the collection.</div>
+<a name="properties"></a>
+
+<div class="summary docProperty">
+<h2>Public Properties</h2>
+
+<p><a href="#" class="toggle">Hide inherited properties</a></p>
+
+<table class="summaryTable">
+<colgroup>
+	<col class="col-property" />
+	<col class="col-type" />
+	<col class="col-description" />
+	<col class="col-defined" />
+</colgroup>
+<tr>
+  <th>Property</th><th>Type</th><th>Description</th><th>Defined By</th>
+</tr>
+<tr id="caseSensitive">
+  <td><a href="/doc/api/1.0/CAttributeCollection#caseSensitive-detail">caseSensitive</a></td>
+  <td>boolean</td>
+  <td>whether the keys are case-sensitive.</td>
+  <td>CAttributeCollection</td>
+</tr>
+<tr class="inherited" id="count">
+  <td><a href="/doc/api/1.0/CMap#count-detail">count</a></td>
+  <td>integer</td>
+  <td>the number of items in the map</td>
+  <td><a href="/doc/api/1.0/CMap">CMap</a></td>
+</tr>
+<tr class="inherited" id="iterator">
+  <td><a href="/doc/api/1.0/CMap#iterator-detail">iterator</a></td>
+  <td><a href="/doc/api/1.0/CMapIterator">CMapIterator</a></td>
+  <td>Returns an iterator for traversing the items in the list.</td>
+  <td><a href="/doc/api/1.0/CMap">CMap</a></td>
+</tr>
+<tr class="inherited" id="keys">
+  <td><a href="/doc/api/1.0/CMap#keys-detail">keys</a></td>
+  <td>array</td>
+  <td>the key list</td>
+  <td><a href="/doc/api/1.0/CMap">CMap</a></td>
+</tr>
+<tr class="inherited" id="readOnly">
+  <td><a href="/doc/api/1.0/CMap#readOnly-detail">readOnly</a></td>
+  <td>boolean</td>
+  <td>whether this map is read-only or not.</td>
+  <td><a href="/doc/api/1.0/CMap">CMap</a></td>
+</tr>
+</table>
+</div>
+<a name="methods"></a>
+
+<div class="summary docMethod">
+<h2>Public Methods</h2>
+
+<p><a href="#" class="toggle">Hide inherited methods</a></p>
+
+<table class="summaryTable">
+<colgroup>
+	<col class="col-method" />
+	<col class="col-description" />
+	<col class="col-defined" />
+</colgroup>
+<tr>
+  <th>Method</th><th>Description</th><th>Defined By</th>
+</tr>
+<tr class="inherited" id="__call">
+  <td><a href="/doc/api/1.0/CComponent#__call-detail">__call()</a></td>
+  <td>Calls the named method which is not a class method.</td>
+  <td><a href="/doc/api/1.0/CComponent">CComponent</a></td>
+</tr>
+<tr class="inherited" id="__construct">
+  <td><a href="/doc/api/1.0/CMap#__construct-detail">__construct()</a></td>
+  <td>Constructor.</td>
+  <td><a href="/doc/api/1.0/CMap">CMap</a></td>
+</tr>
+<tr id="__get">
+  <td><a href="/doc/api/1.0/CAttributeCollection#__get-detail">__get()</a></td>
+  <td>Returns a property value or an event handler list by property or event name.</td>
+  <td>CAttributeCollection</td>
+</tr>
+<tr id="__isset">
+  <td><a href="/doc/api/1.0/CAttributeCollection#__isset-detail">__isset()</a></td>
+  <td>Checks if a property value is null.</td>
+  <td>CAttributeCollection</td>
+</tr>
+<tr id="__set">
+  <td><a href="/doc/api/1.0/CAttributeCollection#__set-detail">__set()</a></td>
+  <td>Sets value of a component property.</td>
+  <td>CAttributeCollection</td>
+</tr>
+<tr id="__unset">
+  <td><a href="/doc/api/1.0/CAttributeCollection#__unset-detail">__unset()</a></td>
+  <td>Sets a component property to be null.</td>
+  <td>CAttributeCollection</td>
+</tr>
+<tr id="add">
+  <td><a href="/doc/api/1.0/CAttributeCollection#add-detail">add()</a></td>
+  <td>Adds an item into the map.</td>
+  <td>CAttributeCollection</td>
+</tr>
+<tr class="inherited" id="asa">
+  <td><a href="/doc/api/1.0/CComponent#asa-detail">asa()</a></td>
+  <td>Returns the named behavior object.</td>
+  <td><a href="/doc/api/1.0/CComponent">CComponent</a></td>
+</tr>
+<tr class="inherited" id="attachBehavior">
+  <td><a href="/doc/api/1.0/CComponent#attachBehavior-detail">attachBehavior()</a></td>
+  <td>Attaches a behavior to this component.</td>
+  <td><a href="/doc/api/1.0/CComponent">CComponent</a></td>
+</tr>
+<tr class="inherited" id="attachBehaviors">
+  <td><a href="/doc/api/1.0/CComponent#attachBehaviors-detail">attachBehaviors()</a></td>
+  <td>Attaches a list of behaviors to the component.</td>
+  <td><a href="/doc/api/1.0/CComponent">CComponent</a></td>
+</tr>
+<tr class="inherited" id="attachEventHandler">
+  <td><a href="/doc/api/1.0/CComponent#attachEventHandler-detail">attachEventHandler()</a></td>
+  <td>Attaches an event handler to an event.</td>
+  <td><a href="/doc/api/1.0/CComponent">CComponent</a></td>
+</tr>
+<tr id="canGetProperty">
+  <td><a href="/doc/api/1.0/CAttributeCollection#canGetProperty-detail">canGetProperty()</a></td>
+  <td>Determines whether a property can be read.</td>
+  <td>CAttributeCollection</td>
+</tr>
+<tr id="canSetProperty">
+  <td><a href="/doc/api/1.0/CAttributeCollection#canSetProperty-detail">canSetProperty()</a></td>
+  <td>Determines whether a property can be set.</td>
+  <td>CAttributeCollection</td>
+</tr>
+<tr class="inherited" id="clear">
+  <td><a href="/doc/api/1.0/CMap#clear-detail">clear()</a></td>
+  <td>Removes all items in the map.</td>
+  <td><a href="/doc/api/1.0/CMap">CMap</a></td>
+</tr>
+<tr id="contains">
+  <td><a href="/doc/api/1.0/CAttributeCollection#contains-detail">contains()</a></td>
+  <td>Returns whether the specified is in the map.</td>
+  <td>CAttributeCollection</td>
+</tr>
+<tr class="inherited" id="copyFrom">
+  <td><a href="/doc/api/1.0/CMap#copyFrom-detail">copyFrom()</a></td>
+  <td>Copies iterable data into the map.</td>
+  <td><a href="/doc/api/1.0/CMap">CMap</a></td>
+</tr>
+<tr class="inherited" id="count()">
+  <td><a href="/doc/api/CMap#count()-detail">count()</a></td>
+  <td>Returns the number of items in the map.</td>
+  <td><a href="/doc/api/1.0/CMap">CMap</a></td>
+</tr>
+<tr class="inherited" id="detachBehavior">
+  <td><a href="/doc/api/1.0/CComponent#detachBehavior-detail">detachBehavior()</a></td>
+  <td>Detaches a behavior from the component.</td>
+  <td><a href="/doc/api/1.0/CComponent">CComponent</a></td>
+</tr>
+<tr class="inherited" id="detachBehaviors">
+  <td><a href="/doc/api/1.0/CComponent#detachBehaviors-detail">detachBehaviors()</a></td>
+  <td>Detaches all behaviors from the component.</td>
+  <td><a href="/doc/api/1.0/CComponent">CComponent</a></td>
+</tr>
+<tr class="inherited" id="detachEventHandler">
+  <td><a href="/doc/api/1.0/CComponent#detachEventHandler-detail">detachEventHandler()</a></td>
+  <td>Detaches an existing event handler.</td>
+  <td><a href="/doc/api/1.0/CComponent">CComponent</a></td>
+</tr>
+<tr class="inherited" id="disableBehavior">
+  <td><a href="/doc/api/1.0/CComponent#disableBehavior-detail">disableBehavior()</a></td>
+  <td>Disables an attached behavior.</td>
+  <td><a href="/doc/api/1.0/CComponent">CComponent</a></td>
+</tr>
+<tr class="inherited" id="disableBehaviors">
+  <td><a href="/doc/api/1.0/CComponent#disableBehaviors-detail">disableBehaviors()</a></td>
+  <td>Disables all behaviors attached to this component.</td>
+  <td><a href="/doc/api/1.0/CComponent">CComponent</a></td>
+</tr>
+<tr class="inherited" id="enableBehavior">
+  <td><a href="/doc/api/1.0/CComponent#enableBehavior-detail">enableBehavior()</a></td>
+  <td>Enables an attached behavior.</td>
+  <td><a href="/doc/api/1.0/CComponent">CComponent</a></td>
+</tr>
+<tr class="inherited" id="enableBehaviors">
+  <td><a href="/doc/api/1.0/CComponent#enableBehaviors-detail">enableBehaviors()</a></td>
+  <td>Enables all behaviors attached to this component.</td>
+  <td><a href="/doc/api/1.0/CComponent">CComponent</a></td>
+</tr>
+<tr class="inherited" id="getCount">
+  <td><a href="/doc/api/1.0/CMap#getCount-detail">getCount()</a></td>
+  <td>Returns the number of items in the map</td>
+  <td><a href="/doc/api/1.0/CMap">CMap</a></td>
+</tr>
+<tr class="inherited" id="getEventHandlers">
+  <td><a href="/doc/api/1.0/CComponent#getEventHandlers-detail">getEventHandlers()</a></td>
+  <td>Returns the list of attached event handlers for an event.</td>
+  <td><a href="/doc/api/1.0/CComponent">CComponent</a></td>
+</tr>
+<tr class="inherited" id="getIterator">
+  <td><a href="/doc/api/1.0/CMap#getIterator-detail">getIterator()</a></td>
+  <td>Returns an iterator for traversing the items in the list.</td>
+  <td><a href="/doc/api/1.0/CMap">CMap</a></td>
+</tr>
+<tr class="inherited" id="getKeys">
+  <td><a href="/doc/api/1.0/CMap#getKeys-detail">getKeys()</a></td>
+  <td>Returns the key list</td>
+  <td><a href="/doc/api/1.0/CMap">CMap</a></td>
+</tr>
+<tr class="inherited" id="getReadOnly">
+  <td><a href="/doc/api/1.0/CMap#getReadOnly-detail">getReadOnly()</a></td>
+  <td>Returns whether this map is read-only or not. Defaults to false.</td>
+  <td><a href="/doc/api/1.0/CMap">CMap</a></td>
+</tr>
+<tr class="inherited" id="hasEvent">
+  <td><a href="/doc/api/1.0/CComponent#hasEvent-detail">hasEvent()</a></td>
+  <td>Determines whether an event is defined.</td>
+  <td><a href="/doc/api/1.0/CComponent">CComponent</a></td>
+</tr>
+<tr class="inherited" id="hasEventHandler">
+  <td><a href="/doc/api/1.0/CComponent#hasEventHandler-detail">hasEventHandler()</a></td>
+  <td>Checks whether the named event has attached handlers.</td>
+  <td><a href="/doc/api/1.0/CComponent">CComponent</a></td>
+</tr>
+<tr id="hasProperty">
+  <td><a href="/doc/api/1.0/CAttributeCollection#hasProperty-detail">hasProperty()</a></td>
+  <td>Determines whether a property is defined.</td>
+  <td>CAttributeCollection</td>
+</tr>
+<tr id="itemAt">
+  <td><a href="/doc/api/1.0/CAttributeCollection#itemAt-detail">itemAt()</a></td>
+  <td>Returns the item with the specified key.</td>
+  <td>CAttributeCollection</td>
+</tr>
+<tr class="inherited" id="mergeArray">
+  <td><a href="/doc/api/1.0/CMap#mergeArray-detail">mergeArray()</a></td>
+  <td>Merges two arrays into one recursively.</td>
+  <td><a href="/doc/api/1.0/CMap">CMap</a></td>
+</tr>
+<tr class="inherited" id="mergeWith">
+  <td><a href="/doc/api/1.0/CMap#mergeWith-detail">mergeWith()</a></td>
+  <td>Merges iterable data into the map.</td>
+  <td><a href="/doc/api/1.0/CMap">CMap</a></td>
+</tr>
+<tr class="inherited" id="offsetExists">
+  <td><a href="/doc/api/1.0/CMap#offsetExists-detail">offsetExists()</a></td>
+  <td>Returns whether there is an element at the specified offset.</td>
+  <td><a href="/doc/api/1.0/CMap">CMap</a></td>
+</tr>
+<tr class="inherited" id="offsetGet">
+  <td><a href="/doc/api/1.0/CMap#offsetGet-detail">offsetGet()</a></td>
+  <td>Returns the element at the specified offset.</td>
+  <td><a href="/doc/api/1.0/CMap">CMap</a></td>
+</tr>
+<tr class="inherited" id="offsetSet">
+  <td><a href="/doc/api/1.0/CMap#offsetSet-detail">offsetSet()</a></td>
+  <td>Sets the element at the specified offset.</td>
+  <td><a href="/doc/api/1.0/CMap">CMap</a></td>
+</tr>
+<tr class="inherited" id="offsetUnset">
+  <td><a href="/doc/api/1.0/CMap#offsetUnset-detail">offsetUnset()</a></td>
+  <td>Unsets the element at the specified offset.</td>
+  <td><a href="/doc/api/1.0/CMap">CMap</a></td>
+</tr>
+<tr class="inherited" id="raiseEvent">
+  <td><a href="/doc/api/1.0/CComponent#raiseEvent-detail">raiseEvent()</a></td>
+  <td>Raises an event.</td>
+  <td><a href="/doc/api/1.0/CComponent">CComponent</a></td>
+</tr>
+<tr id="remove">
+  <td><a href="/doc/api/1.0/CAttributeCollection#remove-detail">remove()</a></td>
+  <td>Removes an item from the map by its key.</td>
+  <td>CAttributeCollection</td>
+</tr>
+<tr class="inherited" id="toArray">
+  <td><a href="/doc/api/1.0/CMap#toArray-detail">toArray()</a></td>
+  <td></td>
+  <td><a href="/doc/api/1.0/CMap">CMap</a></td>
+</tr>
+</table>
+</div>
+<div class="summary docMethod">
+<h2>Protected Methods</h2>
+
+<p><a href="#" class="toggle">Hide inherited methods</a></p>
+
+<table class="summaryTable">
+<colgroup>
+	<col class="col-method" />
+	<col class="col-description" />
+	<col class="col-defined" />
+</colgroup>
+<tr>
+  <th>Method</th><th>Description</th><th>Defined By</th>
+</tr>
+<tr class="inherited" id="setReadOnly">
+  <td><a href="/doc/api/1.0/CMap#setReadOnly-detail">setReadOnly()</a></td>
+  <td>Sets whether this list is read-only or not</td>
+  <td><a href="/doc/api/1.0/CMap">CMap</a></td>
+</tr>
+</table>
+</div>
+<a name="events"></a>
+
+<h2>Property Details</h2>
+<div class="detailHeader" id="caseSensitive-detail">
+caseSensitive<span class="detailHeaderTag">
+property
+</span>
+</div>
+
+<div class="signature">
+public boolean <b>$caseSensitive</b>;</div>
+
+<p>whether the keys are case-sensitive. Defaults to false.</p>
+
+
+<h2>Method Details</h2>
+
+<div class="detailHeader" id="__get-detail">
+__get()
+<span class="detailHeaderTag">
+method
+</span>
+</div>
+
+<table class="summaryTable">
+<tr><td colspan="3">
+<div class="signature2">
+public mixed <b>__get</b>(string $name)</div>
+</td></tr>
+<tr>
+  <td class="paramNameCol">$name</td>
+  <td class="paramTypeCol">string</td>
+  <td class="paramDescCol">the property name or the event name</td>
+</tr>
+<tr>
+  <td class="paramNameCol">{return}</td>
+  <td class="paramTypeCol">mixed</td>
+  <td class="paramDescCol">the property value or the event handler list</td>
+</tr>
+</table>
+
+<div class="sourceCode">
+<b>Source Code:</b> <a class="sourceLink" href="https://github.com/yiisoft/yii/blob/1.0.12/framework/collections/CAttributeCollection.php#L47">framework/collections/CAttributeCollection.php#47</a> (<b><a href="#" class="show">show</a></b>)
+<div class="code"><code><span style="color: #000000">
+<span style="color: #0000BB"></span><span style="color: #007700">public&nbsp;function&nbsp;</span><span style="color: #0000BB">__get</span><span style="color: #007700">(</span><span style="color: #0000BB">$name</span><span style="color: #007700">)<br />{<br />&nbsp;&nbsp;&nbsp;&nbsp;if(</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">contains</span><span style="color: #007700">(</span><span style="color: #0000BB">$name</span><span style="color: #007700">))<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">itemAt</span><span style="color: #007700">(</span><span style="color: #0000BB">$name</span><span style="color: #007700">);<br />&nbsp;&nbsp;&nbsp;&nbsp;else<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;</span><span style="color: #0000BB">parent</span><span style="color: #007700">::</span><span style="color: #0000BB">__get</span><span style="color: #007700">(</span><span style="color: #0000BB">$name</span><span style="color: #007700">);<br />}</span>
+</span>
+</code></div>
+</div>
+<p>Returns a property value or an event handler list by property or event name.
+This method overrides the parent implementation by returning
+a key value if the key exists in the collection.</p>
+
+
+<div class="detailHeader" id="__isset-detail">
+__isset()
+<span class="detailHeaderTag">
+method
+(available since v1.0.1)
+</span>
+</div>
+
+<table class="summaryTable">
+<tr><td colspan="3">
+<div class="signature2">
+public boolean <b>__isset</b>(string $name)</div>
+</td></tr>
+<tr>
+  <td class="paramNameCol">$name</td>
+  <td class="paramTypeCol">string</td>
+  <td class="paramDescCol">the property name or the event name</td>
+</tr>
+<tr>
+  <td class="paramNameCol">{return}</td>
+  <td class="paramTypeCol">boolean</td>
+  <td class="paramDescCol">whether the property value is null</td>
+</tr>
+</table>
+
+<div class="sourceCode">
+<b>Source Code:</b> <a class="sourceLink" href="https://github.com/yiisoft/yii/blob/1.0.12/framework/collections/CAttributeCollection.php#L76">framework/collections/CAttributeCollection.php#76</a> (<b><a href="#" class="show">show</a></b>)
+<div class="code"><code><span style="color: #000000">
+<span style="color: #0000BB"></span><span style="color: #007700">public&nbsp;function&nbsp;</span><span style="color: #0000BB">__isset</span><span style="color: #007700">(</span><span style="color: #0000BB">$name</span><span style="color: #007700">)<br />{<br />&nbsp;&nbsp;&nbsp;&nbsp;if(</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">contains</span><span style="color: #007700">(</span><span style="color: #0000BB">$name</span><span style="color: #007700">))<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">itemAt</span><span style="color: #007700">(</span><span style="color: #0000BB">$name</span><span style="color: #007700">)!==</span><span style="color: #0000BB">null</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;else<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;</span><span style="color: #0000BB">parent</span><span style="color: #007700">::</span><span style="color: #0000BB">__isset</span><span style="color: #007700">(</span><span style="color: #0000BB">$name</span><span style="color: #007700">);<br />}</span>
+</span>
+</code></div>
+</div>
+<p>Checks if a property value is null.
+This method overrides the parent implementation by checking
+if the key exists in the collection and contains a non-null value.</p>
+
+
+<div class="detailHeader" id="__set-detail">
+__set()
+<span class="detailHeaderTag">
+method
+</span>
+</div>
+
+<table class="summaryTable">
+<tr><td colspan="3">
+<div class="signature2">
+public void <b>__set</b>(string $name, mixed $value)</div>
+</td></tr>
+<tr>
+  <td class="paramNameCol">$name</td>
+  <td class="paramTypeCol">string</td>
+  <td class="paramDescCol">the property name or event name</td>
+</tr>
+<tr>
+  <td class="paramNameCol">$value</td>
+  <td class="paramTypeCol">mixed</td>
+  <td class="paramDescCol">the property value or event handler</td>
+</tr>
+</table>
+
+<div class="sourceCode">
+<b>Source Code:</b> <a class="sourceLink" href="https://github.com/yiisoft/yii/blob/1.0.12/framework/collections/CAttributeCollection.php#L63">framework/collections/CAttributeCollection.php#63</a> (<b><a href="#" class="show">show</a></b>)
+<div class="code"><code><span style="color: #000000">
+<span style="color: #0000BB"></span><span style="color: #007700">public&nbsp;function&nbsp;</span><span style="color: #0000BB">__set</span><span style="color: #007700">(</span><span style="color: #0000BB">$name</span><span style="color: #007700">,</span><span style="color: #0000BB">$value</span><span style="color: #007700">)<br />{<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">add</span><span style="color: #007700">(</span><span style="color: #0000BB">$name</span><span style="color: #007700">,</span><span style="color: #0000BB">$value</span><span style="color: #007700">);<br />}</span>
+</span>
+</code></div>
+</div>
+<p>Sets value of a component property.
+This method overrides the parent implementation by adding a new key value
+to the collection.</p>
+
+
+<div class="detailHeader" id="__unset-detail">
+__unset()
+<span class="detailHeaderTag">
+method
+(available since v1.0.1)
+</span>
+</div>
+
+<table class="summaryTable">
+<tr><td colspan="3">
+<div class="signature2">
+public void <b>__unset</b>(string $name)</div>
+</td></tr>
+<tr>
+  <td class="paramNameCol">$name</td>
+  <td class="paramTypeCol">string</td>
+  <td class="paramDescCol">the property name or the event name</td>
+</tr>
+</table>
+
+<div class="sourceCode">
+<b>Source Code:</b> <a class="sourceLink" href="https://github.com/yiisoft/yii/blob/1.0.12/framework/collections/CAttributeCollection.php#L91">framework/collections/CAttributeCollection.php#91</a> (<b><a href="#" class="show">show</a></b>)
+<div class="code"><code><span style="color: #000000">
+<span style="color: #0000BB"></span><span style="color: #007700">public&nbsp;function&nbsp;</span><span style="color: #0000BB">__unset</span><span style="color: #007700">(</span><span style="color: #0000BB">$name</span><span style="color: #007700">)<br />{<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">remove</span><span style="color: #007700">(</span><span style="color: #0000BB">$name</span><span style="color: #007700">);<br />}</span>
+</span>
+</code></div>
+</div>
+<p>Sets a component property to be null.
+This method overrides the parent implementation by clearing
+the specified key value.</p>
+
+
+<div class="detailHeader" id="add-detail">
+add()
+<span class="detailHeaderTag">
+method
+</span>
+</div>
+
+<table class="summaryTable">
+<tr><td colspan="3">
+<div class="signature2">
+public void <b>add</b>(mixed $key, mixed $value)</div>
+</td></tr>
+<tr>
+  <td class="paramNameCol">$key</td>
+  <td class="paramTypeCol">mixed</td>
+  <td class="paramDescCol">key</td>
+</tr>
+<tr>
+  <td class="paramNameCol">$value</td>
+  <td class="paramTypeCol">mixed</td>
+  <td class="paramDescCol">value</td>
+</tr>
+</table>
+
+<div class="sourceCode">
+<b>Source Code:</b> <a class="sourceLink" href="https://github.com/yiisoft/yii/blob/1.0.12/framework/collections/CAttributeCollection.php#L116">framework/collections/CAttributeCollection.php#116</a> (<b><a href="#" class="show">show</a></b>)
+<div class="code"><code><span style="color: #000000">
+<span style="color: #0000BB"></span><span style="color: #007700">public&nbsp;function&nbsp;</span><span style="color: #0000BB">add</span><span style="color: #007700">(</span><span style="color: #0000BB">$key</span><span style="color: #007700">,</span><span style="color: #0000BB">$value</span><span style="color: #007700">)<br />{<br />&nbsp;&nbsp;&nbsp;&nbsp;if(</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">caseSensitive</span><span style="color: #007700">)<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">parent</span><span style="color: #007700">::</span><span style="color: #0000BB">add</span><span style="color: #007700">(</span><span style="color: #0000BB">$key</span><span style="color: #007700">,</span><span style="color: #0000BB">$value</span><span style="color: #007700">);<br />&nbsp;&nbsp;&nbsp;&nbsp;else<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">parent</span><span style="color: #007700">::</span><span style="color: #0000BB">add</span><span style="color: #007700">(</span><span style="color: #0000BB">strtolower</span><span style="color: #007700">(</span><span style="color: #0000BB">$key</span><span style="color: #007700">),</span><span style="color: #0000BB">$value</span><span style="color: #007700">);<br />}</span>
+</span>
+</code></div>
+</div>
+<p>Adds an item into the map.
+This overrides the parent implementation by converting the key to lower case first if <a href="/doc/api/1.0/CAttributeCollection#caseSensitive">caseSensitive</a> is false.</p>
+
+
+<div class="detailHeader" id="canGetProperty-detail">
+canGetProperty()
+<span class="detailHeaderTag">
+method
+</span>
+</div>
+
+<table class="summaryTable">
+<tr><td colspan="3">
+<div class="signature2">
+public boolean <b>canGetProperty</b>(string $name)</div>
+</td></tr>
+<tr>
+  <td class="paramNameCol">$name</td>
+  <td class="paramTypeCol">string</td>
+  <td class="paramDescCol">the property name</td>
+</tr>
+<tr>
+  <td class="paramNameCol">{return}</td>
+  <td class="paramTypeCol">boolean</td>
+  <td class="paramDescCol">whether the property can be read</td>
+</tr>
+</table>
+
+<div class="sourceCode">
+<b>Source Code:</b> <a class="sourceLink" href="https://github.com/yiisoft/yii/blob/1.0.12/framework/collections/CAttributeCollection.php#L171">framework/collections/CAttributeCollection.php#171</a> (<b><a href="#" class="show">show</a></b>)
+<div class="code"><code><span style="color: #000000">
+<span style="color: #0000BB"></span><span style="color: #007700">public&nbsp;function&nbsp;</span><span style="color: #0000BB">canGetProperty</span><span style="color: #007700">(</span><span style="color: #0000BB">$name</span><span style="color: #007700">)<br />{<br />&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">contains</span><span style="color: #007700">(</span><span style="color: #0000BB">$name</span><span style="color: #007700">)&nbsp;||&nbsp;</span><span style="color: #0000BB">parent</span><span style="color: #007700">::</span><span style="color: #0000BB">canGetProperty</span><span style="color: #007700">(</span><span style="color: #0000BB">$name</span><span style="color: #007700">);<br />}</span>
+</span>
+</code></div>
+</div>
+<p>Determines whether a property can be read.
+This method overrides parent implementation by returning true
+if the collection contains the named key.</p>
+
+
+<div class="detailHeader" id="canSetProperty-detail">
+canSetProperty()
+<span class="detailHeaderTag">
+method
+</span>
+</div>
+
+<table class="summaryTable">
+<tr><td colspan="3">
+<div class="signature2">
+public boolean <b>canSetProperty</b>(string $name)</div>
+</td></tr>
+<tr>
+  <td class="paramNameCol">$name</td>
+  <td class="paramTypeCol">string</td>
+  <td class="paramDescCol">the property name</td>
+</tr>
+<tr>
+  <td class="paramNameCol">{return}</td>
+  <td class="paramTypeCol">boolean</td>
+  <td class="paramDescCol">true</td>
+</tr>
+</table>
+
+<div class="sourceCode">
+<b>Source Code:</b> <a class="sourceLink" href="https://github.com/yiisoft/yii/blob/1.0.12/framework/collections/CAttributeCollection.php#L183">framework/collections/CAttributeCollection.php#183</a> (<b><a href="#" class="show">show</a></b>)
+<div class="code"><code><span style="color: #000000">
+<span style="color: #0000BB"></span><span style="color: #007700">public&nbsp;function&nbsp;</span><span style="color: #0000BB">canSetProperty</span><span style="color: #007700">(</span><span style="color: #0000BB">$name</span><span style="color: #007700">)<br />{<br />&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;</span><span style="color: #0000BB">true</span><span style="color: #007700">;<br />}</span>
+</span>
+</code></div>
+</div>
+<p>Determines whether a property can be set.
+This method overrides parent implementation by always returning true
+because you can always add a new value to the collection.</p>
+
+
+<div class="detailHeader" id="contains-detail">
+contains()
+<span class="detailHeaderTag">
+method
+</span>
+</div>
+
+<table class="summaryTable">
+<tr><td colspan="3">
+<div class="signature2">
+public boolean <b>contains</b>(mixed $key)</div>
+</td></tr>
+<tr>
+  <td class="paramNameCol">$key</td>
+  <td class="paramTypeCol">mixed</td>
+  <td class="paramDescCol">the key</td>
+</tr>
+<tr>
+  <td class="paramNameCol">{return}</td>
+  <td class="paramTypeCol">boolean</td>
+  <td class="paramDescCol">whether the map contains an item with the specified key</td>
+</tr>
+</table>
+
+<div class="sourceCode">
+<b>Source Code:</b> <a class="sourceLink" href="https://github.com/yiisoft/yii/blob/1.0.12/framework/collections/CAttributeCollection.php#L144">framework/collections/CAttributeCollection.php#144</a> (<b><a href="#" class="show">show</a></b>)
+<div class="code"><code><span style="color: #000000">
+<span style="color: #0000BB"></span><span style="color: #007700">public&nbsp;function&nbsp;</span><span style="color: #0000BB">contains</span><span style="color: #007700">(</span><span style="color: #0000BB">$key</span><span style="color: #007700">)<br />{<br />&nbsp;&nbsp;&nbsp;&nbsp;if(</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">caseSensitive</span><span style="color: #007700">)<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;</span><span style="color: #0000BB">parent</span><span style="color: #007700">::</span><span style="color: #0000BB">contains</span><span style="color: #007700">(</span><span style="color: #0000BB">$key</span><span style="color: #007700">);<br />&nbsp;&nbsp;&nbsp;&nbsp;else<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;</span><span style="color: #0000BB">parent</span><span style="color: #007700">::</span><span style="color: #0000BB">contains</span><span style="color: #007700">(</span><span style="color: #0000BB">strtolower</span><span style="color: #007700">(</span><span style="color: #0000BB">$key</span><span style="color: #007700">));<br />}</span>
+</span>
+</code></div>
+</div>
+<p>Returns whether the specified is in the map.
+This overrides the parent implementation by converting the key to lower case first if <a href="/doc/api/1.0/CAttributeCollection#caseSensitive">caseSensitive</a> is false.</p>
+
+
+<div class="detailHeader" id="hasProperty-detail">
+hasProperty()
+<span class="detailHeaderTag">
+method
+</span>
+</div>
+
+<table class="summaryTable">
+<tr><td colspan="3">
+<div class="signature2">
+public boolean <b>hasProperty</b>(string $name)</div>
+</td></tr>
+<tr>
+  <td class="paramNameCol">$name</td>
+  <td class="paramTypeCol">string</td>
+  <td class="paramDescCol">the property name</td>
+</tr>
+<tr>
+  <td class="paramNameCol">{return}</td>
+  <td class="paramTypeCol">boolean</td>
+  <td class="paramDescCol">whether the property is defined</td>
+</tr>
+</table>
+
+<div class="sourceCode">
+<b>Source Code:</b> <a class="sourceLink" href="https://github.com/yiisoft/yii/blob/1.0.12/framework/collections/CAttributeCollection.php#L159">framework/collections/CAttributeCollection.php#159</a> (<b><a href="#" class="show">show</a></b>)
+<div class="code"><code><span style="color: #000000">
+<span style="color: #0000BB"></span><span style="color: #007700">public&nbsp;function&nbsp;</span><span style="color: #0000BB">hasProperty</span><span style="color: #007700">(</span><span style="color: #0000BB">$name</span><span style="color: #007700">)<br />{<br />&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">contains</span><span style="color: #007700">(</span><span style="color: #0000BB">$name</span><span style="color: #007700">)&nbsp;||&nbsp;</span><span style="color: #0000BB">parent</span><span style="color: #007700">::</span><span style="color: #0000BB">hasProperty</span><span style="color: #007700">(</span><span style="color: #0000BB">$name</span><span style="color: #007700">);<br />}</span>
+</span>
+</code></div>
+</div>
+<p>Determines whether a property is defined.
+This method overrides parent implementation by returning true
+if the collection contains the named key.</p>
+
+
+<div class="detailHeader" id="itemAt-detail">
+itemAt()
+<span class="detailHeaderTag">
+method
+</span>
+</div>
+
+<table class="summaryTable">
+<tr><td colspan="3">
+<div class="signature2">
+public mixed <b>itemAt</b>(mixed $key)</div>
+</td></tr>
+<tr>
+  <td class="paramNameCol">$key</td>
+  <td class="paramTypeCol">mixed</td>
+  <td class="paramDescCol">the key</td>
+</tr>
+<tr>
+  <td class="paramNameCol">{return}</td>
+  <td class="paramTypeCol">mixed</td>
+  <td class="paramDescCol">the element at the offset, null if no element is found at the offset</td>
+</tr>
+</table>
+
+<div class="sourceCode">
+<b>Source Code:</b> <a class="sourceLink" href="https://github.com/yiisoft/yii/blob/1.0.12/framework/collections/CAttributeCollection.php#L102">framework/collections/CAttributeCollection.php#102</a> (<b><a href="#" class="show">show</a></b>)
+<div class="code"><code><span style="color: #000000">
+<span style="color: #0000BB"></span><span style="color: #007700">public&nbsp;function&nbsp;</span><span style="color: #0000BB">itemAt</span><span style="color: #007700">(</span><span style="color: #0000BB">$key</span><span style="color: #007700">)<br />{<br />&nbsp;&nbsp;&nbsp;&nbsp;if(</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">caseSensitive</span><span style="color: #007700">)<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;</span><span style="color: #0000BB">parent</span><span style="color: #007700">::</span><span style="color: #0000BB">itemAt</span><span style="color: #007700">(</span><span style="color: #0000BB">$key</span><span style="color: #007700">);<br />&nbsp;&nbsp;&nbsp;&nbsp;else<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;</span><span style="color: #0000BB">parent</span><span style="color: #007700">::</span><span style="color: #0000BB">itemAt</span><span style="color: #007700">(</span><span style="color: #0000BB">strtolower</span><span style="color: #007700">(</span><span style="color: #0000BB">$key</span><span style="color: #007700">));<br />}</span>
+</span>
+</code></div>
+</div>
+<p>Returns the item with the specified key.
+This overrides the parent implementation by converting the key to lower case first if <a href="/doc/api/1.0/CAttributeCollection#caseSensitive">caseSensitive</a> is false.</p>
+
+
+<div class="detailHeader" id="remove-detail">
+remove()
+<span class="detailHeaderTag">
+method
+</span>
+</div>
+
+<table class="summaryTable">
+<tr><td colspan="3">
+<div class="signature2">
+public mixed <b>remove</b>(mixed $key)</div>
+</td></tr>
+<tr>
+  <td class="paramNameCol">$key</td>
+  <td class="paramTypeCol">mixed</td>
+  <td class="paramDescCol">the key of the item to be removed</td>
+</tr>
+<tr>
+  <td class="paramNameCol">{return}</td>
+  <td class="paramTypeCol">mixed</td>
+  <td class="paramDescCol">the removed value, null if no such key exists.</td>
+</tr>
+</table>
+
+<div class="sourceCode">
+<b>Source Code:</b> <a class="sourceLink" href="https://github.com/yiisoft/yii/blob/1.0.12/framework/collections/CAttributeCollection.php#L130">framework/collections/CAttributeCollection.php#130</a> (<b><a href="#" class="show">show</a></b>)
+<div class="code"><code><span style="color: #000000">
+<span style="color: #0000BB"></span><span style="color: #007700">public&nbsp;function&nbsp;</span><span style="color: #0000BB">remove</span><span style="color: #007700">(</span><span style="color: #0000BB">$key</span><span style="color: #007700">)<br />{<br />&nbsp;&nbsp;&nbsp;&nbsp;if(</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">caseSensitive</span><span style="color: #007700">)<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;</span><span style="color: #0000BB">parent</span><span style="color: #007700">::</span><span style="color: #0000BB">remove</span><span style="color: #007700">(</span><span style="color: #0000BB">$key</span><span style="color: #007700">);<br />&nbsp;&nbsp;&nbsp;&nbsp;else<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;</span><span style="color: #0000BB">parent</span><span style="color: #007700">::</span><span style="color: #0000BB">remove</span><span style="color: #007700">(</span><span style="color: #0000BB">strtolower</span><span style="color: #007700">(</span><span style="color: #0000BB">$key</span><span style="color: #007700">));<br />}</span>
+</span>
+</code></div>
+</div>
+<p>Removes an item from the map by its key.
+This overrides the parent implementation by converting the key to lower case first if <a href="/doc/api/1.0/CAttributeCollection#caseSensitive">caseSensitive</a> is false.</p>
+
+

@@ -1,26 +1,27 @@
 .container.contribute {
-	color:#4d4d4d;
-	margin-bottom: 6rem;
+  color: #4d4d4d;
+  margin-bottom: 6rem;
   font-size: 1.6rem;
-	p {
-      padding-bottom: 1.3rem;
-	}
 
-    img.icon{
-        width: 8rem;
-        padding-bottom: 3rem;
-    }
+  p {
+    padding-bottom: 1.3rem;
+  }
 
-    blockquote.note a{
-        color: darken(#FFAB19, 15%);
-    }
+  img.icon {
+    width: 8rem;
+    padding-bottom: 3rem;
+  }
 
-    blockquote.note a:hover{
-        color: darken(#FFAB19, 25%);
-    }
+  blockquote.note a {
+    color: darken(#FFAB19, 15%);
+  }
 
-	.heading-separator h2 {
-		@include dashed-heading-variant($eshill-header-color, #fff, fontsize(h2));
-		margin: 6.5rem 0;
-	}
+  blockquote.note a:hover {
+    color: darken(#FFAB19, 25%);
+  }
+
+  .heading-separator h2 {
+    @include dashed-heading-variant($eshill-header-color, #fff, fontsize(h2));
+    margin: 6.5rem 0;
+  }
 }

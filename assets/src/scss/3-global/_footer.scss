@@ -2,9 +2,11 @@ footer {
   background-color: $footer-background-color;
   color: darken($footer-color, 10%);
   @include rem(min-height, 428px);
+
   a {
     text-decoration: none;
     color: darken($footer-color, 10%);
+
     &:hover {
       color: $footer-color;
     }
@@ -30,11 +32,14 @@ footer {
   @include rem(margin-top, 60px);
   padding-left: 0;
 }
+
 .footerList_item {
   @include rem(font-size, 14px);
   @include rem(margin-bottom, 12px);
+
   .social {
     white-space: nowrap;
+
     a {
       border: none;
       text-align: center;
@@ -47,10 +52,11 @@ footer {
       display: inline-block;
       background-color: $footer-color;
       color: $footer-background-color;
-      border-radius:50%;
+      border-radius: 50%;
       @include rem(width, 24px);
       @include rem(height, 24px);
-      transition:color 0.2s ease-out, background 0.2s ease-in;
+      transition: color 0.2s ease-out, background 0.2s ease-in;
+
       &:hover {
         background-color: #fff;
         color: $footer-background-color;

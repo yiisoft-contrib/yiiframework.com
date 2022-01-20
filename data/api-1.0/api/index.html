@@ -1,0 +1,944 @@
+<h1>Yii Framework 1.0 API Documentation</h1>
+<p>
+    This is the Yii Framework API Documentation. Here you will find detailed information about all classes
+    provided by the Framework. Below you find a list of the existing classes, interfaces, and traits, ordered by their
+    fully qualified name (including the namespace). Each of them has a dedicated page which contains a description about the
+    purpose of the class, a list of the available methods, properties and constants, and detailed description
+    on how to use each of them.
+</p>
+<p>
+    On this page you find all the classes included in version 1.0
+    of the framework. You can use the dropdown menu on the top right to switch between versions.
+</p>
+<p>
+    <strong>You can search API documentation using the search form on the top.</strong>
+	You can search for class names and also method and property names, e.g. <code>ActiveRecord.save()</code> or just <code>.save()</code> or <code>::save()</code>.
+</p>
+
+<table class="summaryTable docIndex">
+<colgroup>
+	<col class="col-package" />
+	<col class="col-class" />
+	<col class="col-description" />
+</colgroup>
+<tr>
+  <th>Package</th><th>Class</th><th>Description</th>
+</tr>
+<tr>
+  <td rowspan="2"><a name="system"></a>system</td>
+  <td><a href="/doc/api/1.0/Yii">Yii</a></td>
+  <td>Yii is a helper class serving common framework functionalities.</td>
+</tr>
+<tr>
+  <td><a href="/doc/api/1.0/YiiBase">YiiBase</a></td>
+  <td>YiiBase is a helper class serving common framework functionalities.</td>
+</tr>
+<tr>
+  <td rowspan="27"><a name="system.base"></a>system.base</td>
+  <td><a href="/doc/api/1.0/CApplication">CApplication</a></td>
+  <td>CApplication is the base class for all application classes.</td>
+</tr>
+<tr>
+  <td><a href="/doc/api/1.0/CApplicationComponent">CApplicationComponent</a></td>
+  <td>CApplicationComponent is the base class for application component classes.</td>
+</tr>
+<tr>
+  <td><a href="/doc/api/1.0/CBehavior">CBehavior</a></td>
+  <td>CBehavior is a convenient base class for behavior classes.</td>
+</tr>
+<tr>
+  <td><a href="/doc/api/1.0/CComponent">CComponent</a></td>
+  <td>CComponent is the base class for all components.</td>
+</tr>
+<tr>
+  <td><a href="/doc/api/1.0/CEnumerable">CEnumerable</a></td>
+  <td>CEnumerable is the base class for all enumerable types.</td>
+</tr>
+<tr>
+  <td><a href="/doc/api/1.0/CErrorEvent">CErrorEvent</a></td>
+  <td>CErrorEvent represents the parameter for the <a href="/doc/api/1.0/CApplication#onError">onError</a> event.</td>
+</tr>
+<tr>
+  <td><a href="/doc/api/1.0/CErrorHandler">CErrorHandler</a></td>
+  <td>CErrorHandler handles uncaught PHP errors and exceptions.</td>
+</tr>
+<tr>
+  <td><a href="/doc/api/1.0/CEvent">CEvent</a></td>
+  <td>CEvent is the base class for all event classes.</td>
+</tr>
+<tr>
+  <td><a href="/doc/api/1.0/CException">CException</a></td>
+  <td>CException represents a generic exception for all purposes.</td>
+</tr>
+<tr>
+  <td><a href="/doc/api/1.0/CExceptionEvent">CExceptionEvent</a></td>
+  <td>CExceptionEvent represents the parameter for the <a href="/doc/api/1.0/CApplication#onException">onException</a> event.</td>
+</tr>
+<tr>
+  <td><a href="/doc/api/1.0/CHttpException">CHttpException</a></td>
+  <td>CHttpException represents an exception caused by invalid operations of end-users.</td>
+</tr>
+<tr>
+  <td><a href="/doc/api/1.0/CModel">CModel</a></td>
+  <td>CModel is the base class providing the common features needed by data model objects.</td>
+</tr>
+<tr>
+  <td><a href="/doc/api/1.0/CModelBehavior">CModelBehavior</a></td>
+  <td>CModelBehavior is a base class for behaviors that are attached to a model component.</td>
+</tr>
+<tr>
+  <td><a href="/doc/api/1.0/CModelEvent">CModelEvent</a></td>
+  <td>CModelEvent class.</td>
+</tr>
+<tr>
+  <td><a href="/doc/api/1.0/CModule">CModule</a></td>
+  <td>CModule is the base class for module and application classes.</td>
+</tr>
+<tr>
+  <td><a href="/doc/api/1.0/CSecurityManager">CSecurityManager</a></td>
+  <td>CSecurityManager provides private keys, hashing and encryption functions.</td>
+</tr>
+<tr>
+  <td><a href="/doc/api/1.0/CStatePersister">CStatePersister</a></td>
+  <td>CStatePersister implements a file-based persistent data storage.</td>
+</tr>
+<tr>
+  <td><a href="/doc/api/1.0/IAction">IAction</a></td>
+  <td>IAction is the interface that must be implemented by controller actions.</td>
+</tr>
+<tr>
+  <td><a href="/doc/api/1.0/IApplicationComponent">IApplicationComponent</a></td>
+  <td>IApplicationComponent is the interface that all application components must implement.</td>
+</tr>
+<tr>
+  <td><a href="/doc/api/1.0/IAuthManager">IAuthManager</a></td>
+  <td>IAuthManager interface is implemented by an auth manager application component.</td>
+</tr>
+<tr>
+  <td><a href="/doc/api/1.0/IBehavior">IBehavior</a></td>
+  <td>IBehavior interfaces is implemented by all behavior classes.</td>
+</tr>
+<tr>
+  <td><a href="/doc/api/1.0/IFilter">IFilter</a></td>
+  <td>IFilter is the interface that must be implemented by action filters.</td>
+</tr>
+<tr>
+  <td><a href="/doc/api/1.0/IStatePersister">IStatePersister</a></td>
+  <td>IStatePersister is the interface that must be implemented by state persister calsses.</td>
+</tr>
+<tr>
+  <td><a href="/doc/api/1.0/IUserIdentity">IUserIdentity</a></td>
+  <td>IUserIdentity interface is implemented by a user identity class.</td>
+</tr>
+<tr>
+  <td><a href="/doc/api/1.0/IViewRenderer">IViewRenderer</a></td>
+  <td>IViewRenderer interface is implemented by a view renderer class.</td>
+</tr>
+<tr>
+  <td><a href="/doc/api/1.0/IWebServiceProvider">IWebServiceProvider</a></td>
+  <td>IWebServiceProvider interface may be implemented by Web service provider classes.</td>
+</tr>
+<tr>
+  <td><a href="/doc/api/1.0/IWebUser">IWebUser</a></td>
+  <td>IWebUser interface is implemented by a <a href="/doc/api/1.0/CWebApplication#user">user application component</a>.</td>
+</tr>
+<tr>
+  <td rowspan="12"><a name="system.caching"></a>system.caching</td>
+  <td><a href="/doc/api/1.0/CApcCache">CApcCache</a></td>
+  <td>CApcCache provides APC caching in terms of an application component.</td>
+</tr>
+<tr>
+  <td><a href="/doc/api/1.0/CCache">CCache</a></td>
+  <td>CCache is the base class for cache classes with different cache storage implementation.</td>
+</tr>
+<tr>
+  <td><a href="/doc/api/1.0/CDbCache">CDbCache</a></td>
+  <td>CDbCache implements a cache application component by storing cached data in a database.</td>
+</tr>
+<tr>
+  <td><a href="/doc/api/1.0/CDummyCache">CDummyCache</a></td>
+  <td>CDummyCache is a placeholder cache component.</td>
+</tr>
+<tr>
+  <td><a href="/doc/api/1.0/CEAcceleratorCache">CEAcceleratorCache</a></td>
+  <td>CEAcceleratorCache implements a cache application module based on <a href="http://eaccelerator.net/">eaccelerator</a>.</td>
+</tr>
+<tr>
+  <td><a href="/doc/api/1.0/CFileCache">CFileCache</a></td>
+  <td>CFileCache provides a file-based caching mechanism.</td>
+</tr>
+<tr>
+  <td><a href="/doc/api/1.0/CMemCache">CMemCache</a></td>
+  <td>CMemCache implements a cache application component based on <a href="http://www.danga.com/memcached/">memcached</a>.</td>
+</tr>
+<tr>
+  <td><a href="/doc/api/1.0/CMemCacheServerConfiguration">CMemCacheServerConfiguration</a></td>
+  <td>CMemCacheServerConfiguration represents the configuration data for a single memcache server.</td>
+</tr>
+<tr>
+  <td><a href="/doc/api/1.0/CXCache">CXCache</a></td>
+  <td>CXCache implements a cache application module based on <a href="http://xcache.lighttpd.net/">xcache</a>.</td>
+</tr>
+<tr>
+  <td><a href="/doc/api/1.0/CZendDataCache">CZendDataCache</a></td>
+  <td>CZendDataCache implements a cache application module based on the Zend Data Cache</td>
+</tr>
+<tr>
+  <td><a href="/doc/api/1.0/ICache">ICache</a></td>
+  <td>ICache is the interface that must be implemented by cache components.</td>
+</tr>
+<tr>
+  <td><a href="/doc/api/1.0/ICacheDependency">ICacheDependency</a></td>
+  <td>ICacheDependency is the interface that must be implemented by cache dependency classes.</td>
+</tr>
+<tr>
+  <td rowspan="7"><a name="system.caching.dependencies"></a>system.caching.dependencies</td>
+  <td><a href="/doc/api/1.0/CCacheDependency">CCacheDependency</a></td>
+  <td>CCacheDependency is the base class for cache dependency classes.</td>
+</tr>
+<tr>
+  <td><a href="/doc/api/1.0/CChainedCacheDependency">CChainedCacheDependency</a></td>
+  <td>CChainedCacheDependency represents a list of cache dependencies.</td>
+</tr>
+<tr>
+  <td><a href="/doc/api/1.0/CDbCacheDependency">CDbCacheDependency</a></td>
+  <td>CDbCacheDependency represents a dependency based on the query result of a SQL statement.</td>
+</tr>
+<tr>
+  <td><a href="/doc/api/1.0/CDirectoryCacheDependency">CDirectoryCacheDependency</a></td>
+  <td>CDirectoryCacheDependency represents a dependency based on change of a directory.</td>
+</tr>
+<tr>
+  <td><a href="/doc/api/1.0/CExpressionDependency">CExpressionDependency</a></td>
+  <td>CExpressionDependency represents a dependency based on the result of a PHP expression.</td>
+</tr>
+<tr>
+  <td><a href="/doc/api/1.0/CFileCacheDependency">CFileCacheDependency</a></td>
+  <td>CFileCacheDependency represents a dependency based on a file's last modification time.</td>
+</tr>
+<tr>
+  <td><a href="/doc/api/1.0/CGlobalStateCacheDependency">CGlobalStateCacheDependency</a></td>
+  <td>CGlobalStateCacheDependency represents a dependency based on a global state value.</td>
+</tr>
+<tr>
+  <td rowspan="11"><a name="system.collections"></a>system.collections</td>
+  <td><a href="/doc/api/1.0/CAttributeCollection">CAttributeCollection</a></td>
+  <td>CAttributeCollection implements a collection for storing attribute names and values.</td>
+</tr>
+<tr>
+  <td><a href="/doc/api/1.0/CConfiguration">CConfiguration</a></td>
+  <td>CConfiguration represents an array-based configuration.</td>
+</tr>
+<tr>
+  <td><a href="/doc/api/1.0/CList">CList</a></td>
+  <td>CList implements an integer-indexed collection class.</td>
+</tr>
+<tr>
+  <td><a href="/doc/api/1.0/CListIterator">CListIterator</a></td>
+  <td>CListIterator implements an interator for <a href="/doc/api/1.0/CList">CList</a>.</td>
+</tr>
+<tr>
+  <td><a href="/doc/api/1.0/CMap">CMap</a></td>
+  <td>CMap implements a collection that takes key-value pairs.</td>
+</tr>
+<tr>
+  <td><a href="/doc/api/1.0/CMapIterator">CMapIterator</a></td>
+  <td>CMapIterator implements an interator for <a href="/doc/api/1.0/CMap">CMap</a>.</td>
+</tr>
+<tr>
+  <td><a href="/doc/api/1.0/CQueue">CQueue</a></td>
+  <td>CQueue implements a queue.</td>
+</tr>
+<tr>
+  <td><a href="/doc/api/1.0/CQueueIterator">CQueueIterator</a></td>
+  <td>CQueueIterator implements an interator for <a href="/doc/api/1.0/CQueue">CQueue</a>.</td>
+</tr>
+<tr>
+  <td><a href="/doc/api/1.0/CStack">CStack</a></td>
+  <td>CStack implements a stack.</td>
+</tr>
+<tr>
+  <td><a href="/doc/api/1.0/CStackIterator">CStackIterator</a></td>
+  <td>CStackIterator implements an interator for <a href="/doc/api/1.0/CStack">CStack</a>.</td>
+</tr>
+<tr>
+  <td><a href="/doc/api/1.0/CTypedList">CTypedList</a></td>
+  <td>CTypedList represents a list whose items are of the certain type.</td>
+</tr>
+<tr>
+  <td rowspan="4"><a name="system.console"></a>system.console</td>
+  <td><a href="/doc/api/1.0/CConsoleApplication">CConsoleApplication</a></td>
+  <td>CConsoleApplication represents a console application.</td>
+</tr>
+<tr>
+  <td><a href="/doc/api/1.0/CConsoleCommand">CConsoleCommand</a></td>
+  <td>CConsoleCommand represents an executable user command.</td>
+</tr>
+<tr>
+  <td><a href="/doc/api/1.0/CConsoleCommandRunner">CConsoleCommandRunner</a></td>
+  <td>CConsoleCommandRunner manages commands and executes the requested command.</td>
+</tr>
+<tr>
+  <td><a href="/doc/api/1.0/CHelpCommand">CHelpCommand</a></td>
+  <td>CHelpCommand represents a console help command.</td>
+</tr>
+<tr>
+  <td rowspan="5"><a name="system.db"></a>system.db</td>
+  <td><a href="/doc/api/1.0/CDbCommand">CDbCommand</a></td>
+  <td>CDbCommand represents an SQL statement to execute against a database.</td>
+</tr>
+<tr>
+  <td><a href="/doc/api/1.0/CDbConnection">CDbConnection</a></td>
+  <td>CDbConnection represents a connection to a database.</td>
+</tr>
+<tr>
+  <td><a href="/doc/api/1.0/CDbDataReader">CDbDataReader</a></td>
+  <td>CDbDataReader represents a forward-only stream of rows from a query result set.</td>
+</tr>
+<tr>
+  <td><a href="/doc/api/1.0/CDbException">CDbException</a></td>
+  <td>CDbException represents an exception that is caused by some DB-related operations.</td>
+</tr>
+<tr>
+  <td><a href="/doc/api/1.0/CDbTransaction">CDbTransaction</a></td>
+  <td>CDbTransaction represents a DB transaction.</td>
+</tr>
+<tr>
+  <td rowspan="14"><a name="system.db.ar"></a>system.db.ar</td>
+  <td><a href="/doc/api/1.0/CActiveFinder">CActiveFinder</a></td>
+  <td>CActiveFinder implements eager loading and lazy loading of related active records.</td>
+</tr>
+<tr>
+  <td><a href="/doc/api/1.0/CActiveRecord">CActiveRecord</a></td>
+  <td>CActiveRecord is the base class for classes representing relational data.</td>
+</tr>
+<tr>
+  <td><a href="/doc/api/1.0/CActiveRecordBehavior">CActiveRecordBehavior</a></td>
+  <td>CActiveRecordBehavior is the base class for behaviors that can be attached to <a href="/doc/api/1.0/CActiveRecord">CActiveRecord</a>.</td>
+</tr>
+<tr>
+  <td><a href="/doc/api/1.0/CActiveRecordMetaData">CActiveRecordMetaData</a></td>
+  <td>CActiveRecordMetaData represents the meta-data for an Active Record class.</td>
+</tr>
+<tr>
+  <td><a href="/doc/api/1.0/CActiveRelation">CActiveRelation</a></td>
+  <td>CActiveRelation is the base class for representing active relations that bring back related objects.</td>
+</tr>
+<tr>
+  <td><a href="/doc/api/1.0/CBaseActiveRelation">CBaseActiveRelation</a></td>
+  <td>CBaseActiveRelation is the base class for all active relations.</td>
+</tr>
+<tr>
+  <td><a href="/doc/api/1.0/CBelongsToRelation">CBelongsToRelation</a></td>
+  <td>CBelongsToRelation represents the parameters specifying a BELONGS_TO relation.</td>
+</tr>
+<tr>
+  <td><a href="/doc/api/1.0/CHasManyRelation">CHasManyRelation</a></td>
+  <td>CHasManyRelation represents the parameters specifying a HAS_MANY relation.</td>
+</tr>
+<tr>
+  <td><a href="/doc/api/1.0/CHasOneRelation">CHasOneRelation</a></td>
+  <td>CHasOneRelation represents the parameters specifying a HAS_ONE relation.</td>
+</tr>
+<tr>
+  <td><a href="/doc/api/1.0/CJoinElement">CJoinElement</a></td>
+  <td>CJoinElement represents a tree node in the join tree created by <a href="/doc/api/1.0/CActiveFinder">CActiveFinder</a>.</td>
+</tr>
+<tr>
+  <td><a href="/doc/api/1.0/CJoinQuery">CJoinQuery</a></td>
+  <td>CJoinQuery represents a JOIN SQL statement.</td>
+</tr>
+<tr>
+  <td><a href="/doc/api/1.0/CManyManyRelation">CManyManyRelation</a></td>
+  <td>CManyManyRelation represents the parameters specifying a MANY_MANY relation.</td>
+</tr>
+<tr>
+  <td><a href="/doc/api/1.0/CStatElement">CStatElement</a></td>
+  <td>CStatElement represents STAT join element for <a href="/doc/api/1.0/CActiveFinder">CActiveFinder</a>.</td>
+</tr>
+<tr>
+  <td><a href="/doc/api/1.0/CStatRelation">CStatRelation</a></td>
+  <td>CStatRelation represents a statistical relational query.</td>
+</tr>
+<tr>
+  <td rowspan="6"><a name="system.db.schema"></a>system.db.schema</td>
+  <td><a href="/doc/api/1.0/CDbColumnSchema">CDbColumnSchema</a></td>
+  <td>CDbColumnSchema class describes the column meta data of a database table.</td>
+</tr>
+<tr>
+  <td><a href="/doc/api/1.0/CDbCommandBuilder">CDbCommandBuilder</a></td>
+  <td>CDbCommandBuilder provides basic methods to create query commands for tables.</td>
+</tr>
+<tr>
+  <td><a href="/doc/api/1.0/CDbCriteria">CDbCriteria</a></td>
+  <td>CDbCriteria represents a query criteria, such as conditions, ordering by, limit/offset.</td>
+</tr>
+<tr>
+  <td><a href="/doc/api/1.0/CDbExpression">CDbExpression</a></td>
+  <td>CDbExpression represents a DB expression that does not need escaping.</td>
+</tr>
+<tr>
+  <td><a href="/doc/api/1.0/CDbSchema">CDbSchema</a></td>
+  <td>CDbSchema is the base class for retrieving metadata information.</td>
+</tr>
+<tr>
+  <td><a href="/doc/api/1.0/CDbTableSchema">CDbTableSchema</a></td>
+  <td>CDbTableSchema is the base class for representing the metadata of a database table.</td>
+</tr>
+<tr>
+  <td rowspan="5"><a name="system.db.schema.mssql"></a>system.db.schema.mssql</td>
+  <td><a href="/doc/api/1.0/CMssqlColumnSchema">CMssqlColumnSchema</a></td>
+  <td>CMssqlColumnSchema class describes the column meta data of a MSSQL table.</td>
+</tr>
+<tr>
+  <td><a href="/doc/api/1.0/CMssqlCommandBuilder">CMssqlCommandBuilder</a></td>
+  <td>CMssqlCommandBuilder provides basic methods to create query commands for tables for Mssql Servers.</td>
+</tr>
+<tr>
+  <td><a href="/doc/api/1.0/CMssqlPdoAdapter">CMssqlPdoAdapter</a></td>
+  <td>This is an extension of default PDO class for mssql driver only</td>
+</tr>
+<tr>
+  <td><a href="/doc/api/1.0/CMssqlSchema">CMssqlSchema</a></td>
+  <td>CMssqlSchema is the class for retrieving metadata information from a MS SQL Server database.</td>
+</tr>
+<tr>
+  <td><a href="/doc/api/1.0/CMssqlTableSchema">CMssqlTableSchema</a></td>
+  <td>CMssqlTableSchema represents the metadata for a MSSQL table.</td>
+</tr>
+<tr>
+  <td rowspan="3"><a name="system.db.schema.mysql"></a>system.db.schema.mysql</td>
+  <td><a href="/doc/api/1.0/CMysqlColumnSchema">CMysqlColumnSchema</a></td>
+  <td>CMysqlColumnSchema class describes the column meta data of a MySQL table.</td>
+</tr>
+<tr>
+  <td><a href="/doc/api/1.0/CMysqlSchema">CMysqlSchema</a></td>
+  <td>CMysqlSchema is the class for retrieving metadata information from a MySQL database (version 4.1.x and 5.x).</td>
+</tr>
+<tr>
+  <td><a href="/doc/api/1.0/CMysqlTableSchema">CMysqlTableSchema</a></td>
+  <td>CMysqlTableSchema represents the metadata for a MySQL table.</td>
+</tr>
+<tr>
+  <td rowspan="4"><a name="system.db.schema.oci"></a>system.db.schema.oci</td>
+  <td><a href="/doc/api/1.0/COciColumnSchema">COciColumnSchema</a></td>
+  <td>COciColumnSchema class describes the column meta data of a Oracle table.</td>
+</tr>
+<tr>
+  <td><a href="/doc/api/1.0/COciCommandBuilder">COciCommandBuilder</a></td>
+  <td>COciCommandBuilder provides basic methods to create query commands for tables.</td>
+</tr>
+<tr>
+  <td><a href="/doc/api/1.0/COciSchema">COciSchema</a></td>
+  <td>COciSchema is the class for retrieving metadata information from an Oracle database.</td>
+</tr>
+<tr>
+  <td><a href="/doc/api/1.0/COciTableSchema">COciTableSchema</a></td>
+  <td>COciTableSchema represents the metadata for a Oracle table.</td>
+</tr>
+<tr>
+  <td rowspan="3"><a name="system.db.schema.pgsql"></a>system.db.schema.pgsql</td>
+  <td><a href="/doc/api/1.0/CPgsqlColumnSchema">CPgsqlColumnSchema</a></td>
+  <td>CPgsqlColumnSchema class describes the column meta data of a PostgreSQL table.</td>
+</tr>
+<tr>
+  <td><a href="/doc/api/1.0/CPgsqlSchema">CPgsqlSchema</a></td>
+  <td>CPgsqlSchema is the class for retrieving metadata information from a PostgreSQL database.</td>
+</tr>
+<tr>
+  <td><a href="/doc/api/1.0/CPgsqlTableSchema">CPgsqlTableSchema</a></td>
+  <td>CPgsqlTable represents the metadata for a PostgreSQL table.</td>
+</tr>
+<tr>
+  <td rowspan="3"><a name="system.db.schema.sqlite"></a>system.db.schema.sqlite</td>
+  <td><a href="/doc/api/1.0/CSqliteColumnSchema">CSqliteColumnSchema</a></td>
+  <td>CSqliteColumnSchema class describes the column meta data of a SQLite table.</td>
+</tr>
+<tr>
+  <td><a href="/doc/api/1.0/CSqliteCommandBuilder">CSqliteCommandBuilder</a></td>
+  <td>CSqliteCommandBuilder provides basic methods to create query commands for SQLite tables.</td>
+</tr>
+<tr>
+  <td><a href="/doc/api/1.0/CSqliteSchema">CSqliteSchema</a></td>
+  <td>CSqliteSchema is the class for retrieving metadata information from a SQLite (2/3) database.</td>
+</tr>
+<tr>
+  <td rowspan="8"><a name="system.i18n"></a>system.i18n</td>
+  <td><a href="/doc/api/1.0/CDateFormatter">CDateFormatter</a></td>
+  <td>CDateFormatter provides date/time localization functionalities.</td>
+</tr>
+<tr>
+  <td><a href="/doc/api/1.0/CDbMessageSource">CDbMessageSource</a></td>
+  <td>CDbMessageSource represents a message source that stores translated messages in database.</td>
+</tr>
+<tr>
+  <td><a href="/doc/api/1.0/CGettextMessageSource">CGettextMessageSource</a></td>
+  <td>CGettextMessageSource represents a message source that is based on GNU Gettext.</td>
+</tr>
+<tr>
+  <td><a href="/doc/api/1.0/CLocale">CLocale</a></td>
+  <td>CLocale represents the data relevant to a locale.</td>
+</tr>
+<tr>
+  <td><a href="/doc/api/1.0/CMessageSource">CMessageSource</a></td>
+  <td>CMessageSource is the base class for message translation repository classes.</td>
+</tr>
+<tr>
+  <td><a href="/doc/api/1.0/CMissingTranslationEvent">CMissingTranslationEvent</a></td>
+  <td>CMissingTranslationEvent represents the parameter for the <a href="/doc/api/1.0/CMessageSource#onMissingTranslation">onMissingTranslation</a> event.</td>
+</tr>
+<tr>
+  <td><a href="/doc/api/1.0/CNumberFormatter">CNumberFormatter</a></td>
+  <td>CNumberFormatter provides number localization functionalities.</td>
+</tr>
+<tr>
+  <td><a href="/doc/api/1.0/CPhpMessageSource">CPhpMessageSource</a></td>
+  <td>CPhpMessageSource represents a message source that stores translated messages in PHP scripts.</td>
+</tr>
+<tr>
+  <td rowspan="3"><a name="system.i18n.gettext"></a>system.i18n.gettext</td>
+  <td><a href="/doc/api/1.0/CGettextFile">CGettextFile</a></td>
+  <td>CGettextFile is the base class for representing a Gettext message file.</td>
+</tr>
+<tr>
+  <td><a href="/doc/api/1.0/CGettextMoFile">CGettextMoFile</a></td>
+  <td>CGettextMoFile represents an MO Gettext message file.</td>
+</tr>
+<tr>
+  <td><a href="/doc/api/1.0/CGettextPoFile">CGettextPoFile</a></td>
+  <td>CGettextPoFile represents a PO Gettext message file.</td>
+</tr>
+<tr>
+  <td rowspan="9"><a name="system.logging"></a>system.logging</td>
+  <td><a href="/doc/api/1.0/CDbLogRoute">CDbLogRoute</a></td>
+  <td>CDbLogRoute stores log messages in a database table.</td>
+</tr>
+<tr>
+  <td><a href="/doc/api/1.0/CEmailLogRoute">CEmailLogRoute</a></td>
+  <td>CEmailLogRoute sends selected log messages to email addresses.</td>
+</tr>
+<tr>
+  <td><a href="/doc/api/1.0/CFileLogRoute">CFileLogRoute</a></td>
+  <td>CFileLogRoute records log messages in files.</td>
+</tr>
+<tr>
+  <td><a href="/doc/api/1.0/CLogFilter">CLogFilter</a></td>
+  <td>CLogFilter preprocesses the logged messages before they are handled by a log route.</td>
+</tr>
+<tr>
+  <td><a href="/doc/api/1.0/CLogRoute">CLogRoute</a></td>
+  <td>CLogRoute is the base class for all log route classes.</td>
+</tr>
+<tr>
+  <td><a href="/doc/api/1.0/CLogRouter">CLogRouter</a></td>
+  <td>CLogRouter manages log routes that record log messages in different media.</td>
+</tr>
+<tr>
+  <td><a href="/doc/api/1.0/CLogger">CLogger</a></td>
+  <td>CLogger records log messages in memory.</td>
+</tr>
+<tr>
+  <td><a href="/doc/api/1.0/CProfileLogRoute">CProfileLogRoute</a></td>
+  <td>CProfileLogRoute displays the profiling results in Web page.</td>
+</tr>
+<tr>
+  <td><a href="/doc/api/1.0/CWebLogRoute">CWebLogRoute</a></td>
+  <td>CWebLogRoute shows the log content in Web page.</td>
+</tr>
+<tr>
+  <td rowspan="7"><a name="system.utils"></a>system.utils</td>
+  <td><a href="/doc/api/1.0/CChoiceFormat">CChoiceFormat</a></td>
+  <td>CChoiceFormat is a helper that chooses an appropriate message based on the specified number value.</td>
+</tr>
+<tr>
+  <td><a href="/doc/api/1.0/CDateTimeParser">CDateTimeParser</a></td>
+  <td>CDateTimeParser converts a date/time string to a UNIX timestamp according to the specified pattern.</td>
+</tr>
+<tr>
+  <td><a href="/doc/api/1.0/CFileHelper">CFileHelper</a></td>
+  <td>CFileHelper provides a set of helper methods for common file system operations.</td>
+</tr>
+<tr>
+  <td><a href="/doc/api/1.0/CMarkdownParser">CMarkdownParser</a></td>
+  <td>CMarkdownParser is a wrapper of <a href="http://michelf.com/projects/php-markdown/extra/">MarkdownExtra_Parser</a>.</td>
+</tr>
+<tr>
+  <td><a href="/doc/api/1.0/CPropertyValue">CPropertyValue</a></td>
+  <td>CPropertyValue is a helper class that provides static methods to convert component property values to specific types.</td>
+</tr>
+<tr>
+  <td><a href="/doc/api/1.0/CTimestamp">CTimestamp</a></td>
+  <td>CTimestamp represents a timestamp.</td>
+</tr>
+<tr>
+  <td><a href="/doc/api/1.0/CVarDumper">CVarDumper</a></td>
+  <td>CVarDumper is intended to replace the buggy PHP function var_dump and print_r.</td>
+</tr>
+<tr>
+  <td rowspan="18"><a name="system.validators"></a>system.validators</td>
+  <td><a href="/doc/api/1.0/CBooleanValidator">CBooleanValidator</a></td>
+  <td>CBooleanValidator validates that the attribute value is either <a href="/doc/api/1.0/CBooleanValidator#trueValue">trueValue</a>  or <a href="/doc/api/1.0/CBooleanValidator#falseValue">falseValue</a>.</td>
+</tr>
+<tr>
+  <td><a href="/doc/api/1.0/CCaptchaValidator">CCaptchaValidator</a></td>
+  <td>CCaptchaValidator validates that the attribute value is the same as the verification code displayed in the CAPTCHA.</td>
+</tr>
+<tr>
+  <td><a href="/doc/api/1.0/CCompareValidator">CCompareValidator</a></td>
+  <td>CCompareValidator compares the specified attribute value with another value and validates if they are equal.</td>
+</tr>
+<tr>
+  <td><a href="/doc/api/1.0/CDefaultValueValidator">CDefaultValueValidator</a></td>
+  <td>CDefaultValueValidator sets the attributes with the specified value.</td>
+</tr>
+<tr>
+  <td><a href="/doc/api/1.0/CEmailValidator">CEmailValidator</a></td>
+  <td>CEmailValidator validates that the attribute value is a valid email address.</td>
+</tr>
+<tr>
+  <td><a href="/doc/api/1.0/CExistValidator">CExistValidator</a></td>
+  <td>CExistValidator validates that the attribute value exists in a table.</td>
+</tr>
+<tr>
+  <td><a href="/doc/api/1.0/CFileValidator">CFileValidator</a></td>
+  <td>CFileValidator verifies if an attribute is receiving a valid uploaded file.</td>
+</tr>
+<tr>
+  <td><a href="/doc/api/1.0/CFilterValidator">CFilterValidator</a></td>
+  <td>CFilterValidator transforms the data being validated based on a filter.</td>
+</tr>
+<tr>
+  <td><a href="/doc/api/1.0/CInlineValidator">CInlineValidator</a></td>
+  <td>CInlineValidator represents a validator which is defined as a method in the object being validated.</td>
+</tr>
+<tr>
+  <td><a href="/doc/api/1.0/CNumberValidator">CNumberValidator</a></td>
+  <td>CNumberValidator validates that the attribute value is a number.</td>
+</tr>
+<tr>
+  <td><a href="/doc/api/1.0/CRangeValidator">CRangeValidator</a></td>
+  <td>CRangeValidator validates that the attribute value is among the list (specified via <a href="/doc/api/1.0/CRangeValidator#range">range</a>).</td>
+</tr>
+<tr>
+  <td><a href="/doc/api/1.0/CRegularExpressionValidator">CRegularExpressionValidator</a></td>
+  <td>CRegularExpressionValidator validates that the attribute value matches to the specified <a href="/doc/api/1.0/CRegularExpressionValidator#pattern">regular expression</a>.</td>
+</tr>
+<tr>
+  <td><a href="/doc/api/1.0/CRequiredValidator">CRequiredValidator</a></td>
+  <td>CRequiredValidator validates that the specified attribute does not have null or empty value.</td>
+</tr>
+<tr>
+  <td><a href="/doc/api/1.0/CStringValidator">CStringValidator</a></td>
+  <td>CStringValidator validates that the attribute value is of certain length.</td>
+</tr>
+<tr>
+  <td><a href="/doc/api/1.0/CTypeValidator">CTypeValidator</a></td>
+  <td>CTypeValidator verifies if the attribute is of the type specified by <a href="/doc/api/1.0/CTypeValidator#type">type</a>.</td>
+</tr>
+<tr>
+  <td><a href="/doc/api/1.0/CUniqueValidator">CUniqueValidator</a></td>
+  <td>CUniqueValidator validates that the attribute value is unique in the corresponding database table.</td>
+</tr>
+<tr>
+  <td><a href="/doc/api/1.0/CUrlValidator">CUrlValidator</a></td>
+  <td>CUrlValidator validates that the attribute value is a valid http or https URL.</td>
+</tr>
+<tr>
+  <td><a href="/doc/api/1.0/CValidator">CValidator</a></td>
+  <td>CValidator is the base class for all validators.</td>
+</tr>
+<tr>
+  <td rowspan="23"><a name="system.web"></a>system.web</td>
+  <td><a href="/doc/api/1.0/CAssetManager">CAssetManager</a></td>
+  <td>CAssetManager is a Web application component that manages private files (called assets) and makes them accessible by Web clients.</td>
+</tr>
+<tr>
+  <td><a href="/doc/api/1.0/CBaseController">CBaseController</a></td>
+  <td>CBaseController is the base class for <a href="/doc/api/1.0/CController">CController</a> and <a href="/doc/api/1.0/CWidget">CWidget</a>.</td>
+</tr>
+<tr>
+  <td><a href="/doc/api/1.0/CCacheHttpSession">CCacheHttpSession</a></td>
+  <td>CCacheHttpSession implements a session component using cache as storage medium.</td>
+</tr>
+<tr>
+  <td><a href="/doc/api/1.0/CClientScript">CClientScript</a></td>
+  <td>CClientScript manages JavaScript and CSS stylesheets for views.</td>
+</tr>
+<tr>
+  <td><a href="/doc/api/1.0/CController">CController</a></td>
+  <td>CController manages a set of actions which deal with the corresponding user requests.</td>
+</tr>
+<tr>
+  <td><a href="/doc/api/1.0/CCookieCollection">CCookieCollection</a></td>
+  <td>CCookieCollection implements a collection class to store cookies.</td>
+</tr>
+<tr>
+  <td><a href="/doc/api/1.0/CDbHttpSession">CDbHttpSession</a></td>
+  <td>CDbHttpSession extends <a href="/doc/api/1.0/CHttpSession">CHttpSession</a> by using database as session data storage.</td>
+</tr>
+<tr>
+  <td><a href="/doc/api/1.0/CExtController">CExtController</a></td>
+  <td>CExtController is the base class for controllers distributed as extension.</td>
+</tr>
+<tr>
+  <td><a href="/doc/api/1.0/CFormModel">CFormModel</a></td>
+  <td>CFormModel represents a data model that collects HTML form inputs.</td>
+</tr>
+<tr>
+  <td><a href="/doc/api/1.0/CHttpCookie">CHttpCookie</a></td>
+  <td>A CHttpCookie instance stores a single cookie, including the cookie name, value, domain, path, expire, and secure.</td>
+</tr>
+<tr>
+  <td><a href="/doc/api/1.0/CHttpRequest">CHttpRequest</a></td>
+  <td>CHttpRequest encapsulates the $_SERVER variable and resolves its inconsistency among different Web servers.</td>
+</tr>
+<tr>
+  <td><a href="/doc/api/1.0/CHttpSession">CHttpSession</a></td>
+  <td>CHttpSession provides session-level data management and the related configurations.</td>
+</tr>
+<tr>
+  <td><a href="/doc/api/1.0/CHttpSessionIterator">CHttpSessionIterator</a></td>
+  <td>CHttpSessionIterator implements an interator for <a href="/doc/api/1.0/CHttpSession">CHttpSession</a>.</td>
+</tr>
+<tr>
+  <td><a href="/doc/api/1.0/COutputEvent">COutputEvent</a></td>
+  <td>COutputEvent represents the parameter for events related with output handling.</td>
+</tr>
+<tr>
+  <td><a href="/doc/api/1.0/CPagination">CPagination</a></td>
+  <td>CPagination represents information relevant to pagination.</td>
+</tr>
+<tr>
+  <td><a href="/doc/api/1.0/CSort">CSort</a></td>
+  <td>CSort represents information relevant to sorting.</td>
+</tr>
+<tr>
+  <td><a href="/doc/api/1.0/CTheme">CTheme</a></td>
+  <td>CTheme represents an application theme.</td>
+</tr>
+<tr>
+  <td><a href="/doc/api/1.0/CThemeManager">CThemeManager</a></td>
+  <td>CThemeManager manages the themes for the Web application.</td>
+</tr>
+<tr>
+  <td><a href="/doc/api/1.0/CUploadedFile">CUploadedFile</a></td>
+  <td>CUploadedFile represents the information for an uploaded file.</td>
+</tr>
+<tr>
+  <td><a href="/doc/api/1.0/CUrlManager">CUrlManager</a></td>
+  <td>CUrlManager manages the URLs of Yii Web applications.</td>
+</tr>
+<tr>
+  <td><a href="/doc/api/1.0/CUrlRule">CUrlRule</a></td>
+  <td>CUrlRule represents a URL formatting/parsing rule.</td>
+</tr>
+<tr>
+  <td><a href="/doc/api/1.0/CWebApplication">CWebApplication</a></td>
+  <td>CWebApplication extends CApplication by providing functionalities specific to Web requests.</td>
+</tr>
+<tr>
+  <td><a href="/doc/api/1.0/CWebModule">CWebModule</a></td>
+  <td>CWebModule represents an application module.</td>
+</tr>
+<tr>
+  <td rowspan="3"><a name="system.web.actions"></a>system.web.actions</td>
+  <td><a href="/doc/api/1.0/CAction">CAction</a></td>
+  <td>CAction is the base class for all controller action classes.</td>
+</tr>
+<tr>
+  <td><a href="/doc/api/1.0/CInlineAction">CInlineAction</a></td>
+  <td>CInlineAction represents an action that is defined as a controller method.</td>
+</tr>
+<tr>
+  <td><a href="/doc/api/1.0/CViewAction">CViewAction</a></td>
+  <td>CViewAction represents an action that displays a view according to a user-specified parameter.</td>
+</tr>
+<tr>
+  <td rowspan="10"><a name="system.web.auth"></a>system.web.auth</td>
+  <td><a href="/doc/api/1.0/CAccessControlFilter">CAccessControlFilter</a></td>
+  <td>CAccessControlFilter performs authorization checks for the specified actions.</td>
+</tr>
+<tr>
+  <td><a href="/doc/api/1.0/CAccessRule">CAccessRule</a></td>
+  <td>CAccessRule represents an access rule that is managed by <a href="/doc/api/1.0/CAccessControlFilter">CAccessControlFilter</a>.</td>
+</tr>
+<tr>
+  <td><a href="/doc/api/1.0/CAuthAssignment">CAuthAssignment</a></td>
+  <td>CAuthAssignment represents an assignment of a role to a user.</td>
+</tr>
+<tr>
+  <td><a href="/doc/api/1.0/CAuthItem">CAuthItem</a></td>
+  <td>CAuthItem represents an authorization item.</td>
+</tr>
+<tr>
+  <td><a href="/doc/api/1.0/CAuthManager">CAuthManager</a></td>
+  <td>CAuthManager is the base class for authorization manager classes.</td>
+</tr>
+<tr>
+  <td><a href="/doc/api/1.0/CBaseUserIdentity">CBaseUserIdentity</a></td>
+  <td>CBaseUserIdentity is a base class implementing <a href="/doc/api/1.0/IUserIdentity">IUserIdentity</a>.</td>
+</tr>
+<tr>
+  <td><a href="/doc/api/1.0/CDbAuthManager">CDbAuthManager</a></td>
+  <td>CDbAuthManager represents an authorization manager that stores authorization information in database.</td>
+</tr>
+<tr>
+  <td><a href="/doc/api/1.0/CPhpAuthManager">CPhpAuthManager</a></td>
+  <td>CPhpAuthManager represents an authorization manager that stores authorization information in terms of a PHP script file.</td>
+</tr>
+<tr>
+  <td><a href="/doc/api/1.0/CUserIdentity">CUserIdentity</a></td>
+  <td>CUserIdentity is a base class for representing identities that are authenticated based on a username and a password.</td>
+</tr>
+<tr>
+  <td><a href="/doc/api/1.0/CWebUser">CWebUser</a></td>
+  <td>CWebUser represents the persistent state for a Web application user.</td>
+</tr>
+<tr>
+  <td rowspan="3"><a name="system.web.filters"></a>system.web.filters</td>
+  <td><a href="/doc/api/1.0/CFilter">CFilter</a></td>
+  <td>CFilter is the base class for all filters.</td>
+</tr>
+<tr>
+  <td><a href="/doc/api/1.0/CFilterChain">CFilterChain</a></td>
+  <td>CFilterChain represents a list of filters being applied to an action.</td>
+</tr>
+<tr>
+  <td><a href="/doc/api/1.0/CInlineFilter">CInlineFilter</a></td>
+  <td>CInlineFilter represents a filter defined as a controller method.</td>
+</tr>
+<tr>
+  <td rowspan="4"><a name="system.web.helpers"></a>system.web.helpers</td>
+  <td><a href="/doc/api/1.0/CGoogleApi">CGoogleApi</a></td>
+  <td>CGoogleApi provides helper methods to easily access <a href="http://code.google.com/apis/ajax/">Google AJAX APIs</a>.</td>
+</tr>
+<tr>
+  <td><a href="/doc/api/1.0/CHtml">CHtml</a></td>
+  <td>CHtml is a static class that provides a collection of helper methods for creating HTML views.</td>
+</tr>
+<tr>
+  <td><a href="/doc/api/1.0/CJSON">CJSON</a></td>
+  <td>CJSON converts PHP data to and from JSON format.</td>
+</tr>
+<tr>
+  <td><a href="/doc/api/1.0/CJavaScript">CJavaScript</a></td>
+  <td>CJavaScript is a helper class containing JavaScript-related handling functions.</td>
+</tr>
+<tr>
+  <td rowspan="2"><a name="system.web.renderers"></a>system.web.renderers</td>
+  <td><a href="/doc/api/1.0/CPradoViewRenderer">CPradoViewRenderer</a></td>
+  <td>CPradoViewRenderer implements a view renderer that allows users to use a template syntax similar to PRADO templates.</td>
+</tr>
+<tr>
+  <td><a href="/doc/api/1.0/CViewRenderer">CViewRenderer</a></td>
+  <td>CViewRenderer is the base class for view renderer classes.</td>
+</tr>
+<tr>
+  <td rowspan="4"><a name="system.web.services"></a>system.web.services</td>
+  <td><a href="/doc/api/1.0/CSoapObjectWrapper">CSoapObjectWrapper</a></td>
+  <td>CSoapObjectWrapper is a wrapper class internally used when SoapServer::setObject() is not defined.</td>
+</tr>
+<tr>
+  <td><a href="/doc/api/1.0/CWebService">CWebService</a></td>
+  <td>CWebService encapsulates SoapServer and provides a WSDL-based web service.</td>
+</tr>
+<tr>
+  <td><a href="/doc/api/1.0/CWebServiceAction">CWebServiceAction</a></td>
+  <td>CWebServiceAction implements an action that provides Web services.</td>
+</tr>
+<tr>
+  <td><a href="/doc/api/1.0/CWsdlGenerator">CWsdlGenerator</a></td>
+  <td>CWsdlGenerator generates the WSDL for a given service class.</td>
+</tr>
+<tr>
+  <td rowspan="17"><a name="system.web.widgets"></a>system.web.widgets</td>
+  <td><a href="/doc/api/1.0/CAutoComplete">CAutoComplete</a></td>
+  <td>CAutoComplete generates an auto-complete text field.</td>
+</tr>
+<tr>
+  <td><a href="/doc/api/1.0/CClipWidget">CClipWidget</a></td>
+  <td>CClipWidget records its content and makes it available elsewhere.</td>
+</tr>
+<tr>
+  <td><a href="/doc/api/1.0/CContentDecorator">CContentDecorator</a></td>
+  <td>CContentDecorator decorates the content it encloses with the specified view.</td>
+</tr>
+<tr>
+  <td><a href="/doc/api/1.0/CFilterWidget">CFilterWidget</a></td>
+  <td>CFilterWidget is the base class for widgets that can also be used as filters.</td>
+</tr>
+<tr>
+  <td><a href="/doc/api/1.0/CFlexWidget">CFlexWidget</a></td>
+  <td>CFlexWidget embeds a Flex 3.x application into a page.</td>
+</tr>
+<tr>
+  <td><a href="/doc/api/1.0/CHtmlPurifier">CHtmlPurifier</a></td>
+  <td>CHtmlPurifier is wrapper of <a href="http://htmlpurifier.org">HTML Purifier</a>.</td>
+</tr>
+<tr>
+  <td><a href="/doc/api/1.0/CInputWidget">CInputWidget</a></td>
+  <td>CInputWidget is the base class for widgets that collect user inputs.</td>
+</tr>
+<tr>
+  <td><a href="/doc/api/1.0/CMarkdown">CMarkdown</a></td>
+  <td>CMarkdown converts the captured content from markdown syntax to HTML code.</td>
+</tr>
+<tr>
+  <td><a href="/doc/api/1.0/CMaskedTextField">CMaskedTextField</a></td>
+  <td>CMaskedTextField generates a masked text field.</td>
+</tr>
+<tr>
+  <td><a href="/doc/api/1.0/CMultiFileUpload">CMultiFileUpload</a></td>
+  <td>CMultiFileUpload generates a file input that can allow uploading multiple files at a time.</td>
+</tr>
+<tr>
+  <td><a href="/doc/api/1.0/COutputCache">COutputCache</a></td>
+  <td>COutputCache enables caching the output generated by an action or a view fragment.</td>
+</tr>
+<tr>
+  <td><a href="/doc/api/1.0/COutputProcessor">COutputProcessor</a></td>
+  <td>COutputProcessor transforms the content into a different format.</td>
+</tr>
+<tr>
+  <td><a href="/doc/api/1.0/CStarRating">CStarRating</a></td>
+  <td>CStarRating displays a star rating control that can collect user rating input.</td>
+</tr>
+<tr>
+  <td><a href="/doc/api/1.0/CTabView">CTabView</a></td>
+  <td>CTabView displays contents in multiple tabs.</td>
+</tr>
+<tr>
+  <td><a href="/doc/api/1.0/CTextHighlighter">CTextHighlighter</a></td>
+  <td>CTextHighlighter does syntax highlighting for its body content.</td>
+</tr>
+<tr>
+  <td><a href="/doc/api/1.0/CTreeView">CTreeView</a></td>
+  <td>CTreeView displays a tree view of hierarchical data.</td>
+</tr>
+<tr>
+  <td><a href="/doc/api/1.0/CWidget">CWidget</a></td>
+  <td>CWidget is the base class for widgets.</td>
+</tr>
+<tr>
+  <td rowspan="2"><a name="system.web.widgets.captcha"></a>system.web.widgets.captcha</td>
+  <td><a href="/doc/api/1.0/CCaptcha">CCaptcha</a></td>
+  <td>CCaptcha renders a CAPTCHA image element.</td>
+</tr>
+<tr>
+  <td><a href="/doc/api/1.0/CCaptchaAction">CCaptchaAction</a></td>
+  <td>CCaptchaAction renders a CAPTCHA image.</td>
+</tr>
+<tr>
+  <td rowspan="3"><a name="system.web.widgets.pagers"></a>system.web.widgets.pagers</td>
+  <td><a href="/doc/api/1.0/CBasePager">CBasePager</a></td>
+  <td>CBasePager is the base class for all pagers.</td>
+</tr>
+<tr>
+  <td><a href="/doc/api/1.0/CLinkPager">CLinkPager</a></td>
+  <td>CLinkPager displays a list of hyperlinks that lead to different pages of target.</td>
+</tr>
+<tr>
+  <td><a href="/doc/api/1.0/CListPager">CListPager</a></td>
+  <td>CListPager displays a dropdown list that contains options leading to different pages of target.</td>
+</tr>
+</table>

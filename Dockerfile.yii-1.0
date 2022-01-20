@@ -1,0 +1,15 @@
+# PHP
+
+FROM php:7.0-cli
+
+# System packages
+
+RUN apt-get update
+RUN apt-get install -y git
+
+# Code
+
+ADD . /code
+WORKDIR /code
+
+ENTRYPOINT ["rm", "-rf", "api-1.0"]

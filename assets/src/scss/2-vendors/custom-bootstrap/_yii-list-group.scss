@@ -10,6 +10,7 @@
   margin-bottom: -1px;
   background-color: transparent;
   border: none;
+
   &:first-child {
     @include border-top-radius(0);
   }
@@ -23,6 +24,7 @@
 a.list-group-item,
 button.list-group-item {
   color: $list-group-link-color;
+
   .list-group-item-heading {
     color: $list-group-link-heading-color;
   }
@@ -47,6 +49,7 @@ button.list-group-item {
     background-color: transparent;
     color: $list-group-disabled-color;
     cursor: $cursor-disabled;
+
     .list-group-item-heading {
       color: inherit;
     }
@@ -63,6 +66,7 @@ button.list-group-item {
     color: inherit;
     background-color: transparent;
     border-color: transparent;
+
     .list-group-item-heading,
     .list-group-item-heading > small,
     .list-group-item-heading > .small {
@@ -75,10 +79,21 @@ button.list-group-item {
   }
 }
 
-@include list-group-item-variant(success, $state-success-bg, $state-success-text);
-@include list-group-item-variant(info, $state-info-bg, $state-info-text);
-@include list-group-item-variant(warning, $state-warning-bg, $state-warning-text);
-@include list-group-item-variant(danger, $state-danger-bg, $state-danger-text);
+@include list-group-item-variant(
+    success, $state-success-bg, $state-success-text
+);
+
+@include list-group-item-variant(
+    info, $state-info-bg, $state-info-text
+);
+
+@include list-group-item-variant(
+    warning, $state-warning-bg, $state-warning-text
+);
+
+@include list-group-item-variant(
+    danger, $state-danger-bg, $state-danger-text
+);
 
 .list-group-item-heading {
   margin-top: 0;

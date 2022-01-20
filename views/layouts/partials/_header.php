@@ -135,7 +135,7 @@ if ($discourse) {
                         ],
                         ['label' => 'License', 'url' => ['site/license']],
                         ['label' => 'Team', 'url' => ['site/team']],
-                        ['label' => 'Official logo', 'url' => ['site/logo']],
+                        ['label' => 'Official Logos and Design', 'url' => ['site/logo']],
                     ]],
                 ],
             ]);

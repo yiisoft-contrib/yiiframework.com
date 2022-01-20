@@ -67,6 +67,8 @@ class ChangeEmailForm extends Model
         if ($this->validate()) {
             $this->user->email = $this->email;
             $this->user->email_verified = false;
+            $this->user->generateAuthKey();
+            $this->user->removePasswordResetToken();
             return $this->user->save(false);
         }
 

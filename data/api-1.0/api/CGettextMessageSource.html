@@ -1,0 +1,488 @@
+<h1>CGettextMessageSource</h1>
+<div id="nav">
+<a href="/doc/api/1.0/">All Packages</a>
+| <a href="#properties">Properties</a>
+| <a href="#methods">Methods</a>
+| <a href="#events">Events</a>
+</div>
+
+<table class="summaryTable docClass">
+<colgroup>
+	<col class="col-name" />
+	<col class="col-value" />
+</colgroup>
+<tr>
+  <th>Package</th>
+  <td><a href="/doc/api/1.0/#system.i18n">system.i18n</a></td>
+</tr>
+<tr>
+  <th>Inheritance</th>
+  <td>class CGettextMessageSource &raquo;
+<a href="/doc/api/1.0/CMessageSource">CMessageSource</a> &raquo;
+<a href="/doc/api/1.0/CApplicationComponent">CApplicationComponent</a> &raquo;
+<a href="/doc/api/1.0/CComponent">CComponent</a></td>
+</tr>
+<tr>
+  <th>Implements</th>
+  <td><a href="/doc/api/1.0/IApplicationComponent">IApplicationComponent</a></td>
+</tr>
+<tr>
+  <th>Since</th>
+  <td>1.0</td>
+</tr>
+<tr>
+  <th>Version</th>
+  <td>$Id$</td>
+</tr>
+<tr>
+  <th>Source Code</th>
+  <td><a class="sourceLink" href="https://github.com/yiisoft/yii/blob/1.0.12/framework/i18n/CGettextMessageSource.php">framework/i18n/CGettextMessageSource.php</a></td>
+</tr>
+</table>
+
+<div id="classDescription">
+CGettextMessageSource represents a message source that is based on GNU Gettext.
+<br/><br/>
+Each CGettextMessageSource instance represents the message tranlations
+for a single domain. And each message category represents a message context
+in Gettext. Translated messages are stored as either a MO or PO file,
+depending on the <a href="/doc/api/1.0/CGettextMessageSource#useMoFile">useMoFile</a> property value.
+<br/><br/>
+All translations are saved under the <a href="/doc/api/1.0/CGettextMessageSource#basePath">basePath</a> directory.
+Translations in one language are kept as MO or PO files under an individual
+subdirectory whose name is the language ID. The file name is specified via
+<a href="/doc/api/1.0/CGettextMessageSource#catalog">catalog</a> property, which defaults to 'messages'.</div>
+<a name="properties"></a>
+
+<div class="summary docProperty">
+<h2>Public Properties</h2>
+
+<p><a href="#" class="toggle">Hide inherited properties</a></p>
+
+<table class="summaryTable">
+<colgroup>
+	<col class="col-property" />
+	<col class="col-type" />
+	<col class="col-description" />
+	<col class="col-defined" />
+</colgroup>
+<tr>
+  <th>Property</th><th>Type</th><th>Description</th><th>Defined By</th>
+</tr>
+<tr id="basePath">
+  <td><a href="/doc/api/1.0/CGettextMessageSource#basePath-detail">basePath</a></td>
+  <td>string</td>
+  <td>the base path for all translated messages.</td>
+  <td>CGettextMessageSource</td>
+</tr>
+<tr class="inherited" id="behaviors">
+  <td><a href="/doc/api/1.0/CApplicationComponent#behaviors-detail">behaviors</a></td>
+  <td>array</td>
+  <td>the behaviors that should be attached to this component.</td>
+  <td><a href="/doc/api/1.0/CApplicationComponent">CApplicationComponent</a></td>
+</tr>
+<tr id="cacheID">
+  <td><a href="/doc/api/1.0/CGettextMessageSource#cacheID-detail">cacheID</a></td>
+  <td>string</td>
+  <td>the ID of the cache application component that is used to cache the messages.</td>
+  <td>CGettextMessageSource</td>
+</tr>
+<tr id="cachingDuration">
+  <td><a href="/doc/api/1.0/CGettextMessageSource#cachingDuration-detail">cachingDuration</a></td>
+  <td>integer</td>
+  <td>the time in seconds that the messages can remain valid in cache.</td>
+  <td>CGettextMessageSource</td>
+</tr>
+<tr id="catalog">
+  <td><a href="/doc/api/1.0/CGettextMessageSource#catalog-detail">catalog</a></td>
+  <td>string</td>
+  <td>the message catalog name.</td>
+  <td>CGettextMessageSource</td>
+</tr>
+<tr class="inherited" id="isInitialized">
+  <td><a href="/doc/api/1.0/CApplicationComponent#isInitialized-detail">isInitialized</a></td>
+  <td>boolean</td>
+  <td>whether this application component has been initialized (i.e., <a href="/doc/api/1.0/CGettextMessageSource#init">init()</a> is invoked.</td>
+  <td><a href="/doc/api/1.0/CApplicationComponent">CApplicationComponent</a></td>
+</tr>
+<tr class="inherited" id="language">
+  <td><a href="/doc/api/1.0/CMessageSource#language-detail">language</a></td>
+  <td>string</td>
+  <td>the language that the source messages are written in.</td>
+  <td><a href="/doc/api/1.0/CMessageSource">CMessageSource</a></td>
+</tr>
+<tr id="useBigEndian">
+  <td><a href="/doc/api/1.0/CGettextMessageSource#useBigEndian-detail">useBigEndian</a></td>
+  <td>boolean</td>
+  <td>whether to use Big Endian to read and write MO files.</td>
+  <td>CGettextMessageSource</td>
+</tr>
+<tr id="useMoFile">
+  <td><a href="/doc/api/1.0/CGettextMessageSource#useMoFile-detail">useMoFile</a></td>
+  <td>boolean</td>
+  <td>whether to load messages from MO files.</td>
+  <td>CGettextMessageSource</td>
+</tr>
+</table>
+</div>
+<a name="methods"></a>
+
+<div class="summary docMethod">
+<h2>Public Methods</h2>
+
+<p><a href="#" class="toggle">Hide inherited methods</a></p>
+
+<table class="summaryTable">
+<colgroup>
+	<col class="col-method" />
+	<col class="col-description" />
+	<col class="col-defined" />
+</colgroup>
+<tr>
+  <th>Method</th><th>Description</th><th>Defined By</th>
+</tr>
+<tr class="inherited" id="__call">
+  <td><a href="/doc/api/1.0/CComponent#__call-detail">__call()</a></td>
+  <td>Calls the named method which is not a class method.</td>
+  <td><a href="/doc/api/1.0/CComponent">CComponent</a></td>
+</tr>
+<tr class="inherited" id="__get">
+  <td><a href="/doc/api/1.0/CComponent#__get-detail">__get()</a></td>
+  <td>Returns a property value, an event handler list or a behavior based on its name.</td>
+  <td><a href="/doc/api/1.0/CComponent">CComponent</a></td>
+</tr>
+<tr class="inherited" id="__isset">
+  <td><a href="/doc/api/1.0/CComponent#__isset-detail">__isset()</a></td>
+  <td>Checks if a property value is null.</td>
+  <td><a href="/doc/api/1.0/CComponent">CComponent</a></td>
+</tr>
+<tr class="inherited" id="__set">
+  <td><a href="/doc/api/1.0/CComponent#__set-detail">__set()</a></td>
+  <td>Sets value of a component property.</td>
+  <td><a href="/doc/api/1.0/CComponent">CComponent</a></td>
+</tr>
+<tr class="inherited" id="__unset">
+  <td><a href="/doc/api/1.0/CComponent#__unset-detail">__unset()</a></td>
+  <td>Sets a component property to be null.</td>
+  <td><a href="/doc/api/1.0/CComponent">CComponent</a></td>
+</tr>
+<tr class="inherited" id="asa">
+  <td><a href="/doc/api/1.0/CComponent#asa-detail">asa()</a></td>
+  <td>Returns the named behavior object.</td>
+  <td><a href="/doc/api/1.0/CComponent">CComponent</a></td>
+</tr>
+<tr class="inherited" id="attachBehavior">
+  <td><a href="/doc/api/1.0/CComponent#attachBehavior-detail">attachBehavior()</a></td>
+  <td>Attaches a behavior to this component.</td>
+  <td><a href="/doc/api/1.0/CComponent">CComponent</a></td>
+</tr>
+<tr class="inherited" id="attachBehaviors">
+  <td><a href="/doc/api/1.0/CComponent#attachBehaviors-detail">attachBehaviors()</a></td>
+  <td>Attaches a list of behaviors to the component.</td>
+  <td><a href="/doc/api/1.0/CComponent">CComponent</a></td>
+</tr>
+<tr class="inherited" id="attachEventHandler">
+  <td><a href="/doc/api/1.0/CComponent#attachEventHandler-detail">attachEventHandler()</a></td>
+  <td>Attaches an event handler to an event.</td>
+  <td><a href="/doc/api/1.0/CComponent">CComponent</a></td>
+</tr>
+<tr class="inherited" id="canGetProperty">
+  <td><a href="/doc/api/1.0/CComponent#canGetProperty-detail">canGetProperty()</a></td>
+  <td>Determines whether a property can be read.</td>
+  <td><a href="/doc/api/1.0/CComponent">CComponent</a></td>
+</tr>
+<tr class="inherited" id="canSetProperty">
+  <td><a href="/doc/api/1.0/CComponent#canSetProperty-detail">canSetProperty()</a></td>
+  <td>Determines whether a property can be set.</td>
+  <td><a href="/doc/api/1.0/CComponent">CComponent</a></td>
+</tr>
+<tr class="inherited" id="detachBehavior">
+  <td><a href="/doc/api/1.0/CComponent#detachBehavior-detail">detachBehavior()</a></td>
+  <td>Detaches a behavior from the component.</td>
+  <td><a href="/doc/api/1.0/CComponent">CComponent</a></td>
+</tr>
+<tr class="inherited" id="detachBehaviors">
+  <td><a href="/doc/api/1.0/CComponent#detachBehaviors-detail">detachBehaviors()</a></td>
+  <td>Detaches all behaviors from the component.</td>
+  <td><a href="/doc/api/1.0/CComponent">CComponent</a></td>
+</tr>
+<tr class="inherited" id="detachEventHandler">
+  <td><a href="/doc/api/1.0/CComponent#detachEventHandler-detail">detachEventHandler()</a></td>
+  <td>Detaches an existing event handler.</td>
+  <td><a href="/doc/api/1.0/CComponent">CComponent</a></td>
+</tr>
+<tr class="inherited" id="disableBehavior">
+  <td><a href="/doc/api/1.0/CComponent#disableBehavior-detail">disableBehavior()</a></td>
+  <td>Disables an attached behavior.</td>
+  <td><a href="/doc/api/1.0/CComponent">CComponent</a></td>
+</tr>
+<tr class="inherited" id="disableBehaviors">
+  <td><a href="/doc/api/1.0/CComponent#disableBehaviors-detail">disableBehaviors()</a></td>
+  <td>Disables all behaviors attached to this component.</td>
+  <td><a href="/doc/api/1.0/CComponent">CComponent</a></td>
+</tr>
+<tr class="inherited" id="enableBehavior">
+  <td><a href="/doc/api/1.0/CComponent#enableBehavior-detail">enableBehavior()</a></td>
+  <td>Enables an attached behavior.</td>
+  <td><a href="/doc/api/1.0/CComponent">CComponent</a></td>
+</tr>
+<tr class="inherited" id="enableBehaviors">
+  <td><a href="/doc/api/1.0/CComponent#enableBehaviors-detail">enableBehaviors()</a></td>
+  <td>Enables all behaviors attached to this component.</td>
+  <td><a href="/doc/api/1.0/CComponent">CComponent</a></td>
+</tr>
+<tr class="inherited" id="getEventHandlers">
+  <td><a href="/doc/api/1.0/CComponent#getEventHandlers-detail">getEventHandlers()</a></td>
+  <td>Returns the list of attached event handlers for an event.</td>
+  <td><a href="/doc/api/1.0/CComponent">CComponent</a></td>
+</tr>
+<tr class="inherited" id="getIsInitialized">
+  <td><a href="/doc/api/1.0/CApplicationComponent#getIsInitialized-detail">getIsInitialized()</a></td>
+  <td>Checks whether this application component has been initialized (i.e., <a href="/doc/api/1.0/CGettextMessageSource#init">init()</a> is invoked.)</td>
+  <td><a href="/doc/api/1.0/CApplicationComponent">CApplicationComponent</a></td>
+</tr>
+<tr class="inherited" id="getLanguage">
+  <td><a href="/doc/api/1.0/CMessageSource#getLanguage-detail">getLanguage()</a></td>
+  <td>Returns the language that the source messages are written in.
+Defaults to <a href="/doc/api/1.0/CApplication#language">application language</a>.</td>
+  <td><a href="/doc/api/1.0/CMessageSource">CMessageSource</a></td>
+</tr>
+<tr class="inherited" id="hasEvent">
+  <td><a href="/doc/api/1.0/CComponent#hasEvent-detail">hasEvent()</a></td>
+  <td>Determines whether an event is defined.</td>
+  <td><a href="/doc/api/1.0/CComponent">CComponent</a></td>
+</tr>
+<tr class="inherited" id="hasEventHandler">
+  <td><a href="/doc/api/1.0/CComponent#hasEventHandler-detail">hasEventHandler()</a></td>
+  <td>Checks whether the named event has attached handlers.</td>
+  <td><a href="/doc/api/1.0/CComponent">CComponent</a></td>
+</tr>
+<tr class="inherited" id="hasProperty">
+  <td><a href="/doc/api/1.0/CComponent#hasProperty-detail">hasProperty()</a></td>
+  <td>Determines whether a property is defined.</td>
+  <td><a href="/doc/api/1.0/CComponent">CComponent</a></td>
+</tr>
+<tr id="init">
+  <td><a href="/doc/api/1.0/CGettextMessageSource#init-detail">init()</a></td>
+  <td>Initializes the application component.</td>
+  <td>CGettextMessageSource</td>
+</tr>
+<tr class="inherited" id="onMissingTranslation">
+  <td><a href="/doc/api/1.0/CMessageSource#onMissingTranslation-detail">onMissingTranslation()</a></td>
+  <td>Raised when a message cannot be translated.</td>
+  <td><a href="/doc/api/1.0/CMessageSource">CMessageSource</a></td>
+</tr>
+<tr class="inherited" id="raiseEvent">
+  <td><a href="/doc/api/1.0/CComponent#raiseEvent-detail">raiseEvent()</a></td>
+  <td>Raises an event.</td>
+  <td><a href="/doc/api/1.0/CComponent">CComponent</a></td>
+</tr>
+<tr class="inherited" id="setLanguage">
+  <td><a href="/doc/api/1.0/CMessageSource#setLanguage-detail">setLanguage()</a></td>
+  <td>Sets the language that the source messages are written in.</td>
+  <td><a href="/doc/api/1.0/CMessageSource">CMessageSource</a></td>
+</tr>
+<tr class="inherited" id="translate">
+  <td><a href="/doc/api/1.0/CMessageSource#translate-detail">translate()</a></td>
+  <td>Translates a message to the specified language.</td>
+  <td><a href="/doc/api/1.0/CMessageSource">CMessageSource</a></td>
+</tr>
+</table>
+</div>
+<div class="summary docMethod">
+<h2>Protected Methods</h2>
+
+<p><a href="#" class="toggle">Hide inherited methods</a></p>
+
+<table class="summaryTable">
+<colgroup>
+	<col class="col-method" />
+	<col class="col-description" />
+	<col class="col-defined" />
+</colgroup>
+<tr>
+  <th>Method</th><th>Description</th><th>Defined By</th>
+</tr>
+<tr id="loadMessages">
+  <td><a href="/doc/api/1.0/CGettextMessageSource#loadMessages-detail">loadMessages()</a></td>
+  <td>Loads the message translation for the specified language and category.</td>
+  <td>CGettextMessageSource</td>
+</tr>
+<tr class="inherited" id="translateMessage">
+  <td><a href="/doc/api/1.0/CMessageSource#translateMessage-detail">translateMessage()</a></td>
+  <td>Translates the specified message.</td>
+  <td><a href="/doc/api/1.0/CMessageSource">CMessageSource</a></td>
+</tr>
+</table>
+</div>
+<a name="events"></a>
+
+<div class="summary docEvent">
+<h2>Events</h2>
+
+<p><a href="#" class="toggle">Hide inherited events</a></p>
+
+<table class="summaryTable">
+<colgroup>
+	<col class="col-event" />
+	<col class="col-description" />
+	<col class="col-defined" />
+</colgroup>
+<tr>
+  <th>Event</th><th>Description</th><th>Defined By</th>
+</tr>
+<tr class="inherited" id="onMissingTranslation">
+  <td><a href="/doc/api/1.0/CMessageSource#onMissingTranslation-detail">onMissingTranslation</a></td>
+  <td>Raised when a message cannot be translated.</td>
+  <td><a href="/doc/api/1.0/CMessageSource">CMessageSource</a></td>
+</tr>
+</table>
+</div>
+<h2>Property Details</h2>
+<div class="detailHeader" id="basePath-detail">
+basePath<span class="detailHeaderTag">
+property
+</span>
+</div>
+
+<div class="signature">
+public string <b>$basePath</b>;</div>
+
+<p>the base path for all translated messages. Defaults to null, meaning
+the "messages" subdirectory of the application directory (e.g. "protected/messages").</p>
+
+
+<div class="detailHeader" id="cacheID-detail">
+cacheID<span class="detailHeaderTag">
+property
+ (available since v1.0.10)
+</span>
+</div>
+
+<div class="signature">
+public string <b>$cacheID</b>;</div>
+
+<p>the ID of the cache application component that is used to cache the messages.
+Defaults to 'cache' which refers to the primary cache application component.
+Set this property to false if you want to disable caching the messages.</p>
+
+
+<div class="detailHeader" id="cachingDuration-detail">
+cachingDuration<span class="detailHeaderTag">
+property
+</span>
+</div>
+
+<div class="signature">
+public integer <b>$cachingDuration</b>;</div>
+
+<p>the time in seconds that the messages can remain valid in cache.
+Defaults to 0, meaning the caching is disabled.</p>
+
+
+<div class="detailHeader" id="catalog-detail">
+catalog<span class="detailHeaderTag">
+property
+</span>
+</div>
+
+<div class="signature">
+public string <b>$catalog</b>;</div>
+
+<p>the message catalog name. This is the name of the message file (without extension)
+that stores the translated messages. Defaults to 'messages'.</p>
+
+
+<div class="detailHeader" id="useBigEndian-detail">
+useBigEndian<span class="detailHeaderTag">
+property
+</span>
+</div>
+
+<div class="signature">
+public boolean <b>$useBigEndian</b>;</div>
+
+<p>whether to use Big Endian to read and write MO files.
+Defaults to false. This property is only used when <a href="/doc/api/1.0/CGettextMessageSource#useMoFile">useMoFile</a> is true.</p>
+
+
+<div class="detailHeader" id="useMoFile-detail">
+useMoFile<span class="detailHeaderTag">
+property
+</span>
+</div>
+
+<div class="signature">
+public boolean <b>$useMoFile</b>;</div>
+
+<p>whether to load messages from MO files. Defaults to true.
+If false, messages will be loaded from PO files.</p>
+
+
+<h2>Method Details</h2>
+
+<div class="detailHeader" id="init-detail">
+init()
+<span class="detailHeaderTag">
+method
+</span>
+</div>
+
+<table class="summaryTable">
+<tr><td colspan="3">
+<div class="signature2">
+public void <b>init</b>()</div>
+</td></tr>
+</table>
+
+<div class="sourceCode">
+<b>Source Code:</b> <a class="sourceLink" href="https://github.com/yiisoft/yii/blob/1.0.12/framework/i18n/CGettextMessageSource.php#L73">framework/i18n/CGettextMessageSource.php#73</a> (<b><a href="#" class="show">show</a></b>)
+<div class="code"><code><span style="color: #000000">
+<span style="color: #0000BB"></span><span style="color: #007700">public&nbsp;function&nbsp;</span><span style="color: #0000BB">init</span><span style="color: #007700">()<br />{<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">parent</span><span style="color: #007700">::</span><span style="color: #0000BB">init</span><span style="color: #007700">();<br />&nbsp;&nbsp;&nbsp;&nbsp;if(</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">basePath</span><span style="color: #007700">===</span><span style="color: #0000BB">null</span><span style="color: #007700">)<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">basePath</span><span style="color: #007700">=</span><span style="color: #0000BB">Yii</span><span style="color: #007700">::</span><span style="color: #0000BB">getPathOfAlias</span><span style="color: #007700">(</span><span style="color: #DD0000">'application.messages'</span><span style="color: #007700">);<br />}</span>
+</span>
+</code></div>
+</div>
+<p>Initializes the application component.
+This method overrides the parent implementation by preprocessing
+the user request data.</p>
+
+
+<div class="detailHeader" id="loadMessages-detail">
+loadMessages()
+<span class="detailHeaderTag">
+method
+</span>
+</div>
+
+<table class="summaryTable">
+<tr><td colspan="3">
+<div class="signature2">
+protected array <b>loadMessages</b>(string $category, string $language)</div>
+</td></tr>
+<tr>
+  <td class="paramNameCol">$category</td>
+  <td class="paramTypeCol">string</td>
+  <td class="paramDescCol">the message category</td>
+</tr>
+<tr>
+  <td class="paramNameCol">$language</td>
+  <td class="paramTypeCol">string</td>
+  <td class="paramDescCol">the target language</td>
+</tr>
+<tr>
+  <td class="paramNameCol">{return}</td>
+  <td class="paramTypeCol">array</td>
+  <td class="paramDescCol">the loaded messages</td>
+</tr>
+</table>
+
+<div class="sourceCode">
+<b>Source Code:</b> <a class="sourceLink" href="https://github.com/yiisoft/yii/blob/1.0.12/framework/i18n/CGettextMessageSource.php#L86">framework/i18n/CGettextMessageSource.php#86</a> (<b><a href="#" class="show">show</a></b>)
+<div class="code"><code><span style="color: #000000">
+<span style="color: #0000BB"></span><span style="color: #007700">protected&nbsp;function&nbsp;</span><span style="color: #0000BB">loadMessages</span><span style="color: #007700">(</span><span style="color: #0000BB">$category</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$language</span><span style="color: #007700">)<br />{<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$messageFile</span><span style="color: #007700">=</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">basePath&nbsp;</span><span style="color: #007700">.&nbsp;</span><span style="color: #0000BB">DIRECTORY_SEPARATOR&nbsp;</span><span style="color: #007700">.&nbsp;</span><span style="color: #0000BB">$language&nbsp;</span><span style="color: #007700">.&nbsp;</span><span style="color: #0000BB">DIRECTORY_SEPARATOR&nbsp;</span><span style="color: #007700">.&nbsp;</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">catalog</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;if(</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">useMoFile</span><span style="color: #007700">)<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$messageFile</span><span style="color: #007700">.=</span><span style="color: #0000BB">self</span><span style="color: #007700">::</span><span style="color: #0000BB">MO_FILE_EXT</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;else<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$messageFile</span><span style="color: #007700">.=</span><span style="color: #0000BB">self</span><span style="color: #007700">::</span><span style="color: #0000BB">PO_FILE_EXT</span><span style="color: #007700">;<br /><br />&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">cachingDuration&nbsp;</span><span style="color: #007700">&gt;&nbsp;</span><span style="color: #0000BB">0&nbsp;</span><span style="color: #007700">&amp;&amp;&nbsp;</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">cacheID</span><span style="color: #007700">!==</span><span style="color: #0000BB">false&nbsp;</span><span style="color: #007700">&amp;&amp;&nbsp;(</span><span style="color: #0000BB">$cache</span><span style="color: #007700">=</span><span style="color: #0000BB">Yii</span><span style="color: #007700">::</span><span style="color: #0000BB">app</span><span style="color: #007700">()-&gt;</span><span style="color: #0000BB">getComponent</span><span style="color: #007700">(</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">cacheID</span><span style="color: #007700">))!==</span><span style="color: #0000BB">null</span><span style="color: #007700">)<br />&nbsp;&nbsp;&nbsp;&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$key&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">self</span><span style="color: #007700">::</span><span style="color: #0000BB">CACHE_KEY_PREFIX&nbsp;</span><span style="color: #007700">.&nbsp;</span><span style="color: #0000BB">$messageFile</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;((</span><span style="color: #0000BB">$data</span><span style="color: #007700">=</span><span style="color: #0000BB">$cache</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">get</span><span style="color: #007700">(</span><span style="color: #0000BB">$key</span><span style="color: #007700">))&nbsp;!==&nbsp;</span><span style="color: #0000BB">false</span><span style="color: #007700">)<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;</span><span style="color: #0000BB">unserialize</span><span style="color: #007700">(</span><span style="color: #0000BB">$data</span><span style="color: #007700">);<br />&nbsp;&nbsp;&nbsp;&nbsp;}<br /><br />&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(</span><span style="color: #0000BB">is_file</span><span style="color: #007700">(</span><span style="color: #0000BB">$messageFile</span><span style="color: #007700">))<br />&nbsp;&nbsp;&nbsp;&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if(</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">useMoFile</span><span style="color: #007700">)<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$file</span><span style="color: #007700">=new&nbsp;</span><span style="color: #0000BB">CGettextMoFile</span><span style="color: #007700">(</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">useBigEndian</span><span style="color: #007700">);<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;else<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$file</span><span style="color: #007700">=new&nbsp;</span><span style="color: #0000BB">CGettextPoFile</span><span style="color: #007700">();<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$messages</span><span style="color: #007700">=</span><span style="color: #0000BB">$file</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">load</span><span style="color: #007700">(</span><span style="color: #0000BB">$messageFile</span><span style="color: #007700">,</span><span style="color: #0000BB">$category</span><span style="color: #007700">);<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if(isset(</span><span style="color: #0000BB">$cache</span><span style="color: #007700">))<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$dependency</span><span style="color: #007700">=new&nbsp;</span><span style="color: #0000BB">CFileCacheDependency</span><span style="color: #007700">(</span><span style="color: #0000BB">$messageFile</span><span style="color: #007700">);<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$cache</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">set</span><span style="color: #007700">(</span><span style="color: #0000BB">$key</span><span style="color: #007700">,</span><span style="color: #0000BB">serialize</span><span style="color: #007700">(</span><span style="color: #0000BB">$messages</span><span style="color: #007700">),</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">cachingDuration</span><span style="color: #007700">,</span><span style="color: #0000BB">$dependency</span><span style="color: #007700">);<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;</span><span style="color: #0000BB">$messages</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;}<br />&nbsp;&nbsp;&nbsp;&nbsp;else<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;array();<br />}</span>
+</span>
+</code></div>
+</div>
+<p>Loads the message translation for the specified language and category.</p>
+
+

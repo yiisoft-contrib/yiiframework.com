@@ -661,15 +661,15 @@ SQL
 	private function convertLicense($id)
 	{
 		$licenses = [
-			1 => 'Apache-2.0', // Apache License 2.0|http://www.opensource.org/licenses/apache2.0.php
-			2 => 'EPL-1.0', // Eclipse Public License 1.0|http://www.opensource.org/licenses/eclipse-1.0.php
-			3 => 'GPL-2.0', // GNU General Public License v2|http://www.opensource.org/licenses/gpl-2.0.php
-			4 => 'GPL-3.0', // GNU General Public License v3|http://www.opensource.org/licenses/gpl-3.0.html
-			5 => 'LGPL-3.0', // GNU Lesser General Public License|http://www.opensource.org/licenses/lgpl-3.0.html
-			6 => 'MIT', // MIT License|http://www.opensource.org/licenses/mit-license.php
-			7 => 'MPL-1.1', // Mozilla Public License 1.1|http://www.opensource.org/licenses/mozilla1.1.php
-			8 => 'BSD-2-Clause', // New BSD License|http://www.opensource.org/licenses/bsd-license.php
-			9 => 'PHP-3.0', // PHP License 3.0|http://www.opensource.org/licenses/php.php
+			1 => 'Apache-2.0', // Apache License 2.0|https://www.opensource.org/licenses/apache2.0.php
+			2 => 'EPL-1.0', // Eclipse Public License 1.0|https://www.opensource.org/licenses/eclipse-1.0.php
+			3 => 'GPL-2.0', // GNU General Public License v2|https://www.opensource.org/licenses/gpl-2.0.php
+			4 => 'GPL-3.0', // GNU General Public License v3|https://www.opensource.org/licenses/gpl-3.0.html
+			5 => 'LGPL-3.0', // GNU Lesser General Public License|https://www.opensource.org/licenses/lgpl-3.0.html
+			6 => 'MIT', // MIT License|https://www.opensource.org/licenses/mit-license.php
+			7 => 'MPL-1.1', // Mozilla Public License 1.1|https://www.opensource.org/licenses/mozilla1.1.php
+			8 => 'BSD-2-Clause', // New BSD License|https://www.opensource.org/licenses/bsd-license.php
+			9 => 'PHP-3.0', // PHP License 3.0|https://www.opensource.org/licenses/php.php
 			10 => 'other', // Other Open Source License
 		];
 		return $licenses[$id];
@@ -914,7 +914,7 @@ SQL
 	protected function convertMarkdown($markdown)
 	{
 		// TODO code blocks conversion does not work inside quotes:
-		// http://www.yiiframework.com/wiki/16
+		// https://www.yiiframework.com/wiki/16
 
 		// convert code blocks
 		$markdown = preg_replace_callback('/~~~\s*\[php\]\s*(.+?)\n~~~/is', function($matches) {

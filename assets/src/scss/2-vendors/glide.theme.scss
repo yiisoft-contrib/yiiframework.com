@@ -1,5 +1,6 @@
 .glide {
   $that: '.glide' !default;
+
   &__slide {
     img {
       padding-left: 1px;
@@ -9,6 +10,7 @@
 
   &__arrows {
     position: absolute;
+
     #{$that}--horizontal & {
       top: 50%;
       width: 92%;
@@ -33,6 +35,7 @@
     border: 2px solid rgba(255, 255, 255, 0.5);
     border-radius: 4px;
     transition: border 300ms ease-in-out;
+
     &:focus {
       outline: none;
     }
@@ -43,6 +46,7 @@
 
     #{$that}--horizontal & {
       transform: translateY(-50%);
+
       &.prev {
         left: 0;
       }
@@ -54,6 +58,7 @@
 
     #{$that}--vertical & {
       transform: translateX(-50%);
+
       &.prev {
         top: 0;
       }
@@ -67,8 +72,10 @@
   &__bullets {
     position: absolute;
     list-style: none;
+
     #{$that}--horizontal & {
-      bottom: 5%; left: 16%;
+      bottom: 5%;
+      left: 16%;
       z-index: 100;
       width: 100%;
       height: 12px;
@@ -76,7 +83,8 @@
     }
 
     #{$that}--vertical & {
-      top: 50%; right: 8%;
+      top: 50%;
+      right: 8%;
       width: 12px;
       height: auto;
       transform: translateY(-50%);
@@ -92,6 +100,7 @@
       border-radius: 50%;
       border: 1px solid $eshill-yellow;
       transition: all 300ms ease-in-out;
+
       #{$that}--horizontal & {
         margin: 0 5px;
       }
@@ -119,6 +128,7 @@
     #{$that}__arrow {
       opacity: 1;
       transition: opacity 150ms ease;
+
       &.disabled {
         opacity: 0.33;
       }

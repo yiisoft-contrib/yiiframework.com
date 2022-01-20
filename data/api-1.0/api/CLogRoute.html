@@ -1,0 +1,465 @@
+<h1>CLogRoute</h1>
+<div id="nav">
+<a href="/doc/api/1.0/">All Packages</a>
+| <a href="#properties">Properties</a>
+| <a href="#methods">Methods</a>
+</div>
+
+<table class="summaryTable docClass">
+<colgroup>
+	<col class="col-name" />
+	<col class="col-value" />
+</colgroup>
+<tr>
+  <th>Package</th>
+  <td><a href="/doc/api/1.0/#system.logging">system.logging</a></td>
+</tr>
+<tr>
+  <th>Inheritance</th>
+  <td>abstract class CLogRoute &raquo;
+<a href="/doc/api/1.0/CComponent">CComponent</a></td>
+</tr>
+<tr>
+  <th>Subclasses</th>
+  <td><a href="/doc/api/1.0/CDbLogRoute">CDbLogRoute</a>, <a href="/doc/api/1.0/CEmailLogRoute">CEmailLogRoute</a>, <a href="/doc/api/1.0/CFileLogRoute">CFileLogRoute</a>, <a href="/doc/api/1.0/CWebLogRoute">CWebLogRoute</a></td>
+</tr>
+<tr>
+  <th>Since</th>
+  <td>1.0</td>
+</tr>
+<tr>
+  <th>Version</th>
+  <td>$Id$</td>
+</tr>
+<tr>
+  <th>Source Code</th>
+  <td><a class="sourceLink" href="https://github.com/yiisoft/yii/blob/1.0.12/framework/logging/CLogRoute.php">framework/logging/CLogRoute.php</a></td>
+</tr>
+</table>
+
+<div id="classDescription">
+CLogRoute is the base class for all log route classes.
+<br/><br/>
+A log route object retrieves log messages from a logger and sends it
+somewhere, such as files, emails.
+The messages being retrieved may be filtered first before being sent
+to the destination. The filters include log level filter and log category filter.
+<br/><br/>
+To specify level filter, set <a href="/doc/api/1.0/CLogRoute#levels">levels</a> property,
+which takes a string of comma-separated desired level names (e.g. 'Error, Debug').
+To specify category filter, set <a href="/doc/api/1.0/CLogRoute#categories">categories</a> property,
+which takes a string of comma-separated desired category names (e.g. 'System.Web, System.IO').
+<br/><br/>
+Level filter and category filter are combinational, i.e., only messages
+satisfying both filter conditions will they be returned.</div>
+<a name="properties"></a>
+
+<div class="summary docProperty">
+<h2>Public Properties</h2>
+
+<p><a href="#" class="toggle">Hide inherited properties</a></p>
+
+<table class="summaryTable">
+<colgroup>
+	<col class="col-property" />
+	<col class="col-type" />
+	<col class="col-description" />
+	<col class="col-defined" />
+</colgroup>
+<tr>
+  <th>Property</th><th>Type</th><th>Description</th><th>Defined By</th>
+</tr>
+<tr id="categories">
+  <td><a href="/doc/api/1.0/CLogRoute#categories-detail">categories</a></td>
+  <td>string</td>
+  <td>list of categories separated by comma or space.</td>
+  <td>CLogRoute</td>
+</tr>
+<tr id="enabled">
+  <td><a href="/doc/api/1.0/CLogRoute#enabled-detail">enabled</a></td>
+  <td>boolean</td>
+  <td>whether to enable this log route.</td>
+  <td>CLogRoute</td>
+</tr>
+<tr id="filter">
+  <td><a href="/doc/api/1.0/CLogRoute#filter-detail">filter</a></td>
+  <td>mixed</td>
+  <td>the additional filter (e.g. <a href="/doc/api/1.0/CLogFilter">CLogFilter</a>) that can be applied to the log messages.</td>
+  <td>CLogRoute</td>
+</tr>
+<tr id="levels">
+  <td><a href="/doc/api/1.0/CLogRoute#levels-detail">levels</a></td>
+  <td>string</td>
+  <td>list of levels separated by comma or space.</td>
+  <td>CLogRoute</td>
+</tr>
+</table>
+</div>
+<a name="methods"></a>
+
+<div class="summary docMethod">
+<h2>Public Methods</h2>
+
+<p><a href="#" class="toggle">Hide inherited methods</a></p>
+
+<table class="summaryTable">
+<colgroup>
+	<col class="col-method" />
+	<col class="col-description" />
+	<col class="col-defined" />
+</colgroup>
+<tr>
+  <th>Method</th><th>Description</th><th>Defined By</th>
+</tr>
+<tr class="inherited" id="__call">
+  <td><a href="/doc/api/1.0/CComponent#__call-detail">__call()</a></td>
+  <td>Calls the named method which is not a class method.</td>
+  <td><a href="/doc/api/1.0/CComponent">CComponent</a></td>
+</tr>
+<tr class="inherited" id="__get">
+  <td><a href="/doc/api/1.0/CComponent#__get-detail">__get()</a></td>
+  <td>Returns a property value, an event handler list or a behavior based on its name.</td>
+  <td><a href="/doc/api/1.0/CComponent">CComponent</a></td>
+</tr>
+<tr class="inherited" id="__isset">
+  <td><a href="/doc/api/1.0/CComponent#__isset-detail">__isset()</a></td>
+  <td>Checks if a property value is null.</td>
+  <td><a href="/doc/api/1.0/CComponent">CComponent</a></td>
+</tr>
+<tr class="inherited" id="__set">
+  <td><a href="/doc/api/1.0/CComponent#__set-detail">__set()</a></td>
+  <td>Sets value of a component property.</td>
+  <td><a href="/doc/api/1.0/CComponent">CComponent</a></td>
+</tr>
+<tr class="inherited" id="__unset">
+  <td><a href="/doc/api/1.0/CComponent#__unset-detail">__unset()</a></td>
+  <td>Sets a component property to be null.</td>
+  <td><a href="/doc/api/1.0/CComponent">CComponent</a></td>
+</tr>
+<tr class="inherited" id="asa">
+  <td><a href="/doc/api/1.0/CComponent#asa-detail">asa()</a></td>
+  <td>Returns the named behavior object.</td>
+  <td><a href="/doc/api/1.0/CComponent">CComponent</a></td>
+</tr>
+<tr class="inherited" id="attachBehavior">
+  <td><a href="/doc/api/1.0/CComponent#attachBehavior-detail">attachBehavior()</a></td>
+  <td>Attaches a behavior to this component.</td>
+  <td><a href="/doc/api/1.0/CComponent">CComponent</a></td>
+</tr>
+<tr class="inherited" id="attachBehaviors">
+  <td><a href="/doc/api/1.0/CComponent#attachBehaviors-detail">attachBehaviors()</a></td>
+  <td>Attaches a list of behaviors to the component.</td>
+  <td><a href="/doc/api/1.0/CComponent">CComponent</a></td>
+</tr>
+<tr class="inherited" id="attachEventHandler">
+  <td><a href="/doc/api/1.0/CComponent#attachEventHandler-detail">attachEventHandler()</a></td>
+  <td>Attaches an event handler to an event.</td>
+  <td><a href="/doc/api/1.0/CComponent">CComponent</a></td>
+</tr>
+<tr class="inherited" id="canGetProperty">
+  <td><a href="/doc/api/1.0/CComponent#canGetProperty-detail">canGetProperty()</a></td>
+  <td>Determines whether a property can be read.</td>
+  <td><a href="/doc/api/1.0/CComponent">CComponent</a></td>
+</tr>
+<tr class="inherited" id="canSetProperty">
+  <td><a href="/doc/api/1.0/CComponent#canSetProperty-detail">canSetProperty()</a></td>
+  <td>Determines whether a property can be set.</td>
+  <td><a href="/doc/api/1.0/CComponent">CComponent</a></td>
+</tr>
+<tr id="collectLogs">
+  <td><a href="/doc/api/1.0/CLogRoute#collectLogs-detail">collectLogs()</a></td>
+  <td>Retrieves filtered log messages from logger for further processing.</td>
+  <td>CLogRoute</td>
+</tr>
+<tr class="inherited" id="detachBehavior">
+  <td><a href="/doc/api/1.0/CComponent#detachBehavior-detail">detachBehavior()</a></td>
+  <td>Detaches a behavior from the component.</td>
+  <td><a href="/doc/api/1.0/CComponent">CComponent</a></td>
+</tr>
+<tr class="inherited" id="detachBehaviors">
+  <td><a href="/doc/api/1.0/CComponent#detachBehaviors-detail">detachBehaviors()</a></td>
+  <td>Detaches all behaviors from the component.</td>
+  <td><a href="/doc/api/1.0/CComponent">CComponent</a></td>
+</tr>
+<tr class="inherited" id="detachEventHandler">
+  <td><a href="/doc/api/1.0/CComponent#detachEventHandler-detail">detachEventHandler()</a></td>
+  <td>Detaches an existing event handler.</td>
+  <td><a href="/doc/api/1.0/CComponent">CComponent</a></td>
+</tr>
+<tr class="inherited" id="disableBehavior">
+  <td><a href="/doc/api/1.0/CComponent#disableBehavior-detail">disableBehavior()</a></td>
+  <td>Disables an attached behavior.</td>
+  <td><a href="/doc/api/1.0/CComponent">CComponent</a></td>
+</tr>
+<tr class="inherited" id="disableBehaviors">
+  <td><a href="/doc/api/1.0/CComponent#disableBehaviors-detail">disableBehaviors()</a></td>
+  <td>Disables all behaviors attached to this component.</td>
+  <td><a href="/doc/api/1.0/CComponent">CComponent</a></td>
+</tr>
+<tr class="inherited" id="enableBehavior">
+  <td><a href="/doc/api/1.0/CComponent#enableBehavior-detail">enableBehavior()</a></td>
+  <td>Enables an attached behavior.</td>
+  <td><a href="/doc/api/1.0/CComponent">CComponent</a></td>
+</tr>
+<tr class="inherited" id="enableBehaviors">
+  <td><a href="/doc/api/1.0/CComponent#enableBehaviors-detail">enableBehaviors()</a></td>
+  <td>Enables all behaviors attached to this component.</td>
+  <td><a href="/doc/api/1.0/CComponent">CComponent</a></td>
+</tr>
+<tr class="inherited" id="getEventHandlers">
+  <td><a href="/doc/api/1.0/CComponent#getEventHandlers-detail">getEventHandlers()</a></td>
+  <td>Returns the list of attached event handlers for an event.</td>
+  <td><a href="/doc/api/1.0/CComponent">CComponent</a></td>
+</tr>
+<tr class="inherited" id="hasEvent">
+  <td><a href="/doc/api/1.0/CComponent#hasEvent-detail">hasEvent()</a></td>
+  <td>Determines whether an event is defined.</td>
+  <td><a href="/doc/api/1.0/CComponent">CComponent</a></td>
+</tr>
+<tr class="inherited" id="hasEventHandler">
+  <td><a href="/doc/api/1.0/CComponent#hasEventHandler-detail">hasEventHandler()</a></td>
+  <td>Checks whether the named event has attached handlers.</td>
+  <td><a href="/doc/api/1.0/CComponent">CComponent</a></td>
+</tr>
+<tr class="inherited" id="hasProperty">
+  <td><a href="/doc/api/1.0/CComponent#hasProperty-detail">hasProperty()</a></td>
+  <td>Determines whether a property is defined.</td>
+  <td><a href="/doc/api/1.0/CComponent">CComponent</a></td>
+</tr>
+<tr id="init">
+  <td><a href="/doc/api/1.0/CLogRoute#init-detail">init()</a></td>
+  <td>Initializes the route.</td>
+  <td>CLogRoute</td>
+</tr>
+<tr class="inherited" id="raiseEvent">
+  <td><a href="/doc/api/1.0/CComponent#raiseEvent-detail">raiseEvent()</a></td>
+  <td>Raises an event.</td>
+  <td><a href="/doc/api/1.0/CComponent">CComponent</a></td>
+</tr>
+</table>
+</div>
+<div class="summary docMethod">
+<h2>Protected Methods</h2>
+
+<p><a href="#" class="toggle">Hide inherited methods</a></p>
+
+<table class="summaryTable">
+<colgroup>
+	<col class="col-method" />
+	<col class="col-description" />
+	<col class="col-defined" />
+</colgroup>
+<tr>
+  <th>Method</th><th>Description</th><th>Defined By</th>
+</tr>
+<tr id="formatLogMessage">
+  <td><a href="/doc/api/1.0/CLogRoute#formatLogMessage-detail">formatLogMessage()</a></td>
+  <td>Formats a log message given different fields.</td>
+  <td>CLogRoute</td>
+</tr>
+<tr id="processLogs">
+  <td><a href="/doc/api/1.0/CLogRoute#processLogs-detail">processLogs()</a></td>
+  <td>Processes log messages and sends them to specific destination.</td>
+  <td>CLogRoute</td>
+</tr>
+</table>
+</div>
+<a name="events"></a>
+
+<h2>Property Details</h2>
+<div class="detailHeader" id="categories-detail">
+categories<span class="detailHeaderTag">
+property
+</span>
+</div>
+
+<div class="signature">
+public string <b>$categories</b>;</div>
+
+<p>list of categories separated by comma or space. Defaults to empty, meaning all categories.</p>
+
+
+<div class="detailHeader" id="enabled-detail">
+enabled<span class="detailHeaderTag">
+property
+ (available since v1.0.7)
+</span>
+</div>
+
+<div class="signature">
+public boolean <b>$enabled</b>;</div>
+
+<p>whether to enable this log route. Defaults to true.</p>
+
+
+<div class="detailHeader" id="filter-detail">
+filter<span class="detailHeaderTag">
+property
+ (available since v1.0.6)
+</span>
+</div>
+
+<div class="signature">
+public mixed <b>$filter</b>;</div>
+
+<p>the additional filter (e.g. <a href="/doc/api/1.0/CLogFilter">CLogFilter</a>) that can be applied to the log messages.
+The value of this property will be passed to <a href="/doc/api/1.0/Yii#createComponent">Yii::createComponent</a> to create
+a log filter object. As a result, this can be either a string representing the
+filter class name or an array representing the filter configuration.
+In general, the log filter class should be <a href="/doc/api/1.0/CLogFilter">CLogFilter</a> or a child class of it.
+Defaults to null, meaning no filter will be used.</p>
+
+
+<div class="detailHeader" id="levels-detail">
+levels<span class="detailHeaderTag">
+property
+</span>
+</div>
+
+<div class="signature">
+public string <b>$levels</b>;</div>
+
+<p>list of levels separated by comma or space. Defaults to empty, meaning all levels.</p>
+
+
+<h2>Method Details</h2>
+
+<div class="detailHeader" id="collectLogs-detail">
+collectLogs()
+<span class="detailHeaderTag">
+method
+</span>
+</div>
+
+<table class="summaryTable">
+<tr><td colspan="3">
+<div class="signature2">
+public void <b>collectLogs</b>(<a href="/doc/api/1.0/CLogger">CLogger</a> $logger)</div>
+</td></tr>
+<tr>
+  <td class="paramNameCol">$logger</td>
+  <td class="paramTypeCol"><a href="/doc/api/1.0/CLogger">CLogger</a></td>
+  <td class="paramDescCol">logger instance</td>
+</tr>
+</table>
+
+<div class="sourceCode">
+<b>Source Code:</b> <a class="sourceLink" href="https://github.com/yiisoft/yii/blob/1.0.12/framework/logging/CLogRoute.php#L84">framework/logging/CLogRoute.php#84</a> (<b><a href="#" class="show">show</a></b>)
+<div class="code"><code><span style="color: #000000">
+<span style="color: #0000BB"></span><span style="color: #007700">public&nbsp;function&nbsp;</span><span style="color: #0000BB">collectLogs</span><span style="color: #007700">(</span><span style="color: #0000BB">$logger</span><span style="color: #007700">)<br />{<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$logs</span><span style="color: #007700">=</span><span style="color: #0000BB">$logger</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">getLogs</span><span style="color: #007700">(</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">levels</span><span style="color: #007700">,</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">categories</span><span style="color: #007700">);<br />&nbsp;&nbsp;&nbsp;&nbsp;if(!empty(</span><span style="color: #0000BB">$logs</span><span style="color: #007700">))<br />&nbsp;&nbsp;&nbsp;&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if(</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">filter</span><span style="color: #007700">!==</span><span style="color: #0000BB">null</span><span style="color: #007700">)<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">Yii</span><span style="color: #007700">::</span><span style="color: #0000BB">createComponent</span><span style="color: #007700">(</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">filter</span><span style="color: #007700">)-&gt;</span><span style="color: #0000BB">filter</span><span style="color: #007700">(</span><span style="color: #0000BB">$logs</span><span style="color: #007700">);<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">processLogs</span><span style="color: #007700">(</span><span style="color: #0000BB">$logs</span><span style="color: #007700">);<br />&nbsp;&nbsp;&nbsp;&nbsp;}<br />}</span>
+</span>
+</code></div>
+</div>
+<p>Retrieves filtered log messages from logger for further processing.</p>
+
+
+<div class="detailHeader" id="formatLogMessage-detail">
+formatLogMessage()
+<span class="detailHeaderTag">
+method
+</span>
+</div>
+
+<table class="summaryTable">
+<tr><td colspan="3">
+<div class="signature2">
+protected string <b>formatLogMessage</b>(string $message, integer $level, string $category, integer $time)</div>
+</td></tr>
+<tr>
+  <td class="paramNameCol">$message</td>
+  <td class="paramTypeCol">string</td>
+  <td class="paramDescCol">message content</td>
+</tr>
+<tr>
+  <td class="paramNameCol">$level</td>
+  <td class="paramTypeCol">integer</td>
+  <td class="paramDescCol">message level</td>
+</tr>
+<tr>
+  <td class="paramNameCol">$category</td>
+  <td class="paramTypeCol">string</td>
+  <td class="paramDescCol">message category</td>
+</tr>
+<tr>
+  <td class="paramNameCol">$time</td>
+  <td class="paramTypeCol">integer</td>
+  <td class="paramDescCol">timestamp</td>
+</tr>
+<tr>
+  <td class="paramNameCol">{return}</td>
+  <td class="paramTypeCol">string</td>
+  <td class="paramDescCol">formatted message</td>
+</tr>
+</table>
+
+<div class="sourceCode">
+<b>Source Code:</b> <a class="sourceLink" href="https://github.com/yiisoft/yii/blob/1.0.12/framework/logging/CLogRoute.php#L75">framework/logging/CLogRoute.php#75</a> (<b><a href="#" class="show">show</a></b>)
+<div class="code"><code><span style="color: #000000">
+<span style="color: #0000BB"></span><span style="color: #007700">protected&nbsp;function&nbsp;</span><span style="color: #0000BB">formatLogMessage</span><span style="color: #007700">(</span><span style="color: #0000BB">$message</span><span style="color: #007700">,</span><span style="color: #0000BB">$level</span><span style="color: #007700">,</span><span style="color: #0000BB">$category</span><span style="color: #007700">,</span><span style="color: #0000BB">$time</span><span style="color: #007700">)<br />{<br />&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;@</span><span style="color: #0000BB">date</span><span style="color: #007700">(</span><span style="color: #DD0000">'Y/m/d&nbsp;H:i:s'</span><span style="color: #007700">,</span><span style="color: #0000BB">$time</span><span style="color: #007700">).</span><span style="color: #DD0000">"&nbsp;[</span><span style="color: #0000BB">$level</span><span style="color: #DD0000">]&nbsp;[</span><span style="color: #0000BB">$category</span><span style="color: #DD0000">]&nbsp;</span><span style="color: #0000BB">$message</span><span style="color: #DD0000">\n"</span><span style="color: #007700">;<br />}</span>
+</span>
+</code></div>
+</div>
+<p>Formats a log message given different fields.</p>
+
+
+<div class="detailHeader" id="init-detail">
+init()
+<span class="detailHeaderTag">
+method
+</span>
+</div>
+
+<table class="summaryTable">
+<tr><td colspan="3">
+<div class="signature2">
+public void <b>init</b>()</div>
+</td></tr>
+</table>
+
+<div class="sourceCode">
+<b>Source Code:</b> <a class="sourceLink" href="https://github.com/yiisoft/yii/blob/1.0.12/framework/logging/CLogRoute.php#L63">framework/logging/CLogRoute.php#63</a> (<b><a href="#" class="show">show</a></b>)
+<div class="code"><code><span style="color: #000000">
+<span style="color: #0000BB"></span><span style="color: #007700">public&nbsp;function&nbsp;</span><span style="color: #0000BB">init</span><span style="color: #007700">()<br />{<br />}</span>
+</span>
+</code></div>
+</div>
+<p>Initializes the route.
+This method is invoked after the route is created by the route manager.</p>
+
+
+<div class="detailHeader" id="processLogs-detail">
+processLogs()
+<span class="detailHeaderTag">
+method
+</span>
+</div>
+
+<table class="summaryTable">
+<tr><td colspan="3">
+<div class="signature2">
+abstract protected void <b>processLogs</b>(array $logs)</div>
+</td></tr>
+<tr>
+  <td class="paramNameCol">$logs</td>
+  <td class="paramTypeCol">array</td>
+  <td class="paramDescCol">list of messages.  Each array elements represents one message
+with the following structure:
+array(
+  [0] => message (string)
+  [1] => level (string)
+  [2] => category (string)
+  [3] => timestamp (float, obtained by microtime(true));</td>
+</tr>
+</table>
+
+<div class="sourceCode">
+<b>Source Code:</b> <a class="sourceLink" href="https://github.com/yiisoft/yii/blob/1.0.12/framework/logging/CLogRoute.php#L106">framework/logging/CLogRoute.php#106</a> (<b><a href="#" class="show">show</a></b>)
+<div class="code"><code><span style="color: #000000">
+<span style="color: #0000BB"></span><span style="color: #007700">abstract&nbsp;protected&nbsp;function&nbsp;</span><span style="color: #0000BB">processLogs</span><span style="color: #007700">(</span><span style="color: #0000BB">$logs</span><span style="color: #007700">);</span>
+</span>
+</code></div>
+</div>
+<p>Processes log messages and sends them to specific destination.
+Derived child classes must implement this method.</p>
+
+

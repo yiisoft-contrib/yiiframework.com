@@ -1,0 +1,54 @@
+<h1>CEnumerable</h1>
+<div id="nav">
+<a href="/doc/api/1.0/">All Packages</a>
+</div>
+
+<table class="summaryTable docClass">
+<colgroup>
+	<col class="col-name" />
+	<col class="col-value" />
+</colgroup>
+<tr>
+  <th>Package</th>
+  <td><a href="/doc/api/1.0/#system.base">system.base</a></td>
+</tr>
+<tr>
+  <th>Inheritance</th>
+  <td>class CEnumerable</td>
+</tr>
+<tr>
+  <th>Since</th>
+  <td>1.0</td>
+</tr>
+<tr>
+  <th>Version</th>
+  <td>$Id$</td>
+</tr>
+<tr>
+  <th>Source Code</th>
+  <td><a class="sourceLink" href="https://github.com/yiisoft/yii/blob/1.0.12/framework/base/CComponent.php">framework/base/CComponent.php</a></td>
+</tr>
+</table>
+
+<div id="classDescription">
+CEnumerable is the base class for all enumerable types.
+<br/><br/>
+To define an enumerable type, extend CEnumberable and define string constants.
+Each constant represents an enumerable value.
+The constant name must be the same as the constant value.
+For example,
+<pre>
+class TextAlign extends CEnumerable
+{
+    const Left='Left';
+    const Right='Right';
+}
+</pre>
+Then, one can use the enumerable values such as TextAlign::Left and
+TextAlign::Right.</div>
+<a name="properties"></a>
+
+<a name="methods"></a>
+
+<a name="events"></a>
+

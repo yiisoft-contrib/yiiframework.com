@@ -1,0 +1,1141 @@
+<h1>CDateFormatter</h1>
+<div id="nav">
+<a href="/doc/api/1.0/">All Packages</a>
+| <a href="#methods">Methods</a>
+</div>
+
+<table class="summaryTable docClass">
+<colgroup>
+	<col class="col-name" />
+	<col class="col-value" />
+</colgroup>
+<tr>
+  <th>Package</th>
+  <td><a href="/doc/api/1.0/#system.i18n">system.i18n</a></td>
+</tr>
+<tr>
+  <th>Inheritance</th>
+  <td>class CDateFormatter &raquo;
+<a href="/doc/api/1.0/CComponent">CComponent</a></td>
+</tr>
+<tr>
+  <th>Since</th>
+  <td>1.0</td>
+</tr>
+<tr>
+  <th>Version</th>
+  <td>$Id$</td>
+</tr>
+<tr>
+  <th>Source Code</th>
+  <td><a class="sourceLink" href="https://github.com/yiisoft/yii/blob/1.0.12/framework/i18n/CDateFormatter.php">framework/i18n/CDateFormatter.php</a></td>
+</tr>
+</table>
+
+<div id="classDescription">
+CDateFormatter provides date/time localization functionalities.
+<br/><br/>
+CDateFormatter allows you to format dates and times in a locale-sensitive manner.
+Patterns are interpretted in the locale that the CDateFormatter instance
+is associated with. For example, month names and weekday names may vary
+under different locales, which yields different formatting results.
+The patterns that CDateFormatter recognizes are as defined in
+<a href="http://www.unicode.org/reports/tr35/#Date_Format_Patterns">CLDR</a>.
+<br/><br/>
+CDateFormatter supports predefined patterns as well as customized ones:
+<ul>
+<li>The method <a href="/doc/api/1.0/CDateFormatter#formatDateTime">formatDateTime()</a> formats date or time or both using
+  predefined patterns which include 'full', 'long', 'medium' (default) and 'short'.</li>
+<li>The method <a href="/doc/api/1.0/CDateFormatter#format">format()</a> formats datetime using the specified pattern.
+  See <a href="http://www.unicode.org/reports/tr35/#Date_Format_Patterns">http://www.unicode.org/reports/tr35/#Date_Format_Patterns</a> for
+  details about the recognized pattern characters.</li>
+</ul></div>
+<a name="properties"></a>
+
+<a name="methods"></a>
+
+<div class="summary docMethod">
+<h2>Public Methods</h2>
+
+<p><a href="#" class="toggle">Hide inherited methods</a></p>
+
+<table class="summaryTable">
+<colgroup>
+	<col class="col-method" />
+	<col class="col-description" />
+	<col class="col-defined" />
+</colgroup>
+<tr>
+  <th>Method</th><th>Description</th><th>Defined By</th>
+</tr>
+<tr class="inherited" id="__call">
+  <td><a href="/doc/api/1.0/CComponent#__call-detail">__call()</a></td>
+  <td>Calls the named method which is not a class method.</td>
+  <td><a href="/doc/api/1.0/CComponent">CComponent</a></td>
+</tr>
+<tr id="__construct">
+  <td><a href="/doc/api/1.0/CDateFormatter#__construct-detail">__construct()</a></td>
+  <td>Constructor.</td>
+  <td>CDateFormatter</td>
+</tr>
+<tr class="inherited" id="__get">
+  <td><a href="/doc/api/1.0/CComponent#__get-detail">__get()</a></td>
+  <td>Returns a property value, an event handler list or a behavior based on its name.</td>
+  <td><a href="/doc/api/1.0/CComponent">CComponent</a></td>
+</tr>
+<tr class="inherited" id="__isset">
+  <td><a href="/doc/api/1.0/CComponent#__isset-detail">__isset()</a></td>
+  <td>Checks if a property value is null.</td>
+  <td><a href="/doc/api/1.0/CComponent">CComponent</a></td>
+</tr>
+<tr class="inherited" id="__set">
+  <td><a href="/doc/api/1.0/CComponent#__set-detail">__set()</a></td>
+  <td>Sets value of a component property.</td>
+  <td><a href="/doc/api/1.0/CComponent">CComponent</a></td>
+</tr>
+<tr class="inherited" id="__unset">
+  <td><a href="/doc/api/1.0/CComponent#__unset-detail">__unset()</a></td>
+  <td>Sets a component property to be null.</td>
+  <td><a href="/doc/api/1.0/CComponent">CComponent</a></td>
+</tr>
+<tr class="inherited" id="asa">
+  <td><a href="/doc/api/1.0/CComponent#asa-detail">asa()</a></td>
+  <td>Returns the named behavior object.</td>
+  <td><a href="/doc/api/1.0/CComponent">CComponent</a></td>
+</tr>
+<tr class="inherited" id="attachBehavior">
+  <td><a href="/doc/api/1.0/CComponent#attachBehavior-detail">attachBehavior()</a></td>
+  <td>Attaches a behavior to this component.</td>
+  <td><a href="/doc/api/1.0/CComponent">CComponent</a></td>
+</tr>
+<tr class="inherited" id="attachBehaviors">
+  <td><a href="/doc/api/1.0/CComponent#attachBehaviors-detail">attachBehaviors()</a></td>
+  <td>Attaches a list of behaviors to the component.</td>
+  <td><a href="/doc/api/1.0/CComponent">CComponent</a></td>
+</tr>
+<tr class="inherited" id="attachEventHandler">
+  <td><a href="/doc/api/1.0/CComponent#attachEventHandler-detail">attachEventHandler()</a></td>
+  <td>Attaches an event handler to an event.</td>
+  <td><a href="/doc/api/1.0/CComponent">CComponent</a></td>
+</tr>
+<tr class="inherited" id="canGetProperty">
+  <td><a href="/doc/api/1.0/CComponent#canGetProperty-detail">canGetProperty()</a></td>
+  <td>Determines whether a property can be read.</td>
+  <td><a href="/doc/api/1.0/CComponent">CComponent</a></td>
+</tr>
+<tr class="inherited" id="canSetProperty">
+  <td><a href="/doc/api/1.0/CComponent#canSetProperty-detail">canSetProperty()</a></td>
+  <td>Determines whether a property can be set.</td>
+  <td><a href="/doc/api/1.0/CComponent">CComponent</a></td>
+</tr>
+<tr class="inherited" id="detachBehavior">
+  <td><a href="/doc/api/1.0/CComponent#detachBehavior-detail">detachBehavior()</a></td>
+  <td>Detaches a behavior from the component.</td>
+  <td><a href="/doc/api/1.0/CComponent">CComponent</a></td>
+</tr>
+<tr class="inherited" id="detachBehaviors">
+  <td><a href="/doc/api/1.0/CComponent#detachBehaviors-detail">detachBehaviors()</a></td>
+  <td>Detaches all behaviors from the component.</td>
+  <td><a href="/doc/api/1.0/CComponent">CComponent</a></td>
+</tr>
+<tr class="inherited" id="detachEventHandler">
+  <td><a href="/doc/api/1.0/CComponent#detachEventHandler-detail">detachEventHandler()</a></td>
+  <td>Detaches an existing event handler.</td>
+  <td><a href="/doc/api/1.0/CComponent">CComponent</a></td>
+</tr>
+<tr class="inherited" id="disableBehavior">
+  <td><a href="/doc/api/1.0/CComponent#disableBehavior-detail">disableBehavior()</a></td>
+  <td>Disables an attached behavior.</td>
+  <td><a href="/doc/api/1.0/CComponent">CComponent</a></td>
+</tr>
+<tr class="inherited" id="disableBehaviors">
+  <td><a href="/doc/api/1.0/CComponent#disableBehaviors-detail">disableBehaviors()</a></td>
+  <td>Disables all behaviors attached to this component.</td>
+  <td><a href="/doc/api/1.0/CComponent">CComponent</a></td>
+</tr>
+<tr class="inherited" id="enableBehavior">
+  <td><a href="/doc/api/1.0/CComponent#enableBehavior-detail">enableBehavior()</a></td>
+  <td>Enables an attached behavior.</td>
+  <td><a href="/doc/api/1.0/CComponent">CComponent</a></td>
+</tr>
+<tr class="inherited" id="enableBehaviors">
+  <td><a href="/doc/api/1.0/CComponent#enableBehaviors-detail">enableBehaviors()</a></td>
+  <td>Enables all behaviors attached to this component.</td>
+  <td><a href="/doc/api/1.0/CComponent">CComponent</a></td>
+</tr>
+<tr id="format">
+  <td><a href="/doc/api/1.0/CDateFormatter#format-detail">format()</a></td>
+  <td>Formats a date according to a customized pattern.</td>
+  <td>CDateFormatter</td>
+</tr>
+<tr id="formatDateTime">
+  <td><a href="/doc/api/1.0/CDateFormatter#formatDateTime-detail">formatDateTime()</a></td>
+  <td>Formats a date according to a predefined pattern.</td>
+  <td>CDateFormatter</td>
+</tr>
+<tr class="inherited" id="getEventHandlers">
+  <td><a href="/doc/api/1.0/CComponent#getEventHandlers-detail">getEventHandlers()</a></td>
+  <td>Returns the list of attached event handlers for an event.</td>
+  <td><a href="/doc/api/1.0/CComponent">CComponent</a></td>
+</tr>
+<tr class="inherited" id="hasEvent">
+  <td><a href="/doc/api/1.0/CComponent#hasEvent-detail">hasEvent()</a></td>
+  <td>Determines whether an event is defined.</td>
+  <td><a href="/doc/api/1.0/CComponent">CComponent</a></td>
+</tr>
+<tr class="inherited" id="hasEventHandler">
+  <td><a href="/doc/api/1.0/CComponent#hasEventHandler-detail">hasEventHandler()</a></td>
+  <td>Checks whether the named event has attached handlers.</td>
+  <td><a href="/doc/api/1.0/CComponent">CComponent</a></td>
+</tr>
+<tr class="inherited" id="hasProperty">
+  <td><a href="/doc/api/1.0/CComponent#hasProperty-detail">hasProperty()</a></td>
+  <td>Determines whether a property is defined.</td>
+  <td><a href="/doc/api/1.0/CComponent">CComponent</a></td>
+</tr>
+<tr class="inherited" id="raiseEvent">
+  <td><a href="/doc/api/1.0/CComponent#raiseEvent-detail">raiseEvent()</a></td>
+  <td>Raises an event.</td>
+  <td><a href="/doc/api/1.0/CComponent">CComponent</a></td>
+</tr>
+</table>
+</div>
+<div class="summary docMethod">
+<h2>Protected Methods</h2>
+
+<p><a href="#" class="toggle">Hide inherited methods</a></p>
+
+<table class="summaryTable">
+<colgroup>
+	<col class="col-method" />
+	<col class="col-description" />
+	<col class="col-defined" />
+</colgroup>
+<tr>
+  <th>Method</th><th>Description</th><th>Defined By</th>
+</tr>
+<tr id="formatDay">
+  <td><a href="/doc/api/1.0/CDateFormatter#formatDay-detail">formatDay()</a></td>
+  <td>Get the day of the month.</td>
+  <td>CDateFormatter</td>
+</tr>
+<tr id="formatDayInMonth">
+  <td><a href="/doc/api/1.0/CDateFormatter#formatDayInMonth-detail">formatDayInMonth()</a></td>
+  <td>Get day of week in the month, e.g. 2nd Wed in July.</td>
+  <td>CDateFormatter</td>
+</tr>
+<tr id="formatDayInWeek">
+  <td><a href="/doc/api/1.0/CDateFormatter#formatDayInWeek-detail">formatDayInWeek()</a></td>
+  <td>Get the day of the week.</td>
+  <td>CDateFormatter</td>
+</tr>
+<tr id="formatDayInYear">
+  <td><a href="/doc/api/1.0/CDateFormatter#formatDayInYear-detail">formatDayInYear()</a></td>
+  <td>Get the day in the year, e.g. [1-366]</td>
+  <td>CDateFormatter</td>
+</tr>
+<tr id="formatEra">
+  <td><a href="/doc/api/1.0/CDateFormatter#formatEra-detail">formatEra()</a></td>
+  <td>Get the era. i.e. in gregorian, year > 0 is AD, else BC.</td>
+  <td>CDateFormatter</td>
+</tr>
+<tr id="formatHour12">
+  <td><a href="/doc/api/1.0/CDateFormatter#formatHour12-detail">formatHour12()</a></td>
+  <td>Get the hours in 12 hour format, i.e., [1-12]</td>
+  <td>CDateFormatter</td>
+</tr>
+<tr id="formatHour24">
+  <td><a href="/doc/api/1.0/CDateFormatter#formatHour24-detail">formatHour24()</a></td>
+  <td>Get the hours in 24 hour format, i.e. [0-23].</td>
+  <td>CDateFormatter</td>
+</tr>
+<tr id="formatHourInDay">
+  <td><a href="/doc/api/1.0/CDateFormatter#formatHourInDay-detail">formatHourInDay()</a></td>
+  <td>Get the hours [1-24].</td>
+  <td>CDateFormatter</td>
+</tr>
+<tr id="formatHourInPeriod">
+  <td><a href="/doc/api/1.0/CDateFormatter#formatHourInPeriod-detail">formatHourInPeriod()</a></td>
+  <td>Get the hours in AM/PM format, e.g [0-11]</td>
+  <td>CDateFormatter</td>
+</tr>
+<tr id="formatMinutes">
+  <td><a href="/doc/api/1.0/CDateFormatter#formatMinutes-detail">formatMinutes()</a></td>
+  <td>Get the minutes.</td>
+  <td>CDateFormatter</td>
+</tr>
+<tr id="formatMonth">
+  <td><a href="/doc/api/1.0/CDateFormatter#formatMonth-detail">formatMonth()</a></td>
+  <td>Get the month.</td>
+  <td>CDateFormatter</td>
+</tr>
+<tr id="formatPeriod">
+  <td><a href="/doc/api/1.0/CDateFormatter#formatPeriod-detail">formatPeriod()</a></td>
+  <td>Get the AM/PM designator, 12 noon is PM, 12 midnight is AM.</td>
+  <td>CDateFormatter</td>
+</tr>
+<tr id="formatSeconds">
+  <td><a href="/doc/api/1.0/CDateFormatter#formatSeconds-detail">formatSeconds()</a></td>
+  <td>Get the seconds.</td>
+  <td>CDateFormatter</td>
+</tr>
+<tr id="formatTimeZone">
+  <td><a href="/doc/api/1.0/CDateFormatter#formatTimeZone-detail">formatTimeZone()</a></td>
+  <td>Get the timezone of the server machine.</td>
+  <td>CDateFormatter</td>
+</tr>
+<tr id="formatWeekInMonth">
+  <td><a href="/doc/api/1.0/CDateFormatter#formatWeekInMonth-detail">formatWeekInMonth()</a></td>
+  <td>Get week in the month.</td>
+  <td>CDateFormatter</td>
+</tr>
+<tr id="formatWeekInYear">
+  <td><a href="/doc/api/1.0/CDateFormatter#formatWeekInYear-detail">formatWeekInYear()</a></td>
+  <td>Get the week in the year.</td>
+  <td>CDateFormatter</td>
+</tr>
+<tr id="formatYear">
+  <td><a href="/doc/api/1.0/CDateFormatter#formatYear-detail">formatYear()</a></td>
+  <td>Get the year.</td>
+  <td>CDateFormatter</td>
+</tr>
+<tr id="parseFormat">
+  <td><a href="/doc/api/1.0/CDateFormatter#parseFormat-detail">parseFormat()</a></td>
+  <td>Parses the datetime format pattern.</td>
+  <td>CDateFormatter</td>
+</tr>
+</table>
+</div>
+<a name="events"></a>
+
+<h2>Method Details</h2>
+
+<div class="detailHeader" id="__construct-detail">
+__construct()
+<span class="detailHeaderTag">
+method
+</span>
+</div>
+
+<table class="summaryTable">
+<tr><td colspan="3">
+<div class="signature2">
+public void <b>__construct</b>(mixed $locale)</div>
+</td></tr>
+<tr>
+  <td class="paramNameCol">$locale</td>
+  <td class="paramTypeCol">mixed</td>
+  <td class="paramDescCol">locale ID (string) or CLocale instance</td>
+</tr>
+</table>
+
+<div class="sourceCode">
+<b>Source Code:</b> <a class="sourceLink" href="https://github.com/yiisoft/yii/blob/1.0.12/framework/i18n/CDateFormatter.php#L70">framework/i18n/CDateFormatter.php#70</a> (<b><a href="#" class="show">show</a></b>)
+<div class="code"><code><span style="color: #000000">
+<span style="color: #0000BB"></span><span style="color: #007700">public&nbsp;function&nbsp;</span><span style="color: #0000BB">__construct</span><span style="color: #007700">(</span><span style="color: #0000BB">$locale</span><span style="color: #007700">)<br />{<br />&nbsp;&nbsp;&nbsp;&nbsp;if(</span><span style="color: #0000BB">is_string</span><span style="color: #007700">(</span><span style="color: #0000BB">$locale</span><span style="color: #007700">))<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">_locale</span><span style="color: #007700">=</span><span style="color: #0000BB">CLocale</span><span style="color: #007700">::</span><span style="color: #0000BB">getInstance</span><span style="color: #007700">(</span><span style="color: #0000BB">$locale</span><span style="color: #007700">);<br />&nbsp;&nbsp;&nbsp;&nbsp;else<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">_locale</span><span style="color: #007700">=</span><span style="color: #0000BB">$locale</span><span style="color: #007700">;<br />}</span>
+</span>
+</code></div>
+</div>
+<p>Constructor.</p>
+
+
+<div class="detailHeader" id="format-detail">
+format()
+<span class="detailHeaderTag">
+method
+</span>
+</div>
+
+<table class="summaryTable">
+<tr><td colspan="3">
+<div class="signature2">
+public string <b>format</b>(string $pattern, mixed $time)</div>
+</td></tr>
+<tr>
+  <td class="paramNameCol">$pattern</td>
+  <td class="paramTypeCol">string</td>
+  <td class="paramDescCol">the pattern (See <a href="http://www.unicode.org/reports/tr35/#Date_Format_Patterns">http://www.unicode.org/reports/tr35/#Date_Format_Patterns</a>)</td>
+</tr>
+<tr>
+  <td class="paramNameCol">$time</td>
+  <td class="paramTypeCol">mixed</td>
+  <td class="paramDescCol">UNIX timestamp or a string in strtotime format</td>
+</tr>
+<tr>
+  <td class="paramNameCol">{return}</td>
+  <td class="paramTypeCol">string</td>
+  <td class="paramDescCol">formatted date time.</td>
+</tr>
+</table>
+
+<div class="sourceCode">
+<b>Source Code:</b> <a class="sourceLink" href="https://github.com/yiisoft/yii/blob/1.0.12/framework/i18n/CDateFormatter.php#L84">framework/i18n/CDateFormatter.php#84</a> (<b><a href="#" class="show">show</a></b>)
+<div class="code"><code><span style="color: #000000">
+<span style="color: #0000BB"></span><span style="color: #007700">public&nbsp;function&nbsp;</span><span style="color: #0000BB">format</span><span style="color: #007700">(</span><span style="color: #0000BB">$pattern</span><span style="color: #007700">,</span><span style="color: #0000BB">$time</span><span style="color: #007700">)<br />{<br />&nbsp;&nbsp;&nbsp;&nbsp;if(</span><span style="color: #0000BB">is_string</span><span style="color: #007700">(</span><span style="color: #0000BB">$time</span><span style="color: #007700">))<br />&nbsp;&nbsp;&nbsp;&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if(</span><span style="color: #0000BB">ctype_digit</span><span style="color: #007700">(</span><span style="color: #0000BB">$time</span><span style="color: #007700">))<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$time</span><span style="color: #007700">=(int)</span><span style="color: #0000BB">$time</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;else<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$time</span><span style="color: #007700">=</span><span style="color: #0000BB">strtotime</span><span style="color: #007700">(</span><span style="color: #0000BB">$time</span><span style="color: #007700">);<br />&nbsp;&nbsp;&nbsp;&nbsp;}<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$date</span><span style="color: #007700">=</span><span style="color: #0000BB">CTimestamp</span><span style="color: #007700">::</span><span style="color: #0000BB">getDate</span><span style="color: #007700">(</span><span style="color: #0000BB">$time</span><span style="color: #007700">,</span><span style="color: #0000BB">false</span><span style="color: #007700">,</span><span style="color: #0000BB">false</span><span style="color: #007700">);<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$tokens</span><span style="color: #007700">=</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">parseFormat</span><span style="color: #007700">(</span><span style="color: #0000BB">$pattern</span><span style="color: #007700">);<br />&nbsp;&nbsp;&nbsp;&nbsp;foreach(</span><span style="color: #0000BB">$tokens&nbsp;</span><span style="color: #007700">as&nbsp;&amp;</span><span style="color: #0000BB">$token</span><span style="color: #007700">)<br />&nbsp;&nbsp;&nbsp;&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if(</span><span style="color: #0000BB">is_array</span><span style="color: #007700">(</span><span style="color: #0000BB">$token</span><span style="color: #007700">))&nbsp;</span><span style="color: #FF8000">//&nbsp;a&nbsp;callback:&nbsp;method&nbsp;name,&nbsp;sub-pattern<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$token</span><span style="color: #007700">=</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;{</span><span style="color: #0000BB">$token</span><span style="color: #007700">[</span><span style="color: #0000BB">0</span><span style="color: #007700">]}(</span><span style="color: #0000BB">$token</span><span style="color: #007700">[</span><span style="color: #0000BB">1</span><span style="color: #007700">],</span><span style="color: #0000BB">$date</span><span style="color: #007700">);<br />&nbsp;&nbsp;&nbsp;&nbsp;}<br />&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;</span><span style="color: #0000BB">implode</span><span style="color: #007700">(</span><span style="color: #DD0000">''</span><span style="color: #007700">,</span><span style="color: #0000BB">$tokens</span><span style="color: #007700">);<br />}</span>
+</span>
+</code></div>
+</div>
+<p>Formats a date according to a customized pattern.</p>
+
+
+<div class="detailHeader" id="formatDateTime-detail">
+formatDateTime()
+<span class="detailHeaderTag">
+method
+</span>
+</div>
+
+<table class="summaryTable">
+<tr><td colspan="3">
+<div class="signature2">
+public string <b>formatDateTime</b>(mixed $timestamp, string $dateWidth='medium', string $timeWidth='medium')</div>
+</td></tr>
+<tr>
+  <td class="paramNameCol">$timestamp</td>
+  <td class="paramTypeCol">mixed</td>
+  <td class="paramDescCol">UNIX timestamp or a string in strtotime format</td>
+</tr>
+<tr>
+  <td class="paramNameCol">$dateWidth</td>
+  <td class="paramTypeCol">string</td>
+  <td class="paramDescCol">width of the date pattern. It can be 'full', 'long', 'medium' and 'short'.
+If null, it means the date portion will NOT appear in the formatting result</td>
+</tr>
+<tr>
+  <td class="paramNameCol">$timeWidth</td>
+  <td class="paramTypeCol">string</td>
+  <td class="paramDescCol">width of the time pattern. It can be 'full', 'long', 'medium' and 'short'.
+If null, it means the time portion will NOT appear in the formatting result</td>
+</tr>
+<tr>
+  <td class="paramNameCol">{return}</td>
+  <td class="paramTypeCol">string</td>
+  <td class="paramDescCol">formatted date time.</td>
+</tr>
+</table>
+
+<div class="sourceCode">
+<b>Source Code:</b> <a class="sourceLink" href="https://github.com/yiisoft/yii/blob/1.0.12/framework/i18n/CDateFormatter.php#L113">framework/i18n/CDateFormatter.php#113</a> (<b><a href="#" class="show">show</a></b>)
+<div class="code"><code><span style="color: #000000">
+<span style="color: #0000BB"></span><span style="color: #007700">public&nbsp;function&nbsp;</span><span style="color: #0000BB">formatDateTime</span><span style="color: #007700">(</span><span style="color: #0000BB">$timestamp</span><span style="color: #007700">,</span><span style="color: #0000BB">$dateWidth</span><span style="color: #007700">=</span><span style="color: #DD0000">'medium'</span><span style="color: #007700">,</span><span style="color: #0000BB">$timeWidth</span><span style="color: #007700">=</span><span style="color: #DD0000">'medium'</span><span style="color: #007700">)<br />{<br />&nbsp;&nbsp;&nbsp;&nbsp;if(!empty(</span><span style="color: #0000BB">$dateWidth</span><span style="color: #007700">))<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$date</span><span style="color: #007700">=</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">format</span><span style="color: #007700">(</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">_locale</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">getDateFormat</span><span style="color: #007700">(</span><span style="color: #0000BB">$dateWidth</span><span style="color: #007700">),</span><span style="color: #0000BB">$timestamp</span><span style="color: #007700">);<br /><br />&nbsp;&nbsp;&nbsp;&nbsp;if(!empty(</span><span style="color: #0000BB">$timeWidth</span><span style="color: #007700">))<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$time</span><span style="color: #007700">=</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">format</span><span style="color: #007700">(</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">_locale</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">getTimeFormat</span><span style="color: #007700">(</span><span style="color: #0000BB">$timeWidth</span><span style="color: #007700">),</span><span style="color: #0000BB">$timestamp</span><span style="color: #007700">);<br /><br />&nbsp;&nbsp;&nbsp;&nbsp;if(isset(</span><span style="color: #0000BB">$date</span><span style="color: #007700">)&nbsp;&amp;&amp;&nbsp;isset(</span><span style="color: #0000BB">$time</span><span style="color: #007700">))<br />&nbsp;&nbsp;&nbsp;&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$dateTimePattern</span><span style="color: #007700">=</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">_locale</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">getDateTimeFormat</span><span style="color: #007700">();<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;</span><span style="color: #0000BB">strtr</span><span style="color: #007700">(</span><span style="color: #0000BB">$dateTimePattern</span><span style="color: #007700">,array(</span><span style="color: #DD0000">'{0}'</span><span style="color: #007700">=&gt;</span><span style="color: #0000BB">$time</span><span style="color: #007700">,</span><span style="color: #DD0000">'{1}'</span><span style="color: #007700">=&gt;</span><span style="color: #0000BB">$date</span><span style="color: #007700">));<br />&nbsp;&nbsp;&nbsp;&nbsp;}<br />&nbsp;&nbsp;&nbsp;&nbsp;else&nbsp;if(isset(</span><span style="color: #0000BB">$date</span><span style="color: #007700">))<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;</span><span style="color: #0000BB">$date</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;else&nbsp;if(isset(</span><span style="color: #0000BB">$time</span><span style="color: #007700">))<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;</span><span style="color: #0000BB">$time</span><span style="color: #007700">;<br />}</span>
+</span>
+</code></div>
+</div>
+<p>Formats a date according to a predefined pattern.
+The predefined pattern is determined based on the date pattern width and time pattern width.</p>
+
+
+<div class="detailHeader" id="formatDay-detail">
+formatDay()
+<span class="detailHeaderTag">
+method
+</span>
+</div>
+
+<table class="summaryTable">
+<tr><td colspan="3">
+<div class="signature2">
+protected string <b>formatDay</b>(string $pattern, array $date)</div>
+</td></tr>
+<tr>
+  <td class="paramNameCol">$pattern</td>
+  <td class="paramTypeCol">string</td>
+  <td class="paramDescCol">a pattern.</td>
+</tr>
+<tr>
+  <td class="paramNameCol">$date</td>
+  <td class="paramTypeCol">array</td>
+  <td class="paramDescCol">result of <a href="/doc/api/1.0/CTimestamp#getdate">CTimestamp::getdate</a>.</td>
+</tr>
+<tr>
+  <td class="paramNameCol">{return}</td>
+  <td class="paramTypeCol">string</td>
+  <td class="paramDescCol">day of the month</td>
+</tr>
+</table>
+
+<div class="sourceCode">
+<b>Source Code:</b> <a class="sourceLink" href="https://github.com/yiisoft/yii/blob/1.0.12/framework/i18n/CDateFormatter.php#L246">framework/i18n/CDateFormatter.php#246</a> (<b><a href="#" class="show">show</a></b>)
+<div class="code"><code><span style="color: #000000">
+<span style="color: #0000BB"></span><span style="color: #007700">protected&nbsp;function&nbsp;</span><span style="color: #0000BB">formatDay</span><span style="color: #007700">(</span><span style="color: #0000BB">$pattern</span><span style="color: #007700">,</span><span style="color: #0000BB">$date</span><span style="color: #007700">)<br />{<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$day</span><span style="color: #007700">=</span><span style="color: #0000BB">$date</span><span style="color: #007700">[</span><span style="color: #DD0000">'mday'</span><span style="color: #007700">];<br />&nbsp;&nbsp;&nbsp;&nbsp;if(</span><span style="color: #0000BB">$pattern</span><span style="color: #007700">===</span><span style="color: #DD0000">'d'</span><span style="color: #007700">)<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;</span><span style="color: #0000BB">$day</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;else&nbsp;if(</span><span style="color: #0000BB">$pattern</span><span style="color: #007700">===</span><span style="color: #DD0000">'dd'</span><span style="color: #007700">)<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;</span><span style="color: #0000BB">str_pad</span><span style="color: #007700">(</span><span style="color: #0000BB">$day</span><span style="color: #007700">,</span><span style="color: #0000BB">2</span><span style="color: #007700">,</span><span style="color: #DD0000">'0'</span><span style="color: #007700">,</span><span style="color: #0000BB">STR_PAD_LEFT</span><span style="color: #007700">);<br />&nbsp;&nbsp;&nbsp;&nbsp;else<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;throw&nbsp;new&nbsp;</span><span style="color: #0000BB">CException</span><span style="color: #007700">(</span><span style="color: #0000BB">Yii</span><span style="color: #007700">::</span><span style="color: #0000BB">t</span><span style="color: #007700">(</span><span style="color: #DD0000">'yii'</span><span style="color: #007700">,</span><span style="color: #DD0000">'The&nbsp;pattern&nbsp;for&nbsp;day&nbsp;of&nbsp;the&nbsp;month&nbsp;must&nbsp;be&nbsp;"d"&nbsp;or&nbsp;"dd".'</span><span style="color: #007700">));<br />}</span>
+</span>
+</code></div>
+</div>
+<p>Get the day of the month.
+"d" for non-padding, "dd" will always return 2 digits day numbers, e.g. 05.</p>
+
+
+<div class="detailHeader" id="formatDayInMonth-detail">
+formatDayInMonth()
+<span class="detailHeaderTag">
+method
+</span>
+</div>
+
+<table class="summaryTable">
+<tr><td colspan="3">
+<div class="signature2">
+protected int <b>formatDayInMonth</b>(string $pattern, array $date)</div>
+</td></tr>
+<tr>
+  <td class="paramNameCol">$pattern</td>
+  <td class="paramTypeCol">string</td>
+  <td class="paramDescCol">a pattern.</td>
+</tr>
+<tr>
+  <td class="paramNameCol">$date</td>
+  <td class="paramTypeCol">array</td>
+  <td class="paramDescCol">result of <a href="/doc/api/1.0/CTimestamp#getdate">CTimestamp::getdate</a>.</td>
+</tr>
+<tr>
+  <td class="paramNameCol">{return}</td>
+  <td class="paramTypeCol">int</td>
+  <td class="paramDescCol">day in month</td>
+</tr>
+</table>
+
+<div class="sourceCode">
+<b>Source Code:</b> <a class="sourceLink" href="https://github.com/yiisoft/yii/blob/1.0.12/framework/i18n/CDateFormatter.php#L278">framework/i18n/CDateFormatter.php#278</a> (<b><a href="#" class="show">show</a></b>)
+<div class="code"><code><span style="color: #000000">
+<span style="color: #0000BB"></span><span style="color: #007700">protected&nbsp;function&nbsp;</span><span style="color: #0000BB">formatDayInMonth</span><span style="color: #007700">(</span><span style="color: #0000BB">$pattern</span><span style="color: #007700">,</span><span style="color: #0000BB">$date</span><span style="color: #007700">)<br />{<br />&nbsp;&nbsp;&nbsp;&nbsp;if(</span><span style="color: #0000BB">$pattern</span><span style="color: #007700">===</span><span style="color: #DD0000">'F'</span><span style="color: #007700">)<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;(int)((</span><span style="color: #0000BB">$date</span><span style="color: #007700">[</span><span style="color: #DD0000">'mday'</span><span style="color: #007700">]+</span><span style="color: #0000BB">6</span><span style="color: #007700">)/</span><span style="color: #0000BB">7</span><span style="color: #007700">);<br />&nbsp;&nbsp;&nbsp;&nbsp;else<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;throw&nbsp;new&nbsp;</span><span style="color: #0000BB">CException</span><span style="color: #007700">(</span><span style="color: #0000BB">Yii</span><span style="color: #007700">::</span><span style="color: #0000BB">t</span><span style="color: #007700">(</span><span style="color: #DD0000">'yii'</span><span style="color: #007700">,</span><span style="color: #DD0000">'The&nbsp;pattern&nbsp;for&nbsp;day&nbsp;in&nbsp;month&nbsp;must&nbsp;be&nbsp;"F".'</span><span style="color: #007700">));<br />}</span>
+</span>
+</code></div>
+</div>
+<p>Get day of week in the month, e.g. 2nd Wed in July.</p>
+
+
+<div class="detailHeader" id="formatDayInWeek-detail">
+formatDayInWeek()
+<span class="detailHeaderTag">
+method
+</span>
+</div>
+
+<table class="summaryTable">
+<tr><td colspan="3">
+<div class="signature2">
+protected string <b>formatDayInWeek</b>(string $pattern, array $date)</div>
+</td></tr>
+<tr>
+  <td class="paramNameCol">$pattern</td>
+  <td class="paramTypeCol">string</td>
+  <td class="paramDescCol">a pattern.</td>
+</tr>
+<tr>
+  <td class="paramNameCol">$date</td>
+  <td class="paramTypeCol">array</td>
+  <td class="paramDescCol">result of <a href="/doc/api/1.0/CTimestamp#getdate">CTimestamp::getdate</a>.</td>
+</tr>
+<tr>
+  <td class="paramNameCol">{return}</td>
+  <td class="paramTypeCol">string</td>
+  <td class="paramDescCol">day of the week.</td>
+</tr>
+</table>
+
+<div class="sourceCode">
+<b>Source Code:</b> <a class="sourceLink" href="https://github.com/yiisoft/yii/blob/1.0.12/framework/i18n/CDateFormatter.php#L295">framework/i18n/CDateFormatter.php#295</a> (<b><a href="#" class="show">show</a></b>)
+<div class="code"><code><span style="color: #000000">
+<span style="color: #0000BB"></span><span style="color: #007700">protected&nbsp;function&nbsp;</span><span style="color: #0000BB">formatDayInWeek</span><span style="color: #007700">(</span><span style="color: #0000BB">$pattern</span><span style="color: #007700">,</span><span style="color: #0000BB">$date</span><span style="color: #007700">)<br />{<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$day</span><span style="color: #007700">=</span><span style="color: #0000BB">$date</span><span style="color: #007700">[</span><span style="color: #DD0000">'wday'</span><span style="color: #007700">];<br />&nbsp;&nbsp;&nbsp;&nbsp;switch(</span><span style="color: #0000BB">$pattern</span><span style="color: #007700">)<br />&nbsp;&nbsp;&nbsp;&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;case&nbsp;</span><span style="color: #DD0000">'E'</span><span style="color: #007700">:<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;case&nbsp;</span><span style="color: #DD0000">'EE'</span><span style="color: #007700">:<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;case&nbsp;</span><span style="color: #DD0000">'EEE'</span><span style="color: #007700">:<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">_locale</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">getWeekDayName</span><span style="color: #007700">(</span><span style="color: #0000BB">$day</span><span style="color: #007700">,</span><span style="color: #DD0000">'abbreviated'</span><span style="color: #007700">);<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;case&nbsp;</span><span style="color: #DD0000">'EEEE'</span><span style="color: #007700">:<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">_locale</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">getWeekDayName</span><span style="color: #007700">(</span><span style="color: #0000BB">$day</span><span style="color: #007700">,</span><span style="color: #DD0000">'wide'</span><span style="color: #007700">);<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;case&nbsp;</span><span style="color: #DD0000">'EEEEE'</span><span style="color: #007700">:<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">_locale</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">getWeekDayName</span><span style="color: #007700">(</span><span style="color: #0000BB">$day</span><span style="color: #007700">,</span><span style="color: #DD0000">'narrow'</span><span style="color: #007700">);<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;default:<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;throw&nbsp;new&nbsp;</span><span style="color: #0000BB">CException</span><span style="color: #007700">(</span><span style="color: #0000BB">Yii</span><span style="color: #007700">::</span><span style="color: #0000BB">t</span><span style="color: #007700">(</span><span style="color: #DD0000">'yii'</span><span style="color: #007700">,</span><span style="color: #DD0000">'The&nbsp;pattern&nbsp;for&nbsp;day&nbsp;of&nbsp;the&nbsp;week&nbsp;must&nbsp;be&nbsp;"E",&nbsp;"EE",&nbsp;"EEE",&nbsp;"EEEE"&nbsp;or&nbsp;"EEEEE".'</span><span style="color: #007700">));<br />&nbsp;&nbsp;&nbsp;&nbsp;}<br />}</span>
+</span>
+</code></div>
+</div>
+<p>Get the day of the week.
+"E", "EE", "EEE" will return abbreviated week day name, e.g. "Tues";
+"EEEE" will return full week day name;
+"EEEEE" will return the narrow week day name, e.g. "T";</p>
+
+
+<div class="detailHeader" id="formatDayInYear-detail">
+formatDayInYear()
+<span class="detailHeaderTag">
+method
+</span>
+</div>
+
+<table class="summaryTable">
+<tr><td colspan="3">
+<div class="signature2">
+protected int <b>formatDayInYear</b>(string $pattern, array $date)</div>
+</td></tr>
+<tr>
+  <td class="paramNameCol">$pattern</td>
+  <td class="paramTypeCol">string</td>
+  <td class="paramDescCol">a pattern.</td>
+</tr>
+<tr>
+  <td class="paramNameCol">$date</td>
+  <td class="paramTypeCol">array</td>
+  <td class="paramDescCol">result of <a href="/doc/api/1.0/CTimestamp#getdate">CTimestamp::getdate</a>.</td>
+</tr>
+<tr>
+  <td class="paramNameCol">{return}</td>
+  <td class="paramTypeCol">int</td>
+  <td class="paramDescCol">hours in AM/PM format.</td>
+</tr>
+</table>
+
+<div class="sourceCode">
+<b>Source Code:</b> <a class="sourceLink" href="https://github.com/yiisoft/yii/blob/1.0.12/framework/i18n/CDateFormatter.php#L263">framework/i18n/CDateFormatter.php#263</a> (<b><a href="#" class="show">show</a></b>)
+<div class="code"><code><span style="color: #000000">
+<span style="color: #0000BB"></span><span style="color: #007700">protected&nbsp;function&nbsp;</span><span style="color: #0000BB">formatDayInYear</span><span style="color: #007700">(</span><span style="color: #0000BB">$pattern</span><span style="color: #007700">,</span><span style="color: #0000BB">$date</span><span style="color: #007700">)<br />{<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$day</span><span style="color: #007700">=</span><span style="color: #0000BB">$date</span><span style="color: #007700">[</span><span style="color: #DD0000">'yday'</span><span style="color: #007700">];<br />&nbsp;&nbsp;&nbsp;&nbsp;if((</span><span style="color: #0000BB">$n</span><span style="color: #007700">=</span><span style="color: #0000BB">strlen</span><span style="color: #007700">(</span><span style="color: #0000BB">$pattern</span><span style="color: #007700">))&lt;=</span><span style="color: #0000BB">3</span><span style="color: #007700">)<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;</span><span style="color: #0000BB">str_pad</span><span style="color: #007700">(</span><span style="color: #0000BB">$day</span><span style="color: #007700">,</span><span style="color: #0000BB">$n</span><span style="color: #007700">,</span><span style="color: #DD0000">'0'</span><span style="color: #007700">,</span><span style="color: #0000BB">STR_PAD_LEFT</span><span style="color: #007700">);<br />&nbsp;&nbsp;&nbsp;&nbsp;else<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;throw&nbsp;new&nbsp;</span><span style="color: #0000BB">CException</span><span style="color: #007700">(</span><span style="color: #0000BB">Yii</span><span style="color: #007700">::</span><span style="color: #0000BB">t</span><span style="color: #007700">(</span><span style="color: #DD0000">'yii'</span><span style="color: #007700">,</span><span style="color: #DD0000">'The&nbsp;pattern&nbsp;for&nbsp;day&nbsp;in&nbsp;year&nbsp;must&nbsp;be&nbsp;"D",&nbsp;"DD"&nbsp;or&nbsp;"DDD".'</span><span style="color: #007700">));<br />}</span>
+</span>
+</code></div>
+</div>
+<p>Get the day in the year, e.g. [1-366]</p>
+
+
+<div class="detailHeader" id="formatEra-detail">
+formatEra()
+<span class="detailHeaderTag">
+method
+</span>
+</div>
+
+<table class="summaryTable">
+<tr><td colspan="3">
+<div class="signature2">
+protected string <b>formatEra</b>(string $pattern, array $date)</div>
+</td></tr>
+<tr>
+  <td class="paramNameCol">$pattern</td>
+  <td class="paramTypeCol">string</td>
+  <td class="paramDescCol">a pattern.</td>
+</tr>
+<tr>
+  <td class="paramNameCol">$date</td>
+  <td class="paramTypeCol">array</td>
+  <td class="paramDescCol">result of <a href="/doc/api/1.0/CTimestamp#getdate">CTimestamp::getdate</a>.</td>
+</tr>
+<tr>
+  <td class="paramNameCol">{return}</td>
+  <td class="paramTypeCol">string</td>
+  <td class="paramDescCol">era</td>
+</tr>
+</table>
+
+<div class="sourceCode">
+<b>Source Code:</b> <a class="sourceLink" href="https://github.com/yiisoft/yii/blob/1.0.12/framework/i18n/CDateFormatter.php#L493">framework/i18n/CDateFormatter.php#493</a> (<b><a href="#" class="show">show</a></b>)
+<div class="code"><code><span style="color: #000000">
+<span style="color: #0000BB"></span><span style="color: #007700">protected&nbsp;function&nbsp;</span><span style="color: #0000BB">formatEra</span><span style="color: #007700">(</span><span style="color: #0000BB">$pattern</span><span style="color: #007700">,</span><span style="color: #0000BB">$date</span><span style="color: #007700">)<br />{<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$era</span><span style="color: #007700">=</span><span style="color: #0000BB">$date</span><span style="color: #007700">[</span><span style="color: #DD0000">'year'</span><span style="color: #007700">]&gt;</span><span style="color: #0000BB">0&nbsp;</span><span style="color: #007700">?&nbsp;</span><span style="color: #0000BB">1&nbsp;</span><span style="color: #007700">:&nbsp;</span><span style="color: #0000BB">0</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;switch(</span><span style="color: #0000BB">$pattern</span><span style="color: #007700">)<br />&nbsp;&nbsp;&nbsp;&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;case&nbsp;</span><span style="color: #DD0000">'G'</span><span style="color: #007700">:<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;case&nbsp;</span><span style="color: #DD0000">'GG'</span><span style="color: #007700">:<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;case&nbsp;</span><span style="color: #DD0000">'GGG'</span><span style="color: #007700">:<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">_locale</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">getEraName</span><span style="color: #007700">(</span><span style="color: #0000BB">$era</span><span style="color: #007700">,</span><span style="color: #DD0000">'abbreviated'</span><span style="color: #007700">);<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;case&nbsp;</span><span style="color: #DD0000">'GGGG'</span><span style="color: #007700">:<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">_locale</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">getEraName</span><span style="color: #007700">(</span><span style="color: #0000BB">$era</span><span style="color: #007700">,</span><span style="color: #DD0000">'wide'</span><span style="color: #007700">);<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;case&nbsp;</span><span style="color: #DD0000">'GGGGG'</span><span style="color: #007700">:<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">_locale</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">getEraName</span><span style="color: #007700">(</span><span style="color: #0000BB">$era</span><span style="color: #007700">,</span><span style="color: #DD0000">'narrow'</span><span style="color: #007700">);<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;default:<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;throw&nbsp;new&nbsp;</span><span style="color: #0000BB">CException</span><span style="color: #007700">(</span><span style="color: #0000BB">Yii</span><span style="color: #007700">::</span><span style="color: #0000BB">t</span><span style="color: #007700">(</span><span style="color: #DD0000">'yii'</span><span style="color: #007700">,</span><span style="color: #DD0000">'The&nbsp;pattern&nbsp;for&nbsp;era&nbsp;must&nbsp;be&nbsp;"G",&nbsp;"GG",&nbsp;"GGG",&nbsp;"GGGG"&nbsp;or&nbsp;"GGGGG".'</span><span style="color: #007700">));<br />&nbsp;&nbsp;&nbsp;&nbsp;}<br />}</span>
+</span>
+</code></div>
+</div>
+<p>Get the era. i.e. in gregorian, year > 0 is AD, else BC.</p>
+
+
+<div class="detailHeader" id="formatHour12-detail">
+formatHour12()
+<span class="detailHeaderTag">
+method
+</span>
+</div>
+
+<table class="summaryTable">
+<tr><td colspan="3">
+<div class="signature2">
+protected string <b>formatHour12</b>(string $pattern, array $date)</div>
+</td></tr>
+<tr>
+  <td class="paramNameCol">$pattern</td>
+  <td class="paramTypeCol">string</td>
+  <td class="paramDescCol">a pattern.</td>
+</tr>
+<tr>
+  <td class="paramNameCol">$date</td>
+  <td class="paramTypeCol">array</td>
+  <td class="paramDescCol">result of <a href="/doc/api/1.0/CTimestamp#getdate">CTimestamp::getdate</a>.</td>
+</tr>
+<tr>
+  <td class="paramNameCol">{return}</td>
+  <td class="paramTypeCol">string</td>
+  <td class="paramDescCol">hours in 12 hour format.</td>
+</tr>
+</table>
+
+<div class="sourceCode">
+<b>Source Code:</b> <a class="sourceLink" href="https://github.com/yiisoft/yii/blob/1.0.12/framework/i18n/CDateFormatter.php#L357">framework/i18n/CDateFormatter.php#357</a> (<b><a href="#" class="show">show</a></b>)
+<div class="code"><code><span style="color: #000000">
+<span style="color: #0000BB"></span><span style="color: #007700">protected&nbsp;function&nbsp;</span><span style="color: #0000BB">formatHour12</span><span style="color: #007700">(</span><span style="color: #0000BB">$pattern</span><span style="color: #007700">,</span><span style="color: #0000BB">$date</span><span style="color: #007700">)<br />{<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$hour</span><span style="color: #007700">=</span><span style="color: #0000BB">$date</span><span style="color: #007700">[</span><span style="color: #DD0000">'hours'</span><span style="color: #007700">];<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$hour</span><span style="color: #007700">=(</span><span style="color: #0000BB">$hour</span><span style="color: #007700">==</span><span style="color: #0000BB">12</span><span style="color: #007700">|</span><span style="color: #0000BB">$hour</span><span style="color: #007700">==</span><span style="color: #0000BB">0</span><span style="color: #007700">)?</span><span style="color: #0000BB">12</span><span style="color: #007700">:(</span><span style="color: #0000BB">$hour</span><span style="color: #007700">)%</span><span style="color: #0000BB">12</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;if(</span><span style="color: #0000BB">$pattern</span><span style="color: #007700">===</span><span style="color: #DD0000">'h'</span><span style="color: #007700">)<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;</span><span style="color: #0000BB">$hour</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;else&nbsp;if(</span><span style="color: #0000BB">$pattern</span><span style="color: #007700">===</span><span style="color: #DD0000">'hh'</span><span style="color: #007700">)<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;</span><span style="color: #0000BB">str_pad</span><span style="color: #007700">(</span><span style="color: #0000BB">$hour</span><span style="color: #007700">,</span><span style="color: #0000BB">2</span><span style="color: #007700">,</span><span style="color: #DD0000">'0'</span><span style="color: #007700">,</span><span style="color: #0000BB">STR_PAD_LEFT</span><span style="color: #007700">);<br />&nbsp;&nbsp;&nbsp;&nbsp;else<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;throw&nbsp;new&nbsp;</span><span style="color: #0000BB">CException</span><span style="color: #007700">(</span><span style="color: #0000BB">Yii</span><span style="color: #007700">::</span><span style="color: #0000BB">t</span><span style="color: #007700">(</span><span style="color: #DD0000">'yii'</span><span style="color: #007700">,</span><span style="color: #DD0000">'The&nbsp;pattern&nbsp;for&nbsp;12&nbsp;hour&nbsp;format&nbsp;must&nbsp;be&nbsp;"h"&nbsp;or&nbsp;"hh".'</span><span style="color: #007700">));<br />}</span>
+</span>
+</code></div>
+</div>
+<p>Get the hours in 12 hour format, i.e., [1-12]
+"h" for non-padding, "hh" will always return 2 characters.</p>
+
+
+<div class="detailHeader" id="formatHour24-detail">
+formatHour24()
+<span class="detailHeaderTag">
+method
+</span>
+</div>
+
+<table class="summaryTable">
+<tr><td colspan="3">
+<div class="signature2">
+protected string <b>formatHour24</b>(string $pattern, array $date)</div>
+</td></tr>
+<tr>
+  <td class="paramNameCol">$pattern</td>
+  <td class="paramTypeCol">string</td>
+  <td class="paramDescCol">a pattern.</td>
+</tr>
+<tr>
+  <td class="paramNameCol">$date</td>
+  <td class="paramTypeCol">array</td>
+  <td class="paramDescCol">result of <a href="/doc/api/1.0/CTimestamp#getdate">CTimestamp::getdate</a>.</td>
+</tr>
+<tr>
+  <td class="paramNameCol">{return}</td>
+  <td class="paramTypeCol">string</td>
+  <td class="paramDescCol">hours in 24 hour format.</td>
+</tr>
+</table>
+
+<div class="sourceCode">
+<b>Source Code:</b> <a class="sourceLink" href="https://github.com/yiisoft/yii/blob/1.0.12/framework/i18n/CDateFormatter.php#L339">framework/i18n/CDateFormatter.php#339</a> (<b><a href="#" class="show">show</a></b>)
+<div class="code"><code><span style="color: #000000">
+<span style="color: #0000BB"></span><span style="color: #007700">protected&nbsp;function&nbsp;</span><span style="color: #0000BB">formatHour24</span><span style="color: #007700">(</span><span style="color: #0000BB">$pattern</span><span style="color: #007700">,</span><span style="color: #0000BB">$date</span><span style="color: #007700">)<br />{<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$hour</span><span style="color: #007700">=</span><span style="color: #0000BB">$date</span><span style="color: #007700">[</span><span style="color: #DD0000">'hours'</span><span style="color: #007700">];<br />&nbsp;&nbsp;&nbsp;&nbsp;if(</span><span style="color: #0000BB">$pattern</span><span style="color: #007700">===</span><span style="color: #DD0000">'H'</span><span style="color: #007700">)<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;</span><span style="color: #0000BB">$hour</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;else&nbsp;if(</span><span style="color: #0000BB">$pattern</span><span style="color: #007700">===</span><span style="color: #DD0000">'HH'</span><span style="color: #007700">)<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;</span><span style="color: #0000BB">str_pad</span><span style="color: #007700">(</span><span style="color: #0000BB">$hour</span><span style="color: #007700">,</span><span style="color: #0000BB">2</span><span style="color: #007700">,</span><span style="color: #DD0000">'0'</span><span style="color: #007700">,</span><span style="color: #0000BB">STR_PAD_LEFT</span><span style="color: #007700">);<br />&nbsp;&nbsp;&nbsp;&nbsp;else<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;throw&nbsp;new&nbsp;</span><span style="color: #0000BB">CException</span><span style="color: #007700">(</span><span style="color: #0000BB">Yii</span><span style="color: #007700">::</span><span style="color: #0000BB">t</span><span style="color: #007700">(</span><span style="color: #DD0000">'yii'</span><span style="color: #007700">,</span><span style="color: #DD0000">'The&nbsp;pattern&nbsp;for&nbsp;24&nbsp;hour&nbsp;format&nbsp;must&nbsp;be&nbsp;"H"&nbsp;or&nbsp;"HH".'</span><span style="color: #007700">));<br />}</span>
+</span>
+</code></div>
+</div>
+<p>Get the hours in 24 hour format, i.e. [0-23].
+"H" for non-padding, "HH" will always return 2 characters.</p>
+
+
+<div class="detailHeader" id="formatHourInDay-detail">
+formatHourInDay()
+<span class="detailHeaderTag">
+method
+</span>
+</div>
+
+<table class="summaryTable">
+<tr><td colspan="3">
+<div class="signature2">
+protected int <b>formatHourInDay</b>(string $pattern, array $date)</div>
+</td></tr>
+<tr>
+  <td class="paramNameCol">$pattern</td>
+  <td class="paramTypeCol">string</td>
+  <td class="paramDescCol">a pattern.</td>
+</tr>
+<tr>
+  <td class="paramNameCol">$date</td>
+  <td class="paramTypeCol">array</td>
+  <td class="paramDescCol">result of <a href="/doc/api/1.0/CTimestamp#getdate">CTimestamp::getdate</a>.</td>
+</tr>
+<tr>
+  <td class="paramNameCol">{return}</td>
+  <td class="paramTypeCol">int</td>
+  <td class="paramDescCol">hours [1-24]</td>
+</tr>
+</table>
+
+<div class="sourceCode">
+<b>Source Code:</b> <a class="sourceLink" href="https://github.com/yiisoft/yii/blob/1.0.12/framework/i18n/CDateFormatter.php#L376">framework/i18n/CDateFormatter.php#376</a> (<b><a href="#" class="show">show</a></b>)
+<div class="code"><code><span style="color: #000000">
+<span style="color: #0000BB"></span><span style="color: #007700">protected&nbsp;function&nbsp;</span><span style="color: #0000BB">formatHourInDay</span><span style="color: #007700">(</span><span style="color: #0000BB">$pattern</span><span style="color: #007700">,</span><span style="color: #0000BB">$date</span><span style="color: #007700">)<br />{<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$hour</span><span style="color: #007700">=</span><span style="color: #0000BB">$date</span><span style="color: #007700">[</span><span style="color: #DD0000">'hours'</span><span style="color: #007700">]==</span><span style="color: #0000BB">0</span><span style="color: #007700">?</span><span style="color: #0000BB">24</span><span style="color: #007700">:</span><span style="color: #0000BB">$date</span><span style="color: #007700">[</span><span style="color: #DD0000">'hours'</span><span style="color: #007700">];<br />&nbsp;&nbsp;&nbsp;&nbsp;if(</span><span style="color: #0000BB">$pattern</span><span style="color: #007700">===</span><span style="color: #DD0000">'k'</span><span style="color: #007700">)<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;</span><span style="color: #0000BB">$hour</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;else&nbsp;if(</span><span style="color: #0000BB">$pattern</span><span style="color: #007700">===</span><span style="color: #DD0000">'kk'</span><span style="color: #007700">)<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;</span><span style="color: #0000BB">str_pad</span><span style="color: #007700">(</span><span style="color: #0000BB">$hour</span><span style="color: #007700">,</span><span style="color: #0000BB">2</span><span style="color: #007700">,</span><span style="color: #DD0000">'0'</span><span style="color: #007700">,</span><span style="color: #0000BB">STR_PAD_LEFT</span><span style="color: #007700">);<br />&nbsp;&nbsp;&nbsp;&nbsp;else<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;throw&nbsp;new&nbsp;</span><span style="color: #0000BB">CException</span><span style="color: #007700">(</span><span style="color: #0000BB">Yii</span><span style="color: #007700">::</span><span style="color: #0000BB">t</span><span style="color: #007700">(</span><span style="color: #DD0000">'yii'</span><span style="color: #007700">,</span><span style="color: #DD0000">'The&nbsp;pattern&nbsp;for&nbsp;hour&nbsp;in&nbsp;day&nbsp;must&nbsp;be&nbsp;"k"&nbsp;or&nbsp;"kk".'</span><span style="color: #007700">));<br />}</span>
+</span>
+</code></div>
+</div>
+<p>Get the hours [1-24].
+'k' for non-padding, and 'kk' with 2 characters padding.</p>
+
+
+<div class="detailHeader" id="formatHourInPeriod-detail">
+formatHourInPeriod()
+<span class="detailHeaderTag">
+method
+</span>
+</div>
+
+<table class="summaryTable">
+<tr><td colspan="3">
+<div class="signature2">
+protected int <b>formatHourInPeriod</b>(string $pattern, array $date)</div>
+</td></tr>
+<tr>
+  <td class="paramNameCol">$pattern</td>
+  <td class="paramTypeCol">string</td>
+  <td class="paramDescCol">a pattern.</td>
+</tr>
+<tr>
+  <td class="paramNameCol">$date</td>
+  <td class="paramTypeCol">array</td>
+  <td class="paramDescCol">result of <a href="/doc/api/1.0/CTimestamp#getdate">CTimestamp::getdate</a>.</td>
+</tr>
+<tr>
+  <td class="paramNameCol">{return}</td>
+  <td class="paramTypeCol">int</td>
+  <td class="paramDescCol">hours in AM/PM format.</td>
+</tr>
+</table>
+
+<div class="sourceCode">
+<b>Source Code:</b> <a class="sourceLink" href="https://github.com/yiisoft/yii/blob/1.0.12/framework/i18n/CDateFormatter.php#L394">framework/i18n/CDateFormatter.php#394</a> (<b><a href="#" class="show">show</a></b>)
+<div class="code"><code><span style="color: #000000">
+<span style="color: #0000BB"></span><span style="color: #007700">protected&nbsp;function&nbsp;</span><span style="color: #0000BB">formatHourInPeriod</span><span style="color: #007700">(</span><span style="color: #0000BB">$pattern</span><span style="color: #007700">,</span><span style="color: #0000BB">$date</span><span style="color: #007700">)<br />{<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$hour</span><span style="color: #007700">=</span><span style="color: #0000BB">$date</span><span style="color: #007700">[</span><span style="color: #DD0000">'hours'</span><span style="color: #007700">]%</span><span style="color: #0000BB">12</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;if(</span><span style="color: #0000BB">$pattern</span><span style="color: #007700">===</span><span style="color: #DD0000">'K'</span><span style="color: #007700">)<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;</span><span style="color: #0000BB">$hour</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;else&nbsp;if(</span><span style="color: #0000BB">$pattern</span><span style="color: #007700">===</span><span style="color: #DD0000">'KK'</span><span style="color: #007700">)<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;</span><span style="color: #0000BB">str_pad</span><span style="color: #007700">(</span><span style="color: #0000BB">$hour</span><span style="color: #007700">,</span><span style="color: #0000BB">2</span><span style="color: #007700">,</span><span style="color: #DD0000">'0'</span><span style="color: #007700">,</span><span style="color: #0000BB">STR_PAD_LEFT</span><span style="color: #007700">);<br />&nbsp;&nbsp;&nbsp;&nbsp;else<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;throw&nbsp;new&nbsp;</span><span style="color: #0000BB">CException</span><span style="color: #007700">(</span><span style="color: #0000BB">Yii</span><span style="color: #007700">::</span><span style="color: #0000BB">t</span><span style="color: #007700">(</span><span style="color: #DD0000">'yii'</span><span style="color: #007700">,</span><span style="color: #DD0000">'The&nbsp;pattern&nbsp;for&nbsp;hour&nbsp;in&nbsp;AM/PM&nbsp;must&nbsp;be&nbsp;"K"&nbsp;or&nbsp;"KK".'</span><span style="color: #007700">));<br />}</span>
+</span>
+</code></div>
+</div>
+<p>Get the hours in AM/PM format, e.g [0-11]
+"K" for non-padding, "KK" will always return 2 characters.</p>
+
+
+<div class="detailHeader" id="formatMinutes-detail">
+formatMinutes()
+<span class="detailHeaderTag">
+method
+</span>
+</div>
+
+<table class="summaryTable">
+<tr><td colspan="3">
+<div class="signature2">
+protected string <b>formatMinutes</b>(string $pattern, array $date)</div>
+</td></tr>
+<tr>
+  <td class="paramNameCol">$pattern</td>
+  <td class="paramTypeCol">string</td>
+  <td class="paramDescCol">a pattern.</td>
+</tr>
+<tr>
+  <td class="paramNameCol">$date</td>
+  <td class="paramTypeCol">array</td>
+  <td class="paramDescCol">result of <a href="/doc/api/1.0/CTimestamp#getdate">CTimestamp::getdate</a>.</td>
+</tr>
+<tr>
+  <td class="paramNameCol">{return}</td>
+  <td class="paramTypeCol">string</td>
+  <td class="paramDescCol">minutes.</td>
+</tr>
+</table>
+
+<div class="sourceCode">
+<b>Source Code:</b> <a class="sourceLink" href="https://github.com/yiisoft/yii/blob/1.0.12/framework/i18n/CDateFormatter.php#L412">framework/i18n/CDateFormatter.php#412</a> (<b><a href="#" class="show">show</a></b>)
+<div class="code"><code><span style="color: #000000">
+<span style="color: #0000BB"></span><span style="color: #007700">protected&nbsp;function&nbsp;</span><span style="color: #0000BB">formatMinutes</span><span style="color: #007700">(</span><span style="color: #0000BB">$pattern</span><span style="color: #007700">,</span><span style="color: #0000BB">$date</span><span style="color: #007700">)<br />{<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$minutes</span><span style="color: #007700">=</span><span style="color: #0000BB">$date</span><span style="color: #007700">[</span><span style="color: #DD0000">'minutes'</span><span style="color: #007700">];<br />&nbsp;&nbsp;&nbsp;&nbsp;if(</span><span style="color: #0000BB">$pattern</span><span style="color: #007700">===</span><span style="color: #DD0000">'m'</span><span style="color: #007700">)<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;</span><span style="color: #0000BB">$minutes</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;else&nbsp;if(</span><span style="color: #0000BB">$pattern</span><span style="color: #007700">===</span><span style="color: #DD0000">'mm'</span><span style="color: #007700">)<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;</span><span style="color: #0000BB">str_pad</span><span style="color: #007700">(</span><span style="color: #0000BB">$minutes</span><span style="color: #007700">,</span><span style="color: #0000BB">2</span><span style="color: #007700">,</span><span style="color: #DD0000">'0'</span><span style="color: #007700">,</span><span style="color: #0000BB">STR_PAD_LEFT</span><span style="color: #007700">);<br />&nbsp;&nbsp;&nbsp;&nbsp;else<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;throw&nbsp;new&nbsp;</span><span style="color: #0000BB">CException</span><span style="color: #007700">(</span><span style="color: #0000BB">Yii</span><span style="color: #007700">::</span><span style="color: #0000BB">t</span><span style="color: #007700">(</span><span style="color: #DD0000">'yii'</span><span style="color: #007700">,</span><span style="color: #DD0000">'The&nbsp;pattern&nbsp;for&nbsp;minutes&nbsp;must&nbsp;be&nbsp;"m"&nbsp;or&nbsp;"mm".'</span><span style="color: #007700">));<br />}</span>
+</span>
+</code></div>
+</div>
+<p>Get the minutes.
+"m" for non-padding, "mm" will always return 2 characters.</p>
+
+
+<div class="detailHeader" id="formatMonth-detail">
+formatMonth()
+<span class="detailHeaderTag">
+method
+</span>
+</div>
+
+<table class="summaryTable">
+<tr><td colspan="3">
+<div class="signature2">
+protected string <b>formatMonth</b>(string $pattern, array $date)</div>
+</td></tr>
+<tr>
+  <td class="paramNameCol">$pattern</td>
+  <td class="paramTypeCol">string</td>
+  <td class="paramDescCol">a pattern.</td>
+</tr>
+<tr>
+  <td class="paramNameCol">$date</td>
+  <td class="paramTypeCol">array</td>
+  <td class="paramDescCol">result of <a href="/doc/api/1.0/CTimestamp#getdate">CTimestamp::getdate</a>.</td>
+</tr>
+<tr>
+  <td class="paramNameCol">{return}</td>
+  <td class="paramTypeCol">string</td>
+  <td class="paramDescCol">month name</td>
+</tr>
+</table>
+
+<div class="sourceCode">
+<b>Source Code:</b> <a class="sourceLink" href="https://github.com/yiisoft/yii/blob/1.0.12/framework/i18n/CDateFormatter.php#L219">framework/i18n/CDateFormatter.php#219</a> (<b><a href="#" class="show">show</a></b>)
+<div class="code"><code><span style="color: #000000">
+<span style="color: #0000BB"></span><span style="color: #007700">protected&nbsp;function&nbsp;</span><span style="color: #0000BB">formatMonth</span><span style="color: #007700">(</span><span style="color: #0000BB">$pattern</span><span style="color: #007700">,</span><span style="color: #0000BB">$date</span><span style="color: #007700">)<br />{<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$month</span><span style="color: #007700">=</span><span style="color: #0000BB">$date</span><span style="color: #007700">[</span><span style="color: #DD0000">'mon'</span><span style="color: #007700">];<br />&nbsp;&nbsp;&nbsp;&nbsp;switch(</span><span style="color: #0000BB">$pattern</span><span style="color: #007700">)<br />&nbsp;&nbsp;&nbsp;&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;case&nbsp;</span><span style="color: #DD0000">'M'</span><span style="color: #007700">:<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;</span><span style="color: #0000BB">$month</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;case&nbsp;</span><span style="color: #DD0000">'MM'</span><span style="color: #007700">:<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;</span><span style="color: #0000BB">str_pad</span><span style="color: #007700">(</span><span style="color: #0000BB">$month</span><span style="color: #007700">,</span><span style="color: #0000BB">2</span><span style="color: #007700">,</span><span style="color: #DD0000">'0'</span><span style="color: #007700">,</span><span style="color: #0000BB">STR_PAD_LEFT</span><span style="color: #007700">);<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;case&nbsp;</span><span style="color: #DD0000">'MMM'</span><span style="color: #007700">:<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">_locale</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">getMonthName</span><span style="color: #007700">(</span><span style="color: #0000BB">$month</span><span style="color: #007700">,</span><span style="color: #DD0000">'abbreviated'</span><span style="color: #007700">);<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;case&nbsp;</span><span style="color: #DD0000">'MMMM'</span><span style="color: #007700">:<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">_locale</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">getMonthName</span><span style="color: #007700">(</span><span style="color: #0000BB">$month</span><span style="color: #007700">,</span><span style="color: #DD0000">'wide'</span><span style="color: #007700">);<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;case&nbsp;</span><span style="color: #DD0000">'MMMMM'</span><span style="color: #007700">:<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">_locale</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">getMonthName</span><span style="color: #007700">(</span><span style="color: #0000BB">$month</span><span style="color: #007700">,</span><span style="color: #DD0000">'narrow'</span><span style="color: #007700">);<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;default:<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;throw&nbsp;new&nbsp;</span><span style="color: #0000BB">CException</span><span style="color: #007700">(</span><span style="color: #0000BB">Yii</span><span style="color: #007700">::</span><span style="color: #0000BB">t</span><span style="color: #007700">(</span><span style="color: #DD0000">'yii'</span><span style="color: #007700">,</span><span style="color: #DD0000">'The&nbsp;pattern&nbsp;for&nbsp;month&nbsp;must&nbsp;be&nbsp;"M",&nbsp;"MM",&nbsp;"MMM",&nbsp;or&nbsp;"MMMM".'</span><span style="color: #007700">));<br />&nbsp;&nbsp;&nbsp;&nbsp;}<br />}</span>
+</span>
+</code></div>
+</div>
+<p>Get the month.
+"M" will return integer 1 through 12;
+"MM" will return two digits month number with necessary zero padding, e.g. 05;
+"MMM" will return the abrreviated month name, e.g. "Jan";
+"MMMM" will return the full month name, e.g. "January";
+"MMMMM" will return the narrow month name, e.g. "J";</p>
+
+
+<div class="detailHeader" id="formatPeriod-detail">
+formatPeriod()
+<span class="detailHeaderTag">
+method
+</span>
+</div>
+
+<table class="summaryTable">
+<tr><td colspan="3">
+<div class="signature2">
+protected string <b>formatPeriod</b>(string $pattern, array $date)</div>
+</td></tr>
+<tr>
+  <td class="paramNameCol">$pattern</td>
+  <td class="paramTypeCol">string</td>
+  <td class="paramDescCol">a pattern.</td>
+</tr>
+<tr>
+  <td class="paramNameCol">$date</td>
+  <td class="paramTypeCol">array</td>
+  <td class="paramDescCol">result of <a href="/doc/api/1.0/CTimestamp#getdate">CTimestamp::getdate</a>.</td>
+</tr>
+<tr>
+  <td class="paramNameCol">{return}</td>
+  <td class="paramTypeCol">string</td>
+  <td class="paramDescCol">AM or PM designator</td>
+</tr>
+</table>
+
+<div class="sourceCode">
+<b>Source Code:</b> <a class="sourceLink" href="https://github.com/yiisoft/yii/blob/1.0.12/framework/i18n/CDateFormatter.php#L319">framework/i18n/CDateFormatter.php#319</a> (<b><a href="#" class="show">show</a></b>)
+<div class="code"><code><span style="color: #000000">
+<span style="color: #0000BB"></span><span style="color: #007700">protected&nbsp;function&nbsp;</span><span style="color: #0000BB">formatPeriod</span><span style="color: #007700">(</span><span style="color: #0000BB">$pattern</span><span style="color: #007700">,</span><span style="color: #0000BB">$date</span><span style="color: #007700">)<br />{<br />&nbsp;&nbsp;&nbsp;&nbsp;if(</span><span style="color: #0000BB">$pattern</span><span style="color: #007700">===</span><span style="color: #DD0000">'a'</span><span style="color: #007700">)<br />&nbsp;&nbsp;&nbsp;&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if(</span><span style="color: #0000BB">intval</span><span style="color: #007700">(</span><span style="color: #0000BB">$date</span><span style="color: #007700">[</span><span style="color: #DD0000">'hours'</span><span style="color: #007700">]/</span><span style="color: #0000BB">12</span><span style="color: #007700">))<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">_locale</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">getPMName</span><span style="color: #007700">();<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;else<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">_locale</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">getAMName</span><span style="color: #007700">();<br />&nbsp;&nbsp;&nbsp;&nbsp;}<br />&nbsp;&nbsp;&nbsp;&nbsp;else<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;throw&nbsp;new&nbsp;</span><span style="color: #0000BB">CException</span><span style="color: #007700">(</span><span style="color: #0000BB">Yii</span><span style="color: #007700">::</span><span style="color: #0000BB">t</span><span style="color: #007700">(</span><span style="color: #DD0000">'yii'</span><span style="color: #007700">,</span><span style="color: #DD0000">'The&nbsp;pattern&nbsp;for&nbsp;AM/PM&nbsp;marker&nbsp;must&nbsp;be&nbsp;"a".'</span><span style="color: #007700">));<br />}</span>
+</span>
+</code></div>
+</div>
+<p>Get the AM/PM designator, 12 noon is PM, 12 midnight is AM.</p>
+
+
+<div class="detailHeader" id="formatSeconds-detail">
+formatSeconds()
+<span class="detailHeaderTag">
+method
+</span>
+</div>
+
+<table class="summaryTable">
+<tr><td colspan="3">
+<div class="signature2">
+protected string <b>formatSeconds</b>(string $pattern, array $date)</div>
+</td></tr>
+<tr>
+  <td class="paramNameCol">$pattern</td>
+  <td class="paramTypeCol">string</td>
+  <td class="paramDescCol">a pattern.</td>
+</tr>
+<tr>
+  <td class="paramNameCol">$date</td>
+  <td class="paramTypeCol">array</td>
+  <td class="paramDescCol">result of <a href="/doc/api/1.0/CTimestamp#getdate">CTimestamp::getdate</a>.</td>
+</tr>
+<tr>
+  <td class="paramNameCol">{return}</td>
+  <td class="paramTypeCol">string</td>
+  <td class="paramDescCol">seconds</td>
+</tr>
+</table>
+
+<div class="sourceCode">
+<b>Source Code:</b> <a class="sourceLink" href="https://github.com/yiisoft/yii/blob/1.0.12/framework/i18n/CDateFormatter.php#L430">framework/i18n/CDateFormatter.php#430</a> (<b><a href="#" class="show">show</a></b>)
+<div class="code"><code><span style="color: #000000">
+<span style="color: #0000BB"></span><span style="color: #007700">protected&nbsp;function&nbsp;</span><span style="color: #0000BB">formatSeconds</span><span style="color: #007700">(</span><span style="color: #0000BB">$pattern</span><span style="color: #007700">,</span><span style="color: #0000BB">$date</span><span style="color: #007700">)<br />{<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$seconds</span><span style="color: #007700">=</span><span style="color: #0000BB">$date</span><span style="color: #007700">[</span><span style="color: #DD0000">'seconds'</span><span style="color: #007700">];<br />&nbsp;&nbsp;&nbsp;&nbsp;if(</span><span style="color: #0000BB">$pattern</span><span style="color: #007700">===</span><span style="color: #DD0000">'s'</span><span style="color: #007700">)<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;</span><span style="color: #0000BB">$seconds</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;else&nbsp;if(</span><span style="color: #0000BB">$pattern</span><span style="color: #007700">===</span><span style="color: #DD0000">'ss'</span><span style="color: #007700">)<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;</span><span style="color: #0000BB">str_pad</span><span style="color: #007700">(</span><span style="color: #0000BB">$seconds</span><span style="color: #007700">,</span><span style="color: #0000BB">2</span><span style="color: #007700">,</span><span style="color: #DD0000">'0'</span><span style="color: #007700">,</span><span style="color: #0000BB">STR_PAD_LEFT</span><span style="color: #007700">);<br />&nbsp;&nbsp;&nbsp;&nbsp;else<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;throw&nbsp;new&nbsp;</span><span style="color: #0000BB">CException</span><span style="color: #007700">(</span><span style="color: #0000BB">Yii</span><span style="color: #007700">::</span><span style="color: #0000BB">t</span><span style="color: #007700">(</span><span style="color: #DD0000">'yii'</span><span style="color: #007700">,</span><span style="color: #DD0000">'The&nbsp;pattern&nbsp;for&nbsp;seconds&nbsp;must&nbsp;be&nbsp;"s"&nbsp;or&nbsp;"ss".'</span><span style="color: #007700">));<br />}</span>
+</span>
+</code></div>
+</div>
+<p>Get the seconds.
+"s" for non-padding, "ss" will always return 2 characters.</p>
+
+
+<div class="detailHeader" id="formatTimeZone-detail">
+formatTimeZone()
+<span class="detailHeaderTag">
+method
+</span>
+</div>
+
+<table class="summaryTable">
+<tr><td colspan="3">
+<div class="signature2">
+protected string <b>formatTimeZone</b>(string $pattern, array $date)</div>
+</td></tr>
+<tr>
+  <td class="paramNameCol">$pattern</td>
+  <td class="paramTypeCol">string</td>
+  <td class="paramDescCol">a pattern.</td>
+</tr>
+<tr>
+  <td class="paramNameCol">$date</td>
+  <td class="paramTypeCol">array</td>
+  <td class="paramDescCol">result of <a href="/doc/api/1.0/CTimestamp#getdate">CTimestamp::getdate</a>.</td>
+</tr>
+<tr>
+  <td class="paramNameCol">{return}</td>
+  <td class="paramTypeCol">string</td>
+  <td class="paramDescCol">time zone</td>
+</tr>
+</table>
+
+<div class="sourceCode">
+<b>Source Code:</b> <a class="sourceLink" href="https://github.com/yiisoft/yii/blob/1.0.12/framework/i18n/CDateFormatter.php#L476">framework/i18n/CDateFormatter.php#476</a> (<b><a href="#" class="show">show</a></b>)
+<div class="code"><code><span style="color: #000000">
+<span style="color: #0000BB"></span><span style="color: #007700">protected&nbsp;function&nbsp;</span><span style="color: #0000BB">formatTimeZone</span><span style="color: #007700">(</span><span style="color: #0000BB">$pattern</span><span style="color: #007700">,</span><span style="color: #0000BB">$date</span><span style="color: #007700">)<br />{<br />&nbsp;&nbsp;&nbsp;&nbsp;if(</span><span style="color: #0000BB">$pattern</span><span style="color: #007700">===</span><span style="color: #DD0000">'z'&nbsp;</span><span style="color: #007700">|&nbsp;</span><span style="color: #0000BB">$pattern</span><span style="color: #007700">===</span><span style="color: #DD0000">'v'</span><span style="color: #007700">)<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;@</span><span style="color: #0000BB">date</span><span style="color: #007700">(</span><span style="color: #DD0000">'T'</span><span style="color: #007700">,&nbsp;@</span><span style="color: #0000BB">mktime</span><span style="color: #007700">(</span><span style="color: #0000BB">$date</span><span style="color: #007700">[</span><span style="color: #DD0000">'hours'</span><span style="color: #007700">],&nbsp;</span><span style="color: #0000BB">$date</span><span style="color: #007700">[</span><span style="color: #DD0000">'minutes'</span><span style="color: #007700">],&nbsp;</span><span style="color: #0000BB">$date</span><span style="color: #007700">[</span><span style="color: #DD0000">'seconds'</span><span style="color: #007700">],&nbsp;</span><span style="color: #0000BB">$date</span><span style="color: #007700">[</span><span style="color: #DD0000">'mon'</span><span style="color: #007700">],&nbsp;</span><span style="color: #0000BB">$date</span><span style="color: #007700">[</span><span style="color: #DD0000">'mday'</span><span style="color: #007700">],&nbsp;</span><span style="color: #0000BB">$date</span><span style="color: #007700">[</span><span style="color: #DD0000">'year'</span><span style="color: #007700">]));<br />&nbsp;&nbsp;&nbsp;&nbsp;elseif(</span><span style="color: #0000BB">$pattern</span><span style="color: #007700">===</span><span style="color: #DD0000">'Z'</span><span style="color: #007700">)<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;@</span><span style="color: #0000BB">date</span><span style="color: #007700">(</span><span style="color: #DD0000">'O'</span><span style="color: #007700">,&nbsp;@</span><span style="color: #0000BB">mktime</span><span style="color: #007700">(</span><span style="color: #0000BB">$date</span><span style="color: #007700">[</span><span style="color: #DD0000">'hours'</span><span style="color: #007700">],&nbsp;</span><span style="color: #0000BB">$date</span><span style="color: #007700">[</span><span style="color: #DD0000">'minutes'</span><span style="color: #007700">],&nbsp;</span><span style="color: #0000BB">$date</span><span style="color: #007700">[</span><span style="color: #DD0000">'seconds'</span><span style="color: #007700">],&nbsp;</span><span style="color: #0000BB">$date</span><span style="color: #007700">[</span><span style="color: #DD0000">'mon'</span><span style="color: #007700">],&nbsp;</span><span style="color: #0000BB">$date</span><span style="color: #007700">[</span><span style="color: #DD0000">'mday'</span><span style="color: #007700">],&nbsp;</span><span style="color: #0000BB">$date</span><span style="color: #007700">[</span><span style="color: #DD0000">'year'</span><span style="color: #007700">]));<br />&nbsp;&nbsp;&nbsp;&nbsp;else<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;throw&nbsp;new&nbsp;</span><span style="color: #0000BB">CException</span><span style="color: #007700">(</span><span style="color: #0000BB">Yii</span><span style="color: #007700">::</span><span style="color: #0000BB">t</span><span style="color: #007700">(</span><span style="color: #DD0000">'yii'</span><span style="color: #007700">,</span><span style="color: #DD0000">'The&nbsp;pattern&nbsp;for&nbsp;time&nbsp;zone&nbsp;must&nbsp;be&nbsp;"z"&nbsp;or&nbsp;"v".'</span><span style="color: #007700">));<br />}</span>
+</span>
+</code></div>
+</div>
+<p>Get the timezone of the server machine.</p>
+
+
+<div class="detailHeader" id="formatWeekInMonth-detail">
+formatWeekInMonth()
+<span class="detailHeaderTag">
+method
+</span>
+</div>
+
+<table class="summaryTable">
+<tr><td colspan="3">
+<div class="signature2">
+protected int <b>formatWeekInMonth</b>(array $pattern, string $date)</div>
+</td></tr>
+<tr>
+  <td class="paramNameCol">$pattern</td>
+  <td class="paramTypeCol">array</td>
+  <td class="paramDescCol">result of <a href="/doc/api/1.0/CTimestamp#getdate">CTimestamp::getdate</a>.</td>
+</tr>
+<tr>
+  <td class="paramNameCol">$date</td>
+  <td class="paramTypeCol">string</td>
+  <td class="paramDescCol">a pattern.</td>
+</tr>
+<tr>
+  <td class="paramNameCol">{return}</td>
+  <td class="paramTypeCol">int</td>
+  <td class="paramDescCol">week in month</td>
+</tr>
+</table>
+
+<div class="sourceCode">
+<b>Source Code:</b> <a class="sourceLink" href="https://github.com/yiisoft/yii/blob/1.0.12/framework/i18n/CDateFormatter.php#L461">framework/i18n/CDateFormatter.php#461</a> (<b><a href="#" class="show">show</a></b>)
+<div class="code"><code><span style="color: #000000">
+<span style="color: #0000BB"></span><span style="color: #007700">protected&nbsp;function&nbsp;</span><span style="color: #0000BB">formatWeekInMonth</span><span style="color: #007700">(</span><span style="color: #0000BB">$pattern</span><span style="color: #007700">,</span><span style="color: #0000BB">$date</span><span style="color: #007700">)<br />{<br />&nbsp;&nbsp;&nbsp;&nbsp;if(</span><span style="color: #0000BB">$pattern</span><span style="color: #007700">===</span><span style="color: #DD0000">'W'</span><span style="color: #007700">)<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;@</span><span style="color: #0000BB">date</span><span style="color: #007700">(</span><span style="color: #DD0000">'W'</span><span style="color: #007700">,@</span><span style="color: #0000BB">mktime</span><span style="color: #007700">(</span><span style="color: #0000BB">0</span><span style="color: #007700">,</span><span style="color: #0000BB">0</span><span style="color: #007700">,</span><span style="color: #0000BB">0</span><span style="color: #007700">,</span><span style="color: #0000BB">$date</span><span style="color: #007700">[</span><span style="color: #DD0000">'mon'</span><span style="color: #007700">],&nbsp;</span><span style="color: #0000BB">$date</span><span style="color: #007700">[</span><span style="color: #DD0000">'mday'</span><span style="color: #007700">],</span><span style="color: #0000BB">$date</span><span style="color: #007700">[</span><span style="color: #DD0000">'year'</span><span style="color: #007700">]))-</span><span style="color: #0000BB">date</span><span style="color: #007700">(</span><span style="color: #DD0000">'W'</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">mktime</span><span style="color: #007700">(</span><span style="color: #0000BB">0</span><span style="color: #007700">,</span><span style="color: #0000BB">0</span><span style="color: #007700">,</span><span style="color: #0000BB">0</span><span style="color: #007700">,</span><span style="color: #0000BB">$date</span><span style="color: #007700">[</span><span style="color: #DD0000">'mon'</span><span style="color: #007700">],</span><span style="color: #0000BB">1</span><span style="color: #007700">,</span><span style="color: #0000BB">$date</span><span style="color: #007700">[</span><span style="color: #DD0000">'year'</span><span style="color: #007700">]))+</span><span style="color: #0000BB">1</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;else<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;throw&nbsp;new&nbsp;</span><span style="color: #0000BB">CException</span><span style="color: #007700">(</span><span style="color: #0000BB">Yii</span><span style="color: #007700">::</span><span style="color: #0000BB">t</span><span style="color: #007700">(</span><span style="color: #DD0000">'yii'</span><span style="color: #007700">,</span><span style="color: #DD0000">'The&nbsp;pattern&nbsp;for&nbsp;week&nbsp;in&nbsp;month&nbsp;must&nbsp;be&nbsp;"W".'</span><span style="color: #007700">));<br />}</span>
+</span>
+</code></div>
+</div>
+<p>Get week in the month.</p>
+
+
+<div class="detailHeader" id="formatWeekInYear-detail">
+formatWeekInYear()
+<span class="detailHeaderTag">
+method
+</span>
+</div>
+
+<table class="summaryTable">
+<tr><td colspan="3">
+<div class="signature2">
+protected int <b>formatWeekInYear</b>(string $pattern, array $date)</div>
+</td></tr>
+<tr>
+  <td class="paramNameCol">$pattern</td>
+  <td class="paramTypeCol">string</td>
+  <td class="paramDescCol">a pattern.</td>
+</tr>
+<tr>
+  <td class="paramNameCol">$date</td>
+  <td class="paramTypeCol">array</td>
+  <td class="paramDescCol">result of <a href="/doc/api/1.0/CTimestamp#getdate">CTimestamp::getdate</a>.</td>
+</tr>
+<tr>
+  <td class="paramNameCol">{return}</td>
+  <td class="paramTypeCol">int</td>
+  <td class="paramDescCol">week in year</td>
+</tr>
+</table>
+
+<div class="sourceCode">
+<b>Source Code:</b> <a class="sourceLink" href="https://github.com/yiisoft/yii/blob/1.0.12/framework/i18n/CDateFormatter.php#L447">framework/i18n/CDateFormatter.php#447</a> (<b><a href="#" class="show">show</a></b>)
+<div class="code"><code><span style="color: #000000">
+<span style="color: #0000BB"></span><span style="color: #007700">protected&nbsp;function&nbsp;</span><span style="color: #0000BB">formatWeekInYear</span><span style="color: #007700">(</span><span style="color: #0000BB">$pattern</span><span style="color: #007700">,</span><span style="color: #0000BB">$date</span><span style="color: #007700">)<br />{<br />&nbsp;&nbsp;&nbsp;&nbsp;if(</span><span style="color: #0000BB">$pattern</span><span style="color: #007700">===</span><span style="color: #DD0000">'w'</span><span style="color: #007700">)<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;@</span><span style="color: #0000BB">date</span><span style="color: #007700">(</span><span style="color: #DD0000">'W'</span><span style="color: #007700">,@</span><span style="color: #0000BB">mktime</span><span style="color: #007700">(</span><span style="color: #0000BB">0</span><span style="color: #007700">,</span><span style="color: #0000BB">0</span><span style="color: #007700">,</span><span style="color: #0000BB">0</span><span style="color: #007700">,</span><span style="color: #0000BB">$date</span><span style="color: #007700">[</span><span style="color: #DD0000">'mon'</span><span style="color: #007700">],</span><span style="color: #0000BB">$date</span><span style="color: #007700">[</span><span style="color: #DD0000">'mday'</span><span style="color: #007700">],</span><span style="color: #0000BB">$date</span><span style="color: #007700">[</span><span style="color: #DD0000">'year'</span><span style="color: #007700">]));<br />&nbsp;&nbsp;&nbsp;&nbsp;else<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;throw&nbsp;new&nbsp;</span><span style="color: #0000BB">CException</span><span style="color: #007700">(</span><span style="color: #0000BB">Yii</span><span style="color: #007700">::</span><span style="color: #0000BB">t</span><span style="color: #007700">(</span><span style="color: #DD0000">'yii'</span><span style="color: #007700">,</span><span style="color: #DD0000">'The&nbsp;pattern&nbsp;for&nbsp;week&nbsp;in&nbsp;year&nbsp;must&nbsp;be&nbsp;"w".'</span><span style="color: #007700">));<br />}</span>
+</span>
+</code></div>
+</div>
+<p>Get the week in the year.</p>
+
+
+<div class="detailHeader" id="formatYear-detail">
+formatYear()
+<span class="detailHeaderTag">
+method
+</span>
+</div>
+
+<table class="summaryTable">
+<tr><td colspan="3">
+<div class="signature2">
+protected string <b>formatYear</b>(string $pattern, array $date)</div>
+</td></tr>
+<tr>
+  <td class="paramNameCol">$pattern</td>
+  <td class="paramTypeCol">string</td>
+  <td class="paramDescCol">a pattern.</td>
+</tr>
+<tr>
+  <td class="paramNameCol">$date</td>
+  <td class="paramTypeCol">array</td>
+  <td class="paramDescCol">result of <a href="/doc/api/1.0/CTimestamp#getdate">CTimestamp::getdate</a>.</td>
+</tr>
+<tr>
+  <td class="paramNameCol">{return}</td>
+  <td class="paramTypeCol">string</td>
+  <td class="paramDescCol">formatted year</td>
+</tr>
+</table>
+
+<div class="sourceCode">
+<b>Source Code:</b> <a class="sourceLink" href="https://github.com/yiisoft/yii/blob/1.0.12/framework/i18n/CDateFormatter.php#L199">framework/i18n/CDateFormatter.php#199</a> (<b><a href="#" class="show">show</a></b>)
+<div class="code"><code><span style="color: #000000">
+<span style="color: #0000BB"></span><span style="color: #007700">protected&nbsp;function&nbsp;</span><span style="color: #0000BB">formatYear</span><span style="color: #007700">(</span><span style="color: #0000BB">$pattern</span><span style="color: #007700">,</span><span style="color: #0000BB">$date</span><span style="color: #007700">)<br />{<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$year</span><span style="color: #007700">=</span><span style="color: #0000BB">$date</span><span style="color: #007700">[</span><span style="color: #DD0000">'year'</span><span style="color: #007700">];<br />&nbsp;&nbsp;&nbsp;&nbsp;if(</span><span style="color: #0000BB">$pattern</span><span style="color: #007700">===</span><span style="color: #DD0000">'yy'</span><span style="color: #007700">)<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;</span><span style="color: #0000BB">str_pad</span><span style="color: #007700">(</span><span style="color: #0000BB">$year</span><span style="color: #007700">%</span><span style="color: #0000BB">100</span><span style="color: #007700">,</span><span style="color: #0000BB">2</span><span style="color: #007700">,</span><span style="color: #DD0000">'0'</span><span style="color: #007700">,</span><span style="color: #0000BB">STR_PAD_LEFT</span><span style="color: #007700">);<br />&nbsp;&nbsp;&nbsp;&nbsp;else<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;</span><span style="color: #0000BB">str_pad</span><span style="color: #007700">(</span><span style="color: #0000BB">$year</span><span style="color: #007700">,</span><span style="color: #0000BB">strlen</span><span style="color: #007700">(</span><span style="color: #0000BB">$pattern</span><span style="color: #007700">),</span><span style="color: #DD0000">'0'</span><span style="color: #007700">,</span><span style="color: #0000BB">STR_PAD_LEFT</span><span style="color: #007700">);<br />}</span>
+</span>
+</code></div>
+</div>
+<p>Get the year.
+"yy" will return the last two digits of year.
+"y...y" will pad the year with 0 in the front, e.g. "yyyyy" will generate "02008" for year 2008.</p>
+
+
+<div class="detailHeader" id="parseFormat-detail">
+parseFormat()
+<span class="detailHeaderTag">
+method
+</span>
+</div>
+
+<table class="summaryTable">
+<tr><td colspan="3">
+<div class="signature2">
+protected array <b>parseFormat</b>(string $pattern)</div>
+</td></tr>
+<tr>
+  <td class="paramNameCol">$pattern</td>
+  <td class="paramTypeCol">string</td>
+  <td class="paramDescCol">the pattern to be parsed</td>
+</tr>
+<tr>
+  <td class="paramNameCol">{return}</td>
+  <td class="paramTypeCol">array</td>
+  <td class="paramDescCol">tokenized parsing result</td>
+</tr>
+</table>
+
+<div class="sourceCode">
+<b>Source Code:</b> <a class="sourceLink" href="https://github.com/yiisoft/yii/blob/1.0.12/framework/i18n/CDateFormatter.php#L137">framework/i18n/CDateFormatter.php#137</a> (<b><a href="#" class="show">show</a></b>)
+<div class="code"><code><span style="color: #000000">
+<span style="color: #0000BB"></span><span style="color: #007700">protected&nbsp;function&nbsp;</span><span style="color: #0000BB">parseFormat</span><span style="color: #007700">(</span><span style="color: #0000BB">$pattern</span><span style="color: #007700">)<br />{<br />&nbsp;&nbsp;&nbsp;&nbsp;static&nbsp;</span><span style="color: #0000BB">$formats</span><span style="color: #007700">=array();&nbsp;&nbsp;</span><span style="color: #FF8000">//&nbsp;cache<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #007700">if(isset(</span><span style="color: #0000BB">$formats</span><span style="color: #007700">[</span><span style="color: #0000BB">$pattern</span><span style="color: #007700">]))<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;</span><span style="color: #0000BB">$formats</span><span style="color: #007700">[</span><span style="color: #0000BB">$pattern</span><span style="color: #007700">];<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$tokens</span><span style="color: #007700">=array();<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$n</span><span style="color: #007700">=</span><span style="color: #0000BB">strlen</span><span style="color: #007700">(</span><span style="color: #0000BB">$pattern</span><span style="color: #007700">);<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$isLiteral</span><span style="color: #007700">=</span><span style="color: #0000BB">false</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$literal</span><span style="color: #007700">=</span><span style="color: #DD0000">''</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;for(</span><span style="color: #0000BB">$i</span><span style="color: #007700">=</span><span style="color: #0000BB">0</span><span style="color: #007700">;</span><span style="color: #0000BB">$i</span><span style="color: #007700">&lt;</span><span style="color: #0000BB">$n</span><span style="color: #007700">;++</span><span style="color: #0000BB">$i</span><span style="color: #007700">)<br />&nbsp;&nbsp;&nbsp;&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$c</span><span style="color: #007700">=</span><span style="color: #0000BB">$pattern</span><span style="color: #007700">[</span><span style="color: #0000BB">$i</span><span style="color: #007700">];<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if(</span><span style="color: #0000BB">$c</span><span style="color: #007700">===</span><span style="color: #DD0000">"'"</span><span style="color: #007700">)<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if(</span><span style="color: #0000BB">$i</span><span style="color: #007700">&lt;</span><span style="color: #0000BB">$n</span><span style="color: #007700">-</span><span style="color: #0000BB">1&nbsp;</span><span style="color: #007700">&amp;&amp;&nbsp;</span><span style="color: #0000BB">$pattern</span><span style="color: #007700">[</span><span style="color: #0000BB">$i</span><span style="color: #007700">+</span><span style="color: #0000BB">1</span><span style="color: #007700">]===</span><span style="color: #DD0000">"'"</span><span style="color: #007700">)<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$tokens</span><span style="color: #007700">[]=</span><span style="color: #DD0000">"'"</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$i</span><span style="color: #007700">++;<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;else&nbsp;if(</span><span style="color: #0000BB">$isLiteral</span><span style="color: #007700">)<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$tokens</span><span style="color: #007700">[]=</span><span style="color: #0000BB">$literal</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$literal</span><span style="color: #007700">=</span><span style="color: #DD0000">''</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$isLiteral</span><span style="color: #007700">=</span><span style="color: #0000BB">false</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;else<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$isLiteral</span><span style="color: #007700">=</span><span style="color: #0000BB">true</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$literal</span><span style="color: #007700">=</span><span style="color: #DD0000">''</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;else&nbsp;if(</span><span style="color: #0000BB">$isLiteral</span><span style="color: #007700">)<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$literal</span><span style="color: #007700">.=</span><span style="color: #0000BB">$c</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;else<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;for(</span><span style="color: #0000BB">$j</span><span style="color: #007700">=</span><span style="color: #0000BB">$i</span><span style="color: #007700">+</span><span style="color: #0000BB">1</span><span style="color: #007700">;</span><span style="color: #0000BB">$j</span><span style="color: #007700">&lt;</span><span style="color: #0000BB">$n</span><span style="color: #007700">;++</span><span style="color: #0000BB">$j</span><span style="color: #007700">)<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if(</span><span style="color: #0000BB">$pattern</span><span style="color: #007700">[</span><span style="color: #0000BB">$j</span><span style="color: #007700">]!==</span><span style="color: #0000BB">$c</span><span style="color: #007700">)<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;break;<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$p</span><span style="color: #007700">=</span><span style="color: #0000BB">str_repeat</span><span style="color: #007700">(</span><span style="color: #0000BB">$c</span><span style="color: #007700">,</span><span style="color: #0000BB">$j</span><span style="color: #007700">-</span><span style="color: #0000BB">$i</span><span style="color: #007700">);<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if(isset(</span><span style="color: #0000BB">self</span><span style="color: #007700">::</span><span style="color: #0000BB">$_formatters</span><span style="color: #007700">[</span><span style="color: #0000BB">$c</span><span style="color: #007700">]))<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$tokens</span><span style="color: #007700">[]=array(</span><span style="color: #0000BB">self</span><span style="color: #007700">::</span><span style="color: #0000BB">$_formatters</span><span style="color: #007700">[</span><span style="color: #0000BB">$c</span><span style="color: #007700">],</span><span style="color: #0000BB">$p</span><span style="color: #007700">);<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;else<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$tokens</span><span style="color: #007700">[]=</span><span style="color: #0000BB">$p</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$i</span><span style="color: #007700">=</span><span style="color: #0000BB">$j</span><span style="color: #007700">-</span><span style="color: #0000BB">1</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br />&nbsp;&nbsp;&nbsp;&nbsp;}<br />&nbsp;&nbsp;&nbsp;&nbsp;if(</span><span style="color: #0000BB">$literal</span><span style="color: #007700">!==</span><span style="color: #DD0000">''</span><span style="color: #007700">)<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$tokens</span><span style="color: #007700">[]=</span><span style="color: #0000BB">$literal</span><span style="color: #007700">;<br /><br />&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;</span><span style="color: #0000BB">$formats</span><span style="color: #007700">[</span><span style="color: #0000BB">$pattern</span><span style="color: #007700">]=</span><span style="color: #0000BB">$tokens</span><span style="color: #007700">;<br />}</span>
+</span>
+</code></div>
+</div>
+<p>Parses the datetime format pattern.</p>
+
+

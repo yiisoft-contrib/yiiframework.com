@@ -11,6 +11,7 @@
   background: #ccc;
   width: 200px;
   display: none;
+
   .bar {
     background: $eshill-blue;
     height: 15px;
@@ -20,4 +21,13 @@
 .profile-image-box {
   float: right;
   max-width: 400px;
+  @media (max-width: 991px) {
+    float: none;
+    margin-top: 20px;
+
+    label {
+      margin-top: 10px;
+      margin-bottom: 10px;
+    }
+  }
 }

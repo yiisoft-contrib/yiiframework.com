@@ -1,0 +1,942 @@
+<h1>YiiBase</h1>
+<div id="nav">
+<a href="/doc/api/1.0/">All Packages</a>
+| <a href="#methods">Methods</a>
+</div>
+
+<table class="summaryTable docClass">
+<colgroup>
+	<col class="col-name" />
+	<col class="col-value" />
+</colgroup>
+<tr>
+  <th>Package</th>
+  <td><a href="/doc/api/1.0/#system">system</a></td>
+</tr>
+<tr>
+  <th>Inheritance</th>
+  <td>class YiiBase</td>
+</tr>
+<tr>
+  <th>Subclasses</th>
+  <td><a href="/doc/api/1.0/Yii">Yii</a></td>
+</tr>
+<tr>
+  <th>Since</th>
+  <td>1.0</td>
+</tr>
+<tr>
+  <th>Version</th>
+  <td>$Id$</td>
+</tr>
+<tr>
+  <th>Source Code</th>
+  <td><a class="sourceLink" href="https://github.com/yiisoft/yii/blob/1.0.12/framework/YiiBase.php">framework/YiiBase.php</a></td>
+</tr>
+</table>
+
+<div id="classDescription">
+YiiBase is a helper class serving common framework functionalities.
+<br/><br/>
+Do not use YiiBase directly. Instead, use its child class <a href="/doc/api/1.0/Yii">Yii</a> where
+you can customize methods of YiiBase.</div>
+<a name="properties"></a>
+
+<a name="methods"></a>
+
+<div class="summary docMethod">
+<h2>Public Methods</h2>
+
+<p><a href="#" class="toggle">Hide inherited methods</a></p>
+
+<table class="summaryTable">
+<colgroup>
+	<col class="col-method" />
+	<col class="col-description" />
+	<col class="col-defined" />
+</colgroup>
+<tr>
+  <th>Method</th><th>Description</th><th>Defined By</th>
+</tr>
+<tr id="app">
+  <td><a href="/doc/api/1.0/YiiBase#app-detail">app()</a></td>
+  <td></td>
+  <td>YiiBase</td>
+</tr>
+<tr id="autoload">
+  <td><a href="/doc/api/1.0/YiiBase#autoload-detail">autoload()</a></td>
+  <td>Class autoload loader.</td>
+  <td>YiiBase</td>
+</tr>
+<tr id="beginProfile">
+  <td><a href="/doc/api/1.0/YiiBase#beginProfile-detail">beginProfile()</a></td>
+  <td>Marks the begin of a code block for profiling.</td>
+  <td>YiiBase</td>
+</tr>
+<tr id="createApplication">
+  <td><a href="/doc/api/1.0/YiiBase#createApplication-detail">createApplication()</a></td>
+  <td>Creates an application of the specified class.</td>
+  <td>YiiBase</td>
+</tr>
+<tr id="createComponent">
+  <td><a href="/doc/api/1.0/YiiBase#createComponent-detail">createComponent()</a></td>
+  <td>Creates an object and initializes it based on the given configuration.</td>
+  <td>YiiBase</td>
+</tr>
+<tr id="createConsoleApplication">
+  <td><a href="/doc/api/1.0/YiiBase#createConsoleApplication-detail">createConsoleApplication()</a></td>
+  <td>Creates a console application instance.</td>
+  <td>YiiBase</td>
+</tr>
+<tr id="createWebApplication">
+  <td><a href="/doc/api/1.0/YiiBase#createWebApplication-detail">createWebApplication()</a></td>
+  <td>Creates a Web application instance.</td>
+  <td>YiiBase</td>
+</tr>
+<tr id="endProfile">
+  <td><a href="/doc/api/1.0/YiiBase#endProfile-detail">endProfile()</a></td>
+  <td>Marks the end of a code block for profiling.</td>
+  <td>YiiBase</td>
+</tr>
+<tr id="getFrameworkPath">
+  <td><a href="/doc/api/1.0/YiiBase#getFrameworkPath-detail">getFrameworkPath()</a></td>
+  <td>Returns the path of the framework</td>
+  <td>YiiBase</td>
+</tr>
+<tr id="getLogger">
+  <td><a href="/doc/api/1.0/YiiBase#getLogger-detail">getLogger()</a></td>
+  <td>Returns message logger</td>
+  <td>YiiBase</td>
+</tr>
+<tr id="getPathOfAlias">
+  <td><a href="/doc/api/1.0/YiiBase#getPathOfAlias-detail">getPathOfAlias()</a></td>
+  <td>Translates an alias into a file path.</td>
+  <td>YiiBase</td>
+</tr>
+<tr id="getVersion">
+  <td><a href="/doc/api/1.0/YiiBase#getVersion-detail">getVersion()</a></td>
+  <td>Returns the version of Yii framework</td>
+  <td>YiiBase</td>
+</tr>
+<tr id="import">
+  <td><a href="/doc/api/1.0/YiiBase#import-detail">import()</a></td>
+  <td>Imports the definition of a class or a directory of class files.</td>
+  <td>YiiBase</td>
+</tr>
+<tr id="log">
+  <td><a href="/doc/api/1.0/YiiBase#log-detail">log()</a></td>
+  <td>Logs a message.</td>
+  <td>YiiBase</td>
+</tr>
+<tr id="powered">
+  <td><a href="/doc/api/1.0/YiiBase#powered-detail">powered()</a></td>
+  <td></td>
+  <td>YiiBase</td>
+</tr>
+<tr id="registerAutoloader">
+  <td><a href="/doc/api/1.0/YiiBase#registerAutoloader-detail">registerAutoloader()</a></td>
+  <td>Registers a new class autoloader.</td>
+  <td>YiiBase</td>
+</tr>
+<tr id="setApplication">
+  <td><a href="/doc/api/1.0/YiiBase#setApplication-detail">setApplication()</a></td>
+  <td>Stores the application instance in the class static member.</td>
+  <td>YiiBase</td>
+</tr>
+<tr id="setPathOfAlias">
+  <td><a href="/doc/api/1.0/YiiBase#setPathOfAlias-detail">setPathOfAlias()</a></td>
+  <td>Create a path alias.</td>
+  <td>YiiBase</td>
+</tr>
+<tr id="t">
+  <td><a href="/doc/api/1.0/YiiBase#t-detail">t()</a></td>
+  <td>Translates a message to the specified language.</td>
+  <td>YiiBase</td>
+</tr>
+<tr id="trace">
+  <td><a href="/doc/api/1.0/YiiBase#trace-detail">trace()</a></td>
+  <td>Writes a trace message.</td>
+  <td>YiiBase</td>
+</tr>
+</table>
+</div>
+<a name="events"></a>
+
+<h2>Method Details</h2>
+
+<div class="detailHeader" id="app-detail">
+app()
+<span class="detailHeaderTag">
+method
+</span>
+</div>
+
+<table class="summaryTable">
+<tr><td colspan="3">
+<div class="signature2">
+public static <a href="/doc/api/1.0/CApplication">CApplication</a> <b>app</b>()</div>
+</td></tr>
+<tr>
+  <td class="paramNameCol">{return}</td>
+  <td class="paramTypeCol"><a href="/doc/api/1.0/CApplication">CApplication</a></td>
+  <td class="paramDescCol">the application singleton, null if the singleton has not been created yet.</td>
+</tr>
+</table>
+
+<div class="sourceCode">
+<b>Source Code:</b> <a class="sourceLink" href="https://github.com/yiisoft/yii/blob/1.0.12/framework/YiiBase.php#L114">framework/YiiBase.php#114</a> (<b><a href="#" class="show">show</a></b>)
+<div class="code"><code><span style="color: #000000">
+<span style="color: #0000BB"></span><span style="color: #007700">public&nbsp;static&nbsp;function&nbsp;</span><span style="color: #0000BB">app</span><span style="color: #007700">()<br />{<br />&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;</span><span style="color: #0000BB">self</span><span style="color: #007700">::</span><span style="color: #0000BB">$_app</span><span style="color: #007700">;<br />}</span>
+</span>
+</code></div>
+</div>
+<p></p>
+
+
+<div class="detailHeader" id="autoload-detail">
+autoload()
+<span class="detailHeaderTag">
+method
+</span>
+</div>
+
+<table class="summaryTable">
+<tr><td colspan="3">
+<div class="signature2">
+public static boolean <b>autoload</b>(string $className)</div>
+</td></tr>
+<tr>
+  <td class="paramNameCol">$className</td>
+  <td class="paramTypeCol">string</td>
+  <td class="paramDescCol">class name</td>
+</tr>
+<tr>
+  <td class="paramNameCol">{return}</td>
+  <td class="paramTypeCol">boolean</td>
+  <td class="paramDescCol">whether the class has been loaded successfully</td>
+</tr>
+</table>
+
+<div class="sourceCode">
+<b>Source Code:</b> <a class="sourceLink" href="https://github.com/yiisoft/yii/blob/1.0.12/framework/YiiBase.php#L329">framework/YiiBase.php#329</a> (<b><a href="#" class="show">show</a></b>)
+<div class="code"><code><span style="color: #000000">
+<span style="color: #0000BB"></span><span style="color: #007700">public&nbsp;static&nbsp;function&nbsp;</span><span style="color: #0000BB">autoload</span><span style="color: #007700">(</span><span style="color: #0000BB">$className</span><span style="color: #007700">)<br />{<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #FF8000">//&nbsp;use&nbsp;include&nbsp;so&nbsp;that&nbsp;the&nbsp;error&nbsp;PHP&nbsp;file&nbsp;may&nbsp;appear<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #007700">if(isset(</span><span style="color: #0000BB">self</span><span style="color: #007700">::</span><span style="color: #0000BB">$_coreClasses</span><span style="color: #007700">[</span><span style="color: #0000BB">$className</span><span style="color: #007700">]))<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;include(</span><span style="color: #0000BB">YII_PATH</span><span style="color: #007700">.</span><span style="color: #0000BB">self</span><span style="color: #007700">::</span><span style="color: #0000BB">$_coreClasses</span><span style="color: #007700">[</span><span style="color: #0000BB">$className</span><span style="color: #007700">]);<br />&nbsp;&nbsp;&nbsp;&nbsp;else&nbsp;if(isset(</span><span style="color: #0000BB">self</span><span style="color: #007700">::</span><span style="color: #0000BB">$_classes</span><span style="color: #007700">[</span><span style="color: #0000BB">$className</span><span style="color: #007700">]))<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;include(</span><span style="color: #0000BB">self</span><span style="color: #007700">::</span><span style="color: #0000BB">$_classes</span><span style="color: #007700">[</span><span style="color: #0000BB">$className</span><span style="color: #007700">]);<br />&nbsp;&nbsp;&nbsp;&nbsp;else<br />&nbsp;&nbsp;&nbsp;&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;include(</span><span style="color: #0000BB">$className</span><span style="color: #007700">.</span><span style="color: #DD0000">'.php'</span><span style="color: #007700">);<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;</span><span style="color: #0000BB">class_exists</span><span style="color: #007700">(</span><span style="color: #0000BB">$className</span><span style="color: #007700">,</span><span style="color: #0000BB">false</span><span style="color: #007700">)&nbsp;||&nbsp;</span><span style="color: #0000BB">interface_exists</span><span style="color: #007700">(</span><span style="color: #0000BB">$className</span><span style="color: #007700">,</span><span style="color: #0000BB">false</span><span style="color: #007700">);<br />&nbsp;&nbsp;&nbsp;&nbsp;}<br />&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;</span><span style="color: #0000BB">true</span><span style="color: #007700">;<br />}</span>
+</span>
+</code></div>
+</div>
+<p>Class autoload loader.
+This method is provided to be invoked within an __autoload() magic method.</p>
+
+
+<div class="detailHeader" id="beginProfile-detail">
+beginProfile()
+<span class="detailHeaderTag">
+method
+</span>
+</div>
+
+<table class="summaryTable">
+<tr><td colspan="3">
+<div class="signature2">
+public static void <b>beginProfile</b>(string $token, string $category='application')</div>
+</td></tr>
+<tr>
+  <td class="paramNameCol">$token</td>
+  <td class="paramTypeCol">string</td>
+  <td class="paramDescCol">token for the code block</td>
+</tr>
+<tr>
+  <td class="paramNameCol">$category</td>
+  <td class="paramTypeCol">string</td>
+  <td class="paramDescCol">the category of this log message</td>
+</tr>
+</table>
+
+<div class="sourceCode">
+<b>Source Code:</b> <a class="sourceLink" href="https://github.com/yiisoft/yii/blob/1.0.12/framework/YiiBase.php#L414">framework/YiiBase.php#414</a> (<b><a href="#" class="show">show</a></b>)
+<div class="code"><code><span style="color: #000000">
+<span style="color: #0000BB"></span><span style="color: #007700">public&nbsp;static&nbsp;function&nbsp;</span><span style="color: #0000BB">beginProfile</span><span style="color: #007700">(</span><span style="color: #0000BB">$token</span><span style="color: #007700">,</span><span style="color: #0000BB">$category</span><span style="color: #007700">=</span><span style="color: #DD0000">'application'</span><span style="color: #007700">)<br />{<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">self</span><span style="color: #007700">::</span><span style="color: #0000BB">log</span><span style="color: #007700">(</span><span style="color: #DD0000">'begin:'</span><span style="color: #007700">.</span><span style="color: #0000BB">$token</span><span style="color: #007700">,</span><span style="color: #0000BB">CLogger</span><span style="color: #007700">::</span><span style="color: #0000BB">LEVEL_PROFILE</span><span style="color: #007700">,</span><span style="color: #0000BB">$category</span><span style="color: #007700">);<br />}</span>
+</span>
+</code></div>
+</div>
+<p>Marks the begin of a code block for profiling.
+This has to be matched with a call to <a href="/doc/api/1.0/YiiBase#endProfile">endProfile()</a> with the same token.
+The begin- and end- calls must also be properly nested, e.g.,
+<pre>
+Yii::beginProfile('block1');
+Yii::beginProfile('block2');
+Yii::endProfile('block2');
+Yii::endProfile('block1');
+</pre>
+The following sequence is not valid:
+<pre>
+Yii::beginProfile('block1');
+Yii::beginProfile('block2');
+Yii::endProfile('block1');
+Yii::endProfile('block2');
+</pre></p>
+
+<div class="SeeAlso">
+<h4>See Also</h4>
+<ul>
+	<li><a href="/doc/api/1.0/YiiBase#endProfile">endProfile</a></li>
+</ul>
+</div>
+
+<div class="detailHeader" id="createApplication-detail">
+createApplication()
+<span class="detailHeaderTag">
+method
+(available since v1.0.10)
+</span>
+</div>
+
+<table class="summaryTable">
+<tr><td colspan="3">
+<div class="signature2">
+public static mixed <b>createApplication</b>(string $class, mixed $config=NULL)</div>
+</td></tr>
+<tr>
+  <td class="paramNameCol">$class</td>
+  <td class="paramTypeCol">string</td>
+  <td class="paramDescCol">the application class name</td>
+</tr>
+<tr>
+  <td class="paramNameCol">$config</td>
+  <td class="paramTypeCol">mixed</td>
+  <td class="paramDescCol">application configuration. This parameter will be passed as the parameter
+to the constructor of the application class.</td>
+</tr>
+<tr>
+  <td class="paramNameCol">{return}</td>
+  <td class="paramTypeCol">mixed</td>
+  <td class="paramDescCol">the application instance</td>
+</tr>
+</table>
+
+<div class="sourceCode">
+<b>Source Code:</b> <a class="sourceLink" href="https://github.com/yiisoft/yii/blob/1.0.12/framework/YiiBase.php#L106">framework/YiiBase.php#106</a> (<b><a href="#" class="show">show</a></b>)
+<div class="code"><code><span style="color: #000000">
+<span style="color: #0000BB"></span><span style="color: #007700">public&nbsp;static&nbsp;function&nbsp;</span><span style="color: #0000BB">createApplication</span><span style="color: #007700">(</span><span style="color: #0000BB">$class</span><span style="color: #007700">,</span><span style="color: #0000BB">$config</span><span style="color: #007700">=</span><span style="color: #0000BB">null</span><span style="color: #007700">)<br />{<br />&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;new&nbsp;</span><span style="color: #0000BB">$class</span><span style="color: #007700">(</span><span style="color: #0000BB">$config</span><span style="color: #007700">);<br />}</span>
+</span>
+</code></div>
+</div>
+<p>Creates an application of the specified class.</p>
+
+
+<div class="detailHeader" id="createComponent-detail">
+createComponent()
+<span class="detailHeaderTag">
+method
+</span>
+</div>
+
+<table class="summaryTable">
+<tr><td colspan="3">
+<div class="signature2">
+public static mixed <b>createComponent</b>(mixed $config)</div>
+</td></tr>
+<tr>
+  <td class="paramNameCol">$config</td>
+  <td class="paramTypeCol">mixed</td>
+  <td class="paramDescCol">the configuration. It can be either a string or an array.</td>
+</tr>
+<tr>
+  <td class="paramNameCol">{return}</td>
+  <td class="paramTypeCol">mixed</td>
+  <td class="paramDescCol">the created object</td>
+</tr>
+</table>
+
+<div class="sourceCode">
+<b>Source Code:</b> <a class="sourceLink" href="https://github.com/yiisoft/yii/blob/1.0.12/framework/YiiBase.php#L164">framework/YiiBase.php#164</a> (<b><a href="#" class="show">show</a></b>)
+<div class="code"><code><span style="color: #000000">
+<span style="color: #0000BB"></span><span style="color: #007700">public&nbsp;static&nbsp;function&nbsp;</span><span style="color: #0000BB">createComponent</span><span style="color: #007700">(</span><span style="color: #0000BB">$config</span><span style="color: #007700">)<br />{<br />&nbsp;&nbsp;&nbsp;&nbsp;if(</span><span style="color: #0000BB">is_string</span><span style="color: #007700">(</span><span style="color: #0000BB">$config</span><span style="color: #007700">))<br />&nbsp;&nbsp;&nbsp;&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$type</span><span style="color: #007700">=</span><span style="color: #0000BB">$config</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$config</span><span style="color: #007700">=array();<br />&nbsp;&nbsp;&nbsp;&nbsp;}<br />&nbsp;&nbsp;&nbsp;&nbsp;else&nbsp;if(isset(</span><span style="color: #0000BB">$config</span><span style="color: #007700">[</span><span style="color: #DD0000">'class'</span><span style="color: #007700">]))<br />&nbsp;&nbsp;&nbsp;&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$type</span><span style="color: #007700">=</span><span style="color: #0000BB">$config</span><span style="color: #007700">[</span><span style="color: #DD0000">'class'</span><span style="color: #007700">];<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;unset(</span><span style="color: #0000BB">$config</span><span style="color: #007700">[</span><span style="color: #DD0000">'class'</span><span style="color: #007700">]);<br />&nbsp;&nbsp;&nbsp;&nbsp;}<br />&nbsp;&nbsp;&nbsp;&nbsp;else<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;throw&nbsp;new&nbsp;</span><span style="color: #0000BB">CException</span><span style="color: #007700">(</span><span style="color: #0000BB">Yii</span><span style="color: #007700">::</span><span style="color: #0000BB">t</span><span style="color: #007700">(</span><span style="color: #DD0000">'yii'</span><span style="color: #007700">,</span><span style="color: #DD0000">'Object&nbsp;configuration&nbsp;must&nbsp;be&nbsp;an&nbsp;array&nbsp;containing&nbsp;a&nbsp;"class"&nbsp;element.'</span><span style="color: #007700">));<br /><br />&nbsp;&nbsp;&nbsp;&nbsp;if(!</span><span style="color: #0000BB">class_exists</span><span style="color: #007700">(</span><span style="color: #0000BB">$type</span><span style="color: #007700">,</span><span style="color: #0000BB">false</span><span style="color: #007700">))<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$type</span><span style="color: #007700">=</span><span style="color: #0000BB">Yii</span><span style="color: #007700">::</span><span style="color: #0000BB">import</span><span style="color: #007700">(</span><span style="color: #0000BB">$type</span><span style="color: #007700">,</span><span style="color: #0000BB">true</span><span style="color: #007700">);<br /><br />&nbsp;&nbsp;&nbsp;&nbsp;if((</span><span style="color: #0000BB">$n</span><span style="color: #007700">=</span><span style="color: #0000BB">func_num_args</span><span style="color: #007700">())&gt;</span><span style="color: #0000BB">1</span><span style="color: #007700">)<br />&nbsp;&nbsp;&nbsp;&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$args</span><span style="color: #007700">=</span><span style="color: #0000BB">func_get_args</span><span style="color: #007700">();<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if(</span><span style="color: #0000BB">$n</span><span style="color: #007700">===</span><span style="color: #0000BB">2</span><span style="color: #007700">)<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$object</span><span style="color: #007700">=new&nbsp;</span><span style="color: #0000BB">$type</span><span style="color: #007700">(</span><span style="color: #0000BB">$args</span><span style="color: #007700">[</span><span style="color: #0000BB">1</span><span style="color: #007700">]);<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;else&nbsp;if(</span><span style="color: #0000BB">$n</span><span style="color: #007700">===</span><span style="color: #0000BB">3</span><span style="color: #007700">)<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$object</span><span style="color: #007700">=new&nbsp;</span><span style="color: #0000BB">$type</span><span style="color: #007700">(</span><span style="color: #0000BB">$args</span><span style="color: #007700">[</span><span style="color: #0000BB">1</span><span style="color: #007700">],</span><span style="color: #0000BB">$args</span><span style="color: #007700">[</span><span style="color: #0000BB">2</span><span style="color: #007700">]);<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;else&nbsp;if(</span><span style="color: #0000BB">$n</span><span style="color: #007700">===</span><span style="color: #0000BB">4</span><span style="color: #007700">)<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$object</span><span style="color: #007700">=new&nbsp;</span><span style="color: #0000BB">$type</span><span style="color: #007700">(</span><span style="color: #0000BB">$args</span><span style="color: #007700">[</span><span style="color: #0000BB">1</span><span style="color: #007700">],</span><span style="color: #0000BB">$args</span><span style="color: #007700">[</span><span style="color: #0000BB">2</span><span style="color: #007700">],</span><span style="color: #0000BB">$args</span><span style="color: #007700">[</span><span style="color: #0000BB">3</span><span style="color: #007700">]);<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;else<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;unset(</span><span style="color: #0000BB">$args</span><span style="color: #007700">[</span><span style="color: #0000BB">0</span><span style="color: #007700">]);<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$class</span><span style="color: #007700">=new&nbsp;</span><span style="color: #0000BB">ReflectionClass</span><span style="color: #007700">(</span><span style="color: #0000BB">$type</span><span style="color: #007700">);<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #FF8000">//&nbsp;Note:&nbsp;ReflectionClass::newInstanceArgs()&nbsp;is&nbsp;available&nbsp;for&nbsp;PHP&nbsp;5.1.3+<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;$object=$class-&gt;newInstanceArgs($args);<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$object</span><span style="color: #007700">=</span><span style="color: #0000BB">call_user_func_array</span><span style="color: #007700">(array(</span><span style="color: #0000BB">$class</span><span style="color: #007700">,</span><span style="color: #DD0000">'newInstance'</span><span style="color: #007700">),</span><span style="color: #0000BB">$args</span><span style="color: #007700">);<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br />&nbsp;&nbsp;&nbsp;&nbsp;}<br />&nbsp;&nbsp;&nbsp;&nbsp;else<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$object</span><span style="color: #007700">=new&nbsp;</span><span style="color: #0000BB">$type</span><span style="color: #007700">;<br /><br />&nbsp;&nbsp;&nbsp;&nbsp;foreach(</span><span style="color: #0000BB">$config&nbsp;</span><span style="color: #007700">as&nbsp;</span><span style="color: #0000BB">$key</span><span style="color: #007700">=&gt;</span><span style="color: #0000BB">$value</span><span style="color: #007700">)<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$object</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">$key</span><span style="color: #007700">=</span><span style="color: #0000BB">$value</span><span style="color: #007700">;<br /><br />&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;</span><span style="color: #0000BB">$object</span><span style="color: #007700">;<br />}</span>
+</span>
+</code></div>
+</div>
+<p>Creates an object and initializes it based on the given configuration.
+<br/><br/>
+The specified configuration can be either a string or an array.
+If the former, the string is treated as the object type which can
+be either the class name or <a href="/doc/api/1.0/YiiBase#getPathOfAlias">class path alias</a>.
+If the latter, the 'class' element is treated as the object type,
+and the rest name-value pairs in the array are used to initialize
+the corresponding object properties.
+<br/><br/>
+Any additional parameters passed to this method will be
+passed to the constructor of the object being created.
+<br/><br/>
+NOTE: the array-typed configuration has been supported since version 1.0.1.</p>
+
+
+<div class="detailHeader" id="createConsoleApplication-detail">
+createConsoleApplication()
+<span class="detailHeaderTag">
+method
+</span>
+</div>
+
+<table class="summaryTable">
+<tr><td colspan="3">
+<div class="signature2">
+public static void <b>createConsoleApplication</b>(mixed $config=NULL)</div>
+</td></tr>
+<tr>
+  <td class="paramNameCol">$config</td>
+  <td class="paramTypeCol">mixed</td>
+  <td class="paramDescCol">application configuration.
+If a string, it is treated as the path of the file that contains the configuration;
+If an array, it is the actual configuration information.
+Please make sure you specify the <a href="/doc/api/1.0/CApplication#basePath">basePath</a> property in the configuration,
+which should point to the directory containing all application logic, template and data.
+If not, the directory will be defaulted to 'protected'.</td>
+</tr>
+</table>
+
+<div class="sourceCode">
+<b>Source Code:</b> <a class="sourceLink" href="https://github.com/yiisoft/yii/blob/1.0.12/framework/YiiBase.php#L93">framework/YiiBase.php#93</a> (<b><a href="#" class="show">show</a></b>)
+<div class="code"><code><span style="color: #000000">
+<span style="color: #0000BB"></span><span style="color: #007700">public&nbsp;static&nbsp;function&nbsp;</span><span style="color: #0000BB">createConsoleApplication</span><span style="color: #007700">(</span><span style="color: #0000BB">$config</span><span style="color: #007700">=</span><span style="color: #0000BB">null</span><span style="color: #007700">)<br />{<br />&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;</span><span style="color: #0000BB">self</span><span style="color: #007700">::</span><span style="color: #0000BB">createApplication</span><span style="color: #007700">(</span><span style="color: #DD0000">'CConsoleApplication'</span><span style="color: #007700">,</span><span style="color: #0000BB">$config</span><span style="color: #007700">);<br />}</span>
+</span>
+</code></div>
+</div>
+<p>Creates a console application instance.</p>
+
+
+<div class="detailHeader" id="createWebApplication-detail">
+createWebApplication()
+<span class="detailHeaderTag">
+method
+</span>
+</div>
+
+<table class="summaryTable">
+<tr><td colspan="3">
+<div class="signature2">
+public static void <b>createWebApplication</b>(mixed $config=NULL)</div>
+</td></tr>
+<tr>
+  <td class="paramNameCol">$config</td>
+  <td class="paramTypeCol">mixed</td>
+  <td class="paramDescCol">application configuration.
+If a string, it is treated as the path of the file that contains the configuration;
+If an array, it is the actual configuration information.
+Please make sure you specify the <a href="/doc/api/1.0/CApplication#basePath">basePath</a> property in the configuration,
+which should point to the directory containing all application logic, template and data.
+If not, the directory will be defaulted to 'protected'.</td>
+</tr>
+</table>
+
+<div class="sourceCode">
+<b>Source Code:</b> <a class="sourceLink" href="https://github.com/yiisoft/yii/blob/1.0.12/framework/YiiBase.php#L79">framework/YiiBase.php#79</a> (<b><a href="#" class="show">show</a></b>)
+<div class="code"><code><span style="color: #000000">
+<span style="color: #0000BB"></span><span style="color: #007700">public&nbsp;static&nbsp;function&nbsp;</span><span style="color: #0000BB">createWebApplication</span><span style="color: #007700">(</span><span style="color: #0000BB">$config</span><span style="color: #007700">=</span><span style="color: #0000BB">null</span><span style="color: #007700">)<br />{<br />&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;</span><span style="color: #0000BB">self</span><span style="color: #007700">::</span><span style="color: #0000BB">createApplication</span><span style="color: #007700">(</span><span style="color: #DD0000">'CWebApplication'</span><span style="color: #007700">,</span><span style="color: #0000BB">$config</span><span style="color: #007700">);<br />}</span>
+</span>
+</code></div>
+</div>
+<p>Creates a Web application instance.</p>
+
+
+<div class="detailHeader" id="endProfile-detail">
+endProfile()
+<span class="detailHeaderTag">
+method
+</span>
+</div>
+
+<table class="summaryTable">
+<tr><td colspan="3">
+<div class="signature2">
+public static void <b>endProfile</b>(string $token, string $category='application')</div>
+</td></tr>
+<tr>
+  <td class="paramNameCol">$token</td>
+  <td class="paramTypeCol">string</td>
+  <td class="paramDescCol">token for the code block</td>
+</tr>
+<tr>
+  <td class="paramNameCol">$category</td>
+  <td class="paramTypeCol">string</td>
+  <td class="paramDescCol">the category of this log message</td>
+</tr>
+</table>
+
+<div class="sourceCode">
+<b>Source Code:</b> <a class="sourceLink" href="https://github.com/yiisoft/yii/blob/1.0.12/framework/YiiBase.php#L426">framework/YiiBase.php#426</a> (<b><a href="#" class="show">show</a></b>)
+<div class="code"><code><span style="color: #000000">
+<span style="color: #0000BB"></span><span style="color: #007700">public&nbsp;static&nbsp;function&nbsp;</span><span style="color: #0000BB">endProfile</span><span style="color: #007700">(</span><span style="color: #0000BB">$token</span><span style="color: #007700">,</span><span style="color: #0000BB">$category</span><span style="color: #007700">=</span><span style="color: #DD0000">'application'</span><span style="color: #007700">)<br />{<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">self</span><span style="color: #007700">::</span><span style="color: #0000BB">log</span><span style="color: #007700">(</span><span style="color: #DD0000">'end:'</span><span style="color: #007700">.</span><span style="color: #0000BB">$token</span><span style="color: #007700">,</span><span style="color: #0000BB">CLogger</span><span style="color: #007700">::</span><span style="color: #0000BB">LEVEL_PROFILE</span><span style="color: #007700">,</span><span style="color: #0000BB">$category</span><span style="color: #007700">);<br />}</span>
+</span>
+</code></div>
+</div>
+<p>Marks the end of a code block for profiling.
+This has to be matched with a previous call to <a href="/doc/api/1.0/YiiBase#beginProfile">beginProfile()</a> with the same token.</p>
+
+<div class="SeeAlso">
+<h4>See Also</h4>
+<ul>
+	<li><a href="/doc/api/1.0/YiiBase#beginProfile">beginProfile</a></li>
+</ul>
+</div>
+
+<div class="detailHeader" id="getFrameworkPath-detail">
+getFrameworkPath()
+<span class="detailHeaderTag">
+method
+</span>
+</div>
+
+<table class="summaryTable">
+<tr><td colspan="3">
+<div class="signature2">
+public static string <b>getFrameworkPath</b>()</div>
+</td></tr>
+<tr>
+  <td class="paramNameCol">{return}</td>
+  <td class="paramTypeCol">string</td>
+  <td class="paramDescCol">the path of the framework</td>
+</tr>
+</table>
+
+<div class="sourceCode">
+<b>Source Code:</b> <a class="sourceLink" href="https://github.com/yiisoft/yii/blob/1.0.12/framework/YiiBase.php#L140">framework/YiiBase.php#140</a> (<b><a href="#" class="show">show</a></b>)
+<div class="code"><code><span style="color: #000000">
+<span style="color: #0000BB"></span><span style="color: #007700">public&nbsp;static&nbsp;function&nbsp;</span><span style="color: #0000BB">getFrameworkPath</span><span style="color: #007700">()<br />{<br />&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;</span><span style="color: #0000BB">YII_PATH</span><span style="color: #007700">;<br />}</span>
+</span>
+</code></div>
+</div>
+<p></p>
+
+
+<div class="detailHeader" id="getLogger-detail">
+getLogger()
+<span class="detailHeaderTag">
+method
+</span>
+</div>
+
+<table class="summaryTable">
+<tr><td colspan="3">
+<div class="signature2">
+public static <a href="/doc/api/1.0/CLogger">CLogger</a> <b>getLogger</b>()</div>
+</td></tr>
+<tr>
+  <td class="paramNameCol">{return}</td>
+  <td class="paramTypeCol"><a href="/doc/api/1.0/CLogger">CLogger</a></td>
+  <td class="paramDescCol">message logger</td>
+</tr>
+</table>
+
+<div class="sourceCode">
+<b>Source Code:</b> <a class="sourceLink" href="https://github.com/yiisoft/yii/blob/1.0.12/framework/YiiBase.php#L434">framework/YiiBase.php#434</a> (<b><a href="#" class="show">show</a></b>)
+<div class="code"><code><span style="color: #000000">
+<span style="color: #0000BB"></span><span style="color: #007700">public&nbsp;static&nbsp;function&nbsp;</span><span style="color: #0000BB">getLogger</span><span style="color: #007700">()<br />{<br />&nbsp;&nbsp;&nbsp;&nbsp;if(</span><span style="color: #0000BB">self</span><span style="color: #007700">::</span><span style="color: #0000BB">$_logger</span><span style="color: #007700">!==</span><span style="color: #0000BB">null</span><span style="color: #007700">)<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;</span><span style="color: #0000BB">self</span><span style="color: #007700">::</span><span style="color: #0000BB">$_logger</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;else<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;</span><span style="color: #0000BB">self</span><span style="color: #007700">::</span><span style="color: #0000BB">$_logger</span><span style="color: #007700">=new&nbsp;</span><span style="color: #0000BB">CLogger</span><span style="color: #007700">;<br />}</span>
+</span>
+</code></div>
+</div>
+<p></p>
+
+
+<div class="detailHeader" id="getPathOfAlias-detail">
+getPathOfAlias()
+<span class="detailHeaderTag">
+method
+</span>
+</div>
+
+<table class="summaryTable">
+<tr><td colspan="3">
+<div class="signature2">
+public static mixed <b>getPathOfAlias</b>(string $alias)</div>
+</td></tr>
+<tr>
+  <td class="paramNameCol">$alias</td>
+  <td class="paramTypeCol">string</td>
+  <td class="paramDescCol">alias (e.g. system.web.CController)</td>
+</tr>
+<tr>
+  <td class="paramNameCol">{return}</td>
+  <td class="paramTypeCol">mixed</td>
+  <td class="paramDescCol">file path corresponding to the alias, false if the alias is invalid.</td>
+</tr>
+</table>
+
+<div class="sourceCode">
+<b>Source Code:</b> <a class="sourceLink" href="https://github.com/yiisoft/yii/blob/1.0.12/framework/YiiBase.php#L290">framework/YiiBase.php#290</a> (<b><a href="#" class="show">show</a></b>)
+<div class="code"><code><span style="color: #000000">
+<span style="color: #0000BB"></span><span style="color: #007700">public&nbsp;static&nbsp;function&nbsp;</span><span style="color: #0000BB">getPathOfAlias</span><span style="color: #007700">(</span><span style="color: #0000BB">$alias</span><span style="color: #007700">)<br />{<br />&nbsp;&nbsp;&nbsp;&nbsp;if(isset(</span><span style="color: #0000BB">self</span><span style="color: #007700">::</span><span style="color: #0000BB">$_aliases</span><span style="color: #007700">[</span><span style="color: #0000BB">$alias</span><span style="color: #007700">]))<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;</span><span style="color: #0000BB">self</span><span style="color: #007700">::</span><span style="color: #0000BB">$_aliases</span><span style="color: #007700">[</span><span style="color: #0000BB">$alias</span><span style="color: #007700">];<br />&nbsp;&nbsp;&nbsp;&nbsp;else&nbsp;if((</span><span style="color: #0000BB">$pos</span><span style="color: #007700">=</span><span style="color: #0000BB">strpos</span><span style="color: #007700">(</span><span style="color: #0000BB">$alias</span><span style="color: #007700">,</span><span style="color: #DD0000">'.'</span><span style="color: #007700">))!==</span><span style="color: #0000BB">false</span><span style="color: #007700">)<br />&nbsp;&nbsp;&nbsp;&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$rootAlias</span><span style="color: #007700">=</span><span style="color: #0000BB">substr</span><span style="color: #007700">(</span><span style="color: #0000BB">$alias</span><span style="color: #007700">,</span><span style="color: #0000BB">0</span><span style="color: #007700">,</span><span style="color: #0000BB">$pos</span><span style="color: #007700">);<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if(isset(</span><span style="color: #0000BB">self</span><span style="color: #007700">::</span><span style="color: #0000BB">$_aliases</span><span style="color: #007700">[</span><span style="color: #0000BB">$rootAlias</span><span style="color: #007700">]))<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;</span><span style="color: #0000BB">self</span><span style="color: #007700">::</span><span style="color: #0000BB">$_aliases</span><span style="color: #007700">[</span><span style="color: #0000BB">$alias</span><span style="color: #007700">]=</span><span style="color: #0000BB">rtrim</span><span style="color: #007700">(</span><span style="color: #0000BB">self</span><span style="color: #007700">::</span><span style="color: #0000BB">$_aliases</span><span style="color: #007700">[</span><span style="color: #0000BB">$rootAlias</span><span style="color: #007700">].</span><span style="color: #0000BB">DIRECTORY_SEPARATOR</span><span style="color: #007700">.</span><span style="color: #0000BB">str_replace</span><span style="color: #007700">(</span><span style="color: #DD0000">'.'</span><span style="color: #007700">,</span><span style="color: #0000BB">DIRECTORY_SEPARATOR</span><span style="color: #007700">,</span><span style="color: #0000BB">substr</span><span style="color: #007700">(</span><span style="color: #0000BB">$alias</span><span style="color: #007700">,</span><span style="color: #0000BB">$pos</span><span style="color: #007700">+</span><span style="color: #0000BB">1</span><span style="color: #007700">)),</span><span style="color: #DD0000">'*'</span><span style="color: #007700">.</span><span style="color: #0000BB">DIRECTORY_SEPARATOR</span><span style="color: #007700">);<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;else&nbsp;if(</span><span style="color: #0000BB">self</span><span style="color: #007700">::</span><span style="color: #0000BB">$_app&nbsp;</span><span style="color: #007700">instanceof&nbsp;</span><span style="color: #0000BB">CWebApplication</span><span style="color: #007700">)<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if(</span><span style="color: #0000BB">self</span><span style="color: #007700">::</span><span style="color: #0000BB">$_app</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">findModule</span><span style="color: #007700">(</span><span style="color: #0000BB">$rootAlias</span><span style="color: #007700">)!==</span><span style="color: #0000BB">null</span><span style="color: #007700">)<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;</span><span style="color: #0000BB">self</span><span style="color: #007700">::</span><span style="color: #0000BB">getPathOfAlias</span><span style="color: #007700">(</span><span style="color: #0000BB">$alias</span><span style="color: #007700">);<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br />&nbsp;&nbsp;&nbsp;&nbsp;}<br />&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;</span><span style="color: #0000BB">false</span><span style="color: #007700">;<br />}</span>
+</span>
+</code></div>
+</div>
+<p>Translates an alias into a file path.
+Note, this method does not ensure the existence of the resulting file path.
+It only checks if the root alias is valid or not.</p>
+
+
+<div class="detailHeader" id="getVersion-detail">
+getVersion()
+<span class="detailHeaderTag">
+method
+</span>
+</div>
+
+<table class="summaryTable">
+<tr><td colspan="3">
+<div class="signature2">
+public static string <b>getVersion</b>()</div>
+</td></tr>
+<tr>
+  <td class="paramNameCol">{return}</td>
+  <td class="paramTypeCol">string</td>
+  <td class="paramDescCol">the version of Yii framework</td>
+</tr>
+</table>
+
+<div class="sourceCode">
+<b>Source Code:</b> <a class="sourceLink" href="https://github.com/yiisoft/yii/blob/1.0.12/framework/YiiBase.php#L65">framework/YiiBase.php#65</a> (<b><a href="#" class="show">show</a></b>)
+<div class="code"><code><span style="color: #000000">
+<span style="color: #0000BB"></span><span style="color: #007700">public&nbsp;static&nbsp;function&nbsp;</span><span style="color: #0000BB">getVersion</span><span style="color: #007700">()<br />{<br />&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;</span><span style="color: #DD0000">'1.0.12'</span><span style="color: #007700">;<br />}</span>
+</span>
+</code></div>
+</div>
+<p></p>
+
+
+<div class="detailHeader" id="import-detail">
+import()
+<span class="detailHeaderTag">
+method
+</span>
+</div>
+
+<table class="summaryTable">
+<tr><td colspan="3">
+<div class="signature2">
+public static string <b>import</b>(string $alias, boolean $forceInclude=false)</div>
+</td></tr>
+<tr>
+  <td class="paramNameCol">$alias</td>
+  <td class="paramTypeCol">string</td>
+  <td class="paramDescCol">path alias to be imported</td>
+</tr>
+<tr>
+  <td class="paramNameCol">$forceInclude</td>
+  <td class="paramTypeCol">boolean</td>
+  <td class="paramDescCol">whether to include the class file immediately. If false, the class file
+will be included only when the class is being used.</td>
+</tr>
+<tr>
+  <td class="paramNameCol">{return}</td>
+  <td class="paramTypeCol">string</td>
+  <td class="paramDescCol">the class name or the directory that this alias refers to</td>
+</tr>
+</table>
+
+<div class="sourceCode">
+<b>Source Code:</b> <a class="sourceLink" href="https://github.com/yiisoft/yii/blob/1.0.12/framework/YiiBase.php#L229">framework/YiiBase.php#229</a> (<b><a href="#" class="show">show</a></b>)
+<div class="code"><code><span style="color: #000000">
+<span style="color: #0000BB"></span><span style="color: #007700">public&nbsp;static&nbsp;function&nbsp;</span><span style="color: #0000BB">import</span><span style="color: #007700">(</span><span style="color: #0000BB">$alias</span><span style="color: #007700">,</span><span style="color: #0000BB">$forceInclude</span><span style="color: #007700">=</span><span style="color: #0000BB">false</span><span style="color: #007700">)<br />{<br />&nbsp;&nbsp;&nbsp;&nbsp;if(isset(</span><span style="color: #0000BB">self</span><span style="color: #007700">::</span><span style="color: #0000BB">$_imports</span><span style="color: #007700">[</span><span style="color: #0000BB">$alias</span><span style="color: #007700">]))&nbsp;&nbsp;</span><span style="color: #FF8000">//&nbsp;previously&nbsp;imported<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #007700">return&nbsp;</span><span style="color: #0000BB">self</span><span style="color: #007700">::</span><span style="color: #0000BB">$_imports</span><span style="color: #007700">[</span><span style="color: #0000BB">$alias</span><span style="color: #007700">];<br /><br />&nbsp;&nbsp;&nbsp;&nbsp;if(</span><span style="color: #0000BB">class_exists</span><span style="color: #007700">(</span><span style="color: #0000BB">$alias</span><span style="color: #007700">,</span><span style="color: #0000BB">false</span><span style="color: #007700">)&nbsp;||&nbsp;</span><span style="color: #0000BB">interface_exists</span><span style="color: #007700">(</span><span style="color: #0000BB">$alias</span><span style="color: #007700">,</span><span style="color: #0000BB">false</span><span style="color: #007700">))<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;</span><span style="color: #0000BB">self</span><span style="color: #007700">::</span><span style="color: #0000BB">$_imports</span><span style="color: #007700">[</span><span style="color: #0000BB">$alias</span><span style="color: #007700">]=</span><span style="color: #0000BB">$alias</span><span style="color: #007700">;<br /><br />&nbsp;&nbsp;&nbsp;&nbsp;if(isset(</span><span style="color: #0000BB">self</span><span style="color: #007700">::</span><span style="color: #0000BB">$_coreClasses</span><span style="color: #007700">[</span><span style="color: #0000BB">$alias</span><span style="color: #007700">])&nbsp;||&nbsp;(</span><span style="color: #0000BB">$pos</span><span style="color: #007700">=</span><span style="color: #0000BB">strrpos</span><span style="color: #007700">(</span><span style="color: #0000BB">$alias</span><span style="color: #007700">,</span><span style="color: #DD0000">'.'</span><span style="color: #007700">))===</span><span style="color: #0000BB">false</span><span style="color: #007700">)&nbsp;&nbsp;</span><span style="color: #FF8000">//&nbsp;a&nbsp;simple&nbsp;class&nbsp;name<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #007700">{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">self</span><span style="color: #007700">::</span><span style="color: #0000BB">$_imports</span><span style="color: #007700">[</span><span style="color: #0000BB">$alias</span><span style="color: #007700">]=</span><span style="color: #0000BB">$alias</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if(</span><span style="color: #0000BB">$forceInclude</span><span style="color: #007700">)<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if(isset(</span><span style="color: #0000BB">self</span><span style="color: #007700">::</span><span style="color: #0000BB">$_coreClasses</span><span style="color: #007700">[</span><span style="color: #0000BB">$alias</span><span style="color: #007700">]))&nbsp;</span><span style="color: #FF8000">//&nbsp;a&nbsp;core&nbsp;class<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #007700">require(</span><span style="color: #0000BB">YII_PATH</span><span style="color: #007700">.</span><span style="color: #0000BB">self</span><span style="color: #007700">::</span><span style="color: #0000BB">$_coreClasses</span><span style="color: #007700">[</span><span style="color: #0000BB">$alias</span><span style="color: #007700">]);<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;else<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;require(</span><span style="color: #0000BB">$alias</span><span style="color: #007700">.</span><span style="color: #DD0000">'.php'</span><span style="color: #007700">);<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;</span><span style="color: #0000BB">$alias</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;}<br /><br />&nbsp;&nbsp;&nbsp;&nbsp;if((</span><span style="color: #0000BB">$className</span><span style="color: #007700">=(string)</span><span style="color: #0000BB">substr</span><span style="color: #007700">(</span><span style="color: #0000BB">$alias</span><span style="color: #007700">,</span><span style="color: #0000BB">$pos</span><span style="color: #007700">+</span><span style="color: #0000BB">1</span><span style="color: #007700">))!==</span><span style="color: #DD0000">'*'&nbsp;</span><span style="color: #007700">&amp;&amp;&nbsp;(</span><span style="color: #0000BB">class_exists</span><span style="color: #007700">(</span><span style="color: #0000BB">$className</span><span style="color: #007700">,</span><span style="color: #0000BB">false</span><span style="color: #007700">)&nbsp;||&nbsp;</span><span style="color: #0000BB">interface_exists</span><span style="color: #007700">(</span><span style="color: #0000BB">$className</span><span style="color: #007700">,</span><span style="color: #0000BB">false</span><span style="color: #007700">)))<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;</span><span style="color: #0000BB">self</span><span style="color: #007700">::</span><span style="color: #0000BB">$_imports</span><span style="color: #007700">[</span><span style="color: #0000BB">$alias</span><span style="color: #007700">]=</span><span style="color: #0000BB">$className</span><span style="color: #007700">;<br /><br />&nbsp;&nbsp;&nbsp;&nbsp;if((</span><span style="color: #0000BB">$path</span><span style="color: #007700">=</span><span style="color: #0000BB">self</span><span style="color: #007700">::</span><span style="color: #0000BB">getPathOfAlias</span><span style="color: #007700">(</span><span style="color: #0000BB">$alias</span><span style="color: #007700">))!==</span><span style="color: #0000BB">false</span><span style="color: #007700">)<br />&nbsp;&nbsp;&nbsp;&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if(</span><span style="color: #0000BB">$className</span><span style="color: #007700">!==</span><span style="color: #DD0000">'*'</span><span style="color: #007700">)<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">self</span><span style="color: #007700">::</span><span style="color: #0000BB">$_imports</span><span style="color: #007700">[</span><span style="color: #0000BB">$alias</span><span style="color: #007700">]=</span><span style="color: #0000BB">$className</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if(</span><span style="color: #0000BB">$forceInclude</span><span style="color: #007700">)<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;require(</span><span style="color: #0000BB">$path</span><span style="color: #007700">.</span><span style="color: #DD0000">'.php'</span><span style="color: #007700">);<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;else<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">self</span><span style="color: #007700">::</span><span style="color: #0000BB">$_classes</span><span style="color: #007700">[</span><span style="color: #0000BB">$className</span><span style="color: #007700">]=</span><span style="color: #0000BB">$path</span><span style="color: #007700">.</span><span style="color: #DD0000">'.php'</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;</span><span style="color: #0000BB">$className</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;else&nbsp;&nbsp;</span><span style="color: #FF8000">//&nbsp;a&nbsp;directory<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #007700">{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if(</span><span style="color: #0000BB">self</span><span style="color: #007700">::</span><span style="color: #0000BB">$_includePaths</span><span style="color: #007700">===</span><span style="color: #0000BB">null</span><span style="color: #007700">)<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">self</span><span style="color: #007700">::</span><span style="color: #0000BB">$_includePaths</span><span style="color: #007700">=</span><span style="color: #0000BB">array_unique</span><span style="color: #007700">(</span><span style="color: #0000BB">explode</span><span style="color: #007700">(</span><span style="color: #0000BB">PATH_SEPARATOR</span><span style="color: #007700">,</span><span style="color: #0000BB">get_include_path</span><span style="color: #007700">()));<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if((</span><span style="color: #0000BB">$pos</span><span style="color: #007700">=</span><span style="color: #0000BB">array_search</span><span style="color: #007700">(</span><span style="color: #DD0000">'.'</span><span style="color: #007700">,</span><span style="color: #0000BB">self</span><span style="color: #007700">::</span><span style="color: #0000BB">$_includePaths</span><span style="color: #007700">,</span><span style="color: #0000BB">true</span><span style="color: #007700">))!==</span><span style="color: #0000BB">false</span><span style="color: #007700">)<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;unset(</span><span style="color: #0000BB">self</span><span style="color: #007700">::</span><span style="color: #0000BB">$_includePaths</span><span style="color: #007700">[</span><span style="color: #0000BB">$pos</span><span style="color: #007700">]);<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">array_unshift</span><span style="color: #007700">(</span><span style="color: #0000BB">self</span><span style="color: #007700">::</span><span style="color: #0000BB">$_includePaths</span><span style="color: #007700">,</span><span style="color: #0000BB">$path</span><span style="color: #007700">);<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if(</span><span style="color: #0000BB">set_include_path</span><span style="color: #007700">(</span><span style="color: #DD0000">'.'</span><span style="color: #007700">.</span><span style="color: #0000BB">PATH_SEPARATOR</span><span style="color: #007700">.</span><span style="color: #0000BB">implode</span><span style="color: #007700">(</span><span style="color: #0000BB">PATH_SEPARATOR</span><span style="color: #007700">,</span><span style="color: #0000BB">self</span><span style="color: #007700">::</span><span style="color: #0000BB">$_includePaths</span><span style="color: #007700">))===</span><span style="color: #0000BB">false</span><span style="color: #007700">)<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;throw&nbsp;new&nbsp;</span><span style="color: #0000BB">CException</span><span style="color: #007700">(</span><span style="color: #0000BB">Yii</span><span style="color: #007700">::</span><span style="color: #0000BB">t</span><span style="color: #007700">(</span><span style="color: #DD0000">'yii'</span><span style="color: #007700">,</span><span style="color: #DD0000">'Unable&nbsp;to&nbsp;import&nbsp;"{alias}".&nbsp;Please&nbsp;check&nbsp;your&nbsp;server&nbsp;configuration&nbsp;to&nbsp;make&nbsp;sure&nbsp;you&nbsp;are&nbsp;allowed&nbsp;to&nbsp;change&nbsp;PHP&nbsp;include_path.'</span><span style="color: #007700">,array(</span><span style="color: #DD0000">'{alias}'</span><span style="color: #007700">=&gt;</span><span style="color: #0000BB">$alias</span><span style="color: #007700">)));<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;</span><span style="color: #0000BB">self</span><span style="color: #007700">::</span><span style="color: #0000BB">$_imports</span><span style="color: #007700">[</span><span style="color: #0000BB">$alias</span><span style="color: #007700">]=</span><span style="color: #0000BB">$path</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br />&nbsp;&nbsp;&nbsp;&nbsp;}<br />&nbsp;&nbsp;&nbsp;&nbsp;else<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;throw&nbsp;new&nbsp;</span><span style="color: #0000BB">CException</span><span style="color: #007700">(</span><span style="color: #0000BB">Yii</span><span style="color: #007700">::</span><span style="color: #0000BB">t</span><span style="color: #007700">(</span><span style="color: #DD0000">'yii'</span><span style="color: #007700">,</span><span style="color: #DD0000">'Alias&nbsp;"{alias}"&nbsp;is&nbsp;invalid.&nbsp;Make&nbsp;sure&nbsp;it&nbsp;points&nbsp;to&nbsp;an&nbsp;existing&nbsp;directory&nbsp;or&nbsp;file.'</span><span style="color: #007700">,<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;array(</span><span style="color: #DD0000">'{alias}'</span><span style="color: #007700">=&gt;</span><span style="color: #0000BB">$alias</span><span style="color: #007700">)));<br />}</span>
+</span>
+</code></div>
+</div>
+<p>Imports the definition of a class or a directory of class files.
+<br/><br/>
+Path aliases are used to refer to the class file or directory being imported.
+If importing a path alias ending with '.*', the alias is considered as a directory
+which will be added to the PHP include paths; Otherwise, the alias is translated
+to the path of a class file which is included when needed.
+<br/><br/>
+For example, importing 'system.web.*' will add the 'web' directory of the framework
+to the PHP include paths; while importing 'system.web.CController' will include
+the class file 'web/CController.php' when needed.
+<br/><br/>
+The same alias can be imported multiple times, but only the first time is effective.</p>
+
+
+<div class="detailHeader" id="log-detail">
+log()
+<span class="detailHeaderTag">
+method
+</span>
+</div>
+
+<table class="summaryTable">
+<tr><td colspan="3">
+<div class="signature2">
+public static void <b>log</b>(string $msg, string $level='info', string $category='application')</div>
+</td></tr>
+<tr>
+  <td class="paramNameCol">$msg</td>
+  <td class="paramTypeCol">string</td>
+  <td class="paramDescCol">message to be logged</td>
+</tr>
+<tr>
+  <td class="paramNameCol">$level</td>
+  <td class="paramTypeCol">string</td>
+  <td class="paramDescCol">level of the message (e.g. 'trace', 'warning', 'error'). It is case-insensitive.</td>
+</tr>
+<tr>
+  <td class="paramNameCol">$category</td>
+  <td class="paramTypeCol">string</td>
+  <td class="paramDescCol">category of the message (e.g. 'system.web'). It is case-insensitive.</td>
+</tr>
+</table>
+
+<div class="sourceCode">
+<b>Source Code:</b> <a class="sourceLink" href="https://github.com/yiisoft/yii/blob/1.0.12/framework/YiiBase.php#L386">framework/YiiBase.php#386</a> (<b><a href="#" class="show">show</a></b>)
+<div class="code"><code><span style="color: #000000">
+<span style="color: #0000BB"></span><span style="color: #007700">public&nbsp;static&nbsp;function&nbsp;</span><span style="color: #0000BB">log</span><span style="color: #007700">(</span><span style="color: #0000BB">$msg</span><span style="color: #007700">,</span><span style="color: #0000BB">$level</span><span style="color: #007700">=</span><span style="color: #0000BB">CLogger</span><span style="color: #007700">::</span><span style="color: #0000BB">LEVEL_INFO</span><span style="color: #007700">,</span><span style="color: #0000BB">$category</span><span style="color: #007700">=</span><span style="color: #DD0000">'application'</span><span style="color: #007700">)<br />{<br />&nbsp;&nbsp;&nbsp;&nbsp;if(</span><span style="color: #0000BB">self</span><span style="color: #007700">::</span><span style="color: #0000BB">$_logger</span><span style="color: #007700">===</span><span style="color: #0000BB">null</span><span style="color: #007700">)<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">self</span><span style="color: #007700">::</span><span style="color: #0000BB">$_logger</span><span style="color: #007700">=new&nbsp;</span><span style="color: #0000BB">CLogger</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">self</span><span style="color: #007700">::</span><span style="color: #0000BB">$_logger</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">log</span><span style="color: #007700">(</span><span style="color: #0000BB">$msg</span><span style="color: #007700">,</span><span style="color: #0000BB">$level</span><span style="color: #007700">,</span><span style="color: #0000BB">$category</span><span style="color: #007700">);<br />}</span>
+</span>
+</code></div>
+</div>
+<p>Logs a message.
+Messages logged by this method may be retrieved via <a href="/doc/api/1.0/CLogger#getLogs">CLogger::getLogs</a>
+and may be recorded in different media, such as file, email, database, using
+<a href="/doc/api/1.0/CLogRouter">CLogRouter</a>.</p>
+
+
+<div class="detailHeader" id="powered-detail">
+powered()
+<span class="detailHeaderTag">
+method
+</span>
+</div>
+
+<table class="summaryTable">
+<tr><td colspan="3">
+<div class="signature2">
+public static string <b>powered</b>()</div>
+</td></tr>
+<tr>
+  <td class="paramNameCol">{return}</td>
+  <td class="paramTypeCol">string</td>
+  <td class="paramDescCol">a string that can be displayed on your Web page showing Powered-by-Yii information</td>
+</tr>
+</table>
+
+<div class="sourceCode">
+<b>Source Code:</b> <a class="sourceLink" href="https://github.com/yiisoft/yii/blob/1.0.12/framework/YiiBase.php#L445">framework/YiiBase.php#445</a> (<b><a href="#" class="show">show</a></b>)
+<div class="code"><code><span style="color: #000000">
+<span style="color: #0000BB"></span><span style="color: #007700">public&nbsp;static&nbsp;function&nbsp;</span><span style="color: #0000BB">powered</span><span style="color: #007700">()<br />{<br />&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;</span><span style="color: #DD0000">'Powered&nbsp;by&nbsp;&lt;a&nbsp;href="http://www.yiiframework.com/"&nbsp;target="_blank"&gt;Yii&nbsp;Framework&lt;/a&gt;.'</span><span style="color: #007700">;<br />}</span>
+</span>
+</code></div>
+</div>
+<p></p>
+
+
+<div class="detailHeader" id="registerAutoloader-detail">
+registerAutoloader()
+<span class="detailHeaderTag">
+method
+(available since v1.0.10)
+</span>
+</div>
+
+<table class="summaryTable">
+<tr><td colspan="3">
+<div class="signature2">
+public static void <b>registerAutoloader</b>(callback $callback)</div>
+</td></tr>
+<tr>
+  <td class="paramNameCol">$callback</td>
+  <td class="paramTypeCol">callback</td>
+  <td class="paramDescCol">a valid PHP callback (function name or array($className,$methodName)).</td>
+</tr>
+</table>
+
+<div class="sourceCode">
+<b>Source Code:</b> <a class="sourceLink" href="https://github.com/yiisoft/yii/blob/1.0.12/framework/YiiBase.php#L498">framework/YiiBase.php#498</a> (<b><a href="#" class="show">show</a></b>)
+<div class="code"><code><span style="color: #000000">
+<span style="color: #0000BB"></span><span style="color: #007700">public&nbsp;static&nbsp;function&nbsp;</span><span style="color: #0000BB">registerAutoloader</span><span style="color: #007700">(</span><span style="color: #0000BB">$callback</span><span style="color: #007700">)<br />{<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">spl_autoload_unregister</span><span style="color: #007700">(array(</span><span style="color: #DD0000">'YiiBase'</span><span style="color: #007700">,</span><span style="color: #DD0000">'autoload'</span><span style="color: #007700">));<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">spl_autoload_register</span><span style="color: #007700">(</span><span style="color: #0000BB">$callback</span><span style="color: #007700">);<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">spl_autoload_register</span><span style="color: #007700">(array(</span><span style="color: #DD0000">'YiiBase'</span><span style="color: #007700">,</span><span style="color: #DD0000">'autoload'</span><span style="color: #007700">));<br />}</span>
+</span>
+</code></div>
+</div>
+<p>Registers a new class autoloader.
+The new autoloader will be placed before <a href="/doc/api/1.0/YiiBase#autoload">autoload</a> and after
+any other existing autoloaders.</p>
+
+
+<div class="detailHeader" id="setApplication-detail">
+setApplication()
+<span class="detailHeaderTag">
+method
+</span>
+</div>
+
+<table class="summaryTable">
+<tr><td colspan="3">
+<div class="signature2">
+public static void <b>setApplication</b>(<a href="/doc/api/1.0/CApplication">CApplication</a> $app)</div>
+</td></tr>
+<tr>
+  <td class="paramNameCol">$app</td>
+  <td class="paramTypeCol"><a href="/doc/api/1.0/CApplication">CApplication</a></td>
+  <td class="paramDescCol">the application instance. If this is null, the existing
+application singleton will be removed.</td>
+</tr>
+</table>
+
+<div class="sourceCode">
+<b>Source Code:</b> <a class="sourceLink" href="https://github.com/yiisoft/yii/blob/1.0.12/framework/YiiBase.php#L129">framework/YiiBase.php#129</a> (<b><a href="#" class="show">show</a></b>)
+<div class="code"><code><span style="color: #000000">
+<span style="color: #0000BB"></span><span style="color: #007700">public&nbsp;static&nbsp;function&nbsp;</span><span style="color: #0000BB">setApplication</span><span style="color: #007700">(</span><span style="color: #0000BB">$app</span><span style="color: #007700">)<br />{<br />&nbsp;&nbsp;&nbsp;&nbsp;if(</span><span style="color: #0000BB">self</span><span style="color: #007700">::</span><span style="color: #0000BB">$_app</span><span style="color: #007700">===</span><span style="color: #0000BB">null&nbsp;</span><span style="color: #007700">||&nbsp;</span><span style="color: #0000BB">$app</span><span style="color: #007700">===</span><span style="color: #0000BB">null</span><span style="color: #007700">)<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">self</span><span style="color: #007700">::</span><span style="color: #0000BB">$_app</span><span style="color: #007700">=</span><span style="color: #0000BB">$app</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;else<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;throw&nbsp;new&nbsp;</span><span style="color: #0000BB">CException</span><span style="color: #007700">(</span><span style="color: #0000BB">Yii</span><span style="color: #007700">::</span><span style="color: #0000BB">t</span><span style="color: #007700">(</span><span style="color: #DD0000">'yii'</span><span style="color: #007700">,</span><span style="color: #DD0000">'Yii&nbsp;application&nbsp;can&nbsp;only&nbsp;be&nbsp;created&nbsp;once.'</span><span style="color: #007700">));<br />}</span>
+</span>
+</code></div>
+</div>
+<p>Stores the application instance in the class static member.
+This method helps implement a singleton pattern for CApplication.
+Repeated invocation of this method or the CApplication constructor
+will cause the throw of an exception.
+To retrieve the application instance, use <a href="/doc/api/1.0/YiiBase#app">app()</a>.</p>
+
+
+<div class="detailHeader" id="setPathOfAlias-detail">
+setPathOfAlias()
+<span class="detailHeaderTag">
+method
+</span>
+</div>
+
+<table class="summaryTable">
+<tr><td colspan="3">
+<div class="signature2">
+public static void <b>setPathOfAlias</b>(string $alias, string $path)</div>
+</td></tr>
+<tr>
+  <td class="paramNameCol">$alias</td>
+  <td class="paramTypeCol">string</td>
+  <td class="paramDescCol">alias to the path</td>
+</tr>
+<tr>
+  <td class="paramNameCol">$path</td>
+  <td class="paramTypeCol">string</td>
+  <td class="paramDescCol">the path corresponding to the alias. If this is null, the corresponding
+path alias will be removed.</td>
+</tr>
+</table>
+
+<div class="sourceCode">
+<b>Source Code:</b> <a class="sourceLink" href="https://github.com/yiisoft/yii/blob/1.0.12/framework/YiiBase.php#L315">framework/YiiBase.php#315</a> (<b><a href="#" class="show">show</a></b>)
+<div class="code"><code><span style="color: #000000">
+<span style="color: #0000BB"></span><span style="color: #007700">public&nbsp;static&nbsp;function&nbsp;</span><span style="color: #0000BB">setPathOfAlias</span><span style="color: #007700">(</span><span style="color: #0000BB">$alias</span><span style="color: #007700">,</span><span style="color: #0000BB">$path</span><span style="color: #007700">)<br />{<br />&nbsp;&nbsp;&nbsp;&nbsp;if(empty(</span><span style="color: #0000BB">$path</span><span style="color: #007700">))<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;unset(</span><span style="color: #0000BB">self</span><span style="color: #007700">::</span><span style="color: #0000BB">$_aliases</span><span style="color: #007700">[</span><span style="color: #0000BB">$alias</span><span style="color: #007700">]);<br />&nbsp;&nbsp;&nbsp;&nbsp;else<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">self</span><span style="color: #007700">::</span><span style="color: #0000BB">$_aliases</span><span style="color: #007700">[</span><span style="color: #0000BB">$alias</span><span style="color: #007700">]=</span><span style="color: #0000BB">rtrim</span><span style="color: #007700">(</span><span style="color: #0000BB">$path</span><span style="color: #007700">,</span><span style="color: #DD0000">'\\/'</span><span style="color: #007700">);<br />}</span>
+</span>
+</code></div>
+</div>
+<p>Create a path alias.
+Note, this method neither checks the existence of the path nor normalizes the path.</p>
+
+
+<div class="detailHeader" id="t-detail">
+t()
+<span class="detailHeaderTag">
+method
+</span>
+</div>
+
+<table class="summaryTable">
+<tr><td colspan="3">
+<div class="signature2">
+public static string <b>t</b>(string $category, string $message, array $params=array (
+), string $source=NULL, string $language=NULL)</div>
+</td></tr>
+<tr>
+  <td class="paramNameCol">$category</td>
+  <td class="paramTypeCol">string</td>
+  <td class="paramDescCol">message category. Please use only word letters. Note, category 'yii' is
+reserved for Yii framework core code use. See <a href="/doc/api/1.0/CPhpMessageSource">CPhpMessageSource</a> for
+more interpretation about message category.</td>
+</tr>
+<tr>
+  <td class="paramNameCol">$message</td>
+  <td class="paramTypeCol">string</td>
+  <td class="paramDescCol">the original message</td>
+</tr>
+<tr>
+  <td class="paramNameCol">$params</td>
+  <td class="paramTypeCol">array</td>
+  <td class="paramDescCol">parameters to be applied to the message using <code>strtr</code>.
+Starting from version 1.0.2, the first parameter can be a number without key.
+And in this case, the method will call <a href="/doc/api/1.0/CChoiceFormat#format">CChoiceFormat::format</a> to choose
+an appropriate message translation.</td>
+</tr>
+<tr>
+  <td class="paramNameCol">$source</td>
+  <td class="paramTypeCol">string</td>
+  <td class="paramDescCol">which message source application component to use.
+Defaults to null, meaning using 'coreMessages' for messages belonging to
+the 'yii' category and using 'messages' for the rest messages.</td>
+</tr>
+<tr>
+  <td class="paramNameCol">$language</td>
+  <td class="paramTypeCol">string</td>
+  <td class="paramDescCol">the target language. If null (default), the <a href="/doc/api/1.0/CApplication#getLanguage">application language</a> will be used.
+This parameter has been available since version 1.0.3.</td>
+</tr>
+<tr>
+  <td class="paramNameCol">{return}</td>
+  <td class="paramTypeCol">string</td>
+  <td class="paramDescCol">the translated message</td>
+</tr>
+</table>
+
+<div class="sourceCode">
+<b>Source Code:</b> <a class="sourceLink" href="https://github.com/yiisoft/yii/blob/1.0.12/framework/YiiBase.php#L472">framework/YiiBase.php#472</a> (<b><a href="#" class="show">show</a></b>)
+<div class="code"><code><span style="color: #000000">
+<span style="color: #0000BB"></span><span style="color: #007700">public&nbsp;static&nbsp;function&nbsp;</span><span style="color: #0000BB">t</span><span style="color: #007700">(</span><span style="color: #0000BB">$category</span><span style="color: #007700">,</span><span style="color: #0000BB">$message</span><span style="color: #007700">,</span><span style="color: #0000BB">$params</span><span style="color: #007700">=array(),</span><span style="color: #0000BB">$source</span><span style="color: #007700">=</span><span style="color: #0000BB">null</span><span style="color: #007700">,</span><span style="color: #0000BB">$language</span><span style="color: #007700">=</span><span style="color: #0000BB">null</span><span style="color: #007700">)<br />{<br />&nbsp;&nbsp;&nbsp;&nbsp;if(</span><span style="color: #0000BB">self</span><span style="color: #007700">::</span><span style="color: #0000BB">$_app</span><span style="color: #007700">!==</span><span style="color: #0000BB">null</span><span style="color: #007700">)<br />&nbsp;&nbsp;&nbsp;&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if(</span><span style="color: #0000BB">$source</span><span style="color: #007700">===</span><span style="color: #0000BB">null</span><span style="color: #007700">)<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$source</span><span style="color: #007700">=</span><span style="color: #0000BB">$category</span><span style="color: #007700">===</span><span style="color: #DD0000">'yii'</span><span style="color: #007700">?</span><span style="color: #DD0000">'coreMessages'</span><span style="color: #007700">:</span><span style="color: #DD0000">'messages'</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if((</span><span style="color: #0000BB">$source</span><span style="color: #007700">=</span><span style="color: #0000BB">self</span><span style="color: #007700">::</span><span style="color: #0000BB">$_app</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">getComponent</span><span style="color: #007700">(</span><span style="color: #0000BB">$source</span><span style="color: #007700">))!==</span><span style="color: #0000BB">null</span><span style="color: #007700">)<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$message</span><span style="color: #007700">=</span><span style="color: #0000BB">$source</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">translate</span><span style="color: #007700">(</span><span style="color: #0000BB">$category</span><span style="color: #007700">,</span><span style="color: #0000BB">$message</span><span style="color: #007700">,</span><span style="color: #0000BB">$language</span><span style="color: #007700">);<br />&nbsp;&nbsp;&nbsp;&nbsp;}<br />&nbsp;&nbsp;&nbsp;&nbsp;if(</span><span style="color: #0000BB">$params</span><span style="color: #007700">===array())<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;</span><span style="color: #0000BB">$message</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;if(isset(</span><span style="color: #0000BB">$params</span><span style="color: #007700">[</span><span style="color: #0000BB">0</span><span style="color: #007700">]))&nbsp;</span><span style="color: #FF8000">//&nbsp;number&nbsp;choice<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #007700">{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$message</span><span style="color: #007700">=</span><span style="color: #0000BB">CChoiceFormat</span><span style="color: #007700">::</span><span style="color: #0000BB">format</span><span style="color: #007700">(</span><span style="color: #0000BB">$message</span><span style="color: #007700">,</span><span style="color: #0000BB">$params</span><span style="color: #007700">[</span><span style="color: #0000BB">0</span><span style="color: #007700">]);<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;unset(</span><span style="color: #0000BB">$params</span><span style="color: #007700">[</span><span style="color: #0000BB">0</span><span style="color: #007700">]);<br />&nbsp;&nbsp;&nbsp;&nbsp;}<br />&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;</span><span style="color: #0000BB">$params</span><span style="color: #007700">!==array()&nbsp;?&nbsp;</span><span style="color: #0000BB">strtr</span><span style="color: #007700">(</span><span style="color: #0000BB">$message</span><span style="color: #007700">,</span><span style="color: #0000BB">$params</span><span style="color: #007700">)&nbsp;:&nbsp;</span><span style="color: #0000BB">$message</span><span style="color: #007700">;<br />}</span>
+</span>
+</code></div>
+</div>
+<p>Translates a message to the specified language.
+Starting from version 1.0.2, this method supports choice format (see <a href="/doc/api/1.0/CChoiceFormat">CChoiceFormat</a>),
+i.e., the message returned will be chosen from a few candidates according to the given
+number value. This feature is mainly used to solve plural format issue in case
+a message has different plural forms in some languages.</p>
+
+<div class="SeeAlso">
+<h4>See Also</h4>
+<ul>
+	<li><a href="/doc/api/1.0/CMessageSource">CMessageSource</a></li>
+</ul>
+</div>
+
+<div class="detailHeader" id="trace-detail">
+trace()
+<span class="detailHeaderTag">
+method
+</span>
+</div>
+
+<table class="summaryTable">
+<tr><td colspan="3">
+<div class="signature2">
+public static void <b>trace</b>(string $msg, string $category='application')</div>
+</td></tr>
+<tr>
+  <td class="paramNameCol">$msg</td>
+  <td class="paramTypeCol">string</td>
+  <td class="paramDescCol">message to be logged</td>
+</tr>
+<tr>
+  <td class="paramNameCol">$category</td>
+  <td class="paramTypeCol">string</td>
+  <td class="paramDescCol">category of the message</td>
+</tr>
+</table>
+
+<div class="sourceCode">
+<b>Source Code:</b> <a class="sourceLink" href="https://github.com/yiisoft/yii/blob/1.0.12/framework/YiiBase.php#L351">framework/YiiBase.php#351</a> (<b><a href="#" class="show">show</a></b>)
+<div class="code"><code><span style="color: #000000">
+<span style="color: #0000BB"></span><span style="color: #007700">public&nbsp;static&nbsp;function&nbsp;</span><span style="color: #0000BB">trace</span><span style="color: #007700">(</span><span style="color: #0000BB">$msg</span><span style="color: #007700">,</span><span style="color: #0000BB">$category</span><span style="color: #007700">=</span><span style="color: #DD0000">'application'</span><span style="color: #007700">)<br />{<br />&nbsp;&nbsp;&nbsp;&nbsp;if(</span><span style="color: #0000BB">YII_DEBUG</span><span style="color: #007700">)<br />&nbsp;&nbsp;&nbsp;&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if(</span><span style="color: #0000BB">YII_TRACE_LEVEL</span><span style="color: #007700">&gt;</span><span style="color: #0000BB">0</span><span style="color: #007700">)<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$traces</span><span style="color: #007700">=</span><span style="color: #0000BB">debug_backtrace</span><span style="color: #007700">();<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$count</span><span style="color: #007700">=</span><span style="color: #0000BB">0</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;foreach(</span><span style="color: #0000BB">$traces&nbsp;</span><span style="color: #007700">as&nbsp;</span><span style="color: #0000BB">$trace</span><span style="color: #007700">)<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if(isset(</span><span style="color: #0000BB">$trace</span><span style="color: #007700">[</span><span style="color: #DD0000">'file'</span><span style="color: #007700">],</span><span style="color: #0000BB">$trace</span><span style="color: #007700">[</span><span style="color: #DD0000">'line'</span><span style="color: #007700">]))<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$className</span><span style="color: #007700">=</span><span style="color: #0000BB">substr</span><span style="color: #007700">(</span><span style="color: #0000BB">basename</span><span style="color: #007700">(</span><span style="color: #0000BB">$trace</span><span style="color: #007700">[</span><span style="color: #DD0000">'file'</span><span style="color: #007700">]),</span><span style="color: #0000BB">0</span><span style="color: #007700">,-</span><span style="color: #0000BB">4</span><span style="color: #007700">);<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if(!isset(</span><span style="color: #0000BB">self</span><span style="color: #007700">::</span><span style="color: #0000BB">$_coreClasses</span><span style="color: #007700">[</span><span style="color: #0000BB">$className</span><span style="color: #007700">])&nbsp;&amp;&amp;&nbsp;</span><span style="color: #0000BB">$className</span><span style="color: #007700">!==</span><span style="color: #DD0000">'YiiBase'</span><span style="color: #007700">)<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$msg</span><span style="color: #007700">.=</span><span style="color: #DD0000">"\nin&nbsp;"</span><span style="color: #007700">.</span><span style="color: #0000BB">$trace</span><span style="color: #007700">[</span><span style="color: #DD0000">'file'</span><span style="color: #007700">].</span><span style="color: #DD0000">'&nbsp;('</span><span style="color: #007700">.</span><span style="color: #0000BB">$trace</span><span style="color: #007700">[</span><span style="color: #DD0000">'line'</span><span style="color: #007700">].</span><span style="color: #DD0000">')'</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if(++</span><span style="color: #0000BB">$count</span><span style="color: #007700">&gt;=</span><span style="color: #0000BB">YII_TRACE_LEVEL</span><span style="color: #007700">)<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;break;<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">self</span><span style="color: #007700">::</span><span style="color: #0000BB">log</span><span style="color: #007700">(</span><span style="color: #0000BB">$msg</span><span style="color: #007700">,</span><span style="color: #0000BB">CLogger</span><span style="color: #007700">::</span><span style="color: #0000BB">LEVEL_TRACE</span><span style="color: #007700">,</span><span style="color: #0000BB">$category</span><span style="color: #007700">);<br />&nbsp;&nbsp;&nbsp;&nbsp;}<br />}</span>
+</span>
+</code></div>
+</div>
+<p>Writes a trace message.
+This method will only log a message when the application is in debug mode.</p>
+
+<div class="SeeAlso">
+<h4>See Also</h4>
+<ul>
+	<li><a href="/doc/api/1.0/YiiBase#log">log</a></li>
+</ul>
+</div>
+

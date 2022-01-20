@@ -5,6 +5,8 @@ $this->registerJs("
         autoheight: true,
         autoplay: 10000,
     });
+    var slideButton = $('.glide__bullet');
+    slideButton.attr('title', 'pagination');
 ");
 ?>
 
@@ -35,6 +37,7 @@ $this->registerJs("
                     <?php endforeach ?>
                 </ul>
             </div>
+            <div class="glide__bullets hidden-xs"></div>
         </div>
     </div>
 </div>

@@ -1,29 +1,30 @@
 .site-resources {
-    .header {
-        h1 {
-            @include rem(font-size, 65px);
-            font-weight: bold;
-        }
+  .header {
+    h1 {
+      @include rem(font-size, 65px);
+      font-weight: bold;
+    }
+  }
+
+  .group {
+    margin-bottom: 1em;
+
+    h3 {
+      text-align: center;
+      font-weight: bold;
     }
 
-    .group {
-        margin-bottom: 1em;
-        h3 {
-            text-align: center;
-            font-weight: bold;
-        }
-
-        .image {
-            border: none;
-            text-align: center;
-        }
+    .image {
+      border: none;
+      text-align: center;
     }
+  }
 }
 
 @media (min-width: 1000px) {
-    .site-resources .header .background {
-        position: relative;
-        margin-top: -9em;
-        z-index: -1;
-    }
+  .site-resources .header .background {
+    position: relative;
+    margin-top: -9em;
+    z-index: -1;
+  }
 }

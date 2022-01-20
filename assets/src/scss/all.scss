@@ -19,10 +19,9 @@ This file is part of the
 // This is the master include file for the style
 // used by yiiframework.com
 //
-// Inspired by Sass Guidelines: http://sass-guidelin.es/
+// Inspired by Sass Guidelines: https://sass-guidelin.es/
 // and using a variant of the 7-1 pattern for organizing
-// sass partials ( http://sass-guidelin.es/#the-7-1-pattern )
-
+// sass partials ( https://sass-guidelin.es/#the-7-1-pattern )
 
 // Common style and global variables/mixins
 // that does not depend on vendors
@@ -52,7 +51,8 @@ This file is part of the
 @import "3-global/5ths";
 @import "3-global/site";
 @import "3-global/externallinks";
-@import "3-global/highlight"; // guide code highlight
+@import "3-global/highlight";
+// guide code highlight
 @import "3-global/typography";
 @import "3-global/dashedheadings";
 @import "3-global/content";

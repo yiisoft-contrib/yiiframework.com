@@ -5,6 +5,7 @@
   background-color: #F5FEC4;
   border-color: #70c1b3;
   margin-top: 1.5rem;
+
   &:hover {
     color: $link-color;
     background-color: #BAD9C1;
@@ -48,6 +49,7 @@ ul.wiki-side-menu {
   list-style: none;
   margin: 0;
   padding: 5px 0 5px 0;
+
   &.last-side-menu {
     margin-bottom: 2rem;
   }
@@ -58,6 +60,7 @@ ul.wiki-side-menu {
     display: block;
     padding: 10px 16px;
     cursor: pointer;
+
     &:hover {
       color: $eshill-blue;
       background-color: #fff;
@@ -79,6 +82,7 @@ ul.wiki-side-menu {
   li.active a:hover {
     background-color: $eshill-light-blue;
     color: #fff;
+
     span.count {
       color: #fff;
     }
@@ -90,12 +94,14 @@ ul.wiki-side-comments {
   list-style: none;
   margin: 0;
   padding: 5px 0 5px 0;
+
   &.last-side-menu {
     margin-bottom: 2rem;
   }
 
   li {
     padding: 10px 16px;
+
     .date {
       font-size: $font-size-small;
     }
@@ -104,6 +110,7 @@ ul.wiki-side-comments {
 
 .wiki-row {
   margin-bottom: 2rem;
+
   .subtitle {
     font-size: 1.4rem;
     color: #737373;
@@ -120,6 +127,7 @@ ul.wiki-side-comments {
 
   .comments {
     float: right;
+
     a {
       color: #737373;
       font-size: 1.4rem;
@@ -150,6 +158,7 @@ ul.wiki-side-comments {
   overflow: auto;
   word-wrap: normal;
   padding: 15px;
+
   .diff-snip {
     color: #b2dbbf;
     font-style: italic;
@@ -186,5 +195,11 @@ ul.wiki-side-comments {
 .list-view {
   a {
     word-break: break-word;
+  }
+}
+
+.wiki-form {
+  .btn-danger {
+    background-color: #D43A35;
   }
 }

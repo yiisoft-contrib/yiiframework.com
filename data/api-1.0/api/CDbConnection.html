@@ -1,0 +1,2333 @@
+<h1>CDbConnection</h1>
+<div id="nav">
+<a href="/doc/api/1.0/">All Packages</a>
+| <a href="#properties">Properties</a>
+| <a href="#methods">Methods</a>
+</div>
+
+<table class="summaryTable docClass">
+<colgroup>
+	<col class="col-name" />
+	<col class="col-value" />
+</colgroup>
+<tr>
+  <th>Package</th>
+  <td><a href="/doc/api/1.0/#system.db">system.db</a></td>
+</tr>
+<tr>
+  <th>Inheritance</th>
+  <td>class CDbConnection &raquo;
+<a href="/doc/api/1.0/CApplicationComponent">CApplicationComponent</a> &raquo;
+<a href="/doc/api/1.0/CComponent">CComponent</a></td>
+</tr>
+<tr>
+  <th>Implements</th>
+  <td><a href="/doc/api/1.0/IApplicationComponent">IApplicationComponent</a></td>
+</tr>
+<tr>
+  <th>Since</th>
+  <td>1.0</td>
+</tr>
+<tr>
+  <th>Version</th>
+  <td>$Id$</td>
+</tr>
+<tr>
+  <th>Source Code</th>
+  <td><a class="sourceLink" href="https://github.com/yiisoft/yii/blob/1.0.12/framework/db/CDbConnection.php">framework/db/CDbConnection.php</a></td>
+</tr>
+</table>
+
+<div id="classDescription">
+CDbConnection represents a connection to a database.
+<br/><br/>
+CDbConnection works together with <a href="/doc/api/1.0/CDbCommand">CDbCommand</a>, <a href="/doc/api/1.0/CDbDataReader">CDbDataReader</a>
+and <a href="/doc/api/1.0/CDbTransaction">CDbTransaction</a> to provide data access to various DBMS
+in a common set of APIs. They are a thin wrapper of the <a href="http://www.php.net/manual/en/ref.pdo.php">PDO</a>
+PHP extension.
+<br/><br/>
+To establish a connection, set <a href="/doc/api/1.0/CDbConnection#setActive">active</a> to true after
+specifying <a href="/doc/api/1.0/CDbConnection#connectionString">connectionString</a>, <a href="/doc/api/1.0/CDbConnection#username">username</a> and <a href="/doc/api/1.0/CDbConnection#password">password</a>.
+<br/><br/>
+The following example shows how to create a CDbConnection instance and establish
+the actual connection:
+<pre>
+$connection=new CDbConnection($dsn,$username,$password);
+$connection-&gt;active=true;
+</pre>
+<br/><br/>
+After the DB connection is established, one can execute an SQL statement like the following:
+<pre>
+$command=$connection-&gt;createCommand($sqlStatement);
+$command-&gt;execute();   // a non-query SQL statement execution
+// or execute an SQL query and fetch the result set
+$reader=$command-&gt;query();
+
+// each $row is an array representing a row of data
+foreach($reader as $row) ...
+</pre>
+<br/><br/>
+One can do prepared SQL execution and bind parameters to the prepared SQL:
+<pre>
+$command=$connection-&gt;createCommand($sqlStatement);
+$command-&gt;bindParam($name1,$value1);
+$command-&gt;bindParam($name2,$value2);
+$command-&gt;execute();
+</pre>
+<br/><br/>
+To use transaction, do like the following:
+<pre>
+$transaction=$connection-&gt;beginTransaction();
+try
+{
+   $connection-&gt;createCommand($sql1)-&gt;execute();
+   $connection-&gt;createCommand($sql2)-&gt;execute();
+   //.... other SQL executions
+   $transaction-&gt;commit();
+}
+catch(Exception $e)
+{
+   $transaction-&gt;rollBack();
+}
+</pre>
+<br/><br/>
+CDbConnection also provides a set of methods to support setting and querying
+of certain DBMS attributes, such as <a href="/doc/api/1.0/CDbConnection#getNullConversion">nullConversion</a>.
+<br/><br/>
+Since CDbConnection implements the interface IApplicationComponent, it can
+be used as an application component and be configured in application configuration,
+like the following,
+<pre>
+array(
+    'components'=&gt;array(
+        'db'=&gt;array(
+            'class'=&gt;'CDbConnection',
+            'connectionString'=&gt;'sqlite:path/to/dbfile',
+        ),
+    ),
+)
+</pre></div>
+<a name="properties"></a>
+
+<div class="summary docProperty">
+<h2>Public Properties</h2>
+
+<p><a href="#" class="toggle">Hide inherited properties</a></p>
+
+<table class="summaryTable">
+<colgroup>
+	<col class="col-property" />
+	<col class="col-type" />
+	<col class="col-description" />
+	<col class="col-defined" />
+</colgroup>
+<tr>
+  <th>Property</th><th>Type</th><th>Description</th><th>Defined By</th>
+</tr>
+<tr id="active">
+  <td><a href="/doc/api/1.0/CDbConnection#active-detail">active</a></td>
+  <td>boolean</td>
+  <td>whether the DB connection is established</td>
+  <td>CDbConnection</td>
+</tr>
+<tr id="autoCommit">
+  <td><a href="/doc/api/1.0/CDbConnection#autoCommit-detail">autoCommit</a></td>
+  <td>boolean</td>
+  <td>whether creating or updating a DB record will be automatically committed.</td>
+  <td>CDbConnection</td>
+</tr>
+<tr id="autoConnect">
+  <td><a href="/doc/api/1.0/CDbConnection#autoConnect-detail">autoConnect</a></td>
+  <td>boolean</td>
+  <td>whether the database connection should be automatically established
+the component is being initialized.</td>
+  <td>CDbConnection</td>
+</tr>
+<tr class="inherited" id="behaviors">
+  <td><a href="/doc/api/1.0/CApplicationComponent#behaviors-detail">behaviors</a></td>
+  <td>array</td>
+  <td>the behaviors that should be attached to this component.</td>
+  <td><a href="/doc/api/1.0/CApplicationComponent">CApplicationComponent</a></td>
+</tr>
+<tr id="charset">
+  <td><a href="/doc/api/1.0/CDbConnection#charset-detail">charset</a></td>
+  <td>string</td>
+  <td>the charset used for database connection.</td>
+  <td>CDbConnection</td>
+</tr>
+<tr id="clientVersion">
+  <td><a href="/doc/api/1.0/CDbConnection#clientVersion-detail">clientVersion</a></td>
+  <td>string</td>
+  <td>the version information of the DB driver</td>
+  <td>CDbConnection</td>
+</tr>
+<tr id="columnCase">
+  <td><a href="/doc/api/1.0/CDbConnection#columnCase-detail">columnCase</a></td>
+  <td>mixed</td>
+  <td>the case of the column names</td>
+  <td>CDbConnection</td>
+</tr>
+<tr id="commandBuilder">
+  <td><a href="/doc/api/1.0/CDbConnection#commandBuilder-detail">commandBuilder</a></td>
+  <td><a href="/doc/api/1.0/CDbCommandBuilder">CDbCommandBuilder</a></td>
+  <td>Returns the SQL command builder for the current DB connection.</td>
+  <td>CDbConnection</td>
+</tr>
+<tr id="connectionStatus">
+  <td><a href="/doc/api/1.0/CDbConnection#connectionStatus-detail">connectionStatus</a></td>
+  <td>string</td>
+  <td>the status of the connection
+Some DBMS (such as sqlite) may not support this feature.</td>
+  <td>CDbConnection</td>
+</tr>
+<tr id="connectionString">
+  <td><a href="/doc/api/1.0/CDbConnection#connectionString-detail">connectionString</a></td>
+  <td>string</td>
+  <td>The Data Source Name, or DSN, contains the information required to connect to the database.</td>
+  <td>CDbConnection</td>
+</tr>
+<tr id="currentTransaction">
+  <td><a href="/doc/api/1.0/CDbConnection#currentTransaction-detail">currentTransaction</a></td>
+  <td><a href="/doc/api/1.0/CDbTransaction">CDbTransaction</a></td>
+  <td>the currently active transaction.</td>
+  <td>CDbConnection</td>
+</tr>
+<tr id="driverName">
+  <td><a href="/doc/api/1.0/CDbConnection#driverName-detail">driverName</a></td>
+  <td>string</td>
+  <td>name of the DB driver</td>
+  <td>CDbConnection</td>
+</tr>
+<tr id="emulatePrepare">
+  <td><a href="/doc/api/1.0/CDbConnection#emulatePrepare-detail">emulatePrepare</a></td>
+  <td>boolean</td>
+  <td>whether to turn on prepare emulation.</td>
+  <td>CDbConnection</td>
+</tr>
+<tr id="enableParamLogging">
+  <td><a href="/doc/api/1.0/CDbConnection#enableParamLogging-detail">enableParamLogging</a></td>
+  <td>boolean</td>
+  <td>whether to log the values that are bound to a prepare SQL statement.</td>
+  <td>CDbConnection</td>
+</tr>
+<tr id="enableProfiling">
+  <td><a href="/doc/api/1.0/CDbConnection#enableProfiling-detail">enableProfiling</a></td>
+  <td>boolean</td>
+  <td>whether to enable profiling the SQL statements being executed.</td>
+  <td>CDbConnection</td>
+</tr>
+<tr class="inherited" id="isInitialized">
+  <td><a href="/doc/api/1.0/CApplicationComponent#isInitialized-detail">isInitialized</a></td>
+  <td>boolean</td>
+  <td>whether this application component has been initialized (i.e., <a href="/doc/api/1.0/CDbConnection#init">init()</a> is invoked.</td>
+  <td><a href="/doc/api/1.0/CApplicationComponent">CApplicationComponent</a></td>
+</tr>
+<tr id="lastInsertID">
+  <td><a href="/doc/api/1.0/CDbConnection#lastInsertID-detail">lastInsertID</a></td>
+  <td>string</td>
+  <td>Returns the ID of the last inserted row or sequence value.</td>
+  <td>CDbConnection</td>
+</tr>
+<tr id="nullConversion">
+  <td><a href="/doc/api/1.0/CDbConnection#nullConversion-detail">nullConversion</a></td>
+  <td>mixed</td>
+  <td>how the null and empty strings are converted</td>
+  <td>CDbConnection</td>
+</tr>
+<tr id="password">
+  <td><a href="/doc/api/1.0/CDbConnection#password-detail">password</a></td>
+  <td>string</td>
+  <td>the password for establishing DB connection.</td>
+  <td>CDbConnection</td>
+</tr>
+<tr id="pdoInstance">
+  <td><a href="/doc/api/1.0/CDbConnection#pdoInstance-detail">pdoInstance</a></td>
+  <td>PDO</td>
+  <td>the PDO instance, null if the connection is not established yet</td>
+  <td>CDbConnection</td>
+</tr>
+<tr id="persistent">
+  <td><a href="/doc/api/1.0/CDbConnection#persistent-detail">persistent</a></td>
+  <td>boolean</td>
+  <td>whether the connection is persistent or not
+Some DBMS (such as sqlite) may not support this feature.</td>
+  <td>CDbConnection</td>
+</tr>
+<tr id="prefetch">
+  <td><a href="/doc/api/1.0/CDbConnection#prefetch-detail">prefetch</a></td>
+  <td>boolean</td>
+  <td>whether the connection performs data prefetching</td>
+  <td>CDbConnection</td>
+</tr>
+<tr id="schema">
+  <td><a href="/doc/api/1.0/CDbConnection#schema-detail">schema</a></td>
+  <td><a href="/doc/api/1.0/CDbSchema">CDbSchema</a></td>
+  <td>the database schema for the current connection</td>
+  <td>CDbConnection</td>
+</tr>
+<tr id="schemaCacheID">
+  <td><a href="/doc/api/1.0/CDbConnection#schemaCacheID-detail">schemaCacheID</a></td>
+  <td>string</td>
+  <td>the ID of the cache application component that is used to cache the table metadata.</td>
+  <td>CDbConnection</td>
+</tr>
+<tr id="schemaCachingDuration">
+  <td><a href="/doc/api/1.0/CDbConnection#schemaCachingDuration-detail">schemaCachingDuration</a></td>
+  <td>integer</td>
+  <td>number of seconds that table metadata can remain valid in cache.</td>
+  <td>CDbConnection</td>
+</tr>
+<tr id="schemaCachingExclude">
+  <td><a href="/doc/api/1.0/CDbConnection#schemaCachingExclude-detail">schemaCachingExclude</a></td>
+  <td>array</td>
+  <td>list of tables whose metadata should NOT be cached.</td>
+  <td>CDbConnection</td>
+</tr>
+<tr id="serverInfo">
+  <td><a href="/doc/api/1.0/CDbConnection#serverInfo-detail">serverInfo</a></td>
+  <td>string</td>
+  <td>the information of DBMS server</td>
+  <td>CDbConnection</td>
+</tr>
+<tr id="serverVersion">
+  <td><a href="/doc/api/1.0/CDbConnection#serverVersion-detail">serverVersion</a></td>
+  <td>string</td>
+  <td>the version information of DBMS server</td>
+  <td>CDbConnection</td>
+</tr>
+<tr id="stats">
+  <td><a href="/doc/api/1.0/CDbConnection#stats-detail">stats</a></td>
+  <td>array</td>
+  <td>Returns the statistical results of SQL executions.</td>
+  <td>CDbConnection</td>
+</tr>
+<tr id="timeout">
+  <td><a href="/doc/api/1.0/CDbConnection#timeout-detail">timeout</a></td>
+  <td>int</td>
+  <td>timeout settings for the connection</td>
+  <td>CDbConnection</td>
+</tr>
+<tr id="username">
+  <td><a href="/doc/api/1.0/CDbConnection#username-detail">username</a></td>
+  <td>string</td>
+  <td>the username for establishing DB connection.</td>
+  <td>CDbConnection</td>
+</tr>
+</table>
+</div>
+<a name="methods"></a>
+
+<div class="summary docMethod">
+<h2>Public Methods</h2>
+
+<p><a href="#" class="toggle">Hide inherited methods</a></p>
+
+<table class="summaryTable">
+<colgroup>
+	<col class="col-method" />
+	<col class="col-description" />
+	<col class="col-defined" />
+</colgroup>
+<tr>
+  <th>Method</th><th>Description</th><th>Defined By</th>
+</tr>
+<tr class="inherited" id="__call">
+  <td><a href="/doc/api/1.0/CComponent#__call-detail">__call()</a></td>
+  <td>Calls the named method which is not a class method.</td>
+  <td><a href="/doc/api/1.0/CComponent">CComponent</a></td>
+</tr>
+<tr id="__construct">
+  <td><a href="/doc/api/1.0/CDbConnection#__construct-detail">__construct()</a></td>
+  <td>Constructor.</td>
+  <td>CDbConnection</td>
+</tr>
+<tr class="inherited" id="__get">
+  <td><a href="/doc/api/1.0/CComponent#__get-detail">__get()</a></td>
+  <td>Returns a property value, an event handler list or a behavior based on its name.</td>
+  <td><a href="/doc/api/1.0/CComponent">CComponent</a></td>
+</tr>
+<tr class="inherited" id="__isset">
+  <td><a href="/doc/api/1.0/CComponent#__isset-detail">__isset()</a></td>
+  <td>Checks if a property value is null.</td>
+  <td><a href="/doc/api/1.0/CComponent">CComponent</a></td>
+</tr>
+<tr class="inherited" id="__set">
+  <td><a href="/doc/api/1.0/CComponent#__set-detail">__set()</a></td>
+  <td>Sets value of a component property.</td>
+  <td><a href="/doc/api/1.0/CComponent">CComponent</a></td>
+</tr>
+<tr id="__sleep">
+  <td><a href="/doc/api/1.0/CDbConnection#__sleep-detail">__sleep()</a></td>
+  <td>Close the connection when serializing.</td>
+  <td>CDbConnection</td>
+</tr>
+<tr class="inherited" id="__unset">
+  <td><a href="/doc/api/1.0/CComponent#__unset-detail">__unset()</a></td>
+  <td>Sets a component property to be null.</td>
+  <td><a href="/doc/api/1.0/CComponent">CComponent</a></td>
+</tr>
+<tr class="inherited" id="asa">
+  <td><a href="/doc/api/1.0/CComponent#asa-detail">asa()</a></td>
+  <td>Returns the named behavior object.</td>
+  <td><a href="/doc/api/1.0/CComponent">CComponent</a></td>
+</tr>
+<tr class="inherited" id="attachBehavior">
+  <td><a href="/doc/api/1.0/CComponent#attachBehavior-detail">attachBehavior()</a></td>
+  <td>Attaches a behavior to this component.</td>
+  <td><a href="/doc/api/1.0/CComponent">CComponent</a></td>
+</tr>
+<tr class="inherited" id="attachBehaviors">
+  <td><a href="/doc/api/1.0/CComponent#attachBehaviors-detail">attachBehaviors()</a></td>
+  <td>Attaches a list of behaviors to the component.</td>
+  <td><a href="/doc/api/1.0/CComponent">CComponent</a></td>
+</tr>
+<tr class="inherited" id="attachEventHandler">
+  <td><a href="/doc/api/1.0/CComponent#attachEventHandler-detail">attachEventHandler()</a></td>
+  <td>Attaches an event handler to an event.</td>
+  <td><a href="/doc/api/1.0/CComponent">CComponent</a></td>
+</tr>
+<tr id="beginTransaction">
+  <td><a href="/doc/api/1.0/CDbConnection#beginTransaction-detail">beginTransaction()</a></td>
+  <td>Starts a transaction.</td>
+  <td>CDbConnection</td>
+</tr>
+<tr class="inherited" id="canGetProperty">
+  <td><a href="/doc/api/1.0/CComponent#canGetProperty-detail">canGetProperty()</a></td>
+  <td>Determines whether a property can be read.</td>
+  <td><a href="/doc/api/1.0/CComponent">CComponent</a></td>
+</tr>
+<tr class="inherited" id="canSetProperty">
+  <td><a href="/doc/api/1.0/CComponent#canSetProperty-detail">canSetProperty()</a></td>
+  <td>Determines whether a property can be set.</td>
+  <td><a href="/doc/api/1.0/CComponent">CComponent</a></td>
+</tr>
+<tr id="createCommand">
+  <td><a href="/doc/api/1.0/CDbConnection#createCommand-detail">createCommand()</a></td>
+  <td>Creates a command for execution.</td>
+  <td>CDbConnection</td>
+</tr>
+<tr class="inherited" id="detachBehavior">
+  <td><a href="/doc/api/1.0/CComponent#detachBehavior-detail">detachBehavior()</a></td>
+  <td>Detaches a behavior from the component.</td>
+  <td><a href="/doc/api/1.0/CComponent">CComponent</a></td>
+</tr>
+<tr class="inherited" id="detachBehaviors">
+  <td><a href="/doc/api/1.0/CComponent#detachBehaviors-detail">detachBehaviors()</a></td>
+  <td>Detaches all behaviors from the component.</td>
+  <td><a href="/doc/api/1.0/CComponent">CComponent</a></td>
+</tr>
+<tr class="inherited" id="detachEventHandler">
+  <td><a href="/doc/api/1.0/CComponent#detachEventHandler-detail">detachEventHandler()</a></td>
+  <td>Detaches an existing event handler.</td>
+  <td><a href="/doc/api/1.0/CComponent">CComponent</a></td>
+</tr>
+<tr class="inherited" id="disableBehavior">
+  <td><a href="/doc/api/1.0/CComponent#disableBehavior-detail">disableBehavior()</a></td>
+  <td>Disables an attached behavior.</td>
+  <td><a href="/doc/api/1.0/CComponent">CComponent</a></td>
+</tr>
+<tr class="inherited" id="disableBehaviors">
+  <td><a href="/doc/api/1.0/CComponent#disableBehaviors-detail">disableBehaviors()</a></td>
+  <td>Disables all behaviors attached to this component.</td>
+  <td><a href="/doc/api/1.0/CComponent">CComponent</a></td>
+</tr>
+<tr class="inherited" id="enableBehavior">
+  <td><a href="/doc/api/1.0/CComponent#enableBehavior-detail">enableBehavior()</a></td>
+  <td>Enables an attached behavior.</td>
+  <td><a href="/doc/api/1.0/CComponent">CComponent</a></td>
+</tr>
+<tr class="inherited" id="enableBehaviors">
+  <td><a href="/doc/api/1.0/CComponent#enableBehaviors-detail">enableBehaviors()</a></td>
+  <td>Enables all behaviors attached to this component.</td>
+  <td><a href="/doc/api/1.0/CComponent">CComponent</a></td>
+</tr>
+<tr id="getActive">
+  <td><a href="/doc/api/1.0/CDbConnection#getActive-detail">getActive()</a></td>
+  <td>Returns whether the DB connection is established</td>
+  <td>CDbConnection</td>
+</tr>
+<tr id="getAttribute">
+  <td><a href="/doc/api/1.0/CDbConnection#getAttribute-detail">getAttribute()</a></td>
+  <td>Obtains a specific DB connection attribute information.</td>
+  <td>CDbConnection</td>
+</tr>
+<tr id="getAutoCommit">
+  <td><a href="/doc/api/1.0/CDbConnection#getAutoCommit-detail">getAutoCommit()</a></td>
+  <td>Returns whether creating or updating a DB record will be automatically committed.
+Some DBMS (such as sqlite) may not support this feature.</td>
+  <td>CDbConnection</td>
+</tr>
+<tr id="getAvailableDrivers">
+  <td><a href="/doc/api/1.0/CDbConnection#getAvailableDrivers-detail">getAvailableDrivers()</a></td>
+  <td>Returns list of available PDO drivers</td>
+  <td>CDbConnection</td>
+</tr>
+<tr id="getClientVersion">
+  <td><a href="/doc/api/1.0/CDbConnection#getClientVersion-detail">getClientVersion()</a></td>
+  <td>Returns the version information of the DB driver</td>
+  <td>CDbConnection</td>
+</tr>
+<tr id="getColumnCase">
+  <td><a href="/doc/api/1.0/CDbConnection#getColumnCase-detail">getColumnCase()</a></td>
+  <td>Returns the case of the column names</td>
+  <td>CDbConnection</td>
+</tr>
+<tr id="getCommandBuilder">
+  <td><a href="/doc/api/1.0/CDbConnection#getCommandBuilder-detail">getCommandBuilder()</a></td>
+  <td>Returns the SQL command builder for the current DB connection.</td>
+  <td>CDbConnection</td>
+</tr>
+<tr id="getConnectionStatus">
+  <td><a href="/doc/api/1.0/CDbConnection#getConnectionStatus-detail">getConnectionStatus()</a></td>
+  <td>Returns the status of the connection
+Some DBMS (such as sqlite) may not support this feature.</td>
+  <td>CDbConnection</td>
+</tr>
+<tr id="getCurrentTransaction">
+  <td><a href="/doc/api/1.0/CDbConnection#getCurrentTransaction-detail">getCurrentTransaction()</a></td>
+  <td>Returns the currently active transaction. Null if no active transaction.</td>
+  <td>CDbConnection</td>
+</tr>
+<tr id="getDriverName">
+  <td><a href="/doc/api/1.0/CDbConnection#getDriverName-detail">getDriverName()</a></td>
+  <td>Returns name of the DB driver</td>
+  <td>CDbConnection</td>
+</tr>
+<tr class="inherited" id="getEventHandlers">
+  <td><a href="/doc/api/1.0/CComponent#getEventHandlers-detail">getEventHandlers()</a></td>
+  <td>Returns the list of attached event handlers for an event.</td>
+  <td><a href="/doc/api/1.0/CComponent">CComponent</a></td>
+</tr>
+<tr class="inherited" id="getIsInitialized">
+  <td><a href="/doc/api/1.0/CApplicationComponent#getIsInitialized-detail">getIsInitialized()</a></td>
+  <td>Checks whether this application component has been initialized (i.e., <a href="/doc/api/1.0/CDbConnection#init">init()</a> is invoked.)</td>
+  <td><a href="/doc/api/1.0/CApplicationComponent">CApplicationComponent</a></td>
+</tr>
+<tr id="getLastInsertID">
+  <td><a href="/doc/api/1.0/CDbConnection#getLastInsertID-detail">getLastInsertID()</a></td>
+  <td>Returns the ID of the last inserted row or sequence value.</td>
+  <td>CDbConnection</td>
+</tr>
+<tr id="getNullConversion">
+  <td><a href="/doc/api/1.0/CDbConnection#getNullConversion-detail">getNullConversion()</a></td>
+  <td>Returns how the null and empty strings are converted</td>
+  <td>CDbConnection</td>
+</tr>
+<tr id="getPdoInstance">
+  <td><a href="/doc/api/1.0/CDbConnection#getPdoInstance-detail">getPdoInstance()</a></td>
+  <td>Returns the PDO instance, null if the connection is not established yet</td>
+  <td>CDbConnection</td>
+</tr>
+<tr id="getPdoType">
+  <td><a href="/doc/api/1.0/CDbConnection#getPdoType-detail">getPdoType()</a></td>
+  <td>Determines the PDO type for the specified PHP type.</td>
+  <td>CDbConnection</td>
+</tr>
+<tr id="getPersistent">
+  <td><a href="/doc/api/1.0/CDbConnection#getPersistent-detail">getPersistent()</a></td>
+  <td>Returns whether the connection is persistent or not
+Some DBMS (such as sqlite) may not support this feature.</td>
+  <td>CDbConnection</td>
+</tr>
+<tr id="getPrefetch">
+  <td><a href="/doc/api/1.0/CDbConnection#getPrefetch-detail">getPrefetch()</a></td>
+  <td>Returns whether the connection performs data prefetching</td>
+  <td>CDbConnection</td>
+</tr>
+<tr id="getSchema">
+  <td><a href="/doc/api/1.0/CDbConnection#getSchema-detail">getSchema()</a></td>
+  <td>Returns the database schema for the current connection</td>
+  <td>CDbConnection</td>
+</tr>
+<tr id="getServerInfo">
+  <td><a href="/doc/api/1.0/CDbConnection#getServerInfo-detail">getServerInfo()</a></td>
+  <td>Returns the information of DBMS server</td>
+  <td>CDbConnection</td>
+</tr>
+<tr id="getServerVersion">
+  <td><a href="/doc/api/1.0/CDbConnection#getServerVersion-detail">getServerVersion()</a></td>
+  <td>Returns the version information of DBMS server</td>
+  <td>CDbConnection</td>
+</tr>
+<tr id="getStats">
+  <td><a href="/doc/api/1.0/CDbConnection#getStats-detail">getStats()</a></td>
+  <td>Returns the statistical results of SQL executions.</td>
+  <td>CDbConnection</td>
+</tr>
+<tr id="getTimeout">
+  <td><a href="/doc/api/1.0/CDbConnection#getTimeout-detail">getTimeout()</a></td>
+  <td>Returns timeout settings for the connection</td>
+  <td>CDbConnection</td>
+</tr>
+<tr class="inherited" id="hasEvent">
+  <td><a href="/doc/api/1.0/CComponent#hasEvent-detail">hasEvent()</a></td>
+  <td>Determines whether an event is defined.</td>
+  <td><a href="/doc/api/1.0/CComponent">CComponent</a></td>
+</tr>
+<tr class="inherited" id="hasEventHandler">
+  <td><a href="/doc/api/1.0/CComponent#hasEventHandler-detail">hasEventHandler()</a></td>
+  <td>Checks whether the named event has attached handlers.</td>
+  <td><a href="/doc/api/1.0/CComponent">CComponent</a></td>
+</tr>
+<tr class="inherited" id="hasProperty">
+  <td><a href="/doc/api/1.0/CComponent#hasProperty-detail">hasProperty()</a></td>
+  <td>Determines whether a property is defined.</td>
+  <td><a href="/doc/api/1.0/CComponent">CComponent</a></td>
+</tr>
+<tr id="init">
+  <td><a href="/doc/api/1.0/CDbConnection#init-detail">init()</a></td>
+  <td>Initializes the component.</td>
+  <td>CDbConnection</td>
+</tr>
+<tr id="quoteColumnName">
+  <td><a href="/doc/api/1.0/CDbConnection#quoteColumnName-detail">quoteColumnName()</a></td>
+  <td>Quotes a column name for use in a query.</td>
+  <td>CDbConnection</td>
+</tr>
+<tr id="quoteTableName">
+  <td><a href="/doc/api/1.0/CDbConnection#quoteTableName-detail">quoteTableName()</a></td>
+  <td>Quotes a table name for use in a query.</td>
+  <td>CDbConnection</td>
+</tr>
+<tr id="quoteValue">
+  <td><a href="/doc/api/1.0/CDbConnection#quoteValue-detail">quoteValue()</a></td>
+  <td>Quotes a string value for use in a query.</td>
+  <td>CDbConnection</td>
+</tr>
+<tr class="inherited" id="raiseEvent">
+  <td><a href="/doc/api/1.0/CComponent#raiseEvent-detail">raiseEvent()</a></td>
+  <td>Raises an event.</td>
+  <td><a href="/doc/api/1.0/CComponent">CComponent</a></td>
+</tr>
+<tr id="setActive">
+  <td><a href="/doc/api/1.0/CDbConnection#setActive-detail">setActive()</a></td>
+  <td>Open or close the DB connection.</td>
+  <td>CDbConnection</td>
+</tr>
+<tr id="setAttribute">
+  <td><a href="/doc/api/1.0/CDbConnection#setAttribute-detail">setAttribute()</a></td>
+  <td>Sets an attribute on the database connection.</td>
+  <td>CDbConnection</td>
+</tr>
+<tr id="setAutoCommit">
+  <td><a href="/doc/api/1.0/CDbConnection#setAutoCommit-detail">setAutoCommit()</a></td>
+  <td>Sets whether creating or updating a DB record will be automatically committed.
+Some DBMS (such as sqlite) may not support this feature.</td>
+  <td>CDbConnection</td>
+</tr>
+<tr id="setColumnCase">
+  <td><a href="/doc/api/1.0/CDbConnection#setColumnCase-detail">setColumnCase()</a></td>
+  <td>Sets the case of the column names</td>
+  <td>CDbConnection</td>
+</tr>
+<tr id="setNullConversion">
+  <td><a href="/doc/api/1.0/CDbConnection#setNullConversion-detail">setNullConversion()</a></td>
+  <td>Sets how the null and empty strings are converted</td>
+  <td>CDbConnection</td>
+</tr>
+<tr id="setPersistent">
+  <td><a href="/doc/api/1.0/CDbConnection#setPersistent-detail">setPersistent()</a></td>
+  <td>Sets whether the connection is persistent or not
+Some DBMS (such as sqlite) may not support this feature.</td>
+  <td>CDbConnection</td>
+</tr>
+</table>
+</div>
+<div class="summary docMethod">
+<h2>Protected Methods</h2>
+
+<p><a href="#" class="toggle">Hide inherited methods</a></p>
+
+<table class="summaryTable">
+<colgroup>
+	<col class="col-method" />
+	<col class="col-description" />
+	<col class="col-defined" />
+</colgroup>
+<tr>
+  <th>Method</th><th>Description</th><th>Defined By</th>
+</tr>
+<tr id="close">
+  <td><a href="/doc/api/1.0/CDbConnection#close-detail">close()</a></td>
+  <td>Closes the currently active DB connection.</td>
+  <td>CDbConnection</td>
+</tr>
+<tr id="createPdoInstance">
+  <td><a href="/doc/api/1.0/CDbConnection#createPdoInstance-detail">createPdoInstance()</a></td>
+  <td>Creates the PDO instance.</td>
+  <td>CDbConnection</td>
+</tr>
+<tr id="initConnection">
+  <td><a href="/doc/api/1.0/CDbConnection#initConnection-detail">initConnection()</a></td>
+  <td>Initializes the open db connection.</td>
+  <td>CDbConnection</td>
+</tr>
+<tr id="open">
+  <td><a href="/doc/api/1.0/CDbConnection#open-detail">open()</a></td>
+  <td>Opens DB connection if it is currently not</td>
+  <td>CDbConnection</td>
+</tr>
+</table>
+</div>
+<a name="events"></a>
+
+<h2>Property Details</h2>
+<div class="detailHeader" id="active-detail">
+active<span class="detailHeaderTag">
+property
+</span>
+</div>
+
+<div class="signature">
+public boolean <a href="/doc/api/1.0/CDbConnection#getActive"><b>getActive</b></a>()<br/>public void <a href="/doc/api/1.0/CDbConnection#setActive"><b>setActive</b></a>(boolean $value)</div>
+
+<p>whether the DB connection is established</p>
+
+
+<div class="detailHeader" id="autoCommit-detail">
+autoCommit<span class="detailHeaderTag">
+property
+</span>
+</div>
+
+<div class="signature">
+public boolean <a href="/doc/api/1.0/CDbConnection#getAutoCommit"><b>getAutoCommit</b></a>()<br/>public void <a href="/doc/api/1.0/CDbConnection#setAutoCommit"><b>setAutoCommit</b></a>(boolean $value)</div>
+
+<p>whether creating or updating a DB record will be automatically committed.
+Some DBMS (such as sqlite) may not support this feature.</p>
+
+
+<div class="detailHeader" id="autoConnect-detail">
+autoConnect<span class="detailHeaderTag">
+property
+</span>
+</div>
+
+<div class="signature">
+public boolean <b>$autoConnect</b>;</div>
+
+<p>whether the database connection should be automatically established
+the component is being initialized. Defaults to true. Note, this property is only
+effective when the CDbConnection object is used as an application component.</p>
+
+
+<div class="detailHeader" id="charset-detail">
+charset<span class="detailHeaderTag">
+property
+</span>
+</div>
+
+<div class="signature">
+public string <b>$charset</b>;</div>
+
+<p>the charset used for database connection. The property is only used
+for MySQL and PostgreSQL databases. Defaults to null, meaning using default charset
+as specified by the database.</p>
+
+
+<div class="detailHeader" id="clientVersion-detail">
+clientVersion<span class="detailHeaderTag">
+property
+ <em>read-only</em> </span>
+</div>
+
+<div class="signature">
+public string <a href="/doc/api/1.0/CDbConnection#getClientVersion"><b>getClientVersion</b></a>()</div>
+
+<p>the version information of the DB driver</p>
+
+
+<div class="detailHeader" id="columnCase-detail">
+columnCase<span class="detailHeaderTag">
+property
+</span>
+</div>
+
+<div class="signature">
+public mixed <a href="/doc/api/1.0/CDbConnection#getColumnCase"><b>getColumnCase</b></a>()<br/>public void <a href="/doc/api/1.0/CDbConnection#setColumnCase"><b>setColumnCase</b></a>(mixed $value)</div>
+
+<p>the case of the column names</p>
+
+<div class="SeeAlso">
+<h4>See Also</h4>
+<ul>
+	<li><a href="http://www.php.net/manual/en/pdo.setattribute.php">http://www.php.net/manual/en/pdo.setattribute.php</a></li>
+</ul>
+</div>
+
+<div class="detailHeader" id="commandBuilder-detail">
+commandBuilder<span class="detailHeaderTag">
+property
+ <em>read-only</em>  (available since v1.0.4)
+</span>
+</div>
+
+<div class="signature">
+public <a href="/doc/api/1.0/CDbCommandBuilder">CDbCommandBuilder</a> <a href="/doc/api/1.0/CDbConnection#getCommandBuilder"><b>getCommandBuilder</b></a>()</div>
+
+<p>Returns the SQL command builder for the current DB connection.</p>
+
+
+<div class="detailHeader" id="connectionStatus-detail">
+connectionStatus<span class="detailHeaderTag">
+property
+ <em>read-only</em> </span>
+</div>
+
+<div class="signature">
+public string <a href="/doc/api/1.0/CDbConnection#getConnectionStatus"><b>getConnectionStatus</b></a>()</div>
+
+<p>the status of the connection
+Some DBMS (such as sqlite) may not support this feature.</p>
+
+
+<div class="detailHeader" id="connectionString-detail">
+connectionString<span class="detailHeaderTag">
+property
+</span>
+</div>
+
+<div class="signature">
+public string <b>$connectionString</b>;</div>
+
+<p>The Data Source Name, or DSN, contains the information required to connect to the database.</p>
+
+<div class="SeeAlso">
+<h4>See Also</h4>
+<ul>
+	<li><a href="http://www.php.net/manual/en/function.PDO-construct.php">http://www.php.net/manual/en/function.PDO-construct.php</a></li>
+</ul>
+</div>
+
+<div class="detailHeader" id="currentTransaction-detail">
+currentTransaction<span class="detailHeaderTag">
+property
+ <em>read-only</em> </span>
+</div>
+
+<div class="signature">
+public <a href="/doc/api/1.0/CDbTransaction">CDbTransaction</a> <a href="/doc/api/1.0/CDbConnection#getCurrentTransaction"><b>getCurrentTransaction</b></a>()</div>
+
+<p>the currently active transaction. Null if no active transaction.</p>
+
+
+<div class="detailHeader" id="driverName-detail">
+driverName<span class="detailHeaderTag">
+property
+ <em>read-only</em> </span>
+</div>
+
+<div class="signature">
+public string <a href="/doc/api/1.0/CDbConnection#getDriverName"><b>getDriverName</b></a>()</div>
+
+<p>name of the DB driver</p>
+
+
+<div class="detailHeader" id="emulatePrepare-detail">
+emulatePrepare<span class="detailHeaderTag">
+property
+</span>
+</div>
+
+<div class="signature">
+public boolean <b>$emulatePrepare</b>;</div>
+
+<p>whether to turn on prepare emulation. Defaults to false, meaning PDO
+will use the native prepare support if available. For some databases (such as MySQL),
+this may need to be set true so that PDO can emulate the prepare support to bypass
+the buggy native prepare support. Note, this property is only effective for PHP 5.1.3 or above.</p>
+
+
+<div class="detailHeader" id="enableParamLogging-detail">
+enableParamLogging<span class="detailHeaderTag">
+property
+ (available since v1.0.5)
+</span>
+</div>
+
+<div class="signature">
+public boolean <b>$enableParamLogging</b>;</div>
+
+<p>whether to log the values that are bound to a prepare SQL statement.
+Defaults to false. During development, you may consider setting this property to true
+so that parameter values bound to SQL statements are logged for debugging purpose.
+You should be aware that logging parameter values could be expensive and have significant
+impact on the performance of your application.</p>
+
+
+<div class="detailHeader" id="enableProfiling-detail">
+enableProfiling<span class="detailHeaderTag">
+property
+ (available since v1.0.6)
+</span>
+</div>
+
+<div class="signature">
+public boolean <b>$enableProfiling</b>;</div>
+
+<p>whether to enable profiling the SQL statements being executed.
+Defaults to false. This should be mainly enabled and used during development
+to find out the bottleneck of SQL executions.</p>
+
+
+<div class="detailHeader" id="lastInsertID-detail">
+lastInsertID<span class="detailHeaderTag">
+property
+ <em>read-only</em> </span>
+</div>
+
+<div class="signature">
+public string <a href="/doc/api/1.0/CDbConnection#getLastInsertID"><b>getLastInsertID</b></a>(string $sequenceName='')</div>
+
+<p>Returns the ID of the last inserted row or sequence value.</p>
+
+<div class="SeeAlso">
+<h4>See Also</h4>
+<ul>
+	<li><a href="http://www.php.net/manual/en/function.PDO-lastInsertId.php">http://www.php.net/manual/en/function.PDO-lastInsertId.php</a></li>
+</ul>
+</div>
+
+<div class="detailHeader" id="nullConversion-detail">
+nullConversion<span class="detailHeaderTag">
+property
+</span>
+</div>
+
+<div class="signature">
+public mixed <a href="/doc/api/1.0/CDbConnection#getNullConversion"><b>getNullConversion</b></a>()<br/>public void <a href="/doc/api/1.0/CDbConnection#setNullConversion"><b>setNullConversion</b></a>(mixed $value)</div>
+
+<p>how the null and empty strings are converted</p>
+
+<div class="SeeAlso">
+<h4>See Also</h4>
+<ul>
+	<li><a href="http://www.php.net/manual/en/pdo.setattribute.php">http://www.php.net/manual/en/pdo.setattribute.php</a></li>
+</ul>
+</div>
+
+<div class="detailHeader" id="password-detail">
+password<span class="detailHeaderTag">
+property
+</span>
+</div>
+
+<div class="signature">
+public string <b>$password</b>;</div>
+
+<p>the password for establishing DB connection. Defaults to empty string.</p>
+
+
+<div class="detailHeader" id="pdoInstance-detail">
+pdoInstance<span class="detailHeaderTag">
+property
+ <em>read-only</em> </span>
+</div>
+
+<div class="signature">
+public PDO <a href="/doc/api/1.0/CDbConnection#getPdoInstance"><b>getPdoInstance</b></a>()</div>
+
+<p>the PDO instance, null if the connection is not established yet</p>
+
+
+<div class="detailHeader" id="persistent-detail">
+persistent<span class="detailHeaderTag">
+property
+</span>
+</div>
+
+<div class="signature">
+public boolean <a href="/doc/api/1.0/CDbConnection#getPersistent"><b>getPersistent</b></a>()<br/>public void <a href="/doc/api/1.0/CDbConnection#setPersistent"><b>setPersistent</b></a>(boolean $value)</div>
+
+<p>whether the connection is persistent or not
+Some DBMS (such as sqlite) may not support this feature.</p>
+
+
+<div class="detailHeader" id="prefetch-detail">
+prefetch<span class="detailHeaderTag">
+property
+ <em>read-only</em> </span>
+</div>
+
+<div class="signature">
+public boolean <a href="/doc/api/1.0/CDbConnection#getPrefetch"><b>getPrefetch</b></a>()</div>
+
+<p>whether the connection performs data prefetching</p>
+
+
+<div class="detailHeader" id="schema-detail">
+schema<span class="detailHeaderTag">
+property
+ <em>read-only</em> </span>
+</div>
+
+<div class="signature">
+public <a href="/doc/api/1.0/CDbSchema">CDbSchema</a> <a href="/doc/api/1.0/CDbConnection#getSchema"><b>getSchema</b></a>()</div>
+
+<p>the database schema for the current connection</p>
+
+
+<div class="detailHeader" id="schemaCacheID-detail">
+schemaCacheID<span class="detailHeaderTag">
+property
+ (available since v1.0.10)
+</span>
+</div>
+
+<div class="signature">
+public string <b>$schemaCacheID</b>;</div>
+
+<p>the ID of the cache application component that is used to cache the table metadata.
+Defaults to 'cache' which refers to the primary cache application component.
+Set this property to false if you want to disable caching table metadata.</p>
+
+
+<div class="detailHeader" id="schemaCachingDuration-detail">
+schemaCachingDuration<span class="detailHeaderTag">
+property
+</span>
+</div>
+
+<div class="signature">
+public integer <b>$schemaCachingDuration</b>;</div>
+
+<p>number of seconds that table metadata can remain valid in cache.
+Use 0 or negative value to indicate not caching schema.
+If greater than 0 and the primary cache is enabled, the table metadata will be cached.</p>
+
+<div class="SeeAlso">
+<h4>See Also</h4>
+<ul>
+	<li><a href="/doc/api/1.0/CDbConnection#schemaCachingExclude">schemaCachingExclude</a></li>
+</ul>
+</div>
+
+<div class="detailHeader" id="schemaCachingExclude-detail">
+schemaCachingExclude<span class="detailHeaderTag">
+property
+</span>
+</div>
+
+<div class="signature">
+public array <b>$schemaCachingExclude</b>;</div>
+
+<p>list of tables whose metadata should NOT be cached. Defaults to empty array.</p>
+
+<div class="SeeAlso">
+<h4>See Also</h4>
+<ul>
+	<li><a href="/doc/api/1.0/CDbConnection#schemaCachingDuration">schemaCachingDuration</a></li>
+</ul>
+</div>
+
+<div class="detailHeader" id="serverInfo-detail">
+serverInfo<span class="detailHeaderTag">
+property
+ <em>read-only</em> </span>
+</div>
+
+<div class="signature">
+public string <a href="/doc/api/1.0/CDbConnection#getServerInfo"><b>getServerInfo</b></a>()</div>
+
+<p>the information of DBMS server</p>
+
+
+<div class="detailHeader" id="serverVersion-detail">
+serverVersion<span class="detailHeaderTag">
+property
+ <em>read-only</em> </span>
+</div>
+
+<div class="signature">
+public string <a href="/doc/api/1.0/CDbConnection#getServerVersion"><b>getServerVersion</b></a>()</div>
+
+<p>the version information of DBMS server</p>
+
+
+<div class="detailHeader" id="stats-detail">
+stats<span class="detailHeaderTag">
+property
+ <em>read-only</em>  (available since v1.0.6)
+</span>
+</div>
+
+<div class="signature">
+public array <a href="/doc/api/1.0/CDbConnection#getStats"><b>getStats</b></a>()</div>
+
+<p>Returns the statistical results of SQL executions.
+The results returned include the number of SQL statements executed and
+the total time spent.
+In order to use this method, <a href="/doc/api/1.0/CDbConnection#enableProfiling">enableProfiling</a> has to be set true.</p>
+
+
+<div class="detailHeader" id="timeout-detail">
+timeout<span class="detailHeaderTag">
+property
+ <em>read-only</em> </span>
+</div>
+
+<div class="signature">
+public int <a href="/doc/api/1.0/CDbConnection#getTimeout"><b>getTimeout</b></a>()</div>
+
+<p>timeout settings for the connection</p>
+
+
+<div class="detailHeader" id="username-detail">
+username<span class="detailHeaderTag">
+property
+</span>
+</div>
+
+<div class="signature">
+public string <b>$username</b>;</div>
+
+<p>the username for establishing DB connection. Defaults to empty string.</p>
+
+
+<h2>Method Details</h2>
+
+<div class="detailHeader" id="__construct-detail">
+__construct()
+<span class="detailHeaderTag">
+method
+</span>
+</div>
+
+<table class="summaryTable">
+<tr><td colspan="3">
+<div class="signature2">
+public void <b>__construct</b>(string $dsn='', string $username='', string $password='')</div>
+</td></tr>
+<tr>
+  <td class="paramNameCol">$dsn</td>
+  <td class="paramTypeCol">string</td>
+  <td class="paramDescCol">The Data Source Name, or DSN, contains the information required to connect to the database.</td>
+</tr>
+<tr>
+  <td class="paramNameCol">$username</td>
+  <td class="paramTypeCol">string</td>
+  <td class="paramDescCol">The user name for the DSN string.</td>
+</tr>
+<tr>
+  <td class="paramNameCol">$password</td>
+  <td class="paramTypeCol">string</td>
+  <td class="paramDescCol">The password for the DSN string.</td>
+</tr>
+</table>
+
+<div class="sourceCode">
+<b>Source Code:</b> <a class="sourceLink" href="https://github.com/yiisoft/yii/blob/1.0.12/framework/db/CDbConnection.php#L173">framework/db/CDbConnection.php#173</a> (<b><a href="#" class="show">show</a></b>)
+<div class="code"><code><span style="color: #000000">
+<span style="color: #0000BB"></span><span style="color: #007700">public&nbsp;function&nbsp;</span><span style="color: #0000BB">__construct</span><span style="color: #007700">(</span><span style="color: #0000BB">$dsn</span><span style="color: #007700">=</span><span style="color: #DD0000">''</span><span style="color: #007700">,</span><span style="color: #0000BB">$username</span><span style="color: #007700">=</span><span style="color: #DD0000">''</span><span style="color: #007700">,</span><span style="color: #0000BB">$password</span><span style="color: #007700">=</span><span style="color: #DD0000">''</span><span style="color: #007700">)<br />{<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">connectionString</span><span style="color: #007700">=</span><span style="color: #0000BB">$dsn</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">username</span><span style="color: #007700">=</span><span style="color: #0000BB">$username</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">password</span><span style="color: #007700">=</span><span style="color: #0000BB">$password</span><span style="color: #007700">;<br />}</span>
+</span>
+</code></div>
+</div>
+<p>Constructor.
+Note, the DB connection is not established when this connection
+instance is created. Set <a href="/doc/api/1.0/CDbConnection#setActive">active</a> property to true
+to establish the connection.</p>
+
+<div class="SeeAlso">
+<h4>See Also</h4>
+<ul>
+	<li><a href="http://www.php.net/manual/en/function.PDO-construct.php">http://www.php.net/manual/en/function.PDO-construct.php</a></li>
+</ul>
+</div>
+
+<div class="detailHeader" id="__sleep-detail">
+__sleep()
+<span class="detailHeaderTag">
+method
+</span>
+</div>
+
+<table class="summaryTable">
+<tr><td colspan="3">
+<div class="signature2">
+public void <b>__sleep</b>()</div>
+</td></tr>
+</table>
+
+<div class="sourceCode">
+<b>Source Code:</b> <a class="sourceLink" href="https://github.com/yiisoft/yii/blob/1.0.12/framework/db/CDbConnection.php#L183">framework/db/CDbConnection.php#183</a> (<b><a href="#" class="show">show</a></b>)
+<div class="code"><code><span style="color: #000000">
+<span style="color: #0000BB"></span><span style="color: #007700">public&nbsp;function&nbsp;</span><span style="color: #0000BB">__sleep</span><span style="color: #007700">()<br />{<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">close</span><span style="color: #007700">();<br />&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;</span><span style="color: #0000BB">array_keys</span><span style="color: #007700">(</span><span style="color: #0000BB">get_object_vars</span><span style="color: #007700">(</span><span style="color: #0000BB">$this</span><span style="color: #007700">));<br />}</span>
+</span>
+</code></div>
+</div>
+<p>Close the connection when serializing.</p>
+
+
+<div class="detailHeader" id="beginTransaction-detail">
+beginTransaction()
+<span class="detailHeaderTag">
+method
+</span>
+</div>
+
+<table class="summaryTable">
+<tr><td colspan="3">
+<div class="signature2">
+public <a href="/doc/api/1.0/CDbTransaction">CDbTransaction</a> <b>beginTransaction</b>()</div>
+</td></tr>
+<tr>
+  <td class="paramNameCol">{return}</td>
+  <td class="paramTypeCol"><a href="/doc/api/1.0/CDbTransaction">CDbTransaction</a></td>
+  <td class="paramDescCol">the transaction initiated</td>
+</tr>
+</table>
+
+<div class="sourceCode">
+<b>Source Code:</b> <a class="sourceLink" href="https://github.com/yiisoft/yii/blob/1.0.12/framework/db/CDbConnection.php#L351">framework/db/CDbConnection.php#351</a> (<b><a href="#" class="show">show</a></b>)
+<div class="code"><code><span style="color: #000000">
+<span style="color: #0000BB"></span><span style="color: #007700">public&nbsp;function&nbsp;</span><span style="color: #0000BB">beginTransaction</span><span style="color: #007700">()<br />{<br />&nbsp;&nbsp;&nbsp;&nbsp;if(</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">getActive</span><span style="color: #007700">())<br />&nbsp;&nbsp;&nbsp;&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">_pdo</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">beginTransaction</span><span style="color: #007700">();<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">_transaction</span><span style="color: #007700">=new&nbsp;</span><span style="color: #0000BB">CDbTransaction</span><span style="color: #007700">(</span><span style="color: #0000BB">$this</span><span style="color: #007700">);<br />&nbsp;&nbsp;&nbsp;&nbsp;}<br />&nbsp;&nbsp;&nbsp;&nbsp;else<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;throw&nbsp;new&nbsp;</span><span style="color: #0000BB">CDbException</span><span style="color: #007700">(</span><span style="color: #0000BB">Yii</span><span style="color: #007700">::</span><span style="color: #0000BB">t</span><span style="color: #007700">(</span><span style="color: #DD0000">'yii'</span><span style="color: #007700">,</span><span style="color: #DD0000">'CDbConnection&nbsp;is&nbsp;inactive&nbsp;and&nbsp;cannot&nbsp;perform&nbsp;any&nbsp;DB&nbsp;operations.'</span><span style="color: #007700">));<br />}</span>
+</span>
+</code></div>
+</div>
+<p>Starts a transaction.</p>
+
+
+<div class="detailHeader" id="close-detail">
+close()
+<span class="detailHeaderTag">
+method
+</span>
+</div>
+
+<table class="summaryTable">
+<tr><td colspan="3">
+<div class="signature2">
+protected void <b>close</b>()</div>
+</td></tr>
+</table>
+
+<div class="sourceCode">
+<b>Source Code:</b> <a class="sourceLink" href="https://github.com/yiisoft/yii/blob/1.0.12/framework/db/CDbConnection.php#L265">framework/db/CDbConnection.php#265</a> (<b><a href="#" class="show">show</a></b>)
+<div class="code"><code><span style="color: #000000">
+<span style="color: #0000BB"></span><span style="color: #007700">protected&nbsp;function&nbsp;</span><span style="color: #0000BB">close</span><span style="color: #007700">()<br />{<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">Yii</span><span style="color: #007700">::</span><span style="color: #0000BB">trace</span><span style="color: #007700">(</span><span style="color: #DD0000">'Closing&nbsp;DB&nbsp;connection'</span><span style="color: #007700">,</span><span style="color: #DD0000">'system.db.CDbConnection'</span><span style="color: #007700">);<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">_pdo</span><span style="color: #007700">=</span><span style="color: #0000BB">null</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">_active</span><span style="color: #007700">=</span><span style="color: #0000BB">false</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">_schema</span><span style="color: #007700">=</span><span style="color: #0000BB">null</span><span style="color: #007700">;<br />}</span>
+</span>
+</code></div>
+</div>
+<p>Closes the currently active DB connection.
+It does nothing if the connection is already closed.</p>
+
+
+<div class="detailHeader" id="createCommand-detail">
+createCommand()
+<span class="detailHeaderTag">
+method
+</span>
+</div>
+
+<table class="summaryTable">
+<tr><td colspan="3">
+<div class="signature2">
+public <a href="/doc/api/1.0/CDbCommand">CDbCommand</a> <b>createCommand</b>(string $sql)</div>
+</td></tr>
+<tr>
+  <td class="paramNameCol">$sql</td>
+  <td class="paramTypeCol">string</td>
+  <td class="paramDescCol">SQL statement associated with the new command.</td>
+</tr>
+<tr>
+  <td class="paramNameCol">{return}</td>
+  <td class="paramTypeCol"><a href="/doc/api/1.0/CDbCommand">CDbCommand</a></td>
+  <td class="paramDescCol">the DB command</td>
+</tr>
+</table>
+
+<div class="sourceCode">
+<b>Source Code:</b> <a class="sourceLink" href="https://github.com/yiisoft/yii/blob/1.0.12/framework/db/CDbConnection.php#L325">framework/db/CDbConnection.php#325</a> (<b><a href="#" class="show">show</a></b>)
+<div class="code"><code><span style="color: #000000">
+<span style="color: #0000BB"></span><span style="color: #007700">public&nbsp;function&nbsp;</span><span style="color: #0000BB">createCommand</span><span style="color: #007700">(</span><span style="color: #0000BB">$sql</span><span style="color: #007700">)<br />{<br />&nbsp;&nbsp;&nbsp;&nbsp;if(</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">getActive</span><span style="color: #007700">())<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;new&nbsp;</span><span style="color: #0000BB">CDbCommand</span><span style="color: #007700">(</span><span style="color: #0000BB">$this</span><span style="color: #007700">,</span><span style="color: #0000BB">$sql</span><span style="color: #007700">);<br />&nbsp;&nbsp;&nbsp;&nbsp;else<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;throw&nbsp;new&nbsp;</span><span style="color: #0000BB">CDbException</span><span style="color: #007700">(</span><span style="color: #0000BB">Yii</span><span style="color: #007700">::</span><span style="color: #0000BB">t</span><span style="color: #007700">(</span><span style="color: #DD0000">'yii'</span><span style="color: #007700">,</span><span style="color: #DD0000">'CDbConnection&nbsp;is&nbsp;inactive&nbsp;and&nbsp;cannot&nbsp;perform&nbsp;any&nbsp;DB&nbsp;operations.'</span><span style="color: #007700">));<br />}</span>
+</span>
+</code></div>
+</div>
+<p>Creates a command for execution.</p>
+
+
+<div class="detailHeader" id="createPdoInstance-detail">
+createPdoInstance()
+<span class="detailHeaderTag">
+method
+(available since v1.0.4)
+</span>
+</div>
+
+<table class="summaryTable">
+<tr><td colspan="3">
+<div class="signature2">
+protected PDO <b>createPdoInstance</b>()</div>
+</td></tr>
+<tr>
+  <td class="paramNameCol">{return}</td>
+  <td class="paramTypeCol">PDO</td>
+  <td class="paramDescCol">the pdo instance</td>
+</tr>
+</table>
+
+<div class="sourceCode">
+<b>Source Code:</b> <a class="sourceLink" href="https://github.com/yiisoft/yii/blob/1.0.12/framework/db/CDbConnection.php#L280">framework/db/CDbConnection.php#280</a> (<b><a href="#" class="show">show</a></b>)
+<div class="code"><code><span style="color: #000000">
+<span style="color: #0000BB"></span><span style="color: #007700">protected&nbsp;function&nbsp;</span><span style="color: #0000BB">createPdoInstance</span><span style="color: #007700">()<br />{<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$pdoClass</span><span style="color: #007700">=</span><span style="color: #DD0000">'PDO'</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;if((</span><span style="color: #0000BB">$pos</span><span style="color: #007700">=</span><span style="color: #0000BB">strpos</span><span style="color: #007700">(</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">connectionString</span><span style="color: #007700">,</span><span style="color: #DD0000">':'</span><span style="color: #007700">))!==</span><span style="color: #0000BB">false</span><span style="color: #007700">)<br />&nbsp;&nbsp;&nbsp;&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$driver</span><span style="color: #007700">=</span><span style="color: #0000BB">strtolower</span><span style="color: #007700">(</span><span style="color: #0000BB">substr</span><span style="color: #007700">(</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">connectionString</span><span style="color: #007700">,</span><span style="color: #0000BB">0</span><span style="color: #007700">,</span><span style="color: #0000BB">$pos</span><span style="color: #007700">));<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if(</span><span style="color: #0000BB">$driver</span><span style="color: #007700">===</span><span style="color: #DD0000">'mssql'&nbsp;</span><span style="color: #007700">||&nbsp;</span><span style="color: #0000BB">$driver</span><span style="color: #007700">===</span><span style="color: #DD0000">'dblib'</span><span style="color: #007700">)<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$pdoClass</span><span style="color: #007700">=</span><span style="color: #DD0000">'CMssqlPdoAdapter'</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;}<br />&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;new&nbsp;</span><span style="color: #0000BB">$pdoClass</span><span style="color: #007700">(</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">connectionString</span><span style="color: #007700">,</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">username</span><span style="color: #007700">,<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">password</span><span style="color: #007700">,</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">_attributes</span><span style="color: #007700">);<br />}</span>
+</span>
+</code></div>
+</div>
+<p>Creates the PDO instance.
+When some functionalities are missing in the pdo driver, we may use
+an adapter class to provides them.</p>
+
+
+<div class="detailHeader" id="getActive-detail">
+getActive()
+<span class="detailHeaderTag">
+method
+</span>
+</div>
+
+<table class="summaryTable">
+<tr><td colspan="3">
+<div class="signature2">
+public boolean <b>getActive</b>()</div>
+</td></tr>
+<tr>
+  <td class="paramNameCol">{return}</td>
+  <td class="paramTypeCol">boolean</td>
+  <td class="paramDescCol">whether the DB connection is established</td>
+</tr>
+</table>
+
+<div class="sourceCode">
+<b>Source Code:</b> <a class="sourceLink" href="https://github.com/yiisoft/yii/blob/1.0.12/framework/db/CDbConnection.php#L215">framework/db/CDbConnection.php#215</a> (<b><a href="#" class="show">show</a></b>)
+<div class="code"><code><span style="color: #000000">
+<span style="color: #0000BB"></span><span style="color: #007700">public&nbsp;function&nbsp;</span><span style="color: #0000BB">getActive</span><span style="color: #007700">()<br />{<br />&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">_active</span><span style="color: #007700">;<br />}</span>
+</span>
+</code></div>
+</div>
+<p></p>
+
+
+<div class="detailHeader" id="getAttribute-detail">
+getAttribute()
+<span class="detailHeaderTag">
+method
+</span>
+</div>
+
+<table class="summaryTable">
+<tr><td colspan="3">
+<div class="signature2">
+public mixed <b>getAttribute</b>(int $name)</div>
+</td></tr>
+<tr>
+  <td class="paramNameCol">$name</td>
+  <td class="paramTypeCol">int</td>
+  <td class="paramDescCol">the attribute to be queried</td>
+</tr>
+<tr>
+  <td class="paramNameCol">{return}</td>
+  <td class="paramTypeCol">mixed</td>
+  <td class="paramDescCol">the corresponding attribute information</td>
+</tr>
+</table>
+
+<div class="sourceCode">
+<b>Source Code:</b> <a class="sourceLink" href="https://github.com/yiisoft/yii/blob/1.0.12/framework/db/CDbConnection.php#L608">framework/db/CDbConnection.php#608</a> (<b><a href="#" class="show">show</a></b>)
+<div class="code"><code><span style="color: #000000">
+<span style="color: #0000BB"></span><span style="color: #007700">public&nbsp;function&nbsp;</span><span style="color: #0000BB">getAttribute</span><span style="color: #007700">(</span><span style="color: #0000BB">$name</span><span style="color: #007700">)<br />{<br />&nbsp;&nbsp;&nbsp;&nbsp;if(</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">getActive</span><span style="color: #007700">())<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">_pdo</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">getAttribute</span><span style="color: #007700">(</span><span style="color: #0000BB">$name</span><span style="color: #007700">);<br />&nbsp;&nbsp;&nbsp;&nbsp;else<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;throw&nbsp;new&nbsp;</span><span style="color: #0000BB">CDbException</span><span style="color: #007700">(</span><span style="color: #0000BB">Yii</span><span style="color: #007700">::</span><span style="color: #0000BB">t</span><span style="color: #007700">(</span><span style="color: #DD0000">'yii'</span><span style="color: #007700">,</span><span style="color: #DD0000">'CDbConnection&nbsp;is&nbsp;inactive&nbsp;and&nbsp;cannot&nbsp;perform&nbsp;any&nbsp;DB&nbsp;operations.'</span><span style="color: #007700">));<br />}</span>
+</span>
+</code></div>
+</div>
+<p>Obtains a specific DB connection attribute information.</p>
+
+<div class="SeeAlso">
+<h4>See Also</h4>
+<ul>
+	<li><a href="http://www.php.net/manual/en/function.PDO-getAttribute.php">http://www.php.net/manual/en/function.PDO-getAttribute.php</a></li>
+</ul>
+</div>
+
+<div class="detailHeader" id="getAutoCommit-detail">
+getAutoCommit()
+<span class="detailHeaderTag">
+method
+</span>
+</div>
+
+<table class="summaryTable">
+<tr><td colspan="3">
+<div class="signature2">
+public boolean <b>getAutoCommit</b>()</div>
+</td></tr>
+<tr>
+  <td class="paramNameCol">{return}</td>
+  <td class="paramTypeCol">boolean</td>
+  <td class="paramDescCol">whether creating or updating a DB record will be automatically committed.
+Some DBMS (such as sqlite) may not support this feature.</td>
+</tr>
+</table>
+
+<div class="sourceCode">
+<b>Source Code:</b> <a class="sourceLink" href="https://github.com/yiisoft/yii/blob/1.0.12/framework/db/CDbConnection.php#L513">framework/db/CDbConnection.php#513</a> (<b><a href="#" class="show">show</a></b>)
+<div class="code"><code><span style="color: #000000">
+<span style="color: #0000BB"></span><span style="color: #007700">public&nbsp;function&nbsp;</span><span style="color: #0000BB">getAutoCommit</span><span style="color: #007700">()<br />{<br />&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">getAttribute</span><span style="color: #007700">(</span><span style="color: #0000BB">PDO</span><span style="color: #007700">::</span><span style="color: #0000BB">ATTR_AUTOCOMMIT</span><span style="color: #007700">);<br />}</span>
+</span>
+</code></div>
+</div>
+<p></p>
+
+
+<div class="detailHeader" id="getAvailableDrivers-detail">
+getAvailableDrivers()
+<span class="detailHeaderTag">
+method
+</span>
+</div>
+
+<table class="summaryTable">
+<tr><td colspan="3">
+<div class="signature2">
+public static array <b>getAvailableDrivers</b>()</div>
+</td></tr>
+<tr>
+  <td class="paramNameCol">{return}</td>
+  <td class="paramTypeCol">array</td>
+  <td class="paramDescCol">list of available PDO drivers</td>
+</tr>
+</table>
+
+<div class="sourceCode">
+<b>Source Code:</b> <a class="sourceLink" href="https://github.com/yiisoft/yii/blob/1.0.12/framework/db/CDbConnection.php#L193">framework/db/CDbConnection.php#193</a> (<b><a href="#" class="show">show</a></b>)
+<div class="code"><code><span style="color: #000000">
+<span style="color: #0000BB"></span><span style="color: #007700">public&nbsp;static&nbsp;function&nbsp;</span><span style="color: #0000BB">getAvailableDrivers</span><span style="color: #007700">()<br />{<br />&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;</span><span style="color: #0000BB">PDO</span><span style="color: #007700">::</span><span style="color: #0000BB">getAvailableDrivers</span><span style="color: #007700">();<br />}</span>
+</span>
+</code></div>
+</div>
+<p></p>
+
+<div class="SeeAlso">
+<h4>See Also</h4>
+<ul>
+	<li><a href="http://www.php.net/manual/en/function.PDO-getAvailableDrivers.php">http://www.php.net/manual/en/function.PDO-getAvailableDrivers.php</a></li>
+</ul>
+</div>
+
+<div class="detailHeader" id="getClientVersion-detail">
+getClientVersion()
+<span class="detailHeaderTag">
+method
+</span>
+</div>
+
+<table class="summaryTable">
+<tr><td colspan="3">
+<div class="signature2">
+public string <b>getClientVersion</b>()</div>
+</td></tr>
+<tr>
+  <td class="paramNameCol">{return}</td>
+  <td class="paramTypeCol">string</td>
+  <td class="paramDescCol">the version information of the DB driver</td>
+</tr>
+</table>
+
+<div class="sourceCode">
+<b>Source Code:</b> <a class="sourceLink" href="https://github.com/yiisoft/yii/blob/1.0.12/framework/db/CDbConnection.php#L556">framework/db/CDbConnection.php#556</a> (<b><a href="#" class="show">show</a></b>)
+<div class="code"><code><span style="color: #000000">
+<span style="color: #0000BB"></span><span style="color: #007700">public&nbsp;function&nbsp;</span><span style="color: #0000BB">getClientVersion</span><span style="color: #007700">()<br />{<br />&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">getAttribute</span><span style="color: #007700">(</span><span style="color: #0000BB">PDO</span><span style="color: #007700">::</span><span style="color: #0000BB">ATTR_CLIENT_VERSION</span><span style="color: #007700">);<br />}</span>
+</span>
+</code></div>
+</div>
+<p></p>
+
+
+<div class="detailHeader" id="getColumnCase-detail">
+getColumnCase()
+<span class="detailHeaderTag">
+method
+</span>
+</div>
+
+<table class="summaryTable">
+<tr><td colspan="3">
+<div class="signature2">
+public mixed <b>getColumnCase</b>()</div>
+</td></tr>
+<tr>
+  <td class="paramNameCol">{return}</td>
+  <td class="paramTypeCol">mixed</td>
+  <td class="paramDescCol">the case of the column names</td>
+</tr>
+</table>
+
+<div class="sourceCode">
+<b>Source Code:</b> <a class="sourceLink" href="https://github.com/yiisoft/yii/blob/1.0.12/framework/db/CDbConnection.php#L477">framework/db/CDbConnection.php#477</a> (<b><a href="#" class="show">show</a></b>)
+<div class="code"><code><span style="color: #000000">
+<span style="color: #0000BB"></span><span style="color: #007700">public&nbsp;function&nbsp;</span><span style="color: #0000BB">getColumnCase</span><span style="color: #007700">()<br />{<br />&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">getAttribute</span><span style="color: #007700">(</span><span style="color: #0000BB">PDO</span><span style="color: #007700">::</span><span style="color: #0000BB">ATTR_CASE</span><span style="color: #007700">);<br />}</span>
+</span>
+</code></div>
+</div>
+<p></p>
+
+<div class="SeeAlso">
+<h4>See Also</h4>
+<ul>
+	<li><a href="http://www.php.net/manual/en/pdo.setattribute.php">http://www.php.net/manual/en/pdo.setattribute.php</a></li>
+</ul>
+</div>
+
+<div class="detailHeader" id="getCommandBuilder-detail">
+getCommandBuilder()
+<span class="detailHeaderTag">
+method
+(available since v1.0.4)
+</span>
+</div>
+
+<table class="summaryTable">
+<tr><td colspan="3">
+<div class="signature2">
+public <a href="/doc/api/1.0/CDbCommandBuilder">CDbCommandBuilder</a> <b>getCommandBuilder</b>()</div>
+</td></tr>
+<tr>
+  <td class="paramNameCol">{return}</td>
+  <td class="paramTypeCol"><a href="/doc/api/1.0/CDbCommandBuilder">CDbCommandBuilder</a></td>
+  <td class="paramDescCol">the command builder</td>
+</tr>
+</table>
+
+<div class="sourceCode">
+<b>Source Code:</b> <a class="sourceLink" href="https://github.com/yiisoft/yii/blob/1.0.12/framework/db/CDbConnection.php#L403">framework/db/CDbConnection.php#403</a> (<b><a href="#" class="show">show</a></b>)
+<div class="code"><code><span style="color: #000000">
+<span style="color: #0000BB"></span><span style="color: #007700">public&nbsp;function&nbsp;</span><span style="color: #0000BB">getCommandBuilder</span><span style="color: #007700">()<br />{<br />&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">getSchema</span><span style="color: #007700">()-&gt;</span><span style="color: #0000BB">getCommandBuilder</span><span style="color: #007700">();<br />}</span>
+</span>
+</code></div>
+</div>
+<p>Returns the SQL command builder for the current DB connection.</p>
+
+
+<div class="detailHeader" id="getConnectionStatus-detail">
+getConnectionStatus()
+<span class="detailHeaderTag">
+method
+</span>
+</div>
+
+<table class="summaryTable">
+<tr><td colspan="3">
+<div class="signature2">
+public string <b>getConnectionStatus</b>()</div>
+</td></tr>
+<tr>
+  <td class="paramNameCol">{return}</td>
+  <td class="paramTypeCol">string</td>
+  <td class="paramDescCol">the status of the connection
+Some DBMS (such as sqlite) may not support this feature.</td>
+</tr>
+</table>
+
+<div class="sourceCode">
+<b>Source Code:</b> <a class="sourceLink" href="https://github.com/yiisoft/yii/blob/1.0.12/framework/db/CDbConnection.php#L565">framework/db/CDbConnection.php#565</a> (<b><a href="#" class="show">show</a></b>)
+<div class="code"><code><span style="color: #000000">
+<span style="color: #0000BB"></span><span style="color: #007700">public&nbsp;function&nbsp;</span><span style="color: #0000BB">getConnectionStatus</span><span style="color: #007700">()<br />{<br />&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">getAttribute</span><span style="color: #007700">(</span><span style="color: #0000BB">PDO</span><span style="color: #007700">::</span><span style="color: #0000BB">ATTR_CONNECTION_STATUS</span><span style="color: #007700">);<br />}</span>
+</span>
+</code></div>
+</div>
+<p></p>
+
+
+<div class="detailHeader" id="getCurrentTransaction-detail">
+getCurrentTransaction()
+<span class="detailHeaderTag">
+method
+</span>
+</div>
+
+<table class="summaryTable">
+<tr><td colspan="3">
+<div class="signature2">
+public <a href="/doc/api/1.0/CDbTransaction">CDbTransaction</a> <b>getCurrentTransaction</b>()</div>
+</td></tr>
+<tr>
+  <td class="paramNameCol">{return}</td>
+  <td class="paramTypeCol"><a href="/doc/api/1.0/CDbTransaction">CDbTransaction</a></td>
+  <td class="paramDescCol">the currently active transaction. Null if no active transaction.</td>
+</tr>
+</table>
+
+<div class="sourceCode">
+<b>Source Code:</b> <a class="sourceLink" href="https://github.com/yiisoft/yii/blob/1.0.12/framework/db/CDbConnection.php#L336">framework/db/CDbConnection.php#336</a> (<b><a href="#" class="show">show</a></b>)
+<div class="code"><code><span style="color: #000000">
+<span style="color: #0000BB"></span><span style="color: #007700">public&nbsp;function&nbsp;</span><span style="color: #0000BB">getCurrentTransaction</span><span style="color: #007700">()<br />{<br />&nbsp;&nbsp;&nbsp;&nbsp;if(</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">_transaction</span><span style="color: #007700">!==</span><span style="color: #0000BB">null</span><span style="color: #007700">)<br />&nbsp;&nbsp;&nbsp;&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if(</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">_transaction</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">getActive</span><span style="color: #007700">())<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">_transaction</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;}<br />&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;</span><span style="color: #0000BB">null</span><span style="color: #007700">;<br />}</span>
+</span>
+</code></div>
+</div>
+<p></p>
+
+
+<div class="detailHeader" id="getDriverName-detail">
+getDriverName()
+<span class="detailHeaderTag">
+method
+</span>
+</div>
+
+<table class="summaryTable">
+<tr><td colspan="3">
+<div class="signature2">
+public string <b>getDriverName</b>()</div>
+</td></tr>
+<tr>
+  <td class="paramNameCol">{return}</td>
+  <td class="paramTypeCol">string</td>
+  <td class="paramDescCol">name of the DB driver</td>
+</tr>
+</table>
+
+<div class="sourceCode">
+<b>Source Code:</b> <a class="sourceLink" href="https://github.com/yiisoft/yii/blob/1.0.12/framework/db/CDbConnection.php#L548">framework/db/CDbConnection.php#548</a> (<b><a href="#" class="show">show</a></b>)
+<div class="code"><code><span style="color: #000000">
+<span style="color: #0000BB"></span><span style="color: #007700">public&nbsp;function&nbsp;</span><span style="color: #0000BB">getDriverName</span><span style="color: #007700">()<br />{<br />&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">getAttribute</span><span style="color: #007700">(</span><span style="color: #0000BB">PDO</span><span style="color: #007700">::</span><span style="color: #0000BB">ATTR_DRIVER_NAME</span><span style="color: #007700">);<br />}</span>
+</span>
+</code></div>
+</div>
+<p></p>
+
+
+<div class="detailHeader" id="getLastInsertID-detail">
+getLastInsertID()
+<span class="detailHeaderTag">
+method
+</span>
+</div>
+
+<table class="summaryTable">
+<tr><td colspan="3">
+<div class="signature2">
+public string <b>getLastInsertID</b>(string $sequenceName='')</div>
+</td></tr>
+<tr>
+  <td class="paramNameCol">$sequenceName</td>
+  <td class="paramTypeCol">string</td>
+  <td class="paramDescCol">name of the sequence object (required by some DBMS)</td>
+</tr>
+<tr>
+  <td class="paramNameCol">{return}</td>
+  <td class="paramTypeCol">string</td>
+  <td class="paramDescCol">the row ID of the last row inserted, or the last value retrieved from the sequence object</td>
+</tr>
+</table>
+
+<div class="sourceCode">
+<b>Source Code:</b> <a class="sourceLink" href="https://github.com/yiisoft/yii/blob/1.0.12/framework/db/CDbConnection.php#L414">framework/db/CDbConnection.php#414</a> (<b><a href="#" class="show">show</a></b>)
+<div class="code"><code><span style="color: #000000">
+<span style="color: #0000BB"></span><span style="color: #007700">public&nbsp;function&nbsp;</span><span style="color: #0000BB">getLastInsertID</span><span style="color: #007700">(</span><span style="color: #0000BB">$sequenceName</span><span style="color: #007700">=</span><span style="color: #DD0000">''</span><span style="color: #007700">)<br />{<br />&nbsp;&nbsp;&nbsp;&nbsp;if(</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">getActive</span><span style="color: #007700">())<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">_pdo</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">lastInsertId</span><span style="color: #007700">(</span><span style="color: #0000BB">$sequenceName</span><span style="color: #007700">);<br />&nbsp;&nbsp;&nbsp;&nbsp;else<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;throw&nbsp;new&nbsp;</span><span style="color: #0000BB">CDbException</span><span style="color: #007700">(</span><span style="color: #0000BB">Yii</span><span style="color: #007700">::</span><span style="color: #0000BB">t</span><span style="color: #007700">(</span><span style="color: #DD0000">'yii'</span><span style="color: #007700">,</span><span style="color: #DD0000">'CDbConnection&nbsp;is&nbsp;inactive&nbsp;and&nbsp;cannot&nbsp;perform&nbsp;any&nbsp;DB&nbsp;operations.'</span><span style="color: #007700">));<br />}</span>
+</span>
+</code></div>
+</div>
+<p>Returns the ID of the last inserted row or sequence value.</p>
+
+<div class="SeeAlso">
+<h4>See Also</h4>
+<ul>
+	<li><a href="http://www.php.net/manual/en/function.PDO-lastInsertId.php">http://www.php.net/manual/en/function.PDO-lastInsertId.php</a></li>
+</ul>
+</div>
+
+<div class="detailHeader" id="getNullConversion-detail">
+getNullConversion()
+<span class="detailHeaderTag">
+method
+</span>
+</div>
+
+<table class="summaryTable">
+<tr><td colspan="3">
+<div class="signature2">
+public mixed <b>getNullConversion</b>()</div>
+</td></tr>
+<tr>
+  <td class="paramNameCol">{return}</td>
+  <td class="paramTypeCol">mixed</td>
+  <td class="paramDescCol">how the null and empty strings are converted</td>
+</tr>
+</table>
+
+<div class="sourceCode">
+<b>Source Code:</b> <a class="sourceLink" href="https://github.com/yiisoft/yii/blob/1.0.12/framework/db/CDbConnection.php#L495">framework/db/CDbConnection.php#495</a> (<b><a href="#" class="show">show</a></b>)
+<div class="code"><code><span style="color: #000000">
+<span style="color: #0000BB"></span><span style="color: #007700">public&nbsp;function&nbsp;</span><span style="color: #0000BB">getNullConversion</span><span style="color: #007700">()<br />{<br />&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">getAttribute</span><span style="color: #007700">(</span><span style="color: #0000BB">PDO</span><span style="color: #007700">::</span><span style="color: #0000BB">ATTR_ORACLE_NULLS</span><span style="color: #007700">);<br />}</span>
+</span>
+</code></div>
+</div>
+<p></p>
+
+<div class="SeeAlso">
+<h4>See Also</h4>
+<ul>
+	<li><a href="http://www.php.net/manual/en/pdo.setattribute.php">http://www.php.net/manual/en/pdo.setattribute.php</a></li>
+</ul>
+</div>
+
+<div class="detailHeader" id="getPdoInstance-detail">
+getPdoInstance()
+<span class="detailHeaderTag">
+method
+</span>
+</div>
+
+<table class="summaryTable">
+<tr><td colspan="3">
+<div class="signature2">
+public PDO <b>getPdoInstance</b>()</div>
+</td></tr>
+<tr>
+  <td class="paramNameCol">{return}</td>
+  <td class="paramTypeCol">PDO</td>
+  <td class="paramDescCol">the PDO instance, null if the connection is not established yet</td>
+</tr>
+</table>
+
+<div class="sourceCode">
+<b>Source Code:</b> <a class="sourceLink" href="https://github.com/yiisoft/yii/blob/1.0.12/framework/db/CDbConnection.php#L314">framework/db/CDbConnection.php#314</a> (<b><a href="#" class="show">show</a></b>)
+<div class="code"><code><span style="color: #000000">
+<span style="color: #0000BB"></span><span style="color: #007700">public&nbsp;function&nbsp;</span><span style="color: #0000BB">getPdoInstance</span><span style="color: #007700">()<br />{<br />&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">_pdo</span><span style="color: #007700">;<br />}</span>
+</span>
+</code></div>
+</div>
+<p></p>
+
+
+<div class="detailHeader" id="getPdoType-detail">
+getPdoType()
+<span class="detailHeaderTag">
+method
+</span>
+</div>
+
+<table class="summaryTable">
+<tr><td colspan="3">
+<div class="signature2">
+public integer <b>getPdoType</b>(string $type)</div>
+</td></tr>
+<tr>
+  <td class="paramNameCol">$type</td>
+  <td class="paramTypeCol">string</td>
+  <td class="paramDescCol">The PHP type (obtained by gettype() call).</td>
+</tr>
+<tr>
+  <td class="paramNameCol">{return}</td>
+  <td class="paramTypeCol">integer</td>
+  <td class="paramDescCol">the corresponding PDO type</td>
+</tr>
+</table>
+
+<div class="sourceCode">
+<b>Source Code:</b> <a class="sourceLink" href="https://github.com/yiisoft/yii/blob/1.0.12/framework/db/CDbConnection.php#L461">framework/db/CDbConnection.php#461</a> (<b><a href="#" class="show">show</a></b>)
+<div class="code"><code><span style="color: #000000">
+<span style="color: #0000BB"></span><span style="color: #007700">public&nbsp;function&nbsp;</span><span style="color: #0000BB">getPdoType</span><span style="color: #007700">(</span><span style="color: #0000BB">$type</span><span style="color: #007700">)<br />{<br />&nbsp;&nbsp;&nbsp;&nbsp;static&nbsp;</span><span style="color: #0000BB">$map</span><span style="color: #007700">=array<br />&nbsp;&nbsp;&nbsp;&nbsp;(<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #DD0000">'boolean'</span><span style="color: #007700">=&gt;</span><span style="color: #0000BB">PDO</span><span style="color: #007700">::</span><span style="color: #0000BB">PARAM_BOOL</span><span style="color: #007700">,<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #DD0000">'integer'</span><span style="color: #007700">=&gt;</span><span style="color: #0000BB">PDO</span><span style="color: #007700">::</span><span style="color: #0000BB">PARAM_INT</span><span style="color: #007700">,<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #DD0000">'string'</span><span style="color: #007700">=&gt;</span><span style="color: #0000BB">PDO</span><span style="color: #007700">::</span><span style="color: #0000BB">PARAM_STR</span><span style="color: #007700">,<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #DD0000">'NULL'</span><span style="color: #007700">=&gt;</span><span style="color: #0000BB">PDO</span><span style="color: #007700">::</span><span style="color: #0000BB">PARAM_NULL</span><span style="color: #007700">,<br />&nbsp;&nbsp;&nbsp;&nbsp;);<br />&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;isset(</span><span style="color: #0000BB">$map</span><span style="color: #007700">[</span><span style="color: #0000BB">$type</span><span style="color: #007700">])&nbsp;?&nbsp;</span><span style="color: #0000BB">$map</span><span style="color: #007700">[</span><span style="color: #0000BB">$type</span><span style="color: #007700">]&nbsp;:&nbsp;</span><span style="color: #0000BB">PDO</span><span style="color: #007700">::</span><span style="color: #0000BB">PARAM_STR</span><span style="color: #007700">;<br />}</span>
+</span>
+</code></div>
+</div>
+<p>Determines the PDO type for the specified PHP type.</p>
+
+
+<div class="detailHeader" id="getPersistent-detail">
+getPersistent()
+<span class="detailHeaderTag">
+method
+</span>
+</div>
+
+<table class="summaryTable">
+<tr><td colspan="3">
+<div class="signature2">
+public boolean <b>getPersistent</b>()</div>
+</td></tr>
+<tr>
+  <td class="paramNameCol">{return}</td>
+  <td class="paramTypeCol">boolean</td>
+  <td class="paramDescCol">whether the connection is persistent or not
+Some DBMS (such as sqlite) may not support this feature.</td>
+</tr>
+</table>
+
+<div class="sourceCode">
+<b>Source Code:</b> <a class="sourceLink" href="https://github.com/yiisoft/yii/blob/1.0.12/framework/db/CDbConnection.php#L531">framework/db/CDbConnection.php#531</a> (<b><a href="#" class="show">show</a></b>)
+<div class="code"><code><span style="color: #000000">
+<span style="color: #0000BB"></span><span style="color: #007700">public&nbsp;function&nbsp;</span><span style="color: #0000BB">getPersistent</span><span style="color: #007700">()<br />{<br />&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">getAttribute</span><span style="color: #007700">(</span><span style="color: #0000BB">PDO</span><span style="color: #007700">::</span><span style="color: #0000BB">ATTR_PERSISTENT</span><span style="color: #007700">);<br />}</span>
+</span>
+</code></div>
+</div>
+<p></p>
+
+
+<div class="detailHeader" id="getPrefetch-detail">
+getPrefetch()
+<span class="detailHeaderTag">
+method
+</span>
+</div>
+
+<table class="summaryTable">
+<tr><td colspan="3">
+<div class="signature2">
+public boolean <b>getPrefetch</b>()</div>
+</td></tr>
+<tr>
+  <td class="paramNameCol">{return}</td>
+  <td class="paramTypeCol">boolean</td>
+  <td class="paramDescCol">whether the connection performs data prefetching</td>
+</tr>
+</table>
+
+<div class="sourceCode">
+<b>Source Code:</b> <a class="sourceLink" href="https://github.com/yiisoft/yii/blob/1.0.12/framework/db/CDbConnection.php#L573">framework/db/CDbConnection.php#573</a> (<b><a href="#" class="show">show</a></b>)
+<div class="code"><code><span style="color: #000000">
+<span style="color: #0000BB"></span><span style="color: #007700">public&nbsp;function&nbsp;</span><span style="color: #0000BB">getPrefetch</span><span style="color: #007700">()<br />{<br />&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">getAttribute</span><span style="color: #007700">(</span><span style="color: #0000BB">PDO</span><span style="color: #007700">::</span><span style="color: #0000BB">ATTR_PREFETCH</span><span style="color: #007700">);<br />}</span>
+</span>
+</code></div>
+</div>
+<p></p>
+
+
+<div class="detailHeader" id="getSchema-detail">
+getSchema()
+<span class="detailHeaderTag">
+method
+</span>
+</div>
+
+<table class="summaryTable">
+<tr><td colspan="3">
+<div class="signature2">
+public <a href="/doc/api/1.0/CDbSchema">CDbSchema</a> <b>getSchema</b>()</div>
+</td></tr>
+<tr>
+  <td class="paramNameCol">{return}</td>
+  <td class="paramTypeCol"><a href="/doc/api/1.0/CDbSchema">CDbSchema</a></td>
+  <td class="paramDescCol">the database schema for the current connection</td>
+</tr>
+</table>
+
+<div class="sourceCode">
+<b>Source Code:</b> <a class="sourceLink" href="https://github.com/yiisoft/yii/blob/1.0.12/framework/db/CDbConnection.php#L366">framework/db/CDbConnection.php#366</a> (<b><a href="#" class="show">show</a></b>)
+<div class="code"><code><span style="color: #000000">
+<span style="color: #0000BB"></span><span style="color: #007700">public&nbsp;function&nbsp;</span><span style="color: #0000BB">getSchema</span><span style="color: #007700">()<br />{<br />&nbsp;&nbsp;&nbsp;&nbsp;if(</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">_schema</span><span style="color: #007700">!==</span><span style="color: #0000BB">null</span><span style="color: #007700">)<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">_schema</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;else<br />&nbsp;&nbsp;&nbsp;&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if(!</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">getActive</span><span style="color: #007700">())<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;throw&nbsp;new&nbsp;</span><span style="color: #0000BB">CDbException</span><span style="color: #007700">(</span><span style="color: #0000BB">Yii</span><span style="color: #007700">::</span><span style="color: #0000BB">t</span><span style="color: #007700">(</span><span style="color: #DD0000">'yii'</span><span style="color: #007700">,</span><span style="color: #DD0000">'CDbConnection&nbsp;is&nbsp;inactive&nbsp;and&nbsp;cannot&nbsp;perform&nbsp;any&nbsp;DB&nbsp;operations.'</span><span style="color: #007700">));<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$driver</span><span style="color: #007700">=</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">getDriverName</span><span style="color: #007700">();<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;switch(</span><span style="color: #0000BB">strtolower</span><span style="color: #007700">(</span><span style="color: #0000BB">$driver</span><span style="color: #007700">))<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;case&nbsp;</span><span style="color: #DD0000">'pgsql'</span><span style="color: #007700">:&nbsp;&nbsp;</span><span style="color: #FF8000">//&nbsp;PostgreSQL<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #007700">return&nbsp;</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">_schema</span><span style="color: #007700">=new&nbsp;</span><span style="color: #0000BB">CPgsqlSchema</span><span style="color: #007700">(</span><span style="color: #0000BB">$this</span><span style="color: #007700">);<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;case&nbsp;</span><span style="color: #DD0000">'mysqli'</span><span style="color: #007700">:&nbsp;</span><span style="color: #FF8000">//&nbsp;MySQL<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #007700">case&nbsp;</span><span style="color: #DD0000">'mysql'</span><span style="color: #007700">:<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">_schema</span><span style="color: #007700">=new&nbsp;</span><span style="color: #0000BB">CMysqlSchema</span><span style="color: #007700">(</span><span style="color: #0000BB">$this</span><span style="color: #007700">);<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;case&nbsp;</span><span style="color: #DD0000">'sqlite'</span><span style="color: #007700">:&nbsp;</span><span style="color: #FF8000">//&nbsp;sqlite&nbsp;3<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #007700">case&nbsp;</span><span style="color: #DD0000">'sqlite2'</span><span style="color: #007700">:&nbsp;</span><span style="color: #FF8000">//&nbsp;sqlite&nbsp;2<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #007700">return&nbsp;</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">_schema</span><span style="color: #007700">=new&nbsp;</span><span style="color: #0000BB">CSqliteSchema</span><span style="color: #007700">(</span><span style="color: #0000BB">$this</span><span style="color: #007700">);<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;case&nbsp;</span><span style="color: #DD0000">'mssql'</span><span style="color: #007700">:&nbsp;</span><span style="color: #FF8000">//&nbsp;Mssql&nbsp;driver&nbsp;on&nbsp;windows&nbsp;hosts<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #007700">case&nbsp;</span><span style="color: #DD0000">'dblib'</span><span style="color: #007700">:&nbsp;</span><span style="color: #FF8000">//&nbsp;dblib&nbsp;drivers&nbsp;on&nbsp;linux&nbsp;(and&nbsp;maybe&nbsp;others&nbsp;os)&nbsp;hosts<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #007700">return&nbsp;</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">_schema</span><span style="color: #007700">=new&nbsp;</span><span style="color: #0000BB">CMssqlSchema</span><span style="color: #007700">(</span><span style="color: #0000BB">$this</span><span style="color: #007700">);<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;case&nbsp;</span><span style="color: #DD0000">'oci'</span><span style="color: #007700">:&nbsp;&nbsp;</span><span style="color: #FF8000">//&nbsp;Oracle&nbsp;driver<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #007700">return&nbsp;</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">_schema</span><span style="color: #007700">=new&nbsp;</span><span style="color: #0000BB">COciSchema</span><span style="color: #007700">(</span><span style="color: #0000BB">$this</span><span style="color: #007700">);<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;case&nbsp;</span><span style="color: #DD0000">'ibm'</span><span style="color: #007700">:<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;default:<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;throw&nbsp;new&nbsp;</span><span style="color: #0000BB">CDbException</span><span style="color: #007700">(</span><span style="color: #0000BB">Yii</span><span style="color: #007700">::</span><span style="color: #0000BB">t</span><span style="color: #007700">(</span><span style="color: #DD0000">'yii'</span><span style="color: #007700">,</span><span style="color: #DD0000">'CDbConnection&nbsp;does&nbsp;not&nbsp;support&nbsp;reading&nbsp;schema&nbsp;for&nbsp;{driver}&nbsp;database.'</span><span style="color: #007700">,<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;array(</span><span style="color: #DD0000">'{driver}'</span><span style="color: #007700">=&gt;</span><span style="color: #0000BB">$driver</span><span style="color: #007700">)));<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br />&nbsp;&nbsp;&nbsp;&nbsp;}<br />}</span>
+</span>
+</code></div>
+</div>
+<p></p>
+
+
+<div class="detailHeader" id="getServerInfo-detail">
+getServerInfo()
+<span class="detailHeaderTag">
+method
+</span>
+</div>
+
+<table class="summaryTable">
+<tr><td colspan="3">
+<div class="signature2">
+public string <b>getServerInfo</b>()</div>
+</td></tr>
+<tr>
+  <td class="paramNameCol">{return}</td>
+  <td class="paramTypeCol">string</td>
+  <td class="paramDescCol">the information of DBMS server</td>
+</tr>
+</table>
+
+<div class="sourceCode">
+<b>Source Code:</b> <a class="sourceLink" href="https://github.com/yiisoft/yii/blob/1.0.12/framework/db/CDbConnection.php#L581">framework/db/CDbConnection.php#581</a> (<b><a href="#" class="show">show</a></b>)
+<div class="code"><code><span style="color: #000000">
+<span style="color: #0000BB"></span><span style="color: #007700">public&nbsp;function&nbsp;</span><span style="color: #0000BB">getServerInfo</span><span style="color: #007700">()<br />{<br />&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">getAttribute</span><span style="color: #007700">(</span><span style="color: #0000BB">PDO</span><span style="color: #007700">::</span><span style="color: #0000BB">ATTR_SERVER_INFO</span><span style="color: #007700">);<br />}</span>
+</span>
+</code></div>
+</div>
+<p></p>
+
+
+<div class="detailHeader" id="getServerVersion-detail">
+getServerVersion()
+<span class="detailHeaderTag">
+method
+</span>
+</div>
+
+<table class="summaryTable">
+<tr><td colspan="3">
+<div class="signature2">
+public string <b>getServerVersion</b>()</div>
+</td></tr>
+<tr>
+  <td class="paramNameCol">{return}</td>
+  <td class="paramTypeCol">string</td>
+  <td class="paramDescCol">the version information of DBMS server</td>
+</tr>
+</table>
+
+<div class="sourceCode">
+<b>Source Code:</b> <a class="sourceLink" href="https://github.com/yiisoft/yii/blob/1.0.12/framework/db/CDbConnection.php#L589">framework/db/CDbConnection.php#589</a> (<b><a href="#" class="show">show</a></b>)
+<div class="code"><code><span style="color: #000000">
+<span style="color: #0000BB"></span><span style="color: #007700">public&nbsp;function&nbsp;</span><span style="color: #0000BB">getServerVersion</span><span style="color: #007700">()<br />{<br />&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">getAttribute</span><span style="color: #007700">(</span><span style="color: #0000BB">PDO</span><span style="color: #007700">::</span><span style="color: #0000BB">ATTR_SERVER_VERSION</span><span style="color: #007700">);<br />}</span>
+</span>
+</code></div>
+</div>
+<p></p>
+
+
+<div class="detailHeader" id="getStats-detail">
+getStats()
+<span class="detailHeaderTag">
+method
+(available since v1.0.6)
+</span>
+</div>
+
+<table class="summaryTable">
+<tr><td colspan="3">
+<div class="signature2">
+public array <b>getStats</b>()</div>
+</td></tr>
+<tr>
+  <td class="paramNameCol">{return}</td>
+  <td class="paramTypeCol">array</td>
+  <td class="paramDescCol">the first element indicates the number of SQL statements executed,
+and the second element the total time spent in SQL execution.</td>
+</tr>
+</table>
+
+<div class="sourceCode">
+<b>Source Code:</b> <a class="sourceLink" href="https://github.com/yiisoft/yii/blob/1.0.12/framework/db/CDbConnection.php#L639">framework/db/CDbConnection.php#639</a> (<b><a href="#" class="show">show</a></b>)
+<div class="code"><code><span style="color: #000000">
+<span style="color: #0000BB"></span><span style="color: #007700">public&nbsp;function&nbsp;</span><span style="color: #0000BB">getStats</span><span style="color: #007700">()<br />{<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$logger</span><span style="color: #007700">=</span><span style="color: #0000BB">Yii</span><span style="color: #007700">::</span><span style="color: #0000BB">getLogger</span><span style="color: #007700">();<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$timings</span><span style="color: #007700">=</span><span style="color: #0000BB">$logger</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">getProfilingResults</span><span style="color: #007700">(</span><span style="color: #0000BB">null</span><span style="color: #007700">,</span><span style="color: #DD0000">'system.db.CDbCommand.query'</span><span style="color: #007700">);<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$count</span><span style="color: #007700">=</span><span style="color: #0000BB">count</span><span style="color: #007700">(</span><span style="color: #0000BB">$timings</span><span style="color: #007700">);<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$time</span><span style="color: #007700">=</span><span style="color: #0000BB">array_sum</span><span style="color: #007700">(</span><span style="color: #0000BB">$timings</span><span style="color: #007700">);<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$timings</span><span style="color: #007700">=</span><span style="color: #0000BB">$logger</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">getProfilingResults</span><span style="color: #007700">(</span><span style="color: #0000BB">null</span><span style="color: #007700">,</span><span style="color: #DD0000">'system.db.CDbCommand.execute'</span><span style="color: #007700">);<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$count</span><span style="color: #007700">+=</span><span style="color: #0000BB">count</span><span style="color: #007700">(</span><span style="color: #0000BB">$timings</span><span style="color: #007700">);<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$time</span><span style="color: #007700">+=</span><span style="color: #0000BB">array_sum</span><span style="color: #007700">(</span><span style="color: #0000BB">$timings</span><span style="color: #007700">);<br />&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;array(</span><span style="color: #0000BB">$count</span><span style="color: #007700">,</span><span style="color: #0000BB">$time</span><span style="color: #007700">);<br />}</span>
+</span>
+</code></div>
+</div>
+<p>Returns the statistical results of SQL executions.
+The results returned include the number of SQL statements executed and
+the total time spent.
+In order to use this method, <a href="/doc/api/1.0/CDbConnection#enableProfiling">enableProfiling</a> has to be set true.</p>
+
+
+<div class="detailHeader" id="getTimeout-detail">
+getTimeout()
+<span class="detailHeaderTag">
+method
+</span>
+</div>
+
+<table class="summaryTable">
+<tr><td colspan="3">
+<div class="signature2">
+public int <b>getTimeout</b>()</div>
+</td></tr>
+<tr>
+  <td class="paramNameCol">{return}</td>
+  <td class="paramTypeCol">int</td>
+  <td class="paramDescCol">timeout settings for the connection</td>
+</tr>
+</table>
+
+<div class="sourceCode">
+<b>Source Code:</b> <a class="sourceLink" href="https://github.com/yiisoft/yii/blob/1.0.12/framework/db/CDbConnection.php#L597">framework/db/CDbConnection.php#597</a> (<b><a href="#" class="show">show</a></b>)
+<div class="code"><code><span style="color: #000000">
+<span style="color: #0000BB"></span><span style="color: #007700">public&nbsp;function&nbsp;</span><span style="color: #0000BB">getTimeout</span><span style="color: #007700">()<br />{<br />&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">getAttribute</span><span style="color: #007700">(</span><span style="color: #0000BB">PDO</span><span style="color: #007700">::</span><span style="color: #0000BB">ATTR_TIMEOUT</span><span style="color: #007700">);<br />}</span>
+</span>
+</code></div>
+</div>
+<p></p>
+
+
+<div class="detailHeader" id="init-detail">
+init()
+<span class="detailHeaderTag">
+method
+</span>
+</div>
+
+<table class="summaryTable">
+<tr><td colspan="3">
+<div class="signature2">
+public void <b>init</b>()</div>
+</td></tr>
+</table>
+
+<div class="sourceCode">
+<b>Source Code:</b> <a class="sourceLink" href="https://github.com/yiisoft/yii/blob/1.0.12/framework/db/CDbConnection.php#L205">framework/db/CDbConnection.php#205</a> (<b><a href="#" class="show">show</a></b>)
+<div class="code"><code><span style="color: #000000">
+<span style="color: #0000BB"></span><span style="color: #007700">public&nbsp;function&nbsp;</span><span style="color: #0000BB">init</span><span style="color: #007700">()<br />{<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">parent</span><span style="color: #007700">::</span><span style="color: #0000BB">init</span><span style="color: #007700">();<br />&nbsp;&nbsp;&nbsp;&nbsp;if(</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">autoConnect</span><span style="color: #007700">)<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">setActive</span><span style="color: #007700">(</span><span style="color: #0000BB">true</span><span style="color: #007700">);<br />}</span>
+</span>
+</code></div>
+</div>
+<p>Initializes the component.
+This method is required by <a href="/doc/api/1.0/IApplicationComponent">IApplicationComponent</a> and is invoked by application
+when the CDbConnection is used as an application component.
+If you override this method, make sure to call the parent implementation
+so that the component can be marked as initialized.</p>
+
+
+<div class="detailHeader" id="initConnection-detail">
+initConnection()
+<span class="detailHeaderTag">
+method
+</span>
+</div>
+
+<table class="summaryTable">
+<tr><td colspan="3">
+<div class="signature2">
+protected void <b>initConnection</b>(PDO $pdo)</div>
+</td></tr>
+<tr>
+  <td class="paramNameCol">$pdo</td>
+  <td class="paramTypeCol">PDO</td>
+  <td class="paramDescCol">the PDO instance</td>
+</tr>
+</table>
+
+<div class="sourceCode">
+<b>Source Code:</b> <a class="sourceLink" href="https://github.com/yiisoft/yii/blob/1.0.12/framework/db/CDbConnection.php#L299">framework/db/CDbConnection.php#299</a> (<b><a href="#" class="show">show</a></b>)
+<div class="code"><code><span style="color: #000000">
+<span style="color: #0000BB"></span><span style="color: #007700">protected&nbsp;function&nbsp;</span><span style="color: #0000BB">initConnection</span><span style="color: #007700">(</span><span style="color: #0000BB">$pdo</span><span style="color: #007700">)<br />{<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$pdo</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">setAttribute</span><span style="color: #007700">(</span><span style="color: #0000BB">PDO</span><span style="color: #007700">::</span><span style="color: #0000BB">ATTR_ERRMODE</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">PDO</span><span style="color: #007700">::</span><span style="color: #0000BB">ERRMODE_EXCEPTION</span><span style="color: #007700">);<br />&nbsp;&nbsp;&nbsp;&nbsp;if(</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">emulatePrepare&nbsp;</span><span style="color: #007700">&amp;&amp;&nbsp;</span><span style="color: #0000BB">constant</span><span style="color: #007700">(</span><span style="color: #DD0000">'PDO::ATTR_EMULATE_PREPARES'</span><span style="color: #007700">))<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$pdo</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">setAttribute</span><span style="color: #007700">(</span><span style="color: #0000BB">PDO</span><span style="color: #007700">::</span><span style="color: #0000BB">ATTR_EMULATE_PREPARES</span><span style="color: #007700">,</span><span style="color: #0000BB">true</span><span style="color: #007700">);<br />&nbsp;&nbsp;&nbsp;&nbsp;if(</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">charset</span><span style="color: #007700">!==</span><span style="color: #0000BB">null</span><span style="color: #007700">)<br />&nbsp;&nbsp;&nbsp;&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if(</span><span style="color: #0000BB">strcasecmp</span><span style="color: #007700">(</span><span style="color: #0000BB">$pdo</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">getAttribute</span><span style="color: #007700">(</span><span style="color: #0000BB">PDO</span><span style="color: #007700">::</span><span style="color: #0000BB">ATTR_DRIVER_NAME</span><span style="color: #007700">),</span><span style="color: #DD0000">'sqlite'</span><span style="color: #007700">))<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$pdo</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">exec</span><span style="color: #007700">(</span><span style="color: #DD0000">'SET&nbsp;NAMES&nbsp;'</span><span style="color: #007700">.</span><span style="color: #0000BB">$pdo</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">quote</span><span style="color: #007700">(</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">charset</span><span style="color: #007700">));<br />&nbsp;&nbsp;&nbsp;&nbsp;}<br />}</span>
+</span>
+</code></div>
+</div>
+<p>Initializes the open db connection.
+This method is invoked right after the db connection is established.
+The default implementation is to set the charset for MySQL and PostgreSQL database connections.</p>
+
+
+<div class="detailHeader" id="open-detail">
+open()
+<span class="detailHeaderTag">
+method
+</span>
+</div>
+
+<table class="summaryTable">
+<tr><td colspan="3">
+<div class="signature2">
+protected void <b>open</b>()</div>
+</td></tr>
+</table>
+
+<div class="sourceCode">
+<b>Source Code:</b> <a class="sourceLink" href="https://github.com/yiisoft/yii/blob/1.0.12/framework/db/CDbConnection.php#L240">framework/db/CDbConnection.php#240</a> (<b><a href="#" class="show">show</a></b>)
+<div class="code"><code><span style="color: #000000">
+<span style="color: #0000BB"></span><span style="color: #007700">protected&nbsp;function&nbsp;</span><span style="color: #0000BB">open</span><span style="color: #007700">()<br />{<br />&nbsp;&nbsp;&nbsp;&nbsp;if(</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">_pdo</span><span style="color: #007700">===</span><span style="color: #0000BB">null</span><span style="color: #007700">)<br />&nbsp;&nbsp;&nbsp;&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if(empty(</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">connectionString</span><span style="color: #007700">))<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;throw&nbsp;new&nbsp;</span><span style="color: #0000BB">CDbException</span><span style="color: #007700">(</span><span style="color: #0000BB">Yii</span><span style="color: #007700">::</span><span style="color: #0000BB">t</span><span style="color: #007700">(</span><span style="color: #DD0000">'yii'</span><span style="color: #007700">,</span><span style="color: #DD0000">'CDbConnection.connectionString&nbsp;cannot&nbsp;be&nbsp;empty.'</span><span style="color: #007700">));<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;try<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">Yii</span><span style="color: #007700">::</span><span style="color: #0000BB">trace</span><span style="color: #007700">(</span><span style="color: #DD0000">'Opening&nbsp;DB&nbsp;connection'</span><span style="color: #007700">,</span><span style="color: #DD0000">'system.db.CDbConnection'</span><span style="color: #007700">);<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">_pdo</span><span style="color: #007700">=</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">createPdoInstance</span><span style="color: #007700">();<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">initConnection</span><span style="color: #007700">(</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">_pdo</span><span style="color: #007700">);<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">_active</span><span style="color: #007700">=</span><span style="color: #0000BB">true</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;catch(</span><span style="color: #0000BB">PDOException&nbsp;$e</span><span style="color: #007700">)<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;throw&nbsp;new&nbsp;</span><span style="color: #0000BB">CDbException</span><span style="color: #007700">(</span><span style="color: #0000BB">Yii</span><span style="color: #007700">::</span><span style="color: #0000BB">t</span><span style="color: #007700">(</span><span style="color: #DD0000">'yii'</span><span style="color: #007700">,</span><span style="color: #DD0000">'CDbConnection&nbsp;failed&nbsp;to&nbsp;open&nbsp;the&nbsp;DB&nbsp;connection:&nbsp;{error}'</span><span style="color: #007700">,<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;array(</span><span style="color: #DD0000">'{error}'</span><span style="color: #007700">=&gt;</span><span style="color: #0000BB">$e</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">getMessage</span><span style="color: #007700">())));<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br />&nbsp;&nbsp;&nbsp;&nbsp;}<br />}</span>
+</span>
+</code></div>
+</div>
+<p>Opens DB connection if it is currently not</p>
+
+
+<div class="detailHeader" id="quoteColumnName-detail">
+quoteColumnName()
+<span class="detailHeaderTag">
+method
+</span>
+</div>
+
+<table class="summaryTable">
+<tr><td colspan="3">
+<div class="signature2">
+public string <b>quoteColumnName</b>(string $name)</div>
+</td></tr>
+<tr>
+  <td class="paramNameCol">$name</td>
+  <td class="paramTypeCol">string</td>
+  <td class="paramDescCol">column name</td>
+</tr>
+<tr>
+  <td class="paramNameCol">{return}</td>
+  <td class="paramTypeCol">string</td>
+  <td class="paramDescCol">the properly quoted column name</td>
+</tr>
+</table>
+
+<div class="sourceCode">
+<b>Source Code:</b> <a class="sourceLink" href="https://github.com/yiisoft/yii/blob/1.0.12/framework/db/CDbConnection.php#L451">framework/db/CDbConnection.php#451</a> (<b><a href="#" class="show">show</a></b>)
+<div class="code"><code><span style="color: #000000">
+<span style="color: #0000BB"></span><span style="color: #007700">public&nbsp;function&nbsp;</span><span style="color: #0000BB">quoteColumnName</span><span style="color: #007700">(</span><span style="color: #0000BB">$name</span><span style="color: #007700">)<br />{<br />&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">getSchema</span><span style="color: #007700">()-&gt;</span><span style="color: #0000BB">quoteColumnName</span><span style="color: #007700">(</span><span style="color: #0000BB">$name</span><span style="color: #007700">);<br />}</span>
+</span>
+</code></div>
+</div>
+<p>Quotes a column name for use in a query.</p>
+
+
+<div class="detailHeader" id="quoteTableName-detail">
+quoteTableName()
+<span class="detailHeaderTag">
+method
+</span>
+</div>
+
+<table class="summaryTable">
+<tr><td colspan="3">
+<div class="signature2">
+public string <b>quoteTableName</b>(string $name)</div>
+</td></tr>
+<tr>
+  <td class="paramNameCol">$name</td>
+  <td class="paramTypeCol">string</td>
+  <td class="paramDescCol">table name</td>
+</tr>
+<tr>
+  <td class="paramNameCol">{return}</td>
+  <td class="paramTypeCol">string</td>
+  <td class="paramDescCol">the properly quoted table name</td>
+</tr>
+</table>
+
+<div class="sourceCode">
+<b>Source Code:</b> <a class="sourceLink" href="https://github.com/yiisoft/yii/blob/1.0.12/framework/db/CDbConnection.php#L441">framework/db/CDbConnection.php#441</a> (<b><a href="#" class="show">show</a></b>)
+<div class="code"><code><span style="color: #000000">
+<span style="color: #0000BB"></span><span style="color: #007700">public&nbsp;function&nbsp;</span><span style="color: #0000BB">quoteTableName</span><span style="color: #007700">(</span><span style="color: #0000BB">$name</span><span style="color: #007700">)<br />{<br />&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">getSchema</span><span style="color: #007700">()-&gt;</span><span style="color: #0000BB">quoteTableName</span><span style="color: #007700">(</span><span style="color: #0000BB">$name</span><span style="color: #007700">);<br />}</span>
+</span>
+</code></div>
+</div>
+<p>Quotes a table name for use in a query.</p>
+
+
+<div class="detailHeader" id="quoteValue-detail">
+quoteValue()
+<span class="detailHeaderTag">
+method
+</span>
+</div>
+
+<table class="summaryTable">
+<tr><td colspan="3">
+<div class="signature2">
+public string <b>quoteValue</b>(string $str)</div>
+</td></tr>
+<tr>
+  <td class="paramNameCol">$str</td>
+  <td class="paramTypeCol">string</td>
+  <td class="paramDescCol">string to be quoted</td>
+</tr>
+<tr>
+  <td class="paramNameCol">{return}</td>
+  <td class="paramTypeCol">string</td>
+  <td class="paramDescCol">the properly quoted string</td>
+</tr>
+</table>
+
+<div class="sourceCode">
+<b>Source Code:</b> <a class="sourceLink" href="https://github.com/yiisoft/yii/blob/1.0.12/framework/db/CDbConnection.php#L428">framework/db/CDbConnection.php#428</a> (<b><a href="#" class="show">show</a></b>)
+<div class="code"><code><span style="color: #000000">
+<span style="color: #0000BB"></span><span style="color: #007700">public&nbsp;function&nbsp;</span><span style="color: #0000BB">quoteValue</span><span style="color: #007700">(</span><span style="color: #0000BB">$str</span><span style="color: #007700">)<br />{<br />&nbsp;&nbsp;&nbsp;&nbsp;if(</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">getActive</span><span style="color: #007700">())<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">_pdo</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">quote</span><span style="color: #007700">(</span><span style="color: #0000BB">$str</span><span style="color: #007700">);<br />&nbsp;&nbsp;&nbsp;&nbsp;else<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;throw&nbsp;new&nbsp;</span><span style="color: #0000BB">CDbException</span><span style="color: #007700">(</span><span style="color: #0000BB">Yii</span><span style="color: #007700">::</span><span style="color: #0000BB">t</span><span style="color: #007700">(</span><span style="color: #DD0000">'yii'</span><span style="color: #007700">,</span><span style="color: #DD0000">'CDbConnection&nbsp;is&nbsp;inactive&nbsp;and&nbsp;cannot&nbsp;perform&nbsp;any&nbsp;DB&nbsp;operations.'</span><span style="color: #007700">));<br />}</span>
+</span>
+</code></div>
+</div>
+<p>Quotes a string value for use in a query.</p>
+
+<div class="SeeAlso">
+<h4>See Also</h4>
+<ul>
+	<li><a href="http://www.php.net/manual/en/function.PDO-quote.php">http://www.php.net/manual/en/function.PDO-quote.php</a></li>
+</ul>
+</div>
+
+<div class="detailHeader" id="setActive-detail">
+setActive()
+<span class="detailHeaderTag">
+method
+</span>
+</div>
+
+<table class="summaryTable">
+<tr><td colspan="3">
+<div class="signature2">
+public void <b>setActive</b>(boolean $value)</div>
+</td></tr>
+<tr>
+  <td class="paramNameCol">$value</td>
+  <td class="paramTypeCol">boolean</td>
+  <td class="paramDescCol">whether to open or close DB connection</td>
+</tr>
+</table>
+
+<div class="sourceCode">
+<b>Source Code:</b> <a class="sourceLink" href="https://github.com/yiisoft/yii/blob/1.0.12/framework/db/CDbConnection.php#L225">framework/db/CDbConnection.php#225</a> (<b><a href="#" class="show">show</a></b>)
+<div class="code"><code><span style="color: #000000">
+<span style="color: #0000BB"></span><span style="color: #007700">public&nbsp;function&nbsp;</span><span style="color: #0000BB">setActive</span><span style="color: #007700">(</span><span style="color: #0000BB">$value</span><span style="color: #007700">)<br />{<br />&nbsp;&nbsp;&nbsp;&nbsp;if(</span><span style="color: #0000BB">$value</span><span style="color: #007700">!=</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">_active</span><span style="color: #007700">)<br />&nbsp;&nbsp;&nbsp;&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if(</span><span style="color: #0000BB">$value</span><span style="color: #007700">)<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">open</span><span style="color: #007700">();<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;else<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">close</span><span style="color: #007700">();<br />&nbsp;&nbsp;&nbsp;&nbsp;}<br />}</span>
+</span>
+</code></div>
+</div>
+<p>Open or close the DB connection.</p>
+
+
+<div class="detailHeader" id="setAttribute-detail">
+setAttribute()
+<span class="detailHeaderTag">
+method
+</span>
+</div>
+
+<table class="summaryTable">
+<tr><td colspan="3">
+<div class="signature2">
+public void <b>setAttribute</b>(int $name, mixed $value)</div>
+</td></tr>
+<tr>
+  <td class="paramNameCol">$name</td>
+  <td class="paramTypeCol">int</td>
+  <td class="paramDescCol">the attribute to be set</td>
+</tr>
+<tr>
+  <td class="paramNameCol">$value</td>
+  <td class="paramTypeCol">mixed</td>
+  <td class="paramDescCol">the attribute value</td>
+</tr>
+</table>
+
+<div class="sourceCode">
+<b>Source Code:</b> <a class="sourceLink" href="https://github.com/yiisoft/yii/blob/1.0.12/framework/db/CDbConnection.php#L622">framework/db/CDbConnection.php#622</a> (<b><a href="#" class="show">show</a></b>)
+<div class="code"><code><span style="color: #000000">
+<span style="color: #0000BB"></span><span style="color: #007700">public&nbsp;function&nbsp;</span><span style="color: #0000BB">setAttribute</span><span style="color: #007700">(</span><span style="color: #0000BB">$name</span><span style="color: #007700">,</span><span style="color: #0000BB">$value</span><span style="color: #007700">)<br />{<br />&nbsp;&nbsp;&nbsp;&nbsp;if(</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">_pdo&nbsp;</span><span style="color: #007700">instanceof&nbsp;</span><span style="color: #0000BB">PDO</span><span style="color: #007700">)<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">_pdo</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">setAttribute</span><span style="color: #007700">(</span><span style="color: #0000BB">$name</span><span style="color: #007700">,</span><span style="color: #0000BB">$value</span><span style="color: #007700">);<br />&nbsp;&nbsp;&nbsp;&nbsp;else<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">_attributes</span><span style="color: #007700">[</span><span style="color: #0000BB">$name</span><span style="color: #007700">]=</span><span style="color: #0000BB">$value</span><span style="color: #007700">;<br />}</span>
+</span>
+</code></div>
+</div>
+<p>Sets an attribute on the database connection.</p>
+
+<div class="SeeAlso">
+<h4>See Also</h4>
+<ul>
+	<li><a href="http://www.php.net/manual/en/function.PDO-setAttribute.php">http://www.php.net/manual/en/function.PDO-setAttribute.php</a></li>
+</ul>
+</div>
+
+<div class="detailHeader" id="setAutoCommit-detail">
+setAutoCommit()
+<span class="detailHeaderTag">
+method
+</span>
+</div>
+
+<table class="summaryTable">
+<tr><td colspan="3">
+<div class="signature2">
+public void <b>setAutoCommit</b>(boolean $value)</div>
+</td></tr>
+<tr>
+  <td class="paramNameCol">$value</td>
+  <td class="paramTypeCol">boolean</td>
+  <td class="paramDescCol">whether creating or updating a DB record will be automatically committed.
+Some DBMS (such as sqlite) may not support this feature.</td>
+</tr>
+</table>
+
+<div class="sourceCode">
+<b>Source Code:</b> <a class="sourceLink" href="https://github.com/yiisoft/yii/blob/1.0.12/framework/db/CDbConnection.php#L522">framework/db/CDbConnection.php#522</a> (<b><a href="#" class="show">show</a></b>)
+<div class="code"><code><span style="color: #000000">
+<span style="color: #0000BB"></span><span style="color: #007700">public&nbsp;function&nbsp;</span><span style="color: #0000BB">setAutoCommit</span><span style="color: #007700">(</span><span style="color: #0000BB">$value</span><span style="color: #007700">)<br />{<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">setAttribute</span><span style="color: #007700">(</span><span style="color: #0000BB">PDO</span><span style="color: #007700">::</span><span style="color: #0000BB">ATTR_AUTOCOMMIT</span><span style="color: #007700">,</span><span style="color: #0000BB">$value</span><span style="color: #007700">);<br />}</span>
+</span>
+</code></div>
+</div>
+<p></p>
+
+
+<div class="detailHeader" id="setColumnCase-detail">
+setColumnCase()
+<span class="detailHeaderTag">
+method
+</span>
+</div>
+
+<table class="summaryTable">
+<tr><td colspan="3">
+<div class="signature2">
+public void <b>setColumnCase</b>(mixed $value)</div>
+</td></tr>
+<tr>
+  <td class="paramNameCol">$value</td>
+  <td class="paramTypeCol">mixed</td>
+  <td class="paramDescCol">the case of the column names</td>
+</tr>
+</table>
+
+<div class="sourceCode">
+<b>Source Code:</b> <a class="sourceLink" href="https://github.com/yiisoft/yii/blob/1.0.12/framework/db/CDbConnection.php#L486">framework/db/CDbConnection.php#486</a> (<b><a href="#" class="show">show</a></b>)
+<div class="code"><code><span style="color: #000000">
+<span style="color: #0000BB"></span><span style="color: #007700">public&nbsp;function&nbsp;</span><span style="color: #0000BB">setColumnCase</span><span style="color: #007700">(</span><span style="color: #0000BB">$value</span><span style="color: #007700">)<br />{<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">setAttribute</span><span style="color: #007700">(</span><span style="color: #0000BB">PDO</span><span style="color: #007700">::</span><span style="color: #0000BB">ATTR_CASE</span><span style="color: #007700">,</span><span style="color: #0000BB">$value</span><span style="color: #007700">);<br />}</span>
+</span>
+</code></div>
+</div>
+<p></p>
+
+<div class="SeeAlso">
+<h4>See Also</h4>
+<ul>
+	<li><a href="http://www.php.net/manual/en/pdo.setattribute.php">http://www.php.net/manual/en/pdo.setattribute.php</a></li>
+</ul>
+</div>
+
+<div class="detailHeader" id="setNullConversion-detail">
+setNullConversion()
+<span class="detailHeaderTag">
+method
+</span>
+</div>
+
+<table class="summaryTable">
+<tr><td colspan="3">
+<div class="signature2">
+public void <b>setNullConversion</b>(mixed $value)</div>
+</td></tr>
+<tr>
+  <td class="paramNameCol">$value</td>
+  <td class="paramTypeCol">mixed</td>
+  <td class="paramDescCol">how the null and empty strings are converted</td>
+</tr>
+</table>
+
+<div class="sourceCode">
+<b>Source Code:</b> <a class="sourceLink" href="https://github.com/yiisoft/yii/blob/1.0.12/framework/db/CDbConnection.php#L504">framework/db/CDbConnection.php#504</a> (<b><a href="#" class="show">show</a></b>)
+<div class="code"><code><span style="color: #000000">
+<span style="color: #0000BB"></span><span style="color: #007700">public&nbsp;function&nbsp;</span><span style="color: #0000BB">setNullConversion</span><span style="color: #007700">(</span><span style="color: #0000BB">$value</span><span style="color: #007700">)<br />{<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">setAttribute</span><span style="color: #007700">(</span><span style="color: #0000BB">PDO</span><span style="color: #007700">::</span><span style="color: #0000BB">ATTR_ORACLE_NULLS</span><span style="color: #007700">,</span><span style="color: #0000BB">$value</span><span style="color: #007700">);<br />}</span>
+</span>
+</code></div>
+</div>
+<p></p>
+
+<div class="SeeAlso">
+<h4>See Also</h4>
+<ul>
+	<li><a href="http://www.php.net/manual/en/pdo.setattribute.php">http://www.php.net/manual/en/pdo.setattribute.php</a></li>
+</ul>
+</div>
+
+<div class="detailHeader" id="setPersistent-detail">
+setPersistent()
+<span class="detailHeaderTag">
+method
+</span>
+</div>
+
+<table class="summaryTable">
+<tr><td colspan="3">
+<div class="signature2">
+public void <b>setPersistent</b>(boolean $value)</div>
+</td></tr>
+<tr>
+  <td class="paramNameCol">$value</td>
+  <td class="paramTypeCol">boolean</td>
+  <td class="paramDescCol">whether the connection is persistent or not
+Some DBMS (such as sqlite) may not support this feature.</td>
+</tr>
+</table>
+
+<div class="sourceCode">
+<b>Source Code:</b> <a class="sourceLink" href="https://github.com/yiisoft/yii/blob/1.0.12/framework/db/CDbConnection.php#L540">framework/db/CDbConnection.php#540</a> (<b><a href="#" class="show">show</a></b>)
+<div class="code"><code><span style="color: #000000">
+<span style="color: #0000BB"></span><span style="color: #007700">public&nbsp;function&nbsp;</span><span style="color: #0000BB">setPersistent</span><span style="color: #007700">(</span><span style="color: #0000BB">$value</span><span style="color: #007700">)<br />{<br />&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">setAttribute</span><span style="color: #007700">(</span><span style="color: #0000BB">PDO</span><span style="color: #007700">::</span><span style="color: #0000BB">ATTR_PERSISTENT</span><span style="color: #007700">,</span><span style="color: #0000BB">$value</span><span style="color: #007700">);<br />}</span>
+</span>
+</code></div>
+</div>
+<p></p>
+
+

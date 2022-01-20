@@ -18,7 +18,7 @@ $this->endBlock();
 
         <?= \app\widgets\SearchForm::widget([
             'type' => 'guide',
-            'version' => isset($version) ? $version : '2.0',
+            'version' => $guide->version,
             'language' => $guide->language,
             'placeholder' => 'Search the Guide…',
         ]) ?>

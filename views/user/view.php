@@ -102,8 +102,9 @@ $this->registerMetaTag(['name' => 'keywords', 'value' => 'yii framework, communi
                    }
                ?>
                    <li>
-                       <div class="userbadge userbadge-<?= $info->badge->urlname ?>" title="<?= $title ?>">
+                       <div class="userbadge">
                            <?php $percent = min(100, $info->progress); ?>
+                           <div class="userbadge-icon userbadge-<?= $info->badge->urlname ?>" title="<?= $title ?>"></div>
                            <div class="userbadge-progress-bar" style="width: <?= round($percent) ?>%"></div>
                            <div class="userbadge-info">
                                <h3><?= Html::a(Html::encode($info->badge->name), ['user/view-badge', 'name' => $info->badge->urlname]) ?></h3>

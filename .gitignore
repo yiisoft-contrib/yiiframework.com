@@ -40,6 +40,9 @@ phpunit.phar
 /web/index.php
 /web/.htaccess
 
+# environment-dependent files (miscellaneous)
+docker-compose.override.yml
+
 # files automatically generated on dev platform
 /web/css/*
 /web/js/*

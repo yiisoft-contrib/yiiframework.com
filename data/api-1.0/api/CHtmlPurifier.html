@@ -1,0 +1,506 @@
+<h1>CHtmlPurifier</h1>
+<div id="nav">
+<a href="/doc/api/1.0/">All Packages</a>
+| <a href="#properties">Properties</a>
+| <a href="#methods">Methods</a>
+| <a href="#events">Events</a>
+</div>
+
+<table class="summaryTable docClass">
+<colgroup>
+	<col class="col-name" />
+	<col class="col-value" />
+</colgroup>
+<tr>
+  <th>Package</th>
+  <td><a href="/doc/api/1.0/#system.web.widgets">system.web.widgets</a></td>
+</tr>
+<tr>
+  <th>Inheritance</th>
+  <td>class CHtmlPurifier &raquo;
+<a href="/doc/api/1.0/COutputProcessor">COutputProcessor</a> &raquo;
+<a href="/doc/api/1.0/CFilterWidget">CFilterWidget</a> &raquo;
+<a href="/doc/api/1.0/CWidget">CWidget</a> &raquo;
+<a href="/doc/api/1.0/CBaseController">CBaseController</a> &raquo;
+<a href="/doc/api/1.0/CComponent">CComponent</a></td>
+</tr>
+<tr>
+  <th>Implements</th>
+  <td><a href="/doc/api/1.0/IFilter">IFilter</a></td>
+</tr>
+<tr>
+  <th>Since</th>
+  <td>1.0</td>
+</tr>
+<tr>
+  <th>Version</th>
+  <td>$Id$</td>
+</tr>
+<tr>
+  <th>Source Code</th>
+  <td><a class="sourceLink" href="https://github.com/yiisoft/yii/blob/1.0.12/framework/web/widgets/CHtmlPurifier.php">framework/web/widgets/CHtmlPurifier.php</a></td>
+</tr>
+</table>
+
+<div id="classDescription">
+CHtmlPurifier is wrapper of <a href="http://htmlpurifier.org">HTML Purifier</a>.
+<br/><br/>
+CHtmlPurifier removes all malicious code (better known as XSS) with a thoroughly audited,
+secure yet permissive whitelist. It will also make sure the resulting code
+is standard-compliant.
+<br/><br/>
+CHtmlPurifier can be used as either a widget or a controller filter.
+<br/><br/>
+Note: since HTML Purifier is a big package, its performance is not very good.
+You should consider either caching the purification result or purifying the user input
+before saving to database.</div>
+<a name="properties"></a>
+
+<div class="summary docProperty">
+<h2>Public Properties</h2>
+
+<p><a href="#" class="toggle">Hide inherited properties</a></p>
+
+<table class="summaryTable">
+<colgroup>
+	<col class="col-property" />
+	<col class="col-type" />
+	<col class="col-description" />
+	<col class="col-defined" />
+</colgroup>
+<tr>
+  <th>Property</th><th>Type</th><th>Description</th><th>Defined By</th>
+</tr>
+<tr class="inherited" id="actionPrefix">
+  <td><a href="/doc/api/1.0/CWidget#actionPrefix-detail">actionPrefix</a></td>
+  <td>string</td>
+  <td>the prefix to the IDs of the <a href="/doc/api/1.0/CHtmlPurifier#actions">actions</a>.</td>
+  <td><a href="/doc/api/1.0/CWidget">CWidget</a></td>
+</tr>
+<tr class="inherited" id="controller">
+  <td><a href="/doc/api/1.0/CWidget#controller-detail">controller</a></td>
+  <td><a href="/doc/api/1.0/CController">CController</a></td>
+  <td>the controller that this widget belongs to.</td>
+  <td><a href="/doc/api/1.0/CWidget">CWidget</a></td>
+</tr>
+<tr class="inherited" id="id">
+  <td><a href="/doc/api/1.0/CWidget#id-detail">id</a></td>
+  <td>string</td>
+  <td>id of the widget.</td>
+  <td><a href="/doc/api/1.0/CWidget">CWidget</a></td>
+</tr>
+<tr class="inherited" id="isFilter">
+  <td><a href="/doc/api/1.0/CFilterWidget#isFilter-detail">isFilter</a></td>
+  <td>boolean</td>
+  <td>whether this widget is used as a filter.</td>
+  <td><a href="/doc/api/1.0/CFilterWidget">CFilterWidget</a></td>
+</tr>
+<tr id="options">
+  <td><a href="/doc/api/1.0/CHtmlPurifier#options-detail">options</a></td>
+  <td>mixed</td>
+  <td>the options to be passed to {@link http://htmlpurifier.</td>
+  <td>CHtmlPurifier</td>
+</tr>
+<tr class="inherited" id="owner">
+  <td><a href="/doc/api/1.0/CWidget#owner-detail">owner</a></td>
+  <td><a href="/doc/api/1.0/CBaseController">CBaseController</a></td>
+  <td>owner/creator of this widget.</td>
+  <td><a href="/doc/api/1.0/CWidget">CWidget</a></td>
+</tr>
+<tr class="inherited" id="stopAction">
+  <td><a href="/doc/api/1.0/CFilterWidget#stopAction-detail">stopAction</a></td>
+  <td>boolean</td>
+  <td>whether to stop the action execution when this widget is used as a filter.</td>
+  <td><a href="/doc/api/1.0/CFilterWidget">CFilterWidget</a></td>
+</tr>
+<tr class="inherited" id="viewPath">
+  <td><a href="/doc/api/1.0/CWidget#viewPath-detail">viewPath</a></td>
+  <td>string</td>
+  <td>Returns the directory containing the view files for this widget.</td>
+  <td><a href="/doc/api/1.0/CWidget">CWidget</a></td>
+</tr>
+</table>
+</div>
+<a name="methods"></a>
+
+<div class="summary docMethod">
+<h2>Public Methods</h2>
+
+<p><a href="#" class="toggle">Hide inherited methods</a></p>
+
+<table class="summaryTable">
+<colgroup>
+	<col class="col-method" />
+	<col class="col-description" />
+	<col class="col-defined" />
+</colgroup>
+<tr>
+  <th>Method</th><th>Description</th><th>Defined By</th>
+</tr>
+<tr class="inherited" id="__call">
+  <td><a href="/doc/api/1.0/CComponent#__call-detail">__call()</a></td>
+  <td>Calls the named method which is not a class method.</td>
+  <td><a href="/doc/api/1.0/CComponent">CComponent</a></td>
+</tr>
+<tr class="inherited" id="__construct">
+  <td><a href="/doc/api/1.0/CFilterWidget#__construct-detail">__construct()</a></td>
+  <td>Constructor.</td>
+  <td><a href="/doc/api/1.0/CFilterWidget">CFilterWidget</a></td>
+</tr>
+<tr class="inherited" id="__get">
+  <td><a href="/doc/api/1.0/CComponent#__get-detail">__get()</a></td>
+  <td>Returns a property value, an event handler list or a behavior based on its name.</td>
+  <td><a href="/doc/api/1.0/CComponent">CComponent</a></td>
+</tr>
+<tr class="inherited" id="__isset">
+  <td><a href="/doc/api/1.0/CComponent#__isset-detail">__isset()</a></td>
+  <td>Checks if a property value is null.</td>
+  <td><a href="/doc/api/1.0/CComponent">CComponent</a></td>
+</tr>
+<tr class="inherited" id="__set">
+  <td><a href="/doc/api/1.0/CComponent#__set-detail">__set()</a></td>
+  <td>Sets value of a component property.</td>
+  <td><a href="/doc/api/1.0/CComponent">CComponent</a></td>
+</tr>
+<tr class="inherited" id="__unset">
+  <td><a href="/doc/api/1.0/CComponent#__unset-detail">__unset()</a></td>
+  <td>Sets a component property to be null.</td>
+  <td><a href="/doc/api/1.0/CComponent">CComponent</a></td>
+</tr>
+<tr class="inherited" id="actions">
+  <td><a href="/doc/api/1.0/CWidget#actions-detail">actions()</a></td>
+  <td>Returns a list of actions that are used by this widget.</td>
+  <td><a href="/doc/api/1.0/CWidget">CWidget</a></td>
+</tr>
+<tr class="inherited" id="asa">
+  <td><a href="/doc/api/1.0/CComponent#asa-detail">asa()</a></td>
+  <td>Returns the named behavior object.</td>
+  <td><a href="/doc/api/1.0/CComponent">CComponent</a></td>
+</tr>
+<tr class="inherited" id="attachBehavior">
+  <td><a href="/doc/api/1.0/CComponent#attachBehavior-detail">attachBehavior()</a></td>
+  <td>Attaches a behavior to this component.</td>
+  <td><a href="/doc/api/1.0/CComponent">CComponent</a></td>
+</tr>
+<tr class="inherited" id="attachBehaviors">
+  <td><a href="/doc/api/1.0/CComponent#attachBehaviors-detail">attachBehaviors()</a></td>
+  <td>Attaches a list of behaviors to the component.</td>
+  <td><a href="/doc/api/1.0/CComponent">CComponent</a></td>
+</tr>
+<tr class="inherited" id="attachEventHandler">
+  <td><a href="/doc/api/1.0/CComponent#attachEventHandler-detail">attachEventHandler()</a></td>
+  <td>Attaches an event handler to an event.</td>
+  <td><a href="/doc/api/1.0/CComponent">CComponent</a></td>
+</tr>
+<tr class="inherited" id="beginCache">
+  <td><a href="/doc/api/1.0/CBaseController#beginCache-detail">beginCache()</a></td>
+  <td>Begins fragment caching.</td>
+  <td><a href="/doc/api/1.0/CBaseController">CBaseController</a></td>
+</tr>
+<tr class="inherited" id="beginClip">
+  <td><a href="/doc/api/1.0/CBaseController#beginClip-detail">beginClip()</a></td>
+  <td>Begins recording a clip.</td>
+  <td><a href="/doc/api/1.0/CBaseController">CBaseController</a></td>
+</tr>
+<tr class="inherited" id="beginContent">
+  <td><a href="/doc/api/1.0/CBaseController#beginContent-detail">beginContent()</a></td>
+  <td>Begins the rendering of content that is to be decorated by the specified view.</td>
+  <td><a href="/doc/api/1.0/CBaseController">CBaseController</a></td>
+</tr>
+<tr class="inherited" id="beginWidget">
+  <td><a href="/doc/api/1.0/CBaseController#beginWidget-detail">beginWidget()</a></td>
+  <td>Creates a widget and executes it.</td>
+  <td><a href="/doc/api/1.0/CBaseController">CBaseController</a></td>
+</tr>
+<tr class="inherited" id="canGetProperty">
+  <td><a href="/doc/api/1.0/CComponent#canGetProperty-detail">canGetProperty()</a></td>
+  <td>Determines whether a property can be read.</td>
+  <td><a href="/doc/api/1.0/CComponent">CComponent</a></td>
+</tr>
+<tr class="inherited" id="canSetProperty">
+  <td><a href="/doc/api/1.0/CComponent#canSetProperty-detail">canSetProperty()</a></td>
+  <td>Determines whether a property can be set.</td>
+  <td><a href="/doc/api/1.0/CComponent">CComponent</a></td>
+</tr>
+<tr class="inherited" id="createWidget">
+  <td><a href="/doc/api/1.0/CBaseController#createWidget-detail">createWidget()</a></td>
+  <td>Creates a widget and initializes it.</td>
+  <td><a href="/doc/api/1.0/CBaseController">CBaseController</a></td>
+</tr>
+<tr class="inherited" id="detachBehavior">
+  <td><a href="/doc/api/1.0/CComponent#detachBehavior-detail">detachBehavior()</a></td>
+  <td>Detaches a behavior from the component.</td>
+  <td><a href="/doc/api/1.0/CComponent">CComponent</a></td>
+</tr>
+<tr class="inherited" id="detachBehaviors">
+  <td><a href="/doc/api/1.0/CComponent#detachBehaviors-detail">detachBehaviors()</a></td>
+  <td>Detaches all behaviors from the component.</td>
+  <td><a href="/doc/api/1.0/CComponent">CComponent</a></td>
+</tr>
+<tr class="inherited" id="detachEventHandler">
+  <td><a href="/doc/api/1.0/CComponent#detachEventHandler-detail">detachEventHandler()</a></td>
+  <td>Detaches an existing event handler.</td>
+  <td><a href="/doc/api/1.0/CComponent">CComponent</a></td>
+</tr>
+<tr class="inherited" id="disableBehavior">
+  <td><a href="/doc/api/1.0/CComponent#disableBehavior-detail">disableBehavior()</a></td>
+  <td>Disables an attached behavior.</td>
+  <td><a href="/doc/api/1.0/CComponent">CComponent</a></td>
+</tr>
+<tr class="inherited" id="disableBehaviors">
+  <td><a href="/doc/api/1.0/CComponent#disableBehaviors-detail">disableBehaviors()</a></td>
+  <td>Disables all behaviors attached to this component.</td>
+  <td><a href="/doc/api/1.0/CComponent">CComponent</a></td>
+</tr>
+<tr class="inherited" id="enableBehavior">
+  <td><a href="/doc/api/1.0/CComponent#enableBehavior-detail">enableBehavior()</a></td>
+  <td>Enables an attached behavior.</td>
+  <td><a href="/doc/api/1.0/CComponent">CComponent</a></td>
+</tr>
+<tr class="inherited" id="enableBehaviors">
+  <td><a href="/doc/api/1.0/CComponent#enableBehaviors-detail">enableBehaviors()</a></td>
+  <td>Enables all behaviors attached to this component.</td>
+  <td><a href="/doc/api/1.0/CComponent">CComponent</a></td>
+</tr>
+<tr class="inherited" id="endCache">
+  <td><a href="/doc/api/1.0/CBaseController#endCache-detail">endCache()</a></td>
+  <td>Ends fragment caching.</td>
+  <td><a href="/doc/api/1.0/CBaseController">CBaseController</a></td>
+</tr>
+<tr class="inherited" id="endClip">
+  <td><a href="/doc/api/1.0/CBaseController#endClip-detail">endClip()</a></td>
+  <td>Ends recording a clip.</td>
+  <td><a href="/doc/api/1.0/CBaseController">CBaseController</a></td>
+</tr>
+<tr class="inherited" id="endContent">
+  <td><a href="/doc/api/1.0/CBaseController#endContent-detail">endContent()</a></td>
+  <td>Ends the rendering of content.</td>
+  <td><a href="/doc/api/1.0/CBaseController">CBaseController</a></td>
+</tr>
+<tr class="inherited" id="endWidget">
+  <td><a href="/doc/api/1.0/CBaseController#endWidget-detail">endWidget()</a></td>
+  <td>Ends the execution of the named widget.</td>
+  <td><a href="/doc/api/1.0/CBaseController">CBaseController</a></td>
+</tr>
+<tr class="inherited" id="filter">
+  <td><a href="/doc/api/1.0/CFilterWidget#filter-detail">filter()</a></td>
+  <td>Performs the filtering.</td>
+  <td><a href="/doc/api/1.0/CFilterWidget">CFilterWidget</a></td>
+</tr>
+<tr class="inherited" id="getController">
+  <td><a href="/doc/api/1.0/CWidget#getController-detail">getController()</a></td>
+  <td>Returns the controller that this widget belongs to.</td>
+  <td><a href="/doc/api/1.0/CWidget">CWidget</a></td>
+</tr>
+<tr class="inherited" id="getEventHandlers">
+  <td><a href="/doc/api/1.0/CComponent#getEventHandlers-detail">getEventHandlers()</a></td>
+  <td>Returns the list of attached event handlers for an event.</td>
+  <td><a href="/doc/api/1.0/CComponent">CComponent</a></td>
+</tr>
+<tr class="inherited" id="getId">
+  <td><a href="/doc/api/1.0/CWidget#getId-detail">getId()</a></td>
+  <td>Returns id of the widget.</td>
+  <td><a href="/doc/api/1.0/CWidget">CWidget</a></td>
+</tr>
+<tr class="inherited" id="getIsFilter">
+  <td><a href="/doc/api/1.0/CFilterWidget#getIsFilter-detail">getIsFilter()</a></td>
+  <td>Checks whether this widget is used as a filter.</td>
+  <td><a href="/doc/api/1.0/CFilterWidget">CFilterWidget</a></td>
+</tr>
+<tr class="inherited" id="getOwner">
+  <td><a href="/doc/api/1.0/CWidget#getOwner-detail">getOwner()</a></td>
+  <td>Returns owner/creator of this widget. It could be either a widget or a controller.</td>
+  <td><a href="/doc/api/1.0/CWidget">CWidget</a></td>
+</tr>
+<tr class="inherited" id="getViewFile">
+  <td><a href="/doc/api/1.0/CWidget#getViewFile-detail">getViewFile()</a></td>
+  <td>Looks for the view script file according to the view name.</td>
+  <td><a href="/doc/api/1.0/CWidget">CWidget</a></td>
+</tr>
+<tr class="inherited" id="getViewPath">
+  <td><a href="/doc/api/1.0/CWidget#getViewPath-detail">getViewPath()</a></td>
+  <td>Returns the directory containing the view files for this widget.</td>
+  <td><a href="/doc/api/1.0/CWidget">CWidget</a></td>
+</tr>
+<tr class="inherited" id="hasEvent">
+  <td><a href="/doc/api/1.0/CComponent#hasEvent-detail">hasEvent()</a></td>
+  <td>Determines whether an event is defined.</td>
+  <td><a href="/doc/api/1.0/CComponent">CComponent</a></td>
+</tr>
+<tr class="inherited" id="hasEventHandler">
+  <td><a href="/doc/api/1.0/CComponent#hasEventHandler-detail">hasEventHandler()</a></td>
+  <td>Checks whether the named event has attached handlers.</td>
+  <td><a href="/doc/api/1.0/CComponent">CComponent</a></td>
+</tr>
+<tr class="inherited" id="hasProperty">
+  <td><a href="/doc/api/1.0/CComponent#hasProperty-detail">hasProperty()</a></td>
+  <td>Determines whether a property is defined.</td>
+  <td><a href="/doc/api/1.0/CComponent">CComponent</a></td>
+</tr>
+<tr class="inherited" id="init">
+  <td><a href="/doc/api/1.0/COutputProcessor#init-detail">init()</a></td>
+  <td>Initializes the widget.</td>
+  <td><a href="/doc/api/1.0/COutputProcessor">COutputProcessor</a></td>
+</tr>
+<tr class="inherited" id="onProcessOutput">
+  <td><a href="/doc/api/1.0/COutputProcessor#onProcessOutput-detail">onProcessOutput()</a></td>
+  <td>Raised when the output has been captured.</td>
+  <td><a href="/doc/api/1.0/COutputProcessor">COutputProcessor</a></td>
+</tr>
+<tr id="processOutput">
+  <td><a href="/doc/api/1.0/CHtmlPurifier#processOutput-detail">processOutput()</a></td>
+  <td>Processes the captured output.</td>
+  <td>CHtmlPurifier</td>
+</tr>
+<tr id="purify">
+  <td><a href="/doc/api/1.0/CHtmlPurifier#purify-detail">purify()</a></td>
+  <td>Purifies the HTML content by removing malicious code.</td>
+  <td>CHtmlPurifier</td>
+</tr>
+<tr class="inherited" id="raiseEvent">
+  <td><a href="/doc/api/1.0/CComponent#raiseEvent-detail">raiseEvent()</a></td>
+  <td>Raises an event.</td>
+  <td><a href="/doc/api/1.0/CComponent">CComponent</a></td>
+</tr>
+<tr class="inherited" id="render">
+  <td><a href="/doc/api/1.0/CWidget#render-detail">render()</a></td>
+  <td>Renders a view.</td>
+  <td><a href="/doc/api/1.0/CWidget">CWidget</a></td>
+</tr>
+<tr class="inherited" id="renderFile">
+  <td><a href="/doc/api/1.0/CBaseController#renderFile-detail">renderFile()</a></td>
+  <td>Renders a view file.</td>
+  <td><a href="/doc/api/1.0/CBaseController">CBaseController</a></td>
+</tr>
+<tr class="inherited" id="renderInternal">
+  <td><a href="/doc/api/1.0/CBaseController#renderInternal-detail">renderInternal()</a></td>
+  <td>Renders a view file.</td>
+  <td><a href="/doc/api/1.0/CBaseController">CBaseController</a></td>
+</tr>
+<tr class="inherited" id="run">
+  <td><a href="/doc/api/1.0/COutputProcessor#run-detail">run()</a></td>
+  <td>Executes the widget.</td>
+  <td><a href="/doc/api/1.0/COutputProcessor">COutputProcessor</a></td>
+</tr>
+<tr class="inherited" id="setId">
+  <td><a href="/doc/api/1.0/CWidget#setId-detail">setId()</a></td>
+  <td>Sets id of the widget.</td>
+  <td><a href="/doc/api/1.0/CWidget">CWidget</a></td>
+</tr>
+<tr class="inherited" id="widget">
+  <td><a href="/doc/api/1.0/CBaseController#widget-detail">widget()</a></td>
+  <td>Creates a widget and executes it.</td>
+  <td><a href="/doc/api/1.0/CBaseController">CBaseController</a></td>
+</tr>
+</table>
+</div>
+<a name="events"></a>
+
+<div class="summary docEvent">
+<h2>Events</h2>
+
+<p><a href="#" class="toggle">Hide inherited events</a></p>
+
+<table class="summaryTable">
+<colgroup>
+	<col class="col-event" />
+	<col class="col-description" />
+	<col class="col-defined" />
+</colgroup>
+<tr>
+  <th>Event</th><th>Description</th><th>Defined By</th>
+</tr>
+<tr class="inherited" id="onProcessOutput">
+  <td><a href="/doc/api/1.0/COutputProcessor#onProcessOutput-detail">onProcessOutput</a></td>
+  <td>Raised when the output has been captured.</td>
+  <td><a href="/doc/api/1.0/COutputProcessor">COutputProcessor</a></td>
+</tr>
+</table>
+</div>
+<h2>Property Details</h2>
+<div class="detailHeader" id="options-detail">
+options<span class="detailHeaderTag">
+property
+</span>
+</div>
+
+<div class="signature">
+public mixed <b>$options</b>;</div>
+
+<p>the options to be passed to <a href="http://htmlpurifier.org">HTML Purifier</a>.
+This can be a HTMLPurifier_Config object,  an array of directives (Namespace.Directive => Value)
+or the filename of an ini file.</p>
+
+<div class="SeeAlso">
+<h4>See Also</h4>
+<ul>
+	<li><a href="http://htmlpurifier.org/live/configdoc/plain.html">http://htmlpurifier.org/live/configdoc/plain.html</a></li>
+</ul>
+</div>
+
+<h2>Method Details</h2>
+
+<div class="detailHeader" id="processOutput-detail">
+processOutput()
+<span class="detailHeaderTag">
+method
+</span>
+</div>
+
+<table class="summaryTable">
+<tr><td colspan="3">
+<div class="signature2">
+public void <b>processOutput</b>(string $output)</div>
+</td></tr>
+<tr>
+  <td class="paramNameCol">$output</td>
+  <td class="paramTypeCol">string</td>
+  <td class="paramDescCol">the captured output to be processed</td>
+</tr>
+</table>
+
+<div class="sourceCode">
+<b>Source Code:</b> <a class="sourceLink" href="https://github.com/yiisoft/yii/blob/1.0.12/framework/web/widgets/CHtmlPurifier.php#L47">framework/web/widgets/CHtmlPurifier.php#47</a> (<b><a href="#" class="show">show</a></b>)
+<div class="code"><code><span style="color: #000000">
+<span style="color: #0000BB"></span><span style="color: #007700">public&nbsp;function&nbsp;</span><span style="color: #0000BB">processOutput</span><span style="color: #007700">(</span><span style="color: #0000BB">$output</span><span style="color: #007700">)<br />{<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$output</span><span style="color: #007700">=</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">purify</span><span style="color: #007700">(</span><span style="color: #0000BB">$output</span><span style="color: #007700">);<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">parent</span><span style="color: #007700">::</span><span style="color: #0000BB">processOutput</span><span style="color: #007700">(</span><span style="color: #0000BB">$output</span><span style="color: #007700">);<br />}</span>
+</span>
+</code></div>
+</div>
+<p>Processes the captured output.
+This method purifies the output using <a href="http://htmlpurifier.org">HTML Purifier</a>.</p>
+
+
+<div class="detailHeader" id="purify-detail">
+purify()
+<span class="detailHeaderTag">
+method
+</span>
+</div>
+
+<table class="summaryTable">
+<tr><td colspan="3">
+<div class="signature2">
+public string <b>purify</b>(string $content)</div>
+</td></tr>
+<tr>
+  <td class="paramNameCol">$content</td>
+  <td class="paramTypeCol">string</td>
+  <td class="paramDescCol">the content to be purified.</td>
+</tr>
+<tr>
+  <td class="paramNameCol">{return}</td>
+  <td class="paramTypeCol">string</td>
+  <td class="paramDescCol">the purified content</td>
+</tr>
+</table>
+
+<div class="sourceCode">
+<b>Source Code:</b> <a class="sourceLink" href="https://github.com/yiisoft/yii/blob/1.0.12/framework/web/widgets/CHtmlPurifier.php#L58">framework/web/widgets/CHtmlPurifier.php#58</a> (<b><a href="#" class="show">show</a></b>)
+<div class="code"><code><span style="color: #000000">
+<span style="color: #0000BB"></span><span style="color: #007700">public&nbsp;function&nbsp;</span><span style="color: #0000BB">purify</span><span style="color: #007700">(</span><span style="color: #0000BB">$content</span><span style="color: #007700">)<br />{<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$purifier</span><span style="color: #007700">=new&nbsp;</span><span style="color: #0000BB">HTMLPurifier</span><span style="color: #007700">(</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">options</span><span style="color: #007700">);<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$purifier</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">config</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">set</span><span style="color: #007700">(</span><span style="color: #DD0000">'Cache'</span><span style="color: #007700">,</span><span style="color: #DD0000">'SerializerPath'</span><span style="color: #007700">,</span><span style="color: #0000BB">Yii</span><span style="color: #007700">::</span><span style="color: #0000BB">app</span><span style="color: #007700">()-&gt;</span><span style="color: #0000BB">getRuntimePath</span><span style="color: #007700">());<br />&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;</span><span style="color: #0000BB">$purifier</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">purify</span><span style="color: #007700">(</span><span style="color: #0000BB">$content</span><span style="color: #007700">);<br />}</span>
+</span>
+</code></div>
+</div>
+<p>Purifies the HTML content by removing malicious code.</p>
+
+

@@ -1,0 +1,329 @@
+<h1>ICache</h1>
+<div id="nav">
+<a href="/doc/api/1.0/">All Packages</a>
+| <a href="#methods">Methods</a>
+</div>
+
+<table class="summaryTable docClass">
+<colgroup>
+	<col class="col-name" />
+	<col class="col-value" />
+</colgroup>
+<tr>
+  <th>Package</th>
+  <td><a href="/doc/api/1.0/#system.caching">system.caching</a></td>
+</tr>
+<tr>
+  <th>Inheritance</th>
+  <td>interface ICache</td>
+</tr>
+<tr>
+  <th>Subclasses</th>
+  <td><a href="/doc/api/1.0/CApcCache">CApcCache</a>, <a href="/doc/api/1.0/CCache">CCache</a>, <a href="/doc/api/1.0/CDbCache">CDbCache</a>, <a href="/doc/api/1.0/CDummyCache">CDummyCache</a>, <a href="/doc/api/1.0/CEAcceleratorCache">CEAcceleratorCache</a>, <a href="/doc/api/1.0/CFileCache">CFileCache</a>, <a href="/doc/api/1.0/CMemCache">CMemCache</a>, <a href="/doc/api/1.0/CXCache">CXCache</a>, <a href="/doc/api/1.0/CZendDataCache">CZendDataCache</a></td>
+</tr>
+<tr>
+  <th>Since</th>
+  <td>1.0</td>
+</tr>
+<tr>
+  <th>Version</th>
+  <td>$Id$</td>
+</tr>
+<tr>
+  <th>Source Code</th>
+  <td><a class="sourceLink" href="https://github.com/yiisoft/yii/blob/1.0.12/framework/base/interfaces.php">framework/base/interfaces.php</a></td>
+</tr>
+</table>
+
+<div id="classDescription">
+ICache is the interface that must be implemented by cache components.
+<br/><br/>
+This interface must be implemented by classes supporting caching feature.</div>
+<a name="properties"></a>
+
+<a name="methods"></a>
+
+<div class="summary docMethod">
+<h2>Public Methods</h2>
+
+<p><a href="#" class="toggle">Hide inherited methods</a></p>
+
+<table class="summaryTable">
+<colgroup>
+	<col class="col-method" />
+	<col class="col-description" />
+	<col class="col-defined" />
+</colgroup>
+<tr>
+  <th>Method</th><th>Description</th><th>Defined By</th>
+</tr>
+<tr id="add">
+  <td><a href="/doc/api/1.0/ICache#add-detail">add()</a></td>
+  <td>Stores a value identified by a key into cache if the cache does not contain this key.</td>
+  <td>ICache</td>
+</tr>
+<tr id="delete">
+  <td><a href="/doc/api/1.0/ICache#delete-detail">delete()</a></td>
+  <td>Deletes a value with the specified key from cache</td>
+  <td>ICache</td>
+</tr>
+<tr id="flush">
+  <td><a href="/doc/api/1.0/ICache#flush-detail">flush()</a></td>
+  <td>Deletes all values from cache.</td>
+  <td>ICache</td>
+</tr>
+<tr id="get">
+  <td><a href="/doc/api/1.0/ICache#get-detail">get()</a></td>
+  <td>Retrieves a value from cache with a specified key.</td>
+  <td>ICache</td>
+</tr>
+<tr id="mget">
+  <td><a href="/doc/api/1.0/ICache#mget-detail">mget()</a></td>
+  <td>Retrieves multiple values from cache with the specified keys.</td>
+  <td>ICache</td>
+</tr>
+<tr id="set">
+  <td><a href="/doc/api/1.0/ICache#set-detail">set()</a></td>
+  <td>Stores a value identified by a key into cache.</td>
+  <td>ICache</td>
+</tr>
+</table>
+</div>
+<a name="events"></a>
+
+<h2>Method Details</h2>
+
+<div class="detailHeader" id="add-detail">
+add()
+<span class="detailHeaderTag">
+method
+</span>
+</div>
+
+<table class="summaryTable">
+<tr><td colspan="3">
+<div class="signature2">
+abstract public boolean <b>add</b>(string $id, mixed $value, integer $expire=0, <a href="/doc/api/1.0/ICacheDependency">ICacheDependency</a> $dependency=NULL)</div>
+</td></tr>
+<tr>
+  <td class="paramNameCol">$id</td>
+  <td class="paramTypeCol">string</td>
+  <td class="paramDescCol">the key identifying the value to be cached</td>
+</tr>
+<tr>
+  <td class="paramNameCol">$value</td>
+  <td class="paramTypeCol">mixed</td>
+  <td class="paramDescCol">the value to be cached</td>
+</tr>
+<tr>
+  <td class="paramNameCol">$expire</td>
+  <td class="paramTypeCol">integer</td>
+  <td class="paramDescCol">the number of seconds in which the cached value will expire. 0 means never expire.</td>
+</tr>
+<tr>
+  <td class="paramNameCol">$dependency</td>
+  <td class="paramTypeCol"><a href="/doc/api/1.0/ICacheDependency">ICacheDependency</a></td>
+  <td class="paramDescCol">dependency of the cached item. If the dependency changes, the item is labelled invalid.</td>
+</tr>
+<tr>
+  <td class="paramNameCol">{return}</td>
+  <td class="paramTypeCol">boolean</td>
+  <td class="paramDescCol">true if the value is successfully stored into cache, false otherwise</td>
+</tr>
+</table>
+
+<div class="sourceCode">
+<b>Source Code:</b> <a class="sourceLink" href="https://github.com/yiisoft/yii/blob/1.0.12/framework/base/interfaces.php#L86">framework/base/interfaces.php#86</a> (<b><a href="#" class="show">show</a></b>)
+<div class="code"><code><span style="color: #000000">
+<span style="color: #0000BB"></span><span style="color: #007700">public&nbsp;function&nbsp;</span><span style="color: #0000BB">add</span><span style="color: #007700">(</span><span style="color: #0000BB">$id</span><span style="color: #007700">,</span><span style="color: #0000BB">$value</span><span style="color: #007700">,</span><span style="color: #0000BB">$expire</span><span style="color: #007700">=</span><span style="color: #0000BB">0</span><span style="color: #007700">,</span><span style="color: #0000BB">$dependency</span><span style="color: #007700">=</span><span style="color: #0000BB">null</span><span style="color: #007700">);</span>
+</span>
+</code></div>
+</div>
+<p>Stores a value identified by a key into cache if the cache does not contain this key.
+Nothing will be done if the cache already contains the key.</p>
+
+
+<div class="detailHeader" id="delete-detail">
+delete()
+<span class="detailHeaderTag">
+method
+</span>
+</div>
+
+<table class="summaryTable">
+<tr><td colspan="3">
+<div class="signature2">
+abstract public boolean <b>delete</b>(string $id)</div>
+</td></tr>
+<tr>
+  <td class="paramNameCol">$id</td>
+  <td class="paramTypeCol">string</td>
+  <td class="paramDescCol">the key of the value to be deleted</td>
+</tr>
+<tr>
+  <td class="paramNameCol">{return}</td>
+  <td class="paramTypeCol">boolean</td>
+  <td class="paramDescCol">whether the deletion is successful</td>
+</tr>
+</table>
+
+<div class="sourceCode">
+<b>Source Code:</b> <a class="sourceLink" href="https://github.com/yiisoft/yii/blob/1.0.12/framework/base/interfaces.php#L92">framework/base/interfaces.php#92</a> (<b><a href="#" class="show">show</a></b>)
+<div class="code"><code><span style="color: #000000">
+<span style="color: #0000BB"></span><span style="color: #007700">public&nbsp;function&nbsp;</span><span style="color: #0000BB">delete</span><span style="color: #007700">(</span><span style="color: #0000BB">$id</span><span style="color: #007700">);</span>
+</span>
+</code></div>
+</div>
+<p>Deletes a value with the specified key from cache</p>
+
+
+<div class="detailHeader" id="flush-detail">
+flush()
+<span class="detailHeaderTag">
+method
+</span>
+</div>
+
+<table class="summaryTable">
+<tr><td colspan="3">
+<div class="signature2">
+abstract public void <b>flush</b>()</div>
+</td></tr>
+</table>
+
+<div class="sourceCode">
+<b>Source Code:</b> <a class="sourceLink" href="https://github.com/yiisoft/yii/blob/1.0.12/framework/base/interfaces.php#L97">framework/base/interfaces.php#97</a> (<b><a href="#" class="show">show</a></b>)
+<div class="code"><code><span style="color: #000000">
+<span style="color: #0000BB"></span><span style="color: #007700">public&nbsp;function&nbsp;</span><span style="color: #0000BB">flush</span><span style="color: #007700">();</span>
+</span>
+</code></div>
+</div>
+<p>Deletes all values from cache.
+Be careful of performing this operation if the cache is shared by multiple applications.</p>
+
+
+<div class="detailHeader" id="get-detail">
+get()
+<span class="detailHeaderTag">
+method
+</span>
+</div>
+
+<table class="summaryTable">
+<tr><td colspan="3">
+<div class="signature2">
+abstract public mixed <b>get</b>(string $id)</div>
+</td></tr>
+<tr>
+  <td class="paramNameCol">$id</td>
+  <td class="paramTypeCol">string</td>
+  <td class="paramDescCol">a key identifying the cached value</td>
+</tr>
+<tr>
+  <td class="paramNameCol">{return}</td>
+  <td class="paramTypeCol">mixed</td>
+  <td class="paramDescCol">the value stored in cache, false if the value is not in the cache or expired.</td>
+</tr>
+</table>
+
+<div class="sourceCode">
+<b>Source Code:</b> <a class="sourceLink" href="https://github.com/yiisoft/yii/blob/1.0.12/framework/base/interfaces.php#L52">framework/base/interfaces.php#52</a> (<b><a href="#" class="show">show</a></b>)
+<div class="code"><code><span style="color: #000000">
+<span style="color: #0000BB"></span><span style="color: #007700">public&nbsp;function&nbsp;</span><span style="color: #0000BB">get</span><span style="color: #007700">(</span><span style="color: #0000BB">$id</span><span style="color: #007700">);</span>
+</span>
+</code></div>
+</div>
+<p>Retrieves a value from cache with a specified key.</p>
+
+
+<div class="detailHeader" id="mget-detail">
+mget()
+<span class="detailHeaderTag">
+method
+(available since v1.0.8)
+</span>
+</div>
+
+<table class="summaryTable">
+<tr><td colspan="3">
+<div class="signature2">
+abstract public array <b>mget</b>(array $ids)</div>
+</td></tr>
+<tr>
+  <td class="paramNameCol">$ids</td>
+  <td class="paramTypeCol">array</td>
+  <td class="paramDescCol">list of keys identifying the cached values</td>
+</tr>
+<tr>
+  <td class="paramNameCol">{return}</td>
+  <td class="paramTypeCol">array</td>
+  <td class="paramDescCol">list of cached values corresponding to the specified keys. The array
+is returned in terms of (key,value) pairs.
+If a value is not cached or expired, the corresponding array value will be false.</td>
+</tr>
+</table>
+
+<div class="sourceCode">
+<b>Source Code:</b> <a class="sourceLink" href="https://github.com/yiisoft/yii/blob/1.0.12/framework/base/interfaces.php#L64">framework/base/interfaces.php#64</a> (<b><a href="#" class="show">show</a></b>)
+<div class="code"><code><span style="color: #000000">
+<span style="color: #0000BB"></span><span style="color: #007700">public&nbsp;function&nbsp;</span><span style="color: #0000BB">mget</span><span style="color: #007700">(</span><span style="color: #0000BB">$ids</span><span style="color: #007700">);</span>
+</span>
+</code></div>
+</div>
+<p>Retrieves multiple values from cache with the specified keys.
+Some caches (such as memcache, apc) allow retrieving multiple cached values at one time,
+which may improve the performance since it reduces the communication cost.
+In case a cache doesn't support this feature natively, it will be simulated by this method.</p>
+
+
+<div class="detailHeader" id="set-detail">
+set()
+<span class="detailHeaderTag">
+method
+</span>
+</div>
+
+<table class="summaryTable">
+<tr><td colspan="3">
+<div class="signature2">
+abstract public boolean <b>set</b>(string $id, mixed $value, integer $expire=0, <a href="/doc/api/1.0/ICacheDependency">ICacheDependency</a> $dependency=NULL)</div>
+</td></tr>
+<tr>
+  <td class="paramNameCol">$id</td>
+  <td class="paramTypeCol">string</td>
+  <td class="paramDescCol">the key identifying the value to be cached</td>
+</tr>
+<tr>
+  <td class="paramNameCol">$value</td>
+  <td class="paramTypeCol">mixed</td>
+  <td class="paramDescCol">the value to be cached</td>
+</tr>
+<tr>
+  <td class="paramNameCol">$expire</td>
+  <td class="paramTypeCol">integer</td>
+  <td class="paramDescCol">the number of seconds in which the cached value will expire. 0 means never expire.</td>
+</tr>
+<tr>
+  <td class="paramNameCol">$dependency</td>
+  <td class="paramTypeCol"><a href="/doc/api/1.0/ICacheDependency">ICacheDependency</a></td>
+  <td class="paramDescCol">dependency of the cached item. If the dependency changes, the item is labelled invalid.</td>
+</tr>
+<tr>
+  <td class="paramNameCol">{return}</td>
+  <td class="paramTypeCol">boolean</td>
+  <td class="paramDescCol">true if the value is successfully stored into cache, false otherwise</td>
+</tr>
+</table>
+
+<div class="sourceCode">
+<b>Source Code:</b> <a class="sourceLink" href="https://github.com/yiisoft/yii/blob/1.0.12/framework/base/interfaces.php#L76">framework/base/interfaces.php#76</a> (<b><a href="#" class="show">show</a></b>)
+<div class="code"><code><span style="color: #000000">
+<span style="color: #0000BB"></span><span style="color: #007700">public&nbsp;function&nbsp;</span><span style="color: #0000BB">set</span><span style="color: #007700">(</span><span style="color: #0000BB">$id</span><span style="color: #007700">,</span><span style="color: #0000BB">$value</span><span style="color: #007700">,</span><span style="color: #0000BB">$expire</span><span style="color: #007700">=</span><span style="color: #0000BB">0</span><span style="color: #007700">,</span><span style="color: #0000BB">$dependency</span><span style="color: #007700">=</span><span style="color: #0000BB">null</span><span style="color: #007700">);</span>
+</span>
+</code></div>
+</div>
+<p>Stores a value identified by a key into cache.
+If the cache already contains such a key, the existing value and
+expiration time will be replaced with the new ones.</p>
+
+

@@ -1,47 +1,48 @@
 .avatar img {
-    border: 2px solid $eshill-section-bgcolor;
-    margin-bottom: 1em;
-    @media (max-width: 767px)  {
-      max-width: 210px;
-      margin-left: auto;
-      margin-right: auto;
-    }
+  border: 2px solid $eshill-section-bgcolor;
+  margin-bottom: 1em;
+
+  @media (max-width: 767px) {
+    max-width: 210px;
+    margin-left: auto;
+    margin-right: auto;
+  }
 }
 
 .heading-separator h2 {
-    @include dashed-heading-variant($eshill-header-color, #fff, fontsize(h1));
-    margin: 6.5rem 0;
+  @include dashed-heading-variant($eshill-header-color, #fff, fontsize(h1));
+  margin: 6.5rem 0;
 }
 
 .person-card {
-    @media (min-width: 767px)  {
-      height:45rem;
-    }
+  @media (min-width: 767px) {
+    height: 45rem;
+  }
 }
 
 .team-content {
-    h4 {
-        font-weight: bold;
-        text-align:center;
-    }
+  h4 {
+    font-weight: bold;
+    text-align: center;
+  }
 
-    p {
-        text-align:center;
-    }
+  p {
+    text-align: center;
+  }
 
-    p.duty {
-        font-size: 1.4rem;
-        font-weight: bold;
-    }
+  p.duty {
+    font-size: 1.4rem;
+    font-weight: bold;
+  }
 
-    p.period {
-        font-size: 1.4rem;
-    }
+  p.period {
+    font-size: 1.4rem;
+  }
 
-    p.location {
-        color: #737373;
-        font-size: 1.4rem;
-    }
+  p.location {
+    color: #737373;
+    font-size: 1.4rem;
+  }
 
   .links-inline {
     list-style: none;
@@ -63,6 +64,7 @@
       margin: 3px;
       text-decoration: none;
       transition: all .2s ease;
+
       &:hover {
         background-color: #1e6887;
       }
@@ -71,6 +73,7 @@
     li.github {
       a {
         background-color: transparent;
+
         &:hover {
           background-color: transparent;
         }
@@ -80,6 +83,7 @@
         font-size: 37px;
         color: #999;
         transition: all .2s ease;
+
         &:hover {
           color: #1e6887;
         }
@@ -96,8 +100,9 @@
 }
 
 #contributors img {
-    display: inline-block;
-    @include rem(width, 42px);
-    @include rem(height, 42px);
-    @include rem(margin, 1px);
+  display: inline-block;
+  @include rem(width, 42px);
+  @include rem(height, 42px);
+  @include rem(margin, 1px);
+  text-indent: -1000000000px;
 }

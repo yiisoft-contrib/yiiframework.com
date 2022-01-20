@@ -2,9 +2,7 @@
 
 namespace app\apidoc;
 
-
 use Yii;
-use yii\helpers\Console;
 use yii\helpers\StringHelper;
 use yii\helpers\VarDumper;
 
@@ -16,8 +14,10 @@ class ExtensionApiRenderer extends ApiRenderer
 {
     public $layout = '@app/apidoc/layouts/api.php';
     public $indexView = '@app/apidoc/views/extension-index.php';
-
+    public $allClassesUrl = './';
+    public $typeAvailableSinceVersionLabel = "Available since extension's version";
     public $version;
+
     public $extension;
 
     /**
@@ -52,9 +52,12 @@ class ExtensionApiRenderer extends ApiRenderer
             $type = $this->apiContext->getType($type);
         }
 
-        // TODO implement
+        preg_match('/\/(\d+\.\d+(?:\.\d+)?)\/(.+)/', $type->sourceFile, $matches);
 
-        return null;
+        $baseUrl = rtrim($this->extension->github_url, '/');
+        $url = "$baseUrl/blob/master/$matches[2]";
+
+        return !$line ? $url : "$url#L$line";
     }
 
 	public function generateApiUrl($typeName)

@@ -2,6 +2,7 @@
   @extend .col-md-3;
   @extend .col-sm-6;
   @extend .col-xs-12;
+
   ul {
     padding-left: 0;
   }
@@ -23,7 +24,7 @@
 
   span {
     float: right;
-    color: $eshill-green;
+    color: #198068;
   }
 }
 

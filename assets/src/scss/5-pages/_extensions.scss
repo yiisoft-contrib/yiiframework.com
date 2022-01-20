@@ -1,6 +1,6 @@
-// radio buttons for selection of extension type in extension create form
 label.radiolist-label {
   font-weight: normal;
+
   input {
     width: 25px;
     display: inline-block;
@@ -14,7 +14,8 @@ label.radiolist-label {
 .extension-box {
   @extend .box;
   margin-bottom: 30px;
-  @media (min-width: 768px)  {
+
+  @media (min-width: 768px) {
     min-height: 300px;
   }
 
@@ -26,6 +27,7 @@ label.radiolist-label {
   .extension-stats {
     text-transform: uppercase;
     color: #737373;
+
     a {
       text-decoration: none;
     }
@@ -44,13 +46,13 @@ label.radiolist-label {
   margin-top: 50px;
   text-align: center;
   font-size: 20px;
+
   .fa-spin {
     margin-top: 25px;
     font-size: 48px;
   }
 }
 
-// TODO: All code below looks a lot like _wiki.scss, this needs to be refactored
 .btn-new-extension {
   font-size: 1.8rem;
   font-family: "pt_sansregular", sans-serif;
@@ -58,6 +60,7 @@ label.radiolist-label {
   background-color: #F5FEC4;
   border-color: #70c1b3;
   margin-top: 1.5rem;
+
   .big {
     font-size: 2.4rem;
     display: block;
@@ -101,6 +104,7 @@ ul.extension-side-menu {
   list-style: none;
   margin: 0;
   padding: 5px 0 5px 0;
+
   &.last-side-menu {
     margin-bottom: 2rem;
   }
@@ -113,6 +117,7 @@ ul.extension-side-menu {
     text-decoration: none;
     padding: 10px 16px;
     cursor: pointer;
+
     &:hover {
       color: $eshill-blue;
       background-color: #fff;
@@ -134,6 +139,7 @@ ul.extension-side-menu {
   li.active a:hover {
     background-color: $eshill-light-blue;
     color: #fff;
+
     span.count {
       color: #fff;
     }
@@ -145,12 +151,14 @@ ul.extension-side-comments {
   list-style: none;
   margin: 0;
   padding: 5px 0 5px 0;
+
   &.last-side-menu {
     margin-bottom: 2rem;
   }
 
   li {
     padding: 10px 16px;
+
     .date {
       font-size: $font-size-small;
     }
@@ -159,6 +167,7 @@ ul.extension-side-comments {
 
 .extension-row {
   margin-bottom: 2rem;
+
   .suptitle {
     color: #70c1b3;
     font-size: 1.4rem;
@@ -175,6 +184,7 @@ ul.extension-side-comments {
 
   .comments {
     margin-top: 0.5rem;
+
     a {
       color: #808080;
       font-size: 1.4rem;
@@ -188,4 +198,11 @@ ul.extension-side-comments {
 
 .panel-body p:last-child {
   margin-bottom: 0;
+}
+
+#extension-packagist,
+#extension-form {
+  .btn-danger {
+    background-color: #D43A35;
+  }
 }

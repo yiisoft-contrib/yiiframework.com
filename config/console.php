@@ -12,6 +12,7 @@ return [
     'bootstrap' => ['log', 'queue'],
     'controllerNamespace' => 'app\commands',
     'aliases' => [
+        '@yii/apidoc' => '@vendor/yiisoft/yii2-apidoc',
         'yii\apidoc\templates\' . $template',
         '@webroot' => '@app/web',
         '@bower' => '@vendor/bower-asset',

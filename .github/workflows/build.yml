@@ -18,14 +18,14 @@ jobs:
       matrix:
         os:
           - ubuntu-latest
-          - windows-latest
-
         php:
-          - "7.0"
+          - "7.4"
+        mariadb:
+          - "10.5"
 
     services:
-      mysql:
-        image: mysql:${{ matrix.mysql-version }}
+      mariadb:
+        image: mariadb:${{ matrix.mariadb }}
         env:
           MYSQL_ROOT_PASSWORD: root
           MYSQL_DATABASE: yiitest
@@ -36,10 +36,11 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v2
+
       - name: Set up NodeJS
         uses: actions/setup-node@v2
-          with:
-            node-version: '13'
+        with:
+          node-version: '13'
 
       - name: Install PHP with extensions
         uses: shivammathur/setup-php@v2
@@ -52,10 +53,6 @@ jobs:
       - name: Determine composer cache directory on Linux
         if: matrix.os == 'ubuntu-latest'
         run: echo "COMPOSER_CACHE_DIR=$(composer config cache-dir)" >> $GITHUB_ENV
-
-      - name: Determine composer cache directory on Windows
-        if: matrix.os == 'windows-latest'
-        run: echo "COMPOSER_CACHE_DIR=~\AppData\Local\Composer" | Out-File -FilePath $env:GITHUB_ENV -Encoding utf8 -Append
 
       - name: Cache dependencies installed with composer
         uses: actions/cache@v2
@@ -76,7 +73,7 @@ jobs:
           sed -i "s/'cookieValidationKey' => ''/'cookieValidationKey' => 'testkey'/" config/web-local.php
 
       - name: Install node dependencies
-        run: npm install -g gulp-cli && npm install -g yarn && yarn install
+        run: npm install -g gulp-cli && npm install
 
       - name: Compile assets
         run: touch assets/src/scss/2-vendors/contributors.css && gulp build

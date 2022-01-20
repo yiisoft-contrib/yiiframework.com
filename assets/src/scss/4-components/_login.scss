@@ -1,12 +1,15 @@
 .login-container {
   background-color: $eshill-light-blue;
   width: 100%;
+
   .omb_login {
     @include rem(padding, 80px 0px);
+
     .omb_authTitle {
       @include rem(margin-bottom, 20px);
+
       h3 {
-        color:#FFF;
+        color: #FFF;
         @include rem(font-size, 45px);
         font-weight: bold;
         display: block;
@@ -40,6 +43,7 @@
         color: #ffffff;
         width: 100%;
         -webkit-text-fill-color: #7abbd7 !important;
+
         &:-moz-placeholder {
           color: #7abbd7;
         }
@@ -67,6 +71,7 @@
 
     .forgotPwd {
       @include rem(margin-top, 10px);
+
       a {
         color: #fff;
         font-size: 1.7rem;
@@ -79,13 +84,14 @@
       color: $eshill-blue;
       background-color: #F5FEC4;
       border-color: #ebfd88;
+
       &:hover {
         color: #1e6887;
         background-color: #BAD9C1;
         border-color: #93c39e;
       }
 
-      &:active{
+      &:active {
         color: #ebf1f2;
         background-color: #83BFB3;
         border-color: #5baa9a;
@@ -96,7 +102,8 @@
       text-align: center;
       border-left: 2px solid #1e6887;
       @include rem(min-height, 400px);
-      color:#fff;
+      color: #fff;
+
       @media (max-width: 991px) {
         @include rem(margin-top, 15px);
       }
@@ -112,6 +119,7 @@
         width: 90px;
         height: 90px;
         font-size: 4rem;
+
         i {
           background-color: #1e6887;
           color: #ffffff;

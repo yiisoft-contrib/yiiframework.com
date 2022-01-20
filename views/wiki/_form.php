@@ -20,7 +20,8 @@ use yii\widgets\ActiveForm;
 
             <?= $form->field($model, 'title') ?>
 
-            <?= $form->field($model, 'content')->textarea(['class' => 'markdown-editor']) ?>
+            <?= $form->field($model, 'content')->textarea(['class' => 'markdown-editor', 'title' =>
+                'text']) ?>
 
             <?php if (!$model->isNewRecord): ?>
                 <?= $form->field($model, 'memo')->hint('Give a short summary of what you changed.') ?>

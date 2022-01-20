@@ -26,10 +26,10 @@ return [
     // go
     'go/slack' => 'go/slack',
 
-    // status
-    'status/<version:\\d\\.\\d>' => 'status/index',
-    'status' => 'status/index',
-
+    // Github progress
+    'status/<version:\\d\\.\\d>' => 'github-progress/index',
+    'status' => 'github-progress/index',
+    'yii3-progress' => 'github-progress/yii3-progress',
 
     // RSS
     'rss.xml' => 'rss/all',
@@ -68,7 +68,6 @@ return [
     // search
     'search' => 'search/global',
     'search/suggest' => 'search/suggest',
-//    'search/as-you-type' => 'search/as-you-type',
     'search/opensearch-suggest' => 'search/opensearch-suggest',
     'opensearch.xml' => 'search/opensearch-description',
 

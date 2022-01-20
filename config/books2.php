@@ -10,7 +10,7 @@ return [
         'description' => 'Covers everything from very basics to advanced topics. Explanations are very clear. Additionally to the guide-style
                 chapters there are two complete examples.
             The second edition (for Yii 2.0) is <strong>not finished yet</strong>, but buyers can download updates as they are available.',
-        'url' => 'http://yii.larryullman.com/',
+        'url' => 'https://larry.pub/',
         'level' => 'beginner',
         'level-text' => 'Beginners',
         'level-description' => 'Recommended for beginners.',
@@ -33,7 +33,7 @@ return [
         'description' => 'Based around implementing a real world CRM following many best practices.
             It is assumed that reader is experienced enough in OOP so don\'t expect OO-basics
             explained.',
-        'url' => 'http://www.amazon.com/dp/1783981881?tag=gii20f-20',
+        'url' => 'https://www.amazon.com/dp/1783981881?tag=gii20f-20',
         'level' => 'pro',
         'level-text' => 'Pro',
         'level-description' => 'Recommended for intermediate-to-advanced developers.',
@@ -43,7 +43,7 @@ return [
         'author' => 'Matteo Pescarin',
         'image' => '@web/image/books/yii2-testing.jpg',
         'description' => 'Embrace 360-degree testing on your Yii 2 projects using Codeception.',
-        'url' => 'http://www.amazon.com/dp/1784392278?tag=gii20f-20',
+        'url' => 'https://www.amazon.com/dp/1784392278?tag=gii20f-20',
         'level' => 'pro',
         'level-text' => 'Pro',
         'level-description' => 'Recommended for intermediate-to-advanced developers.',
@@ -54,7 +54,7 @@ return [
         'image' => '@web/image/books/yii2-app-development-cookbook-3.jpg',
         'description' => 'The book is a set of individual independent recipes. Each recipe shows how to
             do something useful with Yii explaining why it\'s done, how it\'s done, why it works and how exactly it works.',
-        'url' => 'https://www.packtpub.com/web-development/yii2-application-development-cookbook-third-edition',
+        'url' => 'https://www.packtpub.com/product/yii2-application-development-cookbook-third-edition/9781785281761',
         'level' => 'all',
         'level-text' => 'All levels',
         'level-description' => 'Recommended for all levels',

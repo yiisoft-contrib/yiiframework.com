@@ -2,7 +2,8 @@
 
 return [
     'bootstrap' => [
-        'debug', 'gii',
+        'debug',
+        'gii',
     ],
     'modules' => [
         'debug' => [

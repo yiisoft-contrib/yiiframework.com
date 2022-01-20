@@ -61,7 +61,14 @@ class DiscourseAdapter extends Component implements ForumAdapterInterface
     {
         $this->getForumUserId($user);
 
-        $response = $this->getClient()->get([$url = sprintf('/admin/users/%d.json', $user->forum_id), 'api_key' => $this->apiToken, 'api_username' => $this->apiAdminUser])->send();
+        $response = $this->getClient()->get(
+            $url = sprintf('/admin/users/%d.json', $user->forum_id),
+            null,
+            [
+                'Api-Key' => $this->apiToken,
+                'Api-Username' => $this->apiAdminUser
+            ]
+        )->send();
         if (!$response->isOk) {
             Yii::error("Discourse API request returned error: $url");
             Yii::error($response);
@@ -94,7 +101,17 @@ class DiscourseAdapter extends Component implements ForumAdapterInterface
             return $user->forum_id;
         }
 
-        $response = $this->getClient()->get([$url = sprintf('/users/%s.json', $this->normalizeUsername($user->username)), 'api_key' => $this->apiToken, 'api_username' => $this->apiAdminUser])->send();
+        $response = $this->getClient()
+            ->get(
+                $url = sprintf('/u/by-external/%s.json', $user->id),
+                null,
+                [
+                    'Api-Key' => $this->apiToken,
+                    'Api-Username' => $this->apiAdminUser
+                ]
+            )
+            ->send();
+
         if ($response->isOk) {
             $userData = $response->data;
             if (isset($userData['user']['id'])) {
@@ -119,11 +136,20 @@ class DiscourseAdapter extends Component implements ForumAdapterInterface
     public function getPostCountsByUsername()
     {
         $postCounts = [];
-        $url = '/directory_items.json?period=all&order=post_count&api_key=' . urlencode($this->apiToken) . '&api_username=' . urlencode($this->apiAdminUser);
+
+        $url = '/directory_items.json?period=all&order=post_count';
         while (true) {
-            $response = $this->getClient()->get($url)->send();
+            $response = $this->getClient()
+                ->get(
+                    $url,
+                    null,
+                    [
+                        'Api-Key' => $this->apiToken,
+                        'Api-Username' => $this->apiAdminUser
+                    ]
+                )->send();
             if (!$response->isOk) {
-                Yii::error('Discourse API request returned error: ' . preg_replace('/api_key=.+?&/', 'api_key=...', $url));
+                Yii::error('Discourse API request returned error: ' . $url);
                 Yii::error($response);
                 return $postCounts;
             }
@@ -137,8 +163,7 @@ class DiscourseAdapter extends Component implements ForumAdapterInterface
                 break;
             }
             // workaround Discourse bug https://meta.discourse.org/t/directory-items-json-api-returns-wrong-link-for-next-page/96268
-            $moreItemsUrl = str_replace('?', '.json?', $userData['load_more_directory_items']);
-            $url = $moreItemsUrl . '&api_key=' . urlencode($this->apiToken) . '&api_username=' . urlencode($this->apiAdminUser);
+            $url = str_replace('?', '.json?', $userData['load_more_directory_items']);
         }
 
         return $postCounts;
@@ -170,7 +195,14 @@ class DiscourseAdapter extends Component implements ForumAdapterInterface
     {
         $badges = Yii::$app->cache->get('discourse_badges');
         if ($badges === false) {
-            $response = $this->getClient()->get(['/admin/badges.json', 'api_key' => $this->apiToken, 'api_username' => $this->apiAdminUser])->send();
+            $response = $this->getClient()->get(
+                '/admin/badges.json',
+                null,
+                [
+                    'Api-Key' => $this->apiToken,
+                    'Api-Username' => $this->apiAdminUser
+                ]
+        )->send();
             if (!$response->isOk) {
                 Yii::error('Discourse API request returned error: /admin/badges.json');
                 Yii::error($response);

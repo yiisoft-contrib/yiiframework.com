@@ -5,6 +5,7 @@ html {
 a {
   text-decoration: underline;
   transition: all ease-in-out .2s;
+
   &:hover,
   &:active,
   &:focus {
@@ -28,7 +29,7 @@ $font-sizes: (
   h4: $font-size-h4,
   h5: $font-size-h5,
   h6: $font-size-h6,
-  2up: $font-size-base * 2
+  2 up: $font-size-base * 2
 );
 
 @function fontsize($key) {

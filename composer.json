@@ -2,77 +2,79 @@
     "name": "yiisoft/yiiframework-com",
     "description": "yiiframework.com source code",
     "keywords": ["yii2", "framework"],
-    "homepage": "http://www.yiiframework.com/",
+    "homepage": "https://www.yiiframework.com/",
     "type": "project",
     "license": "BSD-3-Clause",
     "minimum-stability": "stable",
     "require": {
-        "php": ">=7.0.0",
-        "roave/security-advisories": "dev-master",
-
-        "yiisoft/yii2": "~2.0.36",
-
-        "yiisoft/yii2-apidoc": "~2.1.4@dev",
-        "cebe/markdown-latex": "^1.1.3@dev",
-        "cebe/markdown": "~1.0.3",
-
-        "yiisoft/yii2-authclient": "~2.1.0",
-        "yiisoft/yii2-httpclient": "~2.0.0",
-        "yiisoft/yii2-elasticsearch": "~2.1.0",
-        "yiisoft/yii2-redis": "~2.0.0",
-        "yiisoft/yii2-queue": "~2.0.0",
-        "yiisoft/yii2-swiftmailer": "~2.0.0",
-        "cebe/yii2-gravatar": "1.1",
-        "creocoder/yii2-flysystem": "~0.9.0",
-
-        "samdark/sitemap": "^2.0",
-
-        "knplabs/github-api": "^2.11",
-        "php-http/curl-client": "^1.7",
-        "guzzlehttp/psr7": "^1.5",
-
-        "scrivo/highlight.php": "~9.18",
-        "yetanotherape/diff-match-patch": "~1.0.0",
-
-        "imagine/imagine": "^0.6.3",
-
-        "2amigos/yii2-taggable-behavior": "~1.0.1",
+        "php": "^7.4",
+        "ext-curl": "*",
+        "ext-fileinfo": "*",
+        "ext-gd": "*",
+        "ext-json": "*",
+        "ext-intl": "*",
+        "ext-mbstring": "*",
+        "ext-pdo_mysql": "*",
+        "ext-zend-opcache": "*",
+        "ext-zip": "*",
         "2amigos/yii2-selectize-widget": "~1.0.1",
-
-        "yiisoft/yii2-bootstrap": "~2.0.6",
-        "yiisoft/yii2-jui": "~2.0.6",
-        "bower-asset/blueimp-file-upload": "~9.22.0",
-
-        "bower-asset/jquery": "2.2.*@stable",
-        "bower-asset/bootstrap-sass": "3.3.6",
-        "bower-asset/font-awesome": "^4.5",
-        "bower-asset/bootstrap-social": "^4.11",
-        "bower-asset/glidejs": "^2.0",
-        "bower-asset/sass-rem": "^1.2",
-        "bower-asset/scrollup": "^2.4",
-        "bower-asset/codemirror": "~5.9.0",
-        "bower-asset/codemirror-buttons": "~1.0.0",
-        "composer/spdx-licenses": "^1.1",
-        "zendframework/zend-feed": "^2.8",
+        "2amigos/yii2-taggable-behavior": "~1.0.1",
         "abraham/twitteroauth": "~0.7.4",
         "baibaratsky/yii2-rollbar": "^1.7",
-        "himiklab/yii2-recaptcha-widget": "^1.2",
+        "bower-asset/blueimp-file-upload": "~9.22.0",
+        "bower-asset/bootstrap-sass": "3.3.6",
+        "bower-asset/bootstrap-social": "^4.11",
+        "bower-asset/codemirror": "~5.9.0",
+        "bower-asset/codemirror-buttons": "~1.0.0",
+        "bower-asset/font-awesome": "^4.5",
+        "bower-asset/glidejs": "^2.0",
+        "bower-asset/jquery": "2.2.*@stable",
+        "bower-asset/sass-rem": "^1.2",
+        "bower-asset/scrollup": "^2.4",
+        "cebe/markdown": "~1.0.3",
+        "cebe/markdown-latex": "^1.1.3@dev",
+        "cebe/yii2-gravatar": "1.1",
+        "composer/spdx-licenses": "^1.1",
+        "creocoder/yii2-flysystem": "~0.9.0",
+        "guzzlehttp/psr7": "^1.5",
         "helgesverre/spamprotection": "1.0.1",
-        "yiisoft/yii2-imagine": "~2.1.0"
+        "himiklab/yii2-recaptcha-widget": "^1.2",
+        "imagine/imagine": "^0.6.3",
+        "knplabs/github-api": "2.11.0",
+        "php-http/curl-client": "^1.7",
+        "samdark/sitemap": "^2.0",
+        "scrivo/highlight.php": "~9.18",
+        "yetanotherape/diff-match-patch": "~1.0.0",
+        "yiisoft/yii2": "~2.0.44",
+        "yiisoft/yii2-apidoc": "~3.0.0",
+        "yiisoft/yii2-authclient": "~2.2.0",
+        "yiisoft/yii2-bootstrap": "~2.0.6",
+        "yiisoft/yii2-elasticsearch": "~2.1.0",
+        "yiisoft/yii2-httpclient": "~2.0.0",
+        "yiisoft/yii2-imagine": "~2.1.0",
+        "yiisoft/yii2-jui": "~2.0.6",
+        "yiisoft/yii2-queue": "~2.3.3",
+        "yiisoft/yii2-redis": "~2.0.0",
+        "yiisoft/yii2-swiftmailer": "~2.0.0",
+        "zendframework/zend-feed": "^2.8"
     },
     "require-dev": {
-        "yiisoft/yii2-debug": "~2.1.0@dev",
-        "yiisoft/yii2-gii": "~2.0.0",
+        "codeception/base": "^2.2.3",
+        "yiisoft/yii2-debug": "~2.1.0",
         "yiisoft/yii2-faker": "~2.0.0",
-        "yiisoft/yii2-shell": "~2.0.0",
-        "codeception/base": "^2.2.3"
+        "yiisoft/yii2-gii": "~2.0.0",
+        "yiisoft/yii2-shell": "~2.0.0"
     },
     "config": {
         "process-timeout": 1800,
         "fxp-asset": {
-           "enabled": false
+            "enabled": false
         },
-        "platform": {"php": "7.0"}
+        "platform": {"php": "7.4"},
+        "sort-packages": true,
+        "allow-plugins": {
+            "yiisoft/yii2-composer": true
+        }
     },
     "repositories": [
         {

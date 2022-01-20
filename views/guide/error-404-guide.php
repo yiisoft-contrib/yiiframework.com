@@ -12,7 +12,7 @@ use yii\helpers\Html;
 
 $this->title = 'Not Found (#404)';
 ?>
-<?= $this->render('//site/partials/common/_heading.php', ['title' => $this->title]) ?>
+<?= $this->render('//guide/partials/common/_heading.php', ['title' => $this->title]) ?>
 <div class="container">
     <div class="site-error content">
 

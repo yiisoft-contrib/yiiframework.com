@@ -1,13 +1,13 @@
-$(function($) {
+$(function ($) {
 
-    $('.voting a').on('click', function() {
+    $('.voting a').on('click', function () {
 
         var link = $(this);
         $.ajax({
             url: link.attr('data-vote-url'),
             method: 'post',
             dataType: "json",
-            success: function(data) {
+            success: function (data) {
 
                 console.log(data);
 
@@ -22,9 +22,9 @@ $(function($) {
                     voting.children('.votes-down').addClass('voted');
                 }
             },
-            error: function() {}
+            error: function () {
+            }
         });
-
 
         return false;
     });

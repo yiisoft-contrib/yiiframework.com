@@ -50,17 +50,17 @@ HTML
 			// - guide pdf
 			// - blog pdf
 			// - api html
-			'download-url'=>'https://github.com/yiisoft/yii/releases/download/1.1.23/yii-1.1.23.445827',
+			'download-url'=>'https://github.com/yiisoft/yii/releases/download/1.1.25/yii-1.1.25.43e386',
 			'min-php-version' => '5.1.0',
 			'support-until' => 'December 31, 2016 ',
-			'security-until' => 'December 31, 2021 ',
+			'security-until' => 'December 31, 2023 ',
 			'github-url' => 'https://github.com/yiisoft/yii',
 			'git-url' => 'git@github.com:yiisoft/yii.git',
 			'svn-url' => 'https://github.com/yiisoft/yii/trunk/',
 			'summary' => <<<HTML
-				Yii 1.1 is currently under <a href="http://www.yiiframework.com/news/90/update-on-yii-1-1-support-and-end-of-life/">maintenance mode</a>.
+				Yii 1.1 is currently under <a href="https://www.yiiframework.com/news/90/update-on-yii-1-1-support-and-end-of-life/">maintenance mode</a>.
 		        Continued support and bug fixes for this version have been provided until December 31, 2016.
-		        Security fixes and compatibility for PHP 7 and PHP 8 will be provided until at least December 31, 2021.
+		        Security fixes and compatibility for PHP 7 and PHP 8 will be provided until at least December 31, 2023.
 HTML
 		],
 		'1.0' => [
@@ -82,6 +82,10 @@ HTML
 	],
 	'minor-versions' => [
 		'2.0' => [
+            '2.0.44' => 'December 30, 2021',
+            '2.0.43' => 'August 09, 2021',
+            '2.0.42' => 'May 05, 2021',
+            '2.0.41' => 'March 4, 2021',
             '2.0.40' => 'December 23, 2020',
             '2.0.39' => 'November 10, 2020',
             '2.0.38' => 'September 14, 2020',
@@ -128,6 +132,8 @@ HTML
 			'2.0.0-alpha' => 'December 1, 2013',
 		],
 		'1.1' => [
+            '1.1.25' => 'December 13, 2021',
+            '1.1.24' => 'June 7, 2021',
             '1.1.23' => 'December 2, 2020',
 			'1.1.22' => 'January 16, 2020',
 			'1.1.21' => 'April 2, 2019',

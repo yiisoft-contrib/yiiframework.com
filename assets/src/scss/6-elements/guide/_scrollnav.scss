@@ -1,8 +1,8 @@
-// scrollnav styles nicked from Bootstrap docs
 #scrollnav {
   -webkit-transition: top 0.5s, -webkit-transform 0.5s;
   transition: top 0.5s, transform 0.5s;
-  .nav>li>a {
+
+  .nav > li > a {
     display: block;
     @include rem(padding, 4px 20px);
     @include rem(font-size, 14px);
@@ -10,16 +10,16 @@
     text-decoration: underline;
   }
 
-  .nav>li>a:focus,
-  .nav>li>a:hover {
+  .nav > li > a:focus,
+  .nav > li > a:hover {
     color: $eshill-header-color;
     background-color: #F2F9FA;
     text-decoration: underline;
   }
 
-  .nav>.active:focus>a,
-  .nav>.active:hover>a,
-  .nav>.active>a {
+  .nav > .active:focus > a,
+  .nav > .active:hover > a,
+  .nav > .active > a {
     color: $eshill-header-color;
     background-color: #F2F9FA;
     text-decoration: none;
@@ -30,11 +30,11 @@
     @include rem(padding-bottom, 2px);
   }
 
-  .nav>li.active>.nav {
+  .nav > li.active > .nav {
     display: block;
   }
 
-  .nav .nav>li>a {
+  .nav .nav > li > a {
     @include rem(padding-top, 1px);
     @include rem(padding-bottom, 1px);
     @include rem(padding-left, 30px);
@@ -42,14 +42,14 @@
     font-weight: 400;
   }
 
-  .nav .nav>li>a:focus,
-  .nav .nav>li>a:hover {
+  .nav .nav > li > a:focus,
+  .nav .nav > li > a:hover {
     @include rem(padding-left, 29px);
   }
 
-  .nav .nav>.active:focus>a,
-  .nav .nav>.active:hover>a,
-  .nav .nav>.active>a {
+  .nav .nav > .active:focus > a,
+  .nav .nav > .active:hover > a,
+  .nav .nav > .active > a {
     @include rem(padding-left, 28px);
     font-weight: 500;
   }
