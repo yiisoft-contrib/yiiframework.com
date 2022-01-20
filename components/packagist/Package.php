@@ -301,7 +301,7 @@ class Package
         uasort(
             $versions,
             function ($a, $b) {
-                return $a['version_normalized'] > $b['version_normalized'] ? 1 : -1;
+                return version_compare($a['version_normalized'], $b['version_normalized']);
             }
         );
 
