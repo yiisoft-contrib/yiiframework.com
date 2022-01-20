@@ -35,7 +35,7 @@
         "cebe/markdown-latex": "^1.1.3@dev",
         "cebe/yii2-gravatar": "1.1",
         "composer/spdx-licenses": "^1.1",
-        "creocoder/yii2-flysystem": "~0.9.0",
+        "creocoder/yii2-flysystem": "~1.1.0",
         "guzzlehttp/psr7": "^1.5",
         "helgesverre/spamprotection": "1.0.1",
         "himiklab/yii2-recaptcha-widget": "^1.2",
