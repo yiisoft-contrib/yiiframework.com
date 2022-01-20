@@ -17,7 +17,7 @@
         "ext-pdo_mysql": "*",
         "ext-zend-opcache": "*",
         "ext-zip": "*",
-        "2amigos/yii2-selectize-widget": "~1.0.1",
+        "2amigos/yii2-selectize-widget": "~1.1.0",
         "2amigos/yii2-taggable-behavior": "~1.0.1",
         "abraham/twitteroauth": "~0.7.4",
         "baibaratsky/yii2-rollbar": "^1.7",

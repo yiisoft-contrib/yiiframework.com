@@ -4,20 +4,20 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "7979c6897e95bf21191c91a77fcfd8e3",
+    "content-hash": "c09d344e7ae283e1ea5edf4bd2ecb099",
     "packages": [
         {
             "name": "2amigos/yii2-selectize-widget",
-            "version": "1.0.4",
+            "version": "1.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/2amigos/yii2-selectize-widget.git",
-                "reference": "9a276016e34817fb8be80cdfabfa3a77ef927408"
+                "reference": "9762a34d1095f15b60f46b876dad245011755bfc"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/2amigos/yii2-selectize-widget/zipball/9a276016e34817fb8be80cdfabfa3a77ef927408",
-                "reference": "9a276016e34817fb8be80cdfabfa3a77ef927408",
+                "url": "https://api.github.com/repos/2amigos/yii2-selectize-widget/zipball/9762a34d1095f15b60f46b876dad245011755bfc",
+                "reference": "9762a34d1095f15b60f46b876dad245011755bfc",
                 "shasum": ""
             },
             "require": {
@@ -65,7 +65,7 @@
                 "issues": "https://github.com/2amigos/yii2-selectize-widget/issues",
                 "source": "https://github.com/2amigos/yii2-selectize-widget/tree/master"
             },
-            "time": "2017-08-04T15:30:03+00:00"
+            "time": "2017-09-19T22:02:33+00:00"
         },
         {
             "name": "2amigos/yii2-taggable-behavior",
@@ -590,7 +590,7 @@
             "version": "0.12.6-patch1",
             "source": {
                 "type": "git",
-                "url": "https://github.com/selectize/selectize.js.git",
+                "url": "git@github.com:selectize/selectize.js.git",
                 "reference": "b8df29c9d4733857a4df4ddbf40d72abfd7c3ae9"
             },
             "dist": {
