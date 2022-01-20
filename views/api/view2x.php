@@ -71,15 +71,15 @@ $this->endBlock();
 
 $this->registerJs(<<<'JS'
 
-$(".api-content a.toggle").on('click', function () {
+$('.api-content a.toggle').on('click', function () {
     var $this = $(this);
     if ($this.hasClass('properties-hidden')) {
         $this.text($this.text().replace(/Show/,'Hide'));
-        $this.parents(".summary").find(".inherited").show();
+        $this.parents('.toggle-target-container').find('.inherited').show();
         $this.removeClass('properties-hidden');
     } else {
         $this.text($this.text().replace(/Hide/,'Show'));
-        $this.parents(".summary").find(".inherited").hide();
+        $this.parents('.toggle-target-container').find('.inherited').hide();
         $this.addClass('properties-hidden');
     }
 
