@@ -22,7 +22,7 @@
         "abraham/twitteroauth": "~0.7.4",
         "baibaratsky/yii2-rollbar": "^1.7",
         "bower-asset/blueimp-file-upload": "~9.22.0",
-        "bower-asset/bootstrap-sass": "3.3.6",
+        "bower-asset/bootstrap-sass": "3.4.1",
         "bower-asset/bootstrap-social": "^4.11",
         "bower-asset/codemirror": "~5.9.0",
         "bower-asset/codemirror-buttons": "~1.0.0",
