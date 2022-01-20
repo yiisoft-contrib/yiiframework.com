@@ -6,13 +6,13 @@ services:
       - .:/code/src
     command: >
       bash -c "gulp &
-      rsync -arv /code/vendor /code/node_modules /code/composer.lock /code/package-lock.json /code/src &
+      rsync -arv --delete /code/vendor /code/node_modules /code/composer.lock /code/package-lock.json /code/src &
       ./init --env=Development --overwrite=n &&
       service nginx start &&
       php-fpm"
   mariadb:
-    image: mariadb:10.1.48
+    image: mariadb:10.5.12
   redis:
-    image: redis:3.2.6
+    image: redis:6.0.16
   elasticsearch:
     image: elasticsearch:5.6.16
