@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "7979c6897e95bf21191c91a77fcfd8e3",
+    "content-hash": "2936489bbf723c736d5bf17365b4a484",
     "packages": [
         {
             "name": "2amigos/yii2-selectize-widget",
@@ -551,16 +551,16 @@
         },
         {
             "name": "bower-asset/sass-rem",
-            "version": "v1.2.4",
+            "version": "v2.0.1",
             "source": {
                 "type": "git",
                 "url": "git@github.com:pierreburel/sass-rem.git",
-                "reference": "a156b7382651ef07dff7aa08e3310ed148875b0e"
+                "reference": "44f6fe2702ce50a0eccfe396eaf46c34e6de2dea"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/pierreburel/sass-rem/zipball/a156b7382651ef07dff7aa08e3310ed148875b0e",
-                "reference": "a156b7382651ef07dff7aa08e3310ed148875b0e"
+                "url": "https://api.github.com/repos/pierreburel/sass-rem/zipball/44f6fe2702ce50a0eccfe396eaf46c34e6de2dea",
+                "reference": "44f6fe2702ce50a0eccfe396eaf46c34e6de2dea"
             },
             "type": "bower-asset",
             "license": [
