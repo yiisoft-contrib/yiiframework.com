@@ -182,13 +182,12 @@ return [
     'members' => require __DIR__ . '/members.php',
     'release-cycle' => require __DIR__ . '/release-cycle.php',
 
-    'adminEmail' => 'yii@cebe.cc',
-    'supportEmail' => 'yii@cebe.cc',
+    'adminEmail' => 'hostmaster@yiiframework.com',
+    'supportEmail' => 'team@yiiframework.com',
     'securityEmails' => [
         'sam@rmcreative.ru',
-        'mail@cebe.cc',
+        'contact@cebe.cc',
         'd.naumenko.a@gmail.com',
-        'klimov.paul@gmail.com',
     ],
     'notificationEmail' => ['admin@yiiframework.com' => 'Yii Framework'],
     'user.passwordResetTokenExpire' => 3600 * 3, // 3 hours
