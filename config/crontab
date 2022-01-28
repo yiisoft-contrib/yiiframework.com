@@ -2,6 +2,8 @@
 # This file is linked to /etc/cron.d/yiiframework on deployment
 #
 
+MAILTO=hostmaster@yiiframework.com
+
 # m h dom mon dow   user    command
 
 # generate sitemap daily
