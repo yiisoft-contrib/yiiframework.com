@@ -1,0 +1,28 @@
+# yiiframework.com crontab
+# This file is linked to /etc/cron.d/yiiframework on deployment
+#
+
+MAILTO=hostmaster@yiiframework.com
+
+# m h dom mon dow   user    command
+
+# generate sitemap daily
+15 3 * * *          root        cd /var/www/yiiframework && php ./yii sitemap/generate > /dev/null
+
+# generate contributors every 3rd day
+15 0 * * */3        root        cd /var/www/yiiframework && php ./yii contributors/generate > /dev/null
+
+# hourly update user badges
+2 * * * *           root        cd /var/www/yiiframework && php ./yii badge/update > /dev/null
+
+# daily update user ranking
+5 1 * * *           root        cd /var/www/yiiframework && php ./yii user/ranking > /dev/null
+
+# hourly update packagist information
+30 * * * *          root        cd /var/www/yiiframework && php ./yii cron/update-packagist > /dev/null
+
+# hourly update github progress yii3
+15 * * * *          root        cd /var/www/yiiframework && php ./yii github-progress > /dev/null
+
+# daily update docs
+45 4 * * *          root        cd /var/www/yiiframework && make docs > /dev/null
