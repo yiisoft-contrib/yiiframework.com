@@ -8,7 +8,7 @@ This project contains the source code for the [yiiframework.com](https://yiifram
 
 If you want to contribute please get in touch with us using the [issue tracker](https://github.com/yiisoft-contrib/yiiframework.com/issues).
 
-[![Build Status](https://api.travis-ci.com/yiisoft-contrib/yiiframework.com.svg)](https://travis-ci.com/yiisoft-contrib/yiiframework.com)
+![Build Status](https://github.com/yiisoft-contrib/yiiframework.com/actions/workflows/build.yml/badge.svg)
 
 ## Prerequisites
 
