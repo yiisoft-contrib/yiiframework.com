@@ -17,7 +17,7 @@ help:
 	@echo " - download-{v} make only the doc download archives for version {v} (2.0)"
 
 deploy:
-	composer --no-interaction --classmap-authoritative install
+	composer --no-interaction --classmap-authoritative --no-dev install
 	npm install
 	gulp build --production
 	./yii migrate
