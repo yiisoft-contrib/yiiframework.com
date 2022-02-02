@@ -71,12 +71,12 @@ download-%: yii-%
 yii-1.0: composer
 	test -d data/yii-1.0 || git clone https://github.com/yiisoft/yii.git data/yii-1.0
 	cd data/yii-1.0 && git checkout 1.0.12 && git checkout master build/
-	COMPOSER=composer.yii-1.0.json php data/composer.phar install
+	COMPOSER=composer.yii-1.0.json php data/composer.phar --no-interaction install
 
 yii-1.1: composer
 	test -d data/yii-1.1 || git clone https://github.com/yiisoft/yii.git data/yii-1.1
 	cd data/yii-1.1 && git pull
-	cd data/yii-1.1 && php ../composer.phar require --dev --prefer-dist "phpunit/phpunit:4.8.34" "phpunit/phpunit-selenium:~1.4.0"
+	cd data/yii-1.1 && php ../composer.phar require --dev --prefer-dist --no-interaction "phpunit/phpunit:4.8.34" "phpunit/phpunit-selenium:~1.4.0"
 
 yii-2.0: yii-2.0-git yii-2.0-ext-apidoc yii-2.0-ext-authclient yii-2.0-ext-bootstrap yii-2.0-ext-debug yii-2.0-ext-elasticsearch yii-2.0-ext-faker yii-2.0-ext-gii yii-2.0-ext-httpclient yii-2.0-ext-imagine yii-2.0-ext-jui yii-2.0-ext-mongodb yii-2.0-ext-redis yii-2.0-ext-shell yii-2.0-ext-smarty yii-2.0-ext-sphinx yii-2.0-ext-swiftmailer yii-2.0-ext-twig
 
