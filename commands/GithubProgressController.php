@@ -11,7 +11,7 @@ use yii\console\Controller;
 final class GithubProgressController extends Controller
 {
     private const RETRY_ATTEMPTS_COUNT = 3;
-    private const RETRY_DELAY = 30; // seconds
+    private const RETRY_DELAY = 90; // seconds
 
     public function actionIndex()
     {
