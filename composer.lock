@@ -3725,16 +3725,16 @@
         },
         {
             "name": "yiisoft/yii2-apidoc",
-            "version": "3.0.0",
+            "version": "3.0.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/yiisoft/yii2-apidoc.git",
-                "reference": "cb71bacbe8821b242cd9da6111c184c25801824e"
+                "reference": "47d7812d53661085b771c89b8127d0355066a44f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/yiisoft/yii2-apidoc/zipball/cb71bacbe8821b242cd9da6111c184c25801824e",
-                "reference": "cb71bacbe8821b242cd9da6111c184c25801824e",
+                "url": "https://api.github.com/repos/yiisoft/yii2-apidoc/zipball/47d7812d53661085b771c89b8127d0355066a44f",
+                "reference": "47d7812d53661085b771c89b8127d0355066a44f",
                 "shasum": ""
             },
             "require": {
@@ -3805,7 +3805,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2022-01-14T11:41:43+00:00"
+            "time": "2022-02-08T05:54:53+00:00"
         },
         {
             "name": "yiisoft/yii2-authclient",
