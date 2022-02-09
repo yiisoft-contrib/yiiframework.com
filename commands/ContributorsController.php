@@ -127,7 +127,7 @@ class ContributorsController extends Controller
         if (YII_ENV_DEV) {
             exec('gulp sprites && gulp styles', $output, $ret);
         } else {
-            exec('/usr/bin/gulp sprites && /usr/bin/gulp styles --production', $output, $ret);
+            exec('gulp sprites && gulp styles --production', $output, $ret);
         }
 
         $this->releaseMutex();
