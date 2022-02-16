@@ -14,7 +14,7 @@ use app\widgets\DropdownList;
 
         foreach ($versions as $version) {
 
-            $url = ['status/index'];
+            $url = ['github-progress/index'];
 
             if ($version) {
                 $url['version'] = $version;
