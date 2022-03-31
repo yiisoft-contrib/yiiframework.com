@@ -360,4 +360,10 @@ class SiteController extends BaseController
         $markdown = Yii::$app->request->post('content');
         return Yii::$app->formatter->asGuideMarkdown($markdown);
     }
+
+    public function actionDonate()
+    {
+        $this->sectionTitle = 'Donate';
+        return $this->render('donate', ['donationServices' => Yii::$app->params['donation-services']]);
+    }
 }

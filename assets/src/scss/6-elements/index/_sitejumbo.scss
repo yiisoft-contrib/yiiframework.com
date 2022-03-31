@@ -88,6 +88,14 @@
       text-align: center;
     }
   }
+
+  .column-button-set .btn {
+    width: 100%;
+
+    &:not(:first-child) {
+      margin-top: 2rem;
+    }
+  }
 }
 
 .glide__track {

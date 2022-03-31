@@ -181,6 +181,7 @@ return [
     'testimonials' => require __DIR__ . '/testimonials.php',
     'members' => require __DIR__ . '/members.php',
     'release-cycle' => require __DIR__ . '/release-cycle.php',
+    'donation-services' => require __DIR__ . '/donation-services.php',
 
     'adminEmail' => 'hostmaster@yiiframework.com',
     'supportEmail' => 'team@yiiframework.com',
