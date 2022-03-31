@@ -1,5 +1,6 @@
 <?php
 use yii\helpers\Html;
+use yii\helpers\Url;
 
 /* @var $this yii\web\View */
 $this->title = 'Contribute';
@@ -165,19 +166,10 @@ $this->params['breadcrumbs'][] = $this->title;
                             <h2><span>Donate</span></h2>
                         </div>
                         <p class="text-center"><img class="icon" src="<?= Yii::getAlias('@web/image/contribute/ico_contribute_05.svg')?>" alt=""></p>
-                        <p>Last but not least, there is an option to <a href="https://opencollective.com/yiisoft">fund Yii development through OpenCollective</a>.</p>
-
-                        <p>Funds will be spent on:</p>
-
-                        <ul>
-                            <li>Extra Yii time for core developers</li>
-                            <li>Servers and infrastructure</li>
-                            <li>Development tools</li>
-                            <li>Design</li>
-                            <li>Marketing</li>
-                        </ul>
-
-                        <p><a href="https://www.yiiframework.com/news/204/preparing-yii-for-the-long-run">More about OpenCollective</a>.</p>
+                        <p>
+                            Last but not least, there is an option to
+                            <a href="<?= Url::to('site/donate') ?>">fund Yii development</a>.
+                        </p>
                     </div>
                 </div>
             </div>

@@ -111,11 +111,12 @@ if ($discourse) {
                         ['label' => 'Learn', 'options' => ['class' => 'separator']],
                         ['label' => 'Books', 'url' => ['site/books']],
                         ['label' => 'Resources', 'url' => ['site/resources']],
-                        ['label' => 'Develop', 'options' => ['class' => 'separator']],
+                        ['label' => 'Development', 'options' => ['class' => 'separator']],
                         ['label' => 'Download Yii', 'url' => ['site/download']],
                         ['label' => 'Report an Issue', 'url' => ['site/report-issue']],
                         ['label' => 'Report a Security Issue', 'url' => ['site/security']],
                         ['label' => 'Contribute to Yii', 'url' => ['/site/contribute']],
+                        ['label' => 'Donate', 'url' => ['site/donate']],
                         ['label' => 'About', 'options' => ['class' => 'separator']],
                         [
                             'label' => 'What is Yii?',
