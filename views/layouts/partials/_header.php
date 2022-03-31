@@ -111,7 +111,7 @@ if ($discourse) {
                         ['label' => 'Learn', 'options' => ['class' => 'separator']],
                         ['label' => 'Books', 'url' => ['site/books']],
                         ['label' => 'Resources', 'url' => ['site/resources']],
-                        ['label' => 'Development', 'options' => ['class' => 'separator']],
+                        ['label' => 'Develop', 'options' => ['class' => 'separator']],
                         ['label' => 'Download Yii', 'url' => ['site/download']],
                         ['label' => 'Report an Issue', 'url' => ['site/report-issue']],
                         ['label' => 'Report a Security Issue', 'url' => ['site/security']],
