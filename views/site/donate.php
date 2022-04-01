@@ -24,8 +24,7 @@
             <?php } ?>
         </ul>
         <p>
-            <a href="https://boosty.to/yiisoft">Boosty</a> was added recently specifically for Russian users to overcome
-            blocking transfers.
+            <a href="https://boosty.to/yiisoft">Boosty</a> was added recently for Russian users to be able to contribute as well.
         </p>
         <p>You can read more in these related news:</p>
         <ul>
