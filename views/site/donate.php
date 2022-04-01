@@ -40,6 +40,6 @@
                 </a>
             </li>
         </ul>
-        <p>Thanks for you help!</p>
+        <p>Thanks for your help!</p>
     </div>
 </div>
