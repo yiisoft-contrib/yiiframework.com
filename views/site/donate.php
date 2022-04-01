@@ -1,5 +1,7 @@
 <?php
 
+use yii\helpers\Html;
+
 /* @var yii\web\View $this */
 /* @var array $donationServices */
 ?>
@@ -20,7 +22,7 @@
         <p>Currently these donation services are available:</p>
         <ul>
             <?php foreach ($donationServices as $donationService) { ?>
-                <li><a href="<?= $donationService['link'] ?>"><?= $donationService['name'] ?></a></li>
+                <li><a href="<?= $donationService['link'] ?>"><?= Html::encode($donationService['name']) ?></a></li>
             <?php } ?>
         </ul>
         <p>
