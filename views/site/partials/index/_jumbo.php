@@ -23,8 +23,11 @@ $this->registerJs("
                     Has reasonable defaults.
                 </p>
             </div>
-            <div class="col-md-4 col-link">
-                <a href="<?= Url::to(['github-progress/yii3-progress']) ?>" class="btn">Looking for Yii 3 progress?</a>
+            <div class="col-md-4 col-link column-button-set">
+                <a href="<?= Url::to(['github-progress/yii3-progress']) ?>" class="btn">
+                    Looking for Yii 3 progress?
+                </a>
+                <a href="<?= Url::to(['site/donate']) ?>" class="btn">Donate</a>
             </div>
         </div>
     </div>

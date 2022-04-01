@@ -22,6 +22,7 @@ return [
     'community' => 'site/community',
     'render-markdown' => 'site/render-markdown',
     'release-cycle' => 'site/release-cycle',
+    'donate' => 'site/donate',
 
     // go
     'go/slack' => 'go/slack',

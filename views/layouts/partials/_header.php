@@ -116,6 +116,7 @@ if ($discourse) {
                         ['label' => 'Report an Issue', 'url' => ['site/report-issue']],
                         ['label' => 'Report a Security Issue', 'url' => ['site/security']],
                         ['label' => 'Contribute to Yii', 'url' => ['/site/contribute']],
+                        ['label' => 'Donate', 'url' => ['site/donate']],
                         ['label' => 'About', 'options' => ['class' => 'separator']],
                         [
                             'label' => 'What is Yii?',
