@@ -3,7 +3,7 @@
 return [
     [
         'name' => 'Open Collective',
-        'link' => 'https://opencollective/yiisoft',
+        'link' => 'https://opencollective.com/yiisoft',
     ],
     [
         'name' => 'Github Sponsors',
