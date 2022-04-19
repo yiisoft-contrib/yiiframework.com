@@ -10,7 +10,7 @@ use yii\console\Controller;
 
 final class GithubProgressController extends Controller
 {
-    private const RETRY_ATTEMPTS_COUNT = 3;
+    private const ATTEMPTS_COUNT = 3;
     private const RETRY_DELAY = 90; // seconds
 
     public function actionIndex()
@@ -25,7 +25,7 @@ final class GithubProgressController extends Controller
         $attempt = 0;
         $failures = 0;
 
-        while ($attempt < self::RETRY_ATTEMPTS_COUNT) {
+        while ($attempt < self::ATTEMPTS_COUNT) {
             try {
                 $data = (new GithubProgress($version, new GithubClient()))->getData();
                 Yii::$app->cache->set("github_progress_data_$version", $data);
@@ -44,11 +44,11 @@ final class GithubProgressController extends Controller
             $attempt++;
         }
 
-        if ($failures === self::RETRY_ATTEMPTS_COUNT) {
+        if ($failures === self::ATTEMPTS_COUNT) {
             $this->stderr(sprintf(
                 "Failed to get data for version %s because of timeout.\nRetried %s times with %s seconds interval.\n",
                 $version,
-                $attempt,
+                $attempt - 1,
                 self::RETRY_DELAY
             ));
         }

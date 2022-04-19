@@ -43,9 +43,9 @@ class GithubProgress
         $token = trim(file_get_contents($tokenFile));
 
         $this->client->authenticate($token, null, GithubClient::AUTH_HTTP_TOKEN);
-        $githubRepoStatus = new GithubRepoSet($repositories, $this->client);
+        $githubRepoSet = new GithubRepoSet($repositories, $this->client);
 
-        return $githubRepoStatus->getData();
+        return $githubRepoSet->getData();
     }
 
     private function getAllResponseRepositories(): array
