@@ -94,7 +94,7 @@ yii-2.0: yii-2.0-ext-apidoc \
     yii-2.0-ext-smarty \
     yii-2.0-ext-sphinx \
     yii-2.0-ext-swiftmailer \
-    yii-2.0-ext-twig
+    yii-2.0-ext-twig \
     yii-2.0-git
 
 yii-2.0-git:
