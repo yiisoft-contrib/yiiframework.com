@@ -84,6 +84,9 @@ class Extension extends ActiveRecord implements Linkable, ObjectIdentityInterfac
 
     const NAME_PATTERN = '[a-z][a-z0-9\-]*';
 
+    const TAGLINE_MAX_LENGTH = 128;
+    const TAGLINE_PREVIEW_SUFFIX = '...';
+
     /**
      * @var string editor note on upate
      */
@@ -460,7 +463,13 @@ MARKDOWN;
 
         }
 
-        $this->tagline = $package->getDescription();
+        $this->tagline = $package->getDescription() <= self::TAGLINE_MAX_LENGTH
+            ? $package->getDescription()
+            : substr(
+                $package->getDescription(),
+                0,
+                self::TAGLINE_MAX_LENGTH - strlen(self::TAGLINE_PREVIEW_SUFFIX)
+            ) . self::TAGLINE_PREVIEW_SUFFIX;
         $this->license_id = $package->getLicense();
         $this->yii_version = $package->getYiiVersion();
         $this->github_url = $package->getRepository();
@@ -471,40 +480,6 @@ MARKDOWN;
         $this->download_count = $downloads['total'] ?? 0;
         $this->update_status = self::UPDATE_STATUS_UPTODATE;
         $this->update_time = date('Y-m-d H:i:s');
-
-//
-//        if ($selectedVersion) {
-//            foreach (['require', 'require-dev', 'suggest', 'provide', 'conflict', 'replace'] as $section) {
-//                $selectedVersionData[$section] = [];
-//
-//                if (!empty($selectedVersion[$section])) {
-//                    foreach ($selectedVersion[$section] as $kVersionItem => $vVersionItem) {
-//                        $versionItemName = Html::encode($kVersionItem);
-//                        if (preg_match('/^([\w\-\.]+)\/([\w\-\.]+)$/i', $kVersionItem, $match)) {
-//                            $versionItemName = Html::a($versionItemName, [
-//                                'extension/package',
-//                                'vendorName' => $match[1],
-//                                'packageName' => $match[2]
-//                            ]);
-//                        }
-//
-//                        $selectedVersionData[$section][] = $versionItemName . ': ' . Html::encode($vVersionItem);
-//                    }
-//                }
-//            }
-//        }
-//
-//        return $this->render(
-//            'package',
-//            [
-//                'package' => $package,
-//                'readme' => (new PackagistApi())->getReadmeFromRepository($package->getRepository()),
-//                'versions' => $versions,
-//                'selectedVersion' => $selectedVersion,
-//                'selectedVersionData' => $selectedVersionData
-//            ]
-//        );
-
     }
 
     /**
@@ -667,5 +642,17 @@ MARKDOWN;
         }
 
         return $version === null || in_array($version, $versions, true);
+    }
+
+    /**
+     * @return bool
+     */
+    public function isTaglineAPreview()
+    {
+        if (!$this->from_packagist) {
+            return false;
+        }
+
+        return substr($this->tagline, -strlen(self::TAGLINE_PREVIEW_SUFFIX)) === self::TAGLINE_PREVIEW_SUFFIX;
     }
 }
