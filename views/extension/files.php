@@ -8,16 +8,6 @@ use yii\helpers\Html;
 /** @var $revision int */
 /** @var $file File */
 
-
-/* TODO
- * $this->meta=array(
-    'keywords'    => "yii framework, extension, {$model->category}, {$model->tags}, downloads",
-    'description' => $model->tagline,
-);
-?>
-
- */
-
 $this->title = "$model->name | Downloads";
 
 ?>
