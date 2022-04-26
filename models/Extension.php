@@ -236,7 +236,7 @@ MARKDOWN;
             $url = 'https://packagist.org/p/' . ltrim($url, '/');
         }
         if (strpos($url, 'http://') === 0) {
-            $url = 'https://' . substr($url, 7);
+            $url = 'https://' . mb_substr($url, 7);
         }
         return rtrim($url, '/');
     }
@@ -463,12 +463,12 @@ MARKDOWN;
 
         }
 
-        $this->tagline = $package->getDescription() <= self::TAGLINE_MAX_LENGTH
+        $this->tagline = mb_strlen($package->getDescription()) <= self::TAGLINE_MAX_LENGTH
             ? $package->getDescription()
-            : substr(
+            : mb_substr(
                 $package->getDescription(),
                 0,
-                self::TAGLINE_MAX_LENGTH - strlen(self::TAGLINE_PREVIEW_SUFFIX)
+                self::TAGLINE_MAX_LENGTH - mb_strlen(self::TAGLINE_PREVIEW_SUFFIX)
             ) . self::TAGLINE_PREVIEW_SUFFIX;
         $this->license_id = $package->getLicense();
         $this->yii_version = $package->getYiiVersion();
@@ -653,6 +653,6 @@ MARKDOWN;
             return false;
         }
 
-        return substr($this->tagline, -strlen(self::TAGLINE_PREVIEW_SUFFIX)) === self::TAGLINE_PREVIEW_SUFFIX;
+        return mb_substr($this->tagline, -mb_strlen(self::TAGLINE_PREVIEW_SUFFIX)) === self::TAGLINE_PREVIEW_SUFFIX;
     }
 }
