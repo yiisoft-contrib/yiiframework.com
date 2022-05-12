@@ -37,11 +37,6 @@ $this->registerLinkTag([
 
         <link href="<?= Url::to(['rss/all'], true) ?>" type="application/rss+xml" rel="alternate" title="Live News for Yii Framework">
 
-        <!--[if lt IE 9]>
-        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-        <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
-        <![endif]-->
-
         <?= Html::csrfMetaTags() ?>
         <?php $this->registerJs('yiiBaseUrl = ' . \yii\helpers\Json::htmlEncode(Yii::$app->request->getBaseUrl()), \yii\web\View::POS_HEAD); ?>
 
