@@ -237,7 +237,7 @@ return [
         'photo' => '@web/image/team/hiqsol.jpg',
         'github' => 'hiqsol',
         'twitter' => 'hiqsol',
-        'status' => TeamStatus::TEAM_STATUS_ACTIVE,
+        'status' => TeamStatus::TEAM_STATUS_INACTIVE,
     ],
     [
         'name' => 'Mehdi Achour',
@@ -272,7 +272,7 @@ return [
         'duty' => 'Yii 3.0 development',
         'photo' => '@web/image/team/romkatsu.jpg',
         'github' => 'romkatsu',
-        'status' => TeamStatus::TEAM_STATUS_ACTIVE,
+        'status' => TeamStatus::TEAM_STATUS_INACTIVE,
     ],
     [
         'name' => 'yiiliveext',
@@ -283,7 +283,7 @@ return [
         'duty' => 'Yii 3.0 development',
         'photo' => '@web/image/team/noimage.png',
         'github' => 'yiiliveext',
-        'status' => TeamStatus::TEAM_STATUS_ACTIVE,
+        'status' => TeamStatus::TEAM_STATUS_INACTIVE,
     ],
     [
         'name' => 'Rustam Mamadaminov',
@@ -306,7 +306,7 @@ return [
         'duty' => 'Yii 3.0 development',
         'photo' => '@web/image/team/rugabarbo.jpg',
         'github' => 'rugabarbo',
-        'status' => TeamStatus::TEAM_STATUS_ACTIVE,
+        'status' => TeamStatus::TEAM_STATUS_INACTIVE,
     ],
     [
         'name' => 'Aleksei Gagarin',
@@ -340,7 +340,7 @@ return [
         'duty' => 'Yii 3.0 development',
         'photo' => '@web/image/team/thenotsoft.jpg',
         'github' => 'thenotsoft',
-        'status' => TeamStatus::TEAM_STATUS_ACTIVE,
+        'status' => TeamStatus::TEAM_STATUS_INACTIVE,
     ],
     [
         'name' => 'Dmitry Derepko',
@@ -397,7 +397,7 @@ return [
         'photo' => '@web/image/team/devanych.png',
         'github' => 'devanych',
         'twitter' => 'EvgeniyZyubin',
-        'status' => TeamStatus::TEAM_STATUS_ACTIVE,
+        'status' => TeamStatus::TEAM_STATUS_INACTIVE,
     ],
     [
         'name' => 'Valerii Gorbachev',
