@@ -31,7 +31,7 @@
     "gulp-sourcemaps": "^3.0.0",
     "gulp-touch-fd": "^2.0.0",
     "gulp-uglify": "^3.0.2",
-    "gulp.spritesmith": "^6.12.1",
+    "gulp.spritesmith": "^6.13.0",
     "js-yaml": "^4.1.0",
     "rimraf": "^3.0.2",
     "yargs": "^17.5.1"
