@@ -1,6 +1,8 @@
 <?php
 /** @var $progress */
 /** @var $progressPercent */
+
+use yii\helpers\Url;
 ?>
 <div class="wrapper">
     <div class="flex-center">
@@ -22,7 +24,7 @@
             </li>
             <li>
                 <span>
-                    <a href="https://opencollective.com/yiisoft" target="_blank">Help financially</a>
+                    <a href="<?= Url::to('site/donate') ?>" target="_blank">Donate</a>
                 </span>
             </li>
             <li>

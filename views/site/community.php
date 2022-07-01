@@ -49,7 +49,7 @@
            <ul>
                <li>StackOverflow: <a href="https://ru.stackoverflow.com/questions/tagged/yii">Yii</a>,
                                   <a href="https://ru.stackoverflow.com/questions/tagged/yii2">Yii 2</a></li>
-               <li><a href="https://toster.ru/tag/yii/questions">Toster</a></li>
+               <li><a href="https://qna.habr.com/tag/yii/questions">Habr Q&A</a></li>
            </ul>
 
            <h3>Social Networks</h3>
