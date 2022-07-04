@@ -275,17 +275,6 @@ return [
         'status' => TeamStatus::TEAM_STATUS_INACTIVE,
     ],
     [
-        'name' => 'yiiliveext',
-        'id' => '',
-        'forumName' => '',
-        'period' => '2019',
-        'location' => 'Kiev, Ukraine',
-        'duty' => 'Yii 3.0 development',
-        'photo' => '@web/image/team/noimage.png',
-        'github' => 'yiiliveext',
-        'status' => TeamStatus::TEAM_STATUS_INACTIVE,
-    ],
-    [
         'name' => 'Rustam Mamadaminov',
         'id' => '302659',
         'forumName' => 'rustanwin',
