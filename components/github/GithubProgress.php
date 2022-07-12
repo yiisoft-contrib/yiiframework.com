@@ -91,9 +91,15 @@ class GithubProgress
     {
         $repositories = [];
         foreach (static::getAllResponseRepositories() as $responseRepository) {
-            if (in_array('yii' . (int) $this->version, $responseRepository->topics, true)) {
-                $repositories[] = explode('/', $responseRepository->full_name);
+            if (!in_array('yii' . (int) $this->version, $responseRepository->topics, true)) {
+                continue;
             }
+
+            if (in_array('internal', $responseRepository->topics, true)) {
+                continue;
+            }
+
+            $repositories[] = explode('/', $responseRepository->full_name);
         }
 
         return $repositories;
