@@ -29,7 +29,7 @@ use yii\helpers\Url;
             </li>
             <li>
                 <span>
-                    <a href="https://www.yiiframework.com/status/3.0" target="_blank">Detailed release statuses</a>
+                    <a href="<?= Url::to('status/3.0') ?>" target="_blank">Detailed release statuses</a>
                 </span>
             </li>
             <li>
