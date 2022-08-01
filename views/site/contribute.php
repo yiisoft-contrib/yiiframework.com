@@ -168,7 +168,7 @@ $this->params['breadcrumbs'][] = $this->title;
                         <p class="text-center"><img class="icon" src="<?= Yii::getAlias('@web/image/contribute/ico_contribute_05.svg')?>" alt=""></p>
                         <p>
                             Last but not least, there is an option to
-                            <a href="<?= Url::to(['site/donate']) ?>">fund Yii development</a>.
+                            <a href="<?= Url::to('donate') ?>">fund Yii development</a>.
                         </p>
                     </div>
                 </div>
