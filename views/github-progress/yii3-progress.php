@@ -24,7 +24,7 @@ use yii\helpers\Url;
             </li>
             <li>
                 <span>
-                    <a href="<?= Url::to('site/donate') ?>" target="_blank">Donate</a>
+                    <a href="<?= Url::to(['site/donate']) ?>" target="_blank">Donate</a>
                 </span>
             </li>
             <li>
