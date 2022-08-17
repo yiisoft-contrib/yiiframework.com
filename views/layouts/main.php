@@ -66,7 +66,7 @@ $this->registerLinkTag([
         <meta property="og:site_name" content="Yii Framework" />
         <meta property="og:title" content="<?= !empty($this->title) ? Html::encode($this->title) : 'Yii Framework' ?>" />
         <meta property="og:image" content="<?= Url::to(Yii::getAlias('@web/image/facebook_cover.png'), true) ?>" />
-        <meta property="og:url" content="<?= Url::to() ?>" />
+        <meta property="og:url" content="<?= Html::encode(Url::to()) ?>" />
         <meta property="og:description" content="" />
 
         <meta name="twitter:card" content="summary" />
