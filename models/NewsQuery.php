@@ -20,7 +20,7 @@ class NewsQuery extends \yii\db\ActiveQuery
     public function latest()
     {
         return $this
-            ->orderBy(['news_date' => SORT_DESC]);
+            ->orderBy(['news_date' => SORT_DESC, 'id' => SORT_DESC]);
     }
 
     public function published()
