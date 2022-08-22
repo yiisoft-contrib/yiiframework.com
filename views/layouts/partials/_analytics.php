@@ -1,3 +1,4 @@
+<?php if (YII_ENV_PROD): ?>
 <!-- Global site tag (gtag.js) - Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-707ZP35KCT"></script>
 <script>
@@ -7,3 +8,4 @@
 
     gtag('config', 'G-707ZP35KCT');
 </script>
+<?php endif ?>
