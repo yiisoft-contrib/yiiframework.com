@@ -121,14 +121,14 @@ To assign users extra permissions use `./yii rbac/assign`.
 
 The following commands need to be set up to run on a regular basis:
 
-| command                   | interval | Purpose
-| --------------------      | -------- | --
-| yii sitemap/generate      | daily    | regenerate sitemap.xml
-| yii contributors/generate | weekly   | update contributors list on team page
-| yii badge/update          | hourly   | update badges for users in badge_queue
-| yii cron/update-packagist | hourly   | update packagist extension data
-| yii user/ranking          | daily    | update user ranking
-| yii github-progress       | hourly   | update Github progress data
+| command                   | interval | Purpose                                |
+|---------------------------|----------|----------------------------------------|
+| yii sitemap/generate      | daily    | regenerate sitemap.xml                 |
+| yii contributors/generate | weekly   | update contributors list on team page  |
+| yii badge/update          | hourly   | update badges for users in badge_queue |
+| yii cron/update-packagist | hourly   | update packagist extension data        |
+| yii user/ranking          | daily    | update user ranking                    |
+| yii github-progress       | hourly   | update Github progress data            |
 
 Additionally, `queue/listen` should run as a daemon or `queue/run` as a cronjob.
 
