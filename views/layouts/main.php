@@ -29,6 +29,8 @@ $this->registerLinkTag([
         <link rel="apple-touch-icon" sizes="180x180" href="<?= Yii::getAlias('@web/favico/apple-touch-icon.png') ?>">
         <link rel="icon" type="image/png" sizes="32x32" href="<?= Yii::getAlias('@web/favico/favicon-32x32.png') ?>">
         <link rel="icon" type="image/png" sizes="16x16" href="<?= Yii::getAlias('@web/favico/favicon-16x16.png') ?>">
+        <link rel="icon" type="image/svg+xml" href="<?= Yii::getAlias('@web/favico/favicon.svg') ?>">
+        <link rel="icon" type="image/png" href="<?= Yii::getAlias('@web/favico/favicon.png') ?>">
         <link rel="shortcut icon" href="<?= Yii::getAlias('@web/favico/favicon.ico') ?>">
         <link rel="manifest" href="<?= Yii::getAlias('@web/favico/manifest.json') ?>">
         <link rel="mask-icon" href="<?= Yii::getAlias('@web/favico/safari-pinned-tab.svg') ?>" color="#1e6887">
