@@ -242,6 +242,7 @@ class UserController extends BaseController
 
         $changePasswordForm = new ChangePasswordForm($user);
         if ($changePasswordForm->load(Yii::$app->request->post()) && $changePasswordForm->save()) {
+            Yii::$app->getUser()->switchIdentity($changePasswordForm->getUser(), $this->getRememberMeDuration());
             Yii::$app->getSession()->setFlash('success', 'The password has been changed.');
             return $this->redirect(['/user/profile']);
         }
@@ -260,6 +261,7 @@ class UserController extends BaseController
 
         $changeEmailForm = new ChangeEmailForm($user);
         if ($changeEmailForm->load(Yii::$app->request->post()) && $changeEmailForm->save()) {
+            Yii::$app->getUser()->switchIdentity($changeEmailForm->getUser(), $this->getRememberMeDuration());
             Yii::$app->getSession()->setFlash('success', 'The email has been changed.');
             return $this->redirect(['/user/profile']);
         }
@@ -267,6 +269,15 @@ class UserController extends BaseController
         return $this->render('changeEmail', [
             'changeEmailForm' => $changeEmailForm,
         ]);
+    }
+
+    protected function getRememberMeDuration(): int
+    {
+        $name = Yii::$app->getUser()->identityCookie['name'];
+
+        return Yii::$app->getRequest()->getCookies()->has($name)
+            ? (int) Yii::$app->params['user.rememberMeDuration']
+            : 0;
     }
 
     /**
