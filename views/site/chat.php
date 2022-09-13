@@ -13,6 +13,13 @@ use yii\helpers\Url;
             when they can.
         </p>
 
+        <h2>Telegram</h2>
+        <p>
+            We have a Telegram channel:
+            <a href="https://t.me/yii3en">@yii3en</a>.
+            There are <a href="https://telegram.org/apps">handy clients for Desktop and phones</a>.
+        </p>
+
         <h2>Slack</h2>
         <p>
             We have a Slack channel:
