@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "7979c6897e95bf21191c91a77fcfd8e3",
+    "content-hash": "a3ff3d68806bde82f2adf254416f89b2",
     "packages": [
         {
             "name": "2amigos/yii2-selectize-widget",
@@ -250,71 +250,17 @@
             "time": "2021-07-28T11:01:34+00:00"
         },
         {
-            "name": "bower-asset/blueimp-canvas-to-blob",
-            "version": "v3.28.0",
-            "source": {
-                "type": "git",
-                "url": "git@github.com:blueimp/JavaScript-Canvas-to-Blob.git",
-                "reference": "e618f54e5be896042e5155b9126ebc90bbc55455"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/blueimp/JavaScript-Canvas-to-Blob/zipball/e618f54e5be896042e5155b9126ebc90bbc55455",
-                "reference": "e618f54e5be896042e5155b9126ebc90bbc55455"
-            },
-            "type": "bower-asset"
-        },
-        {
             "name": "bower-asset/blueimp-file-upload",
-            "version": "v9.22.2",
+            "version": "v10.32.0",
             "source": {
                 "type": "git",
-                "url": "https://github.com/blueimp/jQuery-File-Upload.git",
-                "reference": "965e300db3cf5218e0d4bebb3f4dd229bc24e865"
+                "url": "git@github.com:blueimp/jQuery-File-Upload.git",
+                "reference": "0c85627dfb551e2ce25b82cddef557069bd803ed"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/blueimp/jQuery-File-Upload/zipball/965e300db3cf5218e0d4bebb3f4dd229bc24e865",
-                "reference": "965e300db3cf5218e0d4bebb3f4dd229bc24e865"
-            },
-            "require": {
-                "bower-asset/blueimp-canvas-to-blob": ">=2.1.1",
-                "bower-asset/blueimp-load-image": ">=1.13.0",
-                "bower-asset/blueimp-tmpl": ">=2.5.4",
-                "bower-asset/jquery": ">=1.6"
-            },
-            "type": "bower-asset",
-            "license": [
-                "MIT"
-            ]
-        },
-        {
-            "name": "bower-asset/blueimp-load-image",
-            "version": "v5.16.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/blueimp/JavaScript-Load-Image.git",
-                "reference": "5d34ed4ce3472ecb22d920c66cc4d7604526ff24"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/blueimp/JavaScript-Load-Image/zipball/5d34ed4ce3472ecb22d920c66cc4d7604526ff24",
-                "reference": "5d34ed4ce3472ecb22d920c66cc4d7604526ff24"
-            },
-            "type": "bower-asset"
-        },
-        {
-            "name": "bower-asset/blueimp-tmpl",
-            "version": "v3.19.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/blueimp/JavaScript-Templates.git",
-                "reference": "0d0e03882313cf1c192fb4b68c4c78ab7d7d8c7a"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/blueimp/JavaScript-Templates/zipball/0d0e03882313cf1c192fb4b68c4c78ab7d7d8c7a",
-                "reference": "0d0e03882313cf1c192fb4b68c4c78ab7d7d8c7a"
+                "url": "https://api.github.com/repos/blueimp/jQuery-File-Upload/zipball/0c85627dfb551e2ce25b82cddef557069bd803ed",
+                "reference": "0c85627dfb551e2ce25b82cddef557069bd803ed"
             },
             "type": "bower-asset"
         },
@@ -7875,5 +7821,5 @@
     "platform-overrides": {
         "php": "7.4"
     },
-    "plugin-api-version": "2.2.0"
+    "plugin-api-version": "2.3.0"
 }
