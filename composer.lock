@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "7979c6897e95bf21191c91a77fcfd8e3",
+    "content-hash": "538ccd35a2e81c3413f9c56abd295d66",
     "packages": [
         {
             "name": "2amigos/yii2-selectize-widget",
@@ -323,7 +323,7 @@
             "version": "v3.4.1",
             "source": {
                 "type": "git",
-                "url": "https://github.com/twbs/bootstrap.git",
+                "url": "git@github.com:twbs/bootstrap.git",
                 "reference": "68b0d231a13201eb14acd3dc84e51543d16e5f7e"
             },
             "dist": {
@@ -362,20 +362,20 @@
         },
         {
             "name": "bower-asset/bootstrap-social",
-            "version": "4.12.0",
+            "version": "5.1.1",
             "source": {
                 "type": "git",
-                "url": "https://github.com/lipis/bootstrap-social.git",
-                "reference": "94cfded5ede73b5e60dcdafbb7a455a6246ab337"
+                "url": "git@github.com:lipis/bootstrap-social.git",
+                "reference": "8b7618556d386d3fecf4b37783e20f2090cb4fd0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/lipis/bootstrap-social/zipball/94cfded5ede73b5e60dcdafbb7a455a6246ab337",
-                "reference": "94cfded5ede73b5e60dcdafbb7a455a6246ab337"
+                "url": "https://api.github.com/repos/lipis/bootstrap-social/zipball/8b7618556d386d3fecf4b37783e20f2090cb4fd0",
+                "reference": "8b7618556d386d3fecf4b37783e20f2090cb4fd0"
             },
             "require": {
                 "bower-asset/bootstrap": "~3",
-                "bower-asset/font-awesome": "~4.5"
+                "bower-asset/font-awesome": "~4.7"
             },
             "type": "bower-asset",
             "license": [
@@ -423,7 +423,7 @@
             "version": "v4.7.0",
             "source": {
                 "type": "git",
-                "url": "https://github.com/FortAwesome/Font-Awesome.git",
+                "url": "git@github.com:FortAwesome/Font-Awesome.git",
                 "reference": "a8386aae19e200ddb0f6845b5feeee5eb7013687"
             },
             "dist": {
@@ -7875,5 +7875,5 @@
     "platform-overrides": {
         "php": "7.4"
     },
-    "plugin-api-version": "2.2.0"
+    "plugin-api-version": "2.3.0"
 }
