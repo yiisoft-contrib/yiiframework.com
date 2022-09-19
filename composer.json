@@ -39,7 +39,7 @@
         "guzzlehttp/psr7": "^1.5",
         "helgesverre/spamprotection": "1.0.1",
         "himiklab/yii2-recaptcha-widget": "^1.2",
-        "imagine/imagine": "^0.6.3",
+        "imagine/imagine": "^0.7.1",
         "knplabs/github-api": "2.11.0",
         "php-http/curl-client": "^1.7",
         "samdark/sitemap": "^2.0",
