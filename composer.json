@@ -27,7 +27,7 @@
         "bower-asset/codemirror": "~5.9.0",
         "bower-asset/codemirror-buttons": "~1.0.0",
         "bower-asset/font-awesome": "^4.5",
-        "bower-asset/glidejs": "^2.0",
+        "bower-asset/glidejs": "^3.5",
         "bower-asset/jquery": "2.2.*@stable",
         "bower-asset/sass-rem": "^1.2",
         "bower-asset/scrollup": "^2.4",
