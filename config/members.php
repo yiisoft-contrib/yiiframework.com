@@ -371,7 +371,7 @@ return [
         'forumName' => 'marcovtwout',
         'period' => '2020',
         'location' => 'Delft, Netherlands',
-        'duty' => 'Yii 1.1 issues',
+        'duty' => 'Yii 1.1 maintainer',
         'photo' => '@web/image/team/marcovtwout.jpg',
         'github' => 'marcovtwout',
         'status' => TeamStatus::TEAM_STATUS_ACTIVE,
