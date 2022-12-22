@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "7979c6897e95bf21191c91a77fcfd8e3",
+    "content-hash": "09c0813e3031f7a752cb41ff40130713",
     "packages": [
         {
             "name": "2amigos/yii2-selectize-widget",
@@ -479,16 +479,16 @@
         },
         {
             "name": "bower-asset/jquery",
-            "version": "2.2.4",
+            "version": "3.6.3",
             "source": {
                 "type": "git",
-                "url": "https://github.com/jquery/jquery-dist.git",
-                "reference": "c0185ab7c75aab88762c5aae780b9d83b80eda72"
+                "url": "git@github.com:jquery/jquery-dist.git",
+                "reference": "da0f228131a578aea168b799fe4d7fe01764c98b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/jquery/jquery-dist/zipball/c0185ab7c75aab88762c5aae780b9d83b80eda72",
-                "reference": "c0185ab7c75aab88762c5aae780b9d83b80eda72"
+                "url": "https://api.github.com/repos/jquery/jquery-dist/zipball/da0f228131a578aea168b799fe4d7fe01764c98b",
+                "reference": "da0f228131a578aea168b799fe4d7fe01764c98b"
             },
             "type": "bower-asset",
             "license": [
@@ -7854,7 +7854,6 @@
     "aliases": [],
     "minimum-stability": "stable",
     "stability-flags": {
-        "bower-asset/jquery": 0,
         "cebe/markdown-latex": 20
     },
     "prefer-stable": false,
@@ -7875,5 +7874,5 @@
     "platform-overrides": {
         "php": "7.4"
     },
-    "plugin-api-version": "2.2.0"
+    "plugin-api-version": "2.3.0"
 }
