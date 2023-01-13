@@ -18,6 +18,7 @@ use yii\helpers\Html;
             <li>Development tools</li>
             <li>Design</li>
             <li>Marketing</li>
+            <li>Long-term support for Yii 1.1 and 2.0</li>
         </ul>
         <p>Currently these donation services are available:</p>
         <ul>
@@ -27,6 +28,10 @@ use yii\helpers\Html;
         </ul>
         <p>
             <a href="https://boosty.to/yiisoft">Boosty</a> was added recently for Russian users to be able to contribute as well.
+        </p>
+        <p>
+            Yii is also part of the <a href="https://tidelift.com/subscription/pkg/packagist-yiisoft-yii2">Tidelift Subscription</a>.
+            You can read more about how they pay maintainers on their support page: <a href="https://support.tidelift.com/hc/en-us/articles/4406294816916#how-we-pay-lifters-0-0">How we pay lifters</a>.
         </p>
         <p>You can read more in these related news:</p>
         <ul>
