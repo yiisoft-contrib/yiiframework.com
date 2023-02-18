@@ -34,6 +34,6 @@
     "gulp.spritesmith": "^6.13.0",
     "js-yaml": "^4.1.0",
     "rimraf": "^3.0.2",
-    "yargs": "^17.6.2"
+    "yargs": "^17.7.0"
   }
 }
