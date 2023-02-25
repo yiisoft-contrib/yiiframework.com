@@ -70,7 +70,7 @@ return [
         'photo' => '@web/image/team/klimov-paul.jpg',
         'github' => 'klimov-paul',
         'twitter' => 'klimov_paul',
-        'status' => TeamStatus::TEAM_STATUS_INACTIVE,
+        'status' => TeamStatus::TEAM_STATUS_PAST,
     ],
     [
         'name' => 'Dmitry Naumenko',
@@ -181,7 +181,7 @@ return [
         'duty' => 'Core framework development',
         'photo' => '@web/image/team/dynasource.jpg',
         'github' => 'dynasource',
-        'status' => TeamStatus::TEAM_STATUS_INACTIVE,
+        'status' => TeamStatus::TEAM_STATUS_PAST,
     ],
     [
         'name' => 'Konstantin Sirotkin',
@@ -203,7 +203,7 @@ return [
         'duty' => 'Queue extension',
         'photo' => '@web/image/team/zhuravljov.jpg',
         'github' => 'zhuravljov',
-        'status' => TeamStatus::TEAM_STATUS_INACTIVE,
+        'status' => TeamStatus::TEAM_STATUS_PAST,
     ],
     [
         'name' => 'Alexey Rogachev',
@@ -225,7 +225,7 @@ return [
         'duty' => 'Twig extension',
         'photo' => '@web/image/team/amarox.jpg',
         'github' => 'amarox',
-        'status' => TeamStatus::TEAM_STATUS_INACTIVE,
+        'status' => TeamStatus::TEAM_STATUS_PAST,
     ],
     [
         'name' => 'Andrii Vasyliev',
@@ -249,7 +249,7 @@ return [
         'photo' => '@web/image/team/machour.jpg',
         'github' => 'machour',
         'twitter' => 'mac_hour',
-        'status' => TeamStatus::TEAM_STATUS_INACTIVE,
+        'status' => TeamStatus::TEAM_STATUS_PAST,
     ],
     [
         'name' => 'Wilmer Arambula',
@@ -295,7 +295,7 @@ return [
         'duty' => 'Yii 3.0 development',
         'photo' => '@web/image/team/rugabarbo.jpg',
         'github' => 'rugabarbo',
-        'status' => TeamStatus::TEAM_STATUS_INACTIVE,
+        'status' => TeamStatus::TEAM_STATUS_PAST,
     ],
     [
         'name' => 'Aleksei Gagarin',
