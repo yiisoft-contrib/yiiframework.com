@@ -3,7 +3,7 @@ $versions = require 'versions.php';
 
 return [
     '3.x' => [
-        'php' => '>=7.4.0'
+        'php' => '>=8.0.0'
     ],
     '2.0' => [
         'release' => '2014-10-12',
