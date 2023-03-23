@@ -156,11 +156,11 @@ class Yii1MarkdownParser extends \MarkdownExtra_Parser
    	 */
    	public $highlightCssClass='hl-code';
    	/**
-   	 * @var mixed the options to be passed to {@link http://htmlpurifier.org HTML Purifier}.
+   	 * @var mixed the options to be passed to {@link https://htmlpurifier.org HTML Purifier}.
    	 * This can be a HTMLPurifier_Config object,  an array of directives (Namespace.Directive => Value)
    	 * or the filename of an ini file.
    	 * This property is used only when {@link safeTransform} is invoked.
-   	 * @see http://htmlpurifier.org/live/configdoc/plain.html
+   	 * @see https://htmlpurifier.org/live/configdoc/plain.html
    	 * @since 1.1.4
    	 */
    	public $purifierOptions=null;
