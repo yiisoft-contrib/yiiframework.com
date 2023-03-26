@@ -351,7 +351,7 @@ CMssqlCommandBuilder provides basic methods to create query commands for tables 
 </tr>
 <tr id="findOrdering">
   <td><a href="/doc/api/1.0/CMssqlCommandBuilder#findOrdering-detail">findOrdering()</a></td>
-  <td>Base on simplified syntax http://msdn2.microsoft.com/en-us/library/aa259187(SQL.80).aspx</td>
+  <td>Base on simplified syntax https://msdn2.microsoft.com/en-us/library/aa259187(SQL.80).aspx</td>
   <td>CMssqlCommandBuilder</td>
 </tr>
 <tr id="joinOrdering">
@@ -422,7 +422,7 @@ Overrides parent implementation. Alters the sql to apply $limit and $offset.
 The idea for limit with offset is done by modifying the sql on the fly
 with numerous assumptions on the structure of the sql string.
 The modification is done with reference to the notes from
-http://troels.arvin.dk/db/rdbms/#select-limit-offset
+https://troels.arvin.dk/db/rdbms/#select-limit-offset
 <br/><br/>
 <code>
 SELECT * FROM (
@@ -734,7 +734,7 @@ protected array <b>findOrdering</b>(string $sql)</div>
 </span>
 </code></div>
 </div>
-<p>Base on simplified syntax http://msdn2.microsoft.com/en-us/library/aa259187(SQL.80).aspx</p>
+<p>Base on simplified syntax https://msdn2.microsoft.com/en-us/library/aa259187(SQL.80).aspx</p>
 
 
 <div class="detailHeader" id="getLastInsertID-detail">
@@ -882,6 +882,6 @@ protected sql <b>rewriteLimitOffsetSql</b>(string $sql, integer $limit, integer 
 </code></div>
 </div>
 <p>Rewrite sql to apply $limit > and $offset > 0 for MSSQL database.
-See http://troels.arvin.dk/db/rdbms/#select-limit-offset</p>
+See https://troels.arvin.dk/db/rdbms/#select-limit-offset</p>
 
 
