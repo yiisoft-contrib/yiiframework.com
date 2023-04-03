@@ -90,6 +90,7 @@ class SearchController extends BaseController
         } catch (\yii\base\InvalidArgumentException $e) {
             // if input breaks the search, provide empty result
             $results = [];
+            $q = '';
         }
 
         Yii::$app->response->format = Response::FORMAT_RAW;
