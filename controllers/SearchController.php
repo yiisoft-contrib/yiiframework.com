@@ -81,11 +81,16 @@ class SearchController extends BaseController
 
     public function actionSuggest($q, $version = null, $language = null)
     {
-        $q = $this->trimLongQuery($q);
+        try {
+            $q = $this->trimLongQuery($q);
 
-        Yii::$app->response->format = Response::FORMAT_JSON;
-        $query = SearchActiveRecord::searchAsYouType($q, $version, $language);
-        $results = $query->search()['suggest'];
+            Yii::$app->response->format = Response::FORMAT_JSON;
+            $query = SearchActiveRecord::searchAsYouType($q, $version, $language);
+            $results = $query->search()['suggest'];
+        } catch (\yii\base\InvalidArgumentException $e) {
+            // if input breaks the search, provide empty result
+            $results = [];
+        }
 
         Yii::$app->response->format = Response::FORMAT_RAW;
         Yii::$app->response->headers->add('Content-Type', 'application/json');
