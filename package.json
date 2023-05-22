@@ -15,7 +15,7 @@
   "author": "Qiang Xue",
   "homepage": "https://www.yiiframework.com",
   "devDependencies": {
-    "browser-sync": "^2.29.1",
+    "browser-sync": "^2.29.3",
     "es6-promise": "^4.2.8",
     "gulp": "^4.0.2",
     "gulp-autoprefixer": "^8.0.0",
