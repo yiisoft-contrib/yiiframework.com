@@ -12,15 +12,15 @@ return [
 	// detailed information about current major versions e.g. for display on the download page
 	'version-info' => [
 	    '3.0' => [
-            'status' => 'pre-alpha',
-            'min-php-version' => '7.4.0',
+            'status' => 'beta',
+            'min-php-version' => '8.0.0',
             'support-until' => false,
             'security-until' => false,
             'github-url' => 'https://github.com/yiisoft/app',
             'git-url' => 'git@github.com:yiisoft/app.git',
             'svn-url' => 'https://github.com/yiisoft/app/trunk/',
             'summary' => <<<HTML
-				Yii 3.0 is a new generation of Yii on top of PHP 7.4.0.
+				Yii 3.0 is a new generation of Yii on top of PHP 8.
 				It is aimed at both fast and long-term project with testability and modularity in mind.
 				Yii 3.0 is not compatible with version 2.0.
 HTML
@@ -82,6 +82,7 @@ HTML
 	],
 	'minor-versions' => [
 		'2.0' => [
+            '2.0.48' => 'May 22, 2023',
             '2.0.47' => 'November 18, 2022',
             '2.0.46' => 'August 19, 2022',
             '2.0.45' => 'February 11, 2022',
