@@ -628,16 +628,16 @@
         },
         {
             "name": "bower-asset/yii2-pjax",
-            "version": "2.0.7.1",
+            "version": "2.0.8",
             "source": {
                 "type": "git",
-                "url": "https://github.com/yiisoft/jquery-pjax.git",
-                "reference": "aef7b953107264f00234902a3880eb50dafc48be"
+                "url": "git@github.com:yiisoft/jquery-pjax.git",
+                "reference": "a9298d57da63d14a950f1b94366a864bc62264fb"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/yiisoft/jquery-pjax/zipball/aef7b953107264f00234902a3880eb50dafc48be",
-                "reference": "aef7b953107264f00234902a3880eb50dafc48be"
+                "url": "https://api.github.com/repos/yiisoft/jquery-pjax/zipball/a9298d57da63d14a950f1b94366a864bc62264fb",
+                "reference": "a9298d57da63d14a950f1b94366a864bc62264fb"
             },
             "require": {
                 "bower-asset/jquery": ">=1.8"
@@ -1084,20 +1084,30 @@
         },
         {
             "name": "ezyang/htmlpurifier",
-            "version": "v4.14.0",
+            "version": "v4.16.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/ezyang/htmlpurifier.git",
-                "reference": "12ab42bd6e742c70c0a52f7b82477fcd44e64b75"
+                "reference": "523407fb06eb9e5f3d59889b3978d5bfe94299c8"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/ezyang/htmlpurifier/zipball/12ab42bd6e742c70c0a52f7b82477fcd44e64b75",
-                "reference": "12ab42bd6e742c70c0a52f7b82477fcd44e64b75",
+                "url": "https://api.github.com/repos/ezyang/htmlpurifier/zipball/523407fb06eb9e5f3d59889b3978d5bfe94299c8",
+                "reference": "523407fb06eb9e5f3d59889b3978d5bfe94299c8",
                 "shasum": ""
             },
             "require": {
-                "php": ">=5.2"
+                "php": "~5.6.0 || ~7.0.0 || ~7.1.0 || ~7.2.0 || ~7.3.0 || ~7.4.0 || ~8.0.0 || ~8.1.0 || ~8.2.0"
+            },
+            "require-dev": {
+                "cerdic/css-tidy": "^1.7 || ^2.0",
+                "simpletest/simpletest": "dev-master"
+            },
+            "suggest": {
+                "cerdic/css-tidy": "If you want to use the filter 'Filter.ExtractStyleBlocks'.",
+                "ext-bcmath": "Used for unit conversion and imagecrash protection",
+                "ext-iconv": "Converts text to and from non-UTF-8 encodings",
+                "ext-tidy": "Used for pretty-printing HTML"
             },
             "type": "library",
             "autoload": {
@@ -1129,9 +1139,9 @@
             ],
             "support": {
                 "issues": "https://github.com/ezyang/htmlpurifier/issues",
-                "source": "https://github.com/ezyang/htmlpurifier/tree/v4.14.0"
+                "source": "https://github.com/ezyang/htmlpurifier/tree/v4.16.0"
             },
-            "time": "2021-12-25T01:21:49+00:00"
+            "time": "2022-09-18T07:06:19+00:00"
         },
         {
             "name": "guzzlehttp/psr7",
@@ -3603,16 +3613,16 @@
         },
         {
             "name": "yiisoft/yii2",
-            "version": "2.0.45",
+            "version": "2.0.48",
             "source": {
                 "type": "git",
                 "url": "https://github.com/yiisoft/yii2-framework.git",
-                "reference": "e2223d4085e5612aa616635f8fcaf478607f62e8"
+                "reference": "ec2d0a57815a4ee1277fab7492e1bc552e537751"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/yiisoft/yii2-framework/zipball/e2223d4085e5612aa616635f8fcaf478607f62e8",
-                "reference": "e2223d4085e5612aa616635f8fcaf478607f62e8",
+                "url": "https://api.github.com/repos/yiisoft/yii2-framework/zipball/ec2d0a57815a4ee1277fab7492e1bc552e537751",
+                "reference": "ec2d0a57815a4ee1277fab7492e1bc552e537751",
                 "shasum": ""
             },
             "require": {
@@ -3623,7 +3633,7 @@
                 "cebe/markdown": "~1.0.0 | ~1.1.0 | ~1.2.0",
                 "ext-ctype": "*",
                 "ext-mbstring": "*",
-                "ezyang/htmlpurifier": "~4.6",
+                "ezyang/htmlpurifier": "^4.6",
                 "lib-pcre": "*",
                 "paragonie/random_compat": ">=1",
                 "php": ">=5.4.0",
@@ -3721,7 +3731,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2022-02-11T13:12:40+00:00"
+            "time": "2023-05-22T06:32:53+00:00"
         },
         {
             "name": "yiisoft/yii2-apidoc",
@@ -4072,16 +4082,16 @@
         },
         {
             "name": "yiisoft/yii2-elasticsearch",
-            "version": "2.1.2",
+            "version": "2.1.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/yiisoft/yii2-elasticsearch.git",
-                "reference": "12092110ca850a7772f9fc574d238121c27a1723"
+                "reference": "4d92af4e95c47fb633fb4a1018dd7a23ee285bfc"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/yiisoft/yii2-elasticsearch/zipball/12092110ca850a7772f9fc574d238121c27a1723",
-                "reference": "12092110ca850a7772f9fc574d238121c27a1723",
+                "url": "https://api.github.com/repos/yiisoft/yii2-elasticsearch/zipball/4d92af4e95c47fb633fb4a1018dd7a23ee285bfc",
+                "reference": "4d92af4e95c47fb633fb4a1018dd7a23ee285bfc",
                 "shasum": ""
             },
             "require": {
@@ -4140,7 +4150,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2021-08-09T21:01:23+00:00"
+            "time": "2023-05-22T21:00:31+00:00"
         },
         {
             "name": "yiisoft/yii2-httpclient",
@@ -7875,5 +7885,5 @@
     "platform-overrides": {
         "php": "7.4"
     },
-    "plugin-api-version": "2.2.0"
+    "plugin-api-version": "2.3.0"
 }
