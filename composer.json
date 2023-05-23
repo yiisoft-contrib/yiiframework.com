@@ -62,7 +62,7 @@
         "codeception/base": "^2.2.3",
         "yiisoft/yii2-debug": "~2.1.0",
         "yiisoft/yii2-faker": "~2.0.0",
-        "yiisoft/yii2-gii": "~2.0.0",
+        "yiisoft/yii2-gii": "~2.2.6",
         "yiisoft/yii2-shell": "~2.0.0"
     },
     "config": {
