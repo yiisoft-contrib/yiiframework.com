@@ -9,7 +9,6 @@ RUN apt-get install -y texlive-full
 RUN apt-get install -y python3-pygments
 RUN apt-get install -y libnotify-bin
 RUN apt-get install -y git
-RUN apt-get install -y nginx
 RUN apt-get install -y rsync
 
 # PHP extensions
@@ -42,10 +41,6 @@ RUN sed -i 's,^memory_limit =.*$,memory_limit = -1,' "$PHP_INI_DIR/php.ini"
 
 ENV VENDOR_DIR=/code/vendor
 
-# Nginx configuration
-
-COPY nginx-site.conf /etc/nginx/sites-enabled/default
-
 # PHP packages
 
 COPY composer.* /code/
@@ -64,3 +59,11 @@ RUN npm install --loglevel=verbose
 
 ADD . /code/src
 WORKDIR /code/src
+
+# Assets
+
+RUN npm run build
+
+# Framework configuration
+
+RUN ./init --env=Development --overwrite=n
