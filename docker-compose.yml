@@ -7,8 +7,7 @@ services:
     expose:
       - 9000
     command: >
-      bash -c "./init --env=Development --overwrite=n &&
-      php-fpm"
+      bash -c "php-fpm"
   mariadb:
     image: mariadb:10.5.12
     ports:

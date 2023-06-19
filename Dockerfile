@@ -39,26 +39,22 @@ RUN npm install -g pageres-cli --loglevel=verbose --unsafe-perm=true
 RUN mv "$PHP_INI_DIR/php.ini-production" "$PHP_INI_DIR/php.ini"
 RUN sed -i 's,^memory_limit =.*$,memory_limit = -1,' "$PHP_INI_DIR/php.ini"
 
+# Code
+
+COPY . /code
+WORKDIR /code
+
+# Environment variables
+
 ENV VENDOR_DIR=/code/vendor
 
 # PHP packages
 
-COPY composer.* /code/
-WORKDIR /code
-RUN composer config vendor-dir $VENDOR_DIR
 RUN composer install
-RUN composer config vendor-dir vendor
 
 # Node.js packages
 
-COPY package.json /code
-WORKDIR /code
 RUN npm install --loglevel=verbose
-
-# Code
-
-ADD . /code/src
-WORKDIR /code/src
 
 # Assets
 
