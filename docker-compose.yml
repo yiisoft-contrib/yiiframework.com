@@ -3,6 +3,8 @@ services:
   web:
     build: .
     volumes:
+      - assets_volume:/code/assets
+      - vendor_volume:/code/vendor
       - web_volume:/code/web
     expose:
       - 9000
@@ -21,6 +23,8 @@ services:
     build:
       context: docker/nginx
     volumes:
+      - assets_volume:/code/assets
+      - vendor_volume:/code/vendor
       - web_volume:/code/web
     ports:
       - 81:81
@@ -33,4 +37,6 @@ services:
     ports:
       - "9200:9200"
 volumes:
+  assets_volume:
+  vendor_volume:
   web_volume:
