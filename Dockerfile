@@ -62,4 +62,4 @@ RUN npm run build
 
 # Framework configuration
 
-RUN ./init --env=Development --overwrite=n
+RUN ./init --env=Docker --overwrite=n

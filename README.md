@@ -27,14 +27,11 @@ You can use the script `run_pageres.sh` at the root of the source directory to g
 
 ## Initial setup
 
-Adjust local config files:
+Adjust local config files if needed:
 
 - `config/console-local.php`.
 - `config/params-local.php`.
 - `config/web-local.php`.
-
-Setting `components.request.cookieValidationKey` in `web-local.php` is required, the rest can be adjusted depending on 
-a specific problem to  work with.
 
 Generate a personal Github token (from your Github profile settings section). Paste it in a file in the `data` directory 
 (@app/data) called `github.token` (one line, no line-break).
