@@ -10,6 +10,15 @@ return [
         'password' => 'yiiframeworkcom',
     ],
 
+    'components.cache' => [
+        'class' => yii\redis\Cache::class,
+        'redis' => [
+            'class' => yii\redis\Connection::class,
+            'hostname' => 'redis',
+            'database' => 1,
+        ],
+    ],
+
     'components.elasticsearch' => [
         'class' => yii\elasticsearch\Connection::class,
         'nodes' => [
