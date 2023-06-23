@@ -39,6 +39,19 @@ return [
             'config/web-local.php',
         ],
     ],
+    'Docker' => [
+        'path' => 'docker',
+        'setWritable' => [
+            'runtime',
+            'web/assets',
+        ],
+        'setExecutable' => [
+            'yii',
+        ],
+        'setCookieValidationKey' => [
+            'config/web-local.php',
+        ],
+    ],
     'Production' => [
         'path' => 'prod',
         'setWritable' => [

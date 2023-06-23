@@ -3,16 +3,54 @@ services:
   web:
     build: .
     volumes:
-      - .:/code/src
+      - ./apidoc:/code/apidoc
+      - ./commands:/code/commands
+      - ./components:/code/components
+      - ./controllers:/code/controllers
+      - ./data:/code/data
+      - ./jobs:/code/jobs
+      - ./mail:/code/mail
+      - ./migrations:/code/migrations
+      - ./models:/code/models
+      - ./notifications:/code/notifications
+      - ./tests:/code/tests
+      - ./views:/code/views
+      - ./widgets:/code/widgets
+
+      - assets_volume:/code/assets
+      - vendor_volume:/code/vendor
+      - web_volume:/code/web
+    expose:
+      - 9000
     command: >
-      bash -c "gulp &
-      rsync -arv --delete /code/vendor /code/node_modules /code/composer.lock /code/package-lock.json /code/src &
-      ./init --env=Development --overwrite=n &&
-      service nginx start &&
-      php-fpm"
+      bash -c "php-fpm"
   mariadb:
     image: mariadb:10.5.12
+    ports:
+      - "3306:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: 123456
+      MYSQL_DATABASE: yiiframeworkcom
+      MYSQL_USER: yiiframeworkcom
+      MYSQL_PASSWORD: yiiframeworkcom
+  nginx:
+    build:
+      context: docker/nginx
+    volumes:
+      - assets_volume:/code/assets
+      - vendor_volume:/code/vendor
+      - web_volume:/code/web
+    ports:
+      - 81:81
+    depends_on:
+      - web
   redis:
     image: redis:6.0.16
   elasticsearch:
     image: elasticsearch:5.6.16
+    ports:
+      - "9200:9200"
+volumes:
+  assets_volume:
+  vendor_volume:
+  web_volume:

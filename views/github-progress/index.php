@@ -28,7 +28,21 @@ $this->endBlock();
                 'class' => 'table',
             ],
             'dataProvider' => $dataProvider,
+            'rowOptions'=> function ($model) {
+                if (!$model['no_release_for'] && !$model['optionalForFrameworkAnnounce']) {
+                    return ['class' => 'warning'];
+                }
+
+                return [];
+            },
             'columns' => [
+                [
+                    'label' => '#',
+                    'value' => function ($model, $key, $index) {
+                        return $index + 1;
+                    },
+                    'visible' => $version === '3.0',
+                ],
                 [
                     'attribute' => 'repository',
                     'content' => function ($model) {
@@ -91,6 +105,17 @@ $this->endBlock();
 
                         return Html::a(Html::encode(end($parts)), $model['diff']) . $changeLog;
                     }
+                ],
+                [
+                    'attribute' => 'optionalForFrameworkAnnounce',
+                    'content' => function ($model) {
+                        if ($model['repository'] === 'yiisoft/yii' && str_contains($model['repository'], 'yii2')) {
+                            return '';
+                        }
+
+                        return $model['optionalForFrameworkAnnounce'] ? 'Yes' : '';
+                    },
+                    'visible' => $version === '3.0',
                 ],
             ],
         ]) ?>

@@ -12,4 +12,4 @@ RUN apt-get install -y git
 ADD . /code
 WORKDIR /code
 
-ENTRYPOINT ["rm", "-rf", "api-1.0"]
+ENTRYPOINT ["rm", "-rf", "data", "api-1.0"]
