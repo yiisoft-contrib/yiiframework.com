@@ -2,6 +2,7 @@
 
 namespace app\components\github;
 
+use DateTime;
 use Github\Api\GraphQL;
 use Github\Client as GithubClient;
 use yii\helpers\ArrayHelper;
@@ -66,6 +67,13 @@ $alias: repository(owner: "$owner", name: "$name") {
       }
     }
   }
+  repositoryTopics(first: 10) {
+    nodes {
+      topic {
+        name
+      }
+    }
+  }
 }
 GRAPHQL;
 
@@ -127,6 +135,7 @@ GRAPHQL;
                     'coverage' => "https://scrutinizer-ci.com/g/{$repository['nameWithOwner']}/badges/coverage.png",
                     'quality' => "https://scrutinizer-ci.com/g/{$repository['nameWithOwner']}/badges/quality-score.png",
                     'mergedSinceRelease' => [],
+                    'optionalForFrameworkAnnounce' => $this->getOptionalForFrameworkAnnounce($repository),
                 ];
 
                 $versions = $this->getVersionsForRepository($repository);
@@ -139,8 +148,8 @@ GRAPHQL;
 
                     $datum['latest'] = $latest;
 
-                    $latestDate = new \DateTime($date);
-                    $today = new \DateTime();
+                    $latestDate = new DateTime($date);
+                    $today = new DateTime();
 
                     $datum['no_release_for'] = $today->diff($latestDate)->format('%a');
 
@@ -148,7 +157,7 @@ GRAPHQL;
 
                     $mergedSinceRelease = [];
                     foreach ($repository['mergedPRs']['nodes'] as $pr) {
-                        $mergedAt = new \DateTime($pr['mergedAt']);
+                        $mergedAt = new DateTime($pr['mergedAt']);
                         if ($mergedAt > $latestDate) {
                             $mergedSinceRelease[] = $pr;
                         }
@@ -177,5 +186,16 @@ GRAPHQL;
         }
 
         return $data;
+    }
+
+    private function getOptionalForFrameworkAnnounce($repository)
+    {
+        foreach ($repository['repositoryTopics']['nodes'] as $topic) {
+            if ($topic['topic']['name'] === 'optionalforframeworkannounce') {
+                return true;
+            }
+        }
+
+        return false;
     }
 }

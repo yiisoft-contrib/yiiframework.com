@@ -27,14 +27,9 @@ class GithubProgressController extends BaseController
             throw new NotFoundHttpException('Data not found.');
         }
 
-        $dataProvider = new ArrayDataProvider([
-            'allModels' => $data,
-            'sort' => [
-                'attributes' => ['repository', 'no_release_for', 'latest'],
-                'defaultOrder' => ['repository' => SORT_ASC],
-            ],
-            'pagination' => false,
-        ]);
+        $dataProvider = $version === '3.0'
+            ? $this->getDevelopedFrameworkDataProvider($data)
+            : $this->getReleasedFrameworkDataProvider($data);
 
         return $this->render('index', [
             'version' => $version,
@@ -60,12 +55,56 @@ class GithubProgressController extends BaseController
                 $releasedCount++;
             }
 
-            $allCount++;
+            if (!$item['optionalForFrameworkAnnounce']) {
+                $allCount++;
+            }
         }
 
         return $this->render('yii3-progress', [
             'progress' => "{$releasedCount}/{$allCount}",
             'progressPercent' => $allCount > 0  ? round(100 * $releasedCount / $allCount) : 0,
+        ]);
+    }
+
+    private function getReleasedFrameworkDataProvider($data)
+    {
+        return new ArrayDataProvider([
+            'allModels' => $data,
+            'sort' => [
+                'attributes' => ['repository', 'no_release_for', 'latest'],
+                'defaultOrder' => ['repository' => SORT_ASC],
+            ],
+            'pagination' => false,
+        ]);
+    }
+
+    private function getDevelopedFrameworkDataProvider($data)
+    {
+        return new ArrayDataProvider([
+            'allModels' => $data,
+            'sort' => [
+                'attributes' => [
+                    'repository',
+                    'no_release_for' => [
+                        'asc' => [
+                            'no_release_for' => SORT_ASC,
+                            'optionalForFrameworkAnnounce' => SORT_ASC,
+                            'repository' => SORT_ASC,
+                        ],
+                        'desc' => [
+                            'no_release_for' => SORT_DESC,
+                            'optionalForFrameworkAnnounce' => SORT_DESC,
+                            'repository' => SORT_ASC,
+                        ],
+                        'default' => SORT_DESC,
+                        'label' => 'No Release For',
+                    ],
+                    'latest',
+                    'optionalForFrameworkAnnounce',
+                ],
+                'defaultOrder' => ['no_release_for' => SORT_ASC],
+            ],
+            'pagination' => false,
         ]);
     }
 }
