@@ -3,13 +3,23 @@ services:
   web:
     build: .
     volumes:
+      - ./apidoc:/code/apidoc
+      - ./assets/src:/code/assets/src
+      - ./assets/AppAsset.php:/code/assets/AppAsset.php
       - ./commands:/code/commands
       - ./components:/code/components
       - ./controllers:/code/controllers
       - ./data:/code/data
+      - ./jobs:/code/jobs
+      - ./mail:/code/mail
+      - ./migrations:/code/migrations
+      - ./models:/code/models
+      - ./notifications:/code/notifications
+      - ./tests:/code/tests
       - ./views:/code/views
+      - ./widgets:/code/widgets
 
-      - assets_volume:/code/assets
+      - assets_volume:/code/assets/dist
       - vendor_volume:/code/vendor
       - web_volume:/code/web
     expose:
@@ -29,7 +39,7 @@ services:
     build:
       context: docker/nginx
     volumes:
-      - assets_volume:/code/assets
+      - assets_volume:/code/assets/dist
       - vendor_volume:/code/vendor
       - web_volume:/code/web
     ports:
