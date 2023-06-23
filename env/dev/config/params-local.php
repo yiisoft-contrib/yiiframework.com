@@ -10,6 +10,15 @@ return [
         'password' => 'yiiframeworkcom',
     ],
 
+    'components.cache' => [
+        'class' => yii\redis\Cache::class,
+        'redis' => [
+            'class' => yii\redis\Connection::class,
+            'hostname' => 'redis',
+            'database' => 1,
+        ],
+    ],
+
     'components.elasticsearch' => [
         'class' => yii\elasticsearch\Connection::class,
         'nodes' => [
@@ -30,9 +39,9 @@ return [
 
     'siteAbsoluteUrl' => 'http://local.yiiframework.com',
 
-     // https://apps.twitter.com/app/new
-     // After creating an app you need to fill accessToken and accessTokenSecret:
-     // Open App -> Keys and Access Tokens -> You Access Token -> Create my access token
+    // https://apps.twitter.com/app/new
+    // After creating an app you need to fill accessToken and accessTokenSecret:
+    // Open App -> Keys and Access Tokens -> You Access Token -> Create my access token
     'twitter.consumerKey' => '',
     'twitter.consumerSecret' => '',
     'twitter.accessToken' => '',
