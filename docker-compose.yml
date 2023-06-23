@@ -3,6 +3,12 @@ services:
   web:
     build: .
     volumes:
+      - ./commands:/code/commands
+      - ./components:/code/components
+      - ./controllers:/code/controllers
+      - ./data:/code/data
+      - ./views:/code/views
+
       - assets_volume:/code/assets
       - vendor_volume:/code/vendor
       - web_volume:/code/web
