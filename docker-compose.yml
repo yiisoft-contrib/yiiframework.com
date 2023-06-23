@@ -4,8 +4,6 @@ services:
     build: .
     volumes:
       - ./apidoc:/code/apidoc
-      - ./assets/src:/code/assets/src
-      - ./assets/AppAsset.php:/code/assets/AppAsset.php
       - ./commands:/code/commands
       - ./components:/code/components
       - ./controllers:/code/controllers
@@ -19,7 +17,7 @@ services:
       - ./views:/code/views
       - ./widgets:/code/widgets
 
-      - assets_volume:/code/assets/dist
+      - assets_volume:/code/assets
       - vendor_volume:/code/vendor
       - web_volume:/code/web
     expose:
@@ -39,7 +37,7 @@ services:
     build:
       context: docker/nginx
     volumes:
-      - assets_volume:/code/assets/dist
+      - assets_volume:/code/assets
       - vendor_volume:/code/vendor
       - web_volume:/code/web
     ports:
