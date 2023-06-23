@@ -75,6 +75,9 @@ docker run -it -v $PWD/data/api-1.0:/code/data/api-1.0 yiiframeworkcom-yii-1.0
 
 # populate the search index by running
 ./yii search/rebuild
+
+/code/vendor/bin/apidoc guide data/yii-2.0/docs/guide-ru data/docs-offline/yii-docs-2.0-ru --interactive=0
+./yii guide "2.0" --interactive=0
 ```
 
 ### Data import
