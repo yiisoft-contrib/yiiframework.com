@@ -15,17 +15,11 @@ If you want to contribute please get in touch with us using the [issue tracker](
 Install [Docker](https://docs.docker.com/get-docker/) and [Docker Compose](https://docs.docker.com/compose/install/).
 
 ```
-cp docker-compose.override.example.yml docker-compose.override.yml
-```
-
-Fill with actual values.
-
-```
 docker-compose build
 docker-compose up
 ```
 
-The site will be available at http://0.0.0.0:8080.
+The site will be available at http://localhost:81.
 
 ### Generating screenshots
 
@@ -33,31 +27,14 @@ You can use the script `run_pageres.sh` at the root of the source directory to g
 
 ## Initial setup
 
-Adjust `config/params-local.php`. Make sure to configure the following properties:
+Adjust local config files:
 
-```php
-'components.db' => [
-    // copy from params.php and adjust to your environment
-],
-// only if you want to test github auth:
-'authclients' => [
-    'github' => [
-        'class' => 'yii\authclient\clients\GitHub',
-        'clientId' => '...', // register an oauth app on github and enter details here
-        'clientSecret' => '...',
-        'scope' => 'user:email',
-    ],
-],
-'siteAbsoluteUrl' => 'http://yiiframework.local',
+- `config/console-local.php`.
+- `config/params-local.php`.
+- `config/web-local.php`.
 
-// https://apps.twitter.com/app/new
-// After creating an app you need to fill accessToken and accessTokenSecret:
-// Open App -> Keys and Access Tokens -> You Access Token -> Create my access token
-'twitter.consumerKey' => '',
-'twitter.consumerSecret' => '',
-'twitter.accessToken' => '',
-'twitter.accessTokenSecret' => '',
-```
+Setting `components.request.cookieValidationKey` in `web-local.php` is required, the rest can be adjusted depending on 
+a specific problem to  work with.
 
 Generate a personal Github token (from your Github profile settings section). Paste it in a file in the `data` directory 
 (@app/data) called `github.token` (one line, no line-break).
@@ -98,6 +75,9 @@ docker run -it -v $PWD/data/api-1.0:/code/data/api-1.0 yiiframeworkcom-yii-1.0
 
 # populate the search index by running
 ./yii search/rebuild
+
+/code/vendor/bin/apidoc guide data/yii-2.0/docs/guide-ru data/docs-offline/yii-docs-2.0-ru --interactive=0
+./yii guide "2.0" --interactive=0
 ```
 
 ### Data import

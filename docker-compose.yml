@@ -3,11 +3,19 @@ services:
   web:
     build: .
     volumes:
+      - ./apidoc:/code/apidoc
       - ./commands:/code/commands
       - ./components:/code/components
       - ./controllers:/code/controllers
       - ./data:/code/data
+      - ./jobs:/code/jobs
+      - ./mail:/code/mail
+      - ./migrations:/code/migrations
+      - ./models:/code/models
+      - ./notifications:/code/notifications
+      - ./tests:/code/tests
       - ./views:/code/views
+      - ./widgets:/code/widgets
 
       - assets_volume:/code/assets
       - vendor_volume:/code/vendor

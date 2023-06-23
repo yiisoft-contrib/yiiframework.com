@@ -40,7 +40,7 @@ return [
         'useFileTransport' => false,
     ],
 
-     // @see https://apps.twitter.com/app/new
+     // See https://apps.twitter.com/app/new
      // After creating an app you need to fill accessToken and accessTokenSecret:
      // Open App -> Keys and Access Tokens -> You Access Token -> Create my access token
     'twitter.consumerKey' => '',
