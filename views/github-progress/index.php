@@ -29,7 +29,7 @@ $this->endBlock();
             ],
             'dataProvider' => $dataProvider,
             'rowOptions'=> function ($model) {
-                if (!$model['no_release_for'] && !$model['optionalForFrameworkAnnounce']) {
+                if ($model['no_release_for'] === null && !$model['optionalForFrameworkAnnounce']) {
                     return ['class' => 'warning'];
                 }
 
