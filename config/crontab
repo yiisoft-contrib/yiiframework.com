@@ -3,6 +3,7 @@
 #
 
 MAILTO=hostmaster@yiiframework.com
+MAILFROM=hostmaster@yiiframework.com
 
 # m h dom mon dow   user    command
 
