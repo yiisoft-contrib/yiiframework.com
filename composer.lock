@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "7979c6897e95bf21191c91a77fcfd8e3",
+    "content-hash": "9aea2c9218dd7923f75c8f49ca9928dd",
     "packages": [
         {
             "name": "2amigos/yii2-selectize-widget",
@@ -440,21 +440,18 @@
         },
         {
             "name": "bower-asset/glidejs",
-            "version": "v2.1.0",
+            "version": "v3.6.1",
             "source": {
                 "type": "git",
-                "url": "git@github.com:jedrzejchalubek/Glide.js.git",
-                "reference": "55eb2b703cba40bee6c184c8480a2a11a9dbc57e"
+                "url": "https://github.com/glidejs/glide.git",
+                "reference": "87b3be2e79fb6971e7bb7c43c24313645675301a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/jedrzejchalubek/Glide.js/zipball/55eb2b703cba40bee6c184c8480a2a11a9dbc57e",
-                "reference": "55eb2b703cba40bee6c184c8480a2a11a9dbc57e"
+                "url": "https://api.github.com/repos/glidejs/glide/zipball/87b3be2e79fb6971e7bb7c43c24313645675301a",
+                "reference": "87b3be2e79fb6971e7bb7c43c24313645675301a"
             },
-            "type": "bower-asset",
-            "license": [
-                "MIT"
-            ]
+            "type": "bower-asset"
         },
         {
             "name": "bower-asset/inputmask",
