@@ -2859,16 +2859,16 @@
         },
         {
             "name": "samdark/sitemap",
-            "version": "2.4.0",
+            "version": "2.4.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/samdark/sitemap.git",
-                "reference": "a7ba091766afeb5fad1ea3056b30f26c3a620962"
+                "reference": "cf514750781275ad90fc9a828b4330c9c5ccba98"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/samdark/sitemap/zipball/a7ba091766afeb5fad1ea3056b30f26c3a620962",
-                "reference": "a7ba091766afeb5fad1ea3056b30f26c3a620962",
+                "url": "https://api.github.com/repos/samdark/sitemap/zipball/cf514750781275ad90fc9a828b4330c9c5ccba98",
+                "reference": "cf514750781275ad90fc9a828b4330c9c5ccba98",
                 "shasum": ""
             },
             "require": {
@@ -2914,7 +2914,7 @@
                     "type": "patreon"
                 }
             ],
-            "time": "2021-10-02T04:04:28+00:00"
+            "time": "2023-11-01T08:41:34+00:00"
         },
         {
             "name": "scrivo/highlight.php",
@@ -7885,5 +7885,5 @@
     "platform-overrides": {
         "php": "7.4"
     },
-    "plugin-api-version": "2.3.0"
+    "plugin-api-version": "2.6.0"
 }
