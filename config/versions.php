@@ -50,7 +50,7 @@ HTML
 			// - guide pdf
 			// - blog pdf
 			// - api html
-			'download-url'=>'https://github.com/yiisoft/yii/releases/download/1.1.28/yii-1.1.28.23448d',
+			'download-url'=>'https://github.com/yiisoft/yii/releases/download/1.1.29/yii-1.1.29.f89b76',
 			'min-php-version' => '5.1.0',
 			'support-until' => 'December 31, 2016 ',
 			'security-until' => 'December 31, 2026 ',
@@ -137,6 +137,7 @@ HTML
 			'2.0.0-alpha' => 'December 1, 2013',
 		],
 		'1.1' => [
+            '1.1.29' => 'November 14, 2023',
             '1.1.28' => 'February 28, 2023',
             '1.1.27' => 'November 21, 2022',
             '1.1.26' => 'September 30, 2022',
