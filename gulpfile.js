@@ -11,6 +11,7 @@ var yargs = require('yargs');
 var yaml = require('js-yaml');
 var fs = require('fs');
 var touch = require('gulp-touch-fd');
+const sass = require('gulp-sass')(require('sass'));
 
 // Check for --production flag
 const PRODUCTION = !!(yargs.argv.production);
@@ -42,7 +43,7 @@ var autoprefixerOptions = {
 function styles() {
   return gulp.src(config.PATHS.src + '/scss/all.scss')
     .pipe($.sourcemaps.init())
-    .pipe($.sass(sassOptions).on('error', $.sass.logError))
+    .pipe(sass(sassOptions).on('error', sass.logError))
     .pipe($.autoprefixer(autoprefixerOptions))
     .pipe($.if(PRODUCTION, $.rename({ suffix: '.min' })))
     .pipe($.if(PRODUCTION, $.cssnano()))
@@ -56,7 +57,7 @@ function styles() {
 function forumheader() {
   return gulp.src(config.PATHS.src + '/scss/header.scss')
     .pipe($.sourcemaps.init())
-    .pipe($.sass(sassOptions).on('error', $.sass.logError))
+    .pipe(sass(sassOptions).on('error', sass.logError))
     .pipe($.autoprefixer(autoprefixerOptions))
     .pipe(gulp.dest(config.PATHS.dist + '/css'))
     .pipe(touch())

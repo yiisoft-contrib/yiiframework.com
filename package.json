@@ -27,13 +27,14 @@
     "gulp-nop": "0.0.3",
     "gulp-notify": "^4.0.0",
     "gulp-rename": "^2.0.0",
-    "gulp-sass": "^4.1.1",
+    "gulp-sass": "^5.1.0",
     "gulp-sourcemaps": "^3.0.0",
     "gulp-touch-fd": "^2.0.0",
     "gulp-uglify": "^3.0.2",
     "gulp.spritesmith": "^6.13.0",
     "js-yaml": "^4.1.0",
     "rimraf": "^3.0.2",
+    "sass": "1.69.5",
     "yargs": "^17.7.2"
   }
 }
