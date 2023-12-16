@@ -27,7 +27,7 @@ COPY --from=composer:2.2.3 /usr/bin/composer /usr/local/bin/composer
 RUN curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | bash
 SHELL ["/bin/bash", "--login", "-c"]
 RUN command -v nvm
-RUN nvm install 13.14.0
+RUN nvm install 21.4.0
 
 # Node.js global packages
 
