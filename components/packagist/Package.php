@@ -218,13 +218,15 @@ class Package
 
         if (array_key_exists('versions', $data)) {
             $version = static::getLatestVersion($data['versions']);
-            $lastVersion = $data['versions'][$version];
-            $package->license = $lastVersion['license'];
-            $package->updatedAt = strtotime($lastVersion['time']);
-            $package->license = $lastVersion['license'];
-            $package->description = $lastVersion['description'];
-            $package->yii_version = static::determineYiiVersion($data['versions']);
-            $package->majorVersionReferences = static::extractMajorVersions($data['versions']);
+            if (isset($data['versions'][$version])) {
+                $lastVersion = $data['versions'][$version];
+                $package->license = $lastVersion['license'];
+                $package->updatedAt = strtotime($lastVersion['time']);
+                $package->license = $lastVersion['license'];
+                $package->description = $lastVersion['description'];
+                $package->yii_version = static::determineYiiVersion($data['versions']);
+                $package->majorVersionReferences = static::extractMajorVersions($data['versions']);
+            }
         }
 
         // TODO maintainers
