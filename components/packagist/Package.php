@@ -216,11 +216,14 @@ class Package
 //            $package->updatedAt = strtotime($data['time']);
         }
 
-        if (array_key_exists('versions', $data)) {
+        if (array_key_exists('description', $data)) {
+            $package->description = $data['description'];
+        }
+
+        if (array_key_exists('versions', $data) && !empty($data['versions'])) {
             $version = static::getLatestVersion($data['versions']);
             if (isset($data['versions'][$version])) {
                 $lastVersion = $data['versions'][$version];
-                $package->license = $lastVersion['license'];
                 $package->updatedAt = strtotime($lastVersion['time']);
                 $package->license = $lastVersion['license'];
                 $package->description = $lastVersion['description'];
@@ -230,7 +233,6 @@ class Package
         }
 
         // TODO maintainers
-
 
         foreach (['repository', 'versions', 'downloads', 'favers'] as $key) {
             if (array_key_exists($key, $data)) {
