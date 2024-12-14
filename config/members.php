@@ -400,4 +400,15 @@ return [
         'twitter' => 'DarkDef_PR',
         'status' => TeamStatus::TEAM_STATUS_ACTIVE,
     ],
+    [
+        'name' => 'Sergei Tigrov',
+        'id' => '318103',
+        'forumName' => 'Sergei Tigrov',
+        'period' => '2023',
+        'location' => 'Phuket, Thailand',
+        'duty' => 'Yii 3.0 development',
+        'photo' => '@web/image/team/Tigrov.jpg',
+        'github' => 'Tigrov',
+        'status' => TeamStatus::TEAM_STATUS_ACTIVE,
+    ],
 ];
