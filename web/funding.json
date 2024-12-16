@@ -19,8 +19,8 @@
                 "url": "https://www.yiiframework.com/"
             },
             "repositoryUrl": {
-                "url": "https://github.com/yiisoft/",
-                "wellKnown": "https://www.yiiframework.com/.well-known/funding-manifest-urls"
+                "url": "https://github.com/yiisoft/yii2",
+                "wellKnown": "https://github.com/yiisoft/yii2/blob/master/.well-known/funding-manifest-urls"
             },
             "licenses": [
                 "spdx:BSD-3-Clause"
