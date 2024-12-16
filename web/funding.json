@@ -1,0 +1,96 @@
+{
+    "version": "v1.0.0",
+    "entity": {
+        "type": "group",
+        "role": "maintainer",
+        "name": "Yii Software",
+        "email": "sam@rmcreative.ru",
+        "description": "Our primary goal is to develop and support Yii that is a fast, secure, and efficient PHP framework and a set of reusable libraries. Flexible yet pragmatic. Works right out of the box with reasonable defaults.",
+        "webpageUrl": {
+            "url": "https://www.yiiframework.com/"
+        }
+    },
+    "projects": [
+        {
+            "guid": "yii-framework",
+            "name": "Yii framework",
+            "description": "Yii framework. Versions 1, 2, and 3.",
+            "webpageUrl": {
+                "url": "https://www.yiiframework.com/"
+            },
+            "repositoryUrl": {
+                "url": "https://github.com/yiisoft/",
+                "wellKnown": "https://www.yiiframework.com/funding.json"
+            },
+            "licenses": [
+                "spdx:BSD-3-Clause"
+            ],
+            "tags": [
+                "php",
+                "framework",
+                "yii",
+                "database",
+                "library",
+                "api"
+            ]
+        }
+    ],
+    "funding": {
+        "channels": [
+            {
+                "guid": "opencollective",
+                "type": "other",
+                "address": "https://opencollective.com/yiisoft"
+            }
+        ],
+        "plans": [
+            {
+                "guid": "month-5",
+                "status": "active",
+                "name": "Backer",
+                "amount": 5,
+                "currency": "USD",
+                "frequency": "monthly",
+                "channels": [
+                    "opencollective"
+                ]
+            },
+            {
+                "guid": "month-100",
+                "status": "active",
+                "name": "Sponsor",
+                "amount": 100,
+                "currency": "USD",
+                "frequency": "monthly",
+                "channels": [
+                    "opencollective"
+                ]
+            },
+            {
+                "guid": "onetime",
+                "status": "active",
+                "name": "Donation",
+                "amount": 0,
+                "currency": "USD",
+                "frequency": "one-time",
+                "channels": [
+                    "opencollective"
+                ]
+            }
+        ],
+        "history": [
+            {
+                "year": 2023,
+                "income": 44716,
+                "expenses": 48340,
+                "currency": "USD"
+            },
+            {
+                "year": 2024,
+                "income": 26550,
+                "expenses": 23650,
+                "currency": "USD"
+            }
+        ]
+    }
+}
