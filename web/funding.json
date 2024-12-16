@@ -20,7 +20,7 @@
             },
             "repositoryUrl": {
                 "url": "https://github.com/yiisoft/",
-                "wellKnown": "https://www.yiiframework.com/funding.json"
+                "wellKnown": "https://www.yiiframework.com/.well-known/funding-manifest-urls"
             },
             "licenses": [
                 "spdx:BSD-3-Clause"
