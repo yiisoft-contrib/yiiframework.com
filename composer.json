@@ -44,7 +44,7 @@
         "php-http/curl-client": "^1.7",
         "samdark/sitemap": "^2.0",
         "scrivo/highlight.php": "~9.18",
-        "yetanotherape/diff-match-patch": "~1.0.0",
+        "yetanotherape/diff-match-patch": "~1.1.1",
         "yiisoft/yii2": "~2.0.44",
         "yiisoft/yii2-apidoc": "~3.0.0",
         "yiisoft/yii2-authclient": "~2.2.0",

@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "7979c6897e95bf21191c91a77fcfd8e3",
+    "content-hash": "b61a0fccf45c2e847a6feac937187ed1",
     "packages": [
         {
             "name": "2amigos/yii2-selectize-widget",
@@ -3552,26 +3552,26 @@
         },
         {
             "name": "yetanotherape/diff-match-patch",
-            "version": "v1.0.3",
+            "version": "v1.1.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/yetanotherape/diff-match-patch.git",
-                "reference": "463b635e734775ff5e38c2e2edc4f676ea1c3da2"
+                "reference": "a0c37bc694c27ddccbd4989f72908ce524261bd1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/yetanotherape/diff-match-patch/zipball/463b635e734775ff5e38c2e2edc4f676ea1c3da2",
-                "reference": "463b635e734775ff5e38c2e2edc4f676ea1c3da2",
+                "url": "https://api.github.com/repos/yetanotherape/diff-match-patch/zipball/a0c37bc694c27ddccbd4989f72908ce524261bd1",
+                "reference": "a0c37bc694c27ddccbd4989f72908ce524261bd1",
                 "shasum": ""
             },
             "require": {
                 "ext-iconv": "*",
                 "ext-json": "*",
                 "ext-mbstring": "*",
-                "php": ">=5.3"
+                "php": ">=7.3"
             },
             "require-dev": {
-                "phpunit/phpunit": "4.*"
+                "phpunit/phpunit": "9.*"
             },
             "type": "library",
             "autoload": {
@@ -3594,8 +3594,8 @@
                     "homepage": "http://neil.fraser.name/"
                 }
             ],
-            "description": "Port of the google-diff-match-patch (https://code.google.com/p/google-diff-match-patch/) lib to PHP",
-            "homepage": "https://code.google.com/p/google-diff-match-patch/",
+            "description": "Port of the google-diff-match-patch (https://github.com/google/diff-match-patch) lib to PHP",
+            "homepage": "https://github.com/yetanotherape/diff-match-patch",
             "keywords": [
                 "Fuzzy search",
                 "Match",
@@ -3604,9 +3604,9 @@
             ],
             "support": {
                 "issues": "https://github.com/yetanotherape/diff-match-patch/issues",
-                "source": "https://github.com/yetanotherape/diff-match-patch/tree/v1.0.3"
+                "source": "https://github.com/yetanotherape/diff-match-patch/tree/v1.1.1"
             },
-            "time": "2019-09-28T12:00:31+00:00"
+            "time": "2025-02-16T18:49:39+00:00"
         },
         {
             "name": "yiisoft/yii2",
@@ -7882,5 +7882,5 @@
     "platform-overrides": {
         "php": "7.4"
     },
-    "plugin-api-version": "2.6.0"
+    "plugin-api-version": "2.3.0"
 }
