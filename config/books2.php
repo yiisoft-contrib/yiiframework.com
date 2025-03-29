@@ -7,9 +7,7 @@ return [
         'title' => 'The Yii Book (Second edition)',
         'author' => 'Larry Ullman',
         'image' => '@web/image/books/yii1-yiibook-larry.png',
-        'description' => 'Covers everything from very basics to advanced topics. Explanations are very clear. Additionally to the guide-style
-                chapters there are two complete examples.
-            The second edition (for Yii 2.0) of the book is finished and available for free download.',
+        'description' => 'Covers everything from very basics to advanced topics. Explanations are very clear.',
         'url' => 'https://larry.pub/',
         'level' => 'beginner',
         'level-text' => 'Beginners',
