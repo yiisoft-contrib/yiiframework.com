@@ -33,8 +33,10 @@ Adjust local config files if needed:
 - `config/params-local.php`.
 - `config/web-local.php`.
 
+if you do not see the `*-local.php` or `yii` files, then run `./init`
+
 Generate a personal Github token (from your Github profile settings section). Paste it in a file in the `data` directory 
-(@app/data) called `github.token` (one line, no line-break).
+(@app/data) called `github.token` (one line, no line-break). If the file does not exist, just create it ad put the token in it.
 
 Continue with the following commands:
 

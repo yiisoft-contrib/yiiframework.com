@@ -99,11 +99,11 @@ class Extension extends ActiveRecord implements Linkable, ObjectIdentityInterfac
             'timestamp' => $this->timeStampBehavior(),
             'blameable' => [
                 'class' => BlameableBehavior::class,
-//                'createdByAttribute' => 'owner_id', // TODO owner is must have and should not be changed
-//                'updatedByAttribute' => false, // TODO owner is must have and should not be changed
+                //                'createdByAttribute' => 'owner_id', // TODO owner is must have and should not be changed
+                //                'updatedByAttribute' => false, // TODO owner is must have and should not be changed
                 'attributes' => [
                     static::EVENT_BEFORE_INSERT => 'owner_id',
-//                    static::EVENT_BEFORE_UPDATE => 'updater_id',
+                    //                    static::EVENT_BEFORE_UPDATE => 'updater_id',
                 ],
             ],
             'taggable' => [
@@ -233,7 +233,7 @@ MARKDOWN;
     public static function normalizePackagistUrl($url)
     {
         if (Url::isRelative($url)) {
-            $url = 'https://packagist.org/p/' . ltrim($url, '/');
+            $url = 'https://packagist.org/packages' . ltrim($url, '/');
         }
         if (strpos($url, 'http://') === 0) {
             $url = 'https://' . mb_substr($url, 7);
@@ -460,7 +460,6 @@ MARKDOWN;
                 throw new Exception('Package does not exist on Packagist.'); // TODO make this catchable for 404
             }
             \Yii::$app->cache->set($keyCache, $package, Yii::$app->params['cache.extensions.get']);
-
         }
 
         $this->tagline = mb_strlen($package->getDescription()) <= self::TAGLINE_MAX_LENGTH
@@ -585,7 +584,7 @@ MARKDOWN;
     public function cloneGitRepo($sourcePath, $gitRef)
     {
         if (!file_exists($sourcePath)) {
-            passthru('git clone ' . escapeshellarg($this->github_url) . ' ' . escapeshellarg($sourcePath),$exitCode);
+            passthru('git clone ' . escapeshellarg($this->github_url) . ' ' . escapeshellarg($sourcePath), $exitCode);
             if ($exitCode != 0) {
                 return false;
             }

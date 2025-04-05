@@ -1,7 +1,10 @@
 {
     "name": "yiisoft/yiiframework-com",
     "description": "yiiframework.com source code",
-    "keywords": ["yii2", "framework"],
+    "keywords": [
+        "yii2",
+        "framework"
+    ],
     "homepage": "https://www.yiiframework.com/",
     "type": "project",
     "license": "BSD-3-Clause",
@@ -55,7 +58,7 @@
         "yiisoft/yii2-jui": "~2.0.6",
         "yiisoft/yii2-queue": "~2.3.3",
         "yiisoft/yii2-redis": "~2.0.0",
-        "yiisoft/yii2-swiftmailer": "~2.0.0",
+        "yiisoft/yii2-symfonymailer": "~3.0.0",
         "zendframework/zend-feed": "^2.8"
     },
     "require-dev": {
@@ -70,10 +73,13 @@
         "fxp-asset": {
             "enabled": false
         },
-        "platform": {"php": "7.4"},
+        "platform": {
+            "php": "7.4"
+        },
         "sort-packages": true,
         "allow-plugins": {
-            "yiisoft/yii2-composer": true
+            "yiisoft/yii2-composer": true,
+            "php-http/discovery": true
         }
     },
     "repositories": [
