@@ -14,8 +14,8 @@
         "ext-curl": "*",
         "ext-fileinfo": "*",
         "ext-gd": "*",
-        "ext-json": "*",
         "ext-intl": "*",
+        "ext-json": "*",
         "ext-mbstring": "*",
         "ext-pdo_mysql": "*",
         "ext-zend-opcache": "*",
@@ -58,7 +58,7 @@
         "yiisoft/yii2-jui": "~2.0.6",
         "yiisoft/yii2-queue": "~2.3.3",
         "yiisoft/yii2-redis": "~2.0.0",
-        "yiisoft/yii2-swiftmailer": "~2.0.0",
+        "yiisoft/yii2-symfonymailer": "^3.0",
         "zendframework/zend-feed": "^2.8"
     },
     "require-dev": {
