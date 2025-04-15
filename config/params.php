@@ -10,7 +10,7 @@ return [
         'username' => 'root',
         'password' => '',
         'charset' => 'utf8',
-        'on afterOpen' => function ($event) {
+        'on afterOpen' => function($event) {
             /** @var $db \yii\db\Connection */
             $db = $event->sender;
             $db->createCommand("SET time_zone = '+00:00';")->execute();
@@ -28,7 +28,7 @@ return [
         ],
     ],
     'components.mailer' => [
-        'class' => yii\symfonymailer\Mailer::class,
+        'class' => yii\swiftmailer\Mailer::class,
         'viewPath' => '@app/mail',
         // send all mails to a file by default. You have to set
         // 'useFileTransport' to false and configure a transport
@@ -174,7 +174,7 @@ return [
         // these should be configured in local config
     ],
 
-    'versions' => require __DIR__ . '/versions.php',
+	'versions' => require __DIR__ . '/versions.php',
 
     'books2' => require __DIR__ . '/books2.php',
     'books1' => require __DIR__ . '/books1.php',
