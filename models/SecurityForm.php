@@ -52,7 +52,8 @@ class SecurityForm extends Model
 
             Yii::$app->mailer->compose()
                 ->setCc(Yii::$app->params['securityEmails'])
-                ->setFrom([$fromEmail => $name])
+                ->setFrom('security@yiiframework.com')
+                ->setReplyTo([$fromEmail => $name])
                 ->setSubject('[Security] Report by ' . $name)
                 ->setTextBody($this->body)
                 ->send();
