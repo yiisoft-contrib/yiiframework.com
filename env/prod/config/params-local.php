@@ -35,7 +35,7 @@ return [
         'apiAdminUser' => 'system',
     ],
     'components.mailer' => [
-        'class' => yii\swiftmailer\Mailer::class,
+        'class' => \yii\symfonymailer\Mailer::class,
         'viewPath' => '@app/mail',
         'useFileTransport' => false,
     ],
