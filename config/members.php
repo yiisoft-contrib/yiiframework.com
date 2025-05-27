@@ -411,4 +411,12 @@ return [
         'github' => 'Tigrov',
         'status' => TeamStatus::TEAM_STATUS_ACTIVE,
     ],
+    [
+        'name' => 'Alex Babiev',
+        'period' => '2025',
+        'location' => 'Russia',
+        'duty' => 'Business relations',
+        'photo' => '@web/image/team/babiev.jpg',
+        'status' => TeamStatus::TEAM_STATUS_ACTIVE,
+    ]
 ];
