@@ -417,6 +417,7 @@ return [
         'location' => 'Russia',
         'duty' => 'Business relations',
         'photo' => '@web/image/team/babiev.jpg',
+        'github' => 'iamguruman',
         'status' => TeamStatus::TEAM_STATUS_ACTIVE,
     ]
 ];
