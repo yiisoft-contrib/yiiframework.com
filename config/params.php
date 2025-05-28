@@ -190,7 +190,6 @@ return [
     'securityEmails' => [
         'sam@rmcreative.ru',
         'contact@cebe.cc',
-        'd.naumenko.a@gmail.com',
     ],
     'notificationEmail' => ['admin@yiiframework.com' => 'Yii Framework'],
     'user.passwordResetTokenExpire' => 3600 * 3, // 3 hours
