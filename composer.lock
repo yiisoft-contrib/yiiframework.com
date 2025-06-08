@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "67696645e9e4d2dd8ea0e35502b166c9",
+    "content-hash": "747b68cb9159a35f3846a1e254f0c685",
     "packages": [
         {
             "name": "2amigos/yii2-selectize-widget",
@@ -195,61 +195,6 @@
                 "source": "https://github.com/abraham/twitteroauth"
             },
             "time": "2017-06-30T22:02:01+00:00"
-        },
-        {
-            "name": "baibaratsky/yii2-rollbar",
-            "version": "v1.8.1",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/baibaratsky/yii2-rollbar.git",
-                "reference": "5b36210db7b221de40e057d8df17483d79f823b4"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/baibaratsky/yii2-rollbar/zipball/5b36210db7b221de40e057d8df17483d79f823b4",
-                "reference": "5b36210db7b221de40e057d8df17483d79f823b4",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=7.1",
-                "rollbar/rollbar": "^2.1",
-                "yiisoft/yii2": "^2.0.15"
-            },
-            "type": "yii2-extension",
-            "autoload": {
-                "psr-4": {
-                    "baibaratsky\\yii\\rollbar\\": ""
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "BSD-3-Clause"
-            ],
-            "authors": [
-                {
-                    "name": "Andrei Baibaratsky",
-                    "email": "andrei@baibaratsky.com"
-                }
-            ],
-            "description": "Rollbar for Yii2",
-            "homepage": "http://github.com/baibaratsky/yii2-rollbar",
-            "keywords": [
-                "debug",
-                "error",
-                "exception",
-                "log",
-                "monitoring",
-                "ratchet.io",
-                "ratchetio",
-                "rollbar",
-                "yii",
-                "yii2"
-            ],
-            "support": {
-                "issues": "https://github.com/baibaratsky/yii2-rollbar/issues",
-                "source": "https://github.com/baibaratsky/yii2-rollbar/tree/v1.8.1"
-            },
-            "time": "2021-07-28T11:01:34+00:00"
         },
         {
             "name": "bower-asset/blueimp-canvas-to-blob",
@@ -1544,6 +1489,58 @@
             "time": "2018-11-08T09:49:58+00:00"
         },
         {
+            "name": "horat1us/yii2-sentry",
+            "version": "2.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Horat1us/yii2-sentry.git",
+                "reference": "986eeb599d585728c4637efb4c37bb654e42812e"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Horat1us/yii2-sentry/zipball/986eeb599d585728c4637efb4c37bb654e42812e",
+                "reference": "986eeb599d585728c4637efb4c37bb654e42812e",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^8.0",
+                "sentry/sentry": "^4.10",
+                "yiisoft/yii2": "^2.0.51"
+            },
+            "require-dev": {
+                "codeception/codeception": "^5.0",
+                "codeception/module-asserts": "^3.0",
+                "codeception/module-yii2": "^1.1.10",
+                "horat1us/yii2-asset-free": "^1.0",
+                "squizlabs/php_codesniffer": "^3.10"
+            },
+            "type": "yii2-extension",
+            "extra": {
+                "asset-vcs-driver-options": {
+                    "github-no-api": true
+                },
+                "asset-pattern-skip-version": "(-build|-patch)"
+            },
+            "autoload": {
+                "psr-4": {
+                    "Horat1us\\Yii\\Sentry\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "description": "Yii2 logger for Sentry (updated)",
+            "keywords": [
+                "sentry",
+                "yii2"
+            ],
+            "support": {
+                "source": "https://github.com/Horat1us/yii2-sentry/tree/2.0.0"
+            },
+            "time": "2024-11-07T16:30:04+00:00"
+        },
+        {
             "name": "imagine/imagine",
             "version": "v0.6.3",
             "source": {
@@ -1603,6 +1600,66 @@
                 "source": "https://github.com/php-imagine/Imagine/tree/v0.6.3"
             },
             "time": "2015-09-19T16:54:05+00:00"
+        },
+        {
+            "name": "jean85/pretty-package-versions",
+            "version": "2.1.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Jean85/pretty-package-versions.git",
+                "reference": "4d7aa5dab42e2a76d99559706022885de0e18e1a"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Jean85/pretty-package-versions/zipball/4d7aa5dab42e2a76d99559706022885de0e18e1a",
+                "reference": "4d7aa5dab42e2a76d99559706022885de0e18e1a",
+                "shasum": ""
+            },
+            "require": {
+                "composer-runtime-api": "^2.1.0",
+                "php": "^7.4|^8.0"
+            },
+            "require-dev": {
+                "friendsofphp/php-cs-fixer": "^3.2",
+                "jean85/composer-provided-replaced-stub-package": "^1.0",
+                "phpstan/phpstan": "^2.0",
+                "phpunit/phpunit": "^7.5|^8.5|^9.6",
+                "rector/rector": "^2.0",
+                "vimeo/psalm": "^4.3 || ^5.0"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Jean85\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Alessandro Lai",
+                    "email": "alessandro.lai85@gmail.com"
+                }
+            ],
+            "description": "A library to get pretty versions strings of installed dependencies",
+            "keywords": [
+                "composer",
+                "package",
+                "release",
+                "versions"
+            ],
+            "support": {
+                "issues": "https://github.com/Jean85/pretty-package-versions/issues",
+                "source": "https://github.com/Jean85/pretty-package-versions/tree/2.1.1"
+            },
+            "time": "2025-03-19T14:43:43+00:00"
         },
         {
             "name": "knplabs/github-api",
@@ -1867,108 +1924,6 @@
                 "source": "https://github.com/mvriel/TextToLatex/tree/master"
             },
             "time": "2015-12-13T07:33:35+00:00"
-        },
-        {
-            "name": "monolog/monolog",
-            "version": "2.10.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/Seldaek/monolog.git",
-                "reference": "5cf826f2991858b54d5c3809bee745560a1042a7"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/Seldaek/monolog/zipball/5cf826f2991858b54d5c3809bee745560a1042a7",
-                "reference": "5cf826f2991858b54d5c3809bee745560a1042a7",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=7.2",
-                "psr/log": "^1.0.1 || ^2.0 || ^3.0"
-            },
-            "provide": {
-                "psr/log-implementation": "1.0.0 || 2.0.0 || 3.0.0"
-            },
-            "require-dev": {
-                "aws/aws-sdk-php": "^2.4.9 || ^3.0",
-                "doctrine/couchdb": "~1.0@dev",
-                "elasticsearch/elasticsearch": "^7 || ^8",
-                "ext-json": "*",
-                "graylog2/gelf-php": "^1.4.2 || ^2@dev",
-                "guzzlehttp/guzzle": "^7.4",
-                "guzzlehttp/psr7": "^2.2",
-                "mongodb/mongodb": "^1.8",
-                "php-amqplib/php-amqplib": "~2.4 || ^3",
-                "phpspec/prophecy": "^1.15",
-                "phpstan/phpstan": "^1.10",
-                "phpunit/phpunit": "^8.5.38 || ^9.6.19",
-                "predis/predis": "^1.1 || ^2.0",
-                "rollbar/rollbar": "^1.3 || ^2 || ^3",
-                "ruflin/elastica": "^7",
-                "swiftmailer/swiftmailer": "^5.3|^6.0",
-                "symfony/mailer": "^5.4 || ^6",
-                "symfony/mime": "^5.4 || ^6"
-            },
-            "suggest": {
-                "aws/aws-sdk-php": "Allow sending log messages to AWS services like DynamoDB",
-                "doctrine/couchdb": "Allow sending log messages to a CouchDB server",
-                "elasticsearch/elasticsearch": "Allow sending log messages to an Elasticsearch server via official client",
-                "ext-amqp": "Allow sending log messages to an AMQP server (1.0+ required)",
-                "ext-curl": "Required to send log messages using the IFTTTHandler, the LogglyHandler, the SendGridHandler, the SlackWebhookHandler or the TelegramBotHandler",
-                "ext-mbstring": "Allow to work properly with unicode symbols",
-                "ext-mongodb": "Allow sending log messages to a MongoDB server (via driver)",
-                "ext-openssl": "Required to send log messages using SSL",
-                "ext-sockets": "Allow sending log messages to a Syslog server (via UDP driver)",
-                "graylog2/gelf-php": "Allow sending log messages to a GrayLog2 server",
-                "mongodb/mongodb": "Allow sending log messages to a MongoDB server (via library)",
-                "php-amqplib/php-amqplib": "Allow sending log messages to an AMQP server using php-amqplib",
-                "rollbar/rollbar": "Allow sending log messages to Rollbar",
-                "ruflin/elastica": "Allow sending log messages to an Elastic Search server"
-            },
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-main": "2.x-dev"
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "Monolog\\": "src/Monolog"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Jordi Boggiano",
-                    "email": "j.boggiano@seld.be",
-                    "homepage": "https://seld.be"
-                }
-            ],
-            "description": "Sends your logs to files, sockets, inboxes, databases and various web services",
-            "homepage": "https://github.com/Seldaek/monolog",
-            "keywords": [
-                "log",
-                "logging",
-                "psr-3"
-            ],
-            "support": {
-                "issues": "https://github.com/Seldaek/monolog/issues",
-                "source": "https://github.com/Seldaek/monolog/tree/2.10.0"
-            },
-            "funding": [
-                {
-                    "url": "https://github.com/Seldaek",
-                    "type": "github"
-                },
-                {
-                    "url": "https://tidelift.com/funding/github/packagist/monolog/monolog",
-                    "type": "tidelift"
-                }
-            ],
-            "time": "2024-11-12T12:43:37+00:00"
         },
         {
             "name": "nikic/php-parser",
@@ -3151,70 +3106,6 @@
             "time": "2019-03-08T08:55:37+00:00"
         },
         {
-            "name": "rollbar/rollbar",
-            "version": "v2.1.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/rollbar/rollbar-php.git",
-                "reference": "ff3db5739dd635740caed02ddad43e671b5a37e5"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/rollbar/rollbar-php/zipball/ff3db5739dd635740caed02ddad43e671b5a37e5",
-                "reference": "ff3db5739dd635740caed02ddad43e671b5a37e5",
-                "shasum": ""
-            },
-            "require": {
-                "ext-curl": "*",
-                "monolog/monolog": "^1 || ^2",
-                "psr/log": "^1"
-            },
-            "require-dev": {
-                "codeclimate/php-test-reporter": "dev-master",
-                "mockery/mockery": "1.*",
-                "packfire/php5.3-compat": "*",
-                "phpmd/phpmd": "@stable",
-                "phpunit/phpunit": "4.8.* || 5.7.* || ^8",
-                "squizlabs/php_codesniffer": "2.*"
-            },
-            "suggest": {
-                "fluent/logger": "Needed to use the 'fluent' handler for fluentd support",
-                "packfire/php5.3-compat": "for backward compatibility with PHP 5.3"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "Rollbar\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Rollbar, Inc.",
-                    "email": "support@rollbar.com",
-                    "role": "Developer"
-                }
-            ],
-            "description": "Monitors errors and exceptions and reports them to Rollbar",
-            "homepage": "http://github.com/rollbar/rollbar-php",
-            "keywords": [
-                "debugging",
-                "errors",
-                "exceptions",
-                "logging",
-                "monitoring"
-            ],
-            "support": {
-                "email": "support@rollbar.com",
-                "issues": "https://github.com/rollbar/rollbar-php/issues",
-                "source": "https://github.com/rollbar/rollbar-php/tree/v2.1.0"
-            },
-            "time": "2020-07-01T23:21:01+00:00"
-        },
-        {
             "name": "samdark/sitemap",
             "version": "2.4.1",
             "source": {
@@ -3350,6 +3241,95 @@
                 }
             ],
             "time": "2022-12-17T21:53:22+00:00"
+        },
+        {
+            "name": "sentry/sentry",
+            "version": "4.11.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/getsentry/sentry-php.git",
+                "reference": "53dc0bcb6a667cac5b760b46f98d5380e63e02ca"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/getsentry/sentry-php/zipball/53dc0bcb6a667cac5b760b46f98d5380e63e02ca",
+                "reference": "53dc0bcb6a667cac5b760b46f98d5380e63e02ca",
+                "shasum": ""
+            },
+            "require": {
+                "ext-curl": "*",
+                "ext-json": "*",
+                "ext-mbstring": "*",
+                "guzzlehttp/psr7": "^1.8.4|^2.1.1",
+                "jean85/pretty-package-versions": "^1.5|^2.0.4",
+                "php": "^7.2|^8.0",
+                "psr/log": "^1.0|^2.0|^3.0",
+                "symfony/options-resolver": "^4.4.30|^5.0.11|^6.0|^7.0"
+            },
+            "conflict": {
+                "raven/raven": "*"
+            },
+            "require-dev": {
+                "friendsofphp/php-cs-fixer": "^3.4",
+                "guzzlehttp/promises": "^2.0.3",
+                "guzzlehttp/psr7": "^1.8.4|^2.1.1",
+                "monolog/monolog": "^1.6|^2.0|^3.0",
+                "phpbench/phpbench": "^1.0",
+                "phpstan/phpstan": "^1.3",
+                "phpunit/phpunit": "^8.5|^9.6",
+                "symfony/phpunit-bridge": "^5.2|^6.0|^7.0",
+                "vimeo/psalm": "^4.17"
+            },
+            "suggest": {
+                "monolog/monolog": "Allow sending log messages to Sentry by using the included Monolog handler."
+            },
+            "type": "library",
+            "autoload": {
+                "files": [
+                    "src/functions.php"
+                ],
+                "psr-4": {
+                    "Sentry\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Sentry",
+                    "email": "accounts@sentry.io"
+                }
+            ],
+            "description": "PHP SDK for Sentry (http://sentry.io)",
+            "homepage": "http://sentry.io",
+            "keywords": [
+                "crash-reporting",
+                "crash-reports",
+                "error-handler",
+                "error-monitoring",
+                "log",
+                "logging",
+                "profiling",
+                "sentry",
+                "tracing"
+            ],
+            "support": {
+                "issues": "https://github.com/getsentry/sentry-php/issues",
+                "source": "https://github.com/getsentry/sentry-php/tree/4.11.1"
+            },
+            "funding": [
+                {
+                    "url": "https://sentry.io/",
+                    "type": "custom"
+                },
+                {
+                    "url": "https://sentry.io/pricing/",
+                    "type": "custom"
+                }
+            ],
+            "time": "2025-05-12T11:30:33+00:00"
         },
         {
             "name": "symfony/deprecation-contracts",
@@ -8409,14 +8389,14 @@
         "ext-curl": "*",
         "ext-fileinfo": "*",
         "ext-gd": "*",
-        "ext-json": "*",
         "ext-intl": "*",
+        "ext-json": "*",
         "ext-mbstring": "*",
         "ext-pdo_mysql": "*",
         "ext-zend-opcache": "*",
         "ext-zip": "*"
     },
-    "platform-dev": {},
+    "platform-dev": [],
     "platform-overrides": {
         "php": "7.4"
     },
