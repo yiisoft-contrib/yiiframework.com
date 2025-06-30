@@ -39,7 +39,7 @@ return [
 
     'siteAbsoluteUrl' => 'http://local.yiiframework.com',
 
-    // https://apps.twitter.com/app/new
+    // https://apps.x.com/app/new
     // After creating an app you need to fill accessToken and accessTokenSecret:
     // Open App -> Keys and Access Tokens -> You Access Token -> Create my access token
     'twitter.consumerKey' => '',
