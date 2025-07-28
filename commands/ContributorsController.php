@@ -49,14 +49,61 @@ class ContributorsController extends Controller
                 $token = trim(file_get_contents($tokenFile));
                 $client->authenticate($token, null, \Github\Client::AUTH_HTTP_TOKEN);
             }
-            $api = $client->api('repo');
-            $paginator = new \Github\ResultPager($client);
-            $parameters = ['yiisoft', 'yii2'];
-            $rawContributors = $paginator->fetch($api, 'contributors', $parameters);
-
-            while ($paginator->hasNext() && count($rawContributors) < $contributorLimit) {
-                $rawContributors = array_merge($rawContributors, $paginator->fetchNext());
+            
+            // Get all repositories from yiisoft organization
+            $orgApi = $client->api('organization');
+            $orgPaginator = new \Github\ResultPager($client);
+            $this->stdout("Fetching all repositories from yiisoft organization...\n");
+            $repositories = $orgPaginator->fetch($orgApi, 'repositories', ['yiisoft']);
+            
+            while ($orgPaginator->hasNext()) {
+                $repositories = array_merge($repositories, $orgPaginator->fetchNext());
             }
+            
+            $this->stdout("Found " . count($repositories) . " repositories in yiisoft organization.\n");
+            
+            // Aggregate contributors from all repositories
+            $allContributors = [];
+            $api = $client->api('repo');
+            
+            foreach ($repositories as $repo) {
+                $repoName = $repo['name'];
+                $this->stdout("Fetching contributors from yiisoft/{$repoName}...\n");
+                
+                try {
+                    $paginator = new \Github\ResultPager($client);
+                    $parameters = ['yiisoft', $repoName];
+                    $repoContributors = $paginator->fetch($api, 'contributors', $parameters);
+                    
+                    while ($paginator->hasNext() && count($allContributors) < $contributorLimit) {
+                        $repoContributors = array_merge($repoContributors, $paginator->fetchNext());
+                    }
+                    
+                    // Merge contributors, summing contributions for duplicates
+                    foreach ($repoContributors as $contributor) {
+                        $login = $contributor['login'];
+                        if (isset($allContributors[$login])) {
+                            $allContributors[$login]['contributions'] += $contributor['contributions'];
+                        } else {
+                            $allContributors[$login] = $contributor;
+                        }
+                    }
+                    
+                    if (count($allContributors) >= $contributorLimit) {
+                        $this->stdout("Reached contributor limit of {$contributorLimit}.\n");
+                        break;
+                    }
+                } catch (\Exception $e) {
+                    $this->stdout("Warning: Could not fetch contributors from {$repoName}: " . $e->getMessage() . "\n");
+                    continue;
+                }
+            }
+            
+            // Convert back to indexed array and sort by contributions
+            $rawContributors = array_values($allContributors);
+            usort($rawContributors, function($a, $b) {
+                return $b['contributions'] - $a['contributions'];
+            });
 
             // remove team members
             $teamGithubs = array_filter(array_map(function ($member) {
