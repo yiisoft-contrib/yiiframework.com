@@ -117,8 +117,8 @@ abstract class SearchActiveRecord extends \yii\elasticsearch\ActiveRecord
         $queryParts[] = [
             'bool' => [
                 'should' => [
-                    ['term' => ['name' => $queryString]],
-                    ['term' => ['title' => $queryString]],
+                    ['term' => ['name' => mb_strtolower($queryString)]],
+                    ['term' => ['title' => mb_strtolower($queryString)]],
                     ['match' => ['name' => $queryString]],
                     ['match' => ['name.camel' => $queryString]],
                 ],
@@ -135,8 +135,8 @@ abstract class SearchActiveRecord extends \yii\elasticsearch\ActiveRecord
             $queryParts[] = [
                 'bool' => [
                     'should' => [
-                        ['term' => ['name' => $camelQuery]],
-                        ['term' => ['title' => $camelQuery]],
+                        ['term' => ['name' => mb_strtolower($camelQuery)]],
+                        ['term' => ['title' => mb_strtolower($camelQuery)]],
                         ['match' => ['name' => $camelQuery]],
                         ['match' => ['title.stemmed' => $camelQuery]],
                     ],
@@ -247,7 +247,7 @@ abstract class SearchActiveRecord extends \yii\elasticsearch\ActiveRecord
         $query->from($indexes, $types);
         // TODO filter by version if possible
         $query->addSuggester('suggest-title', [
-            'prefix' => $queryString,
+            'prefix' => mb_strtolower($queryString),
             'completion' => [
                 'field' => 'title.suggest',
                 // number of suggestions to return
@@ -261,7 +261,7 @@ abstract class SearchActiveRecord extends \yii\elasticsearch\ActiveRecord
         // language specific indexes have no name field
         if ($language === null || $language === 'en') {
             $query->addSuggester('suggest-name', [
-                'prefix' => $queryString,
+                'prefix' => mb_strtolower($queryString),
                 'completion' => [
                     'field' => 'name.suggest',
                     // number of suggestions to return
