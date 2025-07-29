@@ -480,7 +480,7 @@ class User extends ActiveRecord implements IdentityInterface
         }
 
         $content = $avatar . ' ' . Html::encode($this->display_name);
-        return Html::a($content, ['user/view', 'id' => $this->id], array('class' => $class));
+        return Html::a($content, ['user/view', 'id' => $this->id], ['class' => $class]);
     }
 
     public function getForumUrl()
