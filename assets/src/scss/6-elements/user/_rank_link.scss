@@ -1,6 +1,15 @@
 .user-rank-link {
   text-decoration: none;
 
+  .user-rank-avatar {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    display: inline-block;
+    vertical-align: middle;
+    margin-right: 0.5em;
+  }
+
   &.gold:before,
   &.silver:before,
   &.bronze:before {
