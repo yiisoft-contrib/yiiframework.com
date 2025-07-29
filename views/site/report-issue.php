@@ -68,6 +68,7 @@ $this->params['breadcrumbs'][] = $this->title;
                         'yii2-shell' => 'Shell extension',
                         'yii2-sphinx' => 'Sphinx Search extension',
                         'yii2-swiftmailer' => 'Swiftmailer extension',
+                        'yii2-symfonymailer' => 'Symfony Mailer extension',
                         'yii2-twig' => 'Twig view renderer',
                     ];
 

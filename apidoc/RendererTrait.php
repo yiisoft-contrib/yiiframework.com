@@ -21,6 +21,7 @@ trait RendererTrait
         'smarty',
         'sphinx',
         'swiftmailer',
+        'symfonymailer',
         'twig',
     ];
 
