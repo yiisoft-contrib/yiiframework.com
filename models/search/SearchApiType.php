@@ -127,6 +127,12 @@ class SearchApiType extends SearchActiveRecord
                             'type' => 'pattern',
                             'pattern' => '([^\\p{L}\\d]+)|(?<=\\D)(?=\\d)|(?<=\\d)(?=\\D)|(?<=[\\p{L}&&[^\\p{Lu}]])(?=\\p{Lu})|(?<=\\p{Lu})(?=\\p{Lu}[\\p{L}&&[^\\p{Lu}]])',
                         ]
+                    ],
+                    'normalizer' => [
+                        'lowercase' => [
+                            'type' => 'custom',
+                            'filter' => ['lowercase']
+                        ]
                     ]
                 ]
             ],
@@ -151,6 +157,11 @@ class SearchApiType extends SearchActiveRecord
                                     'type' => 'completion',
                                     'analyzer' => 'camel',
                                 ],
+                                // keyword field for exact case-insensitive matching
+                                'keyword' => [
+                                    'type' => 'keyword',
+                                    'normalizer' => 'lowercase'
+                                ],
                             ],
                         ],
                         'namespace' => ['type' => 'keyword'],
@@ -162,6 +173,11 @@ class SearchApiType extends SearchActiveRecord
                                 'stemmed' => [
                                     'type' => 'text',
                                     'analyzer' => 'english',
+                                ],
+                                // keyword field for exact case-insensitive matching
+                                'keyword' => [
+                                    'type' => 'keyword',
+                                    'normalizer' => 'lowercase'
                                 ],
                             ],
                         ],
