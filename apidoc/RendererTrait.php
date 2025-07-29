@@ -20,7 +20,7 @@ trait RendererTrait
         'redis',
         'smarty',
         'sphinx',
-        'swiftmailer',
+        'symfonymailer',
         'twig',
     ];
 

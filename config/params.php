@@ -28,7 +28,7 @@ return [
         ],
     ],
     'components.mailer' => [
-        'class' => yii\swiftmailer\Mailer::class,
+        'class' => yii\symfonymailer\Mailer::class,
         'viewPath' => '@app/mail',
         // send all mails to a file by default. You have to set
         // 'useFileTransport' to false and configure a transport
