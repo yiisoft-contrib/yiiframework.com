@@ -79,13 +79,23 @@ class SearchController extends BaseController
         );
     }
 
-    public function actionSuggest($q, $version = null, $language = null)
+    public function actionSuggest($q, $version = null, $language = null, $type = null)
     {
         try {
             $q = $this->trimLongQuery($q);
 
+            if (!in_array($version, $this->getVersions(), true)) {
+                $version = null;
+            }
+            if (!array_key_exists($language, $this->getLanguages())) {
+                $language = null;
+            }
+            if (!array_key_exists($type, $this->getTypes())) {
+                $type = null;
+            }
+
             Yii::$app->response->format = Response::FORMAT_JSON;
-            $query = SearchActiveRecord::searchAsYouType($q, $version, $language);
+            $query = SearchActiveRecord::searchAsYouType($q, $version, $language, $type);
             $results = $query->search()['suggest'];
         } catch (\yii\base\InvalidArgumentException $e) {
             // if input breaks the search, provide empty result

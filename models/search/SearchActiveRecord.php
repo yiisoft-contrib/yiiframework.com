@@ -222,7 +222,7 @@ abstract class SearchActiveRecord extends \yii\elasticsearch\ActiveRecord
         return $query;
     }
 
-    public static function searchAsYouType($queryString, $version = null, $language = null)
+    public static function searchAsYouType($queryString, $version = null, $language = null, $type = null)
     {
         $query = static::find();
 
@@ -236,14 +236,33 @@ abstract class SearchActiveRecord extends \yii\elasticsearch\ActiveRecord
             $indexes = [static::index() . "-$language"];
         }
 
-        $types = [
-            SearchApiType::TYPE,
-            // SearchApiPrimitive::TYPE,
-            SearchGuideSection::TYPE,
-            SearchWiki::TYPE,
-            SearchExtension::TYPE,
-            SearchNews::TYPE
-        ];
+        if ($type === null) {
+            $types = [
+                SearchApiType::TYPE,
+                // SearchApiPrimitive::TYPE,
+                SearchGuideSection::TYPE,
+                SearchWiki::TYPE,
+                SearchExtension::TYPE,
+                SearchNews::TYPE
+            ];
+        } elseif (in_array($type, [self::SEARCH_WIKI, self::SEARCH_EXTENSION, self::SEARCH_NEWS], true)) {
+            $types = [$type];
+        } elseif ($type === self::SEARCH_API) {
+            $types = [SearchApiType::TYPE,/* SearchApiPrimitive::TYPE,*/];
+        } elseif ($type === self::SEARCH_GUIDE) {
+            $types = [SearchGuideSection::TYPE];
+        } else {
+            // fallback to all types if unknown type is provided
+            $types = [
+                SearchApiType::TYPE,
+                // SearchApiPrimitive::TYPE,
+                SearchGuideSection::TYPE,
+                SearchWiki::TYPE,
+                SearchExtension::TYPE,
+                SearchNews::TYPE
+            ];
+        }
+        
         $query->from($indexes, $types);
         // TODO filter by version if possible
         $query->addSuggester('suggest-title', [

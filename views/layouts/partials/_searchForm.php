@@ -17,6 +17,9 @@ if ($type = Yii::$app->request->get('type')) {
 } elseif (isset($this->context->searchScope)) {
 	$url['type'] = $this->context->searchScope;
 }
+if (!empty($url['type'])) {
+    $this->registerJs('yiiSearchType = ' . \yii\helpers\Json::htmlEncode($url['type']), \yii\web\View::POS_HEAD);
+}
 
 $searchPlaceholder = trim(implode(' ', [
 	'Search',
