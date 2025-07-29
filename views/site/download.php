@@ -147,41 +147,44 @@ $this->params['breadcrumbs'][] = $this->title;
 					to learn how to use it.
 				</p>
 
-				<h1 id="verify-signatures">Verifying Release Signatures</h1>
+				<h1 id="verify-integrity">Verifying Download Integrity</h1>
 
 				<p class="small">
-					All Yii framework releases are digitally signed with GPG to ensure their integrity and authenticity.
-					To verify that a release has not been tampered with, you can check its GPG signature.
+					All Yii framework releases include SHA256 checksums to help you verify the integrity of downloaded files.
+					These checksums ensure that your downloaded archive has not been corrupted or tampered with.
 				</p>
 
 				<p class="small">
-					<strong>Step 1:</strong> Download both the release archive and its corresponding GPG signature file (*.asc) from the 
-					<a href="https://github.com/yiisoft/yii2/releases">GitHub releases page</a>.
-					The signature files are available alongside each release archive.
+					<strong>Step 1:</strong> After downloading a release archive from the 
+					<a href="https://github.com/yiisoft/yii2/releases">GitHub releases page</a>, 
+					you'll find the SHA256 hash displayed on the same page with a "copy" button for easy copying.
 				</p>
 
 				<p class="small">
-					<strong>Step 2:</strong> Import the Yii Framework release signing keys into your GPG keyring.
-					You can find the current public keys on the 
-					<a href="https://github.com/yiisoft/yii2/releases">GitHub releases page</a> or import them from a keyserver:
+					<strong>Step 2:</strong> Calculate the SHA256 hash of your downloaded file:
 				</p>
 
-				<pre><code class="hljs bash language-bash">gpg --keyserver keyserver.ubuntu.com --recv-keys [KEY_ID]</code></pre>
+				<div class="row ptrem1">
+					<div class="col-md-3">
+						<p class="small">On Linux/macOS:</p>
+					</div>
+					<div class="col-md-9">
+						<pre><code class="hljs bash language-bash">sha256sum yii-basic-app-<?= $latest ?>.tgz</code></pre>
+					</div>
+				</div>
+
+				<div class="row ptrem1">
+					<div class="col-md-3">
+						<p class="small">On Windows:</p>
+					</div>
+					<div class="col-md-9">
+						<pre><code class="hljs bash language-bash">certutil -hashfile yii-basic-app-<?= $latest ?>.tgz SHA256</code></pre>
+					</div>
+				</div>
 
 				<p class="small">
-					<strong>Step 3:</strong> Verify the signature of the downloaded archive:
-				</p>
-
-				<pre><code class="hljs bash language-bash">gpg --verify yii-basic-app-<?= $latest ?>.tgz.asc yii-basic-app-<?= $latest ?>.tgz</code></pre>
-
-				<p class="small">
-					If the signature is valid, you should see a message like <code>"Good signature from..."</code>.
-					If the signature verification fails or the file has been tampered with, GPG will warn you.
-				</p>
-
-				<p class="small">
-					For more information about GPG signature verification, please refer to the
-					<a href="https://www.gnupg.org/gph/en/manual/x135.html">GnuPG documentation</a>.
+					<strong>Step 3:</strong> Compare the calculated hash with the one provided on the GitHub releases page.
+					If they match exactly, your download is verified and safe to use.
 				</p>
 
 				<h1>Upgrade from Older Versions</h1>
