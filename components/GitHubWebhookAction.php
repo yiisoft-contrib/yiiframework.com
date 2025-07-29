@@ -73,10 +73,11 @@ class GitHubWebhookAction extends Action
     /**
      * Validates the GitHub webhook signature
      * 
+     * @param string|null $payload Optional payload for testing
      * @throws BadRequestHttpException
      * @throws ForbiddenHttpException
      */
-    protected function validateSignature()
+    protected function validateSignature($payload = null)
     {
         $secret = Yii::$app->params['github-webhook-secret'] ?? null;
         
@@ -91,7 +92,10 @@ class GitHubWebhookAction extends Action
             throw new ForbiddenHttpException('Missing signature header');
         }
 
-        $payload = file_get_contents('php://input');
+        if ($payload === null) {
+            $payload = file_get_contents('php://input');
+        }
+        
         $expectedSignature = 'sha256=' . hash_hmac('sha256', $payload, $secret);
 
         if (!hash_equals($expectedSignature, $signature)) {
