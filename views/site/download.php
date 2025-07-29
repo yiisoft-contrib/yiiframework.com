@@ -147,6 +147,38 @@ $this->params['breadcrumbs'][] = $this->title;
 					to learn how to use it.
 				</p>
 
+				<h1 id="verify-integrity">Verifying Download Integrity</h1>
+
+				<p class="small">
+					Verify your download using the SHA256 hash from the 
+					<a href="https://github.com/yiisoft/yii2/releases">GitHub releases page</a> 
+					(copy the hash using the "copy" button):
+				</p>
+
+				<div class="row ptrem1">
+					<div class="col-md-3">
+						<p class="small">Linux/macOS:</p>
+					</div>
+					<div class="col-md-9">
+						<pre><code class="hljs bash language-bash">echo "EXPECTED_HASH  yii-basic-app-<?= $latest ?>.tgz" | sha256sum -c</code></pre>
+					</div>
+				</div>
+
+				<div class="row ptrem1">
+					<div class="col-md-3">
+						<p class="small">Windows:</p>
+					</div>
+					<div class="col-md-9">
+						<pre><code class="hljs powershell language-powershell">$expectedHash = "EXPECTED_HASH"
+$actualHash = (Get-FileHash yii-basic-app-<?= $latest ?>.tgz -Algorithm SHA256).Hash.ToLower()
+if ($expectedHash -eq $actualHash) { "✓ Verification successful" } else { "✗ Verification failed" }</code></pre>
+					</div>
+				</div>
+
+				<p class="small">
+					Replace EXPECTED_HASH with the actual hash. If verification fails, re-download the file.
+				</p>
+
 				<h1>Upgrade from Older Versions</h1>
 
 				<p class="small">If you are upgrading from Yii 2.0.x with Composer, simply run the following commands in your project's root directory:</p>
