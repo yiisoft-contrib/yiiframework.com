@@ -38,8 +38,8 @@ class ContactForm extends Model
     {
         return [
             'verifyCode' => 'Verification Code',
-            'name' => 'Your Name',
-            'email' => 'Your Email',
+            'email' => 'Your Name',
+            'name' => 'Your Email',
             'body' => 'Message',
         ];
     }
@@ -51,8 +51,8 @@ class ContactForm extends Model
      */
     public function contact($email)
     {
-        $fromEmail = $this->email;
-        $name = $this->name;
+        $fromEmail = $this->name;
+        $name = $this->email;
 
         if ($this->validate()) {
             Yii::$app->mailer->compose()
