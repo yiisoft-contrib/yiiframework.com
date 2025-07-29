@@ -1,48 +1,36 @@
-# This Makefile is used to generate the yii2 and yii1 api documentation and guide
-#
-# run `make help` for a list of available targets. Run a target with `make <target>`.
-#
+.DEFAULT_GOAL := help
 
-help:
-	@echo "the following targets are available:"
-	@echo ""
-	@echo " - deploy       run commands after git pull for deployment on a server"
-	@echo ""
-	@echo " - docs         make all the docs"
-	@echo " - guide        make only the guide docs"
-	@echo " - guide-{v}    make only the guide docs for version {v} (1.0, 1.1, 2.0)"
-	@echo " - api          make only the api docs"
-	@echo " - api-{v}      make only the api docs for version {v} (1.0, 1.1, 2.0)"
-	@echo " - download     make only the doc download archives"
-	@echo " - download-{v} make only the doc download archives for version {v} (2.0)"
+CLI_ARGS := $(wordlist 2,$(words $(MAKECMDGOALS)),$(MAKECMDGOALS))
+$(eval $(CLI_ARGS):;@:)
 
-deploy:
+deploy: ## Run commands after git pull for deployment on a server.
 	composer --no-interaction --classmap-authoritative --no-dev install
 	npm install
 	gulp build --production
 	./yii migrate
 	./yii cache/flush-all
 
-docs: api guide download
+docs: api guide download ## Make all the docs.
 
-api: api-1.1 api-2.0
+
+api: api-1.1 api-2.0 ## Make only the api docs.
 	./yii search/rebuild api
 
-guide: guide-1.0 guide-1.1 guide-2.0
+guide: guide-1.0 guide-1.1 guide-2.0 ## Make only the guide docs.
 	./yii search/rebuild guide
 
-download: download-2.0
+download: download-2.0 ## Make only the doc download archives.
 
-api-%: yii-%
+api-%: yii-% ## Make only the api docs for version {v} (1.0, 1.1, 2.0).
 	./yii api "$(subst api-,,$@)" --interactive=0
 
-guide-%: yii-%
+guide-%: yii-% ## Make only the guide docs for version {v} (1.0, 1.1, 2.0).
 	./yii guide "$(subst guide-,,$@)" --interactive=0
 	@echo "PDF errors in the following logs:"
 	@find data/$@/ | grep fail.log || echo " - no errors - "
 
 
-download-%: TARGET_DIR=data/docs-offline
+download-%: TARGET_DIR=data/docs-offline ## download-{v} make only the doc download archives for version {v} (2.0).
 download-%: SOURCE_DIR=data/yii-$(subst download-,,$@)
 download-%: DOC_DIR=yii-docs-$(subst download-,,$@)
 download-%: VENDOR_DIR=vendor
@@ -67,7 +55,7 @@ download-%: yii-%
 	done
 
 
-# targets for cloning yii repos for building docs
+# Targets for cloning yii repos for building docs.
 yii-1.0: composer
 	test -d data/yii-1.0 || git clone https://github.com/yiisoft/yii.git data/yii-1.0
 	cd data/yii-1.0 && git checkout 1.0.12 && git checkout master build/
@@ -105,7 +93,34 @@ yii-2.0-ext-%:
 	test -d data/yii-2.0/extensions/$(subst yii-2.0-ext-,,$@) || git clone https://github.com/yiisoft/yii2-$(subst yii-2.0-ext-,,$@).git data/yii-2.0/extensions/$(subst yii-2.0-ext-,,$@)
 	cd data/yii-2.0/extensions/$(subst yii-2.0-ext-,,$@) && git pull
 
-# the following targets are internal only
-
 composer:
 	cd data && (test -f composer.phar || (php -r "readfile('https://getcomposer.org/installer');" | php))
+
+build: ## Build docker images.
+	docker compose build $(CLI_ARGS)
+
+up:  ## Up the dev environment.
+	docker compose up -d --remove-orphans
+
+down: ## Down the dev environment.
+	docker compose down --remove-orphans
+
+clear: ## Remove development docker containers and volumes.
+	docker compose down --volumes --remove-orphans
+
+shell: ## Get into container shell.
+	docker compose exec web /bin/sh
+
+yii: ## Execute Yii command.
+	docker compose run --rm web ./yii $(CLI_ARGS)
+.PHONY: yii
+
+composer-docker: ## Run Composer.
+	docker compose run --rm app composer $(CLI_ARGS)
+
+codecept: ## Run Codeception.
+	docker compose run --rm app ./vendor/bin/codecept $(CLI_ARGS)
+
+# Output the help for each task, see https://marmelab.com/blog/2016/02/29/auto-documented-makefile.html
+help: ## This help.
+	@awk 'BEGIN {FS = ":.*?## "} /^[a-zA-Z_-]+:.*?## / {printf "\033[36m%-30s\033[0m %s\n", $$1, $$2}' $(MAKEFILE_LIST)
