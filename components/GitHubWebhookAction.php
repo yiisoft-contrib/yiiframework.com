@@ -160,7 +160,7 @@ class GitHubWebhookAction extends Action
         $versionSeries = $this->getVersionSeries($tagName, $repoName);
         
         if ($versionSeries === null) {
-            // Not a supported repository or version format
+            Yii::info("Skipping release $tagName from $repoName - not a supported version", __METHOD__);
             return;
         }
 
@@ -169,6 +169,12 @@ class GitHubWebhookAction extends Action
         
         // Read current versions file
         $content = file_get_contents($versionsPath);
+        
+        // Check if version already exists
+        if (strpos($content, "'$tagName'") !== false) {
+            Yii::info("Version $tagName already exists in versions file", __METHOD__);
+            return;
+        }
         
         // Add the new version to the appropriate series
         $pattern = '/(\'' . preg_quote($versionSeries, '/') . '\'\s*=>\s*\[)(.*?)(\],)/s';
@@ -188,9 +194,13 @@ class GitHubWebhookAction extends Action
                 $content
             );
             
-            file_put_contents($versionsPath, $newContent);
-            
-            Yii::info("Updated $versionSeries with version $tagName", __METHOD__);
+            if (file_put_contents($versionsPath, $newContent) !== false) {
+                Yii::info("Successfully updated $versionSeries with version $tagName", __METHOD__);
+            } else {
+                throw new Exception("Failed to write updated versions file");
+            }
+        } else {
+            throw new Exception("Could not find version series '$versionSeries' in versions file");
         }
     }
 
