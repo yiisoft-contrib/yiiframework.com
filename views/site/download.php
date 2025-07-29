@@ -147,6 +147,43 @@ $this->params['breadcrumbs'][] = $this->title;
 					to learn how to use it.
 				</p>
 
+				<h1 id="verify-signatures">Verifying Release Signatures</h1>
+
+				<p class="small">
+					All Yii framework releases are digitally signed with GPG to ensure their integrity and authenticity.
+					To verify that a release has not been tampered with, you can check its GPG signature.
+				</p>
+
+				<p class="small">
+					<strong>Step 1:</strong> Download both the release archive and its corresponding GPG signature file (*.asc) from the 
+					<a href="https://github.com/yiisoft/yii2/releases">GitHub releases page</a>.
+					The signature files are available alongside each release archive.
+				</p>
+
+				<p class="small">
+					<strong>Step 2:</strong> Import the Yii Framework release signing keys into your GPG keyring.
+					You can find the current public keys on the 
+					<a href="https://github.com/yiisoft/yii2/releases">GitHub releases page</a> or import them from a keyserver:
+				</p>
+
+				<pre><code class="hljs bash language-bash">gpg --keyserver keyserver.ubuntu.com --recv-keys [KEY_ID]</code></pre>
+
+				<p class="small">
+					<strong>Step 3:</strong> Verify the signature of the downloaded archive:
+				</p>
+
+				<pre><code class="hljs bash language-bash">gpg --verify yii-basic-app-<?= $latest ?>.tgz.asc yii-basic-app-<?= $latest ?>.tgz</code></pre>
+
+				<p class="small">
+					If the signature is valid, you should see a message like <code>"Good signature from..."</code>.
+					If the signature verification fails or the file has been tampered with, GPG will warn you.
+				</p>
+
+				<p class="small">
+					For more information about GPG signature verification, please refer to the
+					<a href="https://www.gnupg.org/gph/en/manual/x135.html">GnuPG documentation</a>.
+				</p>
+
 				<h1>Upgrade from Older Versions</h1>
 
 				<p class="small">If you are upgrading from Yii 2.0.x with Composer, simply run the following commands in your project's root directory:</p>
