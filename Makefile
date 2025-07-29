@@ -109,7 +109,7 @@ clear: ## Remove development docker containers and volumes.
 	docker compose down --volumes --remove-orphans
 
 shell: ## Get into container shell.
-	docker compose exec web /bin/sh
+	docker compose exec web /bin/bash
 
 yii: ## Execute Yii command.
 	docker compose run --rm web ./yii $(CLI_ARGS)
