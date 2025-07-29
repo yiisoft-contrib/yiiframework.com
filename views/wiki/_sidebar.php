@@ -1,9 +1,6 @@
 <?php
 use app\components\object\ClassType;
-use app\components\UserPermissions;
-use app\models\Wiki;
 use app\models\WikiCategory;
-use app\models\WikiTag;
 use app\widgets\RecentComments;
 use yii\helpers\Html;
 use yii\helpers\Url;
@@ -12,6 +9,7 @@ use yii\helpers\Url;
 /** @var $category string */
 /** @var $version string */
 /** @var $tag \app\models\WikiTag */
+/** @var $popularTags \app\models\WikiTag[] */
 ?>
 <?= Html::a('<span class="big">Write</span><span class="small">new article</span>', ['create'], ['class' => 'btn btn-block btn-new-wiki-article']) ?>
 
@@ -53,20 +51,6 @@ use yii\helpers\Url;
 
 <ul class="wiki-side-menu">
     <li<?= empty($tag) ? ' class="active"' : '' ?>><a href="<?= Url::to(['wiki/index', 'category' => isset($category) ? $category : null])?>">All</a></li>
-    <?php 
-    // Get popular tags, excluding those from deleted wikis for regular users
-    $tagQuery = WikiTag::find();
-    if (UserPermissions::canManageWiki()) {
-        $tagQuery->orderBy(['frequency' => SORT_DESC]);
-    } else {
-        $tagQuery->select(['id' => 'wiki_tag_id', 'name', 'wiki_tags.slug', 'frequency' => 'COUNT(*)'])
-            ->joinWith(['wikis'])
-              ->andWhere(['wikis.status' => Wiki::STATUS_PUBLISHED])
-              ->groupBy(['wiki_tag_id', 'name', 'slug'])
-              ->orderBy(['frequency' => SORT_DESC]);
-    }
-    $popularTags = $tagQuery->limit(10)->all();
-    ?>
     <?php foreach($popularTags as $t): ?>
         <li<?= isset($tag) && $tag->equals($t) ? ' class="active"' : '' ?>>
             <a href="<?= Url::to([

@@ -137,11 +137,25 @@ class WikiController extends BaseController
             Yii::$app->response->statusCode = 404;
         }
 
+        // Get popular tags, excluding those from deleted wikis for regular users
+        $tagQuery = WikiTag::find();
+        if (UserPermissions::canManageWiki()) {
+            $tagQuery->orderBy(['frequency' => SORT_DESC]);
+        } else {
+            $tagQuery->select(['id' => 'wiki_tag_id', 'name', 'wiki_tags.slug', 'frequency' => 'COUNT(*)'])
+                ->joinWith(['wikis'])
+                ->andWhere(['wikis.status' => Wiki::STATUS_PUBLISHED])
+                ->groupBy(['wiki_tag_id', 'name', 'slug'])
+                ->orderBy(['frequency' => SORT_DESC]);
+        }
+        $popularTags = $tagQuery->limit(10)->all();
+
         return $this->render('index', [
             'dataProvider' => $dataProvider,
             'tag' => $tagModel,
             'category' => $categoryModel,
             'version' => $version,
+            'popularTags' => $popularTags,
         ]);
     }
 
