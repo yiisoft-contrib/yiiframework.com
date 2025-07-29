@@ -28,6 +28,7 @@ class Formatter extends \yii\i18n\Formatter
                 'ul', 'ol', 'li',
                 'img'
             ],
+            'TargetNoopener' => true,
         ],
         'Attr' => [
             'EnableID' => true,
