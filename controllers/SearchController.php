@@ -220,7 +220,7 @@ class SearchController extends BaseController
         $q = $this->trimLongQuery($q);
 
         Yii::$app->response->format = Response::FORMAT_JSON;
-        $query = SearchActiveRecord::searchAsYouType($q, null, null);
+        $query = SearchActiveRecord::searchAsYouType($q, null, null, null);
         $results = $query->search()['suggest'];
 
         Yii::$app->response->format = Response::FORMAT_RAW;
