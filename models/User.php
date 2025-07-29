@@ -471,13 +471,13 @@ class User extends ActiveRecord implements IdentityInterface
             $class = "{$class} bronze";
         }
 
-        // Add avatar to the rank link
-        $avatar = '';
         if ($this->hasAvatar()) {
-            $avatar = Html::img($this->getAvatarUrl(), ['alt' => Html::encode($this->display_name), 'class' => 'user-rank-avatar']);
+            $avatarUrl = $this->getAvatarUrl();
         } else {
-            $avatar = Html::img(Url::to('@web/image/user/default_user.png'), ['alt' => Html::encode($this->display_name), 'class' => 'user-rank-avatar']);
+            $avatarUrl = Url::to('@web/image/user/default_user.svg');
         }
+
+        $avatar = Html::img($avatarUrl, ['alt' => Html::encode($this->display_name), 'class' => 'user-rank-avatar']);
 
         $content = $avatar . ' ' . Html::encode($this->display_name);
         return Html::a($content, ['user/view', 'id' => $this->id], ['class' => $class]);
