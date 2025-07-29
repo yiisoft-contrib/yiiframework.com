@@ -43,8 +43,8 @@ class ContactFormCest
     public function submitFormSuccessfully(\FunctionalTester $I)
     {
         $I->submitForm('.content form', [
-            'ContactForm[email]' => 'tester',
-            'ContactForm[name]' => 'tester@example.com',
+            'ContactForm[name]' => 'tester',
+            'ContactForm[email]' => 'tester@example.com',
             'ContactForm[subject]' => 'test subject',
             'ContactForm[body]' => 'test content',
             'ContactForm[verifyCode]' => 'testme',
