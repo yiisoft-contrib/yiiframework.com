@@ -161,7 +161,7 @@ $this->params['breadcrumbs'][] = $this->title;
 				</p>
 
 				<p class="small">
-					<strong>Step 2:</strong> Calculate the SHA256 hash of your downloaded file:
+					<strong>Step 2:</strong> Verify the file automatically using the SHA256 hash:
 				</p>
 
 				<div class="row ptrem1">
@@ -169,22 +169,26 @@ $this->params['breadcrumbs'][] = $this->title;
 						<p class="small">On Linux/macOS:</p>
 					</div>
 					<div class="col-md-9">
-						<pre><code class="hljs bash language-bash">sha256sum yii-basic-app-<?= $latest ?>.tgz</code></pre>
+						<pre><code class="hljs bash language-bash"># Replace EXPECTED_HASH with the hash from GitHub releases page
+echo "EXPECTED_HASH  yii-basic-app-<?= $latest ?>.tgz" | sha256sum -c</code></pre>
 					</div>
 				</div>
 
 				<div class="row ptrem1">
 					<div class="col-md-3">
-						<p class="small">On Windows:</p>
+						<p class="small">On Windows (PowerShell):</p>
 					</div>
 					<div class="col-md-9">
-						<pre><code class="hljs bash language-bash">certutil -hashfile yii-basic-app-<?= $latest ?>.tgz SHA256</code></pre>
+						<pre><code class="hljs powershell language-powershell"># Replace EXPECTED_HASH with the hash from GitHub releases page
+$expectedHash = "EXPECTED_HASH"
+$actualHash = (Get-FileHash yii-basic-app-<?= $latest ?>.tgz -Algorithm SHA256).Hash.ToLower()
+if ($expectedHash -eq $actualHash) { "✓ Verification successful" } else { "✗ Verification failed" }</code></pre>
 					</div>
 				</div>
 
 				<p class="small">
-					<strong>Step 3:</strong> Compare the calculated hash with the one provided on the GitHub releases page.
-					If they match exactly, your download is verified and safe to use.
+					The verification command will automatically compare the hashes and display whether the verification was successful.
+					If verification passes, your download is safe to use. If it fails, re-download the file.
 				</p>
 
 				<h1>Upgrade from Older Versions</h1>
