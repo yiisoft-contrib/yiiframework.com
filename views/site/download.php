@@ -150,45 +150,33 @@ $this->params['breadcrumbs'][] = $this->title;
 				<h1 id="verify-integrity">Verifying Download Integrity</h1>
 
 				<p class="small">
-					All Yii framework releases include SHA256 checksums to help you verify the integrity of downloaded files.
-					These checksums ensure that your downloaded archive has not been corrupted or tampered with.
-				</p>
-
-				<p class="small">
-					<strong>Step 1:</strong> After downloading a release archive from the 
-					<a href="https://github.com/yiisoft/yii2/releases">GitHub releases page</a>, 
-					you'll find the SHA256 hash displayed on the same page with a "copy" button for easy copying.
-				</p>
-
-				<p class="small">
-					<strong>Step 2:</strong> Verify the file automatically using the SHA256 hash:
+					Verify your download using the SHA256 hash from the 
+					<a href="https://github.com/yiisoft/yii2/releases">GitHub releases page</a> 
+					(copy the hash using the "copy" button):
 				</p>
 
 				<div class="row ptrem1">
 					<div class="col-md-3">
-						<p class="small">On Linux/macOS:</p>
+						<p class="small">Linux/macOS:</p>
 					</div>
 					<div class="col-md-9">
-						<pre><code class="hljs bash language-bash"># Replace EXPECTED_HASH with the hash from GitHub releases page
-echo "EXPECTED_HASH  yii-basic-app-<?= $latest ?>.tgz" | sha256sum -c</code></pre>
+						<pre><code class="hljs bash language-bash">echo "EXPECTED_HASH  yii-basic-app-<?= $latest ?>.tgz" | sha256sum -c</code></pre>
 					</div>
 				</div>
 
 				<div class="row ptrem1">
 					<div class="col-md-3">
-						<p class="small">On Windows (PowerShell):</p>
+						<p class="small">Windows:</p>
 					</div>
 					<div class="col-md-9">
-						<pre><code class="hljs powershell language-powershell"># Replace EXPECTED_HASH with the hash from GitHub releases page
-$expectedHash = "EXPECTED_HASH"
+						<pre><code class="hljs powershell language-powershell">$expectedHash = "EXPECTED_HASH"
 $actualHash = (Get-FileHash yii-basic-app-<?= $latest ?>.tgz -Algorithm SHA256).Hash.ToLower()
 if ($expectedHash -eq $actualHash) { "✓ Verification successful" } else { "✗ Verification failed" }</code></pre>
 					</div>
 				</div>
 
 				<p class="small">
-					The verification command will automatically compare the hashes and display whether the verification was successful.
-					If verification passes, your download is safe to use. If it fails, re-download the file.
+					Replace EXPECTED_HASH with the actual hash. If verification fails, re-download the file.
 				</p>
 
 				<h1>Upgrade from Older Versions</h1>
