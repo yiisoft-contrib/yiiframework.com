@@ -34,8 +34,8 @@ class SecurityForm extends Model
     {
         return [
             'verifyCode' => 'Verification Code',
-            'email' => 'Your Email',
-            'name' => 'Your Name',
+            'name' => 'Your Email',
+            'email' => 'Your Name',
             'body' => 'Message',
         ];
     }
@@ -47,8 +47,8 @@ class SecurityForm extends Model
     public function send()
     {
         if ($this->validate()) {
-            $fromEmail = $this->email;
-            $name = $this->name;
+            $fromEmail = $this->name;
+            $name = $this->email;
 
             Yii::$app->mailer->compose()
                 ->setCc(Yii::$app->params['securityEmails'])
