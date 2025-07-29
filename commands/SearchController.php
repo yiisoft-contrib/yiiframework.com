@@ -7,6 +7,7 @@ use app\models\ActiveRecord;
 use app\models\Extension;
 use app\models\News;
 use app\models\search\SearchActiveRecord;
+use app\models\search\SearchApiPrimitive;
 use app\models\search\SearchApiType;
 use app\models\search\SearchExtension;
 use app\models\search\SearchGuideSection;
@@ -129,6 +130,7 @@ class SearchController  extends Controller
                     // guide and API objects are expected to not disappear
                     // SearchGuideSection::deleteAll();
                     SearchApiType::setMappings();
+                    SearchApiPrimitive::setMappings();
                     $this->rebuildApiIndex();
                     break;
                 case 'extension':

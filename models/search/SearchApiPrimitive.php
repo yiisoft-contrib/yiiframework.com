@@ -92,7 +92,7 @@ class SearchApiPrimitive extends SearchActiveRecord
     /**
      *
      * @param SearchApiType $parent
-     * @param MethodDoc|PropertyDoc|ConstDoc|EventDoc $primitive
+     * @param array $primitive array data from API documentation
      * @param $version
      */
     public static function createRecord($parent, $primitive, $version)
@@ -100,70 +100,58 @@ class SearchApiPrimitive extends SearchActiveRecord
         /** @var SearchApiPrimitive $model */
         $model = new static();
         $model->version = $version;
-        $model->name = $primitive->name;
+        $model->name = $primitive['name'] ?? '';
         $model->parentId = $parent->get_id();
-        $model->shortDescription = $primitive->shortDescription;
-        $model->description = $primitive->description;
-        $model->since = $primitive->since;
-        $model->deprecatedSince = $primitive->deprecatedSince;
-        $model->deprecatedReason = $primitive->deprecatedReason;
-        $model->definedBy = $primitive->definedBy;
+        $model->shortDescription = $primitive['shortDescription'] ?? '';
+        $model->description = isset($primitive['description']) ? static::filterHtml($primitive['description']) : '';
+        $model->since = $primitive['since'] ?? null;
+        $model->deprecatedSince = $primitive['deprecatedSince'] ?? null;
+        $model->deprecatedReason = $primitive['deprecatedReason'] ?? null;
+        $model->definedBy = $primitive['definedBy'] ?? ($parent->namespace ? $parent->namespace . '\\' . $parent->name : $parent->name);
 
-        if ($primitive instanceof MethodDoc) {
+        // Determine type from the primitive data structure
+        if (isset($primitive['params']) || isset($primitive['return'])) {
             $model->type = 'method';
+            
+            $model->visibility = $primitive['visibility'] ?? 'public';
+            $model->isStatic = $primitive['isStatic'] ?? false;
+            $model->isAbstract = $primitive['isAbstract'] ?? false;
+            $model->isFinal = $primitive['isFinal'] ?? false;
 
-            $model->visibility = $primitive->visibility;
-            $model->isStatic = $primitive->isStatic;
-            $model->isAbstract = $primitive->isAbstract;
-            $model->isFinal = $primitive->isFinal;
-
-            $params = [];
-            foreach($primitive->params as $param) {
-                $params[] = [
-                    'name' => $param->name,
-                    'description' => $param->description,
-                    'isOptional' => $param->isOptional,
-                    'defaultValue' => $param->defaultValue,
-                    'isPassedByReference' => $param->isPassedByReference,
-                    'typeHint' => $param->typeHint,
-                    'types' => $param->types,
-                ];
-            }
-            $model->params = $params;
-
-            $exceptions = [];
-            foreach($primitive->exceptions as $name => $description) {
-                $exceptions[] = [
-                    'name' => $name,
-                    'description' => $description,
-                ];
-            }
-            $model->exceptions = $exceptions;
-
-            $model->return = $primitive->return;
-            $model->returnTypes = $primitive->returnTypes;
-            $model->isReturnByReference = $primitive->isReturnByReference;
-        } elseif ($primitive instanceof PropertyDoc) {
+            $model->params = $primitive['params'] ?? [];
+            $model->exceptions = $primitive['exceptions'] ?? [];
+            $model->return = $primitive['return'] ?? null;
+            $model->returnTypes = $primitive['returnTypes'] ?? [];
+            $model->isReturnByReference = $primitive['isReturnByReference'] ?? false;
+            
+        } elseif (isset($primitive['types']) || isset($primitive['defaultValue'])) {
             $model->type = 'property';
 
-            $model->writeOnly = $primitive->isWriteOnly;
-            $model->readOnly = $primitive->isReadOnly;
-            $model->types = $primitive->types;
-            $model->defaultValue = $primitive->defaultValue;
-            $model->setter = $primitive->setter ? $primitive->setter->name : null;
-            $model->getter = $primitive->getter ? $primitive->getter->name : null;
+            $model->visibility = $primitive['visibility'] ?? 'public';
+            $model->isStatic = $primitive['isStatic'] ?? false;
+            $model->writeOnly = $primitive['isWriteOnly'] ?? false;
+            $model->readOnly = $primitive['isReadOnly'] ?? false;
+            $model->types = $primitive['types'] ?? [];
+            $model->defaultValue = $primitive['defaultValue'] ?? null;
+            $model->setter = $primitive['setter'] ?? null;
+            $model->getter = $primitive['getter'] ?? null;
 
-        } elseif ($primitive instanceof ConstDoc) {
+        } elseif (isset($primitive['value'])) {
+            // Check if this is an event or constant
+            if (isset($primitive['trigger']) || strpos($model->name, 'EVENT_') === 0) {
+                $model->type = 'event';
+            } else {
+                $model->type = 'const';
+            }
+            $model->value = $primitive['value'];
+        } else {
+            // Default to const if we can't determine type
             $model->type = 'const';
-
-            $model->value = $primitive->value;
-
-        } elseif ($primitive instanceof EventDoc) {
-            $model->type = 'event';
-
-            $model->value = $primitive->value;
+            $model->value = $primitive['value'] ?? null;
         }
-        $model->insert(false, null, ['op_type' => 'create', 'parent' => $model->parentId]);
+        
+        $model->set_id($parent->get_id() . '::' . $model->name);
+        $model->insert(false, null, ['op_type' => 'index']);
     }
 
     public static function type()
@@ -181,44 +169,55 @@ class SearchApiPrimitive extends SearchActiveRecord
         if (empty($mapping)) {
             $command->setMapping(static::index(), static::type(), [
                 static::type() => [
-                    // TODO improve mappings for search
-                    '_parent' => ['type' => 'api-type'],
                     'properties' => [
-                        'version' => ['type' => 'string', 'index' => 'not_analyzed'],
-                        'type' => ['type' => 'string', 'index' => 'not_analyzed'],
+                        'version' => ['type' => 'keyword'],
+                        'type' => ['type' => 'keyword'],
 
-                        'name' => ['type' => 'string'],
-                        'parentId' => ['type' => 'string', 'index' => 'not_analyzed'],
-                        'shortDescription' => ['type' => 'string'],
-                        'description' => ['type' => 'string'],
-                        'since' => ['type' => 'string', 'index' => 'not_analyzed'],
-                        'deprecatedSince' => ['type' => 'string', 'index' => 'not_analyzed'],
-                        'deprecatedReason' => ['type' => 'string'],
+                        'name' => [
+                            'type' => 'text',
+                            'fields' => [
+                                'suggest' => [
+                                    'type' => 'completion',
+                                ],
+                            ],
+                        ],
+                        'parentId' => ['type' => 'keyword'],
+                        'shortDescription' => ['type' => 'text'],
+                        'description' => [
+                            'type' => 'text',
+                            'fields' => [
+                                'stemmed' => [
+                                    'type' => 'text',
+                                    'analyzer' => 'english',
+                                ],
+                            ],
+                        ],
+                        'since' => ['type' => 'keyword'],
+                        'deprecatedSince' => ['type' => 'keyword'],
+                        'deprecatedReason' => ['type' => 'text'],
 
-                        'definedBy' => ['type' => 'string', 'index' => 'not_analyzed'],
+                        'definedBy' => ['type' => 'keyword'],
 
                         // methods and properties
-                        'visibility' => ['type' => 'string', 'index' => 'not_analyzed'],
+                        'visibility' => ['type' => 'keyword'],
                         'isStatic' => ['type' => 'boolean'],
 
                         // properties
                         'writeOnly' => ['type' => 'boolean'],
                         'readOnly' => ['type' => 'boolean'],
-                        'types' => ['type' => 'string', 'index' => 'not_analyzed'], // array
-                        'defaultValue' => ['type' => 'string', 'index' => 'not_analyzed'],
-                        'getter' => ['type' => 'string', 'index' => 'not_analyzed'],
-                        'setter' => ['type' => 'string', 'index' => 'not_analyzed'],
+                        'types' => ['type' => 'keyword'], // array
+                        'defaultValue' => ['type' => 'keyword'],
+                        'getter' => ['type' => 'keyword'],
+                        'setter' => ['type' => 'keyword'],
 
                         // const, event
-                        'value' => ['type' => 'string', 'index' => 'not_analyzed'],
+                        'value' => ['type' => 'keyword'],
 
                         // method
                         'isAbstract' => ['type' => 'boolean'],
                         'isFinal' => ['type' => 'boolean'],
-                        //'params', // array
-                        //'exceptions', // array
-                        'return' => ['type' => 'string'],
-                        'returnTypes' => ['type' => 'string', 'index' => 'not_analyzed'], // array
+                        'return' => ['type' => 'text'],
+                        'returnTypes' => ['type' => 'keyword'], // array
                         'isReturnByReference' => ['type' => 'boolean'],
 
                     ],
@@ -242,11 +241,11 @@ class SearchApiPrimitive extends SearchActiveRecord
 
     public function getDescription()
     {
-        // TODO: Implement getDescription() method.
+        return $this->shortDescription ?: $this->description;
     }
 
     public function getType()
     {
-        // TODO: Implement getTitle() method.
+        return $this->getAttribute('type');
     }
 }
