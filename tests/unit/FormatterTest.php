@@ -58,6 +58,23 @@ class FormatterTest extends Unit
     }
 
     /**
+     * Test that TargetNoopener adds rel="noopener noreferrer" to external links with target="_blank"
+     */
+    public function testTargetNoopenerAddsRelAttribute()
+    {
+        // Create HTML with external link having target="_blank"
+        $html = '<a href="https://example.com" target="_blank">External Link</a>';
+        
+        // Process through HTMLPurifier with our configuration
+        $result = \yii\helpers\HtmlPurifier::process($html, $this->formatter->purifierConfig);
+        
+        // Should contain rel="noopener noreferrer" attribute
+        $this->assertStringContainsString('rel="noopener noreferrer"', $result);
+        $this->assertStringContainsString('href="https://example.com"', $result);
+        $this->assertStringContainsString('target="_blank"', $result);
+    }
+
+    /**
      * Test that comment markdown processing works
      */
     public function testCommentMarkdownProcessing()
@@ -68,6 +85,23 @@ class FormatterTest extends Unit
         // Should produce HTML wrapped in markdown div
         $this->assertStringContainsString('<div class="markdown">', $result);
         $this->assertStringContainsString('href="https://example.com"', $result);
+    }
+
+    /**
+     * Test that TargetNoopener works in comment markdown processing
+     */
+    public function testCommentMarkdownWithTargetBlank()
+    {
+        // Test HTML with target="_blank" in comment markdown
+        $html = '<a href="https://example.com" target="_blank">External Link</a>';
+        
+        // Process through HTMLPurifier with our configuration
+        $result = \yii\helpers\HtmlPurifier::process($html, $this->formatter->purifierConfig);
+        
+        // Should contain rel="noopener noreferrer" attribute
+        $this->assertStringContainsString('rel="noopener noreferrer"', $result);
+        $this->assertStringContainsString('href="https://example.com"', $result);
+        $this->assertStringContainsString('target="_blank"', $result);
     }
 
     /**
