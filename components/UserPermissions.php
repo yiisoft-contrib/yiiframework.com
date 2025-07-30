@@ -162,6 +162,16 @@ class UserPermissions
     }
 
     /**
+     * Authenticated user can manage wiki if he's wiki admin.
+     *
+     * @return bool
+     */
+    public static function canManageWiki()
+    {
+        return Yii::$app->user->can(self::PERMISSION_MANAGE_WIKI);
+    }
+
+    /**
      * Check whether authenticated user is an admin.
      *
      * @return bool
