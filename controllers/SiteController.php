@@ -32,6 +32,10 @@ class SiteController extends BaseController
                 'class' => \yii\captcha\CaptchaAction::class,
                 'fixedVerifyCode' => YII_ENV_TEST ? 'testme' : null,
             ],
+            'github-webhook' => [
+                'class' => \app\components\GitHubWebhookAction::class,
+                'versionsFile' => '@app/config/versions.php',
+            ],
         ];
     }
 
