@@ -18,6 +18,9 @@ nbproject
 # Mac DS_Store Files
 **/.DS_Store
 
+# Backup files
+*.backup
+
 # composer vendor dir
 /vendor
 
