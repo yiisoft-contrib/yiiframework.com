@@ -139,9 +139,8 @@ class WikiController extends BaseController
 
         // Get popular tags, excluding those from deleted wikis for regular users
         $tagQuery = WikiTag::find();
-        if (UserPermissions::canManageWiki()) {
-            $tagQuery->orderBy(['frequency' => SORT_DESC]);
-        } else {
+        $tagQuery->orderBy(['frequency' => SORT_DESC]);
+        if (!UserPermissions::canManageWiki()) {
             $tagQuery->select(['id' => 'wiki_tag_id', 'name', 'wiki_tags.slug', 'frequency' => 'COUNT(*)'])
                 ->joinWith(['wikis'])
                 ->andWhere(['wikis.status' => Wiki::STATUS_PUBLISHED])

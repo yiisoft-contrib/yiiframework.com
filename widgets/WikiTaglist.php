@@ -26,15 +26,13 @@ class WikiTaglist extends Widget
         } else {
             $query = WikiTag::find();
 
-            if (UserPermissions::canManageWiki()) {
-                $query->where('frequency > 1')
-                      ->orderBy(['frequency' => SORT_DESC]);
-            } else {
+            $query->where('frequency > 1')
+                  ->orderBy(['frequency' => SORT_DESC]);
+            if (!UserPermissions::canManageWiki()) {
                 $query->select(['id' => 'wiki_tag_id', 'name', 'wiki_tags.slug', 'frequency' => 'COUNT(*)'])
                     ->joinWith(['wikis'])
                       ->andWhere(['wikis.status' => Wiki::STATUS_PUBLISHED])
-                      ->groupBy(['wiki_tag_id', 'name', 'slug'])
-                      ->orderBy(['frequency' => SORT_DESC]);
+                      ->groupBy(['wiki_tag_id', 'name', 'slug']);
             }
 
             $tags = $query->limit(10)->all();
