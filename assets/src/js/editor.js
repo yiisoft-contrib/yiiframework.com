@@ -132,7 +132,7 @@ function initEditor(els) {
                         }
 
                         // Get all formatting buttons (exclude preview and expand buttons)
-                        var formattingButtons = wrap.find('.CodeMirror-buttonsPanel button').not('.btn-preview').not(':last-child');
+                        var formattingButtons = $('.CodeMirror-buttonsPanel button').not('.btn-preview').not(':last-child');
 
                         if (isInPreviewMode) {
                             preview.hide();
