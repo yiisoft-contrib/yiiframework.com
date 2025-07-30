@@ -131,12 +131,19 @@ function initEditor(els) {
                             preview = wrap.find('.CodeMirror-preview');
                         }
 
+                        // Get all formatting buttons (exclude preview and expand buttons)
+                        var formattingButtons = wrap.find('.CodeMirror-buttonsPanel button').not('.btn-preview').not(':last-child');
+
                         if (isInPreviewMode) {
                             preview.hide();
                             button.removeClass('active');
+                            // Remove disabled styling from formatting buttons
+                            formattingButtons.removeClass('disabled').css('opacity', '');
                         } else {
                             preview.show();
                             button.addClass('active');
+                            // Add disabled styling to formatting buttons
+                            formattingButtons.addClass('disabled').css('opacity', '0.65');
 
                             $.ajax({
                                 method: 'post',
