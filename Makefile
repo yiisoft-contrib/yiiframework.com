@@ -116,10 +116,10 @@ yii: ## Execute Yii command.
 .PHONY: yii
 
 composer-docker: ## Run Composer.
-	docker compose run --rm app composer $(CLI_ARGS)
+	docker compose run --rm web composer $(CLI_ARGS)
 
 codecept: ## Run Codeception.
-	docker compose run --rm app ./vendor/bin/codecept $(CLI_ARGS)
+	docker compose run --rm web ./vendor/bin/codecept $(CLI_ARGS)
 
 # Output the help for each task, see https://marmelab.com/blog/2016/02/29/auto-documented-makefile.html
 help: ## This help.

@@ -471,7 +471,16 @@ class User extends ActiveRecord implements IdentityInterface
             $class = "{$class} bronze";
         }
 
-        return Html::a(Html::encode($this->display_name), ['user/view', 'id' => $this->id], array('class' => $class));
+        if ($this->hasAvatar()) {
+            $avatarUrl = $this->getAvatarUrl();
+        } else {
+            $avatarUrl = Url::to('@web/image/user/default_user.svg');
+        }
+
+        $avatar = Html::img($avatarUrl, ['alt' => Html::encode($this->display_name), 'class' => 'user-rank-avatar']);
+
+        $content = $avatar . ' ' . Html::encode($this->display_name);
+        return Html::a($content, ['user/view', 'id' => $this->id], ['class' => $class]);
     }
 
     public function getForumUrl()

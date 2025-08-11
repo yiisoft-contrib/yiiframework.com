@@ -19,6 +19,7 @@ function initEditor(els) {
                     class: 'bold btn btn-default',
                     label: '<i class="fa fa-bold"></i>',
                     callback: function (cm) {
+                        if (isInPreviewMode) return;
                         var selection = cm.getSelection();
                         cm.replaceSelection('**' + selection + '**');
                         if (!selection) {
@@ -32,6 +33,7 @@ function initEditor(els) {
                     class: 'italic btn btn-default',
                     label: '<i class="fa fa-italic"></i>',
                     callback: function (cm) {
+                        if (isInPreviewMode) return;
                         var selection = cm.getSelection();
                         cm.replaceSelection('*' + selection + '*');
                         if (!selection) {
@@ -44,6 +46,7 @@ function initEditor(els) {
                     class: 'block-code btn btn-default',
                     label: '<i class="fa fa-code"></i>',
                     callback: function (cm) {
+                        if (isInPreviewMode) return;
                         var language = prompt('Language') || '';
 
                         var selection = cm.getSelection();
@@ -58,6 +61,7 @@ function initEditor(els) {
                     class: 'quote btn btn-default',
                     label: '<i class="fa fa-quote-right"></i>',
                     callback: function (cm) {
+                        if (isInPreviewMode) return;
                         cm.replaceSelection("> " + cm.getSelection());
                     }
                 },
@@ -65,6 +69,7 @@ function initEditor(els) {
                     class: 'ul btn btn-default',
                     label: '<i class="fa fa-list-ul"></i>',
                     callback: function (cm) {
+                        if (isInPreviewMode) return;
                         cm.replaceSelection("- " + cm.getSelection());
                     }
                 },
@@ -72,6 +77,7 @@ function initEditor(els) {
                     class: 'ol btn btn-default',
                     label: '<i class="fa fa-list-ol"></i>',
                     callback: function (cm) {
+                        if (isInPreviewMode) return;
                         cm.replaceSelection("1. " + cm.getSelection());
                     }
                 },
@@ -79,6 +85,7 @@ function initEditor(els) {
                     class: 'a btn btn-default',
                     label: '<i class="fa fa-link"></i>',
                     callback: function (cm) {
+                        if (isInPreviewMode) return;
                         var selection = cm.getSelection();
                         var text = '';
                         var link = '';
@@ -104,6 +111,7 @@ function initEditor(els) {
                     class: 'img btn btn-default',
                     label: '<i class="fa fa-picture-o"></i>',
                     callback: function (cm) {
+                        if (isInPreviewMode) return;
                         var url = prompt('Add image url') || '';
 
                         var selection = cm.getSelection();
@@ -123,12 +131,19 @@ function initEditor(els) {
                             preview = wrap.find('.CodeMirror-preview');
                         }
 
+                        // Get all formatting buttons (exclude preview and expand buttons)
+                        var formattingButtons = $('.CodeMirror-buttonsPanel button').not('.btn-preview').not(':last-child');
+
                         if (isInPreviewMode) {
                             preview.hide();
                             button.removeClass('active');
+                            // Remove disabled styling from formatting buttons
+                            formattingButtons.removeClass('disabled').css('opacity', '');
                         } else {
                             preview.show();
                             button.addClass('active');
+                            // Add disabled styling to formatting buttons
+                            formattingButtons.addClass('disabled').css('opacity', '0.65');
 
                             $.ajax({
                                 method: 'post',
