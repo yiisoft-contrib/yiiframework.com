@@ -10,7 +10,7 @@ use Codeception\Test\Unit;
  * specifically the HTML.TargetNoopener security feature.
  * 
  * The HTML.TargetNoopener configuration option automatically adds
- * rel="noopener noreferrer" attributes to external links that have target="_blank".
+ * rel="noopener noreferrer" attributes to external links that have "target" attribute specified.
  * This prevents security vulnerabilities where a malicious page opened in a new tab
  * could access the parent window through window.opener.
  */
