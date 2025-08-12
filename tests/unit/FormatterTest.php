@@ -29,37 +29,21 @@ class FormatterTest extends Unit
     }
 
     /**
-     * Get the purifier configuration from the source file
-     * This allows testing without full framework initialization
+     * Get the purifier configuration from the Formatter class
      */
     private function getPurifierConfig()
     {
-        $formatterFile = __DIR__ . '/../../components/Formatter.php';
-        $content = file_get_contents($formatterFile);
+        // Include the file and extract the purifierConfig array directly
+        $formatterPath = __DIR__ . '/../../components/Formatter.php';
+        $content = file_get_contents($formatterPath);
         
-        // Extract the purifierConfig array from the source file
+        // Extract the purifierConfig array definition
         if (preg_match('/public \$purifierConfig = (\[.*?\]);/s', $content, $matches)) {
-            // Parse the configuration array
-            $configStr = $matches[1];
-            // This is a simplified parsing - in a real test environment,
-            // the framework would be properly initialized
+            $configArray = $matches[1];
             
-            // Check for the key settings we care about
-            $hasTargetNoopener = strpos($configStr, "'TargetNoopener' => true") !== false;
-            $hasAllowedElements = strpos($configStr, "'AllowedElements'") !== false;
-            $hasEnableID = strpos($configStr, "'EnableID' => true") !== false;
-            $hasAnchorTag = strpos($configStr, "'a'") !== false;
-            
-            return [
-                'HTML' => [
-                    'TargetNoopener' => $hasTargetNoopener,
-                    'AllowedElements' => $hasAnchorTag ? ['a'] : [],
-                ],
-                'Attr' => [
-                    'EnableID' => $hasEnableID,
-                ],
-                '_hasAllowedElements' => $hasAllowedElements,
-            ];
+            // Use eval to parse the array - safe since it's our own code
+            $config = eval("return $configArray;");
+            return $config;
         }
         
         return null;
@@ -71,7 +55,7 @@ class FormatterTest extends Unit
     public function testTargetNoopenerConfigurationExists()
     {
         $config = $this->getPurifierConfig();
-        $this->assertNotNull($config, 'Could not parse purifier configuration from source file');
+        $this->assertNotNull($config, 'Could not load purifier configuration');
         
         // Verify that TargetNoopener is enabled in the HTML configuration
         $this->assertArrayHasKey('HTML', $config);
@@ -88,11 +72,11 @@ class FormatterTest extends Unit
     public function testMarkdownProcessing()
     {
         $config = $this->getPurifierConfig();
-        $this->assertNotNull($config, 'Could not parse purifier configuration from source file');
+        $this->assertNotNull($config, 'Could not load purifier configuration');
         
         // Should have HTML configuration with allowed elements including 'a' for links
         $this->assertArrayHasKey('HTML', $config);
-        $this->assertTrue($config['_hasAllowedElements']);
+        $this->assertArrayHasKey('AllowedElements', $config['HTML']);
         $this->assertContains('a', $config['HTML']['AllowedElements']);
         
         // Should have TargetNoopener enabled for security
@@ -109,7 +93,7 @@ class FormatterTest extends Unit
     public function testTargetNoopenerAddsRelAttribute()
     {
         $config = $this->getPurifierConfig();
-        $this->assertNotNull($config, 'Could not parse purifier configuration from source file');
+        $this->assertNotNull($config, 'Could not load purifier configuration');
         
         // The TargetNoopener setting should be enabled
         $this->assertArrayHasKey('HTML', $config);
@@ -129,11 +113,11 @@ class FormatterTest extends Unit
     public function testCommentMarkdownProcessing()
     {
         $config = $this->getPurifierConfig();
-        $this->assertNotNull($config, 'Could not parse purifier configuration from source file');
+        $this->assertNotNull($config, 'Could not load purifier configuration');
         
         // Should have HTML configuration with allowed elements including 'a' for links
         $this->assertArrayHasKey('HTML', $config);
-        $this->assertTrue($config['_hasAllowedElements']);
+        $this->assertArrayHasKey('AllowedElements', $config['HTML']);
         $this->assertContains('a', $config['HTML']['AllowedElements']);
         
         // Should have TargetNoopener enabled for security
@@ -150,7 +134,7 @@ class FormatterTest extends Unit
     public function testCommentMarkdownWithTargetBlank()
     {
         $config = $this->getPurifierConfig();
-        $this->assertNotNull($config, 'Could not parse purifier configuration from source file');
+        $this->assertNotNull($config, 'Could not load purifier configuration');
         
         // The TargetNoopener setting should be enabled
         $this->assertArrayHasKey('HTML', $config);
@@ -167,13 +151,13 @@ class FormatterTest extends Unit
     public function testSecurityConfiguration()
     {
         $config = $this->getPurifierConfig();
-        $this->assertNotNull($config, 'Could not parse purifier configuration from source file');
+        $this->assertNotNull($config, 'Could not load purifier configuration');
         
         // Verify HTML configuration
         $this->assertArrayHasKey('HTML', $config);
         
         // Should have allowed elements
-        $this->assertTrue($config['_hasAllowedElements']);
+        $this->assertArrayHasKey('AllowedElements', $config['HTML']);
         
         // Should include anchor tags for links
         $this->assertContains('a', $config['HTML']['AllowedElements']);
