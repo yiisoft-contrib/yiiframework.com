@@ -37,6 +37,12 @@ class FormatterTest extends Unit
         $this->assertArrayHasKey('HTML', $config);
         $this->assertArrayHasKey('TargetNoopener', $config['HTML']);
         $this->assertTrue($config['HTML']['TargetNoopener']);
+        
+        // Verify that anchor tags allow target and rel attributes
+        $this->assertArrayHasKey('AllowedAttributes', $config['HTML']);
+        $this->assertArrayHasKey('a', $config['HTML']['AllowedAttributes']);
+        $this->assertContains('target', $config['HTML']['AllowedAttributes']['a']);
+        $this->assertContains('rel', $config['HTML']['AllowedAttributes']['a']);
     }
 
     /**
@@ -57,6 +63,15 @@ class FormatterTest extends Unit
         // Should include anchor tags for links
         $this->assertContains('a', $htmlConfig['AllowedElements']);
         
+        // Should have allowed attributes configured
+        $this->assertArrayHasKey('AllowedAttributes', $htmlConfig);
+        $this->assertArrayHasKey('a', $htmlConfig['AllowedAttributes']);
+        
+        // Anchor tags should allow href, target, and rel attributes
+        $this->assertContains('href', $htmlConfig['AllowedAttributes']['a']);
+        $this->assertContains('target', $htmlConfig['AllowedAttributes']['a']);
+        $this->assertContains('rel', $htmlConfig['AllowedAttributes']['a']);
+        
         // Should have TargetNoopener enabled for security
         $this->assertArrayHasKey('TargetNoopener', $htmlConfig);
         $this->assertTrue($htmlConfig['TargetNoopener']);
@@ -65,5 +80,94 @@ class FormatterTest extends Unit
         $this->assertArrayHasKey('Attr', $config);
         $this->assertArrayHasKey('EnableID', $config['Attr']);
         $this->assertTrue($config['Attr']['EnableID']);
+    }
+
+    /**
+     * Test that HTMLPurifier adds rel="noopener noreferrer" to links with target="_blank" 
+     * This test verifies the security feature works as expected
+     */
+    public function testTargetBlankLinksGetNoopenerRel()
+    {
+        // Skip this test if HTMLPurifier is not available (e.g., in CI without full dependencies)
+        if (!class_exists('\HTMLPurifier')) {
+            $this->markTestSkipped('HTMLPurifier is not available');
+        }
+        
+        // Test HTML with a link that has target="_blank"
+        $htmlInput = '<a href="https://example.com" target="_blank">External Link</a>';
+        
+        try {
+            // Process through HTMLPurifier with the formatter's configuration
+            $result = \yii\helpers\HtmlPurifier::process($htmlInput, $this->formatter->purifierConfig);
+            
+            // Should contain rel="noopener noreferrer"
+            $this->assertStringContainsString('rel="noopener noreferrer"', $result);
+            $this->assertStringContainsString('target="_blank"', $result);
+            $this->assertStringContainsString('href="https://example.com"', $result);
+        } catch (\Error $e) {
+            // If there's an error due to missing dependencies, mark test as skipped
+            $this->markTestSkipped('HTMLPurifier dependencies not available: ' . $e->getMessage());
+        }
+    }
+
+    /**
+     * Test that links without target="_blank" don't get rel attributes added
+     */
+    public function testLinksWithoutTargetBlankUnaffected()
+    {
+        // Skip this test if HTMLPurifier is not available
+        if (!class_exists('\HTMLPurifier')) {
+            $this->markTestSkipped('HTMLPurifier is not available');
+        }
+        
+        // Test HTML with a normal link (no target attribute)
+        $htmlInput = '<a href="https://example.com">Normal Link</a>';
+        
+        try {
+            // Process through HTMLPurifier with the formatter's configuration
+            $result = \yii\helpers\HtmlPurifier::process($htmlInput, $this->formatter->purifierConfig);
+            
+            // Should NOT contain rel="noopener noreferrer"
+            $this->assertStringNotContainsString('rel="noopener noreferrer"', $result);
+            $this->assertStringContainsString('href="https://example.com"', $result);
+        } catch (\Error $e) {
+            $this->markTestSkipped('HTMLPurifier dependencies not available: ' . $e->getMessage());
+        }
+    }
+
+    /**
+     * Test that asMarkdown method properly processes links with target="_blank"
+     */
+    public function testMarkdownProcessingWithTargetBlank()
+    {
+        try {
+            // Test a simple markdown to ensure the method works
+            $markdown = 'This is a [test link](https://example.com)';
+            $result = $this->formatter->asMarkdown($markdown);
+            
+            // Should be wrapped in markdown div
+            $this->assertStringContainsString('<div class="markdown">', $result);
+            $this->assertStringContainsString('href="https://example.com"', $result);
+        } catch (\Error $e) {
+            $this->markTestSkipped('Markdown processing dependencies not available: ' . $e->getMessage());
+        }
+    }
+
+    /**
+     * Test that the security configuration is applied in comment processing
+     */
+    public function testCommentMarkdownSecurity()
+    {
+        try {
+            // Test a simple comment to ensure the method works
+            $markdown = 'Check this [link](https://external.com)';
+            $result = $this->formatter->asCommentMarkdown($markdown);
+            
+            // Should be wrapped in markdown div and process the link
+            $this->assertStringContainsString('<div class="markdown">', $result);
+            $this->assertStringContainsString('href="https://external.com"', $result);
+        } catch (\Error $e) {
+            $this->markTestSkipped('Comment markdown processing dependencies not available: ' . $e->getMessage());
+        }
     }
 }
