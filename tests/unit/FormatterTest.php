@@ -23,39 +23,15 @@ class FormatterTest extends Unit
 
     protected function _before()
     {
-        // We'll test the configuration by reading the source file directly
-        // since the Formatter class requires full Yii framework initialization
-        $this->formatter = null;
+        $this->formatter = new Formatter();
     }
 
-    /**
-     * Get the purifier configuration from the Formatter class
-     */
-    private function getPurifierConfig()
-    {
-        // Include the file and extract the purifierConfig array directly
-        $formatterPath = __DIR__ . '/../../components/Formatter.php';
-        $content = file_get_contents($formatterPath);
-        
-        // Extract the purifierConfig array definition
-        if (preg_match('/public \$purifierConfig = (\[.*?\]);/s', $content, $matches)) {
-            $configArray = $matches[1];
-            
-            // Use eval to parse the array - safe since it's our own code
-            $config = eval("return $configArray;");
-            return $config;
-        }
-        
-        return null;
-    }
-    
     /**
      * Test that the HTML.TargetNoopener configuration is properly set
      */
     public function testTargetNoopenerConfigurationExists()
     {
-        $config = $this->getPurifierConfig();
-        $this->assertNotNull($config, 'Could not load purifier configuration');
+        $config = $this->formatter->purifierConfig;
         
         // Verify that TargetNoopener is enabled in the HTML configuration
         $this->assertArrayHasKey('HTML', $config);
@@ -64,107 +40,26 @@ class FormatterTest extends Unit
     }
 
     /**
-     * Test that markdown processing configuration is set up properly
-     * 
-     * This test verifies the Formatter has the correct purifier configuration.
-     * The actual markdown processing requires full framework initialization.
-     */
-    public function testMarkdownProcessing()
-    {
-        $config = $this->getPurifierConfig();
-        $this->assertNotNull($config, 'Could not load purifier configuration');
-        
-        // Should have HTML configuration with allowed elements including 'a' for links
-        $this->assertArrayHasKey('HTML', $config);
-        $this->assertArrayHasKey('AllowedElements', $config['HTML']);
-        $this->assertContains('a', $config['HTML']['AllowedElements']);
-        
-        // Should have TargetNoopener enabled for security
-        $this->assertArrayHasKey('TargetNoopener', $config['HTML']);
-        $this->assertTrue($config['HTML']['TargetNoopener']);
-    }
-
-    /**
-     * Test that TargetNoopener adds rel="noopener noreferrer" to external links with target="_blank"
-     * 
-     * This test verifies the configuration is correctly set up to enable security features.
-     * The actual HTMLPurifier processing requires full framework initialization.
-     */
-    public function testTargetNoopenerAddsRelAttribute()
-    {
-        $config = $this->getPurifierConfig();
-        $this->assertNotNull($config, 'Could not load purifier configuration');
-        
-        // The TargetNoopener setting should be enabled
-        $this->assertArrayHasKey('HTML', $config);
-        $this->assertArrayHasKey('TargetNoopener', $config['HTML']);
-        $this->assertTrue($config['HTML']['TargetNoopener']);
-        
-        // When enabled, HTMLPurifier automatically adds rel="noopener noreferrer" 
-        // to external links with target="_blank" during processing
-    }
-
-    /**
-     * Test that comment markdown configuration is set up properly
-     * 
-     * This test verifies the Formatter has the correct purifier configuration.
-     * The actual comment markdown processing requires full framework initialization.
-     */
-    public function testCommentMarkdownProcessing()
-    {
-        $config = $this->getPurifierConfig();
-        $this->assertNotNull($config, 'Could not load purifier configuration');
-        
-        // Should have HTML configuration with allowed elements including 'a' for links
-        $this->assertArrayHasKey('HTML', $config);
-        $this->assertArrayHasKey('AllowedElements', $config['HTML']);
-        $this->assertContains('a', $config['HTML']['AllowedElements']);
-        
-        // Should have TargetNoopener enabled for security
-        $this->assertArrayHasKey('TargetNoopener', $config['HTML']);
-        $this->assertTrue($config['HTML']['TargetNoopener']);
-    }
-
-    /**
-     * Test that TargetNoopener works in comment markdown processing
-     * 
-     * This test verifies the configuration is correctly set up to enable security features.
-     * The actual HTMLPurifier processing requires full framework initialization.
-     */
-    public function testCommentMarkdownWithTargetBlank()
-    {
-        $config = $this->getPurifierConfig();
-        $this->assertNotNull($config, 'Could not load purifier configuration');
-        
-        // The TargetNoopener setting should be enabled
-        $this->assertArrayHasKey('HTML', $config);
-        $this->assertArrayHasKey('TargetNoopener', $config['HTML']);
-        $this->assertTrue($config['HTML']['TargetNoopener']);
-        
-        // When enabled, HTMLPurifier automatically adds rel="noopener noreferrer" 
-        // to external links with target="_blank" during markdown processing
-    }
-
-    /**
      * Test that the purifier configuration includes all expected security settings
      */
     public function testSecurityConfiguration()
     {
-        $config = $this->getPurifierConfig();
-        $this->assertNotNull($config, 'Could not load purifier configuration');
+        $config = $this->formatter->purifierConfig;
         
         // Verify HTML configuration
         $this->assertArrayHasKey('HTML', $config);
+        $htmlConfig = $config['HTML'];
         
         // Should have allowed elements
-        $this->assertArrayHasKey('AllowedElements', $config['HTML']);
+        $this->assertArrayHasKey('AllowedElements', $htmlConfig);
+        $this->assertIsArray($htmlConfig['AllowedElements']);
         
         // Should include anchor tags for links
-        $this->assertContains('a', $config['HTML']['AllowedElements']);
+        $this->assertContains('a', $htmlConfig['AllowedElements']);
         
         // Should have TargetNoopener enabled for security
-        $this->assertArrayHasKey('TargetNoopener', $config['HTML']);
-        $this->assertTrue($config['HTML']['TargetNoopener']);
+        $this->assertArrayHasKey('TargetNoopener', $htmlConfig);
+        $this->assertTrue($htmlConfig['TargetNoopener']);
         
         // Verify Attr configuration  
         $this->assertArrayHasKey('Attr', $config);
