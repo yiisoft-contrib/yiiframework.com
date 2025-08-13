@@ -215,4 +215,8 @@ return [
     'discourse.sso_secret' => '',
     'discourse.sso_url' => 'https://forum.yiiframework.com',
     'slack.invite.link' => 'https://join.slack.com/t/yii/shared_invite/enQtMzQ4MDExMDcyNTk2LTc0NDQ2ZTZhNjkzZDgwYjE4YjZlNGQxZjFmZDBjZTU3NjViMDE4ZTMxNDRkZjVlNmM1ZTA1ODVmZGUwY2U3NDA',
+
+    // GitHub webhook secret for automatic version updates
+    // Configure this in params-local.php or set via environment variable
+    'github-webhook-secret' => null,
 ];
