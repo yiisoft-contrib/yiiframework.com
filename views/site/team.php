@@ -143,7 +143,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 </div>
 
                 <p>
-                    There is a huge community of <a href="https://github.com/yiisoft/yii2/graphs/contributors">contributors</a> working on the Yii Framework code.
+                    There is a huge community of <a href="https://github.com/yiisoft">contributors</a> working on the Yii Framework code.
                     Without their help it would not be possible to provide and maintain the huge amount of functionality,
                     documentation, and translations.
                 </p>
@@ -156,7 +156,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 </div>
                 <?php else:  ?>
                 <p>
-                    The following list shows all the people who have contributed to the <a href="https://github.com/yiisoft/yii2">yiisoft/yii2</a> repository on Github.
+                    The following list shows all the people who have contributed to <a href="https://github.com/yiisoft">yiisoft</a> repositories on Github.
                     If you are one of them, thank you! If not, <?= Html::a('become a part of it', ['site/contribute']) ?>!
                 </p>
 
