@@ -13,16 +13,17 @@
            <h2>International</h2>
 
            <ul>
+               <li><a href="https://t.me/yii_framework_in_english">Yii2 Telegram</a></li>
+               <li><a href="#">Yii3 Telegram</a></li>
                <li><?= \yii\helpers\Html::a('IRC and Slack chats', ['site/chat']) ?></li>
-               <li>StackOverflow: <a href="https://stackoverflow.com/questions/tagged/yii">Yii</a>,
-                                  <a href="https://stackoverflow.com/questions/tagged/yii2">Yii 2</a></li>
+               <li><a href="https://stackoverflow.com/questions/tagged/yii">Yii 1.1 StackOverflow</a></li>
+               <li><a href="https://stackoverflow.com/questions/tagged/yii2">Yii 2 StackOverflow</a></li>
            </ul>
 
            <h3>Social Networks</h3>
 
            <ul>
                <li><a href="https://www.facebook.com/groups/yiitalk/">Official Facebook group</a></li>
-               <li><a href="https://www.reddit.com/r/yii/">Reddit</a></li>
                <li><a href="https://x.com/yiiframework">Twitter</a></li>
            </ul>
 
@@ -41,7 +42,9 @@
 
            <ul>
                <li>There is #russian channel in <?= \yii\helpers\Html::a('Slack chat', ['site/chat']) ?></li>
-               <li><a href="https://t.me/yii2ru">Telegram</a></li>
+               <li><a href="https://t.me/yii1ru">Yii 1.1 Telegram</a></li>
+               <li><a href="https://t.me/yii2ru">Yii2 Telegram</a></li>
+               <li><a href="https://t.me/yii3ru">Yii3 Telegram</a></li>
            </ul>
 
            <h3>Q & A</h3>
@@ -58,6 +61,18 @@
                <li><a href="https://vk.com/yiiframework">VK Russia</a></li>
                <li><a href="https://vk.com/yiiframework_ua">VK Ukraine</a></li>
                <li><a href="https://www.facebook.com/groups/yiitalk.ru/">Facebook</a></li>
+           </ul>
+
+           <h2>Farsi</h2>
+
+           <ul>
+               <li><a href="https://t.me/yii_framework_in_farsi">Yii2 Telegram</a></li>
+           </ul>
+
+           <h2>Uzbek</h2>
+
+           <ul>
+               <li><a href="https://t.me/yiiframework_uz">Telegram</a></li>
            </ul>
 
            <h2>Indonesian</h2>

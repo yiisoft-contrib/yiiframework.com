@@ -6,7 +6,7 @@ use yii\helpers\Url;
 <div class="container style_external_links">
     <div class="site-chat content">
         <h1>Live Chat</h1>
-        <p>To get near-instant help or support with the Yii Framework you can join either Slack or IRC channel.</p>
+        <p>To get near-instant help or support with the Yii Framework you can join any of the chats available.</p>
         <p>
             Please note that the chats are community effort and that people are not always available or able to help.<br>
             When asking a question, please <strong>be patient and stay for a while</strong> so that people have a chance to respond
@@ -15,8 +15,8 @@ use yii\helpers\Url;
 
         <h2>Telegram</h2>
         <p>
-            We have a Telegram channel:
-            <a href="https://t.me/yii3en">@yii3en</a>.
+            We have a number of Telegram channels.
+            See <a href="<?= Url::to(['site/community']) ?>">communities list</a>.
             There are <a href="https://telegram.org/apps">handy clients for Desktop and phones</a>.
         </p>
 
@@ -31,7 +31,7 @@ use yii\helpers\Url;
         <p>
             Our IRC channel is on the <a href="https://libera.chat/">Libera Chat IRC network</a>. If you already have
             an IRC client installed, simply click on <a href="ircs://irc.libera.chat:6697/yii">#yii on the Libera Chat IRC network</a>.
-            Otherwise feel free to use the web-based IRC client below to join the channel and start the chat.
+            Otherwise, feel free to use the web-based IRC client below to join the channel and start the chat.
         </p>
         <iframe title="IRC Client" src="https://kiwiirc.com/nextclient/#ircs://irc.libera.chat:6697/yii" width="100%" height="480" style="border:1px solid silver;"></iframe>
     </div>
