@@ -36,6 +36,16 @@ if ($model->getUrl() === null) {
                         } else {
                             echo Html::encode(($model->namespace ? $model->namespace . '\\' : '') . $model->name);
                         }
+                    } elseif ($model instanceof SearchApiPrimitive) {
+                        // Show parent class and primitive name
+                        if (isset($highlight['name'])) {
+                            echo Html::encode($model->definedBy) . '::' . $encodeHighlight(implode(' ... ', $highlight['name']));
+                        } else {
+                            echo Html::encode($model->getTitle());
+                        }
+                        if ($model->type === 'method') {
+                            echo '()';
+                        }
                     } elseif ($model instanceof SearchExtension) {
                         if (isset($highlight['name'])) {
                             echo $encodeHighlight(implode(' ... ', $highlight['name']));
@@ -67,7 +77,7 @@ if ($model->getUrl() === null) {
                 } ?>
             </h3>
             <?php
-                if ($model instanceof SearchApiType || $model instanceof SearchExtension) {
+                if ($model instanceof SearchApiType || $model instanceof SearchExtension || $model instanceof SearchApiPrimitive) {
                     echo '<p><strong>';
                     if (isset($highlight['title'])) {
                         echo $encodeHighlight(implode(' ... ', $highlight['title']));
