@@ -148,6 +148,9 @@ searchSuggest = function (query) {
         if (typeof yiiSearchLanguage != 'undefined') {
             apiUrl += '&language=' + encodeURIComponent(yiiSearchLanguage);
         }
+        if (typeof yiiSearchType != 'undefined') {
+            apiUrl += '&type=' + encodeURIComponent(yiiSearchType);
+        }
 
 
         $.ajax({
