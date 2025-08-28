@@ -40,3 +40,21 @@ html {
   @include rem(margin-right, 6px);
   @include rem(margin-left, 6px);
 }
+
+.info-top {
+  background: #1A566EFF;
+  border-bottom: 2px solid #184f65;
+  padding: 6px;
+  text-align: center;
+  color: #ddd;
+
+  a {
+    color: #ddd;
+    text-decoration: none;
+
+    &:hover {
+      text-decoration: none;
+      color: #fff;
+    }
+  }
+}

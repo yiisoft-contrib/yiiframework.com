@@ -8,6 +8,7 @@
  * If this file is rendered for Discourse, the $discourse variable is set to `true`.
  */
 
+use app\widgets\InfoTop;
 use yii\helpers\Html;
 use yii\bootstrap\Nav;
 
@@ -23,6 +24,7 @@ if ($discourse) {
 }
 
 ?>
+<?= InfoTop::widget() ?>
 <header class="navbar navbar-inverse navbar-static" id="top">
     <div class="container">
         <div id="main-nav-head" class="navbar-header">
