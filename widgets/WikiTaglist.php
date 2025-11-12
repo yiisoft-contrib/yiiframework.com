@@ -3,6 +3,7 @@
 namespace app\widgets;
 
 
+use app\components\UserPermissions;
 use app\models\NewsTag;
 use app\models\Wiki;
 use app\models\WikiTag;
@@ -25,23 +26,21 @@ class WikiTaglist extends Widget
         } else {
             $query = WikiTag::find();
 
-//            if (Yii::$app->user->can('wiki:pAdmin')) {
-                $query->where('frequency > 1')
-                      ->orderBy(['frequency' => SORT_DESC]);
-//            } else {
-//                $query->select(['id' => 'news_tag_id', 'name', 'news_tags.slug', 'frequency' => 'COUNT(*)'])
-//                    ->joinWith(['news'])
-//                      ->andWhere(['news.status' => News::STATUS_PUBLISHED])
-//                      ->groupBy(['news_tag_id', 'name', 'slug'])
-//                      ->orderBy(['frequency' => SORT_DESC]);
-//            }
+            $query->where('frequency > 1')
+                  ->orderBy(['frequency' => SORT_DESC]);
+            if (!UserPermissions::canManageWiki()) {
+                $query->select(['id' => 'wiki_tag_id', 'name', 'wiki_tags.slug', 'frequency' => 'COUNT(*)'])
+                    ->joinWith(['wikis'])
+                      ->andWhere(['wikis.status' => Wiki::STATUS_PUBLISHED])
+                      ->groupBy(['wiki_tag_id', 'name', 'slug']);
+            }
 
             $tags = $query->limit(10)->all();
         }
 
         $tagEntries = [];
         foreach($tags as $tag) {
-            /** @var $tag NewsTag */
+            /** @var $tag WikiTag */
             $tagEntries[$tag->slug] = Html::a(Html::encode($tag->name), array_merge($this->urlParams, ['wiki/index', 'tag' => $tag->slug]))
                 . ($this->wiki ? '' : " ($tag->frequency)");
         }

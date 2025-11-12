@@ -1,8 +1,6 @@
 <?php
-
 use app\components\object\ClassType;
 use app\models\WikiCategory;
-use app\models\WikiTag;
 use app\widgets\RecentComments;
 use yii\helpers\Html;
 use yii\helpers\Url;
@@ -11,6 +9,7 @@ use yii\helpers\Url;
 /** @var $category string */
 /** @var $version string */
 /** @var $tag \app\models\WikiTag */
+/** @var $popularTags \app\models\WikiTag[] */
 ?>
 <?= Html::a('<span class="big">Write</span><span class="small">new article</span>', ['create'], ['class' => 'btn btn-block btn-new-wiki-article']) ?>
 
@@ -52,7 +51,7 @@ use yii\helpers\Url;
 
 <ul class="wiki-side-menu">
     <li<?= empty($tag) ? ' class="active"' : '' ?>><a href="<?= Url::to(['wiki/index', 'category' => isset($category) ? $category : null])?>">All</a></li>
-    <?php foreach(WikiTag::find()->orderBy(['frequency' => SORT_DESC])->limit(10)->all() as $t): ?>
+    <?php foreach($popularTags as $t): ?>
         <li<?= isset($tag) && $tag->equals($t) ? ' class="active"' : '' ?>>
             <a href="<?= Url::to([
                 'wiki/index',
