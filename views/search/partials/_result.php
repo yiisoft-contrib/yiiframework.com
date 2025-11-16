@@ -1,18 +1,17 @@
 <?php
 
 use app\models\search\SearchApiType;
-use app\models\search\SearchApiPrimitive;
 use app\models\search\SearchExtension;
 use app\models\search\SearchGuideSection;
+use app\models\search\SearchNews;
 use app\models\search\SearchWiki;
 use yii\helpers\Html;
-use yii\helpers\StringHelper;
 use yii\helpers\Url;
 
-/* @var $this yii\web\View */
-/* @var $model app\models\search\SearchActiveRecord */
+/** @var yii\web\View $this  */
+/** @var app\models\search\SearchActiveRecord $model */
 
-$encodeHighlight = function($h) {
+$encodeHighlight = static function($h) {
     return strip_tags($h, '<em>');
 };
 
@@ -42,21 +41,19 @@ if ($model->getUrl() === null) {
                         } else {
                             echo Html::encode($model->name);
                         }
+                    } elseif (isset($highlight['title'])) {
+                        echo $encodeHighlight(implode(' ... ', $highlight['title']));
+                    } elseif (isset($highlight['title.stemmed'])) {
+                        echo $encodeHighlight(implode(' ... ', $highlight['title.stemmed']));
                     } else {
-                        if (isset($highlight['title'])) {
-                            echo $encodeHighlight(implode(' ... ', $highlight['title']));
-                        } elseif (isset($highlight['title.stemmed'])) {
-                            echo $encodeHighlight(implode(' ... ', $highlight['title.stemmed']));
-                        } else {
-                            echo Html::encode($model->getTitle());
-                        }
+                        echo Html::encode($model->getTitle());
                     }
                 ?></a>
                 <a href="<?= Url::to($model->getUrl()) ?>" class="label label-warning"><?= Html::encode(ucfirst($model->type)) ?></a>
                 <?php if ($model instanceof SearchExtension || $model instanceof SearchWiki || $model instanceof SearchGuideSection): ?>
                     <a href="<?= Url::to($model->getUrl()) ?>" class="label label-default"><?= Html::encode($model->category) ?></a>
                 <?php endif; ?>
-                <?php if (!$model instanceof \app\models\search\SearchNews): ?>
+                <?php if (!$model instanceof SearchNews): ?>
                 <a href="<?= Url::to($model->getUrl()) ?>" class="label label-info"><?= Html::encode($model->version) ?></a>
                 <?php endif; ?>
                 <?php if (isset($model->language)): ?>

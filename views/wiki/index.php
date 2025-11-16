@@ -1,10 +1,16 @@
 <?php
 
+use app\models\search\SearchActiveRecord;
+use app\models\WikiCategory;
+use app\models\WikiTag;
+use app\widgets\SearchForm;
+use yii\data\ActiveDataProvider;
 use yii\helpers\Html;
+use yii\widgets\ListView;
 
-/** @var $dataProvider \yii\data\ActiveDataProvider */
-/** @var $category \app\models\WikiCategory */
-/** @var $tag \app\models\WikiTag */
+/** @var $dataProvider ActiveDataProvider */
+/** @var $category WikiCategory */
+/** @var $tag WikiTag */
 /** @var $version string */
 
 
@@ -27,7 +33,7 @@ $this->endBlock();
     <div class="row">
         <div class="col-sm-3 col-md-2 col-lg-2">
             <?= $this->render('_sidebar', [
-                'category' => $category ? $category->id : null,
+                'category' => $category->id ?? null,
                 'tag' => $tag,
                 'sort' => $dataProvider->sort,
                 'version' => $version,
@@ -46,14 +52,14 @@ $this->endBlock();
                 ?></small></h1>
 
 	        <?php if (empty($category) && empty($tag)) {
-	        	echo \app\widgets\SearchForm::widget([
-			        'type' => \app\models\search\SearchActiveRecord::SEARCH_WIKI,
-                    'version' => isset($version) ? $version : '2.0',
+	        	echo SearchForm::widget([
+			        'type' => SearchActiveRecord::SEARCH_WIKI,
+                    'version' => $version ?? '2.0',
                     'placeholder' => 'Search Wiki…',
                 ]);
 			} ?>
 
-            <?= \yii\widgets\ListView::widget([
+            <?= ListView::widget([
                 'dataProvider' => $dataProvider,
                 'itemView' => '_view',
             ]) ?>

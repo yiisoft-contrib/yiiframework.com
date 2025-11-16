@@ -1,5 +1,8 @@
 <?php
 
+use app\widgets\ExtensionTaglist;
+use app\widgets\Star;
+use app\widgets\Voter;
 use yii\helpers\Html;
 
 /** @var $model app\models\Extension the data model */
@@ -7,8 +10,8 @@ use yii\helpers\Html;
 
 ?>
 <div class="vote-box content">
-    <?= \app\widgets\Voter::widget(['model' => $model]) ?>
-    <?= \app\widgets\Star::widget(['model' => $model]) ?>
+    <?= Voter::widget(['model' => $model]) ?>
+    <?= Star::widget(['model' => $model]) ?>
 
     <div class="star-wrapper">
         <?= Html::tag('i', '', [
@@ -22,7 +25,7 @@ use yii\helpers\Html;
     <div class="people"><span>License:</span> <?= $model->getLicenseLink() ?></div>
 
     <div class="group"><span>Category:</span> <?= Html::a(Html::encode($model->category->name), ['extension/index', 'category' => $model->category_id]) ?></div>
-    <div class="tags"><span>Tags:</span> <?= \app\widgets\ExtensionTaglist::widget(['extension' => $model]) ?></div>
+    <div class="tags"><span>Tags:</span> <?= ExtensionTaglist::widget(['extension' => $model]) ?></div>
     <?php if ($extended): ?>
         <div class="people"><span>Developed by:</span> <?= $model->getOwnerLink() ?></div>
         <div class="dates"><span>Created on:</span> <?= Yii::$app->formatter->asDate($model->created_at) ?></div>

@@ -1,11 +1,17 @@
 <?php
 
+use app\models\ExtensionCategory;
+use app\models\ExtensionTag;
+use app\models\search\SearchActiveRecord;
+use app\widgets\SearchForm;
+use yii\data\ActiveDataProvider;
 use yii\helpers\Html;
+use yii\widgets\ListView;
 
-/** @var $dataProvider \yii\data\ActiveDataProvider */
-/** @var $category \app\models\ExtensionCategory */
+/** @var $dataProvider ActiveDataProvider */
+/** @var $category ExtensionCategory */
 /** @var $version string */
-/** @var $tag \app\models\ExtensionTag */
+/** @var $tag ExtensionTag */
 
 
 $this->title = 'Extensions';
@@ -13,7 +19,7 @@ $this->title = 'Extensions';
 $this->beginBlock('contentSelectors');
     echo $this->render('partials/_versions', [
         'currentVersion' => $version,
-        'category' => $category ? $category->id : null,
+        'category' => $category->id ?? null,
         'tag' => $tag,
     ]);
 $this->endBlock();
@@ -23,7 +29,7 @@ $this->endBlock();
     <div class="row">
         <div class="col-sm-3 col-md-2 col-lg-2">
             <?= $this->render('_sidebar', [
-                'category' => $category ? $category->id : null,
+                'category' => $category->id ?? null,
                 'tag' => $tag,
                 'sort' => $dataProvider->sort,
                 'version' => $version,
@@ -57,9 +63,9 @@ $this->endBlock();
                                 we call these <?= Html::a('official extensions', ['extension/official']) ?>.</li>
                         </ul>
 
-                        <?= \app\widgets\SearchForm::widget([
-                            'type' => \app\models\search\SearchActiveRecord::SEARCH_EXTENSION,
-                            'version' => isset($version) ? $version : '2.0',
+                        <?= SearchForm::widget([
+                            'type' => SearchActiveRecord::SEARCH_EXTENSION,
+                            'version' => $version ?? '2.0',
                             'placeholder' => 'Search Extensions…',
                         ]) ?>
                     </div>
@@ -68,7 +74,7 @@ $this->endBlock();
             <?php endif; ?>
 
 
-            <?= \yii\widgets\ListView::widget([
+            <?= ListView::widget([
                 'dataProvider' => $dataProvider,
                 'itemView' => '_view',
                 'itemOptions' => ['class' => 'col-xs-12 col-sm-6 col-lg-4'],

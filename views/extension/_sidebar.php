@@ -6,10 +6,12 @@ use app\models\ExtensionTag;
 use app\widgets\RecentComments;
 use yii\helpers\Html;
 use yii\helpers\Url;
+use yii\web\View;
+use yii\widgets\LinkSorter;
 
-/** @var $this \yii\web\View */
+/** @var $this View */
 /** @var $category string */
-/** @var $tag \app\models\ExtensionTag */
+/** @var $tag ExtensionTag */
 ?>
 <?= Html::a('<span class="big">Create</span><span class="small">new extension</span>', ['create'], ['class' => 'btn btn-block btn-new-extension']) ?>
 
@@ -22,7 +24,7 @@ use yii\helpers\Url;
         <li><a href="#">Views</a></li>
     </ul-->
 
-    <?= \yii\widgets\LinkSorter::widget([
+    <?= LinkSorter::widget([
         'sort' => $sort,
         'options' => [
             'class' => 'extension-side-menu sorter',
@@ -43,7 +45,7 @@ use yii\helpers\Url;
                 'extension/index',
                 'category' => $cat->id,
                 'tag' => isset($tag) ? $tag->slug : null,
-                'version' => isset($version) ? $version : '2.0',
+                'version' => $version ?? '2.0',
             ])?>"><?= Html::encode($cat->name) ?> <span class="count"><?= (int) $cat->count ?></span></a>
         </li>
     <?php endforeach; ?>
@@ -52,14 +54,14 @@ use yii\helpers\Url;
 <h3 class="extension-side-title">Popular Tags</h3>
 
 <ul class="extension-side-menu last-side-menu">
-    <li<?= empty($tag) ? ' class="active"' : '' ?>><a href="<?= Url::to(['extension/index', 'category' => isset($category) ? $category : null])?>">All</a></li>
+    <li<?= empty($tag) ? ' class="active"' : '' ?>><a href="<?= Url::to(['extension/index', 'category' => $category ?? null])?>">All</a></li>
     <?php foreach(ExtensionTag::find()->orderBy(['frequency' => SORT_DESC])->limit(10)->all() as $t): ?>
         <li<?= isset($tag) && $tag->equals($t) ? ' class="active"' : '' ?>>
             <a href="<?= Url::to([
                 'extension/index',
                 'tag' => $t->slug,
-                'category' => isset($category) ? $category : null,
-                'version' => isset($version) ? $version : '2.0',
+                'category' => $category ?? null,
+                'version' => $version ?? '2.0',
             ])?>"><?= Html::encode($t->name) ?> <span class="count"><?= (int) $t->frequency ?></span></a>
         </li>
     <?php endforeach; ?>

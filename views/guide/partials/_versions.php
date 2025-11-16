@@ -67,9 +67,9 @@ use app\models\Guide;
                     if (!$section->hasTranslation($language)) {
                         continue;
                     }
-                    $url = ['guide/view', 'section' => $section->name, 'version' => $guide->version, 'language' => $language, 'type' => $guide->typeUrlName];
+                    $url = ['guide/view', 'section' => $section->name, 'version' => $guide->version, 'language' => $language, 'type' => $guide->getTypeUrlName()];
                 } else {
-                    $url = ['guide/index', 'version' => $guide->version, 'language' => $language, 'type' => $guide->typeUrlName];
+                    $url = ['guide/index', 'version' => $guide->version, 'language' => $language, 'type' => $guide->getTypeUrlName()];
                 }
             }
 
@@ -115,9 +115,9 @@ use app\models\Guide;
                     $otherGuide = Guide::load($version, $language, $guide->type);
                 }
                 if (isset($section) && $guide->version[0] === $version[0] && $otherGuide->loadSection($section->name) !== null) {
-                    $url = ['guide/view', 'section' => $section->name, 'version' => $version, 'language' => $language, 'type' => $guide->typeUrlName];
+                    $url = ['guide/view', 'section' => $section->name, 'version' => $version, 'language' => $language, 'type' => $guide->getTypeUrlName()];
                 } else {
-                    $url = ['guide/index', 'version' => $version, 'language' => $language, 'type' => $guide->typeUrlName];
+                    $url = ['guide/index', 'version' => $version, 'language' => $language, 'type' => $guide->getTypeUrlName()];
                 }
             }
             $versionItems[] = [

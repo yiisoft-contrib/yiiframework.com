@@ -37,7 +37,7 @@ $this->params['breadcrumbs'][] = $this->title;
                         <p class="text-center"><img class="icon" src="<?= Yii::getAlias('@web/image/contribute/ico_contribute_02.svg')?>" alt=""></p>
                         <p>
                             Found a bug? We probably don't know about it yet so you can help us
-                            reporting it in one of the <?= Html::a('Yii issue trackers', ['site/report-issue']) ?>.
+                            by reporting it in one of the <?= Html::a('Yii issue trackers', ['site/report-issue']) ?>.
                         </p>
                         <p>
                             Please use the <?= Html::a('contact form', ['site/security']) ?> to report any security issues.
@@ -57,8 +57,8 @@ $this->params['breadcrumbs'][] = $this->title;
                             <h2><span>Help us to fix bugs</span></h2>
                         </div>
                         <p class="text-center"><img class="icon" src="<?= Yii::getAlias('@web/image/contribute/ico_contribute_03.svg')?>" alt=""></p>
-                        <p>The most time consuming part of fixing a bug is reproducing it. If
-                            you have some free time and want to dive into Yii internals fixing a bug,
+                        <p>The most time-consuming part of fixing a bug is reproducing it.
+                            If you have some free time and want to dive into Yii internals fixing a bug,
                             the first step is to create a simple test case that contains the minimal code
                             to show the problem. Even better if you can convert it to
                             a unit test. If you don't know how to fix the bug, it's OK. By reproducing
@@ -75,7 +75,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 <div class="row">
                     <div class="col-md-6">
                         <blockquote class="note">Note that if you've found a security issue, it's better to
-                            <?= Html::a('contact core team privately', ['site/security']); ?>.
+                            <?= Html::a('contact core team privately', ['site/security']) ?>.
                             We'll review the issue and will respond via email.
                         </blockquote>
                     </div>
@@ -143,8 +143,8 @@ $this->params['breadcrumbs'][] = $this->title;
                             submit all these in
                             <a href="https://github.com/yiisoft/yii2/issues">Yii issue tracker</a>.
                         </p>
-                        <p>Also each page in the <?= Html::a('Definitive Guide', ['guide/entry']) ?> has an edit link
-                        on the bottom, that lets you update the file and submit your changes directly via Github.</p>
+                        <p>Also, each page in the <?= Html::a('Definitive Guide', ['guide/entry']) ?> has an edit link
+                        on the bottom, that lets you update the file and submit your changes directly via GitHub.</p>
                     </div>
                     <div class="col-md-4">
                         <div class="heading-separator">
@@ -158,7 +158,7 @@ $this->params['breadcrumbs'][] = $this->title;
                         </p>
                         <p>Instructions on how to do the translation work are given in
                             the <a href="https://github.com/yiisoft/yii2/blob/master/docs/internals/translation-workflow.md">Translation workflow</a> at GitHub.
-                            Also if you need help, we are happy to help you get started, just ask.
+                            Also, if you need help, we are happy to help you get started, just ask.
                         </p>
                     </div>
                     <div class="col-md-4">

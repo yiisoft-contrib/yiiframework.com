@@ -9,7 +9,7 @@ use yii\bootstrap\Html;
 
 ?>
 <div class="section-header-wrap">
-    <div class="container section-header lang-<?= isset($language) ? $language : 'en' ?>">
+    <div class="container section-header lang-<?= $language ?? 'en' ?>">
         <div class="row headline-row">
             <div class="col-xs-12 <?php if (empty($this->blocks['adminNav'])): echo 'col-md-12'; else: echo 'col-md-7'; endif; ?>">
                 <div class="section-headline"><?php

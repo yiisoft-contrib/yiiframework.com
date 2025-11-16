@@ -1,12 +1,13 @@
 <?php
 
+use app\models\Wiki;
 use app\models\WikiRevision;
-use Neos\Diff\Renderer\Html\HtmlInlineRenderer;
 use yii\helpers\Html;
 
-/** @var $model \app\models\Wiki */
-/** @var $left WikiRevision */
-/** @var $right WikiRevision */
+/** @var Wiki $model */
+/** @var WikiRevision $left */
+/** @var WikiRevision $right */
+/** @var WikiRevision $diffSingle */
 
 
 $this->title = $model->title . ' | Compare Revisions';

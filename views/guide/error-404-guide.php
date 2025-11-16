@@ -7,6 +7,7 @@
  */
 
 use app\models\Guide;
+use app\models\GuideSection;
 use app\widgets\SearchForm;
 use yii\helpers\Html;
 
@@ -22,7 +23,7 @@ $this->title = 'Not Found (#404)';
 
             <?php if (isset($section)):
 
-                /** @var \app\models\GuideSection[] $alternatives */
+                /** @var GuideSection[] $alternatives */
                 if (isset($extension)) {
                     $versionOptions = Guide::getExtensionOptions($extension);
                     $alternativeGuide = Guide::loadExtension($extension, key($versionOptions), reset($versionOptions)[0]);
@@ -80,11 +81,11 @@ $this->title = 'Not Found (#404)';
 
                     $links = [];
                     foreach($languages as $olanguage) {
-                        $languageName = \Locale::getDisplayLanguage($olanguage, $olanguage);
+                        $languageName = Locale::getDisplayLanguage($olanguage, $olanguage);
                         if (isset($extension)) {
                             $url = ['guide/extension-index', 'version' => $oversion, 'language' => $olanguage, 'name' => $extensionName, 'vendorName' => $extensionVendor];
                         } else {
-                            $url = ['guide/index', 'version' => $oversion, 'language' => $olanguage, 'type' => $versionGuide->typeUrlName];
+                            $url = ['guide/index', 'version' => $oversion, 'language' => $olanguage, 'type' => $versionGuide->getTypeUrlName()];
                         }
                         if ($olanguage === 'en') {
                             $links[$olanguage] = '<strong>' . Html::a($languageName, $url) . '</strong>';

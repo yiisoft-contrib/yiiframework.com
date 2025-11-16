@@ -11,15 +11,16 @@
 use app\widgets\InfoTop;
 use yii\helpers\Html;
 use yii\bootstrap\Nav;
+use yii\web\View;
 
-/* @var $this \yii\web\View */
+/* @var $this View */
 /* @var $discourse boolean */
 
 if ($discourse) {
     $controller = 'forum';
     $action = 'index';
 } else {
-    $controller = Yii::$app->controller ? Yii::$app->controller->id : null;
+    $controller = Yii::$app->controller->id ?? null;
     $action = Yii::$app->controller && Yii::$app->controller->action ? Yii::$app->controller->action->id : null;
 }
 
@@ -171,7 +172,7 @@ if ($discourse) {
             </div>
 
             <div class="nav navbar-nav navbar-right">
-                <?= $this->render('_searchForm'); ?>
+                <?= $this->render('_searchForm') ?>
             </div>
 
             <?php endif; ?>

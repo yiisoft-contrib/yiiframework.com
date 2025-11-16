@@ -26,7 +26,7 @@ $this->params['breadcrumbs'][] = $this->title;
         <div class="content">
             <div class="col-md-12">
                 <div class="heading-separator">
-                    <h2><span>Current Developer Team</span></h2>
+                    <h2><span>Current Team</span></h2>
                 </div>
 
                 <?php foreach($activeMembers as $row): ?>
@@ -151,12 +151,12 @@ $this->params['breadcrumbs'][] = $this->title;
                 <?php if ($contributors === false): ?>
                 <div class="alert alert-warning">
                     <p>
-                        Github.com seems to be unavailable. Thus we curently can not show the list of contributors here. Please try again later.
+                        GitHub.com seems to be unavailable. Thus, we currently can not show the list of contributors here. Please try again later.
                     </p>
                 </div>
                 <?php else:  ?>
                 <p>
-                    The following list shows all the people who have contributed to the <a href="https://github.com/yiisoft/yii2">yiisoft/yii2</a> repository on Github.
+                    The following list shows all the people who have contributed to the <a href="https://github.com/yiisoft/yii2">yiisoft/yii2</a> repository on GitHub.
                     If you are one of them, thank you! If not, <?= Html::a('become a part of it', ['site/contribute']) ?>!
                 </p>
 

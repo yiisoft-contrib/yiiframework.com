@@ -1,7 +1,8 @@
 <?php
 
+use app\components\UserPermissions;
+use yii\bootstrap\Nav;
 use yii\helpers\Html;
-use yii\grid\GridView;
 use app\models\User;
 
 /* @var $this yii\web\View */
@@ -10,9 +11,9 @@ use app\models\User;
 
 $this->title = 'Hall of Fame';
 
-if (Yii::$app->user->can(\app\components\UserPermissions::PERMISSION_MANAGE_USERS)) {
+if (Yii::$app->user->can(UserPermissions::PERMISSION_MANAGE_USERS)) {
     $this->beginBlock('adminNav');
-    echo \yii\bootstrap\Nav::widget([
+    echo Nav::widget([
         'id' => 'admin-nav',
         'items' => [
             ['label' => 'User Admin', 'url' => ['user-admin/index']],
@@ -68,6 +69,6 @@ $this->registerMetaTag(['name' => 'keywords', 'value' => 'yii framework, communi
             <?php $this->endCache();
         } ?>
 
-        <div class="halloffame-all-members"><?= Html::a('View all members', ['user/index']); ?></div>
+        <div class="halloffame-all-members"><?= Html::a('View all members', ['user/index']) ?></div>
     </div>
 </div>

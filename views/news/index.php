@@ -1,13 +1,18 @@
 <?php
 
 use app\components\UserPermissions;
+use app\models\NewsTag;
+use app\widgets\NewsArchive;
+use app\widgets\NewsTaglist;
+use app\widgets\SearchForm;
+use yii\bootstrap\Nav;
 use yii\helpers\Html;
 use yii\widgets\ListView;
 
 /* @var $this yii\web\View */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 /* @var $year int */
-/* @var $tag \app\models\NewsTag */
+/* @var $tag NewsTag */
 
 $urlParams = [];
 
@@ -24,7 +29,7 @@ if ($tag) {
 
 if (UserPermissions::canManageNews()) {
 	$this->beginBlock('adminNav');
-	echo \yii\bootstrap\Nav::widget([
+	echo Nav::widget([
 		'id' => 'admin-nav',
 		'items' => [
 			['label' => 'News Admin', 'url' => ['news/admin']],
@@ -53,14 +58,14 @@ if (UserPermissions::canManageNews()) {
 			<div class="col-md-3">
 
 
-				<?= \app\widgets\SearchForm::widget([
+				<?= SearchForm::widget([
 					'type' => 'news',
 					'placeholder' => 'Search News…',
 				]) ?>
 
-				<?= \app\widgets\NewsArchive::widget(['urlParams' => $urlParams]) ?>
+				<?= NewsArchive::widget(['urlParams' => $urlParams]) ?>
 
-				<?= \app\widgets\NewsTaglist::widget(['urlParams' => $urlParams]) ?>
+				<?= NewsTaglist::widget(['urlParams' => $urlParams]) ?>
 
 
 				<div class="panel panel-default">

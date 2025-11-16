@@ -3,8 +3,11 @@
  * @var $this yii\web\View
  * @var $currentVersion string
  * @var $category string
- * @var $tag \app\models\ExtensionTag
+ * @var $tag ExtensionTag
  */
+
+use app\models\Extension;
+use app\models\ExtensionTag;
 use app\widgets\DropdownList;
 
 ?>
@@ -13,7 +16,7 @@ use app\widgets\DropdownList;
         <?php
         $versionItems = [];
 
-        foreach (\app\models\Extension::getYiiVersionOptions() as $version => $label) {
+        foreach (Extension::getYiiVersionOptions() as $version => $label) {
             if ($version === $currentVersion) {
                 continue;
             }

@@ -6,10 +6,13 @@
  * @var $section string the currently active API file
  * @var $content string the API page content
  * @var $doc Doc
- * @var $extension \app\models\Extension
+ * @var $extension Extension
  */
 
 use app\models\Doc;
+use app\models\Extension;
+use app\widgets\Comments;
+use app\widgets\Star;
 use yii\helpers\Html;
 use yii\helpers\Url;
 
@@ -46,7 +49,7 @@ $this->endBlock();
             . '</ul>'
             . '<p>This page is also available in <a href="?_format='.urlencode('json').'">JSON format</a>:<br>'
             . '<code>curl ' . Url::to(['index', 'version' => $version], true) . ' -H \'Accept: application/json\'</code></p>',
-        '<!-- YII_VERSION_SELECTOR -->' => isset($doc) ? '<div class="pull-right content">' . \app\widgets\Star::widget(['model' => $doc]) . '</div>' : '',
+        '<!-- YII_VERSION_SELECTOR -->' => isset($doc) ? '<div class="pull-right content">' . Star::widget(['model' => $doc]) . '</div>' : '',
 
 
 //        '<div class="col-sm-2 col-md-2 col-lg-2">' => '<div class="col-sm-2 col-md-2 col-lg-2">' . \app\widgets\SearchForm::widget([
@@ -59,7 +62,7 @@ $this->endBlock();
 <?php if (isset($doc)): ?>
 <div class="comments-wrapper">
     <div class="container comments">
-        <?= \app\widgets\Comments::widget([
+        <?= Comments::widget([
             'objectType' => $doc->getObjectType(),
             'objectId' => $doc->getObjectId(),
         ]) ?>

@@ -2,13 +2,14 @@
 
 use app\controllers\BaseController;
 use yii\helpers\Html;
-use yii\bootstrap\Nav;
+use yii\helpers\Json;
 use yii\helpers\Url;
 use app\assets\AppAsset;
+use yii\web\View;
 
 AppAsset::register($this);
 
-/* @var $this \yii\web\View */
+/* @var $this View */
 /* @var $content string */
 
 $this->registerLinkTag([
@@ -38,7 +39,7 @@ $this->registerLinkTag([
         <link href="<?= Url::to(['rss/all'], true) ?>" type="application/rss+xml" rel="alternate" title="Live News for Yii Framework">
 
         <?= Html::csrfMetaTags() ?>
-        <?php $this->registerJs('yiiBaseUrl = ' . \yii\helpers\Json::htmlEncode(Yii::$app->request->getBaseUrl()), \yii\web\View::POS_HEAD); ?>
+        <?php $this->registerJs('yiiBaseUrl = ' . Json::htmlEncode(Yii::$app->request->getBaseUrl()), View::POS_HEAD); ?>
 
         <title><?php
             $title = [];

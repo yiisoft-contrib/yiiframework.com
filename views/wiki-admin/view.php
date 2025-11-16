@@ -1,5 +1,6 @@
 <?php
 
+use app\models\Wiki;
 use yii\helpers\Html;
 use yii\widgets\DetailView;
 
@@ -14,7 +15,7 @@ $this->params['breadcrumbs'][] = $this->title;
 <h1><?= Html::encode($this->title) ?></h1>
 
 <p>
-    <?= $model->status == \app\models\Wiki::STATUS_PUBLISHED ? Html::a('View On Page', ['wiki/view', 'id' => $model->id, 'name' => $model->slug], ['class' => 'btn btn-default']) : '' ?>
+    <?= $model->status == Wiki::STATUS_PUBLISHED ? Html::a('View On Page', ['wiki/view', 'id' => $model->id, 'name' => $model->slug], ['class' => 'btn btn-default']) : '' ?>
     <?= Html::a('View Comments', ['comment-admin/index', 'CommentSearch[object_type]' => 'wiki', 'CommentSearch[object_id]' => $model->id], ['class' => 'btn btn-default']) ?>
     <?= Html::a('Update', ['update', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
     <?php /*= Html::a('Delete', ['delete', 'id' => $model->id], [
@@ -32,7 +33,7 @@ $this->params['breadcrumbs'][] = $this->title;
         'title',
         [
             'attribute' => 'status',
-            'value' => $model->status == \app\models\Wiki::STATUS_PUBLISHED ?
+            'value' => $model->status == Wiki::STATUS_PUBLISHED ?
                 '<span class="label label-success">Published</span>'
               : '<span class="label label-danger">Deleted</span>',
             'format' => 'raw',
@@ -41,7 +42,7 @@ $this->params['breadcrumbs'][] = $this->title;
         'category.name',
         [
             'attribute' => 'creator.username',
-            'value' => function($model) {
+            'value' => static function($model) {
                 if ($model->creator === null) {
                     return Yii::$app->formatter->nullDisplay;
                 }
@@ -52,7 +53,7 @@ $this->params['breadcrumbs'][] = $this->title;
         ],
         [
             'attribute' => 'updater.username',
-            'value' => function($model) {
+            'value' => static function($model) {
                 if ($model->updater === null) {
                     return Yii::$app->formatter->nullDisplay;
                 }

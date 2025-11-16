@@ -7,7 +7,6 @@
  */
 use app\widgets\DropdownList;
 use app\models\Guide;
-use yii\helpers\Html;
 
 ?>
 <nav class="version-selector" role="navigation">
@@ -49,7 +48,7 @@ use yii\helpers\Html;
             }
 
             if (isset($extension)) {
-                list($extensionVendor, $extensionName) = explode('/', $extension->name, 2);
+                [$extensionVendor, $extensionName] = explode('/', $extension->name, 2);
 
                 // do not provide link to version where class does not exist
                 $sectionFile = Yii::getAlias("@app/data/extensions/{$extension->name}/api-$ver/$section.html");

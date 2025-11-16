@@ -1,10 +1,13 @@
 <?php
 /**
  * @var Wiki $model
- * @var int $revision
+ * @var WikiRevision $revision
  */
 
+use app\components\UserPermissions;
 use app\models\Wiki;
+use app\models\WikiRevision;
+use app\widgets\Comments;
 use yii\helpers\Html;
 
 $this->title = $model->title;
@@ -79,7 +82,7 @@ $this->title = $model->title;
 
                     <?= Html::a('Update Article', ['wiki/update', 'id' => $model->id])?>
 
-                    <?php if (Yii::$app->user->can(\app\components\UserPermissions::PERMISSION_MANAGE_WIKI)): ?>
+                    <?php if (Yii::$app->user->can(UserPermissions::PERMISSION_MANAGE_WIKI)): ?>
                         <br>
                         <?= Html::a('View as Admin', ['wiki-admin/view', 'id' => $model->id]) ?>
                     <?php endif; ?>
@@ -110,7 +113,7 @@ $this->title = $model->title;
 </div>
 <div class="comments-wrapper">
     <div class="container comments">
-        <?= \app\widgets\Comments::widget([
+        <?= Comments::widget([
             'objectType' => $model->getObjectType(),
             'objectId' => $model->getObjectId(),
             'prompt' => 'Please only use comments to help explain the above article.<br/>If you have any questions, please ask in '.Html::a('the forum', Yii::$app->request->baseUrl . '/forum').' instead.',

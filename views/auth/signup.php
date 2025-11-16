@@ -1,11 +1,14 @@
 <?php
+
+use app\models\SignupForm;
+use himiklab\yii2\recaptcha\ReCaptcha;
 use yii\helpers\Html;
 use yii\bootstrap\ActiveForm;
 use yii\helpers\Url;
 
 /* @var $this yii\web\View */
 /* @var $form yii\bootstrap\ActiveForm */
-/* @var $model \app\models\SignupForm */
+/* @var $model SignupForm */
 
 $this->title = 'Sign Up';
 $this->params['breadcrumbs'][] = $this->title;
@@ -26,7 +29,7 @@ $this->params['breadcrumbs'][] = $this->title;
         <div class="row">
           <div class="col-md-9">
             <?php $form = ActiveForm::begin(['id' => 'signup-form', 'options' => ['class' => 'omb_loginForm', 'autocomplete' => 'off']]); ?>
-               
+
             <?= $form->field($model, 'username', ['inputOptions' => ['class'=>'login-control','placeholder' => $model->getAttributeLabel('username')]])->label(false) ?>
 
             <?= $form->field($model, 'email', ['inputOptions' => ['class'=>'login-control','placeholder' => $model->getAttributeLabel('email')]])->label(false) ?>
@@ -34,11 +37,11 @@ $this->params['breadcrumbs'][] = $this->title;
             <?= $form->field($model, 'password', ['inputOptions' => ['class'=>'login-control','placeholder' => $model->getAttributeLabel('password')]])->passwordInput()->label(false) ?>
 
             <?php if (Yii::$app->params['recaptcha.enabled']): ?>
-            <?= $form->field($model, 'reCaptcha')->widget(\himiklab\yii2\recaptcha\ReCaptcha::class)->label(false) ?>
+            <?= $form->field($model, 'reCaptcha')->widget(ReCaptcha::class)->label(false) ?>
             <?php endif ?>
 
             <?= Html::submitButton('Create New Account', ['class' => 'btn btn-lg btn-block']) ?>
-            
+
             <?php ActiveForm::end(); ?>
           </div>
         </div>

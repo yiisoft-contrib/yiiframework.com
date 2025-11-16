@@ -1,3 +1,6 @@
+<?php
+/** @var array $tour_slide */
+?>
 <li class="glide__slide">
     <div class="row">
         <div class="col-md-7">

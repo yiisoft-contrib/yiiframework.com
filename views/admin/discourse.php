@@ -1,10 +1,10 @@
 <?php
 
-use app\models\User;
 use yii\helpers\Html;
 use yii\helpers\Url;
+use yii\web\View;
 
-/** @var $this \yii\web\View */
+/** @var $this View */
 /** @var $css string */
 /** @var $js string */
 /** @var $header string */

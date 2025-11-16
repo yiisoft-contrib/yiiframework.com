@@ -5,6 +5,8 @@
  */
 
 use app\models\Extension;
+use app\widgets\Alert;
+use app\widgets\Comments;
 use yii\helpers\Html;
 
 $this->title = $model->name;
@@ -20,7 +22,7 @@ $this->title = $model->name;
 
         <div class="col-sm-9 col-md-10 col-lg-10" role="main">
 
-            <?= \app\widgets\Alert::widget() ?>
+            <?= Alert::widget() ?>
 
             <div class="row">
                 <div class="col-md-12 col-lg-9">
@@ -66,7 +68,7 @@ JS
 </div>
 <div class="comments-wrapper">
     <div class="container comments">
-        <?= \app\widgets\Comments::widget([
+        <?= Comments::widget([
             'objectType' => $model->getObjectType(),
             'objectId' => $model->getObjectId(),
             'prompt' => 'Please only use comments to help explain the above extension.<br/>If you have any questions, please ask in '.Html::a('the forum', Yii::$app->request->baseUrl . '/forum').' instead.',

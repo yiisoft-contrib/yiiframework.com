@@ -1,7 +1,10 @@
 <?php
 
-/** @var $this \yii\web\View */
+/** @var $this View */
 /** @var $content string */
+
+use yii\web\View;
+use yii\widgets\Breadcrumbs;
 
 $this->beginContent('@app/views/layouts/main.php');
 ?>
@@ -10,7 +13,7 @@ $this->beginContent('@app/views/layouts/main.php');
     <?php
 
     if (isset($this->params['breadcrumbs'])) {
-        echo \yii\widgets\Breadcrumbs::widget([
+        echo Breadcrumbs::widget([
             'links' => $this->params['breadcrumbs'],
             'homeLink' => [
                 'label' => 'Admin',

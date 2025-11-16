@@ -1,5 +1,8 @@
 <?php
 
+use app\models\Wiki;
+use app\models\WikiSearch;
+use yii\grid\ActionColumn;
 use yii\helpers\Html;
 use yii\grid\GridView;
 
@@ -20,34 +23,34 @@ $this->params['breadcrumbs'][] = $this->title;
     'columns' => [
         [
             'attribute' => 'id',
-            'content' => function($model) {
+            'content' => static function($model) {
                 return Html::a(Html::encode($model->id), ['wiki-admin/view', 'id' => $model->id]);
             },
         ],
         [
             'attribute' => 'title',
-            'content' => function($model) {
+            'content' => static function($model) {
                 return Html::a(Html::encode($model->title), ['wiki-admin/view', 'id' => $model->id]);
             },
         ],
         [
             'attribute' => 'status',
-            'content' => function($model) {
-                return $model->status == \app\models\Wiki::STATUS_PUBLISHED ?
+            'content' => static function($model) {
+                return $model->status == Wiki::STATUS_PUBLISHED ?
                     '<span class="label label-success">Published</span>'
                   : '<span class="label label-danger">Deleted</span>';
             },
-            'filter' => \app\models\WikiSearch::getStatuses(),
+            'filter' => WikiSearch::getStatuses(),
         ],
         [
             'attribute' => 'category.name',
             'label' => 'Category',
-            'filter' => \app\models\WikiSearch::getCategoryFilter(),
+            'filter' => WikiSearch::getCategoryFilter(),
         ],
         'yii_version',
         [
             'attribute' => 'creator.username',
-            'content' => function($model) {
+            'content' => static function($model) {
                 if ($model->creator === null) {
                     return Yii::$app->formatter->nullDisplay;
                 }
@@ -57,7 +60,7 @@ $this->params['breadcrumbs'][] = $this->title;
         ],
         [
             'attribute' => 'updater.username',
-            'content' => function($model) {
+            'content' => static function($model) {
                 if ($model->updater === null) {
                     return Yii::$app->formatter->nullDisplay;
                 }
@@ -68,8 +71,8 @@ $this->params['breadcrumbs'][] = $this->title;
         'created_at:datetime',
         'updated_at:datetime',
         [
-            'class' => 'yii\grid\ActionColumn',
+            'class' => ActionColumn::class,
             'contentOptions' => ['class' => 'action-column'],
         ],
     ],
-]); ?>
+]) ?>

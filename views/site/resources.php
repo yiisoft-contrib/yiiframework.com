@@ -81,7 +81,7 @@ $this->params['breadcrumbs'][] = $this->title;
 
                 <h4><?= Html::a('The Yii 1.1 Blog tutorial', ['guide/blog-entry']) ?></h4>
 
-                <p>If you need to learn good old Yii 1.1 this is a must read official tutorial.</p>
+                <p>If you need to learn good old Yii 1.1 this is a must-read official tutorial.</p>
             </div>
         </div>
     </div>

@@ -1,7 +1,7 @@
 <?php
 
 use app\components\UserPermissions;
-use app\models\Badge;
+use yii\bootstrap\Nav;
 use yii\helpers\Html;
 use yii\widgets\DetailView;
 
@@ -16,7 +16,7 @@ $forumUrl = $model->getForumUrl();
 
 if (Yii::$app->user->can(UserPermissions::PERMISSION_MANAGE_USERS)) {
     $this->beginBlock('adminNav');
-    echo \yii\bootstrap\Nav::widget([
+    echo Nav::widget([
         'id' => 'admin-nav',
         'items' => [
             ['label' => 'User Admin', 'url' => ['user-admin/index'], 'visible' => Yii::$app->user->can(UserPermissions::PERMISSION_MANAGE_USERS) ],

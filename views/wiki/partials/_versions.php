@@ -2,9 +2,13 @@
 /**
  * @var $this yii\web\View
  * @var $currentVersion string
- * @var $category \app\models\WikiCategory
- * @var $tag \app\models\WikiTag
+ * @var $category WikiCategory
+ * @var $tag WikiTag
  */
+
+use app\models\Wiki;
+use app\models\WikiCategory;
+use app\models\WikiTag;
 use app\widgets\DropdownList;
 
 ?>
@@ -13,7 +17,7 @@ use app\widgets\DropdownList;
         <?php
         $versionItems = [];
 
-        foreach (\app\models\Wiki::getYiiVersionOptions() as $version => $label) {
+        foreach (Wiki::getYiiVersionOptions() as $version => $label) {
             if ($version === $currentVersion) {
                 continue;
             }
@@ -40,7 +44,7 @@ use app\widgets\DropdownList;
         ?>
         <?= DropdownList::widget([
             'tag' => 'div',
-            'selection' => \app\models\Wiki::getYiiVersionOptions()[$currentVersion] ?? null,
+            'selection' => Wiki::getYiiVersionOptions()[$currentVersion] ?? null,
             'items' => $versionItems,
             'options' => [
                 'class' => 'btn-group btn-group-sm'

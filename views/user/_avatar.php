@@ -3,8 +3,9 @@
 use app\models\UserAvatarUploadForm;
 use yii\helpers\Html;
 use yii\helpers\Url;
+use yii\web\View;
 
-/** @var $this \yii\web\View */
+/** @var $this View */
 /** @var $model \app\models\User */
 
 $form = new UserAvatarUploadForm([
@@ -25,7 +26,7 @@ $form = new UserAvatarUploadForm([
 <?php endif; ?>
 
 <div id="upload-progress" style="display: none;">
-    <div class="bar" style="width: 0%;"></div>
+    <div class="bar" style="width: 0"></div>
 </div>
 
 <?= Html::beginForm(['user/upload-avatar'], 'post', ['enctype' => 'multipart/form-data']) ?>
@@ -44,7 +45,7 @@ $form = new UserAvatarUploadForm([
         <?= Html::submitButton('Upload', ['class' => 'btn btn-default']) ?>
     </noscript>
 
-<?= Html::endForm(); ?>
+<?= Html::endForm() ?>
 
 <?php if ($model->hasAvatar()): ?>
 

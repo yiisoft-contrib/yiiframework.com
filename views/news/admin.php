@@ -1,7 +1,8 @@
 <?php
 
+use yii\bootstrap\Nav;
+use yii\grid\ActionColumn;
 use app\models\News;
-use yii\helpers\Html;
 use yii\grid\GridView;
 
 /* @var $this yii\web\View */
@@ -11,7 +12,7 @@ use yii\grid\GridView;
 $this->title = 'News Admin';
 
 $this->beginBlock('adminNav');
-echo \yii\bootstrap\Nav::widget([
+echo Nav::widget([
     'id' => 'admin-nav',
     'items' => [
         ['label' => 'News Page', 'url' => ['news/index'] ],
@@ -43,11 +44,11 @@ $this->endBlock();
                 // 'updater_id',
 
                 [
-                    'class' => 'yii\grid\ActionColumn',
+                    'class' => ActionColumn::class,
                     'contentOptions' => ['class' => 'action-column'],
                 ],
             ],
-        ]); ?>
+        ]) ?>
 
     </div>
 </div>

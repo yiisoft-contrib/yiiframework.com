@@ -1,9 +1,13 @@
 <?php
 
+use app\models\Wiki;
+use yii\data\ActiveDataProvider;
+use yii\grid\CheckboxColumn;
+use yii\grid\GridView;
 use yii\helpers\Html;
 
-/** @var $dataProvider \yii\data\ActiveDataProvider */
-/** @var $model \app\models\Wiki */
+/** @var $dataProvider ActiveDataProvider */
+/** @var $model Wiki */
 
 
 $this->title = $model->title . ' | History';
@@ -26,20 +30,20 @@ $this->title = $model->title . ' | History';
 
                         <?= Html::beginForm(['wiki/revision', 'id' => $model->id], 'get') ?>
 
-                        <?= \yii\grid\GridView::widget([
+                        <?= GridView::widget([
                             'dataProvider' => $dataProvider,
                             'columns' => [
                                 [
-                                    'class' => \yii\grid\CheckboxColumn::class,
+                                    'class' => CheckboxColumn::class,
                                     'name' => 'r',
-                                    'checkboxOptions' => function ($model, $key, $index, $column) {
+                                    'checkboxOptions' => static function ($model) {
                                         return ['value' => $model->revision];
                                     },
                                 ],
                                 'revision:integer:#',
                                 [
                                     'attribute' => 'memo',
-                                    'content' => function($model) {
+                                    'content' => static function($model) {
                                         return Html::a(empty($model->memo) ? Yii::$app->formatter->asText(null) : Html::encode($model->memo), ['wiki/view', 'id' => $model->wiki_id, 'revision' => $model->revision]);
                                     },
                                 ],
@@ -47,8 +51,7 @@ $this->title = $model->title . ' | History';
                                 'updated_at:datetime',
                                 [
                                     'label' => 'Actions',
-                                    'content' => function($model) {
-                                        return implode("<br>\n", [
+                                    'content' => static function($model) {                                        return implode("<br>\n", [
                                             Html::a('view diff', ['wiki/revision', 'id' => $model->wiki_id, 'r1' => $model->revision]),
                                             Html::a('revert to', ['wiki/update', 'id' => $model->wiki_id, 'revision' => $model->revision]),
                                         ]);

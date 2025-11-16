@@ -3,6 +3,8 @@
  * @var $this yii\web\View
  * @var $guide app\models\Guide
  */
+
+use app\widgets\SearchForm;
 use yii\helpers\Html;
 
 $this->title = $guide->title;
@@ -16,7 +18,7 @@ $this->endBlock();
 <div class="container guide-view">
     <div class="guide-content content lang-<?= $guide->language ?>">
 
-        <?= \app\widgets\SearchForm::widget([
+        <?= SearchForm::widget([
             'type' => 'guide',
             'version' => $guide->version,
             'language' => $guide->language,
@@ -37,7 +39,7 @@ $this->endBlock();
                     <h3 class="panel-title"><?= Html::encode($chapterTitle) ?></h3>
                 </div>
                 <div class="panel-body">
-                <?= Html::ul($sections, ['item' => function ($name, $title) use ($guide) {
+                <?= Html::ul($sections, ['item' => static function ($name, $title) use ($guide) {
                     if (preg_match('~^https?://~', $name)) {
                         return '<li>' . Html::a(Html::encode($title), $name) . '</li>';
                     }
@@ -45,7 +47,7 @@ $this->endBlock();
                         'section' => $name,
                         'language' => $guide->language,
                         'version' => $guide->version,
-                        'type' => $guide->typeUrlName
+                        'type' => $guide->getTypeUrlName()
                     ]) . '</li>';
                 }, 'class' => 'list-unstyled']) ?>
                 </div>

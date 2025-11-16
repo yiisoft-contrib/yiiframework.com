@@ -1,11 +1,13 @@
 <?php
 
+use yii\data\ActiveDataProvider;
 use yii\helpers\Html;
-use yii\grid\GridView;
+use yii\widgets\ListView;
 
-/* @var $this yii\web\View */
-/* @var $badge app\models\Badge */
-/* @var $users \yii\data\ActiveDataProvider */
+/* @var yii\web\View $this  */
+/* @var app\models\Badge $badge  */
+/* @var ActiveDataProvider $users  */
+/* @var int $count */
 
 $this->title = $badge->name . ' - Badges';
 
@@ -30,7 +32,7 @@ $this->registerMetaTag(['name' => 'keywords', 'value' => 'yii framework, communi
             users earned this badge. Recently awarded to:
         </div>
         <div class="g-list-view">
-            <?= \yii\widgets\ListView::widget([
+            <?= ListView::widget([
                 'dataProvider'=>$users,
                 'itemView' => 'badge_user',
             ]) ?>

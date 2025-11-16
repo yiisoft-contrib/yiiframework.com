@@ -1,4 +1,6 @@
 <?php
+/** @var array $testimonials */
+
 $this->registerJs("
     $('#Glide2').glide({
         type: 'carousel',

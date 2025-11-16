@@ -9,6 +9,8 @@
  */
 
 use app\models\Doc;
+use app\widgets\Comments;
+use app\widgets\Star;
 use yii\helpers\Html;
 
 $this->beginContent('@app/views/guide/partials/_guide-layout.php', [
@@ -30,7 +32,7 @@ $this->beginContent('@app/views/guide/partials/_guide-layout.php', [
         </div>
     <?php endif ?>
     <div class="pull-right">
-        <?= \app\widgets\Star::widget(['model' => $doc]) ?>
+        <?= Star::widget(['model' => $doc]) ?>
     </div>
 
     <?= $section->content ?>
@@ -39,12 +41,12 @@ $this->beginContent('@app/views/guide/partials/_guide-layout.php', [
         <?php
         if (($prev = $section->getPrevSection()) !== null) {
             $left = '<span class="chevron-left" aria-hidden="true"></span> ';
-            echo '<div class="prev-next__left">' . Html::a($left . Html::encode($prev[1]), ['guide/view', 'section' => $prev[0], 'version' => $guide->version, 'language' => $guide->language, 'type' => $guide->typeUrlName]) . '</div>';
+            echo '<div class="prev-next__left">' . Html::a($left . Html::encode($prev[1]), ['guide/view', 'section' => $prev[0], 'version' => $guide->version, 'language' => $guide->language, 'type' => $guide->getTypeUrlName()]) . '</div>';
         }
         echo '<div class="prev-next__center"><a href="#top">Go to Top <span class="chevron-up" aria-hidden="true"></span></a></div>';
         if (($next = $section->getNextSection()) !== null) {
             $right = ' <span class="chevron-right" aria-hidden="true"></span>';
-            echo '<div class="prev-next__right">' . Html::a(Html::encode($next[1]) . $right, ['guide/view', 'section' => $next[0], 'version' => $guide->version, 'language' => $guide->language, 'type' => $guide->typeUrlName]) . '</div>';
+            echo '<div class="prev-next__right">' . Html::a(Html::encode($next[1]) . $right, ['guide/view', 'section' => $next[0], 'version' => $guide->version, 'language' => $guide->language, 'type' => $guide->getTypeUrlName()]) . '</div>';
         }
         ?>
     </div>
@@ -53,8 +55,8 @@ $this->beginContent('@app/views/guide/partials/_guide-layout.php', [
     <div class="edit-box">
         <div class="edit-icon"><i class="fa fa-github"></i></div>
         <p class="lang-en">
-            Found a typo or you think this page needs improvement?<br />
-                <a href="<?= $editUrl; ?>">Edit it on github</a> !
+            Found a typo, or you think this page needs improvement?<br />
+                <a href="<?= $editUrl ?>">Edit it on GitHub</a> !
         </p>
     </div>
     <?php endif; ?>
@@ -65,7 +67,7 @@ $this->beginContent('@app/views/guide/partials/_guide-layout.php', [
 <?php if ($doc): ?>
     <div class="comments-wrapper">
         <div class="container comments">
-            <?= \app\widgets\Comments::widget([
+            <?= Comments::widget([
                 'objectType' => $doc->getObjectType(),
                 'objectId' => $doc->getObjectId(),
             ]) ?>

@@ -1,5 +1,4 @@
 <?php
-use yii\helpers\Html;
 
 /* @var $this yii\web\View */
 $this->title = 'License';
@@ -23,7 +22,7 @@ $this->title = 'License';
 
                 <p>The Yii framework is free software. It is released under the terms of the following BSD License.</p>
 
-                <p>Copyright &copy; 2008-<?= date('Y'); ?> by Yii Software<br/>All rights reserved.</p>
+                <p>Copyright &copy; 2008-<?= date('Y') ?> by Yii Software<br/>All rights reserved.</p>
 
                 <p>Redistribution and use in source and binary forms, with or without modification, are permitted
                     provided that the following conditions are met:</p>

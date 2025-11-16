@@ -1,5 +1,6 @@
 <?php
 
+use yii\grid\ActionColumn;
 use yii\helpers\Html;
 use yii\grid\GridView;
 
@@ -20,19 +21,19 @@ $this->params['breadcrumbs'][] = $this->title;
     'columns' => [
         [
             'attribute' => 'id',
-            'content' => function($model) {
+            'content' => static function($model) {
                 return Html::a(Html::encode($model->id), ['user-admin/view', 'id' => $model->id]);
             },
         ],
         [
             'attribute' => 'username',
-            'content' => function($model) {
+            'content' => static function($model) {
                 return Html::a(Html::encode($model->username), ['user-admin/view', 'id' => $model->id]);
             },
         ],
         [
             'label' => 'Auth Methods',
-            'content' => function($model) {
+            'content' => static function($model) {
                 /** $model app\models\User */
                 $html = [];
                 if ($model->getPasswordType() !== 'NONE') {
@@ -59,8 +60,8 @@ $this->params['breadcrumbs'][] = $this->title;
         // 'updated_at',
 
         [
-            'class' => 'yii\grid\ActionColumn',
+            'class' => ActionColumn::class,
             'contentOptions' => ['class' => 'action-column'],
         ],
     ],
-]); ?>
+]) ?>

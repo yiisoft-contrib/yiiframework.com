@@ -1,6 +1,5 @@
 <?php
 /* @var $books array */
-use yii\helpers\Html;
 use yii\helpers\Url;
 ?>
 <div class="books-videos">

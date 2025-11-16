@@ -1,5 +1,8 @@
 <?php
 /* @var $this yii\web\View */
+
+use yii\helpers\Html;
+
 ?>
 <div class="container style_external_links">
        <div class="content">
@@ -15,7 +18,7 @@
            <ul>
                <li><a href="https://t.me/yii_framework_in_english">Yii2 Telegram</a></li>
                <li><a href="#">Yii3 Telegram</a></li>
-               <li><?= \yii\helpers\Html::a('IRC and Slack chats', ['site/chat']) ?></li>
+               <li><?= Html::a('IRC and Slack chats', ['site/chat']) ?></li>
                <li><a href="https://stackoverflow.com/questions/tagged/yii">Yii 1.1 StackOverflow</a></li>
                <li><a href="https://stackoverflow.com/questions/tagged/yii2">Yii 2 StackOverflow</a></li>
            </ul>
@@ -41,7 +44,7 @@
            <h3>Chats</h3>
 
            <ul>
-               <li>There is #russian channel in <?= \yii\helpers\Html::a('Slack chat', ['site/chat']) ?></li>
+               <li>There is #russian channel in <?= Html::a('Slack chat', ['site/chat']) ?></li>
                <li><a href="https://t.me/yii1ru">Yii 1.1 Telegram</a></li>
                <li><a href="https://t.me/yii2ru">Yii2 Telegram</a></li>
                <li><a href="https://t.me/yii3ru">Yii3 Telegram</a></li>
