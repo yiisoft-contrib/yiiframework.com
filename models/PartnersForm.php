@@ -58,12 +58,14 @@ class PartnersForm extends Model
             $fromEmail = $this->name;
             $name = $this->email;
 
+            $description = nl2br($this->body);
+
             $body = <<<HTML
                 <ul>
                     <li><strong>Budget:</strong> {$this->budget}</li>
                     <li><strong>Start time:</strong> {$this->when}</li>
                 </ul>
-                {$this->body}
+                {$description}
             HTML;
             Yii::$app->mailer->compose()
                 ->setCc(Yii::$app->params['partnerEmails'])
