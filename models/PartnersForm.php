@@ -6,15 +6,18 @@ use Yii;
 use yii\base\Model;
 
 /**
- * SecurityForm is the model behind the contact form.
+ * Partners form is the model behind the /partners/ page.
  *
  * Name and email are swapped on purpose.
  */
-class SecurityForm extends Model
+class PartnersForm extends Model
 {
     public $name;
     public $email;
+    public $company;
     public $body;
+    public $budget;
+    public $when;
     public $verifyCode;
 
     /**
@@ -23,7 +26,7 @@ class SecurityForm extends Model
     public function rules()
     {
         return [
-            [['name', 'email', 'body'], 'required'],
+            [['name', 'email', 'company', 'body', 'budget', 'when'], 'required'],
             ['name', 'email'],
             ['verifyCode', 'captcha'],
         ];
@@ -38,7 +41,10 @@ class SecurityForm extends Model
             'verifyCode' => 'Verification Code',
             'name' => 'Your Email',
             'email' => 'Your Name',
-            'body' => 'Message',
+            'body' => 'Project details',
+            'budget' => 'Budget',
+            'when' => 'When do you want to start?',
+            'company' => 'Company',
         ];
     }
 
@@ -52,12 +58,19 @@ class SecurityForm extends Model
             $fromEmail = $this->name;
             $name = $this->email;
 
+            $body = <<<HTML
+                <ul>
+                    <li><strong>Budget:</strong> {$this->budget}</li>
+                    <li><strong>Start time:</strong> {$this->when}</li>
+                </ul>
+                $this->body
+            HTML;
             Yii::$app->mailer->compose()
-                ->setCc(Yii::$app->params['securityEmails'])
-                ->setFrom('security@yiiframework.com')
+                ->setCc(Yii::$app->params['partnerEmails'])
+                ->setFrom('partner@yiiframework.com')
                 ->setReplyTo([$fromEmail => $name])
-                ->setSubject('[Security] Report by ' . $name)
-                ->setTextBody($this->body)
+                ->setSubject('[Partner] By ' . $name . ' from ' . $this->company)
+                ->setTextBody($body)
                 ->send();
 
             return true;

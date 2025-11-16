@@ -14,6 +14,7 @@ return [
     'report-issue' => 'site/report-issue',
     'security' => 'site/security',
     'download' => 'site/download',
+    'partners' => 'site/partners',
     'tos' => 'site/tos',
     'logo' => 'site/logo',
     'tour' => 'site/tour',

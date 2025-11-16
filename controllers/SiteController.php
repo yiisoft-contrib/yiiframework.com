@@ -5,6 +5,7 @@ namespace app\controllers;
 use app\components\RowHelper;
 use app\models\Extension;
 use app\models\News;
+use app\models\PartnersForm;
 use app\models\SecurityForm;
 use app\models\User;
 use app\models\Wiki;
@@ -277,6 +278,20 @@ class SiteController extends BaseController
         }
 
         return $this->render('security', [
+            'model' => $model,
+        ]);
+    }
+
+    public function actionPartners()
+    {
+        $model = new PartnersForm();
+        if ($model->load(Yii::$app->request->post()) && $model->send()) {
+            Yii::$app->session->setFlash('partnersFormSubmitted');
+
+            return $this->refresh();
+        }
+
+        return $this->render('partners', [
             'model' => $model,
         ]);
     }
