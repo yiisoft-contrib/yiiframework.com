@@ -1,14 +1,19 @@
 <?php
 
 use app\components\object\ObjectIdentityInterface;
+use app\components\UserPermissions;
+use app\models\Extension;
 use app\models\Linkable;
 use app\models\User;
+use app\models\Wiki;
+use app\widgets\Alert;
+use app\widgets\Star;
 use yii\helpers\Html;
 
 /* @var $this yii\web\View */
 /* @var $model app\models\User */
-/* @var $extensions \app\models\Extension[] */
-/* @var $wikiPages \app\models\Wiki[] */
+/* @var $extensions Extension[] */
+/* @var $wikiPages Wiki[] */
 /* @var Linkable[]|ObjectIdentityInterface[] $starTargets */
 
 $this->title = 'Hi, ' . $model->username . '!';
@@ -17,7 +22,7 @@ $forumUrl = $model->getForumUrl();
 <div class="container style_external_links">
     <div class="content">
 
-        <?= \app\widgets\Alert::widget() ?>
+        <?= Alert::widget() ?>
 
         <div class="row">
             <div class="col-xs-12 heading-separator">
@@ -38,14 +43,14 @@ $forumUrl = $model->getForumUrl();
                         </li>
                     <?php endif ?>
                     <?php if ($forumUrl): ?>
-                        <li><?= Html::a('View forum profile', $forumUrl); ?> (log in using your website username and password)</li>
+                        <li><?= Html::a('View forum profile', $forumUrl) ?> (log in using your website username and password)</li>
                     <?php endif ?>
-                    <li><?= Html::a('View public profile', ['view', 'id' => $model->id]); ?></li>
+                    <li><?= Html::a('View public profile', ['view', 'id' => $model->id]) ?></li>
                     <?php if ($model->passwordType !== User::PASSWORD_TYPE_NONE): ?>
                     <li><?= Html::a('Change password', ['/user/change-password']) ?></li>
                     <?php endif ?>
                     <li><?= Html::a('Change email', ['/user/change-email']) ?></li>
-                    <?php if (\app\components\UserPermissions::isAdmin()): ?>
+                    <?php if (UserPermissions::isAdmin()): ?>
                     <li><?= Html::a('Site Admin Panel', ['/admin/index']) ?></li>
                     <?php endif ?>
                 </ul>
@@ -81,7 +86,7 @@ $forumUrl = $model->getForumUrl();
                             }
 
                             echo 'Your account is connected with your ' . ucfirst($client->source) . ' profile: '
-                                . Html::a('https://github.com/' . Html::encode($client->source_login), 'http://github.com/' . $client->source_login) . '. ';
+                                . Html::a('https://github.com/' . Html::encode($client->source_login), 'https://github.com/' . $client->source_login) . '. ';
 
                             if ($model->passwordType === User::PASSWORD_TYPE_NONE) {
                                 echo 'To remove the connection, you should enable Password login first.';
@@ -104,7 +109,7 @@ $forumUrl = $model->getForumUrl();
                     <?php switch ($model->passwordType) {
                         case User::PASSWORD_TYPE_LEGACYMD5:
                         case User::PASSWORD_TYPE_LEGACYSHA:
-                            echo '<strong>Your password is stored in the database using a deprecated hasing algorithm. Please log out and log in again to fix this.</strong></p><p>';
+                            echo '<strong>Your password is stored in the database using a deprecated hashing algorithm. Please log out and log in again to fix this.</strong></p><p>';
                         // no break
                         case User::PASSWORD_TYPE_NEW:
                             echo 'Password login is enabled. That means that you can log in with your username and password.';
@@ -199,11 +204,11 @@ $forumUrl = $model->getForumUrl();
                     <ul class="profile-star-list">
                         <?php foreach ($starTargets as $target): ?>
                             <li>
-                                <?= \app\widgets\Star::widget([
+                                <?= Star::widget([
                                     'model' => $target,
                                     'starValue' => 1,
                                 ]) ?>
-                                <?= '[' . $target->getObjectType() . '] ' . Html::a(Html::encode($target->getLinkTitle()), $target->getUrl()); ?>
+                                <?= '[' . $target->getObjectType() . '] ' . Html::a(Html::encode($target->getLinkTitle()), $target->getUrl()) ?>
                             </li>
                         <?php endforeach ?>
                     </ul>

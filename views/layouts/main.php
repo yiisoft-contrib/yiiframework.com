@@ -1,14 +1,16 @@
 <?php
 
 use app\controllers\BaseController;
+use app\widgets\Alert;
 use yii\helpers\Html;
-use yii\bootstrap\Nav;
+use yii\helpers\Json;
 use yii\helpers\Url;
 use app\assets\AppAsset;
+use yii\web\View;
 
 AppAsset::register($this);
 
-/* @var $this \yii\web\View */
+/* @var $this View */
 /* @var $content string */
 
 $this->registerLinkTag([
@@ -40,7 +42,7 @@ $this->registerLinkTag([
         <link href="<?= Url::to(['rss/all'], true) ?>" type="application/rss+xml" rel="alternate" title="Lives News for Yii Framework">
 
         <?= Html::csrfMetaTags() ?>
-        <?php $this->registerJs('yiiBaseUrl = ' . \yii\helpers\Json::htmlEncode(Yii::$app->request->getBaseUrl()), \yii\web\View::POS_HEAD); ?>
+        <?php $this->registerJs('yiiBaseUrl = ' . Json::htmlEncode(Yii::$app->request->getBaseUrl()), View::POS_HEAD); ?>
 
         <title><?php
             $title = [];
@@ -88,14 +90,14 @@ $this->registerLinkTag([
 
         <div id="page-wrapper" class="">
 
-            <?= $this->render('partials/_header', ['discourse' => false]); ?>
+            <?= $this->render('partials/_header', ['discourse' => false]) ?>
 
-            <?= $this->context instanceof BaseController && isset($this->context->sectionTitle) ? $this->render('partials/_sectionHeader', ['title' => $this->context->sectionTitle]) : ''; ?>
+            <?= $this->context instanceof BaseController && isset($this->context->sectionTitle) ? $this->render('partials/_sectionHeader', ['title' => $this->context->sectionTitle]) : '' ?>
 
-            <?= \app\widgets\Alert::widget(['options' => ['class' => 'main-alert']]) ?>
+            <?= Alert::widget(['options' => ['class' => 'main-alert']]) ?>
             <?= $content ?>
 
-            <?= $this->render('partials/_footer'); ?>
+            <?= $this->render('partials/_footer') ?>
 
         </div> <!-- close the id="page-wrapper" -->
 

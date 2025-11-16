@@ -7,8 +7,8 @@
  */
 
 use app\models\Doc;
+use app\models\GuideSection;
 use app\widgets\SearchForm;
-use app\widgets\SideNav;
 use yii\helpers\Html;
 
 $this->beginContent('@app/views/guide/partials/_guide-layout.php', [
@@ -25,7 +25,7 @@ $also = '';
 
             <?php
 
-            /** @var \app\models\GuideSection[][] $alternatives */
+            /** @var GuideSection[][] $alternatives */
             $alternatives = $guide->findSectionInOtherLanguages($section->name);
             if (!empty($alternatives)):
                 $also = 'also'
@@ -40,7 +40,7 @@ $also = '';
                         if (isset($extensionName, $extensionVendor)) {
                             $url = ['guide/extension-view', 'section' => $altSection->name, 'version' => $altSection->guide->version, 'language' => $altSection->guide->language, 'name' => $extensionName, 'vendorName' => $extensionVendor];
                         } else {
-                            $url = ['guide/view', 'section' => $altSection->name, 'version' => $altSection->guide->version, 'language' => $altSection->guide->language, 'type' => $altSection->guide->typeUrlName];
+                            $url = ['guide/view', 'section' => $altSection->name, 'version' => $altSection->guide->version, 'language' => $altSection->guide->language, 'type' => $altSection->guide->getTypeUrlName()];
                         }
                         $linkName = $altSection->guide->getLanguageOptions()[$altSection->guide->language] ?? 'Unknown';
                         if ($altSection->guide->language === 'en') {

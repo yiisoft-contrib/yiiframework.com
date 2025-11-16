@@ -1,12 +1,12 @@
 <?php
 
+use app\models\PasswordResetRequestForm;
 use yii\helpers\Html;
 use yii\bootstrap\ActiveForm;
-use yii\helpers\Url;
 
 /* @var $this yii\web\View */
 /* @var $form yii\bootstrap\ActiveForm */
-/* @var $model \app\models\PasswordResetRequestForm */
+/* @var $model PasswordResetRequestForm */
 
 $this->title = 'Request password reset';
 ?>

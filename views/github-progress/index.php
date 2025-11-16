@@ -1,9 +1,10 @@
 <?php
 
+use yii\data\ArrayDataProvider;
 use yii\helpers\Html;
 use yii\grid\GridView;
 
-/** @var \yii\data\ArrayDataProvider $dataProvider */
+/** @var ArrayDataProvider $dataProvider */
 /** @var string $version */
 /** @var string[] $versions */
 ?>
@@ -28,7 +29,7 @@ $this->endBlock();
                 'class' => 'table',
             ],
             'dataProvider' => $dataProvider,
-            'rowOptions'=> function ($model) {
+            'rowOptions'=> static function ($model) {
                 if ($model['no_release_for'] === null && !$model['optionalForFrameworkAnnounce']) {
                     return ['class' => 'warning'];
                 }
@@ -38,21 +39,21 @@ $this->endBlock();
             'columns' => [
                 [
                     'label' => '#',
-                    'value' => function ($model, $key, $index) {
+                    'value' => static function ($model, $key, $index) {
                         return $index + 1;
                     },
                     'visible' => $version === '3.0',
                 ],
                 [
                     'attribute' => 'repository',
-                    'content' => function ($model) {
+                    'content' => static function ($model) {
                         return Html::a($model['repository'], 'https://github.com/' . $model['repository'] . '/');
                     }
                 ],
                 'latest',
                 [
                     'attribute' => 'no_release_for',
-                    'value' => function ($model) {
+                    'value' => static function ($model) {
                         if ($model['no_release_for'] === null) {
                             return '';
                         }
@@ -63,7 +64,7 @@ $this->endBlock();
                 [
                     'attribute' => 'issues',
                     'format' => 'html',
-                    'value' => function ($model) {
+                    'value' => static function ($model) {
                         return $model['issues'] > 0 ? Html::a($model['issues'], 'https://github.com/' . $model['repository'] . '/issues') : 0;
                     }
                 ],
@@ -71,7 +72,7 @@ $this->endBlock();
                     'attribute' => 'pullRequests',
                     'label' => 'PRs',
                     'format' => 'html',
-                    'value' => function ($model) {
+                    'value' => static function ($model) {
                         return $model['pullRequests'] > 0 ? Html::a($model['pullRequests'], 'https://github.com/' . $model['repository'] . '/pulls') : 0;
                     }
                 ],
@@ -81,7 +82,7 @@ $this->endBlock();
                 'quality:image',
                 [
                     'attribute' => 'diff',
-                    'content' => function ($model) {
+                    'content' => static function ($model) {
                         $parts = explode('/', $model['diff']);
 
                         $changeLog = '';
@@ -108,7 +109,7 @@ $this->endBlock();
                 ],
                 [
                     'attribute' => 'optionalForFrameworkAnnounce',
-                    'content' => function ($model) {
+                    'content' => static function ($model) {
                         if ($model['repository'] === 'yiisoft/yii' && str_contains($model['repository'], 'yii2')) {
                             return '';
                         }

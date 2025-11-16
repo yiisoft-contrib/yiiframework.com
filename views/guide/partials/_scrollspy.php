@@ -13,8 +13,8 @@ use yii\helpers\Html;
     <nav id="scrollnav" data-spy="affix" data-offset-top="120">
         <ul class="nav hidden-xs hidden-sm">
             <?php
-                echo '<li>' . Html::a($section->getTitle(), '#' . (isset($section->headings['id']) ? $section->headings['id'] : '')) . '</li>';
-                $sections = isset($section->headings['sections']) ? $section->headings['sections'] : [];
+                echo '<li>' . Html::a($section->getTitle(), '#' . ($section->headings['id'] ?? '')) . '</li>';
+                $sections = $section->headings['sections'] ?? [];
                 foreach($sections as $heading) {
                     echo '<li>' . Html::a(Html::encode(strip_tags($heading['title'])), '#' . $heading['id']);
                     if (isset($heading['sub'])) {

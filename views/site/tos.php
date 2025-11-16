@@ -1,13 +1,12 @@
 <?php
-use yii\helpers\Html;
 
 /* @var $this yii\web\View */
 $this->title = 'Terms of Service';
 ?>
 <div class="container style_external_links">
     <div class="content">
-        <p>This web site is owned and operated by Yii Software, (YiiSoft or we).
-           We have created this page to share with you our privacy and legal policies regarding to your personal information
+        <p>This website is owned and operated by Yii Software, (YiiSoft or we).
+           We have created this page to share with you our privacy and legal policies regarding your personal information
            and the contents on this site.</p>
 
         <h2>Privacy Policy</h2>
@@ -20,7 +19,7 @@ $this->title = 'Terms of Service';
            browser type, access times, domain names, usage habits and other information which does not specifically
            identify any individual.</p>
 
-        <p>We may use cookies to customize your use of the web site and for other purposes to improve your use of the service,
+        <p>We may use cookies to customize your use of the website and for other purposes to improve your use of the service,
            and may also use web beacons, web bugs, action tags and third party cookies. You may stop or restrict the placement
            of cookies on your computer or flush them from your browser by adjusting your web browser preferences, in which
            case you may still use our Service, but it may interfere with some of its functionality. We do not use cookies
@@ -28,21 +27,21 @@ $this->title = 'Terms of Service';
 
         <h2>Legal Disclaimer</h2>
 
-        <p>All the information and contents posted on this web site are the property of YiiSoft, and are protected by U.S.
-           and foreign copyright laws. By accessing this web site, you agree to the following terms and conditions.
-           You shall not use this web site if you do not agree.</p>
+        <p>All the information and contents posted on this website are the property of YiiSoft, and are protected by U.S.
+           and foreign copyright laws. By accessing this website, you agree to the following terms and conditions.
+           You shall not use this website if you do not agree.</p>
 
         <ol>
-            <li>This web site and its contents may NOT be copied or distributed in any manner without the prior written
+            <li>This website and its contents may NOT be copied or distributed in any manner without the prior written
                 consent of YiiSoft.</li>
-            <li>YiiSoft MAKES NO REPRESENTATIONS OR WARRANTIES WITH RESPECT TO THIS WEB SITE, ITS CONTENTS OR THE MANUSCRIPT,
+            <li>YiiSoft MAKES NO REPRESENTATIONS OR WARRANTIES WITH RESPECT TO THIS WEBSITE, ITS CONTENTS OR THE MANUSCRIPT,
                 WHICH ARE PROVIDED FOR USE "AS IS" AND IS WITHOUT WARRANTY OF ANY KIND.</li>
-            <li>Portions of this web site may publish readers comments and opinion. YiiSoft does not assume or have any
+            <li>Portions of this website may publish readers comments and opinion. YiiSoft does not assume or have any
                 responsibility or any liability for the readers comments or opinions.</li>
             <li>You agree, through your use of this website, that you will not post any material which is false, defamatory,
                 inaccurate, abusive, vulgar, hateful, harassing, obscene, profane, sexually oriented, threatening, invasive
                 of a person's privacy, adult material, or otherwise in violation of any International or United States
-                Federal law. You also agree not to post any copyrighted material unless you own the copyright or you have
+                Federal law. You also agree not to post any copyrighted material unless you own the copyright, or you have
                 written consent from the owner of the copyrighted material. Spam, flooding, advertisements, chain letters,
                 pyramid schemes, and solicitations are also forbidden on this website.</li>
             <li>You remain solely responsible for the content that you posted. Furthermore, you agree to indemnify and hold

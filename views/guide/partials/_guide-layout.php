@@ -1,8 +1,9 @@
 <?php
 /**
- * @var $this yii\web\View
- * @var $guide app\models\Guide
- * @var $section app\models\GuideSection
+ * @var yii\web\View $this
+ * @var app\models\Guide $guide
+ * @var app\models\GuideSection $section
+ * @var string $content
  */
 
 use app\widgets\SearchForm;
@@ -19,7 +20,7 @@ foreach ($guide->chapters as $chapterTitle => $sections) {
             if (isset($extensionName, $extensionVendor)) {
                 $url = ['guide/extension-view', 'section' => $sectionName, 'language' => $guide->language, 'version' => $guide->version, 'name' => $extensionName, 'vendorName' => $extensionVendor];
             } else {
-                $url = ['guide/view', 'section' => $sectionName, 'language' => $guide->language, 'version' => $guide->version, 'type' => $guide->typeUrlName];
+                $url = ['guide/view', 'section' => $sectionName, 'language' => $guide->language, 'version' => $guide->version, 'type' => $guide->getTypeUrlName()];
             }
             $active = isset($section) && $section->name === $sectionName;
         }

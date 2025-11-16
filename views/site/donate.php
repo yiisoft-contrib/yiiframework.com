@@ -20,7 +20,7 @@ use yii\helpers\Html;
             <li>Marketing</li>
             <li>Long-term support for Yii 1.1 and 2.0</li>
         </ul>
-        <p>Currently these donation services are available:</p>
+        <p>Currently, these donation services are available:</p>
         <ul>
             <?php foreach ($donationServices as $donationService) { ?>
                 <li><a href="<?= $donationService['link'] ?>"><?= Html::encode($donationService['name']) ?></a></li>

@@ -3,6 +3,7 @@
 use app\models\News;
 use dosamigos\selectize\SelectizeTextInput;
 use yii\helpers\Html;
+use yii\jui\DatePicker;
 use yii\widgets\ActiveForm;
 
 /* @var $this yii\web\View */
@@ -16,7 +17,7 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'status')->dropDownList(News::getStatusList(), ['prompt' => 'Please choose...']) ?>
 
-    <?= $form->field($model, 'news_date')->widget(\yii\jui\DatePicker::class, [
+    <?= $form->field($model, 'news_date')->widget(DatePicker::class, [
         'options' => ['class' => 'form-control'],
     ]) ?>
 

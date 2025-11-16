@@ -1,16 +1,20 @@
 <?php
 
 /** @var $this yii\web\View */
+
+use app\models\search\SearchActiveRecord;
 use yii\helpers\Html;
+use yii\helpers\Json;
+use yii\web\View;
 
 $url = ['/search/global'];
 if ($language = Yii::$app->request->get('language')) {
     $url['language'] = $language;
-    $this->registerJs('yiiSearchLanguage = ' . \yii\helpers\Json::htmlEncode($language), \yii\web\View::POS_HEAD);
+    $this->registerJs('yiiSearchLanguage = ' . Json::htmlEncode($language), View::POS_HEAD);
 }
 if ($version = Yii::$app->request->get('version')) {
     $url['version'] = $version;
-    $this->registerJs('yiiSearchVersion = ' . \yii\helpers\Json::htmlEncode($version), \yii\web\View::POS_HEAD);
+    $this->registerJs('yiiSearchVersion = ' . Json::htmlEncode($version), View::POS_HEAD);
 }
 if ($type = Yii::$app->request->get('type')) {
 	$url['type'] = $type;
@@ -20,7 +24,7 @@ if ($type = Yii::$app->request->get('type')) {
 
 $searchPlaceholder = trim(implode(' ', [
 	'Search',
-	\app\models\search\SearchActiveRecord::getTypeName($url['type'] ?? '')
+	SearchActiveRecord::getTypeName($url['type'] ?? '')
 ]))	. '&hellip;';
 
 ?>

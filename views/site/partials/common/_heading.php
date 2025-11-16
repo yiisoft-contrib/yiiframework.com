@@ -1,5 +1,7 @@
 <?php
 use yii\helpers\Html;
+
+/** @var string $title */
 ?>
 <div class="guide-header-wrap">
     <div class="container guide-header common-heading">

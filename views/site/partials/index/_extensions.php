@@ -1,6 +1,7 @@
 <?php
-/* @var $extensions \app\models\Extension[] */
+/* @var $extensions Extension[] */
 
+use app\models\Extension;
 use yii\helpers\Html;
 use yii\helpers\Url;
 ?>

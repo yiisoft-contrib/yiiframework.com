@@ -39,7 +39,7 @@ $this->params['breadcrumbs'][] = $this->title;
                     </div>
                 </div>
                 <div class="comment-footer">
-                    <?= $model->user ? $model->user->rankLink : User::DELETED_USER_HTML ?> at
+                    <?= $model->user->rankLink ?? User::DELETED_USER_HTML ?> at
                     <span class="date"><?=Yii::$app->formatter->format($model->created_at, 'datetime')?></span>
                 </div>
             </div>
@@ -73,7 +73,7 @@ $this->params['breadcrumbs'][] = $this->title;
         'object_id',
         [
             'attribute' => 'status',
-            'value' => function($model) {
+            'value' => static function($model) {
                 switch($model->status) {
                     case Comment::STATUS_ACTIVE:
                         return '<span class="label label-success">active</span>';

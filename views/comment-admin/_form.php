@@ -11,7 +11,7 @@ use yii\widgets\ActiveForm;
 
 <div class="comment-form">
 
-    by <?= $model->user ? $model->user->rankLink : User::DELETED_USER_HTML ?> at
+    by <?= $model->user->rankLink ?? User::DELETED_USER_HTML ?> at
     <span class="date"><?=Yii::$app->formatter->format($model->created_at, 'datetime')?></span>
 
 

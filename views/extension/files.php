@@ -1,10 +1,13 @@
 <?php
 
 use app\components\UserPermissions;
+use app\models\Extension;
 use app\models\File;
+use app\widgets\Alert;
+use yii\bootstrap\ActiveForm;
 use yii\helpers\Html;
 
-/** @var $model \app\models\Extension */
+/** @var $model Extension */
 /** @var $revision int */
 /** @var $file File */
 
@@ -21,7 +24,7 @@ $this->title = "$model->name | Downloads";
 
         <div class="col-sm-9 col-md-10 col-lg-10" role="main">
 
-            <?= \app\widgets\Alert::widget() ?>
+            <?= Alert::widget() ?>
 
             <div class="row">
                 <div class="col-md-12 col-lg-9">
@@ -36,8 +39,8 @@ $this->title = "$model->name | Downloads";
 
                                 <?php foreach($downloads as $download): ?>
                                 <div class="file">
-                    <b><?= Html::a(Html::encode($download->file_name), $model->getUrl('download', ['filename' => $download->file_name])); ?></b>
-                            (<?= Yii::$app->formatter->asShortSize($download->file_size); ?>)
+                    <b><?= Html::a(Html::encode($download->file_name), $model->getUrl('download', ['filename' => $download->file_name])) ?></b>
+                            (<?= Yii::$app->formatter->asShortSize($download->file_size) ?>)
                             <?php if (UserPermissions::canUpdateExtension($model)): ?>
                                 [<?= Html::a(
                                     'delete this file',
@@ -46,10 +49,10 @@ $this->title = "$model->name | Downloads";
                                         'method' => 'post',
                                         'confirm' => 'Are you sure to delete ' . $download->file_name . '?',
                                     ]]
-                                ); ?>]
+                                ) ?>]
                             <?php endif; ?>
-                            <br/><i><?= Html::encode($download->summary); ?></i>
-                            <br/>Released on <?= Yii::$app->formatter->asDate($download->created_at); ?>; downloaded <?= number_format($download->download_count); ?> times.
+                            <br/><i><?= Html::encode($download->summary) ?></i>
+                            <br/>Released on <?= Yii::$app->formatter->asDate($download->created_at) ?>; downloaded <?= number_format($download->download_count) ?> times.
                         </div>
 
                                 <?php endforeach; ?>
@@ -62,16 +65,16 @@ $this->title = "$model->name | Downloads";
 
                                 <h3>Upload File</h3>
 
-                                <?php $form = \yii\bootstrap\ActiveForm::begin(['options' => ['enctype' => 'multipart/form-data']]) ?>
+                                <?php $form = ActiveForm::begin(['options' => ['enctype' => 'multipart/form-data']]) ?>
 
                                     <?= $form->field($file, 'file_name')->fileInput()->label('File')->hint('The file size must not exceed 2MB. Only gif, png, jpg, jpeg, bmp, zip, gz, tgz or bz2 files are allowed.') ?>
                                     <?= $form->field($file, 'summary') ?>
 
                                     <div class="entry buttons">
-                                        <?= Html::submitButton('Submit', ['class' => 'btn btn-primary']); ?>
+                                        <?= Html::submitButton('Submit', ['class' => 'btn btn-primary']) ?>
                                     </div>
 
-                                <?php \yii\bootstrap\ActiveForm::end() ?>
+                                <?php ActiveForm::end() ?>
 
                             <?php endif; ?>
 

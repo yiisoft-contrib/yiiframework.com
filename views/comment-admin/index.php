@@ -22,7 +22,7 @@ $this->params['breadcrumbs'][] = $this->title;
         'columns' => [
             [
                 'attribute' => 'id',
-                'content' => function(Comment $model) {
+                'content' => static function(Comment $model) {
                     if ($model->status == Comment::STATUS_DELETED) {
                         return Html::a(Html::encode($model->id), ['view', 'id' => $model->id]);
                     }
@@ -42,7 +42,7 @@ $this->params['breadcrumbs'][] = $this->title;
             'text:ntext',
             [
                 'attribute' => 'status',
-                'content' => function($model) {
+                'content' => static function($model) {
                     switch($model->status) {
                         case Comment::STATUS_ACTIVE:
                             return '<span class="label label-success">active</span>';
@@ -62,5 +62,5 @@ $this->params['breadcrumbs'][] = $this->title;
                 'class' => yii\grid\ActionColumn::class,
             ],
         ],
-    ]); ?>
+    ]) ?>
 </div>

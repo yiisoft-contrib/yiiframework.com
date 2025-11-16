@@ -134,7 +134,7 @@ $this->params['breadcrumbs'][] = $this->title;
 				</div>
 
 				<p class="small">
-					Afterwards you may want to follow the
+					Afterward you may want to follow the
 					<?= Html::a('introduction in the definitive guide', [
 						'guide/view',
 						'type' => 'guide',
@@ -150,8 +150,8 @@ $this->params['breadcrumbs'][] = $this->title;
 				<h1 id="verify-integrity">Verifying Download Integrity</h1>
 
 				<p class="small">
-					Verify your download using the SHA256 hash from the 
-					<a href="https://github.com/yiisoft/yii2/releases">GitHub releases page</a> 
+					Verify your download using the SHA256 hash from the
+					<a href="https://github.com/yiisoft/yii2/releases">GitHub releases page</a>
 					(copy the hash using the "copy" button):
 				</p>
 
@@ -300,7 +300,7 @@ if ($expectedHash -eq $actualHash) { "✓ Verification successful" } else { "✗
 					<h2><span>Archive</span></h2>
 				</div>
 
-				<p class="text-center">If you are looking for Yii 1.0 and other really old resources, you may find them at the <a href="https://github.com/yiisoft-contrib/museum">museum</a>.</p>
+				<p class="text-center">If you are looking for Yii 1.0 and other ancient resources, you may find them at the <a href="https://github.com/yiisoft-contrib/museum">museum</a>.</p>
 
 			</div>
 		</div>

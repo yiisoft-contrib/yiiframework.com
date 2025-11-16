@@ -1,12 +1,17 @@
 <?php
 
+use app\models\ExtensionCategory;
+use app\models\ExtensionTag;
+use yii\data\ActiveDataProvider;
 use yii\helpers\Html;
+use yii\web\View;
+use yii\widgets\ListView;
 
-/** @var $dataProvider \yii\data\ActiveDataProvider */
-/** @var $category \app\models\ExtensionCategory */
+/** @var $dataProvider ActiveDataProvider */
+/** @var $category ExtensionCategory */
 /** @var $version string */
-/** @var $tag \app\models\ExtensionTag */
-/** @var $this \yii\web\View */
+/** @var $tag ExtensionTag */
+/** @var $this View */
 
 
 $this->title = 'Official Extensions';
@@ -41,7 +46,7 @@ $this->title = 'Official Extensions';
                 </div>
             </div>
 
-            <?= \yii\widgets\ListView::widget([
+            <?= ListView::widget([
                 'dataProvider' => $dataProvider,
                 'itemView' => '_view',
                 'itemOptions' => ['class' => 'col-xs-12 col-sm-6 col-lg-4'],

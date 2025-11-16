@@ -1,6 +1,7 @@
 <?php
 
-use yii\helpers\Html;
+use app\components\UserPermissions;
+use yii\bootstrap\Nav;
 use yii\grid\GridView;
 
 /* @var $this yii\web\View */
@@ -9,9 +10,9 @@ use yii\grid\GridView;
 
 $this->title = 'Members';
 
-if (Yii::$app->user->can(\app\components\UserPermissions::PERMISSION_MANAGE_USERS)) {
+if (Yii::$app->user->can(UserPermissions::PERMISSION_MANAGE_USERS)) {
     $this->beginBlock('adminNav');
-    echo \yii\bootstrap\Nav::widget([
+    echo Nav::widget([
         'id' => 'admin-nav',
         'items' => [
             ['label' => 'User Admin', 'url' => ['user-admin/index']],
@@ -32,13 +33,13 @@ $this->registerMetaTag(['name' => 'keywords', 'value' => 'yii framework, communi
             'columns' => [
                 [
                     'attribute' => 'rank',
-                    'value' => function($model) {
+                    'value' => static function($model) {
                         return $model->rank == 999999 ? 'not ranked' : $model->rank;
                     },
                 ],
                 [
                     'attribute' => 'display_name',
-                    'content' => function($model) {
+                    'content' => static function($model) {
                         return $model->rankLink;
                     },
                 ],
@@ -66,7 +67,7 @@ $this->registerMetaTag(['name' => 'keywords', 'value' => 'yii framework, communi
                     'value' => 'post_count',
                 ],
             ],
-        ]); ?>
+        ]) ?>
 
     </div>
 </div>

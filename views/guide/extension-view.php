@@ -7,8 +7,6 @@
  * @var $extensionVendor string
  */
 
-use app\models\Doc;
-use app\widgets\SideNav;
 use yii\helpers\Html;
 
 $this->beginContent('@app/views/guide/partials/_guide-layout.php', [

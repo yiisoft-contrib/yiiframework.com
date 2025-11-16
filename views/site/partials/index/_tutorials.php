@@ -1,8 +1,9 @@
 <?php
 
+use app\models\Wiki;
 use yii\helpers\Html;
 use yii\helpers\Url;
-/* @var $tutorials \app\models\Wiki[] */
+/* @var $tutorials Wiki[] */
 ?>
 <div class="tutorials">
     <div class="dashed-heading-front-section">

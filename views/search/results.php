@@ -1,7 +1,9 @@
 <?php
 
 /* @var $this yii\web\View */
-use yii\helpers\Html;
+
+use app\widgets\SearchForm;
+use yii\widgets\ListView;
 
 /* @var $results yii\data\ActiveDataProvider */
 /* @var $queryString string */
@@ -22,7 +24,7 @@ $this->endBlock();
 <div class="container">
     <div class="content">
 
-        <?= \app\widgets\SearchForm::widget([
+        <?= SearchForm::widget([
             'type' => $type,
             'version' => $version,
             'language' => $language,
@@ -30,7 +32,7 @@ $this->endBlock();
             'value' => $queryString,
         ]) ?>
 
-        <?= \yii\widgets\ListView::widget([
+        <?= ListView::widget([
             'dataProvider' => $results,
             'itemView' => 'partials/_result',
         ]) ?>

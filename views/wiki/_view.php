@@ -22,7 +22,7 @@ use yii\helpers\Html;
                         ['wiki/view', 'id' => $model->id, 'name' => $model->slug, '#' => 'comments']
                     ) ?></div>
             </div>
-            <div class="text"><?= $model->teaser ?></div>
+            <div class="text"><?= $model->getTeaser() ?></div>
         </div>
     </div>
     <div class="col-md-12 col-lg-3">

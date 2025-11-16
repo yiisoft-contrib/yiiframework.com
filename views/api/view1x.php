@@ -10,10 +10,10 @@
  */
 
 use app\models\Doc;
+use app\widgets\Comments;
 use app\widgets\SideNav;
-use yii\apidoc\templates\bootstrap\SideNavWidget;
+use app\widgets\Star;
 use yii\helpers\Html;
-use yii\helpers\StringHelper;
 use yii\helpers\Url;
 
 $this->registerJs("
@@ -87,7 +87,7 @@ $this->endBlock();
         <div class="col-sm-9 col-md-9 col-lg-9" role="main">
             <div class="content api1">
                 <div class="pull-right">
-                    <?= \app\widgets\Star::widget(['model' => $doc]) ?>
+                    <?= Star::widget(['model' => $doc]) ?>
                 </div>
 
                 <?= $content ?>
@@ -99,7 +99,7 @@ $this->endBlock();
 <?php if ($doc): ?>
 <div class="comments-wrapper">
     <div class="container comments">
-        <?= \app\widgets\Comments::widget([
+        <?= Comments::widget([
             'objectType' => $doc->getObjectType(),
             'objectId' => $doc->getObjectId(),
         ]) ?>

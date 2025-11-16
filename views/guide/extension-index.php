@@ -33,7 +33,7 @@ $this->endBlock();
                     <h3 class="panel-title"><?= Html::encode($chapterTitle) ?></h3>
                 </div>
                 <div class="panel-body">
-                <?= Html::ul($sections, ['item' => function ($name, $title) use ($guide, $extensionVendor, $extensionName) {
+                <?= Html::ul($sections, ['item' => static function ($name, $title) use ($guide, $extensionVendor, $extensionName) {
                     if (preg_match('~^https?://~', $name)) {
                         return '<li>' . Html::a(Html::encode($title), $name) . '</li>';
                     }

@@ -41,7 +41,7 @@ use yii\widgets\ActiveForm;
 
             <?=$form->field($model, 'name', ['options' => ['class' => 'nopackagist']])
                     ->textInput(['disabled' => !$model->isNewRecord])
-                    ->hint('Name must start with a letter and contain lower-case word characters only.<br>Name cannot be changed once the extension is created.');
+                    ->hint('Name must start with a letter and contain lower-case word characters only.<br>Name cannot be changed once the extension is created.')
             ?>
 
             <?= $form->field($model, 'packagist_url', ['options' => ['class' => 'packagist']])
@@ -56,7 +56,7 @@ use yii\widgets\ActiveForm;
             ?>
             <?= $form->field($model, 'license_id', ['options' => ['class' => 'nopackagist']])
                 ->dropDownList(Extension::getLicenseSelect(), ['prompt' => 'Please select...'])
-                ->hint('All extensions shared on yiiframework.com must be open source.<br>We encourage you to use one of the licenses listed in the above drop-down list. For more information you may visit <a href="https://choosealicense.com/" target="_blank" rel="noopener noreferrer">choosealicense.com</a>.');
+                ->hint('All extensions shared on yiiframework.com must be open source.<br>We encourage you to use one of the licenses listed in the above drop-down list. For more information you may visit <a href="https://choosealicense.com/" target="_blank" rel="noopener noreferrer">choosealicense.com</a>.')
             ?>
 
             <?= $form->field($model, 'github_url', ['options' => ['class' => 'nopackagist']])

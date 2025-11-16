@@ -1,33 +1,35 @@
 <?php
 /* @var $this yii\web\View */
 
+use app\models\Extension;
+use app\models\Wiki;
 use yii\helpers\Url;
 
 /* @var $books array */
 /* @var $tour_slides array */
 /* @var $testimonials array */
 /* @var $news app\models\News[] */
-/* @var $extensions \app\models\Extension[] */
-/* @var $tutorials \app\models\Wiki[] */
+/* @var $extensions Extension[] */
+/* @var $tutorials Wiki[] */
 ?>
-<?= $this->render('partials/index/_jumbo'); ?>
+<?= $this->render('partials/index/_jumbo') ?>
 
-<?= $this->render('partials/index/_featurepoints'); ?>
+<?= $this->render('partials/index/_featurepoints') ?>
 
-<?= $this->render('partials/index/_news', ['news' => $news]); ?>
+<?= $this->render('partials/index/_news', ['news' => $news]) ?>
 
-<?= $this->render('partials/index/_booksvideos', ['books' => $books]); ?>
+<?= $this->render('partials/index/_booksvideos', ['books' => $books]) ?>
 
 <div class="container content-separator content-guide">
     <div class="row">
         <div class="col-md-4">
-            <?= $this->render('partials/index/_testimonials', ['testimonials' => $testimonials]); ?>
+            <?= $this->render('partials/index/_testimonials', ['testimonials' => $testimonials]) ?>
         </div>
         <div class="col-md-4">
-            <?= $this->render('partials/index/_tutorials', ['tutorials' => $tutorials]); ?>
+            <?= $this->render('partials/index/_tutorials', ['tutorials' => $tutorials]) ?>
         </div>
         <div class="col-md-4">
-            <?= $this->render('partials/index/_extensions', ['extensions' => $extensions]); ?>
+            <?= $this->render('partials/index/_extensions', ['extensions' => $extensions]) ?>
         </div>
     </div>
     <div class="row">

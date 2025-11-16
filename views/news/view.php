@@ -1,6 +1,11 @@
 <?php
 
 use app\components\UserPermissions;
+use app\models\News;
+use app\widgets\NewsArchive;
+use app\widgets\NewsTaglist;
+use yii\bootstrap\Alert;
+use yii\bootstrap\Nav;
 use yii\helpers\Html;
 use yii\widgets\DetailView;
 
@@ -13,7 +18,7 @@ $this->params['breadcrumbs'][] = $this->title;
 
 if (UserPermissions::canManageNews()) {
     $this->beginBlock('adminNav');
-    echo \yii\bootstrap\Nav::widget([
+    echo Nav::widget([
         'id' => 'admin-nav',
         'items' => [
             ['label' => 'News Page', 'url' => ['news/index'] ],
@@ -31,13 +36,13 @@ if (UserPermissions::canManageNews()) {
         <div class="row">
             <div class="col-md-9">
 
-                <?php if (UserPermissions::canManageNews() && $model->status != \app\models\News::STATUS_PUBLISHED) {
+                <?php if (UserPermissions::canManageNews() && $model->status != News::STATUS_PUBLISHED) {
 
-                    echo \yii\bootstrap\Alert::widget([
+                    echo Alert::widget([
                         'body' =>
-                            '<strong>News Status: </strong>' . Html::encode(\app\models\News::getStatusList()[$model->status])
+                            '<strong>News Status: </strong>' . Html::encode(News::getStatusList()[$model->status])
                             . ' &mdash; This post is not visibile to non-admins.',
-                        'options' => ['class' => ($model->status == \app\models\News::STATUS_DELETED ? 'alert-danger' : 'alert-info')],
+                        'options' => ['class' => ($model->status == News::STATUS_DELETED ? 'alert-danger' : 'alert-info')],
                         'closeButton' => false,
                     ]);
 
@@ -86,9 +91,9 @@ if (UserPermissions::canManageNews()) {
                 ?>
                 </ul>
 
-                <?= \app\widgets\NewsTaglist::widget(['news' => $model]) ?>
+                <?= NewsTaglist::widget(['news' => $model]) ?>
 
-                <?= \app\widgets\NewsArchive::widget() ?>
+                <?= NewsArchive::widget() ?>
 
             </div>
         </div>
