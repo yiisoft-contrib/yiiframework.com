@@ -63,14 +63,14 @@ class PartnersForm extends Model
                     <li><strong>Budget:</strong> {$this->budget}</li>
                     <li><strong>Start time:</strong> {$this->when}</li>
                 </ul>
-                $this->body
+                {$this->body}
             HTML;
             Yii::$app->mailer->compose()
                 ->setCc(Yii::$app->params['partnerEmails'])
                 ->setFrom('partner@yiiframework.com')
                 ->setReplyTo([$fromEmail => $name])
                 ->setSubject('[Partner] By ' . $name . ' from ' . $this->company)
-                ->setTextBody($body)
+                ->setHtmlBody($body)
                 ->send();
 
             return true;

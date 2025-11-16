@@ -4,7 +4,7 @@ use yii\captcha\Captcha;
 use yii\helpers\Html;
 
 /* @var $this yii\web\View */
-/* @var $model app\models\SecurityForm */
+/* @var $model app\models\PartnersForm */
 
 $this->title = 'Find a development partner';
 $this->params['breadcrumbs'][] = $this->title;
@@ -14,7 +14,7 @@ $this->params['breadcrumbs'][] = $this->title;
     <div class="row">
         <div class="col-md-6">
             <h1 class="">Need the project done?</h1>
-            <h2>We'll help finding right people!</h2>
+            <h2>We'll help you find the right people!</h2>
         </div>
         <div class="col-md-6">
             <img class="background" src="<?= Yii::getAlias('@web/image/partners/partners.svg')?>" alt="" style="margin-top: 10rem">
