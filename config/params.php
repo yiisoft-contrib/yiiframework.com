@@ -192,6 +192,10 @@ return [
         'sam@rmcreative.ru',
         'contact@cebe.cc',
     ],
+    'partnerEmails' => [
+        'alex.babiev@yiiframework.com',
+        'sam@rmcreative.ru',
+    ],
     'notificationEmail' => ['admin@yiiframework.com' => 'Yii Framework'],
     'user.passwordResetTokenExpire' => 3600 * 3, // 3 hours
     'user.emailVerificationTokenExpire' => 3600 * 3, // 3 hours
