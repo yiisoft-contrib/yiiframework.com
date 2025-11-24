@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "c3a0293c9357bfcfdd90c125d342c4c8",
+    "content-hash": "c04f2c24e6575620b7aad14f2e0c023c",
     "packages": [
         {
             "name": "2amigos/yii2-selectize-widget",
@@ -4617,16 +4617,16 @@
         },
         {
             "name": "yiisoft/yii2-apidoc",
-            "version": "3.0.7",
+            "version": "3.0.8",
             "source": {
                 "type": "git",
                 "url": "https://github.com/yiisoft/yii2-apidoc.git",
-                "reference": "5b044906a2ec2df1804aab5da452bbbab3271e2a"
+                "reference": "35e7263a9c47bc61a4fb120912ec1c3bcdb2ee3d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/yiisoft/yii2-apidoc/zipball/5b044906a2ec2df1804aab5da452bbbab3271e2a",
-                "reference": "5b044906a2ec2df1804aab5da452bbbab3271e2a",
+                "url": "https://api.github.com/repos/yiisoft/yii2-apidoc/zipball/35e7263a9c47bc61a4fb120912ec1c3bcdb2ee3d",
+                "reference": "35e7263a9c47bc61a4fb120912ec1c3bcdb2ee3d",
                 "shasum": ""
             },
             "require": {
@@ -4635,15 +4635,17 @@
                 "cebe/markdown-latex": "^1.0",
                 "ext-dom": "*",
                 "ext-mbstring": "*",
-                "nikic/php-parser": "^4.0",
-                "php": "^7.2 || ^8.0",
-                "phpdocumentor/reflection": "^5.1.0",
+                "nikic/php-parser": "^4.0 || ^5.0",
+                "php": "^7.4 || ^8.0",
+                "phpdocumentor/reflection": "^5.1.0 || ^6.0.0",
                 "scrivo/highlight.php": "^9.0",
                 "yiisoft/yii2": "~2.0.16",
                 "yiisoft/yii2-bootstrap": "~2.0.0"
             },
             "require-dev": {
-                "phpunit/phpunit": "*"
+                "phpstan/phpstan": "^2.1",
+                "phpunit/phpunit": "^9.6 || ^10.0",
+                "spatie/phpunit-snapshot-assertions": "^4.2 || ^5.0"
             },
             "suggest": {
                 "ext-intl": "for generating slugs in non-English guides",
@@ -4697,7 +4699,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2025-02-13T21:08:13+00:00"
+            "time": "2025-11-24T07:18:40+00:00"
         },
         {
             "name": "yiisoft/yii2-authclient",
@@ -8492,9 +8494,9 @@
         "ext-zend-opcache": "*",
         "ext-zip": "*"
     },
-    "platform-dev": [],
+    "platform-dev": {},
     "platform-overrides": {
         "php": "7.4"
     },
-    "plugin-api-version": "2.2.0"
+    "plugin-api-version": "2.9.0"
 }
