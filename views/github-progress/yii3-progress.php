@@ -16,7 +16,7 @@ use yii\helpers\Url;
             <div class="percent"><?=$progressPercent?>%</div>
         </div>
 
-        <p>Check the <a href="https://github.com/yiisoft/docs/blob/master/guide/en/README.md">guide in progress to learn more</a>.</p>
+        <p class="guide-link">Check the <a href="https://github.com/yiisoft/docs/blob/master/guide/en/README.md">guide in progress to learn more</a>.</p>
 
         <ul class="mini-footer">
             <li>
@@ -179,6 +179,11 @@ $css = <<<CSS
 
         .mini-footer li a:hover {
             text-decoration: underline;
+        }
+
+        .guide-link a,
+        .guide-link a:active {
+            color: #fff;
         }
 CSS;
 
