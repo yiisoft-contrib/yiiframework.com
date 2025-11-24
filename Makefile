@@ -64,7 +64,7 @@ yii-1.0: composer
 yii-1.1: composer
 	test -d data/yii-1.1 || git clone https://github.com/yiisoft/yii.git data/yii-1.1
 	cd data/yii-1.1 && git pull
-	cd data/yii-1.1 && php ../composer.phar require --dev --prefer-dist --no-interaction --with-all-dependencies "phpunit/phpunit:4.8.34" "phpunit/phpunit-selenium:~1.4.0"
+	cd data/yii-1.1 && php ../composer.phar require --dev --prefer-dist --no-interaction "phpunit/phpunit:4.8.34" "phpunit/phpunit-selenium:~1.4.0" "pear/archive_tar:~1.5.0"
 
 yii-2.0: yii-2.0-ext-apidoc \
     yii-2.0-ext-authclient \
