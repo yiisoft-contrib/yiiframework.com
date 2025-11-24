@@ -59,7 +59,7 @@ download-%: yii-%
 yii-1.0: composer
 	test -d data/yii-1.0 || git clone https://github.com/yiisoft/yii.git data/yii-1.0
 	cd data/yii-1.0 && git checkout 1.0.12 && git checkout master build/
-	cd data/yii-1.0 && COMPOSER=../../composer.yii-1.0.json php ../composer.phar --no-interaction install
+	cd data/yii-1.0 && COMPOSER=../../composer.yii-1.0.json php ../composer.phar --no-interaction update
 
 yii-1.1: composer
 	test -d data/yii-1.1 || git clone https://github.com/yiisoft/yii.git data/yii-1.1
