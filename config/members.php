@@ -419,5 +419,15 @@ return [
         'photo' => '@web/image/team/babiev.jpg',
         'github' => 'iamguruman',
         'status' => TeamStatus::TEAM_STATUS_ACTIVE,
-    ]
+    ],
+    [
+        'name' => 'Maksim Spirkov',
+        'id' => '618378',
+        'period' => '2025',
+        'location' => 'Izhevsk, Russia',
+        'duty' => 'Yii 2.0 and Yii 2.2 development',
+        'photo' => '@web/image/team/mspirkov.jpg',
+        'github' => 'mspirkov',
+        'status' => TeamStatus::TEAM_STATUS_ACTIVE,
+    ],
 ];
