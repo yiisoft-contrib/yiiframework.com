@@ -16,6 +16,8 @@ use yii\helpers\Url;
             <div class="percent"><?=$progressPercent?>%</div>
         </div>
 
+        <p>Check the <a href="https://github.com/yiisoft/docs/blob/master/guide/en/README.md">guide in progress to learn more</a>.</p>
+
         <ul class="mini-footer">
             <li>
                 <span>
