@@ -61,6 +61,9 @@ class UserController extends BaseController
      */
     public function actionIndex()
     {
+        // temporarily
+        return $this->redirect(['site/index']);
+
         $dataProvider = new ActiveDataProvider([
             'query' => User::find()->active(),
             'pagination' => [
