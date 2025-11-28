@@ -7,13 +7,13 @@ class m251128_183910_user_indexes extends BaseMigration
     public function up()
     {
         $this->createIndex('idx-user-status', '{{%user}}', ['status']);
-        $this->createIndex('idx-user-display_name', '{{%user}}', ['display_name']);
-        $this->createIndex('idx-user-rating', '{{%user}}', ['rating']);
-        $this->createIndex('idx-user-comment_count', '{{%user}}', ['comment_count']);
-        $this->createIndex('idx-user-created_at', '{{%user}}', ['created_at']);
-        $this->createIndex('idx-user-post_count', '{{%user}}', ['post_count']);
-        $this->createIndex('idx-user-wiki_count', '{{%user}}', ['wiki_count']);
-        $this->createIndex('idx-user-extension_count', '{{%user}}', ['extension_count']);
+        $this->createIndex('idx-user-display_name', '{{%user}}', ['status', 'display_name']);
+        $this->createIndex('idx-user-rating', '{{%user}}', ['status', 'rating']);
+        $this->createIndex('idx-user-comment_count', '{{%user}}', ['status', 'comment_count']);
+        $this->createIndex('idx-user-created_at', '{{%user}}', ['status', 'created_at']);
+        $this->createIndex('idx-user-post_count', '{{%user}}', ['status',  'post_count']);
+        $this->createIndex('idx-user-wiki_count', '{{%user}}', ['status', 'wiki_count']);
+        $this->createIndex('idx-user-extension_count', '{{%user}}', ['status', 'extension_count']);
     }
 
     public function down()
