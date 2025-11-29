@@ -80,12 +80,33 @@ class SearchGuideSection extends SearchActiveRecord
             $index = static::index() . "-$lang";
             if (!$command->indexExists($index)) {
                 $command->createIndex($index);
+                $command->updateAnalyzers($index, [
+                    'settings' => [
+                        'analysis' => [
+                            'normalizer' => [
+                                'lowercase' => [
+                                    'type' => 'custom',
+                                    'filter' => ['lowercase']
+                                ]
+                            ]
+                        ]
+                    ],
+                ]);
                 $command->setMapping($index, static::type(), [
                     static::type() => [
                         'properties' => [
                             'version' => ['type' => 'keyword'],
                             'language' => ['type' => 'keyword'],
-                            'name' => ['type' => 'text'],
+                            'name' => [
+                                'type' => 'text',
+                                'fields' => [
+                                    // keyword field for exact case-insensitive matching
+                                    'keyword' => [
+                                        'type' => 'keyword',
+                                        'normalizer' => 'lowercase'
+                                    ],
+                                ],
+                            ],
                             'type' => ['type' => 'keyword'],
 
                             'title' => [
@@ -99,6 +120,11 @@ class SearchGuideSection extends SearchActiveRecord
                                     // mapping for search-as-you-type completion
                                     'suggest' => [
                                         'type' => 'completion',
+                                    ],
+                                    // keyword field for exact case-insensitive matching
+                                    'keyword' => [
+                                        'type' => 'keyword',
+                                        'normalizer' => 'lowercase'
                                     ],
                                 ],
                             ],
