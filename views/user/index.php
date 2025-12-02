@@ -1,12 +1,12 @@
 <?php
 
+use app\components\KeysetDataProvider;
 use app\components\UserPermissions;
 use yii\bootstrap\Nav;
-use yii\grid\GridView;
+use yii\helpers\Html;
 
 /* @var $this yii\web\View */
-/* @var $searchModel app\models\UserSearch */
-/* @var $dataProvider yii\data\ActiveDataProvider */
+/* @var $dataProvider KeysetDataProvider */
 
 $this->title = 'Members';
 
@@ -23,51 +23,68 @@ if (Yii::$app->user->can(UserPermissions::PERMISSION_MANAGE_USERS)) {
 
 $this->registerMetaTag(['name' => 'keywords', 'value' => 'yii framework, community, members']);
 
+$models = $dataProvider->getModels();
+$pagination = $dataProvider->getPagination();
+
 ?>
 <div class="container style_external_links">
     <div class="content">
         <h1>Members</h1>
-        <?= GridView::widget([
-            'dataProvider' => $dataProvider,
-            'summary' => 'Showing <b>{begin, number}-{end, number}</b> of <b>{totalCount, number}</b> {totalCount, plural, one{member} other{members}}.',
-            'columns' => [
-                [
-                    'attribute' => 'rank',
-                    'value' => static function($model) {
-                        return $model->rank == 999999 ? 'not ranked' : $model->rank;
-                    },
-                ],
-                [
-                    'attribute' => 'display_name',
-                    'content' => static function($model) {
-                        return $model->rankLink;
-                    },
-                ],
-                [
-                    'attribute' => 'joined',
-                    'value' => 'created_at',
-                    'format' => 'date',
-                    'label'=>'Member Since',
-                ],
-     			'rating',
-                [
-                    'attribute' => 'extensions',
-                    'value' => 'extension_count',
-                ],
-                [
-                    'attribute' => 'wiki',
-                    'value' => 'wiki_count',
-                ],
-                [
-                    'attribute' => 'comments',
-                    'value' => 'comment_count',
-                ],
-                [
-                    'attribute' => 'posts',
-                    'value' => 'post_count',
-                ],
-            ],
-        ]) ?>
+
+        <table class="table table-striped table-bordered">
+            <thead>
+                <tr>
+                    <th>Rank</th>
+                    <th>User</th>
+                    <th>Member Since</th>
+                    <th>Overall Rating</th>
+                    <th>Extensions</th>
+                    <th>Wiki Articles</th>
+                    <th>Comments</th>
+                    <th>Forum Posts</th>
+                </tr>
+            </thead>
+            <tbody>
+                <?php foreach ($models as $model): ?>
+                <tr>
+                    <td><?= $model->rank == 999999 ? 'not ranked' : Html::encode($model->rank) ?></td>
+                    <td><?= $model->rankLink ?></td>
+                    <td><?= Yii::$app->formatter->asDate($model->created_at) ?></td>
+                    <td><?= Html::encode($model->rating) ?></td>
+                    <td><?= Html::encode($model->extension_count) ?></td>
+                    <td><?= Html::encode($model->wiki_count) ?></td>
+                    <td><?= Html::encode($model->comment_count) ?></td>
+                    <td><?= Html::encode($model->post_count) ?></td>
+                </tr>
+                <?php endforeach; ?>
+            </tbody>
+        </table>
+
+        <?php if ($pagination !== false): ?>
+        <nav aria-label="Page navigation">
+            <ul class="pagination">
+                <?php if ($pagination->hasPrevPage): ?>
+                    <li>
+                        <?= Html::a('&laquo; Previous', $pagination->getPrevPageUrl(), ['aria-label' => 'Previous']) ?>
+                    </li>
+                <?php else: ?>
+                    <li class="disabled">
+                        <span aria-label="Previous">&laquo; Previous</span>
+                    </li>
+                <?php endif; ?>
+
+                <?php if ($pagination->hasNextPage): ?>
+                    <li>
+                        <?= Html::a('Next &raquo;', $pagination->getNextPageUrl(), ['aria-label' => 'Next']) ?>
+                    </li>
+                <?php else: ?>
+                    <li class="disabled">
+                        <span aria-label="Next">Next &raquo;</span>
+                    </li>
+                <?php endif; ?>
+            </ul>
+        </nav>
+        <?php endif; ?>
 
     </div>
 </div>
