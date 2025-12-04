@@ -62,9 +62,6 @@ class UserController extends BaseController
      */
     public function actionIndex()
     {
-        // temporarily
-        return $this->redirect(['site/index']);
-
         // Using keyset pagination instead of offset pagination
         // to reduce MySQL load on large user tables
         $dataProvider = new KeysetDataProvider([
