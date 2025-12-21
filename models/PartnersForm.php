@@ -52,7 +52,7 @@ class PartnersForm extends Model
      * Sends an email to the specified email address using the information collected by this model.
      * @return boolean whether the model passes validation
      */
-    public function send()
+    public function send(): bool
     {
         if ($this->validate()) {
             $fromEmail = $this->name;
@@ -62,6 +62,9 @@ class PartnersForm extends Model
 
             $body = <<<HTML
                 <ul>
+                    <li><strong>Name:</strong> {$name}</li>
+                    <li><strong>Email:</strong> {$fromEmail}</li>
+                    <li><strong>Company:</strong> {$this->company}</li>
                     <li><strong>Budget:</strong> {$this->budget}</li>
                     <li><strong>Start time:</strong> {$this->when}</li>
                 </ul>
