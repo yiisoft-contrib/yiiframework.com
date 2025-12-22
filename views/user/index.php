@@ -23,6 +23,7 @@ if (Yii::$app->user->can(UserPermissions::PERMISSION_MANAGE_USERS)) {
 
 $this->registerMetaTag(['name' => 'keywords', 'value' => 'yii framework, community, members']);
 
+/** @var \app\models\User[] $models */
 $models = $dataProvider->getModels();
 $pagination = $dataProvider->getPagination();
 
@@ -56,7 +57,7 @@ $pagination = $dataProvider->getPagination();
                     <td><?= Html::encode($model->comment_count) ?></td>
                     <td><?= Html::encode($model->post_count) ?></td>
                 </tr>
-                <?php endforeach; ?>
+                <?php endforeach ?>
             </tbody>
         </table>
 
@@ -65,7 +66,7 @@ $pagination = $dataProvider->getPagination();
             <ul class="pagination">
                 <?php if ($pagination->hasPrevPage): ?>
                     <li>
-                        <?= Html::a('&laquo; Previous', $pagination->getPrevPageUrl(), ['aria-label' => 'Previous']) ?>
+                        <?= Html::a('&laquo; Previous', $pagination->getPreviousPageUrl(), ['aria-label' => 'Previous']) ?>
                     </li>
                 <?php else: ?>
                     <li class="disabled">

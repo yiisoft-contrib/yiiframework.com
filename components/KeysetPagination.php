@@ -18,62 +18,62 @@ class KeysetPagination extends BaseObject
     /**
      * @var int the number of items per page
      */
-    public $pageSize = 50;
+    public int $pageSize = 50;
 
     /**
      * @var string the name of the parameter storing the cursor value
      */
-    public $cursorParam = 'cursor';
+    public string $cursorParam = 'cursor';
 
     /**
      * @var string the name of the parameter storing the direction (next/prev)
      */
-    public $directionParam = 'dir';
+    public string $directionParam = 'dir';
 
     /**
      * @var string|null the current cursor value
      */
-    public $cursor;
+    public ?string $cursor = null;
 
     /**
      * @var string the direction of pagination: 'next' or 'prev'
      */
-    public $direction = 'next';
+    public string $direction = 'next';
 
     /**
      * @var string|null cursor for next page
      */
-    public $nextCursor;
+    public ?string $nextCursor = null;
 
     /**
      * @var string|null cursor for previous page
      */
-    public $prevCursor;
+    public ?string $prevCursor = null;
 
     /**
      * @var bool whether there are more items in the next direction
      */
-    public $hasNextPage = false;
+    public bool $hasNextPage = false;
 
     /**
      * @var bool whether there are more items in the previous direction
      */
-    public $hasPrevPage = false;
+    public bool $hasPrevPage = false;
 
     /**
-     * @var array the route for creating pagination URLs
+     * @var ?array the route for creating pagination URLs
      */
-    public $route;
+    public ?array $route = null;
 
     /**
      * @var array additional parameters to include in pagination URLs
      */
-    public $params = [];
+    public array $params = [];
 
     /**
      * Initializes the pagination object by reading cursor from request.
      */
-    public function init()
+    public function init(): void
     {
         parent::init();
 
@@ -97,7 +97,7 @@ class KeysetPagination extends BaseObject
      */
     public static function encodeCursor(array $values): string
     {
-        return base64_encode(json_encode($values));
+        return base64_encode(json_encode($values, JSON_THROW_ON_ERROR));
     }
 
     /**
@@ -117,7 +117,7 @@ class KeysetPagination extends BaseObject
             return null;
         }
 
-        $values = json_decode($decoded, true);
+        $values = json_decode($decoded, true, 512, JSON_THROW_ON_ERROR);
         if (!is_array($values)) {
             return null;
         }
@@ -144,7 +144,7 @@ class KeysetPagination extends BaseObject
      *
      * @return string|null the URL or null if no previous page
      */
-    public function getPrevPageUrl(): ?string
+    public function getPreviousPageUrl(): ?string
     {
         if (!$this->hasPrevPage || $this->prevCursor === null) {
             return null;

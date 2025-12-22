@@ -2,6 +2,7 @@
 
 namespace app\components;
 
+use Yii;
 use yii\base\InvalidConfigException;
 use yii\data\BaseDataProvider;
 use yii\db\ActiveQueryInterface;
@@ -16,42 +17,37 @@ use yii\db\QueryInterface;
 class KeysetDataProvider extends BaseDataProvider
 {
     /**
-     * @var QueryInterface the query that is used to fetch data models
+     * @var ?QueryInterface the query that is used to fetch data models
      */
-    public $query;
+    public ?QueryInterface $query;
 
     /**
      * @var string|callable the column to use for keyset pagination.
      * This should be an indexed column for best performance.
      */
-    public $keyColumn = 'id';
+    public $key = 'id';
 
     /**
      * @var string the secondary column to use for tie-breaking when primary key values are not unique.
      * Usually the primary key column.
      */
-    public $secondaryKeyColumn = 'id';
+    public string $secondaryKey = 'id';
 
     /**
      * @var int the sort direction for the key column. SORT_ASC or SORT_DESC.
      */
-    public $keySort = SORT_ASC;
+    public int $keySort = SORT_ASC;
 
     /**
      * @var KeysetPagination|array|false the pagination object or configuration.
-     * Set to false to disable pagination.
+     * Set to `false` to disable pagination.
      */
     public $pagination;
 
     /**
-     * @var int total count of items (optional, expensive to calculate)
-     */
-    private $_totalCount;
-
-    /**
      * @inheritdoc
      */
-    public function init()
+    public function init(): void
     {
         parent::init();
 
@@ -63,7 +59,7 @@ class KeysetDataProvider extends BaseDataProvider
     /**
      * @inheritdoc
      */
-    protected function prepareModels()
+    protected function prepareModels(): array
     {
         $query = clone $this->query;
         $pagination = $this->getPagination();
@@ -86,78 +82,72 @@ class KeysetDataProvider extends BaseDataProvider
                 if ($this->keySort === SORT_ASC) {
                     $query->andWhere([
                         'or',
-                        ['<', $this->keyColumn, $keyValue],
+                        ['<', $this->key, $keyValue],
                         [
                             'and',
-                            [$this->keyColumn => $keyValue],
-                            ['<', $this->secondaryKeyColumn, $idValue]
+                            [$this->key => $keyValue],
+                            ['<', $this->secondaryKey, $idValue]
                         ]
                     ]);
                     // Reverse sort to get the last N items before cursor
                     $query->orderBy([
-                        $this->keyColumn => SORT_DESC,
-                        $this->secondaryKeyColumn => SORT_DESC
+                        $this->key => SORT_DESC,
+                        $this->secondaryKey => SORT_DESC
                     ]);
                 } else {
                     $query->andWhere([
                         'or',
-                        ['>', $this->keyColumn, $keyValue],
+                        ['>', $this->key, $keyValue],
                         [
                             'and',
-                            [$this->keyColumn => $keyValue],
-                            ['>', $this->secondaryKeyColumn, $idValue]
+                            [$this->key => $keyValue],
+                            ['>', $this->secondaryKey, $idValue]
                         ]
                     ]);
                     $query->orderBy([
-                        $this->keyColumn => SORT_ASC,
-                        $this->secondaryKeyColumn => SORT_ASC
+                        $this->key => SORT_ASC,
+                        $this->secondaryKey => SORT_ASC
                     ]);
                 }
+            } elseif ($this->keySort === SORT_ASC) {
+                $query->andWhere([
+                    'or',
+                    ['>', $this->key, $keyValue],
+                    [
+                        'and',
+                        [$this->key => $keyValue],
+                        ['>', $this->secondaryKey, $idValue]
+                    ]
+                ]);
+                $query->orderBy([
+                    $this->key => SORT_ASC,
+                    $this->secondaryKey => SORT_ASC
+                ]);
             } else {
-                // Going forward: get items after the cursor
-                if ($this->keySort === SORT_ASC) {
-                    $query->andWhere([
-                        'or',
-                        ['>', $this->keyColumn, $keyValue],
-                        [
-                            'and',
-                            [$this->keyColumn => $keyValue],
-                            ['>', $this->secondaryKeyColumn, $idValue]
-                        ]
-                    ]);
-                    $query->orderBy([
-                        $this->keyColumn => SORT_ASC,
-                        $this->secondaryKeyColumn => SORT_ASC
-                    ]);
-                } else {
-                    $query->andWhere([
-                        'or',
-                        ['<', $this->keyColumn, $keyValue],
-                        [
-                            'and',
-                            [$this->keyColumn => $keyValue],
-                            ['<', $this->secondaryKeyColumn, $idValue]
-                        ]
-                    ]);
-                    $query->orderBy([
-                        $this->keyColumn => SORT_DESC,
-                        $this->secondaryKeyColumn => SORT_DESC
-                    ]);
-                }
+                $query->andWhere([
+                    'or',
+                    ['<', $this->key, $keyValue],
+                    [
+                        'and',
+                        [$this->key => $keyValue],
+                        ['<', $this->secondaryKey, $idValue]
+                    ]
+                ]);
+                $query->orderBy([
+                    $this->key => SORT_DESC,
+                    $this->secondaryKey => SORT_DESC
+                ]);
             }
+        } elseif ($this->keySort === SORT_ASC) {
+            $query->orderBy([
+                $this->key => SORT_ASC,
+                $this->secondaryKey => SORT_ASC
+            ]);
         } else {
-            // No cursor - start from beginning
-            if ($this->keySort === SORT_ASC) {
-                $query->orderBy([
-                    $this->keyColumn => SORT_ASC,
-                    $this->secondaryKeyColumn => SORT_ASC
-                ]);
-            } else {
-                $query->orderBy([
-                    $this->keyColumn => SORT_DESC,
-                    $this->secondaryKeyColumn => SORT_DESC
-                ]);
-            }
+            $query->orderBy([
+                $this->key => SORT_DESC,
+                $this->secondaryKey => SORT_DESC
+            ]);
         }
 
         // Fetch one extra to determine if there are more pages
@@ -183,13 +173,13 @@ class KeysetDataProvider extends BaseDataProvider
 
             // Set cursors for next/prev navigation
             $pagination->nextCursor = KeysetPagination::encodeCursor([
-                'key' => $lastModel->{$this->keyColumn},
-                'id' => $lastModel->{$this->secondaryKeyColumn}
+                'key' => $lastModel->{$this->key},
+                'id' => $lastModel->{$this->secondaryKey}
             ]);
 
             $pagination->prevCursor = KeysetPagination::encodeCursor([
-                'key' => $firstModel->{$this->keyColumn},
-                'id' => $firstModel->{$this->secondaryKeyColumn}
+                'key' => $firstModel->{$this->key},
+                'id' => $firstModel->{$this->secondaryKey}
             ]);
 
             if ($direction === 'prev') {
@@ -212,7 +202,7 @@ class KeysetDataProvider extends BaseDataProvider
     /**
      * @inheritdoc
      */
-    protected function prepareKeys($models)
+    protected function prepareKeys($models): array
     {
         $keys = [];
         if ($this->key !== null) {
@@ -250,29 +240,15 @@ class KeysetDataProvider extends BaseDataProvider
         return array_keys($models);
     }
 
-    /**
-     * @inheritdoc
-     */
-    protected function prepareTotalCount()
+    protected function prepareTotalCount(): int
     {
-        if ($this->_totalCount !== null) {
-            return $this->_totalCount;
-        }
-
-        // Note: This is expensive for large tables. 
-        // Consider caching or not using total count with keyset pagination.
-        $query = clone $this->query;
-        return (int) $query->limit(-1)->offset(-1)->orderBy([])->count('*');
+        // Not implemented on purpose.
+        return 0;
     }
 
-    /**
-     * Sets the total count manually to avoid expensive COUNT query.
-     *
-     * @param int $count
-     */
-    public function setTotalCount($count)
+    public function setTotalCount($value): void
     {
-        $this->_totalCount = $count;
+        // Not implemented on purpose.
     }
 
     /**
@@ -287,7 +263,7 @@ class KeysetDataProvider extends BaseDataProvider
         } elseif (is_array($this->pagination)) {
             $config = $this->pagination;
             $config['class'] = KeysetPagination::class;
-            $this->pagination = \Yii::createObject($config);
+            $this->pagination = Yii::createObject($config);
         }
 
         return $this->pagination;

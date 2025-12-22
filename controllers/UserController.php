@@ -60,14 +60,12 @@ class UserController extends BaseController
      * Lists all User models using keyset/cursor pagination.
      * This is more efficient than offset pagination for large datasets.
      */
-    public function actionIndex()
+    public function actionIndex(): string
     {
-        // Using keyset pagination instead of offset pagination
-        // to reduce MySQL load on large user tables
         $dataProvider = new KeysetDataProvider([
             'query' => User::find()->active(),
-            'keyColumn' => 'rank',
-            'secondaryKeyColumn' => 'id',
+            'key' => 'rank',
+            'secondaryKey' => 'id',
             'keySort' => SORT_ASC,
             'pagination' => [
                 'pageSize' => 50,
