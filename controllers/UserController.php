@@ -2,6 +2,7 @@
 
 namespace app\controllers;
 
+use app\components\KeysetDataProvider;
 use app\components\mailers\EmailVerificationMailer;
 use app\models\Badge;
 use app\models\ChangeEmailForm;
@@ -13,7 +14,6 @@ use app\models\UserBadge;
 use app\models\Wiki;
 use Yii;
 use app\models\User;
-use yii\data\ActiveDataProvider;
 use yii\filters\AccessControl;
 use yii\filters\VerbFilter;
 use yii\helpers\ArrayHelper;
@@ -57,69 +57,20 @@ class UserController extends BaseController
     }
 
     /**
-     * Lists all User models.
+     * Lists all User models using keyset/cursor pagination.
+     * This is more efficient than offset pagination for large datasets.
      */
-    public function actionIndex()
+    public function actionIndex(): string
     {
-        // temporarily
-        return $this->redirect(['site/index']);
-
-        $dataProvider = new ActiveDataProvider([
+        $dataProvider = new KeysetDataProvider([
             'query' => User::find()->active(),
+            'key' => 'rank',
+            'secondaryKey' => 'id',
+            'keySort' => SORT_ASC,
             'pagination' => [
                 'pageSize' => 50,
+                'route' => ['user/index'],
             ],
-            'sort' => [
-                'defaultOrder' => ['rank' => SORT_ASC],
-                'attributes' => [
-                    'rank'=> [
-                        'asc'=>['rank' => SORT_ASC],
-                        'desc'=>['rank' => SORT_DESC],
-                        'label'=>'Rank',
-                    ],
-                    'display_name'=> [
-                        'asc'=>['display_name' => SORT_ASC],
-                        'desc'=>['display_name' => SORT_DESC],
-                        'label'=>'User',
-                    ],
-                    'joined'=> [
-                        'asc'=>['created_at' => SORT_ASC],
-                        'desc'=>['created_at' => SORT_DESC],
-                        'label'=>'Member Since',
-                        'default'=>SORT_DESC,
-                    ],
-                    'rating'=> [
-                        'asc'=>['rating' => SORT_ASC],
-                        'desc'=>['rating' => SORT_DESC],
-                        'label'=>'Overall Rating',
-                        'default'=>SORT_DESC,
-                    ],
-                    'extensions'=> [
-                        'asc'=>['extension_count' => SORT_ASC],
-                        'desc'=>['extension_count' => SORT_DESC],
-                        'label'=>'Extensions',
-                        'default'=>SORT_DESC,
-                    ],
-                    'wiki'=> [
-                        'asc'=>['wiki_count' => SORT_ASC],
-                        'desc'=>['wiki_count' => SORT_DESC],
-                        'label'=>'Wiki Articles',
-                        'default'=>SORT_DESC,
-                    ],
-                    'comments'=> [
-                        'asc'=>['comment_count' => SORT_ASC],
-                        'desc'=>['comment_count' => SORT_DESC],
-                        'label'=>'Comments',
-                        'default'=>SORT_DESC,
-                    ],
-                    'posts'=> [
-                        'asc'=>['post_count' => SORT_ASC],
-                        'desc'=>['post_count' => SORT_DESC],
-                        'label'=>'Forum Posts',
-                        'default'=>SORT_DESC,
-                    ],
-                ],
-            ]
         ]);
 
         return $this->render('index', [
