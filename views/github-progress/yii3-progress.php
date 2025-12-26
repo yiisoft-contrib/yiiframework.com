@@ -16,7 +16,7 @@ use yii\helpers\Url;
             <div class="percent"><?=$progressPercent?>%</div>
         </div>
 
-        <p class="guide-link">Check the <a href="https://github.com/yiisoft/docs/blob/master/guide/en/README.md">guide in progress to learn more</a>.</p>
+        <p class="guide-link">Check the <a href="https://yiisoft.github.io/docs/guide/">guide in progress to learn more</a>.</p>
 
         <ul class="mini-footer">
             <li>
@@ -36,7 +36,7 @@ use yii\helpers\Url;
             </li>
             <li>
                 <span>
-                    <a href="https://github.com/yiisoft/docs/blob/master/003-roadmap.md" target="_blank">View roadmap</a>
+                    <a href="https://yiisoft.github.io/docs/internals/003-roadmap.html" target="_blank">View roadmap</a>
                 </span>
             </li>
             <li>
