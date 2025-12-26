@@ -66,7 +66,8 @@ yii-1.1: composer
 	cd data/yii-1.1 && git pull
 	cd data/yii-1.1 && php ../composer.phar require --dev --prefer-dist --no-interaction "phpunit/phpunit:4.8.34" "phpunit/phpunit-selenium:~1.4.0" "pear/archive_tar:~1.5.0"
 
-yii-2.0: yii-2.0-ext-apidoc \
+yii-2.0: yii-2.0-git \
+    yii-2.0-ext-apidoc \
     yii-2.0-ext-authclient \
     yii-2.0-ext-bootstrap \
     yii-2.0-ext-debug \
@@ -82,8 +83,7 @@ yii-2.0: yii-2.0-ext-apidoc \
     yii-2.0-ext-smarty \
     yii-2.0-ext-sphinx \
     yii-2.0-ext-swiftmailer \
-    yii-2.0-ext-twig \
-    yii-2.0-git
+    yii-2.0-ext-twig
 
 yii-2.0-git:
 	test -d data/yii-2.0 || git clone https://github.com/yiisoft/yii2.git data/yii-2.0
