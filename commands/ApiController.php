@@ -27,6 +27,7 @@ class ApiController extends \yii\apidoc\commands\ApiController
     public $defaultAction = 'generate';
     public $guidePrefix = '';
     protected $version = '2.0';
+    private ?string $currentPackageName = null;
 
     /**
      * Generates the API documentation for the specified version of Yii.
@@ -45,7 +46,32 @@ class ApiController extends \yii\apidoc\commands\ApiController
         $sourcePath = Yii::getAlias('@app/data');
         $targetPath = $sourcePath;
 
-        if ($version[0] === '2') {
+        if ($version[0] === '3') {
+            $this->stdout("Start generating API $version...\n");
+
+            foreach (glob("$sourcePath/yii-$version/*") as $packagePath) {
+                $packageName = basename($packagePath);
+                $this->currentPackageName = $packageName;
+
+                $this->stdout("Start generating API $packageName...\n");
+
+                $source = ["$packagePath"];
+                $target = "$targetPath/api-$version/$packageName";
+                $this->guide = Yii::$app->params['guide.baseUrl'] . "/{$this->version}/$packageName/en";
+
+                $this->template = 'bootstrap';
+                $this->actionIndex($source, $target);
+
+                $this->stdout("Start generating API $packageName JSON Info...\n");
+                $this->template = 'json';
+                $this->actionIndex($source, $target);
+                $this->splitJson($target);
+
+                $this->stdout("Finished API $packageName.\n\n", Console::FG_GREEN);
+            }
+
+            $this->stdout("Finished API $version.\n\n", Console::FG_GREEN);
+        } elseif ($version[0] === '2') {
             $source = ["$sourcePath/yii-$version/framework"];
             $target = "$targetPath/api-$version";
             $this->guide = Yii::$app->params['guide.baseUrl'] . "/{$this->version}/en";
@@ -192,6 +218,7 @@ HTML
         }
         return new ApiRenderer([
             'version' => $this->version,
+            'currentPackageName' => $this->currentPackageName,
         ]);
     }
 

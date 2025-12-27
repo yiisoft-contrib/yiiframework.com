@@ -4,6 +4,7 @@ return [
 	// version numbers for which API documentation and Guide are available
 	// the first item must be the latest version
 	'api' => [
+        '3.0',
 		'2.0',
 		'1.1',
 		'1.0',
