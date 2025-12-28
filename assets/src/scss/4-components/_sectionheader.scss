@@ -14,6 +14,13 @@
     a {
       color: white;
       text-decoration: none;
+      border-bottom: 2px dashed;
+      transition: none;
+
+      &:hover,
+      &:active {
+        border-bottom: none;
+      }
     }
   }
 
