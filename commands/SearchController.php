@@ -321,9 +321,15 @@ class SearchController  extends Controller
     private function rebuildApiIndex()
     {
         $versions = Yii::$app->params['versions']['api'];
-        foreach($versions as $version) {
-            $targetPath = Yii::getAlias("@app/data/api-$version");
-            $this->generateApiIndex($targetPath, $version);
+        foreach ($versions as $version) {
+            $rootPath = Yii::getAlias("@app/data/api-$version");
+            if ($version[0] === '3') {
+                foreach (glob("$rootPath/*") as $packagePath) {
+                    $this->generateApiIndex($packagePath, $version);
+                }
+            } else {
+                $this->generateApiIndex($rootPath, $version);
+            }
         }
     }
 

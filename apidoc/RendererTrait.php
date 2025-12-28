@@ -78,6 +78,11 @@ trait RendererTrait
                     return strncmp($val->name, 'yii\\', 4) === 0 && !in_array($subName, $self->extensions);
                 });
                 break;
+            case 'Yiisoft':
+                $types = array_filter($types, function ($val) {
+                    return strncmp($val->name, 'Yiisoft\\', 8) === 0;
+                });
+                break;
             default:
                 $types = array_filter($types, function ($val) use ($navClasses) {
                     return strncmp($val->name, "yii\\$navClasses\\", strlen("yii\\$navClasses\\")) === 0;

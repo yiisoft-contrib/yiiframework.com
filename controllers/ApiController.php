@@ -68,25 +68,28 @@ class ApiController extends BaseController
     public function actionView($version, $section)
     {
         $versions = Yii::$app->params['versions']['api'];
+        // TODO: remove next line
+        unset($versions[0]);
         if (!in_array($version, $versions)) {
             return $this->api404($section, $version);
         }
 
-        if (!preg_match('/^[\w\-]+$/', $section)) {
+        if (!preg_match('/^[\d.]+$/', $version)) {
             throw new NotFoundHttpException('The requested page was not found.');
         }
-        if (!preg_match('/^[\d.]+$/', $version)) {
+
+        if ($version[0] !== '3' && !preg_match('/^[\w\-]+$/', $section)) {
             throw new NotFoundHttpException('The requested page was not found.');
         }
 
         switch (Yii::$app->response->format) {
             case Response::FORMAT_HTML:
 
-                $this->sectionTitle = "API Documentation for Yii $version";
-
+                $file = null;
                 $title = '';
                 $packages = [];
                 if ($version[0] === '1') {
+                    $this->sectionTitle = "API Documentation for Yii $version";
                     $file = Yii::getAlias("@app/data/api-$version/api/$section.html");
                     if (!is_file($file)) {
                         // if class is not found as a file, try to find name in a different case and redirect. Throws 404 otherwise.
@@ -95,7 +98,8 @@ class ApiController extends BaseController
                     $packages = unserialize(file_get_contents(Yii::getAlias("@app/data/api-$version/api/packages.txt")));
                     $view = 'view1x';
                     $title = $section !== 'index' ? $section : '';
-                } else {
+                } elseif ($version[0] === '2') {
+                    $this->sectionTitle = "API Documentation for Yii $version";
                     $file = Yii::getAlias("@app/data/api-$version/$section.html");
                     $view = 'view2x';
                     $titles = require Yii::getAlias("@app/data/api-$version/titles.php");
@@ -103,8 +107,32 @@ class ApiController extends BaseController
                     if (isset($titles[$titleKey])) {
                         $title = $titles[$titleKey];
                     }
+                } elseif ($version[0] === '3') {
+                    $this->sectionTitle = ["API Documentation for Yii $version" => ['index', 'version' => $version]];
+
+                    $view = 'view3x';
+                    $sectionPaths = explode('/', $section);
+                    $mainSection = $sectionPaths[0];
+                    $subSection = $sectionPaths[1] ?? null;
+
+                    if ($mainSection !== 'index') {
+                        $this->sectionTitle["Package $mainSection"] = [
+                            'view',
+                            'version' => $version,
+                            'section' => $mainSection,
+                        ];
+
+                        $subSection ??= 'index';
+                        $file = Yii::getAlias("@app/data/api-$version/$mainSection/$subSection.html");
+                        $titles = require Yii::getAlias("@app/data/api-$version/$mainSection/titles.php");
+                        $titleKey = $subSection . '.html';
+                        if (isset($titles[$titleKey])) {
+                            $title = $titles[$titleKey];
+                        }
+                    }
                 }
-                if (!is_file($file)) {
+
+                if (($version[0] !== '3' || $section !== 'index') && !is_file($file)) {
                     return $this->api404($section, $version);
                 }
 
@@ -118,9 +146,9 @@ class ApiController extends BaseController
                 $doc = Doc::getObject(ClassType::API, implode('/', $urlParams), $docUrl, $title);
 
                 return $this->render($view, [
-                    'content' => file_get_contents($file),
+                    'content' => $file ? file_get_contents($file) : '',
                     'section' => $section,
-                    'versions' => Yii::$app->params['versions']['api'],
+                    'versions' => $versions,
                     'version' => $version,
                     'title' => $title,
                     'packages' => $packages,
@@ -130,26 +158,33 @@ class ApiController extends BaseController
 
                 break;
             case Response::FORMAT_JSON:
-
-                if ($section === 'index') {
-                    $apiRenderer = new ApiRenderer([
-                        'version' => $version,
-                    ]);
-
-                    $classes = Json::decode(file_get_contents(Yii::getAlias("@app/data/api-$version/json/typeNames.json")));
-                    foreach($classes as $i => $class) {
-                        $classes[$i]['url'] = Yii::$app->request->hostInfo . $apiRenderer->generateApiUrl($class['name']);
-                    }
-
-                    return [
-                        'classes' => $classes,
-                        'version' => $version,
-                        'count' => count($classes),
-                    ];
+                if ($version[0] !== '3' && $section !== 'index') {
+                    throw new NotFoundHttpException();
                 }
-                throw new NotFoundHttpException();
-                // TODO
-                break;
+
+                $result = [];
+
+                if ($version[0] === '3') {
+                    $typeNamesPath = Yii::getAlias("@app/data/api-$version/$section/json/typeNames.json");
+                    $result['package'] = $section;
+                } else {
+                    $typeNamesPath = Yii::getAlias("@app/data/api-$version/json/typeNames.json");
+                }
+
+                $apiRenderer = new ApiRenderer([
+                    'version' => $version,
+                ]);
+
+                $classes = Json::decode(file_get_contents($typeNamesPath));
+                foreach ($classes as $i => $class) {
+                    $classes[$i]['url'] = Yii::$app->request->hostInfo . $apiRenderer->generateApiUrl($class['name']);
+                }
+
+                return array_merge($result, [
+                    'classes' => $classes,
+                    'version' => $version,
+                    'count' => count($classes),
+                ]);
         }
         throw new UnsupportedMediaTypeHttpException;
     }
@@ -276,6 +311,7 @@ class ApiController extends BaseController
     {
         switch (Yii::$app->response->format) {
             case Response::FORMAT_HTML:
+                // TODO: change version
                 return $this->redirect(['index', 'version' => '2.0']); // Found, latest docs url is not permanent
 
             case Response::FORMAT_JSON:

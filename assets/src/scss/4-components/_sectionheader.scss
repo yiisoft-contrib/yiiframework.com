@@ -14,11 +14,18 @@
     a {
       color: white;
       text-decoration: none;
+      border-bottom: 2px dashed;
+      transition: none;
+
+      &:hover,
+      &:active {
+        border-bottom: none;
+      }
     }
   }
 
   .headline-row {
-    @include rem(margin-bottom, 15px);
+    @include rem(margin-bottom, 18.5px);
   }
 
   .content-selector-row {

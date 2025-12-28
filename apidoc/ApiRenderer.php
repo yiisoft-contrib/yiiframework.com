@@ -23,6 +23,7 @@ class ApiRenderer extends \yii\apidoc\templates\html\ApiRenderer
     public $indexView = '@app/apidoc/views/index.php';
 
     public $version;
+    public ?string $currentPackageName = null;
 
     /**
      * @inheritdoc
@@ -31,43 +32,49 @@ class ApiRenderer extends \yii\apidoc\templates\html\ApiRenderer
     {
         $types = array_merge($context->classes, $context->interfaces, $context->traits);
 
-        $extTypes = [];
-        foreach ($this->extensions as $k => $ext) {
-            $extType = $this->filterTypes($types, $ext);
-            if (empty($extType)) {
-                unset($this->extensions[$k]);
-                continue;
-            }
-            $extTypes[$ext] = $extType;
-        }
-
-        // render view files
         parent::render($context, $targetDir);
 
-        if ($this->controller !== null) {
-            $this->controller->stdout('generating extension index files...');
-        }
-
-        foreach ($extTypes as $ext => $extType) {
-            $readme = @file_get_contents("https://raw.github.com/yiisoft/yii2-$ext/master/README.md");
+        if ($this->version === '3.0') {
             $indexFileContent = $this->renderWithLayout($this->indexView, [
                 'docContext' => $context,
-                'types' => $extType,
-                'readme' => $readme ?: null,
+                'types' => $this->filterTypes($types, 'Yiisoft'),
+                'readme' => null,
             ]);
-            file_put_contents($targetDir . "/ext-{$ext}-index.html", $indexFileContent);
-        }
-        if ($this->controller !== null) {
-            $this->controller->stdout("done.\n", Console::FG_GREEN);
+        } else {
+            $extTypes = [];
+            foreach ($this->extensions as $k => $ext) {
+                $extType = $this->filterTypes($types, $ext);
+                if (empty($extType)) {
+                    unset($this->extensions[$k]);
+                    continue;
+                }
+                $extTypes[$ext] = $extType;
+            }
+
+            if ($this->controller !== null) {
+                $this->controller->stdout('generating extension index files...');
+            }
+
+            foreach ($extTypes as $ext => $extType) {
+                $readme = @file_get_contents("https://raw.github.com/yiisoft/yii2-$ext/master/README.md");
+                $indexFileContent = $this->renderWithLayout($this->indexView, [
+                    'docContext' => $context,
+                    'types' => $extType,
+                    'readme' => $readme ?: null,
+                ]);
+                file_put_contents($targetDir . "/ext-{$ext}-index.html", $indexFileContent);
+            }
+            if ($this->controller !== null) {
+                $this->controller->stdout("done.\n", Console::FG_GREEN);
+            }
+
+            $indexFileContent = $this->renderWithLayout($this->indexView, [
+                'docContext' => $context,
+                'types' => $this->filterTypes($types, 'yii'),
+                'readme' => null,
+            ]);
         }
 
-        // create index.html
-        $yiiTypes = $this->filterTypes($types, 'yii');
-        $indexFileContent = $this->renderWithLayout($this->indexView, [
-            'docContext' => $context,
-            'types' => $yiiTypes,
-            'readme' => null,
-        ]);
         file_put_contents($targetDir . '/index.html', $indexFileContent);
 
         // create file with page titles
@@ -121,6 +128,9 @@ class ApiRenderer extends \yii\apidoc\templates\html\ApiRenderer
 
 	public function generateApiUrl($typeName)
 	{
-		return Yii::$app->params['api.baseUrl'] . "/$this->version/" . substr($this->generateFileName($typeName), 0, -5);
+		return Yii::$app->params['api.baseUrl']
+            . "/{$this->version}/"
+            . ($this->currentPackageName !== null ? "{$this->currentPackageName}/" : '')
+            . substr($this->generateFileName($typeName), 0, -5);
 	}
 }
