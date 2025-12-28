@@ -34,7 +34,7 @@ $api-box-padding-y: ceil($font-size-base / 2);
   }
 
   .icon-hash:before {
-    content: '#';
+    content: "#";
     @include rem(font-size, 32px);
     font-weight: bold;
     line-height: 0.5;
@@ -188,7 +188,6 @@ $api-box-padding-y: ceil($font-size-base / 2);
     margin-bottom: 0;
   }
 
-
   .signature-defs {
     color: #936;
   }
@@ -218,6 +217,33 @@ $api-box-padding-y: ceil($font-size-base / 2);
   pre {
     display: grid;
   }
+
+  .panel-heading {
+    h3 {
+      text-transform: uppercase;
+    }
+  }
+
+  .package-group-panel .panel-body {
+    ul {
+      border-top: 1px dashed $gray;
+      @include rem(padding-top, 12px);
+
+      li {
+        @include rem(margin-bottom, 12px);
+        font-size: 17px;
+      }
+
+      li:before {
+        color: $eshill-green;
+        content: "⁃";
+        display: inline-block;
+        width: 6pt;
+        margin-left: -12pt;
+        margin-right: 6pt;
+      }
+    }
+  }
 }
 
 #api-navigation {
@@ -228,11 +254,11 @@ $api-box-padding-y: ceil($font-size-base / 2);
   }
 
   .api-ns-level-0 {
-    color: #24605A;
+    color: #24605a;
   }
 
   .api-ns-level-1 {
-    color: #247BA0;
+    color: #247ba0;
   }
 
   .api-ns-level-2 {
