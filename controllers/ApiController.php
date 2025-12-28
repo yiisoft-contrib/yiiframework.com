@@ -68,6 +68,8 @@ class ApiController extends BaseController
     public function actionView($version, $section)
     {
         $versions = Yii::$app->params['versions']['api'];
+        // TODO: remove next line
+        unset($versions[0]);
         if (!in_array($version, $versions)) {
             return $this->api404($section, $version);
         }
@@ -146,7 +148,7 @@ class ApiController extends BaseController
                 return $this->render($view, [
                     'content' => $file ? file_get_contents($file) : '',
                     'section' => $section,
-                    'versions' => Yii::$app->params['versions']['api'],
+                    'versions' => $versions,
                     'version' => $version,
                     'title' => $title,
                     'packages' => $packages,
@@ -309,7 +311,8 @@ class ApiController extends BaseController
     {
         switch (Yii::$app->response->format) {
             case Response::FORMAT_HTML:
-                return $this->redirect(['index', 'version' => '3.0']); // Found, latest docs url is not permanent
+                // TODO: change version
+                return $this->redirect(['index', 'version' => '2.0']); // Found, latest docs url is not permanent
 
             case Response::FORMAT_JSON:
 
