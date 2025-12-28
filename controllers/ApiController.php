@@ -22,7 +22,7 @@ use yii\web\UnsupportedMediaTypeHttpException;
  *
  * API documentation is provided in HTML format for all versions of Yii.
  *
- * Version 2.0 provides also json
+ * Version 2.0 provides also JSON
  */
 class ApiController extends BaseController
 {
@@ -68,8 +68,7 @@ class ApiController extends BaseController
     public function actionView($version, $section)
     {
         $versions = Yii::$app->params['versions']['api'];
-        // TODO: remove next line
-        unset($versions[0]);
+
         if (!in_array($version, $versions)) {
             return $this->api404($section, $version);
         }
@@ -305,14 +304,13 @@ class ApiController extends BaseController
 
     /**
      * For application/json request, provide all classes of 1.1 and 2.0
-     * For Html, just redirect to latest docs.
+     * For HTML, just redirect to latest docs.
      */
     public function actionEntry()
     {
         switch (Yii::$app->response->format) {
             case Response::FORMAT_HTML:
-                // TODO: change version
-                return $this->redirect(['index', 'version' => '2.0']); // Found, latest docs url is not permanent
+                return $this->redirect(['index', 'version' => '3.0']); // Found, latest docs url is not permanent
 
             case Response::FORMAT_JSON:
 
