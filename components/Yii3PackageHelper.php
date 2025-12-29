@@ -56,7 +56,6 @@ final class Yii3PackageHelper
             'http',
             'http-middleware',
             'input-http',
-            'locale-middleware',
             'middleware-dispatcher',
             'request-body-parser',
             'request-provider',
@@ -65,7 +64,6 @@ final class Yii3PackageHelper
             'router-fastroute',
             'file-router',
             'session',
-            'sockets',
         ],
         'Auth & RBAC' => [
             'access',
@@ -88,7 +86,7 @@ final class Yii3PackageHelper
         ],
         'View & Templating' => [
             'actions',
-            'data', // Базовый компонент для работы с данными, часто связан с View
+            'data',
             'view',
             'view-twig',
             'widget',
@@ -150,11 +148,9 @@ final class Yii3PackageHelper
         ],
         'Container & Proxy' => [
             'container-proxy',
-            'dummy-provider',
             'factory',
             'proxy',
             'proxy-middleware',
-            'psr-dummy-provider',
             'psr-emitter',
         ],
         'Runners' => [
