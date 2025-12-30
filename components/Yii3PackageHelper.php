@@ -85,7 +85,6 @@ final class Yii3PackageHelper
             'validator',
         ],
         'View & Templating' => [
-            'actions',
             'data',
             'view',
             'view-twig',
