@@ -1,0 +1,132 @@
+.yii3-banner {
+    display: block;
+    margin: 0;
+    padding: 14px 15px;
+    text-decoration: none;
+    color: #fff;
+    background: #08455f;
+    border: none;
+    border-radius: 0;
+    text-align: center;
+    font-size: 22px;
+    position: relative;
+    overflow: hidden;
+    transition: background 0.3s ease;
+
+    // Rays effect
+    &::before {
+        content: '';
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 100%;
+        height: 100%;
+        transform: translate(-50%, -50%);
+        background: conic-gradient(
+            from 0deg at 50% 50%,
+            rgba(255, 255, 255, 0.04) 0deg,
+            rgba(255, 255, 255, 0.04) 8deg,
+            transparent 8deg,
+            transparent 20deg,
+            rgba(255, 255, 255, 0.04) 20deg,
+            rgba(255, 255, 255, 0.04) 28deg,
+            transparent 28deg,
+            transparent 40deg,
+            rgba(255, 255, 255, 0.04) 40deg,
+            rgba(255, 255, 255, 0.04) 48deg,
+            transparent 48deg,
+            transparent 60deg,
+            rgba(255, 255, 255, 0.04) 60deg,
+            rgba(255, 255, 255, 0.04) 68deg,
+            transparent 68deg,
+            transparent 80deg,
+            rgba(255, 255, 255, 0.04) 80deg,
+            rgba(255, 255, 255, 0.04) 88deg,
+            transparent 88deg,
+            transparent 100deg,
+            rgba(255, 255, 255, 0.04) 100deg,
+            rgba(255, 255, 255, 0.04) 108deg,
+            transparent 108deg,
+            transparent 120deg,
+            rgba(255, 255, 255, 0.04) 120deg,
+            rgba(255, 255, 255, 0.04) 128deg,
+            transparent 128deg,
+            transparent 140deg,
+            rgba(255, 255, 255, 0.04) 140deg,
+            rgba(255, 255, 255, 0.04) 148deg,
+            transparent 148deg,
+            transparent 160deg,
+            rgba(255, 255, 255, 0.04) 160deg,
+            rgba(255, 255, 255, 0.04) 168deg,
+            transparent 168deg,
+            transparent 180deg,
+            rgba(255, 255, 255, 0.04) 180deg,
+            rgba(255, 255, 255, 0.04) 188deg,
+            transparent 188deg,
+            transparent 200deg,
+            rgba(255, 255, 255, 0.04) 200deg,
+            rgba(255, 255, 255, 0.04) 208deg,
+            transparent 208deg,
+            transparent 220deg,
+            rgba(255, 255, 255, 0.04) 220deg,
+            rgba(255, 255, 255, 0.04) 228deg,
+            transparent 228deg,
+            transparent 240deg,
+            rgba(255, 255, 255, 0.04) 240deg,
+            rgba(255, 255, 255, 0.04) 248deg,
+            transparent 248deg,
+            transparent 260deg,
+            rgba(255, 255, 255, 0.04) 260deg,
+            rgba(255, 255, 255, 0.04) 268deg,
+            transparent 268deg,
+            transparent 280deg,
+            rgba(255, 255, 255, 0.04) 280deg,
+            rgba(255, 255, 255, 0.04) 288deg,
+            transparent 288deg,
+            transparent 300deg,
+            rgba(255, 255, 255, 0.04) 300deg,
+            rgba(255, 255, 255, 0.04) 308deg,
+            transparent 308deg,
+            transparent 320deg,
+            rgba(255, 255, 255, 0.04) 320deg,
+            rgba(255, 255, 255, 0.04) 328deg,
+            transparent 328deg,
+            transparent 340deg,
+            rgba(255, 255, 255, 0.04) 340deg,
+            rgba(255, 255, 255, 0.04) 348deg,
+            transparent 348deg,
+            transparent 360deg
+        );
+        z-index: 0;
+    }
+
+    // Central glow
+    &::after {
+        content: '';
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 200px;
+        height: 200px;
+        transform: translate(-50%, -50%);
+        background: radial-gradient(circle, rgba(255, 255, 255, 0.05) 0%, transparent 70%);
+        z-index: 0;
+    }
+
+    &:hover,
+    &:focus {
+        color: #fff;
+        text-decoration: none;
+        background: #094e6a;
+    }
+
+    strong {
+        font-weight: bold;
+        position: relative;
+        z-index: 1;
+    }
+
+    &__emoji {
+        margin-right: 8px;
+    }
+}
