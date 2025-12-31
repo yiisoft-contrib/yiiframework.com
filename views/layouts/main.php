@@ -92,7 +92,7 @@ $this->registerLinkTag([
 
             <?= $this->render('partials/_header', ['discourse' => false]) ?>
 
-            <a href="https://yii3.yiiframework.com" class="yii3-banner">
+            <a href="https://3.yiiframework.com" class="yii3-banner">
                 <strong><span class="yii3-banner__emoji">🚀</span>Yii3 is now available!</strong>
             </a>
 
