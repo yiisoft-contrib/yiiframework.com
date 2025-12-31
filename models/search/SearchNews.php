@@ -95,6 +95,18 @@ class SearchNews extends SearchActiveRecord
         if (!$command->indexExists(static::index())) {
             $command->createIndex(static::index());
         }
+        $command->updateAnalyzers(static::index(), [
+            'settings' => [
+                'analysis' => [
+                    'normalizer' => [
+                        'lowercase' => [
+                            'type' => 'custom',
+                            'filter' => ['lowercase']
+                        ]
+                    ]
+                ]
+            ],
+        ]);
         $mapping = $command->getMapping(static::index(), static::type());
         if (empty($mapping)) {
             $command->setMapping(static::index(), static::type(), [
@@ -111,6 +123,11 @@ class SearchNews extends SearchActiveRecord
                                 // mapping for search-as-you-type completion
                                 'suggest' => [
                                     'type' => 'completion',
+                                ],
+                                // keyword field for exact case-insensitive matching
+                                'keyword' => [
+                                    'type' => 'keyword',
+                                    'normalizer' => 'lowercase'
                                 ],
                             ],
                         ],
