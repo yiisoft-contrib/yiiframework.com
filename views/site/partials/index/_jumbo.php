@@ -24,9 +24,6 @@ $this->registerJs("
                 </p>
             </div>
             <div class="col-md-4 col-link column-button-set">
-                <a href="<?= Url::to(['github-progress/yii3-progress']) ?>" class="btn">
-                    Looking for Yii3 progress?
-                </a>
                 <a href="<?= Url::to('partners') ?>" class="btn">Need a developer?</a>
                 <a href="<?= Url::to('donate') ?>" class="btn">Donate</a>
             </div>

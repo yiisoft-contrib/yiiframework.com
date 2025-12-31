@@ -92,6 +92,10 @@ $this->registerLinkTag([
 
             <?= $this->render('partials/_header', ['discourse' => false]) ?>
 
+            <a href="https://yii3.yiiframework.com" class="yii3-banner">
+                <strong><span class="yii3-banner__emoji">🚀</span>Yii3 is now available!</strong>
+            </a>
+
             <?= $this->context instanceof BaseController && isset($this->context->sectionTitle) ? $this->render('partials/_sectionHeader', ['title' => $this->context->sectionTitle]) : '' ?>
 
             <?= Alert::widget(['options' => ['class' => 'main-alert']]) ?>
