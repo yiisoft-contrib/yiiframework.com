@@ -430,4 +430,13 @@ return [
         'github' => 'mspirkov',
         'status' => TeamStatus::TEAM_STATUS_ACTIVE,
     ],
+    [
+        'name' => 'Evgeniy Moiseenko',
+        'period' => '2023',
+        'location' => 'Russia',
+        'duty' => 'Yii 2.0 and Yii 3.0 development',
+        'photo' => '@web/image/team/emoiseenko.jpg',
+        'github' => 's1lver',
+        'status' => TeamStatus::TEAM_STATUS_INACTIVE,
+    ],
 ];
