@@ -35,11 +35,6 @@ use yii\helpers\Url;
     <div class="row">
         <div class="col-md-4">
             <div class="row padded-row">
-                <a href="https://yiipowered.com/en" class="btn btn-front btn-block">See more projects using Yii</a>
-            </div>
-        </div>
-        <div class="col-md-4">
-            <div class="row padded-row">
                 <a href="<?= Url::to(['wiki/index']) ?>" class="btn btn-front btn-block">See all tutorials</a>
             </div>
         </div>

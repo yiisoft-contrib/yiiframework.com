@@ -25,10 +25,7 @@ $this->params['breadcrumbs'][] = $this->title;
                     <h2><span>Spread the word</span></h2>
                 </div>
                 <p class="text-center"><img class="icon" src="<?= Yii::getAlias('@web/image/contribute/ico_contribute_01.svg')?>" alt=""></p>
-                <p class="text-center">You like Yii? Built an outstanding website or application? Blog about it, tweet about it,
-                    and <a href="https://yiipowered.com/en">add it to YiiPowered</a>.
-                </p>
-                <p class="text-center">Have news to share? Add them to <a href="https://yiifeed.com/">YiiFeed</a>.</p>
+                <p class="text-center">You like Yii? Built an outstanding website or application? Blog about it, tweet about it.</p>
                 <div class="row">
                     <div class="col-md-6">
                         <div class="heading-separator">

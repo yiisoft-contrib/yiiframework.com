@@ -26,35 +26,6 @@ $this->params['breadcrumbs'][] = $this->title;
         </div>
         <div class="row">
             <div class="col-xs-12 col-md-6 col-lg-3 group">
-                <h3>News</h3>
-
-                <div class="image">
-                    <a href="https://yiifeed.com/" aria-label="YiiFeed">
-                    <img src="<?= Yii::getAlias('@web/image/resources/yiifeed.png') ?>" alt="YiiFeed">
-                    </a>
-                </div>
-
-                <h4><a href="https://yiifeed.com/">YiiFeed</a></h4>
-
-                <p>is a community-driven news source for both official Yii announcements and
-                    unofficial articles, blogposts and tutorials. Anyone can suggest news. RSS provided.</p>
-            </div>
-            <div class="col-xs-12 col-md-6 col-lg-3 group">
-                <h3>Showcase</h3>
-
-                <div class="image">
-                    <a href="https://yiipowered.com/en" aria-label="YiiPowered">
-                    <img src="<?= Yii::getAlias('@web/image/resources/yiipowered.png') ?>" alt="YiiPowered">
-                    </a>
-                </div>
-
-                <h4><a href="https://yiipowered.com/en">YiiPowered</a></h4>
-
-                <p>Community-powered showcase of projects and websites built with Yii including OpenSource projects.</p>
-
-                <p>Projects could be added by anyone and are published shortly after moderation.</p>
-            </div>
-            <div class="col-xs-12 col-md-6 col-lg-3 group">
                 <h3>Videos</h3>
 
                 <div class="image">
