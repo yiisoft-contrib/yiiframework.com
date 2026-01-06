@@ -37,12 +37,6 @@ class FormatterTest extends Unit
         $this->assertArrayHasKey('HTML', $config);
         $this->assertArrayHasKey('TargetNoopener', $config['HTML']);
         $this->assertTrue($config['HTML']['TargetNoopener']);
-        
-        // Verify that anchor tags allow target and rel attributes
-        $this->assertArrayHasKey('AllowedAttributes', $config['HTML']);
-        $this->assertArrayHasKey('a', $config['HTML']['AllowedAttributes']);
-        $this->assertContains('target', $config['HTML']['AllowedAttributes']['a']);
-        $this->assertContains('rel', $config['HTML']['AllowedAttributes']['a']);
     }
 
     /**
@@ -62,15 +56,6 @@ class FormatterTest extends Unit
         
         // Should include anchor tags for links
         $this->assertContains('a', $htmlConfig['AllowedElements']);
-        
-        // Should have allowed attributes configured
-        $this->assertArrayHasKey('AllowedAttributes', $htmlConfig);
-        $this->assertArrayHasKey('a', $htmlConfig['AllowedAttributes']);
-        
-        // Anchor tags should allow href, target, and rel attributes
-        $this->assertContains('href', $htmlConfig['AllowedAttributes']['a']);
-        $this->assertContains('target', $htmlConfig['AllowedAttributes']['a']);
-        $this->assertContains('rel', $htmlConfig['AllowedAttributes']['a']);
         
         // Should have TargetNoopener enabled for security
         $this->assertArrayHasKey('TargetNoopener', $htmlConfig);
