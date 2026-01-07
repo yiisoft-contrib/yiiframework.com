@@ -31,8 +31,7 @@ use yii\helpers\Url;
         <p>
             Our IRC channel is on the <a href="https://libera.chat/">Libera Chat IRC network</a>. If you already have
             an IRC client installed, simply click on <a href="ircs://irc.libera.chat:6697/yii">#yii on the Libera Chat IRC network</a>.
-            Otherwise, feel free to use the web-based IRC client below to join the channel and start the chat.
+            Otherwise, feel free to use the <a href="https://web.libera.chat/">web-based IRC client</a>.
         </p>
-        <iframe title="IRC Client" src="https://kiwiirc.com/nextclient/#ircs://irc.libera.chat:6697/yii" width="100%" height="480" style="border:1px solid silver;"></iframe>
     </div>
 </div>
