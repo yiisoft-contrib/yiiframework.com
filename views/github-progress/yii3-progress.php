@@ -8,7 +8,9 @@ use yii\helpers\Url;
     <div class="flex-center">
 
         <a class="main-logo" aria-label="home page" href="/"><img alt="Yii3 full logo for dark backgrounds" src="<?=Yii::getAlias('@web/image/design/logo/yii3_full_for_dark.svg')?>"/></a>
-        <p>How about progress on Yii3 development?</p>
+        <p><a href="https://yii3.yiiframework.com/">Yii3 is officially released!</a></p>
+        <p>More packages to come.</p>
+
         <h2>Released <b><?php echo $progress; ?></b> packages</h2>
 
         <div class="progress-bar-wrapper" title="<?=$progressPercent?>%">
@@ -16,7 +18,7 @@ use yii\helpers\Url;
             <div class="percent"><?=$progressPercent?>%</div>
         </div>
 
-        <p class="guide-link">Check the <a href="https://yiisoft.github.io/docs/guide/">guide in progress to learn more</a>.</p>
+        <p class="guide-link">Check the <a href="https://yiisoft.github.io/docs/guide/">guide to learn more</a>.</p>
 
         <ul class="mini-footer">
             <li>

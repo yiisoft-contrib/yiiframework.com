@@ -41,7 +41,7 @@ class GithubProgressController extends BaseController
     public function actionYii3Progress()
     {
         $this->layout = 'fullpage';
-        $this->sectionTitle = 'How about progress on Yii3 development?';
+        $this->sectionTitle = 'Yii3 release status';
 
         $data = Yii::$app->cache->get('github_progress_data_3.0');
         if (!$data) {
