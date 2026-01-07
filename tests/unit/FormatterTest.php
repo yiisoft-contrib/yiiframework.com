@@ -57,6 +57,13 @@ class FormatterTest extends Unit
         // Should include anchor tags for links
         $this->assertContains('a', $htmlConfig['AllowedElements']);
         
+        // Should have AllowedAttributes to support TargetNoopener
+        $this->assertArrayHasKey('AllowedAttributes', $htmlConfig);
+        $this->assertIsString($htmlConfig['AllowedAttributes']);
+        // Verify target and rel attributes are allowed for anchor tags (required for TargetNoopener)
+        $this->assertStringContainsString('a@target', $htmlConfig['AllowedAttributes']);
+        $this->assertStringContainsString('a@rel', $htmlConfig['AllowedAttributes']);
+        
         // Should have TargetNoopener enabled for security
         $this->assertArrayHasKey('TargetNoopener', $htmlConfig);
         $this->assertTrue($htmlConfig['TargetNoopener']);
