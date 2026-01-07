@@ -4679,12 +4679,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/yiisoft/yii2-apidoc.git",
-                "reference": "faea6a873c7fc1bcc8b11b2e73560fad2d8a8072"
+                "reference": "4aeebabc1ef249ac87809a53bed327784e718415"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/yiisoft/yii2-apidoc/zipball/faea6a873c7fc1bcc8b11b2e73560fad2d8a8072",
-                "reference": "faea6a873c7fc1bcc8b11b2e73560fad2d8a8072",
+                "url": "https://api.github.com/repos/yiisoft/yii2-apidoc/zipball/4aeebabc1ef249ac87809a53bed327784e718415",
+                "reference": "4aeebabc1ef249ac87809a53bed327784e718415",
                 "shasum": ""
             },
             "require": {
@@ -4760,7 +4760,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2026-01-06T17:47:41+00:00"
+            "time": "2026-01-07T21:35:54+00:00"
         },
         {
             "name": "yiisoft/yii2-authclient",
@@ -8558,9 +8558,9 @@
         "ext-zend-opcache": "*",
         "ext-zip": "*"
     },
-    "platform-dev": {},
+    "platform-dev": [],
     "platform-overrides": {
         "php": "7.4"
     },
-    "plugin-api-version": "2.6.0"
+    "plugin-api-version": "2.2.0"
 }
