@@ -8,8 +8,11 @@ use yii\helpers\Url;
     <div class="flex-center">
 
         <a class="main-logo" aria-label="home page" href="/"><img alt="Yii3 full logo for dark backgrounds" src="<?=Yii::getAlias('@web/image/design/logo/yii3_full_for_dark.svg')?>"/></a>
-        <p class="guide-link"><a href="https://yii3.yiiframework.com/">Yii3 is officially released!</a></p>
-        <p>More packages to come.</p>
+        <p class="guide-link">
+            <a href="https://yii3.yiiframework.com/">Yii3 is officially released!</a> <br>
+            More packages to come.
+        </p>
+
 
         <h2>Released <b><?php echo $progress; ?></b></h2>
 
