@@ -59,10 +59,11 @@ class FormatterTest extends Unit
         
         // Should have AllowedAttributes to support TargetNoopener
         $this->assertArrayHasKey('AllowedAttributes', $htmlConfig);
-        $this->assertIsString($htmlConfig['AllowedAttributes']);
+        $this->assertIsArray($htmlConfig['AllowedAttributes']);
         // Verify target and rel attributes are allowed for anchor tags (required for TargetNoopener)
-        $this->assertStringContainsString('a@target', $htmlConfig['AllowedAttributes']);
-        $this->assertStringContainsString('a@rel', $htmlConfig['AllowedAttributes']);
+        $this->assertArrayHasKey('a', $htmlConfig['AllowedAttributes']);
+        $this->assertContains('target', $htmlConfig['AllowedAttributes']['a']);
+        $this->assertContains('rel', $htmlConfig['AllowedAttributes']['a']);
         
         // Should have TargetNoopener enabled for security
         $this->assertArrayHasKey('TargetNoopener', $htmlConfig);
