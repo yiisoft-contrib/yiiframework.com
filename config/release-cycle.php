@@ -5,9 +5,6 @@ return [
     '3.x' => [
         'release' => '2025-12-31',
         'php' => '>= 8.2',
-        'enhancements' => 'To be determined',
-        'bugfixes' => 'To be determined',
-        'eol' => 'To be determined',
     ],
     '2.2.x ¹' => [
         'php' => '>= 8.1'
