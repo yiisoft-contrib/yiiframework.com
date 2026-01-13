@@ -9,16 +9,15 @@ use yii\helpers\Html;
 <div class="container style_external_links">
     <div class="content">
         <div>
-            <h2>Release interval</h2>
+            <h2>Framework generations</h2>
 
-            <ul>
-                <li>Extension releases are tagged every week if there are changes since last release.</li>
-                <li>Main framework package release is tagged about once a month if there are changes since last release.</li>
-            </ul>
+            <p>Yii 1.1, Yii 2, and Yii3 are separate projects with their own release cycles. Additionally, Yii3 consists
+            of many packages each tagged using SemVer and having its own release cycle.</p>
 
             <h2>Maintenance policy</h2>
 
-            <p>Major version is receiving enhancements until it is decided to start working on next major version.</p>
+            <p>Major version of Yii 1.1 and Yii 2 is receiving enhancements until it is decided to start working
+                on next major version.</p>
 
             <p>After current major version release previous major version has:</p>
 
@@ -34,7 +33,7 @@ use yii\helpers\Html;
             <p>In order for the framework to work well in a range of PHP versions we are running framework tests using PHPUnit.
                In case <a href="https://phpunit.de/supported-versions.html">newer version of PHPUnit does not work well with unsupported PHP version</a>
                we may remove such PHP version from our test runs. It doesn't mean that older versions would break but
-               it significally increases chances for it.
+               it significantly increases chances for it.
             </p>
 
             <p>Therefore, it is recommended to use <a href="https://www.php.net/supported-versions.php">supported verison of PHP</a>.</p>
