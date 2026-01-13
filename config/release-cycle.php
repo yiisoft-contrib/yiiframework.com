@@ -3,10 +3,14 @@ $versions = require 'versions.php';
 
 return [
     '3.x' => [
-        'php' => '>=8.0.0'
+        'release' => '2025-12-31',
+        'php' => '>= 8.2',
+        'enhancements' => 'To be determined',
+        'bugfixes' => 'To be determined',
+        'eol' => 'To be determined',
     ],
     '2.2.x ¹' => [
-        'php' => '>=8.1.0'
+        'php' => '>= 8.1'
     ],
     '>= 2.0.50' => [
         'release' => '2024-05-30',
@@ -27,7 +31,7 @@ return [
         'enhancements' => '2015-11-22',
         'bugfixes' => '2017-01-01',
         'eol' => '2026-12-31',
-        'php' => '>=5.1.0'
+        'php' => '>= 5.1'
     ],
 ];
 
