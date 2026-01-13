@@ -4,6 +4,9 @@ $versions = require 'versions.php';
 return [
     'Yii3' => [
         'release' => '2025-12-31',
+        'enhancements' => '2030-12-31',
+        'bugfixes' => '2032-12-31',
+        'eol' => '2035-12-31',
         'php' => '>= 8.2',
     ],
     '2.2.x ¹' => [
