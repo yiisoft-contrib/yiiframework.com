@@ -112,13 +112,13 @@ abstract class SearchActiveRecord extends \yii\elasticsearch\ActiveRecord
 
         $queryParts = [];
 
-        // exact match on name field, which is a keyword and not analyzed
-        // exact match on unanalyzed title
+        // exact match on name.keyword and title.keyword fields, which are keywords with lowercase normalizer
+        // exact match on case-insensitive keyword fields
         $queryParts[] = [
             'bool' => [
                 'should' => [
-                    ['term' => ['name' => $queryString]],
-                    ['term' => ['title' => $queryString]],
+                    ['term' => ['name.keyword' => $queryString]],
+                    ['term' => ['title.keyword' => $queryString]],
                     ['match' => ['name' => $queryString]],
                     ['match' => ['name.camel' => $queryString]],
                 ],
@@ -131,12 +131,12 @@ abstract class SearchActiveRecord extends \yii\elasticsearch\ActiveRecord
         $camelQuery = implode('', $words);
         if (mb_strtolower($queryString) !== mb_strtolower($camelQuery)) {
             Yii::warning('adding additional things: ' . $camelQuery);
-            // exact match on name field, which is a keyword and not analyzed
+            // exact match on name.keyword and title.keyword fields, which are keywords with lowercase normalizer
             $queryParts[] = [
                 'bool' => [
                     'should' => [
-                        ['term' => ['name' => $camelQuery]],
-                        ['term' => ['title' => $camelQuery]],
+                        ['term' => ['name.keyword' => $camelQuery]],
+                        ['term' => ['title.keyword' => $camelQuery]],
                         ['match' => ['name' => $camelQuery]],
                         ['match' => ['title.stemmed' => $camelQuery]],
                     ],
