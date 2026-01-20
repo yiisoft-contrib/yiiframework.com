@@ -102,6 +102,7 @@ yii-3.0: yii-3.0-access \
   yii-3.0-cache-wincache \
   yii-3.0-classifier \
   yii-3.0-config \
+  yii-3.0-code-style \
   yii-3.0-container-proxy \
   yii-3.0-cookies \
   yii-3.0-csrf \
