@@ -149,6 +149,7 @@ final class Yii3PackageHelper
             'yii-gii',
             'profiler',
             'yii-sentry',
+            'code-style',
         ],
         'APIs' => [
             'yii-swagger',
