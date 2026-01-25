@@ -9,34 +9,95 @@ use yii\helpers\Html;
 <div class="container style_external_links">
     <div class="content">
         <div>
-            <h2>Framework generations</h2>
+            <p>Yii 1.1, Yii 2, and Yii3 are separate projects with their own separate release cycles and maintenance
+               policies.</p>
 
-            <p>Yii 1.1, Yii 2, and Yii3 are separate projects with their own release cycles. Additionally, Yii3 consists
-            of many packages each tagged using SemVer and having its own release cycle.</p>
+            <h2>Yii3</h2>
 
-            <h2>Maintenance policy</h2>
-
-            <p>Major version of Yii 1.1 and Yii 2 is receiving enhancements until it is decided to start working
-                on next major version.</p>
-
-            <p>After current major version release previous major version has:</p>
+            <p>Yii3 consists of many packages. Each package is <a href="https://semver.org/">versioned using
+               Semantic Versioning (SemVer)</a> independently of the others and has its own release cycle.</p>
 
             <ul>
-                <li>Two years of bug fixes.</li>
-                <li>Three years of security and PHP compatibility fixes.</li>
+                <li>
+                    Major version
+                    <ul>
+                        <li>Released at most once per year.</li>
+                        <li>May introduce backward incompatible changes (BC breaks).</li>
+                        <li>Removes code that was previously deprecated in minor releases.</li>
+                        <li>A documented upgrade path is provided in the package <code>UPGRADE.md</code> file.</li>
+                    </ul>
+                </li>
+                <li>
+                    Minor version
+                    <ul>
+                        <li>Released when a set of features or enhancements is ready.</li>
+                        <li>May introduce new functionality and may mark existing APIs as deprecated, but does not remove them.</li>
+                        <li>Backwards compatibility is preserved.</li>
+                        <li>It is safe to upgrade within the same major version.</li>
+                        <li>May adjust requirements, including the minimum or maximum supported PHP version.</li>
+                        <li>
+                            The supported PHP version range is stated explicitly in <code>composer.json</code> and is
+                            extended only after compatibility has been verified.
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    Patch version
+                    <ul>
+                        <li>Released when bug fixes, documentation improvements, or internal refactorings are ready.</li>
+                        <li>May fix bugs and security issues.</li>
+                        <li>Does not change platform requirements (for example, PHP version constraints remain the same).</li>
+                        <li>Does not introduce new public features or remove existing ones.</li>
+                        <li>It is safe to upgrade.</li>
+                    </ul>
+                </li>
             </ul>
 
-            <p>Above policy periods may be extended for individual versions.</p>
+            <h2>Yii 2</h2>
+
+            <p>
+                Yii 2 consists of the core framework and a set of official extensions.
+                The framework and each official extension are versioned independently.
+            </p>
+
+            <ul>
+                <li>Major version is receiving enhancements until it is decided to start working on next major version.</li>
+                <li>Previous major version may receive security fixes.</li>
+            </ul>
+
+            <h2>Yii 1.1</h2>
+
+            <p>
+                Yii 1.1 is in maintenance mode. It only receives updates for:
+            </p>
+
+            <ul>
+                <li>Support for newer PHP versions where feasible.</li>
+                <li>Security fixes.</li>
+                <li>Critical bug fixes that do not require breaking changes.</li>
+            </ul>
 
             <h2>PHP versions support</h2>
 
-            <p>In order for the framework to work well in a range of PHP versions we are running framework tests using PHPUnit.
-               In case <a href="https://phpunit.de/supported-versions.html">newer version of PHPUnit does not work well with unsupported PHP version</a>
-               we may remove such PHP version from our test runs. It doesn't mean that older versions would break but
-               it significantly increases chances for it.
+            <p>
+                To ensure the framework works correctly across supported PHP versions, we run automated tests using PHPUnit.
+                If a <a href="https://phpunit.de/supported-versions.html">newer version of PHPUnit no longer supports an old PHP version</a>,
+                we may remove that PHP version from our test matrix.
             </p>
 
-            <p>Therefore, it is recommended to use <a href="https://www.php.net/supported-versions.php">supported verison of PHP</a>.</p>
+            <p>
+                This does not immediately mean Yii will stop working on that PHP version, but the lack of automated testing
+                significantly increases the risk of regressions. Over time, new releases may no longer be compatible.
+            </p>
+
+            <p>We generally do not support PHP versions that have reached their end of life.
+               When a PHP version becomes unsupported upstream, it may be removed from our supported range
+               in the next minor release of a package.</p>
+
+            <p>
+                Therefore, we recommend using a
+                <a href="https://www.php.net/supported-versions.php">currently supported version of PHP</a>.
+            </p>
 
             <h2>Current versions</h2>
 
@@ -54,7 +115,7 @@ use yii\helpers\Html;
                 <tr>
                     <td style="background: #71bdff; width: 40px;"></td>
                     <td style="background: #71bdff; width: 40px; opacity: 0.3;"></td>
-                    <td>Feature freeze. New features are no longer accepted.</td>
+                    <td>Feature freeze. New features are no longer accepted; only bug fixes, security fixes, and critical compatibility fixes are.</td>
                 </tr>
                 <tr>
                     <td style="background: #ffb95e; width: 40px;"></td>
