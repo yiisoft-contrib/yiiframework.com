@@ -14,12 +14,15 @@ use yii\helpers\Url;
         </p>
 
 
+        <?php /*
         <h2>Released <b><?php echo $progress; ?></b></h2>
 
         <div class="progress-bar-wrapper" title="<?=$progressPercent?>%">
             <div class="progress"></div>
             <div class="percent"><?=$progressPercent?>%</div>
         </div>
+
+        */ ?>
 
         <p class="guide-link">Check the <a href="https://yiisoft.github.io/docs/guide/">guide to learn more</a>.</p>
 
