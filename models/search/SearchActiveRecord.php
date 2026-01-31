@@ -78,7 +78,7 @@ abstract class SearchActiveRecord extends \yii\elasticsearch\ActiveRecord
         if ($type === null) {
             $types = [
                 SearchApiType::TYPE,
-                // SearchApiPrimitive::TYPE,
+                SearchApiPrimitive::TYPE,
                 SearchGuideSection::TYPE,
                 SearchWiki::TYPE,
                 SearchExtension::TYPE,
@@ -87,7 +87,7 @@ abstract class SearchActiveRecord extends \yii\elasticsearch\ActiveRecord
         } elseif (in_array($type, [self::SEARCH_WIKI, self::SEARCH_EXTENSION, self::SEARCH_NEWS], true)) {
             $types = [$type];
         } elseif ($type === self::SEARCH_API) {
-            $types = [SearchApiType::TYPE,/* SearchApiPrimitive::TYPE,*/];
+            $types = [SearchApiType::TYPE, SearchApiPrimitive::TYPE];
         } elseif ($type === self::SEARCH_GUIDE) {
             // TODO add possibility to search for guide subsections: https://github.com/yiisoft-contrib/yiiframework.com/issues/228
             $types = [SearchGuideSection::TYPE];
@@ -238,7 +238,7 @@ abstract class SearchActiveRecord extends \yii\elasticsearch\ActiveRecord
 
         $types = [
             SearchApiType::TYPE,
-            // SearchApiPrimitive::TYPE,
+            SearchApiPrimitive::TYPE,
             SearchGuideSection::TYPE,
             SearchWiki::TYPE,
             SearchExtension::TYPE,

@@ -76,34 +76,36 @@ class SearchApiType extends SearchActiveRecord
 
         $model->insert(false, null, ['op_type' => 'index']);
 
-        /*
-        if ($type->methods !== null) {
-            foreach($type->methods as $method) {
-                if ($method->visibility === 'private') {
+        // Index methods, properties, constants and events for direct search
+        if (isset($type['methods']) && is_array($type['methods'])) {
+            foreach($type['methods'] as $method) {
+                if (($method['visibility'] ?? 'public') === 'private') {
                     continue;
                 }
                 SearchApiPrimitive::createRecord($model, $method, $version);
             }
         }
 
-        if ($type->properties !== null) {
-            foreach($type->properties as $property) {
-                if ($property->visibility === 'private') {
+        if (isset($type['properties']) && is_array($type['properties'])) {
+            foreach($type['properties'] as $property) {
+                if (($property['visibility'] ?? 'public') === 'private') {
                     continue;
                 }
                 SearchApiPrimitive::createRecord($model, $property, $version);
             }
         }
 
-        if ($type instanceof ClassDoc) {
-            foreach($type->constants as $const) {
+        if (isset($type['constants']) && is_array($type['constants'])) {
+            foreach($type['constants'] as $const) {
                 SearchApiPrimitive::createRecord($model, $const, $version);
             }
+        }
 
-            foreach($type->events as $event) {
+        if (isset($type['events']) && is_array($type['events'])) {
+            foreach($type['events'] as $event) {
                 SearchApiPrimitive::createRecord($model, $event, $version);
             }
-        }*/
+        }
     }
 
     public static function type()
