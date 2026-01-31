@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "e760ee3873483e41e2ee1c0cf7bb73b6",
+    "content-hash": "d96344e969b6fa9091629ad302aeb908",
     "packages": [
         {
             "name": "2amigos/yii2-selectize-widget",
@@ -553,21 +553,18 @@
         },
         {
             "name": "bower-asset/sass-rem",
-            "version": "v1.2.4",
+            "version": "v4.0.0",
             "source": {
                 "type": "git",
                 "url": "git@github.com:pierreburel/sass-rem.git",
-                "reference": "a156b7382651ef07dff7aa08e3310ed148875b0e"
+                "reference": "8dcd38e95c247e660a3cbe70ec5cbb9d96774938"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/pierreburel/sass-rem/zipball/a156b7382651ef07dff7aa08e3310ed148875b0e",
-                "reference": "a156b7382651ef07dff7aa08e3310ed148875b0e"
+                "url": "https://api.github.com/repos/pierreburel/sass-rem/zipball/8dcd38e95c247e660a3cbe70ec5cbb9d96774938",
+                "reference": "8dcd38e95c247e660a3cbe70ec5cbb9d96774938"
             },
-            "type": "bower-asset",
-            "license": [
-                "MIT"
-            ]
+            "type": "bower-asset"
         },
         {
             "name": "bower-asset/scrollup",
