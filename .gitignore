@@ -59,7 +59,3 @@ docker-compose.override.yml
 tests/_output/*
 tests/_support/_generated
 /package-lock.json
-
-# local storage for database dumps and other 
-.data
-
