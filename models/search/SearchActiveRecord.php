@@ -117,8 +117,8 @@ abstract class SearchActiveRecord extends \yii\elasticsearch\ActiveRecord
         $queryParts[] = [
             'bool' => [
                 'should' => [
-                    ['term' => ['name' => $queryString]],
-                    ['term' => ['title' => $queryString]],
+                    ['match_phrase' => ['name' => $queryString]],
+                    ['match_phrase' => ['title' => $queryString]],
                     ['match' => ['name' => $queryString]],
                     ['match' => ['name.camel' => $queryString]],
                 ],
@@ -135,8 +135,8 @@ abstract class SearchActiveRecord extends \yii\elasticsearch\ActiveRecord
             $queryParts[] = [
                 'bool' => [
                     'should' => [
-                        ['term' => ['name' => $camelQuery]],
-                        ['term' => ['title' => $camelQuery]],
+                        ['match_phrase' => ['name' => $camelQuery]],
+                        ['match_phrase' => ['title' => $camelQuery]],
                         ['match' => ['name' => $camelQuery]],
                         ['match' => ['title.stemmed' => $camelQuery]],
                     ],
