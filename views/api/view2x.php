@@ -42,11 +42,10 @@ $this->endBlock();
         </div>
     </div>
 
-    $majorVersion = substr($version, 0, 3);
 	<?= strtr($content, [
         '<!-- YII_DOWNLOAD_OPTIONS -->' => '<p>You may download the API documentation for offline use: </p><ul>'
-            . '<li>' . Html::a("yii-docs-{$majorVersion}-en.tar.bz2", ['guide/download', 'version' => $majorVersion, 'language' => 'en', 'format' => 'tar.bz2']) . '</li>'
-            . '<li>' . Html::a("yii-docs-{$majorVersion}-en.tar.gz", ['guide/download', 'version' => $majorVersion, 'language' => 'en', 'format' => 'tar.gz']) . '</li>'
+            . '<li>' . Html::a("yii-docs-{$version}-en.tar.bz2", ['guide/download', 'version' => $version, 'language' => 'en', 'format' => 'tar.bz2']) . '</li>'
+            . '<li>' . Html::a("yii-docs-{$version}-en.tar.gz", ['guide/download', 'version' => $version, 'language' => 'en', 'format' => 'tar.gz']) . '</li>'
             . '</ul>'
             . '<p>This page is also available in <a href="?_format='.urlencode('json').'">JSON format</a>:<br>'
             . '<code>curl ' . Url::to(['index', 'version' => $version], true) . ' -H \'Accept: application/json\'</code></p>',
