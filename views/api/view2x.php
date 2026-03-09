@@ -32,6 +32,8 @@ $this->beginBlock('contentSelectors');
 echo $this->render('partials/_versions.php', compact('version', 'versions', 'section', 'extension'));
 $this->endBlock();
 
+$majorVersion = substr($version, 0, 3);
+
 ?>
 <div class="container api-content">
     <div class="row visible-xs">
@@ -42,7 +44,6 @@ $this->endBlock();
         </div>
     </div>
 
-    $majorVersion = substr($version, 0, 3);
 	<?= strtr($content, [
         '<!-- YII_DOWNLOAD_OPTIONS -->' => '<p>You may download the API documentation for offline use: </p><ul>'
             . '<li>' . Html::a("yii-docs-{$majorVersion}-en.tar.bz2", ['guide/download', 'version' => $majorVersion, 'language' => 'en', 'format' => 'tar.bz2']) . '</li>'
