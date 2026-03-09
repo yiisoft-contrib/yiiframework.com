@@ -54,13 +54,13 @@ if ($discourse) {
                         'label' => 'Guide',
                         'url' => ['guide/entry'],
                         'options' => ['title' => 'The Definitive Guide to Yii'],
-                        'active' => $controller === 'guide'
+                        'active' => $controller === 'guide' && strncmp((string)$action, 'extension-', 10) !== 0
                     ],
                     [
                         'label' => 'API',
                         'url' => ['api/entry'],
                         'options' => ['title' => 'API Documentation'],
-                        'active' => $controller === 'api'
+                        'active' => $controller === 'api' && strncmp((string)$action, 'extension-', 10) !== 0
                     ],
                     [
                         'label' => 'Wiki',
