@@ -108,11 +108,14 @@ class ApiController extends \yii\apidoc\commands\ApiController
             FileHelper::createDirectory($target);
             passthru("php $cmd api $target online");
 
-            foreach(FileHelper::findFiles($target, ['only' => ['*.html']]) as $file) {
-                file_put_contents($file, preg_replace(
-                    '~href="/doc/api/([\w\#\-\.]*)"~i',
-                    'href="' . Yii::$app->params['api.baseUrl'] . '/' . $version . '/\1"',
-                    file_get_contents($file))
+            foreach (FileHelper::findFiles($target, ['only' => ['*.html']]) as $file) {
+                file_put_contents(
+                    $file,
+                    preg_replace(
+                        '~href="/doc/api/([\w\#\-\.]*)"~i',
+                        'href="' . Yii::$app->params['api.baseUrl'] . '/' . $version . '/\1"',
+                        file_get_contents($file)
+                    )
                 );
             }
 
@@ -137,7 +140,9 @@ class ApiController extends \yii\apidoc\commands\ApiController
 	You can search for class names and also method and property names, e.g. <code>ActiveRecord.save()</code> or just <code>.save()</code> or <code>::save()</code>.
 </p>
 HTML
-                , file_get_contents($indexFilePath)));
+                ,
+                file_get_contents($indexFilePath)
+            ));
 
             $this->writeJsonFiles1x($target, $version);
             $this->stdout("Finished API $version.\n\n", Console::FG_GREEN);
@@ -160,7 +165,7 @@ HTML
 
         $versions = Json::decode($extension->version_references);
         $apiVersions = [];
-        foreach($versions as $version => $gitRef) {
+        foreach ($versions as $version => $gitRef) {
 
             $this->version = $version;
 
@@ -231,7 +236,7 @@ HTML
 
         // write types file:
         file_put_contents("$target/json/typeNames.json", Json::encode(
-            array_values(array_map(function($type) {
+            array_values(array_map(function ($type) {
                 return [
                     'type' => $type['type'],
                     'name' => $type['name'],
@@ -242,20 +247,28 @@ HTML
 
         // write class-member file:
         $members = [];
-        foreach($types as $type) {
+        foreach ($types as $type) {
 
-            $methods = isset($type['methods']) ? array_map(function($m) { $m['type'] = 'method'; return $m; }, $type['methods']) : [];
-            $properties = isset($type['properties']) ? array_map(function($m) { $m['type'] = 'property'; return $m; }, $type['properties']) : [];
-            $constants = isset($type['constants']) ? array_map(function($m) { $m['type'] = 'constant'; return $m; }, $type['constants']) : [];
-            $events = isset($type['events']) ? array_map(function($m) { $m['type'] = 'event'; return $m; }, $type['events']) : [];
+            $methods = isset($type['methods']) ? array_map(function ($m) {
+                $m['type'] = 'method';
+                return $m; }, $type['methods']) : [];
+            $properties = isset($type['properties']) ? array_map(function ($m) {
+                $m['type'] = 'property';
+                return $m; }, $type['properties']) : [];
+            $constants = isset($type['constants']) ? array_map(function ($m) {
+                $m['type'] = 'constant';
+                return $m; }, $type['constants']) : [];
+            $events = isset($type['events']) ? array_map(function ($m) {
+                $m['type'] = 'event';
+                return $m; }, $type['events']) : [];
 
-            foreach(array_merge($methods, $properties, $constants, $events) as $method) {
+            foreach (array_merge($methods, $properties, $constants, $events) as $method) {
 
                 if ($method['definedBy'] != $type['name']) {
                     continue;
                 }
 
-                $k = $method['type'].$method['name'];
+                $k = $method['type'] . $method['name'];
                 if (!isset($members[$k])) {
                     $members[$k] = [
                         'type' => $method['type'],
@@ -289,7 +302,7 @@ HTML
 
         // write types file:
         file_put_contents("$target/json/typeNames.json", Json::encode(
-            array_values(array_map(function($type) {
+            array_values(array_map(function ($type) {
                 $classType = null;
                 if ($type instanceof ClassDoc) {
                     $classType = 'class';
@@ -308,14 +321,14 @@ HTML
 
         // write class-member file:
         $members = [];
-        foreach($types as $type) {
+        foreach ($types as $type) {
 
             $methods = isset($type->methods) ? $type->methods : [];
             $properties = isset($type->properties) ? $type->properties : [];
             $constants = isset($type->constants) ? $type->constants : [];
             $events = isset($type->events) ? $type->events : [];
 
-            foreach(array_merge($methods, $properties, $constants, $events) as $method) {
+            foreach (array_merge($methods, $properties, $constants, $events) as $method) {
 
                 if ($method->definedBy != $type->name) {
                     continue;
@@ -346,104 +359,5 @@ HTML
             }
         }
         file_put_contents("$target/json/typeMembers.json", Json::encode(array_values($members)));
-    }
-
-    /**
-     * Packages the API documentation HTML files into downloadable archives.
-     *
-     * Creates tar.gz and tar.bz2 archives of the API HTML files for the given version,
-     * storing them in data/docs-offline/ so they can be served via /doc/download/ URLs.
-     *
-     * @param string $version version number, e.g. 2.0
-     * @param string $language language code, e.g. en
-     * @return int exit status
-     */
-    public function actionPackDocs($version, $language = 'en')
-    {
-        $versions = Yii::$app->params['versions']['api'];
-        if (!in_array($version, $versions)) {
-            $this->stderr("Unknown version $version. Valid versions are " . implode(', ', $versions) . "\n\n", Console::FG_RED);
-            return ExitCode::UNSPECIFIED_ERROR;
-        }
-
-        if ($version[0] !== '2') {
-            $this->stderr("Only version 2.x is supported for API doc packaging.\n", Console::FG_RED);
-            return ExitCode::UNSPECIFIED_ERROR;
-        }
-
-        $sourcePath = Yii::getAlias("@app/data/api-$version");
-        $outputDir  = Yii::getAlias('@app/data/docs-offline');
-        $tmpDir     = Yii::getAlias("@app/runtime/api-pack-$version-$language");
-
-        if (!is_dir($sourcePath)) {
-            $this->stderr("API data directory not found: $sourcePath\n", Console::FG_RED);
-            return ExitCode::UNSPECIFIED_ERROR;
-        }
-
-        // Prepare output and temp directories
-        FileHelper::createDirectory($outputDir);
-        if (is_dir($tmpDir)) {
-            FileHelper::removeDirectory($tmpDir);
-        }
-        FileHelper::createDirectory($tmpDir);
-
-        $archiveName = "yii-docs-$version-$language";
-        $innerDir    = "$tmpDir/$archiveName";
-        FileHelper::createDirectory($innerDir);
-
-        $this->stdout("Copying API HTML files for version $version...\n", Console::FG_CYAN);
-
-        // Copy all .html files
-        $htmlFiles = FileHelper::findFiles($sourcePath, ['only' => ['*.html']]);
-        foreach ($htmlFiles as $file) {
-            $dest = $innerDir . '/' . basename($file);
-            copy($file, $dest);
-        }
-
-        // Copy assets directory if it exists
-        $assetsDir = "$sourcePath/assets";
-        if (is_dir($assetsDir)) {
-            FileHelper::copyDirectory($assetsDir, "$innerDir/assets");
-        }
-
-        $count = count($htmlFiles);
-        $this->stdout("Copied $count HTML files.\n", Console::FG_CYAN);
-
-        // Create tar.gz
-        $targzFile = "$outputDir/$archiveName.tar.gz";
-        $this->stdout("Creating $archiveName.tar.gz...\n", Console::FG_CYAN);
-        exec(
-            'tar -czf ' . escapeshellarg($targzFile) . ' -C ' . escapeshellarg($tmpDir) . ' ' . escapeshellarg($archiveName),
-            $out, $ret
-        );
-        if ($ret !== 0) {
-            $this->stderr("Failed to create tar.gz archive (exit code $ret).\n", Console::FG_RED);
-            FileHelper::removeDirectory($tmpDir);
-            return ExitCode::UNSPECIFIED_ERROR;
-        }
-        $this->stdout("Created: $targzFile (" . round(filesize($targzFile) / 1024 / 1024, 1) . " MB)\n", Console::FG_GREEN);
-
-        // Create tar.bz2
-        $tarbz2File = "$outputDir/$archiveName.tar.bz2";
-        $this->stdout("Creating $archiveName.tar.bz2...\n", Console::FG_CYAN);
-        exec(
-            'tar -cjf ' . escapeshellarg($tarbz2File) . ' -C ' . escapeshellarg($tmpDir) . ' ' . escapeshellarg($archiveName),
-            $out, $ret
-        );
-        if ($ret !== 0) {
-            $this->stderr("Failed to create tar.bz2 archive (exit code $ret).\n", Console::FG_RED);
-            FileHelper::removeDirectory($tmpDir);
-            return ExitCode::UNSPECIFIED_ERROR;
-        }
-        $this->stdout("Created: $tarbz2File (" . round(filesize($tarbz2File) / 1024 / 1024, 1) . " MB)\n", Console::FG_GREEN);
-
-        // Cleanup temp directory
-        FileHelper::removeDirectory($tmpDir);
-
-        $this->stdout("\nDone! Archives are available at:\n", Console::FG_GREEN);
-        $this->stdout("  /doc/download/$archiveName.tar.gz\n");
-        $this->stdout("  /doc/download/$archiveName.tar.bz2\n");
-
-        return ExitCode::OK;
     }
 }
