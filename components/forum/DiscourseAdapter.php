@@ -115,7 +115,11 @@ class DiscourseAdapter extends Component implements ForumAdapterInterface
         if ($response->isOk) {
             $userData = $response->data;
             if (isset($userData['user']['id'])) {
-                $user->updateAttributes(['forum_id' => $userData['user']['id']]);
+                try {
+                    $user->updateAttributes(['forum_id' => $userData['user']['id']]);
+                } catch (\yii\db\IntegrityException $e) {
+                    Yii::warning("Duplicate forum_id {$userData['user']['id']} for user {$user->id}: " . $e->getMessage(), __METHOD__);
+                }
                 return $userData['user']['id'];
             }
         }
