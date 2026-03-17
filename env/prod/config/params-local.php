@@ -57,4 +57,7 @@ return [
     // configure Discourse to point SSO requests to https://www.yiiframework.com/auth/discourse-sso
     'discourse.sso_secret' => '',
     'discourse.sso_url' => 'https://forum.yiiframework.com',
+
+    // Sentry
+    'sentry.dsn' => 'https://6f97f3cd22664a35db953e03330a5790@o4511058901729280.ingest.de.sentry.io/4511058904744016',
 ];

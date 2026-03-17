@@ -37,4 +37,7 @@ return [
     'twitter.consumerSecret' => '',
     'twitter.accessToken' => '',
     'twitter.accessTokenSecret' => '',
+
+    // Sentry (disabled in local dev — set DSN to enable)
+    'sentry.dsn' => '',
 ];

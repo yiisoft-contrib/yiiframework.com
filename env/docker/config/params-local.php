@@ -46,4 +46,7 @@ return [
     'twitter.consumerSecret' => '',
     'twitter.accessToken' => '',
     'twitter.accessTokenSecret' => '',
+
+    // Sentry (disabled in docker dev — set DSN to enable)
+    'sentry.dsn' => '',
 ];
