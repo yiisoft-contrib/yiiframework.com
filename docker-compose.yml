@@ -5,6 +5,8 @@ services:
       - ./:/code
     expose:
       - 9000
+    environment:
+      SENTRY_DSN: ${SENTRY_DSN:-}
     command: >
       bash -c "php-fpm"
   mariadb:

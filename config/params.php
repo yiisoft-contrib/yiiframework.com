@@ -220,8 +220,8 @@ return [
     'discourse.sso_url' => 'https://forum.yiiframework.com',
     'slack.invite.link' => 'https://join.slack.com/t/yii/shared_invite/zt-3bjav0dc2-GmhqlN1_JEp4u4fbpPKmAQ',
 
-    // Sentry error monitoring
-    'sentry.dsn' => null,
+    // Sentry error monitoring (DSN from SENTRY_DSN env variable)
+    'sentry.dsn' => getenv('SENTRY_DSN') ?: null,
     'sentry.tracesSampleRate' => 1.0,
     'sentry.profilesSampleRate' => 1.0,
 ];
