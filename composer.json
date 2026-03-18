@@ -70,6 +70,9 @@
         "yiisoft/yii2-shell": "~2.0.0"
     },
     "config": {
+        "audit": {
+            "block-insecure": false
+        },
         "process-timeout": 1800,
         "fxp-asset": {
             "enabled": false
