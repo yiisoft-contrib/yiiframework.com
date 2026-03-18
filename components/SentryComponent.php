@@ -2,12 +2,8 @@
 
 namespace app\components;
 
-use Throwable;
 use yii\base\BootstrapInterface;
 use yii\base\Component;
-
-use function Sentry\captureException;
-use function Sentry\init;
 
 /**
  * SentryComponent initializes the Sentry PHP SDK during application bootstrap.
@@ -28,22 +24,22 @@ class SentryComponent extends Component implements BootstrapInterface
     /**
      * @var string|null Sentry DSN. If empty, Sentry will not be initialized.
      */
-    public ?string $dsn;
+    public $dsn;
 
     /**
      * @var float Sample rate for performance tracing (0.0 to 1.0).
      */
-    public float $tracesSampleRate = 1.0;
+    public $tracesSampleRate = 1.0;
 
     /**
      * @var float Sample rate for profiling, relative to traces_sample_rate (0.0 to 1.0).
      */
-    public float $profilesSampleRate = 1.0;
+    public $profilesSampleRate = 1.0;
 
     /**
      * @var string|null Environment name. Defaults to YII_ENV if not set.
      */
-    public ?string $environment;
+    public $environment;
 
     /**
      * Bootstrap method called during application initialization.
@@ -51,13 +47,13 @@ class SentryComponent extends Component implements BootstrapInterface
      *
      * @param \yii\base\Application $app
      */
-    public function bootstrap($app): void
+    public function bootstrap($app)
     {
         if (empty($this->dsn)) {
             return;
         }
 
-        init([
+        \Sentry\init([
             'dsn' => $this->dsn,
             'environment' => $this->environment ?: (defined('YII_ENV') ? YII_ENV : 'production'),
             'traces_sample_rate' => (float)$this->tracesSampleRate,
@@ -68,10 +64,10 @@ class SentryComponent extends Component implements BootstrapInterface
         $previousHandler = set_exception_handler(null);
         restore_exception_handler();
 
-        set_exception_handler(static function (Throwable $exception) use ($previousHandler) {
-            captureException($exception);
+        set_exception_handler(function (\Throwable $exception) use ($previousHandler) {
+            \Sentry\captureException($exception);
             if ($previousHandler) {
-                $previousHandler($exception);
+                call_user_func($previousHandler, $exception);
             }
         });
     }
