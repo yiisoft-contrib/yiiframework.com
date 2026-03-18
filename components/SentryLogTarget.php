@@ -2,9 +2,16 @@
 
 namespace app\components;
 
+use Sentry\SentrySdk;
 use Sentry\Severity;
+use Sentry\State\Scope;
+use Throwable;
 use yii\log\Logger;
 use yii\log\Target;
+
+use function Sentry\captureException;
+use function Sentry\captureMessage;
+use function Sentry\withScope;
 
 /**
  * SentryLogTarget sends Yii2 log messages to Sentry.
@@ -26,25 +33,25 @@ class SentryLogTarget extends Target
     /**
      * Exports log messages to Sentry.
      */
-    public function export()
+    public function export(): void
     {
-        if (!\Sentry\SentrySdk::getCurrentHub()->getClient()) {
+        if (!SentrySdk::getCurrentHub()->getClient()) {
             return;
         }
 
         foreach ($this->messages as $message) {
             [$text, $level, $category, $timestamp] = $message;
 
-            if ($text instanceof \Throwable) {
-                \Sentry\captureException($text);
+            if ($text instanceof Throwable) {
+                captureException($text);
             } else {
                 $sentryLevel = $this->getSentryLevel($level);
                 $messageText = is_string($text) ? $text : print_r($text, true);
 
-                \Sentry\withScope(function (\Sentry\State\Scope $scope) use ($messageText, $sentryLevel, $category, $timestamp) {
+                withScope(function (Scope $scope) use ($messageText, $sentryLevel, $category, $timestamp) {
                     $scope->setExtra('category', $category);
                     $scope->setExtra('timestamp', $timestamp);
-                    \Sentry\captureMessage($messageText, $sentryLevel);
+                    captureMessage($messageText, $sentryLevel);
                 });
             }
         }
