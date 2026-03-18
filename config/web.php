@@ -84,13 +84,13 @@ $config = [
                     'levels' => ['warning'],
                     'logFile' => '@runtime/logs/web_warnings.log'
                 ],
-                /*[
+                [
                     'class' => app\components\SentryLogTarget::class,
                     'levels' => ['error', 'warning'],
                     'except' => [
                         'yii\web\HttpException:404',
                     ],
-                ],*/
+                ],
             ],
         ],
         'assetManager' => [
