@@ -164,8 +164,10 @@ class ApiController extends BaseController
                 $result = [];
 
                 if ($version[0] === '3') {
-                    $typeNamesPath = Yii::getAlias("@app/data/api-$version/$section/json/typeNames.json");
-                    $result['package'] = $section;
+                    $sectionParts = explode('/', $section);
+                    $mainSection = $sectionParts[0];
+                    $typeNamesPath = Yii::getAlias("@app/data/api-$version/$mainSection/json/typeNames.json");
+                    $result['package'] = $mainSection;
                 } else {
                     $typeNamesPath = Yii::getAlias("@app/data/api-$version/json/typeNames.json");
                 }
@@ -173,6 +175,10 @@ class ApiController extends BaseController
                 $apiRenderer = new ApiRenderer([
                     'version' => $version,
                 ]);
+
+                if (!file_exists($typeNamesPath)) {
+                    throw new NotFoundHttpException('The requested API documentation was not found.');
+                }
 
                 $classes = Json::decode(file_get_contents($typeNamesPath));
                 foreach ($classes as $i => $class) {
