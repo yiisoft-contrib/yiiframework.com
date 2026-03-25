@@ -123,10 +123,13 @@ class ApiController extends BaseController
 
                         $subSection ??= 'index';
                         $file = Yii::getAlias("@app/data/api-$version/$mainSection/$subSection.html");
-                        $titles = require Yii::getAlias("@app/data/api-$version/$mainSection/titles.php");
-                        $titleKey = $subSection . '.html';
-                        if (isset($titles[$titleKey])) {
-                            $title = $titles[$titleKey];
+                        $titlesFile = Yii::getAlias("@app/data/api-$version/$mainSection/titles.php");
+                        if (is_file($titlesFile)) {
+                            $titles = require $titlesFile;
+                            $titleKey = $subSection . '.html';
+                            if (isset($titles[$titleKey])) {
+                                $title = $titles[$titleKey];
+                            }
                         }
                     }
                 }
@@ -164,10 +167,16 @@ class ApiController extends BaseController
                 $result = [];
 
                 if ($version[0] === '3') {
-                    $typeNamesPath = Yii::getAlias("@app/data/api-$version/$section/json/typeNames.json");
-                    $result['package'] = $section;
+                    $sectionParts = explode('/', $section);
+                    $mainSection = $sectionParts[0];
+                    $typeNamesPath = Yii::getAlias("@app/data/api-$version/$mainSection/json/typeNames.json");
+                    $result['package'] = $mainSection;
                 } else {
                     $typeNamesPath = Yii::getAlias("@app/data/api-$version/json/typeNames.json");
+                }
+
+                if (!is_file($typeNamesPath)) {
+                    throw new NotFoundHttpException('The requested page was not found.');
                 }
 
                 $apiRenderer = new ApiRenderer([

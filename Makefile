@@ -30,13 +30,14 @@ guide-%: yii-% ## Make only the guide docs for version {v} (1.0, 1.1, 2.0).
 	@find data/$@/ | grep fail.log || echo " - no errors - "
 
 
-download-%: TARGET_DIR=data/docs-offline ## download-{v} make only the doc download archives for version {v} (2.0).
+download-%: TARGET_DIR=data/docs-offline
 download-%: SOURCE_DIR=data/yii-$(subst download-,,$@)
 download-%: DOC_DIR=yii-docs-$(subst download-,,$@)
 download-%: VENDOR_DIR=vendor
 download-%: APIDOC_BIN=${VENDOR_DIR}/bin/apidoc
 download-%: LANGUAGES=en $(shell find ${SOURCE_DIR}/docs/ | grep -ioP 'guide-[a-z-]+$$' | cut -c 7-)
 download-%: yii-%
+	mkdir -p ${TARGET_DIR}
 	cd ${SOURCE_DIR}/docs && ln -sf guide guide-en
 	${APIDOC_BIN} api ${SOURCE_DIR}/framework,${SOURCE_DIR}/extensions ${TARGET_DIR}/${DOC_DIR} --interactive=0
 	for l in $(shell echo "${LANGUAGES}" | xargs -n1 | sort -u | xargs) ; do \
@@ -48,10 +49,10 @@ download-%: yii-%
 		cp -ar ${TARGET_DIR}/${DOC_DIR} ${TARGET_DIR}/${DOC_DIR}-$$l  ; \
 		${APIDOC_BIN} guide ${SOURCE_DIR}/docs/guide-$$l ${TARGET_DIR}/${DOC_DIR}-$$l --interactive=0  ; \
 		${APIDOC_BIN} api ${SOURCE_DIR}/framework,${SOURCE_DIR}/extensions ${TARGET_DIR}/${DOC_DIR}-$$l --interactive=0 ; \
-		rm -r ${TARGET_DIR}/${DOC_DIR}-$$l/cache  ; \
-		cd ${TARGET_DIR} && tar czf ${DOC_DIR}-$$l.tar.gz ${DOC_DIR}-$$l ; cd - ; \
-		cd ${TARGET_DIR} && tar cjf ${DOC_DIR}-$$l.tar.bz2 ${DOC_DIR}-$$l ; cd - ; \
-		rm -r ${TARGET_DIR}/${DOC_DIR}-$$l  ; \
+		rm -rf ${TARGET_DIR}/${DOC_DIR}-$$l/cache  ; \
+		(cd ${TARGET_DIR} && tar czf ${DOC_DIR}-$$l.tar.gz ${DOC_DIR}-$$l)  ; \
+		(cd ${TARGET_DIR} && tar cjf ${DOC_DIR}-$$l.tar.bz2 ${DOC_DIR}-$$l)  ; \
+		rm -rf ${TARGET_DIR}/${DOC_DIR}-$$l  ; \
 	done
 
 
@@ -64,7 +65,6 @@ yii-1.0: composer
 yii-1.1: composer
 	test -d data/yii-1.1 || git clone https://github.com/yiisoft/yii.git data/yii-1.1
 	cd data/yii-1.1 && git pull
-	cd data/yii-1.1 && php ../composer.phar require --dev --prefer-dist --no-interaction "phpunit/phpunit:4.8.34" "phpunit/phpunit-selenium:~1.4.0" "pear/archive_tar:~1.5.0"
 
 yii-2.0: yii-2.0-git \
     yii-2.0-ext-apidoc \
