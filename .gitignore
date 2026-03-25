@@ -45,6 +45,7 @@ phpunit.phar
 
 # environment-dependent files (miscellaneous)
 docker-compose.override.yml
+.env
 
 # files automatically generated on dev platform
 /web/css/*
