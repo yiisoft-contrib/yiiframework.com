@@ -14,8 +14,8 @@
         "ext-curl": "*",
         "ext-fileinfo": "*",
         "ext-gd": "*",
-        "ext-json": "*",
         "ext-intl": "*",
+        "ext-json": "*",
         "ext-mbstring": "*",
         "ext-pdo_mysql": "*",
         "ext-zend-opcache": "*",
@@ -23,7 +23,6 @@
         "2amigos/yii2-selectize-widget": "~1.0.1",
         "2amigos/yii2-taggable-behavior": "~1.0.1",
         "abraham/twitteroauth": "~0.7.4",
-        "baibaratsky/yii2-rollbar": "^1.7",
         "bower-asset/blueimp-file-upload": "~9.22.0",
         "bower-asset/bootstrap-sass": "3.3.6",
         "bower-asset/bootstrap-social": "^4.11",
@@ -42,14 +41,16 @@
         "guzzlehttp/psr7": "^1.5",
         "helgesverre/spamprotection": "1.0.1",
         "himiklab/yii2-recaptcha-widget": "^1.2",
+        "http-interop/http-factory-guzzle": "^1.2",
         "imagine/imagine": "^0.6.3",
         "knplabs/github-api": "2.11.0",
         "php-http/curl-client": "^1.7",
         "samdark/sitemap": "^2.0",
         "scrivo/highlight.php": "~9.18",
+        "sentry/sentry": "^3.0",
         "yetanotherape/diff-match-patch": "~1.0.0",
         "yiisoft/yii2": "~2.0.44",
-        "yiisoft/yii2-apidoc": "dev-master",
+        "yiisoft/yii2-apidoc": "~3.0.8",
         "yiisoft/yii2-authclient": "~2.2.0",
         "yiisoft/yii2-bootstrap": "~2.0.6",
         "yiisoft/yii2-elasticsearch": "~2.1.0",
@@ -69,6 +70,9 @@
         "yiisoft/yii2-shell": "~2.0.0"
     },
     "config": {
+        "audit": {
+            "block-insecure": false
+        },
         "process-timeout": 1800,
         "fxp-asset": {
             "enabled": false
