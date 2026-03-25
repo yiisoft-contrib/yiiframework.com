@@ -103,7 +103,7 @@ use app\models\Guide;
                     $language = 'en';
                     $otherGuide = Guide::loadExtension($guide->extension, $version, $language);
                 }
-                if (isset($section) && $guide->version[0] === $version[0] && $otherGuide->loadSection($section->name) !== null) {
+                if (isset($section) && $otherGuide !== null && $guide->version[0] === $version[0] && $otherGuide->loadSection($section->name) !== null) {
                     $url = ['guide/extension-view', 'section' => $section->name, 'version' => $version, 'language' => $language, 'vendorName' => $extensionVendor, 'name' => $extensionName];
                 } else {
                     $url = ['guide/extension-index', 'version' => $version, 'language' => $language, 'vendorName' => $extensionVendor, 'name' => $extensionName];
@@ -114,7 +114,7 @@ use app\models\Guide;
                     $language = 'en';
                     $otherGuide = Guide::load($version, $language, $guide->type);
                 }
-                if (isset($section) && $guide->version[0] === $version[0] && $otherGuide->loadSection($section->name) !== null) {
+                if (isset($section) && $otherGuide !== null && $guide->version[0] === $version[0] && $otherGuide->loadSection($section->name) !== null) {
                     $url = ['guide/view', 'section' => $section->name, 'version' => $version, 'language' => $language, 'type' => $guide->getTypeUrlName()];
                 } else {
                     $url = ['guide/index', 'version' => $version, 'language' => $language, 'type' => $guide->getTypeUrlName()];
