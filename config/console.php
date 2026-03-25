@@ -9,7 +9,7 @@ return [
     'id' => 'yiiframework.com-console',
     'name' => 'Yii Framework',
     'basePath' => dirname(__DIR__),
-    'bootstrap' => ['log', 'queue'],
+    'bootstrap' => ['log', 'queue', 'sentry'],
     'controllerNamespace' => 'app\commands',
     'aliases' => [
         '@yii/apidoc' => '@vendor/yiisoft/yii2-apidoc',
@@ -39,6 +39,12 @@ return [
         'mailer' => $params['components.mailer'],
         'queue' => $params['components.queue'],
         'formatter' => $params['components.formatter'],
+        'sentry' => [
+            'class' => app\components\SentryComponent::class,
+            'dsn' => $params['sentry.dsn'],
+            'tracesSampleRate' => $params['sentry.tracesSampleRate'],
+            'profilesSampleRate' => $params['sentry.profilesSampleRate'],
+        ],
         'urlManager' => array_merge(
             $params['components.urlManager'],
             [
@@ -58,6 +64,10 @@ return [
                     'class' => 'yii\log\FileTarget',
                     'levels' => ['warning'],
                     'logFile' => '@runtime/logs/console_warnings.log'
+                ],
+                [
+                    'class' => app\components\SentryLogTarget::class,
+                    'levels' => ['error', 'warning'],
                 ],
             ],
         ],

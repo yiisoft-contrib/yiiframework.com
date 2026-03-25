@@ -11,6 +11,7 @@ $config = [
     'basePath' => dirname(__DIR__),
     'bootstrap' => [
         'log',
+        'sentry',
         app\components\BootstrapEvents::class,
     ],
     'aliases' => [
@@ -47,6 +48,12 @@ $config = [
         ],
         'formatter' => $params['components.formatter'],
 
+        'sentry' => [
+            'class' => app\components\SentryComponent::class,
+            'dsn' => $params['sentry.dsn'],
+            'tracesSampleRate' => $params['sentry.tracesSampleRate'],
+            'profilesSampleRate' => $params['sentry.profilesSampleRate'],
+        ],
         'errorHandler' => [
             'errorAction' => 'site/error',
         ],
@@ -76,6 +83,13 @@ $config = [
                     'class' => 'yii\log\FileTarget',
                     'levels' => ['warning'],
                     'logFile' => '@runtime/logs/web_warnings.log'
+                ],
+                [
+                    'class' => app\components\SentryLogTarget::class,
+                    'levels' => ['error', 'warning'],
+                    'except' => [
+                        'yii\web\HttpException:404',
+                    ],
                 ],
             ],
         ],

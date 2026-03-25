@@ -2,13 +2,14 @@
 
 namespace app\commands;
 
+use RuntimeException;
 use Yii;
 use yii\console\Controller;
 use yii\console\ExitCode;
 
 class TestController extends Controller
 {
-    public function actionEmail($to, $from)
+    public function actionEmail($to, $from): int
     {
         Yii::$app->mailer->compose()
             ->setTo($to)
@@ -18,5 +19,10 @@ class TestController extends Controller
             ->send();
 
         return ExitCode::OK;
+    }
+
+    public function actionError(): int
+    {
+        throw new RuntimeException('This is error test');
     }
 }
