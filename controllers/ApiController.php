@@ -183,6 +183,10 @@ class ApiController extends BaseController
                     'version' => $version,
                 ]);
 
+                if (!file_exists($typeNamesPath)) {
+                    throw new NotFoundHttpException('The requested API documentation was not found.');
+                }
+
                 $classes = Json::decode(file_get_contents($typeNamesPath));
                 foreach ($classes as $i => $class) {
                     $classes[$i]['url'] = Yii::$app->request->hostInfo . $apiRenderer->generateApiUrl($class['name']);
