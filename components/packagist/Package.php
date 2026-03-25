@@ -54,6 +54,9 @@ class Package
      */
     public function getLicense()
     {
+        if (empty($this->license)) {
+            return false;
+        }
         return reset($this->license);
     }
 
