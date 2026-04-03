@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "8dcfd2751282c8b3af858edb3d7162e7",
+    "content-hash": "c3ebdc966d80c0b74f6b2e8accf11fd0",
     "packages": [
         {
             "name": "2amigos/yii2-selectize-widget",
@@ -429,7 +429,7 @@
             "version": "2.2.4",
             "source": {
                 "type": "git",
-                "url": "git@github.com:jquery/jquery-dist.git",
+                "url": "https://github.com/jquery/jquery-dist.git",
                 "reference": "c0185ab7c75aab88762c5aae780b9d83b80eda72"
             },
             "dist": {
@@ -1521,16 +1521,16 @@
         },
         {
             "name": "himiklab/yii2-recaptcha-widget",
-            "version": "1.2.2",
+            "version": "2.1.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/himiklab/yii2-recaptcha-widget.git",
-                "reference": "30045aa93e6dd398ff4d0b919c0796984569b54d"
+                "reference": "341ae7e19e12783f3dfd8984a49185e0a44021ea"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/himiklab/yii2-recaptcha-widget/zipball/30045aa93e6dd398ff4d0b919c0796984569b54d",
-                "reference": "30045aa93e6dd398ff4d0b919c0796984569b54d",
+                "url": "https://api.github.com/repos/himiklab/yii2-recaptcha-widget/zipball/341ae7e19e12783f3dfd8984a49185e0a44021ea",
+                "reference": "341ae7e19e12783f3dfd8984a49185e0a44021ea",
                 "shasum": ""
             },
             "require": {
@@ -1557,7 +1557,7 @@
                     "homepage": "https://github.com/himiklab/"
                 }
             ],
-            "description": "Yii2 Google reCAPTCHA widget",
+            "description": "Yii2 Google reCAPTCHA v2 and v3 widget",
             "keywords": [
                 "captcha",
                 "google",
@@ -1570,7 +1570,7 @@
                 "source": "https://github.com/himiklab/yii2-recaptcha-widget"
             },
             "abandoned": true,
-            "time": "2018-11-08T09:49:58+00:00"
+            "time": "2019-05-14T07:40:36+00:00"
         },
         {
             "name": "http-interop/http-factory-guzzle",
@@ -8693,9 +8693,9 @@
         "ext-zend-opcache": "*",
         "ext-zip": "*"
     },
-    "platform-dev": [],
+    "platform-dev": {},
     "platform-overrides": {
         "php": "7.4"
     },
-    "plugin-api-version": "2.2.0"
+    "plugin-api-version": "2.9.0"
 }
