@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "8dcfd2751282c8b3af858edb3d7162e7",
+    "content-hash": "87433ef2934c9397d47c5a1c6d460ec8",
     "packages": [
         {
             "name": "2amigos/yii2-selectize-widget",
@@ -288,19 +288,19 @@
         },
         {
             "name": "bower-asset/bootstrap-sass",
-            "version": "v3.3.6",
+            "version": "v3.4.3",
             "source": {
                 "type": "git",
                 "url": "git@github.com:twbs/bootstrap-sass.git",
-                "reference": "446b41a5af0f20f139a6d33ded2a62101c3bd5a1"
+                "reference": "6b0ca5025c64f2e5696c8719cfce7148c78d0a50"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/twbs/bootstrap-sass/zipball/446b41a5af0f20f139a6d33ded2a62101c3bd5a1",
-                "reference": "446b41a5af0f20f139a6d33ded2a62101c3bd5a1"
+                "url": "https://api.github.com/repos/twbs/bootstrap-sass/zipball/6b0ca5025c64f2e5696c8719cfce7148c78d0a50",
+                "reference": "6b0ca5025c64f2e5696c8719cfce7148c78d0a50"
             },
             "require": {
-                "bower-asset/jquery": ">=1.9.0"
+                "bower-asset/jquery": ">=1.9.1,<4.0"
             },
             "type": "bower-asset",
             "license": [
@@ -429,7 +429,7 @@
             "version": "2.2.4",
             "source": {
                 "type": "git",
-                "url": "git@github.com:jquery/jquery-dist.git",
+                "url": "https://github.com/jquery/jquery-dist.git",
                 "reference": "c0185ab7c75aab88762c5aae780b9d83b80eda72"
             },
             "dist": {
@@ -8693,9 +8693,9 @@
         "ext-zend-opcache": "*",
         "ext-zip": "*"
     },
-    "platform-dev": [],
+    "platform-dev": {},
     "platform-overrides": {
         "php": "7.4"
     },
-    "plugin-api-version": "2.2.0"
+    "plugin-api-version": "2.9.0"
 }
