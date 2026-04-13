@@ -65,7 +65,11 @@ class SentryComponent extends Component implements BootstrapInterface
         restore_exception_handler();
 
         set_exception_handler(function (\Throwable $exception) use ($previousHandler) {
-            \Sentry\captureException($exception);
+            if ($exception instanceof \yii\web\HttpException && $exception->statusCode < 500) {
+                // Ignore 4xx HTTP exceptions to prevent Sentry spam
+            } else {
+                \Sentry\captureException($exception);
+            }
             if ($previousHandler) {
                 call_user_func($previousHandler, $exception);
             }
