@@ -65,7 +65,14 @@ class SentryComponent extends Component implements BootstrapInterface
         restore_exception_handler();
 
         set_exception_handler(function (\Throwable $exception) use ($previousHandler) {
-            \Sentry\captureException($exception);
+            $isNetworkError = $exception instanceof \yii\httpclient\Exception ||
+                              $exception instanceof \yii\elasticsearch\Exception ||
+                              $exception instanceof \Github\Exception\RuntimeException;
+
+            if (!$isNetworkError) {
+                \Sentry\captureException($exception);
+            }
+
             if ($previousHandler) {
                 call_user_func($previousHandler, $exception);
             }

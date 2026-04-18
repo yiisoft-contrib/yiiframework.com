@@ -36,6 +36,12 @@ class SentryLogTarget extends Target
             [$text, $level, $category, $timestamp] = $message;
 
             if ($text instanceof \Throwable) {
+                $isNetworkError = $text instanceof \yii\httpclient\Exception ||
+                                  $text instanceof \yii\elasticsearch\Exception ||
+                                  $text instanceof \Github\Exception\RuntimeException;
+                if ($isNetworkError) {
+                    continue; // Skip logging network exception to Sentry
+                }
                 \Sentry\captureException($text);
             } else {
                 $sentryLevel = $this->getSentryLevel($level);
