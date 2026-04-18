@@ -65,7 +65,10 @@ class SentryComponent extends Component implements BootstrapInterface
         restore_exception_handler();
 
         set_exception_handler(function (\Throwable $exception) use ($previousHandler) {
-            \Sentry\captureException($exception);
+            $isApiDocError = $exception instanceof \InvalidArgumentException && strpos($exception->getMessage(), 'The tag') !== false;
+            if (!$isApiDocError) {
+                \Sentry\captureException($exception);
+            }
             if ($previousHandler) {
                 call_user_func($previousHandler, $exception);
             }

@@ -36,6 +36,10 @@ class SentryLogTarget extends Target
             [$text, $level, $category, $timestamp] = $message;
 
             if ($text instanceof \Throwable) {
+                $isApiDocError = $text instanceof \InvalidArgumentException && strpos($text->getMessage(), 'The tag') !== false;
+                if ($isApiDocError) {
+                    continue;
+                }
                 \Sentry\captureException($text);
             } else {
                 $sentryLevel = $this->getSentryLevel($level);
