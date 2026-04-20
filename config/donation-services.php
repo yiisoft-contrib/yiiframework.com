@@ -13,4 +13,8 @@ return [
         'name' => 'Boosty (for Russian users)',
         'link' => 'https://boosty.to/yiisoft',
     ],
+    [
+        'name' => 'Sponsr (for Russian users)',
+        'link' => 'https://sponsr.ru/yii3/',
+    ],
 ];
