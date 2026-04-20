@@ -36,6 +36,10 @@ class SentryLogTarget extends Target
             [$text, $level, $category, $timestamp] = $message;
 
             if ($text instanceof \Throwable) {
+                // Ignore user-level 4xx HTTP exceptions
+                if ($text instanceof \yii\web\HttpException && $text->statusCode >= 400 && $text->statusCode < 500) {
+                    continue;
+                }
                 \Sentry\captureException($text);
             } else {
                 $sentryLevel = $this->getSentryLevel($level);
