@@ -60,6 +60,13 @@ class GuideRenderer extends \yii\apidoc\templates\html\GuideRenderer
             $headings['h1'] = $matches[1];
             $headings['id'] = isset($matches[3]) ? $matches[3] : '';
         }
+        
+        array_walk_recursive($headings, function (&$val) {
+            if (is_string($val)) {
+                $val = mb_convert_encoding($val, 'UTF-8', 'UTF-8');
+            }
+        });
+
         try {
             file_put_contents($this->targetDir . '/' . basename($file, 'md') . 'json', Json::encode($headings));
         } catch (InvalidArgumentException $e) {
