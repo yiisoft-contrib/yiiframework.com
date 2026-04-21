@@ -28,6 +28,12 @@ class Formatter extends \yii\i18n\Formatter
                 'ul', 'ol', 'li',
                 'img'
             ],
+            'AllowedAttributes' => [
+                'a' => ['href', 'title', 'target', 'rel'],
+                'img' => ['src', 'alt', 'width', 'height'],
+                '*' => ['id', 'class']
+            ],
+            'TargetNoopener' => true,
         ],
         'Attr' => [
             'EnableID' => true,
