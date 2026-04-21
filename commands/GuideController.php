@@ -281,27 +281,30 @@ class GuideController extends \yii\apidoc\commands\GuideController
         $sections = [];
         $data = $this->findRenderer(null)->loadGuideStructure([$source . '/README.md']);
         foreach ($data as $i => $chapter) {
+            $chapterHeadline = $chapter['headline'] ?? '';
             foreach ($chapter['content'] as $j => $section) {
+                
+                $sectionHeadline = $section['headline'] ?? '';
 
                 // if section is an external reference, do only add it to main navigation
-                if (preg_match('~^https?://~', $section['file'])) {
+                if (isset($section['file']) && preg_match('~^https?://~', $section['file'])) {
                     // index file
-                    $chapters[$chapter['headline']][$section['headline']] = $section['file'];
+                    $chapters[$chapterHeadline][$sectionHeadline] = $section['file'];
                     continue;
                 }
 
-                $file = basename($section['file'], '.md');
-                if ($file === 'README') {
+                $file = isset($section['file']) ? basename($section['file'], '.md') : '';
+                if ($file === 'README' || $file === '') {
                     continue;
                 }
 
                 // index file
-                $chapters[$chapter['headline']][$section['headline']] = $file;
-                $sections[$file] = [$chapter['headline'], $section['headline']];
+                $chapters[$chapterHeadline][$sectionHeadline] = $file;
+                $sections[$file] = [$chapterHeadline, $sectionHeadline];
             }
         }
         $lines = file($source . '/README.md');
-        if (($title = trim($lines[0])) === '') {
+        if (($title = trim($lines[0] ?? '')) === '') {
             $title = "The Definitive Guide for {$extension->name} {$version}";
         }
 
