@@ -1,0 +1,97 @@
+---
+name: Update Framework Versions
+
+"on":
+  repository_dispatch:
+    types: [yii-release]
+
+jobs:
+  update-versions:
+    runs-on: ubuntu-latest
+    if: github.event.client_payload.action == 'published'
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Set up PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.1'
+
+      - name: Validate payload
+        run: |
+          if [[ -z "${{ github.event.client_payload.repository.name }}" ]]; then
+            echo "Error: Repository name is missing"
+            exit 1
+          fi
+
+          if [[ -z "${{ github.event.client_payload.release.tag_name }}" ]]
+          then
+            echo "Error: Release tag name is missing"
+            exit 1
+          fi
+
+          echo "✓ Payload validation passed"
+
+      - name: Extract release information
+        id: release_info
+        run: |
+          repo="${{ github.event.client_payload.repository.full_name }}"
+          release="${{ github.event.client_payload.release.tag_name }}"
+          url="${{ github.event.client_payload.release.html_url }}"
+
+          echo "Repository: $repo"
+          echo "Release: $release"
+          echo "Release URL: $url"
+
+          # Determine Yii version from repository
+          repo_name="${{ github.event.client_payload.repository.name }}"
+          if [[ "$repo_name" == "yii2" ]]; then
+            echo "yii_version=2.0" >> $GITHUB_OUTPUT
+          elif [[ "$repo_name" == "yii" ]]; then
+            echo "yii_version=1.1" >> $GITHUB_OUTPUT
+          else
+            echo "Unsupported repository: $repo_name"
+            echo "Supported repositories: yii2, yii"
+            exit 1
+          fi
+
+          echo "tag_name=$release" >> $GITHUB_OUTPUT
+          echo "release_date=$(date +'%b %d, %Y')" >> $GITHUB_OUTPUT
+
+      - name: Update versions.php
+        run: |
+          php scripts/update-versions.php \
+            "${{ steps.release_info.outputs.yii_version }}" \
+            "${{ steps.release_info.outputs.tag_name }}" \
+            "${{ steps.release_info.outputs.release_date }}"
+
+      - name: Verify changes
+        run: |
+          echo "Changes made to config/versions.php:"
+          git diff config/versions.php
+
+      - name: Commit and push changes
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          git add config/versions.php
+
+          if git diff --staged --quiet; then
+            echo "No changes to commit (version may already exist)"
+          else
+            tag="${{ steps.release_info.outputs.tag_name }}"
+            version="${{ steps.release_info.outputs.yii_version }}"
+            url="${{ github.event.client_payload.release.html_url }}"
+            repo="${{ github.event.client_payload.repository.full_name }}"
+
+            git commit -m "Auto-update: Add $tag to Yii $version versions
+
+            Release: $url
+            Triggered by: $repo"
+            git push
+            echo "✓ Successfully updated and committed version $tag"
+          fi
