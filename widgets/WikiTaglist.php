@@ -47,7 +47,10 @@ class WikiTaglist extends Widget
         }
 
         if ($this->wiki) {
-            return implode(', ', $tagEntries);
+            return Html::ul(array_values($tagEntries), [
+                'class' => 'wiki-tag-list',
+                'encode' => false,
+            ]);
         }
 
         return $this->render('wikiTaglist', ['tagEntries' => $tagEntries]);

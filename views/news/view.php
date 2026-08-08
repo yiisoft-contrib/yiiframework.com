@@ -2,7 +2,6 @@
 
 use app\components\UserPermissions;
 use app\models\News;
-use app\widgets\NewsArchive;
 use app\widgets\NewsTaglist;
 use yii\bootstrap\Alert;
 use yii\bootstrap\Nav;
@@ -30,11 +29,11 @@ if (UserPermissions::canManageNews()) {
 }
 
 ?>
-<div class="container style_external_links">
+<div class="container style_external_links news-article">
     <div class="content news-content">
 
         <div class="row">
-            <div class="col-md-9">
+            <article class="col-md-9 news-article__main">
 
                 <?php if (UserPermissions::canManageNews() && $model->status != News::STATUS_PUBLISHED) {
 
@@ -48,15 +47,17 @@ if (UserPermissions::canManageNews()) {
 
                 } ?>
 
-                <span class="date"><?= Yii::$app->formatter->asDate($model->news_date) ?></span>
-                <h2><?= Html::a(Html::encode($model->title), ['news/view', 'id' => $model->id, 'name' => $model->slug]) ?></h2>
-                <div class="text">
+                <header class="news-article__header">
+                    <h1><?= Html::a(Html::encode($model->title), ['news/view', 'id' => $model->id, 'name' => $model->slug]) ?></h1>
+                    <time class="date"><?= Yii::$app->formatter->asDate($model->news_date) ?></time>
+                </header>
+                <div class="text news-article__body">
 
                     <?= $model->contentHtml ?>
 
                 </div>
-            </div>
-            <div class="col-md-3">
+            </article>
+            <div class="col-md-3 news-sidebar">
 
                 <?php if (UserPermissions::canManageNews()): ?>
                     <div class="panel panel-default">
@@ -79,7 +80,7 @@ if (UserPermissions::canManageNews()) {
 
                 <?php endif; ?>
 
-                <h2>Related News</h2>
+                <h2>Related</h2>
 
                 <ul>
                 <?php foreach($model->relatedNews as $news) {
@@ -92,8 +93,6 @@ if (UserPermissions::canManageNews()) {
                 </ul>
 
                 <?= NewsTaglist::widget(['news' => $model]) ?>
-
-                <?= NewsArchive::widget() ?>
 
             </div>
         </div>

@@ -13,7 +13,7 @@ use yii\widgets\LinkSorter;
 /** @var $category string */
 /** @var $tag ExtensionTag */
 ?>
-<?= Html::a('<span class="big">Create</span><span class="small">new extension</span>', ['create'], ['class' => 'btn btn-block btn-new-extension']) ?>
+<?= Html::a('Create new extension', ['create'], ['class' => 'btn btn-block btn-new-extension']) ?>
 
 <?php if (isset($sort)): ?>
     <h3 class="extension-side-title">Sorting by</h3>
@@ -45,7 +45,7 @@ use yii\widgets\LinkSorter;
                 'extension/index',
                 'category' => $cat->id,
                 'tag' => isset($tag) ? $tag->slug : null,
-                'version' => $version ?? '2.0',
+                'version' => $version ?? '3.0',
             ])?>"><?= Html::encode($cat->name) ?> <span class="count"><?= (int) $cat->count ?></span></a>
         </li>
     <?php endforeach; ?>
@@ -61,7 +61,7 @@ use yii\widgets\LinkSorter;
                 'extension/index',
                 'tag' => $t->slug,
                 'category' => $category ?? null,
-                'version' => $version ?? '2.0',
+                'version' => $version ?? '3.0',
             ])?>"><?= Html::encode($t->name) ?> <span class="count"><?= (int) $t->frequency ?></span></a>
         </li>
     <?php endforeach; ?>

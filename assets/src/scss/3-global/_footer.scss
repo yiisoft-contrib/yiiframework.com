@@ -38,29 +38,23 @@ footer {
   @include rem(margin-bottom, 12px);
 
   .social {
+    display: inline-flex;
+    align-items: center;
+    gap: 16px;
     white-space: nowrap;
 
     a {
+      display: inline-flex;
       border: none;
       text-align: center;
     }
 
-    i {
-      @include rem(font-size, 14px);
-      @include rem(margin-left, 3px);
-      @include rem(padding, 6px 6px);
-      display: inline-block;
-      background-color: $footer-color;
-      color: $footer-background-color;
-      border-radius: 50%;
-      @include rem(width, 24px);
-      @include rem(height, 24px);
-      transition: color 0.2s ease-out, background 0.2s ease-in;
-
-      &:hover {
-        background-color: #fff;
-        color: $footer-background-color;
-      }
+    svg {
+      display: block;
+      width: 20px;
+      height: 20px;
+      fill: currentColor;
+      transition: color .3s cubic-bezier(.4, 0, .2, 1);
     }
   }
 }

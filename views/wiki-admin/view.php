@@ -60,7 +60,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 return Html::a(Html::encode($model->updater->username), ['user-admin/view', 'id' => $model->updater_id]);
             },
             'format' => 'raw',
-            'label' => 'Last updated by',
+            'label' => 'Updated by',
         ],
         'created_at:datetimerel',
         'updated_at:datetimerel',

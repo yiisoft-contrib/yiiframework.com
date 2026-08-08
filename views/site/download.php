@@ -6,304 +6,319 @@ use yii\helpers\Html;
 /* @var $this yii\web\View */
 /* @var $versions array */
 /* @var $versionInfo array */
+/* @var $selectedVersion string */
 
-$this->title = 'Download Yii';
+$latestYii2 = key($versions['2.0']);
+$latestYii1 = key($versions['1.1']);
+$downloadTitles = [
+    '3.0' => 'Download Yii3',
+    '2.0' => 'Download Yii 2',
+    '1.1' => 'Download Yii 1.1',
+];
+$this->title = $downloadTitles[$selectedVersion];
 $this->params['breadcrumbs'][] = $this->title;
+
+$this->beginBlock('contentSelectors');
+echo $this->render('partials/_downloadVersions', ['currentVersion' => $selectedVersion]);
+$this->endBlock();
 ?>
-<div class="container site-header">
-	<div class="row">
-		<div class="col-sm-7 col-md-6 col-lg-7">
-			<h1>Download</h1>
-			<h2>Yii Framework & Offline Documentation</h2>
-		</div>
-		<div class="col-sm-5 col-md-6 col-lg-5">
-			<img class="background" src="<?= Yii::getAlias('@web/image/download/downloads.svg')?>" alt="Yii downloads">
-		</div>
-	</div>
-</div>
+<main class="container content download-page style_external_links">
+    <header class="download-page__intro">
+        <h1 id="download-page-title"><?= Html::encode($downloadTitles[$selectedVersion]) ?></h1>
+        <p class="download-page__note">
+            Composer is the recommended way to install Yii. If it is not installed yet, follow the instructions on the
+            <a href="https://getcomposer.org/download/">Composer website</a>.
+        </p>
+    </header>
 
+    <?php if ($selectedVersion === '3.0'): ?>
+    <div class="download-version">
+        <section class="download-subsection download-subsection--first">
+            <header>
+                <h3>Install with Composer <span>Recommended</span></h3>
+                <p>Choose an application template.</p>
+            </header>
+            <div class="download-command-list download-command-list--templates">
+                <article>
+                    <h4><a href="https://packagist.org/packages/yiisoft/app">Web application</a></h4>
+                    <p>A traditional server-rendered web application.</p>
+                    <pre><code class="hljs bash language-bash">composer create-project yiisoft/app my-project</code></pre>
+                </article>
+                <article>
+                    <h4><a href="https://packagist.org/packages/yiisoft/app-api">API application</a></h4>
+                    <p>An application focused on HTTP APIs.</p>
+                    <pre><code class="hljs bash language-bash">composer create-project yiisoft/app-api my-api</code></pre>
+                </article>
+                <article>
+                    <h4><a href="https://packagist.org/packages/yiisoft/app-console">Console application</a></h4>
+                    <p>A command-line application without a web layer.</p>
+                    <pre><code class="hljs bash language-bash">composer create-project yiisoft/app-console my-console</code></pre>
+                </article>
+            </div>
+        </section>
 
-<div class="container download">
-	<div class="content">
-		<div class="row">
-            <div class="col-md-12">
-                <p class="small">
-                    Yii is an open source project released under the terms of the <?= Html::a('BSD License', ['site/license']) ?>.
-				    This means that you can use Yii for free to develop either open-source or proprietary Web applications.
-                </p>
+        <section class="download-subsection">
+            <header>
+                <h3>Documentation</h3>
+                <p>Continue with local or Docker setup.</p>
+            </header>
+            <p><a href="https://yiisoft.github.io/docs/guide/start/creating-project.html">Read the Yii 3 installation guide</a>.</p>
+        </section>
+    </div>
+    <?php endif; ?>
 
-                <p class="small">
-                    There are two ways to install Yii:
-                    by using Composer or
-                    by downloading an application template.
-                    We highly recommend you to use Composer.
-                </p>
+    <?php if ($selectedVersion === '2.0'): ?>
+    <div class="download-version">
+        <div class="download-version__header">
+            <p>Latest release: <strong><?= Html::encode($latestYii2) ?></strong> · <?= Html::encode($versions['2.0'][$latestYii2]) ?></p>
+        </div>
 
-                <p class="small">
-                    If you do not have Composer installed yet,
-                    you may install it following the instructions
-                    on the <a href="https://getcomposer.org/download/">Composer website</a>.
-                </p>
+        <nav class="download-reference-links" aria-label="Yii 2 release information">
+            <?= Html::a('Changelog', "https://github.com/yiisoft/yii2/blob/$latestYii2/framework/CHANGELOG.md") ?>
+            <?= Html::a('Upgrade instructions', "https://github.com/yiisoft/yii2/blob/$latestYii2/framework/UPGRADE.md") ?>
+            <a href="https://github.com/yiisoft/yii2/releases">All Yii 2 releases</a>
+        </nav>
+
+        <section class="download-subsection" id="install-composer">
+            <header>
+                <h3>Install with Composer <span>Recommended</span></h3>
+                <p>Choose an application template.</p>
+            </header>
+
+            <div class="download-command-list">
+                <article>
+                    <h4>Basic application</h4>
+                    <p>Recommended when getting started with Yii.</p>
+                    <pre><code class="hljs bash language-bash">php composer.phar create-project yiisoft/yii2-app-basic basic</code></pre>
+                    <p>
+                        Continue with the
+                        <?= Html::a('introduction in the Definitive Guide', [
+                            'guide/view',
+                            'type' => 'guide',
+                            'version' => '2.0',
+                            'language' => 'en',
+                            'section' => 'start-installation',
+                            '#' => 'verifying-installation',
+                        ]) ?>.
+                    </p>
+                </article>
+                <article>
+                    <h4>Advanced application</h4>
+                    <p>For applications with distinct frontend and backend environments.</p>
+                    <pre><code class="hljs bash language-bash">php composer.phar create-project yiisoft/yii2-app-advanced advanced</code></pre>
+                    <p>
+                        After installation, read the
+                        <a href="<?= Yii::getAlias('@web/extension/yiisoft/yii2-app-advanced/doc/guide') ?>">advanced template documentation</a>.
+                    </p>
+                </article>
+            </div>
+            <p>
+                <?= Html::a('Read the installation guide', [
+                    'guide/view',
+                    'type' => 'guide',
+                    'version' => '2.0',
+                    'language' => 'en',
+                    'section' => 'start-installation',
+                    '#' => 'installing-via-composer',
+                ]) ?>.
+            </p>
+        </section>
+
+        <section class="download-subsection" id="install-from-archive">
+            <header>
+                <h3>Other installation methods</h3>
+                <p>Download a template and extract it into a web-accessible directory.</p>
+            </header>
+
+            <div class="download-archives">
+                <a href="https://github.com/yiisoft/yii2/releases/download/<?= $latestYii2 ?>/yii-basic-app-<?= $latestYii2 ?>.tgz">
+                    <img src="<?= Yii::getAlias('@web/image/tgz.svg') ?>" alt="">
+                    <span><strong>Basic application</strong><small>Yii 2 · tar.gz archive</small></span>
+                </a>
+                <a href="https://github.com/yiisoft/yii2/releases/download/<?= $latestYii2 ?>/yii-advanced-app-<?= $latestYii2 ?>.tgz">
+                    <img src="<?= Yii::getAlias('@web/image/tgz.svg') ?>" alt="">
+                    <span><strong>Advanced application</strong><small>Yii 2 · tar.gz archive</small></span>
+                </a>
             </div>
 
-			<div class="col-md-12">
-				<div class="heading-separator">
-					<h2><span>Yii 2.0</span></h2>
-				</div>
-				<?php $version = '2.0'; ?>
-				<p class="small">
+            <p>
+                After extracting the archive, follow the
+                <?= Html::a('introduction in the Definitive Guide', [
+                    'guide/view',
+                    'type' => 'guide',
+                    'version' => '2.0',
+                    'language' => 'en',
+                    'section' => 'start-installation',
+                    '#' => 'verifying-installation',
+                ]) ?>, or read the
+                <a href="<?= Yii::getAlias('@web/extension/yiisoft/yii2-app-advanced/doc/guide') ?>">advanced template documentation</a>.
+            </p>
+        </section>
 
-                <ul>
-                    <li>Latest release is <strong><?= $latest = key($versions[$version]) ?></strong> (<strong><?= $versions[$version][$latest] ?></strong>)</li>
-                    <li><?= Html::a('Changes in this and older versions', "https://github.com/yiisoft/yii2/blob/$latest/framework/CHANGELOG.md") ?></li>
-                    <li><?= Html::a('Upgrade instructions', "https://github.com/yiisoft/yii2/blob/$latest/framework/UPGRADE.md") ?></li>
-                    <li><a href="https://github.com/yiisoft/yii2/releases">List of all Yii 2.x releases</a></li>
-                </ul>
-
-
-				<h1 id="install-composer">Install via Composer (recommended)</h1>
-
-				<p class="small">
-				The installation instructions described here are a short summary, you may want to check the
-					<?= Html::a('Definitive Guide', [
-						'guide/view',
-						'type' => 'guide',
-						'version' => '2.0',
-						'language' => 'en',
-						'section' => 'start-installation',
-						'#' => 'installing-via-composer',
-					]) ?> for more detailed instructions.</p>
-
-				<p class="small">
-					Choose one of the application templates to start installing Yii 2.0.
-					An application template is a package that contains a skeleton Web application written in Yii
-					which you can start building your application from.
-					If you just start with Yii, we recommend the installation of the <strong>basic</strong> template.
-				</p>
-
-				<div class="row ptrem1">
-					<div class="col-md-3">
-					<p class="small">To install the <b>basic</b> application template, run the following command:</p>
-					</div>
-					<div class="col-md-9">
-					<pre><code class="hljs bash language-bash">php composer.phar create-project yiisoft/yii2-app-basic basic</code></pre>
-					</div>
-				</div>
-
-				<p class="small">
-					The best way to get started with the basic application template is to follow the
-					<?= Html::a('introduction in the definitive guide', [
-						'guide/view',
-						'type' => 'guide',
-						'version' => '2.0',
-						'language' => 'en',
-						'section' => 'start-installation',
-						'#' => 'verifying-installation',
-					]) ?>.
-				</p>
-
-				<div class="row ptrem1">
-					<div class="col-md-3">
-					<p class="small">To install the <b>advanced</b> application template, run the following command:</p>
-					</div>
-					<div class="col-md-9">
-					<pre><code class="hljs bash language-bash">php composer.phar create-project yiisoft/yii2-app-advanced advanced</code></pre>
-					</div>
-				</div>
-
-				<p class="small">
-					When you have installed the advanced application template, you should check out its <a href="<?= Yii::getAlias('@web/extension/yiisoft/yii2-app-advanced/doc/guide') ?>">documentation</a>
-					to learn how to use it.
-				</p>
-
-				<h1 id="install-from-archive">Install from an Archive File</h1>
-
-				<p class="small">Download one of the following archive files, and then extract it to Web-accessible folder:</p>
-
-				<div class="row extensions">
-					<div class="col-md-6 col-sm-12 col-xs-12">
-						<a class="btn btn-lg btn-default btn-block download-btn" href="https://github.com/yiisoft/yii2/releases/download/<?= $latest ?>/yii-basic-app-<?= $latest ?>.tgz">
-						<img alt="tar gz" src="<?= Yii::getAlias('@web/image/tgz.svg')?>" />
-						<span>Yii 2 with basic application template</span></a>
-					</div>
-					<div class="col-md-6 col-sm-12 col-xs-12">
-						<a class="btn btn-lg btn-default btn-block download-btn" href="https://github.com/yiisoft/yii2/releases/download/<?= $latest ?>/yii-advanced-app-<?= $latest ?>.tgz">
-						<img alt="tar gz" src="<?= Yii::getAlias('@web/image/tgz.svg')?>" />
-						<span>Yii 2 with advanced application template</span></a>
-					</div>
-				</div>
-
-				<p class="small">
-					Afterward you may want to follow the
-					<?= Html::a('introduction in the definitive guide', [
-						'guide/view',
-						'type' => 'guide',
-						'version' => '2.0',
-						'language' => 'en',
-						'section' => 'start-installation',
-						'#' => 'verifying-installation',
-					]) ?> to get started, or
-					check out the <a href="<?= Yii::getAlias('@web/extension/yiisoft/yii2-app-advanced/doc/guide') ?>">documentation of the advanced application template</a>
-					to learn how to use it.
-				</p>
-
-				<h1 id="verify-integrity">Verifying Download Integrity</h1>
-
-				<p class="small">
-					Verify your download using the SHA256 hash from the
-					<a href="https://github.com/yiisoft/yii2/releases">GitHub releases page</a>
-					(copy the hash using the "copy" button):
-				</p>
-
-				<div class="row ptrem1">
-					<div class="col-md-3">
-						<p class="small">Linux/macOS:</p>
-					</div>
-					<div class="col-md-9">
-						<pre><code class="hljs bash language-bash">echo "EXPECTED_HASH  yii-basic-app-<?= $latest ?>.tgz" | sha256sum -c</code></pre>
-					</div>
-				</div>
-
-				<div class="row ptrem1">
-					<div class="col-md-3">
-						<p class="small">Windows:</p>
-					</div>
-					<div class="col-md-9">
-						<pre><code class="hljs powershell language-powershell">$expectedHash = "EXPECTED_HASH"
-$actualHash = (Get-FileHash yii-basic-app-<?= $latest ?>.tgz -Algorithm SHA256).Hash.ToLower()
+        <section class="download-subsection" id="verify-integrity">
+            <header>
+                <h3>Verify download integrity</h3>
+                <p>
+                    Copy the SHA256 hash from the <a href="https://github.com/yiisoft/yii2/releases">GitHub releases page</a>
+                    and verify the downloaded archive.
+                </p>
+            </header>
+            <div class="download-command-list">
+                <article>
+                    <h4>Linux and macOS</h4>
+                    <pre><code class="hljs bash language-bash">echo "EXPECTED_HASH  yii-basic-app-<?= $latestYii2 ?>.tgz" | sha256sum -c</code></pre>
+                </article>
+                <article>
+                    <h4>Windows</h4>
+                    <pre><code class="hljs powershell language-powershell">$expectedHash = "EXPECTED_HASH"
+$actualHash = (Get-FileHash yii-basic-app-<?= $latestYii2 ?>.tgz -Algorithm SHA256).Hash.ToLower()
 if ($expectedHash -eq $actualHash) { "✓ Verification successful" } else { "✗ Verification failed" }</code></pre>
-					</div>
-				</div>
+                </article>
+            </div>
+            <p>Replace <code>EXPECTED_HASH</code> with the actual hash. If verification fails, download the file again.</p>
+        </section>
 
-				<p class="small">
-					Replace EXPECTED_HASH with the actual hash. If verification fails, re-download the file.
-				</p>
+        <section class="download-subsection">
+            <header>
+                <h3>Upgrade from older versions</h3>
+                <p>For a Composer installation of Yii 2.0.x, run this command in the project root:</p>
+            </header>
+            <pre><code class="hljs bash language-bash">php composer.phar update yiisoft/yii2 yiisoft/yii2-composer bower-asset/jquery.inputmask</code></pre>
+            <p>
+                Upgrades may require application changes, so always read the
+                <?= Html::a('UPGRADE notes', "https://github.com/yiisoft/yii2/blob/$latestYii2/framework/UPGRADE.md") ?>.
+                They also contain more detailed Composer upgrade instructions.
+            </p>
+            <p>
+                For an archive installation, either migrate to Composer as described above or download the new release
+                and replace the contents of your application's <code>vendor/</code> directory.
+            </p>
+            <p>
+                Upgrading from Yii 1.1 is not trivial and requires rewriting a large part of the application. See
+                <?= Html::a('Upgrading from Yii 1.1', [
+                    'guide/view',
+                    'type' => 'guide',
+                    'version' => '2.0',
+                    'language' => 'en',
+                    'section' => 'intro-upgrade-from-v1',
+                ]) ?> for details.
+            </p>
+        </section>
 
-				<h1>Upgrade from Older Versions</h1>
+        <section class="download-subsection" id="offline-documentation">
+            <header>
+                <h3>Documentation</h3>
+                <p>
+                    Download the Guide and API documentation for offline use.
+                </p>
+            </header>
+            <ul class="download-languages">
+                <?php foreach (Yii::$app->params['guide.versions']['2.0'] as $locale => $language): ?>
+                    <?php
+                    $guide = new Guide('2.0', $locale);
+                    $downloads = [];
+                    foreach (['pdf' => 'PDF', 'tar.gz' => '.tar.gz', 'tar.bz2' => '.tar.bz2'] as $format => $label) {
+                        if ($guide->getDownloadFile($format) !== false) {
+                            $downloads[] = Html::a($label, [
+                                'guide/download',
+                                'version' => $guide->version,
+                                'language' => $guide->language,
+                                'format' => $format,
+                            ]);
+                        }
+                    }
+                    if ($downloads === []) {
+                        continue;
+                    }
+                    ?>
+                    <li>
+                        <img src="<?= Yii::getAlias("@web/image/download/$locale.png") ?>" alt="">
+                        <div><strong><?= Html::encode($language) ?></strong><span><?= implode('<span aria-hidden="true"> · </span>', $downloads) ?></span></div>
+                    </li>
+                <?php endforeach; ?>
+            </ul>
+        </section>
+    </div>
+    <?php endif; ?>
 
-				<p class="small">If you are upgrading from Yii 2.0.x with Composer, simply run the following commands in your project's root directory:</p>
+    <?php if ($selectedVersion === '1.1'): ?>
+    <div class="download-version" id="yii-1-1">
+        <div class="download-version__header">
+            <p>Latest release: <strong><?= Html::encode($latestYii1) ?></strong> · <?= Html::encode($versions['1.1'][$latestYii1]) ?></p>
+        </div>
 
-				<pre><code class="hljs bash language-bash">php composer.phar update yiisoft/yii2 yiisoft/yii2-composer bower-asset/jquery.inputmask</code></pre>
+        <div class="download-status">
+            <p>Yii 1.1 is currently in <?= Html::a('maintenance mode', ['news/view', 'id' => 90]) ?>.</p>
+            <dl>
+                <div><dt>Support and bug fixes</dt><dd>Until <?= Html::encode($versionInfo['1.1']['support-until']) ?></dd></div>
+                <div><dt>Security fixes and PHP 7/8 compatibility</dt><dd>Until <?= Html::encode($versionInfo['1.1']['security-until']) ?></dd></div>
+            </dl>
+        </div>
 
-				<p class="small">
-					When upgrading Yii there might be changes that require adjustment in you application code, so you should always check
-					the <?= Html::a('UPGRADE', "https://github.com/yiisoft/yii2/blob/$latest/framework/UPGRADE.md") ?> notes. These also contain
-					more detailed instructions on how to upgrade Yii with composer.
-				</p>
+        <nav class="download-reference-links" aria-label="Yii 1.1 downloads and release information">
+            <?= Html::a('Changelog', "https://github.com/yiisoft/yii/blob/$latestYii1/CHANGELOG") ?>
+            <?= Html::a('Upgrade instructions', "https://github.com/yiisoft/yii/blob/$latestYii1/UPGRADE") ?>
+            <a href="https://github.com/yiisoft/yii/releases">All Yii 1 releases</a>
+        </nav>
 
-				<p class="small">
-					If you installed Yii using an archive file, you can either follow the progress described above using Composer,
-					or download a new release file and replace the contents of the <code>vendor/</code> directory in your application
-					with the files from the new archive file.
-				</p>
+        <section class="download-subsection">
+            <header>
+                <h3>Install with Composer <span>Recommended</span></h3>
+                <p>Install Yii into the project vendor directory.</p>
+            </header>
+            <div class="download-command-list">
+                <article>
+                    <h4>Yii 1.1 package</h4>
+                    <pre><code class="hljs bash language-bash">composer require yiisoft/yii:^1.1</code></pre>
+                </article>
+            </div>
+            <p>See the <a href="https://packagist.org/packages/yiisoft/yii">package details on Packagist</a>.</p>
+        </section>
 
-				<p class="small">
-					Upgrading from Yii 1.1 is not trivial and requires rewriting a great part of your application code.
-					Please refer to the guide about
-					<?= Html::a('upgrading from Yii 1.1', [
-						'guide/view',
-						'type' => 'guide',
-						'version' => '2.0',
-						'language' => 'en',
-						'section' => 'intro-upgrade-from-v1',
-					]) ?> for more details.
-				</p>
+        <section class="download-subsection">
+            <header>
+                <h3>Other installation methods</h3>
+                <p>Download the stable release or obtain the development source.</p>
+            </header>
+            <nav class="download-reference-links download-reference-links--section" aria-label="Yii 1.1 source downloads">
+                <a href="<?= $versionInfo['1.1']['download-url'] ?>.tar.gz">Source tar.gz</a>
+                <a href="<?= $versionInfo['1.1']['download-url'] ?>.zip">Source zip</a>
+            </nav>
+            <div class="download-command-list">
+                <article>
+                    <h4>Git</h4>
+                    <pre><code class="hljs bash language-bash">git clone <?= Html::encode($versionInfo['1.1']['git-url']) ?> yii</code></pre>
+                </article>
+                <article>
+                    <h4>SVN</h4>
+                    <pre><code class="hljs bash language-bash">svn checkout <?= Html::encode($versionInfo['1.1']['svn-url']) ?> yii</code></pre>
+                </article>
+            </div>
+        </section>
 
-				<div class="heading-separator">
-					<h2 id="offline-documentation"><span>Offline Documentation</span></h2>
-				</div>
+        <section class="download-subsection" id="archive">
+            <header>
+                <h3>Older releases</h3>
+                <p>Yii 1.0 and other historical resources.</p>
+            </header>
+            <p><a href="https://github.com/yiisoft-contrib/museum">Browse the Yii museum</a>.</p>
+        </section>
 
-				<p class="small">
-					The Definitive Guide to Yii 2.0 and the API Documentation are available for offline browsing.
-					Below you will find the download packages including the HTML files of Guide and API Documentation
-					as well as links to the PDF versions of the Guide in different languages.
-				</p>
-
-				<ul class="offline-doc-v2">
-					<?php foreach(Yii::$app->params['guide.versions'][$version] as $locale => $language): ?>
-					<li>
-						<img src="<?= Yii::getAlias("@web/image/download/$locale.png") ?>" alt="<?= $locale ?> language"/>
-						<span><?= $language ?></span>
-						<span>
-						<?php
-							$guide = Guide::load($version, $locale);
-							if ($guide === null) {
-								continue;
-							}
-							$items = [];
-							if ($guide->getDownloadFile('pdf') !== false) {
-								echo Html::a(
-									'PDF',
-									['guide/download', 'version' => $guide->version, 'language' => $guide->language, 'format' => 'pdf']
-								) . ' - ';
-							}
-							if ($guide->getDownloadFile('tar.gz') !== false) {
-								echo Html::a(
-									'.tar.gz',
-									['guide/download', 'version' => $guide->version, 'language' => $guide->language, 'format' => 'tar.gz']
-								) . ' - ';
-							}
-							if ($guide->getDownloadFile('tar.bz2') !== false) {
-								echo Html::a(
-									'.tar.bz2',
-									['guide/download', 'version' => $guide->version, 'language' => $guide->language, 'format' => 'tar.bz2']
-								);
-							}
-						?>
-						</span>
-					</li>
-					<?php endforeach; ?>
-				</ul>
-
-				<span id="yii-1-1">&nbsp;</span>
-				<div class="heading-separator">
-					<h2><span>Yii 1.1</span></h2>
-				</div>
-				<?php $version = '1.1'; ?>
-
-                <p class="text-center medium">Yii 1.1 is currently in <a href="/news/90/update-on-yii-1-1-support-and-end-of-life/">maintenance mode</a>.</p>
-                <p class="text-center">Continued support and bug fixes for this version have been provided until <b><?= $versionInfo[$version]['support-until'] ?></b>.</p>
-                <p class="text-center">Security fixes and compatibility for PHP 7 and PHP 8 until <b><?= $versionInfo[$version]['security-until'] ?></b>.</p>
-
-                <ul>
-                    <li>Latest release is <strong><?= $latest = key($versions[$version]) ?></strong> (<strong><?= $versions[$version][$latest] ?></strong>)</li>
-                    <li><a href="<?= $versionInfo[$version]['download-url'] ?>.tar.gz">Source Code</a> (<a href="<?= $versionInfo['1.1']['download-url'] ?>.zip">.zip</a>)</li>
-                    <li><?= Html::a('Changes in this and older versions', "https://github.com/yiisoft/yii/blob/$latest/CHANGELOG") ?></li>
-                    <li><?= Html::a('Upgrade instructions', "https://github.com/yiisoft/yii/blob/$latest/UPGRADE") ?></li>
-                    <li><a href="<?= str_replace('yii-', 'yii-docs-', $versionInfo[$version]['download-url']) ?>.tar.gz">Offline Documentation</a>
-                        (<a href="<?= str_replace('yii-', 'yii-docs-', $versionInfo[$version]['download-url']) ?>.zip">.zip</a>)</li>
-                    <li><a href="https://github.com/yiisoft/yii/releases">List of all Yii 1.x releases</a></li>
-                </ul>
-
-				<p class="small">
-					You may obtain the latest development version of the Yii 1.1 code from the <?= Html::a('Github repository', $versionInfo[$version]['github-url']) ?> using git:
-				</p>
-				<p><code>git clone <?= $versionInfo[$version]['git-url'] ?> yii</code></p>
-				<p class="small">or via SVN using:</p>
-				<p><code>svn checkout <?= $versionInfo[$version]['svn-url'] ?> yii</code></p>
-
-                <p>The <a href="https://packagist.org/packages/yiisoft/yii">yiisoft/yii</a> composer package is available as well.</p>
-
-				<h3 class="text-center">Documentation</h3>
-
-				<ul class="offline-doc-v1">
-					<?php foreach(Yii::$app->params['guide.versions']['1.1'] as $locale => $language): ?>
-					<li>
-						<?= Html::a($language, ['/doc/guide/1.1/'.$locale]) ?>
-					</li>
-					<?php endforeach; ?>
-				</ul>
-
-
-				<span id="archive">&nbsp;</span>
-				<div class="heading-separator">
-					<h2><span>Archive</span></h2>
-				</div>
-
-				<p class="text-center">If you are looking for Yii 1.0 and other ancient resources, you may find them at the <a href="https://github.com/yiisoft-contrib/museum">museum</a>.</p>
-
-			</div>
-		</div>
-	</div>
-</div>
-
+        <section class="download-subsection">
+            <header>
+                <h3>Documentation</h3>
+                <p>Read online or download for offline use.</p>
+            </header>
+            <nav class="download-reference-links download-reference-links--section" aria-label="Yii 1.1 offline documentation">
+                <a href="<?= str_replace('yii-', 'yii-docs-', $versionInfo['1.1']['download-url']) ?>.tar.gz">Offline docs tar.gz</a>
+                <a href="<?= str_replace('yii-', 'yii-docs-', $versionInfo['1.1']['download-url']) ?>.zip">Offline docs zip</a>
+            </nav>
+            <ul class="download-guide-languages">
+                <?php foreach (Yii::$app->params['guide.versions']['1.1'] as $locale => $language): ?>
+                    <li><?= Html::a($language, ['guide/index', 'type' => 'guide', 'version' => '1.1', 'language' => $locale]) ?></li>
+                <?php endforeach; ?>
+            </ul>
+        </section>
+    </div>
+    <?php endif; ?>
+</main>

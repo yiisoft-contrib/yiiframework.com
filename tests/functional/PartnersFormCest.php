@@ -8,14 +8,15 @@ class PartnersFormCest
 
     public function openPartnersPage(\FunctionalTester $I)
     {
-        $I->see('Project Request Form');
+        $I->see('Tell us what you need');
+        $I->seeElement('.partners-form');
     }
 
     public function submitEmptyForm(\FunctionalTester $I)
     {
-        $I->submitForm('.content form', []);
+        $I->submitForm('.partners-form', []);
         $I->expectTo('see validations errors');
-        $I->see('Project Request Form');
+        $I->see('Tell us what you need');
         $I->see('Your Email cannot be blank');
         $I->see('Your Name cannot be blank');
         $I->see('Company cannot be blank');
@@ -27,7 +28,7 @@ class PartnersFormCest
 
     public function submitFormWithIncorrectEmail(\FunctionalTester $I)
     {
-        $I->submitForm('.content form', [
+        $I->submitForm('.partners-form', [
             'PartnersForm[name]' => 'tester.email',
             'PartnersForm[email]' => 'tester',
             'PartnersForm[company]' => 'Test Company',
@@ -49,7 +50,7 @@ class PartnersFormCest
 
     public function submitFormSuccessfully(\FunctionalTester $I)
     {
-        $I->submitForm('.content form', [
+        $I->submitForm('.partners-form', [
             'PartnersForm[name]' => 'tester@example.com',
             'PartnersForm[email]' => 'tester',
             'PartnersForm[company]' => 'Test Company',
@@ -59,7 +60,7 @@ class PartnersFormCest
             'PartnersForm[verifyCode]' => 'testme',
         ]);
         $I->seeEmailIsSent();
-        $I->seeElement('.content form');
-        $I->see('Thank you for contacting us. We will respond to you as soon as possible.');        
+        $I->dontSeeElement('.partners-form');
+        $I->see('Thank you for contacting us. We will respond as soon as possible.');
     }
 }

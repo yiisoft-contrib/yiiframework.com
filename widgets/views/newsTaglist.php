@@ -9,7 +9,7 @@ if (empty($tagEntries)) {
 ?>
 <h2><?= $this->context->news ? 'Tags' : 'Popular Tags' ?></h2>
 
-<ul>
+<ul class="news-tag-list">
 <?php
     $selectedTag = Yii::$app->request->get('tag');
     foreach($tagEntries as $date => $entry) {

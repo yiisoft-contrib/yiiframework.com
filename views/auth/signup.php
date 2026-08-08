@@ -2,9 +2,8 @@
 
 use app\models\SignupForm;
 use himiklab\yii2\recaptcha\ReCaptcha;
-use yii\helpers\Html;
 use yii\bootstrap\ActiveForm;
-use yii\helpers\Url;
+use yii\helpers\Html;
 
 /* @var $this yii\web\View */
 /* @var $form yii\bootstrap\ActiveForm */
@@ -14,42 +13,64 @@ $this->title = 'Sign Up';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 
-<div class="container login-container">
+<div class="container login-container login-page signup-page">
+    <main class="login-card">
+        <header class="login-card__header">
+            <h1>Join the Yii community</h1>
+            <p>
+                Already have an account?
+                <?= Html::a('Login', ['auth/login']) ?>
+            </p>
+        </header>
 
-    <div class="omb_login row">
+        <div class="login-card__layout">
+            <section class="login-card__account" aria-labelledby="create-account-title">
+                <h2 id="create-account-title">Create your account</h2>
 
-      <div class="col-md-4 col-md-offset-3">
+                <?php $form = ActiveForm::begin([
+                    'id' => 'signup-form',
+                    'options' => ['class' => 'login-form', 'autocomplete' => 'off'],
+                ]); ?>
 
-        <div class="omb_authTitle">
-            <h3><?= Html::encode($this->title) ?></h3>
-            <span>or</span>
-             <?= Html::a('Login', Url::to(['auth/login']),['class'=>'create-account']) ?>
+                <?= $form->field($model, 'username')->textInput([
+                    'class' => 'form-control',
+                    'autocomplete' => 'username',
+                ]) ?>
+
+                <?= $form->field($model, 'email')->textInput([
+                    'class' => 'form-control',
+                    'autocomplete' => 'email',
+                ]) ?>
+
+                <?= $form->field($model, 'password')->passwordInput([
+                    'class' => 'form-control',
+                    'autocomplete' => 'new-password',
+                ]) ?>
+
+                <?php if (Yii::$app->params['recaptcha.enabled']): ?>
+                    <div class="signup-page__captcha">
+                        <?= $form->field($model, 'reCaptcha')->widget(ReCaptcha::class)->label(false) ?>
+                    </div>
+                <?php endif; ?>
+
+                <?= Html::submitButton('Create account', ['class' => 'btn btn-primary login-form__submit']) ?>
+
+                <?php ActiveForm::end(); ?>
+            </section>
+
+            <section class="login-card__github" aria-labelledby="github-signup-title">
+                <span class="login-card__github-icon" aria-hidden="true">
+                    <i class="fa fa-github"></i>
+                </span>
+                <h2 id="github-signup-title">Continue with GitHub</h2>
+                <p>Create your Yii community profile using your GitHub account.</p>
+                <?= Html::a(
+                    '<i class="fa fa-github" aria-hidden="true"></i><span>Sign up with GitHub</span>',
+                    ['auth/auth', 'authclient' => 'github'],
+                    ['class' => 'btn login-card__github-button']
+                ) ?>
+                <p class="login-card__github-note">To connect GitHub to an existing account, log in with your username first.</p>
+            </section>
         </div>
-
-        <div class="row">
-          <div class="col-md-9">
-            <?php $form = ActiveForm::begin(['id' => 'signup-form', 'options' => ['class' => 'omb_loginForm', 'autocomplete' => 'off']]); ?>
-
-            <?= $form->field($model, 'username', ['inputOptions' => ['class'=>'login-control','placeholder' => $model->getAttributeLabel('username')]])->label(false) ?>
-
-            <?= $form->field($model, 'email', ['inputOptions' => ['class'=>'login-control','placeholder' => $model->getAttributeLabel('email')]])->label(false) ?>
-
-            <?= $form->field($model, 'password', ['inputOptions' => ['class'=>'login-control','placeholder' => $model->getAttributeLabel('password')]])->passwordInput()->label(false) ?>
-
-            <?php if (Yii::$app->params['recaptcha.enabled']): ?>
-            <?= $form->field($model, 'reCaptcha')->widget(ReCaptcha::class)->label(false) ?>
-            <?php endif ?>
-
-            <?= Html::submitButton('Create New Account', ['class' => 'btn btn-lg btn-block']) ?>
-
-            <?php ActiveForm::end(); ?>
-          </div>
-        </div>
-
-      </div>
-      <?= $this->render('partials/_githubLogin.php') ?>
-
-    </div>
-
+    </main>
 </div>
-

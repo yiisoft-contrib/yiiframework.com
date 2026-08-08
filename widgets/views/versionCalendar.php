@@ -26,7 +26,7 @@ use yii\helpers\Html; ?>
 	<style type="text/css">
 		<![CDATA[
 			text {
-				fill: #333;
+				fill: var(--release-calendar-text, #333);
 				font-family: "Fira Sans", "Source Sans Pro", Helvetica, Arial, sans-serif;
 				font-size: <?= (2 / 3) * $headerHeight; ?>px;
 			}
@@ -56,7 +56,7 @@ use yii\helpers\Html; ?>
             }
 
             g.future rect {
-                fill: #eee;
+				fill: var(--release-calendar-future, #eee);
             }
 
 			.branch-labels text {
@@ -73,7 +73,7 @@ use yii\helpers\Html; ?>
 				text-anchor: middle;
 			}
 			.years line {
-				stroke: black;
+				stroke: var(--release-calendar-grid, #333);
 			}
 			.years text {
 				text-anchor: middle;

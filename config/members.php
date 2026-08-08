@@ -21,7 +21,7 @@ return [
         'duty' => 'Founder and project lead',
         'photo' => '@web/image/team/qiangxue.jpg',
         'github' => 'qiangxue',
-        'twitter' => 'qiang_xue',
+        'x' => 'qiang_xue',
         'status' => TeamStatus::TEAM_STATUS_PAST,
     ],
     [
@@ -33,7 +33,7 @@ return [
         'duty' => 'Project lead',
         'photo' => '@web/image/team/samdark.jpg',
         'github' => 'samdark',
-        'twitter' => 'sam_dark',
+        'x' => 'sam_dark',
         'status' => TeamStatus::TEAM_STATUS_ACTIVE,
     ],
     [
@@ -45,7 +45,7 @@ return [
         'duty' => 'Community management<br>Yii 1.x development',
         'photo' => '@web/image/team/mdomba.jpg',
         'github' => 'mdomba',
-        'twitter' => 'mdomba',
+        'x' => 'mdomba',
         'status' => TeamStatus::TEAM_STATUS_PAST,
     ],
     [
@@ -57,7 +57,7 @@ return [
         'duty' => 'Core framework development',
         'photo' => '@web/image/team/cebe.png',
         'github' => 'cebe',
-        'twitter' => 'cebe_cc',
+        'x' => 'cebe_cc',
         'status' => TeamStatus::TEAM_STATUS_INACTIVE,
     ],
     [
@@ -69,7 +69,7 @@ return [
         'duty' => 'Core framework development',
         'photo' => '@web/image/team/klimov-paul.jpg',
         'github' => 'klimov-paul',
-        'twitter' => 'klimov_paul',
+        'x' => 'klimov_paul',
         'status' => TeamStatus::TEAM_STATUS_PAST,
     ],
     [
@@ -81,7 +81,7 @@ return [
         'duty' => 'Core framework development',
         'photo' => '@web/image/team/silverfire.jpg',
         'github' => 'SilverFire',
-        'twitter' => 'S1lverF1re',
+        'x' => 'S1lverF1re',
         'status' => TeamStatus::TEAM_STATUS_INACTIVE,
     ],
     [
@@ -93,7 +93,7 @@ return [
         'duty' => 'Core framework development',
         'photo' => '@web/image/team/tonydspaniard.jpg',
         'github' => 'tonydspaniard',
-        'twitter' => 'tonydspaniard',
+        'x' => 'tonydspaniard',
         'status' => TeamStatus::TEAM_STATUS_PAST,
     ],
     [
@@ -236,7 +236,7 @@ return [
         'duty' => 'Yii 3.0 development',
         'photo' => '@web/image/team/hiqsol.jpg',
         'github' => 'hiqsol',
-        'twitter' => 'hiqsol',
+        'x' => 'hiqsol',
         'status' => TeamStatus::TEAM_STATUS_INACTIVE,
     ],
     [
@@ -248,7 +248,7 @@ return [
         'duty' => 'Yii 3.0 development',
         'photo' => '@web/image/team/machour.jpg',
         'github' => 'machour',
-        'twitter' => 'mac_hour',
+        'x' => 'mac_hour',
         'status' => TeamStatus::TEAM_STATUS_PAST,
     ],
     [
@@ -260,7 +260,7 @@ return [
         'duty' => 'Yii 3.0 development',
         'photo' => '@web/image/team/terabytesoftw.jpg',
         'github' => 'terabytesoftw',
-        'twitter' => 'TecnoTerabyte',
+        'x' => 'TecnoTerabyte',
         'status' => TeamStatus::TEAM_STATUS_ACTIVE,
     ],
     [
@@ -283,7 +283,7 @@ return [
         'duty' => 'Yii 3.0 development',
         'photo' => '@web/image/team/rustamwin.jpg',
         'github' => 'rustamwin',
-        'twitter' => 'rustamwin',
+        'x' => 'rustamwin',
         'status' => TeamStatus::TEAM_STATUS_ACTIVE,
     ],
     [
@@ -306,7 +306,7 @@ return [
         'duty' => 'Yii 3.0 development',
         'photo' => '@web/image/team/roxblnfk.jpg',
         'github' => 'roxblnfk',
-        'twitter' => 'roxblnfk',
+        'x' => 'roxblnfk',
         'status' => TeamStatus::TEAM_STATUS_ACTIVE,
     ],
     [
@@ -351,7 +351,7 @@ return [
         'duty' => 'Yii 2.0 issues',
         'photo' => '@web/image/team/bizley.jpg',
         'github' => 'bizley',
-        'twitter' => 'Bizley_',
+        'x' => 'Bizley_',
         'status' => TeamStatus::TEAM_STATUS_ACTIVE,
     ],
     [
@@ -385,7 +385,7 @@ return [
         'duty' => 'Yii 3.0 development',
         'photo' => '@web/image/team/devanych.png',
         'github' => 'devanych',
-        'twitter' => 'EvgeniyZyubin',
+        'x' => 'EvgeniyZyubin',
         'status' => TeamStatus::TEAM_STATUS_INACTIVE,
     ],
     [
@@ -397,7 +397,7 @@ return [
         'duty' => 'Yii 3.0 development',
         'photo' => '@web/image/team/darkdef.jpg',
         'github' => 'darkdef',
-        'twitter' => 'DarkDef_PR',
+        'x' => 'DarkDef_PR',
         'status' => TeamStatus::TEAM_STATUS_ACTIVE,
     ],
     [

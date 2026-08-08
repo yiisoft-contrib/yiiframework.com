@@ -15,19 +15,17 @@ $this->title = $model->title;
 ?>
 <div class="container guide-view lang-en" xmlns="http://www.w3.org/1999/xhtml">
     <div class="row">
-        <div class="col-sm-3 col-md-2 col-lg-2">
-            <?= $this->render('_sidebar', [
-                'category' => $model->category_id,
-            ]) ?>
-        </div>
-
         <div class="col-sm-9 col-md-10 col-lg-10" role="main">
+            <div class="content wiki-row wiki-article">
+                <h2 class="title"><?= Html::a(Html::encode($model->title), ['wiki/view', 'id' => $model->id, 'name' => $model->slug]) ?></h2>
 
-            <div class="row">
-                <div class="col-md-12 col-lg-9">
-                    <div class="content wiki-row">
-                        <h2 class="title"><?= Html::a(Html::encode($model->title), ['wiki/view', 'id' => $model->id, 'name' => $model->slug]) ?></h2>
-                        <div class="text">
+                <?= $this->render('_metadata.php', [
+                    'model' => $model,
+                    'extended' => true,
+                    'inline' => true,
+                ]) ?>
+
+                <div class="text">
 
                             <?php if ($model->yii_version === null && $revision === null) {
                                 echo '<blockquote class="note"><p>'
@@ -73,42 +71,37 @@ $this->title = $model->title;
 
                             } ?>
 
-                            <?= $model->contentHtml ?>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-12 col-lg-3">
-                    <?= $this->render('_metadata.php', ['model' => $model, 'extended' => true]) ?>
-
-                    <?= Html::a('Update Article', ['wiki/update', 'id' => $model->id])?>
-
-                    <?php if (Yii::$app->user->can(UserPermissions::PERMISSION_MANAGE_WIKI)): ?>
-                        <br>
-                        <?= Html::a('View as Admin', ['wiki-admin/view', 'id' => $model->id]) ?>
-                    <?php endif; ?>
-
-                    <h3>Revisions</h3>
-
-                    <?= $this->render('_revisions.php', ['model' => $model]) ?>
-
-
-                    <?php $related = $model->getRelatedWikis() ?>
-                    <?php if (!empty($related)): ?>
-
-                        <h3>Related Articles</h3>
-
-                        <ul>
-                            <?php foreach($related as $wiki) {
-                                echo "<li>" . Html::a(Html::encode($wiki->getLinkTitle()), $wiki->getUrl()) . '</li>';
-                            } ?>
-                        </ul>
-                    <?php endif; ?>
-
+                    <?= $model->contentHtml ?>
                 </div>
             </div>
-
-
         </div>
+
+        <aside class="col-sm-3 col-md-2 col-lg-2 wiki-sidebar wiki-article-sidebar">
+            <div class="wiki-article-sidebar__tools">
+                <?= Html::a(
+                    'Update Article',
+                    ['wiki/update', 'id' => $model->id],
+                    ['class' => 'btn btn-primary']
+                ) ?>
+
+                <?php if (Yii::$app->user->can(UserPermissions::PERMISSION_MANAGE_WIKI)): ?>
+                    <?= Html::a('View as Admin', ['wiki-admin/view', 'id' => $model->id]) ?>
+                <?php endif; ?>
+            </div>
+
+            <h3 class="wiki-side-title">Revisions</h3>
+            <?= $this->render('_revisions.php', ['model' => $model]) ?>
+
+            <?php $related = $model->getRelatedWikis() ?>
+            <?php if (!empty($related)): ?>
+                <h3 class="wiki-side-title">Related Articles</h3>
+                <ul class="wiki-side-menu">
+                    <?php foreach ($related as $wiki): ?>
+                        <li><?= Html::a(Html::encode($wiki->getLinkTitle()), $wiki->getUrl()) ?></li>
+                    <?php endforeach; ?>
+                </ul>
+            <?php endif; ?>
+        </aside>
     </div>
 </div>
 <div class="comments-wrapper">

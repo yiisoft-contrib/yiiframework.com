@@ -1,173 +1,75 @@
 <?php
+
 use yii\helpers\Html;
-use yii\helpers\HtmlPurifier;
 
 /* @var $this yii\web\View */
 /* @var $activeMembers array */
 /* @var $pastMembers array */
 /* @var $inactiveMembers array */
-/* @var $contributors array */
+
 $this->title = 'Team';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="container site-header">
-    <div class="row">
-        <div class="col-md-6">
-            <h1>Team</h1>
-            <h2>Current & Past Team Members</h2>
-        </div>
-        <div class="col-md-6">
-            <img class="background" src="<?= Yii::getAlias('@web/image/team/team.svg')?>" alt="">
-        </div>
-    </div>
-</div>
 
-<div class="container">
-        <div class="content">
-            <div class="col-md-12">
-                <div class="heading-separator">
-                    <h2><span>Current Team</span></h2>
-                </div>
+<main class="container content team-page">
+    <header class="team-page__intro">
+        <h1>Meet the team</h1>
+        <p>Yii is developed and maintained by volunteers from around the world. Their experience and long-term care keep the framework moving forward.</p>
+    </header>
 
-                <?php foreach($activeMembers as $row): ?>
-                    <div class="row">
-                        <?php foreach($row as $i=>$member):?>
-                            <div class="col-sm-4 col-md-2 person-card <?= ($i==0 && count($row)<6)?'col-md-offset-'.(6-count($row)):'' ?>">
-                                    <div class="avatar">
-                                        <img src="<?= Html::encode(Yii::getAlias($member['photo'] ?? '@web/image/team/noimage.png')) ?>" class="img-responsive" alt="" />
-                                    </div>
-                                    <div class="team-content">
-                                        <ul class="links-inline links-circle">
-                                            <?php
-
-                                            if (isset($member['twitter'])) {
-                                                echo '<li class="twitter">' . Html::a('<i class="fa fa-twitter">
-                                                    </i>', 'https://x.com/' . $member['twitter'], ['title' => $member['name'].' on Twitter']) . '</li>';
-                                            }
-                                            if (isset($member['github'])) {
-                                                echo '<li class="github">' . Html::a('<i class="fa fa-github">
-                                                    </i>', 'https://github.com/' . $member['github'], ['title' => $member['name'].' on Github']) . '</li>';
-                                            }
-                                            ?>
-                                        </ul>
-                                        <h4><?= Html::encode($member['name'])?></h4>
-                                        <p class="duty"><?= HtmlPurifier::process($member['duty']) ?></p>
-                                        <?php /* <p class="location"> <?= Html::encode($member['location'])?></p> */ ?>
-                                        <p class="period"><?= Html::encode($member['period']) ?></p>
-
-
-                                    </div>
-                            </div>
-                        <?php endforeach ?>
-                    </div>
-                <?php endforeach ?>
-
-                <div class="heading-separator">
-                    <h2><span>Inactive Team Members</span></h2>
-                </div>
-
-                <?php foreach($inactiveMembers as $row): ?>
-                <div class="row">
-                    <?php foreach($row as $i=>$member):?>
-                        <div class="col-sm-4 col-md-2 person-card <?= ($i==0 && count($row)<6)?'col-md-offset-'.(6-count($row)):'' ?>">
-                            <div class="team-card">
-                                <div class="avatar">
-                                    <img src="<?= Html::encode(Yii::getAlias($member['photo'])) ?>" class="img-responsive" alt="" />
-                                </div>
-                                <div class="team-content">
-                                    <ul class="links-inline links-circle">
-                                            <?php
-
-                                            if (isset($member['twitter'])) {
-                                                echo '<li class="twitter">' . Html::a('<i class="fa fa-twitter">
-                                                    </i>', 'https://x.com/' . $member['twitter'], ['title' => $member['name'].' on Twitter']) . '</li>';
-                                            }
-                                            if (isset($member['github'])) {
-                                                echo '<li class="github">' . Html::a('<i class="fa fa-github">
-                                                    </i>', 'https://github.com/' . $member['github'], ['title' => $member['name'].' on Github']) . '</li>';
-                                            }
-                                            ?>
-                                        </ul>
-                                        <h4><?= Html::encode($member['name'])?></h4>
-                                        <p class="duty"><?= HtmlPurifier::process($member['duty']) ?></p>
-                                        <?php /* <p class="location"> <?= Html::encode($member['location'])?></p> */ ?>
-                                        <p class="period"><?= Html::encode($member['period']) ?></p>
-                                </div>
-                            </div>
-                        </div>
-                    <?php endforeach ?>
-                </div>
-                <?php endforeach ?>
-
-
-                <div class="heading-separator">
-                    <h2><span>Past Team Members</span></h2>
-                </div>
-
-                <?php foreach($pastMembers as $row): ?>
-                <div class="row">
-                    <?php foreach($row as $i=>$member):?>
-                        <div class="col-sm-4 col-md-2 person-card <?= ($i==0 && count($row)<6)?'col-md-offset-'.(6-count($row)):'' ?>">
-                            <div class="team-card">
-                                <div class="avatar">
-                                    <img src="<?= Html::encode(Yii::getAlias($member['photo'])) ?>" class="img-responsive" alt="" />
-                                </div>
-                                <div class="team-content">
-                                    <ul class="links-inline links-circle">
-                                            <?php
-
-                                            if (isset($member['twitter'])) {
-                                                echo '<li class="twitter">' . Html::a('<i class="fa fa-twitter">
-                                                    </i>', 'https://x.com/' . $member['twitter'], ['title' => $member['name'].' on Twitter']) . '</li>';
-                                            }
-                                            if (isset($member['github'])) {
-                                                echo '<li class="github">' . Html::a('<i class="fa fa-github">
-                                                    </i>', 'https://github.com/' . $member['github'], ['title' => $member['name'].' on Github']) . '</li>';
-                                            }
-                                            ?>
-                                        </ul>
-                                        <h4><?= Html::encode($member['name'])?></h4>
-                                        <p class="duty"><?= HtmlPurifier::process($member['duty']) ?></p>
-                                        <?php /* <p class="location"> <?= Html::encode($member['location'])?></p> */ ?>
-                                        <p class="period"><?= Html::encode($member['period']) ?></p>
-                                </div>
-                            </div>
-                        </div>
-                    <?php endforeach ?>
-                </div>
-                <?php endforeach ?>
-
-
-                <div class="heading-separator">
-                    <h2><span>Contributors</span></h2>
-                </div>
-
-                <p>
-                    There is a huge community of <a href="https://github.com/yiisoft/yii2/graphs/contributors">contributors</a> working on the Yii Framework code.
-                    Without their help it would not be possible to provide and maintain the huge amount of functionality,
-                    documentation, and translations.
-                </p>
-
-                <?php if ($contributors === false): ?>
-                <div class="alert alert-warning">
-                    <p>
-                        GitHub.com seems to be unavailable. Thus, we currently can not show the list of contributors here. Please try again later.
-                    </p>
-                </div>
-                <?php else:  ?>
-                <p>
-                    The following list shows all the people who have contributed to the <a href="https://github.com/yiisoft/yii2">yiisoft/yii2</a> repository on GitHub.
-                    If you are one of them, thank you! If not, <?= Html::a('become a part of it', ['site/contribute']) ?>!
-                </p>
-
-                <div id="contributors">
-                    <?php foreach ($contributors as $contributor) {
-                        echo Html::a(Html::img('', ['style' => 'display:inline-block;', 'class' => 'icon-'. $contributor['login']]), $contributor['html_url'], ['title' => $contributor['login'] . ' on Github']);
-                    } ?>
-                </div>
-                <?php endif; ?>
-
-                <p>&nbsp;</p>
+    <section class="team-section" aria-labelledby="current-team-title">
+        <header class="team-section__header">
+            <div>
+                <p class="team-eyebrow">Maintainers</p>
+                <h2 id="current-team-title">Current team</h2>
             </div>
+            <p>Active maintainers guide the project, develop the frameworks and extensions, and support Yii’s infrastructure and community.</p>
+        </header>
+
+        <?= $this->render('_teamMembers', [
+            'memberRows' => $activeMembers,
+            'modifier' => 'team-members--active',
+        ]) ?>
+    </section>
+
+    <section class="team-section" aria-labelledby="inactive-team-title">
+        <header class="team-section__header">
+            <div>
+                <p class="team-eyebrow">Extended team</p>
+                <h2 id="inactive-team-title">Inactive members</h2>
+            </div>
+            <p>Team members who are not currently active but remain part of Yii’s story and expertise.</p>
+        </header>
+
+        <?= $this->render('_teamMembers', [
+            'memberRows' => $inactiveMembers,
+            'modifier' => 'team-members--inactive',
+        ]) ?>
+    </section>
+
+    <section class="team-section" aria-labelledby="past-team-title">
+        <header class="team-section__header">
+            <div>
+                <p class="team-eyebrow">With gratitude</p>
+                <h2 id="past-team-title">Past members</h2>
+            </div>
+            <p>Former team members whose work helped shape Yii and the community around it.</p>
+        </header>
+
+        <?= $this->render('_teamMembers', [
+            'memberRows' => $pastMembers,
+            'modifier' => 'team-members--past',
+        ]) ?>
+    </section>
+
+    <section class="team-contributors" aria-labelledby="contributors-title">
+        <div>
+            <p class="team-eyebrow">Community</p>
+            <h2 id="contributors-title">Built by many</h2>
         </div>
-</div>
+        <div>
+            <p>Yii grows through contributions to code, tests, documentation, translations, design, and reviews. Every focused contribution makes the framework better for everyone.</p>
+            <?= Html::a('Learn how to contribute', ['site/contribute'], ['class' => 'btn btn-primary']) ?>
+        </div>
+    </section>
+</main>

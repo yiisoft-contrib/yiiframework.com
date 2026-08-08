@@ -11,15 +11,27 @@ use app\models\GuideSection;
 use app\widgets\SearchForm;
 use yii\helpers\Html;
 
-$this->title = 'Not Found (#404)';
+$this->title = 'Page not found';
 ?>
-<?= $this->render('//guide/partials/common/_heading.php', ['title' => $this->title]) ?>
-<div class="container">
-    <div class="site-error content">
+<main class="container content guide-error-page">
+    <div class="guide-error-page__hero">
+        <div class="guide-error-page__status" aria-hidden="true">404</div>
+        <div class="guide-error-page__intro">
+            <h1>Not in this guide.</h1>
+            <p>The page may have moved, or it may belong to another version or translation.</p>
 
+            <?php if (!isset($extension)): // TODO search currently does not work for extensions ?>
+                <div class="guide-error-page__search">
+                    <?= SearchForm::widget([
+                        'type' => 'guide',
+                        'placeholder' => 'Search the guide…',
+                    ]) ?>
+                </div>
+            <?php endif; ?>
+        </div>
+    </div>
 
-        <div class="alert alert-warning">
-            <p><strong>Sorry, we could not find this page in the guide.</strong></p>
+    <div class="guide-error-page__recovery">
 
             <?php if (isset($section)):
 
@@ -32,12 +44,13 @@ $this->title = 'Not Found (#404)';
                     $alternatives = (new Guide('2.0', 'en'))->findSectionInOtherLanguages($section);
                 }
                 if (!empty($alternatives)): ?>
-
-                    <p>A page with this name exists in the following languages and versions:</p>
-
-                    <ul>
+                    <section class="guide-error-page__section">
+                    <h2>This page exists elsewhere</h2>
+                    <p>Open it in another available version or language.</p>
+                    <ul class="guide-error-page__versions">
                     <?php foreach($alternatives as $oversion => $altSections) {
-                        echo "<li>Version $oversion:<br>";
+                        $links = [];
+                        echo '<li><strong>Version ' . Html::encode($oversion) . '</strong><div>';
                         foreach($altSections as $altSection) {
                             if (isset($extensionName, $extensionVendor)) {
                                 $url = ['guide/extension-view', 'section' => $altSection->name, 'version' => $altSection->guide->version, 'language' => $altSection->guide->language, 'name' => $extensionName, 'vendorName' => $extensionVendor];
@@ -53,16 +66,24 @@ $this->title = 'Not Found (#404)';
                         }
                         ksort($links);
                         echo implode(', ', $links);
-                        echo "</li>";
+                        echo '</div></li>';
                     }
                     ?>
                     </ul>
-
+                    </section>
                 <?php endif; ?>
             <?php endif; ?>
 
-            <p>The guide is available in the following languages and versions:</p>
-            <ul>
+            <section class="guide-error-page__section">
+            <h2>Choose another guide</h2>
+            <p>Browse every available version and translation.</p>
+            <ul class="guide-error-page__versions">
+            <?php if (!isset($extension)): ?>
+                <li>
+                    <strong>Version 3.0</strong>
+                    <div><?= Html::a('English', 'https://yiisoft.github.io/docs/guide/', ['target' => '_blank', 'rel' => 'noopener noreferrer']) ?></div>
+                </li>
+            <?php endif; ?>
             <?php
                 if (isset($extension)) {
                     $versionOptions = Guide::getExtensionOptions($extension);
@@ -77,7 +98,7 @@ $this->title = 'Not Found (#404)';
                 krsort($versionOptions, SORT_NATURAL);
 
                 foreach($versionOptions as $oversion => $languages) {
-                    echo "<li>Version $oversion:<br>";
+                    echo '<li><strong>Version ' . Html::encode($oversion) . '</strong><div>';
 
                     $links = [];
                     foreach($languages as $olanguage) {
@@ -95,24 +116,10 @@ $this->title = 'Not Found (#404)';
                     }
                     ksort($links);
                     echo implode(', ', $links);
-                    echo "</li>";
+                    echo '</div></li>';
                 }
             ?>
             </ul>
-
-            <?php if (!isset($extension)): // TODO search currently does not work for extensions
-             ?>
-
-            <p>You may also try searching for a guide page:</p>
-
-            <?= SearchForm::widget([
-                'type' => 'guide',
-                'placeholder' => 'Search the Guide…',
-            ]) ?>
-
-            <?php endif; ?>
-
-        </div>
-
+            </section>
     </div>
-</div>
+</main>

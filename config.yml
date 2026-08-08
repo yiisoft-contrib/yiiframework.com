@@ -22,7 +22,6 @@ PATHS:
   # Paths to Sass libraries, which can then be loaded with @import
   sass:
     - "vendor/bower-asset/bootstrap-sass/assets/stylesheets"
-    - "vendor/bower-asset/glidejs/src/sass"
     - "vendor/bower-asset/bootstrap-social"
     - "vendor/scrivo/highlight.php"
     - "vendor/bower-asset/font-awesome/scss"
@@ -37,7 +36,6 @@ PATHS:
     - "vendor/yiisoft/yii2/assets/yii.validation.js"
     - "vendor/yiisoft/yii2/assets/yii.activeForm.js"
     - "vendor/yiisoft/yii2-authclient/src/assets/authchoice.js"
-    - "vendor/bower-asset/glidejs/dist/glide.js"
     - "assets/src/js/polyfill.js"
     - "assets/src/js/custom.js"
     - "assets/src/js/search.js"

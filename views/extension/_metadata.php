@@ -18,17 +18,19 @@ use yii\helpers\Html;
             'class' => 'fa fa-download',
             'aria-hidden' => 'true',
         ]) ?>
-        <span class="star-count"><?= Yii::$app->formatter->asInteger($model->download_count) ?></span> downloads
+        <span class="star-count"><?= Yii::$app->formatter->asInteger($model->download_count) ?></span>
     </div>
 
     <div class="version"><span>Yii Version:</span> <?= empty($model->yii_version) ? 'Unknown' : Html::a(Html::encode($model->yii_version), ['extension/index', 'version' => $model->yii_version]) ?></div>
     <div class="people"><span>License:</span> <?= $model->getLicenseLink() ?></div>
 
     <div class="group"><span>Category:</span> <?= Html::a(Html::encode($model->category->name), ['extension/index', 'category' => $model->category_id]) ?></div>
-    <div class="tags"><span>Tags:</span> <?= ExtensionTaglist::widget(['extension' => $model]) ?></div>
+    <div class="tags"><?= ExtensionTaglist::widget(['extension' => $model]) ?></div>
     <?php if ($extended): ?>
         <div class="people"><span>Developed by:</span> <?= $model->getOwnerLink() ?></div>
-        <div class="dates"><span>Created on:</span> <?= Yii::$app->formatter->asDate($model->created_at) ?></div>
-        <div class="dates"><span>Last updated:</span> <?= Yii::$app->formatter->asRelativeTime($model->updated_at) ?></div>
+        <div class="dates"><span>Created:</span> <?= Yii::$app->formatter->asDate($model->created_at) ?></div>
+        <?php if ($model->updated_at): ?>
+            <div class="dates"><span>Updated:</span> <?= Yii::$app->formatter->asRelativeTime($model->updated_at) ?></div>
+        <?php endif; ?>
     <?php endif; ?>
 </div>

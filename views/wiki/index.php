@@ -1,11 +1,8 @@
 <?php
 
-use app\models\search\SearchActiveRecord;
 use app\models\WikiCategory;
 use app\models\WikiTag;
-use app\widgets\SearchForm;
 use yii\data\ActiveDataProvider;
-use yii\helpers\Html;
 use yii\widgets\ListView;
 
 /** @var $dataProvider ActiveDataProvider */
@@ -31,60 +28,22 @@ $this->endBlock();
 ?>
 <div class="container guide-view lang-en" xmlns="http://www.w3.org/1999/xhtml">
     <div class="row">
-        <div class="col-sm-3 col-md-2 col-lg-2">
+        <div class="col-sm-9 col-md-10 col-lg-10" role="main">
+            <?= ListView::widget([
+                'dataProvider' => $dataProvider,
+                'itemView' => '_view',
+                'itemOptions' => ['class' => 'col-xs-12 wiki-list-column'],
+                'layout' => "{summary}\n<div class=\"row wiki-list-grid\">{items}</div>\n{pager}",
+            ]) ?>
+        </div>
+
+        <div class="col-sm-3 col-md-2 col-lg-2 wiki-sidebar">
             <?= $this->render('_sidebar', [
                 'category' => $category->id ?? null,
                 'tag' => $tag,
                 'sort' => $dataProvider->sort,
                 'version' => $version,
             ]) ?>
-        </div>
-
-        <div class="col-sm-9 col-md-10 col-lg-10" role="main">
-
-            <h1>Wiki articles <small><?php
-                if (!empty($category)) {
-                    echo " in category " . Html::encode($category->name);
-                }
-                if ($tag !== null) {
-                    echo ' tagged with "' . Html::encode($tag->name) . '"';
-                }
-                ?></small></h1>
-
-	        <?php if (empty($category) && empty($tag)) {
-	        	echo SearchForm::widget([
-			        'type' => SearchActiveRecord::SEARCH_WIKI,
-                    'version' => $version ?? '2.0',
-                    'placeholder' => 'Search Wiki…',
-                ]);
-			} ?>
-
-            <?= ListView::widget([
-                'dataProvider' => $dataProvider,
-                'itemView' => '_view',
-            ]) ?>
-
-<!--            <nav class="wiki-pagination-holder">
-              <ul class="pagination pagination-lg wiki-pagination">
-                <li class="prev disabled">
-                    <span><i class="fa fa-chevron-left" aria-hidden="true"></i></span>
-                </li>
-                <li class="active"><a href="#">1</a></li>
-                <li><a href="#">2</a></li>
-                <li><a href="#">3</a></li>
-                <li><a href="#">4</a></li>
-                <li><a href="#">5</a></li>
-                <li><a href="#">6</a></li>
-                <li><a href="#">7</a></li>
-                <li><a href="#">8</a></li>
-                <li><a href="#">9</a></li>
-                <li><a href="#">10</a></li>
-                <li class="next">
-                    <a href="#"><i class="fa fa-chevron-right" aria-hidden="true"></i></a>
-                </li>
-              </ul>
-            </nav>-->
-
         </div>
     </div>
 </div>

@@ -1,4 +1,5 @@
 <?php
+
 use yii\bootstrap\ActiveForm;
 use yii\captcha\Captcha;
 use yii\helpers\Html;
@@ -10,98 +11,110 @@ $this->title = 'Find a development partner';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 
-<div class="container site-header">
-    <div class="row">
-        <div class="col-md-6">
-            <h1 class="">Need the project done?</h1>
-            <h2>We'll help you find the right people!</h2>
+<main class="container partners-page">
+    <header class="partners-hero">
+        <div class="partners-hero__content">
+            <h1>Build your Yii project with the right team</h1>
+            <p class="partners-hero__lead">From new products to complex upgrades and long-term maintenance, we’ll help connect you with experienced Yii developers who fit the work.</p>
+            <div class="partners-hero__actions">
+                <a class="btn btn-primary" href="#project-request-title">Tell us about your project</a>
+                <span>No obligation. Start with a project brief.</span>
+            </div>
         </div>
-        <div class="col-md-6">
-            <img class="background" src="<?= Yii::getAlias('@web/image/partners/partners.svg')?>" alt="" style="margin-top: 10rem">
-        </div>
-    </div>
-</div>
+    </header>
 
-<div class="container">
-    <div class="content">
-        <div class="row">
-            <div class="col-md-12">
-                <?php if (Yii::$app->session->hasFlash('partnersFormSubmitted')): ?>
-                    <div class="alert alert-success">
-                        Thank you for contacting us. We will respond to you as soon as possible.
+    <ul class="partners-benefits" aria-label="Why find a partner through Yii">
+        <li><strong>Yii expertise</strong><span>Developers who understand the framework and its ecosystem.</span></li>
+        <li><strong>Practical matching</strong><span>Your scope is considered before an introduction is made.</span></li>
+        <li><strong>Flexible engagement</strong><span>Suitable for focused fixes, upgrades, or complete projects.</span></li>
+    </ul>
+
+    <section class="partners-request" aria-labelledby="project-request-title">
+        <div class="partners-request__intro">
+            <h2 id="project-request-title">Tell us what you need</h2>
+            <p>
+                Share the essentials below. A Yii team member may take on the work independently or introduce you
+                to a trusted development partner with relevant experience.
+            </p>
+        </div>
+
+        <?php if (Yii::$app->session->hasFlash('partnersFormSubmitted')): ?>
+            <div class="alert alert-success partners-request__success">
+                Thank you for contacting us. We will respond as soon as possible.
+            </div>
+        <?php else: ?>
+            <div class="partners-request__layout">
+                <div class="partners-request__form">
+                    <?php $form = ActiveForm::begin(['options' => ['class' => 'partners-form']]) ?>
+
+                    <?= $form->field($model, 'email')->textInput([
+                        'autocomplete' => 'name',
+                        'placeholder' => 'Your name',
+                    ]) ?>
+
+                    <?= $form->field($model, 'name')->textInput([
+                        'autocomplete' => 'email',
+                        'placeholder' => 'you@example.com',
+                    ]) ?>
+
+                    <?= $form->field($model, 'company')->textInput([
+                        'autocomplete' => 'organization',
+                        'placeholder' => 'Company or organization',
+                    ]) ?>
+
+                    <?= $form->field($model, 'body')->textarea([
+                        'rows' => 8,
+                        'placeholder' => 'Describe the project, its goals, scope, and technical requirements.',
+                    ]) ?>
+
+                    <?= $form->field($model, 'budget')->textInput([
+                        'placeholder' => 'Estimated budget and currency',
+                    ]) ?>
+
+                    <?= $form->field($model, 'when')->textInput([
+                        'placeholder' => 'Preferred start date and deadline',
+                    ]) ?>
+
+                    <?= $form->field($model, 'verifyCode')->widget(Captcha::class, [
+                        'template' => '<div class="partners-captcha">{image}{input}</div>',
+                        'options' => [
+                            'class' => 'form-control',
+                            'placeholder' => 'Enter the verification code',
+                            'autocomplete' => 'off',
+                        ],
+                    ]) ?>
+
+                    <div class="partners-form__submit">
+                        <?= Html::submitButton('Find the right partner', [
+                            'class' => 'btn btn-primary',
+                            'name' => 'contact-button',
+                        ]) ?>
+                        <span>We’ll review your brief and follow up about the best next step.</span>
                     </div>
-                <?php else: ?>
-                    <p>Please use the project request form to send us details about your project.</p>
 
-                    <p>Note that Yii is a non-commercial collective so either team members will take the project
-                       as individuals or forward it to one of the trusted partners.</p>
-                <?php endif ?>
-
-                <div class="heading-separator">
-                    <h2><span>Project Request Form</span></h2>
+                    <?php ActiveForm::end() ?>
                 </div>
+
+                <aside class="partners-request__tips">
+                    <div class="partners-next-steps">
+                        <h3>What happens next</h3>
+                        <ol>
+                            <li><span>1</span><div><strong>We review your brief</strong><p>We look at the scope, Yii version, timing, and budget.</p></div></li>
+                            <li><span>2</span><div><strong>We identify a fit</strong><p>A team member or trusted partner is selected for the work.</p></div></li>
+                            <li><span>3</span><div><strong>You discuss the project</strong><p>You agree on the approach and terms directly with them.</p></div></li>
+                        </ol>
+                    </div>
+                    <div class="partners-request__checklist">
+                        <h3>A useful brief includes</h3>
+                        <ul>
+                            <li>Goals and required features</li>
+                            <li>Current stack and Yii version</li>
+                            <li>Budget, timing, and deadline</li>
+                        </ul>
+                        <p>Not sure yet? Enter “N/A” and we’ll start from there.</p>
+                    </div>
+                </aside>
             </div>
-
-            <div class="col-md-9">
-                <?php $form = ActiveForm::begin() ?>
-                <?= $form->field($model, 'name', [
-                    'inputOptions' => [
-                        'placeholder' => $model->getAttributeLabel('name'),
-                        'aria-label' => $model->getAttributeLabel('name'),
-                    ]
-                ])->label(false) ?>
-
-                <?= $form->field($model, 'email', [
-                    'inputOptions' => [
-                        'placeholder' => $model->getAttributeLabel('email'),
-                        'aria-label' => $model->getAttributeLabel('email'),
-                    ]
-                ])->label(false) ?>
-
-                <?= $form->field($model, 'company', [
-                    'inputOptions' => [
-                        'placeholder' => $model->getAttributeLabel('company'),
-                        'aria-label' => $model->getAttributeLabel('company'),
-                    ]
-                ])->label(false) ?>
-
-                <?= $form->field($model, 'body', [
-                    'inputOptions' => [
-                        'placeholder' => $model->getAttributeLabel('body'),
-                        'aria-label' => $model->getAttributeLabel('body'),
-                    ]
-                ])->label(false)->textarea(['rows' => 6]) ?>
-
-                <?= $form->field($model, 'budget', [
-                    'inputOptions' => [
-                        'placeholder' => $model->getAttributeLabel('budget'),
-                        'aria-label' => $model->getAttributeLabel('budget'),
-                    ]
-                ])->label(false) ?>
-
-                <?= $form->field($model, 'when', [
-                    'inputOptions' => [
-                        'placeholder' => $model->getAttributeLabel('when'),
-                        'aria-label' => $model->getAttributeLabel('when'),
-                    ]
-                ])->label(false) ?>
-
-
-                <?= $form->field($model, 'verifyCode', [
-                    'inputOptions' => ['placeholder' => 'Verification Code']
-                ])->label('Verification code: ')->widget(Captcha::class, [
-                    'template' => '{image}{input}',
-                ]) ?>
-
-                <?= Html::submitButton('Submit', ['class' => 'btn btn-primary', 'name' => 'contact-button']) ?>
-                <?php ActiveForm::end() ?>
-            </div>
-            <div class="col-md-3">
-                <p class="small">Specifying project details, estimated budget along with currency, time to start and deadlines will help us
-                    find the right people.</p>
-
-                <p class="small">If something is not clear at this stage, feel free to specify it as N/A.</p>
-            </div>
-        </div>
-    </div>
-</div>
+        <?php endif; ?>
+    </section>
+</main>

@@ -74,7 +74,7 @@ $this->registerLinkTag([
         <meta name="twitter:site" content="yiiframework" />
         <meta name="twitter:title" content="<?= !empty($this->title) ? Html::encode($this->title) : 'Yii Framework' ?>" />
         <meta name="twitter:description" content="" />
-        <meta name="twitter:image" content="<?= Url::to(Yii::getAlias('@web/image/twitter_cover.png'), true) ?>" />
+        <meta name="twitter:image" content="<?= Url::to(Yii::getAlias('@web/image/x_cover.png'), true) ?>" />
         <meta name="twitter:image:width" content="120" />
         <meta name="twitter:image:height" content="120" />
 

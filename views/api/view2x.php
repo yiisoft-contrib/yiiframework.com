@@ -26,6 +26,8 @@ $this->registerJs("
 
 if (!empty($title)) {
     $this->title = $title;
+} else {
+    $this->title = "Yii $version API Documentation";
 }
 
 $this->beginBlock('contentSelectors');
@@ -33,7 +35,7 @@ echo $this->render('partials/_versions.php', compact('version', 'versions', 'sec
 $this->endBlock();
 
 ?>
-<div class="container api-content">
+<div class="container api-content api-reference-page api-reference-page--2">
     <div class="row visible-xs">
         <div class="col-md-12">
             <p class="pull-right topmost">

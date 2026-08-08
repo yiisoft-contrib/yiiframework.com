@@ -28,7 +28,7 @@ class GuideController extends BaseController
             if ($normalizedLanguage !== $language) {
                 return $this->redirect(['index', 'language' => $normalizedLanguage, 'version' => $version, 'type' => $type]);
             }
-            $this->sectionTitle = $guide->title;
+            $this->sectionTitle = null;
             return $this->render('index', ['guide' => $guide]);
         }
 

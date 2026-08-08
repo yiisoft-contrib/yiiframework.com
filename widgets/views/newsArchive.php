@@ -7,7 +7,7 @@ if (empty($archiveEntries)) {
 }
 
 ?>
-<h2>News Archive</h2>
+<h2>Years</h2>
 
 <ul>
 <?php

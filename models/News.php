@@ -145,6 +145,38 @@ class News extends ActiveRecord implements Linkable, ObjectIdentityInterface, En
         return reset($lines);
     }
 
+    public function getPreviewContent($previewBlockCount = 3, $fullContentBlockLimit = 5)
+    {
+        $blocks = $this->getContentBlocks();
+
+        if (count($blocks) > $fullContentBlockLimit) {
+            $content = implode("\n\n", array_slice($blocks, 0, $previewBlockCount));
+        } else {
+            $content = trim($this->content);
+        }
+
+        $lines = preg_split('/\R/', $content);
+        $listItemCount = 0;
+
+        foreach ($lines as $index => $line) {
+            if (preg_match('/^\s*(?:[-*+]|\d+\.)\s+/', $line) && ++$listItemCount > 4) {
+                return trim(implode("\n", array_slice($lines, 0, $index)));
+            }
+        }
+
+        return $content;
+    }
+
+    public function isPreviewTruncated($fullContentBlockLimit = 5)
+    {
+        return trim($this->getPreviewContent(3, $fullContentBlockLimit)) !== trim($this->content);
+    }
+
+    private function getContentBlocks()
+    {
+        return preg_split('/(?:\r?\n){2,}/', trim($this->content), -1, PREG_SPLIT_NO_EMPTY);
+    }
+
     /**
      * @inheritdoc
      * @return NewsQuery the active query used by this AR class.

@@ -56,17 +56,3 @@
     line-height: 1.4;
   }
 }
-
-.dashed-heading-front-section {
-  @include dashed-heading-variant($eshill-header-color, $body-bg, fontsize(h3));
-  @media (max-width: 380px) {
-    line-height: 1.4;
-  }
-}
-
-.dashed-heading-front-books {
-  @include dashed-heading-variant($eshill-header-color, #EBF1F2, fontsize(h1));
-  @media (max-width: 380px) {
-    line-height: 1.4;
-  }
-}

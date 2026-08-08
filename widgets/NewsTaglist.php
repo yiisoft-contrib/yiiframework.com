@@ -40,10 +40,15 @@ class NewsTaglist extends Widget
         }
 
         $tagEntries = [];
+        $urlParams = $this->urlParams;
+        unset($urlParams['year']);
         foreach($tags as $tag) {
             /** @var $tag NewsTag */
-            $tagEntries[$tag->slug] = Html::a(Html::encode($tag->name), array_merge($this->urlParams, ['news/index', 'tag' => $tag->slug]))
-                . ($this->news ? '' : " ($tag->frequency)");
+            $label = Html::encode($tag->name);
+            if (!$this->news) {
+                $label .= ' <span class="count">' . (int) $tag->frequency . '</span>';
+            }
+            $tagEntries[$tag->slug] = Html::a($label, array_merge($urlParams, ['news/index', 'tag' => $tag->slug]));
         }
 
         return $this->render('newsTaglist', ['tagEntries' => $tagEntries]);

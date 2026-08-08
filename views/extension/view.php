@@ -14,13 +14,7 @@ $this->title = $model->name;
 ?>
 <div class="container guide-view lang-en">
     <div class="row">
-        <div class="col-sm-3 col-md-2 col-lg-2">
-            <?= $this->render('_sidebar', [
-                'category' => $model->category_id,
-            ]) ?>
-        </div>
-
-        <div class="col-sm-9 col-md-10 col-lg-10" role="main">
+        <div class="col-xs-12" role="main">
 
             <?= Alert::widget() ?>
 

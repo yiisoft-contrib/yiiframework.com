@@ -3,12 +3,8 @@
 namespace app\controllers;
 
 use app\components\RowHelper;
-use app\models\Extension;
-use app\models\News;
 use app\models\PartnersForm;
-use app\models\SecurityForm;
 use app\models\User;
-use app\models\Wiki;
 use Yii;
 use app\models\ContactForm;
 use yii\filters\AccessControl;
@@ -171,18 +167,7 @@ class SiteController extends BaseController
 
     public function actionIndex()
     {
-        $books = array_slice(Yii::$app->params['books2'], 0, 5);
-        $news = News::find()->latest()->published()->limit(4)->all();
-        $extensions = Extension::find()->latest()->limit(6)->all();
-        $tutorials = Wiki::find()->latest()->limit(10)->all();
-
-        return $this->render('index', [
-            'testimonials' => Yii::$app->params['testimonials'],
-            'books' => $books,
-            'news' => $news,
-            'extensions' => $extensions,
-            'tutorials' => $tutorials,
-        ]);
+        return $this->render('index');
     }
 
     public function actionContact()
@@ -212,9 +197,7 @@ class SiteController extends BaseController
 
     public function actionChat()
     {
-        $this->sectionTitle = 'Yii Framework Community';
-        $this->headTitle = 'Live Chat';
-        return $this->render('chat');
+        return $this->redirect(['site/community'], 301);
     }
 
     public function actionLicense()
@@ -248,18 +231,10 @@ class SiteController extends BaseController
         $inactiveMembers = RowHelper::split($inactiveMembers, 6);
         $pastMembers = RowHelper::split($pastMembers, 6);
 
-        try {
-            $data_dir = Yii::getAlias('@app/data');
-            $contributors = json_decode(file_get_contents($data_dir . '/contributors.json'), true);
-        } catch(\Exception $e) {
-            $contributors = false;
-        }
-
         return $this->render('team', [
             'inactiveMembers' => $inactiveMembers,
             'activeMembers' => $activeMembers,
             'pastMembers' => $pastMembers,
-            'contributors' => $contributors,
         ]);
     }
 
@@ -270,16 +245,7 @@ class SiteController extends BaseController
 
     public function actionSecurity()
     {
-        $model = new SecurityForm();
-        if ($model->load(Yii::$app->request->post()) && $model->send()) {
-            Yii::$app->session->setFlash('securityFormSubmitted');
-
-            return $this->refresh();
-        }
-
-        return $this->render('security', [
-            'model' => $model,
-        ]);
+        return $this->render('security');
     }
 
     public function actionPartners()
@@ -296,11 +262,16 @@ class SiteController extends BaseController
         ]);
     }
 
-    public function actionDownload()
+    public function actionDownload($version = '3.0')
     {
+	    if (!in_array($version, ['3.0', '2.0', '1.1'], true)) {
+		    throw new NotFoundHttpException('The requested Yii version was not found.');
+	    }
+
 	    $versions = Yii::$app->params['versions']['minor-versions'];
 	    $versionInfo = Yii::$app->params['versions']['version-info'];
         return $this->render('download', [
+	        'selectedVersion' => $version,
 	        'versions' => $versions,
 	        'versionInfo' => $versionInfo,
         ]);
@@ -358,13 +329,13 @@ class SiteController extends BaseController
 
     public function actionCommunity()
     {
-        $this->sectionTitle = 'Community Resources';
+        $this->sectionTitle = null;
         return $this->render('community');
     }
 
     public function actionReleaseCycle()
     {
-        $this->sectionTitle = 'Release Cycle';
+        $this->sectionTitle = null;
         return $this->render('release-cycle', [
             'versions' => Yii::$app->params['release-cycle'],
         ]);

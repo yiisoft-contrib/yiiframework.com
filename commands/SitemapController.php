@@ -69,7 +69,7 @@ class SitemapController extends Controller
         $sitemap->addItem(Url::to('/', true), null, Sitemap::ALWAYS, 1);
 
         $baseUrls = [
-            'site/books', 'site/contribute', 'site/chat', 'site/contact', 'site/license', 'site/team', 'wiki/index',
+            'site/books', 'site/contribute', 'site/community', 'site/contact', 'site/license', 'site/team', 'wiki/index',
             'site/report-issue', 'site/security', 'site/download', 'site/tos', 'site/logo', 'site/tour', 'site/resources',
             'extension/index', 'user/index', 'user/badges'
         ];

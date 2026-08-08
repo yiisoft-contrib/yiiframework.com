@@ -1,53 +1,33 @@
 <?php
+
 /**
  * @var $this yii\web\View
  * @var $currentVersion string
  * @var $category string
- * @var $tag ExtensionTag
+ * @var $tag app\models\ExtensionTag|null
  */
 
 use app\models\Extension;
-use app\models\ExtensionTag;
-use app\widgets\DropdownList;
+use yii\helpers\Html;
 
 ?>
-<nav class="version-selector">
-        <div class="btn-group btn-group-justified btn-group-1-element">
-        <?php
-        $versionItems = [];
-
-        foreach (Extension::getYiiVersionOptions() as $version => $label) {
-            if ($version === $currentVersion) {
-                continue;
-            }
-
-            $url = ['extension/index'];
-
-            if ($version) {
-                $url['version'] = $version;
-            }
-
+<nav class="version-selector" aria-label="Yii version">
+    <span class="version-selector__label">Version</span>
+    <div class="version-selector__options">
+        <?php foreach (Extension::getYiiVersionOptions() as $version => $label): ?>
+            <?php
+            $url = ['extension/index', 'version' => $version];
             if ($category) {
                 $url['category'] = $category;
             }
-
             if ($tag) {
                 $url['tag'] = $tag->slug;
             }
-
-            $versionItems[] = [
-                'label' => $label,
-                'url' => $url,
-            ];
-        }
-        ?>
-        <?= DropdownList::widget([
-            'tag' => 'div',
-            'selection' => 'For Yii ' . $currentVersion,
-            'items' => $versionItems,
-            'options' => [
-                'class' => 'btn-group btn-group-sm'
-            ]
-        ]) ?>
+            ?>
+            <?= Html::a($label, $url, [
+                'class' => 'version-selector__option' . ($version === $currentVersion ? ' is-active' : ''),
+                'aria-current' => $version === $currentVersion ? 'page' : null,
+            ]) ?>
+        <?php endforeach; ?>
     </div>
 </nav>
