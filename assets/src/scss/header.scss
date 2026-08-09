@@ -6,44 +6,229 @@
 @import "2-vendors/custom-bootstrap/yii-dropdowns";
 @import "bootstrap/navs";
 @import "bootstrap/navbar";
-@import "rem";
-@import "3-global/navbar";
 
-.dropdown-menu {
-  z-index: 3000;
-}
+$forum-ink: #25262a;
+$forum-copy: #626368;
+$forum-muted: #85868a;
+$forum-surface: #f6f7f7;
+$forum-line: #ebebeb;
+$forum-blue: #40b3d8;
 
-.navbar-nav > .active > a,
-.navbar-nav > li > a:hover {
-  height: 50px;
-}
+.dropdown-menu { z-index: 3000; }
 
-.navbar-brand {
-  height: auto;
-  padding-left: 0;
-  padding-bottom: 0;
-}
+.info-top { display: none; }
 
-.navbar-nav .dropdown-menu > li.separator {
-  font-size: 13px;
-}
+.navbar-inverse {
+  position: relative;
+  z-index: 1001;
+  width: 100%;
+  min-height: 96px;
+  margin: 0;
+  background: linear-gradient(to bottom, #fff 20%, rgba(255, 255, 255, .88) 72%, transparent 100%);
+  border: 0;
+  border-radius: 0;
+  box-shadow: none;
 
-@media screen and (max-width: 1100px) {
-  .nav > li > a {
-    padding: 0 8px;
+  > .wrap {
+    position: relative;
+    width: calc(100% - 32px);
+    max-width: 1464px;
+    min-height: 96px;
+    margin: 0 auto;
   }
 
-  .navbar-nav {
-    margin: 14.5px -15px;
-    display: flex;
-    align-items: center;
+  .navbar-header { position: static; }
+  .navbar-brand { height: auto; padding: 28px 15px 0 0; }
+  .yii-logo { display: block; width: auto; height: 40px; }
+  .yii-logo--dark { display: none; }
+  .theme-toggle { display: none; }
+  .navbar-toggle { margin-top: 25px; color: $forum-ink; background: transparent; border-color: $forum-line; }
+}
 
-    > .active > a, > li > a:hover {
-      height: auto;
-    }
+.header-github {
+  position: absolute;
+  z-index: 3;
+  top: 28px;
+  right: 0;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  height: 40px;
+  color: $forum-ink;
+  text-decoration: none;
 
-    > li.open > .dropdown-menu {
-      z-index: 1001;
+  svg { display: block; width: 20px; height: 20px; fill: currentColor; }
+  span { color: $forum-muted; font-size: 15px; line-height: 20px; }
+  &:hover,
+  &:focus { color: $forum-blue; text-decoration: none; }
+}
+
+@media screen and (min-width: $grid-float-breakpoint) {
+  .navbar-inverse .navbar-collapse { margin: 0; padding: 0; }
+
+  #main-nav {
+    position: absolute;
+    top: 27px;
+    left: 50%;
+    z-index: 2;
+    margin: 0;
+    padding: 0;
+    background: rgba(255, 255, 255, .9);
+    border: 1px solid $forum-line;
+    border-radius: 48px;
+    backdrop-filter: blur(16px);
+    transform: translateX(-50%);
+
+    > li > a {
+      height: 40px;
+      padding: 8px 11px;
+      color: $forum-ink;
+      font-size: 16px;
+      font-weight: 400;
+      line-height: 24px;
+      text-decoration: none;
+      background: transparent;
+      border: 0;
+      border-radius: 48px;
     }
+    > li:first-child > a { padding-left: 18px; }
+    > li:last-child > a { padding-right: 18px; }
+    > li > a:hover,
+    > li > a:focus,
+    > li.active > a,
+    > li.open > a { color: $forum-blue; background: $forum-surface; }
+
+    > li > .dropdown-menu {
+      top: calc(100% + 1px);
+      right: auto;
+      left: 0;
+    }
+  }
+
+  .navbar-nav .dropdown-menu {
+    padding: 5px 0;
+    background: #fff;
+    border: 1px solid $forum-line;
+    border-radius: 0 0 12px 12px;
+    box-shadow: 0 16px 40px rgba(20, 21, 24, .1);
+    overflow: hidden;
+
+    > li > a,
+    > .active > a {
+      padding: 8px 20px;
+      color: $forum-ink;
+      font-size: 14px;
+      line-height: 20px;
+      text-indent: 0;
+      text-decoration: none;
+      background: #fff;
+    }
+    > li > a:hover,
+    > li > a:focus,
+    > .active > a:hover,
+    > .active > a:focus { color: $forum-blue; background: $forum-surface; }
+
+    > li.separator {
+      padding: 7px 20px;
+      color: $forum-muted;
+      font-size: 13px;
+      line-height: 18px;
+      text-transform: none;
+      background: $forum-surface;
+    }
+  }
+}
+
+@media screen and (min-width: $grid-float-breakpoint) and (max-width: 1199px) {
+  .header-github { display: none; }
+  #main-nav { left: auto; right: 0; transform: none; }
+}
+
+@media screen and (max-width: ($grid-float-breakpoint - 1)) {
+  .navbar-inverse { min-height: 91px; }
+  .navbar-inverse > .wrap { width: 100%; min-height: 91px; padding: 0 15px; }
+  .navbar-inverse .navbar-brand { padding-top: 22px; }
+  .navbar-inverse .navbar-brand .yii-logo { height: 34px; }
+  .header-github { display: none; }
+  .navbar-inverse .navbar-collapse {
+    margin: 0 -15px;
+    padding: 0 15px 16px;
+    background: rgba(255, 255, 255, .96);
+    border: 0;
+    box-shadow: none;
+    backdrop-filter: blur(16px);
+  }
+  #main-nav { margin: 4px 0 0; }
+  #main-nav > li { display: block; }
+  #main-nav > li > a { padding: 9px 12px; color: $forum-ink; text-decoration: none; border-radius: 8px; }
+  #main-nav > li > a:hover,
+  #main-nav > li > a:focus,
+  #main-nav > li.active > a,
+  #main-nav > li.open > a { color: $forum-blue; background: $forum-surface; }
+  #main-nav > li.open > .dropdown-menu {
+    position: static;
+    float: none;
+    margin: 2px 0 6px;
+    background: $forum-surface;
+    border: 1px solid $forum-line;
+    border-radius: 10px;
+    box-shadow: none;
+  }
+  #main-nav .dropdown-menu > li > a { padding: 8px 18px; color: $forum-copy; text-decoration: none; }
+  #main-nav .dropdown-menu > li > a:hover,
+  #main-nav .dropdown-menu > li > a:focus { color: $forum-blue; background: #fff; }
+  #main-nav .dropdown-menu > li.separator { padding: 7px 18px; color: $forum-muted; font-size: 13px; }
+}
+
+// Discourse exposes its active palette through these classes in current themes;
+// theme-dark also keeps the standalone preview in sync with the main website.
+.theme-dark,
+.discourse-color-scheme-is-dark,
+[data-theme="dark"] {
+  .navbar-inverse {
+    background: linear-gradient(to bottom, #141518 20%, rgba(20, 21, 24, .88) 72%, transparent 100%);
+
+    .yii-logo--light { display: none; }
+    .yii-logo--dark { display: block; }
+    .navbar-toggle { color: #fff; border-color: #333437; }
+  }
+  .header-github { color: #fff; }
+  .header-github span { color: #a3a5ad; }
+
+  @media screen and (min-width: $grid-float-breakpoint) {
+    #main-nav { background: rgba(24, 25, 29, .9); border-color: #333437; }
+    #main-nav > li > a { color: #fff; }
+    #main-nav > li > a:hover,
+    #main-nav > li > a:focus,
+    #main-nav > li.active > a,
+    #main-nav > li.open > a { color: $forum-blue; background: #242529; }
+    .navbar-nav .dropdown-menu { background: #18191d; border-color: #333437; box-shadow: 0 16px 40px rgba(0, 0, 0, .35); }
+    .navbar-nav .dropdown-menu > li > a,
+    .navbar-nav .dropdown-menu > .active > a { color: #fff; background: #18191d; }
+    .navbar-nav .dropdown-menu > li > a:hover,
+    .navbar-nav .dropdown-menu > li > a:focus,
+    .navbar-nav .dropdown-menu > .active > a:hover,
+    .navbar-nav .dropdown-menu > .active > a:focus,
+    .navbar-nav .dropdown-menu > li.separator { background: #242529; }
+    .navbar-nav .dropdown-menu > li.separator { color: #87888c; }
+  }
+
+  @media screen and (max-width: ($grid-float-breakpoint - 1)) {
+    .navbar-inverse .navbar-collapse { background: rgba(20, 21, 24, .96); }
+    #main-nav > li > a { color: #fff; }
+    #main-nav > li > a:hover,
+    #main-nav > li > a:focus,
+    #main-nav > li.active > a,
+    #main-nav > li.open > a { color: $forum-blue; background: #242529; }
+    #main-nav > li.open > .dropdown-menu { background: #18191d; border-color: #333437; }
+    #main-nav .dropdown-menu > li > a { color: #a3a5ad; }
+    #main-nav .dropdown-menu > li > a:hover,
+    #main-nav .dropdown-menu > li > a:focus { color: #fff; background: #242529; }
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  html:not(.theme-light) .navbar-inverse {
+    background: linear-gradient(to bottom, #141518 20%, rgba(20, 21, 24, .88) 72%, transparent 100%);
   }
 }
