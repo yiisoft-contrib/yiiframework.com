@@ -1938,6 +1938,103 @@ form#search-form.navbar-form div.form-group.nospace div.input-group input#search
   }
 }
 
+.context-nav .guide-selector {
+  &__actions {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-left: 4px;
+  }
+
+  .guide-context-dropdown { position: relative; }
+
+  .guide-context-dropdown .btn {
+    display: inline-flex;
+    min-height: 40px;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 11px;
+    color: $redesign-copy;
+    background: #fff;
+    border: 1px solid $redesign-line;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 20px;
+    box-shadow: none;
+  }
+
+  .guide-context-dropdown .btn:hover,
+  .guide-context-dropdown .btn:focus,
+  .guide-context-dropdown.open .btn {
+    color: $redesign-ink;
+    background: #fff;
+    border-color: #cfd0d2;
+    box-shadow: 0 2px 8px rgba(20, 21, 24, .08);
+  }
+
+  .guide-context-dropdown .btn svg {
+    width: 18px;
+    height: 18px;
+    flex: 0 0 auto;
+    color: $redesign-muted;
+    fill: currentColor;
+  }
+
+  .guide-context-dropdown .btn:hover svg,
+  .guide-context-dropdown .btn:focus svg,
+  .guide-context-dropdown.open .btn svg { color: $redesign-blue; }
+
+  .guide-context-dropdown .caret { margin-left: 2px; color: $redesign-muted; }
+
+  .guide-context-dropdown .dropdown-menu {
+    top: calc(100% + 7px);
+    right: 0;
+    left: auto;
+    min-width: 220px;
+    margin: 0;
+    padding: 6px;
+    background: #fff;
+    border: 1px solid $redesign-line;
+    border-radius: 9px;
+    box-shadow: 0 14px 34px rgba(20, 21, 24, .14);
+  }
+
+  .guide-context-dropdown .dropdown-menu > li + li { margin-top: 2px; }
+  .guide-context-dropdown .dropdown-menu > li > a {
+    padding: 8px 10px;
+    color: $redesign-copy;
+    background: transparent;
+    border-radius: 6px;
+    font-size: 14px;
+    line-height: 20px;
+    white-space: normal;
+  }
+  .guide-context-dropdown .dropdown-menu > li > a:hover,
+  .guide-context-dropdown .dropdown-menu > li > a:focus {
+    color: $redesign-ink;
+    background: $redesign-surface;
+  }
+
+  .guide-language-dropdown .dropdown-menu { max-height: min(420px, 70vh); overflow-y: auto; }
+  .guide-download-dropdown .dropdown-menu { min-width: 244px; }
+  .guide-download-dropdown .dropdown-menu a { display: flex; flex-direction: column; }
+  .guide-download-dropdown .dropdown-menu strong { color: $redesign-ink; font-weight: 600; }
+  .guide-download-dropdown .dropdown-menu small { color: $redesign-muted; font-size: 12px; line-height: 17px; }
+
+  @media (max-width: 760px) {
+    &__actions { width: 100%; margin-left: 0; }
+    .guide-context-dropdown { flex: 1 1 0; }
+    .guide-context-dropdown .btn { width: 100%; justify-content: center; }
+    .guide-context-dropdown .dropdown-menu { right: auto; left: 0; }
+    .guide-context-dropdown:last-child .dropdown-menu { right: 0; left: auto; }
+  }
+}
+
+@media (max-width: 760px) {
+  .context-nav__selectors { width: 100%; }
+}
+
 .wiki-row {
   h2.title a { color: $redesign-ink; text-decoration: none; }
   h2.title a:hover,
@@ -4933,6 +5030,29 @@ footer {
       background: #242529;
       box-shadow: 0 1px 4px rgba(0, 0, 0, .35);
     }
+  }
+
+  .context-nav .guide-selector {
+    .guide-context-dropdown .btn,
+    .guide-context-dropdown .dropdown-menu {
+      color: #a3a5ad;
+      background: #18191d;
+      border-color: #333437;
+    }
+    .guide-context-dropdown .btn:hover,
+    .guide-context-dropdown .btn:focus,
+    .guide-context-dropdown.open .btn {
+      color: #fff;
+      background: #242529;
+      border-color: #4b4c50;
+      box-shadow: 0 10px 28px rgba(0, 0, 0, .3);
+    }
+    .guide-context-dropdown .dropdown-menu { box-shadow: 0 16px 40px rgba(0, 0, 0, .35); }
+    .guide-context-dropdown .dropdown-menu > li > a { color: #a3a5ad; background: transparent; }
+    .guide-context-dropdown .dropdown-menu > li > a:hover,
+    .guide-context-dropdown .dropdown-menu > li > a:focus { color: #fff; background: #242529; }
+    .guide-download-dropdown .dropdown-menu strong { color: #fff; }
+    .guide-download-dropdown .dropdown-menu small { color: #87888c; }
   }
 
   .wiki-row {

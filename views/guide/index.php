@@ -4,7 +4,6 @@
  * @var $guide app\models\Guide
  */
 
-use app\widgets\SearchForm;
 use yii\helpers\Html;
 
 $this->title = $guide->title;
@@ -17,13 +16,6 @@ $this->endBlock();
 ?>
 <div class="container guide-view">
     <div class="guide-content content lang-<?= $guide->language ?>">
-
-        <?= SearchForm::widget([
-            'type' => 'guide',
-            'version' => $guide->version,
-            'language' => $guide->language,
-            'placeholder' => 'Search the Guide…',
-        ]) ?>
 
         <div class="row">
     <?php
