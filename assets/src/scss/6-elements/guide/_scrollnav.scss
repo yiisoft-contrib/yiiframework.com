@@ -72,7 +72,8 @@
 
 .affix {
   position: fixed;
-  @include rem(top, 12px);
+  // Keep the page outline below the 96px sticky site header.
+  @include rem(top, 104px);
   @include rem(right, 2px);
   background-color: $body-bg;
   z-index: 300;

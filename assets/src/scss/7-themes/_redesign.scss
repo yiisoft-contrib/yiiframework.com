@@ -1141,6 +1141,49 @@ $redesign-orange: #f18a2a;
 
   .component-comments { margin-top: 24px; }
 
+  .component-comments .comment-header > .row {
+    display: flex;
+    align-items: center;
+    margin-right: 0;
+    margin-left: 0;
+  }
+  .component-comments .comment-header > .row > [class*="col-"] {
+    float: none;
+    width: auto;
+    padding-right: 0;
+    padding-left: 0;
+  }
+  .component-comments .comment-header > .row > [class*="col-"]:last-child { margin-left: auto; }
+  .component-comments .comment-header .voting {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    min-height: 38px;
+    margin: 0;
+    padding: 7px 9px;
+    background: #fff;
+    border: 1px solid $redesign-line;
+    border-radius: 8px;
+  }
+  .component-comments .comment-header .votes-up,
+  .component-comments .comment-header .votes-down { display: inline-flex; align-items: center; gap: 3px; }
+  .component-comments .comment-header .votes { margin-right: 1px; color: $redesign-copy; font-size: 13px; }
+  .component-comments .comment-header .votes-up > a,
+  .component-comments .comment-header .votes-down > a {
+    display: inline-flex;
+    padding: 3px;
+    color: $redesign-muted;
+    border-radius: 5px;
+  }
+  .component-comments .comment-header .votes-up > a:hover,
+  .component-comments .comment-header .votes-up > a:focus,
+  .component-comments .comment-header .votes-down > a:hover,
+  .component-comments .comment-header .votes-down > a:focus { color: $redesign-ink; background: $redesign-surface; }
+  .component-comments .comment-header .vote-arrow { display: block; width: 18px; height: 18px; fill: currentColor; }
+  .component-comments .comment-header .votes-up.voted > a { color: $redesign-green; background: rgba($redesign-green, .11); }
+  .component-comments .comment-header .votes-down.voted > a { color: $redesign-orange; background: rgba($redesign-orange, .11); }
+
   .comment-composer { margin-top: 34px; }
   .comment-composer__header { margin-bottom: 14px; }
   .comment-composer__header .heading {
@@ -5655,6 +5698,149 @@ footer {
   #guide-navigation > .in a.active,
   #api-navigation > .in a.active { color: #fff; background: rgba($redesign-blue, .14); }
 
+  .guide-view {
+    #guide-navigation,
+    #guide-navigation > .submenu,
+    #guide-navigation > .active-parent { background: transparent; }
+
+    #guide-navigation .list-group-item,
+    #guide-navigation > .list-group-item {
+      color: #b5b6b9;
+      background: transparent;
+      border-color: #333437;
+    }
+    #guide-navigation .list-group-item:hover,
+    #guide-navigation .list-group-item:focus { color: #fff; background: #242529; text-decoration: none; }
+    #guide-navigation > .list-group-item.active,
+    #guide-navigation > .list-group-item.has-children.active {
+      color: #fff;
+      background: #20272a;
+      border-color: rgba($redesign-blue, .5);
+      box-shadow: inset 3px 0 $redesign-blue;
+    }
+    #guide-navigation > .active-parent > .list-group-item { color: #b5b6b9; background: #18191d; }
+    #guide-navigation > .active-parent > .list-group-item.active,
+    #guide-navigation > .active-parent > .list-group-item.active:hover,
+    #guide-navigation > .active-parent > .list-group-item.active:focus {
+      color: #fff;
+      background: rgba($redesign-blue, .16);
+      box-shadow: inset 3px 0 $redesign-blue;
+    }
+
+    .guide-content {
+      color: #b5b6b9;
+
+      h1,
+      h2,
+      h3,
+      h4,
+      h5,
+      h6 { color: #fff; }
+
+      code { color: #f0a35c; background: rgba($redesign-orange, .12); }
+      pre,
+      pre code { color: #d8d8da; background: transparent; }
+
+      blockquote { color: #c4c5c9; background-color: #18191d; border-color: #4b4c50; }
+      blockquote.tip { background-color: #182522; border-color: #4f9d90; }
+      blockquote.note { background-color: #292316; border-color: #c9892f; }
+      blockquote.info { background-color: #17252a; border-color: #438eae; }
+      blockquote.warn,
+      blockquote.warning { background-color: #2a191f; border-color: #c85574; }
+      .prev-next { border-color: #333437; }
+      .broken-link { color: #e9b5b5; background: #2a191b; border-color: #6e3438; }
+
+      div.toc {
+        color: #a3a5ad;
+        background: #18191d;
+        border-color: #333437;
+      }
+      div.image p { color: #a3a5ad; background: #242529; }
+    }
+
+    .edit-box {
+      color: #a3a5ad;
+      background: #18191d;
+      border-color: rgba($redesign-blue, .55);
+
+      a,
+      .edit-icon i { color: $redesign-blue; }
+    }
+
+    .hashlink { color: #696a6e; }
+    .hashlink:hover,
+    .hashlink:focus { color: $redesign-blue; }
+  }
+
+  #scrollnav,
+  #scrollnav.affix,
+  #scrollnav.affix-top {
+    background: #18191d;
+    border-color: #333437;
+  }
+  #scrollnav .nav > li > a,
+  #scrollnav .nav .nav > li > a { color: #a3a5ad; background: #18191d; text-decoration: none; }
+  #scrollnav .nav > li > a:hover,
+  #scrollnav .nav > li > a:focus,
+  #scrollnav .nav .nav > li > a:hover,
+  #scrollnav .nav .nav > li > a:focus { color: #fff; background: #242529; }
+  #scrollnav .nav > .active > a,
+  #scrollnav .nav > .active:hover > a,
+  #scrollnav .nav > .active:focus > a,
+  #scrollnav .nav .nav > .active > a { color: $redesign-blue; background: #20272a; }
+
+  .hljs,
+  .guide-view .guide-content pre > code.hljs,
+  .comments-wrapper .comment-body pre > code.hljs {
+    display: block;
+    color: #d8d8da;
+    background: #18191d;
+    border-color: #333437;
+  }
+  .hljs-comment,
+  .hljs-quote { color: #92949a; }
+  .hljs-keyword,
+  .hljs-selector-tag,
+  .hljs-subst { color: #ef9b65; }
+  .hljs-number,
+  .hljs-literal,
+  .hljs-variable,
+  .hljs-template-variable,
+  .hljs-tag .hljs-attr { color: #82c7e5; }
+  .hljs-string,
+  .hljs-doctag { color: #a8cf7a; }
+  .hljs-title,
+  .hljs-section,
+  .hljs-selector-id { color: #e4b86a; }
+  .hljs-type,
+  .hljs-class .hljs-title { color: #b7a6e6; }
+  .hljs-tag,
+  .hljs-name,
+  .hljs-attribute { color: #e78b91; }
+  .hljs-regexp,
+  .hljs-link { color: #76c6ba; }
+  .hljs-symbol,
+  .hljs-bullet { color: #d5a6dc; }
+  .hljs-built_in,
+  .hljs-builtin-name { color: #71b9dc; }
+  .hljs-meta { color: #adb0b6; }
+  .guide-view .hl-default,
+  .guide-view .hl-code { color: #d8d8da; }
+  .guide-view .hl-comment { color: #92949a; }
+  .guide-view .hl-brackets,
+  .guide-view .hl-number { color: #e4b86a; }
+  .guide-view .hl-quotes,
+  .guide-view .hl-string { color: #a8cf7a; }
+  .guide-view .hl-identifier,
+  .guide-view .hl-builtin { color: #82c7e5; }
+  .guide-view .hl-reserved { color: #ef9b65; }
+  .guide-view .hl-inlinedoc,
+  .guide-view .hl-var,
+  .guide-view .hl-url,
+  .guide-view .hl-inlinetags { color: #b7a6e6; }
+  .guide-view .hl-special { color: #76c6ba; }
+  .guide-view .hl-gutter { color: #d8d8da; background: #242529; }
+
   .comments-wrapper {
     color: #a3a5ad;
     background: #18191d;
@@ -5686,6 +5872,16 @@ footer {
     .component-comments .comment .comment-id { color: #87888c; }
     .component-comments .comment .comment-id:hover,
     .component-comments .comment .comment-id:focus { color: $redesign-blue; }
+    .component-comments .comment-header .voting { background: #242529; border-color: #333437; }
+    .component-comments .comment-header .votes { color: #a3a5ad; }
+    .component-comments .comment-header .votes-up > a,
+    .component-comments .comment-header .votes-down > a { color: #87888c; }
+    .component-comments .comment-header .votes-up > a:hover,
+    .component-comments .comment-header .votes-up > a:focus,
+    .component-comments .comment-header .votes-down > a:hover,
+    .component-comments .comment-header .votes-down > a:focus { color: #fff; background: #18191d; }
+    .component-comments .comment-header .votes-up.voted > a { color: $redesign-green; background: rgba($redesign-green, .14); }
+    .component-comments .comment-header .votes-down.voted > a { color: $redesign-orange; background: rgba($redesign-orange, .14); }
     .component-comments .comment .comment-body,
     .component-comments .comment .comment-footer { color: #a3a5ad; }
     .component-comments .comment .text-muted { color: #87888c; }
