@@ -6,7 +6,7 @@
 $this->title = 'Create Wiki Article';
 
 ?>
-<div class="container guide-view lang-en" xmlns="http://www.w3.org/1999/xhtml">
+<div class="container guide-view lang-en editor-page" xmlns="http://www.w3.org/1999/xhtml">
     <div class="row">
         <div class="col-sm-3 col-md-2 col-lg-2">
             <?= $this->render('_sidebar', [

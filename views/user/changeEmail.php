@@ -11,11 +11,11 @@ use yii\widgets\ActiveForm;
 
 $this->title = 'Change email';
 ?>
-<div class="container style_external_links">
-    <div class="content">
+<div class="container style_external_links account-form-page">
+    <div class="content account-form-page__content">
 
         <h1><?= Html::encode($this->title) ?></h1>
-        <br>
+        <p class="account-form-page__intro">Confirm your password, then enter the new email address for your account.</p>
 
         <?php $form = ActiveForm::begin(); ?>
 
@@ -23,12 +23,10 @@ $this->title = 'Change email';
                 <div class="col-md-6">
 
                     <?= $form->field($changeEmailForm, 'currentPassword')->passwordInput() ?>
-                    <hr>
                     <?= $form->field($changeEmailForm, 'email')->input('email') ?>
                 </div>
             </div>
 
-            <br>
             <div class="form-group">
                 <?= Html::submitButton('Save', ['class' => 'btn btn-primary']) ?>
             </div>

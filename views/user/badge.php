@@ -14,7 +14,7 @@ $this->title = $badge->name . ' - Badges';
 $this->registerMetaTag(['name' => 'keywords', 'value' => 'yii framework, community, badges, ' . $badge->name]);
 
 ?>
-<div class="container style_external_links view-user-view-badge">
+<div class="container style_external_links view-user-view-badge badge-detail-page">
     <div class="content">
 
         <div class="row">

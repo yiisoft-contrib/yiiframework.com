@@ -22,7 +22,7 @@ if (UserPermissions::canManageNews()) {
 }
 
 ?>
-<div class="container style_external_links">
+<div class="container style_external_links editor-page">
     <div class="row">
         <div class="content">
 

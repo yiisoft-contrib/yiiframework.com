@@ -10,33 +10,18 @@ use yii\bootstrap\ActiveForm;
 
 $this->title = 'Reset password';
 ?>
-<div class="container login-container">
-
-    <div class="omb_login row">
-
-      <div class="col-md-4 col-md-offset-3">
-
-        <div class="omb_authTitle">
-            <h3><?= Html::encode($this->title) ?></h3>
-            <span>Please choose your new password.</span>
-        </div>
-
-        <div class="row">
-          <div class="col-md-9">
-            <?php $form = ActiveForm::begin(['id' => 'reset-password-form', 'options' => ['class' => 'omb_loginForm', 'autocomplete' => 'off']]); ?>
-
-            <?= $form->field($model, 'password', ['inputOptions' => ['class'=>'login-control','placeholder' => $model->getAttributeLabel('password')]])->passwordInput()->label(false) ?>
-            <span class="help-block"></span>
-
-            <?= Html::submitButton('Change Password', ['class' => 'btn btn-lg btn-block']) ?>
-
+<main class="container login-container login-page auth-task-page">
+    <div class="login-card auth-task-card">
+        <header class="login-card__header">
+            <p class="login-card__eyebrow">Account recovery</p>
+            <h1><?= Html::encode($this->title) ?></h1>
+            <p>Choose a secure new password for your Yii account.</p>
+        </header>
+        <div class="login-card__password">
+            <?php $form = ActiveForm::begin(['id' => 'reset-password-form', 'options' => ['class' => 'login-form', 'autocomplete' => 'off']]); ?>
+            <?= $form->field($model, 'password')->passwordInput(['class' => 'form-control', 'placeholder' => $model->getAttributeLabel('password')])->label(false) ?>
+            <?= Html::submitButton('Change password', ['class' => 'btn btn-primary login-form__submit']) ?>
             <?php ActiveForm::end(); ?>
-          </div>
         </div>
-
-      </div>
-      <?= $this->render('partials/_githubLogin.php') ?>
-
     </div>
-
-</div>
+</main>

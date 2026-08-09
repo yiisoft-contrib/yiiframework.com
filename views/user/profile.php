@@ -19,7 +19,7 @@ use yii\helpers\Html;
 $this->title = 'Hi, ' . $model->username . '!';
 $forumUrl = $model->getForumUrl();
 ?>
-<div class="container style_external_links">
+<div class="container style_external_links account-page profile-page">
     <div class="content">
 
         <?= Alert::widget() ?>

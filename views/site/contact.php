@@ -8,23 +8,19 @@ use yii\captcha\Captcha;
 /* @var $form yii\bootstrap\ActiveForm */
 /* @var $model app\models\ContactForm */
 ?>
-<div class="container">
-    <div class="row">
-        <div class="content">
-            <div class="col-xs-12 col-sm-6">
+<main class="container contact-page">
+    <div class="content contact-page__layout">
+        <header class="contact-page__intro">
+            <p>Contact</p>
+            <h1>Let’s talk.</h1>
+            <div>For business inquiries and questions that do not belong in the forum or issue tracker, send us a message.</div>
+        </header>
+        <section class="contact-page__form" aria-label="Contact form">
                 <?php if (Yii::$app->session->hasFlash('contactFormSubmitted')): ?>
                     <div class="alert alert-success">
                         Thank you for contacting us. We will respond to you as soon as possible.
                     </div>
                 <?php else: ?>
-                    <p>
-                        If you have business inquiries or other questions,<br>please fill out the following form to
-                        contact
-                        us.
-                    </p>
-                    <p>
-                        Thank you.
-                    </p>
                     <?php $form = ActiveForm::begin() ?>
                     <?= $form->field($model, 'name', [
                         'inputOptions' => ['placeholder' => $model->getAttributeLabel('name')]
@@ -50,11 +46,9 @@ use yii\captcha\Captcha;
                         'template' => '{image}{input}',
                     ]) ?>
 
-                    <?= Html::submitButton('Submit', ['class' => 'btn btn-primary', 'name' => 'contact-button']) ?>
+                    <?= Html::submitButton('Send message', ['class' => 'btn btn-primary', 'name' => 'contact-button']) ?>
                     <?php ActiveForm::end(); ?>
                 <?php endif ?>
-            </div>
-            <div class="clearfix"></div>
-        </div>
+        </section>
     </div>
-</div>
+</main>

@@ -14,7 +14,7 @@ use yii\helpers\Html;
 $this->title = "$model->name | Downloads";
 
 ?>
-<div class="container">
+<div class="container editor-page">
     <div class="row">
         <div class="col-sm-3 col-md-2 col-lg-2">
             <?= $this->render('_sidebar', [
