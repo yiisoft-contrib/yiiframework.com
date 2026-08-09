@@ -30,8 +30,9 @@ if (UserPermissions::canManageNews()) {
 	$this->beginBlock('adminNav');
 	echo Nav::widget([
 		'id' => 'admin-nav',
+		'options' => ['class' => 'news-admin-actions'],
 		'items' => [
-			['label' => 'News Admin', 'url' => ['news/admin']],
+			['label' => 'News Admin', 'url' => ['news/admin'], 'linkOptions' => ['class' => 'news-admin-actions__primary']],
 		],
 	]);
 	$this->endBlock();
