@@ -11,12 +11,12 @@ use yii\widgets\ActiveForm;
 use yii\helpers\Html;
 ?>
 
-<div class="row" id="user-notes">
+<div class="row user-notes__header" id="user-notes">
     <div class="col-md-offset-2 col-md-9">
         <?php if (!empty($comments)): ?>
-            <span class="heading">User Contributed Notes <span class="badge"><?= count($comments) ?></span></span>
+            <h2 class="heading">User Contributed Notes <span class="badge"><?= count($comments) ?></span></h2>
         <?php else: ?>
-            <span class="heading">User Contributed Notes</span>
+            <h2 class="heading">User Contributed Notes</h2>
         <?php endif; ?>
     </div>
 </div>
@@ -60,31 +60,36 @@ use yii\helpers\Html;
         </div>
     </div>
 </div>
-<div class="row">
+<div class="row comment-composer">
     <div class="col-md-offset-2 col-md-9">
-        <span class="heading">Leave a comment</span>
-    </div>
-</div>
-<?php if (isset($prompt)): ?>
-<div class="row">
-    <div class="col-md-offset-2 col-md-9">
-        <?= $prompt ?>
-    </div>
-</div>
-<?php endif; ?>
-<div class="row">
-    <div class="col-md-offset-2 col-md-9">
-        <?php if (!Yii::$app->user->isGuest): ?>
-            <?php $form = ActiveForm::begin(); ?>
-                <?= $form->field($commentForm, 'text')->label(false)->textarea(['class' => 'markdown-editor', 'title' =>
-            'text']) ?>
+        <div class="comment-composer__header">
+            <h3 class="heading">Leave a comment</h3>
+            <?php if (isset($prompt)): ?>
+                <div class="comment-composer__prompt"><?= $prompt ?></div>
+            <?php endif; ?>
+        </div>
 
-                <div class="form-group">
-                    <?= Html::submitButton('Comment', ['class' => 'btn btn-primary']) ?>
+        <?php if (!Yii::$app->user->isGuest): ?>
+            <?php $form = ActiveForm::begin(['options' => ['class' => 'comment-composer__form']]); ?>
+                <?= $form->field($commentForm, 'text')->label(false)->textarea([
+                    'class' => 'markdown-editor',
+                    'title' => 'Comment',
+                    'placeholder' => 'Share a useful note, example, or clarification…',
+                ]) ?>
+
+                <div class="comment-composer__actions">
+                    <span>Markdown is supported.</span>
+                    <?= Html::submitButton('Post comment', ['class' => 'btn btn-primary']) ?>
                 </div>
             <?php ActiveForm::end(); ?>
         <?php else: ?>
-            <p><?= Html::a('Signup', ['auth/signup'])?> or <?= Html::a('Login', ['auth/login']) ?> in order to comment.</p>
+            <div class="comment-composer__guest">
+                <p>Join the conversation to share a note.</p>
+                <div>
+                    <?= Html::a('Log in', ['auth/login'], ['class' => 'btn btn-primary']) ?>
+                    <?= Html::a('Create an account', ['auth/signup'], ['class' => 'btn btn-default']) ?>
+                </div>
+            </div>
         <?php endif ?>
     </div>
 </div>
