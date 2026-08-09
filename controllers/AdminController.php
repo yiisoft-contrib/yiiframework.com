@@ -84,8 +84,8 @@ class AdminController extends BaseController
         $header = $this->renderPartial('//layouts/partials/_header', ['discourse' => true]);
 
         $header = preg_replace('~<div class="container">~', '<div class="wrap">', $header);
-        $header = preg_replace('~<a\s+href="/~', '<a href="' . Yii::$app->request->hostInfo . Yii::$app->request->baseUrl . '/', $header);
-        $header = preg_replace('~<img\s+src="/~', '<img src="' . Yii::$app->request->hostInfo . Yii::$app->request->baseUrl . '/', $header);
+        $websiteUrl = rtrim(Yii::$app->params['siteAbsoluteUrl'] ?: Yii::$app->request->hostInfo . Yii::$app->request->baseUrl, '/');
+        $header = preg_replace('~\b(href|src)="/~', '$1="' . $websiteUrl . '/', $header);
 
 
         return $this->render('discourse', [

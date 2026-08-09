@@ -24,7 +24,7 @@ $forum-blue: #40b3d8;
   width: 100%;
   min-height: 96px;
   margin: 0;
-  background: linear-gradient(to bottom, #fff 20%, rgba(255, 255, 255, .88) 72%, transparent 100%);
+  background: #fff;
   border: 0;
   border-radius: 0;
   box-shadow: none;
@@ -186,7 +186,7 @@ $forum-blue: #40b3d8;
 .discourse-color-scheme-is-dark,
 [data-theme="dark"] {
   .navbar-inverse {
-    background: linear-gradient(to bottom, #141518 20%, rgba(20, 21, 24, .88) 72%, transparent 100%);
+    background: #141518;
 
     .yii-logo--light { display: none; }
     .yii-logo--dark { display: block; }
@@ -229,6 +229,6 @@ $forum-blue: #40b3d8;
 
 @media (prefers-color-scheme: dark) {
   html:not(.theme-light) .navbar-inverse {
-    background: linear-gradient(to bottom, #141518 20%, rgba(20, 21, 24, .88) 72%, transparent 100%);
+    background: #141518;
   }
 }
