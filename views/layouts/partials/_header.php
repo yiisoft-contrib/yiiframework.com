@@ -26,7 +26,7 @@ if ($discourse) {
 
 ?>
 <?= InfoTop::widget() ?>
-<header class="navbar navbar-inverse navbar-static" id="top">
+<header class="navbar navbar-inverse navbar-static<?= !$discourse && !Yii::$app->user->isGuest ? ' navbar--authenticated' : '' ?>" id="top">
     <div class="container">
         <div id="main-nav-head" class="navbar-header">
             <a href="<?= Yii::$app->homeUrl ?>" class="navbar-brand">
@@ -159,33 +159,35 @@ if ($discourse) {
             ?>
 
             <?php if (!$discourse): ?>
+            <div class="navbar-utilities">
+                <div class="navbar-search">
+                    <?= $this->render('_searchForm') ?>
+                </div>
 
-            <div class="nav navbar-nav navbar-right navbar-login">
-                <?php echo Nav::widget([
-                    'id' => 'login-nav',
-                    'encodeLabels' => true,
-                    'options' => ['class' => 'nav navbar-nav navbar-main-menu'],
-                    'activateItems' => false,
-                    'dropDownCaret' => '<span class="caret"></span>',
-                    'items' => [
-                        Yii::$app->user->isGuest ? ['label' => 'Login', 'url' => ['/auth/login']] : (
-                            '<li>'
-                            . Html::beginForm(['/auth/logout'], 'post', ['class' => 'navbar-form'])
-                            . Html::submitButton(
-                                'Logout', // (' . Yii::$app->user->identity->username . ')',
-                                ['class' => 'btn btn-link']
-                            )
-                            . Html::a(Html::encode(Yii::$app->user->identity->username), ['/user/profile'], ['class' => 'btn btn-link'])
-                            . Html::endForm()
-                            . '</li>'
-                        ),
-                    ]
-                ]);
-                ?>
-            </div>
-
-            <div class="nav navbar-nav navbar-right navbar-search">
-                <?= $this->render('_searchForm') ?>
+                <nav class="navbar-account" aria-label="Account">
+                    <?php if (Yii::$app->user->isGuest): ?>
+                        <?= Html::a('Login', ['/auth/login'], ['class' => 'navbar-account__login']) ?>
+                    <?php else: ?>
+                        <div class="dropdown navbar-account__dropdown">
+                            <button class="navbar-account__trigger" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <svg viewBox="0 0 20 20" aria-hidden="true">
+                                    <path d="M10 10a4 4 0 1 0 0-8 4 4 0 0 0 0 8Zm0 2c-4.418 0-8 2.239-8 5v1h16v-1c0-2.761-3.582-5-8-5Z"/>
+                                </svg>
+                                <span><?= Html::encode(Yii::$app->user->identity->username) ?></span>
+                                <span class="caret" aria-hidden="true"></span>
+                            </button>
+                            <ul class="dropdown-menu dropdown-menu-right">
+                                <li><?= Html::a('Profile', ['/user/profile']) ?></li>
+                                <li class="divider" role="separator"></li>
+                                <li>
+                                    <?= Html::beginForm(['/auth/logout'], 'post', ['class' => 'navbar-account__logout-form']) ?>
+                                    <?= Html::submitButton('Logout', ['class' => 'navbar-account__logout']) ?>
+                                    <?= Html::endForm() ?>
+                                </li>
+                            </ul>
+                        </div>
+                    <?php endif; ?>
+                </nav>
             </div>
 
             <?php endif; ?>

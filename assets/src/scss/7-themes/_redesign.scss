@@ -1455,6 +1455,36 @@ a {
   }
 }
 
+.navbar-utilities { display: flex; align-items: center; gap: 12px; }
+.navbar-account__login,
+.navbar-account__trigger {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  height: 40px;
+  padding: 8px 10px;
+  color: $redesign-ink;
+  font-size: 15px;
+  font-weight: 600;
+  line-height: 24px;
+  background: transparent;
+  border: 0;
+  border-radius: 8px;
+  text-decoration: none;
+}
+.navbar-account__login:hover,
+.navbar-account__login:focus,
+.navbar-account__trigger:hover,
+.navbar-account__trigger:focus,
+.navbar-account__dropdown.open .navbar-account__trigger { color: $redesign-blue; background: $redesign-surface; text-decoration: none; }
+.navbar-account__trigger svg { flex: 0 0 auto; width: 18px; height: 18px; fill: currentColor; }
+.navbar-account__trigger > span:not(.caret) { max-width: 112px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.navbar-account__dropdown .dropdown-menu { top: calc(100% + 7px); min-width: 170px; }
+.navbar-account__logout-form { margin: 0; }
+.navbar-account__logout { width: 100%; padding: 8px 20px; color: $redesign-ink; text-align: left; background: transparent; border: 0; }
+.navbar-account__logout:hover,
+.navbar-account__logout:focus { color: $redesign-blue; background: $redesign-surface; }
+
 @media (max-width: 767px) {
   .navbar-inverse { min-height: 91px; }
   .navbar-inverse .navbar-collapse {
@@ -1466,6 +1496,14 @@ a {
   .navbar-inverse .navbar-brand .yii-logo { width: auto; height: 34px; }
   .theme-toggle { top: 25px; right: 58px; }
   .header-github { display: none; }
+  .navbar-utilities { display: flex; flex-direction: column; align-items: stretch; gap: 0; padding: 10px 15px 18px; }
+  .navbar-search #search-form { display: block; margin: 0 0 8px; padding: 0; }
+  .navbar-search #search-form .form-group,
+  .navbar-search #search-form .input-group,
+  .navbar-search #search-form #search { display: block; width: 100% !important; }
+  .navbar-account__login,
+  .navbar-account__trigger { width: 100%; justify-content: flex-start; }
+  .navbar-account__dropdown .dropdown-menu { position: static; float: none; width: 100%; margin-top: 4px; background: transparent; border: 0; box-shadow: none; }
 }
 
 @media screen and (min-width: $grid-float-breakpoint) {
@@ -1484,17 +1522,8 @@ a {
     padding: 0;
   }
 
-  .navbar-inverse .navbar-search { margin-right: 200px; }
-
-  #login-nav > li > a {
-    height: 40px;
-    margin-top: 27px;
-    padding: 8px 0 8px 11px;
-    font-size: 16px;
-    font-weight: 400;
-    line-height: 24px;
-    border: 0;
-  }
+  .navbar-utilities { position: absolute; top: 27px; right: 198px; z-index: 4; }
+  .navbar-utilities .navbar-form { margin: 0; padding: 0; }
 
   #main-nav {
     position: absolute;
@@ -1585,6 +1614,29 @@ a {
       padding-bottom: 7px;
     }
   }
+}
+
+@media screen and (min-width: $grid-float-breakpoint) and (max-width: 991px) {
+  .navbar--authenticated .header-github { display: none; }
+  .navbar--authenticated .navbar-utilities { right: 116px; }
+  .navbar--authenticated #main-nav { left: 44%; }
+}
+
+@media screen and (min-width: $grid-float-breakpoint) and (max-width: 1199px) {
+  .navbar--authenticated .navbar-account__trigger { width: 48px; padding-right: 8px; padding-left: 8px; }
+  .navbar--authenticated .navbar-account__trigger > span:not(.caret) { display: none; }
+}
+
+@media screen and (min-width: 992px) and (max-width: 1199px) {
+  .navbar--authenticated #main-nav { left: 47%; }
+}
+
+@media screen and (min-width: $grid-float-breakpoint) and (max-width: 1499px) {
+  .navbar--authenticated .navbar-search { display: none; }
+}
+
+@media screen and (min-width: 1500px) {
+  .navbar--authenticated #main-nav { left: 46%; }
 }
 
 @media screen and (min-width: 1200px) {
@@ -4685,6 +4737,19 @@ footer {
 
     &::after { border-color: #333437; }
   }
+
+  .navbar-account__login,
+  .navbar-account__trigger,
+  .navbar-account__logout { color: #fff; }
+  .navbar-account__login:hover,
+  .navbar-account__login:focus,
+  .navbar-account__trigger:hover,
+  .navbar-account__trigger:focus,
+  .navbar-account__dropdown.open .navbar-account__trigger,
+  .navbar-account__logout:hover,
+  .navbar-account__logout:focus { color: $redesign-blue; background: #242529; }
+  .navbar-account__dropdown .dropdown-menu { background: #18191d; border-color: #333437; }
+  .navbar-account__dropdown .divider { background: #333437; }
 
   @media screen and (min-width: $grid-float-breakpoint) {
     .navbar-nav > li > a,
