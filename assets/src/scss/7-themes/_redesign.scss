@@ -2842,6 +2842,13 @@ form#search-form.navbar-form div.form-group.nospace div.input-group input#search
   #classDescription { color: #4f5054; line-height: 1.68; }
 
   #api-navigation {
+    max-width: 100%;
+
+    .list-group-item {
+      overflow-wrap: anywhere;
+      word-break: normal;
+    }
+
     .list-group-item:focus-visible { position: relative; z-index: 1; outline: 2px solid rgba($redesign-blue, .55); outline-offset: -2px; }
     > a.has-children.active {
       color: $redesign-ink;
@@ -2889,6 +2896,28 @@ form#search-form.navbar-form div.form-group.nospace div.input-group input#search
     h1 { font-size: 29px; line-height: 37px; }
     table.summary-table,
     table.summaryTable { font-size: 13px; }
+  }
+
+  .api-reference-page--3 {
+    .topmost {
+      right: 0;
+      margin: 12px 0 16px;
+      overflow: visible;
+      opacity: 1;
+    }
+
+    .api-navigation-toggle {
+      padding: 8px 14px;
+      font-size: 14px;
+      line-height: 20px;
+    }
+
+    .row-offcanvas.active { left: 100%; }
+
+    .sidenav-offcanvas {
+      left: -100%;
+      width: 100%;
+    }
   }
 }
 

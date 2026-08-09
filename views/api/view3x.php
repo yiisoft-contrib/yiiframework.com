@@ -17,7 +17,8 @@ use yii\web\View;
 
 $this->registerJs("
     $(\"[data-toggle='offcanvas']\").click(function () {
-      $('.row-offcanvas').toggleClass('active')
+      var isOpen = $('.row-offcanvas').toggleClass('active').hasClass('active');
+      $(this).attr('aria-expanded', isOpen);
     });
 
     $('.has-children.active + div').addClass('active-parent');
@@ -42,8 +43,9 @@ $this->endBlock();
     <div class="row visible-xs">
         <div class="col-md-12">
             <p class="pull-right topmost">
-                <button type="button" title="Toggle Side-Nav" class="btn btn-primary btn-xs" data-toggle="offcanvas">
-                    SideNav
+                <button type="button" class="btn btn-primary api-navigation-toggle" data-toggle="offcanvas"
+                        aria-controls="api-navigation" aria-expanded="false">
+                    API navigation
                 </button>
             </p>
         </div>
