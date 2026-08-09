@@ -139,16 +139,6 @@ if ($discourse) {
                         ['label' => 'Contribute to Yii', 'url' => ['/site/contribute']],
                         ['label' => 'Donate', 'url' => ['site/donate']],
                         ['label' => 'About', 'options' => ['class' => 'separator']],
-                        [
-                            'label' => 'What is Yii?',
-                            'url' => [
-                                'guide/view',
-                                'type' => 'guide',
-                                'version' => reset(Yii::$app->params['versions']['api']),
-                                'language' => 'en',
-                                'section' => 'intro-yii'
-                            ]
-                        ],
                         ['label' => 'Release Cycle', 'url' => ['site/release-cycle']],
                         ['label' => 'License', 'url' => ['site/license']],
                         ['label' => 'Team', 'url' => ['site/team']],
