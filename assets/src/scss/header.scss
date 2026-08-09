@@ -19,7 +19,7 @@ $forum-blue: #40b3d8;
 .info-top { display: none; }
 
 .navbar-inverse {
-  position: relative;
+  position: absolute;
   z-index: 1001;
   width: 100%;
   min-height: 96px;
@@ -202,6 +202,6 @@ $forum-blue: #40b3d8;
 
 @media (prefers-color-scheme: dark) {
   html:not(.theme-light) .navbar-inverse {
-    background: #fff;
+    background: transparent;
   }
 }
