@@ -12,6 +12,6 @@ use yii\helpers\Html;
         <?= Html::a('API', ['api/index', 'version' => '2.0']) ?>
     </li>
     <li class="footerList_item">
-        <?= Html::a('Wiki', ['wiki/index']) ?>
+        <?= Html::a('Wiki', ['wiki/index', 'version' => '2.0']) ?>
     </li>
 </ul>
