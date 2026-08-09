@@ -37,11 +37,6 @@ $forum-blue: #40b3d8;
     margin: 0 auto;
   }
 
-  .navbar-header { position: static; }
-  .navbar-brand { height: auto; padding: 28px 15px 0 0; }
-  .yii-logo { display: block; width: auto; height: 40px; }
-  .yii-logo--dark { display: none; }
-  .navbar-toggle { margin-top: 25px; color: $forum-ink; background: transparent; border-color: $forum-line; }
 }
 
 @media screen and (min-width: $grid-float-breakpoint) {
@@ -126,8 +121,6 @@ $forum-blue: #40b3d8;
 @media screen and (max-width: ($grid-float-breakpoint - 1)) {
   .navbar-inverse { min-height: 91px; }
   .navbar-inverse > .wrap { width: 100%; min-height: 91px; padding: 0 15px; }
-  .navbar-inverse .navbar-brand { padding-top: 22px; }
-  .navbar-inverse .navbar-brand .yii-logo { height: 34px; }
   .navbar-inverse .navbar-collapse {
     display: block !important;
     height: auto !important;
@@ -174,10 +167,6 @@ $forum-blue: #40b3d8;
 [data-theme="dark"] {
   .navbar-inverse {
     background: #141518;
-
-    .yii-logo--light { display: none; }
-    .yii-logo--dark { display: block; }
-    .navbar-toggle { color: #fff; border-color: #333437; }
   }
   @media screen and (min-width: $grid-float-breakpoint) {
     #main-nav { background: rgba(24, 25, 29, .9); border-color: #333437; }
