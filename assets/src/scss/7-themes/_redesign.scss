@@ -1507,16 +1507,6 @@ a {
 }
 
 @media screen and (min-width: $grid-float-breakpoint) {
-  .theme-toggle::after {
-    content: "";
-    position: absolute;
-    top: 8px;
-    right: -10px;
-    display: block;
-    height: 24px;
-    border-right: 1px solid #f6f6f6;
-  }
-
   .navbar-inverse .navbar-collapse {
     margin-right: 0;
     padding: 0;
@@ -1873,8 +1863,15 @@ form#search-form.navbar-form div.form-group.nospace div.input-group input#search
   .votes-up,
   .votes-down { display: inline-flex; align-items: center; gap: 3px; }
   .votes { margin-right: 1px; color: $redesign-copy; font-size: 13px; }
-  .thumbs-up,
-  .thumbs-down { filter: grayscale(1); opacity: .7; }
+  .votes-up > a,
+  .votes-down > a { display: inline-flex; padding: 3px; color: $redesign-muted; border-radius: 5px; }
+  .votes-up > a:hover,
+  .votes-up > a:focus,
+  .votes-down > a:hover,
+  .votes-down > a:focus { color: $redesign-ink; background: $redesign-surface; }
+  .vote-arrow { display: block; width: 18px; height: 18px; fill: currentColor; }
+  .voting--wiki .votes-up.voted > a { color: $redesign-green; background: rgba($redesign-green, .11); }
+  .voting--wiki .votes-down.voted > a { color: $redesign-orange; background: rgba($redesign-orange, .11); }
   .star-wrapper .fa { color: $redesign-orange; }
   .star-count { margin-left: 6px; color: $redesign-copy; }
 
@@ -4684,8 +4681,6 @@ footer {
 
   body { color: #a3a5ad; background: #141518; }
 
-  .theme-toggle::after { border-color: #333437; }
-
   h1,
   h2,
   h3,
@@ -4918,6 +4913,14 @@ footer {
     .star-wrapper { background: #242529; border-color: #333437; }
     .votes,
     .star-count { color: #a3a5ad; }
+    .votes-up > a,
+    .votes-down > a { color: #87888c; }
+    .votes-up > a:hover,
+    .votes-up > a:focus,
+    .votes-down > a:hover,
+    .votes-down > a:focus { color: #fff; background: #18191d; }
+    .voting--wiki .votes-up.voted > a { color: $redesign-green; background: rgba($redesign-green, .14); }
+    .voting--wiki .votes-down.voted > a { color: $redesign-orange; background: rgba($redesign-orange, .14); }
     > div > span:first-child { color: #87888c; }
   }
 
