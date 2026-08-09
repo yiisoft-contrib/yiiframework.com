@@ -229,7 +229,7 @@ yii-2.0-ext-%:
 
 yii-3.0-%:
 	test -d data/yii-3.0/$(subst yii-3.0-,,$@) || git clone https://github.com/yiisoft/$(subst yii-3.0-,,$@).git data/yii-3.0/$(subst yii-3.0-,,$@)
-	cd data/yii-3.0/$(subst yii-3.0-,,$@) && git pull
+	cd data/yii-3.0/$(subst yii-3.0-,,$@) && git pull --ff-only origin HEAD
 
 composer:
 	cd data && (test -f composer.phar || (php -r "readfile('https://getcomposer.org/installer');" | php))
