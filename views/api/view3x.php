@@ -72,11 +72,15 @@ $this->endBlock();
                         $packages,
                         [
                             'item' => static function (string $package) use ($version) {
-                                return '<li>' . Html::a(Html::encode($package), [
-                                    'view',
-                                    'version' => $version,
-                                    'section' => $package,
-                                ]) . '</li>';
+                                $arrow = '<svg class="package-group-panel__arrow" viewBox="0 0 20 20" aria-hidden="true">'
+                                    . '<path d="M7.5 4.5 13 10l-5.5 5.5-1.4-1.4 4.1-4.1-4.1-4.1 1.4-1.4Z"/>'
+                                    . '</svg>';
+
+                                return '<li>' . Html::a(Html::encode($package) . $arrow, [
+                                        'view',
+                                        'version' => $version,
+                                        'section' => $package,
+                                    ]) . '</li>';
                             },
                             'class' => 'package-group-panel__packages',
                         ]

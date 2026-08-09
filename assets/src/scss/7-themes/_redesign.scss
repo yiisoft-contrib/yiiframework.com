@@ -2669,22 +2669,22 @@ form#search-form.navbar-form div.form-group.nospace div.input-group input#search
     border-radius: 5px;
     transition: color .15s ease, background-color .15s ease;
   }
-  a::after {
+  .package-group-panel__arrow {
     position: absolute;
-    top: 9px;
-    right: 9px;
-    content: "→" !important;
+    top: 10px;
+    right: 8px;
+    width: 18px;
+    height: 18px;
     color: $redesign-muted;
-    background: none !important;
-    font-family: sans-serif;
+    fill: currentColor;
     opacity: 0;
     transform: translateX(-4px);
     transition: opacity .15s ease, transform .15s ease;
   }
   a:hover,
   a:focus { color: $redesign-ink; background: #fff; text-decoration: none; }
-  a:hover::after,
-  a:focus::after { color: $redesign-blue; opacity: 1; transform: translateX(0); }
+  a:hover .package-group-panel__arrow,
+  a:focus .package-group-panel__arrow { color: $redesign-blue; opacity: 1; transform: translateX(0); }
 }
 
 @media (max-width: 991px) {
@@ -5237,11 +5237,11 @@ footer {
   .api-index-page .package-group-panel { background: #18191d; }
   .api-content.api-index-page .package-group-panel__packages {
     a { color: #b8b9bd; }
-    a::after { color: #87888c; }
+    .package-group-panel__arrow { color: #87888c; }
     a:hover,
     a:focus { color: #fff; background: #242529; }
-    a:hover::after,
-    a:focus::after { color: $redesign-blue; }
+    a:hover .package-group-panel__arrow,
+    a:focus .package-group-panel__arrow { color: $redesign-blue; }
   }
 
   .login-form {
