@@ -7,7 +7,7 @@ return [
     ],
     [
         'name' => 'GitHub Sponsors',
-        'link' => 'https://github.com/yiisoft',
+        'link' => 'https://github.com/sponsors/yiisoft',
     ],
     [
         'name' => 'Boosty',
