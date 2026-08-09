@@ -2084,6 +2084,97 @@ form#search-form.navbar-form div.form-group.nospace div.input-group input#search
   .context-nav__selectors { width: 100%; }
 }
 
+.context-nav .search-selectors {
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: 10px 14px;
+
+  &__group {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  &__scope .version-selector__options { max-width: 100%; }
+
+  .search-context-dropdown { position: relative; }
+  .search-context-dropdown .btn {
+    display: inline-flex;
+    min-height: 40px;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 11px;
+    color: $redesign-copy;
+    background: #fff;
+    border: 1px solid $redesign-line;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 20px;
+    box-shadow: none;
+  }
+  .search-context-dropdown .btn:hover,
+  .search-context-dropdown .btn:focus,
+  .search-context-dropdown.open .btn {
+    color: $redesign-ink;
+    background: #fff;
+    border-color: #cfd0d2;
+    box-shadow: 0 2px 8px rgba(20, 21, 24, .08);
+  }
+  .search-context-dropdown .btn svg {
+    width: 18px;
+    height: 18px;
+    flex: 0 0 auto;
+    color: $redesign-muted;
+    fill: currentColor;
+  }
+  .search-context-dropdown .btn:hover svg,
+  .search-context-dropdown .btn:focus svg,
+  .search-context-dropdown.open .btn svg { color: $redesign-blue; }
+  .search-context-dropdown .caret { margin-left: 2px; color: $redesign-muted; }
+  .search-context-dropdown .dropdown-menu {
+    top: calc(100% + 7px);
+    right: 0;
+    left: auto;
+    min-width: 220px;
+    max-height: min(420px, 70vh);
+    margin: 0;
+    padding: 6px;
+    overflow-y: auto;
+    background: #fff;
+    border: 1px solid $redesign-line;
+    border-radius: 9px;
+    box-shadow: 0 14px 34px rgba(20, 21, 24, .14);
+  }
+  .search-context-dropdown .dropdown-menu > li + li { margin-top: 2px; }
+  .search-context-dropdown .dropdown-menu > li > a {
+    padding: 8px 10px;
+    color: $redesign-copy;
+    background: transparent;
+    border-radius: 6px;
+    font-size: 14px;
+    line-height: 20px;
+  }
+  .search-context-dropdown .dropdown-menu > li > a:hover,
+  .search-context-dropdown .dropdown-menu > li > a:focus { color: $redesign-ink; background: $redesign-surface; }
+
+  @media (max-width: 900px) {
+    justify-content: flex-start;
+    &__group { width: 100%; }
+    &__group .version-selector__options { overflow-x: auto; }
+    &__language { margin-left: auto; }
+  }
+
+  @media (max-width: 600px) {
+    &__group { align-items: flex-start; flex-direction: column; }
+    &__language { width: 100%; margin-left: 0; }
+    .search-context-dropdown,
+    .search-context-dropdown .btn { width: 100%; }
+    .search-context-dropdown .btn { justify-content: center; }
+    .search-context-dropdown .dropdown-menu { right: auto; left: 0; width: 100%; }
+  }
+}
+
 .wiki-row {
   h2.title a { color: $redesign-ink; text-decoration: none; }
   h2.title a:hover,
@@ -5294,6 +5385,27 @@ footer {
     .guide-context-dropdown .dropdown-menu > li > a:focus { color: #fff; background: #242529; }
     .guide-download-dropdown .dropdown-menu strong { color: #fff; }
     .guide-download-dropdown .dropdown-menu small { color: #87888c; }
+  }
+
+  .context-nav .search-selectors {
+    .search-context-dropdown .btn,
+    .search-context-dropdown .dropdown-menu {
+      color: #a3a5ad;
+      background: #18191d;
+      border-color: #333437;
+    }
+    .search-context-dropdown .btn:hover,
+    .search-context-dropdown .btn:focus,
+    .search-context-dropdown.open .btn {
+      color: #fff;
+      background: #242529;
+      border-color: #4b4c50;
+      box-shadow: 0 10px 28px rgba(0, 0, 0, .3);
+    }
+    .search-context-dropdown .dropdown-menu { box-shadow: 0 16px 40px rgba(0, 0, 0, .35); }
+    .search-context-dropdown .dropdown-menu > li > a { color: #a3a5ad; background: transparent; }
+    .search-context-dropdown .dropdown-menu > li > a:hover,
+    .search-context-dropdown .dropdown-menu > li > a:focus { color: #fff; background: #242529; }
   }
 
   .wiki-row {
