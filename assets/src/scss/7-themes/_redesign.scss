@@ -5065,6 +5065,11 @@ footer {
   }
 
   .navbar-inverse .navbar-nav .open .dropdown-menu > li > a { color: $redesign-ink; }
+  .navbar-inverse .navbar-nav .open .dropdown-menu > li.separator {
+    color: $redesign-muted;
+    background: rgba($redesign-blue, .06);
+    border-color: $redesign-line !important;
+  }
   .navbar-inverse .navbar-nav .open .dropdown-menu > .active > a,
   .navbar-inverse .navbar-nav .open .dropdown-menu > .active > a:hover,
   .navbar-inverse .navbar-nav .open .dropdown-menu > .active > a:focus {
