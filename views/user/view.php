@@ -3,7 +3,6 @@
 use app\components\UserPermissions;
 use yii\bootstrap\Nav;
 use yii\helpers\Html;
-use yii\widgets\DetailView;
 
 /* @var $this yii\web\View */
 /* @var $model app\models\User */
@@ -13,6 +12,9 @@ use yii\widgets\DetailView;
 
 $this->title = $model->display_name . "'s profile";
 $forumUrl = $model->getForumUrl();
+$avatarUrl = $model->hasAvatar()
+    ? $model->getAvatarUrl()
+    : Yii::getAlias('@web/image/user/default_user.svg');
 
 if (Yii::$app->user->can(UserPermissions::PERMISSION_MANAGE_USERS)) {
     $this->beginBlock('adminNav');
@@ -30,65 +32,82 @@ $this->registerMetaTag(['name' => 'keywords', 'value' => 'yii framework, communi
 
 ?>
 <div class="container style_external_links">
-    <div class="content">
+    <div class="content user-public-profile">
 
-        <h1><?= Html::encode($this->title) ?></h1>
+        <header class="user-profile-hero">
+            <img class="user-profile-hero__avatar" src="<?= Html::encode($avatarUrl) ?>" alt="">
+            <div class="user-profile-hero__identity">
+                <h1><?= Html::encode($model->display_name) ?></h1>
+                <p class="user-profile-hero__username">@<?= Html::encode($model->username) ?></p>
+                <p class="user-profile-hero__joined">Member since <?= Yii::$app->formatter->asDate($model->created_at) ?></p>
+            </div>
+        </header>
 
-        <?= DetailView::widget([
-            'model' => $model,
-            'attributes' => [
-                [
-                    'attribute' => 'username',
-                    'value' => $model->rankLink,
-                    'format' => 'raw',
-                ],
-                [
-                    'label' => 'Overall Rating',
-                    'value' => "<strong>" . ((int)$model->rating) . "</strong> ("
-                        . ($model->rank==999999 ? 'not ranked' :
-                            Html::a('ranked as <i>No. '.((int)$model->rank).'</i> among '. ((int)$userCount) . ' members',
-                               		['user/index', 'sort'=>'rank', 'page'=>((int)(($model->rank-1)/50))+1]
-                            )) . ')',
-                    'format' => 'raw'
-                ],
-                'created_at:datetime',
+        <section class="user-profile-stats" aria-label="Community activity">
+            <div class="user-profile-stat">
+                <span class="user-profile-stat__value"><?= (int) $model->rating ?></span>
+                <span class="user-profile-stat__label">Rating</span>
+                <?php if ($model->rank == 999999): ?>
+                    <span class="user-profile-stat__note">Not ranked</span>
+                <?php else: ?>
+                    <?= Html::a(
+                        'No. ' . (int) $model->rank . ' of ' . (int) $userCount,
+                        ['user/index', 'sort' => 'rank', 'page' => (int) (($model->rank - 1) / 50) + 1],
+                        ['class' => 'user-profile-stat__note']
+                    ) ?>
+                <?php endif; ?>
+            </div>
+            <div class="user-profile-stat">
+                <span class="user-profile-stat__value"><?= (int) $model->post_count ?></span>
+                <span class="user-profile-stat__label">Forum posts</span>
+                <?php if ($forumUrl): ?>
+                    <?= Html::a('View profile', $forumUrl, ['class' => 'user-profile-stat__note']) ?>
+                <?php endif; ?>
+            </div>
+            <div class="user-profile-stat">
+                <span class="user-profile-stat__value"><?= (int) $model->extension_count ?></span>
+                <span class="user-profile-stat__label">Extensions</span>
+            </div>
+            <div class="user-profile-stat">
+                <span class="user-profile-stat__value"><?= (int) $model->wiki_count ?></span>
+                <span class="user-profile-stat__label">Wiki articles</span>
+            </div>
+            <div class="user-profile-stat">
+                <span class="user-profile-stat__value"><?= (int) $model->comment_count ?></span>
+                <span class="user-profile-stat__label">Comments</span>
+            </div>
+        </section>
 
-                'post_count' => [
-                    'label' => 'Forum Posts',
-                    'value' => $model->post_count . ($forumUrl ? ' (' . Html::a('view forum profile', $forumUrl) . ')' : ''),
-                    'format' => 'raw',
-                ],
-                'extension_count',
-                'wiki_count',
-                'comment_count',
+        <?php if (!empty($extensions) || !empty($wikis)): ?>
+            <div class="user-profile-contributions">
+                <?php if (!empty($extensions)): ?>
+                    <section>
+                        <h2>Extensions</h2>
+                        <ul class="user-profile-links">
+                            <?php foreach ($extensions as $extension): ?>
+                                <li><?= Html::a(Html::encode($extension->getLinkTitle()), $extension->getUrl()) ?></li>
+                            <?php endforeach; ?>
+                        </ul>
+                    </section>
+                <?php endif; ?>
 
-            ],
-        ]) ?>
-
-        <?php if (!empty($extensions)): ?>
-            <h2>Extensions</h2>
-
-            <ul>
-                <?php foreach($extensions as $extension) {
-                    echo "<li>" . Html::a(Html::encode($extension->getLinkTitle()), $extension->getUrl()) . '</li>';
-                } ?>
-            </ul>
-        <?php endif; ?>
-
-        <?php if (!empty($wikis)): ?>
-            <h2>Wiki Articles</h2>
-
-            <ul>
-                <?php foreach($wikis as $wiki) {
-                    echo "<li>" . Html::a(Html::encode($wiki->getLinkTitle()), $wiki->getUrl()) . '</li>';
-                } ?>
-            </ul>
+                <?php if (!empty($wikis)): ?>
+                    <section>
+                        <h2>Wiki Articles</h2>
+                        <ul class="user-profile-links">
+                            <?php foreach ($wikis as $wiki): ?>
+                                <li><?= Html::a(Html::encode($wiki->getLinkTitle()), $wiki->getUrl()) ?></li>
+                            <?php endforeach; ?>
+                        </ul>
+                    </section>
+                <?php endif; ?>
+            </div>
         <?php endif; ?>
 
         <?php if(!empty($model->badges)): ?>
 
             <h2>Badges</h2>
-            <ul class="list-unstyled">
+           <ul class="list-unstyled user-profile-badges">
                 <?php foreach($model->getBadges()->with('badge')->all() as $info): ?>
                 <?php
                     if (!$info->badge->active) {

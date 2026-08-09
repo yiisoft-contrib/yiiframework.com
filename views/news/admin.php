@@ -23,7 +23,7 @@ echo Nav::widget([
 $this->endBlock();
 
 ?>
-<div class="container style_external_links">
+<div class="container style_external_links admin-page">
     <div class="content">
 
         <?= GridView::widget([

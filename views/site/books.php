@@ -5,29 +5,25 @@
 $this->title = 'Books';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="container site-header">
-	<div class="row">
-		<div class="col-sm-9 col-md-7">
-            <h1>Books,</h1>
-            <h2>that help you master the framework</h2>
-		</div>
-		<div class="col-sm-3 col-md-5">
-			<img class="background" src="<?= Yii::getAlias('@web/image/books/header.svg')?>" alt="">
-		</div>
-	</div>
-</div>
+<div class="container style_external_links">
+    <main class="content books">
+        <header class="books-intro">
+            <h1>Books about Yii</h1>
+            <p>In-depth guides and practical references written by members of the Yii community.</p>
+        </header>
 
-<div class="container content books">
-    <div class="version">
-        <h2><span>Yii 2.0</span></h2>
-    </div>
-    <div class="row">
+        <section class="books-section">
+            <div class="books-section__heading">
+                <h2>Yii 2</h2>
+            </div>
         <?= $this->render('partials/_books', ['books' => $books2]) ?>
-    </div>
-    <div class="version">
-        <h2><span>Yii 1.1</span></h2>
-    </div>
-    <div class="row">
+        </section>
+
+        <section class="books-section">
+            <div class="books-section__heading">
+                <h2>Yii 1.1</h2>
+            </div>
         <?= $this->render('partials/_books', ['books' => $books1]) ?>
-    </div>
+        </section>
+    </main>
 </div>

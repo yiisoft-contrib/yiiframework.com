@@ -77,20 +77,6 @@ function scripts() {
     .pipe($.notify({ message: 'Scripts task complete' }));
 };
 
-// sprites
-function sprites() {
-    var spriteData = gulp.src('data/avatars/*')
-        .pipe($.spritesmith({
-            imgName: 'sprite.png',
-            imgPath: '../../../image/sprite.png',
-            cssName: 'contributors.css',
-            padding: 2
-        }));
-    spriteData.img.pipe(gulp.dest('web/image'));
-    spriteData.css.pipe(gulp.dest(config.PATHS.src + '/scss/2-vendors'));
-    return spriteData;
-};
-
 // Copy fonts
 function fonts() {
   return gulp.src(config.PATHS.fonts)
@@ -111,7 +97,6 @@ function clean(done) {
 // The main build task
 gulp.task('build', gulp.series(
   clean,
-  sprites,
   gulp.parallel(styles, forumheader, scripts, fonts)
 ));
 
@@ -143,4 +128,3 @@ gulp.task('fonts', fonts);
 gulp.task('styles', styles);
 gulp.task('forumheader', forumheader);
 gulp.task('scripts', scripts);
-gulp.task('sprites', sprites);

@@ -28,6 +28,17 @@ $this->registerLinkTag([
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta http-equiv="x-ua-compatible" content="ie=edge">
 
+        <script>
+            (function () {
+                try {
+                    var theme = localStorage.getItem('yii-theme');
+                    if (theme === 'dark' || (!theme && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+                        document.documentElement.classList.add('theme-dark');
+                    }
+                } catch (error) {}
+            }());
+        </script>
+
         <link rel="apple-touch-icon" sizes="180x180" href="<?= Yii::getAlias('@web/favico/apple-touch-icon.png') ?>">
         <link rel="icon" type="image/png" sizes="32x32" href="<?= Yii::getAlias('@web/favico/favicon-32x32.png') ?>">
         <link rel="icon" type="image/png" sizes="16x16" href="<?= Yii::getAlias('@web/favico/favicon-16x16.png') ?>">
@@ -77,7 +88,7 @@ $this->registerLinkTag([
         <meta name="twitter:site" content="yiiframework" />
         <meta name="twitter:title" content="<?= !empty($this->title) ? Html::encode($this->title) : 'Yii Framework' ?>" />
         <meta name="twitter:description" content="" />
-        <meta name="twitter:image" content="<?= Url::to(Yii::getAlias('@web/image/twitter_cover.png'), true) ?>" />
+        <meta name="twitter:image" content="<?= Url::to(Yii::getAlias('@web/image/x_cover.png'), true) ?>" />
         <meta name="twitter:image:width" content="120" />
         <meta name="twitter:image:height" content="120" />
 
@@ -92,11 +103,9 @@ $this->registerLinkTag([
 
             <?= $this->render('partials/_header', ['discourse' => false]) ?>
 
-            <a href="https://yii3.yiiframework.com" class="yii3-banner">
-                <strong><span class="yii3-banner__emoji">🚀</span>Yii3 is now available!</strong>
-            </a>
-
-            <?= $this->context instanceof BaseController && isset($this->context->sectionTitle) ? $this->render('partials/_sectionHeader', ['title' => $this->context->sectionTitle]) : '' ?>
+            <?php if (!empty($this->blocks['adminNav']) || !empty($this->blocks['contentSelectors'])): ?>
+                <?= $this->render('partials/_contextNav') ?>
+            <?php endif; ?>
 
             <?= Alert::widget(['options' => ['class' => 'main-alert']]) ?>
             <?= $content ?>

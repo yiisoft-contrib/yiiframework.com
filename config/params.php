@@ -181,17 +181,12 @@ return [
 
     'books2' => require __DIR__ . '/books2.php',
     'books1' => require __DIR__ . '/books1.php',
-    'testimonials' => require __DIR__ . '/testimonials.php',
     'members' => require __DIR__ . '/members.php',
     'release-cycle' => require __DIR__ . '/release-cycle.php',
     'donation-services' => require __DIR__ . '/donation-services.php',
 
     'adminEmail' => 'hostmaster@yiiframework.com',
     'supportEmail' => 'team@yiiframework.com',
-    'securityEmails' => [
-        'sam@rmcreative.ru',
-        'contact@cebe.cc',
-    ],
     'partnerEmails' => [
         'alex.babiev@yiiframework.com',
         'sam@rmcreative.ru',

@@ -45,7 +45,10 @@ class ExtensionTaglist extends Widget
         }
 
         if ($this->extension) {
-            return implode(', ', $tagEntries);
+            return Html::ul(array_values($tagEntries), [
+                'class' => 'extension-tag-list',
+                'encode' => false,
+            ]);
         }
 
         return $this->render('extensionTaglist', ['tagEntries' => $tagEntries]);

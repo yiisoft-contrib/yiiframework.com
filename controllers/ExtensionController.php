@@ -69,10 +69,16 @@ class ExtensionController extends BaseController
         ];
     }
 
-    public function actionIndex($category = null, $tag = null, $version = '2.0')
+    public function actionIndex($category = null, $tag = null, $version = '3.0')
     {
-        if (!\in_array($version, [Extension::YII_VERSION_10, Extension::YII_VERSION_11, Extension::YII_VERSION_20], true)) {
+        $this->sectionTitle = null;
+
+        if (!\in_array($version, [Extension::YII_VERSION_10, Extension::YII_VERSION_11, Extension::YII_VERSION_20, Extension::YII_VERSION_30], true)) {
             throw new NotFoundHttpException();
+        }
+
+        if ($version === Extension::YII_VERSION_30) {
+            return $this->render('index-yii3', ['version' => $version]);
         }
 
         $query = Extension::find()->active()->with(['owner', 'category']);
@@ -146,31 +152,31 @@ class ExtensionController extends BaseController
             'create'=> [
                 'asc'=>['created_at' => SORT_ASC],
                 'desc'=>['created_at' => SORT_DESC],
-                'label'=>'Sorted by date',
+                'label'=>'Date',
                 'default'=>'desc',
             ],
             'update'=> [
                 'asc'=>['updated_at' => SORT_ASC],
                 'desc'=>['updated_at' => SORT_DESC],
-                'label'=>'Sorted by date (updated)',
+                'label'=>'Last updated',
                 'default'=>'desc',
             ],
             'rating'=> [
                 'asc'=>['rating' => SORT_ASC],
                 'desc'=>['rating' => SORT_DESC],
-                'label'=>'Sorted by rating',
+                'label'=>'Rating',
                 'default'=>'desc',
             ],
             'comments'=> [
                 'asc'=>['comment_count' => SORT_ASC],
                 'desc'=>['comment_count' => SORT_DESC],
-                'label'=>'Sorted by comments',
+                'label'=>'Comments',
                 'default'=>'desc',
             ],
             'downloads'=> [
                 'asc'=>['download_count' => SORT_ASC],
                 'desc'=>['download_count' => SORT_DESC],
-                'label'=>'Sorted by downloads',
+                'label'=>'Downloads',
                 'default'=>'desc',
             ],
         ];

@@ -1,59 +1,79 @@
 <?php
+
 use yii\helpers\Html;
-use yii\helpers\Url;
 
 /* @var $this yii\web\View */
-$this->title = 'Resources';
+
+$this->title = 'Learning Resources';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="site-resources">
-    <div class="header container">
-        <div class="row">
-            <div class="col-xs-12">
-                <h1>Resources</h1>
-                <h2>Very helpful. Check these out.</h2>
-            </div>
-        </div>
-        <img class="background" src="<?= Yii::getAlias('@web/image/resources/header.svg')?>" alt="">
+<main class="container content learning-page style_external_links">
+    <header class="learning-page__intro">
+        <h1>Learning resources</h1>
+        <p>Free tutorials and community-made courses for learning Yii at your own pace.</p>
+    </header>
+
+    <div class="learning-sections">
+        <section class="learning-section" aria-labelledby="learning-yii3">
+            <header>
+                <h2 id="learning-yii3">Yii 3</h2>
+                <p>Short introductions to creating and structuring a modern Yii application.</p>
+            </header>
+            <ul class="learning-list">
+                <li>
+                    <span class="learning-list__type">Video</span>
+                    <a href="https://www.youtube.com/watch?v=-AY6DT2IcaM">Time to Hello World</a>
+                    <span class="learning-list__description">Create a project and run your first Yii 3 application.</span>
+                </li>
+                <li>
+                    <span class="learning-list__type">Video</span>
+                    <a href="https://www.youtube.com/watch?v=NvN93QEycYU">Building a static website</a>
+                    <span class="learning-list__description">Continue with a small, practical website.</span>
+                </li>
+            </ul>
+        </section>
+
+        <section class="learning-section" aria-labelledby="learning-yii2">
+            <header>
+                <h2 id="learning-yii2">Yii 2</h2>
+                <p>Long-form courses and established community video series.</p>
+            </header>
+            <ul class="learning-list">
+                <li>
+                    <span class="learning-list__type">Course</span>
+                    <a href="https://www.youtube.com/watch?v=whuIf33v2Ug">Full course: build a YouTube clone</a>
+                    <span class="learning-list__description">A complete project-based introduction to Yii 2.</span>
+                </li>
+                <li>
+                    <span class="learning-list__type">Video series</span>
+                    <a href="https://www.youtube.com/playlist?list=PLMyGpiUTm106xkNQh9WeMsa-LXjanaLUm">Beginning Yii 2.0</a>
+                    <span class="learning-list__description">Beginner series by Tom King.</span>
+                </li>
+                <li>
+                    <span class="learning-list__type">Video series</span>
+                    <a href="https://www.youtube.com/playlist?list=PLRd0zhQj3CBmusDbBzFgg3H20VxLx2mkF">Yii 2 lessons</a>
+                    <span class="learning-list__description">Community series by DoingITeasyChannel.</span>
+                </li>
+                <li>
+                    <span class="learning-list__type">Video series</span>
+                    <a href="https://www.youtube.com/watch?v=aq0A2o6nGuA&amp;list=PLpNYlUeSK_rn_3mWq_vPt_jKz6cp7a6sZ">Yii 2.0 series</a>
+                    <span class="learning-list__description">Community series by Luke Briner.</span>
+                </li>
+            </ul>
+        </section>
+
+        <section class="learning-section" aria-labelledby="learning-yii11">
+            <header>
+                <h2 id="learning-yii11">Yii 1.1</h2>
+                <p>The original official project tutorial, retained for Yii 1.1 applications.</p>
+            </header>
+            <ul class="learning-list">
+                <li>
+                    <span class="learning-list__type">Tutorial</span>
+                    <?= Html::a('Building a blog system', ['guide/blog-entry']) ?>
+                    <span class="learning-list__description">Build a complete blog application step by step.</span>
+                </li>
+            </ul>
+        </section>
     </div>
-    <div class="container style_external_links">
-        <div class="row">
-            <div class="col-xs-12">
-                <div class="content">
-                    <p>There are various resources that aren't part of official Yii website but are very helpful. Check these out.</p>
-                </div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-xs-12 col-md-6 col-lg-3 group">
-                <h3>Videos</h3>
-
-                <div class="image">
-                    <img src="<?= Yii::getAlias('@web/image/resources/videos.png') ?>" alt="Videos">
-                </div>
-
-                <p>There are many videos available. <a href="https://www.youtube.com/results?search_query=yii">Check YouTube for "yii"</a>.</p>
-                <p>Below are links to two big video series community likes most.</p>
-
-                <ul>
-                    <li><a href="https://www.youtube.com/playlist?list=PLMyGpiUTm106xkNQh9WeMsa-LXjanaLUm">Beginning Yii 2.0 by Tom King</a></li>
-                    <li><a href="https://www.youtube.com/playlist?list=PLRd0zhQj3CBmusDbBzFgg3H20VxLx2mkF">Yii2 Lessons, DoingITeasyChannel</a></li>
-                    <li><a href="https://www.youtube.com/watch?v=aq0A2o6nGuA&amp;list=PLpNYlUeSK_rn_3mWq_vPt_jKz6cp7a6sZ">Yii 2.0 by Luke Briner</a></li>
-                </ul>
-            </div>
-            <div class="col-xs-12 col-md-6 col-lg-3 group">
-                <h3>Yii 1.1</h3>
-
-                <div class="image">
-                    <a href="<?= Url::to(['guide/blog-entry']) ?>" aria-label="Yii 1.1 Blog tutorial">
-                    <img src="<?= Yii::getAlias('@web/image/resources/yii11.png') ?>" alt="Yii 1.1">
-                    </a>
-                </div>
-
-                <h4><?= Html::a('The Yii 1.1 Blog tutorial', ['guide/blog-entry']) ?></h4>
-
-                <p>If you need to learn good old Yii 1.1 this is a must-read official tutorial.</p>
-            </div>
-        </div>
-    </div>
-</div>
+</main>

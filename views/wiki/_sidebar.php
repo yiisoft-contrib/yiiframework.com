@@ -13,8 +13,12 @@ use yii\widgets\LinkSorter;
 /** @var $category string */
 /** @var $version string */
 /** @var $tag WikiTag */
+/** @var $showCreateLink bool */
 ?>
-<?= Html::a('<span class="big">Write</span><span class="small">new article</span>', ['create'], ['class' => 'btn btn-block btn-new-wiki-article']) ?>
+<?php $showCreateLink = $showCreateLink ?? true; ?>
+<?php if ($showCreateLink): ?>
+    <?= Html::a('Write new article', ['create'], ['class' => 'btn btn-block btn-new-wiki-article']) ?>
+<?php endif; ?>
 
 <?php if (isset($sort)): ?>
     <h3 class="wiki-side-title">Sorting by</h3>
@@ -44,7 +48,7 @@ use yii\widgets\LinkSorter;
                 'wiki/index',
                 'category' => $cat->id,
                 'tag' => isset($tag) ? $tag->slug : null,
-                'version' => $version ?? '2.0',
+                'version' => $version ?? '3.0',
             ])?>"><?= Html::encode($cat->name) ?> <span class="count"><?= (int) $cat->count ?></span></a>
         </li>
     <?php endforeach; ?>
@@ -52,7 +56,7 @@ use yii\widgets\LinkSorter;
 
 <h3 class="wiki-side-title">Popular Tags</h3>
 
-<ul class="wiki-side-menu">
+<ul class="wiki-side-menu wiki-tag-list">
     <li<?= empty($tag) ? ' class="active"' : '' ?>><a href="<?= Url::to(['wiki/index', 'category' => $category ?? null])?>">All</a></li>
     <?php foreach(WikiTag::find()->orderBy(['frequency' => SORT_DESC])->limit(10)->all() as $t): ?>
         <li<?= isset($tag) && $tag->equals($t) ? ' class="active"' : '' ?>>
@@ -60,7 +64,7 @@ use yii\widgets\LinkSorter;
                 'wiki/index',
                 'tag' => $t->slug,
                 'category' => $category ?? null,
-                'version' => $version ?? '2.0',
+                'version' => $version ?? '3.0',
             ])?>"><?= Html::encode($t->name) ?> <span class="count"><?= (int) $t->frequency ?></span></a>
         </li>
     <?php endforeach; ?>

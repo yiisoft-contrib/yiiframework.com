@@ -5,141 +5,132 @@ use yii\helpers\Html;
 
 /* @var $this yii\web\View */
 /* @var $versions array */
+
+$this->title = 'Release cycle';
+$this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="container style_external_links">
-    <div class="content">
-        <div>
-            <p>Yii 1.1, Yii 2, and Yii3 have separate release cycles and maintenance policies.</p>
 
-            <h2>Yii3</h2>
+<main class="container content style_external_links release-cycle-page">
+    <header class="release-cycle-page__intro">
+        <h1>Release cycle</h1>
+        <p>Yii 1.1, Yii 2, and Yii3 follow separate release cycles and maintenance policies.</p>
+    </header>
 
-            <p>Yii3 consists of many packages. Each package is <a href="https://semver.org/">versioned
-               using SemVer</a> independently.</p>
+    <div class="release-policies">
+        <section class="release-policy release-policy--yii3">
+            <header>
+                <p class="release-policy__eyebrow">Package-based</p>
+                <h2>Yii3</h2>
+                <p>Each package is versioned independently using <a href="https://semver.org/">Semantic Versioning</a>.</p>
+            </header>
 
+            <dl class="release-version-types">
+                <div>
+                    <dt>Major</dt>
+                    <dd>Released at most yearly. May include breaking changes and removes deprecated code. Migration steps are documented in <code>UPGRADE.md</code>.</dd>
+                </div>
+                <div>
+                    <dt>Minor</dt>
+                    <dd>Adds features and may deprecate APIs without removing them. Platform requirements, including supported PHP versions, may change.</dd>
+                </div>
+                <div>
+                    <dt>Patch</dt>
+                    <dd>Contains compatible bug fixes, documentation improvements, and internal refactoring. Safe to upgrade without platform requirement changes.</dd>
+                </div>
+            </dl>
+        </section>
+
+        <section class="release-policy">
+            <header>
+                <p class="release-policy__eyebrow">Framework and extensions</p>
+                <h2>Yii 2</h2>
+                <p>The core framework and official extensions are versioned independently.</p>
+            </header>
             <ul>
-                <li>
-                    Major version
-                    <ul>
-                        <li>Released at most once per year.</li>
-                        <li>May introduce backward incompatible changes (BC breaks).</li>
-                        <li>Removes previously deprecated code.</li>
-                        <li>Upgrade path is documented in <code>UPGRADE.md</code>.</li>
-                    </ul>
-                </li>
-                <li>
-                    Minor version
-                    <ul>
-                        <li>Released when a set of features or enhancements is ready.</li>
-                        <li>May introduce new functionality and deprecate existing APIs, but does not remove them.</li>
-                        <li>Safe to upgrade within the same major version.</li>
-                        <li>May adjust requirements, including the minimum or maximum supported PHP version.</li>
-                    </ul>
-                </li>
-                <li>
-                    Patch version
-                    <ul>
-                        <li>Released for bug fixes, documentation improvements, or internal refactorings.</li>
-                        <li>Does not change platform requirements (for example, PHP version constraints remain the same).</li>
-                        <li>Does not introduce new features or remove existing ones.</li>
-                        <li>Safe to upgrade.</li>
-                    </ul>
-                </li>
+                <li>The current major version receives enhancements until work begins on the next major version.</li>
+                <li>The previous major version may continue to receive security fixes.</li>
             </ul>
+        </section>
 
-            <h2>Yii 2</h2>
-
-            <p>Yii 2 consists of the core framework and official extensions, each versioned independently.</p>
-
-            <ul>
-                <li>Major version is receiving enhancements until it is decided to start working on next major version.</li>
-                <li>Previous major version may receive security fixes.</li>
-            </ul>
-
-            <h2>Yii 1.1</h2>
-
-            <p>
-                Yii 1.1 is in maintenance mode. It only receives updates for:
-            </p>
-
+        <section class="release-policy">
+            <header>
+                <p class="release-policy__eyebrow">Maintenance mode</p>
+                <h2>Yii 1.1</h2>
+                <p>Updates are limited to changes that keep existing applications secure and operational.</p>
+            </header>
             <ul>
                 <li>Support for newer PHP versions where feasible.</li>
                 <li>Security fixes.</li>
                 <li>Critical bug fixes that do not require breaking changes.</li>
             </ul>
+        </section>
+    </div>
 
-            <h2>PHP versions support</h2>
+    <aside class="release-php-note" aria-labelledby="php-support-title">
+        <div>
+            <p class="release-policy__eyebrow">Platform policy</p>
+            <h2 id="php-support-title">PHP version support</h2>
+        </div>
+        <div>
+            <p>Yii is continuously tested with PHPUnit. When a <a href="https://phpunit.de/supported-versions.html">supported PHPUnit version</a> drops an old PHP version, Yii may remove that version from its test matrix.</p>
+            <p>End-of-life PHP versions may be dropped in a minor release. We recommend using a <a href="https://www.php.net/supported-versions.php">currently supported PHP version</a>.</p>
+        </div>
+    </aside>
 
-            <p>
-                We run automated tests using PHPUnit.
-                If a <a href="https://phpunit.de/supported-versions.html">newer PHPUnit version drops support for an old PHP version</a>,
-                we may remove it from our test matrix.
-            </p>
+    <section class="release-timeline" aria-labelledby="current-versions-title">
+        <header class="release-timeline__header">
+            <div>
+                <p class="release-policy__eyebrow">Support timeline</p>
+                <h2 id="current-versions-title">Current versions</h2>
+            </div>
+            <p>The timeline shows the support phase for each Yii branch. Lighter colors indicate forecast dates based on a new major release today.</p>
+        </header>
 
-            <p>End-of-life PHP versions may be dropped in the next minor release.
-               We recommend using a <a href="https://www.php.net/supported-versions.php">currently supported PHP version</a>.</p>
-
-            <h2>Current versions</h2>
-
+        <div class="release-calendar" role="img" aria-label="Timeline of current Yii versions and their support phases">
             <?= VersionCalendar::widget(['versions' => $versions]) ?>
+        </div>
 
-            <h3>Legend</h3>
+        <ul class="release-legend" aria-label="Timeline legend">
+            <li><span class="release-legend__swatch release-legend-active"></span><strong>Active support</strong><small>Features, bug fixes, and security fixes</small></li>
+            <li><span class="release-legend__swatch release-legend-freeze"></span><strong>Feature freeze</strong><small>Bug, security, and compatibility fixes</small></li>
+            <li><span class="release-legend__swatch release-legend-security"></span><strong>Security support</strong><small>Security and PHP compatibility fixes</small></li>
+            <li><span class="release-legend__swatch release-legend-future"></span><strong>Future</strong><small>Not released yet</small></li>
+        </ul>
+    </section>
 
+    <section class="release-details" aria-labelledby="release-details-title">
+        <header>
+            <h2 id="release-details-title">Lifecycle dates</h2>
+            <p>Dates for announced phases are listed below. Unannounced dates are calculated relative to the next major release.</p>
+        </header>
+
+        <div class="table-responsive">
             <table class="table">
+                <thead>
+                <tr>
+                    <th>Version</th>
+                    <th>PHP</th>
+                    <th>Release</th>
+                    <th>Feature freeze</th>
+                    <th>Security fixes only</th>
+                    <th>End of life</th>
+                </tr>
+                </thead>
                 <tbody>
-                <tr>
-                    <td style="background: #9c9; width: 40px;"></td>
-                    <td style="background: #9c9; width: 40px; opacity: 0.3"></td>
-                    <td>Active support. New features, enhancements, bug fixes, security fixes.</td>
-                </tr>
-                <tr>
-                    <td style="background: #71bdff; width: 40px;"></td>
-                    <td style="background: #71bdff; width: 40px; opacity: 0.3;"></td>
-                    <td>Feature freeze. Bug fixes, security fixes, and critical compatibility fixes only.</td>
-                </tr>
-                <tr>
-                    <td style="background: #ffb95e; width: 40px;"></td>
-                    <td style="background: #ffb95e; width: 40px; opacity: 0.3;"></td>
-                    <td>Mainly security and PHP compatibility fixes.</td>
-                </tr>
-                <tr>
-                    <td style="background: #eee; width: 40px;"></td>
-                    <td></td>
-                    <td>Future version.</td>
-                </tr>
+                <?php foreach ($versions as $branch => $data): ?>
+                    <tr>
+                        <th scope="row"><?= Html::encode($branch) ?></th>
+                        <td><?= Html::encode($data['php'] ?? 'To be announced') ?></td>
+                        <td><?= Html::encode($data['release'] ?? 'To be announced') ?></td>
+                        <td><?= Html::encode($data['enhancements'] ?? 'To be announced') ?></td>
+                        <td><?= Html::encode($data['bugfixes'] ?? 'Next release +2 years') ?></td>
+                        <td><?= Html::encode($data['eol'] ?? 'Next release +5 years') ?></td>
+                    </tr>
+                <?php endforeach ?>
                 </tbody>
             </table>
-
-            <p>Pale color means forecast in case next major version is released today.</p>
-
-            <h2>Details</h2>
-
-            <div class="table-responsive">
-                <table class="table table-striped">
-                    <thead>
-                    <tr>
-                        <th>Version</th>
-                        <th>PHP Version</th>
-                        <th>Release (active support)</th>
-                        <th>Feature freeze</th>
-                        <th>Security and PHP compatibility fixes only</th>
-                        <th>End of life</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    <?php foreach ($versions as $branch => $data): ?>
-                        <tr>
-                            <td><?= Html::encode($branch) ?></td>
-                            <td><?= Html::encode($data['php'] ?? 'To be announced') ?></td>
-                            <td><?= Html::encode($data['release'] ?? 'To be announced') ?></td>
-                            <td><?= Html::encode($data['enhancements'] ?? 'To be announced') ?></td>
-                            <td><?= Html::encode($data['bugfixes'] ?? 'Next release +2 years') ?></td>
-                            <td><?= Html::encode($data['eol'] ?? 'Next release +5 years') ?></td>
-                        </tr>
-                    <?php endforeach ?>
-                    </tbody>
-                </table>
-            </div>
-            ¹ Note: Yii <a href="https://github.com/yiisoft/yii2/discussions/19831#discussioncomment-5858046" target="_blank">2.1</a> was skipped.
         </div>
-    </div>
-</div>
+
+        <p class="release-details__note">Yii <a href="https://github.com/yiisoft/yii2/discussions/19831#discussioncomment-5858046">2.1 was skipped</a>.</p>
+    </section>
+</main>

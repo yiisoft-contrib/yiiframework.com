@@ -26,9 +26,8 @@ $this->registerMetaTag(['name' => 'keywords', 'value' => 'yii framework, communi
 
 ?>
 <div class="container style_external_links">
-    <div class="content">
-        <h1>Hall of Fame</h1>
-
+    <div class="content halloffame-page">
+        <div class="halloffame-grid">
         <?php if ($this->beginCache('user/halloffame', ['duration' => 3600])) { ?>
             <div class="halloffame-members">
                 <h2>Top Rated Members</h2>
@@ -68,6 +67,7 @@ $this->registerMetaTag(['name' => 'keywords', 'value' => 'yii framework, communi
 
             <?php $this->endCache();
         } ?>
+        </div>
 
         <div class="halloffame-all-members"><?= Html::a('View all members', ['user/index']) ?></div>
     </div>

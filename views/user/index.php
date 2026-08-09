@@ -29,10 +29,9 @@ $pagination = $dataProvider->getPagination();
 
 ?>
 <div class="container style_external_links">
-    <div class="content">
-        <h1>Members</h1>
-
-        <table class="table table-striped table-bordered">
+    <div class="content users-page">
+        <div class="users-table-wrap">
+        <table class="table users-table">
             <thead>
                 <tr>
                     <th>Rank</th>
@@ -60,6 +59,7 @@ $pagination = $dataProvider->getPagination();
                 <?php endforeach ?>
             </tbody>
         </table>
+        </div>
 
         <?php if ($pagination !== false): ?>
         <nav aria-label="Page navigation">

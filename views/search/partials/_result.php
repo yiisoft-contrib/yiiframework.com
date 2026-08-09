@@ -24,7 +24,7 @@ if ($model->getUrl() === null) {
 }
 
 ?>
-<div class="search-result">
+<article class="search-result">
     <div class="row">
         <div class="col-sm-12">
             <h3>
@@ -94,4 +94,4 @@ if ($model->getUrl() === null) {
         </div>
 
     </div>
-</div>
+</article>

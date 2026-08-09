@@ -20,7 +20,7 @@ $this->endBlock();
 
 ?>
 
-<div class="container">
+<div class="container progress-page">
     <div class="content">
 
         <?= GridView::widget([

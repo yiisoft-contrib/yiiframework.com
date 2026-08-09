@@ -29,10 +29,12 @@ class NewsArchive extends Widget
         $years = $query->asArray()->all();
 
         $archiveEntries = [];
+        $urlParams = $this->urlParams;
+        unset($urlParams['tag']);
         foreach($years as $year) {
             $date = $year['y'];
             $count = $year['c'];
-            $archiveEntries[$date] = Html::a($date, array_merge($this->urlParams, ['news/index', 'year' => $date])) . " ($count)";
+            $archiveEntries[$date] = Html::a($date, array_merge($urlParams, ['news/index', 'year' => $date])) . " ($count)";
         }
         krsort($archiveEntries);
 

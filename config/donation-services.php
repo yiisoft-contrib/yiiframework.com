@@ -6,15 +6,15 @@ return [
         'link' => 'https://opencollective.com/yiisoft',
     ],
     [
-        'name' => 'Github Sponsors',
+        'name' => 'GitHub Sponsors',
         'link' => 'https://github.com/yiisoft',
     ],
     [
-        'name' => 'Boosty (for Russian users)',
+        'name' => 'Boosty',
         'link' => 'https://boosty.to/yiisoft',
     ],
     [
-        'name' => 'Sponsr (for Russian users)',
+        'name' => 'Sponsr',
         'link' => 'https://sponsr.ru/yii3/',
     ],
 ];

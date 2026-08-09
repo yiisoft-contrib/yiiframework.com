@@ -62,8 +62,10 @@ class WikiController extends BaseController
         ];
     }
 
-    public function actionIndex($category = null, $tag = null, $version = '2.0')
+    public function actionIndex($category = null, $tag = null, $version = '3.0')
     {
+        $this->sectionTitle = null;
+
         if (!isset(Wiki::getYiiVersionOptions()[$version])) {
             throw new NotFoundHttpException();
         }
@@ -102,31 +104,31 @@ class WikiController extends BaseController
                     'create'=> [
                         'asc'=>['created_at' => SORT_ASC],
                         'desc'=>['created_at' => SORT_DESC],
-                        'label'=>'Sorted by date',
+                        'label'=>'Date',
                         'default'=>'desc',
                     ],
                     'update'=> [
                         'asc'=>['updated_at' => SORT_ASC],
                         'desc'=>['updated_at' => SORT_DESC],
-                        'label'=>'Sorted by date (updated)',
+                        'label'=>'Last updated',
                         'default'=>'desc',
                     ],
                     'rating'=> [
                         'asc'=>['rating' => SORT_ASC],
                         'desc'=>['rating' => SORT_DESC],
-                        'label'=>'Sorted by rating',
+                        'label'=>'Rating',
                         'default'=>'desc',
                     ],
                     'comments'=> [
                         'asc'=>['comment_count' => SORT_ASC],
                         'desc'=>['comment_count' => SORT_DESC],
-                        'label'=>'Sorted by comments',
+                        'label'=>'Comments',
                         'default'=>'desc',
                     ],
                     'views'=> [
                         'asc'=>['view_count' => SORT_ASC],
                         'desc'=>['view_count' => SORT_DESC],
-                        'label'=>'Sorted by views',
+                        'label'=>'Views',
                         'default'=>'desc',
                     ],
                 ],

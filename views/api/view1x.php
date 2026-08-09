@@ -32,7 +32,7 @@ echo $this->render('partials/_versions.php', compact('version', 'versions', 'sec
 $this->endBlock();
 
 ?>
-<div class="container api-content">
+<div class="container api-content api-reference-page api-reference-page--1">
     <div class="row visible-xs">
         <div class="col-md-12">
             <p class="pull-right topmost">

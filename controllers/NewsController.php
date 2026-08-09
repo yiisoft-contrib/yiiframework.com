@@ -61,6 +61,8 @@ class NewsController extends BaseController
      */
     public function actionIndex($year = null, $tag = null)
     {
+        $this->sectionTitle = null;
+
         $query = News::find()->latest();
         $dataProvider = new ActiveDataProvider([
             'query' => $query,

@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "264f1198c382ed54c2b2fe53ac8fa411",
+    "content-hash": "d6be8c4590ca6f8a1c72d0da9ad9b9dd",
     "packages": [
         {
             "name": "2amigos/yii2-selectize-widget",
@@ -435,24 +435,6 @@
                 "OFL-1.1",
                 "MIT",
                 "CC-BY-3.0"
-            ]
-        },
-        {
-            "name": "bower-asset/glidejs",
-            "version": "v2.1.0",
-            "source": {
-                "type": "git",
-                "url": "git@github.com:jedrzejchalubek/Glide.js.git",
-                "reference": "55eb2b703cba40bee6c184c8480a2a11a9dbc57e"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/jedrzejchalubek/Glide.js/zipball/55eb2b703cba40bee6c184c8480a2a11a9dbc57e",
-                "reference": "55eb2b703cba40bee6c184c8480a2a11a9dbc57e"
-            },
-            "type": "bower-asset",
-            "license": [
-                "MIT"
             ]
         },
         {
@@ -6962,9 +6944,9 @@
     "platform": {
         "php": "~7.0"
     },
-    "platform-dev": [],
+    "platform-dev": {},
     "platform-overrides": {
         "php": "7.0"
     },
-    "plugin-api-version": "2.1.0"
+    "plugin-api-version": "2.9.0"
 }

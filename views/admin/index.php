@@ -9,39 +9,41 @@ use yii\web\View;
 /** @var $roleUsers array */
 
 ?>
-<h1>Admin</h1>
+<header class="admin-page__header">
+    <p>Site operations</p>
+    <h1>Administration</h1>
+</header>
 
-
-<ul>
+<ul class="admin-dashboard">
 <?php if (Yii::$app->user->can(UserPermissions::PERMISSION_MANAGE_USERS)): ?>
-    <li><?= Html::a('Manage Users', ['user-admin/index']) ?></li>
+    <li><?= Html::a('<strong>Users</strong><span>Manage accounts and permissions</span>', ['user-admin/index']) ?></li>
 <?php endif?>
 
 <?php if (Yii::$app->user->can(UserPermissions::PERMISSION_MANAGE_NEWS)): ?>
-    <li><?= Html::a('Manage News', ['news/admin']) ?></li>
+    <li><?= Html::a('<strong>News</strong><span>Publish and maintain announcements</span>', ['news/admin']) ?></li>
 <?php endif?>
 
 <?php if (Yii::$app->user->can(UserPermissions::PERMISSION_MANAGE_COMMENTS)): ?>
-    <li><?= Html::a('Manage Comments', ['comment-admin/index']) ?></li>
+    <li><?= Html::a('<strong>Comments</strong><span>Review community discussion</span>', ['comment-admin/index']) ?></li>
 <?php endif?>
 
 <?php if (Yii::$app->user->can(UserPermissions::PERMISSION_MANAGE_WIKI)): ?>
-    <li><?= Html::a('Manage Wiki', ['wiki-admin/index']) ?></li>
+    <li><?= Html::a('<strong>Wiki</strong><span>Review and edit contributed articles</span>', ['wiki-admin/index']) ?></li>
 <?php endif?>
 
 <?php if (Yii::$app->user->can(UserPermissions::PERMISSION_MANAGE_EXTENSIONS)): ?>
-    <li><?= Html::a('Manage Extensions', ['extension/index']) ?> (Currently no separate admin interface)</li>
+    <li><?= Html::a('<strong>Extensions</strong><span>Open the public extension manager</span>', ['extension/index']) ?></li>
 <?php endif?>
 
 <?php if (Yii::$app->user->can(UserPermissions::PERMISSION_MANAGE_FORUM)): ?>
-    <li><?= Html::a('Discourse Forum Integration', ['admin/discourse']) ?></li>
+    <li><?= Html::a('<strong>Discourse</strong><span>Forum integration settings</span>', ['admin/discourse']) ?></li>
 <?php endif?>
 
-	<li><?= Html::a('View Repository Status', ['status/index']) ?> (publicly accessable)
+	<li><?= Html::a('<strong>Repository status</strong><span>View public package progress</span>', ['status/index']) ?></li>
 
 </ul>
 
-<h2>RBAC Assignments</h2>
+<h2 class="admin-page__section-title">RBAC assignments</h2>
 
 <?php foreach($roleUsers as $role => $users): ?>
 
@@ -52,4 +54,3 @@ use yii\web\View;
     }, $users)) ?></li></ul>
 
 <?php endforeach; ?>
-

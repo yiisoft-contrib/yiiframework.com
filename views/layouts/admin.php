@@ -8,7 +8,7 @@ use yii\widgets\Breadcrumbs;
 
 $this->beginContent('@app/views/layouts/main.php');
 ?>
-<div class="container style_external_links">
+<div class="container style_external_links admin-page">
 
     <?php
 

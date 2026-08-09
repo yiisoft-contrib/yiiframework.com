@@ -10,41 +10,21 @@ use yii\bootstrap\ActiveForm;
 
 $this->title = 'Request password reset';
 ?>
-<div class="container login-container">
-
-    <div class="omb_login row">
-
-      <div class="col-md-4 col-md-offset-3">
-
-        <div class="omb_authTitle">
-            <h3><?= Html::encode($this->title) ?></h3>
-            <span>Please fill out your email.<br/>A link to reset your password will be sent there.</span>
-        </div>
-
-        <div class="row">
-          <div class="col-md-9">
-            <?php $form = ActiveForm::begin(['id' => 'request-password-reset-form', 'options' => ['class' => 'omb_loginForm', 'autocomplete' => 'off']]); ?>
-
-            <?= $form->field($model, 'email', ['inputOptions' => ['class'=>'login-control','placeholder' => $model->getAttributeLabel('email')]])->label(false) ?>
-            <span class="help-block"></span>
-
-            <?= Html::submitButton('Request password reset', ['class' => 'btn btn-lg btn-block']) ?>
-
+<main class="container login-container login-page auth-task-page">
+    <div class="login-card auth-task-card">
+        <header class="login-card__header">
+            <p class="login-card__eyebrow">Account recovery</p>
+            <h1><?= Html::encode($this->title) ?></h1>
+            <p>Enter your email and we’ll send you a password reset link.</p>
+        </header>
+        <div class="login-card__password">
+            <?php $form = ActiveForm::begin(['id' => 'request-password-reset-form', 'options' => ['class' => 'login-form', 'autocomplete' => 'off']]); ?>
+            <?= $form->field($model, 'email')->textInput(['class' => 'form-control', 'placeholder' => $model->getAttributeLabel('email')])->label(false) ?>
+            <?= Html::submitButton('Send reset link', ['class' => 'btn btn-primary login-form__submit']) ?>
             <?php ActiveForm::end(); ?>
-
-            <p class="forgotPwd">
-                <?= Yii::$app->user->isGuest ?
-                    Html::a('Back to login', ['auth/login'])
-                        :
-                    Html::a('Back to profile', ['user/profile'])
-                ?>
-            </p>
-          </div>
         </div>
-
-      </div>
-      <?= $this->render('partials/_githubLogin.php') ?>
-
+        <footer class="auth-task-card__footer">
+            <?= Yii::$app->user->isGuest ? Html::a('Back to login', ['auth/login']) : Html::a('Back to profile', ['user/profile']) ?>
+        </footer>
     </div>
-
-</div>
+</main>

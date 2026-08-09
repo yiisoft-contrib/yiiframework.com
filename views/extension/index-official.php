@@ -17,7 +17,7 @@ use yii\widgets\ListView;
 $this->title = 'Official Extensions';
 
 ?>
-<div class="container">
+<div class="container extension-page extension-official-page">
     <div class="row">
         <div class="col-sm-3 col-md-2 col-lg-2">
             <?= $this->render('_sidebar', [

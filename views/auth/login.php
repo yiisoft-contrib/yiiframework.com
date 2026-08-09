@@ -1,55 +1,67 @@
 <?php
-use yii\helpers\Html;
+
 use yii\bootstrap\ActiveForm;
-use yii\helpers\Url;
+use yii\helpers\Html;
 
 /* @var $this yii\web\View */
-/* @var $form yii\bootstrap\ActiveForm */
-/* @var $model \app\models\LoginForm */
+/* @var $model app\models\LoginForm */
 
 $this->title = 'Login';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="container login-container">
 
-    <div class="omb_login row">
-
-      <div class="col-md-4 col-md-offset-3">
-
-        <div class="omb_authTitle">
-            <h3><?= Html::encode($this->title) ?></h3>
-            <span>or</span>
-             <?= Html::a('Create a new account', Url::to(['auth/signup']),['class'=>'create-account']) ?>
-        </div>
-
-        <div class="row">
-          <div class="col-md-9">
-            <?php $form = ActiveForm::begin(['id' => 'login-form', 'options' => ['class' => 'omb_loginForm', 'autocomplete' => 'off']]); ?>
-               
-            <?= $form->field($model, 'username', [
-                    'inputOptions' => ['class'=>'login-control','placeholder' => $model->getAttributeLabel('username'),'aria-label' => $model->getAttributeLabel('username')]
-            ])->label(false) ?>
-            <span class="help-block"></span>
-
-            <?= $form->field($model, 'password', [
-                    'inputOptions' => ['class'=>'login-control','placeholder' => $model->getAttributeLabel('password'),'aria-label' => $model->getAttributeLabel('password')]
-            ])->passwordInput()->label(false) ?>
-
-            <?= $form->field($model, 'rememberMe')->checkbox() ?>
-
-            <?= Html::submitButton('Login', ['class' => 'btn btn-lg btn-block']) ?>
-            
-            <?php ActiveForm::end(); ?>
-
-            <p class="forgotPwd">
-                <?= Html::a('Forgot your password?', Url::to(['auth/request-password-reset'])) ?>
+<div class="container login-container login-page">
+    <main class="login-card">
+        <header class="login-card__header">
+            <h1>Welcome back</h1>
+            <p>
+                New to Yii?
+                <?= Html::a('Create an account', ['auth/signup']) ?>
             </p>
-          </div>
+        </header>
+
+        <div class="login-card__layout">
+            <section class="login-card__password" aria-labelledby="password-login-title">
+                <h2 id="password-login-title">Login with your account</h2>
+
+                <?php $form = ActiveForm::begin([
+                    'id' => 'login-form',
+                    'options' => ['class' => 'login-form', 'autocomplete' => 'off'],
+                ]); ?>
+
+                <?= $form->field($model, 'username')->textInput([
+                    'class' => 'form-control',
+                    'autocomplete' => 'username',
+                ]) ?>
+
+                <?= $form->field($model, 'password')->passwordInput([
+                    'class' => 'form-control',
+                    'autocomplete' => 'current-password',
+                ]) ?>
+
+                <div class="login-form__options">
+                    <?= $form->field($model, 'rememberMe')->checkbox() ?>
+                    <?= Html::a('Forgot password?', ['auth/request-password-reset']) ?>
+                </div>
+
+                <?= Html::submitButton('Login', ['class' => 'btn btn-primary login-form__submit']) ?>
+
+                <?php ActiveForm::end(); ?>
+            </section>
+
+            <section class="login-card__github" aria-labelledby="github-login-title">
+                <span class="login-card__github-icon" aria-hidden="true">
+                    <i class="fa fa-github"></i>
+                </span>
+                <h2 id="github-login-title">Continue with GitHub</h2>
+                <p>Use the GitHub account connected to your Yii community profile.</p>
+                <?= Html::a(
+                    '<i class="fa fa-github" aria-hidden="true"></i><span>Login with GitHub</span>',
+                    ['auth/auth', 'authclient' => 'github'],
+                    ['class' => 'btn login-card__github-button']
+                ) ?>
+                <p class="login-card__github-note">To connect GitHub to an existing account, log in with your username first.</p>
+            </section>
         </div>
-
-      </div>
-      <?= $this->render('partials/_githubLogin.php') ?>
-
-    </div>
-
+    </main>
 </div>

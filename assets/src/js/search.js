@@ -34,7 +34,7 @@ renderResultList = function (resultName, limit) {
         }
         html += '</ul>';
     } else {
-        html += 'loading...';
+        html += '<div class="search-loading">Loading…</div>';
     }
 
     return html;

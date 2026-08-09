@@ -3,8 +3,10 @@
 /* @var $this yii\web\View */
 $this->title = 'Terms of Service';
 ?>
-<div class="container style_external_links">
-    <div class="content">
+<main class="container style_external_links prose-page">
+    <div class="content prose-page__content">
+        <p class="prose-page__eyebrow">Legal</p>
+        <h1><?= $this->title ?></h1>
         <p>This website is owned and operated by Yii Software, (YiiSoft or we).
            We have created this page to share with you our privacy and legal policies regarding your personal information
            and the contents on this site.</p>
@@ -56,4 +58,4 @@ $this->title = 'Terms of Service';
 
         <p>This page was last updated on November 19, 2008.</p>
     </div>
-</div>
+</main>
