@@ -1649,9 +1649,23 @@ a {
 .navbar-account__dropdown.open .navbar-account__trigger { color: $redesign-blue; background: $redesign-surface; text-decoration: none; }
 .navbar-account__trigger svg { flex: 0 0 auto; width: 18px; height: 18px; fill: currentColor; }
 .navbar-account__trigger > span:not(.caret) { max-width: 112px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
-.navbar-account__dropdown .dropdown-menu { top: calc(100% + 7px); min-width: 170px; }
+.navbar-account__dropdown .dropdown-menu {
+  top: calc(100% + 1px);
+  min-width: 140px;
+  padding: 5px 0;
+  background: #fff;
+  border: 1px solid $redesign-line;
+  border-radius: 0 0 12px 12px;
+  box-shadow: 0 16px 40px rgba(20, 21, 24, .1);
+  overflow: hidden;
+}
+.navbar-account__dropdown .dropdown-menu > li > a,
+.navbar-account__logout { padding: 8px 20px; font-size: 14px; line-height: 20px; }
+.navbar-account__dropdown .dropdown-menu > li > a { color: $redesign-ink; background: #fff; }
+.navbar-account__dropdown .dropdown-menu > li > a:hover,
+.navbar-account__dropdown .dropdown-menu > li > a:focus { color: $redesign-blue; background: $redesign-surface; }
 .navbar-account__logout-form { margin: 0; }
-.navbar-account__logout { width: 100%; padding: 8px 20px; color: $redesign-ink; text-align: left; background: transparent; border: 0; }
+.navbar-account__logout { width: 100%; color: $redesign-ink; text-align: left; background: transparent; border: 0; }
 .navbar-account__logout:hover,
 .navbar-account__logout:focus { color: $redesign-blue; background: $redesign-surface; }
 
@@ -5336,7 +5350,9 @@ footer {
   .navbar-account__logout:hover,
   .navbar-account__logout:focus { color: $redesign-blue; background: #242529; }
   .navbar-account__dropdown .dropdown-menu { background: #18191d; border-color: #333437; }
-  .navbar-account__dropdown .divider { background: #333437; }
+  .navbar-account__dropdown .dropdown-menu > li > a { color: #fff; background: #18191d; }
+  .navbar-account__dropdown .dropdown-menu > li > a:hover,
+  .navbar-account__dropdown .dropdown-menu > li > a:focus { color: $redesign-blue; background: #242529; }
 
   @media screen and (min-width: $grid-float-breakpoint) {
     .navbar-nav > li > a,

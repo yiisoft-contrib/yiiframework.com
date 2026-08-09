@@ -168,7 +168,6 @@ if ($discourse) {
                             </button>
                             <ul class="dropdown-menu dropdown-menu-right">
                                 <li><?= Html::a('Profile', ['/user/profile']) ?></li>
-                                <li class="divider" role="separator"></li>
                                 <li>
                                     <?= Html::beginForm(['/auth/logout'], 'post', ['class' => 'navbar-account__logout-form']) ?>
                                     <?= Html::submitButton('Logout', ['class' => 'navbar-account__logout']) ?>
