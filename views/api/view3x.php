@@ -33,6 +33,7 @@ $this->beginBlock('contentSelectors');
 echo $this->render('partials/_versions.php', [
     'version' => $version,
     'versions' => $versions,
+    'section' => $section,
 ]);
 $this->endBlock();
 
