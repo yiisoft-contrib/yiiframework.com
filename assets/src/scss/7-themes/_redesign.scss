@@ -3797,6 +3797,19 @@ footer {
 .footerList_item .social a:hover svg,
 .footerList_item .social a:focus svg { color: $redesign-blue; }
 
+.footer-donations {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+
+  svg {
+    width: 15px;
+    height: 15px;
+    color: #b84b54;
+    fill: currentColor;
+  }
+}
+
 .footerList img[alt="JetBrains logo"] {
   filter: invert(1);
   opacity: .78;
@@ -5677,6 +5690,7 @@ footer {
   .footerList_item .social svg { color: #fff; }
   .footerList_item .social a:hover svg,
   .footerList_item .social a:focus svg { color: $redesign-blue; }
+  .footer-donations svg { color: #c66a72; }
 
 
   .footerList img[alt="JetBrains logo"] { filter: none; opacity: .9; }
