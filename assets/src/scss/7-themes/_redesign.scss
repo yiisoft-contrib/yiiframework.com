@@ -2927,7 +2927,7 @@ form#search-form.navbar-form div.form-group.nospace div.input-group input#search
     .row-offcanvas.active { left: calc(100% + 15px); }
 
     .sidenav-offcanvas {
-      left: -100%;
+      left: calc(-100% + 15px);
       width: 100%;
     }
   }
