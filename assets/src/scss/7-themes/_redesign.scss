@@ -2916,7 +2916,8 @@ form#search-form.navbar-form div.form-group.nospace div.input-group input#search
       line-height: 20px;
     }
 
-    .row-offcanvas.active { left: 100%; }
+    // Bootstrap rows start 15px outside the container content box.
+    .row-offcanvas.active { left: calc(100% + 15px); }
 
     .sidenav-offcanvas {
       left: -100%;
