@@ -5036,6 +5036,10 @@ footer {
     background: #fff;
     border-color: $redesign-line;
   }
+  .navbar-inverse .navbar-collapse.in,
+  .navbar-inverse .navbar-collapse.collapsing {
+    border-bottom: 1px solid $redesign-line;
+  }
 
   .navbar-inverse #main-nav { width: 100%; }
   .navbar-inverse #main-nav > li { display: block; width: 100%; }
@@ -5386,6 +5390,7 @@ footer {
   }
 
   @media (max-width: $grid-float-breakpoint) {
+    .navbar-inverse .navbar-collapse { border-color: #333437; }
     .navbar-inverse .navbar-nav > li > a { color: #fff; }
     .navbar-inverse .navbar-nav > li > a:hover,
     .navbar-inverse .navbar-nav > li > a:focus,
