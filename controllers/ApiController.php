@@ -262,7 +262,7 @@ class ApiController extends BaseController
             '~(?<=>)[^<>]*\\\\[^<>]*(?=<)~',
             static function (array $matches): string {
                 return preg_replace_callback(
-                    '~\\\\(?=[A-Za-z_])~',
+                    '~\\\\(?=[A-Za-z_]|$)~',
                     static fn (): string => '\\<wbr>',
                     $matches[0],
                 ) ?? $matches[0];

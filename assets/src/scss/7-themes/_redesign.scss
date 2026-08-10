@@ -2851,6 +2851,13 @@ form#search-form.navbar-form div.form-group.nospace div.input-group input#search
     .list-group-item {
       overflow-wrap: normal;
       word-break: normal;
+      white-space: normal;
+    }
+
+    [class^="api-ns-level-"] {
+      white-space: nowrap;
+
+      &::after { content: "\200b"; }
     }
 
     .list-group-item:focus-visible { position: relative; z-index: 1; outline: 2px solid rgba($redesign-blue, .55); outline-offset: -2px; }
