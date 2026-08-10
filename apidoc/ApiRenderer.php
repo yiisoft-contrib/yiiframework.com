@@ -126,6 +126,18 @@ class ApiRenderer extends \yii\apidoc\templates\html\ApiRenderer
         return rtrim($this->guideUrl, '/') . '/' . $this->guidePrefix . basename($file, '.md') . $hash;
     }
 
+    /**
+     * @inheritdoc
+     */
+    public function renderMethodSignature($method, $context = null)
+    {
+        return str_replace(
+            ['<strong>', '</strong>', '<b>', '</b>'],
+            ['<span>', '</span>', '<span>', '</span>'],
+            parent::renderMethodSignature($method, $context),
+        );
+    }
+
 	public function generateApiUrl($typeName)
 	{
 		return Yii::$app->params['api.baseUrl']
