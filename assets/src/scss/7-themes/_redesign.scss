@@ -2849,8 +2849,6 @@ form#search-form.navbar-form div.form-group.nospace div.input-group input#search
       word-break: normal;
     }
 
-    [class^="api-ns-level-"]::after { content: "\200b"; }
-
     .list-group-item:focus-visible { position: relative; z-index: 1; outline: 2px solid rgba($redesign-blue, .55); outline-offset: -2px; }
     > a.has-children.active {
       color: $redesign-ink;

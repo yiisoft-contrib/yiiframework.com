@@ -148,7 +148,9 @@ class ApiController extends BaseController
                 $doc = Doc::getObject(ClassType::API, implode('/', $urlParams), $docUrl, $title);
 
                 return $this->render($view, [
-                    'content' => $file ? file_get_contents($file) : '',
+                    'content' => $file
+                        ? $this->addNamespaceBreakOpportunities(file_get_contents($file))
+                        : '',
                     'section' => $section,
                     'versions' => $versions,
                     'version' => $version,
@@ -238,7 +240,7 @@ class ApiController extends BaseController
                 }
 
                 return $this->render('view2x', [
-                    'content' => file_get_contents($file),
+                    'content' => $this->addNamespaceBreakOpportunities(file_get_contents($file)),
                     'section' => $section,
                     'versions' => $extension->getApiVersions(),
                     'version' => $version,
@@ -249,6 +251,24 @@ class ApiController extends BaseController
                 break;
         }
         throw new UnsupportedMediaTypeHttpException;
+    }
+
+    /**
+     * Adds safe wrapping points after PHP namespace separators in visible text.
+     */
+    private function addNamespaceBreakOpportunities(string $html): string
+    {
+        return preg_replace_callback(
+            '~(?<=>)[^<>]*\\\\[^<>]*(?=<)~',
+            static function (array $matches): string {
+                return preg_replace_callback(
+                    '~\\\\(?=[A-Za-z_])~',
+                    static fn (): string => '\\<wbr>',
+                    $matches[0],
+                ) ?? $matches[0];
+            },
+            $html,
+        ) ?? $html;
     }
 
     private function api404($section, $version)
