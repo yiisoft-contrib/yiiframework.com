@@ -1568,6 +1568,10 @@ a {
   .yii-logo--dark { display: none; }
   .navbar-toggle { border-color: $redesign-line; }
   .navbar-toggle .fa { color: $redesign-ink; }
+  .navbar-toggle:hover,
+  .navbar-toggle:focus { background: $redesign-surface; border-color: $redesign-line; }
+  .navbar-toggle:hover .fa,
+  .navbar-toggle:focus .fa { color: $redesign-blue; }
 }
 
 .theme-toggle {
@@ -5381,6 +5385,10 @@ footer {
     .yii-logo--dark { display: block; }
     .navbar-toggle { border-color: #333437; }
     .navbar-toggle .fa { color: #fff; }
+    .navbar-toggle:hover,
+    .navbar-toggle:focus { background: #242529; border-color: #333437; }
+    .navbar-toggle:hover .fa,
+    .navbar-toggle:focus .fa { color: $redesign-blue; }
   }
 
   @media (max-width: 767px) {
