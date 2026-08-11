@@ -96,7 +96,7 @@ $this->registerLinkTag([
 
         <?= $this->render('partials/_analytics') ?>
     </head>
-    <body data-spy="scroll" data-target="#scrollnav" data-offset="1">
+    <body data-spy="scroll" data-target="#scrollnav" data-offset="120">
         <?php $this->beginBody() ?>
 
         <div id="page-wrapper" class="">

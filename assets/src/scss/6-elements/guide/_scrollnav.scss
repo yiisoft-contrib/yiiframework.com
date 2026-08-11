@@ -1,6 +1,6 @@
 #scrollnav {
-  width: 220px;
-  max-width: calc(100vw - 30px);
+  // Fill the space to the right of Bootstrap's centered 1170px container.
+  width: calc((100vw - 1170px) / 2 - 2px);
   -webkit-transition: top 0.5s, -webkit-transform 0.5s;
   transition: top 0.5s, transform 0.5s;
 
