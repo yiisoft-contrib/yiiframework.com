@@ -82,7 +82,7 @@ $this->registerLinkTag([
 
         <?= $this->render('partials/_analytics') ?>
     </head>
-    <body data-spy="scroll" data-target="#scrollnav" data-offset="120">
+    <body data-spy="scroll" data-target="#scrollnav" data-offset="121">
         <?php $this->beginBody() ?>
 
             <?= $content ?>
