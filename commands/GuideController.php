@@ -8,6 +8,7 @@ use Yii;
 use yii\console\ExitCode;
 use yii\helpers\Console;
 use app\apidoc\GuideRenderer;
+use app\apidoc\PdfGuideRenderer;
 use yii\helpers\FileHelper;
 use yii\helpers\Inflector;
 use yii\helpers\Json;
@@ -125,7 +126,12 @@ class GuideController extends \yii\apidoc\commands\GuideController
                     if (file_exists("$pdfTarget/fail.log")) {
                         unlink("$pdfTarget/fail.log");
                     }
-                    exec('cd ' . escapeshellarg($pdfTarget) . ' && make pdf', $output, $ret);
+                    // exec() appends to an existing output array. Reset it for
+                    // every language or fail.log contains all earlier builds
+                    // and grows to several megabytes. Capture stderr as well;
+                    // pdflatex writes the useful failure reason there.
+                    $output = [];
+                    exec('cd ' . escapeshellarg($pdfTarget) . ' && make pdf 2>&1', $output, $ret);
                     if ($ret === 0) {
                         $this->stdout("\nFinished guide $version PDF in $name.\n\n", Console::FG_CYAN);
                     } else {
@@ -326,8 +332,10 @@ class GuideController extends \yii\apidoc\commands\GuideController
     public function findRenderer($template)
     {
         if ($template === 'pdf') {
-            $rendererClass = 'yii\\apidoc\\templates\\' . $template . '\\GuideRenderer';
-            return new $rendererClass();
+            // Keep compatibility fixes here rather than in data/yii-2.0 or the
+            // generated .tex files: the former is replaced by `git pull` on
+            // every docs build and the latter is disposable output.
+            return new PdfGuideRenderer();
         }
 
         if ($template === 'extension') {
