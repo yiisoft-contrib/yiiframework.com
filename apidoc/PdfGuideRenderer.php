@@ -3,7 +3,6 @@
 namespace app\apidoc;
 
 use Yii;
-use yii\apidoc\helpers\ApiMarkdownLaTeX;
 use yii\helpers\Console;
 
 /**
@@ -28,7 +27,7 @@ class PdfGuideRenderer extends \yii\apidoc\templates\pdf\GuideRenderer
             $fileData[basename($file)] = self::normalizeMarkdown(file_get_contents($file));
         }
 
-        $md = new ApiMarkdownLaTeX();
+        $md = new PdfMarkdownLaTeX();
         $output = '';
         foreach ($chapters as $chapter) {
             if (isset($chapter['headline'])) {
