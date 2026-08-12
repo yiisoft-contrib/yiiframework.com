@@ -23,6 +23,9 @@ class PdfMarkdownLaTeX extends \yii\apidoc\helpers\ApiMarkdownLaTeX
         }
 
         $title = EncodingHelper::convertToUtf8WithHtmlEntities($title);
+        if ($title === '') {
+            return '';
+        }
         $useInternalErrors = libxml_use_internal_errors(true);
 
         try {
