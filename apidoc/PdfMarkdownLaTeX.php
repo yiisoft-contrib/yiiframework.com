@@ -13,6 +13,10 @@ class PdfMarkdownLaTeX extends \yii\apidoc\helpers\ApiMarkdownLaTeX
 {
     protected function renderApiLinkText($title)
     {
+        // Some Russian API-link titles become empty during Markdown processing
+        // or entity conversion. The upstream implementation passes that value
+        // to DOMDocument::loadHTML(), and the production error handler promotes
+        // its "Empty string supplied as input" warning to an exception.
         if (!$title) {
             return $title;
         }
@@ -29,6 +33,9 @@ class PdfMarkdownLaTeX extends \yii\apidoc\helpers\ApiMarkdownLaTeX
         $useInternalErrors = libxml_use_internal_errors(true);
 
         try {
+            // Guide snippets are not necessarily valid standalone HTML. Keep
+            // recoverable libxml diagnostics local so production does not turn
+            // them into exceptions while extracting the link label.
             $doc = new DOMDocument();
             $doc->loadHTML($title);
 

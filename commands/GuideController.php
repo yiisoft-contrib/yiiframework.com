@@ -126,6 +126,10 @@ class GuideController extends \yii\apidoc\commands\GuideController
                     if (file_exists("$pdfTarget/fail.log")) {
                         unlink("$pdfTarget/fail.log");
                     }
+                    // exec() appends to an existing output array. Reset it for
+                    // every language or fail.log contains all earlier builds
+                    // and grows to several megabytes. Capture stderr as well;
+                    // pdflatex writes the useful failure reason there.
                     $output = [];
                     exec('cd ' . escapeshellarg($pdfTarget) . ' && make pdf 2>&1', $output, $ret);
                     if ($ret === 0) {
@@ -328,6 +332,9 @@ class GuideController extends \yii\apidoc\commands\GuideController
     public function findRenderer($template)
     {
         if ($template === 'pdf') {
+            // Keep compatibility fixes here rather than in data/yii-2.0 or the
+            // generated .tex files: the former is replaced by `git pull` on
+            // every docs build and the latter is disposable output.
             return new PdfGuideRenderer();
         }
 
