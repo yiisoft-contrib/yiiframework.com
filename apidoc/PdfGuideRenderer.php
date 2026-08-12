@@ -70,7 +70,7 @@ class PdfGuideRenderer extends \yii\apidoc\templates\pdf\GuideRenderer
     public static function normalizeMarkdown($markdown)
     {
         // The LaTeX Markdown parser requires a blank line before fenced blocks.
-        $lines = preg_split('~\R~', $markdown);
+        $lines = preg_split('~\R~u', $markdown);
         $result = [];
         $fencePrefix = null;
 

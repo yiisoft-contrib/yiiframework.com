@@ -28,6 +28,13 @@ class PdfGuideRendererTest extends \Codeception\Test\Unit
         self::assertSame($expected, PdfGuideRenderer::normalizeMarkdown($markdown));
     }
 
+    public function testPreservesCyrillicText()
+    {
+        $markdown = "Иерархия и данные в файлах.\n";
+
+        self::assertSame($markdown, PdfGuideRenderer::normalizeMarkdown($markdown));
+    }
+
     public function testNormalizesMisparsedFencedCodeBlock()
     {
         $latex = <<<'LATEX'
