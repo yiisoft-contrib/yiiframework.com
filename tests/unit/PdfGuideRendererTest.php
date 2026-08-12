@@ -12,6 +12,14 @@ class PdfGuideRendererTest extends \Codeception\Test\Unit
         self::assertSame($expected, PdfGuideRenderer::normalizeMarkdown($markdown));
     }
 
+    public function testAddsBlankLineBeforeLanguageLessFencedCodeBlock()
+    {
+        $markdown = "Example\n```\nplain text\n```\n";
+        $expected = "Example\n\n```\nplain text\n```\n";
+
+        self::assertSame($expected, PdfGuideRenderer::normalizeMarkdown($markdown));
+    }
+
     public function testNormalizesMisparsedFencedCodeBlock()
     {
         $latex = <<<'LATEX'

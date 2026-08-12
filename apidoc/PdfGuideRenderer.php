@@ -13,13 +13,17 @@ class PdfGuideRenderer extends \yii\apidoc\templates\pdf\GuideRenderer
 {
     public function render($files, $targetDir)
     {
-        $fileCount = count($files) + 1;
+        $fileData = [];
+        $chapters = $this->loadGuideStructure($files);
+        $fileCount = array_sum(array_map(static function (array $chapter) {
+            return count(array_filter($chapter['content'], static function (array $content) {
+                return strpos($content['file'], 'http://') !== 0 && strpos($content['file'], 'https://') !== 0;
+            }));
+        }, $chapters)) + 1;
         if ($this->controller !== null) {
             Console::startProgress(0, $fileCount, 'Rendering markdown files: ', false);
         }
         $done = 0;
-        $fileData = [];
-        $chapters = $this->loadGuideStructure($files);
         foreach ($files as $file) {
             $fileData[basename($file)] = self::normalizeMarkdown(file_get_contents($file));
         }
@@ -35,9 +39,10 @@ class PdfGuideRenderer extends \yii\apidoc\templates\pdf\GuideRenderer
                     continue;
                 }
                 $output .= '\label{' . $content['file'] . '}';
-                if (isset($fileData[$content['file']])) {
+                $fileName = basename($content['file']);
+                if (isset($fileData[$fileName])) {
                     $md->labelPrefix = $content['file'] . '#';
-                    $output .= $md->parse($fileData[$content['file']]) . "\n\n";
+                    $output .= $md->parse($fileData[$fileName]) . "\n\n";
                 } else {
                     $output .= '\newpage\textbf{Error: not existing file: ' . $content['file'] . '}\newpage' . "\n";
                 }
@@ -66,7 +71,11 @@ class PdfGuideRenderer extends \yii\apidoc\templates\pdf\GuideRenderer
     public static function normalizeMarkdown($markdown)
     {
         // The LaTeX Markdown parser requires a blank line before fenced blocks.
-        return preg_replace('~([^\r\n])\R([ \t]*```[a-zA-Z0-9_+.-]+[ \t]*)\R~', "$1\n\n$2\n", $markdown);
+        return preg_replace(
+            '~([^\r\n])\R([ \t]*```(?:[a-zA-Z0-9_+.-]+)?[ \t]*)\R(?=.*?^[ \t]*```[ \t]*$(?:\R|\z))~ms',
+            "$1\n\n$2\n",
+            $markdown
+        );
     }
 
     public static function normalizeLatex($latex)
