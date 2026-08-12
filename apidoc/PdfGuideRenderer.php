@@ -71,14 +71,29 @@ class PdfGuideRenderer extends \yii\apidoc\templates\pdf\GuideRenderer
     public static function normalizeMarkdown($markdown)
     {
         // The LaTeX Markdown parser requires a blank line before fenced blocks.
-        return preg_replace_callback(
-            '~([^\r\n])\R(([ \t]*(?:>[ \t]*)*)```(?:[a-zA-Z0-9_+.-]+)?[ \t]*)\R'
-            . '(?=.*?^\3```[ \t]*$(?:\R|\z))~ms',
-            static function (array $matches) {
-                return $matches[1] . "\n" . rtrim($matches[3]) . "\n" . $matches[2] . "\n";
-            },
-            $markdown
-        );
+        $lines = preg_split('~\R~', $markdown);
+        $result = [];
+        $fencePrefix = null;
+
+        foreach ($lines as $line) {
+            if (preg_match('~^([ \t]*(?:>[ \t]*)*)```(?:[a-zA-Z0-9_+.-]+)?[ \t]*$~', $line, $matches)) {
+                if ($fencePrefix === null) {
+                    $prefix = $matches[1];
+                    $previousLine = end($result);
+                    $previousContent = preg_replace('~^' . preg_quote($prefix, '~') . '~', '', $previousLine);
+                    if ($previousLine !== false && trim($previousContent) !== '') {
+                        $result[] = rtrim($prefix);
+                    }
+                    $fencePrefix = $prefix;
+                } elseif ($matches[1] === $fencePrefix) {
+                    $fencePrefix = null;
+                }
+            }
+
+            $result[] = $line;
+        }
+
+        return implode("\n", $result);
     }
 
     public static function normalizeLatex($latex)
