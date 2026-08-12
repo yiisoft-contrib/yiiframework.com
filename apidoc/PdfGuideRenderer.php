@@ -71,9 +71,12 @@ class PdfGuideRenderer extends \yii\apidoc\templates\pdf\GuideRenderer
     public static function normalizeMarkdown($markdown)
     {
         // The LaTeX Markdown parser requires a blank line before fenced blocks.
-        return preg_replace(
-            '~([^\r\n])\R([ \t]*```(?:[a-zA-Z0-9_+.-]+)?[ \t]*)\R(?=.*?^[ \t]*```[ \t]*$(?:\R|\z))~ms',
-            "$1\n\n$2\n",
+        return preg_replace_callback(
+            '~([^\r\n])\R(([ \t]*(?:>[ \t]*)*)```(?:[a-zA-Z0-9_+.-]+)?[ \t]*)\R'
+            . '(?=.*?^\3```[ \t]*$(?:\R|\z))~ms',
+            static function (array $matches) {
+                return $matches[1] . "\n" . rtrim($matches[3]) . "\n" . $matches[2] . "\n";
+            },
             $markdown
         );
     }

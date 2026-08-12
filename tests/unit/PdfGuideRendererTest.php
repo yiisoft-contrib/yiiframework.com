@@ -20,6 +20,14 @@ class PdfGuideRendererTest extends \Codeception\Test\Unit
         self::assertSame($expected, PdfGuideRenderer::normalizeMarkdown($markdown));
     }
 
+    public function testAddsQuotedBlankLineBeforeFencedCodeBlockInBlockquote()
+    {
+        $markdown = "> Example\n> ```php\n> echo 'ok';\n> ```\n";
+        $expected = "> Example\n>\n> ```php\n> echo 'ok';\n> ```\n";
+
+        self::assertSame($expected, PdfGuideRenderer::normalizeMarkdown($markdown));
+    }
+
     public function testNormalizesMisparsedFencedCodeBlock()
     {
         $latex = <<<'LATEX'
