@@ -161,6 +161,10 @@ class PdfGuideRenderer extends \yii\apidoc\templates\pdf\GuideRenderer
         return preg_replace_callback(
             '~\\\\texttt(?<body>\{(?:[^{}]++|(?&body))*\})~',
             static function (array $text) {
+                if (strpos($text[0], '\\detokenize{') !== false) {
+                    return $text[0];
+                }
+
                 return preg_replace('~(?<!\\\\)\$~', '\\\\$', $text[0]);
             },
             $latex

@@ -75,6 +75,7 @@ LATEX;
 \begin{tabularx}{\textwidth}{|c|c|}
 \mintinline{text}{lt} & \mintinline{text}{<}\\ \hline
 \mintinline{text}{lte} & \mintinline{text}{<=}\\ \hline
+\mintinline{text}{property} & \mintinline{text}{$property}\\ \hline
 \end{tabularx}
 LATEX;
 
@@ -83,6 +84,7 @@ LATEX;
 \begin{tabularx}{\textwidth}{|c|c|}
 \texttt{\detokenize{lt}} & \texttt{\detokenize{<}}\\ \hline
 \texttt{\detokenize{lte}} & \texttt{\detokenize{<=}}\\ \hline
+\texttt{\detokenize{property}} & \texttt{\detokenize{$property}}\\ \hline
 \end{tabularx}
 LATEX;
 
