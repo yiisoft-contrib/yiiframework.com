@@ -28,6 +28,22 @@ class PdfGuideRendererTest extends \Codeception\Test\Unit
         self::assertSame($expected, PdfGuideRenderer::normalizeMarkdown($markdown));
     }
 
+    public function testNormalizesFenceIndentation()
+    {
+        $markdown = " Paragraph\n ```php\ncode();\n ```\n";
+        $expected = " Paragraph\n\n```php\ncode();\n```\n";
+
+        self::assertSame($expected, PdfGuideRenderer::normalizeMarkdown($markdown));
+    }
+
+    public function testNormalizesFenceIndentationInBlockquote()
+    {
+        $markdown = "> Example\n>   ```php\n>   code();\n>   ```\n";
+        $expected = "> Example\n>\n> ```php\n>   code();\n> ```\n";
+
+        self::assertSame($expected, PdfGuideRenderer::normalizeMarkdown($markdown));
+    }
+
     public function testPreservesCyrillicText()
     {
         $markdown = "Иерархия и данные в файлах.\n";
@@ -68,6 +84,22 @@ LATEX;
 \texttt{\detokenize{lt}} & \texttt{\detokenize{<}}\\ \hline
 \texttt{\detokenize{lte}} & \texttt{\detokenize{<=}}\\ \hline
 \end{tabularx}
+LATEX;
+
+        self::assertSame($expected, PdfGuideRenderer::normalizeLatex($latex));
+    }
+
+    public function testEscapesPropertySigilInApiLink()
+    {
+        $latex = <<<'LATEX'
+\texttt{yii\allowbreak{}::\allowbreak{}$property}
+\texttt{$otherProperty}
+\texttt{already escaped: \$property}
+LATEX;
+        $expected = <<<'LATEX'
+\texttt{yii\allowbreak{}::\allowbreak{}\$property}
+\texttt{\$otherProperty}
+\texttt{already escaped: \$property}
 LATEX;
 
         self::assertSame($expected, PdfGuideRenderer::normalizeLatex($latex));

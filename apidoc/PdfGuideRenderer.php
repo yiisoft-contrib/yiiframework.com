@@ -96,15 +96,21 @@ class PdfGuideRenderer extends \yii\apidoc\templates\pdf\GuideRenderer
 
         foreach ($lines as $line) {
             if (preg_match('~^([ \t]*(?:>[ \t]*)*)```(?:[a-zA-Z0-9_+.-]+)?[ \t]*$~', $line, $matches)) {
+                // The legacy LaTeX parser handles indentation around fences
+                // inconsistently: it may recognize one marker as a fence and
+                // render its pair as an inline backtick. Keep quote depth but
+                // canonicalize whitespace before both fence markers.
+                $prefix = str_repeat('> ', substr_count($matches[1], '>'));
+                $line = $prefix . ltrim(substr($line, strlen($matches[1])));
+
                 if ($fencePrefix === null) {
-                    $prefix = $matches[1];
                     $previousLine = end($result);
                     $previousContent = preg_replace('~^' . preg_quote($prefix, '~') . '~', '', $previousLine);
                     if ($previousLine !== false && trim($previousContent) !== '') {
                         $result[] = rtrim($prefix);
                     }
                     $fencePrefix = $prefix;
-                } elseif ($matches[1] === $fencePrefix) {
+                } elseif ($prefix === $fencePrefix) {
                     $fencePrefix = null;
                 }
             }
@@ -135,7 +141,7 @@ class PdfGuideRenderer extends \yii\apidoc\templates\pdf\GuideRenderer
         // table failed on cells such as < and <= with "Missing Pygments output".
         // These are plain-text cells, so \detokenize preserves their appearance
         // and literal characters without the fragile external invocation.
-        return preg_replace_callback(
+        $latex = preg_replace_callback(
             '~\\\\begin\{tabularx\}.*?\\\\end\{tabularx\}~s',
             static function (array $table) {
                 return preg_replace(
@@ -143,6 +149,19 @@ class PdfGuideRenderer extends \yii\apidoc\templates\pdf\GuideRenderer
                     '\\texttt{\\detokenize{$1}}',
                     $table[0]
                 );
+            },
+            $latex
+        );
+
+        // A malformed fenced block may make the defense-in-depth replacement
+        // above span subsequent API links and unescape their property sigils.
+        // An unescaped dollar starts TeX math mode and eventually aborts the
+        // PDF build with "Extra }, or forgotten $". Match balanced braces
+        // because API labels contain nested \allowbreak{} commands.
+        return preg_replace_callback(
+            '~\\\\texttt(?<body>\{(?:[^{}]++|(?&body))*\})~',
+            static function (array $text) {
+                return preg_replace('~(?<!\\\\)\$~', '\\\\$', $text[0]);
             },
             $latex
         );
