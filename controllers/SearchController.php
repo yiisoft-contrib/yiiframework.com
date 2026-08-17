@@ -65,6 +65,12 @@ class SearchController extends BaseController
                     'sort' => false,
                 ]
             );
+
+            // Cap the total count to Elasticsearch's index.max_result_window limit
+            // to prevent 500 errors when users request pages past this boundary.
+            if ($results->getTotalCount() > 10000) {
+                $results->setTotalCount(10000);
+            }
         }
 
         return $this->render(
