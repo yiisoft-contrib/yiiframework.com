@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "c73a100cde18dbd0db91d75d85d969d6",
+    "content-hash": "7b4f056800df80d0106b78aa8ab898a9",
     "packages": [
         {
             "name": "2amigos/yii2-selectize-widget",
@@ -939,34 +939,36 @@
         },
         {
             "name": "creocoder/yii2-flysystem",
-            "version": "0.9.4",
+            "version": "1.2.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/creocoder/yii2-flysystem.git",
-                "reference": "d31afc46fa85523cff180ddb707bb70888700be8"
+                "reference": "12b0c0cc8ded3ff8d41d9cd723d7fb7b09b99a49"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/creocoder/yii2-flysystem/zipball/d31afc46fa85523cff180ddb707bb70888700be8",
-                "reference": "d31afc46fa85523cff180ddb707bb70888700be8",
+                "url": "https://api.github.com/repos/creocoder/yii2-flysystem/zipball/12b0c0cc8ded3ff8d41d9cd723d7fb7b09b99a49",
+                "reference": "12b0c0cc8ded3ff8d41d9cd723d7fb7b09b99a49",
                 "shasum": ""
             },
             "require": {
                 "league/flysystem": "~1.0",
                 "yiisoft/yii2": "~2.0.0"
             },
+            "conflict": {
+                "league/flysystem-aws-s3-v3": "<1.0.26"
+            },
             "require-dev": {
                 "league/flysystem-aws-s3-v3": "~1.0",
                 "league/flysystem-azure": "~1.0",
                 "league/flysystem-cached-adapter": "~1.0",
-                "league/flysystem-copy": "~1.0",
-                "league/flysystem-dropbox": "~1.0",
                 "league/flysystem-gridfs": "~1.0",
                 "league/flysystem-rackspace": "~1.0",
                 "league/flysystem-replicate-adapter": "~1.0",
                 "league/flysystem-sftp": "~1.0",
                 "league/flysystem-webdav": "~1.0",
-                "league/flysystem-ziparchive": "~1.0"
+                "league/flysystem-ziparchive": "~1.0",
+                "spatie/flysystem-dropbox": "~1.0"
             },
             "type": "yii2-extension",
             "autoload": {
@@ -1003,9 +1005,9 @@
             ],
             "support": {
                 "issues": "https://github.com/creocoder/yii2-flysystem/issues",
-                "source": "https://github.com/creocoder/yii2-flysystem/tree/0.9.4"
+                "source": "https://github.com/creocoder/yii2-flysystem/tree/1.2.0"
             },
-            "time": "2020-02-17T18:06:21+00:00"
+            "time": "2023-07-31T16:02:45+00:00"
         },
         {
             "name": "doctrine/deprecations",
@@ -1896,16 +1898,16 @@
         },
         {
             "name": "league/mime-type-detection",
-            "version": "1.16.0",
+            "version": "1.17.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/thephpleague/mime-type-detection.git",
-                "reference": "2d6702ff215bf922936ccc1ad31007edc76451b9"
+                "reference": "f5f47eff7c48ed1003069a2ca67f316fb4021c76"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/thephpleague/mime-type-detection/zipball/2d6702ff215bf922936ccc1ad31007edc76451b9",
-                "reference": "2d6702ff215bf922936ccc1ad31007edc76451b9",
+                "url": "https://api.github.com/repos/thephpleague/mime-type-detection/zipball/f5f47eff7c48ed1003069a2ca67f316fb4021c76",
+                "reference": "f5f47eff7c48ed1003069a2ca67f316fb4021c76",
                 "shasum": ""
             },
             "require": {
@@ -1915,7 +1917,7 @@
             "require-dev": {
                 "friendsofphp/php-cs-fixer": "^3.2",
                 "phpstan/phpstan": "^0.12.68",
-                "phpunit/phpunit": "^8.5.8 || ^9.3 || ^10.0"
+                "phpunit/phpunit": "^8.5.8 || ^9.3 || ^10.0 || ^11.0 || ^12.0"
             },
             "type": "library",
             "autoload": {
@@ -1936,7 +1938,7 @@
             "description": "Mime-type detection for Flysystem",
             "support": {
                 "issues": "https://github.com/thephpleague/mime-type-detection/issues",
-                "source": "https://github.com/thephpleague/mime-type-detection/tree/1.16.0"
+                "source": "https://github.com/thephpleague/mime-type-detection/tree/1.17.0"
             },
             "funding": [
                 {
@@ -1948,7 +1950,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2024-09-21T08:32:55+00:00"
+            "time": "2026-07-09T11:49:27+00:00"
         },
         {
             "name": "mikevanriel/text-to-latex",
