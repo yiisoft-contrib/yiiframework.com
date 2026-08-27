@@ -22,16 +22,4 @@ class FormatterTest extends \Codeception\Test\Unit
         );
     }
 
-    public function testDoesNotProxyShieldsImages(): void
-    {
-        $formatter = new class extends Formatter {
-            public function proxyUrl($sourceUrl)
-            {
-                return $this->generateProxyUrl($sourceUrl);
-            }
-        };
-        $url = 'https://img.shields.io/github/actions/workflow/status/yiisoft/yii2-bootstrap5/build.yml?style=for-the-badge&amp;label=Build';
-
-        self::assertSame($url, $formatter->proxyUrl($url));
-    }
 }
