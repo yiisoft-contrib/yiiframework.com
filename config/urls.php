@@ -29,7 +29,7 @@ return [
     'go/slack' => 'go/slack',
 
     // Github progress
-    'status/<version:\\d\\.\\d>' => 'github-progress/index',
+    'status/<version:\\d+\\.\\d+>' => 'github-progress/index',
     'status' => 'github-progress/index',
     'yii3-progress' => 'github-progress/yii3-progress',
 
@@ -52,20 +52,21 @@ return [
     // class api docs
     'doc/api' => 'api/entry',
     'doc/api/class-members' => 'api/class-members', // TODO allow versioning
-    'doc/api/<version:\\d\\.\\d>' => 'api/index',
-    'doc/api/<version:\\d\\.\\d>/<section:.+>' => 'api/view',
+    'doc/api/<version:\\d+\\.\\d+>' => 'api/index',
+    'doc/api/<version:\\d+\\.\\d+>/<section:.+>' => 'api/view',
     'doc/api/<section:[^\\d].+>' => 'api/redirect',
     // definitive guide and Yii 1 blog tutorial
-    'doc/<type:guide|blog>/<version:\\d\\.\\d>/<language:[\\w\\-]+>' => 'guide/index',
-    'doc/<type:guide|blog>/<version:\\d\\.\\d>/<language:[\\w\\-]+>/<section:[a-z0-9\\.\\-]+>' => 'guide/view',
-    'doc/<type:guide|blog>/<version:\\d\\.\\d>/<language:[\\w\\-]+>/images/<image>' => 'guide/image',
-    'doc/guide/<version:\\d\\.\\d>' => 'guide/entry',
+    'doc/<type:guide|blog>/<version:\\d+\\.\\d+>/<language:[\\w\\-]+>' => 'guide/index',
+    'doc/<type:guide|blog>/<version:\\d+\\.\\d+>/<language:[\\w\\-]+>/<section:[a-z0-9\\.\\-]+>' => 'guide/view',
+    'doc/<type:guide|blog>/<version:\\d+\\.\\d+>/<language:[\\w\\-]+>/images/<image>' => 'guide/image',
+    'doc/guide/<version:\\d+\\.\\d+>' => 'guide/entry',
     'doc/guide' => 'guide/entry',
-    'doc/blog/<version:\\d\\.\\d>' => 'guide/blog-entry',
+    'doc/blog/<version:\\d+\\.\\d+>' => 'guide/blog-entry',
     'doc/blog' => 'guide/blog-entry',
+    'guide/index' => 'guide/index',
 
-    'doc/download/yii-guide-<version:\\d\\.\\d>-<language:[\\w\\-]+>.<format:pdf>' => 'guide/download', // TODO how is this different from site/download
-    'doc/download/yii-docs-<version:\\d\\.\\d>-<language:[\\w\\-]+>.<format:tar\\.gz|tar\\.bz2>' => 'guide/download',
+    'doc/download/yii-guide-<version:\\d+\\.\\d+>-<language:[\\w\\-]+>.<format:pdf>' => 'guide/download', // TODO how is this different from site/download
+    'doc/download/yii-docs-<version:\\d+\\.\\d+>-<language:[\\w\\-]+>.<format:tar\\.gz|tar\\.bz2>' => 'guide/download',
 
     // search
     'search' => 'search/global',
@@ -75,11 +76,11 @@ return [
 
     // extensions
     'extension/<vendorName:[\w\-\.]+>/<name:[\w\-\.]+>/doc/<type:api|guide>' => 'extension/doc',
-    'extension/<vendorName:[\w\-\.]+>/<name:[\w\-\.]+>/doc/guide/<version:\\d\\.\\d>/<language:[\\w\\-]+>' => 'guide/extension-index',
-    'extension/<vendorName:[\w\-\.]+>/<name:[\w\-\.]+>/doc/guide/<version:\\d\\.\\d>/<language:[\\w\\-]+>/<section:[a-z0-9\\.\\-]+>' => 'guide/extension-view',
-    'extension/<vendorName:[\w\-\.]+>/<name:[\w\-\.]+>/doc/guide/<version:\\d\\.\\d>/<language:[\\w\\-]+>/images/<image>' => 'guide/extension-image',
-    'extension/<vendorName:[\w\-\.]+>/<name:[\w\-\.]+>/doc/api/<version:\\d\\.\\d>' => 'api/extension-index',
-    'extension/<vendorName:[\w\-\.]+>/<name:[\w\-\.]+>/doc/api/<version:\\d\\.\\d>/<section:.+>' => 'api/extension-view',
+    'extension/<vendorName:[\w\-\.]+>/<name:[\w\-\.]+>/doc/guide/<version:\\d+\\.\\d+>/<language:[\\w\\-]+>' => 'guide/extension-index',
+    'extension/<vendorName:[\w\-\.]+>/<name:[\w\-\.]+>/doc/guide/<version:\\d+\\.\\d+>/<language:[\\w\\-]+>/<section:[a-z0-9\\.\\-]+>' => 'guide/extension-view',
+    'extension/<vendorName:[\w\-\.]+>/<name:[\w\-\.]+>/doc/guide/<version:\\d+\\.\\d+>/<language:[\\w\\-]+>/images/<image>' => 'guide/extension-image',
+    'extension/<vendorName:[\w\-\.]+>/<name:[\w\-\.]+>/doc/api/<version:\\d+\\.\\d+>' => 'api/extension-index',
+    'extension/<vendorName:[\w\-\.]+>/<name:[\w\-\.]+>/doc/api/<version:\\d+\\.\\d+>/<section:.+>' => 'api/extension-view',
     'extension/<vendorName:[\w\-\.]+>/<name:[\w\-\.]+>/files/<filename>' => 'extension/download',
     'extension/<name:[A-z][A-z0-9\-]*>/files/<filename>' => 'extension/download',
     'extension/<vendorName:[\w\-\.]+>/<name:[\w\-\.]+>' => 'extension/view',
