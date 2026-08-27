@@ -360,6 +360,10 @@ MARKDOWN;
 
     public function getLicenseLink()
     {
+        if (empty($this->license_id)) {
+            return Yii::$app->formatter->nullDisplay;
+        }
+
         $spdx = new SpdxLicenses();
         $license = $spdx->getLicenseByIdentifier($this->license_id);
         return $license === null ? Yii::$app->formatter->nullDisplay : Html::a($this->license_id, $license[2], ['title' => $license[0]]);
