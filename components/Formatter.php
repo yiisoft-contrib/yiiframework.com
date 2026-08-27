@@ -5,6 +5,7 @@ namespace app\components;
 use Yii;
 use app\apidoc\ApiMarkdown;
 use yii\apidoc\models\Context;
+use yii\helpers\Html;
 use yii\helpers\HtmlPurifier;
 use yii\helpers\Markdown;
 use yii\helpers\StringHelper;
@@ -189,14 +190,15 @@ class Formatter extends \yii\i18n\Formatter
      *
      * @return string
      */
-    private function replaceImageUrlForProxy($html)
+    protected function replaceImageUrlForProxy($html)
     {
         if (!isset(Yii::$app->params['image-proxy'], Yii::$app->params['image-proxy-secret'])) {
             return $html;
         }
 
         return preg_replace_callback('/(<img[^>]+?)src=(["\'])([^"\']+)\2/i', function($matches) {
-            return $matches[1] . 'src="' . $this->generateProxyUrl($matches[3]) . '"';
+            $sourceUrl = html_entity_decode($matches[3], ENT_QUOTES | ENT_HTML5, 'UTF-8');
+            return $matches[1] . 'src="' . Html::encode($this->generateProxyUrl($sourceUrl)) . '"';
         }, $html);
     }
 
