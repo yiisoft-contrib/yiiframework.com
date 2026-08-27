@@ -121,7 +121,11 @@ $this->params['breadcrumbs'][] = $this->title;
                     <tr>
                         <th scope="row"><?= Html::encode($branch) ?></th>
                         <td><?= Html::encode($data['php'] ?? 'To be announced') ?></td>
-                        <td><?= Html::encode($data['release'] ?? 'To be announced') ?></td>
+                        <td>
+                            <?= Html::encode(!empty($data['release-estimate'])
+                                ? 'By end of ' . substr($data['release'], 0, 4) . ' (estimate)'
+                                : ($data['release'] ?? 'To be announced')) ?>
+                        </td>
                         <td><?= Html::encode($data['enhancements'] ?? 'To be announced') ?></td>
                         <td><?= Html::encode($data['bugfixes'] ?? 'Next release +2 years') ?></td>
                         <td><?= Html::encode($data['eol'] ?? 'Next release +5 years') ?></td>
