@@ -4,6 +4,7 @@
  * @var $section string
  * @var $version string
  * @var $language string
+ * @var $type string|null
  */
 
 use app\models\Guide;
@@ -12,6 +13,31 @@ use app\widgets\SearchForm;
 use yii\helpers\Html;
 
 $this->title = 'Page not found';
+
+if (isset($extension)) {
+    $guide = new Guide($version, strtolower(str_replace('_', '-', $language)), Guide::TYPE_EXTENSION);
+    $guide->extension = $extension;
+} else {
+    $guideType = ($type ?? 'guide') === 'blog' ? Guide::TYPE_BLOG : Guide::TYPE_GUIDE;
+    $guideVersions = Yii::$app->params["{$guideType}.versions"];
+    $guideVersion = isset($guideVersions[$version]) ? $version : array_key_first($guideVersions);
+    $guideLanguage = strtolower(str_replace('_', '-', $language));
+    if (!isset($guideVersions[$guideVersion][$guideLanguage])) {
+        $guideLanguage = isset($guideVersions[$guideVersion][Guide::LANGUAGE_EN])
+            ? Guide::LANGUAGE_EN
+            : array_key_first($guideVersions[$guideVersion]);
+    }
+    $guide = new Guide($guideVersion, $guideLanguage, $guideType);
+}
+
+$this->beginBlock('contentSelectors');
+echo $this->render('partials/_versions.php', [
+    'guide' => $guide,
+    'section' => null,
+    'extensionName' => $extensionName ?? null,
+    'extensionVendor' => $extensionVendor ?? null,
+]);
+$this->endBlock();
 ?>
 <main class="container content guide-error-page">
     <div class="guide-error-page__hero">

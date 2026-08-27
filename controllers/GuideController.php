@@ -36,6 +36,7 @@ class GuideController extends BaseController
         return $this->render('error-404-guide', [
             'version' => $version,
             'language' => $language,
+            'type' => $type,
             'section' => null,
         ]);
     }
@@ -117,6 +118,7 @@ class GuideController extends BaseController
             'section' => $section,
             'version' => $version,
             'language' => $language,
+            'type' => $type,
         ]);
     }
 
