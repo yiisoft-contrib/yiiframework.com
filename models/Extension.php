@@ -66,6 +66,7 @@ class Extension extends ActiveRecord implements Linkable, ObjectIdentityInterfac
     const STATUS_DELETED = 5;
 
     const YII_VERSION_30 = '3.0';
+    const YII_VERSION_22 = '22.0';
     const YII_VERSION_20 = '2.0';
     const YII_VERSION_11 = '1.1';
     const YII_VERSION_10 = '1.0';
@@ -556,7 +557,8 @@ MARKDOWN;
     public static function getYiiVersionOptions()
     {
         return [
-            self::YII_VERSION_30 => 'Yii 3',
+            self::YII_VERSION_30 => 'Yii3',
+            self::YII_VERSION_22 => 'Yii 22',
             self::YII_VERSION_20 => 'Yii 2',
             self::YII_VERSION_11 => 'Yii 1.1',
         ];

@@ -5,6 +5,7 @@ return [
 	// the first item must be the latest version
 	'api' => [
         '3.0',
+		'22.0',
 		'2.0',
 		'1.1',
 		'1.0',

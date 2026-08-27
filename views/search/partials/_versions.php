@@ -40,9 +40,10 @@ if (!$hideVersion) {
     ];
 
     $versions = array_values($this->context->getVersions());
-    usort($versions, static fn(string $a, string $b): int => version_compare($b, $a));
     foreach ($versions as $itemVersion) {
-        $label = $itemVersion === '3.0' ? 'Yii 3' : ($itemVersion === '2.0' ? 'Yii 2' : "Yii $itemVersion");
+        $label = $itemVersion === '3.0'
+            ? 'Yii3'
+            : ($itemVersion === '22.0' ? 'Yii 22' : ($itemVersion === '2.0' ? 'Yii 2' : "Yii $itemVersion"));
         $versionItems[] = [
             'version' => $itemVersion,
             'label' => $label,

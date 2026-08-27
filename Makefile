@@ -13,10 +13,10 @@ deploy: ## Run commands after git pull for deployment on a server.
 docs: api guide download ## Make all the docs.
 
 
-api: api-1.1 api-2.0 api-3.0 ## Make only the api docs.
+api: api-1.1 api-2.0 api-22.0 api-3.0 ## Make only the api docs.
 	./yii search/rebuild api
 
-guide: guide-1.0 guide-1.1 guide-2.0 ## Make only the guide docs.
+guide: guide-1.0 guide-1.1 guide-2.0 guide-22.0 ## Make only the guide docs.
 	./yii search/rebuild guide
 
 download: download-2.0 ## Make only the doc download archives.
@@ -84,6 +84,11 @@ yii-2.0: yii-2.0-git \
     yii-2.0-ext-sphinx \
     yii-2.0-ext-swiftmailer \
     yii-2.0-ext-twig
+
+yii-22.0:
+	test -d data/yii-22.0 || git clone --branch 22.0 --single-branch https://github.com/yiisoft/yii2.git data/yii-22.0
+	cd data/yii-22.0 && git checkout 22.0
+	cd data/yii-22.0 && git pull --ff-only origin 22.0
 
 yii-3.0: yii-3.0-access \
   yii-3.0-active-record \

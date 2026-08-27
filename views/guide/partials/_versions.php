@@ -171,7 +171,9 @@ $downloadIcon = '<svg viewBox="0 0 20 20" aria-hidden="true">'
         <?php foreach ($versionItems as $item): ?>
             <?php
             $version = $item['version'];
-            $label = $version === '3.0' ? 'Yii 3' : ($version === '2.0' ? 'Yii 2' : "Yii $version");
+            $label = $version === '3.0'
+                ? 'Yii3'
+                : ($version === '22.0' ? 'Yii 22' : ($version === '2.0' ? 'Yii 2' : "Yii $version"));
             $linkOptions = [
                 'class' => 'version-selector__option' . ($version === $guide->version ? ' is-active' : ''),
                 'aria-current' => $version === $guide->version ? 'page' : null,

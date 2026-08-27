@@ -13,7 +13,13 @@ use app\widgets\DropdownList;
 use yii\helpers\Html;
 
 $versions = array_values($versions);
-usort($versions, static fn(string $a, string $b): int => version_compare($b, $a));
+usort($versions, static function (string $a, string $b): int {
+    $order = ['3.0' => 0, '22.0' => 1, '2.0' => 2];
+    $aOrder = $order[$a] ?? 100;
+    $bOrder = $order[$b] ?? 100;
+
+    return $aOrder === $bOrder ? version_compare($b, $a) : $aOrder <=> $bOrder;
+});
 
 $downloadItems = [];
 $guide = Guide::load($version, 'en');
@@ -53,7 +59,9 @@ if (!isset($extension) && $guide) {
                     ? ['api/index', 'version' => $ver]
                     : ['api/view', 'version' => $ver, 'section' => $section];
             }
-            $label = $ver === '3.0' ? 'Yii 3' : ($ver === '2.0' ? 'Yii 2' : "Yii $ver");
+            $label = $ver === '3.0'
+                ? 'Yii3'
+                : ($ver === '22.0' ? 'Yii 22' : ($ver === '2.0' ? 'Yii 2' : "Yii $ver"));
             ?>
             <?= Html::a($label, $url, [
                 'class' => 'version-selector__option' . ($ver === $version ? ' is-active' : ''),

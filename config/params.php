@@ -86,6 +86,9 @@ return [
     'baseUrl' => '',
 
     'guide.versions' => [
+        '22.0' => [
+            'en' => 'English',
+        ],
         '2.0' => [
             'ar' => 'العربية',  // Arabic
             'en' => 'English',

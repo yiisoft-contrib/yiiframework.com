@@ -123,14 +123,16 @@ class SitemapController extends Controller
         //api
         $apiBaseUrl = Yii::$app->params['api.baseUrl'];
 
-        $urls[] = "{$apiBaseUrl}/2.0";
+        foreach (['22.0', '2.0'] as $version) {
+            $urls[] = "{$apiBaseUrl}/{$version}";
 
-        $apiRenderer = new ApiRenderer([
-            'version' => '2.0'
-        ]);
-        $classes = Json::decode(file_get_contents(Yii::getAlias("@app/data/api-2.0/json/typeNames.json")));
-        foreach($classes as $class) {
-            $urls[] = $apiRenderer->generateApiUrl($class['name']);
+            $apiRenderer = new ApiRenderer([
+                'version' => $version,
+            ]);
+            $classes = Json::decode(file_get_contents(Yii::getAlias("@app/data/api-{$version}/json/typeNames.json")));
+            foreach($classes as $class) {
+                $urls[] = $apiRenderer->generateApiUrl($class['name']);
+            }
         }
 
         foreach (['1.0', '1.1'] as $version) {

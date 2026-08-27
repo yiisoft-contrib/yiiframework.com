@@ -73,7 +73,7 @@ class ExtensionController extends BaseController
     {
         $this->sectionTitle = null;
 
-        if (!\in_array($version, [Extension::YII_VERSION_10, Extension::YII_VERSION_11, Extension::YII_VERSION_20, Extension::YII_VERSION_30], true)) {
+        if (!\in_array($version, [Extension::YII_VERSION_10, Extension::YII_VERSION_11, Extension::YII_VERSION_20, Extension::YII_VERSION_22, Extension::YII_VERSION_30], true)) {
             throw new NotFoundHttpException();
         }
 

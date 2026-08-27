@@ -6,7 +6,7 @@ use yii\helpers\Html;
 /* @var $currentVersion string */
 
 $versions = [
-    '3.0' => 'Yii 3',
+    '3.0' => 'Yii3',
     '2.0' => 'Yii 2',
     '1.1' => 'Yii 1.1',
 ];
