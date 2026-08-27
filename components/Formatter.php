@@ -218,8 +218,12 @@ class Formatter extends \yii\i18n\Formatter
      *
      * `<hash>` is a value generated from the URL and a secret to avoid abuse of the proxy server.
      */
-    private function generateProxyUrl($sourceUrl)
+    protected function generateProxyUrl($sourceUrl)
     {
+        if (strcasecmp((string) parse_url(html_entity_decode($sourceUrl), PHP_URL_HOST), 'img.shields.io') === 0) {
+            return $sourceUrl;
+        }
+
         // generate proxy URL for all absolute URLs on http, https and protocol relative
         if (preg_match('~^(https?:|)//([^/]+)/(.*)$~', $sourceUrl, $matches)) {
 

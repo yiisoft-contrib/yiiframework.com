@@ -345,10 +345,11 @@ MARKDOWN;
 
     public function getContentHtml()
     {
+        $description = $this->normalizeImportedMarkdown($this->description);
         $imageBaseUrl = $this->from_packagist
             ? PackagistApi::getRawRepositoryUrl($this->github_url)
             : null;
-        $content = Yii::$app->formatter->asGuideMarkdown($this->description, $imageBaseUrl);
+        $content = Yii::$app->formatter->asGuideMarkdown($description, $imageBaseUrl);
 
         if ($this->isOfficialExtension) {
             // replace guide link that works on github but not here
@@ -359,6 +360,16 @@ MARKDOWN;
         }
 
         return $content;
+    }
+
+    protected function normalizeImportedMarkdown($markdown)
+    {
+        return strtr($markdown, [
+            'https://v4-alpha.getbootstrap.com/assets/brand/bootstrap-solid.svg'
+                => 'https://getbootstrap.com/docs/4.0/assets/brand/bootstrap-solid.svg',
+            'https://github.com/yiisoft/yii2-bootstrap4/workflows/build/badge.svg'
+                => 'https://img.shields.io/github/actions/workflow/status/yiisoft/yii2-bootstrap4/build.yml?style=for-the-badge&logo=github&label=Build',
+        ]);
     }
 
     public function getLicenseLink()
