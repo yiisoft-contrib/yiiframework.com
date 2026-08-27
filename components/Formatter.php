@@ -3,7 +3,7 @@
 namespace app\components;
 
 use Yii;
-use yii\apidoc\helpers\ApiMarkdown;
+use app\apidoc\ApiMarkdown;
 use yii\apidoc\models\Context;
 use yii\helpers\HtmlPurifier;
 use yii\helpers\Markdown;
