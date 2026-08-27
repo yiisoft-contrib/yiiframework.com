@@ -172,6 +172,25 @@ class PackagistApi
         return null;
     }
 
+    public static function getRawRepositoryUrl($repositoryUrl)
+    {
+        $repositoryUrl = preg_replace('~\.git$~i', '', rtrim($repositoryUrl, '/'));
+        if (!preg_match('~^https?://(github\.com|gitlab\.com|bitbucket\.org)/([^/]+/[^/]+)$~i', $repositoryUrl, $matches)) {
+            return null;
+        }
+
+        switch (strtolower($matches[1])) {
+            case 'github.com':
+                return 'https://raw.githubusercontent.com/' . $matches[2] . '/master';
+            case 'gitlab.com':
+                return $repositoryUrl . '/raw/master';
+            case 'bitbucket.org':
+                return $repositoryUrl . '/raw/master';
+        }
+
+        return null;
+    }
+
     private function getRawFile($service, $package, $file)
     {
         switch ($service) {

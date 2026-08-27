@@ -115,7 +115,7 @@ class Formatter extends \yii\i18n\Formatter
      * @param $markdown
      * @return string
      */
-   	public function asGuideMarkdown($markdown)
+    public function asGuideMarkdown($markdown, $imageBaseUrl = null)
    	{
         if (ApiMarkdown::$renderer === null) {
             ApiMarkdown::$renderer = new \app\apidoc\GuideRenderer();
@@ -136,6 +136,10 @@ class Formatter extends \yii\i18n\Formatter
 
         $output = HtmlPurifier::process($html, $this->purifierConfig);
 
+        if ($imageBaseUrl !== null) {
+            $output = $this->resolveRelativeImageUrls($output, $imageBaseUrl);
+        }
+
         $output = $this->replaceImageUrlForProxy($output);
 
    		return '<div class="markdown">'.$output.'</div>';
@@ -155,6 +159,18 @@ class Formatter extends \yii\i18n\Formatter
                 $level = 6;
             }
             return $matches[1] . $level . $matches[3];
+        }, $html);
+    }
+
+    protected function resolveRelativeImageUrls($html, $baseUrl)
+    {
+        return preg_replace_callback('/(<img[^>]+?src=)(["\'])([^"\']+)\2/i', function ($matches) use ($baseUrl) {
+            $sourceUrl = $matches[3];
+            if (preg_match('~^(?:[a-z][a-z0-9+.-]*:|//|/|#)~i', $sourceUrl)) {
+                return $matches[0];
+            }
+
+            return $matches[1] . $matches[2] . rtrim($baseUrl, '/') . '/' . ltrim($sourceUrl, './') . $matches[2];
         }, $html);
     }
 

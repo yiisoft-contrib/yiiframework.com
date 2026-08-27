@@ -345,7 +345,10 @@ MARKDOWN;
 
     public function getContentHtml()
     {
-        $content = Yii::$app->formatter->asGuideMarkdown($this->description);
+        $imageBaseUrl = $this->from_packagist
+            ? PackagistApi::getRawRepositoryUrl($this->github_url)
+            : null;
+        $content = Yii::$app->formatter->asGuideMarkdown($this->description, $imageBaseUrl);
 
         if ($this->isOfficialExtension) {
             // replace guide link that works on github but not here
