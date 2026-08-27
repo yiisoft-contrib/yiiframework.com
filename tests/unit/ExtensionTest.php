@@ -39,4 +39,14 @@ class ExtensionTest extends \Codeception\Test\Unit
         );
     }
 
+    public function testSplitsMultipleYiiVersions(): void
+    {
+        $extension = new class extends Extension {
+            public $yii_version;
+        };
+        $extension->yii_version = '22.0 | 2.0';
+
+        self::assertSame(['22.0', '2.0'], $extension->getYiiVersions());
+    }
+
 }
