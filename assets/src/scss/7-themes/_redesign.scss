@@ -4009,6 +4009,8 @@ code {
 }
 
 pre code { color: inherit; background: transparent; }
+pre code .hljs-addition { color: #0c5b12; }
+pre code .hljs-deletion { color: #88162b; }
 
 .table > thead > tr > th { color: $redesign-ink; border-bottom-color: $redesign-line; }
 .table > tbody > tr > td { border-top-color: $redesign-line; }
