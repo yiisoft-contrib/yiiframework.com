@@ -4,7 +4,7 @@ return [
     'dsn' => 'mysql:host=localhost;dbname=yiiframework_tests',
     'username' => 'root',
     'password' => '',
-    'charset' => 'utf8',
+    'charset' => 'utf8mb4',
     'on afterOpen' => function($event) {
         /** @var $db \yii\db\Connection */
         $db = $event->sender;
