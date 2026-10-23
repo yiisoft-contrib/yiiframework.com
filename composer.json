@@ -9,6 +9,9 @@
     "type": "project",
     "license": "BSD-3-Clause",
     "minimum-stability": "stable",
+    "scripts": {
+        "phpstan": "./vendor/bin/phpstan"
+    },
     "require": {
         "php": "^7.4",
         "ext-curl": "*",
@@ -63,6 +66,8 @@
     },
     "require-dev": {
         "codeception/base": "^2.2.3",
+        "mspirkov/yii2-phpstan": "^0.16",
+        "phpstan/phpstan": "^2.3",
         "yiisoft/yii2-debug": "~2.1.0",
         "yiisoft/yii2-faker": "~2.0.0",
         "yiisoft/yii2-gii": "~2.2.0",

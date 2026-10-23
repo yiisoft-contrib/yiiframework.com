@@ -3,8 +3,9 @@
 use app\components\UserPermissions;
 use yii\helpers\Html;
 
-/** @var $model app\models\Extension the data model */
-/** @var $extended bool */
+/** @var yii\web\View $this */
+/** @var app\models\Extension $model the data model */
+/** @var bool $extended */
 
 ?>
 

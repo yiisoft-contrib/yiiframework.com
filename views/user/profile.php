@@ -10,11 +10,11 @@ use app\widgets\Alert;
 use app\widgets\Star;
 use yii\helpers\Html;
 
-/* @var $this yii\web\View */
-/* @var $model app\models\User */
-/* @var $extensions Extension[] */
-/* @var $wikiPages Wiki[] */
-/* @var Linkable[]|ObjectIdentityInterface[] $starTargets */
+/** @var yii\web\View $this */
+/** @var app\models\User $model */
+/** @var Extension[] $extensions */
+/** @var Wiki[] $wikiPages */
+/** @var Linkable[]|ObjectIdentityInterface[] $starTargets */
 
 $this->title = 'Hi, ' . $model->username . '!';
 $forumUrl = $model->getForumUrl();

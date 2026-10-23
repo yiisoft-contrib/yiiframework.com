@@ -42,7 +42,7 @@ class SearchController  extends Controller
     {
         $this->stdout("Search settings\n\n", Console::BOLD);
 
-        /** @var $es Connection */
+        /** @var Connection $es */
         $es = Yii::$app->elasticsearch;
 
         $this->stdout('Elasticsearch config: ' . print_r($es->nodes, true));

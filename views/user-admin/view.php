@@ -3,8 +3,8 @@
 use yii\helpers\Html;
 use yii\widgets\DetailView;
 
-/* @var $this yii\web\View */
-/* @var $model app\models\User */
+/** @var yii\web\View $this */
+/** @var app\models\User $model */
 
 $this->title = 'User: ' . Html::encode($model->username);
 $this->params['breadcrumbs'][] = ['label' => 'Users', 'url' => ['index']];

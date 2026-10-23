@@ -1,9 +1,9 @@
 <?php
 
-/* @var $this \yii\web\View */
-/* @var $wiki \app\models\Wiki the wiki model object that has been changed */
-/* @var $user \app\models\User the user object to whom the email is sent */
-/* @var $changes \app\models\WikiRevision string, the changes */
+/** @var \yii\web\View $this */
+/** @var \app\models\Wiki $wiki the wiki model object that has been changed */
+/** @var \app\models\User $user the user object to whom the email is sent */
+/** @var \app\models\WikiRevision $changes string, the changes */
 
 use app\components\DiffBehavior;
 use app\models\WikiCategory;
@@ -29,8 +29,8 @@ CHANGES: <?= Url::to($changes->getUrl(), true); ?>
 -------------------------------------------------------------------------------
 <?php
 
-/** @var $left \app\models\WikiRevision|DiffBehavior */
-/** @var $right \app\models\WikiRevision|DiffBehavior */
+/** @var \app\models\WikiRevision|DiffBehavior $left */
+/** @var \app\models\WikiRevision|DiffBehavior $right */
 $left = $changes->findPrevious();
 $right = $changes;
 

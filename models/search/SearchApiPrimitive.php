@@ -10,7 +10,6 @@ use yii\apidoc\models\PropertyDoc;
 /**
  * API documentation primitive, i.e. method, property, const, event
  *
- * @property string $version
  * @property string $type method, property, const, event
  * @property string $name
  * @property string $parentId

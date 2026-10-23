@@ -6,10 +6,11 @@ use yii\data\ActiveDataProvider;
 use yii\helpers\Html;
 use yii\widgets\ListView;
 
-/** @var $dataProvider ActiveDataProvider */
-/** @var $category ExtensionCategory */
-/** @var $version string */
-/** @var $tag ExtensionTag */
+/** @var yii\web\View $this */
+/** @var ActiveDataProvider $dataProvider */
+/** @var ExtensionCategory|null $category */
+/** @var string $version */
+/** @var ExtensionTag|null $tag */
 
 
 $this->title = 'Extensions';

@@ -45,7 +45,7 @@ class Voter extends Widget
 
         $hasVoted = -1;
         if (!Yii::$app->user->isGuest) {
-            /** @var $userRating Rating */
+            /** @var Rating $userRating */
             $userRating = Rating::find()->where(['object_type' => $modelType, 'object_id' => $modelId, 'user_id' => Yii::$app->user->id])->one();
             if ($userRating !== null) {
                 $hasVoted = $userRating->rating;

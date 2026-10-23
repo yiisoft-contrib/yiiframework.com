@@ -7,9 +7,7 @@ use app\models\Wiki;
 /**
  * Search record for Wiki
  *
- *
  * @property string $id
- * @property string $version
  * @property string $category_id
  * @property string $category
  * @property string $title

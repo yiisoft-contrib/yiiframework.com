@@ -2,7 +2,7 @@
 /**
  * @var yii\web\View $this
  * @var app\models\Guide $guide
- * @var app\models\GuideSection $section
+ * @var app\models\GuideSection|null $section
  * @var string $content
  */
 

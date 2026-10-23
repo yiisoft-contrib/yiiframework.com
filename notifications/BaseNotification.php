@@ -31,7 +31,7 @@ abstract class BaseNotification extends BaseObject
     {
         $followers = Star::getFollowers($model)->each();
         foreach($followers as $follower) {
-            /** @var $follower User */
+            /** @var User $follower */
             if ($updater !== null && $follower->equals($updater)) {
                 continue;
             }
@@ -64,7 +64,7 @@ abstract class BaseNotification extends BaseObject
 
     public static function create($params)
     {
-        /** @var $queue Queue */
+        /** @var Queue $queue */
         $queue = Yii::$app->queue;
         foreach ($params as $param) {
             // clear validators which may contain closures, so objects can be serialized

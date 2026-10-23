@@ -32,6 +32,10 @@ use yii\helpers\Url;
  * @property NewsTag[] $tags
  * @property News[] $relatedNews
  * @property User $creator
+ * @property string[] $tagNames This property comes from Taggable. We have to specify it here
+ * because it is not specified in the behavior itself.
+ *
+ * @mixin Taggable
  */
 class News extends ActiveRecord implements Linkable, ObjectIdentityInterface, EntityInterface
 {
@@ -130,8 +134,8 @@ class News extends ActiveRecord implements Linkable, ObjectIdentityInterface, En
             'news_date' => 'News Date',
             'image_id' => 'Image ID',
             'content' => 'Content',
-            'create_time' => 'Create Time',
-            'update_time' => 'Update Time',
+            'created_at' => 'Create Time',
+            'updated_at' => 'Update Time',
             'creator_id' => 'Creator ID',
             'updater_id' => 'Updater ID',
             'status' => 'Status',

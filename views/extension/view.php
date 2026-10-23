@@ -1,5 +1,6 @@
 <?php
 /**
+ * @var yii\web\View $this
  * @var Extension $model
  * @var int $revision
  */

@@ -7,11 +7,11 @@ use yii\helpers\Html;
 use yii\web\View;
 use yii\widgets\ListView;
 
-/** @var $dataProvider ActiveDataProvider */
-/** @var $category ExtensionCategory */
-/** @var $version string */
-/** @var $tag ExtensionTag */
-/** @var $this View */
+/** @var ActiveDataProvider $dataProvider */
+/** @var ExtensionCategory $category */
+/** @var string $version */
+/** @var ExtensionTag $tag */
+/** @var View $this */
 
 
 $this->title = 'Official Extensions';

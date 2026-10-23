@@ -1,7 +1,7 @@
 <?php
-/* @var $books1 array */
-/* @var $books2 array */
-/* @var $this yii\web\View */
+/** @var array $books1 */
+/** @var array $books2 */
+/** @var yii\web\View $this */
 $this->title = 'Books';
 $this->params['breadcrumbs'][] = $this->title;
 ?>

@@ -1,8 +1,8 @@
 <?php
 
-/* @var $comments app\models\Comment[] */
-/* @var $form yii\widgets\ActiveForm */
-/* @var $commentForm app\models\Comment */
+/** @var app\models\Comment[] $comments */
+/** @var yii\widgets\ActiveForm $form */
+/** @var app\models\Comment $commentForm */
 
 use app\components\UserPermissions;
 use app\models\User;

@@ -8,10 +8,10 @@ use yii\bootstrap\Nav;
 use yii\helpers\Html;
 use yii\widgets\ListView;
 
-/* @var $this yii\web\View */
-/* @var $dataProvider yii\data\ActiveDataProvider */
-/* @var $year int */
-/* @var $tag NewsTag */
+/** @var yii\web\View $this */
+/** @var yii\data\ActiveDataProvider $dataProvider */
+/** @var int $year */
+/** @var NewsTag $tag */
 
 $urlParams = [];
 

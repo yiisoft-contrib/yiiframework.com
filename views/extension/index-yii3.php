@@ -2,7 +2,7 @@
 
 use yii\helpers\Html;
 
-/** @var $this yii\web\View */
+/** @var yii\web\View $this */
 /** @var string $version */
 
 $this->title = 'Yii3 packages';

@@ -1,10 +1,10 @@
 <?php
 
 /**
- * @var $this yii\web\View
- * @var $currentVersion string
- * @var $category string
- * @var $tag app\models\ExtensionTag|null
+ * @var yii\web\View $this
+ * @var string $currentVersion
+ * @var string $category
+ * @var app\models\ExtensionTag|null $tag
  */
 
 use app\models\Extension;

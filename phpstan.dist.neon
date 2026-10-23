@@ -1,0 +1,101 @@
+includes:
+    - phpstan-baseline.neon
+    - vendor/mspirkov/yii2-phpstan/extension.neon
+
+parameters:
+    level: 1
+
+    paths:
+        - apidoc
+        - assets
+        - commands
+        - components
+        - config
+        - controllers
+        - env
+        - jobs
+        - mail
+        - migrations
+        - models
+        - notifications
+        - tests
+        - views
+        - widgets
+
+    excludePaths:
+        - apidoc/Yii1MarkdownParser.php
+        - tests/_output
+
+    bootstrapFiles:
+        - vendor/yiisoft/yii2/Yii.php
+
+    scanFiles:
+        # The parent of migrations/m170910_230411_rbac_tables.php. It isn't autoloaded, the migration requires it at runtime
+        - vendor/yiisoft/yii2/rbac/migrations/m140506_102106_rbac_init.php
+
+    mspirkovYii2:
+        enableAllRules: false
+        enableValidationRules: true
+
+        applicationConfigs:
+            -
+                paths:
+                    - .
+                files:
+                    - config/web.php
+                    - config/web-local.php
+            -
+                paths:
+                    - commands
+                    - jobs
+                    - migrations
+                files:
+                    - config/console.php
+                    - config/console-local.php
+
+        yiiAppTypes:
+            -
+                paths:
+                    - .
+                type: yii\console\Application|yii\web\Application<app\models\User>
+                nullable: false
+            -
+                paths:
+                    - assets
+                    - controllers
+                    - views
+                    - widgets
+                type: yii\web\Application<app\models\User>
+                nullable: false
+            -
+                paths:
+                    - commands
+                    - jobs
+                    - migrations
+                type: yii\console\Application
+                nullable: false
+
+        aliases:
+            '@app': .
+
+    ignoreErrors:
+        - '#Unsafe usage of new static\(\).#'
+
+        # TODO: remove after updating Yii2 to 2.0.56.
+        -
+            message: '#^Object option "(?:pagination|sort)" for yii\\data\\ActiveDataProvider must be #'
+            identifier: mspirkovYii2.baseObjectInstantiationValidation
+        -
+            message: '#^Object option "sort" for yii\\data\\ArrayDataProvider must be #'
+            identifier: mspirkovYii2.baseObjectInstantiationValidation
+        -
+            message: '#^Behavior option "createdAtAttribute" for yii\\behaviors\\TimestampBehavior must be string, false given\.$#'
+            identifier: mspirkovYii2.componentBehaviorsValidation
+        -
+            message: '#^Behavior option "updatedByAttribute" for yii\\behaviors\\BlameableBehavior must be string, false given\.$#'
+            identifier: mspirkovYii2.componentBehaviorsValidation
+
+        # TODO: remove after updating yii2-httpclient.
+        -
+            message: '#^Object option "transport" for yii\\httpclient\\Client must be #'
+            identifier: mspirkovYii2.baseObjectInstantiationValidation

@@ -1,9 +1,9 @@
 <?php
 
-/** @var $this \yii\web\View */
-/** @var $model \app\models\Linkable */
-/** @var $user \app\models\User */
-/** @var $content string */
+/** @var \yii\web\View $this */
+/** @var \app\models\Linkable $model */
+/** @var \app\models\User $user */
+/** @var string $content */
 
 use yii\helpers\Url;
 

@@ -1,7 +1,7 @@
 <?php
 
-/** @var $this View */
-/** @var $content string */
+/** @var View $this */
+/** @var string $content */
 
 use yii\web\View;
 use yii\widgets\Breadcrumbs;

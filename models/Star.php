@@ -91,7 +91,7 @@ class Star extends ActiveRecord
      */
     public static function castStar($model, $userID, $starValue = -1)
     {
-        /** @var $star Star */
+        /** @var Star $star */
         $star = static::findOne([
             'object_type' => $model->getObjectType(),
             'object_id' => $model->getObjectId(),
@@ -193,7 +193,7 @@ class Star extends ActiveRecord
      */
     public static function getStarValue($model, $userID)
     {
-        /** @var $star Star */
+        /** @var Star $star */
         $star = static::findOne([
             'object_type' => $model->getObjectType(),
             'object_id' => $model->getObjectId(),

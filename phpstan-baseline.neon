@@ -1,0 +1,121 @@
+parameters:
+	ignoreErrors:
+		-
+			message: '#^Instantiated class app\\apidoc\\Yii1MarkdownParser not found\.$#'
+			identifier: class.notFound
+			count: 1
+			path: apidoc/Yii1GuideRenderer.php
+
+		-
+			message: '#^Variable \$mtype might not be defined\.$#'
+			identifier: variable.undefined
+			count: 2
+			path: commands/ApiController.php
+
+		-
+			message: '#^Variable \$avatarPath might not be defined\.$#'
+			identifier: variable.undefined
+			count: 2
+			path: commands/ImportController.php
+
+		-
+			message: '#^Method app\\components\\AuthHandler\:\:signup\(\) should return yii\\console\\Response\|yii\\web\\Response but return statement is missing\.$#'
+			identifier: return.missing
+			count: 1
+			path: components/AuthHandler.php
+
+		-
+			message: '#^Variable \$view might not be defined\.$#'
+			identifier: variable.undefined
+			count: 1
+			path: controllers/ApiController.php
+
+		-
+			message: '#^Regex pattern is invalid\: Compilation failed\: invalid range in character class at offset 5 in pattern\: ~\^\[\\w\-\.\]\+\$~$#'
+			identifier: regexp.pattern
+			count: 1
+			path: controllers/SiteController.php
+
+		-
+			message: '#^Class Swift_RfcComplianceException not found\.$#'
+			identifier: class.notFound
+			count: 1
+			path: jobs/EmailNotificationJob.php
+
+		-
+			message: '#^Class Swift_SwiftException not found\.$#'
+			identifier: class.notFound
+			count: 1
+			path: jobs/EmailNotificationJob.php
+
+		-
+			message: '#^Value for attribute "object_id" on ActiveRecord app\\models\\Comment in deleteAll\(\) condition must be string, int given\.$#'
+			identifier: mspirkovYii2.activeRecordConditionValidation
+			count: 1
+			path: models/Doc.php
+
+		-
+			message: '#^Variable \$avatarPath might not be defined\.$#'
+			identifier: variable.undefined
+			count: 2
+			path: models/UserAvatarUploadForm.php
+
+		-
+			message: '#^Value for attribute "id" on ActiveRecord app\\models\\Wiki in updateAll\(\) condition must be int, string given\.$#'
+			identifier: mspirkovYii2.activeRecordConditionValidation
+			count: 1
+			path: models/Wiki.php
+
+		-
+			message: '#^Method app\\models\\faker\\BadgeFaker\:\:generateModel\(\) should return yii\\db\\ActiveRecord but return statement is missing\.$#'
+			identifier: return.missing
+			count: 1
+			path: models/faker/BadgeFaker.php
+
+		-
+			message: '#^Variable \$section in isset\(\) always exists and is not nullable\.$#'
+			identifier: isset.variable
+			count: 1
+			path: views/api/view1x.php
+
+		-
+			message: '#^Widget option "objectId" for app\\widgets\\Comments must be string, int given\.$#'
+			identifier: mspirkovYii2.widgetPropertiesValidation
+			count: 1
+			path: views/api/view1x.php
+
+		-
+			message: '#^Widget option "objectId" for app\\widgets\\Comments must be string, int given\.$#'
+			identifier: mspirkovYii2.widgetPropertiesValidation
+			count: 1
+			path: views/api/view2x.php
+
+		-
+			message: '#^Widget option "objectId" for app\\widgets\\Comments must be string, int given\.$#'
+			identifier: mspirkovYii2.widgetPropertiesValidation
+			count: 1
+			path: views/extension/view.php
+
+		-
+			message: '#^Variable \$versionGuide might not be defined\.$#'
+			identifier: variable.undefined
+			count: 1
+			path: views/guide/error-404-guide.php
+
+		-
+			message: '#^Variable \$notes in isset\(\) always exists and is not nullable\.$#'
+			identifier: isset.variable
+			count: 1
+			path: views/guide/partials/_scrollspy.php
+
+		-
+			message: '#^Widget option "objectId" for app\\widgets\\Comments must be string, int given\.$#'
+			identifier: mspirkovYii2.widgetPropertiesValidation
+			count: 1
+			path: views/guide/view.php
+
+		-
+			message: '#^Widget option "objectId" for app\\widgets\\Comments must be string, int given\.$#'
+			identifier: mspirkovYii2.widgetPropertiesValidation
+			count: 1
+			path: views/wiki/view.php

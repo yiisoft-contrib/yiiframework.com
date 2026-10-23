@@ -41,7 +41,7 @@ class WikiTaglist extends Widget
 
         $tagEntries = [];
         foreach($tags as $tag) {
-            /** @var $tag NewsTag */
+            /** @var NewsTag $tag */
             $tagEntries[$tag->slug] = Html::a(Html::encode($tag->name), array_merge($this->urlParams, ['wiki/index', 'tag' => $tag->slug]))
                 . ($this->wiki ? '' : " ($tag->frequency)");
         }

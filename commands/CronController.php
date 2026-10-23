@@ -39,7 +39,7 @@ class CronController extends Controller
         foreach($outdatedExtensions as $extension) {
             $extension->updateAttributes(['update_status' => Extension::UPDATE_STATUS_EXPIRED]);
 
-            /** @var $queue Queue */
+            /** @var Queue $queue */
             $queue = Yii::$app->queue;
             $job = new ExtensionImportJob(['extensionId' => $extension->id]);
             $queue->delay(rand(0, 3600))->push($job);

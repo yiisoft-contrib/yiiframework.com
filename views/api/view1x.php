@@ -1,11 +1,11 @@
 <?php
 /**
- * @var $this yii\web\View
- * @var $versions array all available API versions
- * @var $version string the currently chosen API version
- * @var $section string the currently active API file
- * @var $content string the API page content
- * @var $packages array the API page menu structure
+ * @var yii\web\View $this
+ * @var array $versions all available API versions
+ * @var string $version the currently chosen API version
+ * @var string $section the currently active API file
+ * @var string $content the API page content
+ * @var array $packages the API page menu structure
  * @var Doc $doc
  */
 

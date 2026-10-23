@@ -1,11 +1,11 @@
 <?php
 
-/** @var $this \yii\web\View */
-/** @var $model \app\models\Linkable */
-/** @var $user \app\models\User */
-/** @var $title string */
-/** @var $css string optional css to be added to the header */
-/** @var $content string */
+/** @var \yii\web\View $this */
+/** @var \app\models\Linkable $model */
+/** @var \app\models\User $user */
+/** @var string $title */
+/** @var string|null $css optional css to be added to the header */
+/** @var string $content */
 
 use yii\helpers\Url;
 use yii\helpers\Html;

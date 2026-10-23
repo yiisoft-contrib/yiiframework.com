@@ -2,7 +2,7 @@
 
 use yii\helpers\Html;
 
-/* @var $this yii\web\View */
+/** @var yii\web\View $this */
 
 ?>
 <main class="container style_external_links notice-page">

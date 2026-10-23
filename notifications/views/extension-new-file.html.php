@@ -1,9 +1,9 @@
 <?php
 
-/* @var $this \yii\web\View */
-/* @var $extension \app\models\Extension|DiffBehavior the extension model object that has been changed */
-/* @var $user \app\models\User the user object to whom the email is sent */
-/* @var $file \app\models\File the file object that has been uploaded */
+/** @var \yii\web\View $this */
+/** @var \app\models\Extension|DiffBehavior $extension the extension model object that has been changed */
+/** @var \app\models\User $user the user object to whom the email is sent */
+/** @var \app\models\File $file the file object that has been uploaded */
 
 use app\components\DiffBehavior;
 use yii\helpers\Html;

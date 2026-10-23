@@ -118,7 +118,7 @@ class AuthController extends BaseController
             throw new NotFoundHttpException();
         }
 
-        /** @var $user User */
+        /** @var User $user */
         $user = Yii::$app->user->identity;
         $auth = $user->getAuthClients()->where(['source' => $source])->one();
         if ($auth !== null) {
@@ -136,7 +136,7 @@ class AuthController extends BaseController
      */
     public function actionDisablePassword()
     {
-        /** @var $user User */
+        /** @var User $user */
         $user = Yii::$app->user->identity;
         $user->disablePassword();
         Yii::$app->session->setFlash('success', 'You successfully disabled password login for your account.');
@@ -264,7 +264,7 @@ class AuthController extends BaseController
         }
 
         // if email is not validated, redirect to profile
-        /** @var $user User */
+        /** @var User $user */
         $user = Yii::$app->user->identity;
         if (!$user->email_verified) {
             Yii::$app->session->setFlash('error', 'You need to validate your email address before being able to log in to the forum.');

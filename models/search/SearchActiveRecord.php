@@ -8,6 +8,8 @@ use yii\base\Exception;
 /**
  * Base class for all search records
  *
+ * @property string $version
+ *
  * @author Carsten Brandt <mail@cebe.cc>
  */
 abstract class SearchActiveRecord extends \yii\elasticsearch\ActiveRecord

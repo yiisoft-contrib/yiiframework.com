@@ -6,11 +6,11 @@ use yii\apidoc\templates\bootstrap\SideNavWidget;
 use yii\helpers\Html;
 use yii\helpers\StringHelper;
 
-/* @var $this yii\web\View */
-/* @var $types array */
-/* @var $content string */
+/** @var yii\web\View $this */
+/** @var array $types */
+/** @var string $content */
 
-/** @var $renderer ApiRenderer */
+/** @var ApiRenderer $renderer */
 $renderer = $this->context;
 ?>
 <div class="row row-offcanvas">

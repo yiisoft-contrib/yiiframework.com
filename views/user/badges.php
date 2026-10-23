@@ -2,10 +2,10 @@
 
 use yii\helpers\Html;
 
-/* @var $this yii\web\View */
-/* @var $badges app\models\Badge[] */
-/* @var $counts array */
-/* @var $forumBadges array */
+/** @var yii\web\View $this */
+/** @var app\models\Badge[] $badges */
+/** @var array $counts */
+/** @var array $forumBadges */
 
 $this->title = 'Badges';
 

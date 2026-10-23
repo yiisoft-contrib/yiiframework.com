@@ -1,10 +1,10 @@
 <?php
 /**
- * @var $this yii\web\View
- * @var $guide app\models\Guide
- * @var $section app\models\GuideSection
- * @var $extensionName string
- * @var $extensionVendor string
+ * @var yii\web\View $this
+ * @var app\models\Guide $guide
+ * @var app\models\GuideSection $section
+ * @var string $extensionName
+ * @var string $extensionVendor
  */
 
 use yii\helpers\Html;

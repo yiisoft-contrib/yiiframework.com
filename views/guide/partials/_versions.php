@@ -1,11 +1,11 @@
 <?php
 
 /**
- * @var $this yii\web\View
- * @var $guide app\models\Guide
- * @var $section app\models\GuideSection|null
- * @var $extensionName string
- * @var $extensionVendor string
+ * @var yii\web\View $this
+ * @var app\models\Guide $guide
+ * @var app\models\GuideSection|null $section
+ * @var string|null $extensionName
+ * @var string|null $extensionVendor
  */
 
 use app\models\Guide;

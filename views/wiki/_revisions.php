@@ -4,7 +4,7 @@ use app\models\User;
 use yii\helpers\Html;
 use yii\helpers\StringHelper;
 
-/** @var $model app\models\Wiki the data model */
+/** @var app\models\Wiki $model the data model */
 
 ?>
 

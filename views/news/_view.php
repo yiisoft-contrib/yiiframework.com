@@ -2,7 +2,7 @@
 
 use yii\helpers\Html;
 
-/** @var $model app\models\News */
+/** @var app\models\News $model */
 
 ?>
 <article class="news-list-item">

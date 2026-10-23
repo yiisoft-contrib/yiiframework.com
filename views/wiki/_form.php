@@ -6,9 +6,9 @@ use dosamigos\selectize\SelectizeTextInput;
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 
-/* @var $this yii\web\View */
-/* @var $model app\models\Wiki */
-/* @var $form ActiveForm */
+/** @var yii\web\View $this */
+/** @var app\models\Wiki $model */
+/** @var ActiveForm $form */
 
 ?>
 <div class="wiki-form">

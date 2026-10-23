@@ -7,9 +7,10 @@ use app\widgets\Alert;
 use yii\bootstrap\ActiveForm;
 use yii\helpers\Html;
 
-/** @var $model Extension */
-/** @var $revision int */
-/** @var $file File */
+/** @var yii\web\View $this */
+/** @var Extension $model */
+/** @var int $revision */
+/** @var File $file */
 
 $this->title = "$model->name | Downloads";
 

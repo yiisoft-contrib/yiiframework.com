@@ -1,7 +1,7 @@
 <?php
 /**
- * @var $this yii\web\View
- * @var $guide app\models\Guide
+ * @var yii\web\View $this
+ * @var app\models\Guide $guide
  */
 
 use yii\helpers\Html;

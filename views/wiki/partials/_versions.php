@@ -1,10 +1,10 @@
 <?php
 
 /**
- * @var $this yii\web\View
- * @var $currentVersion string
- * @var $category app\models\WikiCategory|null
- * @var $tag app\models\WikiTag|null
+ * @var yii\web\View $this
+ * @var string $currentVersion
+ * @var app\models\WikiCategory|null $category
+ * @var app\models\WikiTag|null $tag
  */
 
 use app\models\Wiki;

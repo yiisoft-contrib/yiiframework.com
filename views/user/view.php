@@ -4,11 +4,11 @@ use app\components\UserPermissions;
 use yii\bootstrap\Nav;
 use yii\helpers\Html;
 
-/* @var $this yii\web\View */
-/* @var $model app\models\User */
-/* @var $userCount int */
-/* @var $wikis app\models\Wiki[] */
-/* @var $extensions app\models\Extension[] */
+/** @var yii\web\View $this */
+/** @var app\models\User $model */
+/** @var int $userCount */
+/** @var app\models\Wiki[] $wikis */
+/** @var app\models\Extension[] $extensions */
 
 $this->title = $model->display_name . "'s profile";
 $forumUrl = $model->getForumUrl();

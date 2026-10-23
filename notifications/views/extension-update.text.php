@@ -1,8 +1,8 @@
 <?php
 
-/* @var $this \yii\web\View */
-/* @var $extension \app\models\Extension|DiffBehavior the extension model object that has been changed */
-/* @var $user \app\models\User the user object to whom the email is sent */
+/** @var \yii\web\View $this */
+/** @var \app\models\Extension|DiffBehavior $extension the extension model object that has been changed */
+/** @var \app\models\User $user the user object to whom the email is sent */
 
 use app\components\DiffBehavior;
 use app\models\ExtensionCategory;

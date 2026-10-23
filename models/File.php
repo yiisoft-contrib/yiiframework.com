@@ -24,9 +24,9 @@ use yii\web\UploadedFile;
  * @property string $mime_type
  * @property integer $download_count
  * @property string $summary
- * @property integer $created_by
- * @property integer $created_at
- * @property integer $updated_at
+ * @property integer|null $created_by
+ * @property string $created_at
+ * @property string|null $updated_at
  * @property string $extension
  * @property string $path
  *
@@ -79,7 +79,7 @@ class File extends ActiveRecord
             ],
             ['file_name', 'unique',
                 'filter' => function($query) {
-                    /** @var $query ActiveQuery */
+                    /** @var ActiveQuery $query */
                     // filename must be unique per type
                     $query->andWhere(['object_type' => $this->object_type, 'object_id' => $this->object_id]);
                 },
@@ -140,7 +140,7 @@ class File extends ActiveRecord
     {
         parent::afterSave($insert, $changedAttributes);
         if($this->file_name instanceof UploadedFile) {
-            /** @var $fs Filesystem */
+            /** @var Filesystem $fs */
             $fs = Yii::$app->fs;
             $fp = fopen($this->file_name->tempName, 'rb');
             $fs->writeStream($this->path, $fp);
@@ -152,7 +152,7 @@ class File extends ActiveRecord
 
     public function afterDelete()
     {
-        /** @var $fs Filesystem */
+        /** @var Filesystem $fs */
         $fs = Yii::$app->fs;
         $fs->delete($this->path);
     }
@@ -203,7 +203,7 @@ class File extends ActiveRecord
      */
     public function download()
     {
-        /** @var $fs Filesystem */
+        /** @var Filesystem $fs */
         $fs = Yii::$app->fs;
         $this->updateCounters(['download_count' => 1]);
         return Yii::$app->response->sendStreamAsFile($fs->readStream($this->path), $this->file_name, [

@@ -2,7 +2,8 @@
 
 use yii\helpers\Html;
 
-/** @var $model app\models\Wiki */
+/** @var yii\web\View $this */
+/** @var app\models\Wiki $model */
 ?>
 <article class="wiki-list-item">
     <div class="wiki-row">

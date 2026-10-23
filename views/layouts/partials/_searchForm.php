@@ -1,6 +1,6 @@
 <?php
 
-/** @var $this yii\web\View */
+/** @var yii\web\View $this */
 
 use app\models\search\SearchActiveRecord;
 use yii\helpers\Html;

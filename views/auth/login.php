@@ -3,8 +3,8 @@
 use yii\bootstrap\ActiveForm;
 use yii\helpers\Html;
 
-/* @var $this yii\web\View */
-/* @var $model app\models\LoginForm */
+/** @var yii\web\View $this */
+/** @var app\models\LoginForm $model */
 
 $this->title = 'Login';
 $this->params['breadcrumbs'][] = $this->title;

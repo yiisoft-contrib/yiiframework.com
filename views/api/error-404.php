@@ -1,8 +1,8 @@
 <?php
 /**
- * @var $this yii\web\View
- * @var $alternatives array
- * @var $alternativeVersions array
+ * @var yii\web\View $this
+ * @var array $alternatives
+ * @var array $alternativeVersions
  */
 
 use app\widgets\SearchForm;

@@ -46,7 +46,10 @@ use yii\helpers\Url;
  * @property User $creator
  * @property WikiRevision[] $revisions
  * @property WikiRevision[] $latestRevisions
+ * @property string[] $tagNames This property comes from Taggable. We have to specify it here
+ * because it is not specified in the behavior itself.
  *
+ * @mixin Taggable
  */
 class Wiki extends ActiveRecord implements Linkable, ObjectIdentityInterface, EntityInterface
 {

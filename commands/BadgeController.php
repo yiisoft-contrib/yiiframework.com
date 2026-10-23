@@ -42,7 +42,7 @@ class BadgeController extends Controller
         foreach ($badges as $badge) {
             try {
                 // TODO batch per 100
-                /** @var $badge Badge */
+                /** @var Badge $badge */
                 $badge->updateBadges($userIds);
             } catch (\Exception $e) {
                 Yii::error($e);

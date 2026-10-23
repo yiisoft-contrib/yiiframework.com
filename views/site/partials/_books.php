@@ -1,5 +1,5 @@
 <?php
-/** @var $books array */
+/** @var array $books */
 
 use yii\helpers\Html;
 
