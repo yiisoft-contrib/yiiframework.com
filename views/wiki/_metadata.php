@@ -5,9 +5,9 @@ use app\widgets\Voter;
 use app\widgets\WikiTaglist;
 use yii\helpers\Html;
 
-/** @var $model app\models\Wiki the data model */
-/** @var $extended bool */
-/** @var $inline bool */
+/** @var app\models\Wiki $model the data model */
+/** @var bool $extended */
+/** @var bool|null $inline */
 
 ?>
 <?php $inline = $inline ?? false; ?>

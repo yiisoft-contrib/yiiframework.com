@@ -3,8 +3,8 @@
 use app\widgets\VersionCalendar;
 use yii\helpers\Html;
 
-/* @var $this yii\web\View */
-/* @var $versions array */
+/** @var yii\web\View $this */
+/** @var array $versions */
 
 $this->title = 'Release cycle';
 $this->params['breadcrumbs'][] = $this->title;

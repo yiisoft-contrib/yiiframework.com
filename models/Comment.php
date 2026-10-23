@@ -23,6 +23,7 @@ use yii\behaviors\BlameableBehavior;
  * @property float $rating
  *
  * @property User $user
+ * @property-read ActiveRecord|null $model
  */
 class Comment extends ActiveRecord implements ObjectIdentityInterface
 {
@@ -100,7 +101,7 @@ class Comment extends ActiveRecord implements ObjectIdentityInterface
     }
 
     /**
-     * @return ActiveRecord
+     * @return ActiveRecord|null
      */
     public function getModel()
     {
@@ -118,7 +119,7 @@ class Comment extends ActiveRecord implements ObjectIdentityInterface
      */
     public function getUrl()
     {
-        /** @var $model Linkable */
+        /** @var Linkable $model */
         $model = $this->getModel();
         if (!$this->model instanceof Linkable) {
             return null;

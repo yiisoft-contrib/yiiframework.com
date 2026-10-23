@@ -1,9 +1,9 @@
 <?php
 /**
- * @var $this yii\web\View
- * @var $guide app\models\Guide
- * @var $extensionName string
- * @var $extensionVendor string
+ * @var yii\web\View $this
+ * @var app\models\Guide $guide
+ * @var string $extensionName
+ * @var string $extensionVendor
  */
 use yii\helpers\Html;
 

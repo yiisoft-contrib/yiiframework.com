@@ -7,10 +7,10 @@ use yii\helpers\Url;
 use app\assets\AppAsset;
 use yii\web\View;
 
-AppAsset::register($this);
+/** @var View $this */
+/** @var string $content */
 
-/* @var $this View */
-/* @var $content string */
+AppAsset::register($this);
 
 $this->registerLinkTag([
     'rel' => 'search',

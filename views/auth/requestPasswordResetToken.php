@@ -4,9 +4,9 @@ use app\models\PasswordResetRequestForm;
 use yii\helpers\Html;
 use yii\bootstrap\ActiveForm;
 
-/* @var $this yii\web\View */
-/* @var $form yii\bootstrap\ActiveForm */
-/* @var $model PasswordResetRequestForm */
+/** @var yii\web\View $this */
+/** @var yii\bootstrap\ActiveForm $form */
+/** @var PasswordResetRequestForm $model */
 
 $this->title = 'Request password reset';
 ?>

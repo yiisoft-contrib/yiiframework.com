@@ -5,8 +5,8 @@ use app\widgets\Star;
 use app\widgets\Voter;
 use yii\helpers\Html;
 
-/** @var $model app\models\Extension the data model */
-/** @var $extended bool */
+/** @var app\models\Extension $model the data model */
+/** @var bool $extended */
 
 $yiiVersions = $model->getYiiVersions();
 $yiiVersionLinks = array_map(static function ($version) {

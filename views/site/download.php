@@ -3,10 +3,10 @@
 use app\models\Guide;
 use yii\helpers\Html;
 
-/* @var $this yii\web\View */
-/* @var $versions array */
-/* @var $versionInfo array */
-/* @var $selectedVersion string */
+/** @var yii\web\View $this */
+/** @var array $versions */
+/** @var array $versionInfo */
+/** @var string $selectedVersion */
 
 $latestYii2 = key($versions['2.0']);
 $latestYii1 = key($versions['1.1']);

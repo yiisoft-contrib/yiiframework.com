@@ -6,8 +6,9 @@ use yii\grid\CheckboxColumn;
 use yii\grid\GridView;
 use yii\helpers\Html;
 
-/** @var $dataProvider ActiveDataProvider */
-/** @var $model Wiki */
+/** @var yii\web\View $this */
+/** @var ActiveDataProvider $dataProvider */
+/** @var Wiki $model */
 
 
 $this->title = $model->title . ' | History';

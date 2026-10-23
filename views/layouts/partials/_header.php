@@ -13,8 +13,8 @@ use yii\helpers\Html;
 use yii\bootstrap\Nav;
 use yii\web\View;
 
-/* @var $this View */
-/* @var $discourse boolean */
+/** @var View $this */
+/** @var boolean $discourse */
 
 if ($discourse) {
     $controller = 'forum';

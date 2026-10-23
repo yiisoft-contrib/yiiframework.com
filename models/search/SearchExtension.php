@@ -7,9 +7,7 @@ use app\models\Extension;
 /**
  * Search record for Extensions
  *
- *
  * @property string $id
- * @property string $version
  * @property string $category_id
  * @property string $category
  * @property string $name

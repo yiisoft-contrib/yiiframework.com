@@ -8,8 +8,6 @@ use yii\helpers\StringHelper;
 /**
  * API documentation type, i.e. class, interface or trait
  *
- *
- * @property string $version
  * @property string $type class, interface, trait
  * @property string $name
  * @property string $namespace

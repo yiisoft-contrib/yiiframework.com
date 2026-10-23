@@ -4,11 +4,11 @@ use app\widgets\DropdownList;
 use yii\helpers\Html;
 
 /**
- * @var $this yii\web\View
- * @var $language string|null
- * @var $version string|null
- * @var $type string|null
- * @var $searchQuery string
+ * @var yii\web\View $this
+ * @var string|null $language
+ * @var string|null $version
+ * @var string|null $type
+ * @var string $searchQuery
  */
 
 $hideVersion = $type === 'news';

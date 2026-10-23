@@ -4,6 +4,7 @@ use app\models\Wiki;
 use app\models\WikiRevision;
 use yii\helpers\Html;
 
+/** @var yii\web\View $this */
 /** @var Wiki $model */
 /** @var WikiRevision $left */
 /** @var WikiRevision $right */

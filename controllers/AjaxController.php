@@ -79,7 +79,7 @@ class AjaxController extends BaseController
         }
 
         // check if user has already voted
-        /** @var $userRating Rating */
+        /** @var Rating $userRating */
         $userRating = Rating::find()->where(['object_type' => $type, 'object_id' => $id, 'user_id' => Yii::$app->user->id])->one();
         if ($userRating !== null && $userRating->rating == $userVote) {
             $userRating->delete();

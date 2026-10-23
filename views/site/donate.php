@@ -2,8 +2,8 @@
 
 use yii\helpers\Html;
 
-/* @var yii\web\View $this */
-/* @var array $donationServices */
+/** @var yii\web\View $this */
+/** @var array $donationServices */
 
 $this->title = 'Donate to Yii';
 $this->params['breadcrumbs'][] = $this->title;

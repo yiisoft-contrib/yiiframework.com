@@ -1,10 +1,13 @@
 <?php
 /**
- * @var $this yii\web\View
- * @var $section string
- * @var $version string
- * @var $language string
- * @var $type string|null
+ * @var yii\web\View $this
+ * @var string|null $section
+ * @var string $version
+ * @var string $language
+ * @var string|null $type
+ * @var app\models\Extension|null $extension
+ * @var string|null $extensionName
+ * @var string|null $extensionVendor
  */
 
 use app\models\Guide;

@@ -5,9 +5,9 @@ use himiklab\yii2\recaptcha\ReCaptcha;
 use yii\bootstrap\ActiveForm;
 use yii\helpers\Html;
 
-/* @var $this yii\web\View */
-/* @var $form yii\bootstrap\ActiveForm */
-/* @var $model SignupForm */
+/** @var yii\web\View $this */
+/** @var yii\bootstrap\ActiveForm $form */
+/** @var SignupForm $model */
 
 $this->title = 'Sign Up';
 $this->params['breadcrumbs'][] = $this->title;

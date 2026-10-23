@@ -5,8 +5,6 @@ namespace app\models\search;
 /**
  * API documentation type, i.e. class, interface or trait
  *
- *
- * @property string $version
  * @property string $language
  * @property string $type
  * @property string $name

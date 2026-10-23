@@ -5,9 +5,9 @@ use yii\bootstrap\Nav;
 use yii\helpers\Html;
 use app\models\User;
 
-/* @var $this yii\web\View */
-/* @var $searchModel app\models\UserSearch */
-/* @var $dataProvider yii\data\ActiveDataProvider */
+/** @var yii\web\View $this */
+/** @var app\models\UserSearch $searchModel */
+/** @var yii\data\ActiveDataProvider $dataProvider */
 
 $this->title = 'Hall of Fame';
 

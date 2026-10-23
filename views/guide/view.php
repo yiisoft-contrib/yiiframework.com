@@ -1,10 +1,10 @@
 <?php
 /**
- * @var $this yii\web\View
- * @var $guide app\models\Guide
- * @var $section app\models\GuideSection
- * @var $missingTranslation bool
- * @var $type string
+ * @var yii\web\View $this
+ * @var app\models\Guide $guide
+ * @var app\models\GuideSection $section
+ * @var bool $missingTranslation
+ * @var string $type
  * @var Doc $doc
  */
 

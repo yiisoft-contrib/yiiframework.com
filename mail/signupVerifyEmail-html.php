@@ -1,8 +1,8 @@
 <?php
 use yii\helpers\Html;
 
-/* @var $this yii\web\View */
-/* @var $user \app\models\User */
+/** @var yii\web\View $this */
+/** @var \app\models\User $user */
 
 $verifyEmailLink = Yii::$app->urlManager->createAbsoluteUrl(['auth/verify-email', 'token' => $user->email_verification_token]);
 ?>

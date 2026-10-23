@@ -1,8 +1,9 @@
 <?php
 /**
+ * @var yii\web\View $this
  * @var Linkable|ObjectIdentityInterface $model the model object that just received a new comment
- * @var $comment \app\models\Comment the comment object
- * @var $user \app\models\User the user object to whom the email is sent
+ * @var \app\models\Comment $comment the comment object
+ * @var \app\models\User $user the user object to whom the email is sent
  */
 
 use app\components\object\ObjectIdentityInterface;

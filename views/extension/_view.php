@@ -1,11 +1,11 @@
 <?php
 
-/** @var $model app\models\Extension the data model */
+/** @var app\models\Extension $model the data model */
 use yii\helpers\Html;
 
-/** @var $key mixed the key value associated with the data item */
-/** @var $index integer the zero-based index of the data item in the items array returned by dataProvider. */
-/** @var $widget yii\widgets\ListView the widget instance */
+/** @var mixed $key the key value associated with the data item */
+/** @var integer $index the zero-based index of the data item in the items array returned by dataProvider. */
+/** @var yii\widgets\ListView $widget the widget instance */
 
 ?>
     <div class="extension-box">

@@ -1,14 +1,14 @@
 <?php
-/* @var int $headerHeight */
-/* @var int $branchHeight */
-/* @var int $marginLeft */
-/* @var int $marginRight */
-/* @var int $footerHeight */
-/* @var int $yearWidth */
-/* @var array $versions */
-/* @var \yii\web\View $this */
+/** @var int $headerHeight */
+/** @var int $branchHeight */
+/** @var int $marginLeft */
+/** @var int $marginRight */
+/** @var int $footerHeight */
+/** @var int $yearWidth */
+/** @var array $versions */
+/** @var \yii\web\View $this */
 
-/* @var \app\widgets\VersionCalendar $widget */
+/** @var \app\widgets\VersionCalendar $widget */
 $widget = $this->context;
 
 $i = 0;

@@ -14,7 +14,6 @@ use app\notifications\WikiUpdateNotification;
 use Yii;
 use yii\data\ActiveDataProvider;
 use yii\filters\AccessControl;
-use yii\filters\VerbFilter;
 use yii\web\NotFoundHttpException;
 use yii\web\Response;
 
@@ -44,20 +43,7 @@ class WikiController extends BaseController
                         'actions' => ['create', 'list-tags', 'update', 'keep-alive'],
                         'roles' => ['@'],
                     ],
-//                    [
-//                        // allow all to a access index and view action
-//                        'allow' => true,
-//                        'actions' => ['admin', 'create', 'update', 'delete', 'list-tags'],
-//                        'roles' => ['news:pAdmin'],
-//                    ],
                 ]
-            ],
-
-            'verbs' => [
-                'class' => VerbFilter::class,
-                'actions' => [
-                    'delete' => ['POST'],
-                ],
             ],
         ];
     }

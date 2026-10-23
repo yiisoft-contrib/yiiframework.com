@@ -1,7 +1,7 @@
 <?php
-/* @var $comments app\models\Comment[] */
-/* @var $titleClass string */
-/* @var $menuClass string */
+/** @var app\models\Comment[] $comments */
+/** @var string $titleClass */
+/** @var string $menuClass */
 
 use app\models\User;
 use yii\helpers\Html;

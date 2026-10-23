@@ -1,16 +1,16 @@
 <?php
 
-/* @var $this yii\web\View */
+/** @var yii\web\View $this */
 
 use app\widgets\SearchForm;
 use yii\helpers\Html;
 use yii\widgets\ListView;
 
-/* @var $results yii\data\ActiveDataProvider */
-/* @var $queryString string */
-/* @var $language string */
-/* @var $version string */
-/* @var $type string */
+/** @var yii\data\ActiveDataProvider $results */
+/** @var string $queryString */
+/** @var string $language */
+/** @var string $version */
+/** @var string $type */
 
 
 $this->beginBlock('contentSelectors');

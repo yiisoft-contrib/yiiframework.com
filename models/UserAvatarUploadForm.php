@@ -55,7 +55,7 @@ class UserAvatarUploadForm extends Model
 
     public function getMaxFileSize()
     {
-        /** @var $fileValidator FileValidator[] */
+        /** @var FileValidator[] $fileValidator */
         $fileValidator = array_filter($this->getValidators()->getArrayCopy(), function($v) { return $v instanceof FileValidator; });
         return reset($fileValidator)->getSizeLimit();
     }

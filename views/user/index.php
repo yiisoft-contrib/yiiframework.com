@@ -5,8 +5,8 @@ use app\components\UserPermissions;
 use yii\bootstrap\Nav;
 use yii\helpers\Html;
 
-/* @var $this yii\web\View */
-/* @var $dataProvider KeysetDataProvider */
+/** @var yii\web\View $this */
+/** @var KeysetDataProvider $dataProvider */
 
 $this->title = 'Members';
 

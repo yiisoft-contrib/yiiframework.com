@@ -1,7 +1,7 @@
 <?php
 
 /**
- * @var $this yii\web\View
+ * @var yii\web\View $this
  * @var string[] $versions all available API versions
  * @var string $version the currently chosen API version
  * @var string $section the currently active API file

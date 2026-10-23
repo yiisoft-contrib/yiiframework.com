@@ -4,6 +4,7 @@ use yii\data\ArrayDataProvider;
 use yii\helpers\Html;
 use yii\grid\GridView;
 
+/** @var yii\web\View $this */
 /** @var ArrayDataProvider $dataProvider */
 /** @var string $version */
 /** @var string[] $versions */

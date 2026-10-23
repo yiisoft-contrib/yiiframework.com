@@ -5,8 +5,8 @@ use app\models\User;
 use yii\helpers\Html;
 use yii\web\View;
 
-/** @var $this View */
-/** @var $roleUsers array */
+/** @var View $this */
+/** @var array $roleUsers */
 
 ?>
 <header class="admin-page__header">

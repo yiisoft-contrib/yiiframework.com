@@ -226,7 +226,7 @@ class ExtensionController extends BaseController
                     $model->license_id = null;
                     $model->save(false);
 
-                    /** @var $queue Queue */
+                    /** @var Queue $queue */
                     $queue = Yii::$app->queue;
                     $queue->push(new ExtensionImportJob(['extensionId' => $model->id]));
                 } else {
@@ -295,7 +295,7 @@ class ExtensionController extends BaseController
 
         // allow one update every 5min
         $delay = $model->update_time ? max(0, strtotime($model->update_time) - strtotime('now - 5 minutes')) : 0;
-        /** @var $queue Queue */
+        /** @var Queue $queue */
         $queue = Yii::$app->queue;
         $job = new ExtensionImportJob(['extensionId' => $model->id]);
         if ($delay > 0) {
@@ -381,7 +381,7 @@ class ExtensionController extends BaseController
             return $this->redirect($model->getUrl('download', ['filename' => $filename]), 301);
         }
 
-        /** @var $file File */
+        /** @var File $file */
         $file = $model->getDownloads()->where(['file_name' => $filename])->one();
         if ($file === null) {
             throw new NotFoundHttpException('The requested file does not exist.');

@@ -2,8 +2,8 @@
 
 use yii\helpers\Html;
 
-/* @var $this yii\web\View */
-/* @var $model app\models\Wiki */
+/** @var yii\web\View $this */
+/** @var app\models\Wiki $model */
 
 $this->title = 'Update Wiki #' . $model->id . ' - ' . $model->title;
 $this->params['breadcrumbs'][] = ['label' => 'Wiki', 'url' => ['index']];

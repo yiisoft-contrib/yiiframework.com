@@ -8,8 +8,8 @@ use yii\bootstrap\Nav;
 use yii\helpers\Html;
 use yii\widgets\DetailView;
 
-/* @var $this yii\web\View */
-/* @var $model app\models\News */
+/** @var yii\web\View $this */
+/** @var app\models\News $model */
 
 $this->title = $model->title;
 $this->params['breadcrumbs'][] = ['label' => 'News', 'url' => ['index']];

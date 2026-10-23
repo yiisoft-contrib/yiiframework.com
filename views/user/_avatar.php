@@ -5,8 +5,8 @@ use yii\helpers\Html;
 use yii\helpers\Url;
 use yii\web\View;
 
-/** @var $this View */
-/** @var $model \app\models\User */
+/** @var View $this */
+/** @var \app\models\User $model */
 
 $form = new UserAvatarUploadForm([
     'user' => $model,

@@ -4,8 +4,8 @@ use app\models\Wiki;
 use yii\helpers\Html;
 use yii\widgets\DetailView;
 
-/* @var $this yii\web\View */
-/* @var $model app\models\Wiki */
+/** @var yii\web\View $this */
+/** @var app\models\Wiki $model */
 
 $this->title = 'Wiki: ' . Html::encode($model->title);
 $this->params['breadcrumbs'][] = ['label' => 'Wiki', 'url' => ['index']];

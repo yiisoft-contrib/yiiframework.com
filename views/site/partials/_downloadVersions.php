@@ -2,8 +2,8 @@
 
 use yii\helpers\Html;
 
-/* @var $this yii\web\View */
-/* @var $currentVersion string */
+/** @var yii\web\View $this */
+/** @var string $currentVersion */
 
 $versions = [
     '3.0' => 'Yii3',

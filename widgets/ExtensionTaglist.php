@@ -39,7 +39,7 @@ class ExtensionTaglist extends Widget
 
         $tagEntries = [];
         foreach($tags as $tag) {
-            /** @var $tag ExtensionTag */
+            /** @var ExtensionTag $tag */
             $tagEntries[$tag->slug] = Html::a(Html::encode($tag->name), array_merge($this->urlParams, ['extension/index', 'tag' => $tag->slug]))
                 . ($this->extension ? '' : " ($tag->frequency)");
         }

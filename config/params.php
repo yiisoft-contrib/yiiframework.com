@@ -11,7 +11,7 @@ return [
         'password' => '',
         'charset' => 'utf8',
         'on afterOpen' => function($event) {
-            /** @var $db \yii\db\Connection */
+            /** @var \yii\db\Connection $db */
             $db = $event->sender;
             $db->createCommand("SET time_zone = '+00:00';")->execute();
         },

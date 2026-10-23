@@ -52,11 +52,16 @@ use yii\web\HttpException;
  * @property string $version_references
  * @property integer $status
  * @property string $description
+ * @property string|null $license_id
  *
  * @property bool $isOfficialExtension
  *
  * @property User $owner
  * @property ExtensionCategory $category
+ * @property string[] $tagNames This property comes from Taggable. We have to specify it here
+ * because it is not specified in the behavior itself.
+ *
+ * @mixin Taggable
  */
 class Extension extends ActiveRecord implements Linkable, ObjectIdentityInterface, EntityInterface
 {

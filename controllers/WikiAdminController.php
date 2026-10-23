@@ -10,7 +10,6 @@ use Yii;
 use yii\base\Event;
 use yii\filters\AccessControl;
 use yii\web\NotFoundHttpException;
-use yii\filters\VerbFilter;
 
 /**
  * WikiAdminController implements the CRUD actions for Wiki model.
@@ -36,12 +35,6 @@ class WikiAdminController extends BaseController
    			        ],
    		        ]
    	        ],
-            'verbs' => [
-                'class' => VerbFilter::class,
-                'actions' => [
-                    'delete' => ['POST'],
-                ],
-            ],
         ];
     }
 
@@ -86,7 +79,7 @@ class WikiAdminController extends BaseController
             $model->updateAttributes([
                 'status' => $model->status,
             ]);
-            /** @var $searchAble SearchableBehavior */
+            /** @var SearchableBehavior $searchAble */
             $searchAble = $model->getBehavior('search');
             $searchAble->afterUpdate(new Event(['sender' => $model]));
             return $this->redirect(['view', 'id' => $model->id]);
@@ -96,19 +89,6 @@ class WikiAdminController extends BaseController
             'model' => $model,
         ]);
     }
-
-    /**
-     * Deletes an existing Wiki model.
-     * If deletion is successful, the browser will be redirected to the 'index' page.
-     * @param integer $id
-     * @return mixed
-     */
-//    public function actionDelete($id)
-//    {
-//        $this->findModel($id)->delete();
-//
-//        return $this->redirect(['index']);
-//    }
 
     /**
      * Finds the User model based on its primary key value.

@@ -7,7 +7,6 @@ use app\models\News;
 /**
  * Search record for News
  *
- *
  * @property string $id
  * @property string $title
  * @property string $content

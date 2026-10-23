@@ -1,6 +1,7 @@
 <?php
-/** @var $progress */
-/** @var $progressPercent */
+/** @var yii\web\View $this */
+/** @var string $progress */
+/** @var float|int $progressPercent */
 
 use yii\helpers\Url;
 ?>

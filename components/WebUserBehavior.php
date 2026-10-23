@@ -25,7 +25,7 @@ class WebUserBehavior extends Behavior
 
     public function afterLogin($event)
     {
-        /** @var $user User */
+        /** @var User $user */
         $user = $event->sender;
         $user->identity->updateAttributes([
             'login_time' => new Expression('NOW()'),

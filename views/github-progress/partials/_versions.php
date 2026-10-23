@@ -1,8 +1,8 @@
 <?php
 /**
- * @var $this yii\web\View
- * @var $currentVersion string
- * @var $versions string[]
+ * @var yii\web\View $this
+ * @var string $currentVersion
+ * @var string[] $versions
  */
 use app\widgets\DropdownList;
 

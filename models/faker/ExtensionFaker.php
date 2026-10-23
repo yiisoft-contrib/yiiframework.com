@@ -82,7 +82,7 @@ class ExtensionFaker extends BaseFaker
 	{
 		$models = parent::generateModels();
 
-		/** @var $queue Queue */
+		/** @var Queue $queue */
 		$queue = Yii::$app->queue;
 
 		foreach($models as $model) {

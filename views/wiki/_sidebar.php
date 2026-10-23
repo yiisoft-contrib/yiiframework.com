@@ -9,11 +9,11 @@ use yii\helpers\Url;
 use yii\web\View;
 use yii\widgets\LinkSorter;
 
-/** @var $this View */
-/** @var $category string */
-/** @var $version string */
-/** @var $tag WikiTag */
-/** @var $showCreateLink bool */
+/** @var View $this */
+/** @var int|null $category */
+/** @var string|null $version */
+/** @var WikiTag|null $tag */
+/** @var bool|null $showCreateLink */
 ?>
 <?php $showCreateLink = $showCreateLink ?? true; ?>
 <?php if ($showCreateLink): ?>

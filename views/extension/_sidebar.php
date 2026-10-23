@@ -9,9 +9,9 @@ use yii\helpers\Url;
 use yii\web\View;
 use yii\widgets\LinkSorter;
 
-/** @var $this View */
-/** @var $category string */
-/** @var $tag ExtensionTag */
+/** @var View $this */
+/** @var int|null $category */
+/** @var ExtensionTag|null $tag */
 ?>
 <?= Html::a('Create new extension', ['create'], ['class' => 'btn btn-block btn-new-extension']) ?>
 

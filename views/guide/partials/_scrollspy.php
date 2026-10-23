@@ -1,9 +1,9 @@
 <?php
 /**
- * @var $this yii\web\View
- * @var $guide app\models\Guide
- * @var $section app\models\GuideSection
- * @var $notes bool whether to show "user contributed notes" link
+ * @var yii\web\View $this
+ * @var app\models\Guide $guide
+ * @var app\models\GuideSection $section
+ * @var bool $notes whether to show "user contributed notes" link
  */
 
 use yii\helpers\Html;

@@ -5,10 +5,11 @@ use app\models\WikiTag;
 use yii\data\ActiveDataProvider;
 use yii\widgets\ListView;
 
-/** @var $dataProvider ActiveDataProvider */
-/** @var $category WikiCategory */
-/** @var $tag WikiTag */
-/** @var $version string */
+/** @var yii\web\View $this */
+/** @var ActiveDataProvider $dataProvider */
+/** @var WikiCategory $category */
+/** @var WikiTag $tag */
+/** @var string $version */
 
 
 if ($category !== null) {

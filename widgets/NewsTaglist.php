@@ -43,7 +43,7 @@ class NewsTaglist extends Widget
         $urlParams = $this->urlParams;
         unset($urlParams['year']);
         foreach($tags as $tag) {
-            /** @var $tag NewsTag */
+            /** @var NewsTag $tag */
             $label = Html::encode($tag->name);
             if (!$this->news) {
                 $label .= ' <span class="count">' . (int) $tag->frequency . '</span>';

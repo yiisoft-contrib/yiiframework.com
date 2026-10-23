@@ -1,6 +1,6 @@
 <?php
 
-/* @var $this yii\web\View */
+/** @var yii\web\View $this */
 $this->title = 'Terms of Service';
 ?>
 <main class="container style_external_links prose-page">

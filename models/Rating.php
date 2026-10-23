@@ -83,7 +83,7 @@ class Rating extends ActiveRecord
      */
     public static function castVote($model, $userID, $vote)
     {
-        /** @var $rating Rating */
+        /** @var Rating $rating */
         $rating = static::findOne([
             'object_type' => $model->getObjectType(),
             'object_id' => $model->getObjectId(),

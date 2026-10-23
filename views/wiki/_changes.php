@@ -1,7 +1,7 @@
 <?php
 
-/** @var $left WikiRevision|DiffBehavior */
-/** @var $right WikiRevision|DiffBehavior */
+/** @var WikiRevision|DiffBehavior $left */
+/** @var WikiRevision|DiffBehavior $right */
 
 use app\models\WikiRevision;
 use app\components\DiffBehavior;

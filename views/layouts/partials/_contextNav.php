@@ -1,6 +1,6 @@
 <?php
 
-/** @var $this yii\web\View */
+/** @var yii\web\View $this */
 
 ?>
 <div class="context-nav">

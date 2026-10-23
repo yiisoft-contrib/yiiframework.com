@@ -4,8 +4,8 @@ use yii\bootstrap\ActiveForm;
 use yii\captcha\Captcha;
 use yii\helpers\Html;
 
-/* @var $this yii\web\View */
-/* @var $model app\models\PartnersForm */
+/** @var yii\web\View $this */
+/** @var app\models\PartnersForm $model */
 
 $this->title = 'Find a development partner';
 $this->params['breadcrumbs'][] = $this->title;

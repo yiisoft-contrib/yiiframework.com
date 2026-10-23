@@ -1,3 +1,6 @@
+<?php
+/** @var yii\web\View $this */
+?>
 <div class="footer-wrapper">
     <footer>
         <div class="container">

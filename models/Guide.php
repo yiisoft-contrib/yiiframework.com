@@ -51,7 +51,7 @@ class Guide extends BaseObject
      * Loads the guide with the specified version and language.
      * @param string $version
      * @param string $language
-     * @return Guide the loaded guide, or null if the guide does not exist.
+     * @return Guide|null the loaded guide, or null if the guide does not exist.
      */
     public static function load($version, $language, $type = self::TYPE_GUIDE)
     {

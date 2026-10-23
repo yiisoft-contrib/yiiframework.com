@@ -1,7 +1,7 @@
 <?php
 
-/* @var $this yii\web\View */
-/* @var $model app\models\Extension */
+/** @var yii\web\View $this */
+/** @var app\models\Extension $model */
 
 $this->title = 'Update Extension ' . $model->name;
 

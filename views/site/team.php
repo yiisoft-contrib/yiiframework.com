@@ -2,10 +2,10 @@
 
 use yii\helpers\Html;
 
-/* @var $this yii\web\View */
-/* @var $activeMembers array */
-/* @var $pastMembers array */
-/* @var $inactiveMembers array */
+/** @var yii\web\View $this */
+/** @var array $activeMembers */
+/** @var array $pastMembers */
+/** @var array $inactiveMembers */
 
 $this->title = 'Team';
 $this->params['breadcrumbs'][] = $this->title;

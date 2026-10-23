@@ -4,10 +4,10 @@ use yii\data\ActiveDataProvider;
 use yii\helpers\Html;
 use yii\widgets\ListView;
 
-/* @var yii\web\View $this  */
-/* @var app\models\Badge $badge  */
-/* @var ActiveDataProvider $users  */
-/* @var int $count */
+/** @var yii\web\View $this */
+/** @var app\models\Badge $badge */
+/** @var ActiveDataProvider $users */
+/** @var int $count */
 
 $this->title = $badge->name . ' - Badges';
 
