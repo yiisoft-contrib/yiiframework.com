@@ -311,6 +311,7 @@ class SiteController extends BaseController
      */
     public function actionFile($category, $file)
     {
+        // @phpstan-ignore regexp.pattern (Regex pattern is invalid: Compilation failed: invalid range in character class at offset 4 in pattern: ~^[\w-.]+$~)
         if (!preg_match('~^[\w-.]+$~', $file)) {
             throw new NotFoundHttpException('The requested page was not found.');
         }

@@ -31,12 +31,6 @@ parameters:
 			path: controllers/ApiController.php
 
 		-
-			message: '#^Regex pattern is invalid\: Compilation failed\: invalid range in character class at offset 5 in pattern\: ~\^\[\\w\-\.\]\+\$~$#'
-			identifier: regexp.pattern
-			count: 1
-			path: controllers/SiteController.php
-
-		-
 			message: '#^Class Swift_RfcComplianceException not found\.$#'
 			identifier: class.notFound
 			count: 1
