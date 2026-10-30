@@ -24,6 +24,7 @@ return [
     'render-markdown' => 'site/render-markdown',
     'release-cycle' => 'site/release-cycle',
     'donate' => 'site/donate',
+    'sponsors' => 'site/sponsors',
 
     // go
     'go/slack' => 'go/slack',
