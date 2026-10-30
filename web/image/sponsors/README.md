@@ -23,8 +23,14 @@ the shared footer asset unchanged.
   in OpenAI's [official archive](https://cdn.openai.com/brand/OpenAI-Logos-2025.zip),
   associated with its [brand guidelines](https://openai.com/brand/).
   Only the root dimensions/viewBox crop outer whitespace; paths are unchanged.
-- `coderabbit.svg` is the unchanged wordmark from the
-  [official CodeRabbit website header](https://www.coderabbit.ai/redesign/cr-logo-name.svg).
+- `coderabbit.svg` combines the
+  [official CodeRabbit rabbit mark](https://www.coderabbit.ai/press-kit/coderabbit-mark-orange.svg)
+  and [official wordmark](https://www.coderabbit.ai/redesign/cr-logo-name.svg).
+  Both components keep their complete original child geometry. The 200px mark
+  is uniformly scaled to 29px and the 121x18px wordmark is centered beside it
+  with an 8px gap, matching the [official website header](https://www.coderabbit.ai/).
+  The resulting 158x29px lockup is displayed at 205px wide for comparable
+  lettering weight and uses the same monochrome CSS treatment in both themes.
 - `php-foundation.svg` comes from the SVG download on the
   [official PHP Foundation branding page](https://thephp.foundation/branding/),
   using its [supplied SVG](https://thephp.foundation/assets/branding/php_foundation.svg).
