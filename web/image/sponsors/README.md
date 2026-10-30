@@ -3,8 +3,8 @@
 Artwork sources verified on 30 October 2026. These marks belong to their owners
 and acknowledge the matching public sponsors. Source geometry is preserved;
 CSS presents the page's artwork in monochrome in both themes, including
-Skillshare, without changing the original files. JetBrains retains its neutral
-white-on-black presentation.
+Skillshare, without changing the original files. The page also uses this treatment for the existing JetBrains SVG, leaving
+the shared footer asset unchanged.
 
 ## Official SVG artwork
 
@@ -23,6 +23,14 @@ white-on-black presentation.
   in OpenAI's [official archive](https://cdn.openai.com/brand/OpenAI-Logos-2025.zip),
   associated with its [brand guidelines](https://openai.com/brand/).
   Only the root dimensions/viewBox crop outer whitespace; paths are unchanged.
+- `coderabbit.svg` is the unchanged wordmark from the
+  [official CodeRabbit website header](https://www.coderabbit.ai/redesign/cr-logo-name.svg).
+- `php-foundation.svg` comes from the SVG download on the
+  [official PHP Foundation branding page](https://thephp.foundation/branding/),
+  using its [supplied SVG](https://thephp.foundation/assets/branding/php_foundation.svg).
+  The purple background rectangle is removed for transparent monochrome
+  presentation; only root dimensions/viewBox crop empty margins. Both original
+  lettering paths are unchanged.
 - `anthropic.svg` is the wordmark SVG (`logoWordmark`) in the
   [official Anthropic homepage](https://www.anthropic.com/).
   `sentry.svg` is the `0 0 200 44` logo SVG in the
@@ -65,3 +73,13 @@ Toni Schreiber is featured by contribution rank and retains a text label: the
 verified public Open Collective profile provides no website or artwork.
 Sponsor order, public identity labels, contribution dates and grouping are
 independent of artwork availability.
+
+## Optical sizing
+
+Rendered SVG bounds are measured before setting the display widths. Wordmarks
+use individual widths to balance actual lettering weight; two-line marks use
+less width than single-line marks. Each tools link shares a 64px alignment row,
+with proportions preserved. The OpenAI viewport includes its complete descender
+(artwork bottom about 541.622 in source coordinates, viewport bottom 560).
+The PHP Foundation viewport contains both full lettering lines. CSS controls
+presentation only; it does not stretch paths or alter sponsor rankings.
