@@ -68,7 +68,7 @@
   list-style: none;
 
   &__brand { display: inline-block; color: #000; font-size: 22px; line-height: 50px; }
-  &__brand:focus-visible { outline: 2px solid #40b3d8; outline-offset: 4px; }
+  &__brand:focus-visible { outline: 2px solid #40b3d8 !important; outline-offset: 4px; }
   &__jetbrains { width: 149px; height: 32px; box-sizing: content-box; padding: 8px; background: #111; }
   p { margin: 8px 0 0; }
 }
