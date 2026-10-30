@@ -8,7 +8,10 @@ use RuntimeException;
 /** Maintainer-side aggregation and presentation of the approved sponsor snapshot. */
 class Sponsors
 {
-    /** Read the private export locally. Names and transaction details are never returned. */
+    /**
+     * Read the private export locally. Names and transaction details are never returned.
+     * The Open Collective export uses empty reversal fields for original, unreversed rows.
+     */
     public static function readContributions(string $path): array
     {
         $file = fopen($path, 'r');
@@ -82,7 +85,11 @@ class Sponsors
     public static function group(array $data): array
     {
         $snapshot = new DateTimeImmutable($data['snapshot']);
-        $from = $snapshot->modify('-' . (int) $data['currentMonths'] . ' months')->modify('+1 day')->format('Y-m-d');
+        $month = $snapshot->modify('first day of this month')->modify('-' . (int) $data['currentMonths'] . ' months');
+        // Clamp before adding the inclusive day: February 29 minus a year ends on February 28.
+        $day = min((int) $snapshot->format('j'), (int) $month->format('t'));
+        $from = $month->setDate((int) $month->format('Y'), (int) $month->format('n'), $day)
+            ->modify('+1 day')->format('Y-m-d');
         $groups = ['current' => [], 'past' => []];
         foreach ($data['sponsors'] as $sponsor) {
             $group = $sponsor['lastContribution'] >= $from ? 'current' : 'past';

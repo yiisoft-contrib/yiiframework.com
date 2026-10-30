@@ -65,6 +65,39 @@ $from = new DateTimeImmutable($currentFrom);
         </section>
     <?php endforeach; ?>
 
+    <section class="sponsors-section" aria-labelledby="sponsors-tools">
+        <h2 id="sponsors-tools">Tools and other support</h2>
+        <p class="sponsors-section__description">Thank you to the organizations helping Yii with tools, services and funding.</p>
+        <ul class="sponsor-supporters">
+            <li>
+                <a class="sponsor-supporters__brand" href="https://www.jetbrains.com/?from=yii">
+                    <?= Html::img('@web/image/jetbrains.svg', ['alt' => 'JetBrains', 'class' => 'sponsor-supporters__jetbrains']) ?>
+                </a>
+                <p>Development tools for the Yii team.</p>
+            </li>
+            <li class="style_external_links">
+                <a class="sponsor-supporters__brand" href="https://www.anthropic.com/">Anthropic</a>
+                <p>Free access for open-source development.</p>
+            </li>
+            <li class="style_external_links">
+                <a class="sponsor-supporters__brand" href="https://openai.com/">OpenAI</a>
+                <p>Free access for open-source development.</p>
+            </li>
+            <li class="style_external_links">
+                <a class="sponsor-supporters__brand" href="https://www.coderabbit.ai/">CodeRabbit</a>
+                <p>Free access for open-source development.</p>
+            </li>
+            <li class="style_external_links">
+                <a class="sponsor-supporters__brand" href="https://github.com/">GitHub</a>
+                <p>Funding and free access to additional features.</p>
+            </li>
+            <li class="style_external_links">
+                <a class="sponsor-supporters__brand" href="https://thephp.foundation/">The PHP Foundation</a>
+                <p>Security scanning for Yii.</p>
+            </li>
+        </ul>
+    </section>
+
     <section class="sponsors-thanks" aria-labelledby="sponsors-community">
         <h2 id="sponsors-community">Every contribution matters</h2>
         <p>Thank you also to our anonymous and guest contributors, and to the community supporting Yii

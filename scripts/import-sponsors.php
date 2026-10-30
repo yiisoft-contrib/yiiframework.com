@@ -5,6 +5,7 @@
  * Review the result before replacing config/sponsors.php. Its identities/logos
  * are a verified public allowlist; add new names only after public verification.
  * Unverified accounts are acknowledged collectively. No runtime CSV dependency.
+ * A full contribution history is required; missing approved handles abort the refresh.
  */
 require dirname(__DIR__) . '/components/Sponsors.php';
 
@@ -16,6 +17,9 @@ try {
     $data = require dirname(__DIR__) . '/config/sponsors.php';
     $contributions = \app\components\Sponsors::readContributions($argv[1]);
     $approved = array_column($data['sponsors'], null, 'handle');
+    if (array_diff_key($approved, $contributions['accounts'])) {
+        throw new \RuntimeException('Export is missing approved sponsors; provide the full contribution history.');
+    }
     $data['snapshot'] = $contributions['snapshot'];
     $data['sponsors'] = [];
     foreach ($contributions['accounts'] as $handle => $account) {

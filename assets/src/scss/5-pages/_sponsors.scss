@@ -59,6 +59,20 @@
 
 .sponsor-logo--dark { display: none; }
 
+.sponsor-supporters {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 24px 32px;
+  margin: 24px 0 0;
+  padding: 0;
+  list-style: none;
+
+  &__brand { display: inline-block; color: #000; font-size: 22px; line-height: 50px; }
+  &__brand:focus-visible { outline: 2px solid #40b3d8; outline-offset: 4px; }
+  &__jetbrains { width: 149px; height: 32px; box-sizing: content-box; padding: 8px; background: #111; }
+  p { margin: 8px 0 0; }
+}
+
 .sponsor-names {
   columns: 4;
   column-gap: 32px;
@@ -80,7 +94,7 @@
 
 .theme-dark {
   .sponsors-page { color: #a3a5ad; }
-  .sponsors-page h1, .sponsors-page h2, .sponsor-leader { color: #fff; }
+  .sponsors-page h1, .sponsors-page h2, .sponsor-leader, .sponsor-supporters__brand { color: #fff; }
   .sponsor-logo--light { display: none; }
   .sponsor-logo--dark { display: block; }
 }
@@ -88,6 +102,7 @@
 @media (max-width: 991px) {
   .sponsor-leaders { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 20px 32px; }
   .sponsor-names { columns: 3; }
+  .sponsor-supporters { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }
 
 @media (max-width: 600px) {
@@ -97,6 +112,7 @@
   .sponsor-leader--text, .sponsor-leader--symbol { font-size: 21px; }
   .sponsor-leader--symbol { flex-direction: column; gap: 8px; }
   .sponsor-names { columns: 2; column-gap: 24px; }
+  .sponsor-supporters { grid-template-columns: 1fr; gap: 20px; }
 }
 
 @media (max-width: 360px) {
