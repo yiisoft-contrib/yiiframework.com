@@ -39,11 +39,11 @@ $from = new DateTimeImmutable($currentFrom);
                             <?php if (isset($sponsor['logo'])): ?>
                                 <?= Html::img('@web/image/sponsors/' . $sponsor['logo'], [
                                     'alt' => $sponsor['logoStyle'] === 'wordmark' ? $sponsor['name'] : '',
-                                    'class' => isset($sponsor['logoDark']) ? 'sponsor-logo sponsor-logo--light' : 'sponsor-logo',
+                                    'class' => 'sponsor-logo sponsor-artwork' . (isset($sponsor['logoDark']) ? ' sponsor-logo--light' : ''),
                                 ]) ?>
                                 <?php if (isset($sponsor['logoDark'])): ?>
                                     <?= Html::img('@web/image/sponsors/' . $sponsor['logoDark'], [
-                                        'alt' => '', 'class' => 'sponsor-logo sponsor-logo--dark', 'aria-hidden' => 'true',
+                                        'alt' => '', 'class' => 'sponsor-logo sponsor-artwork sponsor-logo--dark', 'aria-hidden' => 'true',
                                     ]) ?>
                                 <?php endif; ?>
                                 <?php if ($sponsor['logoStyle'] === 'symbol'): ?>
@@ -75,21 +75,33 @@ $from = new DateTimeImmutable($currentFrom);
                 </a>
                 <p>Development tools for the Yii team.</p>
             </li>
-            <li class="style_external_links">
-                <a class="sponsor-supporters__brand" href="https://www.anthropic.com/">Anthropic</a>
+            <li>
+                <a class="sponsor-supporters__brand" href="https://www.anthropic.com/">
+                    <?= Html::img('@web/image/sponsors/anthropic.svg', ['alt' => 'Anthropic', 'class' => 'sponsor-supporters__logo sponsor-artwork']) ?>
+                </a>
                 <p>Free access for open-source development.</p>
             </li>
-            <li class="style_external_links">
-                <a class="sponsor-supporters__brand" href="https://openai.com/">OpenAI</a>
+            <li>
+                <a class="sponsor-supporters__brand" href="https://openai.com/">
+                    <?= Html::img('@web/image/sponsors/openai.svg', ['alt' => 'OpenAI', 'class' => 'sponsor-supporters__logo sponsor-artwork']) ?>
+                </a>
                 <p>Free access for open-source development.</p>
             </li>
             <li class="style_external_links">
                 <a class="sponsor-supporters__brand" href="https://www.coderabbit.ai/">CodeRabbit</a>
                 <p>Free access for open-source development.</p>
             </li>
-            <li class="style_external_links">
-                <a class="sponsor-supporters__brand" href="https://github.com/">GitHub</a>
+            <li>
+                <a class="sponsor-supporters__brand" href="https://github.com/">
+                    <?= Html::img('@web/image/sponsors/github.svg', ['alt' => 'GitHub', 'class' => 'sponsor-supporters__logo sponsor-artwork']) ?>
+                </a>
                 <p>Funding and free access to additional features.</p>
+            </li>
+            <li>
+                <a class="sponsor-supporters__brand" href="https://sentry.io/">
+                    <?= Html::img('@web/image/sponsors/sentry.svg', ['alt' => 'Sentry', 'class' => 'sponsor-supporters__logo sponsor-artwork']) ?>
+                </a>
+                <p>Tools supporting Yii development.</p>
             </li>
             <li class="style_external_links">
                 <a class="sponsor-supporters__brand" href="https://thephp.foundation/">The PHP Foundation</a>
