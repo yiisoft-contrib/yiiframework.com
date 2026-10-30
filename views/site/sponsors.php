@@ -97,13 +97,13 @@ $from = new DateTimeImmutable($currentFrom);
                 <a class="sponsor-supporters__brand" href="https://github.com/">
                     <?= Html::img('@web/image/sponsors/github.svg', ['alt' => 'GitHub', 'class' => 'sponsor-supporters__logo sponsor-supporters__logo--github sponsor-artwork']) ?>
                 </a>
-                <p>Funding and free access to additional features.</p>
+                <p>Funding, security support and free access to additional features.</p>
             </li>
             <li>
                 <a class="sponsor-supporters__brand" href="https://sentry.io/">
                     <?= Html::img('@web/image/sponsors/sentry.svg', ['alt' => 'Sentry', 'class' => 'sponsor-supporters__logo sponsor-supporters__logo--sentry sponsor-artwork']) ?>
                 </a>
-                <p>Tools supporting Yii development.</p>
+                <p>Monitoring website issues.</p>
             </li>
             <li>
                 <a class="sponsor-supporters__brand" href="https://thephp.foundation/">
