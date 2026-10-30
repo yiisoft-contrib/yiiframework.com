@@ -353,4 +353,17 @@ class SiteController extends BaseController
         $this->sectionTitle = 'Donate';
         return $this->render('donate', ['donationServices' => Yii::$app->params['donation-services']]);
     }
+
+    public function actionSponsors()
+    {
+        $this->sectionTitle = null;
+        $data = require Yii::getAlias('@app/config/sponsors.php');
+        $grouped = \app\components\Sponsors::group($data);
+
+        return $this->render('sponsors', [
+            'data' => $data,
+            'groups' => $grouped['groups'],
+            'currentFrom' => $grouped['from'],
+        ]);
+    }
 }
