@@ -5,7 +5,7 @@
 return [
     'snapshot' => '2026-10-26',
     'currentMonths' => 12,
-    'featuredCount' => 4,
+    'featuredCount' => 5,
     'sponsors' => [
         ['handle' => 'craftcms', 'name' => 'Craft CMS', 'lastContribution' => '2021-08-01', 'logo' => 'craft-cms.svg', 'logoStyle' => 'wordmark', 'logoDark' => 'craft-cms-dark.svg'],
         ['handle' => 'skillshare', 'name' => 'Skillshare', 'lastContribution' => '2026-10-01', 'logo' => 'skillshare.svg', 'logoStyle' => 'wordmark', 'logoDark' => 'skillshare-dark.svg'],
@@ -15,7 +15,7 @@ return [
         ['handle' => 'dudesquare-b-v', 'name' => 'DudeSquare B.V.', 'lastContribution' => '2026-10-01'],
         ['handle' => 'dataskills', 'name' => 'dataskills', 'lastContribution' => '2024-04-01'],
         ['handle' => 'betteridge1897', 'name' => 'Betteridge', 'lastContribution' => '2021-12-01', 'logo' => 'betteridge.svg', 'logoStyle' => 'symbol'],
-        ['handle' => 'icons8', 'name' => 'Icons8', 'lastContribution' => '2024-10-02'],
+        ['handle' => 'icons8', 'name' => 'Icons8', 'lastContribution' => '2024-10-02', 'logo' => 'icons8.svg', 'logoStyle' => 'symbol'],
         ['handle' => 'toni-schreiber', 'name' => 'Toni Schreiber', 'lastContribution' => '2026-09-30'],
         ['handle' => 'atsushi-sakurai', 'name' => 'Atsushi', 'lastContribution' => '2026-10-01'],
         ['handle' => 'putyourlightson', 'name' => 'PutYourLightsOn', 'lastContribution' => '2020-06-02'],
