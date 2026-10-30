@@ -4329,14 +4329,6 @@ footer {
   }
 }
 
-.footerList img[alt="JetBrains logo"] {
-  filter: invert(1);
-  opacity: .78;
-  transition: opacity .2s ease;
-
-  &:hover { opacity: 1; }
-}
-
 .news-rss-callout .panel-body {
   display: block;
   padding: 16px;
@@ -6523,7 +6515,4 @@ footer {
   .footerList_item .social a:hover svg,
   .footerList_item .social a:focus svg { color: $redesign-blue; }
   .footer-donations svg { color: #c66a72; }
-
-
-  .footerList img[alt="JetBrains logo"] { filter: none; opacity: .9; }
 }

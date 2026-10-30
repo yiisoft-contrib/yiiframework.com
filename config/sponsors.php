@@ -9,10 +9,10 @@ return [
     'sponsors' => [
         ['handle' => 'craftcms', 'name' => 'Craft CMS', 'lastContribution' => '2021-08-01', 'logo' => 'craft-cms.svg', 'logoStyle' => 'wordmark', 'logoDark' => 'craft-cms-dark.svg'],
         ['handle' => 'skillshare', 'name' => 'Skillshare', 'lastContribution' => '2026-10-01', 'logo' => 'skillshare.svg', 'logoStyle' => 'wordmark', 'logoDark' => 'skillshare-dark.svg'],
-        ['handle' => 'diemeisterei', 'name' => 'dmstr', 'lastContribution' => '2026-10-01'],
+        ['handle' => 'diemeisterei', 'name' => 'dmstr', 'lastContribution' => '2026-10-01', 'logo' => 'dmstr.svg', 'logoStyle' => 'symbol'],
         ['handle' => 'humhub', 'name' => 'HumHub', 'lastContribution' => '2026-10-01', 'logo' => 'humhub.svg', 'logoStyle' => 'symbol'],
-        ['handle' => 'onetwist-software', 'name' => 'Onetwist Software', 'lastContribution' => '2024-12-01'],
-        ['handle' => 'dudesquare-b-v', 'name' => 'DudeSquare B.V.', 'lastContribution' => '2026-10-01'],
+        ['handle' => 'onetwist-software', 'name' => 'Onetwist Software', 'lastContribution' => '2024-12-01', 'logo' => 'onetwist.svg', 'logoStyle' => 'symbol'],
+        ['handle' => 'dudesquare-b-v', 'name' => 'DudeSquare B.V.', 'lastContribution' => '2026-10-01', 'logo' => 'dudesquare.svg', 'logoStyle' => 'wordmark'],
         ['handle' => 'dataskills', 'name' => 'dataskills', 'lastContribution' => '2024-04-01'],
         ['handle' => 'betteridge1897', 'name' => 'Betteridge', 'lastContribution' => '2021-12-01', 'logo' => 'betteridge.svg', 'logoStyle' => 'symbol'],
         ['handle' => 'icons8', 'name' => 'Icons8', 'lastContribution' => '2024-10-02', 'logo' => 'icons8.svg', 'logoStyle' => 'symbol'],

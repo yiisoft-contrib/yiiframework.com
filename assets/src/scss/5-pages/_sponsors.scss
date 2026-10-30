@@ -49,15 +49,23 @@
   text-decoration: none;
 
   &:hover { text-decoration: none; }
-  &:focus-visible { outline: 2px solid #40b3d8; outline-offset: 8px; }
+  &:focus-visible { outline: 2px solid #40b3d8 !important; outline-offset: 8px; }
 
   &--text { font-size: 26px; font-weight: 600; line-height: 1.25; text-align: center; }
-  &--symbol { font-size: 24px; font-weight: 600; }
-  &--symbol .sponsor-logo { width: 44px; height: 44px; padding: 4px; background: #fff; }
+  &--symbol { font-size: 22px; font-weight: 600; }
+  &--symbol .sponsor-logo { width: 44px; height: 44px; flex-shrink: 0; object-fit: contain; }
   &--wordmark .sponsor-logo { width: 100%; max-width: 190px; height: 94px; object-fit: contain; }
+  // Stacked lettering needs less width than a single-line wordmark to carry
+  // comparable visual weight beside a symbol and name.
+  &--wordmark .sponsor-logo--skillshare,
+  &--wordmark .sponsor-logo--dudesquare-b-v { max-width: 108px; height: 56px; }
+  &--wordmark .sponsor-logo--craftcms { max-width: 175px; height: 50px; }
 }
 
 .sponsor-logo--dark { display: none; }
+
+// Keep the supplied geometry; present every mark in the page's neutral palette.
+.sponsor-artwork { filter: grayscale(1) brightness(0); }
 
 .sponsor-supporters {
   display: grid;
@@ -67,9 +75,17 @@
   padding: 0;
   list-style: none;
 
-  &__brand { display: inline-block; color: #000; font-size: 22px; line-height: 50px; }
+  &__brand { display: inline-flex; height: 64px; max-width: 100%; align-items: center; color: #000; }
   &__brand:focus-visible { outline: 2px solid #40b3d8 !important; outline-offset: 4px; }
-  &__jetbrains { width: 149px; height: 32px; box-sizing: content-box; padding: 8px; background: #111; }
+  // Sizes follow measured artwork bounds and lettering weight, not equal boxes.
+  &__logo { display: block; max-width: 100%; height: auto; }
+  &__logo--jetbrains { width: 180px; }
+  &__logo--anthropic { width: 205px; }
+  &__logo--openai { width: 130px; }
+  &__logo--coderabbit { width: 205px; }
+  &__logo--github { width: 150px; }
+  &__logo--sentry { width: 176px; }
+  &__logo--php-foundation { width: 150px; }
   p { margin: 8px 0 0; }
 }
 
@@ -97,6 +113,7 @@
   .sponsors-page h1, .sponsors-page h2, .sponsor-leader, .sponsor-supporters__brand { color: #fff; }
   .sponsor-logo--light { display: none; }
   .sponsor-logo--dark { display: block; }
+  .sponsor-artwork { filter: grayscale(1) brightness(0) invert(1); }
 }
 
 @media (max-width: 991px) {

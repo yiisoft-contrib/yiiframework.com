@@ -39,11 +39,11 @@ $from = new DateTimeImmutable($currentFrom);
                             <?php if (isset($sponsor['logo'])): ?>
                                 <?= Html::img('@web/image/sponsors/' . $sponsor['logo'], [
                                     'alt' => $sponsor['logoStyle'] === 'wordmark' ? $sponsor['name'] : '',
-                                    'class' => isset($sponsor['logoDark']) ? 'sponsor-logo sponsor-logo--light' : 'sponsor-logo',
+                                    'class' => 'sponsor-logo sponsor-artwork sponsor-logo--' . Html::encode($sponsor['handle']) . (isset($sponsor['logoDark']) ? ' sponsor-logo--light' : ''),
                                 ]) ?>
                                 <?php if (isset($sponsor['logoDark'])): ?>
                                     <?= Html::img('@web/image/sponsors/' . $sponsor['logoDark'], [
-                                        'alt' => '', 'class' => 'sponsor-logo sponsor-logo--dark', 'aria-hidden' => 'true',
+                                        'alt' => '', 'class' => 'sponsor-logo sponsor-artwork sponsor-logo--dark sponsor-logo--' . Html::encode($sponsor['handle']), 'aria-hidden' => 'true',
                                     ]) ?>
                                 <?php endif; ?>
                                 <?php if ($sponsor['logoStyle'] === 'symbol'): ?>
@@ -71,28 +71,44 @@ $from = new DateTimeImmutable($currentFrom);
         <ul class="sponsor-supporters">
             <li>
                 <a class="sponsor-supporters__brand" href="https://www.jetbrains.com/?from=yii">
-                    <?= Html::img('@web/image/jetbrains.svg', ['alt' => 'JetBrains', 'class' => 'sponsor-supporters__jetbrains']) ?>
+                    <?= Html::img('@web/image/jetbrains.svg', ['alt' => 'JetBrains', 'class' => 'sponsor-supporters__logo sponsor-supporters__logo--jetbrains sponsor-artwork']) ?>
                 </a>
                 <p>Development tools for the Yii team.</p>
             </li>
-            <li class="style_external_links">
-                <a class="sponsor-supporters__brand" href="https://www.anthropic.com/">Anthropic</a>
+            <li>
+                <a class="sponsor-supporters__brand" href="https://www.anthropic.com/">
+                    <?= Html::img('@web/image/sponsors/anthropic.svg', ['alt' => 'Anthropic', 'class' => 'sponsor-supporters__logo sponsor-supporters__logo--anthropic sponsor-artwork']) ?>
+                </a>
                 <p>Free access for open-source development.</p>
             </li>
-            <li class="style_external_links">
-                <a class="sponsor-supporters__brand" href="https://openai.com/">OpenAI</a>
+            <li>
+                <a class="sponsor-supporters__brand" href="https://openai.com/">
+                    <?= Html::img('@web/image/sponsors/openai.svg', ['alt' => 'OpenAI', 'class' => 'sponsor-supporters__logo sponsor-supporters__logo--openai sponsor-artwork']) ?>
+                </a>
                 <p>Free access for open-source development.</p>
             </li>
-            <li class="style_external_links">
-                <a class="sponsor-supporters__brand" href="https://www.coderabbit.ai/">CodeRabbit</a>
+            <li>
+                <a class="sponsor-supporters__brand" href="https://www.coderabbit.ai/">
+                    <?= Html::img('@web/image/sponsors/coderabbit.svg', ['alt' => 'CodeRabbit', 'class' => 'sponsor-supporters__logo sponsor-supporters__logo--coderabbit sponsor-artwork']) ?>
+                </a>
                 <p>Free access for open-source development.</p>
             </li>
-            <li class="style_external_links">
-                <a class="sponsor-supporters__brand" href="https://github.com/">GitHub</a>
-                <p>Funding and free access to additional features.</p>
+            <li>
+                <a class="sponsor-supporters__brand" href="https://github.com/">
+                    <?= Html::img('@web/image/sponsors/github.svg', ['alt' => 'GitHub', 'class' => 'sponsor-supporters__logo sponsor-supporters__logo--github sponsor-artwork']) ?>
+                </a>
+                <p>Funding, security support and free access to additional features.</p>
             </li>
-            <li class="style_external_links">
-                <a class="sponsor-supporters__brand" href="https://thephp.foundation/">The PHP Foundation</a>
+            <li>
+                <a class="sponsor-supporters__brand" href="https://sentry.io/">
+                    <?= Html::img('@web/image/sponsors/sentry.svg', ['alt' => 'Sentry', 'class' => 'sponsor-supporters__logo sponsor-supporters__logo--sentry sponsor-artwork']) ?>
+                </a>
+                <p>Monitoring website issues.</p>
+            </li>
+            <li>
+                <a class="sponsor-supporters__brand" href="https://thephp.foundation/">
+                    <?= Html::img('@web/image/sponsors/php-foundation.svg', ['alt' => 'The PHP Foundation', 'class' => 'sponsor-supporters__logo sponsor-supporters__logo--php-foundation sponsor-artwork']) ?>
+                </a>
                 <p>Security scanning for Yii.</p>
             </li>
         </ul>
