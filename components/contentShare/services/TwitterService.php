@@ -30,7 +30,7 @@ class TwitterService extends BaseService
             $params['twitter.accessTokenSecret']
         );
 
-        $twitter->post('statuses/update', ['status' => $this->contentShare->message]);
+        $twitter->post('statuses/update', ['status' => $this->contentShare->message], ['jsonPayload' => false]);
 
         $status = (int) $twitter->getLastHttpCode();
         if ($status === 200) {

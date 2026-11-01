@@ -42,7 +42,7 @@ class GithubProgress
 
         $token = trim(file_get_contents($tokenFile));
 
-        $this->client->authenticate($token, null, GithubClient::AUTH_HTTP_TOKEN);
+        $this->client->authenticate($token, null, GithubClient::AUTH_ACCESS_TOKEN);
         $githubRepoSet = new GithubRepoSet($repositories, $this->client);
 
         return $githubRepoSet->getData();

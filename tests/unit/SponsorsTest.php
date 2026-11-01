@@ -121,11 +121,11 @@ class SponsorsTest extends \PHPUnit\Framework\TestCase
             if ($partial) {
                 self::assertSame(1, $status);
                 self::assertSame('', $output);
-                self::assertContains('full contribution history', $error);
+                self::assertStringContainsString('full contribution history', $error);
             } else {
                 self::assertSame(0, $status, $error);
                 self::assertSame(count($config['sponsors']), substr_count($output, "'handle' =>"));
-                self::assertNotContains('not-in-public-allowlist', $output);
+                self::assertStringNotContainsString('not-in-public-allowlist', $output);
             }
         } finally {
             unlink($file);

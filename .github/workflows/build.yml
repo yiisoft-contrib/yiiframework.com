@@ -19,7 +19,7 @@ jobs:
         os:
           - ubuntu-latest
         php:
-          - "7.4"
+          - "8.5"
         mariadb:
           - "10.5"
 
@@ -77,6 +77,9 @@ jobs:
 
       - name: Compile assets
         run: touch assets/src/scss/2-vendors/contributors.css && gulp build
+
+      - name: Build Codeception actor classes
+        run: vendor/bin/codecept build
 
       - name: Run tests with codeception
         run: |
