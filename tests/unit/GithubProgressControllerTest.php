@@ -100,13 +100,12 @@ class GithubProgressControllerTest extends TestCase
         ];
     }
 
-    /** @dataProvider cacheStates */
-    public function testExhaustionPropagatesFailureAndPreservesCachedData(bool $hasCache): void
+    /** @dataProvider exhaustedResponses */
+    public function testExhaustionPropagatesFailureAndPreservesCachedData(bool $hasCache, string $body): void
     {
         if (!$hasCache) {
             $this->app->cache->delete('github_progress_data_2.0');
         }
-        $body = "<html>Unicorn! We couldn't respond to your request in time.</html>";
         $this->outcomes['2.0'] = array_fill(0, 3, new Response(502, ['Content-Type' => 'text/html'], $body));
 
         try {
@@ -124,9 +123,17 @@ class GithubProgressControllerTest extends TestCase
         self::assertSame(['stale' => '3.0'], $this->app->cache->get('github_progress_data_3.0'));
     }
 
-    public function cacheStates(): array
+    public function exhaustedResponses(): array
     {
-        return ['existing cache' => [true], 'missing cache' => [false]];
+        $html = "<html>Unicorn! We couldn't respond to your request in time.</html>";
+        $legacy = 'This may be the result of a timeout, or it could be a GitHub bug.';
+
+        return [
+            'HTML timeout with existing cache' => [true, $html],
+            'HTML timeout with missing cache' => [false, $html],
+            'legacy timeout with existing cache' => [true, $legacy],
+            'legacy timeout with missing cache' => [false, $legacy],
+        ];
     }
 
     /** @dataProvider permanentResponses */
