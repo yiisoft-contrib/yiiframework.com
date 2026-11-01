@@ -67,7 +67,7 @@ class GithubProgress
 
             echo "Received organization repositories, page $i.\n";
 
-            $responseRepositories = json_decode($response->getBody()->getContents());
+            $responseRepositories = json_decode((string) $response->getBody());
             if (!$responseRepositories) {
                 break;
             }
