@@ -12,6 +12,10 @@ final class GithubProgressController extends Controller
 {
     private const ATTEMPTS_COUNT = 3;
     private const RETRY_DELAY = 90; // seconds
+    private const TIMEOUT_MESSAGE_FRAGMENTS = [
+        'This may be the result of a timeout, or it could be a GitHub bug.',
+        "We couldn't respond to your request in time.",
+    ];
 
     public function actionIndex()
     {
@@ -22,35 +26,40 @@ final class GithubProgressController extends Controller
 
     private function fetchProgress(string $version): void
     {
-        $attempt = 0;
-        $failures = 0;
-
-        while ($attempt < self::ATTEMPTS_COUNT) {
+        for ($attempt = 1; $attempt <= self::ATTEMPTS_COUNT; $attempt++) {
             try {
                 $data = (new GithubProgress($version, new GithubClient()))->getData();
                 Yii::$app->cache->set("github_progress_data_$version", $data);
 
-                break;
+                return;
             } catch (RuntimeException $e) {
-                $keyText = 'This may be the result of a timeout, or it could be a GitHub bug.';
-                if (strpos($e->getMessage(), $keyText) === false) {
+                if (!$this->isRetryableException($e) || $attempt === self::ATTEMPTS_COUNT) {
                     throw $e;
                 }
 
                 sleep(self::RETRY_DELAY);
-                $failures++;
             }
+        }
+    }
 
-            $attempt++;
+    private function isRetryableException(RuntimeException $exception): bool
+    {
+        // The GitHub client uses the HTTP status as the exception code.
+        if (in_array($exception->getCode(), [500, 502, 503, 504], true)) {
+            return true;
         }
 
-        if ($failures === self::ATTEMPTS_COUNT) {
-            $this->stderr(sprintf(
-                "Failed to get data for version %s because of timeout.\nRetried %s times with %s seconds interval.\n",
-                $version,
-                $attempt - 1,
-                self::RETRY_DELAY
-            ));
+        // Preserve timeout detection when the response has no HTTP status.
+        if ($exception->getCode() !== 0) {
+            return false;
         }
+
+        foreach (self::TIMEOUT_MESSAGE_FRAGMENTS as $messageFragment) {
+            if (strpos($exception->getMessage(), $messageFragment) !== false) {
+                return true;
+            }
+        }
+
+        return false;
     }
 }
