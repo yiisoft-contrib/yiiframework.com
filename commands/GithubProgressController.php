@@ -12,6 +12,10 @@ final class GithubProgressController extends Controller
 {
     private const ATTEMPTS_COUNT = 3;
     private const RETRY_DELAY = 90; // seconds
+    private const TIMEOUT_MESSAGE_FRAGMENTS = [
+        'This may be the result of a timeout, or it could be a GitHub bug.',
+        "We couldn't respond to your request in time.",
+    ];
 
     public function actionIndex()
     {
@@ -32,13 +36,18 @@ final class GithubProgressController extends Controller
 
                 break;
             } catch (RuntimeException $e) {
-                $keyText = 'This may be the result of a timeout, or it could be a GitHub bug.';
-                if (strpos($e->getMessage(), $keyText) === false) {
+                if (!$this->isTimeoutException($e)) {
                     throw $e;
                 }
 
-                sleep(self::RETRY_DELAY);
                 $failures++;
+                $attempt++;
+
+                if ($attempt < self::ATTEMPTS_COUNT) {
+                    sleep(self::RETRY_DELAY);
+                }
+
+                continue;
             }
 
             $attempt++;
@@ -52,5 +61,16 @@ final class GithubProgressController extends Controller
                 self::RETRY_DELAY
             ));
         }
+    }
+
+    private function isTimeoutException(RuntimeException $exception): bool
+    {
+        foreach (self::TIMEOUT_MESSAGE_FRAGMENTS as $messageFragment) {
+            if (strpos($exception->getMessage(), $messageFragment) !== false) {
+                return true;
+            }
+        }
+
+        return false;
     }
 }
