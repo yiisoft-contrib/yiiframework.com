@@ -26,45 +26,34 @@ final class GithubProgressController extends Controller
 
     private function fetchProgress(string $version): void
     {
-        $attempt = 0;
-        $failures = 0;
-
-        while ($attempt < self::ATTEMPTS_COUNT) {
+        for ($attempt = 1; $attempt <= self::ATTEMPTS_COUNT; $attempt++) {
             try {
                 $data = (new GithubProgress($version, new GithubClient()))->getData();
                 Yii::$app->cache->set("github_progress_data_$version", $data);
 
-                break;
+                return;
             } catch (RuntimeException $e) {
-                if (!$this->isTimeoutException($e)) {
+                if (!$this->isRetryableException($e) || $attempt === self::ATTEMPTS_COUNT) {
                     throw $e;
                 }
 
-                $failures++;
-                $attempt++;
-
-                if ($attempt < self::ATTEMPTS_COUNT) {
-                    sleep(self::RETRY_DELAY);
-                }
-
-                continue;
+                sleep(self::RETRY_DELAY);
             }
-
-            $attempt++;
-        }
-
-        if ($failures === self::ATTEMPTS_COUNT) {
-            $this->stderr(sprintf(
-                "Failed to get data for version %s because of timeout.\nRetried %s times with %s seconds interval.\n",
-                $version,
-                $attempt - 1,
-                self::RETRY_DELAY
-            ));
         }
     }
 
-    private function isTimeoutException(RuntimeException $exception): bool
+    private function isRetryableException(RuntimeException $exception): bool
     {
+        // The GitHub client uses the HTTP status as the exception code.
+        if (in_array($exception->getCode(), [500, 502, 503, 504], true)) {
+            return true;
+        }
+
+        // Preserve timeout detection when the response has no HTTP status.
+        if ($exception->getCode() !== 0) {
+            return false;
+        }
+
         foreach (self::TIMEOUT_MESSAGE_FRAGMENTS as $messageFragment) {
             if (strpos($exception->getMessage(), $messageFragment) !== false) {
                 return true;

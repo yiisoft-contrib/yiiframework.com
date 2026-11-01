@@ -1,0 +1,194 @@
+<?php
+
+use app\components\github\GithubProgress;
+use Github\Exception\RuntimeException;
+use GuzzleHttp\Psr7\Response;
+use Http\Client\HttpClient;
+use Http\Discovery\HttpClientDiscovery;
+use PHPUnit\Framework\TestCase;
+use Psr\Http\Message\RequestInterface;
+use yii\caching\ArrayCache;
+use yii\console\Application;
+
+require_once __DIR__ . '/../_support/GithubProgressHttpDiscovery.php';
+require_once __DIR__ . '/../_support/github-progress-sleep.php';
+
+class GithubProgressControllerTest extends TestCase
+{
+    public static $delays = [];
+
+    private $previousApp;
+    private $previousAliases;
+    private $previousStrategies;
+    private $previousRepositories;
+    private $repositoriesProperty;
+    private $dataPath;
+    private $outcomes = [];
+    private $calls = [];
+    private $app;
+
+    protected function setUp(): void
+    {
+        $this->previousApp = Yii::$app;
+        $this->previousAliases = Yii::$aliases;
+        Yii::setAlias('@app', dirname(__DIR__, 2));
+        $this->previousStrategies = [];
+        foreach (HttpClientDiscovery::getStrategies() as $strategy) {
+            $this->previousStrategies[] = $strategy;
+        }
+        $this->repositoriesProperty = new ReflectionProperty(GithubProgress::class, 'allResponseRepositories');
+        $this->repositoriesProperty->setAccessible(true);
+        $this->previousRepositories = $this->repositoriesProperty->getValue();
+        $this->repositoriesProperty->setValue(null, null);
+        self::$delays = [];
+
+        $client = $this->createMock(HttpClient::class);
+        $client->method('sendRequest')->willReturnCallback(function (RequestInterface $request) {
+            return $this->respond($request);
+        });
+        GithubProgressHttpDiscovery::$client = $client;
+        HttpClientDiscovery::prependStrategy(GithubProgressHttpDiscovery::class);
+
+        $this->app = new Application([
+            'id' => 'github-progress-test',
+            'basePath' => dirname(__DIR__, 2),
+            'controllerNamespace' => 'app\\commands',
+            'components' => ['cache' => ['class' => ArrayCache::class]],
+        ]);
+        $this->dataPath = sys_get_temp_dir() . '/github-progress-' . uniqid('', true);
+        mkdir($this->dataPath);
+        file_put_contents($this->dataPath . '/github.token', 'test-token');
+        Yii::setAlias('@app/data', $this->dataPath);
+
+        foreach (GithubProgress::VERSIONS as $version) {
+            $this->app->cache->set('github_progress_data_' . $version, ['stale' => $version]);
+        }
+    }
+
+    protected function tearDown(): void
+    {
+        unlink($this->dataPath . '/github.token');
+        rmdir($this->dataPath);
+        Yii::$aliases = $this->previousAliases;
+        Yii::$app = $this->previousApp;
+        HttpClientDiscovery::setStrategies($this->previousStrategies);
+        GithubProgressHttpDiscovery::$client = null;
+        $this->repositoriesProperty->setValue(null, $this->previousRepositories);
+    }
+
+    /** @dataProvider temporaryResponses */
+    public function testRecoversFromTemporaryHttpFailure(int $status, string $body): void
+    {
+        $this->outcomes['1.1'] = [new Response($status, ['Content-Type' => 'text/html'], $body)];
+
+        self::assertSame(0, $this->app->runAction('github-progress'));
+        self::assertSame(['1.1', '1.1', '2.0', '3.0'], $this->calls);
+        self::assertSame([90], self::$delays);
+        foreach (GithubProgress::VERSIONS as $version) {
+            self::assertSame([], $this->app->cache->get('github_progress_data_' . $version));
+        }
+    }
+
+    public function temporaryResponses(): array
+    {
+        return [
+            'observed HTML' => [502, "<html>Unicorn! We couldn't respond to your request in time.</html>"],
+            'changed response wording' => [504, '<html>Gateway timeout</html>'],
+            'unavailable' => [503, 'Service temporarily unavailable'],
+            'server error' => [500, 'Internal server error'],
+            'legacy response' => [502, 'This may be the result of a timeout, or it could be a GitHub bug.'],
+        ];
+    }
+
+    /** @dataProvider cacheStates */
+    public function testExhaustionPropagatesFailureAndPreservesCachedData(bool $hasCache): void
+    {
+        if (!$hasCache) {
+            $this->app->cache->delete('github_progress_data_2.0');
+        }
+        $body = "<html>Unicorn! We couldn't respond to your request in time.</html>";
+        $this->outcomes['2.0'] = array_fill(0, 3, new Response(502, ['Content-Type' => 'text/html'], $body));
+
+        try {
+            $this->app->runAction('github-progress');
+            self::fail('Exhausted retries must propagate an exception to the console application.');
+        } catch (RuntimeException $exception) {
+            self::assertSame(502, $exception->getCode());
+            self::assertSame($body, $exception->getMessage());
+        }
+
+        self::assertSame(['1.1', '2.0', '2.0', '2.0'], $this->calls);
+        self::assertSame([90, 90], self::$delays);
+        self::assertSame([], $this->app->cache->get('github_progress_data_1.1'));
+        self::assertSame($hasCache ? ['stale' => '2.0'] : false, $this->app->cache->get('github_progress_data_2.0'));
+        self::assertSame(['stale' => '3.0'], $this->app->cache->get('github_progress_data_3.0'));
+    }
+
+    public function cacheStates(): array
+    {
+        return ['existing cache' => [true], 'missing cache' => [false]];
+    }
+
+    /** @dataProvider permanentResponses */
+    public function testPermanentFailureIsNotRetried(int $status, string $body, array $headers): void
+    {
+        $this->outcomes['1.1'] = [new Response($status, $headers, $body)];
+
+        try {
+            $this->app->runAction('github-progress');
+            self::fail('Permanent failures must propagate immediately.');
+        } catch (RuntimeException $exception) {
+            self::assertNotSame('', $exception->getMessage());
+        }
+
+        self::assertSame(['1.1'], $this->calls);
+        self::assertSame([], self::$delays);
+        foreach (GithubProgress::VERSIONS as $version) {
+            self::assertSame(['stale' => $version], $this->app->cache->get('github_progress_data_' . $version));
+        }
+    }
+
+    public function permanentResponses(): array
+    {
+        return [
+            'credentials' => [401, '{"message":"Bad credentials"}', ['Content-Type' => 'application/json']],
+            'permission' => [403, 'Forbidden', []],
+            'missing repository' => [404, 'Not Found', []],
+            'invalid query' => [422, 'Invalid query', []],
+            'unsupported operation' => [501, 'Not implemented', []],
+            'misleading timeout text' => [401, "We couldn't respond to your request in time.", []],
+            'rate limit' => [403, 'Rate limit', ['X-RateLimit-Remaining' => '0']],
+        ];
+    }
+
+    private function respond(RequestInterface $request): Response
+    {
+        if ($request->getUri()->getPath() === '/orgs/yiisoft/repos') {
+            $repositories = [];
+            if (strpos($request->getUri()->getQuery(), 'page=1&') === 0) {
+                foreach (GithubProgress::VERSIONS as $version) {
+                    $repositories[] = [
+                        'archived' => false,
+                        'full_name' => 'yiisoft/yii' . (int) $version,
+                        'topics' => ['yii' . (int) $version],
+                    ];
+                }
+            }
+            return new Response(200, ['Content-Type' => 'application/json'], json_encode($repositories));
+        }
+
+        self::assertSame('/graphql', $request->getUri()->getPath());
+        $body = (string) $request->getBody();
+        foreach (GithubProgress::VERSIONS as $version) {
+            if (strpos($body, 'yii' . (int) $version) !== false) {
+                $this->calls[] = $version;
+                if (!empty($this->outcomes[$version])) {
+                    return array_shift($this->outcomes[$version]);
+                }
+                return new Response(200, ['Content-Type' => 'application/json'], '{"data":[]}');
+            }
+        }
+
+        throw new LogicException('Unexpected GitHub query.');
+    }
+}
