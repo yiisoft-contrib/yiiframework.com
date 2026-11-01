@@ -100,6 +100,47 @@ class GithubProgressControllerTest extends TestCase
         ];
     }
 
+    /** @dataProvider timeoutsWithoutStatus */
+    public function testRecoversFromTimeoutWithoutHttpStatus(string $body): void
+    {
+        $this->outcomes['1.1'] = [new RuntimeException($body)];
+
+        self::assertSame(0, $this->app->runAction('github-progress'));
+        self::assertSame(['1.1', '1.1', '2.0', '3.0'], $this->calls);
+        self::assertSame([90], self::$delays);
+        foreach (GithubProgress::VERSIONS as $version) {
+            self::assertSame([], $this->app->cache->get('github_progress_data_' . $version));
+        }
+    }
+
+    /** @dataProvider timeoutsWithoutStatus */
+    public function testExhaustedTimeoutWithoutHttpStatusPropagatesFailure(string $body): void
+    {
+        $failure = new RuntimeException($body);
+        $this->outcomes['1.1'] = array_fill(0, 3, $failure);
+
+        try {
+            $this->app->runAction('github-progress');
+            self::fail('Exhausted timeouts without an HTTP status must propagate the final exception.');
+        } catch (RuntimeException $exception) {
+            self::assertSame($failure, $exception);
+        }
+
+        self::assertSame(['1.1', '1.1', '1.1'], $this->calls);
+        self::assertSame([90, 90], self::$delays);
+        foreach (GithubProgress::VERSIONS as $version) {
+            self::assertSame(['stale' => $version], $this->app->cache->get('github_progress_data_' . $version));
+        }
+    }
+
+    public function timeoutsWithoutStatus(): array
+    {
+        return [
+            'observed HTML' => ["<html>Unicorn! We couldn't respond to your request in time.</html>"],
+            'legacy response' => ['This may be the result of a timeout, or it could be a GitHub bug.'],
+        ];
+    }
+
     /** @dataProvider exhaustedResponses */
     public function testExhaustionPropagatesFailureAndPreservesCachedData(bool $hasCache, string $body): void
     {
@@ -190,7 +231,11 @@ class GithubProgressControllerTest extends TestCase
             if (strpos($body, 'yii' . (int) $version) !== false) {
                 $this->calls[] = $version;
                 if (!empty($this->outcomes[$version])) {
-                    return array_shift($this->outcomes[$version]);
+                    $outcome = array_shift($this->outcomes[$version]);
+                    if ($outcome instanceof RuntimeException) {
+                        throw $outcome;
+                    }
+                    return $outcome;
                 }
                 return new Response(200, ['Content-Type' => 'application/json'], '{"data":[]}');
             }
