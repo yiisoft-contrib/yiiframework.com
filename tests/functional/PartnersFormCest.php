@@ -3,7 +3,7 @@ class PartnersFormCest
 {
     public function _before(\FunctionalTester $I)
     {
-        $I->amOnPage(['site/partners']);
+        $I->amOnRoute('site/partners');
     }
 
     public function openPartnersPage(\FunctionalTester $I)

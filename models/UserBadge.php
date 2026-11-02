@@ -130,7 +130,7 @@ class UserBadge extends ActiveRecord
     }
 
 
-    public static function countUsers(Badge $badge = null)
+    public static function countUsers(?Badge $badge = null)
     {
         if ($badge !== null) {
             $query = static::find()->where(['badge_id' => $badge->id])->andWhere('complete_time IS NOT NULL');
