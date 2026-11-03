@@ -108,6 +108,13 @@ Additionally, `queue/listen` should run as a daemon or `queue/run` as a cronjob.
 
 ### Deployment
 
+After deploying the Markdown API context cache change, run `./yii api/generate 2.0` before serving requests.
+API generation writes `data/api-2.0/cache/markdown.data`, a compact context used for API links in wiki and
+extension Markdown. Subsequent API builds refresh it automatically. Web requests never load the full
+`apidoc.data` cache. If the compact cache is missing or invalid, Markdown still renders, but API references are unresolved.
+Yii 2.0 API builds hold an exclusive lock in `data/api-2.0/.generate.lock` for the complete generation workflow.
+Overlapping builds wait for the current build to finish before updating pages and caches.
+
 This section covers notes for deployment on a server, you may not need this for your dev env. OS is assumed to be Debian 
 "bullseye".
 
