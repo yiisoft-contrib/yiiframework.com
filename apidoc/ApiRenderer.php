@@ -30,6 +30,14 @@ class ApiRenderer extends \yii\apidoc\templates\html\ApiRenderer
      */
     public function render($context, $targetDir)
     {
+        if ($this->version === '2.0') {
+            $cacheDir = $targetDir . '/cache';
+            FileHelper::createDirectory($cacheDir);
+            $cacheFile = $cacheDir . '/markdown.data';
+            file_put_contents($cacheFile . '.tmp', serialize(MarkdownContext::create($context)));
+            rename($cacheFile . '.tmp', $cacheFile);
+        }
+
         $types = array_merge($context->classes, $context->interfaces, $context->traits);
 
         parent::render($context, $targetDir);
