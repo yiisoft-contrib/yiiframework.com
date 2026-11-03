@@ -12,6 +12,9 @@ use yii\apidoc\models\InterfaceDoc;
  */
 final class MarkdownContext
 {
+    /**
+     * Returns an independent context for link resolution, preserving shared inherited members.
+     */
     public static function create(Context $context): Context
     {
         $result = new Context();
