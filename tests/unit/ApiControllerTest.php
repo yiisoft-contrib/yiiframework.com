@@ -59,8 +59,8 @@ class ApiControllerTest extends \PHPUnit\Framework\TestCase
             }
 
             self::assertSame($fail ? 1 : 2, $calls);
-            self::assertTrue($this->canAcquireLock($lockFile));
             self::assertFileExists($lockFile);
+            self::assertTrue($this->canAcquireLock($lockFile));
         } finally {
             Yii::setAlias('@app', $originalAlias);
             Yii::setAlias('@runtime', $originalRuntime === false ? null : $originalRuntime);
