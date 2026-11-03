@@ -14,16 +14,57 @@ use yii\apidoc\models\PropertyDoc;
 use yii\apidoc\models\TraitDoc;
 use yii\helpers\FileHelper;
 
+class UnexpectedApidocCacheRead extends Context
+{
+    public function __wakeup(): void
+    {
+        throw new RuntimeException('The full API cache must not be unserialized.');
+    }
+}
+
 class MarkdownContextTest extends \PHPUnit\Framework\TestCase
 {
     public function testFormatterUsesCompactCacheInsteadOfFullApiContext(): void
     {
-        $directory = sys_get_temp_dir() . '/yii-markdown-context-' . uniqid();
-        mkdir($directory . '/data/api-2.0/cache', 0777, true);
         $context = new Context();
         $context->classes['Example'] = new ClassDoc(null, null, ['name' => 'Example']);
-        file_put_contents($directory . '/data/api-2.0/cache/markdown.data', serialize(MarkdownContext::create($context)));
-        file_put_contents($directory . '/data/api-2.0/cache/apidoc.data', serialize(new Context()));
+
+        self::assertStringContainsString(
+            'href="/doc/api/2.0/example"',
+            $this->renderWithCache(serialize(MarkdownContext::create($context)))
+        );
+    }
+
+    /**
+     * @dataProvider invalidCacheProvider
+     */
+    public function testFormatterFallsBackForMissingOrInvalidCache(?string $cacheData): void
+    {
+        $html = $this->renderWithCache($cacheData);
+
+        self::assertStringContainsString('<strong>Text</strong>', $html);
+        self::assertStringContainsString('<span class="broken-link">Example</span>', $html);
+    }
+
+    public static function invalidCacheProvider(): array
+    {
+        return [
+            'missing' => [null],
+            'truncated' => ['O:25:"yii\\apidoc\\models\\Context":9:{'],
+            'false' => [serialize(false)],
+            'wrong type' => [serialize(new stdClass())],
+            'missing class' => ['O:19:"MissingCacheContext":0:{}'],
+        ];
+    }
+
+    private function renderWithCache(?string $cacheData): string
+    {
+        $directory = sys_get_temp_dir() . '/yii-markdown-context-' . uniqid();
+        mkdir($directory . '/data/api-2.0/cache', 0777, true);
+        if ($cacheData !== null) {
+            file_put_contents($directory . '/data/api-2.0/cache/markdown.data', $cacheData);
+        }
+        file_put_contents($directory . '/data/api-2.0/cache/apidoc.data', serialize(new UnexpectedApidocCacheRead()));
         $originalAlias = Yii::getAlias('@app');
         $originalRenderer = ApiMarkdown::$renderer;
         $originalApplication = Yii::$app;
@@ -39,10 +80,7 @@ class MarkdownContextTest extends \PHPUnit\Framework\TestCase
             ]);
             Yii::setAlias('@app', $directory);
 
-            self::assertStringContainsString(
-                'href="/doc/api/2.0/example"',
-                $formatter->asGuideMarkdown('[[Example]]')
-            );
+            return $formatter->asGuideMarkdown('[[Example]] **Text**');
         } finally {
             Yii::setAlias('@app', $originalAlias);
             Yii::setAlias('@runtime', $originalRuntime === false ? null : $originalRuntime);

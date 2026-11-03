@@ -34,6 +34,10 @@ class ApiRendererTest extends \PHPUnit\Framework\TestCase
         $renderer->render($context, $this->directory);
 
         self::assertFileExists($this->directory . '/titles.php');
+        $titles = require $this->directory . '/titles.php';
+        foreach (array_keys($titles) as $pageFile) {
+            self::assertFileExists($this->directory . '/' . $pageFile);
+        }
         self::assertNotNull(unserialize(file_get_contents($cacheFile))->getType('yii\\example\\Example'));
         self::assertSame(0644, fileperms($cacheFile) & 0777);
         self::assertSame([], glob($this->directory . '/cache/markdown-*'));

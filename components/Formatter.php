@@ -124,12 +124,8 @@ class Formatter extends \yii\i18n\Formatter
         if (ApiMarkdown::$renderer->apiContext === null) {
             // The full apidoc cache can exceed the web request memory limit when deserialized.
             $cacheFile = Yii::getAlias('@app/data/api-2.0/cache/markdown.data');
-            if (file_exists($cacheFile)) {
-                $context = unserialize(file_get_contents($cacheFile));
-            } else {
-                $context = new Context();
-            }
-            ApiMarkdown::$renderer->apiContext = $context;
+            $context = file_exists($cacheFile) ? @unserialize(file_get_contents($cacheFile)) : null;
+            ApiMarkdown::$renderer->apiContext = $context instanceof Context ? $context : new Context();
         }
 
         $html = ApiMarkdown::process($markdown);
