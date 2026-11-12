@@ -129,7 +129,7 @@ class ApiRenderer extends \yii\apidoc\templates\html\ApiRenderer
     /**
      * @inheritdoc
      */
-    public function renderMethodSignature($method, $context = null)
+    public function renderMethodSignature($method, $context = null): string
     {
         return str_replace(
             ['<strong>', '</strong>', '<b>', '</b>'],
