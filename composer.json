@@ -12,6 +12,9 @@
     "scripts": {
         "phpstan": "./vendor/bin/phpstan"
     },
+    "scripts-descriptions": {
+        "phpstan": "Run vendor/bin/codecept build to generate test actors before running PHPStan."
+    },
     "require": {
         "php": "^8.5",
         "ext-curl": "*",
@@ -44,7 +47,7 @@
         "helgesverre/spamprotection": "1.0.1",
         "himiklab/yii2-recaptcha-widget": "^1.2",
         "http-interop/http-factory-guzzle": "^1.2",
-        "imagine/imagine": "^0.6.3",
+        "imagine/imagine": "^1.5.4",
         "knplabs/github-api": "^3.16",
         "laminas/laminas-feed": "^2.26",
         "php-http/curl-client": "^2.4",
@@ -59,7 +62,7 @@
         "yiisoft/yii2-bootstrap": "~2.0.6",
         "yiisoft/yii2-elasticsearch": "~2.1.0",
         "yiisoft/yii2-httpclient": "~2.0.0",
-        "yiisoft/yii2-imagine": "~2.1.0",
+        "yiisoft/yii2-imagine": "~2.3.1",
         "yiisoft/yii2-jui": "~2.0.6",
         "yiisoft/yii2-queue": "~2.3.3",
         "yiisoft/yii2-redis": "~2.1.0",
