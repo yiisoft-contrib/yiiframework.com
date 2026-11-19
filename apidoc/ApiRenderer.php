@@ -2,6 +2,7 @@
 
 namespace app\apidoc;
 
+use RuntimeException;
 use Yii;
 use yii\apidoc\helpers\ApiIndexer;
 use yii\base\ErrorHandler;
@@ -83,6 +84,32 @@ class ApiRenderer extends \yii\apidoc\templates\html\ApiRenderer
             $titles[$this->generateFileName($type->name)] = StringHelper::basename($type->name) . ", {$type->name}";
         }
         file_put_contents($targetDir . '/titles.php', '<?php return ' . VarDumper::export($titles) . ';');
+
+        if ($this->version === '2.0') {
+            $cacheDir = $targetDir . '/cache';
+            FileHelper::createDirectory($cacheDir);
+            $cacheFile = $cacheDir . '/markdown.data';
+            $data = serialize(MarkdownContext::create($context));
+            $temporaryFile = @tempnam($cacheDir, 'markdown-');
+            if ($temporaryFile === false) {
+                throw new RuntimeException("Cannot create temporary Markdown API cache in $cacheDir.");
+            }
+
+            try {
+                // tempnam creates owner-only files; the published cache must be readable by PHP-FPM.
+                if (dirname($temporaryFile) !== realpath($cacheDir)
+                    || @file_put_contents($temporaryFile, $data) !== strlen($data)
+                    || !@chmod($temporaryFile, 0644)
+                    || !@rename($temporaryFile, $cacheFile)
+                ) {
+                    throw new RuntimeException("Cannot publish Markdown API cache: $cacheFile.");
+                }
+            } finally {
+                if (is_file($temporaryFile)) {
+                    unlink($temporaryFile);
+                }
+            }
+        }
     }
 
     public function getSourceUrl($type, $line = null)

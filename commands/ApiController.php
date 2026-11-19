@@ -2,6 +2,7 @@
 
 namespace app\commands;
 
+use RuntimeException;
 use app\apidoc\ExtensionApiRenderer;
 use app\models\Extension;
 use Yii;
@@ -35,6 +36,31 @@ class ApiController extends \yii\apidoc\commands\ApiController
      * @return integer exit status
      */
     public function actionGenerate($version)
+    {
+        if ($version !== '2.0') {
+            return $this->generate($version);
+        }
+
+        $target = Yii::getAlias('@app/data/api-2.0');
+        FileHelper::createDirectory($target);
+        $lock = @fopen($target . '/.generate.lock', 'c');
+        if ($lock === false) {
+            throw new RuntimeException('Cannot open the Yii 2.0 API generation lock.');
+        }
+
+        try {
+            if (!flock($lock, LOCK_EX)) {
+                throw new RuntimeException('Cannot acquire the Yii 2.0 API generation lock.');
+            }
+
+            return $this->generate($version);
+        } finally {
+            // Keep the lock file in place so waiting builds always lock the same inode.
+            fclose($lock);
+        }
+    }
+
+    private function generate($version)
     {
         $versions = Yii::$app->params['versions']['api'];
         if (!in_array($version, $versions)) {

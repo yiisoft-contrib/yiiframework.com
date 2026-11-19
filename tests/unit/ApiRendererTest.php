@@ -1,54 +1,97 @@
 <?php
 
 use app\apidoc\ApiRenderer;
-use yii\apidoc\helpers\ApiMarkdown;
-use yii\apidoc\helpers\ApiMarkdownLaTeX;
+use yii\apidoc\models\ClassDoc;
 use yii\apidoc\models\Context;
 use yii\helpers\FileHelper;
 
-class ApiRendererTest extends \Codeception\Test\Unit
+class ApiRendererTest extends \PHPUnit\Framework\TestCase
 {
-    public function testRendersMethodDocumentationWithWebsiteLinks(): void
-    {
-        $directory = codecept_output_dir('api-renderer');
-        FileHelper::createDirectory($directory);
-        $source = $directory . '/Example.php';
-        file_put_contents($source, <<<'PHP'
-<?php
-namespace yii\docs;
+    private $directory;
 
-/** An example API class. */
-class Example
-{
-    /**
-     * Greet a reader.
-     * @param string $name the reader's name
-     * @return string the greeting
-     */
-    public function greet(string $name): string
+    protected function setUp(): void
     {
-        return 'Hello ' . $name;
+        $this->directory = sys_get_temp_dir() . '/yii-api-renderer-' . uniqid();
+        FileHelper::createDirectory($this->directory . '/cache');
     }
-}
-PHP);
+
+    protected function tearDown(): void
+    {
+        FileHelper::removeDirectory($this->directory);
+    }
+
+    public function testPublishesReadableCacheAfterRenderingCompletes(): void
+    {
+        $cacheFile = $this->directory . '/cache/markdown.data';
+        file_put_contents($cacheFile, 'previous cache');
+        $renderer = $this->createRenderer();
+        $renderer->beforeRender = function () use ($cacheFile) {
+            self::assertSame('previous cache', file_get_contents($cacheFile));
+        };
         $context = new Context();
-        $context->addFile($source);
-        $context->processFiles();
-        $context->updateReferences();
-        $renderer = new ApiRenderer(['version' => '2.0', 'extensions' => []]);
+        $context->classes['yii\\example\\Example'] = new ClassDoc(null, null, ['name' => 'yii\\example\\Example']);
+
+        $renderer->render($context, $this->directory);
+
+        self::assertFileExists($this->directory . '/titles.php');
+        $titles = require $this->directory . '/titles.php';
+        foreach (array_keys($titles) as $pageFile) {
+            self::assertFileExists($this->directory . '/' . $pageFile);
+        }
+        self::assertNotNull(unserialize(file_get_contents($cacheFile))->getType('yii\\example\\Example'));
+        self::assertSame(0644, fileperms($cacheFile) & 0777);
+        self::assertSame([], glob($this->directory . '/cache/markdown-*'));
+    }
+
+    public function testRenderingFailureKeepsPreviousCache(): void
+    {
+        $cacheFile = $this->directory . '/cache/markdown.data';
+        file_put_contents($cacheFile, 'previous cache');
+        $renderer = $this->createRenderer();
+        $renderer->beforeRender = function () {
+            throw new RuntimeException('Rendering failed.');
+        };
+        $this->expectException(RuntimeException::class);
+        $this->expectExceptionMessage('Rendering failed.');
 
         try {
-            $renderer->render($context, $directory);
-            $html = file_get_contents($directory . '/yii-docs-example.html');
-            self::assertStringContainsString('Greet a reader.', $html);
-            self::assertStringContainsString('$name', $html);
-            self::assertStringContainsString('greet()', $html);
-            self::assertStringContainsString($renderer->generateApiUrl('yii\\docs\\Example'), $html);
-            self::assertFileExists($directory . '/titles.php');
-            self::assertSame([], $context->errors);
+            $renderer->render(new Context(), $this->directory);
         } finally {
-            ApiMarkdown::$renderer = null;
-            ApiMarkdownLaTeX::$renderer = null;
+            self::assertSame('previous cache', file_get_contents($cacheFile));
+            self::assertSame([], glob($this->directory . '/cache/markdown-*'));
         }
+    }
+
+    public function testPublicationFailureRemovesTemporaryCache(): void
+    {
+        // A directory at the destination makes rename fail without relying on filesystem permissions.
+        $cacheFile = $this->directory . '/cache/markdown.data';
+        mkdir($cacheFile);
+        $renderer = $this->createRenderer();
+        $this->expectException(RuntimeException::class);
+        $this->expectExceptionMessage('Cannot publish Markdown API cache');
+
+        try {
+            $renderer->render(new Context(), $this->directory);
+        } finally {
+            self::assertDirectoryExists($cacheFile);
+            self::assertSame([], glob($this->directory . '/cache/markdown-*'));
+        }
+    }
+
+    private function createRenderer(): ApiRenderer
+    {
+        return new class(['version' => '2.0', 'extensions' => []]) extends ApiRenderer {
+            public $beforeRender;
+
+            protected function renderWithLayout($viewFile, $params)
+            {
+                if ($this->beforeRender !== null) {
+                    call_user_func($this->beforeRender);
+                }
+
+                return 'API page';
+            }
+        };
     }
 }
