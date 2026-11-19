@@ -13,7 +13,7 @@
         "phpstan": "./vendor/bin/phpstan"
     },
     "require": {
-        "php": "^7.4",
+        "php": "^8.5",
         "ext-curl": "*",
         "ext-fileinfo": "*",
         "ext-gd": "*",
@@ -25,7 +25,7 @@
         "ext-zip": "*",
         "2amigos/yii2-selectize-widget": "~1.0.1",
         "2amigos/yii2-taggable-behavior": "~1.0.1",
-        "abraham/twitteroauth": "~0.7.4",
+        "abraham/twitteroauth": "^9.0",
         "bower-asset/blueimp-file-upload": "~9.22.0",
         "bower-asset/bootstrap-sass": "3.3.6",
         "bower-asset/bootstrap-social": "^4.11",
@@ -40,17 +40,19 @@
         "cebe/yii2-gravatar": "1.1",
         "composer/spdx-licenses": "^1.1",
         "creocoder/yii2-flysystem": "~0.9.0",
-        "guzzlehttp/psr7": "^1.5",
+        "guzzlehttp/psr7": "^2.0",
         "helgesverre/spamprotection": "1.0.1",
         "himiklab/yii2-recaptcha-widget": "^1.2",
         "http-interop/http-factory-guzzle": "^1.2",
         "imagine/imagine": "^0.6.3",
-        "knplabs/github-api": "2.11.0",
-        "php-http/curl-client": "^1.7",
+        "knplabs/github-api": "^3.16",
+        "laminas/laminas-feed": "^2.26",
+        "php-http/curl-client": "^2.4",
         "samdark/sitemap": "^2.0",
         "scrivo/highlight.php": "~9.18",
         "sentry/sentry": "^3.0",
-        "yetanotherape/diff-match-patch": "~1.0.0",
+        "symfony/http-client": "^8.1",
+        "yetanotherape/diff-match-patch": "^1.1",
         "yiisoft/yii2": "~2.0.44",
         "yiisoft/yii2-apidoc": "~3.0.8",
         "yiisoft/yii2-authclient": "~2.2.0",
@@ -61,11 +63,13 @@
         "yiisoft/yii2-jui": "~2.0.6",
         "yiisoft/yii2-queue": "~2.3.3",
         "yiisoft/yii2-redis": "~2.1.0",
-        "yiisoft/yii2-symfonymailer": "~3.0.0",
-        "zendframework/zend-feed": "^2.8"
+        "yiisoft/yii2-symfonymailer": "~3.0.0"
     },
     "require-dev": {
-        "codeception/base": "^2.2.3",
+        "codeception/codeception": "^5.3",
+        "codeception/module-asserts": "^3.0",
+        "codeception/module-filesystem": "^3.0",
+        "codeception/module-yii2": "^2.0",
         "mspirkov/yii2-phpstan": "^0.16",
         "phpstan/phpstan": "^2.3",
         "yiisoft/yii2-debug": "~2.1.0",
@@ -82,7 +86,7 @@
             "enabled": false
         },
         "platform": {
-            "php": "7.4"
+            "php": "8.5"
         },
         "sort-packages": true,
         "allow-plugins": {

@@ -9,7 +9,7 @@ use DateTime;
 use yii\base\Exception;
 use yii\helpers\ArrayHelper;
 use yii\helpers\Url;
-use Zend\Feed\Writer\Feed;
+use Laminas\Feed\Writer\Feed;
 
 class RssController extends BaseController
 {
