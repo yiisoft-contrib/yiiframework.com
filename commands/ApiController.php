@@ -29,6 +29,7 @@ class ApiController extends \yii\apidoc\commands\ApiController
     public $guidePrefix = '';
     protected $version = '2.0';
     private ?string $currentPackageName = null;
+    private bool $generatingYii2Api = false;
 
     /**
      * Generates the API documentation for the specified version of Yii.
@@ -53,10 +54,20 @@ class ApiController extends \yii\apidoc\commands\ApiController
                 throw new RuntimeException('Cannot acquire the Yii 2.0 API generation lock.');
             }
 
+            $this->generatingYii2Api = true;
             return $this->generate($version);
         } finally {
+            $this->generatingYii2Api = false;
             // Keep the lock file in place so waiting builds always lock the same inode.
             fclose($lock);
+        }
+    }
+
+    protected function storeMarkdownContext($context, $location): void
+    {
+        // The Yii 2 HTML renderer publishes atomically before the JSON pass.
+        if (!$this->generatingYii2Api) {
+            parent::storeMarkdownContext($context, $location);
         }
     }
 

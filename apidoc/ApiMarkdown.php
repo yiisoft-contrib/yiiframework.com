@@ -6,7 +6,7 @@ use yii\helpers\Markdown;
 
 class ApiMarkdown extends \yii\apidoc\helpers\ApiMarkdown
 {
-    public static function process($content, $context = null, $paragraph = false)
+    public static function process(?string $content, $context = null, bool $paragraph = false): string
     {
         $flavor = 'app-api';
         if (!isset(Markdown::$flavors[$flavor])) {

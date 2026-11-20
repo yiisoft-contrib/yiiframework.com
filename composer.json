@@ -54,7 +54,7 @@
         "symfony/http-client": "^8.1",
         "yetanotherape/diff-match-patch": "^1.1",
         "yiisoft/yii2": "~2.0.44",
-        "yiisoft/yii2-apidoc": "~3.0.8",
+        "yiisoft/yii2-apidoc": "~4.0.2",
         "yiisoft/yii2-authclient": "~2.2.0",
         "yiisoft/yii2-bootstrap": "~2.0.6",
         "yiisoft/yii2-elasticsearch": "~2.1.0",

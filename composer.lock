@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "d616da554155633a06f48beee2b7708b",
+    "content-hash": "c9aeff96d94c0f2b07374fc24a2376eb",
     "packages": [
         {
             "name": "2amigos/yii2-selectize-widget",
@@ -2960,27 +2960,26 @@
         },
         {
             "name": "phpdocumentor/reflection",
-            "version": "6.6.0",
+            "version": "7.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/phpDocumentor/Reflection.git",
-                "reference": "c8d36446027506a005103d57265ba5ea56beabfc"
+                "reference": "70254fa0b3058b16908a3a9d95f7dca904e03396"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/phpDocumentor/Reflection/zipball/c8d36446027506a005103d57265ba5ea56beabfc",
-                "reference": "c8d36446027506a005103d57265ba5ea56beabfc",
+                "url": "https://api.github.com/repos/phpDocumentor/Reflection/zipball/70254fa0b3058b16908a3a9d95f7dca904e03396",
+                "reference": "70254fa0b3058b16908a3a9d95f7dca904e03396",
                 "shasum": ""
             },
             "require": {
                 "composer-runtime-api": "^2",
-                "nikic/php-parser": "~4.18 || ^5.0",
-                "php": "8.1.*|8.2.*|8.3.*|8.4.*|8.5.*",
+                "nikic/php-parser": "^5.5",
+                "php": "8.2.*|8.3.*|8.4.*|8.5.*",
                 "phpdocumentor/reflection-common": "^2.1",
-                "phpdocumentor/reflection-docblock": "^5",
-                "phpdocumentor/type-resolver": "^1.4",
-                "symfony/polyfill-php80": "^1.28",
-                "webmozart/assert": "^1.7"
+                "phpdocumentor/reflection-docblock": "^6.0",
+                "phpdocumentor/type-resolver": "^2.0",
+                "webmozart/assert": "^1.7 || ^2.1"
             },
             "require-dev": {
                 "dealerdirect/phpcodesniffer-composer-installer": "^1.0",
@@ -2989,12 +2988,11 @@
                 "mikey179/vfsstream": "~1.2",
                 "mockery/mockery": "~1.6.0",
                 "phpspec/prophecy-phpunit": "^2.4",
-                "phpstan/extension-installer": "^1.1",
-                "phpstan/phpstan": "^1.8",
-                "phpstan/phpstan-webmozart-assert": "^1.2",
+                "phpstan/extension-installer": "^1.4",
+                "phpstan/phpstan": "^2.0",
+                "phpstan/phpstan-webmozart-assert": "^2.0",
                 "phpunit/phpunit": "^10.5.53",
                 "psalm/phar": "^6.0",
-                "rector/rector": "^1.0.0",
                 "squizlabs/php_codesniffer": "^3.8"
             },
             "type": "library",
@@ -3005,9 +3003,6 @@
                 }
             },
             "autoload": {
-                "files": [
-                    "src/php-parser/Modifiers.php"
-                ],
                 "psr-4": {
                     "phpDocumentor\\": "src/phpDocumentor"
                 }
@@ -3026,9 +3021,9 @@
             ],
             "support": {
                 "issues": "https://github.com/phpDocumentor/Reflection/issues",
-                "source": "https://github.com/phpDocumentor/Reflection/tree/6.6.0"
+                "source": "https://github.com/phpDocumentor/Reflection/tree/7.0.0"
             },
-            "time": "2026-04-12T18:07:10+00:00"
+            "time": "2026-05-28T19:54:52+00:00"
         },
         {
             "name": "phpdocumentor/reflection-common",
@@ -3090,16 +3085,16 @@
         },
         {
             "name": "phpdocumentor/reflection-docblock",
-            "version": "5.6.7",
+            "version": "6.0.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/phpDocumentor/ReflectionDocBlock.git",
-                "reference": "31a105931bc8ffa3a123383829772e832fd8d903"
+                "reference": "7bae67520aa9f5ecc506d646810bd40d9da54582"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/phpDocumentor/ReflectionDocBlock/zipball/31a105931bc8ffa3a123383829772e832fd8d903",
-                "reference": "31a105931bc8ffa3a123383829772e832fd8d903",
+                "url": "https://api.github.com/repos/phpDocumentor/ReflectionDocBlock/zipball/7bae67520aa9f5ecc506d646810bd40d9da54582",
+                "reference": "7bae67520aa9f5ecc506d646810bd40d9da54582",
                 "shasum": ""
             },
             "require": {
@@ -3107,8 +3102,8 @@
                 "ext-filter": "*",
                 "php": "^7.4 || ^8.0",
                 "phpdocumentor/reflection-common": "^2.2",
-                "phpdocumentor/type-resolver": "^1.7",
-                "phpstan/phpdoc-parser": "^1.7|^2.0",
+                "phpdocumentor/type-resolver": "^2.0",
+                "phpstan/phpdoc-parser": "^2.0",
                 "webmozart/assert": "^1.9.1 || ^2"
             },
             "require-dev": {
@@ -3118,7 +3113,8 @@
                 "phpstan/phpstan-mockery": "^1.1",
                 "phpstan/phpstan-webmozart-assert": "^1.2",
                 "phpunit/phpunit": "^9.5",
-                "psalm/phar": "^5.26"
+                "psalm/phar": "^5.26",
+                "shipmonk/dead-code-detector": "^0.5.1"
             },
             "type": "library",
             "extra": {
@@ -3148,44 +3144,44 @@
             "description": "With this component, a library can provide support for annotations via DocBlocks or otherwise retrieve information that is embedded in a DocBlock.",
             "support": {
                 "issues": "https://github.com/phpDocumentor/ReflectionDocBlock/issues",
-                "source": "https://github.com/phpDocumentor/ReflectionDocBlock/tree/5.6.7"
+                "source": "https://github.com/phpDocumentor/ReflectionDocBlock/tree/6.0.3"
             },
-            "time": "2026-03-18T20:47:46+00:00"
+            "time": "2026-03-18T20:49:53+00:00"
         },
         {
             "name": "phpdocumentor/type-resolver",
-            "version": "1.12.0",
+            "version": "2.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/phpDocumentor/TypeResolver.git",
-                "reference": "92a98ada2b93d9b201a613cb5a33584dde25f195"
+                "reference": "dbe2133bb23e2e33a6834f4ed417f24a1b167769"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/phpDocumentor/TypeResolver/zipball/92a98ada2b93d9b201a613cb5a33584dde25f195",
-                "reference": "92a98ada2b93d9b201a613cb5a33584dde25f195",
+                "url": "https://api.github.com/repos/phpDocumentor/TypeResolver/zipball/dbe2133bb23e2e33a6834f4ed417f24a1b167769",
+                "reference": "dbe2133bb23e2e33a6834f4ed417f24a1b167769",
                 "shasum": ""
             },
             "require": {
                 "doctrine/deprecations": "^1.0",
-                "php": "^7.3 || ^8.0",
+                "php": "^7.4 || ^8.0",
                 "phpdocumentor/reflection-common": "^2.0",
-                "phpstan/phpdoc-parser": "^1.18|^2.0"
+                "phpstan/phpdoc-parser": "^2.0"
             },
             "require-dev": {
                 "ext-tokenizer": "*",
                 "phpbench/phpbench": "^1.2",
-                "phpstan/extension-installer": "^1.1",
-                "phpstan/phpstan": "^1.8",
-                "phpstan/phpstan-phpunit": "^1.1",
+                "phpstan/extension-installer": "^1.4",
+                "phpstan/phpstan": "^2.1",
+                "phpstan/phpstan-phpunit": "^2.0",
                 "phpunit/phpunit": "^9.5",
-                "rector/rector": "^0.13.9",
-                "vimeo/psalm": "^4.25"
+                "psalm/phar": "^4"
             },
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-1.x": "1.x-dev"
+                    "dev-1.x": "1.x-dev",
+                    "dev-2.x": "2.x-dev"
                 }
             },
             "autoload": {
@@ -3206,9 +3202,9 @@
             "description": "A PSR-5 based resolver of Class names, Types and Structural Element Names",
             "support": {
                 "issues": "https://github.com/phpDocumentor/TypeResolver/issues",
-                "source": "https://github.com/phpDocumentor/TypeResolver/tree/1.12.0"
+                "source": "https://github.com/phpDocumentor/TypeResolver/tree/2.1.0"
             },
-            "time": "2025-11-21T15:09:14+00:00"
+            "time": "2026-09-27T19:32:54+00:00"
         },
         {
             "name": "phpstan/phpdoc-parser",
@@ -5348,16 +5344,16 @@
         },
         {
             "name": "yiisoft/yii2-apidoc",
-            "version": "3.0.8",
+            "version": "4.0.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/yiisoft/yii2-apidoc.git",
-                "reference": "35e7263a9c47bc61a4fb120912ec1c3bcdb2ee3d"
+                "reference": "8e497c08205a8800f17708bf854e03c994b454f3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/yiisoft/yii2-apidoc/zipball/35e7263a9c47bc61a4fb120912ec1c3bcdb2ee3d",
-                "reference": "35e7263a9c47bc61a4fb120912ec1c3bcdb2ee3d",
+                "url": "https://api.github.com/repos/yiisoft/yii2-apidoc/zipball/8e497c08205a8800f17708bf854e03c994b454f3",
+                "reference": "8e497c08205a8800f17708bf854e03c994b454f3",
                 "shasum": ""
             },
             "require": {
@@ -5366,21 +5362,26 @@
                 "cebe/markdown-latex": "^1.0",
                 "ext-dom": "*",
                 "ext-mbstring": "*",
-                "nikic/php-parser": "^4.0 || ^5.0",
-                "php": "^7.4 || ^8.0",
-                "phpdocumentor/reflection": "^5.1.0 || ^6.0.0",
+                "nikic/php-parser": "^5.0",
+                "php": "^8.2",
+                "phpdocumentor/reflection": "^7.0",
+                "phpdocumentor/type-resolver": "^2.0",
                 "scrivo/highlight.php": "^9.0",
-                "yiisoft/yii2": "~2.0.16",
-                "yiisoft/yii2-bootstrap": "~2.0.0"
+                "yiisoft/yii2": "~2.0.16"
             },
             "require-dev": {
+                "friendsofphp/php-cs-fixer": "^3.95",
+                "mspirkov/yii2-rector": "^0.2",
                 "phpstan/phpstan": "^2.1",
-                "phpunit/phpunit": "^9.6 || ^10.0",
-                "spatie/phpunit-snapshot-assertions": "^4.2 || ^5.0"
+                "phpunit/phpunit": "^11.5",
+                "rector/rector": "^2.3",
+                "spatie/phpunit-snapshot-assertions": "^5.0",
+                "yiisoft/yii2-bootstrap": "~2.0.0"
             },
             "suggest": {
                 "ext-intl": "for generating slugs in non-English guides",
-                "ext-json": "for outputting documentation data structures as a JSON text"
+                "ext-json": "for outputting documentation data structures as a JSON text",
+                "yiisoft/yii2-bootstrap": "for generating API documentation based on the Bootstrap template"
             },
             "bin": [
                 "apidoc"
@@ -5430,7 +5431,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2025-11-24T07:18:40+00:00"
+            "time": "2026-11-04T12:02:34+00:00"
         },
         {
             "name": "yiisoft/yii2-authclient",
@@ -10168,7 +10169,7 @@
         "ext-zend-opcache": "*",
         "ext-zip": "*"
     },
-    "platform-dev": [],
+    "platform-dev": {},
     "platform-overrides": {
         "php": "8.5"
     },

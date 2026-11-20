@@ -5,6 +5,7 @@ namespace app\apidoc;
 use RuntimeException;
 use Yii;
 use yii\apidoc\helpers\ApiIndexer;
+use yii\apidoc\helpers\MarkdownContext;
 use yii\base\ErrorHandler;
 use yii\helpers\Console;
 use yii\helpers\FileHelper;
@@ -156,7 +157,7 @@ class ApiRenderer extends \yii\apidoc\templates\html\ApiRenderer
     /**
      * @inheritdoc
      */
-    public function renderMethodSignature($method, $context = null)
+    public function renderMethodSignature($method, $context = null): string
     {
         return str_replace(
             ['<strong>', '</strong>', '<b>', '</b>'],

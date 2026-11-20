@@ -4,6 +4,30 @@ use app\apidoc\PdfGuideRenderer;
 
 class PdfGuideRendererTest extends \Codeception\Test\Unit
 {
+    public function testRendersGuideToLatex(): void
+    {
+        $directory = codecept_output_dir('pdf-guide-renderer');
+        \yii\helpers\FileHelper::createDirectory($directory);
+        $index = $directory . '/README.md';
+        $source = $directory . '/example.md';
+        file_put_contents($index, "# Guide\n\n## Basics\n\n* [Example](example.md)\n");
+        file_put_contents($source, "# Example\n\nПример café\n\n```php\necho \$ready && \$enabled;\n```\n");
+        $renderer = new PdfGuideRenderer(['apiContext' => new \yii\apidoc\models\Context()]);
+
+        try {
+            $renderer->render([$index, $source], $directory);
+            $latex = file_get_contents($directory . '/guide.tex');
+            self::assertStringContainsString('Пример café', $latex);
+            self::assertStringContainsString('echo $ready && $enabled;', $latex);
+            self::assertStringNotContainsString('Error: not existing file', $latex);
+            self::assertFileExists($directory . '/main.tex');
+            self::assertFileExists($directory . '/Makefile');
+        } finally {
+            \yii\apidoc\helpers\ApiMarkdown::$renderer = null;
+            \yii\apidoc\helpers\ApiMarkdownLaTeX::$renderer = null;
+        }
+    }
+
     public function testAddsBlankLineBeforeFencedCodeBlock()
     {
         $markdown = "To delete it use\n```php\necho 'ok';\n```\n";
