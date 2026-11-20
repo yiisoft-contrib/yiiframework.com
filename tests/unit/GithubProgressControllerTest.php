@@ -1,10 +1,12 @@
 <?php
 
 use app\components\github\GithubProgress;
+use Github\Exception\ApiLimitExceedException;
 use Github\Exception\RuntimeException;
 use GuzzleHttp\Psr7\Response;
 use Http\Client\HttpClient;
 use Http\Discovery\HttpClientDiscovery;
+use Http\Discovery\Psr18ClientDiscovery;
 use PHPUnit\Framework\TestCase;
 use Psr\Http\Message\RequestInterface;
 use yii\caching\ArrayCache;
@@ -33,7 +35,7 @@ class GithubProgressControllerTest extends TestCase
         $this->previousAliases = Yii::$aliases;
         Yii::setAlias('@app', dirname(__DIR__, 2));
         $this->previousStrategies = [];
-        foreach (HttpClientDiscovery::getStrategies() as $strategy) {
+        foreach (Psr18ClientDiscovery::getStrategies() as $strategy) {
             $this->previousStrategies[] = $strategy;
         }
         $this->repositoriesProperty = new ReflectionProperty(GithubProgress::class, 'allResponseRepositories');
@@ -47,7 +49,7 @@ class GithubProgressControllerTest extends TestCase
             return $this->respond($request);
         });
         GithubProgressHttpDiscovery::$client = $client;
-        HttpClientDiscovery::prependStrategy(GithubProgressHttpDiscovery::class);
+        Psr18ClientDiscovery::prependStrategy(GithubProgressHttpDiscovery::class);
 
         $this->app = new Application([
             'id' => 'github-progress-test',
@@ -60,6 +62,9 @@ class GithubProgressControllerTest extends TestCase
         file_put_contents($this->dataPath . '/github.token', 'test-token');
         Yii::setAlias('@app/data', $this->dataPath);
 
+        self::assertSame($client, Psr18ClientDiscovery::find());
+        self::assertSame($client, HttpClientDiscovery::find());
+
         foreach (GithubProgress::VERSIONS as $version) {
             $this->app->cache->set('github_progress_data_' . $version, ['stale' => $version]);
         }
@@ -71,7 +76,7 @@ class GithubProgressControllerTest extends TestCase
         rmdir($this->dataPath);
         Yii::$aliases = $this->previousAliases;
         Yii::$app = $this->previousApp;
-        HttpClientDiscovery::setStrategies($this->previousStrategies);
+        Psr18ClientDiscovery::setStrategies($this->previousStrategies);
         GithubProgressHttpDiscovery::$client = null;
         $this->repositoriesProperty->setValue(null, $this->previousRepositories);
     }
@@ -187,6 +192,37 @@ class GithubProgressControllerTest extends TestCase
             self::fail('Permanent failures must propagate immediately.');
         } catch (RuntimeException $exception) {
             self::assertNotSame('', $exception->getMessage());
+        }
+
+        self::assertSame(['1.1'], $this->calls);
+        self::assertSame([], self::$delays);
+        foreach (GithubProgress::VERSIONS as $version) {
+            self::assertSame(['stale' => $version], $this->app->cache->get('github_progress_data_' . $version));
+        }
+    }
+
+    public function testRateLimitQuotaRaisesApiLimitExceedException(): void
+    {
+        // The GitHub API v3 rate limit answer (403 JSON 'API rate limit
+        // exceeded' with Remaining/Limit/Reset headers) must reach the
+        // controller as the library's ApiLimitExceedException and be treated
+        // as permanent: no retry, no delay, existing caches preserved. This
+        // covers the exception-code-zero quota path (not only the plain HTTP
+        // 403 fixture below).
+        $this->outcomes['1.1'] = [new Response(403, [
+            'Content-Type' => 'application/json',
+            'X-RateLimit-Remaining' => '0',
+            'X-RateLimit-Limit' => '5000',
+            'X-RateLimit-Reset' => '1234567890',
+        ], '{"message":"API rate limit exceeded for 192.0.2.1. Limit 5000, Used 5000, Reset 1234567890","documentation_url":"https://docs.github.com/rest"}')];
+
+        try {
+            $this->app->runAction('github-progress');
+            self::fail('Rate limit quota must propagate immediately.');
+        } catch (ApiLimitExceedException $exception) {
+            self::assertSame(5000, $exception->getLimit());
+            self::assertSame(1234567890, $exception->getResetTime());
+            self::assertSame(0, $exception->getCode());
         }
 
         self::assertSame(['1.1'], $this->calls);
