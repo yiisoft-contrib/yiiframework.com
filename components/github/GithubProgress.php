@@ -42,7 +42,11 @@ class GithubProgress
 
         $token = trim(file_get_contents($tokenFile));
 
-        $this->client->authenticate($token, null, GithubClient::AUTH_ACCESS_TOKEN);
+        // The cron command may still load a 2.x client from an older vendor directory.
+        $authMethod = defined(GithubClient::class . '::AUTH_ACCESS_TOKEN')
+            ? GithubClient::AUTH_ACCESS_TOKEN
+            : constant(GithubClient::class . '::AUTH_HTTP_TOKEN');
+        $this->client->authenticate($token, null, $authMethod);
         $githubRepoSet = new GithubRepoSet($repositories, $this->client);
 
         return $githubRepoSet->getData();

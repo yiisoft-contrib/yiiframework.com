@@ -59,6 +59,7 @@ class GithubProgressTest extends \Codeception\Test\Unit
                     }
 
                     \PHPUnit\Framework\Assert::assertSame('/graphql', $path);
+                    \PHPUnit\Framework\Assert::assertSame('token test-token', $request->getHeaderLine('Authorization'));
                     $this->calls[] = (string) $request->getBody();
                     return new Response(200, ['Content-Type' => 'application/json'], json_encode([
                         'data' => [
@@ -103,9 +104,6 @@ class GithubProgressTest extends \Codeception\Test\Unit
 
     public function testAuthenticateUsesAccessTokenConstant(): void
     {
-        // Locks GithubProgress::getData()'s call:
-        //   $this->client->authenticate($token, null, GithubClient::AUTH_ACCESS_TOKEN);
-        //
         // GitHub API client 3.x removed AUTH_HTTP_TOKEN; ACCESS_TOKEN is the
         // replacement, exposed on Github\Client as AUTH_ACCESS_TOKEN and on
         // Github\AuthMethod as ACCESS_TOKEN.
