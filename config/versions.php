@@ -55,14 +55,14 @@ HTML
 			'download-url'=>'https://github.com/yiisoft/yii/releases/download/1.1.32/yii-1.1.32.e7728e',
 			'min-php-version' => '5.1.0',
 			'support-until' => 'December 31, 2016 ',
-			'security-until' => 'December 31, 2026 ',
+			'security-until' => 'December 31, 2029 ',
 			'github-url' => 'https://github.com/yiisoft/yii',
 			'git-url' => 'git@github.com:yiisoft/yii.git',
 			'svn-url' => 'https://github.com/yiisoft/yii/trunk/',
 			'summary' => <<<HTML
 				Yii 1.1 is currently under <a href="https://www.yiiframework.com/news/90/update-on-yii-1-1-support-and-end-of-life/">maintenance mode</a>.
 		        Continued support and bug fixes for this version have been provided until December 31, 2016.
-		        Security fixes and compatibility for current PHP versions will be provided until at least December 31, 2026.
+		        Security fixes and compatibility for current PHP versions will be provided until at least December 31, 2029.
 HTML
 		],
 		'1.0' => [
