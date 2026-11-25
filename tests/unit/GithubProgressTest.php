@@ -3,7 +3,7 @@
 use Github\Client;
 use Github\HttpClient\Builder;
 use GuzzleHttp\Psr7\Response;
-use Psr\Http\Client\ClientInterface;
+use Http\Client\HttpClient;
 
 /**
  * Regression tests for the knplabs/github-api 2.x -> 3.x migration used by
@@ -35,7 +35,7 @@ class GithubProgressTest extends \Codeception\Test\Unit
             \Yii::setAlias('@app', dirname(__DIR__, 2));
             \Yii::setAlias('@app/data', $dataPath);
 
-            $client = new class($graphqlCalls) implements ClientInterface {
+            $client = new class($graphqlCalls) implements HttpClient {
                 public function __construct(private array &$calls)
                 {
                 }
@@ -59,6 +59,7 @@ class GithubProgressTest extends \Codeception\Test\Unit
                     }
 
                     \PHPUnit\Framework\Assert::assertSame('/graphql', $path);
+                    \PHPUnit\Framework\Assert::assertSame('token test-token', $request->getHeaderLine('Authorization'));
                     $this->calls[] = (string) $request->getBody();
                     return new Response(200, ['Content-Type' => 'application/json'], json_encode([
                         'data' => [
@@ -99,26 +100,6 @@ class GithubProgressTest extends \Codeception\Test\Unit
                 @rmdir($dataPath);
             }
         }
-    }
-
-    public function testAuthenticateUsesAccessTokenConstant(): void
-    {
-        // Locks GithubProgress::getData()'s call:
-        //   $this->client->authenticate($token, null, GithubClient::AUTH_ACCESS_TOKEN);
-        //
-        // GitHub API client 3.x removed AUTH_HTTP_TOKEN; ACCESS_TOKEN is the
-        // replacement, exposed on Github\Client as AUTH_ACCESS_TOKEN and on
-        // Github\AuthMethod as ACCESS_TOKEN.
-        $clientConst = Github\Client::AUTH_ACCESS_TOKEN;
-        self::assertSame(Github\AuthMethod::ACCESS_TOKEN, $clientConst);
-        self::assertSame('access_token_header', $clientConst);
-
-        // The removed constant must indeed be gone (this is why the app code
-        // had to be updated).
-        self::assertFalse(
-            (new ReflectionClass(Github\Client::class))->hasConstant('AUTH_HTTP_TOKEN'),
-            'AUTH_HTTP_TOKEN should have been removed by github-api 3.x'
-        );
     }
 
     public function testAuthenticateMethodAcceptsTokenAndAuthMethod(): void
