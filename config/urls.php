@@ -12,6 +12,7 @@ return [
     'license' => 'site/license',
     'team' => 'site/team',
     'report-issue' => 'site/report-issue',
+    'cna' => 'site/cna',
     'security' => 'site/security',
     'download' => 'site/download',
     'partners' => 'site/partners',

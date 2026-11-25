@@ -248,6 +248,11 @@ class SiteController extends BaseController
         return $this->render('security');
     }
 
+    public function actionCna()
+    {
+        return $this->render('cna');
+    }
+
     public function actionPartners()
     {
         $model = new PartnersForm();

@@ -13,9 +13,10 @@ $githubIcon = '<svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 .248c-5.
 <main class="container content report-issue-page security-report-page style_external_links">
     <header class="report-issue-page__intro">
         <h1>Report a Security Issue</h1>
-        <p>Report vulnerabilities privately to the maintainers of the affected project.</p>
+        <p>Choose the affected project to send its maintainers a private report.</p>
         <p class="report-issue-page__security">
-            Do not open a public issue or disclose the vulnerability before it has been addressed.
+            You can also <?= Html::a('request a CVE ID', ['site/cna', '#' => 'cve-assignment']) ?>
+            in your report. If the issue is already public, include a link.
         </p>
     </header>
 
