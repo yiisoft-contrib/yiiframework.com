@@ -227,7 +227,7 @@ class News extends ActiveRecord implements Linkable, ObjectIdentityInterface, En
             ->published()
             ->select('news.id')->distinct()
             ->joinWith('tags AS tags')
-            ->where(['or like', 'tags.name', $likes])
+            ->andWhere(['or like', 'tags.name', $likes])
             ->andWhere(['!=', 'news.id', $this->id])
             ->limit(5)
             ->column();
