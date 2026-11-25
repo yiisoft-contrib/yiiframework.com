@@ -26,7 +26,8 @@ class SearchController extends BaseController
      */
     public function trimLongQuery($q)
     {
-        return mb_substr($q, 0, self::MAX_QUERY_LENGTH);
+        $q = mb_convert_encoding((string)$q, 'UTF-8', 'UTF-8');
+        return mb_substr($q, 0, self::MAX_QUERY_LENGTH, 'UTF-8');
     }
 
     public function actionGlobal($q = null, $version = null, $language = null, $type = null)
